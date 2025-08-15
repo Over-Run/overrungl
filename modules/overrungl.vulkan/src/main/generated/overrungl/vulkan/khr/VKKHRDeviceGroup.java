@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_device_group` - device extension
 public final class VKKHRDeviceGroup {
     public static final int VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR = 0x00000001;
     public static final int VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR = 0x00000002;
@@ -65,70 +67,77 @@ public final class VKKHRDeviceGroup {
 
     private VKKHRDeviceGroup() {}
 
+    /// Invokes `vkGetDeviceGroupPeerMemoryFeaturesKHR`.
     /// ```
     /// void vkGetDeviceGroupPeerMemoryFeaturesKHR((struct VkDevice*) VkDevice device, uint32_t heapIndex, uint32_t localDeviceIndex, uint32_t remoteDeviceIndex, VkPeerMemoryFeatureFlags* pPeerMemoryFeatures);
     /// ```
-    public static void vkGetDeviceGroupPeerMemoryFeaturesKHR(VkDevice device, int heapIndex, int localDeviceIndex, int remoteDeviceIndex, MemorySegment pPeerMemoryFeatures) {
+    public static void vkGetDeviceGroupPeerMemoryFeaturesKHR(@NonNull VkDevice device, int heapIndex, int localDeviceIndex, int remoteDeviceIndex, @NonNull MemorySegment pPeerMemoryFeatures) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceGroupPeerMemoryFeaturesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceGroupPeerMemoryFeaturesKHR", device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures); }
         Handles.MH_vkGetDeviceGroupPeerMemoryFeaturesKHR.invokeExact(device.capabilities().PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR, device.segment(), heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceGroupPeerMemoryFeaturesKHR", e); }
     }
 
+    /// Invokes `vkCmdSetDeviceMaskKHR`.
     /// ```
     /// void vkCmdSetDeviceMaskKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t deviceMask);
     /// ```
-    public static void vkCmdSetDeviceMaskKHR(VkCommandBuffer commandBuffer, int deviceMask) {
+    public static void vkCmdSetDeviceMaskKHR(@NonNull VkCommandBuffer commandBuffer, int deviceMask) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDeviceMaskKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDeviceMaskKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetDeviceMaskKHR", commandBuffer, deviceMask); }
         Handles.MH_vkCmdSetDeviceMaskKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDeviceMaskKHR, commandBuffer.segment(), deviceMask); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDeviceMaskKHR", e); }
     }
 
+    /// Invokes `vkCmdDispatchBaseKHR`.
     /// ```
     /// void vkCmdDispatchBaseKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t baseGroupX, uint32_t baseGroupY, uint32_t baseGroupZ, uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ);
     /// ```
-    public static void vkCmdDispatchBaseKHR(VkCommandBuffer commandBuffer, int baseGroupX, int baseGroupY, int baseGroupZ, int groupCountX, int groupCountY, int groupCountZ) {
+    public static void vkCmdDispatchBaseKHR(@NonNull VkCommandBuffer commandBuffer, int baseGroupX, int baseGroupY, int baseGroupZ, int groupCountX, int groupCountY, int groupCountZ) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDispatchBaseKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDispatchBaseKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDispatchBaseKHR", commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ); }
         Handles.MH_vkCmdDispatchBaseKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdDispatchBaseKHR, commandBuffer.segment(), baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDispatchBaseKHR", e); }
     }
 
+    /// Invokes `vkGetDeviceGroupPresentCapabilitiesKHR`.
     /// ```
     /// (int) VkResult vkGetDeviceGroupPresentCapabilitiesKHR((struct VkDevice*) VkDevice device, VkDeviceGroupPresentCapabilitiesKHR* pDeviceGroupPresentCapabilities);
     /// ```
-    public static int vkGetDeviceGroupPresentCapabilitiesKHR(VkDevice device, MemorySegment pDeviceGroupPresentCapabilities) {
+    public static int vkGetDeviceGroupPresentCapabilitiesKHR(@NonNull VkDevice device, @NonNull MemorySegment pDeviceGroupPresentCapabilities) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceGroupPresentCapabilitiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceGroupPresentCapabilitiesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceGroupPresentCapabilitiesKHR", device, pDeviceGroupPresentCapabilities); }
         return (int) Handles.MH_vkGetDeviceGroupPresentCapabilitiesKHR.invokeExact(device.capabilities().PFN_vkGetDeviceGroupPresentCapabilitiesKHR, device.segment(), pDeviceGroupPresentCapabilities); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceGroupPresentCapabilitiesKHR", e); }
     }
 
+    /// Invokes `vkGetDeviceGroupSurfacePresentModesKHR`.
     /// ```
     /// (int) VkResult vkGetDeviceGroupSurfacePresentModesKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSurfaceKHR surface, VkDeviceGroupPresentModeFlagsKHR* pModes);
     /// ```
-    public static int vkGetDeviceGroupSurfacePresentModesKHR(VkDevice device, long surface, MemorySegment pModes) {
+    public static int vkGetDeviceGroupSurfacePresentModesKHR(@NonNull VkDevice device, long surface, @NonNull MemorySegment pModes) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceGroupSurfacePresentModesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceGroupSurfacePresentModesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceGroupSurfacePresentModesKHR", device, surface, pModes); }
         return (int) Handles.MH_vkGetDeviceGroupSurfacePresentModesKHR.invokeExact(device.capabilities().PFN_vkGetDeviceGroupSurfacePresentModesKHR, device.segment(), surface, pModes); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceGroupSurfacePresentModesKHR", e); }
     }
 
+    /// Invokes `vkGetPhysicalDevicePresentRectanglesKHR`.
     /// ```
     /// (int) VkResult vkGetPhysicalDevicePresentRectanglesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkSurfaceKHR surface, uint32_t* pRectCount, VkRect2D* pRects);
     /// ```
-    public static int vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, long surface, MemorySegment pRectCount, MemorySegment pRects) {
+    public static int vkGetPhysicalDevicePresentRectanglesKHR(@NonNull VkPhysicalDevice physicalDevice, long surface, @NonNull MemorySegment pRectCount, @NonNull MemorySegment pRects) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDevicePresentRectanglesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDevicePresentRectanglesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDevicePresentRectanglesKHR", physicalDevice, surface, pRectCount, pRects); }
         return (int) Handles.MH_vkGetPhysicalDevicePresentRectanglesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDevicePresentRectanglesKHR, physicalDevice.segment(), surface, pRectCount, pRects); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDevicePresentRectanglesKHR", e); }
     }
 
+    /// Invokes `vkAcquireNextImage2KHR`.
     /// ```
     /// (int) VkResult vkAcquireNextImage2KHR((struct VkDevice*) VkDevice device, const VkAcquireNextImageInfoKHR* pAcquireInfo, uint32_t* pImageIndex);
     /// ```
-    public static int vkAcquireNextImage2KHR(VkDevice device, MemorySegment pAcquireInfo, MemorySegment pImageIndex) {
+    public static int vkAcquireNextImage2KHR(@NonNull VkDevice device, @NonNull MemorySegment pAcquireInfo, @NonNull MemorySegment pImageIndex) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquireNextImage2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireNextImage2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkAcquireNextImage2KHR", device, pAcquireInfo, pImageIndex); }
         return (int) Handles.MH_vkAcquireNextImage2KHR.invokeExact(device.capabilities().PFN_vkAcquireNextImage2KHR, device.segment(), pAcquireInfo, pImageIndex); }

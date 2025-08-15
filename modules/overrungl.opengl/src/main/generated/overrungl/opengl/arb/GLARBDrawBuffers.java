@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_draw_buffers`
 public final class GLARBDrawBuffers {
     public static final int GL_MAX_DRAW_BUFFERS_ARB = 0x8824;
     public static final int GL_DRAW_BUFFER0_ARB = 0x8825;
@@ -45,19 +45,20 @@ public final class GLARBDrawBuffers {
     public static final class Handles {
         public static final MethodHandle MH_glDrawBuffersARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDrawBuffersARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDrawBuffersARB = func.invoke("glDrawBuffersARB", "glDrawBuffers");
         }
     }
 
-    public GLARBDrawBuffers(overrungl.opengl.GLLoadFunc func) {
+    public GLARBDrawBuffers(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDrawBuffersARB`.
     /// ```
     /// void glDrawBuffersARB((int) GLsizei n, const GLenum* bufs);
     /// ```
-    public void DrawBuffersARB(int n, MemorySegment bufs) {
+    public void DrawBuffersARB(int n, @NonNull MemorySegment bufs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawBuffersARB)) throw new GLSymbolNotFoundError("Symbol not found: glDrawBuffersARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawBuffersARB", n, bufs); }
         Handles.MH_glDrawBuffersARB.invokeExact(handles.PFN_glDrawBuffersARB, n, bufs); }

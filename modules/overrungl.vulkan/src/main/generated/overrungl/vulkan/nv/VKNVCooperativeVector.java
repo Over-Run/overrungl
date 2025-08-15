@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_cooperative_vector` - device extension
 public final class VKNVCooperativeVector {
     public static final int VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV = 0;
     public static final int VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV = 1;
@@ -57,30 +59,33 @@ public final class VKNVCooperativeVector {
 
     private VKNVCooperativeVector() {}
 
+    /// Invokes `vkGetPhysicalDeviceCooperativeVectorPropertiesNV`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceCooperativeVectorPropertiesNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeVectorPropertiesNV* pProperties);
     /// ```
-    public static int vkGetPhysicalDeviceCooperativeVectorPropertiesNV(VkPhysicalDevice physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public static int vkGetPhysicalDeviceCooperativeVectorPropertiesNV(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pPropertyCount, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeVectorPropertiesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceCooperativeVectorPropertiesNV", physicalDevice, pPropertyCount, pProperties); }
         return (int) Handles.MH_vkGetPhysicalDeviceCooperativeVectorPropertiesNV.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV, physicalDevice.segment(), pPropertyCount, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceCooperativeVectorPropertiesNV", e); }
     }
 
+    /// Invokes `vkConvertCooperativeVectorMatrixNV`.
     /// ```
     /// (int) VkResult vkConvertCooperativeVectorMatrixNV((struct VkDevice*) VkDevice device, const VkConvertCooperativeVectorMatrixInfoNV* pInfo);
     /// ```
-    public static int vkConvertCooperativeVectorMatrixNV(VkDevice device, MemorySegment pInfo) {
+    public static int vkConvertCooperativeVectorMatrixNV(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkConvertCooperativeVectorMatrixNV)) throw new VKSymbolNotFoundError("Symbol not found: vkConvertCooperativeVectorMatrixNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkConvertCooperativeVectorMatrixNV", device, pInfo); }
         return (int) Handles.MH_vkConvertCooperativeVectorMatrixNV.invokeExact(device.capabilities().PFN_vkConvertCooperativeVectorMatrixNV, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkConvertCooperativeVectorMatrixNV", e); }
     }
 
+    /// Invokes `vkCmdConvertCooperativeVectorMatrixNV`.
     /// ```
     /// void vkCmdConvertCooperativeVectorMatrixNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t infoCount, const VkConvertCooperativeVectorMatrixInfoNV* pInfos);
     /// ```
-    public static void vkCmdConvertCooperativeVectorMatrixNV(VkCommandBuffer commandBuffer, int infoCount, MemorySegment pInfos) {
+    public static void vkCmdConvertCooperativeVectorMatrixNV(@NonNull VkCommandBuffer commandBuffer, int infoCount, @NonNull MemorySegment pInfos) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdConvertCooperativeVectorMatrixNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdConvertCooperativeVectorMatrixNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdConvertCooperativeVectorMatrixNV", commandBuffer, infoCount, pInfos); }
         Handles.MH_vkCmdConvertCooperativeVectorMatrixNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdConvertCooperativeVectorMatrixNV, commandBuffer.segment(), infoCount, pInfos); }

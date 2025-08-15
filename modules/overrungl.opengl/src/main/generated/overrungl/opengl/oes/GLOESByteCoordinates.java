@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.oes;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_OES_byte_coordinates`
 public final class GLOESByteCoordinates {
     public static final int GL_BYTE = 0x1400;
     private final Handles handles;
@@ -71,7 +71,7 @@ public final class GLOESByteCoordinates {
         public final MemorySegment PFN_glVertex3bvOES;
         public final MemorySegment PFN_glVertex4bOES;
         public final MemorySegment PFN_glVertex4bvOES;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glMultiTexCoord1bOES = func.invoke("glMultiTexCoord1bOES");
             PFN_glMultiTexCoord1bvOES = func.invoke("glMultiTexCoord1bvOES");
             PFN_glMultiTexCoord2bOES = func.invoke("glMultiTexCoord2bOES");
@@ -97,10 +97,11 @@ public final class GLOESByteCoordinates {
         }
     }
 
-    public GLOESByteCoordinates(overrungl.opengl.GLLoadFunc func) {
+    public GLOESByteCoordinates(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glMultiTexCoord1bOES`.
     /// ```
     /// void glMultiTexCoord1bOES((unsigned int) GLenum texture, ((signed char) khronos_int8_t) GLbyte s);
     /// ```
@@ -111,16 +112,18 @@ public final class GLOESByteCoordinates {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1bOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord1bvOES`.
     /// ```
     /// void glMultiTexCoord1bvOES((unsigned int) GLenum texture, const GLbyte* coords);
     /// ```
-    public void MultiTexCoord1bvOES(int texture, MemorySegment coords) {
+    public void MultiTexCoord1bvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord1bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord1bvOES", texture, coords); }
         Handles.MH_glMultiTexCoord1bvOES.invokeExact(handles.PFN_glMultiTexCoord1bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1bvOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord2bOES`.
     /// ```
     /// void glMultiTexCoord2bOES((unsigned int) GLenum texture, ((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t);
     /// ```
@@ -131,16 +134,18 @@ public final class GLOESByteCoordinates {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2bOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord2bvOES`.
     /// ```
     /// void glMultiTexCoord2bvOES((unsigned int) GLenum texture, const GLbyte* coords);
     /// ```
-    public void MultiTexCoord2bvOES(int texture, MemorySegment coords) {
+    public void MultiTexCoord2bvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord2bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord2bvOES", texture, coords); }
         Handles.MH_glMultiTexCoord2bvOES.invokeExact(handles.PFN_glMultiTexCoord2bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2bvOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord3bOES`.
     /// ```
     /// void glMultiTexCoord3bOES((unsigned int) GLenum texture, ((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t, ((signed char) khronos_int8_t) GLbyte r);
     /// ```
@@ -151,16 +156,18 @@ public final class GLOESByteCoordinates {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3bOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord3bvOES`.
     /// ```
     /// void glMultiTexCoord3bvOES((unsigned int) GLenum texture, const GLbyte* coords);
     /// ```
-    public void MultiTexCoord3bvOES(int texture, MemorySegment coords) {
+    public void MultiTexCoord3bvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord3bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord3bvOES", texture, coords); }
         Handles.MH_glMultiTexCoord3bvOES.invokeExact(handles.PFN_glMultiTexCoord3bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3bvOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord4bOES`.
     /// ```
     /// void glMultiTexCoord4bOES((unsigned int) GLenum texture, ((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t, ((signed char) khronos_int8_t) GLbyte r, ((signed char) khronos_int8_t) GLbyte q);
     /// ```
@@ -171,16 +178,18 @@ public final class GLOESByteCoordinates {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4bOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord4bvOES`.
     /// ```
     /// void glMultiTexCoord4bvOES((unsigned int) GLenum texture, const GLbyte* coords);
     /// ```
-    public void MultiTexCoord4bvOES(int texture, MemorySegment coords) {
+    public void MultiTexCoord4bvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord4bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord4bvOES", texture, coords); }
         Handles.MH_glMultiTexCoord4bvOES.invokeExact(handles.PFN_glMultiTexCoord4bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4bvOES", e); }
     }
 
+    /// Invokes `glTexCoord1bOES`.
     /// ```
     /// void glTexCoord1bOES(((signed char) khronos_int8_t) GLbyte s);
     /// ```
@@ -191,16 +200,18 @@ public final class GLOESByteCoordinates {
         catch (Throwable e) { throw new RuntimeException("error in TexCoord1bOES", e); }
     }
 
+    /// Invokes `glTexCoord1bvOES`.
     /// ```
     /// void glTexCoord1bvOES(const GLbyte* coords);
     /// ```
-    public void TexCoord1bvOES(MemorySegment coords) {
+    public void TexCoord1bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord1bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord1bvOES", coords); }
         Handles.MH_glTexCoord1bvOES.invokeExact(handles.PFN_glTexCoord1bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord1bvOES", e); }
     }
 
+    /// Invokes `glTexCoord2bOES`.
     /// ```
     /// void glTexCoord2bOES(((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t);
     /// ```
@@ -211,16 +222,18 @@ public final class GLOESByteCoordinates {
         catch (Throwable e) { throw new RuntimeException("error in TexCoord2bOES", e); }
     }
 
+    /// Invokes `glTexCoord2bvOES`.
     /// ```
     /// void glTexCoord2bvOES(const GLbyte* coords);
     /// ```
-    public void TexCoord2bvOES(MemorySegment coords) {
+    public void TexCoord2bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord2bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord2bvOES", coords); }
         Handles.MH_glTexCoord2bvOES.invokeExact(handles.PFN_glTexCoord2bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord2bvOES", e); }
     }
 
+    /// Invokes `glTexCoord3bOES`.
     /// ```
     /// void glTexCoord3bOES(((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t, ((signed char) khronos_int8_t) GLbyte r);
     /// ```
@@ -231,16 +244,18 @@ public final class GLOESByteCoordinates {
         catch (Throwable e) { throw new RuntimeException("error in TexCoord3bOES", e); }
     }
 
+    /// Invokes `glTexCoord3bvOES`.
     /// ```
     /// void glTexCoord3bvOES(const GLbyte* coords);
     /// ```
-    public void TexCoord3bvOES(MemorySegment coords) {
+    public void TexCoord3bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord3bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord3bvOES", coords); }
         Handles.MH_glTexCoord3bvOES.invokeExact(handles.PFN_glTexCoord3bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord3bvOES", e); }
     }
 
+    /// Invokes `glTexCoord4bOES`.
     /// ```
     /// void glTexCoord4bOES(((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t, ((signed char) khronos_int8_t) GLbyte r, ((signed char) khronos_int8_t) GLbyte q);
     /// ```
@@ -251,16 +266,18 @@ public final class GLOESByteCoordinates {
         catch (Throwable e) { throw new RuntimeException("error in TexCoord4bOES", e); }
     }
 
+    /// Invokes `glTexCoord4bvOES`.
     /// ```
     /// void glTexCoord4bvOES(const GLbyte* coords);
     /// ```
-    public void TexCoord4bvOES(MemorySegment coords) {
+    public void TexCoord4bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord4bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord4bvOES", coords); }
         Handles.MH_glTexCoord4bvOES.invokeExact(handles.PFN_glTexCoord4bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord4bvOES", e); }
     }
 
+    /// Invokes `glVertex2bOES`.
     /// ```
     /// void glVertex2bOES(((signed char) khronos_int8_t) GLbyte x, ((signed char) khronos_int8_t) GLbyte y);
     /// ```
@@ -271,16 +288,18 @@ public final class GLOESByteCoordinates {
         catch (Throwable e) { throw new RuntimeException("error in Vertex2bOES", e); }
     }
 
+    /// Invokes `glVertex2bvOES`.
     /// ```
     /// void glVertex2bvOES(const GLbyte* coords);
     /// ```
-    public void Vertex2bvOES(MemorySegment coords) {
+    public void Vertex2bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex2bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex2bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex2bvOES", coords); }
         Handles.MH_glVertex2bvOES.invokeExact(handles.PFN_glVertex2bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex2bvOES", e); }
     }
 
+    /// Invokes `glVertex3bOES`.
     /// ```
     /// void glVertex3bOES(((signed char) khronos_int8_t) GLbyte x, ((signed char) khronos_int8_t) GLbyte y, ((signed char) khronos_int8_t) GLbyte z);
     /// ```
@@ -291,16 +310,18 @@ public final class GLOESByteCoordinates {
         catch (Throwable e) { throw new RuntimeException("error in Vertex3bOES", e); }
     }
 
+    /// Invokes `glVertex3bvOES`.
     /// ```
     /// void glVertex3bvOES(const GLbyte* coords);
     /// ```
-    public void Vertex3bvOES(MemorySegment coords) {
+    public void Vertex3bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex3bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex3bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex3bvOES", coords); }
         Handles.MH_glVertex3bvOES.invokeExact(handles.PFN_glVertex3bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex3bvOES", e); }
     }
 
+    /// Invokes `glVertex4bOES`.
     /// ```
     /// void glVertex4bOES(((signed char) khronos_int8_t) GLbyte x, ((signed char) khronos_int8_t) GLbyte y, ((signed char) khronos_int8_t) GLbyte z, ((signed char) khronos_int8_t) GLbyte w);
     /// ```
@@ -311,10 +332,11 @@ public final class GLOESByteCoordinates {
         catch (Throwable e) { throw new RuntimeException("error in Vertex4bOES", e); }
     }
 
+    /// Invokes `glVertex4bvOES`.
     /// ```
     /// void glVertex4bvOES(const GLbyte* coords);
     /// ```
-    public void Vertex4bvOES(MemorySegment coords) {
+    public void Vertex4bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex4bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex4bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex4bvOES", coords); }
         Handles.MH_glVertex4bvOES.invokeExact(handles.PFN_glVertex4bvOES, coords); }

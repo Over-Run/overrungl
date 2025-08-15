@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_external_memory_capabilities` - instance extension
 public final class VKKHRExternalMemoryCapabilities {
     public static final int VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_memory_capabilities";
@@ -47,10 +49,11 @@ public final class VKKHRExternalMemoryCapabilities {
 
     private VKKHRExternalMemoryCapabilities() {}
 
+    /// Invokes `vkGetPhysicalDeviceExternalBufferPropertiesKHR`.
     /// ```
     /// void vkGetPhysicalDeviceExternalBufferPropertiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo, VkExternalBufferProperties* pExternalBufferProperties);
     /// ```
-    public static void vkGetPhysicalDeviceExternalBufferPropertiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pExternalBufferInfo, MemorySegment pExternalBufferProperties) {
+    public static void vkGetPhysicalDeviceExternalBufferPropertiesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pExternalBufferInfo, @NonNull MemorySegment pExternalBufferProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalBufferPropertiesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceExternalBufferPropertiesKHR", physicalDevice, pExternalBufferInfo, pExternalBufferProperties); }
         Handles.MH_vkGetPhysicalDeviceExternalBufferPropertiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR, physicalDevice.segment(), pExternalBufferInfo, pExternalBufferProperties); }

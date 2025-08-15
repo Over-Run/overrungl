@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkDeviceFaultVendorBinaryHeaderVersionOneEXT`.
 /// ## Layout
 /// ```
 /// struct VkDeviceFaultVendorBinaryHeaderVersionOneEXT {
@@ -43,7 +45,7 @@ import overrungl.util.*;
 /// ```
 public final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT extends GroupType {
     /// The struct layout of `VkDeviceFaultVendorBinaryHeaderVersionOneEXT`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("headerSize"),
         ValueLayout.JAVA_INT.withName("headerVersion"),
         ValueLayout.JAVA_INT.withName("vendorID"),

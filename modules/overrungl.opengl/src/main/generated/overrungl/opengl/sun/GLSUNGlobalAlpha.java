@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sun;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_SUN_global_alpha`
 public final class GLSUNGlobalAlpha {
     public static final int GL_GLOBAL_ALPHA_SUN = 0x81D9;
     public static final int GL_GLOBAL_ALPHA_FACTOR_SUN = 0x81DA;
@@ -44,7 +44,7 @@ public final class GLSUNGlobalAlpha {
         public final MemorySegment PFN_glGlobalAlphaFactorubSUN;
         public final MemorySegment PFN_glGlobalAlphaFactorusSUN;
         public final MemorySegment PFN_glGlobalAlphaFactoruiSUN;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGlobalAlphaFactorbSUN = func.invoke("glGlobalAlphaFactorbSUN");
             PFN_glGlobalAlphaFactorsSUN = func.invoke("glGlobalAlphaFactorsSUN");
             PFN_glGlobalAlphaFactoriSUN = func.invoke("glGlobalAlphaFactoriSUN");
@@ -56,10 +56,11 @@ public final class GLSUNGlobalAlpha {
         }
     }
 
-    public GLSUNGlobalAlpha(overrungl.opengl.GLLoadFunc func) {
+    public GLSUNGlobalAlpha(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGlobalAlphaFactorbSUN`.
     /// ```
     /// void glGlobalAlphaFactorbSUN(((signed char) khronos_int8_t) GLbyte factor);
     /// ```
@@ -70,6 +71,7 @@ public final class GLSUNGlobalAlpha {
         catch (Throwable e) { throw new RuntimeException("error in GlobalAlphaFactorbSUN", e); }
     }
 
+    /// Invokes `glGlobalAlphaFactorsSUN`.
     /// ```
     /// void glGlobalAlphaFactorsSUN(((signed short) khronos_int16_t) GLshort factor);
     /// ```
@@ -80,6 +82,7 @@ public final class GLSUNGlobalAlpha {
         catch (Throwable e) { throw new RuntimeException("error in GlobalAlphaFactorsSUN", e); }
     }
 
+    /// Invokes `glGlobalAlphaFactoriSUN`.
     /// ```
     /// void glGlobalAlphaFactoriSUN((int) GLint factor);
     /// ```
@@ -90,6 +93,7 @@ public final class GLSUNGlobalAlpha {
         catch (Throwable e) { throw new RuntimeException("error in GlobalAlphaFactoriSUN", e); }
     }
 
+    /// Invokes `glGlobalAlphaFactorfSUN`.
     /// ```
     /// void glGlobalAlphaFactorfSUN(((float) khronos_float_t) GLfloat factor);
     /// ```
@@ -100,6 +104,7 @@ public final class GLSUNGlobalAlpha {
         catch (Throwable e) { throw new RuntimeException("error in GlobalAlphaFactorfSUN", e); }
     }
 
+    /// Invokes `glGlobalAlphaFactordSUN`.
     /// ```
     /// void glGlobalAlphaFactordSUN((double) GLdouble factor);
     /// ```
@@ -110,6 +115,7 @@ public final class GLSUNGlobalAlpha {
         catch (Throwable e) { throw new RuntimeException("error in GlobalAlphaFactordSUN", e); }
     }
 
+    /// Invokes `glGlobalAlphaFactorubSUN`.
     /// ```
     /// void glGlobalAlphaFactorubSUN(((unsigned char) khronos_uint8_t) GLubyte factor);
     /// ```
@@ -120,6 +126,7 @@ public final class GLSUNGlobalAlpha {
         catch (Throwable e) { throw new RuntimeException("error in GlobalAlphaFactorubSUN", e); }
     }
 
+    /// Invokes `glGlobalAlphaFactorusSUN`.
     /// ```
     /// void glGlobalAlphaFactorusSUN(((unsigned short) khronos_uint16_t) GLushort factor);
     /// ```
@@ -130,6 +137,7 @@ public final class GLSUNGlobalAlpha {
         catch (Throwable e) { throw new RuntimeException("error in GlobalAlphaFactorusSUN", e); }
     }
 
+    /// Invokes `glGlobalAlphaFactoruiSUN`.
     /// ```
     /// void glGlobalAlphaFactoruiSUN((unsigned int) GLuint factor);
     /// ```

@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_conservative_rasterization` - device extension
 public final class VKEXTConservativeRasterization {
     public static final int VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT = 0;
     public static final int VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT = 1;

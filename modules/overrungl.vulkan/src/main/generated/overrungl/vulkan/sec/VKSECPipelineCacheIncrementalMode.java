@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.sec;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_SEC_pipeline_cache_incremental_mode` - device extension
 public final class VKSECPipelineCacheIncrementalMode {
     public static final int VK_SEC_PIPELINE_CACHE_INCREMENTAL_MODE_SPEC_VERSION = 1;
     public static final String VK_SEC_PIPELINE_CACHE_INCREMENTAL_MODE_EXTENSION_NAME = "VK_SEC_pipeline_cache_incremental_mode";

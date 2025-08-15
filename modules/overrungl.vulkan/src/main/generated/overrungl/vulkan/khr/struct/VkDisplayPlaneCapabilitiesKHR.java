@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkDisplayPlaneCapabilitiesKHR`.
 /// ## Layout
 /// ```
 /// struct VkDisplayPlaneCapabilitiesKHR {
@@ -41,7 +43,7 @@ import overrungl.util.*;
 /// ```
 public final class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// The struct layout of `VkDisplayPlaneCapabilitiesKHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("supportedAlpha"),
         overrungl.vulkan.struct.VkOffset2D.LAYOUT.withName("minSrcPosition"),
         overrungl.vulkan.struct.VkOffset2D.LAYOUT.withName("maxSrcPosition"),

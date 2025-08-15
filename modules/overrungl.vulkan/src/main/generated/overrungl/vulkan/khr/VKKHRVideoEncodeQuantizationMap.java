@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_video_encode_quantization_map` - device extension
 public final class VKKHRVideoEncodeQuantizationMap {
     public static final int VK_KHR_VIDEO_ENCODE_QUANTIZATION_MAP_SPEC_VERSION = 2;
     public static final String VK_KHR_VIDEO_ENCODE_QUANTIZATION_MAP_EXTENSION_NAME = "VK_KHR_video_encode_quantization_map";

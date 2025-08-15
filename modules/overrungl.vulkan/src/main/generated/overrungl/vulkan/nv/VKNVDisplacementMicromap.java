@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_displacement_micromap` - device extension
 public final class VKNVDisplacementMicromap {
     public static final int VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV = 1;
     public static final int VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV = 2;

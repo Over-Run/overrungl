@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_window_rectangles`
 public final class GLEXTWindowRectangles {
     public static final int GL_INCLUSIVE_EXT = 0x8F10;
     public static final int GL_EXCLUSIVE_EXT = 0x8F11;
@@ -34,19 +34,20 @@ public final class GLEXTWindowRectangles {
     public static final class Handles {
         public static final MethodHandle MH_glWindowRectanglesEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glWindowRectanglesEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glWindowRectanglesEXT = func.invoke("glWindowRectanglesEXT");
         }
     }
 
-    public GLEXTWindowRectangles(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTWindowRectangles(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glWindowRectanglesEXT`.
     /// ```
     /// void glWindowRectanglesEXT((unsigned int) GLenum mode, (int) GLsizei count, const GLint* box);
     /// ```
-    public void WindowRectanglesEXT(int mode, int count, MemorySegment box) {
+    public void WindowRectanglesEXT(int mode, int count, @NonNull MemorySegment box) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowRectanglesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glWindowRectanglesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowRectanglesEXT", mode, count, box); }
         Handles.MH_glWindowRectanglesEXT.invokeExact(handles.PFN_glWindowRectanglesEXT, mode, count, box); }

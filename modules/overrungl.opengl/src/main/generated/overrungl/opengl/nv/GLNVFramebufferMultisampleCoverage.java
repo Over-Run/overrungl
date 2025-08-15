@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_framebuffer_multisample_coverage`
 public final class GLNVFramebufferMultisampleCoverage {
     public static final int GL_RENDERBUFFER_COVERAGE_SAMPLES_NV = 0x8CAB;
     public static final int GL_RENDERBUFFER_COLOR_SAMPLES_NV = 0x8E10;
@@ -32,15 +32,16 @@ public final class GLNVFramebufferMultisampleCoverage {
     public static final class Handles {
         public static final MethodHandle MH_glRenderbufferStorageMultisampleCoverageNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glRenderbufferStorageMultisampleCoverageNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glRenderbufferStorageMultisampleCoverageNV = func.invoke("glRenderbufferStorageMultisampleCoverageNV");
         }
     }
 
-    public GLNVFramebufferMultisampleCoverage(overrungl.opengl.GLLoadFunc func) {
+    public GLNVFramebufferMultisampleCoverage(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glRenderbufferStorageMultisampleCoverageNV`.
     /// ```
     /// void glRenderbufferStorageMultisampleCoverageNV((unsigned int) GLenum target, (int) GLsizei coverageSamples, (int) GLsizei colorSamples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```

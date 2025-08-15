@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeAV1OperatingPointInfo`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeAV1OperatingPointInfo {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// The struct layout of `StdVideoEncodeAV1OperatingPointInfo`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoEncodeAV1OperatingPointInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_SHORT.withName("operating_point_idc"),
         ValueLayout.JAVA_BYTE.withName("seq_level_idx"),

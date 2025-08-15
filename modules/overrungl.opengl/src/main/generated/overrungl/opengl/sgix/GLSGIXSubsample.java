@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
-
+/// `GL_SGIX_subsample`
 public final class GLSGIXSubsample {
     public static final int GL_PACK_SUBSAMPLE_RATE_SGIX = 0x85A0;
     public static final int GL_UNPACK_SUBSAMPLE_RATE_SGIX = 0x85A1;

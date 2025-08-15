@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_partitioned_acceleration_structure` - device extension
 public final class VKNVPartitionedAccelerationStructure {
     public static final int VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_INSTANCE_NV = 0;
     public static final int VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_UPDATE_INSTANCE_NV = 1;
@@ -48,20 +50,22 @@ public final class VKNVPartitionedAccelerationStructure {
 
     private VKNVPartitionedAccelerationStructure() {}
 
+    /// Invokes `vkGetPartitionedAccelerationStructuresBuildSizesNV`.
     /// ```
     /// void vkGetPartitionedAccelerationStructuresBuildSizesNV((struct VkDevice*) VkDevice device, const VkPartitionedAccelerationStructureInstancesInputNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
     /// ```
-    public static void vkGetPartitionedAccelerationStructuresBuildSizesNV(VkDevice device, MemorySegment pInfo, MemorySegment pSizeInfo) {
+    public static void vkGetPartitionedAccelerationStructuresBuildSizesNV(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pSizeInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPartitionedAccelerationStructuresBuildSizesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPartitionedAccelerationStructuresBuildSizesNV", device, pInfo, pSizeInfo); }
         Handles.MH_vkGetPartitionedAccelerationStructuresBuildSizesNV.invokeExact(device.capabilities().PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV, device.segment(), pInfo, pSizeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPartitionedAccelerationStructuresBuildSizesNV", e); }
     }
 
+    /// Invokes `vkCmdBuildPartitionedAccelerationStructuresNV`.
     /// ```
     /// void vkCmdBuildPartitionedAccelerationStructuresNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkBuildPartitionedAccelerationStructureInfoNV* pBuildInfo);
     /// ```
-    public static void vkCmdBuildPartitionedAccelerationStructuresNV(VkCommandBuffer commandBuffer, MemorySegment pBuildInfo) {
+    public static void vkCmdBuildPartitionedAccelerationStructuresNV(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pBuildInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildPartitionedAccelerationStructuresNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBuildPartitionedAccelerationStructuresNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBuildPartitionedAccelerationStructuresNV", commandBuffer, pBuildInfo); }
         Handles.MH_vkCmdBuildPartitionedAccelerationStructuresNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildPartitionedAccelerationStructuresNV, commandBuffer.segment(), pBuildInfo); }

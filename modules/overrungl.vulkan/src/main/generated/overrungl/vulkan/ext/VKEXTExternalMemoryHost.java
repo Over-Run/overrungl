@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_external_memory_host` - device extension
 public final class VKEXTExternalMemoryHost {
     public static final int VK_EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION = 1;
     public static final String VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME = "VK_EXT_external_memory_host";
@@ -36,10 +38,11 @@ public final class VKEXTExternalMemoryHost {
 
     private VKEXTExternalMemoryHost() {}
 
+    /// Invokes `vkGetMemoryHostPointerPropertiesEXT`.
     /// ```
     /// (int) VkResult vkGetMemoryHostPointerPropertiesEXT((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, const void* pHostPointer, VkMemoryHostPointerPropertiesEXT* pMemoryHostPointerProperties);
     /// ```
-    public static int vkGetMemoryHostPointerPropertiesEXT(VkDevice device, int handleType, MemorySegment pHostPointer, MemorySegment pMemoryHostPointerProperties) {
+    public static int vkGetMemoryHostPointerPropertiesEXT(@NonNull VkDevice device, int handleType, @NonNull MemorySegment pHostPointer, @NonNull MemorySegment pMemoryHostPointerProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryHostPointerPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryHostPointerPropertiesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMemoryHostPointerPropertiesEXT", device, handleType, pHostPointer, pMemoryHostPointerProperties); }
         return (int) Handles.MH_vkGetMemoryHostPointerPropertiesEXT.invokeExact(device.capabilities().PFN_vkGetMemoryHostPointerPropertiesEXT, device.segment(), handleType, pHostPointer, pMemoryHostPointerProperties); }

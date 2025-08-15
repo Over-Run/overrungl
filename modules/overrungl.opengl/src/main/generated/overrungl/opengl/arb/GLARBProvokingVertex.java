@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_provoking_vertex`
 public final class GLARBProvokingVertex {
     public static final int GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION = 0x8E4C;
     public static final int GL_FIRST_VERTEX_CONVENTION = 0x8E4D;
@@ -32,15 +32,16 @@ public final class GLARBProvokingVertex {
     public static final class Handles {
         public static final MethodHandle MH_glProvokingVertex = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glProvokingVertex;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glProvokingVertex = func.invoke("glProvokingVertex");
         }
     }
 
-    public GLARBProvokingVertex(overrungl.opengl.GLLoadFunc func) {
+    public GLARBProvokingVertex(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glProvokingVertex`.
     /// ```
     /// void glProvokingVertex((unsigned int) GLenum mode);
     /// ```

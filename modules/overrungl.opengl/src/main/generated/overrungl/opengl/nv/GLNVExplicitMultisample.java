@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_explicit_multisample`
 public final class GLNVExplicitMultisample {
     public static final int GL_SAMPLE_POSITION_NV = 0x8E50;
     public static final int GL_SAMPLE_MASK_NV = 0x8E51;
@@ -42,27 +42,29 @@ public final class GLNVExplicitMultisample {
         public final MemorySegment PFN_glGetMultisamplefvNV;
         public final MemorySegment PFN_glSampleMaskIndexedNV;
         public final MemorySegment PFN_glTexRenderbufferNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGetMultisamplefvNV = func.invoke("glGetMultisamplefvNV", "glGetMultisamplefv");
             PFN_glSampleMaskIndexedNV = func.invoke("glSampleMaskIndexedNV");
             PFN_glTexRenderbufferNV = func.invoke("glTexRenderbufferNV");
         }
     }
 
-    public GLNVExplicitMultisample(overrungl.opengl.GLLoadFunc func) {
+    public GLNVExplicitMultisample(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGetMultisamplefvNV`.
     /// ```
     /// void glGetMultisamplefvNV((unsigned int) GLenum pname, (unsigned int) GLuint index, GLfloat* val);
     /// ```
-    public void GetMultisamplefvNV(int pname, int index, MemorySegment val) {
+    public void GetMultisamplefvNV(int pname, int index, @NonNull MemorySegment val) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultisamplefvNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultisamplefvNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultisamplefvNV", pname, index, val); }
         Handles.MH_glGetMultisamplefvNV.invokeExact(handles.PFN_glGetMultisamplefvNV, pname, index, val); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultisamplefvNV", e); }
     }
 
+    /// Invokes `glSampleMaskIndexedNV`.
     /// ```
     /// void glSampleMaskIndexedNV((unsigned int) GLuint index, (unsigned int) GLbitfield mask);
     /// ```
@@ -73,6 +75,7 @@ public final class GLNVExplicitMultisample {
         catch (Throwable e) { throw new RuntimeException("error in SampleMaskIndexedNV", e); }
     }
 
+    /// Invokes `glTexRenderbufferNV`.
     /// ```
     /// void glTexRenderbufferNV((unsigned int) GLenum target, (unsigned int) GLuint renderbuffer);
     /// ```

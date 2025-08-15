@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoDecodeH264ReferenceInfo`.
 /// ## Layout
 /// ```
 /// struct StdVideoDecodeH264ReferenceInfo {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoDecodeH264ReferenceInfo extends GroupType {
     /// The struct layout of `StdVideoDecodeH264ReferenceInfo`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoDecodeH264ReferenceInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_SHORT.withName("FrameNum"),
         ValueLayout.JAVA_SHORT.withName("reserved"),

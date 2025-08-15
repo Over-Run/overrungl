@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ati;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ATI_fragment_shader`
 public final class GLATIFragmentShader {
     public static final int GL_FRAGMENT_SHADER_ATI = 0x8920;
     public static final int GL_REG_0_ATI = 0x8921;
@@ -158,7 +158,7 @@ public final class GLATIFragmentShader {
         public final MemorySegment PFN_glAlphaFragmentOp2ATI;
         public final MemorySegment PFN_glAlphaFragmentOp3ATI;
         public final MemorySegment PFN_glSetFragmentShaderConstantATI;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGenFragmentShadersATI = func.invoke("glGenFragmentShadersATI");
             PFN_glBindFragmentShaderATI = func.invoke("glBindFragmentShaderATI");
             PFN_glDeleteFragmentShaderATI = func.invoke("glDeleteFragmentShaderATI");
@@ -176,10 +176,11 @@ public final class GLATIFragmentShader {
         }
     }
 
-    public GLATIFragmentShader(overrungl.opengl.GLLoadFunc func) {
+    public GLATIFragmentShader(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGenFragmentShadersATI`.
     /// ```
     /// (unsigned int) GLuint glGenFragmentShadersATI((unsigned int) GLuint range);
     /// ```
@@ -190,6 +191,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in GenFragmentShadersATI", e); }
     }
 
+    /// Invokes `glBindFragmentShaderATI`.
     /// ```
     /// void glBindFragmentShaderATI((unsigned int) GLuint id);
     /// ```
@@ -200,6 +202,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in BindFragmentShaderATI", e); }
     }
 
+    /// Invokes `glDeleteFragmentShaderATI`.
     /// ```
     /// void glDeleteFragmentShaderATI((unsigned int) GLuint id);
     /// ```
@@ -210,6 +213,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in DeleteFragmentShaderATI", e); }
     }
 
+    /// Invokes `glBeginFragmentShaderATI`.
     /// ```
     /// void glBeginFragmentShaderATI();
     /// ```
@@ -220,6 +224,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in BeginFragmentShaderATI", e); }
     }
 
+    /// Invokes `glEndFragmentShaderATI`.
     /// ```
     /// void glEndFragmentShaderATI();
     /// ```
@@ -230,6 +235,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in EndFragmentShaderATI", e); }
     }
 
+    /// Invokes `glPassTexCoordATI`.
     /// ```
     /// void glPassTexCoordATI((unsigned int) GLuint dst, (unsigned int) GLuint coord, (unsigned int) GLenum swizzle);
     /// ```
@@ -240,6 +246,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in PassTexCoordATI", e); }
     }
 
+    /// Invokes `glSampleMapATI`.
     /// ```
     /// void glSampleMapATI((unsigned int) GLuint dst, (unsigned int) GLuint interp, (unsigned int) GLenum swizzle);
     /// ```
@@ -250,6 +257,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in SampleMapATI", e); }
     }
 
+    /// Invokes `glColorFragmentOp1ATI`.
     /// ```
     /// void glColorFragmentOp1ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMask, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod);
     /// ```
@@ -260,6 +268,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in ColorFragmentOp1ATI", e); }
     }
 
+    /// Invokes `glColorFragmentOp2ATI`.
     /// ```
     /// void glColorFragmentOp2ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMask, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod);
     /// ```
@@ -270,6 +279,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in ColorFragmentOp2ATI", e); }
     }
 
+    /// Invokes `glColorFragmentOp3ATI`.
     /// ```
     /// void glColorFragmentOp3ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMask, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod, (unsigned int) GLuint arg3, (unsigned int) GLuint arg3Rep, (unsigned int) GLuint arg3Mod);
     /// ```
@@ -280,6 +290,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in ColorFragmentOp3ATI", e); }
     }
 
+    /// Invokes `glAlphaFragmentOp1ATI`.
     /// ```
     /// void glAlphaFragmentOp1ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod);
     /// ```
@@ -290,6 +301,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in AlphaFragmentOp1ATI", e); }
     }
 
+    /// Invokes `glAlphaFragmentOp2ATI`.
     /// ```
     /// void glAlphaFragmentOp2ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod);
     /// ```
@@ -300,6 +312,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in AlphaFragmentOp2ATI", e); }
     }
 
+    /// Invokes `glAlphaFragmentOp3ATI`.
     /// ```
     /// void glAlphaFragmentOp3ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod, (unsigned int) GLuint arg3, (unsigned int) GLuint arg3Rep, (unsigned int) GLuint arg3Mod);
     /// ```
@@ -310,10 +323,11 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in AlphaFragmentOp3ATI", e); }
     }
 
+    /// Invokes `glSetFragmentShaderConstantATI`.
     /// ```
     /// void glSetFragmentShaderConstantATI((unsigned int) GLuint dst, const GLfloat* value);
     /// ```
-    public void SetFragmentShaderConstantATI(int dst, MemorySegment value) {
+    public void SetFragmentShaderConstantATI(int dst, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSetFragmentShaderConstantATI)) throw new GLSymbolNotFoundError("Symbol not found: glSetFragmentShaderConstantATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSetFragmentShaderConstantATI", dst, value); }
         Handles.MH_glSetFragmentShaderConstantATI.invokeExact(handles.PFN_glSetFragmentShaderConstantATI, dst, value); }

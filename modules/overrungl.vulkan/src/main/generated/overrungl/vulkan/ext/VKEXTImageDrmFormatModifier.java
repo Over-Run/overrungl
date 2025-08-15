@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_image_drm_format_modifier` - device extension
 public final class VKEXTImageDrmFormatModifier {
     public static final int VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION = 2;
     public static final String VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME = "VK_EXT_image_drm_format_modifier";
@@ -43,10 +45,11 @@ public final class VKEXTImageDrmFormatModifier {
 
     private VKEXTImageDrmFormatModifier() {}
 
+    /// Invokes `vkGetImageDrmFormatModifierPropertiesEXT`.
     /// ```
     /// (int) VkResult vkGetImageDrmFormatModifierPropertiesEXT((struct VkDevice*) VkDevice device, (uint64_t) VkImage image, VkImageDrmFormatModifierPropertiesEXT* pProperties);
     /// ```
-    public static int vkGetImageDrmFormatModifierPropertiesEXT(VkDevice device, long image, MemorySegment pProperties) {
+    public static int vkGetImageDrmFormatModifierPropertiesEXT(@NonNull VkDevice device, long image, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageDrmFormatModifierPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageDrmFormatModifierPropertiesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetImageDrmFormatModifierPropertiesEXT", device, image, pProperties); }
         return (int) Handles.MH_vkGetImageDrmFormatModifierPropertiesEXT.invokeExact(device.capabilities().PFN_vkGetImageDrmFormatModifierPropertiesEXT, device.segment(), image, pProperties); }

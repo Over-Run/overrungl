@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.amd;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_AMD_name_gen_delete`
 public final class GLAMDNameGenDelete {
     public static final int GL_DATA_BUFFER_AMD = 0x9151;
     public static final int GL_PERFORMANCE_MONITOR_AMD = 0x9152;
@@ -37,37 +37,40 @@ public final class GLAMDNameGenDelete {
         public final MemorySegment PFN_glGenNamesAMD;
         public final MemorySegment PFN_glDeleteNamesAMD;
         public final MemorySegment PFN_glIsNameAMD;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGenNamesAMD = func.invoke("glGenNamesAMD");
             PFN_glDeleteNamesAMD = func.invoke("glDeleteNamesAMD");
             PFN_glIsNameAMD = func.invoke("glIsNameAMD");
         }
     }
 
-    public GLAMDNameGenDelete(overrungl.opengl.GLLoadFunc func) {
+    public GLAMDNameGenDelete(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGenNamesAMD`.
     /// ```
     /// void glGenNamesAMD((unsigned int) GLenum identifier, (unsigned int) GLuint num, GLuint* names);
     /// ```
-    public void GenNamesAMD(int identifier, int num, MemorySegment names) {
+    public void GenNamesAMD(int identifier, int num, @NonNull MemorySegment names) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenNamesAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGenNamesAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenNamesAMD", identifier, num, names); }
         Handles.MH_glGenNamesAMD.invokeExact(handles.PFN_glGenNamesAMD, identifier, num, names); }
         catch (Throwable e) { throw new RuntimeException("error in GenNamesAMD", e); }
     }
 
+    /// Invokes `glDeleteNamesAMD`.
     /// ```
     /// void glDeleteNamesAMD((unsigned int) GLenum identifier, (unsigned int) GLuint num, const GLuint* names);
     /// ```
-    public void DeleteNamesAMD(int identifier, int num, MemorySegment names) {
+    public void DeleteNamesAMD(int identifier, int num, @NonNull MemorySegment names) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteNamesAMD)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteNamesAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteNamesAMD", identifier, num, names); }
         Handles.MH_glDeleteNamesAMD.invokeExact(handles.PFN_glDeleteNamesAMD, identifier, num, names); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteNamesAMD", e); }
     }
 
+    /// Invokes `glIsNameAMD`.
     /// ```
     /// GLboolean glIsNameAMD((unsigned int) GLenum identifier, (unsigned int) GLuint name);
     /// ```

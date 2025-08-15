@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_bindless_multi_draw_indirect`
 public final class GLNVBindlessMultiDrawIndirect {
     private final Handles handles;
     public static final class Handles {
@@ -30,30 +30,32 @@ public final class GLNVBindlessMultiDrawIndirect {
         public static final MethodHandle MH_glMultiDrawElementsIndirectBindlessNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMultiDrawArraysIndirectBindlessNV;
         public final MemorySegment PFN_glMultiDrawElementsIndirectBindlessNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glMultiDrawArraysIndirectBindlessNV = func.invoke("glMultiDrawArraysIndirectBindlessNV");
             PFN_glMultiDrawElementsIndirectBindlessNV = func.invoke("glMultiDrawElementsIndirectBindlessNV");
         }
     }
 
-    public GLNVBindlessMultiDrawIndirect(overrungl.opengl.GLLoadFunc func) {
+    public GLNVBindlessMultiDrawIndirect(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glMultiDrawArraysIndirectBindlessNV`.
     /// ```
     /// void glMultiDrawArraysIndirectBindlessNV((unsigned int) GLenum mode, const void* indirect, (int) GLsizei drawCount, (int) GLsizei stride, (int) GLint vertexBufferCount);
     /// ```
-    public void MultiDrawArraysIndirectBindlessNV(int mode, MemorySegment indirect, int drawCount, int stride, int vertexBufferCount) {
+    public void MultiDrawArraysIndirectBindlessNV(int mode, @NonNull MemorySegment indirect, int drawCount, int stride, int vertexBufferCount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectBindlessNV)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectBindlessNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawArraysIndirectBindlessNV", mode, indirect, drawCount, stride, vertexBufferCount); }
         Handles.MH_glMultiDrawArraysIndirectBindlessNV.invokeExact(handles.PFN_glMultiDrawArraysIndirectBindlessNV, mode, indirect, drawCount, stride, vertexBufferCount); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysIndirectBindlessNV", e); }
     }
 
+    /// Invokes `glMultiDrawElementsIndirectBindlessNV`.
     /// ```
     /// void glMultiDrawElementsIndirectBindlessNV((unsigned int) GLenum mode, (unsigned int) GLenum type, const void* indirect, (int) GLsizei drawCount, (int) GLsizei stride, (int) GLint vertexBufferCount);
     /// ```
-    public void MultiDrawElementsIndirectBindlessNV(int mode, int type, MemorySegment indirect, int drawCount, int stride, int vertexBufferCount) {
+    public void MultiDrawElementsIndirectBindlessNV(int mode, int type, @NonNull MemorySegment indirect, int drawCount, int stride, int vertexBufferCount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectBindlessNV)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectBindlessNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawElementsIndirectBindlessNV", mode, type, indirect, drawCount, stride, vertexBufferCount); }
         Handles.MH_glMultiDrawElementsIndirectBindlessNV.invokeExact(handles.PFN_glMultiDrawElementsIndirectBindlessNV, mode, type, indirect, drawCount, stride, vertexBufferCount); }

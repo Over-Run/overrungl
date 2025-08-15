@@ -16,27 +16,28 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ingr;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_INGR_blend_func_separate`
 public final class GLINGRBlendFuncSeparate {
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_glBlendFuncSeparateINGR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendFuncSeparateINGR;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBlendFuncSeparateINGR = func.invoke("glBlendFuncSeparateINGR", "glBlendFuncSeparate");
         }
     }
 
-    public GLINGRBlendFuncSeparate(overrungl.opengl.GLLoadFunc func) {
+    public GLINGRBlendFuncSeparate(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBlendFuncSeparateINGR`.
     /// ```
     /// void glBlendFuncSeparateINGR((unsigned int) GLenum sfactorRGB, (unsigned int) GLenum dfactorRGB, (unsigned int) GLenum sfactorAlpha, (unsigned int) GLenum dfactorAlpha);
     /// ```

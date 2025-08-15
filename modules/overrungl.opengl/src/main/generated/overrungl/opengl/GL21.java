@@ -16,12 +16,12 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// Constants and functions of OpenGL 2.1.
 public class GL21 extends GL20 {
     public static final int GL_PIXEL_PACK_BUFFER = 0x88EB;
     public static final int GL_PIXEL_UNPACK_BUFFER = 0x88EC;
@@ -68,60 +68,66 @@ public class GL21 extends GL20 {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glUniformMatrix2x3fv`.
     /// ```
     /// void glUniformMatrix2x3fv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void UniformMatrix2x3fv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix2x3fv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix2x3fv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix2x3fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix2x3fv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix2x3fv.invokeExact(handles.PFN_glUniformMatrix2x3fv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix2x3fv", e); }
     }
 
+    /// Invokes `glUniformMatrix3x2fv`.
     /// ```
     /// void glUniformMatrix3x2fv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void UniformMatrix3x2fv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix3x2fv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix3x2fv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix3x2fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix3x2fv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix3x2fv.invokeExact(handles.PFN_glUniformMatrix3x2fv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix3x2fv", e); }
     }
 
+    /// Invokes `glUniformMatrix2x4fv`.
     /// ```
     /// void glUniformMatrix2x4fv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void UniformMatrix2x4fv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix2x4fv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix2x4fv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix2x4fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix2x4fv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix2x4fv.invokeExact(handles.PFN_glUniformMatrix2x4fv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix2x4fv", e); }
     }
 
+    /// Invokes `glUniformMatrix4x2fv`.
     /// ```
     /// void glUniformMatrix4x2fv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void UniformMatrix4x2fv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix4x2fv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix4x2fv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix4x2fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix4x2fv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix4x2fv.invokeExact(handles.PFN_glUniformMatrix4x2fv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix4x2fv", e); }
     }
 
+    /// Invokes `glUniformMatrix3x4fv`.
     /// ```
     /// void glUniformMatrix3x4fv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void UniformMatrix3x4fv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix3x4fv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix3x4fv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix3x4fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix3x4fv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix3x4fv.invokeExact(handles.PFN_glUniformMatrix3x4fv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix3x4fv", e); }
     }
 
+    /// Invokes `glUniformMatrix4x3fv`.
     /// ```
     /// void glUniformMatrix4x3fv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void UniformMatrix4x3fv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix4x3fv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix4x3fv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix4x3fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix4x3fv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix4x3fv.invokeExact(handles.PFN_glUniformMatrix4x3fv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }

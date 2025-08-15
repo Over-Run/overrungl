@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV`.
 /// ## Layout
 /// ```
 /// struct VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV {
@@ -50,7 +52,7 @@ import overrungl.util.*;
 /// ```
 public final class VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV extends GroupType {
     /// The struct layout of `VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("clusterID"), -1,
         ValueLayout.JAVA_INT.withName("clusterFlags"), -1,
         ValueLayout.JAVA_INT.withName("triangleCount"), 9,

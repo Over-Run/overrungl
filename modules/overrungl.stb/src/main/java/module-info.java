@@ -25,4 +25,5 @@ module overrungl.stb {
 
     requires transitive overrungl.core;
     requires static org.graalvm.nativeimage;
+    requires static org.jspecify;
 }

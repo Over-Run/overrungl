@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPhysicalDeviceMemoryProperties`.
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMemoryProperties {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMemoryProperties`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("memoryTypeCount"),
         MemoryLayout.sequenceLayout(32, overrungl.vulkan.struct.VkMemoryType.LAYOUT).withName("memoryTypes"),
         ValueLayout.JAVA_INT.withName("memoryHeapCount"),

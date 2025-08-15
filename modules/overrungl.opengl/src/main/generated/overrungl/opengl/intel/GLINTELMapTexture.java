@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.intel;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_INTEL_map_texture`
 public final class GLINTELMapTexture {
     public static final int GL_TEXTURE_MEMORY_LAYOUT_INTEL = 0x83FF;
     public static final int GL_LAYOUT_DEFAULT_INTEL = 0;
@@ -36,17 +36,18 @@ public final class GLINTELMapTexture {
         public final MemorySegment PFN_glSyncTextureINTEL;
         public final MemorySegment PFN_glUnmapTexture2DINTEL;
         public final MemorySegment PFN_glMapTexture2DINTEL;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glSyncTextureINTEL = func.invoke("glSyncTextureINTEL");
             PFN_glUnmapTexture2DINTEL = func.invoke("glUnmapTexture2DINTEL");
             PFN_glMapTexture2DINTEL = func.invoke("glMapTexture2DINTEL");
         }
     }
 
-    public GLINTELMapTexture(overrungl.opengl.GLLoadFunc func) {
+    public GLINTELMapTexture(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glSyncTextureINTEL`.
     /// ```
     /// void glSyncTextureINTEL((unsigned int) GLuint texture);
     /// ```
@@ -57,6 +58,7 @@ public final class GLINTELMapTexture {
         catch (Throwable e) { throw new RuntimeException("error in SyncTextureINTEL", e); }
     }
 
+    /// Invokes `glUnmapTexture2DINTEL`.
     /// ```
     /// void glUnmapTexture2DINTEL((unsigned int) GLuint texture, (int) GLint level);
     /// ```
@@ -67,10 +69,11 @@ public final class GLINTELMapTexture {
         catch (Throwable e) { throw new RuntimeException("error in UnmapTexture2DINTEL", e); }
     }
 
+    /// Invokes `glMapTexture2DINTEL`.
     /// ```
     /// void* glMapTexture2DINTEL((unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLbitfield access, GLint* stride, GLenum* layout);
     /// ```
-    public MemorySegment MapTexture2DINTEL(int texture, int level, int access, MemorySegment stride, MemorySegment layout) {
+    public @NonNull MemorySegment MapTexture2DINTEL(int texture, int level, int access, @NonNull MemorySegment stride, @NonNull MemorySegment layout) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapTexture2DINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glMapTexture2DINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapTexture2DINTEL", texture, level, access, stride, layout); }
         return (MemorySegment) Handles.MH_glMapTexture2DINTEL.invokeExact(handles.PFN_glMapTexture2DINTEL, texture, level, access, stride, layout); }

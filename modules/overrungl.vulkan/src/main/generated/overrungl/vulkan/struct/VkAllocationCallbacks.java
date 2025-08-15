@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkAllocationCallbacks`.
 /// ## Layout
 /// ```
 /// struct VkAllocationCallbacks {
@@ -38,7 +40,7 @@ import overrungl.util.*;
 /// ```
 public final class VkAllocationCallbacks extends GroupType {
     /// The struct layout of `VkAllocationCallbacks`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("pUserData"),
         ValueLayout.ADDRESS.withName("pfnAllocation"),
         ValueLayout.ADDRESS.withName("pfnReallocation"),

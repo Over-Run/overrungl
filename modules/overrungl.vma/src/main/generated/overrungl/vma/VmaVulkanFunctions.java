@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VmaVulkanFunctions`.
 /// ## Layout
 /// ```
 /// struct VmaVulkanFunctions {
@@ -59,7 +61,7 @@ import overrungl.util.*;
 /// ```
 public final class VmaVulkanFunctions extends GroupType {
     /// The struct layout of `VmaVulkanFunctions`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("vkGetInstanceProcAddr"),
         ValueLayout.ADDRESS.withName("vkGetDeviceProcAddr"),
         ValueLayout.ADDRESS.withName("vkGetPhysicalDeviceProperties"),

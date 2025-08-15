@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_compiled_vertex_array`
 public final class GLEXTCompiledVertexArray {
     public static final int GL_ARRAY_ELEMENT_LOCK_FIRST_EXT = 0x81A8;
     public static final int GL_ARRAY_ELEMENT_LOCK_COUNT_EXT = 0x81A9;
@@ -32,16 +32,17 @@ public final class GLEXTCompiledVertexArray {
         public static final MethodHandle MH_glUnlockArraysEXT = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glLockArraysEXT;
         public final MemorySegment PFN_glUnlockArraysEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glLockArraysEXT = func.invoke("glLockArraysEXT");
             PFN_glUnlockArraysEXT = func.invoke("glUnlockArraysEXT");
         }
     }
 
-    public GLEXTCompiledVertexArray(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTCompiledVertexArray(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glLockArraysEXT`.
     /// ```
     /// void glLockArraysEXT((int) GLint first, (int) GLsizei count);
     /// ```
@@ -52,6 +53,7 @@ public final class GLEXTCompiledVertexArray {
         catch (Throwable e) { throw new RuntimeException("error in LockArraysEXT", e); }
     }
 
+    /// Invokes `glUnlockArraysEXT`.
     /// ```
     /// void glUnlockArraysEXT();
     /// ```

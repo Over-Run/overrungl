@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkDisplayModeParametersKHR`.
 /// ## Layout
 /// ```
 /// struct VkDisplayModeParametersKHR {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class VkDisplayModeParametersKHR extends GroupType {
     /// The struct layout of `VkDisplayModeParametersKHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("visibleRegion"),
         ValueLayout.JAVA_INT.withName("refreshRate")
     );

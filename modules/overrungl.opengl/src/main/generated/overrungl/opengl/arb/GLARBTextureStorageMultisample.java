@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_texture_storage_multisample`
 public final class GLARBTextureStorageMultisample {
     private final Handles handles;
     public static final class Handles {
@@ -30,16 +30,17 @@ public final class GLARBTextureStorageMultisample {
         public static final MethodHandle MH_glTexStorage3DMultisample = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
         public final MemorySegment PFN_glTexStorage2DMultisample;
         public final MemorySegment PFN_glTexStorage3DMultisample;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTexStorage2DMultisample = func.invoke("glTexStorage2DMultisample");
             PFN_glTexStorage3DMultisample = func.invoke("glTexStorage3DMultisample");
         }
     }
 
-    public GLARBTextureStorageMultisample(overrungl.opengl.GLLoadFunc func) {
+    public GLARBTextureStorageMultisample(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTexStorage2DMultisample`.
     /// ```
     /// void glTexStorage2DMultisample((unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedsamplelocations);
     /// ```
@@ -50,6 +51,7 @@ public final class GLARBTextureStorageMultisample {
         catch (Throwable e) { throw new RuntimeException("error in TexStorage2DMultisample", e); }
     }
 
+    /// Invokes `glTexStorage3DMultisample`.
     /// ```
     /// void glTexStorage3DMultisample((unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedsamplelocations);
     /// ```

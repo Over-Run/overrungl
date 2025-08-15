@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_gpu_shader4`
 public final class GLEXTGpuShader4 {
     public static final int GL_SAMPLER_1D_ARRAY_EXT = 0x8DC0;
     public static final int GL_SAMPLER_2D_ARRAY_EXT = 0x8DC1;
@@ -122,7 +122,7 @@ public final class GLEXTGpuShader4 {
         public final MemorySegment PFN_glVertexAttribIPointerEXT;
         public final MemorySegment PFN_glGetVertexAttribIivEXT;
         public final MemorySegment PFN_glGetVertexAttribIuivEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGetUniformuivEXT = func.invoke("glGetUniformuivEXT", "glGetUniformuiv");
             PFN_glBindFragDataLocationEXT = func.invoke("glBindFragDataLocationEXT", "glBindFragDataLocation");
             PFN_glGetFragDataLocationEXT = func.invoke("glGetFragDataLocationEXT", "glGetFragDataLocation");
@@ -159,40 +159,44 @@ public final class GLEXTGpuShader4 {
         }
     }
 
-    public GLEXTGpuShader4(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTGpuShader4(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGetUniformuivEXT`.
     /// ```
     /// void glGetUniformuivEXT((unsigned int) GLuint program, (int) GLint location, GLuint* params);
     /// ```
-    public void GetUniformuivEXT(int program, int location, MemorySegment params) {
+    public void GetUniformuivEXT(int program, int location, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetUniformuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetUniformuivEXT", program, location, params); }
         Handles.MH_glGetUniformuivEXT.invokeExact(handles.PFN_glGetUniformuivEXT, program, location, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetUniformuivEXT", e); }
     }
 
+    /// Invokes `glBindFragDataLocationEXT`.
     /// ```
     /// void glBindFragDataLocationEXT((unsigned int) GLuint program, (unsigned int) GLuint color, const GLchar* name);
     /// ```
-    public void BindFragDataLocationEXT(int program, int color, MemorySegment name) {
+    public void BindFragDataLocationEXT(int program, int color, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindFragDataLocationEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBindFragDataLocationEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindFragDataLocationEXT", program, color, name); }
         Handles.MH_glBindFragDataLocationEXT.invokeExact(handles.PFN_glBindFragDataLocationEXT, program, color, name); }
         catch (Throwable e) { throw new RuntimeException("error in BindFragDataLocationEXT", e); }
     }
 
+    /// Invokes `glGetFragDataLocationEXT`.
     /// ```
     /// (int) GLint glGetFragDataLocationEXT((unsigned int) GLuint program, const GLchar* name);
     /// ```
-    public int GetFragDataLocationEXT(int program, MemorySegment name) {
+    public int GetFragDataLocationEXT(int program, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFragDataLocationEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetFragDataLocationEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFragDataLocationEXT", program, name); }
         return (int) Handles.MH_glGetFragDataLocationEXT.invokeExact(handles.PFN_glGetFragDataLocationEXT, program, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetFragDataLocationEXT", e); }
     }
 
+    /// Invokes `glUniform1uiEXT`.
     /// ```
     /// void glUniform1uiEXT((int) GLint location, (unsigned int) GLuint v0);
     /// ```
@@ -203,6 +207,7 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in Uniform1uiEXT", e); }
     }
 
+    /// Invokes `glUniform2uiEXT`.
     /// ```
     /// void glUniform2uiEXT((int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1);
     /// ```
@@ -213,6 +218,7 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in Uniform2uiEXT", e); }
     }
 
+    /// Invokes `glUniform3uiEXT`.
     /// ```
     /// void glUniform3uiEXT((int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1, (unsigned int) GLuint v2);
     /// ```
@@ -223,6 +229,7 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in Uniform3uiEXT", e); }
     }
 
+    /// Invokes `glUniform4uiEXT`.
     /// ```
     /// void glUniform4uiEXT((int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1, (unsigned int) GLuint v2, (unsigned int) GLuint v3);
     /// ```
@@ -233,46 +240,51 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in Uniform4uiEXT", e); }
     }
 
+    /// Invokes `glUniform1uivEXT`.
     /// ```
     /// void glUniform1uivEXT((int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void Uniform1uivEXT(int location, int count, MemorySegment value) {
+    public void Uniform1uivEXT(int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glUniform1uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform1uivEXT", location, count, value); }
         Handles.MH_glUniform1uivEXT.invokeExact(handles.PFN_glUniform1uivEXT, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform1uivEXT", e); }
     }
 
+    /// Invokes `glUniform2uivEXT`.
     /// ```
     /// void glUniform2uivEXT((int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void Uniform2uivEXT(int location, int count, MemorySegment value) {
+    public void Uniform2uivEXT(int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glUniform2uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform2uivEXT", location, count, value); }
         Handles.MH_glUniform2uivEXT.invokeExact(handles.PFN_glUniform2uivEXT, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform2uivEXT", e); }
     }
 
+    /// Invokes `glUniform3uivEXT`.
     /// ```
     /// void glUniform3uivEXT((int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void Uniform3uivEXT(int location, int count, MemorySegment value) {
+    public void Uniform3uivEXT(int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glUniform3uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform3uivEXT", location, count, value); }
         Handles.MH_glUniform3uivEXT.invokeExact(handles.PFN_glUniform3uivEXT, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform3uivEXT", e); }
     }
 
+    /// Invokes `glUniform4uivEXT`.
     /// ```
     /// void glUniform4uivEXT((int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void Uniform4uivEXT(int location, int count, MemorySegment value) {
+    public void Uniform4uivEXT(int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glUniform4uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform4uivEXT", location, count, value); }
         Handles.MH_glUniform4uivEXT.invokeExact(handles.PFN_glUniform4uivEXT, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform4uivEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI1iEXT`.
     /// ```
     /// void glVertexAttribI1iEXT((unsigned int) GLuint index, (int) GLint x);
     /// ```
@@ -283,6 +295,7 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI1iEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI2iEXT`.
     /// ```
     /// void glVertexAttribI2iEXT((unsigned int) GLuint index, (int) GLint x, (int) GLint y);
     /// ```
@@ -293,6 +306,7 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI2iEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI3iEXT`.
     /// ```
     /// void glVertexAttribI3iEXT((unsigned int) GLuint index, (int) GLint x, (int) GLint y, (int) GLint z);
     /// ```
@@ -303,6 +317,7 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI3iEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI4iEXT`.
     /// ```
     /// void glVertexAttribI4iEXT((unsigned int) GLuint index, (int) GLint x, (int) GLint y, (int) GLint z, (int) GLint w);
     /// ```
@@ -313,6 +328,7 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI4iEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI1uiEXT`.
     /// ```
     /// void glVertexAttribI1uiEXT((unsigned int) GLuint index, (unsigned int) GLuint x);
     /// ```
@@ -323,6 +339,7 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI1uiEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI2uiEXT`.
     /// ```
     /// void glVertexAttribI2uiEXT((unsigned int) GLuint index, (unsigned int) GLuint x, (unsigned int) GLuint y);
     /// ```
@@ -333,6 +350,7 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI2uiEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI3uiEXT`.
     /// ```
     /// void glVertexAttribI3uiEXT((unsigned int) GLuint index, (unsigned int) GLuint x, (unsigned int) GLuint y, (unsigned int) GLuint z);
     /// ```
@@ -343,6 +361,7 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI3uiEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI4uiEXT`.
     /// ```
     /// void glVertexAttribI4uiEXT((unsigned int) GLuint index, (unsigned int) GLuint x, (unsigned int) GLuint y, (unsigned int) GLuint z, (unsigned int) GLuint w);
     /// ```
@@ -353,150 +372,165 @@ public final class GLEXTGpuShader4 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI4uiEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI1ivEXT`.
     /// ```
     /// void glVertexAttribI1ivEXT((unsigned int) GLuint index, const GLint* v);
     /// ```
-    public void VertexAttribI1ivEXT(int index, MemorySegment v) {
+    public void VertexAttribI1ivEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI1ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI1ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI1ivEXT", index, v); }
         Handles.MH_glVertexAttribI1ivEXT.invokeExact(handles.PFN_glVertexAttribI1ivEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI1ivEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI2ivEXT`.
     /// ```
     /// void glVertexAttribI2ivEXT((unsigned int) GLuint index, const GLint* v);
     /// ```
-    public void VertexAttribI2ivEXT(int index, MemorySegment v) {
+    public void VertexAttribI2ivEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI2ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI2ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI2ivEXT", index, v); }
         Handles.MH_glVertexAttribI2ivEXT.invokeExact(handles.PFN_glVertexAttribI2ivEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI2ivEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI3ivEXT`.
     /// ```
     /// void glVertexAttribI3ivEXT((unsigned int) GLuint index, const GLint* v);
     /// ```
-    public void VertexAttribI3ivEXT(int index, MemorySegment v) {
+    public void VertexAttribI3ivEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI3ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI3ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI3ivEXT", index, v); }
         Handles.MH_glVertexAttribI3ivEXT.invokeExact(handles.PFN_glVertexAttribI3ivEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI3ivEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI4ivEXT`.
     /// ```
     /// void glVertexAttribI4ivEXT((unsigned int) GLuint index, const GLint* v);
     /// ```
-    public void VertexAttribI4ivEXT(int index, MemorySegment v) {
+    public void VertexAttribI4ivEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI4ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI4ivEXT", index, v); }
         Handles.MH_glVertexAttribI4ivEXT.invokeExact(handles.PFN_glVertexAttribI4ivEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI4ivEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI1uivEXT`.
     /// ```
     /// void glVertexAttribI1uivEXT((unsigned int) GLuint index, const GLuint* v);
     /// ```
-    public void VertexAttribI1uivEXT(int index, MemorySegment v) {
+    public void VertexAttribI1uivEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI1uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI1uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI1uivEXT", index, v); }
         Handles.MH_glVertexAttribI1uivEXT.invokeExact(handles.PFN_glVertexAttribI1uivEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI1uivEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI2uivEXT`.
     /// ```
     /// void glVertexAttribI2uivEXT((unsigned int) GLuint index, const GLuint* v);
     /// ```
-    public void VertexAttribI2uivEXT(int index, MemorySegment v) {
+    public void VertexAttribI2uivEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI2uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI2uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI2uivEXT", index, v); }
         Handles.MH_glVertexAttribI2uivEXT.invokeExact(handles.PFN_glVertexAttribI2uivEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI2uivEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI3uivEXT`.
     /// ```
     /// void glVertexAttribI3uivEXT((unsigned int) GLuint index, const GLuint* v);
     /// ```
-    public void VertexAttribI3uivEXT(int index, MemorySegment v) {
+    public void VertexAttribI3uivEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI3uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI3uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI3uivEXT", index, v); }
         Handles.MH_glVertexAttribI3uivEXT.invokeExact(handles.PFN_glVertexAttribI3uivEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI3uivEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI4uivEXT`.
     /// ```
     /// void glVertexAttribI4uivEXT((unsigned int) GLuint index, const GLuint* v);
     /// ```
-    public void VertexAttribI4uivEXT(int index, MemorySegment v) {
+    public void VertexAttribI4uivEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI4uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI4uivEXT", index, v); }
         Handles.MH_glVertexAttribI4uivEXT.invokeExact(handles.PFN_glVertexAttribI4uivEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI4uivEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI4bvEXT`.
     /// ```
     /// void glVertexAttribI4bvEXT((unsigned int) GLuint index, const GLbyte* v);
     /// ```
-    public void VertexAttribI4bvEXT(int index, MemorySegment v) {
+    public void VertexAttribI4bvEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4bvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI4bvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI4bvEXT", index, v); }
         Handles.MH_glVertexAttribI4bvEXT.invokeExact(handles.PFN_glVertexAttribI4bvEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI4bvEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI4svEXT`.
     /// ```
     /// void glVertexAttribI4svEXT((unsigned int) GLuint index, const GLshort* v);
     /// ```
-    public void VertexAttribI4svEXT(int index, MemorySegment v) {
+    public void VertexAttribI4svEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4svEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI4svEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI4svEXT", index, v); }
         Handles.MH_glVertexAttribI4svEXT.invokeExact(handles.PFN_glVertexAttribI4svEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI4svEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI4ubvEXT`.
     /// ```
     /// void glVertexAttribI4ubvEXT((unsigned int) GLuint index, const GLubyte* v);
     /// ```
-    public void VertexAttribI4ubvEXT(int index, MemorySegment v) {
+    public void VertexAttribI4ubvEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4ubvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI4ubvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI4ubvEXT", index, v); }
         Handles.MH_glVertexAttribI4ubvEXT.invokeExact(handles.PFN_glVertexAttribI4ubvEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI4ubvEXT", e); }
     }
 
+    /// Invokes `glVertexAttribI4usvEXT`.
     /// ```
     /// void glVertexAttribI4usvEXT((unsigned int) GLuint index, const GLushort* v);
     /// ```
-    public void VertexAttribI4usvEXT(int index, MemorySegment v) {
+    public void VertexAttribI4usvEXT(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4usvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribI4usvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribI4usvEXT", index, v); }
         Handles.MH_glVertexAttribI4usvEXT.invokeExact(handles.PFN_glVertexAttribI4usvEXT, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribI4usvEXT", e); }
     }
 
+    /// Invokes `glVertexAttribIPointerEXT`.
     /// ```
     /// void glVertexAttribIPointerEXT((unsigned int) GLuint index, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, const void* pointer);
     /// ```
-    public void VertexAttribIPointerEXT(int index, int size, int type, int stride, MemorySegment pointer) {
+    public void VertexAttribIPointerEXT(int index, int size, int type, int stride, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribIPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribIPointerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribIPointerEXT", index, size, type, stride, pointer); }
         Handles.MH_glVertexAttribIPointerEXT.invokeExact(handles.PFN_glVertexAttribIPointerEXT, index, size, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribIPointerEXT", e); }
     }
 
+    /// Invokes `glGetVertexAttribIivEXT`.
     /// ```
     /// void glGetVertexAttribIivEXT((unsigned int) GLuint index, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetVertexAttribIivEXT(int index, int pname, MemorySegment params) {
+    public void GetVertexAttribIivEXT(int index, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexAttribIivEXT", index, pname, params); }
         Handles.MH_glGetVertexAttribIivEXT.invokeExact(handles.PFN_glGetVertexAttribIivEXT, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexAttribIivEXT", e); }
     }
 
+    /// Invokes `glGetVertexAttribIuivEXT`.
     /// ```
     /// void glGetVertexAttribIuivEXT((unsigned int) GLuint index, (unsigned int) GLenum pname, GLuint* params);
     /// ```
-    public void GetVertexAttribIuivEXT(int index, int pname, MemorySegment params) {
+    public void GetVertexAttribIuivEXT(int index, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexAttribIuivEXT", index, pname, params); }
         Handles.MH_glGetVertexAttribIuivEXT.invokeExact(handles.PFN_glGetVertexAttribIuivEXT, index, pname, params); }

@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_display_stereo` - instance extension
 public final class VKNVDisplayStereo {
     public static final int VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV = 0;
     public static final int VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV = 1;

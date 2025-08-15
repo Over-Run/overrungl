@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_polygon_offset`
 public final class GLEXTPolygonOffset {
     public static final int GL_POLYGON_OFFSET_EXT = 0x8037;
     public static final int GL_POLYGON_OFFSET_FACTOR_EXT = 0x8038;
@@ -31,15 +31,16 @@ public final class GLEXTPolygonOffset {
     public static final class Handles {
         public static final MethodHandle MH_glPolygonOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glPolygonOffsetEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glPolygonOffsetEXT = func.invoke("glPolygonOffsetEXT");
         }
     }
 
-    public GLEXTPolygonOffset(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTPolygonOffset(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glPolygonOffsetEXT`.
     /// ```
     /// void glPolygonOffsetEXT(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat bias);
     /// ```

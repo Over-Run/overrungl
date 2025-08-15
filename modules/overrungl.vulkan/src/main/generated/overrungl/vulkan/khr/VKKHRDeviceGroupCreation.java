@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_device_group_creation` - instance extension
 public final class VKKHRDeviceGroupCreation {
     public static final int VK_KHR_DEVICE_GROUP_CREATION_SPEC_VERSION = 1;
     public static final String VK_KHR_DEVICE_GROUP_CREATION_EXTENSION_NAME = "VK_KHR_device_group_creation";
@@ -35,10 +37,11 @@ public final class VKKHRDeviceGroupCreation {
 
     private VKKHRDeviceGroupCreation() {}
 
+    /// Invokes `vkEnumeratePhysicalDeviceGroupsKHR`.
     /// ```
     /// (int) VkResult vkEnumeratePhysicalDeviceGroupsKHR((struct VkInstance*) VkInstance instance, uint32_t* pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties);
     /// ```
-    public static int vkEnumeratePhysicalDeviceGroupsKHR(VkInstance instance, MemorySegment pPhysicalDeviceGroupCount, MemorySegment pPhysicalDeviceGroupProperties) {
+    public static int vkEnumeratePhysicalDeviceGroupsKHR(@NonNull VkInstance instance, @NonNull MemorySegment pPhysicalDeviceGroupCount, @NonNull MemorySegment pPhysicalDeviceGroupProperties) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkEnumeratePhysicalDeviceGroupsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceGroupsKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkEnumeratePhysicalDeviceGroupsKHR", instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties); }
         return (int) Handles.MH_vkEnumeratePhysicalDeviceGroupsKHR.invokeExact(instance.capabilities().PFN_vkEnumeratePhysicalDeviceGroupsKHR, instance.segment(), pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties); }

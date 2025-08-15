@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_transform_feedback_instanced`
 public final class GLARBTransformFeedbackInstanced {
     private final Handles handles;
     public static final class Handles {
@@ -30,16 +30,17 @@ public final class GLARBTransformFeedbackInstanced {
         public static final MethodHandle MH_glDrawTransformFeedbackStreamInstanced = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDrawTransformFeedbackInstanced;
         public final MemorySegment PFN_glDrawTransformFeedbackStreamInstanced;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDrawTransformFeedbackInstanced = func.invoke("glDrawTransformFeedbackInstanced");
             PFN_glDrawTransformFeedbackStreamInstanced = func.invoke("glDrawTransformFeedbackStreamInstanced");
         }
     }
 
-    public GLARBTransformFeedbackInstanced(overrungl.opengl.GLLoadFunc func) {
+    public GLARBTransformFeedbackInstanced(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDrawTransformFeedbackInstanced`.
     /// ```
     /// void glDrawTransformFeedbackInstanced((unsigned int) GLenum mode, (unsigned int) GLuint id, (int) GLsizei instancecount);
     /// ```
@@ -50,6 +51,7 @@ public final class GLARBTransformFeedbackInstanced {
         catch (Throwable e) { throw new RuntimeException("error in DrawTransformFeedbackInstanced", e); }
     }
 
+    /// Invokes `glDrawTransformFeedbackStreamInstanced`.
     /// ```
     /// void glDrawTransformFeedbackStreamInstanced((unsigned int) GLenum mode, (unsigned int) GLuint id, (unsigned int) GLuint stream, (int) GLsizei instancecount);
     /// ```

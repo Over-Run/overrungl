@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.amd;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_AMD_framebuffer_multisample_advanced`
 public final class GLAMDFramebufferMultisampleAdvanced {
     public static final int GL_RENDERBUFFER_STORAGE_SAMPLES_AMD = 0x91B2;
     public static final int GL_MAX_COLOR_FRAMEBUFFER_SAMPLES_AMD = 0x91B3;
@@ -36,16 +36,17 @@ public final class GLAMDFramebufferMultisampleAdvanced {
         public static final MethodHandle MH_glNamedRenderbufferStorageMultisampleAdvancedAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glRenderbufferStorageMultisampleAdvancedAMD;
         public final MemorySegment PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glRenderbufferStorageMultisampleAdvancedAMD = func.invoke("glRenderbufferStorageMultisampleAdvancedAMD");
             PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD = func.invoke("glNamedRenderbufferStorageMultisampleAdvancedAMD");
         }
     }
 
-    public GLAMDFramebufferMultisampleAdvanced(overrungl.opengl.GLLoadFunc func) {
+    public GLAMDFramebufferMultisampleAdvanced(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glRenderbufferStorageMultisampleAdvancedAMD`.
     /// ```
     /// void glRenderbufferStorageMultisampleAdvancedAMD((unsigned int) GLenum target, (int) GLsizei samples, (int) GLsizei storageSamples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -56,6 +57,7 @@ public final class GLAMDFramebufferMultisampleAdvanced {
         catch (Throwable e) { throw new RuntimeException("error in RenderbufferStorageMultisampleAdvancedAMD", e); }
     }
 
+    /// Invokes `glNamedRenderbufferStorageMultisampleAdvancedAMD`.
     /// ```
     /// void glNamedRenderbufferStorageMultisampleAdvancedAMD((unsigned int) GLuint renderbuffer, (int) GLsizei samples, (int) GLsizei storageSamples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```

@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
+/// `GL_EXT_texture_snorm`
 public final class GLEXTTextureSnorm {
     public static final int GL_ALPHA_SNORM = 0x9010;
     public static final int GL_LUMINANCE_SNORM = 0x9011;

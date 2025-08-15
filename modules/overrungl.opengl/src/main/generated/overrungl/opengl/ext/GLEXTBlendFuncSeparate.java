@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_blend_func_separate`
 public final class GLEXTBlendFuncSeparate {
     public static final int GL_BLEND_DST_RGB_EXT = 0x80C8;
     public static final int GL_BLEND_SRC_RGB_EXT = 0x80C9;
@@ -32,15 +32,16 @@ public final class GLEXTBlendFuncSeparate {
     public static final class Handles {
         public static final MethodHandle MH_glBlendFuncSeparateEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendFuncSeparateEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBlendFuncSeparateEXT = func.invoke("glBlendFuncSeparateEXT", "glBlendFuncSeparate");
         }
     }
 
-    public GLEXTBlendFuncSeparate(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTBlendFuncSeparate(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBlendFuncSeparateEXT`.
     /// ```
     /// void glBlendFuncSeparateEXT((unsigned int) GLenum sfactorRGB, (unsigned int) GLenum dfactorRGB, (unsigned int) GLenum sfactorAlpha, (unsigned int) GLenum dfactorAlpha);
     /// ```

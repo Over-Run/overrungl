@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_tooling_info` - device extension
 public final class VKEXTToolingInfo {
     public static final int VK_EXT_TOOLING_INFO_SPEC_VERSION = 1;
     public static final String VK_EXT_TOOLING_INFO_EXTENSION_NAME = "VK_EXT_tooling_info";
@@ -39,10 +41,11 @@ public final class VKEXTToolingInfo {
 
     private VKEXTToolingInfo() {}
 
+    /// Invokes `vkGetPhysicalDeviceToolPropertiesEXT`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceToolPropertiesEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pToolCount, VkPhysicalDeviceToolProperties* pToolProperties);
     /// ```
-    public static int vkGetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, MemorySegment pToolCount, MemorySegment pToolProperties) {
+    public static int vkGetPhysicalDeviceToolPropertiesEXT(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pToolCount, @NonNull MemorySegment pToolProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceToolPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceToolPropertiesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceToolPropertiesEXT", physicalDevice, pToolCount, pToolProperties); }
         return (int) Handles.MH_vkGetPhysicalDeviceToolPropertiesEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceToolPropertiesEXT, physicalDevice.segment(), pToolCount, pToolProperties); }

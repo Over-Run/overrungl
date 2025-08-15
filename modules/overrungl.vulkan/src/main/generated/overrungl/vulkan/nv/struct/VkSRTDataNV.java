@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkSRTDataNV`.
 /// ## Layout
 /// ```
 /// struct VkSRTDataNV {
@@ -48,7 +50,7 @@ import overrungl.util.*;
 /// ```
 public final class VkSRTDataNV extends GroupType {
     /// The struct layout of `VkSRTDataNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("sx"),
         ValueLayout.JAVA_FLOAT.withName("a"),
         ValueLayout.JAVA_FLOAT.withName("b"),

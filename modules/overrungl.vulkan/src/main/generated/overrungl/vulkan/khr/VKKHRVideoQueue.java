@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_video_queue` - device extension
 public final class VKKHRVideoQueue {
     public static final int VK_VIDEO_CODEC_OPERATION_NONE_KHR = 0;
     public static final int VK_VIDEO_CHROMA_SUBSAMPLING_INVALID_KHR = 0;
@@ -86,120 +88,132 @@ public final class VKKHRVideoQueue {
 
     private VKKHRVideoQueue() {}
 
+    /// Invokes `vkGetPhysicalDeviceVideoCapabilitiesKHR`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceVideoCapabilitiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkVideoProfileInfoKHR* pVideoProfile, VkVideoCapabilitiesKHR* pCapabilities);
     /// ```
-    public static int vkGetPhysicalDeviceVideoCapabilitiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pVideoProfile, MemorySegment pCapabilities) {
+    public static int vkGetPhysicalDeviceVideoCapabilitiesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pVideoProfile, @NonNull MemorySegment pCapabilities) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoCapabilitiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceVideoCapabilitiesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceVideoCapabilitiesKHR", physicalDevice, pVideoProfile, pCapabilities); }
         return (int) Handles.MH_vkGetPhysicalDeviceVideoCapabilitiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoCapabilitiesKHR, physicalDevice.segment(), pVideoProfile, pCapabilities); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceVideoCapabilitiesKHR", e); }
     }
 
+    /// Invokes `vkGetPhysicalDeviceVideoFormatPropertiesKHR`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceVideoFormatPropertiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceVideoFormatInfoKHR* pVideoFormatInfo, uint32_t* pVideoFormatPropertyCount, VkVideoFormatPropertiesKHR* pVideoFormatProperties);
     /// ```
-    public static int vkGetPhysicalDeviceVideoFormatPropertiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pVideoFormatInfo, MemorySegment pVideoFormatPropertyCount, MemorySegment pVideoFormatProperties) {
+    public static int vkGetPhysicalDeviceVideoFormatPropertiesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pVideoFormatInfo, @NonNull MemorySegment pVideoFormatPropertyCount, @NonNull MemorySegment pVideoFormatProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoFormatPropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceVideoFormatPropertiesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceVideoFormatPropertiesKHR", physicalDevice, pVideoFormatInfo, pVideoFormatPropertyCount, pVideoFormatProperties); }
         return (int) Handles.MH_vkGetPhysicalDeviceVideoFormatPropertiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoFormatPropertiesKHR, physicalDevice.segment(), pVideoFormatInfo, pVideoFormatPropertyCount, pVideoFormatProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceVideoFormatPropertiesKHR", e); }
     }
 
+    /// Invokes `vkCreateVideoSessionKHR`.
     /// ```
     /// (int) VkResult vkCreateVideoSessionKHR((struct VkDevice*) VkDevice device, const VkVideoSessionCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkVideoSessionKHR* pVideoSession);
     /// ```
-    public static int vkCreateVideoSessionKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pVideoSession) {
+    public static int vkCreateVideoSessionKHR(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pVideoSession) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateVideoSessionKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateVideoSessionKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateVideoSessionKHR", device, pCreateInfo, pAllocator, pVideoSession); }
         return (int) Handles.MH_vkCreateVideoSessionKHR.invokeExact(device.capabilities().PFN_vkCreateVideoSessionKHR, device.segment(), pCreateInfo, pAllocator, pVideoSession); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateVideoSessionKHR", e); }
     }
 
+    /// Invokes `vkDestroyVideoSessionKHR`.
     /// ```
     /// void vkDestroyVideoSessionKHR((struct VkDevice*) VkDevice device, (uint64_t) VkVideoSessionKHR videoSession, const VkAllocationCallbacks* pAllocator);
     /// ```
-    public static void vkDestroyVideoSessionKHR(VkDevice device, long videoSession, MemorySegment pAllocator) {
+    public static void vkDestroyVideoSessionKHR(@NonNull VkDevice device, long videoSession, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyVideoSessionKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyVideoSessionKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyVideoSessionKHR", device, videoSession, pAllocator); }
         Handles.MH_vkDestroyVideoSessionKHR.invokeExact(device.capabilities().PFN_vkDestroyVideoSessionKHR, device.segment(), videoSession, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyVideoSessionKHR", e); }
     }
 
+    /// Invokes `vkGetVideoSessionMemoryRequirementsKHR`.
     /// ```
     /// (int) VkResult vkGetVideoSessionMemoryRequirementsKHR((struct VkDevice*) VkDevice device, (uint64_t) VkVideoSessionKHR videoSession, uint32_t* pMemoryRequirementsCount, VkVideoSessionMemoryRequirementsKHR* pMemoryRequirements);
     /// ```
-    public static int vkGetVideoSessionMemoryRequirementsKHR(VkDevice device, long videoSession, MemorySegment pMemoryRequirementsCount, MemorySegment pMemoryRequirements) {
+    public static int vkGetVideoSessionMemoryRequirementsKHR(@NonNull VkDevice device, long videoSession, @NonNull MemorySegment pMemoryRequirementsCount, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetVideoSessionMemoryRequirementsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetVideoSessionMemoryRequirementsKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetVideoSessionMemoryRequirementsKHR", device, videoSession, pMemoryRequirementsCount, pMemoryRequirements); }
         return (int) Handles.MH_vkGetVideoSessionMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetVideoSessionMemoryRequirementsKHR, device.segment(), videoSession, pMemoryRequirementsCount, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetVideoSessionMemoryRequirementsKHR", e); }
     }
 
+    /// Invokes `vkBindVideoSessionMemoryKHR`.
     /// ```
     /// (int) VkResult vkBindVideoSessionMemoryKHR((struct VkDevice*) VkDevice device, (uint64_t) VkVideoSessionKHR videoSession, uint32_t bindSessionMemoryInfoCount, const VkBindVideoSessionMemoryInfoKHR* pBindSessionMemoryInfos);
     /// ```
-    public static int vkBindVideoSessionMemoryKHR(VkDevice device, long videoSession, int bindSessionMemoryInfoCount, MemorySegment pBindSessionMemoryInfos) {
+    public static int vkBindVideoSessionMemoryKHR(@NonNull VkDevice device, long videoSession, int bindSessionMemoryInfoCount, @NonNull MemorySegment pBindSessionMemoryInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindVideoSessionMemoryKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkBindVideoSessionMemoryKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkBindVideoSessionMemoryKHR", device, videoSession, bindSessionMemoryInfoCount, pBindSessionMemoryInfos); }
         return (int) Handles.MH_vkBindVideoSessionMemoryKHR.invokeExact(device.capabilities().PFN_vkBindVideoSessionMemoryKHR, device.segment(), videoSession, bindSessionMemoryInfoCount, pBindSessionMemoryInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkBindVideoSessionMemoryKHR", e); }
     }
 
+    /// Invokes `vkCreateVideoSessionParametersKHR`.
     /// ```
     /// (int) VkResult vkCreateVideoSessionParametersKHR((struct VkDevice*) VkDevice device, const VkVideoSessionParametersCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkVideoSessionParametersKHR* pVideoSessionParameters);
     /// ```
-    public static int vkCreateVideoSessionParametersKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pVideoSessionParameters) {
+    public static int vkCreateVideoSessionParametersKHR(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pVideoSessionParameters) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateVideoSessionParametersKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateVideoSessionParametersKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateVideoSessionParametersKHR", device, pCreateInfo, pAllocator, pVideoSessionParameters); }
         return (int) Handles.MH_vkCreateVideoSessionParametersKHR.invokeExact(device.capabilities().PFN_vkCreateVideoSessionParametersKHR, device.segment(), pCreateInfo, pAllocator, pVideoSessionParameters); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateVideoSessionParametersKHR", e); }
     }
 
+    /// Invokes `vkUpdateVideoSessionParametersKHR`.
     /// ```
     /// (int) VkResult vkUpdateVideoSessionParametersKHR((struct VkDevice*) VkDevice device, (uint64_t) VkVideoSessionParametersKHR videoSessionParameters, const VkVideoSessionParametersUpdateInfoKHR* pUpdateInfo);
     /// ```
-    public static int vkUpdateVideoSessionParametersKHR(VkDevice device, long videoSessionParameters, MemorySegment pUpdateInfo) {
+    public static int vkUpdateVideoSessionParametersKHR(@NonNull VkDevice device, long videoSessionParameters, @NonNull MemorySegment pUpdateInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkUpdateVideoSessionParametersKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkUpdateVideoSessionParametersKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkUpdateVideoSessionParametersKHR", device, videoSessionParameters, pUpdateInfo); }
         return (int) Handles.MH_vkUpdateVideoSessionParametersKHR.invokeExact(device.capabilities().PFN_vkUpdateVideoSessionParametersKHR, device.segment(), videoSessionParameters, pUpdateInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkUpdateVideoSessionParametersKHR", e); }
     }
 
+    /// Invokes `vkDestroyVideoSessionParametersKHR`.
     /// ```
     /// void vkDestroyVideoSessionParametersKHR((struct VkDevice*) VkDevice device, (uint64_t) VkVideoSessionParametersKHR videoSessionParameters, const VkAllocationCallbacks* pAllocator);
     /// ```
-    public static void vkDestroyVideoSessionParametersKHR(VkDevice device, long videoSessionParameters, MemorySegment pAllocator) {
+    public static void vkDestroyVideoSessionParametersKHR(@NonNull VkDevice device, long videoSessionParameters, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyVideoSessionParametersKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyVideoSessionParametersKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyVideoSessionParametersKHR", device, videoSessionParameters, pAllocator); }
         Handles.MH_vkDestroyVideoSessionParametersKHR.invokeExact(device.capabilities().PFN_vkDestroyVideoSessionParametersKHR, device.segment(), videoSessionParameters, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyVideoSessionParametersKHR", e); }
     }
 
+    /// Invokes `vkCmdBeginVideoCodingKHR`.
     /// ```
     /// void vkCmdBeginVideoCodingKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkVideoBeginCodingInfoKHR* pBeginInfo);
     /// ```
-    public static void vkCmdBeginVideoCodingKHR(VkCommandBuffer commandBuffer, MemorySegment pBeginInfo) {
+    public static void vkCmdBeginVideoCodingKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pBeginInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginVideoCodingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginVideoCodingKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBeginVideoCodingKHR", commandBuffer, pBeginInfo); }
         Handles.MH_vkCmdBeginVideoCodingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginVideoCodingKHR, commandBuffer.segment(), pBeginInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginVideoCodingKHR", e); }
     }
 
+    /// Invokes `vkCmdEndVideoCodingKHR`.
     /// ```
     /// void vkCmdEndVideoCodingKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkVideoEndCodingInfoKHR* pEndCodingInfo);
     /// ```
-    public static void vkCmdEndVideoCodingKHR(VkCommandBuffer commandBuffer, MemorySegment pEndCodingInfo) {
+    public static void vkCmdEndVideoCodingKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pEndCodingInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndVideoCodingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndVideoCodingKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndVideoCodingKHR", commandBuffer, pEndCodingInfo); }
         Handles.MH_vkCmdEndVideoCodingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndVideoCodingKHR, commandBuffer.segment(), pEndCodingInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndVideoCodingKHR", e); }
     }
 
+    /// Invokes `vkCmdControlVideoCodingKHR`.
     /// ```
     /// void vkCmdControlVideoCodingKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkVideoCodingControlInfoKHR* pCodingControlInfo);
     /// ```
-    public static void vkCmdControlVideoCodingKHR(VkCommandBuffer commandBuffer, MemorySegment pCodingControlInfo) {
+    public static void vkCmdControlVideoCodingKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pCodingControlInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdControlVideoCodingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdControlVideoCodingKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdControlVideoCodingKHR", commandBuffer, pCodingControlInfo); }
         Handles.MH_vkCmdControlVideoCodingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdControlVideoCodingKHR, commandBuffer.segment(), pCodingControlInfo); }

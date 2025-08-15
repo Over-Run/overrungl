@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_external_memory` - device extension
 public final class VKNVExternalMemory {
     public static final int VK_NV_EXTERNAL_MEMORY_SPEC_VERSION = 1;
     public static final String VK_NV_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_NV_external_memory";

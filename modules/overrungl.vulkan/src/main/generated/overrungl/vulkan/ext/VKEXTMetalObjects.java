@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_metal_objects` - device extension
 public final class VKEXTMetalObjects {
     public static final int VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT = 0x00000001;
     public static final int VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT = 0x00000002;
@@ -49,10 +51,11 @@ public final class VKEXTMetalObjects {
 
     private VKEXTMetalObjects() {}
 
+    /// Invokes `vkExportMetalObjectsEXT`.
     /// ```
     /// void vkExportMetalObjectsEXT((struct VkDevice*) VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo);
     /// ```
-    public static void vkExportMetalObjectsEXT(VkDevice device, MemorySegment pMetalObjectsInfo) {
+    public static void vkExportMetalObjectsEXT(@NonNull VkDevice device, @NonNull MemorySegment pMetalObjectsInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkExportMetalObjectsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkExportMetalObjectsEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkExportMetalObjectsEXT", device, pMetalObjectsInfo); }
         Handles.MH_vkExportMetalObjectsEXT.invokeExact(device.capabilities().PFN_vkExportMetalObjectsEXT, device.segment(), pMetalObjectsInfo); }

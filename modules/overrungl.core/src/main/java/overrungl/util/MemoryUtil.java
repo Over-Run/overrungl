@@ -16,12 +16,14 @@
 
 package overrungl.util;
 
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 import static java.lang.foreign.ValueLayout.*;
 import static overrungl.util.CanonicalTypes.SIZE_T;
@@ -159,7 +161,7 @@ public final class MemoryUtil {
      * @see #malloc(MemoryLayout)
      * @see #aligned_alloc(long, long)
      */
-    public static MemorySegment malloc(long size) {
+    public static @NonNull MemorySegment malloc(long size) {
         try {
             MemorySegment segment = switch (SIZE_T) {
                 case ValueLayout.OfInt _ -> (MemorySegment) Handles.m_malloc.invokeExact(Math.toIntExact(size));
@@ -179,7 +181,7 @@ public final class MemoryUtil {
      * @return the allocated space.
      * @see #malloc(long)
      */
-    public static MemorySegment malloc(MemoryLayout layout) {
+    public static @NonNull MemorySegment malloc(@NonNull MemoryLayout layout) {
         return malloc(layout.byteSize());
     }
 
@@ -196,7 +198,7 @@ public final class MemoryUtil {
      * @see #calloc(long, MemoryLayout)
      * @see #aligned_alloc(long, long)
      */
-    public static MemorySegment calloc(long number, long size) {
+    public static @NonNull MemorySegment calloc(long number, long size) {
         try {
             long byteSize = number * size;
             MemorySegment segment = switch (SIZE_T) {
@@ -223,7 +225,7 @@ public final class MemoryUtil {
      * return value is suitably aligned for storage of any type of object.
      * @see #calloc(long, long)
      */
-    public static MemorySegment calloc(long number, MemoryLayout layout) {
+    public static @NonNull MemorySegment calloc(long number, @NonNull MemoryLayout layout) {
         return calloc(number, layout.byteSize());
     }
 
@@ -256,7 +258,7 @@ public final class MemoryUtil {
      * The return value points to a storage space that is suitably aligned for storage of any type of object.
      * @see #aligned_realloc(MemorySegment, long, long)
      */
-    public static MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
+    public static @NonNull MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
         try {
             final MemorySegment mem = memblock != null ? memblock : MemorySegment.NULL;
             MemorySegment segment = switch (SIZE_T) {
@@ -307,7 +309,7 @@ public final class MemoryUtil {
      * @param count Number of characters to copy.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemorySegment memcpy(MemorySegment dest, MemorySegment src, long count) {
+    public static @NonNull MemorySegment memcpy(@NonNull MemorySegment dest, @NonNull MemorySegment src, long count) {
         try {
             final var _ = switch (SIZE_T) {
                 case ValueLayout.OfInt _ ->
@@ -337,7 +339,7 @@ public final class MemoryUtil {
      * @param count Number of bytes to copy.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemorySegment memmove(MemorySegment dest, MemorySegment src, long count) {
+    public static @NonNull MemorySegment memmove(@NonNull MemorySegment dest, @NonNull MemorySegment src, long count) {
         try {
             final var _ = switch (SIZE_T) {
                 case ValueLayout.OfInt _ ->
@@ -365,7 +367,7 @@ public final class MemoryUtil {
      * @param count Number of characters.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemorySegment memset(MemorySegment dest, int c, long count) {
+    public static @NonNull MemorySegment memset(@NonNull MemorySegment dest, int c, long count) {
         try {
             final var _ = switch (SIZE_T) {
                 case ValueLayout.OfInt _ ->
@@ -405,7 +407,7 @@ public final class MemoryUtil {
      * @see #malloc(long)
      * @see #calloc(long, long)
      */
-    public static MemorySegment aligned_alloc(long alignment, long size) {
+    public static @NonNull MemorySegment aligned_alloc(long alignment, long size) {
         try {
             MemorySegment segment = switch (SIZE_T) {
                 case ValueLayout.OfInt _ -> !isNullPointer(Handles.PFN_aligned_alloc)
@@ -444,7 +446,7 @@ public final class MemoryUtil {
      * It's an error to reallocate memory and change the alignment of a block.
      * @see #realloc(MemorySegment, long)
      */
-    public static MemorySegment aligned_realloc(@Nullable MemorySegment memblock, long size, long alignment) {
+    public static @NonNull MemorySegment aligned_realloc(@Nullable MemorySegment memblock, long size, long alignment) {
         try {
             MemorySegment mem = memblock != null ? memblock : MemorySegment.NULL;
             MemorySegment segment = !isNullPointer(Handles.PFN__aligned_realloc) ? switch (SIZE_T) {
@@ -489,7 +491,8 @@ public final class MemoryUtil {
      * @return the segment allocator which allocates <strong>uninitialized</strong> memory
      * with {@link #malloc(long) malloc} whose address is aligned according the provided alignment constraint
      */
-    public static SegmentAllocator allocator(Arena arena) {
+    public static @NonNull SegmentAllocator allocator(@NonNull Arena arena) {
+        Objects.requireNonNull(arena);
         return (byteSize, byteAlignment) -> {
             checkByteSize(byteSize);
             checkAlignment(byteAlignment);
@@ -518,7 +521,7 @@ public final class MemoryUtil {
     /// @param string    the string
     /// @param charset   the charset of the string; defaults to UTF-8
     /// @return the allocated segment; or `NULL` if _`string`_ is `null`
-    public static MemorySegment allocString(SegmentAllocator allocator, String string, Charset charset) {
+    public static @NonNull MemorySegment allocString(SegmentAllocator allocator, @Nullable String string, Charset charset) {
         if (string == null) return MemorySegment.NULL;
         return allocator.allocateFrom(string, charset);
     }
@@ -528,7 +531,7 @@ public final class MemoryUtil {
     /// @param allocator the allocator
     /// @param string    the string
     /// @return the allocated segment; or `NULL` if _`string`_ is `null`
-    public static MemorySegment allocString(SegmentAllocator allocator, String string) {
+    public static @NonNull MemorySegment allocString(SegmentAllocator allocator, @Nullable String string) {
         if (string == null) return MemorySegment.NULL;
         return allocator.allocateFrom(string);
     }
@@ -541,7 +544,7 @@ public final class MemoryUtil {
     /// @param string  the string
     /// @param charset the charset of the string; defaults to UTF-8
     /// @return the allocated segment; or `NULL` if _`string`_ is `null`
-    public static MemorySegment allocString(String string, Charset charset) {
+    public static @NonNull MemorySegment allocString(@Nullable String string, Charset charset) {
         return allocString(Arena.ofAuto(), string, charset);
     }
 
@@ -552,7 +555,7 @@ public final class MemoryUtil {
     ///
     /// @param string the string
     /// @return the allocated segment; or `NULL` if _`string`_ is `null`
-    public static MemorySegment allocString(String string) {
+    public static @NonNull MemorySegment allocString(@Nullable String string) {
         return allocString(Arena.ofAuto(), string);
     }
 
@@ -561,7 +564,7 @@ public final class MemoryUtil {
     /// @param allocator the allocator
     /// @param arr       the array
     /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
-    public static MemorySegment allocArray(SegmentAllocator allocator, char[] arr) {
+    public static @NonNull MemorySegment allocArray(SegmentAllocator allocator, char @Nullable [] arr) {
         if (arr == null) return MemorySegment.NULL;
         return allocator.allocateFrom(JAVA_CHAR, arr);
     }
@@ -571,7 +574,7 @@ public final class MemoryUtil {
     /// @param allocator the allocator
     /// @param arr       the array
     /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
-    public static MemorySegment allocArray(SegmentAllocator allocator, byte[] arr) {
+    public static @NonNull MemorySegment allocArray(SegmentAllocator allocator, byte @Nullable [] arr) {
         if (arr == null) return MemorySegment.NULL;
         return allocator.allocateFrom(JAVA_BYTE, arr);
     }
@@ -581,7 +584,7 @@ public final class MemoryUtil {
     /// @param allocator the allocator
     /// @param arr       the array
     /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
-    public static MemorySegment allocArray(SegmentAllocator allocator, short[] arr) {
+    public static @NonNull MemorySegment allocArray(SegmentAllocator allocator, short @Nullable [] arr) {
         if (arr == null) return MemorySegment.NULL;
         return allocator.allocateFrom(JAVA_SHORT, arr);
     }
@@ -591,7 +594,7 @@ public final class MemoryUtil {
     /// @param allocator the allocator
     /// @param arr       the array
     /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
-    public static MemorySegment allocArray(SegmentAllocator allocator, int[] arr) {
+    public static @NonNull MemorySegment allocArray(SegmentAllocator allocator, int @Nullable [] arr) {
         if (arr == null) return MemorySegment.NULL;
         return allocator.allocateFrom(JAVA_INT, arr);
     }
@@ -601,7 +604,7 @@ public final class MemoryUtil {
     /// @param allocator the allocator
     /// @param arr       the array
     /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
-    public static MemorySegment allocArray(SegmentAllocator allocator, long[] arr) {
+    public static @NonNull MemorySegment allocArray(SegmentAllocator allocator, long @Nullable [] arr) {
         if (arr == null) return MemorySegment.NULL;
         return allocator.allocateFrom(JAVA_LONG, arr);
     }
@@ -611,7 +614,7 @@ public final class MemoryUtil {
     /// @param allocator the allocator
     /// @param arr       the array
     /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
-    public static MemorySegment allocArray(SegmentAllocator allocator, float[] arr) {
+    public static @NonNull MemorySegment allocArray(SegmentAllocator allocator, float @Nullable [] arr) {
         if (arr == null) return MemorySegment.NULL;
         return allocator.allocateFrom(JAVA_FLOAT, arr);
     }
@@ -621,7 +624,7 @@ public final class MemoryUtil {
     /// @param allocator the allocator
     /// @param arr       the array
     /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
-    public static MemorySegment allocArray(SegmentAllocator allocator, double[] arr) {
+    public static @NonNull MemorySegment allocArray(SegmentAllocator allocator, double @Nullable [] arr) {
         if (arr == null) return MemorySegment.NULL;
         return allocator.allocateFrom(JAVA_DOUBLE, arr);
     }
@@ -631,7 +634,7 @@ public final class MemoryUtil {
     /// @param allocator the allocator
     /// @param arr       the array
     /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
-    public static MemorySegment allocArray(SegmentAllocator allocator, MemorySegment[] arr) {
+    public static @NonNull MemorySegment allocArray(SegmentAllocator allocator, MemorySegment @Nullable [] arr) {
         if (arr == null) return MemorySegment.NULL;
         MemorySegment segment = allocator.allocate(ADDRESS, arr.length);
         for (int i = 0; i < arr.length; i++) {
@@ -646,7 +649,7 @@ public final class MemoryUtil {
     /// @param arr       the array
     /// @param charset   the charset of the string
     /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
-    public static MemorySegment allocArray(SegmentAllocator allocator, String[] arr, Charset charset) {
+    public static @NonNull MemorySegment allocArray(SegmentAllocator allocator, String @Nullable [] arr, Charset charset) {
         if (arr == null) return MemorySegment.NULL;
         MemorySegment segment = allocator.allocate(ADDRESS, arr.length);
         for (int i = 0; i < arr.length; i++) {
@@ -660,7 +663,7 @@ public final class MemoryUtil {
     /// @param allocator the allocator
     /// @param arr       the array
     /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
-    public static MemorySegment allocArray(SegmentAllocator allocator, String[] arr) {
+    public static @NonNull MemorySegment allocArray(SegmentAllocator allocator, String @Nullable [] arr) {
         return allocArray(allocator, arr, StandardCharsets.UTF_8);
     }
 
@@ -669,11 +672,8 @@ public final class MemoryUtil {
     /// @param layout the actual value layout of the result
     /// @param value  the value to be converted
     /// @return the result
-    public static Object narrowingLong(MemoryLayout layout, long value) {
-        if (!(layout instanceof ValueLayout valueLayout)) {
-            throw notValueLayout(layout);
-        }
-        return switch (valueLayout) {
+    public static @NonNull Object narrowingLong(@NonNull ValueLayout layout, long value) {
+        return switch (layout) {
             case OfByte _ -> (byte) value;
             case OfChar _ -> (char) value;
             case OfShort _ -> (short) value;
@@ -688,11 +688,8 @@ public final class MemoryUtil {
     /// @param layout the actual value layout of the result
     /// @param value  the value to be converted
     /// @return the result
-    public static Object narrowingInt(MemoryLayout layout, int value) {
-        if (!(layout instanceof ValueLayout valueLayout)) {
-            throw notValueLayout(layout);
-        }
-        return switch (valueLayout) {
+    public static @NonNull Object narrowingInt(@NonNull ValueLayout layout, int value) {
+        return switch (layout) {
             case OfByte _ -> (byte) value;
             case OfChar _ -> (char) value;
             case OfShort _ -> (short) value;
@@ -733,7 +730,7 @@ public final class MemoryUtil {
     /// @param segment the segment
     /// @param charset the charset of the string; defaults to UTF-8
     /// @return the string; or `null` if _`segment`_ is `NULL`
-    public static String nativeString(MemorySegment segment, Charset charset) {
+    public static @Nullable String nativeString(@Nullable MemorySegment segment, Charset charset) {
         if (isNullPointer(segment)) return null;
         return (segment.byteSize() == 0 ? segment.reinterpret(STR_SIZE) : segment)
             .getString(0, charset);
@@ -745,7 +742,7 @@ public final class MemoryUtil {
     ///
     /// @param segment the segment
     /// @return the string; or `null` if _`segment`_ is `NULL`
-    public static String nativeString(MemorySegment segment) {
+    public static @Nullable String nativeString(@Nullable MemorySegment segment) {
         return nativeString(segment, StandardCharsets.UTF_8);
     }
 
@@ -753,7 +750,7 @@ public final class MemoryUtil {
     ///
     /// @param segment the segment
     /// @return the char array; or `null` if _`segment`_ is `NULL`
-    public static char[] asCharArray(MemorySegment segment) {
+    public static char @Nullable [] asCharArray(@Nullable MemorySegment segment) {
         return isNullPointer(segment) ? null : segment.toArray(JAVA_CHAR);
     }
 
@@ -761,7 +758,7 @@ public final class MemoryUtil {
     ///
     /// @param segment the segment
     /// @return the byte array; or `null` if _`segment`_ is `NULL`
-    public static byte[] asByteArray(MemorySegment segment) {
+    public static byte @Nullable [] asByteArray(@Nullable MemorySegment segment) {
         return isNullPointer(segment) ? null : segment.toArray(JAVA_BYTE);
     }
 
@@ -769,7 +766,7 @@ public final class MemoryUtil {
     ///
     /// @param segment the segment
     /// @return the short array; or `null` if _`segment`_ is `NULL`
-    public static short[] asShortArray(MemorySegment segment) {
+    public static short @Nullable [] asShortArray(@Nullable MemorySegment segment) {
         return isNullPointer(segment) ? null : segment.toArray(JAVA_SHORT);
     }
 
@@ -777,7 +774,7 @@ public final class MemoryUtil {
     ///
     /// @param segment the segment
     /// @return the int array; or `null` if _`segment`_ is `NULL`
-    public static int[] asIntArray(MemorySegment segment) {
+    public static int @Nullable [] asIntArray(@Nullable MemorySegment segment) {
         return isNullPointer(segment) ? null : segment.toArray(JAVA_INT);
     }
 
@@ -785,7 +782,7 @@ public final class MemoryUtil {
     ///
     /// @param segment the segment
     /// @return the long array; or `null` if _`segment`_ is `NULL`
-    public static long[] asLongArray(MemorySegment segment) {
+    public static long @Nullable [] asLongArray(@Nullable MemorySegment segment) {
         return isNullPointer(segment) ? null : segment.toArray(JAVA_LONG);
     }
 
@@ -793,7 +790,7 @@ public final class MemoryUtil {
     ///
     /// @param segment the segment
     /// @return the float array; or `null` if _`segment`_ is `NULL`
-    public static float[] asFloatArray(MemorySegment segment) {
+    public static float @Nullable [] asFloatArray(@Nullable MemorySegment segment) {
         return isNullPointer(segment) ? null : segment.toArray(JAVA_FLOAT);
     }
 
@@ -801,7 +798,7 @@ public final class MemoryUtil {
     ///
     /// @param segment the segment
     /// @return the double array; or `null` if _`segment`_ is `NULL`
-    public static double[] asDoubleArray(MemorySegment segment) {
+    public static double @Nullable [] asDoubleArray(@Nullable MemorySegment segment) {
         return isNullPointer(segment) ? null : segment.toArray(JAVA_DOUBLE);
     }
 
@@ -811,7 +808,7 @@ public final class MemoryUtil {
     ///
     /// @param segment the segment
     /// @return the address array; or `null` if _`segment`_ is `NULL`
-    public static MemorySegment[] asAddressArray(MemorySegment segment) {
+    public static MemorySegment @Nullable [] asAddressArray(@Nullable MemorySegment segment) {
         if (isNullPointer(segment)) return null;
         return segment.elements(ADDRESS)
             .map(s -> s.get(ADDRESS, 0))
@@ -823,7 +820,7 @@ public final class MemoryUtil {
     /// @param segment the segment
     /// @param charset the charset of the string; defaults to UTF-8
     /// @return the string array; or `null` if _`segment`_ is `NULL`
-    public static String[] asStringArray(MemorySegment segment, Charset charset) {
+    public static String @Nullable [] asStringArray(@Nullable MemorySegment segment, Charset charset) {
         if (isNullPointer(segment)) return null;
         return segment.elements(ADDRESS)
             .map(s -> s.get(STR_LAYOUT, 0).getString(0L, charset))
@@ -834,7 +831,7 @@ public final class MemoryUtil {
     ///
     /// @param segment the segment
     /// @return the string array; or `null` if _`segment`_ is `NULL`
-    public static String[] asStringArray(MemorySegment segment) {
+    public static String @Nullable [] asStringArray(@Nullable MemorySegment segment) {
         return asStringArray(segment, StandardCharsets.UTF_8);
     }
 
@@ -843,11 +840,8 @@ public final class MemoryUtil {
     /// @param layout the actual value layout of _`o`_
     /// @param o      the integer to be converted
     /// @return the result
-    public static long wideningToLong(MemoryLayout layout, Object o) {
-        if (!(layout instanceof ValueLayout valueLayout)) {
-            throw notValueLayout(layout);
-        }
-        return switch (valueLayout) {
+    public static long wideningToLong(@NonNull ValueLayout layout, Object o) {
+        return switch (layout) {
             case OfByte _ -> ((Byte) o).longValue();
             case OfChar _ -> (long) (Character) o;
             case OfShort _ -> ((Short) o).longValue();
@@ -862,11 +856,8 @@ public final class MemoryUtil {
     /// @param layout the actual value layout of _`o`_
     /// @param o      the integer to be converted
     /// @return the result
-    public static int wideningToInt(MemoryLayout layout, Object o) {
-        if (!(layout instanceof ValueLayout valueLayout)) {
-            throw notValueLayout(layout);
-        }
-        return switch (valueLayout) {
+    public static int wideningToInt(@NonNull ValueLayout layout, Object o) {
+        return switch (layout) {
             case OfByte _ -> ((Byte) o).intValue();
             case OfChar _ -> (int) (Character) o;
             case OfShort _ -> ((Short) o).intValue();
@@ -992,9 +983,5 @@ public final class MemoryUtil {
         for (int i = 0; i < dst.length; i++) {
             dst[i] = src.getAtIndex(ADDRESS, i);
         }
-    }
-
-    private static IllegalArgumentException notValueLayout(MemoryLayout layout) {
-        return new IllegalArgumentException("Not a value layout: " + layout);
     }
 }

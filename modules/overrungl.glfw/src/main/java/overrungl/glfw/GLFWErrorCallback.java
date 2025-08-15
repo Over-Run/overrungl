@@ -16,10 +16,12 @@
 
 package overrungl.glfw;
 
+import org.jspecify.annotations.NonNull;
 import overrungl.OverrunGL;
 import overrungl.util.MemoryUtil;
 
 import java.io.PrintStream;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
@@ -36,7 +38,7 @@ public final class GLFWErrorCallback {
     /**
      * {@return a {@link GLFWErrorFun} instance that throws an {@link IllegalStateException} when an error occurs}
      */
-    public static GLFWErrorFun createThrow() {
+    public static @NonNull GLFWErrorFun createThrow() {
         return (errorCode, description) -> {
             throw new IllegalStateException("GLFW " + GLFW.glfwGetErrorString(errorCode) + " error [0x" + Integer.toHexString(errorCode) + "]: " + MemoryUtil.nativeString(description));
         };
@@ -47,7 +49,8 @@ public final class GLFWErrorCallback {
      *
      * @param logger the logger function.
      */
-    public static GLFWErrorFun createLog(Consumer<String> logger) {
+    public static @NonNull GLFWErrorFun createLog(@NonNull Consumer<String> logger) {
+        Objects.requireNonNull(logger);
         return (errorCode, description) -> {
             var sb = new StringBuilder(512);
             sb.append("[OverrunGL] GLFW ")
@@ -70,7 +73,7 @@ public final class GLFWErrorCallback {
      * @param stream the logger stream.
      * @see #createPrint()
      */
-    public static GLFWErrorFun createPrint(PrintStream stream) {
+    public static @NonNull GLFWErrorFun createPrint(@NonNull PrintStream stream) {
         return createLog(stream::println);
     }
 
@@ -80,7 +83,7 @@ public final class GLFWErrorCallback {
      *
      * @see #createPrint(PrintStream)
      */
-    public static GLFWErrorFun createPrint() {
+    public static @NonNull GLFWErrorFun createPrint() {
         return createLog(OverrunGL.apiLogger());
     }
 }

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkGeometryDataNV`.
 /// ## Layout
 /// ```
 /// struct VkGeometryDataNV {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class VkGeometryDataNV extends GroupType {
     /// The struct layout of `VkGeometryDataNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.nv.struct.VkGeometryTrianglesNV.LAYOUT.withName("triangles"),
         overrungl.vulkan.nv.struct.VkGeometryAABBNV.LAYOUT.withName("aabbs")
     );

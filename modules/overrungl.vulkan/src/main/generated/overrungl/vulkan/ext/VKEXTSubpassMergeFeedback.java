@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_subpass_merge_feedback` - device extension
 public final class VKEXTSubpassMergeFeedback {
     public static final int VK_SUBPASS_MERGE_STATUS_MERGED_EXT = 0;
     public static final int VK_SUBPASS_MERGE_STATUS_DISALLOWED_EXT = 1;

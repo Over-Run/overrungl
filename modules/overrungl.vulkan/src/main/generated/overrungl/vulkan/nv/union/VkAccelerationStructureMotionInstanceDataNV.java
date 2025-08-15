@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkAccelerationStructureMotionInstanceDataNV`.
 /// ## Layout
 /// ```
 /// union VkAccelerationStructureMotionInstanceDataNV {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkAccelerationStructureMotionInstanceDataNV extends GroupType {
     /// The union layout of `VkAccelerationStructureMotionInstanceDataNV`.
-    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         overrungl.vulkan.khr.struct.VkAccelerationStructureInstanceKHR.LAYOUT.withName("staticInstance"),
         overrungl.vulkan.nv.struct.VkAccelerationStructureMatrixMotionInstanceNV.LAYOUT.withName("matrixMotionInstance"),
         overrungl.vulkan.nv.struct.VkAccelerationStructureSRTMotionInstanceNV.LAYOUT.withName("srtMotionInstance")

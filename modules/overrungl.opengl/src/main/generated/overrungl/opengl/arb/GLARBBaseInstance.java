@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_base_instance`
 public final class GLARBBaseInstance {
     private final Handles handles;
     public static final class Handles {
@@ -32,17 +32,18 @@ public final class GLARBBaseInstance {
         public final MemorySegment PFN_glDrawArraysInstancedBaseInstance;
         public final MemorySegment PFN_glDrawElementsInstancedBaseInstance;
         public final MemorySegment PFN_glDrawElementsInstancedBaseVertexBaseInstance;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDrawArraysInstancedBaseInstance = func.invoke("glDrawArraysInstancedBaseInstance");
             PFN_glDrawElementsInstancedBaseInstance = func.invoke("glDrawElementsInstancedBaseInstance");
             PFN_glDrawElementsInstancedBaseVertexBaseInstance = func.invoke("glDrawElementsInstancedBaseVertexBaseInstance");
         }
     }
 
-    public GLARBBaseInstance(overrungl.opengl.GLLoadFunc func) {
+    public GLARBBaseInstance(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDrawArraysInstancedBaseInstance`.
     /// ```
     /// void glDrawArraysInstancedBaseInstance((unsigned int) GLenum mode, (int) GLint first, (int) GLsizei count, (int) GLsizei instancecount, (unsigned int) GLuint baseinstance);
     /// ```
@@ -53,20 +54,22 @@ public final class GLARBBaseInstance {
         catch (Throwable e) { throw new RuntimeException("error in DrawArraysInstancedBaseInstance", e); }
     }
 
+    /// Invokes `glDrawElementsInstancedBaseInstance`.
     /// ```
     /// void glDrawElementsInstancedBaseInstance((unsigned int) GLenum mode, (int) GLsizei count, (unsigned int) GLenum type, const void* indices, (int) GLsizei instancecount, (unsigned int) GLuint baseinstance);
     /// ```
-    public void DrawElementsInstancedBaseInstance(int mode, int count, int type, MemorySegment indices, int instancecount, int baseinstance) {
+    public void DrawElementsInstancedBaseInstance(int mode, int count, int type, @NonNull MemorySegment indices, int instancecount, int baseinstance) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseInstance)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseInstance");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElementsInstancedBaseInstance", mode, count, type, indices, instancecount, baseinstance); }
         Handles.MH_glDrawElementsInstancedBaseInstance.invokeExact(handles.PFN_glDrawElementsInstancedBaseInstance, mode, count, type, indices, instancecount, baseinstance); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedBaseInstance", e); }
     }
 
+    /// Invokes `glDrawElementsInstancedBaseVertexBaseInstance`.
     /// ```
     /// void glDrawElementsInstancedBaseVertexBaseInstance((unsigned int) GLenum mode, (int) GLsizei count, (unsigned int) GLenum type, const void* indices, (int) GLsizei instancecount, (int) GLint basevertex, (unsigned int) GLuint baseinstance);
     /// ```
-    public void DrawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, MemorySegment indices, int instancecount, int basevertex, int baseinstance) {
+    public void DrawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, @NonNull MemorySegment indices, int instancecount, int basevertex, int baseinstance) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseVertexBaseInstance)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertexBaseInstance");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElementsInstancedBaseVertexBaseInstance", mode, count, type, indices, instancecount, basevertex, baseinstance); }
         Handles.MH_glDrawElementsInstancedBaseVertexBaseInstance.invokeExact(handles.PFN_glDrawElementsInstancedBaseVertexBaseInstance, mode, count, type, indices, instancecount, basevertex, baseinstance); }

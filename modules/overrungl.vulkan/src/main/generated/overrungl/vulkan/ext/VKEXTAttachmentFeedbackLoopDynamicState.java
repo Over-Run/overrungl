@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_attachment_feedback_loop_dynamic_state` - device extension
 public final class VKEXTAttachmentFeedbackLoopDynamicState {
     public static final int VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_SPEC_VERSION = 1;
     public static final String VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_attachment_feedback_loop_dynamic_state";
@@ -33,10 +35,11 @@ public final class VKEXTAttachmentFeedbackLoopDynamicState {
 
     private VKEXTAttachmentFeedbackLoopDynamicState() {}
 
+    /// Invokes `vkCmdSetAttachmentFeedbackLoopEnableEXT`.
     /// ```
     /// void vkCmdSetAttachmentFeedbackLoopEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint32_t) VkFlags) VkImageAspectFlags aspectMask);
     /// ```
-    public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, int aspectMask) {
+    public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(@NonNull VkCommandBuffer commandBuffer, int aspectMask) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetAttachmentFeedbackLoopEnableEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetAttachmentFeedbackLoopEnableEXT", commandBuffer, aspectMask); }
         Handles.MH_vkCmdSetAttachmentFeedbackLoopEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT, commandBuffer.segment(), aspectMask); }

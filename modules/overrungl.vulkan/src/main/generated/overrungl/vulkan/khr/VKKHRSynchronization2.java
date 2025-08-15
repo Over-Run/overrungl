@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_synchronization2` - device extension
 public final class VKKHRSynchronization2 {
     public static final int VK_KHR_SYNCHRONIZATION_2_SPEC_VERSION = 1;
     public static final String VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2";
@@ -128,60 +130,66 @@ public final class VKKHRSynchronization2 {
 
     private VKKHRSynchronization2() {}
 
+    /// Invokes `vkCmdSetEvent2KHR`.
     /// ```
     /// void vkCmdSetEvent2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkEvent event, const VkDependencyInfo* pDependencyInfo);
     /// ```
-    public static void vkCmdSetEvent2KHR(VkCommandBuffer commandBuffer, long event, MemorySegment pDependencyInfo) {
+    public static void vkCmdSetEvent2KHR(@NonNull VkCommandBuffer commandBuffer, long event, @NonNull MemorySegment pDependencyInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetEvent2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetEvent2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetEvent2KHR", commandBuffer, event, pDependencyInfo); }
         Handles.MH_vkCmdSetEvent2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetEvent2KHR, commandBuffer.segment(), event, pDependencyInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetEvent2KHR", e); }
     }
 
+    /// Invokes `vkCmdResetEvent2KHR`.
     /// ```
     /// void vkCmdResetEvent2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkEvent event, ((uint64_t) VkFlags64) VkPipelineStageFlags2 stageMask);
     /// ```
-    public static void vkCmdResetEvent2KHR(VkCommandBuffer commandBuffer, long event, long stageMask) {
+    public static void vkCmdResetEvent2KHR(@NonNull VkCommandBuffer commandBuffer, long event, long stageMask) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdResetEvent2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdResetEvent2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdResetEvent2KHR", commandBuffer, event, stageMask); }
         Handles.MH_vkCmdResetEvent2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdResetEvent2KHR, commandBuffer.segment(), event, stageMask); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdResetEvent2KHR", e); }
     }
 
+    /// Invokes `vkCmdWaitEvents2KHR`.
     /// ```
     /// void vkCmdWaitEvents2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t eventCount, const VkEvent* pEvents, const VkDependencyInfo* pDependencyInfos);
     /// ```
-    public static void vkCmdWaitEvents2KHR(VkCommandBuffer commandBuffer, int eventCount, MemorySegment pEvents, MemorySegment pDependencyInfos) {
+    public static void vkCmdWaitEvents2KHR(@NonNull VkCommandBuffer commandBuffer, int eventCount, @NonNull MemorySegment pEvents, @NonNull MemorySegment pDependencyInfos) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWaitEvents2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdWaitEvents2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdWaitEvents2KHR", commandBuffer, eventCount, pEvents, pDependencyInfos); }
         Handles.MH_vkCmdWaitEvents2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdWaitEvents2KHR, commandBuffer.segment(), eventCount, pEvents, pDependencyInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdWaitEvents2KHR", e); }
     }
 
+    /// Invokes `vkCmdPipelineBarrier2KHR`.
     /// ```
     /// void vkCmdPipelineBarrier2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkDependencyInfo* pDependencyInfo);
     /// ```
-    public static void vkCmdPipelineBarrier2KHR(VkCommandBuffer commandBuffer, MemorySegment pDependencyInfo) {
+    public static void vkCmdPipelineBarrier2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pDependencyInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPipelineBarrier2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPipelineBarrier2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdPipelineBarrier2KHR", commandBuffer, pDependencyInfo); }
         Handles.MH_vkCmdPipelineBarrier2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdPipelineBarrier2KHR, commandBuffer.segment(), pDependencyInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPipelineBarrier2KHR", e); }
     }
 
+    /// Invokes `vkCmdWriteTimestamp2KHR`.
     /// ```
     /// void vkCmdWriteTimestamp2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint64_t) VkFlags64) VkPipelineStageFlags2 stage, (uint64_t) VkQueryPool queryPool, uint32_t query);
     /// ```
-    public static void vkCmdWriteTimestamp2KHR(VkCommandBuffer commandBuffer, long stage, long queryPool, int query) {
+    public static void vkCmdWriteTimestamp2KHR(@NonNull VkCommandBuffer commandBuffer, long stage, long queryPool, int query) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteTimestamp2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdWriteTimestamp2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdWriteTimestamp2KHR", commandBuffer, stage, queryPool, query); }
         Handles.MH_vkCmdWriteTimestamp2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdWriteTimestamp2KHR, commandBuffer.segment(), stage, queryPool, query); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdWriteTimestamp2KHR", e); }
     }
 
+    /// Invokes `vkQueueSubmit2KHR`.
     /// ```
     /// (int) VkResult vkQueueSubmit2KHR((struct VkQueue*) VkQueue queue, uint32_t submitCount, const VkSubmitInfo2* pSubmits, (uint64_t) VkFence fence);
     /// ```
-    public static int vkQueueSubmit2KHR(VkQueue queue, int submitCount, MemorySegment pSubmits, long fence) {
+    public static int vkQueueSubmit2KHR(@NonNull VkQueue queue, int submitCount, @NonNull MemorySegment pSubmits, long fence) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueSubmit2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueSubmit2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkQueueSubmit2KHR", queue, submitCount, pSubmits, fence); }
         return (int) Handles.MH_vkQueueSubmit2KHR.invokeExact(queue.capabilities().PFN_vkQueueSubmit2KHR, queue.segment(), submitCount, pSubmits, fence); }

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `STBTTKerningEntry`.
 /// ## Layout
 /// ```
 /// struct STBTTKerningEntry {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class STBTTKerningEntry extends GroupType {
     /// The struct layout of `STBTTKerningEntry`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("glyph1"),
         ValueLayout.JAVA_INT.withName("glyph2"),
         ValueLayout.JAVA_INT.withName("advance")

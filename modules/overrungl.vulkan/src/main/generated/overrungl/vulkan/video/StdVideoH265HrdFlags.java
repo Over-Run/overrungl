@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH265HrdFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoH265HrdFlags {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH265HrdFlags extends GroupType {
     /// The struct layout of `StdVideoH265HrdFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("nal_hrd_parameters_present_flag"), 1,
         ValueLayout.JAVA_INT.withName("vcl_hrd_parameters_present_flag"), 1,
         ValueLayout.JAVA_INT.withName("sub_pic_hrd_params_present_flag"), 1,

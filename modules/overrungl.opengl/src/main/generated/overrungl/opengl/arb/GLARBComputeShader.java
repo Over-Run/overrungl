@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_compute_shader`
 public final class GLARBComputeShader {
     public static final int GL_COMPUTE_SHADER = 0x91B9;
     public static final int GL_MAX_COMPUTE_UNIFORM_BLOCKS = 0x91BB;
@@ -48,16 +48,17 @@ public final class GLARBComputeShader {
         public static final MethodHandle MH_glDispatchComputeIndirect = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glDispatchCompute;
         public final MemorySegment PFN_glDispatchComputeIndirect;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDispatchCompute = func.invoke("glDispatchCompute");
             PFN_glDispatchComputeIndirect = func.invoke("glDispatchComputeIndirect");
         }
     }
 
-    public GLARBComputeShader(overrungl.opengl.GLLoadFunc func) {
+    public GLARBComputeShader(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDispatchCompute`.
     /// ```
     /// void glDispatchCompute((unsigned int) GLuint num_groups_x, (unsigned int) GLuint num_groups_y, (unsigned int) GLuint num_groups_z);
     /// ```
@@ -68,6 +69,7 @@ public final class GLARBComputeShader {
         catch (Throwable e) { throw new RuntimeException("error in DispatchCompute", e); }
     }
 
+    /// Invokes `glDispatchComputeIndirect`.
     /// ```
     /// void glDispatchComputeIndirect(((signed long long) khronos_intptr_t) GLintptr indirect);
     /// ```

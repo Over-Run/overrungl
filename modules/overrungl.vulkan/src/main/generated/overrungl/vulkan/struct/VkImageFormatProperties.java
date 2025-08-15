@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkImageFormatProperties`.
 /// ## Layout
 /// ```
 /// struct VkImageFormatProperties {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class VkImageFormatProperties extends GroupType {
     /// The struct layout of `VkImageFormatProperties`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkExtent3D.LAYOUT.withName("maxExtent"),
         ValueLayout.JAVA_INT.withName("maxMipLevels"),
         ValueLayout.JAVA_INT.withName("maxArrayLayers"),

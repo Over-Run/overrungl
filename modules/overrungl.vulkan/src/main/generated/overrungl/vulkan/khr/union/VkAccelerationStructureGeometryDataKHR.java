@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkAccelerationStructureGeometryDataKHR`.
 /// ## Layout
 /// ```
 /// union VkAccelerationStructureGeometryDataKHR {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkAccelerationStructureGeometryDataKHR extends GroupType {
     /// The union layout of `VkAccelerationStructureGeometryDataKHR`.
-    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryTrianglesDataKHR.LAYOUT.withName("triangles"),
         overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryAabbsDataKHR.LAYOUT.withName("aabbs"),
         overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryInstancesDataKHR.LAYOUT.withName("instances")

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkIndirectCommandsIndexBufferTokenEXT`.
 /// ## Layout
 /// ```
 /// struct VkIndirectCommandsIndexBufferTokenEXT {
@@ -33,7 +35,7 @@ import overrungl.util.*;
 /// ```
 public final class VkIndirectCommandsIndexBufferTokenEXT extends GroupType {
     /// The struct layout of `VkIndirectCommandsIndexBufferTokenEXT`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("mode")
     );
     /// The byte offset of `mode`.

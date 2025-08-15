@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_fragment_shading_rate` - device extension
 public final class VKKHRFragmentShadingRate {
     public static final int VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR = 0;
     public static final int VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR = 1;
@@ -52,20 +54,22 @@ public final class VKKHRFragmentShadingRate {
 
     private VKKHRFragmentShadingRate() {}
 
+    /// Invokes `vkGetPhysicalDeviceFragmentShadingRatesKHR`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceFragmentShadingRatesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pFragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR* pFragmentShadingRates);
     /// ```
-    public static int vkGetPhysicalDeviceFragmentShadingRatesKHR(VkPhysicalDevice physicalDevice, MemorySegment pFragmentShadingRateCount, MemorySegment pFragmentShadingRates) {
+    public static int vkGetPhysicalDeviceFragmentShadingRatesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pFragmentShadingRateCount, @NonNull MemorySegment pFragmentShadingRates) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceFragmentShadingRatesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceFragmentShadingRatesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceFragmentShadingRatesKHR", physicalDevice, pFragmentShadingRateCount, pFragmentShadingRates); }
         return (int) Handles.MH_vkGetPhysicalDeviceFragmentShadingRatesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceFragmentShadingRatesKHR, physicalDevice.segment(), pFragmentShadingRateCount, pFragmentShadingRates); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceFragmentShadingRatesKHR", e); }
     }
 
+    /// Invokes `vkCmdSetFragmentShadingRateKHR`.
     /// ```
     /// void vkCmdSetFragmentShadingRateKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkExtent2D* pFragmentSize, (int) VkFragmentShadingRateCombinerOpKHR combinerOps[2]);
     /// ```
-    public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, MemorySegment pFragmentSize, MemorySegment combinerOps) {
+    public static void vkCmdSetFragmentShadingRateKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pFragmentSize, @NonNull MemorySegment combinerOps) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetFragmentShadingRateKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetFragmentShadingRateKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetFragmentShadingRateKHR", commandBuffer, pFragmentSize, combinerOps); }
         Handles.MH_vkCmdSetFragmentShadingRateKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetFragmentShadingRateKHR, commandBuffer.segment(), pFragmentSize, combinerOps); }

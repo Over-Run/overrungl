@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_ray_tracing_linear_swept_spheres` - device extension
 public final class VKNVRayTracingLinearSweptSpheres {
     public static final int VK_RAY_TRACING_LSS_INDEXING_MODE_LIST_NV = 0;
     public static final int VK_RAY_TRACING_LSS_INDEXING_MODE_SUCCESSIVE_NV = 1;

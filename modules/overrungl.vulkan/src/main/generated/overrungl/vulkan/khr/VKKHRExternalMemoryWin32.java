@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_external_memory_win32` - device extension
 public final class VKKHRExternalMemoryWin32 {
     public static final int VK_KHR_EXTERNAL_MEMORY_WIN32_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME = "VK_KHR_external_memory_win32";
@@ -36,20 +38,22 @@ public final class VKKHRExternalMemoryWin32 {
 
     private VKKHRExternalMemoryWin32() {}
 
+    /// Invokes `vkGetMemoryWin32HandleKHR`.
     /// ```
     /// (int) VkResult vkGetMemoryWin32HandleKHR((struct VkDevice*) VkDevice device, const VkMemoryGetWin32HandleInfoKHR* pGetWin32HandleInfo, HANDLE* pHandle);
     /// ```
-    public static int vkGetMemoryWin32HandleKHR(VkDevice device, MemorySegment pGetWin32HandleInfo, MemorySegment pHandle) {
+    public static int vkGetMemoryWin32HandleKHR(@NonNull VkDevice device, @NonNull MemorySegment pGetWin32HandleInfo, @NonNull MemorySegment pHandle) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandleKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMemoryWin32HandleKHR", device, pGetWin32HandleInfo, pHandle); }
         return (int) Handles.MH_vkGetMemoryWin32HandleKHR.invokeExact(device.capabilities().PFN_vkGetMemoryWin32HandleKHR, device.segment(), pGetWin32HandleInfo, pHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryWin32HandleKHR", e); }
     }
 
+    /// Invokes `vkGetMemoryWin32HandlePropertiesKHR`.
     /// ```
     /// (int) VkResult vkGetMemoryWin32HandlePropertiesKHR((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, (void*) HANDLE handle, VkMemoryWin32HandlePropertiesKHR* pMemoryWin32HandleProperties);
     /// ```
-    public static int vkGetMemoryWin32HandlePropertiesKHR(VkDevice device, int handleType, MemorySegment handle, MemorySegment pMemoryWin32HandleProperties) {
+    public static int vkGetMemoryWin32HandlePropertiesKHR(@NonNull VkDevice device, int handleType, @NonNull MemorySegment handle, @NonNull MemorySegment pMemoryWin32HandleProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryWin32HandlePropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandlePropertiesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMemoryWin32HandlePropertiesKHR", device, handleType, handle, pMemoryWin32HandleProperties); }
         return (int) Handles.MH_vkGetMemoryWin32HandlePropertiesKHR.invokeExact(device.capabilities().PFN_vkGetMemoryWin32HandlePropertiesKHR, device.segment(), handleType, handle, pMemoryWin32HandleProperties); }

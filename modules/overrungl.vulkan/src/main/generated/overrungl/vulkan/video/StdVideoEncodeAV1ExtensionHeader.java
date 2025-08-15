@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeAV1ExtensionHeader`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeAV1ExtensionHeader {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeAV1ExtensionHeader extends GroupType {
     /// The struct layout of `StdVideoEncodeAV1ExtensionHeader`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("temporal_id"),
         ValueLayout.JAVA_BYTE.withName("spatial_id")
     );

@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
+/// `GL_EXT_texture_env_combine`
 public final class GLEXTTextureEnvCombine {
     public static final int GL_COMBINE_EXT = 0x8570;
     public static final int GL_COMBINE_RGB_EXT = 0x8571;

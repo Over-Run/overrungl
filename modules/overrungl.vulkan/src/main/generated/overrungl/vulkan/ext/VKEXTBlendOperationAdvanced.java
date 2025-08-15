@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_blend_operation_advanced` - device extension
 public final class VKEXTBlendOperationAdvanced {
     public static final int VK_BLEND_OVERLAP_UNCORRELATED_EXT = 0;
     public static final int VK_BLEND_OVERLAP_DISJOINT_EXT = 1;

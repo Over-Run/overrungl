@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkConformanceVersion`.
 /// ## Layout
 /// ```
 /// struct VkConformanceVersion {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkConformanceVersion extends GroupType {
     /// The struct layout of `VkConformanceVersion`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("major"),
         ValueLayout.JAVA_BYTE.withName("minor"),
         ValueLayout.JAVA_BYTE.withName("subminor"),

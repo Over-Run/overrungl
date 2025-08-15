@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_debug_utils` - instance extension
 public final class VKEXTDebugUtils {
     public static final int VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT = 0x00000001;
     public static final int VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT = 0x00000010;
@@ -54,110 +56,121 @@ public final class VKEXTDebugUtils {
 
     private VKEXTDebugUtils() {}
 
+    /// Invokes `vkSetDebugUtilsObjectNameEXT`.
     /// ```
     /// (int) VkResult vkSetDebugUtilsObjectNameEXT((struct VkDevice*) VkDevice device, const VkDebugUtilsObjectNameInfoEXT* pNameInfo);
     /// ```
-    public static int vkSetDebugUtilsObjectNameEXT(VkDevice device, MemorySegment pNameInfo) {
+    public static int vkSetDebugUtilsObjectNameEXT(@NonNull VkDevice device, @NonNull MemorySegment pNameInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetDebugUtilsObjectNameEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetDebugUtilsObjectNameEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkSetDebugUtilsObjectNameEXT", device, pNameInfo); }
         return (int) Handles.MH_vkSetDebugUtilsObjectNameEXT.invokeExact(device.capabilities().PFN_vkSetDebugUtilsObjectNameEXT, device.segment(), pNameInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetDebugUtilsObjectNameEXT", e); }
     }
 
+    /// Invokes `vkSetDebugUtilsObjectTagEXT`.
     /// ```
     /// (int) VkResult vkSetDebugUtilsObjectTagEXT((struct VkDevice*) VkDevice device, const VkDebugUtilsObjectTagInfoEXT* pTagInfo);
     /// ```
-    public static int vkSetDebugUtilsObjectTagEXT(VkDevice device, MemorySegment pTagInfo) {
+    public static int vkSetDebugUtilsObjectTagEXT(@NonNull VkDevice device, @NonNull MemorySegment pTagInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetDebugUtilsObjectTagEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetDebugUtilsObjectTagEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkSetDebugUtilsObjectTagEXT", device, pTagInfo); }
         return (int) Handles.MH_vkSetDebugUtilsObjectTagEXT.invokeExact(device.capabilities().PFN_vkSetDebugUtilsObjectTagEXT, device.segment(), pTagInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetDebugUtilsObjectTagEXT", e); }
     }
 
+    /// Invokes `vkQueueBeginDebugUtilsLabelEXT`.
     /// ```
     /// void vkQueueBeginDebugUtilsLabelEXT((struct VkQueue*) VkQueue queue, const VkDebugUtilsLabelEXT* pLabelInfo);
     /// ```
-    public static void vkQueueBeginDebugUtilsLabelEXT(VkQueue queue, MemorySegment pLabelInfo) {
+    public static void vkQueueBeginDebugUtilsLabelEXT(@NonNull VkQueue queue, @NonNull MemorySegment pLabelInfo) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueBeginDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueBeginDebugUtilsLabelEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkQueueBeginDebugUtilsLabelEXT", queue, pLabelInfo); }
         Handles.MH_vkQueueBeginDebugUtilsLabelEXT.invokeExact(queue.capabilities().PFN_vkQueueBeginDebugUtilsLabelEXT, queue.segment(), pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueBeginDebugUtilsLabelEXT", e); }
     }
 
+    /// Invokes `vkQueueEndDebugUtilsLabelEXT`.
     /// ```
     /// void vkQueueEndDebugUtilsLabelEXT((struct VkQueue*) VkQueue queue);
     /// ```
-    public static void vkQueueEndDebugUtilsLabelEXT(VkQueue queue) {
+    public static void vkQueueEndDebugUtilsLabelEXT(@NonNull VkQueue queue) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueEndDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueEndDebugUtilsLabelEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkQueueEndDebugUtilsLabelEXT", queue); }
         Handles.MH_vkQueueEndDebugUtilsLabelEXT.invokeExact(queue.capabilities().PFN_vkQueueEndDebugUtilsLabelEXT, queue.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueEndDebugUtilsLabelEXT", e); }
     }
 
+    /// Invokes `vkQueueInsertDebugUtilsLabelEXT`.
     /// ```
     /// void vkQueueInsertDebugUtilsLabelEXT((struct VkQueue*) VkQueue queue, const VkDebugUtilsLabelEXT* pLabelInfo);
     /// ```
-    public static void vkQueueInsertDebugUtilsLabelEXT(VkQueue queue, MemorySegment pLabelInfo) {
+    public static void vkQueueInsertDebugUtilsLabelEXT(@NonNull VkQueue queue, @NonNull MemorySegment pLabelInfo) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueInsertDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueInsertDebugUtilsLabelEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkQueueInsertDebugUtilsLabelEXT", queue, pLabelInfo); }
         Handles.MH_vkQueueInsertDebugUtilsLabelEXT.invokeExact(queue.capabilities().PFN_vkQueueInsertDebugUtilsLabelEXT, queue.segment(), pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueInsertDebugUtilsLabelEXT", e); }
     }
 
+    /// Invokes `vkCmdBeginDebugUtilsLabelEXT`.
     /// ```
     /// void vkCmdBeginDebugUtilsLabelEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkDebugUtilsLabelEXT* pLabelInfo);
     /// ```
-    public static void vkCmdBeginDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, MemorySegment pLabelInfo) {
+    public static void vkCmdBeginDebugUtilsLabelEXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pLabelInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginDebugUtilsLabelEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBeginDebugUtilsLabelEXT", commandBuffer, pLabelInfo); }
         Handles.MH_vkCmdBeginDebugUtilsLabelEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginDebugUtilsLabelEXT, commandBuffer.segment(), pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginDebugUtilsLabelEXT", e); }
     }
 
+    /// Invokes `vkCmdEndDebugUtilsLabelEXT`.
     /// ```
     /// void vkCmdEndDebugUtilsLabelEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer);
     /// ```
-    public static void vkCmdEndDebugUtilsLabelEXT(VkCommandBuffer commandBuffer) {
+    public static void vkCmdEndDebugUtilsLabelEXT(@NonNull VkCommandBuffer commandBuffer) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndDebugUtilsLabelEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndDebugUtilsLabelEXT", commandBuffer); }
         Handles.MH_vkCmdEndDebugUtilsLabelEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndDebugUtilsLabelEXT, commandBuffer.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndDebugUtilsLabelEXT", e); }
     }
 
+    /// Invokes `vkCmdInsertDebugUtilsLabelEXT`.
     /// ```
     /// void vkCmdInsertDebugUtilsLabelEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkDebugUtilsLabelEXT* pLabelInfo);
     /// ```
-    public static void vkCmdInsertDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, MemorySegment pLabelInfo) {
+    public static void vkCmdInsertDebugUtilsLabelEXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pLabelInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdInsertDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdInsertDebugUtilsLabelEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdInsertDebugUtilsLabelEXT", commandBuffer, pLabelInfo); }
         Handles.MH_vkCmdInsertDebugUtilsLabelEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdInsertDebugUtilsLabelEXT, commandBuffer.segment(), pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdInsertDebugUtilsLabelEXT", e); }
     }
 
+    /// Invokes `vkCreateDebugUtilsMessengerEXT`.
     /// ```
     /// (int) VkResult vkCreateDebugUtilsMessengerEXT((struct VkInstance*) VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDebugUtilsMessengerEXT* pMessenger);
     /// ```
-    public static int vkCreateDebugUtilsMessengerEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pMessenger) {
+    public static int vkCreateDebugUtilsMessengerEXT(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pMessenger) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateDebugUtilsMessengerEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDebugUtilsMessengerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateDebugUtilsMessengerEXT", instance, pCreateInfo, pAllocator, pMessenger); }
         return (int) Handles.MH_vkCreateDebugUtilsMessengerEXT.invokeExact(instance.capabilities().PFN_vkCreateDebugUtilsMessengerEXT, instance.segment(), pCreateInfo, pAllocator, pMessenger); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDebugUtilsMessengerEXT", e); }
     }
 
+    /// Invokes `vkDestroyDebugUtilsMessengerEXT`.
     /// ```
     /// void vkDestroyDebugUtilsMessengerEXT((struct VkInstance*) VkInstance instance, (uint64_t) VkDebugUtilsMessengerEXT messenger, const VkAllocationCallbacks* pAllocator);
     /// ```
-    public static void vkDestroyDebugUtilsMessengerEXT(VkInstance instance, long messenger, MemorySegment pAllocator) {
+    public static void vkDestroyDebugUtilsMessengerEXT(@NonNull VkInstance instance, long messenger, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDestroyDebugUtilsMessengerEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyDebugUtilsMessengerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyDebugUtilsMessengerEXT", instance, messenger, pAllocator); }
         Handles.MH_vkDestroyDebugUtilsMessengerEXT.invokeExact(instance.capabilities().PFN_vkDestroyDebugUtilsMessengerEXT, instance.segment(), messenger, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyDebugUtilsMessengerEXT", e); }
     }
 
+    /// Invokes `vkSubmitDebugUtilsMessageEXT`.
     /// ```
     /// void vkSubmitDebugUtilsMessageEXT((struct VkInstance*) VkInstance instance, (int) VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, ((uint32_t) VkFlags) VkDebugUtilsMessageTypeFlagsEXT messageTypes, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData);
     /// ```
-    public static void vkSubmitDebugUtilsMessageEXT(VkInstance instance, int messageSeverity, int messageTypes, MemorySegment pCallbackData) {
+    public static void vkSubmitDebugUtilsMessageEXT(@NonNull VkInstance instance, int messageSeverity, int messageTypes, @NonNull MemorySegment pCallbackData) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkSubmitDebugUtilsMessageEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSubmitDebugUtilsMessageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkSubmitDebugUtilsMessageEXT", instance, messageSeverity, messageTypes, pCallbackData); }
         Handles.MH_vkSubmitDebugUtilsMessageEXT.invokeExact(instance.capabilities().PFN_vkSubmitDebugUtilsMessageEXT, instance.segment(), messageSeverity, messageTypes, pCallbackData); }

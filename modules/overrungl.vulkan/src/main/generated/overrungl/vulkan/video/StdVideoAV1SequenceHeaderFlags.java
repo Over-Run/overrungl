@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoAV1SequenceHeaderFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoAV1SequenceHeaderFlags {
@@ -52,7 +54,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoAV1SequenceHeaderFlags extends GroupType {
     /// The struct layout of `StdVideoAV1SequenceHeaderFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("still_picture"), 1,
         ValueLayout.JAVA_INT.withName("reduced_still_picture_header"), 1,
         ValueLayout.JAVA_INT.withName("use_128x128_superblock"), 1,

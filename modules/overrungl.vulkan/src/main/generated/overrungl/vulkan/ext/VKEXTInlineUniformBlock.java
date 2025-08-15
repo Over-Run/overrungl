@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_inline_uniform_block` - device extension
 public final class VKEXTInlineUniformBlock {
     public static final int VK_EXT_INLINE_UNIFORM_BLOCK_SPEC_VERSION = 1;
     public static final String VK_EXT_INLINE_UNIFORM_BLOCK_EXTENSION_NAME = "VK_EXT_inline_uniform_block";

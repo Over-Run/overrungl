@@ -16,12 +16,12 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// Constants and functions of OpenGL 4.2.
 public class GL42 extends GL41 {
     public static final int GL_COPY_READ_BUFFER_BINDING = 0x8F36;
     public static final int GL_COPY_WRITE_BUFFER_BINDING = 0x8F37;
@@ -182,6 +182,7 @@ public class GL42 extends GL41 {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDrawArraysInstancedBaseInstance`.
     /// ```
     /// void glDrawArraysInstancedBaseInstance((unsigned int) GLenum mode, (int) GLint first, (int) GLsizei count, (int) GLsizei instancecount, (unsigned int) GLuint baseinstance);
     /// ```
@@ -192,46 +193,51 @@ public class GL42 extends GL41 {
         catch (Throwable e) { throw new RuntimeException("error in DrawArraysInstancedBaseInstance", e); }
     }
 
+    /// Invokes `glDrawElementsInstancedBaseInstance`.
     /// ```
     /// void glDrawElementsInstancedBaseInstance((unsigned int) GLenum mode, (int) GLsizei count, (unsigned int) GLenum type, const void* indices, (int) GLsizei instancecount, (unsigned int) GLuint baseinstance);
     /// ```
-    public void DrawElementsInstancedBaseInstance(int mode, int count, int type, MemorySegment indices, int instancecount, int baseinstance) {
+    public void DrawElementsInstancedBaseInstance(int mode, int count, int type, @NonNull MemorySegment indices, int instancecount, int baseinstance) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseInstance)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseInstance");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElementsInstancedBaseInstance", mode, count, type, indices, instancecount, baseinstance); }
         Handles.MH_glDrawElementsInstancedBaseInstance.invokeExact(handles.PFN_glDrawElementsInstancedBaseInstance, mode, count, type, indices, instancecount, baseinstance); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedBaseInstance", e); }
     }
 
+    /// Invokes `glDrawElementsInstancedBaseVertexBaseInstance`.
     /// ```
     /// void glDrawElementsInstancedBaseVertexBaseInstance((unsigned int) GLenum mode, (int) GLsizei count, (unsigned int) GLenum type, const void* indices, (int) GLsizei instancecount, (int) GLint basevertex, (unsigned int) GLuint baseinstance);
     /// ```
-    public void DrawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, MemorySegment indices, int instancecount, int basevertex, int baseinstance) {
+    public void DrawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, @NonNull MemorySegment indices, int instancecount, int basevertex, int baseinstance) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseVertexBaseInstance)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertexBaseInstance");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElementsInstancedBaseVertexBaseInstance", mode, count, type, indices, instancecount, basevertex, baseinstance); }
         Handles.MH_glDrawElementsInstancedBaseVertexBaseInstance.invokeExact(handles.PFN_glDrawElementsInstancedBaseVertexBaseInstance, mode, count, type, indices, instancecount, basevertex, baseinstance); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedBaseVertexBaseInstance", e); }
     }
 
+    /// Invokes `glGetInternalformativ`.
     /// ```
     /// void glGetInternalformativ((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLenum pname, (int) GLsizei count, GLint* params);
     /// ```
-    public void GetInternalformativ(int target, int internalformat, int pname, int count, MemorySegment params) {
+    public void GetInternalformativ(int target, int internalformat, int pname, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformativ)) throw new GLSymbolNotFoundError("Symbol not found: glGetInternalformativ");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInternalformativ", target, internalformat, pname, count, params); }
         Handles.MH_glGetInternalformativ.invokeExact(handles.PFN_glGetInternalformativ, target, internalformat, pname, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetInternalformativ", e); }
     }
 
+    /// Invokes `glGetActiveAtomicCounterBufferiv`.
     /// ```
     /// void glGetActiveAtomicCounterBufferiv((unsigned int) GLuint program, (unsigned int) GLuint bufferIndex, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, MemorySegment params) {
+    public void GetActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveAtomicCounterBufferiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetActiveAtomicCounterBufferiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetActiveAtomicCounterBufferiv", program, bufferIndex, pname, params); }
         Handles.MH_glGetActiveAtomicCounterBufferiv.invokeExact(handles.PFN_glGetActiveAtomicCounterBufferiv, program, bufferIndex, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetActiveAtomicCounterBufferiv", e); }
     }
 
+    /// Invokes `glBindImageTexture`.
     /// ```
     /// void glBindImageTexture((unsigned int) GLuint unit, (unsigned int) GLuint texture, (int) GLint level, GLboolean layered, (int) GLint layer, (unsigned int) GLenum access, (unsigned int) GLenum format);
     /// ```
@@ -242,6 +248,7 @@ public class GL42 extends GL41 {
         catch (Throwable e) { throw new RuntimeException("error in BindImageTexture", e); }
     }
 
+    /// Invokes `glMemoryBarrier`.
     /// ```
     /// void glMemoryBarrier((unsigned int) GLbitfield barriers);
     /// ```
@@ -252,6 +259,7 @@ public class GL42 extends GL41 {
         catch (Throwable e) { throw new RuntimeException("error in MemoryBarrier", e); }
     }
 
+    /// Invokes `glTexStorage1D`.
     /// ```
     /// void glTexStorage1D((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width);
     /// ```
@@ -262,6 +270,7 @@ public class GL42 extends GL41 {
         catch (Throwable e) { throw new RuntimeException("error in TexStorage1D", e); }
     }
 
+    /// Invokes `glTexStorage2D`.
     /// ```
     /// void glTexStorage2D((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -272,6 +281,7 @@ public class GL42 extends GL41 {
         catch (Throwable e) { throw new RuntimeException("error in TexStorage2D", e); }
     }
 
+    /// Invokes `glTexStorage3D`.
     /// ```
     /// void glTexStorage3D((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```
@@ -282,6 +292,7 @@ public class GL42 extends GL41 {
         catch (Throwable e) { throw new RuntimeException("error in TexStorage3D", e); }
     }
 
+    /// Invokes `glDrawTransformFeedbackInstanced`.
     /// ```
     /// void glDrawTransformFeedbackInstanced((unsigned int) GLenum mode, (unsigned int) GLuint id, (int) GLsizei instancecount);
     /// ```
@@ -292,6 +303,7 @@ public class GL42 extends GL41 {
         catch (Throwable e) { throw new RuntimeException("error in DrawTransformFeedbackInstanced", e); }
     }
 
+    /// Invokes `glDrawTransformFeedbackStreamInstanced`.
     /// ```
     /// void glDrawTransformFeedbackStreamInstanced((unsigned int) GLenum mode, (unsigned int) GLuint id, (unsigned int) GLuint stream, (int) GLsizei instancecount);
     /// ```

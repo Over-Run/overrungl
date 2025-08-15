@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_clip_space_w_scaling`
 public final class GLNVClipSpaceWScaling {
     public static final int GL_VIEWPORT_POSITION_W_SCALE_NV = 0x937C;
     public static final int GL_VIEWPORT_POSITION_W_SCALE_X_COEFF_NV = 0x937D;
@@ -31,15 +31,16 @@ public final class GLNVClipSpaceWScaling {
     public static final class Handles {
         public static final MethodHandle MH_glViewportPositionWScaleNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glViewportPositionWScaleNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glViewportPositionWScaleNV = func.invoke("glViewportPositionWScaleNV");
         }
     }
 
-    public GLNVClipSpaceWScaling(overrungl.opengl.GLLoadFunc func) {
+    public GLNVClipSpaceWScaling(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glViewportPositionWScaleNV`.
     /// ```
     /// void glViewportPositionWScaleNV((unsigned int) GLuint index, ((float) khronos_float_t) GLfloat xcoeff, ((float) khronos_float_t) GLfloat ycoeff);
     /// ```

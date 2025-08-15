@@ -18,9 +18,11 @@
 package overrungl.vulkan.qcom;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_QCOM_tile_shading` - device extension
 public final class VKQCOMTileShading {
     public static final int VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM = 0x00000001;
     public static final int VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM = 0x00000002;
@@ -44,30 +46,33 @@ public final class VKQCOMTileShading {
 
     private VKQCOMTileShading() {}
 
+    /// Invokes `vkCmdDispatchTileQCOM`.
     /// ```
     /// void vkCmdDispatchTileQCOM((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkDispatchTileInfoQCOM* pDispatchTileInfo);
     /// ```
-    public static void vkCmdDispatchTileQCOM(VkCommandBuffer commandBuffer, MemorySegment pDispatchTileInfo) {
+    public static void vkCmdDispatchTileQCOM(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pDispatchTileInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDispatchTileQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDispatchTileQCOM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDispatchTileQCOM", commandBuffer, pDispatchTileInfo); }
         Handles.MH_vkCmdDispatchTileQCOM.invokeExact(commandBuffer.capabilities().PFN_vkCmdDispatchTileQCOM, commandBuffer.segment(), pDispatchTileInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDispatchTileQCOM", e); }
     }
 
+    /// Invokes `vkCmdBeginPerTileExecutionQCOM`.
     /// ```
     /// void vkCmdBeginPerTileExecutionQCOM((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPerTileBeginInfoQCOM* pPerTileBeginInfo);
     /// ```
-    public static void vkCmdBeginPerTileExecutionQCOM(VkCommandBuffer commandBuffer, MemorySegment pPerTileBeginInfo) {
+    public static void vkCmdBeginPerTileExecutionQCOM(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pPerTileBeginInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginPerTileExecutionQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginPerTileExecutionQCOM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBeginPerTileExecutionQCOM", commandBuffer, pPerTileBeginInfo); }
         Handles.MH_vkCmdBeginPerTileExecutionQCOM.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginPerTileExecutionQCOM, commandBuffer.segment(), pPerTileBeginInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginPerTileExecutionQCOM", e); }
     }
 
+    /// Invokes `vkCmdEndPerTileExecutionQCOM`.
     /// ```
     /// void vkCmdEndPerTileExecutionQCOM((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPerTileEndInfoQCOM* pPerTileEndInfo);
     /// ```
-    public static void vkCmdEndPerTileExecutionQCOM(VkCommandBuffer commandBuffer, MemorySegment pPerTileEndInfo) {
+    public static void vkCmdEndPerTileExecutionQCOM(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pPerTileEndInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndPerTileExecutionQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndPerTileExecutionQCOM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndPerTileExecutionQCOM", commandBuffer, pPerTileEndInfo); }
         Handles.MH_vkCmdEndPerTileExecutionQCOM.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndPerTileExecutionQCOM, commandBuffer.segment(), pPerTileEndInfo); }

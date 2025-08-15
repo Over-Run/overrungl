@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `STBIR_RESIZE`.
 /// ## Layout
 /// ```
 /// struct STBIR_RESIZE {
@@ -68,7 +70,7 @@ import overrungl.util.*;
 /// ```
 public final class STBIR_RESIZE extends GroupType {
     /// The struct layout of `STBIR_RESIZE`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("user_data"),
         ValueLayout.ADDRESS.withName("input_pixels"),
         ValueLayout.JAVA_INT.withName("input_w"),

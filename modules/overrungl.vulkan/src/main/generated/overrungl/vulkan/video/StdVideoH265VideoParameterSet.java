@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH265VideoParameterSet`.
 /// ## Layout
 /// ```
 /// struct StdVideoH265VideoParameterSet {
@@ -44,7 +46,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH265VideoParameterSet extends GroupType {
     /// The struct layout of `StdVideoH265VideoParameterSet`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoH265VpsFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("vps_video_parameter_set_id"),
         ValueLayout.JAVA_BYTE.withName("vps_max_sub_layers_minus1"),

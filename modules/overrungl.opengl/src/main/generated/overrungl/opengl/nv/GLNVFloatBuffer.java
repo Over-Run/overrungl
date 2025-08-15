@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
+/// `GL_NV_float_buffer`
 public final class GLNVFloatBuffer {
     public static final int GL_FLOAT_R_NV = 0x8880;
     public static final int GL_FLOAT_RG_NV = 0x8881;

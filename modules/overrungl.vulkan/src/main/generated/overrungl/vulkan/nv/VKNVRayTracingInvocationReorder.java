@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_ray_tracing_invocation_reorder` - device extension
 public final class VKNVRayTracingInvocationReorder {
     public static final int VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_NV = 0;
     public static final int VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_NV = 1;

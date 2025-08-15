@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_external_semaphore` - device extension
 public final class VKKHRExternalSemaphore {
     public static final int VK_KHR_EXTERNAL_SEMAPHORE_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_SEMAPHORE_EXTENSION_NAME = "VK_KHR_external_semaphore";

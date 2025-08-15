@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_framebuffer_object`
 public final class GLEXTFramebufferObject {
     public static final int GL_INVALID_FRAMEBUFFER_OPERATION_EXT = 0x0506;
     public static final int GL_MAX_RENDERBUFFER_SIZE_EXT = 0x84E8;
@@ -111,7 +111,7 @@ public final class GLEXTFramebufferObject {
         public final MemorySegment PFN_glFramebufferRenderbufferEXT;
         public final MemorySegment PFN_glGetFramebufferAttachmentParameterivEXT;
         public final MemorySegment PFN_glGenerateMipmapEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glIsRenderbufferEXT = func.invoke("glIsRenderbufferEXT", "glIsRenderbuffer");
             PFN_glBindRenderbufferEXT = func.invoke("glBindRenderbufferEXT");
             PFN_glDeleteRenderbuffersEXT = func.invoke("glDeleteRenderbuffersEXT", "glDeleteRenderbuffers");
@@ -132,10 +132,11 @@ public final class GLEXTFramebufferObject {
         }
     }
 
-    public GLEXTFramebufferObject(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTFramebufferObject(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glIsRenderbufferEXT`.
     /// ```
     /// GLboolean glIsRenderbufferEXT((unsigned int) GLuint renderbuffer);
     /// ```
@@ -146,6 +147,7 @@ public final class GLEXTFramebufferObject {
         catch (Throwable e) { throw new RuntimeException("error in IsRenderbufferEXT", e); }
     }
 
+    /// Invokes `glBindRenderbufferEXT`.
     /// ```
     /// void glBindRenderbufferEXT((unsigned int) GLenum target, (unsigned int) GLuint renderbuffer);
     /// ```
@@ -156,26 +158,29 @@ public final class GLEXTFramebufferObject {
         catch (Throwable e) { throw new RuntimeException("error in BindRenderbufferEXT", e); }
     }
 
+    /// Invokes `glDeleteRenderbuffersEXT`.
     /// ```
     /// void glDeleteRenderbuffersEXT((int) GLsizei n, const GLuint* renderbuffers);
     /// ```
-    public void DeleteRenderbuffersEXT(int n, MemorySegment renderbuffers) {
+    public void DeleteRenderbuffersEXT(int n, @NonNull MemorySegment renderbuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteRenderbuffersEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteRenderbuffersEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteRenderbuffersEXT", n, renderbuffers); }
         Handles.MH_glDeleteRenderbuffersEXT.invokeExact(handles.PFN_glDeleteRenderbuffersEXT, n, renderbuffers); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteRenderbuffersEXT", e); }
     }
 
+    /// Invokes `glGenRenderbuffersEXT`.
     /// ```
     /// void glGenRenderbuffersEXT((int) GLsizei n, GLuint* renderbuffers);
     /// ```
-    public void GenRenderbuffersEXT(int n, MemorySegment renderbuffers) {
+    public void GenRenderbuffersEXT(int n, @NonNull MemorySegment renderbuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenRenderbuffersEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGenRenderbuffersEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenRenderbuffersEXT", n, renderbuffers); }
         Handles.MH_glGenRenderbuffersEXT.invokeExact(handles.PFN_glGenRenderbuffersEXT, n, renderbuffers); }
         catch (Throwable e) { throw new RuntimeException("error in GenRenderbuffersEXT", e); }
     }
 
+    /// Invokes `glRenderbufferStorageEXT`.
     /// ```
     /// void glRenderbufferStorageEXT((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -186,16 +191,18 @@ public final class GLEXTFramebufferObject {
         catch (Throwable e) { throw new RuntimeException("error in RenderbufferStorageEXT", e); }
     }
 
+    /// Invokes `glGetRenderbufferParameterivEXT`.
     /// ```
     /// void glGetRenderbufferParameterivEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetRenderbufferParameterivEXT(int target, int pname, MemorySegment params) {
+    public void GetRenderbufferParameterivEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetRenderbufferParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetRenderbufferParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetRenderbufferParameterivEXT", target, pname, params); }
         Handles.MH_glGetRenderbufferParameterivEXT.invokeExact(handles.PFN_glGetRenderbufferParameterivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetRenderbufferParameterivEXT", e); }
     }
 
+    /// Invokes `glIsFramebufferEXT`.
     /// ```
     /// GLboolean glIsFramebufferEXT((unsigned int) GLuint framebuffer);
     /// ```
@@ -206,6 +213,7 @@ public final class GLEXTFramebufferObject {
         catch (Throwable e) { throw new RuntimeException("error in IsFramebufferEXT", e); }
     }
 
+    /// Invokes `glBindFramebufferEXT`.
     /// ```
     /// void glBindFramebufferEXT((unsigned int) GLenum target, (unsigned int) GLuint framebuffer);
     /// ```
@@ -216,26 +224,29 @@ public final class GLEXTFramebufferObject {
         catch (Throwable e) { throw new RuntimeException("error in BindFramebufferEXT", e); }
     }
 
+    /// Invokes `glDeleteFramebuffersEXT`.
     /// ```
     /// void glDeleteFramebuffersEXT((int) GLsizei n, const GLuint* framebuffers);
     /// ```
-    public void DeleteFramebuffersEXT(int n, MemorySegment framebuffers) {
+    public void DeleteFramebuffersEXT(int n, @NonNull MemorySegment framebuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFramebuffersEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteFramebuffersEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteFramebuffersEXT", n, framebuffers); }
         Handles.MH_glDeleteFramebuffersEXT.invokeExact(handles.PFN_glDeleteFramebuffersEXT, n, framebuffers); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteFramebuffersEXT", e); }
     }
 
+    /// Invokes `glGenFramebuffersEXT`.
     /// ```
     /// void glGenFramebuffersEXT((int) GLsizei n, GLuint* framebuffers);
     /// ```
-    public void GenFramebuffersEXT(int n, MemorySegment framebuffers) {
+    public void GenFramebuffersEXT(int n, @NonNull MemorySegment framebuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenFramebuffersEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGenFramebuffersEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenFramebuffersEXT", n, framebuffers); }
         Handles.MH_glGenFramebuffersEXT.invokeExact(handles.PFN_glGenFramebuffersEXT, n, framebuffers); }
         catch (Throwable e) { throw new RuntimeException("error in GenFramebuffersEXT", e); }
     }
 
+    /// Invokes `glCheckFramebufferStatusEXT`.
     /// ```
     /// (unsigned int) GLenum glCheckFramebufferStatusEXT((unsigned int) GLenum target);
     /// ```
@@ -246,6 +257,7 @@ public final class GLEXTFramebufferObject {
         catch (Throwable e) { throw new RuntimeException("error in CheckFramebufferStatusEXT", e); }
     }
 
+    /// Invokes `glFramebufferTexture1DEXT`.
     /// ```
     /// void glFramebufferTexture1DEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLenum textarget, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
@@ -256,6 +268,7 @@ public final class GLEXTFramebufferObject {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTexture1DEXT", e); }
     }
 
+    /// Invokes `glFramebufferTexture2DEXT`.
     /// ```
     /// void glFramebufferTexture2DEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLenum textarget, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
@@ -266,6 +279,7 @@ public final class GLEXTFramebufferObject {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTexture2DEXT", e); }
     }
 
+    /// Invokes `glFramebufferTexture3DEXT`.
     /// ```
     /// void glFramebufferTexture3DEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLenum textarget, (unsigned int) GLuint texture, (int) GLint level, (int) GLint zoffset);
     /// ```
@@ -276,6 +290,7 @@ public final class GLEXTFramebufferObject {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTexture3DEXT", e); }
     }
 
+    /// Invokes `glFramebufferRenderbufferEXT`.
     /// ```
     /// void glFramebufferRenderbufferEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLenum renderbuffertarget, (unsigned int) GLuint renderbuffer);
     /// ```
@@ -286,16 +301,18 @@ public final class GLEXTFramebufferObject {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferRenderbufferEXT", e); }
     }
 
+    /// Invokes `glGetFramebufferAttachmentParameterivEXT`.
     /// ```
     /// void glGetFramebufferAttachmentParameterivEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetFramebufferAttachmentParameterivEXT(int target, int attachment, int pname, MemorySegment params) {
+    public void GetFramebufferAttachmentParameterivEXT(int target, int attachment, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferAttachmentParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetFramebufferAttachmentParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFramebufferAttachmentParameterivEXT", target, attachment, pname, params); }
         Handles.MH_glGetFramebufferAttachmentParameterivEXT.invokeExact(handles.PFN_glGetFramebufferAttachmentParameterivEXT, target, attachment, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFramebufferAttachmentParameterivEXT", e); }
     }
 
+    /// Invokes `glGenerateMipmapEXT`.
     /// ```
     /// void glGenerateMipmapEXT((unsigned int) GLenum target);
     /// ```

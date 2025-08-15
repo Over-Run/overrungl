@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoAV1FilmGrainFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoAV1FilmGrainFlags {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoAV1FilmGrainFlags extends GroupType {
     /// The struct layout of `StdVideoAV1FilmGrainFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("chroma_scaling_from_luma"), 1,
         ValueLayout.JAVA_INT.withName("overlap_flag"), 1,
         ValueLayout.JAVA_INT.withName("clip_to_restricted_range"), 1,

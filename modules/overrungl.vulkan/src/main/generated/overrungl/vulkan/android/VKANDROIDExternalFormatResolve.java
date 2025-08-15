@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.android;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_ANDROID_external_format_resolve` - device extension
 public final class VKANDROIDExternalFormatResolve {
     public static final int VK_ANDROID_EXTERNAL_FORMAT_RESOLVE_SPEC_VERSION = 1;
     public static final String VK_ANDROID_EXTERNAL_FORMAT_RESOLVE_EXTENSION_NAME = "VK_ANDROID_external_format_resolve";

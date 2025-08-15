@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkImageResolve`.
 /// ## Layout
 /// ```
 /// struct VkImageResolve {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class VkImageResolve extends GroupType {
     /// The struct layout of `VkImageResolve`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
         overrungl.vulkan.struct.VkOffset3D.LAYOUT.withName("srcOffset"),
         overrungl.vulkan.struct.VkImageSubresourceLayers.LAYOUT.withName("dstSubresource"),

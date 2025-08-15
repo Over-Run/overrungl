@@ -16,12 +16,12 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// Constants and functions of OpenGL 3.2.
 public class GL32 extends GL31 {
     public static final int GL_CONTEXT_CORE_PROFILE_BIT = 0x00000001;
     public static final int GL_CONTEXT_COMPATIBILITY_PROFILE_BIT = 0x00000002;
@@ -155,46 +155,51 @@ public class GL32 extends GL31 {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDrawElementsBaseVertex`.
     /// ```
     /// void glDrawElementsBaseVertex((unsigned int) GLenum mode, (int) GLsizei count, (unsigned int) GLenum type, const void* indices, (int) GLint basevertex);
     /// ```
-    public void DrawElementsBaseVertex(int mode, int count, int type, MemorySegment indices, int basevertex) {
+    public void DrawElementsBaseVertex(int mode, int count, int type, @NonNull MemorySegment indices, int basevertex) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsBaseVertex)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsBaseVertex");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElementsBaseVertex", mode, count, type, indices, basevertex); }
         Handles.MH_glDrawElementsBaseVertex.invokeExact(handles.PFN_glDrawElementsBaseVertex, mode, count, type, indices, basevertex); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementsBaseVertex", e); }
     }
 
+    /// Invokes `glDrawRangeElementsBaseVertex`.
     /// ```
     /// void glDrawRangeElementsBaseVertex((unsigned int) GLenum mode, (unsigned int) GLuint start, (unsigned int) GLuint end, (int) GLsizei count, (unsigned int) GLenum type, const void* indices, (int) GLint basevertex);
     /// ```
-    public void DrawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, MemorySegment indices, int basevertex) {
+    public void DrawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, @NonNull MemorySegment indices, int basevertex) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElementsBaseVertex)) throw new GLSymbolNotFoundError("Symbol not found: glDrawRangeElementsBaseVertex");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawRangeElementsBaseVertex", mode, start, end, count, type, indices, basevertex); }
         Handles.MH_glDrawRangeElementsBaseVertex.invokeExact(handles.PFN_glDrawRangeElementsBaseVertex, mode, start, end, count, type, indices, basevertex); }
         catch (Throwable e) { throw new RuntimeException("error in DrawRangeElementsBaseVertex", e); }
     }
 
+    /// Invokes `glDrawElementsInstancedBaseVertex`.
     /// ```
     /// void glDrawElementsInstancedBaseVertex((unsigned int) GLenum mode, (int) GLsizei count, (unsigned int) GLenum type, const void* indices, (int) GLsizei instancecount, (int) GLint basevertex);
     /// ```
-    public void DrawElementsInstancedBaseVertex(int mode, int count, int type, MemorySegment indices, int instancecount, int basevertex) {
+    public void DrawElementsInstancedBaseVertex(int mode, int count, int type, @NonNull MemorySegment indices, int instancecount, int basevertex) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseVertex)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertex");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElementsInstancedBaseVertex", mode, count, type, indices, instancecount, basevertex); }
         Handles.MH_glDrawElementsInstancedBaseVertex.invokeExact(handles.PFN_glDrawElementsInstancedBaseVertex, mode, count, type, indices, instancecount, basevertex); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedBaseVertex", e); }
     }
 
+    /// Invokes `glMultiDrawElementsBaseVertex`.
     /// ```
     /// void glMultiDrawElementsBaseVertex((unsigned int) GLenum mode, const GLsizei* count, (unsigned int) GLenum type, const void* const * indices, (int) GLsizei drawcount, const GLint* basevertex);
     /// ```
-    public void MultiDrawElementsBaseVertex(int mode, MemorySegment count, int type, MemorySegment indices, int drawcount, MemorySegment basevertex) {
+    public void MultiDrawElementsBaseVertex(int mode, @NonNull MemorySegment count, int type, @NonNull MemorySegment indices, int drawcount, @NonNull MemorySegment basevertex) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsBaseVertex)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElementsBaseVertex");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawElementsBaseVertex", mode, count, type, indices, drawcount, basevertex); }
         Handles.MH_glMultiDrawElementsBaseVertex.invokeExact(handles.PFN_glMultiDrawElementsBaseVertex, mode, count, type, indices, drawcount, basevertex); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsBaseVertex", e); }
     }
 
+    /// Invokes `glProvokingVertex`.
     /// ```
     /// void glProvokingVertex((unsigned int) GLenum mode);
     /// ```
@@ -205,96 +210,106 @@ public class GL32 extends GL31 {
         catch (Throwable e) { throw new RuntimeException("error in ProvokingVertex", e); }
     }
 
+    /// Invokes `glFenceSync`.
     /// ```
     /// (struct __GLsync *) GLsync glFenceSync((unsigned int) GLenum condition, (unsigned int) GLbitfield flags);
     /// ```
-    public MemorySegment FenceSync(int condition, int flags) {
+    public @NonNull MemorySegment FenceSync(int condition, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFenceSync)) throw new GLSymbolNotFoundError("Symbol not found: glFenceSync");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFenceSync", condition, flags); }
         return (MemorySegment) Handles.MH_glFenceSync.invokeExact(handles.PFN_glFenceSync, condition, flags); }
         catch (Throwable e) { throw new RuntimeException("error in FenceSync", e); }
     }
 
+    /// Invokes `glIsSync`.
     /// ```
     /// GLboolean glIsSync((struct __GLsync *) GLsync sync);
     /// ```
-    public boolean IsSync(MemorySegment sync) {
+    public boolean IsSync(@NonNull MemorySegment sync) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsSync)) throw new GLSymbolNotFoundError("Symbol not found: glIsSync");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIsSync", sync); }
         return (((byte) Handles.MH_glIsSync.invokeExact(handles.PFN_glIsSync, sync)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsSync", e); }
     }
 
+    /// Invokes `glDeleteSync`.
     /// ```
     /// void glDeleteSync((struct __GLsync *) GLsync sync);
     /// ```
-    public void DeleteSync(MemorySegment sync) {
+    public void DeleteSync(@NonNull MemorySegment sync) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteSync)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteSync");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteSync", sync); }
         Handles.MH_glDeleteSync.invokeExact(handles.PFN_glDeleteSync, sync); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteSync", e); }
     }
 
+    /// Invokes `glClientWaitSync`.
     /// ```
     /// (unsigned int) GLenum glClientWaitSync((struct __GLsync *) GLsync sync, (unsigned int) GLbitfield flags, ((uint64_t) khronos_uint64_t) GLuint64 timeout);
     /// ```
-    public int ClientWaitSync(MemorySegment sync, int flags, long timeout) {
+    public int ClientWaitSync(@NonNull MemorySegment sync, int flags, long timeout) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClientWaitSync)) throw new GLSymbolNotFoundError("Symbol not found: glClientWaitSync");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClientWaitSync", sync, flags, timeout); }
         return (int) Handles.MH_glClientWaitSync.invokeExact(handles.PFN_glClientWaitSync, sync, flags, timeout); }
         catch (Throwable e) { throw new RuntimeException("error in ClientWaitSync", e); }
     }
 
+    /// Invokes `glWaitSync`.
     /// ```
     /// void glWaitSync((struct __GLsync *) GLsync sync, (unsigned int) GLbitfield flags, ((uint64_t) khronos_uint64_t) GLuint64 timeout);
     /// ```
-    public void WaitSync(MemorySegment sync, int flags, long timeout) {
+    public void WaitSync(@NonNull MemorySegment sync, int flags, long timeout) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWaitSync)) throw new GLSymbolNotFoundError("Symbol not found: glWaitSync");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glWaitSync", sync, flags, timeout); }
         Handles.MH_glWaitSync.invokeExact(handles.PFN_glWaitSync, sync, flags, timeout); }
         catch (Throwable e) { throw new RuntimeException("error in WaitSync", e); }
     }
 
+    /// Invokes `glGetInteger64v`.
     /// ```
     /// void glGetInteger64v((unsigned int) GLenum pname, GLint64* data);
     /// ```
-    public void GetInteger64v(int pname, MemorySegment data) {
+    public void GetInteger64v(int pname, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInteger64v)) throw new GLSymbolNotFoundError("Symbol not found: glGetInteger64v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInteger64v", pname, data); }
         Handles.MH_glGetInteger64v.invokeExact(handles.PFN_glGetInteger64v, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetInteger64v", e); }
     }
 
+    /// Invokes `glGetSynciv`.
     /// ```
     /// void glGetSynciv((struct __GLsync *) GLsync sync, (unsigned int) GLenum pname, (int) GLsizei count, GLsizei* length, GLint* values);
     /// ```
-    public void GetSynciv(MemorySegment sync, int pname, int count, MemorySegment length, MemorySegment values) {
+    public void GetSynciv(@NonNull MemorySegment sync, int pname, int count, @NonNull MemorySegment length, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSynciv)) throw new GLSymbolNotFoundError("Symbol not found: glGetSynciv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetSynciv", sync, pname, count, length, values); }
         Handles.MH_glGetSynciv.invokeExact(handles.PFN_glGetSynciv, sync, pname, count, length, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetSynciv", e); }
     }
 
+    /// Invokes `glGetInteger64i_v`.
     /// ```
     /// void glGetInteger64i_v((unsigned int) GLenum target, (unsigned int) GLuint index, GLint64* data);
     /// ```
-    public void GetInteger64i_v(int target, int index, MemorySegment data) {
+    public void GetInteger64i_v(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInteger64i_v)) throw new GLSymbolNotFoundError("Symbol not found: glGetInteger64i_v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInteger64i_v", target, index, data); }
         Handles.MH_glGetInteger64i_v.invokeExact(handles.PFN_glGetInteger64i_v, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetInteger64i_v", e); }
     }
 
+    /// Invokes `glGetBufferParameteri64v`.
     /// ```
     /// void glGetBufferParameteri64v((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint64* params);
     /// ```
-    public void GetBufferParameteri64v(int target, int pname, MemorySegment params) {
+    public void GetBufferParameteri64v(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferParameteri64v)) throw new GLSymbolNotFoundError("Symbol not found: glGetBufferParameteri64v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetBufferParameteri64v", target, pname, params); }
         Handles.MH_glGetBufferParameteri64v.invokeExact(handles.PFN_glGetBufferParameteri64v, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetBufferParameteri64v", e); }
     }
 
+    /// Invokes `glFramebufferTexture`.
     /// ```
     /// void glFramebufferTexture((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
@@ -305,6 +320,7 @@ public class GL32 extends GL31 {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTexture", e); }
     }
 
+    /// Invokes `glTexImage2DMultisample`.
     /// ```
     /// void glTexImage2DMultisample((unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedsamplelocations);
     /// ```
@@ -315,6 +331,7 @@ public class GL32 extends GL31 {
         catch (Throwable e) { throw new RuntimeException("error in TexImage2DMultisample", e); }
     }
 
+    /// Invokes `glTexImage3DMultisample`.
     /// ```
     /// void glTexImage3DMultisample((unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedsamplelocations);
     /// ```
@@ -325,16 +342,18 @@ public class GL32 extends GL31 {
         catch (Throwable e) { throw new RuntimeException("error in TexImage3DMultisample", e); }
     }
 
+    /// Invokes `glGetMultisamplefv`.
     /// ```
     /// void glGetMultisamplefv((unsigned int) GLenum pname, (unsigned int) GLuint index, GLfloat* val);
     /// ```
-    public void GetMultisamplefv(int pname, int index, MemorySegment val) {
+    public void GetMultisamplefv(int pname, int index, @NonNull MemorySegment val) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultisamplefv)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultisamplefv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultisamplefv", pname, index, val); }
         Handles.MH_glGetMultisamplefv.invokeExact(handles.PFN_glGetMultisamplefv, pname, index, val); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultisamplefv", e); }
     }
 
+    /// Invokes `glSampleMaski`.
     /// ```
     /// void glSampleMaski((unsigned int) GLuint maskNumber, (unsigned int) GLbitfield mask);
     /// ```

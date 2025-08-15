@@ -18,9 +18,11 @@
 package overrungl.vulkan.fuchsia;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_FUCHSIA_external_semaphore` - device extension
 public final class VKFUCHSIAExternalSemaphore {
     public static final int VK_FUCHSIA_EXTERNAL_SEMAPHORE_SPEC_VERSION = 1;
     public static final String VK_FUCHSIA_EXTERNAL_SEMAPHORE_EXTENSION_NAME = "VK_FUCHSIA_external_semaphore";
@@ -35,20 +37,22 @@ public final class VKFUCHSIAExternalSemaphore {
 
     private VKFUCHSIAExternalSemaphore() {}
 
+    /// Invokes `vkImportSemaphoreZirconHandleFUCHSIA`.
     /// ```
     /// (int) VkResult vkImportSemaphoreZirconHandleFUCHSIA((struct VkDevice*) VkDevice device, const VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo);
     /// ```
-    public static int vkImportSemaphoreZirconHandleFUCHSIA(VkDevice device, MemorySegment pImportSemaphoreZirconHandleInfo) {
+    public static int vkImportSemaphoreZirconHandleFUCHSIA(@NonNull VkDevice device, @NonNull MemorySegment pImportSemaphoreZirconHandleInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreZirconHandleFUCHSIA)) throw new VKSymbolNotFoundError("Symbol not found: vkImportSemaphoreZirconHandleFUCHSIA");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkImportSemaphoreZirconHandleFUCHSIA", device, pImportSemaphoreZirconHandleInfo); }
         return (int) Handles.MH_vkImportSemaphoreZirconHandleFUCHSIA.invokeExact(device.capabilities().PFN_vkImportSemaphoreZirconHandleFUCHSIA, device.segment(), pImportSemaphoreZirconHandleInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkImportSemaphoreZirconHandleFUCHSIA", e); }
     }
 
+    /// Invokes `vkGetSemaphoreZirconHandleFUCHSIA`.
     /// ```
     /// (int) VkResult vkGetSemaphoreZirconHandleFUCHSIA((struct VkDevice*) VkDevice device, const VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, zx_handle_t* pZirconHandle);
     /// ```
-    public static int vkGetSemaphoreZirconHandleFUCHSIA(VkDevice device, MemorySegment pGetZirconHandleInfo, MemorySegment pZirconHandle) {
+    public static int vkGetSemaphoreZirconHandleFUCHSIA(@NonNull VkDevice device, @NonNull MemorySegment pGetZirconHandleInfo, @NonNull MemorySegment pZirconHandle) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreZirconHandleFUCHSIA)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSemaphoreZirconHandleFUCHSIA");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetSemaphoreZirconHandleFUCHSIA", device, pGetZirconHandleInfo, pZirconHandle); }
         return (int) Handles.MH_vkGetSemaphoreZirconHandleFUCHSIA.invokeExact(device.capabilities().PFN_vkGetSemaphoreZirconHandleFUCHSIA, device.segment(), pGetZirconHandleInfo, pZirconHandle); }

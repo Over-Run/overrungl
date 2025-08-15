@@ -22,26 +22,26 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `GLDrawArraysIndirectCommand`.
 /// ## Layout
 /// ```
-/// struct DrawElementsIndirectCommand {
+/// struct GLDrawArraysIndirectCommand {
 ///     unsigned int count;
 ///     unsigned int instanceCount;
-///     unsigned int firstIndex;
-///     int baseVertex;
+///     unsigned int first;
 ///     unsigned int baseInstance;
 /// };
 /// ```
-public final class DrawElementsIndirectCommand extends GroupType {
-    /// The struct layout of `DrawElementsIndirectCommand`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+public final class GLDrawArraysIndirectCommand extends GroupType {
+    /// The struct layout of `GLDrawArraysIndirectCommand`.
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("count"),
         ValueLayout.JAVA_INT.withName("instanceCount"),
-        ValueLayout.JAVA_INT.withName("firstIndex"),
-        ValueLayout.JAVA_INT.withName("baseVertex"),
+        ValueLayout.JAVA_INT.withName("first"),
         ValueLayout.JAVA_INT.withName("baseInstance")
     );
     /// The byte offset of `count`.
@@ -56,18 +56,12 @@ public final class DrawElementsIndirectCommand extends GroupType {
     public static final MemoryLayout LAYOUT_instanceCount = LAYOUT.select(PathElement.groupElement("instanceCount"));
     /// The [VarHandle] of `instanceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_instanceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceCount"));
-    /// The byte offset of `firstIndex`.
-    public static final long OFFSET_firstIndex = LAYOUT.byteOffset(PathElement.groupElement("firstIndex"));
-    /// The memory layout of `firstIndex`.
-    public static final MemoryLayout LAYOUT_firstIndex = LAYOUT.select(PathElement.groupElement("firstIndex"));
-    /// The [VarHandle] of `firstIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_firstIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstIndex"));
-    /// The byte offset of `baseVertex`.
-    public static final long OFFSET_baseVertex = LAYOUT.byteOffset(PathElement.groupElement("baseVertex"));
-    /// The memory layout of `baseVertex`.
-    public static final MemoryLayout LAYOUT_baseVertex = LAYOUT.select(PathElement.groupElement("baseVertex"));
-    /// The [VarHandle] of `baseVertex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_baseVertex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseVertex"));
+    /// The byte offset of `first`.
+    public static final long OFFSET_first = LAYOUT.byteOffset(PathElement.groupElement("first"));
+    /// The memory layout of `first`.
+    public static final MemoryLayout LAYOUT_first = LAYOUT.select(PathElement.groupElement("first"));
+    /// The [VarHandle] of `first` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_first = LAYOUT.arrayElementVarHandle(PathElement.groupElement("first"));
     /// The byte offset of `baseInstance`.
     public static final long OFFSET_baseInstance = LAYOUT.byteOffset(PathElement.groupElement("baseInstance"));
     /// The memory layout of `baseInstance`.
@@ -75,51 +69,51 @@ public final class DrawElementsIndirectCommand extends GroupType {
     /// The [VarHandle] of `baseInstance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_baseInstance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseInstance"));
 
-    /// Creates `DrawElementsIndirectCommand` with the given segment.
+    /// Creates `GLDrawArraysIndirectCommand` with the given segment.
     /// @param segment      the memory segment
     /// @param elementCount the element count of this struct buffer
-    public DrawElementsIndirectCommand(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
+    public GLDrawArraysIndirectCommand(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
-    /// Creates `DrawElementsIndirectCommand` with the given segment.
+    /// Creates `GLDrawArraysIndirectCommand` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static DrawElementsIndirectCommand of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new DrawElementsIndirectCommand(segment, estimateCount(segment, LAYOUT)); }
+    public static GLDrawArraysIndirectCommand of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLDrawArraysIndirectCommand(segment, estimateCount(segment, LAYOUT)); }
 
-    /// Creates `DrawElementsIndirectCommand` with the given segment.
+    /// Creates `GLDrawArraysIndirectCommand` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static DrawElementsIndirectCommand ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new DrawElementsIndirectCommand(segment.reinterpret(LAYOUT.byteSize()), 1); }
+    public static GLDrawArraysIndirectCommand ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLDrawArraysIndirectCommand(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
-    /// Creates `DrawElementsIndirectCommand` with the given segment.
+    /// Creates `GLDrawArraysIndirectCommand` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static DrawElementsIndirectCommand ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new DrawElementsIndirectCommand(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static GLDrawArraysIndirectCommand ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new GLDrawArraysIndirectCommand(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
-    /// Allocates a `DrawElementsIndirectCommand` with the given segment allocator.
+    /// Allocates a `GLDrawArraysIndirectCommand` with the given segment allocator.
     /// @param allocator the segment allocator
-    /// @return the allocated `DrawElementsIndirectCommand`
-    public static DrawElementsIndirectCommand alloc(SegmentAllocator allocator) { return new DrawElementsIndirectCommand(allocator.allocate(LAYOUT), 1); }
+    /// @return the allocated `GLDrawArraysIndirectCommand`
+    public static GLDrawArraysIndirectCommand alloc(SegmentAllocator allocator) { return new GLDrawArraysIndirectCommand(allocator.allocate(LAYOUT), 1); }
 
-    /// Allocates a `DrawElementsIndirectCommand` with the given segment allocator and count.
+    /// Allocates a `GLDrawArraysIndirectCommand` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
-    /// @return the allocated `DrawElementsIndirectCommand`
-    public static DrawElementsIndirectCommand alloc(SegmentAllocator allocator, long count) { return new DrawElementsIndirectCommand(allocator.allocate(LAYOUT, count), count); }
+    /// @return the allocated `GLDrawArraysIndirectCommand`
+    public static GLDrawArraysIndirectCommand alloc(SegmentAllocator allocator, long count) { return new GLDrawArraysIndirectCommand(allocator.allocate(LAYOUT, count), count); }
 
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
-    public DrawElementsIndirectCommand copyFrom(DrawElementsIndirectCommand src) { this.segment().copyFrom(src.segment()); return this; }
+    public GLDrawArraysIndirectCommand copyFrom(GLDrawArraysIndirectCommand src) { this.segment().copyFrom(src.segment()); return this; }
 
     /// Reinterprets this buffer with the given count.
     /// @param count the new count
     /// @return the reinterpreted buffer
-    public DrawElementsIndirectCommand reinterpret(long count) { return new DrawElementsIndirectCommand(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
+    public GLDrawArraysIndirectCommand reinterpret(long count) { return new GLDrawArraysIndirectCommand(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `count` at the given index}
     /// @param segment the segment of the struct
@@ -135,7 +129,7 @@ public final class DrawElementsIndirectCommand extends GroupType {
     /// Sets `count` with the given value.
     /// @param value the value
     /// @return `this`
-    public DrawElementsIndirectCommand count(int value) { count(this.segment(), 0L, value); return this; }
+    public GLDrawArraysIndirectCommand count(int value) { count(this.segment(), 0L, value); return this; }
 
     /// {@return `instanceCount` at the given index}
     /// @param segment the segment of the struct
@@ -151,39 +145,23 @@ public final class DrawElementsIndirectCommand extends GroupType {
     /// Sets `instanceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public DrawElementsIndirectCommand instanceCount(int value) { instanceCount(this.segment(), 0L, value); return this; }
+    public GLDrawArraysIndirectCommand instanceCount(int value) { instanceCount(this.segment(), 0L, value); return this; }
 
-    /// {@return `firstIndex` at the given index}
+    /// {@return `first` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int firstIndex(MemorySegment segment, long index) { return (int) VH_firstIndex.get(segment, 0L, index); }
-    /// {@return `firstIndex`}
-    public int firstIndex() { return firstIndex(this.segment(), 0L); }
-    /// Sets `firstIndex` with the given value at the given index.
+    public static int first(MemorySegment segment, long index) { return (int) VH_first.get(segment, 0L, index); }
+    /// {@return `first`}
+    public int first() { return first(this.segment(), 0L); }
+    /// Sets `first` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void firstIndex(MemorySegment segment, long index, int value) { VH_firstIndex.set(segment, 0L, index, value); }
-    /// Sets `firstIndex` with the given value.
+    public static void first(MemorySegment segment, long index, int value) { VH_first.set(segment, 0L, index, value); }
+    /// Sets `first` with the given value.
     /// @param value the value
     /// @return `this`
-    public DrawElementsIndirectCommand firstIndex(int value) { firstIndex(this.segment(), 0L, value); return this; }
-
-    /// {@return `baseVertex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int baseVertex(MemorySegment segment, long index) { return (int) VH_baseVertex.get(segment, 0L, index); }
-    /// {@return `baseVertex`}
-    public int baseVertex() { return baseVertex(this.segment(), 0L); }
-    /// Sets `baseVertex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void baseVertex(MemorySegment segment, long index, int value) { VH_baseVertex.set(segment, 0L, index, value); }
-    /// Sets `baseVertex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public DrawElementsIndirectCommand baseVertex(int value) { baseVertex(this.segment(), 0L, value); return this; }
+    public GLDrawArraysIndirectCommand first(int value) { first(this.segment(), 0L, value); return this; }
 
     /// {@return `baseInstance` at the given index}
     /// @param segment the segment of the struct
@@ -199,24 +177,24 @@ public final class DrawElementsIndirectCommand extends GroupType {
     /// Sets `baseInstance` with the given value.
     /// @param value the value
     /// @return `this`
-    public DrawElementsIndirectCommand baseInstance(int value) { baseInstance(this.segment(), 0L, value); return this; }
+    public GLDrawArraysIndirectCommand baseInstance(int value) { baseInstance(this.segment(), 0L, value); return this; }
 
-    /// Creates a slice of `DrawElementsIndirectCommand`.
+    /// Creates a slice of `GLDrawArraysIndirectCommand`.
     /// @param index the index of the struct buffer
-    /// @return the slice of `DrawElementsIndirectCommand`
-    public DrawElementsIndirectCommand asSlice(long index) { return new DrawElementsIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
+    /// @return the slice of `GLDrawArraysIndirectCommand`
+    public GLDrawArraysIndirectCommand asSlice(long index) { return new GLDrawArraysIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-    /// Creates a slice of `DrawElementsIndirectCommand`.
+    /// Creates a slice of `GLDrawArraysIndirectCommand`.
     /// @param index the index of the struct buffer
     /// @param count the count
-    /// @return the slice of `DrawElementsIndirectCommand`
-    public DrawElementsIndirectCommand asSlice(long index, long count) { return new DrawElementsIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// @return the slice of `GLDrawArraysIndirectCommand`
+    public GLDrawArraysIndirectCommand asSlice(long index, long count) { return new GLDrawArraysIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-    /// Visits `DrawElementsIndirectCommand` buffer at the given index.
+    /// Visits `GLDrawArraysIndirectCommand` buffer at the given index.
     /// @param index the index of this buffer
     /// @param func  the function to run with the slice of this buffer
     /// @return `this`
-    public DrawElementsIndirectCommand at(long index, Consumer<DrawElementsIndirectCommand> func) { func.accept(asSlice(index)); return this; }
+    public GLDrawArraysIndirectCommand at(long index, Consumer<GLDrawArraysIndirectCommand> func) { func.accept(asSlice(index)); return this; }
 
     /// {@return `count` at the given index}
     /// @param index the index of the struct buffer
@@ -225,7 +203,7 @@ public final class DrawElementsIndirectCommand extends GroupType {
     /// @param index the index of the struct buffer
     /// @param value the value
     /// @return `this`
-    public DrawElementsIndirectCommand countAt(long index, int value) { count(this.segment(), index, value); return this; }
+    public GLDrawArraysIndirectCommand countAt(long index, int value) { count(this.segment(), index, value); return this; }
 
     /// {@return `instanceCount` at the given index}
     /// @param index the index of the struct buffer
@@ -234,25 +212,16 @@ public final class DrawElementsIndirectCommand extends GroupType {
     /// @param index the index of the struct buffer
     /// @param value the value
     /// @return `this`
-    public DrawElementsIndirectCommand instanceCountAt(long index, int value) { instanceCount(this.segment(), index, value); return this; }
+    public GLDrawArraysIndirectCommand instanceCountAt(long index, int value) { instanceCount(this.segment(), index, value); return this; }
 
-    /// {@return `firstIndex` at the given index}
+    /// {@return `first` at the given index}
     /// @param index the index of the struct buffer
-    public int firstIndexAt(long index) { return firstIndex(this.segment(), index); }
-    /// Sets `firstIndex` with the given value at the given index.
+    public int firstAt(long index) { return first(this.segment(), index); }
+    /// Sets `first` with the given value at the given index.
     /// @param index the index of the struct buffer
     /// @param value the value
     /// @return `this`
-    public DrawElementsIndirectCommand firstIndexAt(long index, int value) { firstIndex(this.segment(), index, value); return this; }
-
-    /// {@return `baseVertex` at the given index}
-    /// @param index the index of the struct buffer
-    public int baseVertexAt(long index) { return baseVertex(this.segment(), index); }
-    /// Sets `baseVertex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public DrawElementsIndirectCommand baseVertexAt(long index, int value) { baseVertex(this.segment(), index, value); return this; }
+    public GLDrawArraysIndirectCommand firstAt(long index, int value) { first(this.segment(), index, value); return this; }
 
     /// {@return `baseInstance` at the given index}
     /// @param index the index of the struct buffer
@@ -261,6 +230,6 @@ public final class DrawElementsIndirectCommand extends GroupType {
     /// @param index the index of the struct buffer
     /// @param value the value
     /// @return `this`
-    public DrawElementsIndirectCommand baseInstanceAt(long index, int value) { baseInstance(this.segment(), index, value); return this; }
+    public GLDrawArraysIndirectCommand baseInstanceAt(long index, int value) { baseInstance(this.segment(), index, value); return this; }
 
 }

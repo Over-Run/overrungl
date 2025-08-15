@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_bindless_texture`
 public final class GLARBBindlessTexture {
     public static final int GL_UNSIGNED_INT64_ARB = 0x140F;
     private final Handles handles;
@@ -59,7 +59,7 @@ public final class GLARBBindlessTexture {
         public final MemorySegment PFN_glVertexAttribL1ui64ARB;
         public final MemorySegment PFN_glVertexAttribL1ui64vARB;
         public final MemorySegment PFN_glGetVertexAttribLui64vARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGetTextureHandleARB = func.invoke("glGetTextureHandleARB");
             PFN_glGetTextureSamplerHandleARB = func.invoke("glGetTextureSamplerHandleARB");
             PFN_glMakeTextureHandleResidentARB = func.invoke("glMakeTextureHandleResidentARB");
@@ -79,10 +79,11 @@ public final class GLARBBindlessTexture {
         }
     }
 
-    public GLARBBindlessTexture(overrungl.opengl.GLLoadFunc func) {
+    public GLARBBindlessTexture(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGetTextureHandleARB`.
     /// ```
     /// ((uint64_t) khronos_uint64_t) GLuint64 glGetTextureHandleARB((unsigned int) GLuint texture);
     /// ```
@@ -93,6 +94,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in GetTextureHandleARB", e); }
     }
 
+    /// Invokes `glGetTextureSamplerHandleARB`.
     /// ```
     /// ((uint64_t) khronos_uint64_t) GLuint64 glGetTextureSamplerHandleARB((unsigned int) GLuint texture, (unsigned int) GLuint sampler);
     /// ```
@@ -103,6 +105,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in GetTextureSamplerHandleARB", e); }
     }
 
+    /// Invokes `glMakeTextureHandleResidentARB`.
     /// ```
     /// void glMakeTextureHandleResidentARB(((uint64_t) khronos_uint64_t) GLuint64 handle);
     /// ```
@@ -113,6 +116,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in MakeTextureHandleResidentARB", e); }
     }
 
+    /// Invokes `glMakeTextureHandleNonResidentARB`.
     /// ```
     /// void glMakeTextureHandleNonResidentARB(((uint64_t) khronos_uint64_t) GLuint64 handle);
     /// ```
@@ -123,6 +127,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in MakeTextureHandleNonResidentARB", e); }
     }
 
+    /// Invokes `glGetImageHandleARB`.
     /// ```
     /// ((uint64_t) khronos_uint64_t) GLuint64 glGetImageHandleARB((unsigned int) GLuint texture, (int) GLint level, GLboolean layered, (int) GLint layer, (unsigned int) GLenum format);
     /// ```
@@ -133,6 +138,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in GetImageHandleARB", e); }
     }
 
+    /// Invokes `glMakeImageHandleResidentARB`.
     /// ```
     /// void glMakeImageHandleResidentARB(((uint64_t) khronos_uint64_t) GLuint64 handle, (unsigned int) GLenum access);
     /// ```
@@ -143,6 +149,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in MakeImageHandleResidentARB", e); }
     }
 
+    /// Invokes `glMakeImageHandleNonResidentARB`.
     /// ```
     /// void glMakeImageHandleNonResidentARB(((uint64_t) khronos_uint64_t) GLuint64 handle);
     /// ```
@@ -153,6 +160,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in MakeImageHandleNonResidentARB", e); }
     }
 
+    /// Invokes `glUniformHandleui64ARB`.
     /// ```
     /// void glUniformHandleui64ARB((int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 value);
     /// ```
@@ -163,16 +171,18 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in UniformHandleui64ARB", e); }
     }
 
+    /// Invokes `glUniformHandleui64vARB`.
     /// ```
     /// void glUniformHandleui64vARB((int) GLint location, (int) GLsizei count, const GLuint64* value);
     /// ```
-    public void UniformHandleui64vARB(int location, int count, MemorySegment value) {
+    public void UniformHandleui64vARB(int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformHandleui64vARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniformHandleui64vARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformHandleui64vARB", location, count, value); }
         Handles.MH_glUniformHandleui64vARB.invokeExact(handles.PFN_glUniformHandleui64vARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformHandleui64vARB", e); }
     }
 
+    /// Invokes `glProgramUniformHandleui64ARB`.
     /// ```
     /// void glProgramUniformHandleui64ARB((unsigned int) GLuint program, (int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 value);
     /// ```
@@ -183,16 +193,18 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformHandleui64ARB", e); }
     }
 
+    /// Invokes `glProgramUniformHandleui64vARB`.
     /// ```
     /// void glProgramUniformHandleui64vARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint64* values);
     /// ```
-    public void ProgramUniformHandleui64vARB(int program, int location, int count, MemorySegment values) {
+    public void ProgramUniformHandleui64vARB(int program, int location, int count, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformHandleui64vARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformHandleui64vARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformHandleui64vARB", program, location, count, values); }
         Handles.MH_glProgramUniformHandleui64vARB.invokeExact(handles.PFN_glProgramUniformHandleui64vARB, program, location, count, values); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformHandleui64vARB", e); }
     }
 
+    /// Invokes `glIsTextureHandleResidentARB`.
     /// ```
     /// GLboolean glIsTextureHandleResidentARB(((uint64_t) khronos_uint64_t) GLuint64 handle);
     /// ```
@@ -203,6 +215,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in IsTextureHandleResidentARB", e); }
     }
 
+    /// Invokes `glIsImageHandleResidentARB`.
     /// ```
     /// GLboolean glIsImageHandleResidentARB(((uint64_t) khronos_uint64_t) GLuint64 handle);
     /// ```
@@ -213,6 +226,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in IsImageHandleResidentARB", e); }
     }
 
+    /// Invokes `glVertexAttribL1ui64ARB`.
     /// ```
     /// void glVertexAttribL1ui64ARB((unsigned int) GLuint index, ((uint64_t) khronos_uint64_t) GLuint64EXT x);
     /// ```
@@ -223,20 +237,22 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL1ui64ARB", e); }
     }
 
+    /// Invokes `glVertexAttribL1ui64vARB`.
     /// ```
     /// void glVertexAttribL1ui64vARB((unsigned int) GLuint index, const GLuint64EXT* v);
     /// ```
-    public void VertexAttribL1ui64vARB(int index, MemorySegment v) {
+    public void VertexAttribL1ui64vARB(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL1ui64vARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL1ui64vARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL1ui64vARB", index, v); }
         Handles.MH_glVertexAttribL1ui64vARB.invokeExact(handles.PFN_glVertexAttribL1ui64vARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL1ui64vARB", e); }
     }
 
+    /// Invokes `glGetVertexAttribLui64vARB`.
     /// ```
     /// void glGetVertexAttribLui64vARB((unsigned int) GLuint index, (unsigned int) GLenum pname, GLuint64EXT* params);
     /// ```
-    public void GetVertexAttribLui64vARB(int index, int pname, MemorySegment params) {
+    public void GetVertexAttribLui64vARB(int index, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribLui64vARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribLui64vARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexAttribLui64vARB", index, pname, params); }
         Handles.MH_glGetVertexAttribLui64vARB.invokeExact(handles.PFN_glGetVertexAttribLui64vARB, index, pname, params); }

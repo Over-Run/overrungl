@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoAV1ColorConfig`.
 /// ## Layout
 /// ```
 /// struct StdVideoAV1ColorConfig {
@@ -41,7 +43,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoAV1ColorConfig extends GroupType {
     /// The struct layout of `StdVideoAV1ColorConfig`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoAV1ColorConfigFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("BitDepth"),
         ValueLayout.JAVA_BYTE.withName("subsampling_x"),

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoAV1GlobalMotion`.
 /// ## Layout
 /// ```
 /// struct StdVideoAV1GlobalMotion {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoAV1GlobalMotion extends GroupType {
     /// The struct layout of `StdVideoAV1GlobalMotion`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("GmType"),
         MemoryLayout.sequenceLayout(6, MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_INT)).withName("gm_params")
     );

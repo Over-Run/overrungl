@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_image_view_min_lod` - device extension
 public final class VKEXTImageViewMinLod {
     public static final int VK_EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION = 1;
     public static final String VK_EXT_IMAGE_VIEW_MIN_LOD_EXTENSION_NAME = "VK_EXT_image_view_min_lod";

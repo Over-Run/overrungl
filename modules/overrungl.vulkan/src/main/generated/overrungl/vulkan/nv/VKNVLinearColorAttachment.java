@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_linear_color_attachment` - device extension
 public final class VKNVLinearColorAttachment {
     public static final int VK_NV_LINEAR_COLOR_ATTACHMENT_SPEC_VERSION = 1;
     public static final String VK_NV_LINEAR_COLOR_ATTACHMENT_EXTENSION_NAME = "VK_NV_linear_color_attachment";

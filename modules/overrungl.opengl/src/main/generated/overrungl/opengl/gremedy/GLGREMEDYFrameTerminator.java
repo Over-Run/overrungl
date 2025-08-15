@@ -16,27 +16,28 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.gremedy;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_GREMEDY_frame_terminator`
 public final class GLGREMEDYFrameTerminator {
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_glFrameTerminatorGREMEDY = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFrameTerminatorGREMEDY;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glFrameTerminatorGREMEDY = func.invoke("glFrameTerminatorGREMEDY");
         }
     }
 
-    public GLGREMEDYFrameTerminator(overrungl.opengl.GLLoadFunc func) {
+    public GLGREMEDYFrameTerminator(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glFrameTerminatorGREMEDY`.
     /// ```
     /// void glFrameTerminatorGREMEDY();
     /// ```

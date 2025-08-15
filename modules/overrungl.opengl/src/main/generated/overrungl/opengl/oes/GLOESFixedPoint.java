@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.oes;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_OES_fixed_point`
 public final class GLOESFixedPoint {
     public static final int GL_FIXED_OES = 0x140C;
     private final Handles handles;
@@ -241,7 +241,7 @@ public final class GLOESFixedPoint {
         public final MemorySegment PFN_glVertex3xvOES;
         public final MemorySegment PFN_glVertex4xOES;
         public final MemorySegment PFN_glVertex4xvOES;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glAlphaFuncxOES = func.invoke("glAlphaFuncxOES");
             PFN_glClearColorxOES = func.invoke("glClearColorxOES");
             PFN_glClearDepthxOES = func.invoke("glClearDepthxOES");
@@ -350,10 +350,11 @@ public final class GLOESFixedPoint {
         }
     }
 
-    public GLOESFixedPoint(overrungl.opengl.GLLoadFunc func) {
+    public GLOESFixedPoint(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glAlphaFuncxOES`.
     /// ```
     /// void glAlphaFuncxOES((unsigned int) GLenum func, ((int32_t) khronos_int32_t) GLfixed ref);
     /// ```
@@ -364,6 +365,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in AlphaFuncxOES", e); }
     }
 
+    /// Invokes `glClearColorxOES`.
     /// ```
     /// void glClearColorxOES(((int32_t) khronos_int32_t) GLfixed red, ((int32_t) khronos_int32_t) GLfixed green, ((int32_t) khronos_int32_t) GLfixed blue, ((int32_t) khronos_int32_t) GLfixed alpha);
     /// ```
@@ -374,6 +376,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in ClearColorxOES", e); }
     }
 
+    /// Invokes `glClearDepthxOES`.
     /// ```
     /// void glClearDepthxOES(((int32_t) khronos_int32_t) GLfixed depth);
     /// ```
@@ -384,16 +387,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in ClearDepthxOES", e); }
     }
 
+    /// Invokes `glClipPlanexOES`.
     /// ```
     /// void glClipPlanexOES((unsigned int) GLenum plane, const GLfixed* equation);
     /// ```
-    public void ClipPlanexOES(int plane, MemorySegment equation) {
+    public void ClipPlanexOES(int plane, @NonNull MemorySegment equation) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClipPlanexOES)) throw new GLSymbolNotFoundError("Symbol not found: glClipPlanexOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClipPlanexOES", plane, equation); }
         Handles.MH_glClipPlanexOES.invokeExact(handles.PFN_glClipPlanexOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in ClipPlanexOES", e); }
     }
 
+    /// Invokes `glColor4xOES`.
     /// ```
     /// void glColor4xOES(((int32_t) khronos_int32_t) GLfixed red, ((int32_t) khronos_int32_t) GLfixed green, ((int32_t) khronos_int32_t) GLfixed blue, ((int32_t) khronos_int32_t) GLfixed alpha);
     /// ```
@@ -404,6 +409,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in Color4xOES", e); }
     }
 
+    /// Invokes `glDepthRangexOES`.
     /// ```
     /// void glDepthRangexOES(((int32_t) khronos_int32_t) GLfixed n, ((int32_t) khronos_int32_t) GLfixed f);
     /// ```
@@ -414,6 +420,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in DepthRangexOES", e); }
     }
 
+    /// Invokes `glFogxOES`.
     /// ```
     /// void glFogxOES((unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -424,16 +431,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in FogxOES", e); }
     }
 
+    /// Invokes `glFogxvOES`.
     /// ```
     /// void glFogxvOES((unsigned int) GLenum pname, const GLfixed* param);
     /// ```
-    public void FogxvOES(int pname, MemorySegment param) {
+    public void FogxvOES(int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glFogxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFogxvOES", pname, param); }
         Handles.MH_glFogxvOES.invokeExact(handles.PFN_glFogxvOES, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in FogxvOES", e); }
     }
 
+    /// Invokes `glFrustumxOES`.
     /// ```
     /// void glFrustumxOES(((int32_t) khronos_int32_t) GLfixed l, ((int32_t) khronos_int32_t) GLfixed r, ((int32_t) khronos_int32_t) GLfixed b, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed n, ((int32_t) khronos_int32_t) GLfixed f);
     /// ```
@@ -444,46 +453,51 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in FrustumxOES", e); }
     }
 
+    /// Invokes `glGetClipPlanexOES`.
     /// ```
     /// void glGetClipPlanexOES((unsigned int) GLenum plane, GLfixed* equation);
     /// ```
-    public void GetClipPlanexOES(int plane, MemorySegment equation) {
+    public void GetClipPlanexOES(int plane, @NonNull MemorySegment equation) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetClipPlanexOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetClipPlanexOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetClipPlanexOES", plane, equation); }
         Handles.MH_glGetClipPlanexOES.invokeExact(handles.PFN_glGetClipPlanexOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in GetClipPlanexOES", e); }
     }
 
+    /// Invokes `glGetFixedvOES`.
     /// ```
     /// void glGetFixedvOES((unsigned int) GLenum pname, GLfixed* params);
     /// ```
-    public void GetFixedvOES(int pname, MemorySegment params) {
+    public void GetFixedvOES(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFixedvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetFixedvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFixedvOES", pname, params); }
         Handles.MH_glGetFixedvOES.invokeExact(handles.PFN_glGetFixedvOES, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFixedvOES", e); }
     }
 
+    /// Invokes `glGetTexEnvxvOES`.
     /// ```
     /// void glGetTexEnvxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfixed* params);
     /// ```
-    public void GetTexEnvxvOES(int target, int pname, MemorySegment params) {
+    public void GetTexEnvxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexEnvxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexEnvxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexEnvxvOES", target, pname, params); }
         Handles.MH_glGetTexEnvxvOES.invokeExact(handles.PFN_glGetTexEnvxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexEnvxvOES", e); }
     }
 
+    /// Invokes `glGetTexParameterxvOES`.
     /// ```
     /// void glGetTexParameterxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfixed* params);
     /// ```
-    public void GetTexParameterxvOES(int target, int pname, MemorySegment params) {
+    public void GetTexParameterxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexParameterxvOES", target, pname, params); }
         Handles.MH_glGetTexParameterxvOES.invokeExact(handles.PFN_glGetTexParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexParameterxvOES", e); }
     }
 
+    /// Invokes `glLightModelxOES`.
     /// ```
     /// void glLightModelxOES((unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -494,16 +508,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in LightModelxOES", e); }
     }
 
+    /// Invokes `glLightModelxvOES`.
     /// ```
     /// void glLightModelxvOES((unsigned int) GLenum pname, const GLfixed* param);
     /// ```
-    public void LightModelxvOES(int pname, MemorySegment param) {
+    public void LightModelxvOES(int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLightModelxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glLightModelxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLightModelxvOES", pname, param); }
         Handles.MH_glLightModelxvOES.invokeExact(handles.PFN_glLightModelxvOES, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in LightModelxvOES", e); }
     }
 
+    /// Invokes `glLightxOES`.
     /// ```
     /// void glLightxOES((unsigned int) GLenum light, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -514,16 +530,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in LightxOES", e); }
     }
 
+    /// Invokes `glLightxvOES`.
     /// ```
     /// void glLightxvOES((unsigned int) GLenum light, (unsigned int) GLenum pname, const GLfixed* params);
     /// ```
-    public void LightxvOES(int light, int pname, MemorySegment params) {
+    public void LightxvOES(int light, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLightxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glLightxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLightxvOES", light, pname, params); }
         Handles.MH_glLightxvOES.invokeExact(handles.PFN_glLightxvOES, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in LightxvOES", e); }
     }
 
+    /// Invokes `glLineWidthxOES`.
     /// ```
     /// void glLineWidthxOES(((int32_t) khronos_int32_t) GLfixed width);
     /// ```
@@ -534,16 +552,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in LineWidthxOES", e); }
     }
 
+    /// Invokes `glLoadMatrixxOES`.
     /// ```
     /// void glLoadMatrixxOES(const GLfixed* m);
     /// ```
-    public void LoadMatrixxOES(MemorySegment m) {
+    public void LoadMatrixxOES(@NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLoadMatrixxOES)) throw new GLSymbolNotFoundError("Symbol not found: glLoadMatrixxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLoadMatrixxOES", m); }
         Handles.MH_glLoadMatrixxOES.invokeExact(handles.PFN_glLoadMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in LoadMatrixxOES", e); }
     }
 
+    /// Invokes `glMaterialxOES`.
     /// ```
     /// void glMaterialxOES((unsigned int) GLenum face, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -554,26 +574,29 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in MaterialxOES", e); }
     }
 
+    /// Invokes `glMaterialxvOES`.
     /// ```
     /// void glMaterialxvOES((unsigned int) GLenum face, (unsigned int) GLenum pname, const GLfixed* param);
     /// ```
-    public void MaterialxvOES(int face, int pname, MemorySegment param) {
+    public void MaterialxvOES(int face, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMaterialxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMaterialxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMaterialxvOES", face, pname, param); }
         Handles.MH_glMaterialxvOES.invokeExact(handles.PFN_glMaterialxvOES, face, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in MaterialxvOES", e); }
     }
 
+    /// Invokes `glMultMatrixxOES`.
     /// ```
     /// void glMultMatrixxOES(const GLfixed* m);
     /// ```
-    public void MultMatrixxOES(MemorySegment m) {
+    public void MultMatrixxOES(@NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultMatrixxOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultMatrixxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultMatrixxOES", m); }
         Handles.MH_glMultMatrixxOES.invokeExact(handles.PFN_glMultMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in MultMatrixxOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord4xOES`.
     /// ```
     /// void glMultiTexCoord4xOES((unsigned int) GLenum texture, ((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed r, ((int32_t) khronos_int32_t) GLfixed q);
     /// ```
@@ -584,6 +607,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4xOES", e); }
     }
 
+    /// Invokes `glNormal3xOES`.
     /// ```
     /// void glNormal3xOES(((int32_t) khronos_int32_t) GLfixed nx, ((int32_t) khronos_int32_t) GLfixed ny, ((int32_t) khronos_int32_t) GLfixed nz);
     /// ```
@@ -594,6 +618,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in Normal3xOES", e); }
     }
 
+    /// Invokes `glOrthoxOES`.
     /// ```
     /// void glOrthoxOES(((int32_t) khronos_int32_t) GLfixed l, ((int32_t) khronos_int32_t) GLfixed r, ((int32_t) khronos_int32_t) GLfixed b, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed n, ((int32_t) khronos_int32_t) GLfixed f);
     /// ```
@@ -604,16 +629,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in OrthoxOES", e); }
     }
 
+    /// Invokes `glPointParameterxvOES`.
     /// ```
     /// void glPointParameterxvOES((unsigned int) GLenum pname, const GLfixed* params);
     /// ```
-    public void PointParameterxvOES(int pname, MemorySegment params) {
+    public void PointParameterxvOES(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameterxvOES", pname, params); }
         Handles.MH_glPointParameterxvOES.invokeExact(handles.PFN_glPointParameterxvOES, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterxvOES", e); }
     }
 
+    /// Invokes `glPointSizexOES`.
     /// ```
     /// void glPointSizexOES(((int32_t) khronos_int32_t) GLfixed size);
     /// ```
@@ -624,6 +651,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in PointSizexOES", e); }
     }
 
+    /// Invokes `glPolygonOffsetxOES`.
     /// ```
     /// void glPolygonOffsetxOES(((int32_t) khronos_int32_t) GLfixed factor, ((int32_t) khronos_int32_t) GLfixed units);
     /// ```
@@ -634,6 +662,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in PolygonOffsetxOES", e); }
     }
 
+    /// Invokes `glRotatexOES`.
     /// ```
     /// void glRotatexOES(((int32_t) khronos_int32_t) GLfixed angle, ((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z);
     /// ```
@@ -644,6 +673,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in RotatexOES", e); }
     }
 
+    /// Invokes `glScalexOES`.
     /// ```
     /// void glScalexOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z);
     /// ```
@@ -654,6 +684,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in ScalexOES", e); }
     }
 
+    /// Invokes `glTexEnvxOES`.
     /// ```
     /// void glTexEnvxOES((unsigned int) GLenum target, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -664,16 +695,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in TexEnvxOES", e); }
     }
 
+    /// Invokes `glTexEnvxvOES`.
     /// ```
     /// void glTexEnvxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfixed* params);
     /// ```
-    public void TexEnvxvOES(int target, int pname, MemorySegment params) {
+    public void TexEnvxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexEnvxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexEnvxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexEnvxvOES", target, pname, params); }
         Handles.MH_glTexEnvxvOES.invokeExact(handles.PFN_glTexEnvxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TexEnvxvOES", e); }
     }
 
+    /// Invokes `glTexParameterxOES`.
     /// ```
     /// void glTexParameterxOES((unsigned int) GLenum target, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -684,16 +717,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in TexParameterxOES", e); }
     }
 
+    /// Invokes `glTexParameterxvOES`.
     /// ```
     /// void glTexParameterxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfixed* params);
     /// ```
-    public void TexParameterxvOES(int target, int pname, MemorySegment params) {
+    public void TexParameterxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexParameterxvOES", target, pname, params); }
         Handles.MH_glTexParameterxvOES.invokeExact(handles.PFN_glTexParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TexParameterxvOES", e); }
     }
 
+    /// Invokes `glTranslatexOES`.
     /// ```
     /// void glTranslatexOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z);
     /// ```
@@ -704,26 +739,29 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in TranslatexOES", e); }
     }
 
+    /// Invokes `glGetLightxvOES`.
     /// ```
     /// void glGetLightxvOES((unsigned int) GLenum light, (unsigned int) GLenum pname, GLfixed* params);
     /// ```
-    public void GetLightxvOES(int light, int pname, MemorySegment params) {
+    public void GetLightxvOES(int light, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLightxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetLightxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetLightxvOES", light, pname, params); }
         Handles.MH_glGetLightxvOES.invokeExact(handles.PFN_glGetLightxvOES, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetLightxvOES", e); }
     }
 
+    /// Invokes `glGetMaterialxvOES`.
     /// ```
     /// void glGetMaterialxvOES((unsigned int) GLenum face, (unsigned int) GLenum pname, GLfixed* params);
     /// ```
-    public void GetMaterialxvOES(int face, int pname, MemorySegment params) {
+    public void GetMaterialxvOES(int face, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMaterialxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetMaterialxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMaterialxvOES", face, pname, params); }
         Handles.MH_glGetMaterialxvOES.invokeExact(handles.PFN_glGetMaterialxvOES, face, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMaterialxvOES", e); }
     }
 
+    /// Invokes `glPointParameterxOES`.
     /// ```
     /// void glPointParameterxOES((unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -734,6 +772,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in PointParameterxOES", e); }
     }
 
+    /// Invokes `glSampleCoveragexOES`.
     /// ```
     /// void glSampleCoveragexOES(((int32_t) khronos_int32_t) GLclampx value, GLboolean invert);
     /// ```
@@ -744,6 +783,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in SampleCoveragexOES", e); }
     }
 
+    /// Invokes `glAccumxOES`.
     /// ```
     /// void glAccumxOES((unsigned int) GLenum op, ((int32_t) khronos_int32_t) GLfixed value);
     /// ```
@@ -754,16 +794,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in AccumxOES", e); }
     }
 
+    /// Invokes `glBitmapxOES`.
     /// ```
     /// void glBitmapxOES((int) GLsizei width, (int) GLsizei height, ((int32_t) khronos_int32_t) GLfixed xorig, ((int32_t) khronos_int32_t) GLfixed yorig, ((int32_t) khronos_int32_t) GLfixed xmove, ((int32_t) khronos_int32_t) GLfixed ymove, const GLubyte* bitmap);
     /// ```
-    public void BitmapxOES(int width, int height, int xorig, int yorig, int xmove, int ymove, MemorySegment bitmap) {
+    public void BitmapxOES(int width, int height, int xorig, int yorig, int xmove, int ymove, @NonNull MemorySegment bitmap) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBitmapxOES)) throw new GLSymbolNotFoundError("Symbol not found: glBitmapxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBitmapxOES", width, height, xorig, yorig, xmove, ymove, bitmap); }
         Handles.MH_glBitmapxOES.invokeExact(handles.PFN_glBitmapxOES, width, height, xorig, yorig, xmove, ymove, bitmap); }
         catch (Throwable e) { throw new RuntimeException("error in BitmapxOES", e); }
     }
 
+    /// Invokes `glBlendColorxOES`.
     /// ```
     /// void glBlendColorxOES(((int32_t) khronos_int32_t) GLfixed red, ((int32_t) khronos_int32_t) GLfixed green, ((int32_t) khronos_int32_t) GLfixed blue, ((int32_t) khronos_int32_t) GLfixed alpha);
     /// ```
@@ -774,6 +816,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in BlendColorxOES", e); }
     }
 
+    /// Invokes `glClearAccumxOES`.
     /// ```
     /// void glClearAccumxOES(((int32_t) khronos_int32_t) GLfixed red, ((int32_t) khronos_int32_t) GLfixed green, ((int32_t) khronos_int32_t) GLfixed blue, ((int32_t) khronos_int32_t) GLfixed alpha);
     /// ```
@@ -784,6 +827,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in ClearAccumxOES", e); }
     }
 
+    /// Invokes `glColor3xOES`.
     /// ```
     /// void glColor3xOES(((int32_t) khronos_int32_t) GLfixed red, ((int32_t) khronos_int32_t) GLfixed green, ((int32_t) khronos_int32_t) GLfixed blue);
     /// ```
@@ -794,26 +838,29 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in Color3xOES", e); }
     }
 
+    /// Invokes `glColor3xvOES`.
     /// ```
     /// void glColor3xvOES(const GLfixed* components);
     /// ```
-    public void Color3xvOES(MemorySegment components) {
+    public void Color3xvOES(@NonNull MemorySegment components) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glColor3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColor3xvOES", components); }
         Handles.MH_glColor3xvOES.invokeExact(handles.PFN_glColor3xvOES, components); }
         catch (Throwable e) { throw new RuntimeException("error in Color3xvOES", e); }
     }
 
+    /// Invokes `glColor4xvOES`.
     /// ```
     /// void glColor4xvOES(const GLfixed* components);
     /// ```
-    public void Color4xvOES(MemorySegment components) {
+    public void Color4xvOES(@NonNull MemorySegment components) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor4xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glColor4xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColor4xvOES", components); }
         Handles.MH_glColor4xvOES.invokeExact(handles.PFN_glColor4xvOES, components); }
         catch (Throwable e) { throw new RuntimeException("error in Color4xvOES", e); }
     }
 
+    /// Invokes `glConvolutionParameterxOES`.
     /// ```
     /// void glConvolutionParameterxOES((unsigned int) GLenum target, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -824,16 +871,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in ConvolutionParameterxOES", e); }
     }
 
+    /// Invokes `glConvolutionParameterxvOES`.
     /// ```
     /// void glConvolutionParameterxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfixed* params);
     /// ```
-    public void ConvolutionParameterxvOES(int target, int pname, MemorySegment params) {
+    public void ConvolutionParameterxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConvolutionParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glConvolutionParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glConvolutionParameterxvOES", target, pname, params); }
         Handles.MH_glConvolutionParameterxvOES.invokeExact(handles.PFN_glConvolutionParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in ConvolutionParameterxvOES", e); }
     }
 
+    /// Invokes `glEvalCoord1xOES`.
     /// ```
     /// void glEvalCoord1xOES(((int32_t) khronos_int32_t) GLfixed u);
     /// ```
@@ -844,16 +893,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in EvalCoord1xOES", e); }
     }
 
+    /// Invokes `glEvalCoord1xvOES`.
     /// ```
     /// void glEvalCoord1xvOES(const GLfixed* coords);
     /// ```
-    public void EvalCoord1xvOES(MemorySegment coords) {
+    public void EvalCoord1xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord1xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glEvalCoord1xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEvalCoord1xvOES", coords); }
         Handles.MH_glEvalCoord1xvOES.invokeExact(handles.PFN_glEvalCoord1xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in EvalCoord1xvOES", e); }
     }
 
+    /// Invokes `glEvalCoord2xOES`.
     /// ```
     /// void glEvalCoord2xOES(((int32_t) khronos_int32_t) GLfixed u, ((int32_t) khronos_int32_t) GLfixed v);
     /// ```
@@ -864,66 +915,73 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in EvalCoord2xOES", e); }
     }
 
+    /// Invokes `glEvalCoord2xvOES`.
     /// ```
     /// void glEvalCoord2xvOES(const GLfixed* coords);
     /// ```
-    public void EvalCoord2xvOES(MemorySegment coords) {
+    public void EvalCoord2xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord2xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glEvalCoord2xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEvalCoord2xvOES", coords); }
         Handles.MH_glEvalCoord2xvOES.invokeExact(handles.PFN_glEvalCoord2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in EvalCoord2xvOES", e); }
     }
 
+    /// Invokes `glFeedbackBufferxOES`.
     /// ```
     /// void glFeedbackBufferxOES((int) GLsizei n, (unsigned int) GLenum type, const GLfixed* buffer);
     /// ```
-    public void FeedbackBufferxOES(int n, int type, MemorySegment buffer) {
+    public void FeedbackBufferxOES(int n, int type, @NonNull MemorySegment buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFeedbackBufferxOES)) throw new GLSymbolNotFoundError("Symbol not found: glFeedbackBufferxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFeedbackBufferxOES", n, type, buffer); }
         Handles.MH_glFeedbackBufferxOES.invokeExact(handles.PFN_glFeedbackBufferxOES, n, type, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in FeedbackBufferxOES", e); }
     }
 
+    /// Invokes `glGetConvolutionParameterxvOES`.
     /// ```
     /// void glGetConvolutionParameterxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfixed* params);
     /// ```
-    public void GetConvolutionParameterxvOES(int target, int pname, MemorySegment params) {
+    public void GetConvolutionParameterxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetConvolutionParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetConvolutionParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetConvolutionParameterxvOES", target, pname, params); }
         Handles.MH_glGetConvolutionParameterxvOES.invokeExact(handles.PFN_glGetConvolutionParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetConvolutionParameterxvOES", e); }
     }
 
+    /// Invokes `glGetHistogramParameterxvOES`.
     /// ```
     /// void glGetHistogramParameterxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfixed* params);
     /// ```
-    public void GetHistogramParameterxvOES(int target, int pname, MemorySegment params) {
+    public void GetHistogramParameterxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetHistogramParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetHistogramParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetHistogramParameterxvOES", target, pname, params); }
         Handles.MH_glGetHistogramParameterxvOES.invokeExact(handles.PFN_glGetHistogramParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetHistogramParameterxvOES", e); }
     }
 
+    /// Invokes `glGetLightxOES`.
     /// ```
     /// void glGetLightxOES((unsigned int) GLenum light, (unsigned int) GLenum pname, GLfixed* params);
     /// ```
-    public void GetLightxOES(int light, int pname, MemorySegment params) {
+    public void GetLightxOES(int light, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLightxOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetLightxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetLightxOES", light, pname, params); }
         Handles.MH_glGetLightxOES.invokeExact(handles.PFN_glGetLightxOES, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetLightxOES", e); }
     }
 
+    /// Invokes `glGetMapxvOES`.
     /// ```
     /// void glGetMapxvOES((unsigned int) GLenum target, (unsigned int) GLenum query, GLfixed* v);
     /// ```
-    public void GetMapxvOES(int target, int query, MemorySegment v) {
+    public void GetMapxvOES(int target, int query, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMapxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetMapxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMapxvOES", target, query, v); }
         Handles.MH_glGetMapxvOES.invokeExact(handles.PFN_glGetMapxvOES, target, query, v); }
         catch (Throwable e) { throw new RuntimeException("error in GetMapxvOES", e); }
     }
 
+    /// Invokes `glGetMaterialxOES`.
     /// ```
     /// void glGetMaterialxOES((unsigned int) GLenum face, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -934,36 +992,40 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in GetMaterialxOES", e); }
     }
 
+    /// Invokes `glGetPixelMapxv`.
     /// ```
     /// void glGetPixelMapxv((unsigned int) GLenum map, (int) GLint size, GLfixed* values);
     /// ```
-    public void GetPixelMapxv(int map, int size, MemorySegment values) {
+    public void GetPixelMapxv(int map, int size, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelMapxv)) throw new GLSymbolNotFoundError("Symbol not found: glGetPixelMapxv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPixelMapxv", map, size, values); }
         Handles.MH_glGetPixelMapxv.invokeExact(handles.PFN_glGetPixelMapxv, map, size, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetPixelMapxv", e); }
     }
 
+    /// Invokes `glGetTexGenxvOES`.
     /// ```
     /// void glGetTexGenxvOES((unsigned int) GLenum coord, (unsigned int) GLenum pname, GLfixed* params);
     /// ```
-    public void GetTexGenxvOES(int coord, int pname, MemorySegment params) {
+    public void GetTexGenxvOES(int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexGenxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexGenxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexGenxvOES", coord, pname, params); }
         Handles.MH_glGetTexGenxvOES.invokeExact(handles.PFN_glGetTexGenxvOES, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexGenxvOES", e); }
     }
 
+    /// Invokes `glGetTexLevelParameterxvOES`.
     /// ```
     /// void glGetTexLevelParameterxvOES((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum pname, GLfixed* params);
     /// ```
-    public void GetTexLevelParameterxvOES(int target, int level, int pname, MemorySegment params) {
+    public void GetTexLevelParameterxvOES(int target, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexLevelParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexLevelParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexLevelParameterxvOES", target, level, pname, params); }
         Handles.MH_glGetTexLevelParameterxvOES.invokeExact(handles.PFN_glGetTexLevelParameterxvOES, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexLevelParameterxvOES", e); }
     }
 
+    /// Invokes `glIndexxOES`.
     /// ```
     /// void glIndexxOES(((int32_t) khronos_int32_t) GLfixed component);
     /// ```
@@ -974,26 +1036,29 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in IndexxOES", e); }
     }
 
+    /// Invokes `glIndexxvOES`.
     /// ```
     /// void glIndexxvOES(const GLfixed* component);
     /// ```
-    public void IndexxvOES(MemorySegment component) {
+    public void IndexxvOES(@NonNull MemorySegment component) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glIndexxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIndexxvOES", component); }
         Handles.MH_glIndexxvOES.invokeExact(handles.PFN_glIndexxvOES, component); }
         catch (Throwable e) { throw new RuntimeException("error in IndexxvOES", e); }
     }
 
+    /// Invokes `glLoadTransposeMatrixxOES`.
     /// ```
     /// void glLoadTransposeMatrixxOES(const GLfixed* m);
     /// ```
-    public void LoadTransposeMatrixxOES(MemorySegment m) {
+    public void LoadTransposeMatrixxOES(@NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLoadTransposeMatrixxOES)) throw new GLSymbolNotFoundError("Symbol not found: glLoadTransposeMatrixxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLoadTransposeMatrixxOES", m); }
         Handles.MH_glLoadTransposeMatrixxOES.invokeExact(handles.PFN_glLoadTransposeMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in LoadTransposeMatrixxOES", e); }
     }
 
+    /// Invokes `glMap1xOES`.
     /// ```
     /// void glMap1xOES((unsigned int) GLenum target, ((int32_t) khronos_int32_t) GLfixed u1, ((int32_t) khronos_int32_t) GLfixed u2, (int) GLint stride, (int) GLint order, ((int32_t) khronos_int32_t) GLfixed points);
     /// ```
@@ -1004,6 +1069,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in Map1xOES", e); }
     }
 
+    /// Invokes `glMap2xOES`.
     /// ```
     /// void glMap2xOES((unsigned int) GLenum target, ((int32_t) khronos_int32_t) GLfixed u1, ((int32_t) khronos_int32_t) GLfixed u2, (int) GLint ustride, (int) GLint uorder, ((int32_t) khronos_int32_t) GLfixed v1, ((int32_t) khronos_int32_t) GLfixed v2, (int) GLint vstride, (int) GLint vorder, ((int32_t) khronos_int32_t) GLfixed points);
     /// ```
@@ -1014,6 +1080,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in Map2xOES", e); }
     }
 
+    /// Invokes `glMapGrid1xOES`.
     /// ```
     /// void glMapGrid1xOES((int) GLint n, ((int32_t) khronos_int32_t) GLfixed u1, ((int32_t) khronos_int32_t) GLfixed u2);
     /// ```
@@ -1024,6 +1091,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in MapGrid1xOES", e); }
     }
 
+    /// Invokes `glMapGrid2xOES`.
     /// ```
     /// void glMapGrid2xOES((int) GLint n, ((int32_t) khronos_int32_t) GLfixed u1, ((int32_t) khronos_int32_t) GLfixed u2, ((int32_t) khronos_int32_t) GLfixed v1, ((int32_t) khronos_int32_t) GLfixed v2);
     /// ```
@@ -1034,16 +1102,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in MapGrid2xOES", e); }
     }
 
+    /// Invokes `glMultTransposeMatrixxOES`.
     /// ```
     /// void glMultTransposeMatrixxOES(const GLfixed* m);
     /// ```
-    public void MultTransposeMatrixxOES(MemorySegment m) {
+    public void MultTransposeMatrixxOES(@NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultTransposeMatrixxOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultTransposeMatrixxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultTransposeMatrixxOES", m); }
         Handles.MH_glMultTransposeMatrixxOES.invokeExact(handles.PFN_glMultTransposeMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in MultTransposeMatrixxOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord1xOES`.
     /// ```
     /// void glMultiTexCoord1xOES((unsigned int) GLenum texture, ((int32_t) khronos_int32_t) GLfixed s);
     /// ```
@@ -1054,16 +1124,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1xOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord1xvOES`.
     /// ```
     /// void glMultiTexCoord1xvOES((unsigned int) GLenum texture, const GLfixed* coords);
     /// ```
-    public void MultiTexCoord1xvOES(int texture, MemorySegment coords) {
+    public void MultiTexCoord1xvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord1xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord1xvOES", texture, coords); }
         Handles.MH_glMultiTexCoord1xvOES.invokeExact(handles.PFN_glMultiTexCoord1xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1xvOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord2xOES`.
     /// ```
     /// void glMultiTexCoord2xOES((unsigned int) GLenum texture, ((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t);
     /// ```
@@ -1074,16 +1146,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2xOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord2xvOES`.
     /// ```
     /// void glMultiTexCoord2xvOES((unsigned int) GLenum texture, const GLfixed* coords);
     /// ```
-    public void MultiTexCoord2xvOES(int texture, MemorySegment coords) {
+    public void MultiTexCoord2xvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord2xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord2xvOES", texture, coords); }
         Handles.MH_glMultiTexCoord2xvOES.invokeExact(handles.PFN_glMultiTexCoord2xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2xvOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord3xOES`.
     /// ```
     /// void glMultiTexCoord3xOES((unsigned int) GLenum texture, ((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed r);
     /// ```
@@ -1094,36 +1168,40 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3xOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord3xvOES`.
     /// ```
     /// void glMultiTexCoord3xvOES((unsigned int) GLenum texture, const GLfixed* coords);
     /// ```
-    public void MultiTexCoord3xvOES(int texture, MemorySegment coords) {
+    public void MultiTexCoord3xvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord3xvOES", texture, coords); }
         Handles.MH_glMultiTexCoord3xvOES.invokeExact(handles.PFN_glMultiTexCoord3xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3xvOES", e); }
     }
 
+    /// Invokes `glMultiTexCoord4xvOES`.
     /// ```
     /// void glMultiTexCoord4xvOES((unsigned int) GLenum texture, const GLfixed* coords);
     /// ```
-    public void MultiTexCoord4xvOES(int texture, MemorySegment coords) {
+    public void MultiTexCoord4xvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord4xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord4xvOES", texture, coords); }
         Handles.MH_glMultiTexCoord4xvOES.invokeExact(handles.PFN_glMultiTexCoord4xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4xvOES", e); }
     }
 
+    /// Invokes `glNormal3xvOES`.
     /// ```
     /// void glNormal3xvOES(const GLfixed* coords);
     /// ```
-    public void Normal3xvOES(MemorySegment coords) {
+    public void Normal3xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormal3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glNormal3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNormal3xvOES", coords); }
         Handles.MH_glNormal3xvOES.invokeExact(handles.PFN_glNormal3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Normal3xvOES", e); }
     }
 
+    /// Invokes `glPassThroughxOES`.
     /// ```
     /// void glPassThroughxOES(((int32_t) khronos_int32_t) GLfixed token);
     /// ```
@@ -1134,16 +1212,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in PassThroughxOES", e); }
     }
 
+    /// Invokes `glPixelMapx`.
     /// ```
     /// void glPixelMapx((unsigned int) GLenum map, (int) GLint size, const GLfixed* values);
     /// ```
-    public void PixelMapx(int map, int size, MemorySegment values) {
+    public void PixelMapx(int map, int size, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelMapx)) throw new GLSymbolNotFoundError("Symbol not found: glPixelMapx");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelMapx", map, size, values); }
         Handles.MH_glPixelMapx.invokeExact(handles.PFN_glPixelMapx, map, size, values); }
         catch (Throwable e) { throw new RuntimeException("error in PixelMapx", e); }
     }
 
+    /// Invokes `glPixelStorex`.
     /// ```
     /// void glPixelStorex((unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -1154,6 +1234,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in PixelStorex", e); }
     }
 
+    /// Invokes `glPixelTransferxOES`.
     /// ```
     /// void glPixelTransferxOES((unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -1164,6 +1245,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in PixelTransferxOES", e); }
     }
 
+    /// Invokes `glPixelZoomxOES`.
     /// ```
     /// void glPixelZoomxOES(((int32_t) khronos_int32_t) GLfixed xfactor, ((int32_t) khronos_int32_t) GLfixed yfactor);
     /// ```
@@ -1174,16 +1256,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in PixelZoomxOES", e); }
     }
 
+    /// Invokes `glPrioritizeTexturesxOES`.
     /// ```
     /// void glPrioritizeTexturesxOES((int) GLsizei n, const GLuint* textures, const GLfixed* priorities);
     /// ```
-    public void PrioritizeTexturesxOES(int n, MemorySegment textures, MemorySegment priorities) {
+    public void PrioritizeTexturesxOES(int n, @NonNull MemorySegment textures, @NonNull MemorySegment priorities) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPrioritizeTexturesxOES)) throw new GLSymbolNotFoundError("Symbol not found: glPrioritizeTexturesxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPrioritizeTexturesxOES", n, textures, priorities); }
         Handles.MH_glPrioritizeTexturesxOES.invokeExact(handles.PFN_glPrioritizeTexturesxOES, n, textures, priorities); }
         catch (Throwable e) { throw new RuntimeException("error in PrioritizeTexturesxOES", e); }
     }
 
+    /// Invokes `glRasterPos2xOES`.
     /// ```
     /// void glRasterPos2xOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y);
     /// ```
@@ -1194,16 +1278,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in RasterPos2xOES", e); }
     }
 
+    /// Invokes `glRasterPos2xvOES`.
     /// ```
     /// void glRasterPos2xvOES(const GLfixed* coords);
     /// ```
-    public void RasterPos2xvOES(MemorySegment coords) {
+    public void RasterPos2xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos2xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glRasterPos2xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRasterPos2xvOES", coords); }
         Handles.MH_glRasterPos2xvOES.invokeExact(handles.PFN_glRasterPos2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in RasterPos2xvOES", e); }
     }
 
+    /// Invokes `glRasterPos3xOES`.
     /// ```
     /// void glRasterPos3xOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z);
     /// ```
@@ -1214,16 +1300,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in RasterPos3xOES", e); }
     }
 
+    /// Invokes `glRasterPos3xvOES`.
     /// ```
     /// void glRasterPos3xvOES(const GLfixed* coords);
     /// ```
-    public void RasterPos3xvOES(MemorySegment coords) {
+    public void RasterPos3xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glRasterPos3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRasterPos3xvOES", coords); }
         Handles.MH_glRasterPos3xvOES.invokeExact(handles.PFN_glRasterPos3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in RasterPos3xvOES", e); }
     }
 
+    /// Invokes `glRasterPos4xOES`.
     /// ```
     /// void glRasterPos4xOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z, ((int32_t) khronos_int32_t) GLfixed w);
     /// ```
@@ -1234,16 +1322,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in RasterPos4xOES", e); }
     }
 
+    /// Invokes `glRasterPos4xvOES`.
     /// ```
     /// void glRasterPos4xvOES(const GLfixed* coords);
     /// ```
-    public void RasterPos4xvOES(MemorySegment coords) {
+    public void RasterPos4xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos4xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glRasterPos4xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRasterPos4xvOES", coords); }
         Handles.MH_glRasterPos4xvOES.invokeExact(handles.PFN_glRasterPos4xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in RasterPos4xvOES", e); }
     }
 
+    /// Invokes `glRectxOES`.
     /// ```
     /// void glRectxOES(((int32_t) khronos_int32_t) GLfixed x1, ((int32_t) khronos_int32_t) GLfixed y1, ((int32_t) khronos_int32_t) GLfixed x2, ((int32_t) khronos_int32_t) GLfixed y2);
     /// ```
@@ -1254,16 +1344,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in RectxOES", e); }
     }
 
+    /// Invokes `glRectxvOES`.
     /// ```
     /// void glRectxvOES(const GLfixed* v1, const GLfixed* v2);
     /// ```
-    public void RectxvOES(MemorySegment v1, MemorySegment v2) {
+    public void RectxvOES(@NonNull MemorySegment v1, @NonNull MemorySegment v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRectxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glRectxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRectxvOES", v1, v2); }
         Handles.MH_glRectxvOES.invokeExact(handles.PFN_glRectxvOES, v1, v2); }
         catch (Throwable e) { throw new RuntimeException("error in RectxvOES", e); }
     }
 
+    /// Invokes `glTexCoord1xOES`.
     /// ```
     /// void glTexCoord1xOES(((int32_t) khronos_int32_t) GLfixed s);
     /// ```
@@ -1274,16 +1366,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in TexCoord1xOES", e); }
     }
 
+    /// Invokes `glTexCoord1xvOES`.
     /// ```
     /// void glTexCoord1xvOES(const GLfixed* coords);
     /// ```
-    public void TexCoord1xvOES(MemorySegment coords) {
+    public void TexCoord1xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord1xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord1xvOES", coords); }
         Handles.MH_glTexCoord1xvOES.invokeExact(handles.PFN_glTexCoord1xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord1xvOES", e); }
     }
 
+    /// Invokes `glTexCoord2xOES`.
     /// ```
     /// void glTexCoord2xOES(((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t);
     /// ```
@@ -1294,16 +1388,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in TexCoord2xOES", e); }
     }
 
+    /// Invokes `glTexCoord2xvOES`.
     /// ```
     /// void glTexCoord2xvOES(const GLfixed* coords);
     /// ```
-    public void TexCoord2xvOES(MemorySegment coords) {
+    public void TexCoord2xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord2xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord2xvOES", coords); }
         Handles.MH_glTexCoord2xvOES.invokeExact(handles.PFN_glTexCoord2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord2xvOES", e); }
     }
 
+    /// Invokes `glTexCoord3xOES`.
     /// ```
     /// void glTexCoord3xOES(((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed r);
     /// ```
@@ -1314,16 +1410,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in TexCoord3xOES", e); }
     }
 
+    /// Invokes `glTexCoord3xvOES`.
     /// ```
     /// void glTexCoord3xvOES(const GLfixed* coords);
     /// ```
-    public void TexCoord3xvOES(MemorySegment coords) {
+    public void TexCoord3xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord3xvOES", coords); }
         Handles.MH_glTexCoord3xvOES.invokeExact(handles.PFN_glTexCoord3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord3xvOES", e); }
     }
 
+    /// Invokes `glTexCoord4xOES`.
     /// ```
     /// void glTexCoord4xOES(((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed r, ((int32_t) khronos_int32_t) GLfixed q);
     /// ```
@@ -1334,16 +1432,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in TexCoord4xOES", e); }
     }
 
+    /// Invokes `glTexCoord4xvOES`.
     /// ```
     /// void glTexCoord4xvOES(const GLfixed* coords);
     /// ```
-    public void TexCoord4xvOES(MemorySegment coords) {
+    public void TexCoord4xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord4xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord4xvOES", coords); }
         Handles.MH_glTexCoord4xvOES.invokeExact(handles.PFN_glTexCoord4xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord4xvOES", e); }
     }
 
+    /// Invokes `glTexGenxOES`.
     /// ```
     /// void glTexGenxOES((unsigned int) GLenum coord, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
     /// ```
@@ -1354,16 +1454,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in TexGenxOES", e); }
     }
 
+    /// Invokes `glTexGenxvOES`.
     /// ```
     /// void glTexGenxvOES((unsigned int) GLenum coord, (unsigned int) GLenum pname, const GLfixed* params);
     /// ```
-    public void TexGenxvOES(int coord, int pname, MemorySegment params) {
+    public void TexGenxvOES(int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexGenxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexGenxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexGenxvOES", coord, pname, params); }
         Handles.MH_glTexGenxvOES.invokeExact(handles.PFN_glTexGenxvOES, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TexGenxvOES", e); }
     }
 
+    /// Invokes `glVertex2xOES`.
     /// ```
     /// void glVertex2xOES(((int32_t) khronos_int32_t) GLfixed x);
     /// ```
@@ -1374,16 +1476,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in Vertex2xOES", e); }
     }
 
+    /// Invokes `glVertex2xvOES`.
     /// ```
     /// void glVertex2xvOES(const GLfixed* coords);
     /// ```
-    public void Vertex2xvOES(MemorySegment coords) {
+    public void Vertex2xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex2xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex2xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex2xvOES", coords); }
         Handles.MH_glVertex2xvOES.invokeExact(handles.PFN_glVertex2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex2xvOES", e); }
     }
 
+    /// Invokes `glVertex3xOES`.
     /// ```
     /// void glVertex3xOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y);
     /// ```
@@ -1394,16 +1498,18 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in Vertex3xOES", e); }
     }
 
+    /// Invokes `glVertex3xvOES`.
     /// ```
     /// void glVertex3xvOES(const GLfixed* coords);
     /// ```
-    public void Vertex3xvOES(MemorySegment coords) {
+    public void Vertex3xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex3xvOES", coords); }
         Handles.MH_glVertex3xvOES.invokeExact(handles.PFN_glVertex3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex3xvOES", e); }
     }
 
+    /// Invokes `glVertex4xOES`.
     /// ```
     /// void glVertex4xOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z);
     /// ```
@@ -1414,10 +1520,11 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in Vertex4xOES", e); }
     }
 
+    /// Invokes `glVertex4xvOES`.
     /// ```
     /// void glVertex4xvOES(const GLfixed* coords);
     /// ```
-    public void Vertex4xvOES(MemorySegment coords) {
+    public void Vertex4xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex4xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex4xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex4xvOES", coords); }
         Handles.MH_glVertex4xvOES.invokeExact(handles.PFN_glVertex4xvOES, coords); }

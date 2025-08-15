@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_pixel_transform`
 public final class GLEXTPixelTransform {
     public static final int GL_PIXEL_TRANSFORM_2D_EXT = 0x8330;
     public static final int GL_PIXEL_MAG_FILTER_EXT = 0x8331;
@@ -47,7 +47,7 @@ public final class GLEXTPixelTransform {
         public final MemorySegment PFN_glPixelTransformParameterfvEXT;
         public final MemorySegment PFN_glGetPixelTransformParameterivEXT;
         public final MemorySegment PFN_glGetPixelTransformParameterfvEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glPixelTransformParameteriEXT = func.invoke("glPixelTransformParameteriEXT");
             PFN_glPixelTransformParameterfEXT = func.invoke("glPixelTransformParameterfEXT");
             PFN_glPixelTransformParameterivEXT = func.invoke("glPixelTransformParameterivEXT");
@@ -57,10 +57,11 @@ public final class GLEXTPixelTransform {
         }
     }
 
-    public GLEXTPixelTransform(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTPixelTransform(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glPixelTransformParameteriEXT`.
     /// ```
     /// void glPixelTransformParameteriEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -71,6 +72,7 @@ public final class GLEXTPixelTransform {
         catch (Throwable e) { throw new RuntimeException("error in PixelTransformParameteriEXT", e); }
     }
 
+    /// Invokes `glPixelTransformParameterfEXT`.
     /// ```
     /// void glPixelTransformParameterfEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
@@ -81,40 +83,44 @@ public final class GLEXTPixelTransform {
         catch (Throwable e) { throw new RuntimeException("error in PixelTransformParameterfEXT", e); }
     }
 
+    /// Invokes `glPixelTransformParameterivEXT`.
     /// ```
     /// void glPixelTransformParameterivEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLint* params);
     /// ```
-    public void PixelTransformParameterivEXT(int target, int pname, MemorySegment params) {
+    public void PixelTransformParameterivEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTransformParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPixelTransformParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelTransformParameterivEXT", target, pname, params); }
         Handles.MH_glPixelTransformParameterivEXT.invokeExact(handles.PFN_glPixelTransformParameterivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PixelTransformParameterivEXT", e); }
     }
 
+    /// Invokes `glPixelTransformParameterfvEXT`.
     /// ```
     /// void glPixelTransformParameterfvEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfloat* params);
     /// ```
-    public void PixelTransformParameterfvEXT(int target, int pname, MemorySegment params) {
+    public void PixelTransformParameterfvEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTransformParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPixelTransformParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelTransformParameterfvEXT", target, pname, params); }
         Handles.MH_glPixelTransformParameterfvEXT.invokeExact(handles.PFN_glPixelTransformParameterfvEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PixelTransformParameterfvEXT", e); }
     }
 
+    /// Invokes `glGetPixelTransformParameterivEXT`.
     /// ```
     /// void glGetPixelTransformParameterivEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetPixelTransformParameterivEXT(int target, int pname, MemorySegment params) {
+    public void GetPixelTransformParameterivEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelTransformParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetPixelTransformParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPixelTransformParameterivEXT", target, pname, params); }
         Handles.MH_glGetPixelTransformParameterivEXT.invokeExact(handles.PFN_glGetPixelTransformParameterivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetPixelTransformParameterivEXT", e); }
     }
 
+    /// Invokes `glGetPixelTransformParameterfvEXT`.
     /// ```
     /// void glGetPixelTransformParameterfvEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetPixelTransformParameterfvEXT(int target, int pname, MemorySegment params) {
+    public void GetPixelTransformParameterfvEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelTransformParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetPixelTransformParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPixelTransformParameterfvEXT", target, pname, params); }
         Handles.MH_glGetPixelTransformParameterfvEXT.invokeExact(handles.PFN_glGetPixelTransformParameterfvEXT, target, pname, params); }

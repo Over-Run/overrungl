@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.apple;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_APPLE_vertex_array_range`
 public final class GLAPPLEVertexArrayRange {
     public static final int GL_VERTEX_ARRAY_RANGE_APPLE = 0x851D;
     public static final int GL_VERTEX_ARRAY_RANGE_LENGTH_APPLE = 0x851E;
@@ -39,37 +39,40 @@ public final class GLAPPLEVertexArrayRange {
         public final MemorySegment PFN_glVertexArrayRangeAPPLE;
         public final MemorySegment PFN_glFlushVertexArrayRangeAPPLE;
         public final MemorySegment PFN_glVertexArrayParameteriAPPLE;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glVertexArrayRangeAPPLE = func.invoke("glVertexArrayRangeAPPLE");
             PFN_glFlushVertexArrayRangeAPPLE = func.invoke("glFlushVertexArrayRangeAPPLE");
             PFN_glVertexArrayParameteriAPPLE = func.invoke("glVertexArrayParameteriAPPLE");
         }
     }
 
-    public GLAPPLEVertexArrayRange(overrungl.opengl.GLLoadFunc func) {
+    public GLAPPLEVertexArrayRange(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glVertexArrayRangeAPPLE`.
     /// ```
     /// void glVertexArrayRangeAPPLE((int) GLsizei length, void* pointer);
     /// ```
-    public void VertexArrayRangeAPPLE(int length, MemorySegment pointer) {
+    public void VertexArrayRangeAPPLE(int length, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayRangeAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayRangeAPPLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayRangeAPPLE", length, pointer); }
         Handles.MH_glVertexArrayRangeAPPLE.invokeExact(handles.PFN_glVertexArrayRangeAPPLE, length, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayRangeAPPLE", e); }
     }
 
+    /// Invokes `glFlushVertexArrayRangeAPPLE`.
     /// ```
     /// void glFlushVertexArrayRangeAPPLE((int) GLsizei length, void* pointer);
     /// ```
-    public void FlushVertexArrayRangeAPPLE(int length, MemorySegment pointer) {
+    public void FlushVertexArrayRangeAPPLE(int length, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushVertexArrayRangeAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glFlushVertexArrayRangeAPPLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFlushVertexArrayRangeAPPLE", length, pointer); }
         Handles.MH_glFlushVertexArrayRangeAPPLE.invokeExact(handles.PFN_glFlushVertexArrayRangeAPPLE, length, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in FlushVertexArrayRangeAPPLE", e); }
     }
 
+    /// Invokes `glVertexArrayParameteriAPPLE`.
     /// ```
     /// void glVertexArrayParameteriAPPLE((unsigned int) GLenum pname, (int) GLint param);
     /// ```

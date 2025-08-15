@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.pgi;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_PGI_misc_hints`
 public final class GLPGIMiscHints {
     public static final int GL_PREFER_DOUBLEBUFFER_HINT_PGI = 0x1A1F8;
     public static final int GL_CONSERVE_MEMORY_HINT_PGI = 0x1A1FD;
@@ -48,15 +48,16 @@ public final class GLPGIMiscHints {
     public static final class Handles {
         public static final MethodHandle MH_glHintPGI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glHintPGI;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glHintPGI = func.invoke("glHintPGI");
         }
     }
 
-    public GLPGIMiscHints(overrungl.opengl.GLLoadFunc func) {
+    public GLPGIMiscHints(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glHintPGI`.
     /// ```
     /// void glHintPGI((unsigned int) GLenum target, (int) GLint mode);
     /// ```

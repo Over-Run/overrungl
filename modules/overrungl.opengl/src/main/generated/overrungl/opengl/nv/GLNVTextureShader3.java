@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
+/// `GL_NV_texture_shader3`
 public final class GLNVTextureShader3 {
     public static final int GL_OFFSET_PROJECTIVE_TEXTURE_2D_NV = 0x8850;
     public static final int GL_OFFSET_PROJECTIVE_TEXTURE_2D_SCALE_NV = 0x8851;

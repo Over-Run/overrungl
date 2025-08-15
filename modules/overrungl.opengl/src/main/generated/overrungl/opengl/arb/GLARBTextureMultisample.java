@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_texture_multisample`
 public final class GLARBTextureMultisample {
     public static final int GL_SAMPLE_POSITION = 0x8E50;
     public static final int GL_SAMPLE_MASK = 0x8E51;
@@ -55,7 +55,7 @@ public final class GLARBTextureMultisample {
         public final MemorySegment PFN_glTexImage3DMultisample;
         public final MemorySegment PFN_glGetMultisamplefv;
         public final MemorySegment PFN_glSampleMaski;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTexImage2DMultisample = func.invoke("glTexImage2DMultisample");
             PFN_glTexImage3DMultisample = func.invoke("glTexImage3DMultisample");
             PFN_glGetMultisamplefv = func.invoke("glGetMultisamplefv");
@@ -63,10 +63,11 @@ public final class GLARBTextureMultisample {
         }
     }
 
-    public GLARBTextureMultisample(overrungl.opengl.GLLoadFunc func) {
+    public GLARBTextureMultisample(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTexImage2DMultisample`.
     /// ```
     /// void glTexImage2DMultisample((unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedsamplelocations);
     /// ```
@@ -77,6 +78,7 @@ public final class GLARBTextureMultisample {
         catch (Throwable e) { throw new RuntimeException("error in TexImage2DMultisample", e); }
     }
 
+    /// Invokes `glTexImage3DMultisample`.
     /// ```
     /// void glTexImage3DMultisample((unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedsamplelocations);
     /// ```
@@ -87,16 +89,18 @@ public final class GLARBTextureMultisample {
         catch (Throwable e) { throw new RuntimeException("error in TexImage3DMultisample", e); }
     }
 
+    /// Invokes `glGetMultisamplefv`.
     /// ```
     /// void glGetMultisamplefv((unsigned int) GLenum pname, (unsigned int) GLuint index, GLfloat* val);
     /// ```
-    public void GetMultisamplefv(int pname, int index, MemorySegment val) {
+    public void GetMultisamplefv(int pname, int index, @NonNull MemorySegment val) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultisamplefv)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultisamplefv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultisamplefv", pname, index, val); }
         Handles.MH_glGetMultisamplefv.invokeExact(handles.PFN_glGetMultisamplefv, pname, index, val); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultisamplefv", e); }
     }
 
+    /// Invokes `glSampleMaski`.
     /// ```
     /// void glSampleMaski((unsigned int) GLuint maskNumber, (unsigned int) GLbitfield mask);
     /// ```

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkSparseImageMemoryRequirements`.
 /// ## Layout
 /// ```
 /// struct VkSparseImageMemoryRequirements {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class VkSparseImageMemoryRequirements extends GroupType {
     /// The struct layout of `VkSparseImageMemoryRequirements`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkSparseImageFormatProperties.LAYOUT.withName("formatProperties"),
         ValueLayout.JAVA_INT.withName("imageMipTailFirstLod"),
         ValueLayout.JAVA_LONG.withName("imageMipTailSize"),

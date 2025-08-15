@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_direct_state_access`
 public final class GLEXTDirectStateAccess {
     public static final int GL_PROGRAM_MATRIX_EXT = 0x8E2D;
     public static final int GL_TRANSPOSE_PROGRAM_MATRIX_EXT = 0x8E2E;
@@ -539,7 +539,7 @@ public final class GLEXTDirectStateAccess {
         public final MemorySegment PFN_glVertexArrayVertexAttribLOffsetEXT;
         public final MemorySegment PFN_glTexturePageCommitmentEXT;
         public final MemorySegment PFN_glVertexArrayVertexAttribDivisorEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glMatrixLoadfEXT = func.invoke("glMatrixLoadfEXT");
             PFN_glMatrixLoaddEXT = func.invoke("glMatrixLoaddEXT");
             PFN_glMatrixMultfEXT = func.invoke("glMatrixMultfEXT");
@@ -753,50 +753,55 @@ public final class GLEXTDirectStateAccess {
         }
     }
 
-    public GLEXTDirectStateAccess(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTDirectStateAccess(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glMatrixLoadfEXT`.
     /// ```
     /// void glMatrixLoadfEXT((unsigned int) GLenum mode, const GLfloat* m);
     /// ```
-    public void MatrixLoadfEXT(int mode, MemorySegment m) {
+    public void MatrixLoadfEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixLoadfEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixLoadfEXT", mode, m); }
         Handles.MH_glMatrixLoadfEXT.invokeExact(handles.PFN_glMatrixLoadfEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixLoadfEXT", e); }
     }
 
+    /// Invokes `glMatrixLoaddEXT`.
     /// ```
     /// void glMatrixLoaddEXT((unsigned int) GLenum mode, const GLdouble* m);
     /// ```
-    public void MatrixLoaddEXT(int mode, MemorySegment m) {
+    public void MatrixLoaddEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoaddEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixLoaddEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixLoaddEXT", mode, m); }
         Handles.MH_glMatrixLoaddEXT.invokeExact(handles.PFN_glMatrixLoaddEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixLoaddEXT", e); }
     }
 
+    /// Invokes `glMatrixMultfEXT`.
     /// ```
     /// void glMatrixMultfEXT((unsigned int) GLenum mode, const GLfloat* m);
     /// ```
-    public void MatrixMultfEXT(int mode, MemorySegment m) {
+    public void MatrixMultfEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixMultfEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixMultfEXT", mode, m); }
         Handles.MH_glMatrixMultfEXT.invokeExact(handles.PFN_glMatrixMultfEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixMultfEXT", e); }
     }
 
+    /// Invokes `glMatrixMultdEXT`.
     /// ```
     /// void glMatrixMultdEXT((unsigned int) GLenum mode, const GLdouble* m);
     /// ```
-    public void MatrixMultdEXT(int mode, MemorySegment m) {
+    public void MatrixMultdEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultdEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixMultdEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixMultdEXT", mode, m); }
         Handles.MH_glMatrixMultdEXT.invokeExact(handles.PFN_glMatrixMultdEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixMultdEXT", e); }
     }
 
+    /// Invokes `glMatrixLoadIdentityEXT`.
     /// ```
     /// void glMatrixLoadIdentityEXT((unsigned int) GLenum mode);
     /// ```
@@ -807,6 +812,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MatrixLoadIdentityEXT", e); }
     }
 
+    /// Invokes `glMatrixRotatefEXT`.
     /// ```
     /// void glMatrixRotatefEXT((unsigned int) GLenum mode, ((float) khronos_float_t) GLfloat angle, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z);
     /// ```
@@ -817,6 +823,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MatrixRotatefEXT", e); }
     }
 
+    /// Invokes `glMatrixRotatedEXT`.
     /// ```
     /// void glMatrixRotatedEXT((unsigned int) GLenum mode, (double) GLdouble angle, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
@@ -827,6 +834,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MatrixRotatedEXT", e); }
     }
 
+    /// Invokes `glMatrixScalefEXT`.
     /// ```
     /// void glMatrixScalefEXT((unsigned int) GLenum mode, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z);
     /// ```
@@ -837,6 +845,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MatrixScalefEXT", e); }
     }
 
+    /// Invokes `glMatrixScaledEXT`.
     /// ```
     /// void glMatrixScaledEXT((unsigned int) GLenum mode, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
@@ -847,6 +856,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MatrixScaledEXT", e); }
     }
 
+    /// Invokes `glMatrixTranslatefEXT`.
     /// ```
     /// void glMatrixTranslatefEXT((unsigned int) GLenum mode, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z);
     /// ```
@@ -857,6 +867,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MatrixTranslatefEXT", e); }
     }
 
+    /// Invokes `glMatrixTranslatedEXT`.
     /// ```
     /// void glMatrixTranslatedEXT((unsigned int) GLenum mode, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
@@ -867,6 +878,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MatrixTranslatedEXT", e); }
     }
 
+    /// Invokes `glMatrixFrustumEXT`.
     /// ```
     /// void glMatrixFrustumEXT((unsigned int) GLenum mode, (double) GLdouble left, (double) GLdouble right, (double) GLdouble bottom, (double) GLdouble top, (double) GLdouble zNear, (double) GLdouble zFar);
     /// ```
@@ -877,6 +889,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MatrixFrustumEXT", e); }
     }
 
+    /// Invokes `glMatrixOrthoEXT`.
     /// ```
     /// void glMatrixOrthoEXT((unsigned int) GLenum mode, (double) GLdouble left, (double) GLdouble right, (double) GLdouble bottom, (double) GLdouble top, (double) GLdouble zNear, (double) GLdouble zFar);
     /// ```
@@ -887,6 +900,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MatrixOrthoEXT", e); }
     }
 
+    /// Invokes `glMatrixPopEXT`.
     /// ```
     /// void glMatrixPopEXT((unsigned int) GLenum mode);
     /// ```
@@ -897,6 +911,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MatrixPopEXT", e); }
     }
 
+    /// Invokes `glMatrixPushEXT`.
     /// ```
     /// void glMatrixPushEXT((unsigned int) GLenum mode);
     /// ```
@@ -907,6 +922,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MatrixPushEXT", e); }
     }
 
+    /// Invokes `glClientAttribDefaultEXT`.
     /// ```
     /// void glClientAttribDefaultEXT((unsigned int) GLbitfield mask);
     /// ```
@@ -917,6 +933,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ClientAttribDefaultEXT", e); }
     }
 
+    /// Invokes `glPushClientAttribDefaultEXT`.
     /// ```
     /// void glPushClientAttribDefaultEXT((unsigned int) GLbitfield mask);
     /// ```
@@ -927,6 +944,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in PushClientAttribDefaultEXT", e); }
     }
 
+    /// Invokes `glTextureParameterfEXT`.
     /// ```
     /// void glTextureParameterfEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
@@ -937,16 +955,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterfEXT", e); }
     }
 
+    /// Invokes `glTextureParameterfvEXT`.
     /// ```
     /// void glTextureParameterfvEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfloat* params);
     /// ```
-    public void TextureParameterfvEXT(int texture, int target, int pname, MemorySegment params) {
+    public void TextureParameterfvEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterfvEXT", texture, target, pname, params); }
         Handles.MH_glTextureParameterfvEXT.invokeExact(handles.PFN_glTextureParameterfvEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterfvEXT", e); }
     }
 
+    /// Invokes `glTextureParameteriEXT`.
     /// ```
     /// void glTextureParameteriEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -957,56 +977,62 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureParameteriEXT", e); }
     }
 
+    /// Invokes `glTextureParameterivEXT`.
     /// ```
     /// void glTextureParameterivEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum pname, const GLint* params);
     /// ```
-    public void TextureParameterivEXT(int texture, int target, int pname, MemorySegment params) {
+    public void TextureParameterivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterivEXT", texture, target, pname, params); }
         Handles.MH_glTextureParameterivEXT.invokeExact(handles.PFN_glTextureParameterivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterivEXT", e); }
     }
 
+    /// Invokes `glTextureImage1DEXT`.
     /// ```
     /// void glTextureImage1DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint internalformat, (int) GLsizei width, (int) GLint border, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void TextureImage1DEXT(int texture, int target, int level, int internalformat, int width, int border, int format, int type, MemorySegment pixels) {
+    public void TextureImage1DEXT(int texture, int target, int level, int internalformat, int width, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureImage1DEXT", texture, target, level, internalformat, width, border, format, type, pixels); }
         Handles.MH_glTextureImage1DEXT.invokeExact(handles.PFN_glTextureImage1DEXT, texture, target, level, internalformat, width, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureImage1DEXT", e); }
     }
 
+    /// Invokes `glTextureImage2DEXT`.
     /// ```
     /// void glTextureImage2DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLint border, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void TextureImage2DEXT(int texture, int target, int level, int internalformat, int width, int height, int border, int format, int type, MemorySegment pixels) {
+    public void TextureImage2DEXT(int texture, int target, int level, int internalformat, int width, int height, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureImage2DEXT", texture, target, level, internalformat, width, height, border, format, type, pixels); }
         Handles.MH_glTextureImage2DEXT.invokeExact(handles.PFN_glTextureImage2DEXT, texture, target, level, internalformat, width, height, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureImage2DEXT", e); }
     }
 
+    /// Invokes `glTextureSubImage1DEXT`.
     /// ```
     /// void glTextureSubImage1DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLsizei width, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void TextureSubImage1DEXT(int texture, int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
+    public void TextureSubImage1DEXT(int texture, int target, int level, int xoffset, int width, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureSubImage1DEXT", texture, target, level, xoffset, width, format, type, pixels); }
         Handles.MH_glTextureSubImage1DEXT.invokeExact(handles.PFN_glTextureSubImage1DEXT, texture, target, level, xoffset, width, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureSubImage1DEXT", e); }
     }
 
+    /// Invokes `glTextureSubImage2DEXT`.
     /// ```
     /// void glTextureSubImage2DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void TextureSubImage2DEXT(int texture, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
+    public void TextureSubImage2DEXT(int texture, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureSubImage2DEXT", texture, target, level, xoffset, yoffset, width, height, format, type, pixels); }
         Handles.MH_glTextureSubImage2DEXT.invokeExact(handles.PFN_glTextureSubImage2DEXT, texture, target, level, xoffset, yoffset, width, height, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureSubImage2DEXT", e); }
     }
 
+    /// Invokes `glCopyTextureImage1DEXT`.
     /// ```
     /// void glCopyTextureImage1DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLint border);
     /// ```
@@ -1017,6 +1043,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureImage1DEXT", e); }
     }
 
+    /// Invokes `glCopyTextureImage2DEXT`.
     /// ```
     /// void glCopyTextureImage2DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height, (int) GLint border);
     /// ```
@@ -1027,6 +1054,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureImage2DEXT", e); }
     }
 
+    /// Invokes `glCopyTextureSubImage1DEXT`.
     /// ```
     /// void glCopyTextureSubImage1DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint x, (int) GLint y, (int) GLsizei width);
     /// ```
@@ -1037,6 +1065,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage1DEXT", e); }
     }
 
+    /// Invokes `glCopyTextureSubImage2DEXT`.
     /// ```
     /// void glCopyTextureSubImage2DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -1047,76 +1076,84 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage2DEXT", e); }
     }
 
+    /// Invokes `glGetTextureImageEXT`.
     /// ```
     /// void glGetTextureImageEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum format, (unsigned int) GLenum type, void* pixels);
     /// ```
-    public void GetTextureImageEXT(int texture, int target, int level, int format, int type, MemorySegment pixels) {
+    public void GetTextureImageEXT(int texture, int target, int level, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureImageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureImageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureImageEXT", texture, target, level, format, type, pixels); }
         Handles.MH_glGetTextureImageEXT.invokeExact(handles.PFN_glGetTextureImageEXT, texture, target, level, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureImageEXT", e); }
     }
 
+    /// Invokes `glGetTextureParameterfvEXT`.
     /// ```
     /// void glGetTextureParameterfvEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetTextureParameterfvEXT(int texture, int target, int pname, MemorySegment params) {
+    public void GetTextureParameterfvEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameterfvEXT", texture, target, pname, params); }
         Handles.MH_glGetTextureParameterfvEXT.invokeExact(handles.PFN_glGetTextureParameterfvEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterfvEXT", e); }
     }
 
+    /// Invokes `glGetTextureParameterivEXT`.
     /// ```
     /// void glGetTextureParameterivEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetTextureParameterivEXT(int texture, int target, int pname, MemorySegment params) {
+    public void GetTextureParameterivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameterivEXT", texture, target, pname, params); }
         Handles.MH_glGetTextureParameterivEXT.invokeExact(handles.PFN_glGetTextureParameterivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterivEXT", e); }
     }
 
+    /// Invokes `glGetTextureLevelParameterfvEXT`.
     /// ```
     /// void glGetTextureLevelParameterfvEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetTextureLevelParameterfvEXT(int texture, int target, int level, int pname, MemorySegment params) {
+    public void GetTextureLevelParameterfvEXT(int texture, int target, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureLevelParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureLevelParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureLevelParameterfvEXT", texture, target, level, pname, params); }
         Handles.MH_glGetTextureLevelParameterfvEXT.invokeExact(handles.PFN_glGetTextureLevelParameterfvEXT, texture, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureLevelParameterfvEXT", e); }
     }
 
+    /// Invokes `glGetTextureLevelParameterivEXT`.
     /// ```
     /// void glGetTextureLevelParameterivEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetTextureLevelParameterivEXT(int texture, int target, int level, int pname, MemorySegment params) {
+    public void GetTextureLevelParameterivEXT(int texture, int target, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureLevelParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureLevelParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureLevelParameterivEXT", texture, target, level, pname, params); }
         Handles.MH_glGetTextureLevelParameterivEXT.invokeExact(handles.PFN_glGetTextureLevelParameterivEXT, texture, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureLevelParameterivEXT", e); }
     }
 
+    /// Invokes `glTextureImage3DEXT`.
     /// ```
     /// void glTextureImage3DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLint border, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void TextureImage3DEXT(int texture, int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, MemorySegment pixels) {
+    public void TextureImage3DEXT(int texture, int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureImage3DEXT", texture, target, level, internalformat, width, height, depth, border, format, type, pixels); }
         Handles.MH_glTextureImage3DEXT.invokeExact(handles.PFN_glTextureImage3DEXT, texture, target, level, internalformat, width, height, depth, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureImage3DEXT", e); }
     }
 
+    /// Invokes `glTextureSubImage3DEXT`.
     /// ```
     /// void glTextureSubImage3DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void TextureSubImage3DEXT(int texture, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
+    public void TextureSubImage3DEXT(int texture, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureSubImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureSubImage3DEXT", texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         Handles.MH_glTextureSubImage3DEXT.invokeExact(handles.PFN_glTextureSubImage3DEXT, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureSubImage3DEXT", e); }
     }
 
+    /// Invokes `glCopyTextureSubImage3DEXT`.
     /// ```
     /// void glCopyTextureSubImage3DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -1127,6 +1164,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage3DEXT", e); }
     }
 
+    /// Invokes `glBindMultiTextureEXT`.
     /// ```
     /// void glBindMultiTextureEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLuint texture);
     /// ```
@@ -1137,16 +1175,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in BindMultiTextureEXT", e); }
     }
 
+    /// Invokes `glMultiTexCoordPointerEXT`.
     /// ```
     /// void glMultiTexCoordPointerEXT((unsigned int) GLenum texunit, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, const void* pointer);
     /// ```
-    public void MultiTexCoordPointerEXT(int texunit, int size, int type, int stride, MemorySegment pointer) {
+    public void MultiTexCoordPointerEXT(int texunit, int size, int type, int stride, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoordPointerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoordPointerEXT", texunit, size, type, stride, pointer); }
         Handles.MH_glMultiTexCoordPointerEXT.invokeExact(handles.PFN_glMultiTexCoordPointerEXT, texunit, size, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoordPointerEXT", e); }
     }
 
+    /// Invokes `glMultiTexEnvfEXT`.
     /// ```
     /// void glMultiTexEnvfEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
@@ -1157,16 +1197,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexEnvfEXT", e); }
     }
 
+    /// Invokes `glMultiTexEnvfvEXT`.
     /// ```
     /// void glMultiTexEnvfvEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfloat* params);
     /// ```
-    public void MultiTexEnvfvEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void MultiTexEnvfvEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexEnvfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexEnvfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexEnvfvEXT", texunit, target, pname, params); }
         Handles.MH_glMultiTexEnvfvEXT.invokeExact(handles.PFN_glMultiTexEnvfvEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexEnvfvEXT", e); }
     }
 
+    /// Invokes `glMultiTexEnviEXT`.
     /// ```
     /// void glMultiTexEnviEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -1177,16 +1219,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexEnviEXT", e); }
     }
 
+    /// Invokes `glMultiTexEnvivEXT`.
     /// ```
     /// void glMultiTexEnvivEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, const GLint* params);
     /// ```
-    public void MultiTexEnvivEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void MultiTexEnvivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexEnvivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexEnvivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexEnvivEXT", texunit, target, pname, params); }
         Handles.MH_glMultiTexEnvivEXT.invokeExact(handles.PFN_glMultiTexEnvivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexEnvivEXT", e); }
     }
 
+    /// Invokes `glMultiTexGendEXT`.
     /// ```
     /// void glMultiTexGendEXT((unsigned int) GLenum texunit, (unsigned int) GLenum coord, (unsigned int) GLenum pname, (double) GLdouble param);
     /// ```
@@ -1197,16 +1241,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGendEXT", e); }
     }
 
+    /// Invokes `glMultiTexGendvEXT`.
     /// ```
     /// void glMultiTexGendvEXT((unsigned int) GLenum texunit, (unsigned int) GLenum coord, (unsigned int) GLenum pname, const GLdouble* params);
     /// ```
-    public void MultiTexGendvEXT(int texunit, int coord, int pname, MemorySegment params) {
+    public void MultiTexGendvEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGendvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexGendvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexGendvEXT", texunit, coord, pname, params); }
         Handles.MH_glMultiTexGendvEXT.invokeExact(handles.PFN_glMultiTexGendvEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGendvEXT", e); }
     }
 
+    /// Invokes `glMultiTexGenfEXT`.
     /// ```
     /// void glMultiTexGenfEXT((unsigned int) GLenum texunit, (unsigned int) GLenum coord, (unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
@@ -1217,16 +1263,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGenfEXT", e); }
     }
 
+    /// Invokes `glMultiTexGenfvEXT`.
     /// ```
     /// void glMultiTexGenfvEXT((unsigned int) GLenum texunit, (unsigned int) GLenum coord, (unsigned int) GLenum pname, const GLfloat* params);
     /// ```
-    public void MultiTexGenfvEXT(int texunit, int coord, int pname, MemorySegment params) {
+    public void MultiTexGenfvEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGenfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexGenfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexGenfvEXT", texunit, coord, pname, params); }
         Handles.MH_glMultiTexGenfvEXT.invokeExact(handles.PFN_glMultiTexGenfvEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGenfvEXT", e); }
     }
 
+    /// Invokes `glMultiTexGeniEXT`.
     /// ```
     /// void glMultiTexGeniEXT((unsigned int) GLenum texunit, (unsigned int) GLenum coord, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -1237,66 +1285,73 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGeniEXT", e); }
     }
 
+    /// Invokes `glMultiTexGenivEXT`.
     /// ```
     /// void glMultiTexGenivEXT((unsigned int) GLenum texunit, (unsigned int) GLenum coord, (unsigned int) GLenum pname, const GLint* params);
     /// ```
-    public void MultiTexGenivEXT(int texunit, int coord, int pname, MemorySegment params) {
+    public void MultiTexGenivEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGenivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexGenivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexGenivEXT", texunit, coord, pname, params); }
         Handles.MH_glMultiTexGenivEXT.invokeExact(handles.PFN_glMultiTexGenivEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGenivEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexEnvfvEXT`.
     /// ```
     /// void glGetMultiTexEnvfvEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetMultiTexEnvfvEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void GetMultiTexEnvfvEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexEnvfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexEnvfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexEnvfvEXT", texunit, target, pname, params); }
         Handles.MH_glGetMultiTexEnvfvEXT.invokeExact(handles.PFN_glGetMultiTexEnvfvEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexEnvfvEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexEnvivEXT`.
     /// ```
     /// void glGetMultiTexEnvivEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetMultiTexEnvivEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void GetMultiTexEnvivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexEnvivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexEnvivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexEnvivEXT", texunit, target, pname, params); }
         Handles.MH_glGetMultiTexEnvivEXT.invokeExact(handles.PFN_glGetMultiTexEnvivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexEnvivEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexGendvEXT`.
     /// ```
     /// void glGetMultiTexGendvEXT((unsigned int) GLenum texunit, (unsigned int) GLenum coord, (unsigned int) GLenum pname, GLdouble* params);
     /// ```
-    public void GetMultiTexGendvEXT(int texunit, int coord, int pname, MemorySegment params) {
+    public void GetMultiTexGendvEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexGendvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexGendvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexGendvEXT", texunit, coord, pname, params); }
         Handles.MH_glGetMultiTexGendvEXT.invokeExact(handles.PFN_glGetMultiTexGendvEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexGendvEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexGenfvEXT`.
     /// ```
     /// void glGetMultiTexGenfvEXT((unsigned int) GLenum texunit, (unsigned int) GLenum coord, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetMultiTexGenfvEXT(int texunit, int coord, int pname, MemorySegment params) {
+    public void GetMultiTexGenfvEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexGenfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexGenfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexGenfvEXT", texunit, coord, pname, params); }
         Handles.MH_glGetMultiTexGenfvEXT.invokeExact(handles.PFN_glGetMultiTexGenfvEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexGenfvEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexGenivEXT`.
     /// ```
     /// void glGetMultiTexGenivEXT((unsigned int) GLenum texunit, (unsigned int) GLenum coord, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetMultiTexGenivEXT(int texunit, int coord, int pname, MemorySegment params) {
+    public void GetMultiTexGenivEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexGenivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexGenivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexGenivEXT", texunit, coord, pname, params); }
         Handles.MH_glGetMultiTexGenivEXT.invokeExact(handles.PFN_glGetMultiTexGenivEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexGenivEXT", e); }
     }
 
+    /// Invokes `glMultiTexParameteriEXT`.
     /// ```
     /// void glMultiTexParameteriEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -1307,16 +1362,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameteriEXT", e); }
     }
 
+    /// Invokes `glMultiTexParameterivEXT`.
     /// ```
     /// void glMultiTexParameterivEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, const GLint* params);
     /// ```
-    public void MultiTexParameterivEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void MultiTexParameterivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexParameterivEXT", texunit, target, pname, params); }
         Handles.MH_glMultiTexParameterivEXT.invokeExact(handles.PFN_glMultiTexParameterivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameterivEXT", e); }
     }
 
+    /// Invokes `glMultiTexParameterfEXT`.
     /// ```
     /// void glMultiTexParameterfEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
@@ -1327,56 +1384,62 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameterfEXT", e); }
     }
 
+    /// Invokes `glMultiTexParameterfvEXT`.
     /// ```
     /// void glMultiTexParameterfvEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfloat* params);
     /// ```
-    public void MultiTexParameterfvEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void MultiTexParameterfvEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexParameterfvEXT", texunit, target, pname, params); }
         Handles.MH_glMultiTexParameterfvEXT.invokeExact(handles.PFN_glMultiTexParameterfvEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameterfvEXT", e); }
     }
 
+    /// Invokes `glMultiTexImage1DEXT`.
     /// ```
     /// void glMultiTexImage1DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint internalformat, (int) GLsizei width, (int) GLint border, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void MultiTexImage1DEXT(int texunit, int target, int level, int internalformat, int width, int border, int format, int type, MemorySegment pixels) {
+    public void MultiTexImage1DEXT(int texunit, int target, int level, int internalformat, int width, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexImage1DEXT", texunit, target, level, internalformat, width, border, format, type, pixels); }
         Handles.MH_glMultiTexImage1DEXT.invokeExact(handles.PFN_glMultiTexImage1DEXT, texunit, target, level, internalformat, width, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexImage1DEXT", e); }
     }
 
+    /// Invokes `glMultiTexImage2DEXT`.
     /// ```
     /// void glMultiTexImage2DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLint border, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void MultiTexImage2DEXT(int texunit, int target, int level, int internalformat, int width, int height, int border, int format, int type, MemorySegment pixels) {
+    public void MultiTexImage2DEXT(int texunit, int target, int level, int internalformat, int width, int height, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexImage2DEXT", texunit, target, level, internalformat, width, height, border, format, type, pixels); }
         Handles.MH_glMultiTexImage2DEXT.invokeExact(handles.PFN_glMultiTexImage2DEXT, texunit, target, level, internalformat, width, height, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexImage2DEXT", e); }
     }
 
+    /// Invokes `glMultiTexSubImage1DEXT`.
     /// ```
     /// void glMultiTexSubImage1DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLsizei width, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void MultiTexSubImage1DEXT(int texunit, int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
+    public void MultiTexSubImage1DEXT(int texunit, int target, int level, int xoffset, int width, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexSubImage1DEXT", texunit, target, level, xoffset, width, format, type, pixels); }
         Handles.MH_glMultiTexSubImage1DEXT.invokeExact(handles.PFN_glMultiTexSubImage1DEXT, texunit, target, level, xoffset, width, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexSubImage1DEXT", e); }
     }
 
+    /// Invokes `glMultiTexSubImage2DEXT`.
     /// ```
     /// void glMultiTexSubImage2DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void MultiTexSubImage2DEXT(int texunit, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
+    public void MultiTexSubImage2DEXT(int texunit, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexSubImage2DEXT", texunit, target, level, xoffset, yoffset, width, height, format, type, pixels); }
         Handles.MH_glMultiTexSubImage2DEXT.invokeExact(handles.PFN_glMultiTexSubImage2DEXT, texunit, target, level, xoffset, yoffset, width, height, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexSubImage2DEXT", e); }
     }
 
+    /// Invokes `glCopyMultiTexImage1DEXT`.
     /// ```
     /// void glCopyMultiTexImage1DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLint border);
     /// ```
@@ -1387,6 +1450,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyMultiTexImage1DEXT", e); }
     }
 
+    /// Invokes `glCopyMultiTexImage2DEXT`.
     /// ```
     /// void glCopyMultiTexImage2DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height, (int) GLint border);
     /// ```
@@ -1397,6 +1461,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyMultiTexImage2DEXT", e); }
     }
 
+    /// Invokes `glCopyMultiTexSubImage1DEXT`.
     /// ```
     /// void glCopyMultiTexSubImage1DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint x, (int) GLint y, (int) GLsizei width);
     /// ```
@@ -1407,6 +1472,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyMultiTexSubImage1DEXT", e); }
     }
 
+    /// Invokes `glCopyMultiTexSubImage2DEXT`.
     /// ```
     /// void glCopyMultiTexSubImage2DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -1417,76 +1483,84 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyMultiTexSubImage2DEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexImageEXT`.
     /// ```
     /// void glGetMultiTexImageEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum format, (unsigned int) GLenum type, void* pixels);
     /// ```
-    public void GetMultiTexImageEXT(int texunit, int target, int level, int format, int type, MemorySegment pixels) {
+    public void GetMultiTexImageEXT(int texunit, int target, int level, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexImageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexImageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexImageEXT", texunit, target, level, format, type, pixels); }
         Handles.MH_glGetMultiTexImageEXT.invokeExact(handles.PFN_glGetMultiTexImageEXT, texunit, target, level, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexImageEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexParameterfvEXT`.
     /// ```
     /// void glGetMultiTexParameterfvEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetMultiTexParameterfvEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void GetMultiTexParameterfvEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexParameterfvEXT", texunit, target, pname, params); }
         Handles.MH_glGetMultiTexParameterfvEXT.invokeExact(handles.PFN_glGetMultiTexParameterfvEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexParameterfvEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexParameterivEXT`.
     /// ```
     /// void glGetMultiTexParameterivEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetMultiTexParameterivEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void GetMultiTexParameterivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexParameterivEXT", texunit, target, pname, params); }
         Handles.MH_glGetMultiTexParameterivEXT.invokeExact(handles.PFN_glGetMultiTexParameterivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexParameterivEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexLevelParameterfvEXT`.
     /// ```
     /// void glGetMultiTexLevelParameterfvEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetMultiTexLevelParameterfvEXT(int texunit, int target, int level, int pname, MemorySegment params) {
+    public void GetMultiTexLevelParameterfvEXT(int texunit, int target, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexLevelParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexLevelParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexLevelParameterfvEXT", texunit, target, level, pname, params); }
         Handles.MH_glGetMultiTexLevelParameterfvEXT.invokeExact(handles.PFN_glGetMultiTexLevelParameterfvEXT, texunit, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexLevelParameterfvEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexLevelParameterivEXT`.
     /// ```
     /// void glGetMultiTexLevelParameterivEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetMultiTexLevelParameterivEXT(int texunit, int target, int level, int pname, MemorySegment params) {
+    public void GetMultiTexLevelParameterivEXT(int texunit, int target, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexLevelParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexLevelParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexLevelParameterivEXT", texunit, target, level, pname, params); }
         Handles.MH_glGetMultiTexLevelParameterivEXT.invokeExact(handles.PFN_glGetMultiTexLevelParameterivEXT, texunit, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexLevelParameterivEXT", e); }
     }
 
+    /// Invokes `glMultiTexImage3DEXT`.
     /// ```
     /// void glMultiTexImage3DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLint border, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void MultiTexImage3DEXT(int texunit, int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, MemorySegment pixels) {
+    public void MultiTexImage3DEXT(int texunit, int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexImage3DEXT", texunit, target, level, internalformat, width, height, depth, border, format, type, pixels); }
         Handles.MH_glMultiTexImage3DEXT.invokeExact(handles.PFN_glMultiTexImage3DEXT, texunit, target, level, internalformat, width, height, depth, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexImage3DEXT", e); }
     }
 
+    /// Invokes `glMultiTexSubImage3DEXT`.
     /// ```
     /// void glMultiTexSubImage3DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void MultiTexSubImage3DEXT(int texunit, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
+    public void MultiTexSubImage3DEXT(int texunit, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexSubImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexSubImage3DEXT", texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         Handles.MH_glMultiTexSubImage3DEXT.invokeExact(handles.PFN_glMultiTexSubImage3DEXT, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexSubImage3DEXT", e); }
     }
 
+    /// Invokes `glCopyMultiTexSubImage3DEXT`.
     /// ```
     /// void glCopyMultiTexSubImage3DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -1497,6 +1571,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyMultiTexSubImage3DEXT", e); }
     }
 
+    /// Invokes `glEnableClientStateIndexedEXT`.
     /// ```
     /// void glEnableClientStateIndexedEXT((unsigned int) GLenum array, (unsigned int) GLuint index);
     /// ```
@@ -1507,6 +1582,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in EnableClientStateIndexedEXT", e); }
     }
 
+    /// Invokes `glDisableClientStateIndexedEXT`.
     /// ```
     /// void glDisableClientStateIndexedEXT((unsigned int) GLenum array, (unsigned int) GLuint index);
     /// ```
@@ -1517,36 +1593,40 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in DisableClientStateIndexedEXT", e); }
     }
 
+    /// Invokes `glGetFloatIndexedvEXT`.
     /// ```
     /// void glGetFloatIndexedvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, GLfloat* data);
     /// ```
-    public void GetFloatIndexedvEXT(int target, int index, MemorySegment data) {
+    public void GetFloatIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFloatIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetFloatIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFloatIndexedvEXT", target, index, data); }
         Handles.MH_glGetFloatIndexedvEXT.invokeExact(handles.PFN_glGetFloatIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetFloatIndexedvEXT", e); }
     }
 
+    /// Invokes `glGetDoubleIndexedvEXT`.
     /// ```
     /// void glGetDoubleIndexedvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, GLdouble* data);
     /// ```
-    public void GetDoubleIndexedvEXT(int target, int index, MemorySegment data) {
+    public void GetDoubleIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDoubleIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetDoubleIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetDoubleIndexedvEXT", target, index, data); }
         Handles.MH_glGetDoubleIndexedvEXT.invokeExact(handles.PFN_glGetDoubleIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetDoubleIndexedvEXT", e); }
     }
 
+    /// Invokes `glGetPointerIndexedvEXT`.
     /// ```
     /// void glGetPointerIndexedvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, void** data);
     /// ```
-    public void GetPointerIndexedvEXT(int target, int index, MemorySegment data) {
+    public void GetPointerIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPointerIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetPointerIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPointerIndexedvEXT", target, index, data); }
         Handles.MH_glGetPointerIndexedvEXT.invokeExact(handles.PFN_glGetPointerIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetPointerIndexedvEXT", e); }
     }
 
+    /// Invokes `glEnableIndexedEXT`.
     /// ```
     /// void glEnableIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
     /// ```
@@ -1557,6 +1637,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in EnableIndexedEXT", e); }
     }
 
+    /// Invokes `glDisableIndexedEXT`.
     /// ```
     /// void glDisableIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
     /// ```
@@ -1567,6 +1648,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in DisableIndexedEXT", e); }
     }
 
+    /// Invokes `glIsEnabledIndexedEXT`.
     /// ```
     /// GLboolean glIsEnabledIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
     /// ```
@@ -1577,236 +1659,260 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in IsEnabledIndexedEXT", e); }
     }
 
+    /// Invokes `glGetIntegerIndexedvEXT`.
     /// ```
     /// void glGetIntegerIndexedvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, GLint* data);
     /// ```
-    public void GetIntegerIndexedvEXT(int target, int index, MemorySegment data) {
+    public void GetIntegerIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetIntegerIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetIntegerIndexedvEXT", target, index, data); }
         Handles.MH_glGetIntegerIndexedvEXT.invokeExact(handles.PFN_glGetIntegerIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetIntegerIndexedvEXT", e); }
     }
 
+    /// Invokes `glGetBooleanIndexedvEXT`.
     /// ```
     /// void glGetBooleanIndexedvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, GLboolean* data);
     /// ```
-    public void GetBooleanIndexedvEXT(int target, int index, MemorySegment data) {
+    public void GetBooleanIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBooleanIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetBooleanIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetBooleanIndexedvEXT", target, index, data); }
         Handles.MH_glGetBooleanIndexedvEXT.invokeExact(handles.PFN_glGetBooleanIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetBooleanIndexedvEXT", e); }
     }
 
+    /// Invokes `glCompressedTextureImage3DEXT`.
     /// ```
     /// void glCompressedTextureImage3DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLint border, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedTextureImage3DEXT(int texture, int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, MemorySegment bits) {
+    public void CompressedTextureImage3DEXT(int texture, int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureImage3DEXT", texture, target, level, internalformat, width, height, depth, border, imageSize, bits); }
         Handles.MH_glCompressedTextureImage3DEXT.invokeExact(handles.PFN_glCompressedTextureImage3DEXT, texture, target, level, internalformat, width, height, depth, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureImage3DEXT", e); }
     }
 
+    /// Invokes `glCompressedTextureImage2DEXT`.
     /// ```
     /// void glCompressedTextureImage2DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLint border, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedTextureImage2DEXT(int texture, int target, int level, int internalformat, int width, int height, int border, int imageSize, MemorySegment bits) {
+    public void CompressedTextureImage2DEXT(int texture, int target, int level, int internalformat, int width, int height, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureImage2DEXT", texture, target, level, internalformat, width, height, border, imageSize, bits); }
         Handles.MH_glCompressedTextureImage2DEXT.invokeExact(handles.PFN_glCompressedTextureImage2DEXT, texture, target, level, internalformat, width, height, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureImage2DEXT", e); }
     }
 
+    /// Invokes `glCompressedTextureImage1DEXT`.
     /// ```
     /// void glCompressedTextureImage1DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLint border, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedTextureImage1DEXT(int texture, int target, int level, int internalformat, int width, int border, int imageSize, MemorySegment bits) {
+    public void CompressedTextureImage1DEXT(int texture, int target, int level, int internalformat, int width, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureImage1DEXT", texture, target, level, internalformat, width, border, imageSize, bits); }
         Handles.MH_glCompressedTextureImage1DEXT.invokeExact(handles.PFN_glCompressedTextureImage1DEXT, texture, target, level, internalformat, width, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureImage1DEXT", e); }
     }
 
+    /// Invokes `glCompressedTextureSubImage3DEXT`.
     /// ```
     /// void glCompressedTextureSubImage3DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedTextureSubImage3DEXT(int texture, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, MemorySegment bits) {
+    public void CompressedTextureSubImage3DEXT(int texture, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureSubImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureSubImage3DEXT", texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits); }
         Handles.MH_glCompressedTextureSubImage3DEXT.invokeExact(handles.PFN_glCompressedTextureSubImage3DEXT, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage3DEXT", e); }
     }
 
+    /// Invokes `glCompressedTextureSubImage2DEXT`.
     /// ```
     /// void glCompressedTextureSubImage2DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedTextureSubImage2DEXT(int texture, int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, MemorySegment bits) {
+    public void CompressedTextureSubImage2DEXT(int texture, int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureSubImage2DEXT", texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits); }
         Handles.MH_glCompressedTextureSubImage2DEXT.invokeExact(handles.PFN_glCompressedTextureSubImage2DEXT, texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage2DEXT", e); }
     }
 
+    /// Invokes `glCompressedTextureSubImage1DEXT`.
     /// ```
     /// void glCompressedTextureSubImage1DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLsizei width, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedTextureSubImage1DEXT(int texture, int target, int level, int xoffset, int width, int format, int imageSize, MemorySegment bits) {
+    public void CompressedTextureSubImage1DEXT(int texture, int target, int level, int xoffset, int width, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureSubImage1DEXT", texture, target, level, xoffset, width, format, imageSize, bits); }
         Handles.MH_glCompressedTextureSubImage1DEXT.invokeExact(handles.PFN_glCompressedTextureSubImage1DEXT, texture, target, level, xoffset, width, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage1DEXT", e); }
     }
 
+    /// Invokes `glGetCompressedTextureImageEXT`.
     /// ```
     /// void glGetCompressedTextureImageEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLint lod, void* img);
     /// ```
-    public void GetCompressedTextureImageEXT(int texture, int target, int lod, MemorySegment img) {
+    public void GetCompressedTextureImageEXT(int texture, int target, int lod, @NonNull MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedTextureImageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetCompressedTextureImageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetCompressedTextureImageEXT", texture, target, lod, img); }
         Handles.MH_glGetCompressedTextureImageEXT.invokeExact(handles.PFN_glGetCompressedTextureImageEXT, texture, target, lod, img); }
         catch (Throwable e) { throw new RuntimeException("error in GetCompressedTextureImageEXT", e); }
     }
 
+    /// Invokes `glCompressedMultiTexImage3DEXT`.
     /// ```
     /// void glCompressedMultiTexImage3DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLint border, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedMultiTexImage3DEXT(int texunit, int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, MemorySegment bits) {
+    public void CompressedMultiTexImage3DEXT(int texunit, int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexImage3DEXT", texunit, target, level, internalformat, width, height, depth, border, imageSize, bits); }
         Handles.MH_glCompressedMultiTexImage3DEXT.invokeExact(handles.PFN_glCompressedMultiTexImage3DEXT, texunit, target, level, internalformat, width, height, depth, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexImage3DEXT", e); }
     }
 
+    /// Invokes `glCompressedMultiTexImage2DEXT`.
     /// ```
     /// void glCompressedMultiTexImage2DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLint border, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedMultiTexImage2DEXT(int texunit, int target, int level, int internalformat, int width, int height, int border, int imageSize, MemorySegment bits) {
+    public void CompressedMultiTexImage2DEXT(int texunit, int target, int level, int internalformat, int width, int height, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexImage2DEXT", texunit, target, level, internalformat, width, height, border, imageSize, bits); }
         Handles.MH_glCompressedMultiTexImage2DEXT.invokeExact(handles.PFN_glCompressedMultiTexImage2DEXT, texunit, target, level, internalformat, width, height, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexImage2DEXT", e); }
     }
 
+    /// Invokes `glCompressedMultiTexImage1DEXT`.
     /// ```
     /// void glCompressedMultiTexImage1DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLint border, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedMultiTexImage1DEXT(int texunit, int target, int level, int internalformat, int width, int border, int imageSize, MemorySegment bits) {
+    public void CompressedMultiTexImage1DEXT(int texunit, int target, int level, int internalformat, int width, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexImage1DEXT", texunit, target, level, internalformat, width, border, imageSize, bits); }
         Handles.MH_glCompressedMultiTexImage1DEXT.invokeExact(handles.PFN_glCompressedMultiTexImage1DEXT, texunit, target, level, internalformat, width, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexImage1DEXT", e); }
     }
 
+    /// Invokes `glCompressedMultiTexSubImage3DEXT`.
     /// ```
     /// void glCompressedMultiTexSubImage3DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedMultiTexSubImage3DEXT(int texunit, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, MemorySegment bits) {
+    public void CompressedMultiTexSubImage3DEXT(int texunit, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexSubImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexSubImage3DEXT", texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits); }
         Handles.MH_glCompressedMultiTexSubImage3DEXT.invokeExact(handles.PFN_glCompressedMultiTexSubImage3DEXT, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexSubImage3DEXT", e); }
     }
 
+    /// Invokes `glCompressedMultiTexSubImage2DEXT`.
     /// ```
     /// void glCompressedMultiTexSubImage2DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedMultiTexSubImage2DEXT(int texunit, int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, MemorySegment bits) {
+    public void CompressedMultiTexSubImage2DEXT(int texunit, int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexSubImage2DEXT", texunit, target, level, xoffset, yoffset, width, height, format, imageSize, bits); }
         Handles.MH_glCompressedMultiTexSubImage2DEXT.invokeExact(handles.PFN_glCompressedMultiTexSubImage2DEXT, texunit, target, level, xoffset, yoffset, width, height, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexSubImage2DEXT", e); }
     }
 
+    /// Invokes `glCompressedMultiTexSubImage1DEXT`.
     /// ```
     /// void glCompressedMultiTexSubImage1DEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLsizei width, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* bits);
     /// ```
-    public void CompressedMultiTexSubImage1DEXT(int texunit, int target, int level, int xoffset, int width, int format, int imageSize, MemorySegment bits) {
+    public void CompressedMultiTexSubImage1DEXT(int texunit, int target, int level, int xoffset, int width, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexSubImage1DEXT", texunit, target, level, xoffset, width, format, imageSize, bits); }
         Handles.MH_glCompressedMultiTexSubImage1DEXT.invokeExact(handles.PFN_glCompressedMultiTexSubImage1DEXT, texunit, target, level, xoffset, width, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexSubImage1DEXT", e); }
     }
 
+    /// Invokes `glGetCompressedMultiTexImageEXT`.
     /// ```
     /// void glGetCompressedMultiTexImageEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (int) GLint lod, void* img);
     /// ```
-    public void GetCompressedMultiTexImageEXT(int texunit, int target, int lod, MemorySegment img) {
+    public void GetCompressedMultiTexImageEXT(int texunit, int target, int lod, @NonNull MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedMultiTexImageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetCompressedMultiTexImageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetCompressedMultiTexImageEXT", texunit, target, lod, img); }
         Handles.MH_glGetCompressedMultiTexImageEXT.invokeExact(handles.PFN_glGetCompressedMultiTexImageEXT, texunit, target, lod, img); }
         catch (Throwable e) { throw new RuntimeException("error in GetCompressedMultiTexImageEXT", e); }
     }
 
+    /// Invokes `glMatrixLoadTransposefEXT`.
     /// ```
     /// void glMatrixLoadTransposefEXT((unsigned int) GLenum mode, const GLfloat* m);
     /// ```
-    public void MatrixLoadTransposefEXT(int mode, MemorySegment m) {
+    public void MatrixLoadTransposefEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadTransposefEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixLoadTransposefEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixLoadTransposefEXT", mode, m); }
         Handles.MH_glMatrixLoadTransposefEXT.invokeExact(handles.PFN_glMatrixLoadTransposefEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixLoadTransposefEXT", e); }
     }
 
+    /// Invokes `glMatrixLoadTransposedEXT`.
     /// ```
     /// void glMatrixLoadTransposedEXT((unsigned int) GLenum mode, const GLdouble* m);
     /// ```
-    public void MatrixLoadTransposedEXT(int mode, MemorySegment m) {
+    public void MatrixLoadTransposedEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadTransposedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixLoadTransposedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixLoadTransposedEXT", mode, m); }
         Handles.MH_glMatrixLoadTransposedEXT.invokeExact(handles.PFN_glMatrixLoadTransposedEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixLoadTransposedEXT", e); }
     }
 
+    /// Invokes `glMatrixMultTransposefEXT`.
     /// ```
     /// void glMatrixMultTransposefEXT((unsigned int) GLenum mode, const GLfloat* m);
     /// ```
-    public void MatrixMultTransposefEXT(int mode, MemorySegment m) {
+    public void MatrixMultTransposefEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultTransposefEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixMultTransposefEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixMultTransposefEXT", mode, m); }
         Handles.MH_glMatrixMultTransposefEXT.invokeExact(handles.PFN_glMatrixMultTransposefEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixMultTransposefEXT", e); }
     }
 
+    /// Invokes `glMatrixMultTransposedEXT`.
     /// ```
     /// void glMatrixMultTransposedEXT((unsigned int) GLenum mode, const GLdouble* m);
     /// ```
-    public void MatrixMultTransposedEXT(int mode, MemorySegment m) {
+    public void MatrixMultTransposedEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultTransposedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixMultTransposedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixMultTransposedEXT", mode, m); }
         Handles.MH_glMatrixMultTransposedEXT.invokeExact(handles.PFN_glMatrixMultTransposedEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixMultTransposedEXT", e); }
     }
 
+    /// Invokes `glNamedBufferDataEXT`.
     /// ```
     /// void glNamedBufferDataEXT((unsigned int) GLuint buffer, ((signed long long) khronos_ssize_t) GLsizeiptr size, const void* data, (unsigned int) GLenum usage);
     /// ```
-    public void NamedBufferDataEXT(int buffer, long size, MemorySegment data, int usage) {
+    public void NamedBufferDataEXT(int buffer, long size, @NonNull MemorySegment data, int usage) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferDataEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedBufferDataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedBufferDataEXT", buffer, size, data, usage); }
         Handles.MH_glNamedBufferDataEXT.invokeExact(handles.PFN_glNamedBufferDataEXT, buffer, size, data, usage); }
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferDataEXT", e); }
     }
 
+    /// Invokes `glNamedBufferSubDataEXT`.
     /// ```
     /// void glNamedBufferSubDataEXT((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, const void* data);
     /// ```
-    public void NamedBufferSubDataEXT(int buffer, long offset, long size, MemorySegment data) {
+    public void NamedBufferSubDataEXT(int buffer, long offset, long size, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferSubDataEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedBufferSubDataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedBufferSubDataEXT", buffer, offset, size, data); }
         Handles.MH_glNamedBufferSubDataEXT.invokeExact(handles.PFN_glNamedBufferSubDataEXT, buffer, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferSubDataEXT", e); }
     }
 
+    /// Invokes `glMapNamedBufferEXT`.
     /// ```
     /// void* glMapNamedBufferEXT((unsigned int) GLuint buffer, (unsigned int) GLenum access);
     /// ```
-    public MemorySegment MapNamedBufferEXT(int buffer, int access) {
+    public @NonNull MemorySegment MapNamedBufferEXT(int buffer, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapNamedBufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMapNamedBufferEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapNamedBufferEXT", buffer, access); }
         return (MemorySegment) Handles.MH_glMapNamedBufferEXT.invokeExact(handles.PFN_glMapNamedBufferEXT, buffer, access); }
         catch (Throwable e) { throw new RuntimeException("error in MapNamedBufferEXT", e); }
     }
 
+    /// Invokes `glUnmapNamedBufferEXT`.
     /// ```
     /// GLboolean glUnmapNamedBufferEXT((unsigned int) GLuint buffer);
     /// ```
@@ -1817,36 +1923,40 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in UnmapNamedBufferEXT", e); }
     }
 
+    /// Invokes `glGetNamedBufferParameterivEXT`.
     /// ```
     /// void glGetNamedBufferParameterivEXT((unsigned int) GLuint buffer, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetNamedBufferParameterivEXT(int buffer, int pname, MemorySegment params) {
+    public void GetNamedBufferParameterivEXT(int buffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedBufferParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedBufferParameterivEXT", buffer, pname, params); }
         Handles.MH_glGetNamedBufferParameterivEXT.invokeExact(handles.PFN_glGetNamedBufferParameterivEXT, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferParameterivEXT", e); }
     }
 
+    /// Invokes `glGetNamedBufferPointervEXT`.
     /// ```
     /// void glGetNamedBufferPointervEXT((unsigned int) GLuint buffer, (unsigned int) GLenum pname, void** params);
     /// ```
-    public void GetNamedBufferPointervEXT(int buffer, int pname, MemorySegment params) {
+    public void GetNamedBufferPointervEXT(int buffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferPointervEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedBufferPointervEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedBufferPointervEXT", buffer, pname, params); }
         Handles.MH_glGetNamedBufferPointervEXT.invokeExact(handles.PFN_glGetNamedBufferPointervEXT, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferPointervEXT", e); }
     }
 
+    /// Invokes `glGetNamedBufferSubDataEXT`.
     /// ```
     /// void glGetNamedBufferSubDataEXT((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, void* data);
     /// ```
-    public void GetNamedBufferSubDataEXT(int buffer, long offset, long size, MemorySegment data) {
+    public void GetNamedBufferSubDataEXT(int buffer, long offset, long size, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferSubDataEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedBufferSubDataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedBufferSubDataEXT", buffer, offset, size, data); }
         Handles.MH_glGetNamedBufferSubDataEXT.invokeExact(handles.PFN_glGetNamedBufferSubDataEXT, buffer, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferSubDataEXT", e); }
     }
 
+    /// Invokes `glProgramUniform1fEXT`.
     /// ```
     /// void glProgramUniform1fEXT((unsigned int) GLuint program, (int) GLint location, ((float) khronos_float_t) GLfloat v0);
     /// ```
@@ -1857,6 +1967,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1fEXT", e); }
     }
 
+    /// Invokes `glProgramUniform2fEXT`.
     /// ```
     /// void glProgramUniform2fEXT((unsigned int) GLuint program, (int) GLint location, ((float) khronos_float_t) GLfloat v0, ((float) khronos_float_t) GLfloat v1);
     /// ```
@@ -1867,6 +1978,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2fEXT", e); }
     }
 
+    /// Invokes `glProgramUniform3fEXT`.
     /// ```
     /// void glProgramUniform3fEXT((unsigned int) GLuint program, (int) GLint location, ((float) khronos_float_t) GLfloat v0, ((float) khronos_float_t) GLfloat v1, ((float) khronos_float_t) GLfloat v2);
     /// ```
@@ -1877,6 +1989,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3fEXT", e); }
     }
 
+    /// Invokes `glProgramUniform4fEXT`.
     /// ```
     /// void glProgramUniform4fEXT((unsigned int) GLuint program, (int) GLint location, ((float) khronos_float_t) GLfloat v0, ((float) khronos_float_t) GLfloat v1, ((float) khronos_float_t) GLfloat v2, ((float) khronos_float_t) GLfloat v3);
     /// ```
@@ -1887,6 +2000,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4fEXT", e); }
     }
 
+    /// Invokes `glProgramUniform1iEXT`.
     /// ```
     /// void glProgramUniform1iEXT((unsigned int) GLuint program, (int) GLint location, (int) GLint v0);
     /// ```
@@ -1897,6 +2011,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1iEXT", e); }
     }
 
+    /// Invokes `glProgramUniform2iEXT`.
     /// ```
     /// void glProgramUniform2iEXT((unsigned int) GLuint program, (int) GLint location, (int) GLint v0, (int) GLint v1);
     /// ```
@@ -1907,6 +2022,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2iEXT", e); }
     }
 
+    /// Invokes `glProgramUniform3iEXT`.
     /// ```
     /// void glProgramUniform3iEXT((unsigned int) GLuint program, (int) GLint location, (int) GLint v0, (int) GLint v1, (int) GLint v2);
     /// ```
@@ -1917,6 +2033,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3iEXT", e); }
     }
 
+    /// Invokes `glProgramUniform4iEXT`.
     /// ```
     /// void glProgramUniform4iEXT((unsigned int) GLuint program, (int) GLint location, (int) GLint v0, (int) GLint v1, (int) GLint v2, (int) GLint v3);
     /// ```
@@ -1927,176 +2044,194 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4iEXT", e); }
     }
 
+    /// Invokes `glProgramUniform1fvEXT`.
     /// ```
     /// void glProgramUniform1fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
-    public void ProgramUniform1fvEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform1fvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1fvEXT", program, location, count, value); }
         Handles.MH_glProgramUniform1fvEXT.invokeExact(handles.PFN_glProgramUniform1fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniform2fvEXT`.
     /// ```
     /// void glProgramUniform2fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
-    public void ProgramUniform2fvEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform2fvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2fvEXT", program, location, count, value); }
         Handles.MH_glProgramUniform2fvEXT.invokeExact(handles.PFN_glProgramUniform2fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniform3fvEXT`.
     /// ```
     /// void glProgramUniform3fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
-    public void ProgramUniform3fvEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform3fvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3fvEXT", program, location, count, value); }
         Handles.MH_glProgramUniform3fvEXT.invokeExact(handles.PFN_glProgramUniform3fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniform4fvEXT`.
     /// ```
     /// void glProgramUniform4fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
-    public void ProgramUniform4fvEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform4fvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4fvEXT", program, location, count, value); }
         Handles.MH_glProgramUniform4fvEXT.invokeExact(handles.PFN_glProgramUniform4fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniform1ivEXT`.
     /// ```
     /// void glProgramUniform1ivEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
-    public void ProgramUniform1ivEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform1ivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1ivEXT", program, location, count, value); }
         Handles.MH_glProgramUniform1ivEXT.invokeExact(handles.PFN_glProgramUniform1ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1ivEXT", e); }
     }
 
+    /// Invokes `glProgramUniform2ivEXT`.
     /// ```
     /// void glProgramUniform2ivEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
-    public void ProgramUniform2ivEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform2ivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2ivEXT", program, location, count, value); }
         Handles.MH_glProgramUniform2ivEXT.invokeExact(handles.PFN_glProgramUniform2ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2ivEXT", e); }
     }
 
+    /// Invokes `glProgramUniform3ivEXT`.
     /// ```
     /// void glProgramUniform3ivEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
-    public void ProgramUniform3ivEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform3ivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3ivEXT", program, location, count, value); }
         Handles.MH_glProgramUniform3ivEXT.invokeExact(handles.PFN_glProgramUniform3ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3ivEXT", e); }
     }
 
+    /// Invokes `glProgramUniform4ivEXT`.
     /// ```
     /// void glProgramUniform4ivEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
-    public void ProgramUniform4ivEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform4ivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4ivEXT", program, location, count, value); }
         Handles.MH_glProgramUniform4ivEXT.invokeExact(handles.PFN_glProgramUniform4ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4ivEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2fvEXT`.
     /// ```
     /// void glProgramUniformMatrix2fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix2fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2fvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3fvEXT`.
     /// ```
     /// void glProgramUniformMatrix3fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix3fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3fvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4fvEXT`.
     /// ```
     /// void glProgramUniformMatrix4fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix4fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4fvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2x3fvEXT`.
     /// ```
     /// void glProgramUniformMatrix2x3fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix2x3fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2x3fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x3fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x3fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x3fvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2x3fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2x3fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x3fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3x2fvEXT`.
     /// ```
     /// void glProgramUniformMatrix3x2fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix3x2fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3x2fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x2fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x2fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x2fvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3x2fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3x2fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x2fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2x4fvEXT`.
     /// ```
     /// void glProgramUniformMatrix2x4fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix2x4fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2x4fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x4fvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2x4fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2x4fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x4fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4x2fvEXT`.
     /// ```
     /// void glProgramUniformMatrix4x2fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix4x2fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4x2fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x2fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x2fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x2fvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4x2fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4x2fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x2fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3x4fvEXT`.
     /// ```
     /// void glProgramUniformMatrix3x4fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix3x4fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3x4fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x4fvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3x4fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3x4fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x4fvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4x3fvEXT`.
     /// ```
     /// void glProgramUniformMatrix4x3fvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix4x3fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4x3fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x3fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x3fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x3fvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4x3fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4x3fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x3fvEXT", e); }
     }
 
+    /// Invokes `glTextureBufferEXT`.
     /// ```
     /// void glTextureBufferEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer);
     /// ```
@@ -2107,6 +2242,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureBufferEXT", e); }
     }
 
+    /// Invokes `glMultiTexBufferEXT`.
     /// ```
     /// void glMultiTexBufferEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer);
     /// ```
@@ -2117,86 +2253,95 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexBufferEXT", e); }
     }
 
+    /// Invokes `glTextureParameterIivEXT`.
     /// ```
     /// void glTextureParameterIivEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum pname, const GLint* params);
     /// ```
-    public void TextureParameterIivEXT(int texture, int target, int pname, MemorySegment params) {
+    public void TextureParameterIivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterIivEXT", texture, target, pname, params); }
         Handles.MH_glTextureParameterIivEXT.invokeExact(handles.PFN_glTextureParameterIivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterIivEXT", e); }
     }
 
+    /// Invokes `glTextureParameterIuivEXT`.
     /// ```
     /// void glTextureParameterIuivEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum pname, const GLuint* params);
     /// ```
-    public void TextureParameterIuivEXT(int texture, int target, int pname, MemorySegment params) {
+    public void TextureParameterIuivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterIuivEXT", texture, target, pname, params); }
         Handles.MH_glTextureParameterIuivEXT.invokeExact(handles.PFN_glTextureParameterIuivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterIuivEXT", e); }
     }
 
+    /// Invokes `glGetTextureParameterIivEXT`.
     /// ```
     /// void glGetTextureParameterIivEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetTextureParameterIivEXT(int texture, int target, int pname, MemorySegment params) {
+    public void GetTextureParameterIivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameterIivEXT", texture, target, pname, params); }
         Handles.MH_glGetTextureParameterIivEXT.invokeExact(handles.PFN_glGetTextureParameterIivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterIivEXT", e); }
     }
 
+    /// Invokes `glGetTextureParameterIuivEXT`.
     /// ```
     /// void glGetTextureParameterIuivEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum pname, GLuint* params);
     /// ```
-    public void GetTextureParameterIuivEXT(int texture, int target, int pname, MemorySegment params) {
+    public void GetTextureParameterIuivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameterIuivEXT", texture, target, pname, params); }
         Handles.MH_glGetTextureParameterIuivEXT.invokeExact(handles.PFN_glGetTextureParameterIuivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterIuivEXT", e); }
     }
 
+    /// Invokes `glMultiTexParameterIivEXT`.
     /// ```
     /// void glMultiTexParameterIivEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, const GLint* params);
     /// ```
-    public void MultiTexParameterIivEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void MultiTexParameterIivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexParameterIivEXT", texunit, target, pname, params); }
         Handles.MH_glMultiTexParameterIivEXT.invokeExact(handles.PFN_glMultiTexParameterIivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameterIivEXT", e); }
     }
 
+    /// Invokes `glMultiTexParameterIuivEXT`.
     /// ```
     /// void glMultiTexParameterIuivEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, const GLuint* params);
     /// ```
-    public void MultiTexParameterIuivEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void MultiTexParameterIuivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexParameterIuivEXT", texunit, target, pname, params); }
         Handles.MH_glMultiTexParameterIuivEXT.invokeExact(handles.PFN_glMultiTexParameterIuivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameterIuivEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexParameterIivEXT`.
     /// ```
     /// void glGetMultiTexParameterIivEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetMultiTexParameterIivEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void GetMultiTexParameterIivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexParameterIivEXT", texunit, target, pname, params); }
         Handles.MH_glGetMultiTexParameterIivEXT.invokeExact(handles.PFN_glGetMultiTexParameterIivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexParameterIivEXT", e); }
     }
 
+    /// Invokes `glGetMultiTexParameterIuivEXT`.
     /// ```
     /// void glGetMultiTexParameterIuivEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLenum pname, GLuint* params);
     /// ```
-    public void GetMultiTexParameterIuivEXT(int texunit, int target, int pname, MemorySegment params) {
+    public void GetMultiTexParameterIuivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexParameterIuivEXT", texunit, target, pname, params); }
         Handles.MH_glGetMultiTexParameterIuivEXT.invokeExact(handles.PFN_glGetMultiTexParameterIuivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexParameterIuivEXT", e); }
     }
 
+    /// Invokes `glProgramUniform1uiEXT`.
     /// ```
     /// void glProgramUniform1uiEXT((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLuint v0);
     /// ```
@@ -2207,6 +2352,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1uiEXT", e); }
     }
 
+    /// Invokes `glProgramUniform2uiEXT`.
     /// ```
     /// void glProgramUniform2uiEXT((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1);
     /// ```
@@ -2217,6 +2363,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2uiEXT", e); }
     }
 
+    /// Invokes `glProgramUniform3uiEXT`.
     /// ```
     /// void glProgramUniform3uiEXT((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1, (unsigned int) GLuint v2);
     /// ```
@@ -2227,6 +2374,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3uiEXT", e); }
     }
 
+    /// Invokes `glProgramUniform4uiEXT`.
     /// ```
     /// void glProgramUniform4uiEXT((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1, (unsigned int) GLuint v2, (unsigned int) GLuint v3);
     /// ```
@@ -2237,56 +2385,62 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4uiEXT", e); }
     }
 
+    /// Invokes `glProgramUniform1uivEXT`.
     /// ```
     /// void glProgramUniform1uivEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void ProgramUniform1uivEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform1uivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1uivEXT", program, location, count, value); }
         Handles.MH_glProgramUniform1uivEXT.invokeExact(handles.PFN_glProgramUniform1uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1uivEXT", e); }
     }
 
+    /// Invokes `glProgramUniform2uivEXT`.
     /// ```
     /// void glProgramUniform2uivEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void ProgramUniform2uivEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform2uivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2uivEXT", program, location, count, value); }
         Handles.MH_glProgramUniform2uivEXT.invokeExact(handles.PFN_glProgramUniform2uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2uivEXT", e); }
     }
 
+    /// Invokes `glProgramUniform3uivEXT`.
     /// ```
     /// void glProgramUniform3uivEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void ProgramUniform3uivEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform3uivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3uivEXT", program, location, count, value); }
         Handles.MH_glProgramUniform3uivEXT.invokeExact(handles.PFN_glProgramUniform3uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3uivEXT", e); }
     }
 
+    /// Invokes `glProgramUniform4uivEXT`.
     /// ```
     /// void glProgramUniform4uivEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void ProgramUniform4uivEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform4uivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4uivEXT", program, location, count, value); }
         Handles.MH_glProgramUniform4uivEXT.invokeExact(handles.PFN_glProgramUniform4uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4uivEXT", e); }
     }
 
+    /// Invokes `glNamedProgramLocalParameters4fvEXT`.
     /// ```
     /// void glNamedProgramLocalParameters4fvEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLfloat* params);
     /// ```
-    public void NamedProgramLocalParameters4fvEXT(int program, int target, int index, int count, MemorySegment params) {
+    public void NamedProgramLocalParameters4fvEXT(int program, int target, int index, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameters4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameters4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameters4fvEXT", program, target, index, count, params); }
         Handles.MH_glNamedProgramLocalParameters4fvEXT.invokeExact(handles.PFN_glNamedProgramLocalParameters4fvEXT, program, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameters4fvEXT", e); }
     }
 
+    /// Invokes `glNamedProgramLocalParameterI4iEXT`.
     /// ```
     /// void glNamedProgramLocalParameterI4iEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLint x, (int) GLint y, (int) GLint z, (int) GLint w);
     /// ```
@@ -2297,26 +2451,29 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameterI4iEXT", e); }
     }
 
+    /// Invokes `glNamedProgramLocalParameterI4ivEXT`.
     /// ```
     /// void glNamedProgramLocalParameterI4ivEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, const GLint* params);
     /// ```
-    public void NamedProgramLocalParameterI4ivEXT(int program, int target, int index, MemorySegment params) {
+    public void NamedProgramLocalParameterI4ivEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameterI4ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameterI4ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameterI4ivEXT", program, target, index, params); }
         Handles.MH_glNamedProgramLocalParameterI4ivEXT.invokeExact(handles.PFN_glNamedProgramLocalParameterI4ivEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameterI4ivEXT", e); }
     }
 
+    /// Invokes `glNamedProgramLocalParametersI4ivEXT`.
     /// ```
     /// void glNamedProgramLocalParametersI4ivEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLint* params);
     /// ```
-    public void NamedProgramLocalParametersI4ivEXT(int program, int target, int index, int count, MemorySegment params) {
+    public void NamedProgramLocalParametersI4ivEXT(int program, int target, int index, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParametersI4ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParametersI4ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParametersI4ivEXT", program, target, index, count, params); }
         Handles.MH_glNamedProgramLocalParametersI4ivEXT.invokeExact(handles.PFN_glNamedProgramLocalParametersI4ivEXT, program, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParametersI4ivEXT", e); }
     }
 
+    /// Invokes `glNamedProgramLocalParameterI4uiEXT`.
     /// ```
     /// void glNamedProgramLocalParameterI4uiEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint x, (unsigned int) GLuint y, (unsigned int) GLuint z, (unsigned int) GLuint w);
     /// ```
@@ -2327,46 +2484,51 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameterI4uiEXT", e); }
     }
 
+    /// Invokes `glNamedProgramLocalParameterI4uivEXT`.
     /// ```
     /// void glNamedProgramLocalParameterI4uivEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, const GLuint* params);
     /// ```
-    public void NamedProgramLocalParameterI4uivEXT(int program, int target, int index, MemorySegment params) {
+    public void NamedProgramLocalParameterI4uivEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameterI4uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameterI4uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameterI4uivEXT", program, target, index, params); }
         Handles.MH_glNamedProgramLocalParameterI4uivEXT.invokeExact(handles.PFN_glNamedProgramLocalParameterI4uivEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameterI4uivEXT", e); }
     }
 
+    /// Invokes `glNamedProgramLocalParametersI4uivEXT`.
     /// ```
     /// void glNamedProgramLocalParametersI4uivEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLuint* params);
     /// ```
-    public void NamedProgramLocalParametersI4uivEXT(int program, int target, int index, int count, MemorySegment params) {
+    public void NamedProgramLocalParametersI4uivEXT(int program, int target, int index, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParametersI4uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParametersI4uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParametersI4uivEXT", program, target, index, count, params); }
         Handles.MH_glNamedProgramLocalParametersI4uivEXT.invokeExact(handles.PFN_glNamedProgramLocalParametersI4uivEXT, program, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParametersI4uivEXT", e); }
     }
 
+    /// Invokes `glGetNamedProgramLocalParameterIivEXT`.
     /// ```
     /// void glGetNamedProgramLocalParameterIivEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, GLint* params);
     /// ```
-    public void GetNamedProgramLocalParameterIivEXT(int program, int target, int index, MemorySegment params) {
+    public void GetNamedProgramLocalParameterIivEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramLocalParameterIivEXT", program, target, index, params); }
         Handles.MH_glGetNamedProgramLocalParameterIivEXT.invokeExact(handles.PFN_glGetNamedProgramLocalParameterIivEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramLocalParameterIivEXT", e); }
     }
 
+    /// Invokes `glGetNamedProgramLocalParameterIuivEXT`.
     /// ```
     /// void glGetNamedProgramLocalParameterIuivEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, GLuint* params);
     /// ```
-    public void GetNamedProgramLocalParameterIuivEXT(int program, int target, int index, MemorySegment params) {
+    public void GetNamedProgramLocalParameterIuivEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramLocalParameterIuivEXT", program, target, index, params); }
         Handles.MH_glGetNamedProgramLocalParameterIuivEXT.invokeExact(handles.PFN_glGetNamedProgramLocalParameterIuivEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramLocalParameterIuivEXT", e); }
     }
 
+    /// Invokes `glEnableClientStateiEXT`.
     /// ```
     /// void glEnableClientStateiEXT((unsigned int) GLenum array, (unsigned int) GLuint index);
     /// ```
@@ -2377,6 +2539,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in EnableClientStateiEXT", e); }
     }
 
+    /// Invokes `glDisableClientStateiEXT`.
     /// ```
     /// void glDisableClientStateiEXT((unsigned int) GLenum array, (unsigned int) GLuint index);
     /// ```
@@ -2387,46 +2550,51 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in DisableClientStateiEXT", e); }
     }
 
+    /// Invokes `glGetFloati_vEXT`.
     /// ```
     /// void glGetFloati_vEXT((unsigned int) GLenum pname, (unsigned int) GLuint index, GLfloat* params);
     /// ```
-    public void GetFloati_vEXT(int pname, int index, MemorySegment params) {
+    public void GetFloati_vEXT(int pname, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFloati_vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetFloati_vEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFloati_vEXT", pname, index, params); }
         Handles.MH_glGetFloati_vEXT.invokeExact(handles.PFN_glGetFloati_vEXT, pname, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFloati_vEXT", e); }
     }
 
+    /// Invokes `glGetDoublei_vEXT`.
     /// ```
     /// void glGetDoublei_vEXT((unsigned int) GLenum pname, (unsigned int) GLuint index, GLdouble* params);
     /// ```
-    public void GetDoublei_vEXT(int pname, int index, MemorySegment params) {
+    public void GetDoublei_vEXT(int pname, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDoublei_vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetDoublei_vEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetDoublei_vEXT", pname, index, params); }
         Handles.MH_glGetDoublei_vEXT.invokeExact(handles.PFN_glGetDoublei_vEXT, pname, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetDoublei_vEXT", e); }
     }
 
+    /// Invokes `glGetPointeri_vEXT`.
     /// ```
     /// void glGetPointeri_vEXT((unsigned int) GLenum pname, (unsigned int) GLuint index, void** params);
     /// ```
-    public void GetPointeri_vEXT(int pname, int index, MemorySegment params) {
+    public void GetPointeri_vEXT(int pname, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPointeri_vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetPointeri_vEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPointeri_vEXT", pname, index, params); }
         Handles.MH_glGetPointeri_vEXT.invokeExact(handles.PFN_glGetPointeri_vEXT, pname, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetPointeri_vEXT", e); }
     }
 
+    /// Invokes `glNamedProgramStringEXT`.
     /// ```
     /// void glNamedProgramStringEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLenum format, (int) GLsizei len, const void* string);
     /// ```
-    public void NamedProgramStringEXT(int program, int target, int format, int len, MemorySegment string) {
+    public void NamedProgramStringEXT(int program, int target, int format, int len, @NonNull MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramStringEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramStringEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramStringEXT", program, target, format, len, string); }
         Handles.MH_glNamedProgramStringEXT.invokeExact(handles.PFN_glNamedProgramStringEXT, program, target, format, len, string); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramStringEXT", e); }
     }
 
+    /// Invokes `glNamedProgramLocalParameter4dEXT`.
     /// ```
     /// void glNamedProgramLocalParameter4dEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z, (double) GLdouble w);
     /// ```
@@ -2437,16 +2605,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameter4dEXT", e); }
     }
 
+    /// Invokes `glNamedProgramLocalParameter4dvEXT`.
     /// ```
     /// void glNamedProgramLocalParameter4dvEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, const GLdouble* params);
     /// ```
-    public void NamedProgramLocalParameter4dvEXT(int program, int target, int index, MemorySegment params) {
+    public void NamedProgramLocalParameter4dvEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameter4dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameter4dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameter4dvEXT", program, target, index, params); }
         Handles.MH_glNamedProgramLocalParameter4dvEXT.invokeExact(handles.PFN_glNamedProgramLocalParameter4dvEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameter4dvEXT", e); }
     }
 
+    /// Invokes `glNamedProgramLocalParameter4fEXT`.
     /// ```
     /// void glNamedProgramLocalParameter4fEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z, ((float) khronos_float_t) GLfloat w);
     /// ```
@@ -2457,56 +2627,62 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameter4fEXT", e); }
     }
 
+    /// Invokes `glNamedProgramLocalParameter4fvEXT`.
     /// ```
     /// void glNamedProgramLocalParameter4fvEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, const GLfloat* params);
     /// ```
-    public void NamedProgramLocalParameter4fvEXT(int program, int target, int index, MemorySegment params) {
+    public void NamedProgramLocalParameter4fvEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameter4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameter4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameter4fvEXT", program, target, index, params); }
         Handles.MH_glNamedProgramLocalParameter4fvEXT.invokeExact(handles.PFN_glNamedProgramLocalParameter4fvEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameter4fvEXT", e); }
     }
 
+    /// Invokes `glGetNamedProgramLocalParameterdvEXT`.
     /// ```
     /// void glGetNamedProgramLocalParameterdvEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, GLdouble* params);
     /// ```
-    public void GetNamedProgramLocalParameterdvEXT(int program, int target, int index, MemorySegment params) {
+    public void GetNamedProgramLocalParameterdvEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterdvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterdvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramLocalParameterdvEXT", program, target, index, params); }
         Handles.MH_glGetNamedProgramLocalParameterdvEXT.invokeExact(handles.PFN_glGetNamedProgramLocalParameterdvEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramLocalParameterdvEXT", e); }
     }
 
+    /// Invokes `glGetNamedProgramLocalParameterfvEXT`.
     /// ```
     /// void glGetNamedProgramLocalParameterfvEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLuint index, GLfloat* params);
     /// ```
-    public void GetNamedProgramLocalParameterfvEXT(int program, int target, int index, MemorySegment params) {
+    public void GetNamedProgramLocalParameterfvEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramLocalParameterfvEXT", program, target, index, params); }
         Handles.MH_glGetNamedProgramLocalParameterfvEXT.invokeExact(handles.PFN_glGetNamedProgramLocalParameterfvEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramLocalParameterfvEXT", e); }
     }
 
+    /// Invokes `glGetNamedProgramivEXT`.
     /// ```
     /// void glGetNamedProgramivEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetNamedProgramivEXT(int program, int target, int pname, MemorySegment params) {
+    public void GetNamedProgramivEXT(int program, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramivEXT", program, target, pname, params); }
         Handles.MH_glGetNamedProgramivEXT.invokeExact(handles.PFN_glGetNamedProgramivEXT, program, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramivEXT", e); }
     }
 
+    /// Invokes `glGetNamedProgramStringEXT`.
     /// ```
     /// void glGetNamedProgramStringEXT((unsigned int) GLuint program, (unsigned int) GLenum target, (unsigned int) GLenum pname, void* string);
     /// ```
-    public void GetNamedProgramStringEXT(int program, int target, int pname, MemorySegment string) {
+    public void GetNamedProgramStringEXT(int program, int target, int pname, @NonNull MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramStringEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramStringEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramStringEXT", program, target, pname, string); }
         Handles.MH_glGetNamedProgramStringEXT.invokeExact(handles.PFN_glGetNamedProgramStringEXT, program, target, pname, string); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramStringEXT", e); }
     }
 
+    /// Invokes `glNamedRenderbufferStorageEXT`.
     /// ```
     /// void glNamedRenderbufferStorageEXT((unsigned int) GLuint renderbuffer, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -2517,16 +2693,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorageEXT", e); }
     }
 
+    /// Invokes `glGetNamedRenderbufferParameterivEXT`.
     /// ```
     /// void glGetNamedRenderbufferParameterivEXT((unsigned int) GLuint renderbuffer, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetNamedRenderbufferParameterivEXT(int renderbuffer, int pname, MemorySegment params) {
+    public void GetNamedRenderbufferParameterivEXT(int renderbuffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedRenderbufferParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedRenderbufferParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedRenderbufferParameterivEXT", renderbuffer, pname, params); }
         Handles.MH_glGetNamedRenderbufferParameterivEXT.invokeExact(handles.PFN_glGetNamedRenderbufferParameterivEXT, renderbuffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedRenderbufferParameterivEXT", e); }
     }
 
+    /// Invokes `glNamedRenderbufferStorageMultisampleEXT`.
     /// ```
     /// void glNamedRenderbufferStorageMultisampleEXT((unsigned int) GLuint renderbuffer, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -2537,6 +2715,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorageMultisampleEXT", e); }
     }
 
+    /// Invokes `glNamedRenderbufferStorageMultisampleCoverageEXT`.
     /// ```
     /// void glNamedRenderbufferStorageMultisampleCoverageEXT((unsigned int) GLuint renderbuffer, (int) GLsizei coverageSamples, (int) GLsizei colorSamples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -2547,6 +2726,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorageMultisampleCoverageEXT", e); }
     }
 
+    /// Invokes `glCheckNamedFramebufferStatusEXT`.
     /// ```
     /// (unsigned int) GLenum glCheckNamedFramebufferStatusEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum target);
     /// ```
@@ -2557,6 +2737,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CheckNamedFramebufferStatusEXT", e); }
     }
 
+    /// Invokes `glNamedFramebufferTexture1DEXT`.
     /// ```
     /// void glNamedFramebufferTexture1DEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLenum textarget, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
@@ -2567,6 +2748,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTexture1DEXT", e); }
     }
 
+    /// Invokes `glNamedFramebufferTexture2DEXT`.
     /// ```
     /// void glNamedFramebufferTexture2DEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLenum textarget, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
@@ -2577,6 +2759,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTexture2DEXT", e); }
     }
 
+    /// Invokes `glNamedFramebufferTexture3DEXT`.
     /// ```
     /// void glNamedFramebufferTexture3DEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLenum textarget, (unsigned int) GLuint texture, (int) GLint level, (int) GLint zoffset);
     /// ```
@@ -2587,6 +2770,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTexture3DEXT", e); }
     }
 
+    /// Invokes `glNamedFramebufferRenderbufferEXT`.
     /// ```
     /// void glNamedFramebufferRenderbufferEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLenum renderbuffertarget, (unsigned int) GLuint renderbuffer);
     /// ```
@@ -2597,16 +2781,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferRenderbufferEXT", e); }
     }
 
+    /// Invokes `glGetNamedFramebufferAttachmentParameterivEXT`.
     /// ```
     /// void glGetNamedFramebufferAttachmentParameterivEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetNamedFramebufferAttachmentParameterivEXT(int framebuffer, int attachment, int pname, MemorySegment params) {
+    public void GetNamedFramebufferAttachmentParameterivEXT(int framebuffer, int attachment, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferAttachmentParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedFramebufferAttachmentParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedFramebufferAttachmentParameterivEXT", framebuffer, attachment, pname, params); }
         Handles.MH_glGetNamedFramebufferAttachmentParameterivEXT.invokeExact(handles.PFN_glGetNamedFramebufferAttachmentParameterivEXT, framebuffer, attachment, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedFramebufferAttachmentParameterivEXT", e); }
     }
 
+    /// Invokes `glGenerateTextureMipmapEXT`.
     /// ```
     /// void glGenerateTextureMipmapEXT((unsigned int) GLuint texture, (unsigned int) GLenum target);
     /// ```
@@ -2617,6 +2803,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in GenerateTextureMipmapEXT", e); }
     }
 
+    /// Invokes `glGenerateMultiTexMipmapEXT`.
     /// ```
     /// void glGenerateMultiTexMipmapEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target);
     /// ```
@@ -2627,6 +2814,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in GenerateMultiTexMipmapEXT", e); }
     }
 
+    /// Invokes `glFramebufferDrawBufferEXT`.
     /// ```
     /// void glFramebufferDrawBufferEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum mode);
     /// ```
@@ -2637,16 +2825,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferDrawBufferEXT", e); }
     }
 
+    /// Invokes `glFramebufferDrawBuffersEXT`.
     /// ```
     /// void glFramebufferDrawBuffersEXT((unsigned int) GLuint framebuffer, (int) GLsizei n, const GLenum* bufs);
     /// ```
-    public void FramebufferDrawBuffersEXT(int framebuffer, int n, MemorySegment bufs) {
+    public void FramebufferDrawBuffersEXT(int framebuffer, int n, @NonNull MemorySegment bufs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferDrawBuffersEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferDrawBuffersEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferDrawBuffersEXT", framebuffer, n, bufs); }
         Handles.MH_glFramebufferDrawBuffersEXT.invokeExact(handles.PFN_glFramebufferDrawBuffersEXT, framebuffer, n, bufs); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferDrawBuffersEXT", e); }
     }
 
+    /// Invokes `glFramebufferReadBufferEXT`.
     /// ```
     /// void glFramebufferReadBufferEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum mode);
     /// ```
@@ -2657,16 +2847,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferReadBufferEXT", e); }
     }
 
+    /// Invokes `glGetFramebufferParameterivEXT`.
     /// ```
     /// void glGetFramebufferParameterivEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetFramebufferParameterivEXT(int framebuffer, int pname, MemorySegment params) {
+    public void GetFramebufferParameterivEXT(int framebuffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetFramebufferParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFramebufferParameterivEXT", framebuffer, pname, params); }
         Handles.MH_glGetFramebufferParameterivEXT.invokeExact(handles.PFN_glGetFramebufferParameterivEXT, framebuffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFramebufferParameterivEXT", e); }
     }
 
+    /// Invokes `glNamedCopyBufferSubDataEXT`.
     /// ```
     /// void glNamedCopyBufferSubDataEXT((unsigned int) GLuint readBuffer, (unsigned int) GLuint writeBuffer, ((signed long long) khronos_intptr_t) GLintptr readOffset, ((signed long long) khronos_intptr_t) GLintptr writeOffset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```
@@ -2677,6 +2869,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedCopyBufferSubDataEXT", e); }
     }
 
+    /// Invokes `glNamedFramebufferTextureEXT`.
     /// ```
     /// void glNamedFramebufferTextureEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
@@ -2687,6 +2880,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTextureEXT", e); }
     }
 
+    /// Invokes `glNamedFramebufferTextureLayerEXT`.
     /// ```
     /// void glNamedFramebufferTextureLayerEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint layer);
     /// ```
@@ -2697,6 +2891,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTextureLayerEXT", e); }
     }
 
+    /// Invokes `glNamedFramebufferTextureFaceEXT`.
     /// ```
     /// void glNamedFramebufferTextureFaceEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLenum face);
     /// ```
@@ -2707,6 +2902,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTextureFaceEXT", e); }
     }
 
+    /// Invokes `glTextureRenderbufferEXT`.
     /// ```
     /// void glTextureRenderbufferEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLuint renderbuffer);
     /// ```
@@ -2717,6 +2913,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureRenderbufferEXT", e); }
     }
 
+    /// Invokes `glMultiTexRenderbufferEXT`.
     /// ```
     /// void glMultiTexRenderbufferEXT((unsigned int) GLenum texunit, (unsigned int) GLenum target, (unsigned int) GLuint renderbuffer);
     /// ```
@@ -2727,6 +2924,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in MultiTexRenderbufferEXT", e); }
     }
 
+    /// Invokes `glVertexArrayVertexOffsetEXT`.
     /// ```
     /// void glVertexArrayVertexOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -2737,6 +2935,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexOffsetEXT", e); }
     }
 
+    /// Invokes `glVertexArrayColorOffsetEXT`.
     /// ```
     /// void glVertexArrayColorOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -2747,6 +2946,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayColorOffsetEXT", e); }
     }
 
+    /// Invokes `glVertexArrayEdgeFlagOffsetEXT`.
     /// ```
     /// void glVertexArrayEdgeFlagOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -2757,6 +2957,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayEdgeFlagOffsetEXT", e); }
     }
 
+    /// Invokes `glVertexArrayIndexOffsetEXT`.
     /// ```
     /// void glVertexArrayIndexOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (unsigned int) GLenum type, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -2767,6 +2968,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayIndexOffsetEXT", e); }
     }
 
+    /// Invokes `glVertexArrayNormalOffsetEXT`.
     /// ```
     /// void glVertexArrayNormalOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (unsigned int) GLenum type, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -2777,6 +2979,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayNormalOffsetEXT", e); }
     }
 
+    /// Invokes `glVertexArrayTexCoordOffsetEXT`.
     /// ```
     /// void glVertexArrayTexCoordOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -2787,6 +2990,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayTexCoordOffsetEXT", e); }
     }
 
+    /// Invokes `glVertexArrayMultiTexCoordOffsetEXT`.
     /// ```
     /// void glVertexArrayMultiTexCoordOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (unsigned int) GLenum texunit, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -2797,6 +3001,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayMultiTexCoordOffsetEXT", e); }
     }
 
+    /// Invokes `glVertexArrayFogCoordOffsetEXT`.
     /// ```
     /// void glVertexArrayFogCoordOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (unsigned int) GLenum type, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -2807,6 +3012,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayFogCoordOffsetEXT", e); }
     }
 
+    /// Invokes `glVertexArraySecondaryColorOffsetEXT`.
     /// ```
     /// void glVertexArraySecondaryColorOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -2817,6 +3023,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArraySecondaryColorOffsetEXT", e); }
     }
 
+    /// Invokes `glVertexArrayVertexAttribOffsetEXT`.
     /// ```
     /// void glVertexArrayVertexAttribOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (unsigned int) GLuint index, (int) GLint size, (unsigned int) GLenum type, GLboolean normalized, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -2827,6 +3034,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribOffsetEXT", e); }
     }
 
+    /// Invokes `glVertexArrayVertexAttribIOffsetEXT`.
     /// ```
     /// void glVertexArrayVertexAttribIOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (unsigned int) GLuint index, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -2837,6 +3045,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribIOffsetEXT", e); }
     }
 
+    /// Invokes `glEnableVertexArrayEXT`.
     /// ```
     /// void glEnableVertexArrayEXT((unsigned int) GLuint vaobj, (unsigned int) GLenum array);
     /// ```
@@ -2847,6 +3056,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in EnableVertexArrayEXT", e); }
     }
 
+    /// Invokes `glDisableVertexArrayEXT`.
     /// ```
     /// void glDisableVertexArrayEXT((unsigned int) GLuint vaobj, (unsigned int) GLenum array);
     /// ```
@@ -2857,6 +3067,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in DisableVertexArrayEXT", e); }
     }
 
+    /// Invokes `glEnableVertexArrayAttribEXT`.
     /// ```
     /// void glEnableVertexArrayAttribEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint index);
     /// ```
@@ -2867,6 +3078,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in EnableVertexArrayAttribEXT", e); }
     }
 
+    /// Invokes `glDisableVertexArrayAttribEXT`.
     /// ```
     /// void glDisableVertexArrayAttribEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint index);
     /// ```
@@ -2877,56 +3089,62 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in DisableVertexArrayAttribEXT", e); }
     }
 
+    /// Invokes `glGetVertexArrayIntegervEXT`.
     /// ```
     /// void glGetVertexArrayIntegervEXT((unsigned int) GLuint vaobj, (unsigned int) GLenum pname, GLint* param);
     /// ```
-    public void GetVertexArrayIntegervEXT(int vaobj, int pname, MemorySegment param) {
+    public void GetVertexArrayIntegervEXT(int vaobj, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayIntegervEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexArrayIntegervEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexArrayIntegervEXT", vaobj, pname, param); }
         Handles.MH_glGetVertexArrayIntegervEXT.invokeExact(handles.PFN_glGetVertexArrayIntegervEXT, vaobj, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayIntegervEXT", e); }
     }
 
+    /// Invokes `glGetVertexArrayPointervEXT`.
     /// ```
     /// void glGetVertexArrayPointervEXT((unsigned int) GLuint vaobj, (unsigned int) GLenum pname, void** param);
     /// ```
-    public void GetVertexArrayPointervEXT(int vaobj, int pname, MemorySegment param) {
+    public void GetVertexArrayPointervEXT(int vaobj, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayPointervEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexArrayPointervEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexArrayPointervEXT", vaobj, pname, param); }
         Handles.MH_glGetVertexArrayPointervEXT.invokeExact(handles.PFN_glGetVertexArrayPointervEXT, vaobj, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayPointervEXT", e); }
     }
 
+    /// Invokes `glGetVertexArrayIntegeri_vEXT`.
     /// ```
     /// void glGetVertexArrayIntegeri_vEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint index, (unsigned int) GLenum pname, GLint* param);
     /// ```
-    public void GetVertexArrayIntegeri_vEXT(int vaobj, int index, int pname, MemorySegment param) {
+    public void GetVertexArrayIntegeri_vEXT(int vaobj, int index, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayIntegeri_vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexArrayIntegeri_vEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexArrayIntegeri_vEXT", vaobj, index, pname, param); }
         Handles.MH_glGetVertexArrayIntegeri_vEXT.invokeExact(handles.PFN_glGetVertexArrayIntegeri_vEXT, vaobj, index, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayIntegeri_vEXT", e); }
     }
 
+    /// Invokes `glGetVertexArrayPointeri_vEXT`.
     /// ```
     /// void glGetVertexArrayPointeri_vEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint index, (unsigned int) GLenum pname, void** param);
     /// ```
-    public void GetVertexArrayPointeri_vEXT(int vaobj, int index, int pname, MemorySegment param) {
+    public void GetVertexArrayPointeri_vEXT(int vaobj, int index, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayPointeri_vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexArrayPointeri_vEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexArrayPointeri_vEXT", vaobj, index, pname, param); }
         Handles.MH_glGetVertexArrayPointeri_vEXT.invokeExact(handles.PFN_glGetVertexArrayPointeri_vEXT, vaobj, index, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayPointeri_vEXT", e); }
     }
 
+    /// Invokes `glMapNamedBufferRangeEXT`.
     /// ```
     /// void* glMapNamedBufferRangeEXT((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr length, (unsigned int) GLbitfield access);
     /// ```
-    public MemorySegment MapNamedBufferRangeEXT(int buffer, long offset, long length, int access) {
+    public @NonNull MemorySegment MapNamedBufferRangeEXT(int buffer, long offset, long length, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapNamedBufferRangeEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMapNamedBufferRangeEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapNamedBufferRangeEXT", buffer, offset, length, access); }
         return (MemorySegment) Handles.MH_glMapNamedBufferRangeEXT.invokeExact(handles.PFN_glMapNamedBufferRangeEXT, buffer, offset, length, access); }
         catch (Throwable e) { throw new RuntimeException("error in MapNamedBufferRangeEXT", e); }
     }
 
+    /// Invokes `glFlushMappedNamedBufferRangeEXT`.
     /// ```
     /// void glFlushMappedNamedBufferRangeEXT((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr length);
     /// ```
@@ -2937,36 +3155,40 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in FlushMappedNamedBufferRangeEXT", e); }
     }
 
+    /// Invokes `glNamedBufferStorageEXT`.
     /// ```
     /// void glNamedBufferStorageEXT((unsigned int) GLuint buffer, ((signed long long) khronos_ssize_t) GLsizeiptr size, const void* data, (unsigned int) GLbitfield flags);
     /// ```
-    public void NamedBufferStorageEXT(int buffer, long size, MemorySegment data, int flags) {
+    public void NamedBufferStorageEXT(int buffer, long size, @NonNull MemorySegment data, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferStorageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedBufferStorageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedBufferStorageEXT", buffer, size, data, flags); }
         Handles.MH_glNamedBufferStorageEXT.invokeExact(handles.PFN_glNamedBufferStorageEXT, buffer, size, data, flags); }
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferStorageEXT", e); }
     }
 
+    /// Invokes `glClearNamedBufferDataEXT`.
     /// ```
     /// void glClearNamedBufferDataEXT((unsigned int) GLuint buffer, (unsigned int) GLenum internalformat, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* data);
     /// ```
-    public void ClearNamedBufferDataEXT(int buffer, int internalformat, int format, int type, MemorySegment data) {
+    public void ClearNamedBufferDataEXT(int buffer, int internalformat, int format, int type, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedBufferDataEXT)) throw new GLSymbolNotFoundError("Symbol not found: glClearNamedBufferDataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearNamedBufferDataEXT", buffer, internalformat, format, type, data); }
         Handles.MH_glClearNamedBufferDataEXT.invokeExact(handles.PFN_glClearNamedBufferDataEXT, buffer, internalformat, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ClearNamedBufferDataEXT", e); }
     }
 
+    /// Invokes `glClearNamedBufferSubDataEXT`.
     /// ```
     /// void glClearNamedBufferSubDataEXT((unsigned int) GLuint buffer, (unsigned int) GLenum internalformat, ((signed long long) khronos_ssize_t) GLsizeiptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* data);
     /// ```
-    public void ClearNamedBufferSubDataEXT(int buffer, int internalformat, long offset, long size, int format, int type, MemorySegment data) {
+    public void ClearNamedBufferSubDataEXT(int buffer, int internalformat, long offset, long size, int format, int type, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedBufferSubDataEXT)) throw new GLSymbolNotFoundError("Symbol not found: glClearNamedBufferSubDataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearNamedBufferSubDataEXT", buffer, internalformat, offset, size, format, type, data); }
         Handles.MH_glClearNamedBufferSubDataEXT.invokeExact(handles.PFN_glClearNamedBufferSubDataEXT, buffer, internalformat, offset, size, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ClearNamedBufferSubDataEXT", e); }
     }
 
+    /// Invokes `glNamedFramebufferParameteriEXT`.
     /// ```
     /// void glNamedFramebufferParameteriEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -2977,16 +3199,18 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferParameteriEXT", e); }
     }
 
+    /// Invokes `glGetNamedFramebufferParameterivEXT`.
     /// ```
     /// void glGetNamedFramebufferParameterivEXT((unsigned int) GLuint framebuffer, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetNamedFramebufferParameterivEXT(int framebuffer, int pname, MemorySegment params) {
+    public void GetNamedFramebufferParameterivEXT(int framebuffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedFramebufferParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedFramebufferParameterivEXT", framebuffer, pname, params); }
         Handles.MH_glGetNamedFramebufferParameterivEXT.invokeExact(handles.PFN_glGetNamedFramebufferParameterivEXT, framebuffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedFramebufferParameterivEXT", e); }
     }
 
+    /// Invokes `glProgramUniform1dEXT`.
     /// ```
     /// void glProgramUniform1dEXT((unsigned int) GLuint program, (int) GLint location, (double) GLdouble x);
     /// ```
@@ -2997,6 +3221,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1dEXT", e); }
     }
 
+    /// Invokes `glProgramUniform2dEXT`.
     /// ```
     /// void glProgramUniform2dEXT((unsigned int) GLuint program, (int) GLint location, (double) GLdouble x, (double) GLdouble y);
     /// ```
@@ -3007,6 +3232,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2dEXT", e); }
     }
 
+    /// Invokes `glProgramUniform3dEXT`.
     /// ```
     /// void glProgramUniform3dEXT((unsigned int) GLuint program, (int) GLint location, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
@@ -3017,6 +3243,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3dEXT", e); }
     }
 
+    /// Invokes `glProgramUniform4dEXT`.
     /// ```
     /// void glProgramUniform4dEXT((unsigned int) GLuint program, (int) GLint location, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z, (double) GLdouble w);
     /// ```
@@ -3027,136 +3254,150 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4dEXT", e); }
     }
 
+    /// Invokes `glProgramUniform1dvEXT`.
     /// ```
     /// void glProgramUniform1dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void ProgramUniform1dvEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform1dvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1dvEXT", program, location, count, value); }
         Handles.MH_glProgramUniform1dvEXT.invokeExact(handles.PFN_glProgramUniform1dvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniform2dvEXT`.
     /// ```
     /// void glProgramUniform2dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void ProgramUniform2dvEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform2dvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2dvEXT", program, location, count, value); }
         Handles.MH_glProgramUniform2dvEXT.invokeExact(handles.PFN_glProgramUniform2dvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniform3dvEXT`.
     /// ```
     /// void glProgramUniform3dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void ProgramUniform3dvEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform3dvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3dvEXT", program, location, count, value); }
         Handles.MH_glProgramUniform3dvEXT.invokeExact(handles.PFN_glProgramUniform3dvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniform4dvEXT`.
     /// ```
     /// void glProgramUniform4dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void ProgramUniform4dvEXT(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform4dvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4dvEXT", program, location, count, value); }
         Handles.MH_glProgramUniform4dvEXT.invokeExact(handles.PFN_glProgramUniform4dvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2dvEXT`.
     /// ```
     /// void glProgramUniformMatrix2dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix2dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2dvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3dvEXT`.
     /// ```
     /// void glProgramUniformMatrix3dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix3dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3dvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4dvEXT`.
     /// ```
     /// void glProgramUniformMatrix4dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix4dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4dvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2x3dvEXT`.
     /// ```
     /// void glProgramUniformMatrix2x3dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix2x3dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2x3dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x3dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x3dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x3dvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2x3dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2x3dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x3dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2x4dvEXT`.
     /// ```
     /// void glProgramUniformMatrix2x4dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix2x4dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2x4dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x4dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x4dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x4dvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2x4dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2x4dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x4dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3x2dvEXT`.
     /// ```
     /// void glProgramUniformMatrix3x2dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix3x2dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3x2dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x2dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x2dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x2dvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3x2dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3x2dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x2dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3x4dvEXT`.
     /// ```
     /// void glProgramUniformMatrix3x4dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix3x4dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3x4dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x4dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x4dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x4dvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3x4dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3x4dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x4dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4x2dvEXT`.
     /// ```
     /// void glProgramUniformMatrix4x2dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix4x2dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4x2dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x2dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x2dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x2dvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4x2dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4x2dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x2dvEXT", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4x3dvEXT`.
     /// ```
     /// void glProgramUniformMatrix4x3dvEXT((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix4x3dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4x3dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x3dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x3dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x3dvEXT", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4x3dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4x3dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x3dvEXT", e); }
     }
 
+    /// Invokes `glTextureBufferRangeEXT`.
     /// ```
     /// void glTextureBufferRangeEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```
@@ -3167,6 +3408,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureBufferRangeEXT", e); }
     }
 
+    /// Invokes `glTextureStorage1DEXT`.
     /// ```
     /// void glTextureStorage1DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width);
     /// ```
@@ -3177,6 +3419,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage1DEXT", e); }
     }
 
+    /// Invokes `glTextureStorage2DEXT`.
     /// ```
     /// void glTextureStorage2DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -3187,6 +3430,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage2DEXT", e); }
     }
 
+    /// Invokes `glTextureStorage3DEXT`.
     /// ```
     /// void glTextureStorage3DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```
@@ -3197,6 +3441,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage3DEXT", e); }
     }
 
+    /// Invokes `glTextureStorage2DMultisampleEXT`.
     /// ```
     /// void glTextureStorage2DMultisampleEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedsamplelocations);
     /// ```
@@ -3207,6 +3452,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage2DMultisampleEXT", e); }
     }
 
+    /// Invokes `glTextureStorage3DMultisampleEXT`.
     /// ```
     /// void glTextureStorage3DMultisampleEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedsamplelocations);
     /// ```
@@ -3217,6 +3463,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage3DMultisampleEXT", e); }
     }
 
+    /// Invokes `glVertexArrayBindVertexBufferEXT`.
     /// ```
     /// void glVertexArrayBindVertexBufferEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint bindingindex, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, (int) GLsizei stride);
     /// ```
@@ -3227,6 +3474,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayBindVertexBufferEXT", e); }
     }
 
+    /// Invokes `glVertexArrayVertexAttribFormatEXT`.
     /// ```
     /// void glVertexArrayVertexAttribFormatEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, GLboolean normalized, (unsigned int) GLuint relativeoffset);
     /// ```
@@ -3237,6 +3485,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribFormatEXT", e); }
     }
 
+    /// Invokes `glVertexArrayVertexAttribIFormatEXT`.
     /// ```
     /// void glVertexArrayVertexAttribIFormatEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, (unsigned int) GLuint relativeoffset);
     /// ```
@@ -3247,6 +3496,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribIFormatEXT", e); }
     }
 
+    /// Invokes `glVertexArrayVertexAttribLFormatEXT`.
     /// ```
     /// void glVertexArrayVertexAttribLFormatEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, (unsigned int) GLuint relativeoffset);
     /// ```
@@ -3257,6 +3507,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribLFormatEXT", e); }
     }
 
+    /// Invokes `glVertexArrayVertexAttribBindingEXT`.
     /// ```
     /// void glVertexArrayVertexAttribBindingEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint attribindex, (unsigned int) GLuint bindingindex);
     /// ```
@@ -3267,6 +3518,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribBindingEXT", e); }
     }
 
+    /// Invokes `glVertexArrayVertexBindingDivisorEXT`.
     /// ```
     /// void glVertexArrayVertexBindingDivisorEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint bindingindex, (unsigned int) GLuint divisor);
     /// ```
@@ -3277,6 +3529,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexBindingDivisorEXT", e); }
     }
 
+    /// Invokes `glVertexArrayVertexAttribLOffsetEXT`.
     /// ```
     /// void glVertexArrayVertexAttribLOffsetEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer, (unsigned int) GLuint index, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -3287,6 +3540,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribLOffsetEXT", e); }
     }
 
+    /// Invokes `glTexturePageCommitmentEXT`.
     /// ```
     /// void glTexturePageCommitmentEXT((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean commit);
     /// ```
@@ -3297,6 +3551,7 @@ public final class GLEXTDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TexturePageCommitmentEXT", e); }
     }
 
+    /// Invokes `glVertexArrayVertexAttribDivisorEXT`.
     /// ```
     /// void glVertexArrayVertexAttribDivisorEXT((unsigned int) GLuint vaobj, (unsigned int) GLuint index, (unsigned int) GLuint divisor);
     /// ```

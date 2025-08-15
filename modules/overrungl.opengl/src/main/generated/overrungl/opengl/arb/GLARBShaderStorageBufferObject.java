@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_shader_storage_buffer_object`
 public final class GLARBShaderStorageBufferObject {
     public static final int GL_SHADER_STORAGE_BUFFER = 0x90D2;
     public static final int GL_SHADER_STORAGE_BUFFER_BINDING = 0x90D3;
@@ -45,15 +45,16 @@ public final class GLARBShaderStorageBufferObject {
     public static final class Handles {
         public static final MethodHandle MH_glShaderStorageBlockBinding = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glShaderStorageBlockBinding;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glShaderStorageBlockBinding = func.invoke("glShaderStorageBlockBinding");
         }
     }
 
-    public GLARBShaderStorageBufferObject(overrungl.opengl.GLLoadFunc func) {
+    public GLARBShaderStorageBufferObject(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glShaderStorageBlockBinding`.
     /// ```
     /// void glShaderStorageBlockBinding((unsigned int) GLuint program, (unsigned int) GLuint storageBlockIndex, (unsigned int) GLuint storageBlockBinding);
     /// ```

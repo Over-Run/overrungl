@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_shader_image_load_store`
 public final class GLARBShaderImageLoadStore {
     public static final int GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT = 0x00000001;
     public static final int GL_ELEMENT_ARRAY_BARRIER_BIT = 0x00000002;
@@ -94,16 +94,17 @@ public final class GLARBShaderImageLoadStore {
         public static final MethodHandle MH_glMemoryBarrier = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBindImageTexture;
         public final MemorySegment PFN_glMemoryBarrier;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBindImageTexture = func.invoke("glBindImageTexture");
             PFN_glMemoryBarrier = func.invoke("glMemoryBarrier");
         }
     }
 
-    public GLARBShaderImageLoadStore(overrungl.opengl.GLLoadFunc func) {
+    public GLARBShaderImageLoadStore(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBindImageTexture`.
     /// ```
     /// void glBindImageTexture((unsigned int) GLuint unit, (unsigned int) GLuint texture, (int) GLint level, GLboolean layered, (int) GLint layer, (unsigned int) GLenum access, (unsigned int) GLenum format);
     /// ```
@@ -114,6 +115,7 @@ public final class GLARBShaderImageLoadStore {
         catch (Throwable e) { throw new RuntimeException("error in BindImageTexture", e); }
     }
 
+    /// Invokes `glMemoryBarrier`.
     /// ```
     /// void glMemoryBarrier((unsigned int) GLbitfield barriers);
     /// ```

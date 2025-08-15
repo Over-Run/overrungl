@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_device_address_binding_report` - device extension
 public final class VKEXTDeviceAddressBindingReport {
     public static final int VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT = 0x00000001;
     public static final int VK_DEVICE_ADDRESS_BINDING_TYPE_BIND_EXT = 0;

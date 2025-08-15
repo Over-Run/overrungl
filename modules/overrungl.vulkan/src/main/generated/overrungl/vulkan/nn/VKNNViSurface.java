@@ -18,9 +18,11 @@
 package overrungl.vulkan.nn;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NN_vi_surface` - instance extension
 public final class VKNNViSurface {
     public static final int VK_NN_VI_SURFACE_SPEC_VERSION = 1;
     public static final String VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface";
@@ -32,10 +34,11 @@ public final class VKNNViSurface {
 
     private VKNNViSurface() {}
 
+    /// Invokes `vkCreateViSurfaceNN`.
     /// ```
     /// (int) VkResult vkCreateViSurfaceNN((struct VkInstance*) VkInstance instance, const VkViSurfaceCreateInfoNN* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
-    public static int vkCreateViSurfaceNN(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public static int vkCreateViSurfaceNN(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateViSurfaceNN)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateViSurfaceNN");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateViSurfaceNN", instance, pCreateInfo, pAllocator, pSurface); }
         return (int) Handles.MH_vkCreateViSurfaceNN.invokeExact(instance.capabilities().PFN_vkCreateViSurfaceNN, instance.segment(), pCreateInfo, pAllocator, pSurface); }

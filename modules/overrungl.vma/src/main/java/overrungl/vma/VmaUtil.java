@@ -16,6 +16,7 @@
 
 package overrungl.vma;
 
+import org.jspecify.annotations.NonNull;
 import overrungl.vulkan.VKCapabilitiesDevice;
 import overrungl.vulkan.VKCapabilitiesInstance;
 import overrungl.vulkan.VkDevice;
@@ -36,16 +37,16 @@ public final class VmaUtil {
     /// This method configures the `pVulkanFunctions` field of the create info structure by
     /// extracting necessary function pointers from the given Vulkan instance and device capabilities.
     ///
-    /// @param allocator the segment allocator used to allocate _`createInfo`_
+    /// @param allocator  the segment allocator used to allocate _`createInfo`_
     /// @param createInfo the [VmaAllocatorCreateInfo] to populate
-    /// @param instance the Vulkan instance providing instance-level function pointers
-    /// @param device the Vulkan device providing device-level function pointers
+    /// @param instance   the Vulkan instance providing instance-level function pointers
+    /// @param device     the Vulkan device providing device-level function pointers
     /// @return _`createInfo`_
-    public static VmaAllocatorCreateInfo fillAllocatorCreateInfo(
-        SegmentAllocator allocator,
-        VmaAllocatorCreateInfo createInfo,
-        VkInstance instance,
-        VkDevice device
+    public static @NonNull VmaAllocatorCreateInfo fillAllocatorCreateInfo(
+        @NonNull SegmentAllocator allocator,
+        @NonNull VmaAllocatorCreateInfo createInfo,
+        @NonNull VkInstance instance,
+        @NonNull VkDevice device
     ) {
         VKCapabilitiesInstance ci = instance.capabilities();
         VKCapabilitiesDevice cd = device.capabilities();

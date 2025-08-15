@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkNativeBufferUsage2ANDROID`.
 /// ## Layout
 /// ```
 /// struct VkNativeBufferUsage2ANDROID {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class VkNativeBufferUsage2ANDROID extends GroupType {
     /// The struct layout of `VkNativeBufferUsage2ANDROID`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("consumer"),
         ValueLayout.JAVA_LONG.withName("producer")
     );

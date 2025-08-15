@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeH264PictureInfoFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH264PictureInfoFlags {
@@ -38,7 +40,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeH264PictureInfoFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeH264PictureInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("IdrPicFlag"), 1,
         ValueLayout.JAVA_INT.withName("is_reference"), 1,
         ValueLayout.JAVA_INT.withName("no_output_of_prior_pics_flag"), 1,

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkDispatchIndirectCommand`.
 /// ## Layout
 /// ```
 /// struct VkDispatchIndirectCommand {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkDispatchIndirectCommand extends GroupType {
     /// The struct layout of `VkDispatchIndirectCommand`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("x"),
         ValueLayout.JAVA_INT.withName("y"),
         ValueLayout.JAVA_INT.withName("z")

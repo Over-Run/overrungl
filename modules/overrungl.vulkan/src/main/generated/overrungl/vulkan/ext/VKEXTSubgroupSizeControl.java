@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_subgroup_size_control` - device extension
 public final class VKEXTSubgroupSizeControl {
     public static final int VK_EXT_SUBGROUP_SIZE_CONTROL_SPEC_VERSION = 2;
     public static final String VK_EXT_SUBGROUP_SIZE_CONTROL_EXTENSION_NAME = "VK_EXT_subgroup_size_control";

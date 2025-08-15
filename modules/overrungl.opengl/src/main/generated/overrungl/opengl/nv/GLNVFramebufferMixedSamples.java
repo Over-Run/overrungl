@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_framebuffer_mixed_samples`
 public final class GLNVFramebufferMixedSamples {
     public static final int GL_RASTER_MULTISAMPLE_EXT = 0x9327;
     public static final int GL_COVERAGE_MODULATION_TABLE_NV = 0x9331;
@@ -48,7 +48,7 @@ public final class GLNVFramebufferMixedSamples {
         public final MemorySegment PFN_glCoverageModulationTableNV;
         public final MemorySegment PFN_glGetCoverageModulationTableNV;
         public final MemorySegment PFN_glCoverageModulationNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glRasterSamplesEXT = func.invoke("glRasterSamplesEXT");
             PFN_glCoverageModulationTableNV = func.invoke("glCoverageModulationTableNV");
             PFN_glGetCoverageModulationTableNV = func.invoke("glGetCoverageModulationTableNV");
@@ -56,10 +56,11 @@ public final class GLNVFramebufferMixedSamples {
         }
     }
 
-    public GLNVFramebufferMixedSamples(overrungl.opengl.GLLoadFunc func) {
+    public GLNVFramebufferMixedSamples(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glRasterSamplesEXT`.
     /// ```
     /// void glRasterSamplesEXT((unsigned int) GLuint samples, GLboolean fixedsamplelocations);
     /// ```
@@ -70,26 +71,29 @@ public final class GLNVFramebufferMixedSamples {
         catch (Throwable e) { throw new RuntimeException("error in RasterSamplesEXT", e); }
     }
 
+    /// Invokes `glCoverageModulationTableNV`.
     /// ```
     /// void glCoverageModulationTableNV((int) GLsizei n, const GLfloat* v);
     /// ```
-    public void CoverageModulationTableNV(int n, MemorySegment v) {
+    public void CoverageModulationTableNV(int n, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCoverageModulationTableNV)) throw new GLSymbolNotFoundError("Symbol not found: glCoverageModulationTableNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCoverageModulationTableNV", n, v); }
         Handles.MH_glCoverageModulationTableNV.invokeExact(handles.PFN_glCoverageModulationTableNV, n, v); }
         catch (Throwable e) { throw new RuntimeException("error in CoverageModulationTableNV", e); }
     }
 
+    /// Invokes `glGetCoverageModulationTableNV`.
     /// ```
     /// void glGetCoverageModulationTableNV((int) GLsizei bufSize, GLfloat* v);
     /// ```
-    public void GetCoverageModulationTableNV(int bufSize, MemorySegment v) {
+    public void GetCoverageModulationTableNV(int bufSize, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCoverageModulationTableNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetCoverageModulationTableNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetCoverageModulationTableNV", bufSize, v); }
         Handles.MH_glGetCoverageModulationTableNV.invokeExact(handles.PFN_glGetCoverageModulationTableNV, bufSize, v); }
         catch (Throwable e) { throw new RuntimeException("error in GetCoverageModulationTableNV", e); }
     }
 
+    /// Invokes `glCoverageModulationNV`.
     /// ```
     /// void glCoverageModulationNV((unsigned int) GLenum components);
     /// ```

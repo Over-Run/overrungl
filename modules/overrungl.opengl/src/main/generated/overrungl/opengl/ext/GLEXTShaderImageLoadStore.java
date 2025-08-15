@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_shader_image_load_store`
 public final class GLEXTShaderImageLoadStore {
     public static final int GL_MAX_IMAGE_UNITS_EXT = 0x8F38;
     public static final int GL_MAX_COMBINED_IMAGE_UNITS_AND_FRAGMENT_OUTPUTS_EXT = 0x8F39;
@@ -85,16 +85,17 @@ public final class GLEXTShaderImageLoadStore {
         public static final MethodHandle MH_glMemoryBarrierEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBindImageTextureEXT;
         public final MemorySegment PFN_glMemoryBarrierEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBindImageTextureEXT = func.invoke("glBindImageTextureEXT");
             PFN_glMemoryBarrierEXT = func.invoke("glMemoryBarrierEXT", "glMemoryBarrier");
         }
     }
 
-    public GLEXTShaderImageLoadStore(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTShaderImageLoadStore(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBindImageTextureEXT`.
     /// ```
     /// void glBindImageTextureEXT((unsigned int) GLuint index, (unsigned int) GLuint texture, (int) GLint level, GLboolean layered, (int) GLint layer, (unsigned int) GLenum access, (int) GLint format);
     /// ```
@@ -105,6 +106,7 @@ public final class GLEXTShaderImageLoadStore {
         catch (Throwable e) { throw new RuntimeException("error in BindImageTextureEXT", e); }
     }
 
+    /// Invokes `glMemoryBarrierEXT`.
     /// ```
     /// void glMemoryBarrierEXT((unsigned int) GLbitfield barriers);
     /// ```

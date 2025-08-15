@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkImageSubresourceRange`.
 /// ## Layout
 /// ```
 /// struct VkImageSubresourceRange {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class VkImageSubresourceRange extends GroupType {
     /// The struct layout of `VkImageSubresourceRange`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("aspectMask"),
         ValueLayout.JAVA_INT.withName("baseMipLevel"),
         ValueLayout.JAVA_INT.withName("levelCount"),

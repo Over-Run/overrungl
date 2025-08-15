@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH265SequenceParameterSetVui`.
 /// ## Layout
 /// ```
 /// struct StdVideoH265SequenceParameterSetVui {
@@ -58,7 +60,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH265SequenceParameterSetVui extends GroupType {
     /// The struct layout of `StdVideoH265SequenceParameterSetVui`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoH265SpsVuiFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_INT.withName("aspect_ratio_idc"),
         ValueLayout.JAVA_SHORT.withName("sar_width"),

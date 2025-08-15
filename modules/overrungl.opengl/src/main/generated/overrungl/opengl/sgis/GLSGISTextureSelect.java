@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgis;
-
+/// `GL_SGIS_texture_select`
 public final class GLSGISTextureSelect {
     public static final int GL_DUAL_ALPHA4_SGIS = 0x8110;
     public static final int GL_DUAL_ALPHA8_SGIS = 0x8111;

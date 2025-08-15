@@ -16,28 +16,29 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_polygon_offset_clamp`
 public final class GLEXTPolygonOffsetClamp {
     public static final int GL_POLYGON_OFFSET_CLAMP_EXT = 0x8E1B;
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_glPolygonOffsetClampEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glPolygonOffsetClampEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glPolygonOffsetClampEXT = func.invoke("glPolygonOffsetClampEXT", "glPolygonOffsetClamp");
         }
     }
 
-    public GLEXTPolygonOffsetClamp(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTPolygonOffsetClamp(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glPolygonOffsetClampEXT`.
     /// ```
     /// void glPolygonOffsetClampEXT(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat units, ((float) khronos_float_t) GLfloat clamp);
     /// ```

@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_viewport_swizzle` - device extension
 public final class VKNVViewportSwizzle {
     public static final int VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV = 0;
     public static final int VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_X_NV = 1;

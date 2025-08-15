@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkRenderPassSubpassFeedbackInfoEXT`.
 /// ## Layout
 /// ```
 /// struct VkRenderPassSubpassFeedbackInfoEXT {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// The struct layout of `VkRenderPassSubpassFeedbackInfoEXT`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("subpassMergeStatus"),
         MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.JAVA_INT.withName("postMergeIndex")

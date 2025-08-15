@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.amd;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_AMD_device_coherent_memory` - device extension
 public final class VKAMDDeviceCoherentMemory {
     public static final int VK_AMD_DEVICE_COHERENT_MEMORY_SPEC_VERSION = 1;
     public static final String VK_AMD_DEVICE_COHERENT_MEMORY_EXTENSION_NAME = "VK_AMD_device_coherent_memory";

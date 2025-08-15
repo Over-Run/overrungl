@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ati;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ATI_pn_triangles`
 public final class GLATIPnTriangles {
     public static final int GL_PN_TRIANGLES_ATI = 0x87F0;
     public static final int GL_MAX_PN_TRIANGLES_TESSELATION_LEVEL_ATI = 0x87F1;
@@ -39,16 +39,17 @@ public final class GLATIPnTriangles {
         public static final MethodHandle MH_glPNTrianglesfATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glPNTrianglesiATI;
         public final MemorySegment PFN_glPNTrianglesfATI;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glPNTrianglesiATI = func.invoke("glPNTrianglesiATI");
             PFN_glPNTrianglesfATI = func.invoke("glPNTrianglesfATI");
         }
     }
 
-    public GLATIPnTriangles(overrungl.opengl.GLLoadFunc func) {
+    public GLATIPnTriangles(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glPNTrianglesiATI`.
     /// ```
     /// void glPNTrianglesiATI((unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -59,6 +60,7 @@ public final class GLATIPnTriangles {
         catch (Throwable e) { throw new RuntimeException("error in PNTrianglesiATI", e); }
     }
 
+    /// Invokes `glPNTrianglesfATI`.
     /// ```
     /// void glPNTrianglesfATI((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```

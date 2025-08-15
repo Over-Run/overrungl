@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPhysicalDeviceSparseProperties`.
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSparseProperties {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPhysicalDeviceSparseProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceSparseProperties`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("residencyStandard2DBlockShape"),
         ValueLayout.JAVA_INT.withName("residencyStandard2DMultisampleBlockShape"),
         ValueLayout.JAVA_INT.withName("residencyStandard3DBlockShape"),

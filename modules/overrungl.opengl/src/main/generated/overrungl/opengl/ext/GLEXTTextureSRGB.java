@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
+/// `GL_EXT_texture_sRGB`
 public final class GLEXTTextureSRGB {
     public static final int GL_SRGB_EXT = 0x8C40;
     public static final int GL_SRGB8_EXT = 0x8C41;

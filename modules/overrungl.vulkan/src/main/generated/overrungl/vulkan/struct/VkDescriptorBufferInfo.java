@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkDescriptorBufferInfo`.
 /// ## Layout
 /// ```
 /// struct VkDescriptorBufferInfo {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkDescriptorBufferInfo extends GroupType {
     /// The struct layout of `VkDescriptorBufferInfo`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("buffer"),
         ValueLayout.JAVA_LONG.withName("offset"),
         ValueLayout.JAVA_LONG.withName("range")

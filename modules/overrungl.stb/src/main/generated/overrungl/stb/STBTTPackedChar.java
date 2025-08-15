@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `STBTTPackedChar`.
 /// ## Layout
 /// ```
 /// struct STBTTPackedChar {
@@ -41,7 +43,7 @@ import overrungl.util.*;
 /// ```
 public final class STBTTPackedChar extends GroupType {
     /// The struct layout of `STBTTPackedChar`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_SHORT.withName("x0"),
         ValueLayout.JAVA_SHORT.withName("y0"),
         ValueLayout.JAVA_SHORT.withName("x1"),

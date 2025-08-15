@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.qcom;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_QCOM_filter_cubic_weights` - device extension
 public final class VKQCOMFilterCubicWeights {
     public static final int VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM = 0;
     public static final int VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM = 1;

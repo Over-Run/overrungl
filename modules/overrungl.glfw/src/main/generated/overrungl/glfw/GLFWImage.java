@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `GLFWImage`.
 /// ## Layout
 /// ```
 /// struct GLFWImage {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class GLFWImage extends GroupType {
     /// The struct layout of `GLFWImage`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("width"),
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.ADDRESS.withName("pixels")

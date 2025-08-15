@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_buffer_device_address` - device extension
 public final class VKEXTBufferDeviceAddress {
     public static final int VK_EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 2;
     public static final String VK_EXT_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_EXT_buffer_device_address";
@@ -38,10 +40,11 @@ public final class VKEXTBufferDeviceAddress {
 
     private VKEXTBufferDeviceAddress() {}
 
+    /// Invokes `vkGetBufferDeviceAddressEXT`.
     /// ```
     /// (uint64_t) VkDeviceAddress vkGetBufferDeviceAddressEXT((struct VkDevice*) VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
     /// ```
-    public static long vkGetBufferDeviceAddressEXT(VkDevice device, MemorySegment pInfo) {
+    public static long vkGetBufferDeviceAddressEXT(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferDeviceAddressEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetBufferDeviceAddressEXT", device, pInfo); }
         return (long) Handles.MH_vkGetBufferDeviceAddressEXT.invokeExact(device.capabilities().PFN_vkGetBufferDeviceAddressEXT, device.segment(), pInfo); }

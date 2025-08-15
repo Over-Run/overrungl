@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkDecompressMemoryRegionNV`.
 /// ## Layout
 /// ```
 /// struct VkDecompressMemoryRegionNV {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class VkDecompressMemoryRegionNV extends GroupType {
     /// The struct layout of `VkDecompressMemoryRegionNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("srcAddress"),
         ValueLayout.JAVA_LONG.withName("dstAddress"),
         ValueLayout.JAVA_LONG.withName("compressedSize"),

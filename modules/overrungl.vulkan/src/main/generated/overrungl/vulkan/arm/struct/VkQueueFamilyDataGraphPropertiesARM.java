@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkQueueFamilyDataGraphPropertiesARM`.
 /// ## Layout
 /// ```
 /// struct VkQueueFamilyDataGraphPropertiesARM {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkQueueFamilyDataGraphPropertiesARM extends GroupType {
     /// The struct layout of `VkQueueFamilyDataGraphPropertiesARM`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.arm.struct.VkPhysicalDeviceDataGraphProcessingEngineARM.LAYOUT.withName("engine"),

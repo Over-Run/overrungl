@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `STBIIOCallbacks`.
 /// ## Layout
 /// ```
 /// struct STBIIOCallbacks {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class STBIIOCallbacks extends GroupType {
     /// The struct layout of `STBIIOCallbacks`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("read"),
         ValueLayout.ADDRESS.withName("skip"),
         ValueLayout.ADDRESS.withName("eof")

@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_geometry_program4`
 public final class GLNVGeometryProgram4 {
     public static final int GL_LINES_ADJACENCY_EXT = 0x000A;
     public static final int GL_LINE_STRIP_ADJACENCY_EXT = 0x000B;
@@ -50,7 +50,7 @@ public final class GLNVGeometryProgram4 {
         public final MemorySegment PFN_glFramebufferTextureEXT;
         public final MemorySegment PFN_glFramebufferTextureLayerEXT;
         public final MemorySegment PFN_glFramebufferTextureFaceEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glProgramVertexLimitNV = func.invoke("glProgramVertexLimitNV");
             PFN_glFramebufferTextureEXT = func.invoke("glFramebufferTextureEXT", "glFramebufferTexture");
             PFN_glFramebufferTextureLayerEXT = func.invoke("glFramebufferTextureLayerEXT", "glFramebufferTextureLayer");
@@ -58,10 +58,11 @@ public final class GLNVGeometryProgram4 {
         }
     }
 
-    public GLNVGeometryProgram4(overrungl.opengl.GLLoadFunc func) {
+    public GLNVGeometryProgram4(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glProgramVertexLimitNV`.
     /// ```
     /// void glProgramVertexLimitNV((unsigned int) GLenum target, (int) GLint limit);
     /// ```
@@ -72,6 +73,7 @@ public final class GLNVGeometryProgram4 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramVertexLimitNV", e); }
     }
 
+    /// Invokes `glFramebufferTextureEXT`.
     /// ```
     /// void glFramebufferTextureEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
@@ -82,6 +84,7 @@ public final class GLNVGeometryProgram4 {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureEXT", e); }
     }
 
+    /// Invokes `glFramebufferTextureLayerEXT`.
     /// ```
     /// void glFramebufferTextureLayerEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint layer);
     /// ```
@@ -92,6 +95,7 @@ public final class GLNVGeometryProgram4 {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureLayerEXT", e); }
     }
 
+    /// Invokes `glFramebufferTextureFaceEXT`.
     /// ```
     /// void glFramebufferTextureFaceEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLenum face);
     /// ```

@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_raster_multisample`
 public final class GLEXTRasterMultisample {
     public static final int GL_RASTER_MULTISAMPLE_EXT = 0x9327;
     public static final int GL_RASTER_SAMPLES_EXT = 0x9328;
@@ -34,15 +34,16 @@ public final class GLEXTRasterMultisample {
     public static final class Handles {
         public static final MethodHandle MH_glRasterSamplesEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
         public final MemorySegment PFN_glRasterSamplesEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glRasterSamplesEXT = func.invoke("glRasterSamplesEXT");
         }
     }
 
-    public GLEXTRasterMultisample(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTRasterMultisample(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glRasterSamplesEXT`.
     /// ```
     /// void glRasterSamplesEXT((unsigned int) GLuint samples, GLboolean fixedsamplelocations);
     /// ```

@@ -16,12 +16,12 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// Constants and functions of OpenGL 1.4.
 public class GL14 extends GL13 {
     public static final int GL_BLEND_DST_RGB = 0x80C8;
     public static final int GL_BLEND_SRC_RGB = 0x80C9;
@@ -88,6 +88,7 @@ public class GL14 extends GL13 {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBlendFuncSeparate`.
     /// ```
     /// void glBlendFuncSeparate((unsigned int) GLenum sfactorRGB, (unsigned int) GLenum dfactorRGB, (unsigned int) GLenum sfactorAlpha, (unsigned int) GLenum dfactorAlpha);
     /// ```
@@ -98,26 +99,29 @@ public class GL14 extends GL13 {
         catch (Throwable e) { throw new RuntimeException("error in BlendFuncSeparate", e); }
     }
 
+    /// Invokes `glMultiDrawArrays`.
     /// ```
     /// void glMultiDrawArrays((unsigned int) GLenum mode, const GLint* first, const GLsizei* count, (int) GLsizei drawcount);
     /// ```
-    public void MultiDrawArrays(int mode, MemorySegment first, MemorySegment count, int drawcount) {
+    public void MultiDrawArrays(int mode, @NonNull MemorySegment first, @NonNull MemorySegment count, int drawcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArrays)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawArrays");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawArrays", mode, first, count, drawcount); }
         Handles.MH_glMultiDrawArrays.invokeExact(handles.PFN_glMultiDrawArrays, mode, first, count, drawcount); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawArrays", e); }
     }
 
+    /// Invokes `glMultiDrawElements`.
     /// ```
     /// void glMultiDrawElements((unsigned int) GLenum mode, const GLsizei* count, (unsigned int) GLenum type, const void* const * indices, (int) GLsizei drawcount);
     /// ```
-    public void MultiDrawElements(int mode, MemorySegment count, int type, MemorySegment indices, int drawcount) {
+    public void MultiDrawElements(int mode, @NonNull MemorySegment count, int type, @NonNull MemorySegment indices, int drawcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElements)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElements");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawElements", mode, count, type, indices, drawcount); }
         Handles.MH_glMultiDrawElements.invokeExact(handles.PFN_glMultiDrawElements, mode, count, type, indices, drawcount); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawElements", e); }
     }
 
+    /// Invokes `glPointParameterf`.
     /// ```
     /// void glPointParameterf((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
@@ -128,16 +132,18 @@ public class GL14 extends GL13 {
         catch (Throwable e) { throw new RuntimeException("error in PointParameterf", e); }
     }
 
+    /// Invokes `glPointParameterfv`.
     /// ```
     /// void glPointParameterfv((unsigned int) GLenum pname, const GLfloat* params);
     /// ```
-    public void PointParameterfv(int pname, MemorySegment params) {
+    public void PointParameterfv(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfv)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterfv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameterfv", pname, params); }
         Handles.MH_glPointParameterfv.invokeExact(handles.PFN_glPointParameterfv, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterfv", e); }
     }
 
+    /// Invokes `glPointParameteri`.
     /// ```
     /// void glPointParameteri((unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -148,16 +154,18 @@ public class GL14 extends GL13 {
         catch (Throwable e) { throw new RuntimeException("error in PointParameteri", e); }
     }
 
+    /// Invokes `glPointParameteriv`.
     /// ```
     /// void glPointParameteriv((unsigned int) GLenum pname, const GLint* params);
     /// ```
-    public void PointParameteriv(int pname, MemorySegment params) {
+    public void PointParameteriv(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameteriv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameteriv", pname, params); }
         Handles.MH_glPointParameteriv.invokeExact(handles.PFN_glPointParameteriv, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameteriv", e); }
     }
 
+    /// Invokes `glBlendColor`.
     /// ```
     /// void glBlendColor(((float) khronos_float_t) GLfloat red, ((float) khronos_float_t) GLfloat green, ((float) khronos_float_t) GLfloat blue, ((float) khronos_float_t) GLfloat alpha);
     /// ```
@@ -168,6 +176,7 @@ public class GL14 extends GL13 {
         catch (Throwable e) { throw new RuntimeException("error in BlendColor", e); }
     }
 
+    /// Invokes `glBlendEquation`.
     /// ```
     /// void glBlendEquation((unsigned int) GLenum mode);
     /// ```

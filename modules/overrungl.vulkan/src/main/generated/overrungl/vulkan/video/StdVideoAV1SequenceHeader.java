@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoAV1SequenceHeader`.
 /// ## Layout
 /// ```
 /// struct StdVideoAV1SequenceHeader {
@@ -46,7 +48,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoAV1SequenceHeader extends GroupType {
     /// The struct layout of `StdVideoAV1SequenceHeader`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoAV1SequenceHeaderFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_INT.withName("seq_profile"),
         ValueLayout.JAVA_BYTE.withName("frame_width_bits_minus_1"),

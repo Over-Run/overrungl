@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkDescriptorSetLayoutBinding`.
 /// ## Layout
 /// ```
 /// struct VkDescriptorSetLayoutBinding {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class VkDescriptorSetLayoutBinding extends GroupType {
     /// The struct layout of `VkDescriptorSetLayoutBinding`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("binding"),
         ValueLayout.JAVA_INT.withName("descriptorType"),
         ValueLayout.JAVA_INT.withName("descriptorCount"),

@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.arm;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_ARM_format_pack` - device extension
 public final class VKARMFormatPack {
     public static final int VK_ARM_FORMAT_PACK_SPEC_VERSION = 1;
     public static final String VK_ARM_FORMAT_PACK_EXTENSION_NAME = "VK_ARM_format_pack";

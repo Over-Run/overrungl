@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
+/// `GL_EXT_pixel_buffer_object`
 public final class GLEXTPixelBufferObject {
     public static final int GL_PIXEL_PACK_BUFFER_EXT = 0x88EB;
     public static final int GL_PIXEL_UNPACK_BUFFER_EXT = 0x88EC;

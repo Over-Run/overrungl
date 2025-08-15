@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.qcom;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_QCOM_image_processing2` - device extension
 public final class VKQCOMImageProcessing2 {
     public static final int VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM = 0;
     public static final int VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM = 1;

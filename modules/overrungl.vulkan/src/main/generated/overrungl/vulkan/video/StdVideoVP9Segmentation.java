@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoVP9Segmentation`.
 /// ## Layout
 /// ```
 /// struct StdVideoVP9Segmentation {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoVP9Segmentation extends GroupType {
     /// The struct layout of `StdVideoVP9Segmentation`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoVP9SegmentationFlags.LAYOUT.withName("flags"),
         MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("segmentation_tree_probs"),
         MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_BYTE).withName("segmentation_pred_prob"),

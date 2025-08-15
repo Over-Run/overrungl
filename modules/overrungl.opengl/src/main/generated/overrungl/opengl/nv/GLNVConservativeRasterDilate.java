@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_conservative_raster_dilate`
 public final class GLNVConservativeRasterDilate {
     public static final int GL_CONSERVATIVE_RASTER_DILATE_NV = 0x9379;
     public static final int GL_CONSERVATIVE_RASTER_DILATE_RANGE_NV = 0x937A;
@@ -31,15 +31,16 @@ public final class GLNVConservativeRasterDilate {
     public static final class Handles {
         public static final MethodHandle MH_glConservativeRasterParameterfNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glConservativeRasterParameterfNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glConservativeRasterParameterfNV = func.invoke("glConservativeRasterParameterfNV");
         }
     }
 
-    public GLNVConservativeRasterDilate(overrungl.opengl.GLLoadFunc func) {
+    public GLNVConservativeRasterDilate(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glConservativeRasterParameterfNV`.
     /// ```
     /// void glConservativeRasterParameterfNV((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat value);
     /// ```

@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ati;
-
+/// `GL_ATI_texture_float`
 public final class GLATITextureFloat {
     public static final int GL_RGBA_FLOAT32_ATI = 0x8814;
     public static final int GL_RGB_FLOAT32_ATI = 0x8815;

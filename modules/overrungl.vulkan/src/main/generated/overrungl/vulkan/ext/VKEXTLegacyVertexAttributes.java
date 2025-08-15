@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_legacy_vertex_attributes` - device extension
 public final class VKEXTLegacyVertexAttributes {
     public static final int VK_EXT_LEGACY_VERTEX_ATTRIBUTES_SPEC_VERSION = 1;
     public static final String VK_EXT_LEGACY_VERTEX_ATTRIBUTES_EXTENSION_NAME = "VK_EXT_legacy_vertex_attributes";

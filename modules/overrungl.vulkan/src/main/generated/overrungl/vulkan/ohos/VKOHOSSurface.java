@@ -18,9 +18,11 @@
 package overrungl.vulkan.ohos;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_OHOS_surface` - instance extension
 public final class VKOHOSSurface {
     public static final int VK_OHOS_SURFACE_SPEC_VERSION = 1;
     public static final String VK_OHOS_SURFACE_EXTENSION_NAME = "VK_OHOS_surface";
@@ -32,10 +34,11 @@ public final class VKOHOSSurface {
 
     private VKOHOSSurface() {}
 
+    /// Invokes `vkCreateSurfaceOHOS`.
     /// ```
     /// (int) VkResult vkCreateSurfaceOHOS((struct VkInstance*) VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
-    public static int vkCreateSurfaceOHOS(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public static int vkCreateSurfaceOHOS(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateSurfaceOHOS)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateSurfaceOHOS");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateSurfaceOHOS", instance, pCreateInfo, pAllocator, pSurface); }
         return (int) Handles.MH_vkCreateSurfaceOHOS.invokeExact(instance.capabilities().PFN_vkCreateSurfaceOHOS, instance.segment(), pCreateInfo, pAllocator, pSurface); }

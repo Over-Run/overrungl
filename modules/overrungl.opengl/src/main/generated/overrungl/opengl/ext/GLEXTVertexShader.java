@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_vertex_shader`
 public final class GLEXTVertexShader {
     public static final int GL_VERTEX_SHADER_EXT = 0x8780;
     public static final int GL_VERTEX_SHADER_BINDING_EXT = 0x8781;
@@ -220,7 +220,7 @@ public final class GLEXTVertexShader {
         public final MemorySegment PFN_glGetLocalConstantBooleanvEXT;
         public final MemorySegment PFN_glGetLocalConstantIntegervEXT;
         public final MemorySegment PFN_glGetLocalConstantFloatvEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBeginVertexShaderEXT = func.invoke("glBeginVertexShaderEXT");
             PFN_glEndVertexShaderEXT = func.invoke("glEndVertexShaderEXT");
             PFN_glBindVertexShaderEXT = func.invoke("glBindVertexShaderEXT");
@@ -266,10 +266,11 @@ public final class GLEXTVertexShader {
         }
     }
 
-    public GLEXTVertexShader(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTVertexShader(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBeginVertexShaderEXT`.
     /// ```
     /// void glBeginVertexShaderEXT();
     /// ```
@@ -280,6 +281,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in BeginVertexShaderEXT", e); }
     }
 
+    /// Invokes `glEndVertexShaderEXT`.
     /// ```
     /// void glEndVertexShaderEXT();
     /// ```
@@ -290,6 +292,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in EndVertexShaderEXT", e); }
     }
 
+    /// Invokes `glBindVertexShaderEXT`.
     /// ```
     /// void glBindVertexShaderEXT((unsigned int) GLuint id);
     /// ```
@@ -300,6 +303,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in BindVertexShaderEXT", e); }
     }
 
+    /// Invokes `glGenVertexShadersEXT`.
     /// ```
     /// (unsigned int) GLuint glGenVertexShadersEXT((unsigned int) GLuint range);
     /// ```
@@ -310,6 +314,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in GenVertexShadersEXT", e); }
     }
 
+    /// Invokes `glDeleteVertexShaderEXT`.
     /// ```
     /// void glDeleteVertexShaderEXT((unsigned int) GLuint id);
     /// ```
@@ -320,6 +325,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in DeleteVertexShaderEXT", e); }
     }
 
+    /// Invokes `glShaderOp1EXT`.
     /// ```
     /// void glShaderOp1EXT((unsigned int) GLenum op, (unsigned int) GLuint res, (unsigned int) GLuint arg1);
     /// ```
@@ -330,6 +336,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in ShaderOp1EXT", e); }
     }
 
+    /// Invokes `glShaderOp2EXT`.
     /// ```
     /// void glShaderOp2EXT((unsigned int) GLenum op, (unsigned int) GLuint res, (unsigned int) GLuint arg1, (unsigned int) GLuint arg2);
     /// ```
@@ -340,6 +347,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in ShaderOp2EXT", e); }
     }
 
+    /// Invokes `glShaderOp3EXT`.
     /// ```
     /// void glShaderOp3EXT((unsigned int) GLenum op, (unsigned int) GLuint res, (unsigned int) GLuint arg1, (unsigned int) GLuint arg2, (unsigned int) GLuint arg3);
     /// ```
@@ -350,6 +358,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in ShaderOp3EXT", e); }
     }
 
+    /// Invokes `glSwizzleEXT`.
     /// ```
     /// void glSwizzleEXT((unsigned int) GLuint res, (unsigned int) GLuint in, (unsigned int) GLenum outX, (unsigned int) GLenum outY, (unsigned int) GLenum outZ, (unsigned int) GLenum outW);
     /// ```
@@ -360,6 +369,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in SwizzleEXT", e); }
     }
 
+    /// Invokes `glWriteMaskEXT`.
     /// ```
     /// void glWriteMaskEXT((unsigned int) GLuint res, (unsigned int) GLuint in, (unsigned int) GLenum outX, (unsigned int) GLenum outY, (unsigned int) GLenum outZ, (unsigned int) GLenum outW);
     /// ```
@@ -370,6 +380,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in WriteMaskEXT", e); }
     }
 
+    /// Invokes `glInsertComponentEXT`.
     /// ```
     /// void glInsertComponentEXT((unsigned int) GLuint res, (unsigned int) GLuint src, (unsigned int) GLuint num);
     /// ```
@@ -380,6 +391,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in InsertComponentEXT", e); }
     }
 
+    /// Invokes `glExtractComponentEXT`.
     /// ```
     /// void glExtractComponentEXT((unsigned int) GLuint res, (unsigned int) GLuint src, (unsigned int) GLuint num);
     /// ```
@@ -390,6 +402,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in ExtractComponentEXT", e); }
     }
 
+    /// Invokes `glGenSymbolsEXT`.
     /// ```
     /// (unsigned int) GLuint glGenSymbolsEXT((unsigned int) GLenum datatype, (unsigned int) GLenum storagetype, (unsigned int) GLenum range, (unsigned int) GLuint components);
     /// ```
@@ -400,116 +413,128 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in GenSymbolsEXT", e); }
     }
 
+    /// Invokes `glSetInvariantEXT`.
     /// ```
     /// void glSetInvariantEXT((unsigned int) GLuint id, (unsigned int) GLenum type, const void* addr);
     /// ```
-    public void SetInvariantEXT(int id, int type, MemorySegment addr) {
+    public void SetInvariantEXT(int id, int type, @NonNull MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSetInvariantEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSetInvariantEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSetInvariantEXT", id, type, addr); }
         Handles.MH_glSetInvariantEXT.invokeExact(handles.PFN_glSetInvariantEXT, id, type, addr); }
         catch (Throwable e) { throw new RuntimeException("error in SetInvariantEXT", e); }
     }
 
+    /// Invokes `glSetLocalConstantEXT`.
     /// ```
     /// void glSetLocalConstantEXT((unsigned int) GLuint id, (unsigned int) GLenum type, const void* addr);
     /// ```
-    public void SetLocalConstantEXT(int id, int type, MemorySegment addr) {
+    public void SetLocalConstantEXT(int id, int type, @NonNull MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSetLocalConstantEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSetLocalConstantEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSetLocalConstantEXT", id, type, addr); }
         Handles.MH_glSetLocalConstantEXT.invokeExact(handles.PFN_glSetLocalConstantEXT, id, type, addr); }
         catch (Throwable e) { throw new RuntimeException("error in SetLocalConstantEXT", e); }
     }
 
+    /// Invokes `glVariantbvEXT`.
     /// ```
     /// void glVariantbvEXT((unsigned int) GLuint id, const GLbyte* addr);
     /// ```
-    public void VariantbvEXT(int id, MemorySegment addr) {
+    public void VariantbvEXT(int id, @NonNull MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantbvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVariantbvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVariantbvEXT", id, addr); }
         Handles.MH_glVariantbvEXT.invokeExact(handles.PFN_glVariantbvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in VariantbvEXT", e); }
     }
 
+    /// Invokes `glVariantsvEXT`.
     /// ```
     /// void glVariantsvEXT((unsigned int) GLuint id, const GLshort* addr);
     /// ```
-    public void VariantsvEXT(int id, MemorySegment addr) {
+    public void VariantsvEXT(int id, @NonNull MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantsvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVariantsvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVariantsvEXT", id, addr); }
         Handles.MH_glVariantsvEXT.invokeExact(handles.PFN_glVariantsvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in VariantsvEXT", e); }
     }
 
+    /// Invokes `glVariantivEXT`.
     /// ```
     /// void glVariantivEXT((unsigned int) GLuint id, const GLint* addr);
     /// ```
-    public void VariantivEXT(int id, MemorySegment addr) {
+    public void VariantivEXT(int id, @NonNull MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVariantivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVariantivEXT", id, addr); }
         Handles.MH_glVariantivEXT.invokeExact(handles.PFN_glVariantivEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in VariantivEXT", e); }
     }
 
+    /// Invokes `glVariantfvEXT`.
     /// ```
     /// void glVariantfvEXT((unsigned int) GLuint id, const GLfloat* addr);
     /// ```
-    public void VariantfvEXT(int id, MemorySegment addr) {
+    public void VariantfvEXT(int id, @NonNull MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVariantfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVariantfvEXT", id, addr); }
         Handles.MH_glVariantfvEXT.invokeExact(handles.PFN_glVariantfvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in VariantfvEXT", e); }
     }
 
+    /// Invokes `glVariantdvEXT`.
     /// ```
     /// void glVariantdvEXT((unsigned int) GLuint id, const GLdouble* addr);
     /// ```
-    public void VariantdvEXT(int id, MemorySegment addr) {
+    public void VariantdvEXT(int id, @NonNull MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantdvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVariantdvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVariantdvEXT", id, addr); }
         Handles.MH_glVariantdvEXT.invokeExact(handles.PFN_glVariantdvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in VariantdvEXT", e); }
     }
 
+    /// Invokes `glVariantubvEXT`.
     /// ```
     /// void glVariantubvEXT((unsigned int) GLuint id, const GLubyte* addr);
     /// ```
-    public void VariantubvEXT(int id, MemorySegment addr) {
+    public void VariantubvEXT(int id, @NonNull MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantubvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVariantubvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVariantubvEXT", id, addr); }
         Handles.MH_glVariantubvEXT.invokeExact(handles.PFN_glVariantubvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in VariantubvEXT", e); }
     }
 
+    /// Invokes `glVariantusvEXT`.
     /// ```
     /// void glVariantusvEXT((unsigned int) GLuint id, const GLushort* addr);
     /// ```
-    public void VariantusvEXT(int id, MemorySegment addr) {
+    public void VariantusvEXT(int id, @NonNull MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantusvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVariantusvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVariantusvEXT", id, addr); }
         Handles.MH_glVariantusvEXT.invokeExact(handles.PFN_glVariantusvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in VariantusvEXT", e); }
     }
 
+    /// Invokes `glVariantuivEXT`.
     /// ```
     /// void glVariantuivEXT((unsigned int) GLuint id, const GLuint* addr);
     /// ```
-    public void VariantuivEXT(int id, MemorySegment addr) {
+    public void VariantuivEXT(int id, @NonNull MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVariantuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVariantuivEXT", id, addr); }
         Handles.MH_glVariantuivEXT.invokeExact(handles.PFN_glVariantuivEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in VariantuivEXT", e); }
     }
 
+    /// Invokes `glVariantPointerEXT`.
     /// ```
     /// void glVariantPointerEXT((unsigned int) GLuint id, (unsigned int) GLenum type, (unsigned int) GLuint stride, const void* addr);
     /// ```
-    public void VariantPointerEXT(int id, int type, int stride, MemorySegment addr) {
+    public void VariantPointerEXT(int id, int type, int stride, @NonNull MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVariantPointerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVariantPointerEXT", id, type, stride, addr); }
         Handles.MH_glVariantPointerEXT.invokeExact(handles.PFN_glVariantPointerEXT, id, type, stride, addr); }
         catch (Throwable e) { throw new RuntimeException("error in VariantPointerEXT", e); }
     }
 
+    /// Invokes `glEnableVariantClientStateEXT`.
     /// ```
     /// void glEnableVariantClientStateEXT((unsigned int) GLuint id);
     /// ```
@@ -520,6 +545,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in EnableVariantClientStateEXT", e); }
     }
 
+    /// Invokes `glDisableVariantClientStateEXT`.
     /// ```
     /// void glDisableVariantClientStateEXT((unsigned int) GLuint id);
     /// ```
@@ -530,6 +556,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in DisableVariantClientStateEXT", e); }
     }
 
+    /// Invokes `glBindLightParameterEXT`.
     /// ```
     /// (unsigned int) GLuint glBindLightParameterEXT((unsigned int) GLenum light, (unsigned int) GLenum value);
     /// ```
@@ -540,6 +567,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in BindLightParameterEXT", e); }
     }
 
+    /// Invokes `glBindMaterialParameterEXT`.
     /// ```
     /// (unsigned int) GLuint glBindMaterialParameterEXT((unsigned int) GLenum face, (unsigned int) GLenum value);
     /// ```
@@ -550,6 +578,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in BindMaterialParameterEXT", e); }
     }
 
+    /// Invokes `glBindTexGenParameterEXT`.
     /// ```
     /// (unsigned int) GLuint glBindTexGenParameterEXT((unsigned int) GLenum unit, (unsigned int) GLenum coord, (unsigned int) GLenum value);
     /// ```
@@ -560,6 +589,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in BindTexGenParameterEXT", e); }
     }
 
+    /// Invokes `glBindTextureUnitParameterEXT`.
     /// ```
     /// (unsigned int) GLuint glBindTextureUnitParameterEXT((unsigned int) GLenum unit, (unsigned int) GLenum value);
     /// ```
@@ -570,6 +600,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in BindTextureUnitParameterEXT", e); }
     }
 
+    /// Invokes `glBindParameterEXT`.
     /// ```
     /// (unsigned int) GLuint glBindParameterEXT((unsigned int) GLenum value);
     /// ```
@@ -580,6 +611,7 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in BindParameterEXT", e); }
     }
 
+    /// Invokes `glIsVariantEnabledEXT`.
     /// ```
     /// GLboolean glIsVariantEnabledEXT((unsigned int) GLuint id, (unsigned int) GLenum cap);
     /// ```
@@ -590,100 +622,110 @@ public final class GLEXTVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in IsVariantEnabledEXT", e); }
     }
 
+    /// Invokes `glGetVariantBooleanvEXT`.
     /// ```
     /// void glGetVariantBooleanvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLboolean* data);
     /// ```
-    public void GetVariantBooleanvEXT(int id, int value, MemorySegment data) {
+    public void GetVariantBooleanvEXT(int id, int value, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantBooleanvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVariantBooleanvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVariantBooleanvEXT", id, value, data); }
         Handles.MH_glGetVariantBooleanvEXT.invokeExact(handles.PFN_glGetVariantBooleanvEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetVariantBooleanvEXT", e); }
     }
 
+    /// Invokes `glGetVariantIntegervEXT`.
     /// ```
     /// void glGetVariantIntegervEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLint* data);
     /// ```
-    public void GetVariantIntegervEXT(int id, int value, MemorySegment data) {
+    public void GetVariantIntegervEXT(int id, int value, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantIntegervEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVariantIntegervEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVariantIntegervEXT", id, value, data); }
         Handles.MH_glGetVariantIntegervEXT.invokeExact(handles.PFN_glGetVariantIntegervEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetVariantIntegervEXT", e); }
     }
 
+    /// Invokes `glGetVariantFloatvEXT`.
     /// ```
     /// void glGetVariantFloatvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLfloat* data);
     /// ```
-    public void GetVariantFloatvEXT(int id, int value, MemorySegment data) {
+    public void GetVariantFloatvEXT(int id, int value, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantFloatvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVariantFloatvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVariantFloatvEXT", id, value, data); }
         Handles.MH_glGetVariantFloatvEXT.invokeExact(handles.PFN_glGetVariantFloatvEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetVariantFloatvEXT", e); }
     }
 
+    /// Invokes `glGetVariantPointervEXT`.
     /// ```
     /// void glGetVariantPointervEXT((unsigned int) GLuint id, (unsigned int) GLenum value, void** data);
     /// ```
-    public void GetVariantPointervEXT(int id, int value, MemorySegment data) {
+    public void GetVariantPointervEXT(int id, int value, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantPointervEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVariantPointervEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVariantPointervEXT", id, value, data); }
         Handles.MH_glGetVariantPointervEXT.invokeExact(handles.PFN_glGetVariantPointervEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetVariantPointervEXT", e); }
     }
 
+    /// Invokes `glGetInvariantBooleanvEXT`.
     /// ```
     /// void glGetInvariantBooleanvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLboolean* data);
     /// ```
-    public void GetInvariantBooleanvEXT(int id, int value, MemorySegment data) {
+    public void GetInvariantBooleanvEXT(int id, int value, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInvariantBooleanvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetInvariantBooleanvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInvariantBooleanvEXT", id, value, data); }
         Handles.MH_glGetInvariantBooleanvEXT.invokeExact(handles.PFN_glGetInvariantBooleanvEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetInvariantBooleanvEXT", e); }
     }
 
+    /// Invokes `glGetInvariantIntegervEXT`.
     /// ```
     /// void glGetInvariantIntegervEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLint* data);
     /// ```
-    public void GetInvariantIntegervEXT(int id, int value, MemorySegment data) {
+    public void GetInvariantIntegervEXT(int id, int value, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInvariantIntegervEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetInvariantIntegervEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInvariantIntegervEXT", id, value, data); }
         Handles.MH_glGetInvariantIntegervEXT.invokeExact(handles.PFN_glGetInvariantIntegervEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetInvariantIntegervEXT", e); }
     }
 
+    /// Invokes `glGetInvariantFloatvEXT`.
     /// ```
     /// void glGetInvariantFloatvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLfloat* data);
     /// ```
-    public void GetInvariantFloatvEXT(int id, int value, MemorySegment data) {
+    public void GetInvariantFloatvEXT(int id, int value, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInvariantFloatvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetInvariantFloatvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInvariantFloatvEXT", id, value, data); }
         Handles.MH_glGetInvariantFloatvEXT.invokeExact(handles.PFN_glGetInvariantFloatvEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetInvariantFloatvEXT", e); }
     }
 
+    /// Invokes `glGetLocalConstantBooleanvEXT`.
     /// ```
     /// void glGetLocalConstantBooleanvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLboolean* data);
     /// ```
-    public void GetLocalConstantBooleanvEXT(int id, int value, MemorySegment data) {
+    public void GetLocalConstantBooleanvEXT(int id, int value, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLocalConstantBooleanvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetLocalConstantBooleanvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetLocalConstantBooleanvEXT", id, value, data); }
         Handles.MH_glGetLocalConstantBooleanvEXT.invokeExact(handles.PFN_glGetLocalConstantBooleanvEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetLocalConstantBooleanvEXT", e); }
     }
 
+    /// Invokes `glGetLocalConstantIntegervEXT`.
     /// ```
     /// void glGetLocalConstantIntegervEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLint* data);
     /// ```
-    public void GetLocalConstantIntegervEXT(int id, int value, MemorySegment data) {
+    public void GetLocalConstantIntegervEXT(int id, int value, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLocalConstantIntegervEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetLocalConstantIntegervEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetLocalConstantIntegervEXT", id, value, data); }
         Handles.MH_glGetLocalConstantIntegervEXT.invokeExact(handles.PFN_glGetLocalConstantIntegervEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetLocalConstantIntegervEXT", e); }
     }
 
+    /// Invokes `glGetLocalConstantFloatvEXT`.
     /// ```
     /// void glGetLocalConstantFloatvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLfloat* data);
     /// ```
-    public void GetLocalConstantFloatvEXT(int id, int value, MemorySegment data) {
+    public void GetLocalConstantFloatvEXT(int id, int value, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLocalConstantFloatvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetLocalConstantFloatvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetLocalConstantFloatvEXT", id, value, data); }
         Handles.MH_glGetLocalConstantFloatvEXT.invokeExact(handles.PFN_glGetLocalConstantFloatvEXT, id, value, data); }

@@ -18,9 +18,11 @@
 package overrungl.vulkan.amd;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_AMD_display_native_hdr` - device extension
 public final class VKAMDDisplayNativeHdr {
     public static final int VK_AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION = 1;
     public static final String VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME = "VK_AMD_display_native_hdr";
@@ -34,10 +36,11 @@ public final class VKAMDDisplayNativeHdr {
 
     private VKAMDDisplayNativeHdr() {}
 
+    /// Invokes `vkSetLocalDimmingAMD`.
     /// ```
     /// void vkSetLocalDimmingAMD((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapChain, (uint32_t) VkBool32 localDimmingEnable);
     /// ```
-    public static void vkSetLocalDimmingAMD(VkDevice device, long swapChain, int localDimmingEnable) {
+    public static void vkSetLocalDimmingAMD(@NonNull VkDevice device, long swapChain, int localDimmingEnable) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLocalDimmingAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkSetLocalDimmingAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkSetLocalDimmingAMD", device, swapChain, localDimmingEnable); }
         Handles.MH_vkSetLocalDimmingAMD.invokeExact(device.capabilities().PFN_vkSetLocalDimmingAMD, device.segment(), swapChain, localDimmingEnable); }

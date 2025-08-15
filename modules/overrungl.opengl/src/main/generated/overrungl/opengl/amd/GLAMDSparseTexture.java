@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.amd;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_AMD_sparse_texture`
 public final class GLAMDSparseTexture {
     public static final int GL_VIRTUAL_PAGE_SIZE_X_AMD = 0x9195;
     public static final int GL_VIRTUAL_PAGE_SIZE_Y_AMD = 0x9196;
@@ -39,16 +39,17 @@ public final class GLAMDSparseTexture {
         public static final MethodHandle MH_glTextureStorageSparseAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTexStorageSparseAMD;
         public final MemorySegment PFN_glTextureStorageSparseAMD;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTexStorageSparseAMD = func.invoke("glTexStorageSparseAMD");
             PFN_glTextureStorageSparseAMD = func.invoke("glTextureStorageSparseAMD");
         }
     }
 
-    public GLAMDSparseTexture(overrungl.opengl.GLLoadFunc func) {
+    public GLAMDSparseTexture(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTexStorageSparseAMD`.
     /// ```
     /// void glTexStorageSparseAMD((unsigned int) GLenum target, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLsizei layers, (unsigned int) GLbitfield flags);
     /// ```
@@ -59,6 +60,7 @@ public final class GLAMDSparseTexture {
         catch (Throwable e) { throw new RuntimeException("error in TexStorageSparseAMD", e); }
     }
 
+    /// Invokes `glTextureStorageSparseAMD`.
     /// ```
     /// void glTextureStorageSparseAMD((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLsizei layers, (unsigned int) GLbitfield flags);
     /// ```

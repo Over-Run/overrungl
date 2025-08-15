@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkSparseImageFormatProperties`.
 /// ## Layout
 /// ```
 /// struct VkSparseImageFormatProperties {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkSparseImageFormatProperties extends GroupType {
     /// The struct layout of `VkSparseImageFormatProperties`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("aspectMask"),
         overrungl.vulkan.struct.VkExtent3D.LAYOUT.withName("imageGranularity"),
         ValueLayout.JAVA_INT.withName("flags")

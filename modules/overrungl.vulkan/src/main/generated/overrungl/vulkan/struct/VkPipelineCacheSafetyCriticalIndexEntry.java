@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPipelineCacheSafetyCriticalIndexEntry`.
 /// ## Layout
 /// ```
 /// struct VkPipelineCacheSafetyCriticalIndexEntry {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// The struct layout of `VkPipelineCacheSafetyCriticalIndexEntry`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("pipelineIdentifier"),
         ValueLayout.JAVA_LONG.withName("pipelineMemorySize"),
         ValueLayout.JAVA_LONG.withName("jsonSize"),

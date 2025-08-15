@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.valve;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_VALVE_mutable_descriptor_type` - device extension
 public final class VKVALVEMutableDescriptorType {
     public static final int VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1;
     public static final String VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_VALVE_mutable_descriptor_type";

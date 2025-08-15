@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `GLFWAllocator`.
 /// ## Layout
 /// ```
 /// struct GLFWAllocator {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class GLFWAllocator extends GroupType {
     /// The struct layout of `GLFWAllocator`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("allocate"),
         ValueLayout.ADDRESS.withName("reallocate"),
         ValueLayout.ADDRESS.withName("deallocate"),

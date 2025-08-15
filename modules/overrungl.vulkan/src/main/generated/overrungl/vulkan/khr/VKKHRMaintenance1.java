@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_maintenance1` - device extension
 public final class VKKHRMaintenance1 {
     public static final int VK_KHR_MAINTENANCE_1_SPEC_VERSION = 2;
     public static final String VK_KHR_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_maintenance1";
@@ -37,10 +39,11 @@ public final class VKKHRMaintenance1 {
 
     private VKKHRMaintenance1() {}
 
+    /// Invokes `vkTrimCommandPoolKHR`.
     /// ```
     /// void vkTrimCommandPoolKHR((struct VkDevice*) VkDevice device, (uint64_t) VkCommandPool commandPool, ((uint32_t) VkFlags) VkCommandPoolTrimFlags flags);
     /// ```
-    public static void vkTrimCommandPoolKHR(VkDevice device, long commandPool, int flags) {
+    public static void vkTrimCommandPoolKHR(@NonNull VkDevice device, long commandPool, int flags) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkTrimCommandPoolKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkTrimCommandPoolKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkTrimCommandPoolKHR", device, commandPool, flags); }
         Handles.MH_vkTrimCommandPoolKHR.invokeExact(device.capabilities().PFN_vkTrimCommandPoolKHR, device.segment(), commandPool, flags); }

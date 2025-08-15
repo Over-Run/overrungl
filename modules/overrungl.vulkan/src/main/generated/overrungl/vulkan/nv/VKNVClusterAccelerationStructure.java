@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_cluster_acceleration_structure` - device extension
 public final class VKNVClusterAccelerationStructure {
     public static final int VK_CLUSTER_ACCELERATION_STRUCTURE_CLUSTER_ALLOW_DISABLE_OPACITY_MICROMAPS_NV = 0x00000001;
     public static final int VK_CLUSTER_ACCELERATION_STRUCTURE_GEOMETRY_CULL_DISABLE_BIT_NV = 0x00000001;
@@ -68,20 +70,22 @@ public final class VKNVClusterAccelerationStructure {
 
     private VKNVClusterAccelerationStructure() {}
 
+    /// Invokes `vkGetClusterAccelerationStructureBuildSizesNV`.
     /// ```
     /// void vkGetClusterAccelerationStructureBuildSizesNV((struct VkDevice*) VkDevice device, const VkClusterAccelerationStructureInputInfoNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
     /// ```
-    public static void vkGetClusterAccelerationStructureBuildSizesNV(VkDevice device, MemorySegment pInfo, MemorySegment pSizeInfo) {
+    public static void vkGetClusterAccelerationStructureBuildSizesNV(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pSizeInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetClusterAccelerationStructureBuildSizesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetClusterAccelerationStructureBuildSizesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetClusterAccelerationStructureBuildSizesNV", device, pInfo, pSizeInfo); }
         Handles.MH_vkGetClusterAccelerationStructureBuildSizesNV.invokeExact(device.capabilities().PFN_vkGetClusterAccelerationStructureBuildSizesNV, device.segment(), pInfo, pSizeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetClusterAccelerationStructureBuildSizesNV", e); }
     }
 
+    /// Invokes `vkCmdBuildClusterAccelerationStructureIndirectNV`.
     /// ```
     /// void vkCmdBuildClusterAccelerationStructureIndirectNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkClusterAccelerationStructureCommandsInfoNV* pCommandInfos);
     /// ```
-    public static void vkCmdBuildClusterAccelerationStructureIndirectNV(VkCommandBuffer commandBuffer, MemorySegment pCommandInfos) {
+    public static void vkCmdBuildClusterAccelerationStructureIndirectNV(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pCommandInfos) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildClusterAccelerationStructureIndirectNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBuildClusterAccelerationStructureIndirectNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBuildClusterAccelerationStructureIndirectNV", commandBuffer, pCommandInfos); }
         Handles.MH_vkCmdBuildClusterAccelerationStructureIndirectNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildClusterAccelerationStructureIndirectNV, commandBuffer.segment(), pCommandInfos); }

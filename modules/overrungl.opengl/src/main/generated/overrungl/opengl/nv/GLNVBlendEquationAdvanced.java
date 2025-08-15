@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_blend_equation_advanced`
 public final class GLNVBlendEquationAdvanced {
     public static final int GL_BLEND_OVERLAP_NV = 0x9281;
     public static final int GL_BLEND_PREMULTIPLIED_SRC_NV = 0x9280;
@@ -81,16 +81,17 @@ public final class GLNVBlendEquationAdvanced {
         public static final MethodHandle MH_glBlendBarrierNV = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glBlendParameteriNV;
         public final MemorySegment PFN_glBlendBarrierNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBlendParameteriNV = func.invoke("glBlendParameteriNV");
             PFN_glBlendBarrierNV = func.invoke("glBlendBarrierNV", "glBlendBarrier");
         }
     }
 
-    public GLNVBlendEquationAdvanced(overrungl.opengl.GLLoadFunc func) {
+    public GLNVBlendEquationAdvanced(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBlendParameteriNV`.
     /// ```
     /// void glBlendParameteriNV((unsigned int) GLenum pname, (int) GLint value);
     /// ```
@@ -101,6 +102,7 @@ public final class GLNVBlendEquationAdvanced {
         catch (Throwable e) { throw new RuntimeException("error in BlendParameteriNV", e); }
     }
 
+    /// Invokes `glBlendBarrierNV`.
     /// ```
     /// void glBlendBarrierNV();
     /// ```

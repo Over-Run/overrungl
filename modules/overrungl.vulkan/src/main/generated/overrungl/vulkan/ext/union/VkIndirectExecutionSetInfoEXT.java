@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkIndirectExecutionSetInfoEXT`.
 /// ## Layout
 /// ```
 /// union VkIndirectExecutionSetInfoEXT {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class VkIndirectExecutionSetInfoEXT extends GroupType {
     /// The union layout of `VkIndirectExecutionSetInfoEXT`.
-    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.ADDRESS.withName("pPipelineInfo"),
         ValueLayout.ADDRESS.withName("pShaderInfo")
     );

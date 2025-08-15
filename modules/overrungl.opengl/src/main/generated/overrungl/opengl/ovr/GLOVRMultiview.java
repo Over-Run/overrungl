@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ovr;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_OVR_multiview`
 public final class GLOVRMultiview {
     public static final int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR = 0x9630;
     public static final int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR = 0x9632;
@@ -34,15 +34,16 @@ public final class GLOVRMultiview {
         public static final MethodHandle MH_glNamedFramebufferTextureMultiviewOVR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glFramebufferTextureMultiviewOVR;
         public final MemorySegment PFN_glNamedFramebufferTextureMultiviewOVR;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glFramebufferTextureMultiviewOVR = func.invoke("glFramebufferTextureMultiviewOVR");PFN_glNamedFramebufferTextureMultiviewOVR = func.invoke("glNamedFramebufferTextureMultiviewOVR");
         }
     }
 
-    public GLOVRMultiview(overrungl.opengl.GLLoadFunc func) {
+    public GLOVRMultiview(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glFramebufferTextureMultiviewOVR`.
     /// ```
     /// void glFramebufferTextureMultiviewOVR((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint baseViewIndex, (int) GLsizei numViews);
     /// ```
@@ -53,6 +54,7 @@ public final class GLOVRMultiview {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureMultiviewOVR", e); }
     }
 
+    /// Invokes `glNamedFramebufferTextureMultiviewOVR`.
     /// ```
     /// void glNamedFramebufferTextureMultiviewOVR((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint baseViewIndex, (int) GLsizei numViews);
     /// ```

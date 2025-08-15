@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH265ProfileTierLevelFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoH265ProfileTierLevelFlags {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH265ProfileTierLevelFlags extends GroupType {
     /// The struct layout of `StdVideoH265ProfileTierLevelFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("general_tier_flag"), 1,
         ValueLayout.JAVA_INT.withName("general_progressive_source_flag"), 1,
         ValueLayout.JAVA_INT.withName("general_interlaced_source_flag"), 1,

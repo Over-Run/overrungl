@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_cooperative_matrix` - device extension
 public final class VKNVCooperativeMatrix {
     public static final int VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION = 1;
     public static final String VK_NV_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_NV_cooperative_matrix";
@@ -49,10 +51,11 @@ public final class VKNVCooperativeMatrix {
 
     private VKNVCooperativeMatrix() {}
 
+    /// Invokes `vkGetPhysicalDeviceCooperativeMatrixPropertiesNV`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeMatrixPropertiesNV* pProperties);
     /// ```
-    public static int vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(VkPhysicalDevice physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public static int vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pPropertyCount, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceCooperativeMatrixPropertiesNV", physicalDevice, pPropertyCount, pProperties); }
         return (int) Handles.MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV, physicalDevice.segment(), pPropertyCount, pProperties); }

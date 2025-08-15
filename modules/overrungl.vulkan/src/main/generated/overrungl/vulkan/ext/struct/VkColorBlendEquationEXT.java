@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkColorBlendEquationEXT`.
 /// ## Layout
 /// ```
 /// struct VkColorBlendEquationEXT {
@@ -38,7 +40,7 @@ import overrungl.util.*;
 /// ```
 public final class VkColorBlendEquationEXT extends GroupType {
     /// The struct layout of `VkColorBlendEquationEXT`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("srcColorBlendFactor"),
         ValueLayout.JAVA_INT.withName("dstColorBlendFactor"),
         ValueLayout.JAVA_INT.withName("colorBlendOp"),

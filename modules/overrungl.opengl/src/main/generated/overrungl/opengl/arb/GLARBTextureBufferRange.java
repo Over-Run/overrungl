@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_texture_buffer_range`
 public final class GLARBTextureBufferRange {
     public static final int GL_TEXTURE_BUFFER_OFFSET = 0x919D;
     public static final int GL_TEXTURE_BUFFER_SIZE = 0x919E;
@@ -31,15 +31,16 @@ public final class GLARBTextureBufferRange {
     public static final class Handles {
         public static final MethodHandle MH_glTexBufferRange = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glTexBufferRange;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTexBufferRange = func.invoke("glTexBufferRange");
         }
     }
 
-    public GLARBTextureBufferRange(overrungl.opengl.GLLoadFunc func) {
+    public GLARBTextureBufferRange(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTexBufferRange`.
     /// ```
     /// void glTexBufferRange((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```

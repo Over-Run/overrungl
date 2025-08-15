@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkRefreshCycleDurationGOOGLE`.
 /// ## Layout
 /// ```
 /// struct VkRefreshCycleDurationGOOGLE {
@@ -33,7 +35,7 @@ import overrungl.util.*;
 /// ```
 public final class VkRefreshCycleDurationGOOGLE extends GroupType {
     /// The struct layout of `VkRefreshCycleDurationGOOGLE`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("refreshDuration")
     );
     /// The byte offset of `refreshDuration`.

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPipelineExecutableStatisticKHR`.
 /// ## Layout
 /// ```
 /// struct VkPipelineExecutableStatisticKHR {
@@ -38,7 +40,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPipelineExecutableStatisticKHR extends GroupType {
     /// The struct layout of `VkPipelineExecutableStatisticKHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("name"),
