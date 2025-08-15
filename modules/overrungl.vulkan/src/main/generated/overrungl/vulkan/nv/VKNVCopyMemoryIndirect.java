@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_copy_memory_indirect` - device extension
 public final class VKNVCopyMemoryIndirect {
     public static final int VK_NV_COPY_MEMORY_INDIRECT_SPEC_VERSION = 1;
     public static final String VK_NV_COPY_MEMORY_INDIRECT_EXTENSION_NAME = "VK_NV_copy_memory_indirect";
@@ -34,20 +36,22 @@ public final class VKNVCopyMemoryIndirect {
 
     private VKNVCopyMemoryIndirect() {}
 
+    /// Invokes `vkCmdCopyMemoryIndirectNV`.
     /// ```
     /// void vkCmdCopyMemoryIndirectNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress copyBufferAddress, uint32_t copyCount, uint32_t stride);
     /// ```
-    public static void vkCmdCopyMemoryIndirectNV(VkCommandBuffer commandBuffer, long copyBufferAddress, int copyCount, int stride) {
+    public static void vkCmdCopyMemoryIndirectNV(@NonNull VkCommandBuffer commandBuffer, long copyBufferAddress, int copyCount, int stride) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMemoryIndirectNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyMemoryIndirectNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyMemoryIndirectNV", commandBuffer, copyBufferAddress, copyCount, stride); }
         Handles.MH_vkCmdCopyMemoryIndirectNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryIndirectNV, commandBuffer.segment(), copyBufferAddress, copyCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyMemoryIndirectNV", e); }
     }
 
+    /// Invokes `vkCmdCopyMemoryToImageIndirectNV`.
     /// ```
     /// void vkCmdCopyMemoryToImageIndirectNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress copyBufferAddress, uint32_t copyCount, uint32_t stride, (uint64_t) VkImage dstImage, (int) VkImageLayout dstImageLayout, const VkImageSubresourceLayers* pImageSubresources);
     /// ```
-    public static void vkCmdCopyMemoryToImageIndirectNV(VkCommandBuffer commandBuffer, long copyBufferAddress, int copyCount, int stride, long dstImage, int dstImageLayout, MemorySegment pImageSubresources) {
+    public static void vkCmdCopyMemoryToImageIndirectNV(@NonNull VkCommandBuffer commandBuffer, long copyBufferAddress, int copyCount, int stride, long dstImage, int dstImageLayout, @NonNull MemorySegment pImageSubresources) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToImageIndirectNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyMemoryToImageIndirectNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyMemoryToImageIndirectNV", commandBuffer, copyBufferAddress, copyCount, stride, dstImage, dstImageLayout, pImageSubresources); }
         Handles.MH_vkCmdCopyMemoryToImageIndirectNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToImageIndirectNV, commandBuffer.segment(), copyBufferAddress, copyCount, stride, dstImage, dstImageLayout, pImageSubresources); }

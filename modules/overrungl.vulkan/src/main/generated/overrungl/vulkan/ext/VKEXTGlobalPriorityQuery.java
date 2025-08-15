@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_global_priority_query` - device extension
 public final class VKEXTGlobalPriorityQuery {
     public static final int VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION = 1;
     public static final String VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query";

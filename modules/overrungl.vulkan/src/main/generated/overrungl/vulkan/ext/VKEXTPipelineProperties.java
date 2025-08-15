@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_pipeline_properties` - device extension
 public final class VKEXTPipelineProperties {
     public static final int VK_EXT_PIPELINE_PROPERTIES_SPEC_VERSION = 1;
     public static final String VK_EXT_PIPELINE_PROPERTIES_EXTENSION_NAME = "VK_EXT_pipeline_properties";
@@ -34,10 +36,11 @@ public final class VKEXTPipelineProperties {
 
     private VKEXTPipelineProperties() {}
 
+    /// Invokes `vkGetPipelinePropertiesEXT`.
     /// ```
     /// (int) VkResult vkGetPipelinePropertiesEXT((struct VkDevice*) VkDevice device, const VkPipelineInfoEXT* pPipelineInfo, VkBaseOutStructure* pPipelineProperties);
     /// ```
-    public static int vkGetPipelinePropertiesEXT(VkDevice device, MemorySegment pPipelineInfo, MemorySegment pPipelineProperties) {
+    public static int vkGetPipelinePropertiesEXT(@NonNull VkDevice device, @NonNull MemorySegment pPipelineInfo, @NonNull MemorySegment pPipelineProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelinePropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelinePropertiesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPipelinePropertiesEXT", device, pPipelineInfo, pPipelineProperties); }
         return (int) Handles.MH_vkGetPipelinePropertiesEXT.invokeExact(device.capabilities().PFN_vkGetPipelinePropertiesEXT, device.segment(), pPipelineInfo, pPipelineProperties); }

@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_draw_buffers_blend`
 public final class GLARBDrawBuffersBlend {
     private final Handles handles;
     public static final class Handles {
@@ -34,7 +34,7 @@ public final class GLARBDrawBuffersBlend {
         public final MemorySegment PFN_glBlendEquationSeparateiARB;
         public final MemorySegment PFN_glBlendFunciARB;
         public final MemorySegment PFN_glBlendFuncSeparateiARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBlendEquationiARB = func.invoke("glBlendEquationiARB", "glBlendEquationi");
             PFN_glBlendEquationSeparateiARB = func.invoke("glBlendEquationSeparateiARB", "glBlendEquationSeparatei");
             PFN_glBlendFunciARB = func.invoke("glBlendFunciARB", "glBlendFunci");
@@ -42,10 +42,11 @@ public final class GLARBDrawBuffersBlend {
         }
     }
 
-    public GLARBDrawBuffersBlend(overrungl.opengl.GLLoadFunc func) {
+    public GLARBDrawBuffersBlend(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBlendEquationiARB`.
     /// ```
     /// void glBlendEquationiARB((unsigned int) GLuint buf, (unsigned int) GLenum mode);
     /// ```
@@ -56,6 +57,7 @@ public final class GLARBDrawBuffersBlend {
         catch (Throwable e) { throw new RuntimeException("error in BlendEquationiARB", e); }
     }
 
+    /// Invokes `glBlendEquationSeparateiARB`.
     /// ```
     /// void glBlendEquationSeparateiARB((unsigned int) GLuint buf, (unsigned int) GLenum modeRGB, (unsigned int) GLenum modeAlpha);
     /// ```
@@ -66,6 +68,7 @@ public final class GLARBDrawBuffersBlend {
         catch (Throwable e) { throw new RuntimeException("error in BlendEquationSeparateiARB", e); }
     }
 
+    /// Invokes `glBlendFunciARB`.
     /// ```
     /// void glBlendFunciARB((unsigned int) GLuint buf, (unsigned int) GLenum src, (unsigned int) GLenum dst);
     /// ```
@@ -76,6 +79,7 @@ public final class GLARBDrawBuffersBlend {
         catch (Throwable e) { throw new RuntimeException("error in BlendFunciARB", e); }
     }
 
+    /// Invokes `glBlendFuncSeparateiARB`.
     /// ```
     /// void glBlendFuncSeparateiARB((unsigned int) GLuint buf, (unsigned int) GLenum srcRGB, (unsigned int) GLenum dstRGB, (unsigned int) GLenum srcAlpha, (unsigned int) GLenum dstAlpha);
     /// ```

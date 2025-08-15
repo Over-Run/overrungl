@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.oml;
-
+/// `GL_OML_resample`
 public final class GLOMLResample {
     public static final int GL_PACK_RESAMPLE_OML = 0x8984;
     public static final int GL_UNPACK_RESAMPLE_OML = 0x8985;

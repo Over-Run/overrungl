@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_index_func`
 public final class GLEXTIndexFunc {
     public static final int GL_INDEX_TEST_EXT = 0x81B5;
     public static final int GL_INDEX_TEST_FUNC_EXT = 0x81B6;
@@ -31,15 +31,16 @@ public final class GLEXTIndexFunc {
     public static final class Handles {
         public static final MethodHandle MH_glIndexFuncEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glIndexFuncEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glIndexFuncEXT = func.invoke("glIndexFuncEXT");
         }
     }
 
-    public GLEXTIndexFunc(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTIndexFunc(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glIndexFuncEXT`.
     /// ```
     /// void glIndexFuncEXT((unsigned int) GLenum func, ((float) khronos_float_t) GLclampf ref);
     /// ```

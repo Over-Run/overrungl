@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_map_buffer_range`
 public final class GLARBMapBufferRange {
     public static final int GL_MAP_READ_BIT = 0x0001;
     public static final int GL_MAP_WRITE_BIT = 0x0002;
@@ -36,26 +36,28 @@ public final class GLARBMapBufferRange {
         public static final MethodHandle MH_glFlushMappedBufferRange = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glMapBufferRange;
         public final MemorySegment PFN_glFlushMappedBufferRange;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glMapBufferRange = func.invoke("glMapBufferRange");
             PFN_glFlushMappedBufferRange = func.invoke("glFlushMappedBufferRange");
         }
     }
 
-    public GLARBMapBufferRange(overrungl.opengl.GLLoadFunc func) {
+    public GLARBMapBufferRange(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glMapBufferRange`.
     /// ```
     /// void* glMapBufferRange((unsigned int) GLenum target, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr length, (unsigned int) GLbitfield access);
     /// ```
-    public MemorySegment MapBufferRange(int target, long offset, long length, int access) {
+    public @NonNull MemorySegment MapBufferRange(int target, long offset, long length, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapBufferRange)) throw new GLSymbolNotFoundError("Symbol not found: glMapBufferRange");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapBufferRange", target, offset, length, access); }
         return (MemorySegment) Handles.MH_glMapBufferRange.invokeExact(handles.PFN_glMapBufferRange, target, offset, length, access); }
         catch (Throwable e) { throw new RuntimeException("error in MapBufferRange", e); }
     }
 
+    /// Invokes `glFlushMappedBufferRange`.
     /// ```
     /// void glFlushMappedBufferRange((unsigned int) GLenum target, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr length);
     /// ```

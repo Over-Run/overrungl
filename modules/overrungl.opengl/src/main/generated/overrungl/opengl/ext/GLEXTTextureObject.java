@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_texture_object`
 public final class GLEXTTextureObject {
     public static final int GL_TEXTURE_PRIORITY_EXT = 0x8066;
     public static final int GL_TEXTURE_RESIDENT_EXT = 0x8067;
@@ -43,7 +43,7 @@ public final class GLEXTTextureObject {
         public final MemorySegment PFN_glGenTexturesEXT;
         public final MemorySegment PFN_glIsTextureEXT;
         public final MemorySegment PFN_glPrioritizeTexturesEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glAreTexturesResidentEXT = func.invoke("glAreTexturesResidentEXT");
             PFN_glBindTextureEXT = func.invoke("glBindTextureEXT", "glBindTexture");
             PFN_glDeleteTexturesEXT = func.invoke("glDeleteTexturesEXT");
@@ -53,20 +53,22 @@ public final class GLEXTTextureObject {
         }
     }
 
-    public GLEXTTextureObject(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTTextureObject(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glAreTexturesResidentEXT`.
     /// ```
     /// GLboolean glAreTexturesResidentEXT((int) GLsizei n, const GLuint* textures, GLboolean* residences);
     /// ```
-    public boolean AreTexturesResidentEXT(int n, MemorySegment textures, MemorySegment residences) {
+    public boolean AreTexturesResidentEXT(int n, @NonNull MemorySegment textures, @NonNull MemorySegment residences) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAreTexturesResidentEXT)) throw new GLSymbolNotFoundError("Symbol not found: glAreTexturesResidentEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glAreTexturesResidentEXT", n, textures, residences); }
         return (((byte) Handles.MH_glAreTexturesResidentEXT.invokeExact(handles.PFN_glAreTexturesResidentEXT, n, textures, residences)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in AreTexturesResidentEXT", e); }
     }
 
+    /// Invokes `glBindTextureEXT`.
     /// ```
     /// void glBindTextureEXT((unsigned int) GLenum target, (unsigned int) GLuint texture);
     /// ```
@@ -77,26 +79,29 @@ public final class GLEXTTextureObject {
         catch (Throwable e) { throw new RuntimeException("error in BindTextureEXT", e); }
     }
 
+    /// Invokes `glDeleteTexturesEXT`.
     /// ```
     /// void glDeleteTexturesEXT((int) GLsizei n, const GLuint* textures);
     /// ```
-    public void DeleteTexturesEXT(int n, MemorySegment textures) {
+    public void DeleteTexturesEXT(int n, @NonNull MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteTexturesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteTexturesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteTexturesEXT", n, textures); }
         Handles.MH_glDeleteTexturesEXT.invokeExact(handles.PFN_glDeleteTexturesEXT, n, textures); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteTexturesEXT", e); }
     }
 
+    /// Invokes `glGenTexturesEXT`.
     /// ```
     /// void glGenTexturesEXT((int) GLsizei n, GLuint* textures);
     /// ```
-    public void GenTexturesEXT(int n, MemorySegment textures) {
+    public void GenTexturesEXT(int n, @NonNull MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenTexturesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGenTexturesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenTexturesEXT", n, textures); }
         Handles.MH_glGenTexturesEXT.invokeExact(handles.PFN_glGenTexturesEXT, n, textures); }
         catch (Throwable e) { throw new RuntimeException("error in GenTexturesEXT", e); }
     }
 
+    /// Invokes `glIsTextureEXT`.
     /// ```
     /// GLboolean glIsTextureEXT((unsigned int) GLuint texture);
     /// ```
@@ -107,10 +112,11 @@ public final class GLEXTTextureObject {
         catch (Throwable e) { throw new RuntimeException("error in IsTextureEXT", e); }
     }
 
+    /// Invokes `glPrioritizeTexturesEXT`.
     /// ```
     /// void glPrioritizeTexturesEXT((int) GLsizei n, const GLuint* textures, const GLclampf* priorities);
     /// ```
-    public void PrioritizeTexturesEXT(int n, MemorySegment textures, MemorySegment priorities) {
+    public void PrioritizeTexturesEXT(int n, @NonNull MemorySegment textures, @NonNull MemorySegment priorities) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPrioritizeTexturesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPrioritizeTexturesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPrioritizeTexturesEXT", n, textures, priorities); }
         Handles.MH_glPrioritizeTexturesEXT.invokeExact(handles.PFN_glPrioritizeTexturesEXT, n, textures, priorities); }

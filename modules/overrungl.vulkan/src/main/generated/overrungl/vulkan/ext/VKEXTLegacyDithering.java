@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_legacy_dithering` - device extension
 public final class VKEXTLegacyDithering {
     public static final int VK_EXT_LEGACY_DITHERING_SPEC_VERSION = 2;
     public static final String VK_EXT_LEGACY_DITHERING_EXTENSION_NAME = "VK_EXT_legacy_dithering";

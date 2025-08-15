@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoAV1Quantization`.
 /// ## Layout
 /// ```
 /// struct StdVideoAV1Quantization {
@@ -42,7 +44,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoAV1Quantization extends GroupType {
     /// The struct layout of `StdVideoAV1Quantization`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoAV1QuantizationFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("base_q_idx"),
         ValueLayout.JAVA_BYTE.withName("DeltaQYDc"),

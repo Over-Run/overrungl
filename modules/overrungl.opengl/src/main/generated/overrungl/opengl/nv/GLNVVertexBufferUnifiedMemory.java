@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_vertex_buffer_unified_memory`
 public final class GLNVVertexBufferUnifiedMemory {
     public static final int GL_VERTEX_ATTRIB_ARRAY_UNIFIED_NV = 0x8F1E;
     public static final int GL_ELEMENT_ARRAY_UNIFIED_NV = 0x8F1F;
@@ -75,7 +75,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         public final MemorySegment PFN_glVertexAttribFormatNV;
         public final MemorySegment PFN_glVertexAttribIFormatNV;
         public final MemorySegment PFN_glGetIntegerui64i_vNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBufferAddressRangeNV = func.invoke("glBufferAddressRangeNV");
             PFN_glVertexFormatNV = func.invoke("glVertexFormatNV");
             PFN_glNormalFormatNV = func.invoke("glNormalFormatNV");
@@ -91,10 +91,11 @@ public final class GLNVVertexBufferUnifiedMemory {
         }
     }
 
-    public GLNVVertexBufferUnifiedMemory(overrungl.opengl.GLLoadFunc func) {
+    public GLNVVertexBufferUnifiedMemory(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBufferAddressRangeNV`.
     /// ```
     /// void glBufferAddressRangeNV((unsigned int) GLenum pname, (unsigned int) GLuint index, ((uint64_t) khronos_uint64_t) GLuint64EXT address, ((signed long long) khronos_ssize_t) GLsizeiptr length);
     /// ```
@@ -105,6 +106,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in BufferAddressRangeNV", e); }
     }
 
+    /// Invokes `glVertexFormatNV`.
     /// ```
     /// void glVertexFormatNV((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
@@ -115,6 +117,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in VertexFormatNV", e); }
     }
 
+    /// Invokes `glNormalFormatNV`.
     /// ```
     /// void glNormalFormatNV((unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
@@ -125,6 +128,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in NormalFormatNV", e); }
     }
 
+    /// Invokes `glColorFormatNV`.
     /// ```
     /// void glColorFormatNV((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
@@ -135,6 +139,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in ColorFormatNV", e); }
     }
 
+    /// Invokes `glIndexFormatNV`.
     /// ```
     /// void glIndexFormatNV((unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
@@ -145,6 +150,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in IndexFormatNV", e); }
     }
 
+    /// Invokes `glTexCoordFormatNV`.
     /// ```
     /// void glTexCoordFormatNV((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
@@ -155,6 +161,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in TexCoordFormatNV", e); }
     }
 
+    /// Invokes `glEdgeFlagFormatNV`.
     /// ```
     /// void glEdgeFlagFormatNV((int) GLsizei stride);
     /// ```
@@ -165,6 +172,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in EdgeFlagFormatNV", e); }
     }
 
+    /// Invokes `glSecondaryColorFormatNV`.
     /// ```
     /// void glSecondaryColorFormatNV((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
@@ -175,6 +183,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColorFormatNV", e); }
     }
 
+    /// Invokes `glFogCoordFormatNV`.
     /// ```
     /// void glFogCoordFormatNV((unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
@@ -185,6 +194,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in FogCoordFormatNV", e); }
     }
 
+    /// Invokes `glVertexAttribFormatNV`.
     /// ```
     /// void glVertexAttribFormatNV((unsigned int) GLuint index, (int) GLint size, (unsigned int) GLenum type, GLboolean normalized, (int) GLsizei stride);
     /// ```
@@ -195,6 +205,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribFormatNV", e); }
     }
 
+    /// Invokes `glVertexAttribIFormatNV`.
     /// ```
     /// void glVertexAttribIFormatNV((unsigned int) GLuint index, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
@@ -205,10 +216,11 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribIFormatNV", e); }
     }
 
+    /// Invokes `glGetIntegerui64i_vNV`.
     /// ```
     /// void glGetIntegerui64i_vNV((unsigned int) GLenum value, (unsigned int) GLuint index, GLuint64EXT* result);
     /// ```
-    public void GetIntegerui64i_vNV(int value, int index, MemorySegment result) {
+    public void GetIntegerui64i_vNV(int value, int index, @NonNull MemorySegment result) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerui64i_vNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetIntegerui64i_vNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetIntegerui64i_vNV", value, index, result); }
         Handles.MH_glGetIntegerui64i_vNV.invokeExact(handles.PFN_glGetIntegerui64i_vNV, value, index, result); }

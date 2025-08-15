@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPipelineExecutableStatisticValueKHR`.
 /// ## Layout
 /// ```
 /// union VkPipelineExecutableStatisticValueKHR {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPipelineExecutableStatisticValueKHR extends GroupType {
     /// The union layout of `VkPipelineExecutableStatisticValueKHR`.
-    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.JAVA_INT.withName("b32"),
         ValueLayout.JAVA_LONG.withName("i64"),
         ValueLayout.JAVA_LONG.withName("u64"),

@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_maintenance2` - device extension
 public final class VKKHRMaintenance2 {
     public static final int VK_KHR_MAINTENANCE_2_SPEC_VERSION = 1;
     public static final String VK_KHR_MAINTENANCE_2_EXTENSION_NAME = "VK_KHR_maintenance2";

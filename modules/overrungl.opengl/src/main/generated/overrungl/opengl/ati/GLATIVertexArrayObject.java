@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ati;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ATI_vertex_array_object`
 public final class GLATIVertexArrayObject {
     public static final int GL_STATIC_ATI = 0x8760;
     public static final int GL_DYNAMIC_ATI = 0x8761;
@@ -58,7 +58,7 @@ public final class GLATIVertexArrayObject {
         public final MemorySegment PFN_glVariantArrayObjectATI;
         public final MemorySegment PFN_glGetVariantArrayObjectfvATI;
         public final MemorySegment PFN_glGetVariantArrayObjectivATI;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glNewObjectBufferATI = func.invoke("glNewObjectBufferATI");
             PFN_glIsObjectBufferATI = func.invoke("glIsObjectBufferATI");
             PFN_glUpdateObjectBufferATI = func.invoke("glUpdateObjectBufferATI");
@@ -74,20 +74,22 @@ public final class GLATIVertexArrayObject {
         }
     }
 
-    public GLATIVertexArrayObject(overrungl.opengl.GLLoadFunc func) {
+    public GLATIVertexArrayObject(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glNewObjectBufferATI`.
     /// ```
     /// (unsigned int) GLuint glNewObjectBufferATI((int) GLsizei size, const void* pointer, (unsigned int) GLenum usage);
     /// ```
-    public int NewObjectBufferATI(int size, MemorySegment pointer, int usage) {
+    public int NewObjectBufferATI(int size, @NonNull MemorySegment pointer, int usage) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNewObjectBufferATI)) throw new GLSymbolNotFoundError("Symbol not found: glNewObjectBufferATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNewObjectBufferATI", size, pointer, usage); }
         return (int) Handles.MH_glNewObjectBufferATI.invokeExact(handles.PFN_glNewObjectBufferATI, size, pointer, usage); }
         catch (Throwable e) { throw new RuntimeException("error in NewObjectBufferATI", e); }
     }
 
+    /// Invokes `glIsObjectBufferATI`.
     /// ```
     /// GLboolean glIsObjectBufferATI((unsigned int) GLuint buffer);
     /// ```
@@ -98,36 +100,40 @@ public final class GLATIVertexArrayObject {
         catch (Throwable e) { throw new RuntimeException("error in IsObjectBufferATI", e); }
     }
 
+    /// Invokes `glUpdateObjectBufferATI`.
     /// ```
     /// void glUpdateObjectBufferATI((unsigned int) GLuint buffer, (unsigned int) GLuint offset, (int) GLsizei size, const void* pointer, (unsigned int) GLenum preserve);
     /// ```
-    public void UpdateObjectBufferATI(int buffer, int offset, int size, MemorySegment pointer, int preserve) {
+    public void UpdateObjectBufferATI(int buffer, int offset, int size, @NonNull MemorySegment pointer, int preserve) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUpdateObjectBufferATI)) throw new GLSymbolNotFoundError("Symbol not found: glUpdateObjectBufferATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUpdateObjectBufferATI", buffer, offset, size, pointer, preserve); }
         Handles.MH_glUpdateObjectBufferATI.invokeExact(handles.PFN_glUpdateObjectBufferATI, buffer, offset, size, pointer, preserve); }
         catch (Throwable e) { throw new RuntimeException("error in UpdateObjectBufferATI", e); }
     }
 
+    /// Invokes `glGetObjectBufferfvATI`.
     /// ```
     /// void glGetObjectBufferfvATI((unsigned int) GLuint buffer, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetObjectBufferfvATI(int buffer, int pname, MemorySegment params) {
+    public void GetObjectBufferfvATI(int buffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectBufferfvATI)) throw new GLSymbolNotFoundError("Symbol not found: glGetObjectBufferfvATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetObjectBufferfvATI", buffer, pname, params); }
         Handles.MH_glGetObjectBufferfvATI.invokeExact(handles.PFN_glGetObjectBufferfvATI, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetObjectBufferfvATI", e); }
     }
 
+    /// Invokes `glGetObjectBufferivATI`.
     /// ```
     /// void glGetObjectBufferivATI((unsigned int) GLuint buffer, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetObjectBufferivATI(int buffer, int pname, MemorySegment params) {
+    public void GetObjectBufferivATI(int buffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectBufferivATI)) throw new GLSymbolNotFoundError("Symbol not found: glGetObjectBufferivATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetObjectBufferivATI", buffer, pname, params); }
         Handles.MH_glGetObjectBufferivATI.invokeExact(handles.PFN_glGetObjectBufferivATI, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetObjectBufferivATI", e); }
     }
 
+    /// Invokes `glFreeObjectBufferATI`.
     /// ```
     /// void glFreeObjectBufferATI((unsigned int) GLuint buffer);
     /// ```
@@ -138,6 +144,7 @@ public final class GLATIVertexArrayObject {
         catch (Throwable e) { throw new RuntimeException("error in FreeObjectBufferATI", e); }
     }
 
+    /// Invokes `glArrayObjectATI`.
     /// ```
     /// void glArrayObjectATI((unsigned int) GLenum array, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, (unsigned int) GLuint buffer, (unsigned int) GLuint offset);
     /// ```
@@ -148,26 +155,29 @@ public final class GLATIVertexArrayObject {
         catch (Throwable e) { throw new RuntimeException("error in ArrayObjectATI", e); }
     }
 
+    /// Invokes `glGetArrayObjectfvATI`.
     /// ```
     /// void glGetArrayObjectfvATI((unsigned int) GLenum array, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetArrayObjectfvATI(int array, int pname, MemorySegment params) {
+    public void GetArrayObjectfvATI(int array, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetArrayObjectfvATI)) throw new GLSymbolNotFoundError("Symbol not found: glGetArrayObjectfvATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetArrayObjectfvATI", array, pname, params); }
         Handles.MH_glGetArrayObjectfvATI.invokeExact(handles.PFN_glGetArrayObjectfvATI, array, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetArrayObjectfvATI", e); }
     }
 
+    /// Invokes `glGetArrayObjectivATI`.
     /// ```
     /// void glGetArrayObjectivATI((unsigned int) GLenum array, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetArrayObjectivATI(int array, int pname, MemorySegment params) {
+    public void GetArrayObjectivATI(int array, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetArrayObjectivATI)) throw new GLSymbolNotFoundError("Symbol not found: glGetArrayObjectivATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetArrayObjectivATI", array, pname, params); }
         Handles.MH_glGetArrayObjectivATI.invokeExact(handles.PFN_glGetArrayObjectivATI, array, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetArrayObjectivATI", e); }
     }
 
+    /// Invokes `glVariantArrayObjectATI`.
     /// ```
     /// void glVariantArrayObjectATI((unsigned int) GLuint id, (unsigned int) GLenum type, (int) GLsizei stride, (unsigned int) GLuint buffer, (unsigned int) GLuint offset);
     /// ```
@@ -178,20 +188,22 @@ public final class GLATIVertexArrayObject {
         catch (Throwable e) { throw new RuntimeException("error in VariantArrayObjectATI", e); }
     }
 
+    /// Invokes `glGetVariantArrayObjectfvATI`.
     /// ```
     /// void glGetVariantArrayObjectfvATI((unsigned int) GLuint id, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetVariantArrayObjectfvATI(int id, int pname, MemorySegment params) {
+    public void GetVariantArrayObjectfvATI(int id, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantArrayObjectfvATI)) throw new GLSymbolNotFoundError("Symbol not found: glGetVariantArrayObjectfvATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVariantArrayObjectfvATI", id, pname, params); }
         Handles.MH_glGetVariantArrayObjectfvATI.invokeExact(handles.PFN_glGetVariantArrayObjectfvATI, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetVariantArrayObjectfvATI", e); }
     }
 
+    /// Invokes `glGetVariantArrayObjectivATI`.
     /// ```
     /// void glGetVariantArrayObjectivATI((unsigned int) GLuint id, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetVariantArrayObjectivATI(int id, int pname, MemorySegment params) {
+    public void GetVariantArrayObjectivATI(int id, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantArrayObjectivATI)) throw new GLSymbolNotFoundError("Symbol not found: glGetVariantArrayObjectivATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVariantArrayObjectivATI", id, pname, params); }
         Handles.MH_glGetVariantArrayObjectivATI.invokeExact(handles.PFN_glGetVariantArrayObjectivATI, id, pname, params); }

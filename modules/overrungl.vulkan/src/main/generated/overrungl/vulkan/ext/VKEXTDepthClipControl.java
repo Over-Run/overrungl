@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_depth_clip_control` - device extension
 public final class VKEXTDepthClipControl {
     public static final int VK_EXT_DEPTH_CLIP_CONTROL_SPEC_VERSION = 1;
     public static final String VK_EXT_DEPTH_CLIP_CONTROL_EXTENSION_NAME = "VK_EXT_depth_clip_control";

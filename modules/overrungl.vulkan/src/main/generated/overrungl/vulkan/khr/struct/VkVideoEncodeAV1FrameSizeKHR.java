@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkVideoEncodeAV1FrameSizeKHR`.
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeAV1FrameSizeKHR {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeAV1FrameSizeKHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("intraFrameSize"),
         ValueLayout.JAVA_INT.withName("predictiveFrameSize"),
         ValueLayout.JAVA_INT.withName("bipredictiveFrameSize")

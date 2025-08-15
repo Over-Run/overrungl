@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sunx;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_SUNX_constant_data`
 public final class GLSUNXConstantData {
     public static final int GL_UNPACK_CONSTANT_DATA_SUNX = 0x81D5;
     public static final int GL_TEXTURE_CONSTANT_DATA_SUNX = 0x81D6;
@@ -30,15 +30,16 @@ public final class GLSUNXConstantData {
     public static final class Handles {
         public static final MethodHandle MH_glFinishTextureSUNX = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFinishTextureSUNX;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glFinishTextureSUNX = func.invoke("glFinishTextureSUNX");
         }
     }
 
-    public GLSUNXConstantData(overrungl.opengl.GLLoadFunc func) {
+    public GLSUNXConstantData(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glFinishTextureSUNX`.
     /// ```
     /// void glFinishTextureSUNX();
     /// ```

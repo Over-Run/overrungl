@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_gpu_shader_fp64`
 public final class GLARBGpuShaderFp64 {
     public static final int GL_DOUBLE = 0x140A;
     public static final int GL_DOUBLE_VEC2 = 0x8FFC;
@@ -75,7 +75,7 @@ public final class GLARBGpuShaderFp64 {
         public final MemorySegment PFN_glUniformMatrix4x2dv;
         public final MemorySegment PFN_glUniformMatrix4x3dv;
         public final MemorySegment PFN_glGetUniformdv;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glUniform1d = func.invoke("glUniform1d");
             PFN_glUniform2d = func.invoke("glUniform2d");
             PFN_glUniform3d = func.invoke("glUniform3d");
@@ -97,10 +97,11 @@ public final class GLARBGpuShaderFp64 {
         }
     }
 
-    public GLARBGpuShaderFp64(overrungl.opengl.GLLoadFunc func) {
+    public GLARBGpuShaderFp64(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glUniform1d`.
     /// ```
     /// void glUniform1d((int) GLint location, (double) GLdouble x);
     /// ```
@@ -111,6 +112,7 @@ public final class GLARBGpuShaderFp64 {
         catch (Throwable e) { throw new RuntimeException("error in Uniform1d", e); }
     }
 
+    /// Invokes `glUniform2d`.
     /// ```
     /// void glUniform2d((int) GLint location, (double) GLdouble x, (double) GLdouble y);
     /// ```
@@ -121,6 +123,7 @@ public final class GLARBGpuShaderFp64 {
         catch (Throwable e) { throw new RuntimeException("error in Uniform2d", e); }
     }
 
+    /// Invokes `glUniform3d`.
     /// ```
     /// void glUniform3d((int) GLint location, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
@@ -131,6 +134,7 @@ public final class GLARBGpuShaderFp64 {
         catch (Throwable e) { throw new RuntimeException("error in Uniform3d", e); }
     }
 
+    /// Invokes `glUniform4d`.
     /// ```
     /// void glUniform4d((int) GLint location, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z, (double) GLdouble w);
     /// ```
@@ -141,140 +145,154 @@ public final class GLARBGpuShaderFp64 {
         catch (Throwable e) { throw new RuntimeException("error in Uniform4d", e); }
     }
 
+    /// Invokes `glUniform1dv`.
     /// ```
     /// void glUniform1dv((int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void Uniform1dv(int location, int count, MemorySegment value) {
+    public void Uniform1dv(int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniform1dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform1dv", location, count, value); }
         Handles.MH_glUniform1dv.invokeExact(handles.PFN_glUniform1dv, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform1dv", e); }
     }
 
+    /// Invokes `glUniform2dv`.
     /// ```
     /// void glUniform2dv((int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void Uniform2dv(int location, int count, MemorySegment value) {
+    public void Uniform2dv(int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniform2dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform2dv", location, count, value); }
         Handles.MH_glUniform2dv.invokeExact(handles.PFN_glUniform2dv, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform2dv", e); }
     }
 
+    /// Invokes `glUniform3dv`.
     /// ```
     /// void glUniform3dv((int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void Uniform3dv(int location, int count, MemorySegment value) {
+    public void Uniform3dv(int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniform3dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform3dv", location, count, value); }
         Handles.MH_glUniform3dv.invokeExact(handles.PFN_glUniform3dv, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform3dv", e); }
     }
 
+    /// Invokes `glUniform4dv`.
     /// ```
     /// void glUniform4dv((int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void Uniform4dv(int location, int count, MemorySegment value) {
+    public void Uniform4dv(int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniform4dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform4dv", location, count, value); }
         Handles.MH_glUniform4dv.invokeExact(handles.PFN_glUniform4dv, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform4dv", e); }
     }
 
+    /// Invokes `glUniformMatrix2dv`.
     /// ```
     /// void glUniformMatrix2dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void UniformMatrix2dv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix2dv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix2dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix2dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix2dv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix2dv.invokeExact(handles.PFN_glUniformMatrix2dv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix2dv", e); }
     }
 
+    /// Invokes `glUniformMatrix3dv`.
     /// ```
     /// void glUniformMatrix3dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void UniformMatrix3dv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix3dv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix3dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix3dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix3dv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix3dv.invokeExact(handles.PFN_glUniformMatrix3dv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix3dv", e); }
     }
 
+    /// Invokes `glUniformMatrix4dv`.
     /// ```
     /// void glUniformMatrix4dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void UniformMatrix4dv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix4dv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix4dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix4dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix4dv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix4dv.invokeExact(handles.PFN_glUniformMatrix4dv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix4dv", e); }
     }
 
+    /// Invokes `glUniformMatrix2x3dv`.
     /// ```
     /// void glUniformMatrix2x3dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void UniformMatrix2x3dv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix2x3dv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix2x3dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix2x3dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix2x3dv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix2x3dv.invokeExact(handles.PFN_glUniformMatrix2x3dv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix2x3dv", e); }
     }
 
+    /// Invokes `glUniformMatrix2x4dv`.
     /// ```
     /// void glUniformMatrix2x4dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void UniformMatrix2x4dv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix2x4dv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix2x4dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix2x4dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix2x4dv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix2x4dv.invokeExact(handles.PFN_glUniformMatrix2x4dv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix2x4dv", e); }
     }
 
+    /// Invokes `glUniformMatrix3x2dv`.
     /// ```
     /// void glUniformMatrix3x2dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void UniformMatrix3x2dv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix3x2dv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix3x2dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix3x2dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix3x2dv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix3x2dv.invokeExact(handles.PFN_glUniformMatrix3x2dv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix3x2dv", e); }
     }
 
+    /// Invokes `glUniformMatrix3x4dv`.
     /// ```
     /// void glUniformMatrix3x4dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void UniformMatrix3x4dv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix3x4dv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix3x4dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix3x4dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix3x4dv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix3x4dv.invokeExact(handles.PFN_glUniformMatrix3x4dv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix3x4dv", e); }
     }
 
+    /// Invokes `glUniformMatrix4x2dv`.
     /// ```
     /// void glUniformMatrix4x2dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void UniformMatrix4x2dv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix4x2dv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix4x2dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix4x2dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix4x2dv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix4x2dv.invokeExact(handles.PFN_glUniformMatrix4x2dv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix4x2dv", e); }
     }
 
+    /// Invokes `glUniformMatrix4x3dv`.
     /// ```
     /// void glUniformMatrix4x3dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void UniformMatrix4x3dv(int location, int count, boolean transpose, MemorySegment value) {
+    public void UniformMatrix4x3dv(int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix4x3dv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix4x3dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix4x3dv", location, count, transpose, value); }
         Handles.MH_glUniformMatrix4x3dv.invokeExact(handles.PFN_glUniformMatrix4x3dv, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix4x3dv", e); }
     }
 
+    /// Invokes `glGetUniformdv`.
     /// ```
     /// void glGetUniformdv((unsigned int) GLuint program, (int) GLint location, GLdouble* params);
     /// ```
-    public void GetUniformdv(int program, int location, MemorySegment params) {
+    public void GetUniformdv(int program, int location, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformdv)) throw new GLSymbolNotFoundError("Symbol not found: glGetUniformdv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetUniformdv", program, location, params); }
         Handles.MH_glGetUniformdv.invokeExact(handles.PFN_glGetUniformdv, program, location, params); }

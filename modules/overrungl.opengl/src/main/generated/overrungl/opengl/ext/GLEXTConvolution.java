@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_convolution`
 public final class GLEXTConvolution {
     public static final int GL_CONVOLUTION_1D_EXT = 0x8010;
     public static final int GL_CONVOLUTION_2D_EXT = 0x8011;
@@ -72,7 +72,7 @@ public final class GLEXTConvolution {
         public final MemorySegment PFN_glGetConvolutionParameterivEXT;
         public final MemorySegment PFN_glGetSeparableFilterEXT;
         public final MemorySegment PFN_glSeparableFilter2DEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glConvolutionFilter1DEXT = func.invoke("glConvolutionFilter1DEXT", "glConvolutionFilter1D");
             PFN_glConvolutionFilter2DEXT = func.invoke("glConvolutionFilter2DEXT", "glConvolutionFilter2D");
             PFN_glConvolutionParameterfEXT = func.invoke("glConvolutionParameterfEXT", "glConvolutionParameterf");
@@ -89,30 +89,33 @@ public final class GLEXTConvolution {
         }
     }
 
-    public GLEXTConvolution(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTConvolution(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glConvolutionFilter1DEXT`.
     /// ```
     /// void glConvolutionFilter1DEXT((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (int) GLsizei width, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* image);
     /// ```
-    public void ConvolutionFilter1DEXT(int target, int internalformat, int width, int format, int type, MemorySegment image) {
+    public void ConvolutionFilter1DEXT(int target, int internalformat, int width, int format, int type, @NonNull MemorySegment image) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConvolutionFilter1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glConvolutionFilter1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glConvolutionFilter1DEXT", target, internalformat, width, format, type, image); }
         Handles.MH_glConvolutionFilter1DEXT.invokeExact(handles.PFN_glConvolutionFilter1DEXT, target, internalformat, width, format, type, image); }
         catch (Throwable e) { throw new RuntimeException("error in ConvolutionFilter1DEXT", e); }
     }
 
+    /// Invokes `glConvolutionFilter2DEXT`.
     /// ```
     /// void glConvolutionFilter2DEXT((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* image);
     /// ```
-    public void ConvolutionFilter2DEXT(int target, int internalformat, int width, int height, int format, int type, MemorySegment image) {
+    public void ConvolutionFilter2DEXT(int target, int internalformat, int width, int height, int format, int type, @NonNull MemorySegment image) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConvolutionFilter2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glConvolutionFilter2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glConvolutionFilter2DEXT", target, internalformat, width, height, format, type, image); }
         Handles.MH_glConvolutionFilter2DEXT.invokeExact(handles.PFN_glConvolutionFilter2DEXT, target, internalformat, width, height, format, type, image); }
         catch (Throwable e) { throw new RuntimeException("error in ConvolutionFilter2DEXT", e); }
     }
 
+    /// Invokes `glConvolutionParameterfEXT`.
     /// ```
     /// void glConvolutionParameterfEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat params);
     /// ```
@@ -123,16 +126,18 @@ public final class GLEXTConvolution {
         catch (Throwable e) { throw new RuntimeException("error in ConvolutionParameterfEXT", e); }
     }
 
+    /// Invokes `glConvolutionParameterfvEXT`.
     /// ```
     /// void glConvolutionParameterfvEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfloat* params);
     /// ```
-    public void ConvolutionParameterfvEXT(int target, int pname, MemorySegment params) {
+    public void ConvolutionParameterfvEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConvolutionParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glConvolutionParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glConvolutionParameterfvEXT", target, pname, params); }
         Handles.MH_glConvolutionParameterfvEXT.invokeExact(handles.PFN_glConvolutionParameterfvEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in ConvolutionParameterfvEXT", e); }
     }
 
+    /// Invokes `glConvolutionParameteriEXT`.
     /// ```
     /// void glConvolutionParameteriEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint params);
     /// ```
@@ -143,16 +148,18 @@ public final class GLEXTConvolution {
         catch (Throwable e) { throw new RuntimeException("error in ConvolutionParameteriEXT", e); }
     }
 
+    /// Invokes `glConvolutionParameterivEXT`.
     /// ```
     /// void glConvolutionParameterivEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLint* params);
     /// ```
-    public void ConvolutionParameterivEXT(int target, int pname, MemorySegment params) {
+    public void ConvolutionParameterivEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConvolutionParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glConvolutionParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glConvolutionParameterivEXT", target, pname, params); }
         Handles.MH_glConvolutionParameterivEXT.invokeExact(handles.PFN_glConvolutionParameterivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in ConvolutionParameterivEXT", e); }
     }
 
+    /// Invokes `glCopyConvolutionFilter1DEXT`.
     /// ```
     /// void glCopyConvolutionFilter1DEXT((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width);
     /// ```
@@ -163,6 +170,7 @@ public final class GLEXTConvolution {
         catch (Throwable e) { throw new RuntimeException("error in CopyConvolutionFilter1DEXT", e); }
     }
 
+    /// Invokes `glCopyConvolutionFilter2DEXT`.
     /// ```
     /// void glCopyConvolutionFilter2DEXT((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -173,50 +181,55 @@ public final class GLEXTConvolution {
         catch (Throwable e) { throw new RuntimeException("error in CopyConvolutionFilter2DEXT", e); }
     }
 
+    /// Invokes `glGetConvolutionFilterEXT`.
     /// ```
     /// void glGetConvolutionFilterEXT((unsigned int) GLenum target, (unsigned int) GLenum format, (unsigned int) GLenum type, void* image);
     /// ```
-    public void GetConvolutionFilterEXT(int target, int format, int type, MemorySegment image) {
+    public void GetConvolutionFilterEXT(int target, int format, int type, @NonNull MemorySegment image) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetConvolutionFilterEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetConvolutionFilterEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetConvolutionFilterEXT", target, format, type, image); }
         Handles.MH_glGetConvolutionFilterEXT.invokeExact(handles.PFN_glGetConvolutionFilterEXT, target, format, type, image); }
         catch (Throwable e) { throw new RuntimeException("error in GetConvolutionFilterEXT", e); }
     }
 
+    /// Invokes `glGetConvolutionParameterfvEXT`.
     /// ```
     /// void glGetConvolutionParameterfvEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetConvolutionParameterfvEXT(int target, int pname, MemorySegment params) {
+    public void GetConvolutionParameterfvEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetConvolutionParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetConvolutionParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetConvolutionParameterfvEXT", target, pname, params); }
         Handles.MH_glGetConvolutionParameterfvEXT.invokeExact(handles.PFN_glGetConvolutionParameterfvEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetConvolutionParameterfvEXT", e); }
     }
 
+    /// Invokes `glGetConvolutionParameterivEXT`.
     /// ```
     /// void glGetConvolutionParameterivEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetConvolutionParameterivEXT(int target, int pname, MemorySegment params) {
+    public void GetConvolutionParameterivEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetConvolutionParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetConvolutionParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetConvolutionParameterivEXT", target, pname, params); }
         Handles.MH_glGetConvolutionParameterivEXT.invokeExact(handles.PFN_glGetConvolutionParameterivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetConvolutionParameterivEXT", e); }
     }
 
+    /// Invokes `glGetSeparableFilterEXT`.
     /// ```
     /// void glGetSeparableFilterEXT((unsigned int) GLenum target, (unsigned int) GLenum format, (unsigned int) GLenum type, void* row, void* column, void* span);
     /// ```
-    public void GetSeparableFilterEXT(int target, int format, int type, MemorySegment row, MemorySegment column, MemorySegment span) {
+    public void GetSeparableFilterEXT(int target, int format, int type, @NonNull MemorySegment row, @NonNull MemorySegment column, @NonNull MemorySegment span) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSeparableFilterEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetSeparableFilterEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetSeparableFilterEXT", target, format, type, row, column, span); }
         Handles.MH_glGetSeparableFilterEXT.invokeExact(handles.PFN_glGetSeparableFilterEXT, target, format, type, row, column, span); }
         catch (Throwable e) { throw new RuntimeException("error in GetSeparableFilterEXT", e); }
     }
 
+    /// Invokes `glSeparableFilter2DEXT`.
     /// ```
     /// void glSeparableFilter2DEXT((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* row, const void* column);
     /// ```
-    public void SeparableFilter2DEXT(int target, int internalformat, int width, int height, int format, int type, MemorySegment row, MemorySegment column) {
+    public void SeparableFilter2DEXT(int target, int internalformat, int width, int height, int format, int type, @NonNull MemorySegment row, @NonNull MemorySegment column) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSeparableFilter2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSeparableFilter2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSeparableFilter2DEXT", target, internalformat, width, height, format, type, row, column); }
         Handles.MH_glSeparableFilter2DEXT.invokeExact(handles.PFN_glSeparableFilter2DEXT, target, internalformat, width, height, format, type, row, column); }

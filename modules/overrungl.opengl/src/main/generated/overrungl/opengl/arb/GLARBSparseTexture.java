@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_sparse_texture`
 public final class GLARBSparseTexture {
     public static final int GL_TEXTURE_SPARSE_ARB = 0x91A6;
     public static final int GL_VIRTUAL_PAGE_SIZE_INDEX_ARB = 0x91A7;
@@ -39,15 +39,16 @@ public final class GLARBSparseTexture {
     public static final class Handles {
         public static final MethodHandle MH_glTexPageCommitmentARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
         public final MemorySegment PFN_glTexPageCommitmentARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTexPageCommitmentARB = func.invoke("glTexPageCommitmentARB");
         }
     }
 
-    public GLARBSparseTexture(overrungl.opengl.GLLoadFunc func) {
+    public GLARBSparseTexture(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTexPageCommitmentARB`.
     /// ```
     /// void glTexPageCommitmentARB((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean commit);
     /// ```

@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_shader_atomic_counters`
 public final class GLARBShaderAtomicCounters {
     public static final int GL_ATOMIC_COUNTER_BUFFER = 0x92C0;
     public static final int GL_ATOMIC_COUNTER_BUFFER_BINDING = 0x92C1;
@@ -57,19 +57,20 @@ public final class GLARBShaderAtomicCounters {
     public static final class Handles {
         public static final MethodHandle MH_glGetActiveAtomicCounterBufferiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetActiveAtomicCounterBufferiv;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGetActiveAtomicCounterBufferiv = func.invoke("glGetActiveAtomicCounterBufferiv");
         }
     }
 
-    public GLARBShaderAtomicCounters(overrungl.opengl.GLLoadFunc func) {
+    public GLARBShaderAtomicCounters(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGetActiveAtomicCounterBufferiv`.
     /// ```
     /// void glGetActiveAtomicCounterBufferiv((unsigned int) GLuint program, (unsigned int) GLuint bufferIndex, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, MemorySegment params) {
+    public void GetActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveAtomicCounterBufferiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetActiveAtomicCounterBufferiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetActiveAtomicCounterBufferiv", program, bufferIndex, pname, params); }
         Handles.MH_glGetActiveAtomicCounterBufferiv.invokeExact(handles.PFN_glGetActiveAtomicCounterBufferiv, program, bufferIndex, pname, params); }

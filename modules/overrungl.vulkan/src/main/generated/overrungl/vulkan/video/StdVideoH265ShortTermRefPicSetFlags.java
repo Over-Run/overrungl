@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH265ShortTermRefPicSetFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoH265ShortTermRefPicSetFlags {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH265ShortTermRefPicSetFlags extends GroupType {
     /// The struct layout of `StdVideoH265ShortTermRefPicSetFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("inter_ref_pic_set_prediction_flag"), 1,
         ValueLayout.JAVA_INT.withName("delta_rps_sign"), 1
     );

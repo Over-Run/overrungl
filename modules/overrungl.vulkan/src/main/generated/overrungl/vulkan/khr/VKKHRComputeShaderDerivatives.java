@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_compute_shader_derivatives` - device extension
 public final class VKKHRComputeShaderDerivatives {
     public static final int VK_KHR_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION = 1;
     public static final String VK_KHR_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME = "VK_KHR_compute_shader_derivatives";

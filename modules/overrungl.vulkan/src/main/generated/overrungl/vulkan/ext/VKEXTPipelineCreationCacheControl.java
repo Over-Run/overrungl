@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_pipeline_creation_cache_control` - device extension
 public final class VKEXTPipelineCreationCacheControl {
     public static final int VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION = 3;
     public static final String VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME = "VK_EXT_pipeline_creation_cache_control";

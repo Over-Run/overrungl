@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
+/// `GL_EXT_texture`
 public final class GLEXTTexture {
     public static final int GL_ALPHA4_EXT = 0x803B;
     public static final int GL_ALPHA8_EXT = 0x803C;

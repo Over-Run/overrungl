@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_device_generated_commands_compute` - device extension
 public final class VKNVDeviceGeneratedCommandsCompute {
     public static final int VK_NV_DEVICE_GENERATED_COMMANDS_COMPUTE_SPEC_VERSION = 2;
     public static final String VK_NV_DEVICE_GENERATED_COMMANDS_COMPUTE_EXTENSION_NAME = "VK_NV_device_generated_commands_compute";
@@ -39,30 +41,33 @@ public final class VKNVDeviceGeneratedCommandsCompute {
 
     private VKNVDeviceGeneratedCommandsCompute() {}
 
+    /// Invokes `vkGetPipelineIndirectMemoryRequirementsNV`.
     /// ```
     /// void vkGetPipelineIndirectMemoryRequirementsNV((struct VkDevice*) VkDevice device, const VkComputePipelineCreateInfo* pCreateInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
-    public static void vkGetPipelineIndirectMemoryRequirementsNV(VkDevice device, MemorySegment pCreateInfo, MemorySegment pMemoryRequirements) {
+    public static void vkGetPipelineIndirectMemoryRequirementsNV(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineIndirectMemoryRequirementsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelineIndirectMemoryRequirementsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPipelineIndirectMemoryRequirementsNV", device, pCreateInfo, pMemoryRequirements); }
         Handles.MH_vkGetPipelineIndirectMemoryRequirementsNV.invokeExact(device.capabilities().PFN_vkGetPipelineIndirectMemoryRequirementsNV, device.segment(), pCreateInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPipelineIndirectMemoryRequirementsNV", e); }
     }
 
+    /// Invokes `vkCmdUpdatePipelineIndirectBufferNV`.
     /// ```
     /// void vkCmdUpdatePipelineIndirectBufferNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPipelineBindPoint pipelineBindPoint, (uint64_t) VkPipeline pipeline);
     /// ```
-    public static void vkCmdUpdatePipelineIndirectBufferNV(VkCommandBuffer commandBuffer, int pipelineBindPoint, long pipeline) {
+    public static void vkCmdUpdatePipelineIndirectBufferNV(@NonNull VkCommandBuffer commandBuffer, int pipelineBindPoint, long pipeline) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdUpdatePipelineIndirectBufferNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdUpdatePipelineIndirectBufferNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdUpdatePipelineIndirectBufferNV", commandBuffer, pipelineBindPoint, pipeline); }
         Handles.MH_vkCmdUpdatePipelineIndirectBufferNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdUpdatePipelineIndirectBufferNV, commandBuffer.segment(), pipelineBindPoint, pipeline); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdUpdatePipelineIndirectBufferNV", e); }
     }
 
+    /// Invokes `vkGetPipelineIndirectDeviceAddressNV`.
     /// ```
     /// (uint64_t) VkDeviceAddress vkGetPipelineIndirectDeviceAddressNV((struct VkDevice*) VkDevice device, const VkPipelineIndirectDeviceAddressInfoNV* pInfo);
     /// ```
-    public static long vkGetPipelineIndirectDeviceAddressNV(VkDevice device, MemorySegment pInfo) {
+    public static long vkGetPipelineIndirectDeviceAddressNV(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineIndirectDeviceAddressNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelineIndirectDeviceAddressNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPipelineIndirectDeviceAddressNV", device, pInfo); }
         return (long) Handles.MH_vkGetPipelineIndirectDeviceAddressNV.invokeExact(device.capabilities().PFN_vkGetPipelineIndirectDeviceAddressNV, device.segment(), pInfo); }

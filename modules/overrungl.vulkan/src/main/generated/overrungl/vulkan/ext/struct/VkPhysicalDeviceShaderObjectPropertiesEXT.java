@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPhysicalDeviceShaderObjectPropertiesEXT`.
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderObjectPropertiesEXT {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPhysicalDeviceShaderObjectPropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderObjectPropertiesEXT`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("shaderBinaryUUID"),

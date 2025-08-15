@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `STBTTPackRange`.
 /// ## Layout
 /// ```
 /// struct STBTTPackRange {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class STBTTPackRange extends GroupType {
     /// The struct layout of `STBTTPackRange`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("font_size"),
         ValueLayout.JAVA_INT.withName("first_unicode_codepoint_in_range"),
         ValueLayout.ADDRESS.withName("array_of_unicode_codepoints"),

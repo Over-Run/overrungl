@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_coverage_reduction_mode` - device extension
 public final class VKNVCoverageReductionMode {
     public static final int VK_COVERAGE_REDUCTION_MODE_MERGE_NV = 0;
     public static final int VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV = 1;
@@ -36,10 +38,11 @@ public final class VKNVCoverageReductionMode {
 
     private VKNVCoverageReductionMode() {}
 
+    /// Invokes `vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pCombinationCount, VkFramebufferMixedSamplesCombinationNV* pCombinations);
     /// ```
-    public static int vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(VkPhysicalDevice physicalDevice, MemorySegment pCombinationCount, MemorySegment pCombinations) {
+    public static int vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pCombinationCount, @NonNull MemorySegment pCombinations) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV", physicalDevice, pCombinationCount, pCombinations); }
         return (int) Handles.MH_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV, physicalDevice.segment(), pCombinationCount, pCombinations); }

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `STBVorbisAlloc`.
 /// ## Layout
 /// ```
 /// struct STBVorbisAlloc {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class STBVorbisAlloc extends GroupType {
     /// The struct layout of `STBVorbisAlloc`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("alloc_buffer"),
         ValueLayout.JAVA_INT.withName("alloc_buffer_length_in_bytes")
     );

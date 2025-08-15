@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkImportSemaphoreWin32HandleInfoKHR`.
 /// ## Layout
 /// ```
 /// struct VkImportSemaphoreWin32HandleInfoKHR {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class VkImportSemaphoreWin32HandleInfoKHR extends GroupType {
     /// The struct layout of `VkImportSemaphoreWin32HandleInfoKHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("semaphore"),

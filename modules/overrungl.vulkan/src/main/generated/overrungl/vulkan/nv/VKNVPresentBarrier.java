@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_present_barrier` - device extension
 public final class VKNVPresentBarrier {
     public static final int VK_NV_PRESENT_BARRIER_SPEC_VERSION = 1;
     public static final String VK_NV_PRESENT_BARRIER_EXTENSION_NAME = "VK_NV_present_barrier";

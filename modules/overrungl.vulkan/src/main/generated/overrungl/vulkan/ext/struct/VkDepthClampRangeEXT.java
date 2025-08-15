@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkDepthClampRangeEXT`.
 /// ## Layout
 /// ```
 /// struct VkDepthClampRangeEXT {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class VkDepthClampRangeEXT extends GroupType {
     /// The struct layout of `VkDepthClampRangeEXT`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("minDepthClamp"),
         ValueLayout.JAVA_FLOAT.withName("maxDepthClamp")
     );

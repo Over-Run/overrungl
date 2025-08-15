@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoAV1LoopRestoration`.
 /// ## Layout
 /// ```
 /// struct StdVideoAV1LoopRestoration {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoAV1LoopRestoration extends GroupType {
     /// The struct layout of `StdVideoAV1LoopRestoration`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("FrameRestorationType"),
         MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_SHORT).withName("LoopRestorationSize")
     );

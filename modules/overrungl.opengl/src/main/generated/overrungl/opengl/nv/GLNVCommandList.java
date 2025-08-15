@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_command_list`
 public final class GLNVCommandList {
     public static final int GL_TERMINATE_SEQUENCE_COMMAND_NV = 0x0000;
     public static final int GL_NOP_COMMAND_NV = 0x0001;
@@ -79,7 +79,7 @@ public final class GLNVCommandList {
         public final MemorySegment PFN_glCommandListSegmentsNV;
         public final MemorySegment PFN_glCompileCommandListNV;
         public final MemorySegment PFN_glCallCommandListNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glCreateStatesNV = func.invoke("glCreateStatesNV");
             PFN_glDeleteStatesNV = func.invoke("glDeleteStatesNV");
             PFN_glIsStateNV = func.invoke("glIsStateNV");
@@ -100,30 +100,33 @@ public final class GLNVCommandList {
         }
     }
 
-    public GLNVCommandList(overrungl.opengl.GLLoadFunc func) {
+    public GLNVCommandList(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glCreateStatesNV`.
     /// ```
     /// void glCreateStatesNV((int) GLsizei n, GLuint* states);
     /// ```
-    public void CreateStatesNV(int n, MemorySegment states) {
+    public void CreateStatesNV(int n, @NonNull MemorySegment states) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateStatesNV)) throw new GLSymbolNotFoundError("Symbol not found: glCreateStatesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateStatesNV", n, states); }
         Handles.MH_glCreateStatesNV.invokeExact(handles.PFN_glCreateStatesNV, n, states); }
         catch (Throwable e) { throw new RuntimeException("error in CreateStatesNV", e); }
     }
 
+    /// Invokes `glDeleteStatesNV`.
     /// ```
     /// void glDeleteStatesNV((int) GLsizei n, const GLuint* states);
     /// ```
-    public void DeleteStatesNV(int n, MemorySegment states) {
+    public void DeleteStatesNV(int n, @NonNull MemorySegment states) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteStatesNV)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteStatesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteStatesNV", n, states); }
         Handles.MH_glDeleteStatesNV.invokeExact(handles.PFN_glDeleteStatesNV, n, states); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteStatesNV", e); }
     }
 
+    /// Invokes `glIsStateNV`.
     /// ```
     /// GLboolean glIsStateNV((unsigned int) GLuint state);
     /// ```
@@ -134,6 +137,7 @@ public final class GLNVCommandList {
         catch (Throwable e) { throw new RuntimeException("error in IsStateNV", e); }
     }
 
+    /// Invokes `glStateCaptureNV`.
     /// ```
     /// void glStateCaptureNV((unsigned int) GLuint state, (unsigned int) GLenum mode);
     /// ```
@@ -144,6 +148,7 @@ public final class GLNVCommandList {
         catch (Throwable e) { throw new RuntimeException("error in StateCaptureNV", e); }
     }
 
+    /// Invokes `glGetCommandHeaderNV`.
     /// ```
     /// (unsigned int) GLuint glGetCommandHeaderNV((unsigned int) GLenum tokenID, (unsigned int) GLuint size);
     /// ```
@@ -154,6 +159,7 @@ public final class GLNVCommandList {
         catch (Throwable e) { throw new RuntimeException("error in GetCommandHeaderNV", e); }
     }
 
+    /// Invokes `glGetStageIndexNV`.
     /// ```
     /// ((unsigned short) khronos_uint16_t) GLushort glGetStageIndexNV((unsigned int) GLenum shadertype);
     /// ```
@@ -164,66 +170,73 @@ public final class GLNVCommandList {
         catch (Throwable e) { throw new RuntimeException("error in GetStageIndexNV", e); }
     }
 
+    /// Invokes `glDrawCommandsNV`.
     /// ```
     /// void glDrawCommandsNV((unsigned int) GLenum primitiveMode, (unsigned int) GLuint buffer, const GLintptr* indirects, const GLsizei* sizes, (unsigned int) GLuint count);
     /// ```
-    public void DrawCommandsNV(int primitiveMode, int buffer, MemorySegment indirects, MemorySegment sizes, int count) {
+    public void DrawCommandsNV(int primitiveMode, int buffer, @NonNull MemorySegment indirects, @NonNull MemorySegment sizes, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawCommandsNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawCommandsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawCommandsNV", primitiveMode, buffer, indirects, sizes, count); }
         Handles.MH_glDrawCommandsNV.invokeExact(handles.PFN_glDrawCommandsNV, primitiveMode, buffer, indirects, sizes, count); }
         catch (Throwable e) { throw new RuntimeException("error in DrawCommandsNV", e); }
     }
 
+    /// Invokes `glDrawCommandsAddressNV`.
     /// ```
     /// void glDrawCommandsAddressNV((unsigned int) GLenum primitiveMode, const GLuint64* indirects, const GLsizei* sizes, (unsigned int) GLuint count);
     /// ```
-    public void DrawCommandsAddressNV(int primitiveMode, MemorySegment indirects, MemorySegment sizes, int count) {
+    public void DrawCommandsAddressNV(int primitiveMode, @NonNull MemorySegment indirects, @NonNull MemorySegment sizes, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawCommandsAddressNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawCommandsAddressNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawCommandsAddressNV", primitiveMode, indirects, sizes, count); }
         Handles.MH_glDrawCommandsAddressNV.invokeExact(handles.PFN_glDrawCommandsAddressNV, primitiveMode, indirects, sizes, count); }
         catch (Throwable e) { throw new RuntimeException("error in DrawCommandsAddressNV", e); }
     }
 
+    /// Invokes `glDrawCommandsStatesNV`.
     /// ```
     /// void glDrawCommandsStatesNV((unsigned int) GLuint buffer, const GLintptr* indirects, const GLsizei* sizes, const GLuint* states, const GLuint* fbos, (unsigned int) GLuint count);
     /// ```
-    public void DrawCommandsStatesNV(int buffer, MemorySegment indirects, MemorySegment sizes, MemorySegment states, MemorySegment fbos, int count) {
+    public void DrawCommandsStatesNV(int buffer, @NonNull MemorySegment indirects, @NonNull MemorySegment sizes, @NonNull MemorySegment states, @NonNull MemorySegment fbos, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawCommandsStatesNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawCommandsStatesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawCommandsStatesNV", buffer, indirects, sizes, states, fbos, count); }
         Handles.MH_glDrawCommandsStatesNV.invokeExact(handles.PFN_glDrawCommandsStatesNV, buffer, indirects, sizes, states, fbos, count); }
         catch (Throwable e) { throw new RuntimeException("error in DrawCommandsStatesNV", e); }
     }
 
+    /// Invokes `glDrawCommandsStatesAddressNV`.
     /// ```
     /// void glDrawCommandsStatesAddressNV(const GLuint64* indirects, const GLsizei* sizes, const GLuint* states, const GLuint* fbos, (unsigned int) GLuint count);
     /// ```
-    public void DrawCommandsStatesAddressNV(MemorySegment indirects, MemorySegment sizes, MemorySegment states, MemorySegment fbos, int count) {
+    public void DrawCommandsStatesAddressNV(@NonNull MemorySegment indirects, @NonNull MemorySegment sizes, @NonNull MemorySegment states, @NonNull MemorySegment fbos, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawCommandsStatesAddressNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawCommandsStatesAddressNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawCommandsStatesAddressNV", indirects, sizes, states, fbos, count); }
         Handles.MH_glDrawCommandsStatesAddressNV.invokeExact(handles.PFN_glDrawCommandsStatesAddressNV, indirects, sizes, states, fbos, count); }
         catch (Throwable e) { throw new RuntimeException("error in DrawCommandsStatesAddressNV", e); }
     }
 
+    /// Invokes `glCreateCommandListsNV`.
     /// ```
     /// void glCreateCommandListsNV((int) GLsizei n, GLuint* lists);
     /// ```
-    public void CreateCommandListsNV(int n, MemorySegment lists) {
+    public void CreateCommandListsNV(int n, @NonNull MemorySegment lists) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateCommandListsNV)) throw new GLSymbolNotFoundError("Symbol not found: glCreateCommandListsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateCommandListsNV", n, lists); }
         Handles.MH_glCreateCommandListsNV.invokeExact(handles.PFN_glCreateCommandListsNV, n, lists); }
         catch (Throwable e) { throw new RuntimeException("error in CreateCommandListsNV", e); }
     }
 
+    /// Invokes `glDeleteCommandListsNV`.
     /// ```
     /// void glDeleteCommandListsNV((int) GLsizei n, const GLuint* lists);
     /// ```
-    public void DeleteCommandListsNV(int n, MemorySegment lists) {
+    public void DeleteCommandListsNV(int n, @NonNull MemorySegment lists) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteCommandListsNV)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteCommandListsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteCommandListsNV", n, lists); }
         Handles.MH_glDeleteCommandListsNV.invokeExact(handles.PFN_glDeleteCommandListsNV, n, lists); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteCommandListsNV", e); }
     }
 
+    /// Invokes `glIsCommandListNV`.
     /// ```
     /// GLboolean glIsCommandListNV((unsigned int) GLuint list);
     /// ```
@@ -234,16 +247,18 @@ public final class GLNVCommandList {
         catch (Throwable e) { throw new RuntimeException("error in IsCommandListNV", e); }
     }
 
+    /// Invokes `glListDrawCommandsStatesClientNV`.
     /// ```
     /// void glListDrawCommandsStatesClientNV((unsigned int) GLuint list, (unsigned int) GLuint segment, const void** indirects, const GLsizei* sizes, const GLuint* states, const GLuint* fbos, (unsigned int) GLuint count);
     /// ```
-    public void ListDrawCommandsStatesClientNV(int list, int segment, MemorySegment indirects, MemorySegment sizes, MemorySegment states, MemorySegment fbos, int count) {
+    public void ListDrawCommandsStatesClientNV(int list, int segment, @NonNull MemorySegment indirects, @NonNull MemorySegment sizes, @NonNull MemorySegment states, @NonNull MemorySegment fbos, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glListDrawCommandsStatesClientNV)) throw new GLSymbolNotFoundError("Symbol not found: glListDrawCommandsStatesClientNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glListDrawCommandsStatesClientNV", list, segment, indirects, sizes, states, fbos, count); }
         Handles.MH_glListDrawCommandsStatesClientNV.invokeExact(handles.PFN_glListDrawCommandsStatesClientNV, list, segment, indirects, sizes, states, fbos, count); }
         catch (Throwable e) { throw new RuntimeException("error in ListDrawCommandsStatesClientNV", e); }
     }
 
+    /// Invokes `glCommandListSegmentsNV`.
     /// ```
     /// void glCommandListSegmentsNV((unsigned int) GLuint list, (unsigned int) GLuint segments);
     /// ```
@@ -254,6 +269,7 @@ public final class GLNVCommandList {
         catch (Throwable e) { throw new RuntimeException("error in CommandListSegmentsNV", e); }
     }
 
+    /// Invokes `glCompileCommandListNV`.
     /// ```
     /// void glCompileCommandListNV((unsigned int) GLuint list);
     /// ```
@@ -264,6 +280,7 @@ public final class GLNVCommandList {
         catch (Throwable e) { throw new RuntimeException("error in CompileCommandListNV", e); }
     }
 
+    /// Invokes `glCallCommandListNV`.
     /// ```
     /// void glCallCommandListNV((unsigned int) GLuint list);
     /// ```

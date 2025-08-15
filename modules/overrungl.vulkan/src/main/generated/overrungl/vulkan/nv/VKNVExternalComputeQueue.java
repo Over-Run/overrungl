@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_external_compute_queue` - device extension
 public final class VKNVExternalComputeQueue {
     public static final int VK_NV_EXTERNAL_COMPUTE_QUEUE_SPEC_VERSION = 1;
     public static final String VK_NV_EXTERNAL_COMPUTE_QUEUE_EXTENSION_NAME = "VK_NV_external_compute_queue";
@@ -38,30 +40,33 @@ public final class VKNVExternalComputeQueue {
 
     private VKNVExternalComputeQueue() {}
 
+    /// Invokes `vkCreateExternalComputeQueueNV`.
     /// ```
     /// (int) VkResult vkCreateExternalComputeQueueNV((struct VkDevice*) VkDevice device, const VkExternalComputeQueueCreateInfoNV* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkExternalComputeQueueNV* pExternalQueue);
     /// ```
-    public static int vkCreateExternalComputeQueueNV(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pExternalQueue) {
+    public static int vkCreateExternalComputeQueueNV(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pExternalQueue) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateExternalComputeQueueNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateExternalComputeQueueNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateExternalComputeQueueNV", device, pCreateInfo, pAllocator, pExternalQueue); }
         return (int) Handles.MH_vkCreateExternalComputeQueueNV.invokeExact(device.capabilities().PFN_vkCreateExternalComputeQueueNV, device.segment(), pCreateInfo, pAllocator, pExternalQueue); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateExternalComputeQueueNV", e); }
     }
 
+    /// Invokes `vkDestroyExternalComputeQueueNV`.
     /// ```
     /// void vkDestroyExternalComputeQueueNV((struct VkDevice*) VkDevice device, (struct VkExternalComputeQueueNV*) VkExternalComputeQueueNV externalQueue, const VkAllocationCallbacks* pAllocator);
     /// ```
-    public static void vkDestroyExternalComputeQueueNV(VkDevice device, MemorySegment externalQueue, MemorySegment pAllocator) {
+    public static void vkDestroyExternalComputeQueueNV(@NonNull VkDevice device, @NonNull MemorySegment externalQueue, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyExternalComputeQueueNV)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyExternalComputeQueueNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyExternalComputeQueueNV", device, externalQueue, pAllocator); }
         Handles.MH_vkDestroyExternalComputeQueueNV.invokeExact(device.capabilities().PFN_vkDestroyExternalComputeQueueNV, device.segment(), externalQueue, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyExternalComputeQueueNV", e); }
     }
 
+    /// Invokes `vkGetExternalComputeQueueDataNV`.
     /// ```
     /// void vkGetExternalComputeQueueDataNV((struct VkExternalComputeQueueNV*) VkExternalComputeQueueNV externalQueue, VkExternalComputeQueueDataParamsNV* params, void* pData);
     /// ```
-    public static void vkGetExternalComputeQueueDataNV(VkExternalComputeQueueNV externalQueue, MemorySegment params, MemorySegment pData) {
+    public static void vkGetExternalComputeQueueDataNV(@NonNull VkExternalComputeQueueNV externalQueue, @NonNull MemorySegment params, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(externalQueue.capabilities().PFN_vkGetExternalComputeQueueDataNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetExternalComputeQueueDataNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetExternalComputeQueueDataNV", externalQueue, params, pData); }
         Handles.MH_vkGetExternalComputeQueueDataNV.invokeExact(externalQueue.capabilities().PFN_vkGetExternalComputeQueueDataNV, externalQueue.segment(), params, pData); }

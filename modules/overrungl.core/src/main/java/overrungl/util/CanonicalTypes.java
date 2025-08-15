@@ -17,27 +17,29 @@
 package overrungl.util;
 
 import java.lang.foreign.Linker;
-import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.ValueLayout;
 
 /**
  * Memory layouts of C builtin type got from {@link Linker#canonicalLayouts()}.
+ *
  * @author squid233
  * @since 0.1.0
  */
 public final class CanonicalTypes {
     private static final Linker LINKER = Linker.nativeLinker();
     /// `long`
-    public static final MemoryLayout C_LONG;
+    public static final ValueLayout C_LONG;
     /// `size_t`
-    public static final MemoryLayout SIZE_T;
+    public static final ValueLayout SIZE_T;
     /// `wchar_t`
-    public static final MemoryLayout WCHAR_T;
+    public static final ValueLayout WCHAR_T;
 
     static {
         var map = LINKER.canonicalLayouts();
-        C_LONG = map.get("long");
-        SIZE_T = map.get("size_t");
-        WCHAR_T = map.get("wchar_t");
+        // we can expect these layouts as value layouts
+        C_LONG = (ValueLayout) map.get("long");
+        SIZE_T = (ValueLayout) map.get("size_t");
+        WCHAR_T = (ValueLayout) map.get("wchar_t");
     }
 
     private CanonicalTypes() {

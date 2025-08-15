@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_dynamic_rendering_local_read` - device extension
 public final class VKKHRDynamicRenderingLocalRead {
     public static final int VK_KHR_DYNAMIC_RENDERING_LOCAL_READ_SPEC_VERSION = 1;
     public static final String VK_KHR_DYNAMIC_RENDERING_LOCAL_READ_EXTENSION_NAME = "VK_KHR_dynamic_rendering_local_read";
@@ -36,20 +38,22 @@ public final class VKKHRDynamicRenderingLocalRead {
 
     private VKKHRDynamicRenderingLocalRead() {}
 
+    /// Invokes `vkCmdSetRenderingAttachmentLocationsKHR`.
     /// ```
     /// void vkCmdSetRenderingAttachmentLocationsKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingAttachmentLocationInfo* pLocationInfo);
     /// ```
-    public static void vkCmdSetRenderingAttachmentLocationsKHR(VkCommandBuffer commandBuffer, MemorySegment pLocationInfo) {
+    public static void vkCmdSetRenderingAttachmentLocationsKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pLocationInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingAttachmentLocationsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRenderingAttachmentLocationsKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetRenderingAttachmentLocationsKHR", commandBuffer, pLocationInfo); }
         Handles.MH_vkCmdSetRenderingAttachmentLocationsKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRenderingAttachmentLocationsKHR, commandBuffer.segment(), pLocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRenderingAttachmentLocationsKHR", e); }
     }
 
+    /// Invokes `vkCmdSetRenderingInputAttachmentIndicesKHR`.
     /// ```
     /// void vkCmdSetRenderingInputAttachmentIndicesKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingInputAttachmentIndexInfo* pInputAttachmentIndexInfo);
     /// ```
-    public static void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, MemorySegment pInputAttachmentIndexInfo) {
+    public static void vkCmdSetRenderingInputAttachmentIndicesKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pInputAttachmentIndexInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingInputAttachmentIndicesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRenderingInputAttachmentIndicesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetRenderingInputAttachmentIndicesKHR", commandBuffer, pInputAttachmentIndexInfo); }
         Handles.MH_vkCmdSetRenderingInputAttachmentIndicesKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRenderingInputAttachmentIndicesKHR, commandBuffer.segment(), pInputAttachmentIndexInfo); }

@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_blend_minmax`
 public final class GLEXTBlendMinmax {
     public static final int GL_MIN_EXT = 0x8007;
     public static final int GL_MAX_EXT = 0x8008;
@@ -32,15 +32,16 @@ public final class GLEXTBlendMinmax {
     public static final class Handles {
         public static final MethodHandle MH_glBlendEquationEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendEquationEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBlendEquationEXT = func.invoke("glBlendEquationEXT", "glBlendEquation");
         }
     }
 
-    public GLEXTBlendMinmax(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTBlendMinmax(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBlendEquationEXT`.
     /// ```
     /// void glBlendEquationEXT((unsigned int) GLenum mode);
     /// ```

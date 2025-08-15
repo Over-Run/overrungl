@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_cooperative_matrix2` - device extension
 public final class VKNVCooperativeMatrix2 {
     public static final int VK_NV_COOPERATIVE_MATRIX_2_SPEC_VERSION = 1;
     public static final String VK_NV_COOPERATIVE_MATRIX_2_EXTENSION_NAME = "VK_NV_cooperative_matrix2";
@@ -34,10 +36,11 @@ public final class VKNVCooperativeMatrix2 {
 
     private VKNVCooperativeMatrix2() {}
 
+    /// Invokes `vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeMatrixFlexibleDimensionsPropertiesNV* pProperties);
     /// ```
-    public static int vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(VkPhysicalDevice physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public static int vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pPropertyCount, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV", physicalDevice, pPropertyCount, pProperties); }
         return (int) Handles.MH_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV, physicalDevice.segment(), pPropertyCount, pProperties); }

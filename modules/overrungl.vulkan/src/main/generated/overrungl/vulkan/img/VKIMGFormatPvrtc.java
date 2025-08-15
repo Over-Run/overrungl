@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.img;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_IMG_format_pvrtc` - device extension
 public final class VKIMGFormatPvrtc {
     public static final int VK_IMG_FORMAT_PVRTC_SPEC_VERSION = 1;
     public static final String VK_IMG_FORMAT_PVRTC_EXTENSION_NAME = "VK_IMG_format_pvrtc";

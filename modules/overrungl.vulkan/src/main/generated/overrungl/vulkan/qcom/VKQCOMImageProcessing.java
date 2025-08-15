@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.qcom;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_QCOM_image_processing` - device extension
 public final class VKQCOMImageProcessing {
     public static final int VK_QCOM_IMAGE_PROCESSING_SPEC_VERSION = 1;
     public static final String VK_QCOM_IMAGE_PROCESSING_EXTENSION_NAME = "VK_QCOM_image_processing";

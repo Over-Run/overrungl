@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkSubresourceLayout2EXT`.
 /// ## Layout
 /// ```
 /// struct VkSubresourceLayout2EXT {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkSubresourceLayout2EXT extends GroupType {
     /// The struct layout of `VkSubresourceLayout2EXT`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkSubresourceLayout.LAYOUT.withName("subresourceLayout")

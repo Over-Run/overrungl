@@ -18,9 +18,11 @@
 package overrungl.vulkan.qnx;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_QNX_external_memory_screen_buffer` - device extension
 public final class VKQNXExternalMemoryScreenBuffer {
     public static final int VK_QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_SPEC_VERSION = 1;
     public static final String VK_QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_EXTENSION_NAME = "VK_QNX_external_memory_screen_buffer";
@@ -37,10 +39,11 @@ public final class VKQNXExternalMemoryScreenBuffer {
 
     private VKQNXExternalMemoryScreenBuffer() {}
 
+    /// Invokes `vkGetScreenBufferPropertiesQNX`.
     /// ```
     /// (int) VkResult vkGetScreenBufferPropertiesQNX((struct VkDevice*) VkDevice device, const struct _screen_buffer * buffer, VkScreenBufferPropertiesQNX* pProperties);
     /// ```
-    public static int vkGetScreenBufferPropertiesQNX(VkDevice device, MemorySegment buffer, MemorySegment pProperties) {
+    public static int vkGetScreenBufferPropertiesQNX(@NonNull VkDevice device, @NonNull MemorySegment buffer, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetScreenBufferPropertiesQNX)) throw new VKSymbolNotFoundError("Symbol not found: vkGetScreenBufferPropertiesQNX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetScreenBufferPropertiesQNX", device, buffer, pProperties); }
         return (int) Handles.MH_vkGetScreenBufferPropertiesQNX.invokeExact(device.capabilities().PFN_vkGetScreenBufferPropertiesQNX, device.segment(), buffer, pProperties); }

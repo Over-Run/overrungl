@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkImportMemoryWin32HandleInfoNV`.
 /// ## Layout
 /// ```
 /// struct VkImportMemoryWin32HandleInfoNV {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkImportMemoryWin32HandleInfoNV extends GroupType {
     /// The struct layout of `VkImportMemoryWin32HandleInfoNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("handleType"),

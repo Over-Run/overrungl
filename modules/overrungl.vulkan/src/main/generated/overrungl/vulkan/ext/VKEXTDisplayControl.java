@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_display_control` - device extension
 public final class VKEXTDisplayControl {
     public static final int VK_DISPLAY_POWER_STATE_OFF_EXT = 0;
     public static final int VK_DISPLAY_POWER_STATE_SUSPEND_EXT = 1;
@@ -43,40 +45,44 @@ public final class VKEXTDisplayControl {
 
     private VKEXTDisplayControl() {}
 
+    /// Invokes `vkDisplayPowerControlEXT`.
     /// ```
     /// (int) VkResult vkDisplayPowerControlEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDisplayKHR display, const VkDisplayPowerInfoEXT* pDisplayPowerInfo);
     /// ```
-    public static int vkDisplayPowerControlEXT(VkDevice device, long display, MemorySegment pDisplayPowerInfo) {
+    public static int vkDisplayPowerControlEXT(@NonNull VkDevice device, long display, @NonNull MemorySegment pDisplayPowerInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDisplayPowerControlEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDisplayPowerControlEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDisplayPowerControlEXT", device, display, pDisplayPowerInfo); }
         return (int) Handles.MH_vkDisplayPowerControlEXT.invokeExact(device.capabilities().PFN_vkDisplayPowerControlEXT, device.segment(), display, pDisplayPowerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkDisplayPowerControlEXT", e); }
     }
 
+    /// Invokes `vkRegisterDeviceEventEXT`.
     /// ```
     /// (int) VkResult vkRegisterDeviceEventEXT((struct VkDevice*) VkDevice device, const VkDeviceEventInfoEXT* pDeviceEventInfo, const VkAllocationCallbacks* pAllocator, VkFence* pFence);
     /// ```
-    public static int vkRegisterDeviceEventEXT(VkDevice device, MemorySegment pDeviceEventInfo, MemorySegment pAllocator, MemorySegment pFence) {
+    public static int vkRegisterDeviceEventEXT(@NonNull VkDevice device, @NonNull MemorySegment pDeviceEventInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pFence) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkRegisterDeviceEventEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkRegisterDeviceEventEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkRegisterDeviceEventEXT", device, pDeviceEventInfo, pAllocator, pFence); }
         return (int) Handles.MH_vkRegisterDeviceEventEXT.invokeExact(device.capabilities().PFN_vkRegisterDeviceEventEXT, device.segment(), pDeviceEventInfo, pAllocator, pFence); }
         catch (Throwable e) { throw new RuntimeException("error in vkRegisterDeviceEventEXT", e); }
     }
 
+    /// Invokes `vkRegisterDisplayEventEXT`.
     /// ```
     /// (int) VkResult vkRegisterDisplayEventEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDisplayKHR display, const VkDisplayEventInfoEXT* pDisplayEventInfo, const VkAllocationCallbacks* pAllocator, VkFence* pFence);
     /// ```
-    public static int vkRegisterDisplayEventEXT(VkDevice device, long display, MemorySegment pDisplayEventInfo, MemorySegment pAllocator, MemorySegment pFence) {
+    public static int vkRegisterDisplayEventEXT(@NonNull VkDevice device, long display, @NonNull MemorySegment pDisplayEventInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pFence) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkRegisterDisplayEventEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkRegisterDisplayEventEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkRegisterDisplayEventEXT", device, display, pDisplayEventInfo, pAllocator, pFence); }
         return (int) Handles.MH_vkRegisterDisplayEventEXT.invokeExact(device.capabilities().PFN_vkRegisterDisplayEventEXT, device.segment(), display, pDisplayEventInfo, pAllocator, pFence); }
         catch (Throwable e) { throw new RuntimeException("error in vkRegisterDisplayEventEXT", e); }
     }
 
+    /// Invokes `vkGetSwapchainCounterEXT`.
     /// ```
     /// (int) VkResult vkGetSwapchainCounterEXT((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, (int) VkSurfaceCounterFlagBitsEXT counter, uint64_t* pCounterValue);
     /// ```
-    public static int vkGetSwapchainCounterEXT(VkDevice device, long swapchain, int counter, MemorySegment pCounterValue) {
+    public static int vkGetSwapchainCounterEXT(@NonNull VkDevice device, long swapchain, int counter, @NonNull MemorySegment pCounterValue) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainCounterEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSwapchainCounterEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetSwapchainCounterEXT", device, swapchain, counter, pCounterValue); }
         return (int) Handles.MH_vkGetSwapchainCounterEXT.invokeExact(device.capabilities().PFN_vkGetSwapchainCounterEXT, device.segment(), swapchain, counter, pCounterValue); }

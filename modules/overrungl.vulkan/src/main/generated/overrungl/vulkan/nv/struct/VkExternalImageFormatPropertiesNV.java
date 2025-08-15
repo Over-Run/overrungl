@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkExternalImageFormatPropertiesNV`.
 /// ## Layout
 /// ```
 /// struct VkExternalImageFormatPropertiesNV {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkExternalImageFormatPropertiesNV extends GroupType {
     /// The struct layout of `VkExternalImageFormatPropertiesNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkImageFormatProperties.LAYOUT.withName("imageFormatProperties"),
         ValueLayout.JAVA_INT.withName("externalMemoryFeatures"),
         ValueLayout.JAVA_INT.withName("exportFromImportedHandleTypes"),

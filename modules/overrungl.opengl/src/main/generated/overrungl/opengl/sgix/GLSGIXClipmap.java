@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
-
+/// `GL_SGIX_clipmap`
 public final class GLSGIXClipmap {
     public static final int GL_LINEAR_CLIPMAP_LINEAR_SGIX = 0x8170;
     public static final int GL_TEXTURE_CLIPMAP_CENTER_SGIX = 0x8171;

@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.amd;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_AMD_interleaved_elements`
 public final class GLAMDInterleavedElements {
     public static final int GL_VERTEX_ELEMENT_SWIZZLE_AMD = 0x91A4;
     public static final int GL_VERTEX_ID_SWIZZLE_AMD = 0x91A5;
@@ -37,15 +37,16 @@ public final class GLAMDInterleavedElements {
     public static final class Handles {
         public static final MethodHandle MH_glVertexAttribParameteriAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glVertexAttribParameteriAMD;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glVertexAttribParameteriAMD = func.invoke("glVertexAttribParameteriAMD");
         }
     }
 
-    public GLAMDInterleavedElements(overrungl.opengl.GLLoadFunc func) {
+    public GLAMDInterleavedElements(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glVertexAttribParameteriAMD`.
     /// ```
     /// void glVertexAttribParameteriAMD((unsigned int) GLuint index, (unsigned int) GLenum pname, (int) GLint param);
     /// ```

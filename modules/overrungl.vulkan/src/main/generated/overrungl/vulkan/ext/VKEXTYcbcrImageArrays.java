@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_ycbcr_image_arrays` - device extension
 public final class VKEXTYcbcrImageArrays {
     public static final int VK_EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION = 1;
     public static final String VK_EXT_YCBCR_IMAGE_ARRAYS_EXTENSION_NAME = "VK_EXT_ycbcr_image_arrays";

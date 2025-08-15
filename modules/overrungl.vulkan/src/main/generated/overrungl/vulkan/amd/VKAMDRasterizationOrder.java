@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.amd;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_AMD_rasterization_order` - device extension
 public final class VKAMDRasterizationOrder {
     public static final int VK_RASTERIZATION_ORDER_STRICT_AMD = 0;
     public static final int VK_RASTERIZATION_ORDER_RELAXED_AMD = 1;

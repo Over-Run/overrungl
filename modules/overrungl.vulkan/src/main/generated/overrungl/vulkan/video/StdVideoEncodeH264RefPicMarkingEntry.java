@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeH264RefPicMarkingEntry`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH264RefPicMarkingEntry {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeH264RefPicMarkingEntry extends GroupType {
     /// The struct layout of `StdVideoEncodeH264RefPicMarkingEntry`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("memory_management_control_operation"),
         ValueLayout.JAVA_SHORT.withName("difference_of_pic_nums_minus1"),
         ValueLayout.JAVA_SHORT.withName("long_term_pic_num"),

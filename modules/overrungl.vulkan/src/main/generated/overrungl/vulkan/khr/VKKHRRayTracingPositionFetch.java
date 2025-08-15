@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_ray_tracing_position_fetch` - device extension
 public final class VKKHRRayTracingPositionFetch {
     public static final int VK_KHR_RAY_TRACING_POSITION_FETCH_SPEC_VERSION = 1;
     public static final String VK_KHR_RAY_TRACING_POSITION_FETCH_EXTENSION_NAME = "VK_KHR_ray_tracing_position_fetch";

@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.huawei;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_HUAWEI_hdr_vivid` - device extension
 public final class VKHUAWEIHdrVivid {
     public static final int VK_HUAWEI_HDR_VIVID_SPEC_VERSION = 1;
     public static final String VK_HUAWEI_HDR_VIVID_EXTENSION_NAME = "VK_HUAWEI_hdr_vivid";

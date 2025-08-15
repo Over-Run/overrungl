@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_shader_tile_image` - device extension
 public final class VKEXTShaderTileImage {
     public static final int VK_EXT_SHADER_TILE_IMAGE_SPEC_VERSION = 1;
     public static final String VK_EXT_SHADER_TILE_IMAGE_EXTENSION_NAME = "VK_EXT_shader_tile_image";

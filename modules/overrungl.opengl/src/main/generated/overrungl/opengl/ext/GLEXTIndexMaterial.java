@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_index_material`
 public final class GLEXTIndexMaterial {
     public static final int GL_INDEX_MATERIAL_EXT = 0x81B8;
     public static final int GL_INDEX_MATERIAL_PARAMETER_EXT = 0x81B9;
@@ -31,15 +31,16 @@ public final class GLEXTIndexMaterial {
     public static final class Handles {
         public static final MethodHandle MH_glIndexMaterialEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glIndexMaterialEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glIndexMaterialEXT = func.invoke("glIndexMaterialEXT");
         }
     }
 
-    public GLEXTIndexMaterial(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTIndexMaterial(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glIndexMaterialEXT`.
     /// ```
     /// void glIndexMaterialEXT((unsigned int) GLenum face, (unsigned int) GLenum mode);
     /// ```

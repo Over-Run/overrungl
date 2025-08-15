@@ -16,27 +16,28 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_texture_barrier`
 public final class GLNVTextureBarrier {
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_glTextureBarrierNV = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glTextureBarrierNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTextureBarrierNV = func.invoke("glTextureBarrierNV");
         }
     }
 
-    public GLNVTextureBarrier(overrungl.opengl.GLLoadFunc func) {
+    public GLNVTextureBarrier(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTextureBarrierNV`.
     /// ```
     /// void glTextureBarrierNV();
     /// ```

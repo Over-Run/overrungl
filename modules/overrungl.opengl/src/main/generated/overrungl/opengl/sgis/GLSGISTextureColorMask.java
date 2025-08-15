@@ -16,28 +16,29 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgis;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_SGIS_texture_color_mask`
 public final class GLSGISTextureColorMask {
     public static final int GL_TEXTURE_COLOR_WRITEMASK_SGIS = 0x81EF;
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_glTextureColorMaskSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
         public final MemorySegment PFN_glTextureColorMaskSGIS;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTextureColorMaskSGIS = func.invoke("glTextureColorMaskSGIS");
         }
     }
 
-    public GLSGISTextureColorMask(overrungl.opengl.GLLoadFunc func) {
+    public GLSGISTextureColorMask(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTextureColorMaskSGIS`.
     /// ```
     /// void glTextureColorMaskSGIS(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
     /// ```

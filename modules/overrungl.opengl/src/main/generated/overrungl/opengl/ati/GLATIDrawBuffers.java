@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ati;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ATI_draw_buffers`
 public final class GLATIDrawBuffers {
     public static final int GL_MAX_DRAW_BUFFERS_ATI = 0x8824;
     public static final int GL_DRAW_BUFFER0_ATI = 0x8825;
@@ -45,19 +45,20 @@ public final class GLATIDrawBuffers {
     public static final class Handles {
         public static final MethodHandle MH_glDrawBuffersATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDrawBuffersATI;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDrawBuffersATI = func.invoke("glDrawBuffersATI", "glDrawBuffers");
         }
     }
 
-    public GLATIDrawBuffers(overrungl.opengl.GLLoadFunc func) {
+    public GLATIDrawBuffers(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDrawBuffersATI`.
     /// ```
     /// void glDrawBuffersATI((int) GLsizei n, const GLenum* bufs);
     /// ```
-    public void DrawBuffersATI(int n, MemorySegment bufs) {
+    public void DrawBuffersATI(int n, @NonNull MemorySegment bufs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawBuffersATI)) throw new GLSymbolNotFoundError("Symbol not found: glDrawBuffersATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawBuffersATI", n, bufs); }
         Handles.MH_glDrawBuffersATI.invokeExact(handles.PFN_glDrawBuffersATI, n, bufs); }

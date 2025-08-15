@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkImageBlit`.
 /// ## Layout
 /// ```
 /// struct VkImageBlit {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkImageBlit extends GroupType {
     /// The struct layout of `VkImageBlit`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
         MemoryLayout.sequenceLayout(2, overrungl.vulkan.struct.VkOffset3D.LAYOUT).withName("srcOffsets"),
         overrungl.vulkan.struct.VkImageSubresourceLayers.LAYOUT.withName("dstSubresource"),

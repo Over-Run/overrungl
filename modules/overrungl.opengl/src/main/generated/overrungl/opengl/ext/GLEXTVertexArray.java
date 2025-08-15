@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_vertex_array`
 public final class GLEXTVertexArray {
     public static final int GL_VERTEX_ARRAY_EXT = 0x8074;
     public static final int GL_NORMAL_ARRAY_EXT = 0x8075;
@@ -76,7 +76,7 @@ public final class GLEXTVertexArray {
         public final MemorySegment PFN_glNormalPointerEXT;
         public final MemorySegment PFN_glTexCoordPointerEXT;
         public final MemorySegment PFN_glVertexPointerEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glArrayElementEXT = func.invoke("glArrayElementEXT", "glArrayElement");
             PFN_glColorPointerEXT = func.invoke("glColorPointerEXT");
             PFN_glDrawArraysEXT = func.invoke("glDrawArraysEXT", "glDrawArrays");
@@ -89,10 +89,11 @@ public final class GLEXTVertexArray {
         }
     }
 
-    public GLEXTVertexArray(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTVertexArray(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glArrayElementEXT`.
     /// ```
     /// void glArrayElementEXT((int) GLint i);
     /// ```
@@ -103,16 +104,18 @@ public final class GLEXTVertexArray {
         catch (Throwable e) { throw new RuntimeException("error in ArrayElementEXT", e); }
     }
 
+    /// Invokes `glColorPointerEXT`.
     /// ```
     /// void glColorPointerEXT((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, (int) GLsizei count, const void* pointer);
     /// ```
-    public void ColorPointerEXT(int size, int type, int stride, int count, MemorySegment pointer) {
+    public void ColorPointerEXT(int size, int type, int stride, int count, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glColorPointerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColorPointerEXT", size, type, stride, count, pointer); }
         Handles.MH_glColorPointerEXT.invokeExact(handles.PFN_glColorPointerEXT, size, type, stride, count, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in ColorPointerEXT", e); }
     }
 
+    /// Invokes `glDrawArraysEXT`.
     /// ```
     /// void glDrawArraysEXT((unsigned int) GLenum mode, (int) GLint first, (int) GLsizei count);
     /// ```
@@ -123,60 +126,66 @@ public final class GLEXTVertexArray {
         catch (Throwable e) { throw new RuntimeException("error in DrawArraysEXT", e); }
     }
 
+    /// Invokes `glEdgeFlagPointerEXT`.
     /// ```
     /// void glEdgeFlagPointerEXT((int) GLsizei stride, (int) GLsizei count, const GLboolean* pointer);
     /// ```
-    public void EdgeFlagPointerEXT(int stride, int count, MemorySegment pointer) {
+    public void EdgeFlagPointerEXT(int stride, int count, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEdgeFlagPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glEdgeFlagPointerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEdgeFlagPointerEXT", stride, count, pointer); }
         Handles.MH_glEdgeFlagPointerEXT.invokeExact(handles.PFN_glEdgeFlagPointerEXT, stride, count, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in EdgeFlagPointerEXT", e); }
     }
 
+    /// Invokes `glGetPointervEXT`.
     /// ```
     /// void glGetPointervEXT((unsigned int) GLenum pname, void** params);
     /// ```
-    public void GetPointervEXT(int pname, MemorySegment params) {
+    public void GetPointervEXT(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPointervEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetPointervEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPointervEXT", pname, params); }
         Handles.MH_glGetPointervEXT.invokeExact(handles.PFN_glGetPointervEXT, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetPointervEXT", e); }
     }
 
+    /// Invokes `glIndexPointerEXT`.
     /// ```
     /// void glIndexPointerEXT((unsigned int) GLenum type, (int) GLsizei stride, (int) GLsizei count, const void* pointer);
     /// ```
-    public void IndexPointerEXT(int type, int stride, int count, MemorySegment pointer) {
+    public void IndexPointerEXT(int type, int stride, int count, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glIndexPointerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIndexPointerEXT", type, stride, count, pointer); }
         Handles.MH_glIndexPointerEXT.invokeExact(handles.PFN_glIndexPointerEXT, type, stride, count, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in IndexPointerEXT", e); }
     }
 
+    /// Invokes `glNormalPointerEXT`.
     /// ```
     /// void glNormalPointerEXT((unsigned int) GLenum type, (int) GLsizei stride, (int) GLsizei count, const void* pointer);
     /// ```
-    public void NormalPointerEXT(int type, int stride, int count, MemorySegment pointer) {
+    public void NormalPointerEXT(int type, int stride, int count, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNormalPointerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalPointerEXT", type, stride, count, pointer); }
         Handles.MH_glNormalPointerEXT.invokeExact(handles.PFN_glNormalPointerEXT, type, stride, count, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in NormalPointerEXT", e); }
     }
 
+    /// Invokes `glTexCoordPointerEXT`.
     /// ```
     /// void glTexCoordPointerEXT((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, (int) GLsizei count, const void* pointer);
     /// ```
-    public void TexCoordPointerEXT(int size, int type, int stride, int count, MemorySegment pointer) {
+    public void TexCoordPointerEXT(int size, int type, int stride, int count, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoordPointerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoordPointerEXT", size, type, stride, count, pointer); }
         Handles.MH_glTexCoordPointerEXT.invokeExact(handles.PFN_glTexCoordPointerEXT, size, type, stride, count, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoordPointerEXT", e); }
     }
 
+    /// Invokes `glVertexPointerEXT`.
     /// ```
     /// void glVertexPointerEXT((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, (int) GLsizei count, const void* pointer);
     /// ```
-    public void VertexPointerEXT(int size, int type, int stride, int count, MemorySegment pointer) {
+    public void VertexPointerEXT(int size, int type, int stride, int count, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexPointerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexPointerEXT", size, type, stride, count, pointer); }
         Handles.MH_glVertexPointerEXT.invokeExact(handles.PFN_glVertexPointerEXT, size, type, stride, count, pointer); }

@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_texture_buffer_object`
 public final class GLARBTextureBufferObject {
     public static final int GL_TEXTURE_BUFFER_ARB = 0x8C2A;
     public static final int GL_MAX_TEXTURE_BUFFER_SIZE_ARB = 0x8C2B;
@@ -33,15 +33,16 @@ public final class GLARBTextureBufferObject {
     public static final class Handles {
         public static final MethodHandle MH_glTexBufferARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTexBufferARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTexBufferARB = func.invoke("glTexBufferARB", "glTexBuffer");
         }
     }
 
-    public GLARBTextureBufferObject(overrungl.opengl.GLLoadFunc func) {
+    public GLARBTextureBufferObject(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTexBufferARB`.
     /// ```
     /// void glTexBufferARB((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer);
     /// ```

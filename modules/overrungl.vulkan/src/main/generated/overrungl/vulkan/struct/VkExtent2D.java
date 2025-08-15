@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkExtent2D`.
 /// ## Layout
 /// ```
 /// struct VkExtent2D {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class VkExtent2D extends GroupType {
     /// The struct layout of `VkExtent2D`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("width"),
         ValueLayout.JAVA_INT.withName("height")
     );

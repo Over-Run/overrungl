@@ -16,28 +16,29 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_memory_object_fd`
 public final class GLEXTMemoryObjectFd {
     public static final int GL_HANDLE_TYPE_OPAQUE_FD_EXT = 0x9586;
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_glImportMemoryFdEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glImportMemoryFdEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glImportMemoryFdEXT = func.invoke("glImportMemoryFdEXT");
         }
     }
 
-    public GLEXTMemoryObjectFd(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTMemoryObjectFd(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glImportMemoryFdEXT`.
     /// ```
     /// void glImportMemoryFdEXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 size, (unsigned int) GLenum handleType, (int) GLint fd);
     /// ```

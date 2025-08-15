@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH265PredictorPaletteEntries`.
 /// ## Layout
 /// ```
 /// struct StdVideoH265PredictorPaletteEntries {
@@ -33,7 +35,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH265PredictorPaletteEntries extends GroupType {
     /// The struct layout of `StdVideoH265PredictorPaletteEntries`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(128, MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_SHORT)).withName("PredictorPaletteEntries")
     );
     /// The byte offset of `PredictorPaletteEntries`.

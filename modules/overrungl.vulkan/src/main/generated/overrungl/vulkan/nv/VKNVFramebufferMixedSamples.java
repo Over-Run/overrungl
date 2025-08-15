@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_framebuffer_mixed_samples` - device extension
 public final class VKNVFramebufferMixedSamples {
     public static final int VK_COVERAGE_MODULATION_MODE_NONE_NV = 0;
     public static final int VK_COVERAGE_MODULATION_MODE_RGB_NV = 1;

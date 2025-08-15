@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPhysicalDeviceImageFormatInfo2KHR`.
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImageFormatInfo2KHR {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPhysicalDeviceImageFormatInfo2KHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceImageFormatInfo2KHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("format"),

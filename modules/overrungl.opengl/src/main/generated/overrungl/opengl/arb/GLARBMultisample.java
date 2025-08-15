@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_multisample`
 public final class GLARBMultisample {
     public static final int GL_MULTISAMPLE_ARB = 0x809D;
     public static final int GL_SAMPLE_ALPHA_TO_COVERAGE_ARB = 0x809E;
@@ -37,15 +37,16 @@ public final class GLARBMultisample {
     public static final class Handles {
         public static final MethodHandle MH_glSampleCoverageARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BYTE));
         public final MemorySegment PFN_glSampleCoverageARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glSampleCoverageARB = func.invoke("glSampleCoverageARB", "glSampleCoverage");
         }
     }
 
-    public GLARBMultisample(overrungl.opengl.GLLoadFunc func) {
+    public GLARBMultisample(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glSampleCoverageARB`.
     /// ```
     /// void glSampleCoverageARB(((float) khronos_float_t) GLfloat value, GLboolean invert);
     /// ```

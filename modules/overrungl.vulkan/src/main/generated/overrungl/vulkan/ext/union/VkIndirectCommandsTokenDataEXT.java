@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkIndirectCommandsTokenDataEXT`.
 /// ## Layout
 /// ```
 /// union VkIndirectCommandsTokenDataEXT {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkIndirectCommandsTokenDataEXT extends GroupType {
     /// The union layout of `VkIndirectCommandsTokenDataEXT`.
-    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.ADDRESS.withName("pPushConstant"),
         ValueLayout.ADDRESS.withName("pVertexBuffer"),
         ValueLayout.ADDRESS.withName("pIndexBuffer"),

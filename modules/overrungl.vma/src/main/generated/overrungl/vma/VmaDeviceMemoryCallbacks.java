@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VmaDeviceMemoryCallbacks`.
 /// ## Layout
 /// ```
 /// struct VmaDeviceMemoryCallbacks {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VmaDeviceMemoryCallbacks extends GroupType {
     /// The struct layout of `VmaDeviceMemoryCallbacks`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("pfnAllocate"),
         ValueLayout.ADDRESS.withName("pfnFree"),
         ValueLayout.ADDRESS.withName("pUserData")

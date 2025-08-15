@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.amdx;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_AMDX_dense_geometry_format` - device extension
 public final class VKAMDXDenseGeometryFormat {
     public static final int VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX = 0;
     public static final int VK_AMDX_DENSE_GEOMETRY_FORMAT_SPEC_VERSION = 1;

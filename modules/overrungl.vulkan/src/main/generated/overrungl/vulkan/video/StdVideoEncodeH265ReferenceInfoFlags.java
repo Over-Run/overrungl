@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeH265ReferenceInfoFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH265ReferenceInfoFlags {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeH265ReferenceInfoFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeH265ReferenceInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("used_for_long_term_reference"), 1,
         ValueLayout.JAVA_INT.withName("unused_for_reference"), 1,
         ValueLayout.JAVA_INT.withName("reserved"), 30

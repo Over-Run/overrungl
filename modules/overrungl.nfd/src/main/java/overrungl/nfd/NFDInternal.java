@@ -33,8 +33,8 @@ final class NFDInternal {
     static final Platform os = Platform.current();
     static final boolean isOsWin = os instanceof Platform.Windows;
     static final Charset nfdCharset = isOsWin ? StandardCharsets.UTF_16LE : StandardCharsets.UTF_8;
-    static final MemoryLayout nfdnchar_t = isOsWin ? CanonicalTypes.WCHAR_T : ValueLayout.JAVA_BYTE;
-    static final MemoryLayout nfdpathsetsize_t = (os instanceof Platform.Windows || os instanceof Platform.MacOS)
+    static final ValueLayout nfdnchar_t = isOsWin ? CanonicalTypes.WCHAR_T : ValueLayout.JAVA_BYTE;
+    static final ValueLayout nfdpathsetsize_t = (os instanceof Platform.Windows || os instanceof Platform.MacOS)
         ? CanonicalTypes.C_LONG
         : ValueLayout.JAVA_INT;
 

@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_histogram`
 public final class GLEXTHistogram {
     public static final int GL_HISTOGRAM_EXT = 0x8024;
     public static final int GL_PROXY_HISTOGRAM_EXT = 0x8025;
@@ -60,7 +60,7 @@ public final class GLEXTHistogram {
         public final MemorySegment PFN_glMinmaxEXT;
         public final MemorySegment PFN_glResetHistogramEXT;
         public final MemorySegment PFN_glResetMinmaxEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGetHistogramEXT = func.invoke("glGetHistogramEXT");
             PFN_glGetHistogramParameterfvEXT = func.invoke("glGetHistogramParameterfvEXT");
             PFN_glGetHistogramParameterivEXT = func.invoke("glGetHistogramParameterivEXT");
@@ -74,70 +74,77 @@ public final class GLEXTHistogram {
         }
     }
 
-    public GLEXTHistogram(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTHistogram(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGetHistogramEXT`.
     /// ```
     /// void glGetHistogramEXT((unsigned int) GLenum target, GLboolean reset, (unsigned int) GLenum format, (unsigned int) GLenum type, void* values);
     /// ```
-    public void GetHistogramEXT(int target, boolean reset, int format, int type, MemorySegment values) {
+    public void GetHistogramEXT(int target, boolean reset, int format, int type, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetHistogramEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetHistogramEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetHistogramEXT", target, reset, format, type, values); }
         Handles.MH_glGetHistogramEXT.invokeExact(handles.PFN_glGetHistogramEXT, target, ((reset) ? (byte)1 : (byte)0), format, type, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetHistogramEXT", e); }
     }
 
+    /// Invokes `glGetHistogramParameterfvEXT`.
     /// ```
     /// void glGetHistogramParameterfvEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetHistogramParameterfvEXT(int target, int pname, MemorySegment params) {
+    public void GetHistogramParameterfvEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetHistogramParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetHistogramParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetHistogramParameterfvEXT", target, pname, params); }
         Handles.MH_glGetHistogramParameterfvEXT.invokeExact(handles.PFN_glGetHistogramParameterfvEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetHistogramParameterfvEXT", e); }
     }
 
+    /// Invokes `glGetHistogramParameterivEXT`.
     /// ```
     /// void glGetHistogramParameterivEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetHistogramParameterivEXT(int target, int pname, MemorySegment params) {
+    public void GetHistogramParameterivEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetHistogramParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetHistogramParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetHistogramParameterivEXT", target, pname, params); }
         Handles.MH_glGetHistogramParameterivEXT.invokeExact(handles.PFN_glGetHistogramParameterivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetHistogramParameterivEXT", e); }
     }
 
+    /// Invokes `glGetMinmaxEXT`.
     /// ```
     /// void glGetMinmaxEXT((unsigned int) GLenum target, GLboolean reset, (unsigned int) GLenum format, (unsigned int) GLenum type, void* values);
     /// ```
-    public void GetMinmaxEXT(int target, boolean reset, int format, int type, MemorySegment values) {
+    public void GetMinmaxEXT(int target, boolean reset, int format, int type, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMinmaxEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMinmaxEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMinmaxEXT", target, reset, format, type, values); }
         Handles.MH_glGetMinmaxEXT.invokeExact(handles.PFN_glGetMinmaxEXT, target, ((reset) ? (byte)1 : (byte)0), format, type, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetMinmaxEXT", e); }
     }
 
+    /// Invokes `glGetMinmaxParameterfvEXT`.
     /// ```
     /// void glGetMinmaxParameterfvEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetMinmaxParameterfvEXT(int target, int pname, MemorySegment params) {
+    public void GetMinmaxParameterfvEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMinmaxParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMinmaxParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMinmaxParameterfvEXT", target, pname, params); }
         Handles.MH_glGetMinmaxParameterfvEXT.invokeExact(handles.PFN_glGetMinmaxParameterfvEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMinmaxParameterfvEXT", e); }
     }
 
+    /// Invokes `glGetMinmaxParameterivEXT`.
     /// ```
     /// void glGetMinmaxParameterivEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetMinmaxParameterivEXT(int target, int pname, MemorySegment params) {
+    public void GetMinmaxParameterivEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMinmaxParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMinmaxParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMinmaxParameterivEXT", target, pname, params); }
         Handles.MH_glGetMinmaxParameterivEXT.invokeExact(handles.PFN_glGetMinmaxParameterivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMinmaxParameterivEXT", e); }
     }
 
+    /// Invokes `glHistogramEXT`.
     /// ```
     /// void glHistogramEXT((unsigned int) GLenum target, (int) GLsizei width, (unsigned int) GLenum internalformat, GLboolean sink);
     /// ```
@@ -148,6 +155,7 @@ public final class GLEXTHistogram {
         catch (Throwable e) { throw new RuntimeException("error in HistogramEXT", e); }
     }
 
+    /// Invokes `glMinmaxEXT`.
     /// ```
     /// void glMinmaxEXT((unsigned int) GLenum target, (unsigned int) GLenum internalformat, GLboolean sink);
     /// ```
@@ -158,6 +166,7 @@ public final class GLEXTHistogram {
         catch (Throwable e) { throw new RuntimeException("error in MinmaxEXT", e); }
     }
 
+    /// Invokes `glResetHistogramEXT`.
     /// ```
     /// void glResetHistogramEXT((unsigned int) GLenum target);
     /// ```
@@ -168,6 +177,7 @@ public final class GLEXTHistogram {
         catch (Throwable e) { throw new RuntimeException("error in ResetHistogramEXT", e); }
     }
 
+    /// Invokes `glResetMinmaxEXT`.
     /// ```
     /// void glResetMinmaxEXT((unsigned int) GLenum target);
     /// ```

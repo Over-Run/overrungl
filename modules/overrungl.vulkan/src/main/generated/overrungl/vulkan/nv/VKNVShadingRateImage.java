@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_shading_rate_image` - device extension
 public final class VKNVShadingRateImage {
     public static final int VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV = 0;
     public static final int VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV = 1;
@@ -59,30 +61,33 @@ public final class VKNVShadingRateImage {
 
     private VKNVShadingRateImage() {}
 
+    /// Invokes `vkCmdBindShadingRateImageNV`.
     /// ```
     /// void vkCmdBindShadingRateImageNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkImageView imageView, (int) VkImageLayout imageLayout);
     /// ```
-    public static void vkCmdBindShadingRateImageNV(VkCommandBuffer commandBuffer, long imageView, int imageLayout) {
+    public static void vkCmdBindShadingRateImageNV(@NonNull VkCommandBuffer commandBuffer, long imageView, int imageLayout) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindShadingRateImageNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindShadingRateImageNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBindShadingRateImageNV", commandBuffer, imageView, imageLayout); }
         Handles.MH_vkCmdBindShadingRateImageNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindShadingRateImageNV, commandBuffer.segment(), imageView, imageLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindShadingRateImageNV", e); }
     }
 
+    /// Invokes `vkCmdSetViewportShadingRatePaletteNV`.
     /// ```
     /// void vkCmdSetViewportShadingRatePaletteNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkShadingRatePaletteNV* pShadingRatePalettes);
     /// ```
-    public static void vkCmdSetViewportShadingRatePaletteNV(VkCommandBuffer commandBuffer, int firstViewport, int viewportCount, MemorySegment pShadingRatePalettes) {
+    public static void vkCmdSetViewportShadingRatePaletteNV(@NonNull VkCommandBuffer commandBuffer, int firstViewport, int viewportCount, @NonNull MemorySegment pShadingRatePalettes) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportShadingRatePaletteNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetViewportShadingRatePaletteNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetViewportShadingRatePaletteNV", commandBuffer, firstViewport, viewportCount, pShadingRatePalettes); }
         Handles.MH_vkCmdSetViewportShadingRatePaletteNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetViewportShadingRatePaletteNV, commandBuffer.segment(), firstViewport, viewportCount, pShadingRatePalettes); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetViewportShadingRatePaletteNV", e); }
     }
 
+    /// Invokes `vkCmdSetCoarseSampleOrderNV`.
     /// ```
     /// void vkCmdSetCoarseSampleOrderNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkCoarseSampleOrderTypeNV sampleOrderType, uint32_t customSampleOrderCount, const VkCoarseSampleOrderCustomNV* pCustomSampleOrders);
     /// ```
-    public static void vkCmdSetCoarseSampleOrderNV(VkCommandBuffer commandBuffer, int sampleOrderType, int customSampleOrderCount, MemorySegment pCustomSampleOrders) {
+    public static void vkCmdSetCoarseSampleOrderNV(@NonNull VkCommandBuffer commandBuffer, int sampleOrderType, int customSampleOrderCount, @NonNull MemorySegment pCustomSampleOrders) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoarseSampleOrderNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCoarseSampleOrderNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetCoarseSampleOrderNV", commandBuffer, sampleOrderType, customSampleOrderCount, pCustomSampleOrders); }
         Handles.MH_vkCmdSetCoarseSampleOrderNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCoarseSampleOrderNV, commandBuffer.segment(), sampleOrderType, customSampleOrderCount, pCustomSampleOrders); }

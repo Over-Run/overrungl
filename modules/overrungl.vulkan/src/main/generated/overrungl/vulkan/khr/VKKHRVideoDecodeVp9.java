@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_video_decode_vp9` - device extension
 public final class VKKHRVideoDecodeVp9 {
     public static final int VK_KHR_VIDEO_DECODE_VP9_SPEC_VERSION = 1;
     public static final String VK_KHR_VIDEO_DECODE_VP9_EXTENSION_NAME = "VK_KHR_video_decode_vp9";

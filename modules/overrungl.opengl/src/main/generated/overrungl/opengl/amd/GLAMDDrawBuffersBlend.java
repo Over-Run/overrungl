@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.amd;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_AMD_draw_buffers_blend`
 public final class GLAMDDrawBuffersBlend {
     private final Handles handles;
     public static final class Handles {
@@ -34,7 +34,7 @@ public final class GLAMDDrawBuffersBlend {
         public final MemorySegment PFN_glBlendFuncSeparateIndexedAMD;
         public final MemorySegment PFN_glBlendEquationIndexedAMD;
         public final MemorySegment PFN_glBlendEquationSeparateIndexedAMD;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBlendFuncIndexedAMD = func.invoke("glBlendFuncIndexedAMD", "glBlendFunci");
             PFN_glBlendFuncSeparateIndexedAMD = func.invoke("glBlendFuncSeparateIndexedAMD", "glBlendFuncSeparatei");
             PFN_glBlendEquationIndexedAMD = func.invoke("glBlendEquationIndexedAMD", "glBlendEquationi");
@@ -42,10 +42,11 @@ public final class GLAMDDrawBuffersBlend {
         }
     }
 
-    public GLAMDDrawBuffersBlend(overrungl.opengl.GLLoadFunc func) {
+    public GLAMDDrawBuffersBlend(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBlendFuncIndexedAMD`.
     /// ```
     /// void glBlendFuncIndexedAMD((unsigned int) GLuint buf, (unsigned int) GLenum src, (unsigned int) GLenum dst);
     /// ```
@@ -56,6 +57,7 @@ public final class GLAMDDrawBuffersBlend {
         catch (Throwable e) { throw new RuntimeException("error in BlendFuncIndexedAMD", e); }
     }
 
+    /// Invokes `glBlendFuncSeparateIndexedAMD`.
     /// ```
     /// void glBlendFuncSeparateIndexedAMD((unsigned int) GLuint buf, (unsigned int) GLenum srcRGB, (unsigned int) GLenum dstRGB, (unsigned int) GLenum srcAlpha, (unsigned int) GLenum dstAlpha);
     /// ```
@@ -66,6 +68,7 @@ public final class GLAMDDrawBuffersBlend {
         catch (Throwable e) { throw new RuntimeException("error in BlendFuncSeparateIndexedAMD", e); }
     }
 
+    /// Invokes `glBlendEquationIndexedAMD`.
     /// ```
     /// void glBlendEquationIndexedAMD((unsigned int) GLuint buf, (unsigned int) GLenum mode);
     /// ```
@@ -76,6 +79,7 @@ public final class GLAMDDrawBuffersBlend {
         catch (Throwable e) { throw new RuntimeException("error in BlendEquationIndexedAMD", e); }
     }
 
+    /// Invokes `glBlendEquationSeparateIndexedAMD`.
     /// ```
     /// void glBlendEquationSeparateIndexedAMD((unsigned int) GLuint buf, (unsigned int) GLenum modeRGB, (unsigned int) GLenum modeAlpha);
     /// ```

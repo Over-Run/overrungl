@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH264ScalingLists`.
 /// ## Layout
 /// ```
 /// struct StdVideoH264ScalingLists {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH264ScalingLists extends GroupType {
     /// The struct layout of `StdVideoH264ScalingLists`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_SHORT.withName("scaling_list_present_mask"),
         ValueLayout.JAVA_SHORT.withName("use_default_scaling_matrix_mask"),
         MemoryLayout.sequenceLayout(16, MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_BYTE)).withName("ScalingList4x4"),

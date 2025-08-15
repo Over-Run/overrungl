@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_swapchain_colorspace` - instance extension
 public final class VKEXTSwapchainColorspace {
     public static final int VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION = 5;
     public static final String VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME = "VK_EXT_swapchain_colorspace";

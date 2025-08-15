@@ -31,6 +31,7 @@ data class VkFunction(val function: DefinitionFunction, val handlesInstance: Str
 class VkDowncall(
     private val packageName: String,
     private val className: String,
+    private val description: String,
     action: VkDowncall.() -> Unit
 ) {
     val fields = mutableListOf<VkDowncallField>()
@@ -138,12 +139,14 @@ class VkDowncall(
                 """
                     import java.lang.foreign.*;
                     import java.lang.invoke.*;
-                    import static overrungl.internal.RuntimeHelper.*;
+                    import org.jspecify.annotations.*;
                     import overrungl.util.*;
                 """.trimIndent()
             )
         }
         if (packageName != vulkanPackage) sb.appendLine("import overrungl.vulkan.*;")
+        sb.appendLine("import static overrungl.internal.RuntimeHelper.*;")
+        sb.appendLine("/// $description")
         sb.appendLine("public final class $className {")
 
         fun writeFields(list: List<VkDowncallField>, indent: Int) {

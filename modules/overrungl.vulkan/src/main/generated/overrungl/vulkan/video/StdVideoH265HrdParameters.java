@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH265HrdParameters`.
 /// ## Layout
 /// ```
 /// struct StdVideoH265HrdParameters {
@@ -47,7 +49,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH265HrdParameters extends GroupType {
     /// The struct layout of `StdVideoH265HrdParameters`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoH265HrdFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("tick_divisor_minus2"),
         ValueLayout.JAVA_BYTE.withName("du_cpb_removal_delay_increment_length_minus1"),

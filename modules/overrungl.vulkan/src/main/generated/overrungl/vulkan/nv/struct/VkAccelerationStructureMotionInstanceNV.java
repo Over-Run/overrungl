@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkAccelerationStructureMotionInstanceNV`.
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureMotionInstanceNV {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkAccelerationStructureMotionInstanceNV extends GroupType {
     /// The struct layout of `VkAccelerationStructureMotionInstanceNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.JAVA_INT.withName("flags"),
         overrungl.vulkan.nv.union.VkAccelerationStructureMotionInstanceDataNV.LAYOUT.withName("data")

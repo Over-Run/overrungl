@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPerformanceCounterResultKHR`.
 /// ## Layout
 /// ```
 /// union VkPerformanceCounterResultKHR {
@@ -38,7 +40,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPerformanceCounterResultKHR extends GroupType {
     /// The union layout of `VkPerformanceCounterResultKHR`.
-    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.JAVA_INT.withName("int32"),
         ValueLayout.JAVA_LONG.withName("int64"),
         ValueLayout.JAVA_INT.withName("uint32"),

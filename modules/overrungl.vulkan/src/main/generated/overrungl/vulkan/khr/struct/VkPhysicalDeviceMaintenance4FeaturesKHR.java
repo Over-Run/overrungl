@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPhysicalDeviceMaintenance4FeaturesKHR`.
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMaintenance4FeaturesKHR {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPhysicalDeviceMaintenance4FeaturesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMaintenance4FeaturesKHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("maintenance4")

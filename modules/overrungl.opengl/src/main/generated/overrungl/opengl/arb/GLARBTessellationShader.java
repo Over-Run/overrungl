@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_tessellation_shader`
 public final class GLARBTessellationShader {
     public static final int GL_PATCHES = 0x000E;
     public static final int GL_PATCH_VERTICES = 0x8E72;
@@ -67,16 +67,17 @@ public final class GLARBTessellationShader {
         public static final MethodHandle MH_glPatchParameterfv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPatchParameteri;
         public final MemorySegment PFN_glPatchParameterfv;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glPatchParameteri = func.invoke("glPatchParameteri");
             PFN_glPatchParameterfv = func.invoke("glPatchParameterfv");
         }
     }
 
-    public GLARBTessellationShader(overrungl.opengl.GLLoadFunc func) {
+    public GLARBTessellationShader(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glPatchParameteri`.
     /// ```
     /// void glPatchParameteri((unsigned int) GLenum pname, (int) GLint value);
     /// ```
@@ -87,10 +88,11 @@ public final class GLARBTessellationShader {
         catch (Throwable e) { throw new RuntimeException("error in PatchParameteri", e); }
     }
 
+    /// Invokes `glPatchParameterfv`.
     /// ```
     /// void glPatchParameterfv((unsigned int) GLenum pname, const GLfloat* values);
     /// ```
-    public void PatchParameterfv(int pname, MemorySegment values) {
+    public void PatchParameterfv(int pname, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPatchParameterfv)) throw new GLSymbolNotFoundError("Symbol not found: glPatchParameterfv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPatchParameterfv", pname, values); }
         Handles.MH_glPatchParameterfv.invokeExact(handles.PFN_glPatchParameterfv, pname, values); }

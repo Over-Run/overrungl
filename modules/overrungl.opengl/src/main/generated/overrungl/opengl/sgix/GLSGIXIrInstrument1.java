@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
-
+/// `GL_SGIX_ir_instrument1`
 public final class GLSGIXIrInstrument1 {
     public static final int GL_IR_INSTRUMENT1_SGIX = 0x817F;
 

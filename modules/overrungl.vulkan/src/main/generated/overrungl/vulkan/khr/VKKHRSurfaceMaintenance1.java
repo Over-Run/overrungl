@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_surface_maintenance1` - instance extension
 public final class VKKHRSurfaceMaintenance1 {
     public static final int VK_PRESENT_SCALING_ONE_TO_ONE_BIT_KHR = 0x00000001;
     public static final int VK_PRESENT_SCALING_ONE_TO_ONE_BIT_EXT = 0x00000001;

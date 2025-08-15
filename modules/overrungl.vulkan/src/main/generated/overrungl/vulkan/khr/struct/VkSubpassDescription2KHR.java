@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkSubpassDescription2KHR`.
 /// ## Layout
 /// ```
 /// struct VkSubpassDescription2KHR {
@@ -45,7 +47,7 @@ import overrungl.util.*;
 /// ```
 public final class VkSubpassDescription2KHR extends GroupType {
     /// The struct layout of `VkSubpassDescription2KHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),

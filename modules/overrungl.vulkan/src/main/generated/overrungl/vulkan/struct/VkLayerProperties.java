@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkLayerProperties`.
 /// ## Layout
 /// ```
 /// struct VkLayerProperties {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkLayerProperties extends GroupType {
     /// The struct layout of `VkLayerProperties`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("layerName"),
         ValueLayout.JAVA_INT.withName("specVersion"),
         ValueLayout.JAVA_INT.withName("implementationVersion"),

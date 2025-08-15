@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ati;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ATI_element_array`
 public final class GLATIElementArray {
     public static final int GL_ELEMENT_ARRAY_ATI = 0x8768;
     public static final int GL_ELEMENT_ARRAY_TYPE_ATI = 0x8769;
@@ -35,27 +35,29 @@ public final class GLATIElementArray {
         public final MemorySegment PFN_glElementPointerATI;
         public final MemorySegment PFN_glDrawElementArrayATI;
         public final MemorySegment PFN_glDrawRangeElementArrayATI;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glElementPointerATI = func.invoke("glElementPointerATI");
             PFN_glDrawElementArrayATI = func.invoke("glDrawElementArrayATI");
             PFN_glDrawRangeElementArrayATI = func.invoke("glDrawRangeElementArrayATI");
         }
     }
 
-    public GLATIElementArray(overrungl.opengl.GLLoadFunc func) {
+    public GLATIElementArray(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glElementPointerATI`.
     /// ```
     /// void glElementPointerATI((unsigned int) GLenum type, const void* pointer);
     /// ```
-    public void ElementPointerATI(int type, MemorySegment pointer) {
+    public void ElementPointerATI(int type, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glElementPointerATI)) throw new GLSymbolNotFoundError("Symbol not found: glElementPointerATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glElementPointerATI", type, pointer); }
         Handles.MH_glElementPointerATI.invokeExact(handles.PFN_glElementPointerATI, type, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in ElementPointerATI", e); }
     }
 
+    /// Invokes `glDrawElementArrayATI`.
     /// ```
     /// void glDrawElementArrayATI((unsigned int) GLenum mode, (int) GLsizei count);
     /// ```
@@ -66,6 +68,7 @@ public final class GLATIElementArray {
         catch (Throwable e) { throw new RuntimeException("error in DrawElementArrayATI", e); }
     }
 
+    /// Invokes `glDrawRangeElementArrayATI`.
     /// ```
     /// void glDrawRangeElementArrayATI((unsigned int) GLenum mode, (unsigned int) GLuint start, (unsigned int) GLuint end, (int) GLsizei count);
     /// ```

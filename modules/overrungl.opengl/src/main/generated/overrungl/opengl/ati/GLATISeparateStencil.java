@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ati;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ATI_separate_stencil`
 public final class GLATISeparateStencil {
     public static final int GL_STENCIL_BACK_FUNC_ATI = 0x8800;
     public static final int GL_STENCIL_BACK_FAIL_ATI = 0x8801;
@@ -34,16 +34,17 @@ public final class GLATISeparateStencil {
         public static final MethodHandle MH_glStencilFuncSeparateATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glStencilOpSeparateATI;
         public final MemorySegment PFN_glStencilFuncSeparateATI;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glStencilOpSeparateATI = func.invoke("glStencilOpSeparateATI", "glStencilOpSeparate");
             PFN_glStencilFuncSeparateATI = func.invoke("glStencilFuncSeparateATI");
         }
     }
 
-    public GLATISeparateStencil(overrungl.opengl.GLLoadFunc func) {
+    public GLATISeparateStencil(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glStencilOpSeparateATI`.
     /// ```
     /// void glStencilOpSeparateATI((unsigned int) GLenum face, (unsigned int) GLenum sfail, (unsigned int) GLenum dpfail, (unsigned int) GLenum dppass);
     /// ```
@@ -54,6 +55,7 @@ public final class GLATISeparateStencil {
         catch (Throwable e) { throw new RuntimeException("error in StencilOpSeparateATI", e); }
     }
 
+    /// Invokes `glStencilFuncSeparateATI`.
     /// ```
     /// void glStencilFuncSeparateATI((unsigned int) GLenum frontfunc, (unsigned int) GLenum backfunc, (int) GLint ref, (unsigned int) GLuint mask);
     /// ```

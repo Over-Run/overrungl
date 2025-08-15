@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_dynamic_rendering` - device extension
 public final class VKKHRDynamicRendering {
     public static final int VK_KHR_DYNAMIC_RENDERING_SPEC_VERSION = 1;
     public static final String VK_KHR_DYNAMIC_RENDERING_EXTENSION_NAME = "VK_KHR_dynamic_rendering";
@@ -41,20 +43,22 @@ public final class VKKHRDynamicRendering {
 
     private VKKHRDynamicRendering() {}
 
+    /// Invokes `vkCmdBeginRenderingKHR`.
     /// ```
     /// void vkCmdBeginRenderingKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingInfo* pRenderingInfo);
     /// ```
-    public static void vkCmdBeginRenderingKHR(VkCommandBuffer commandBuffer, MemorySegment pRenderingInfo) {
+    public static void vkCmdBeginRenderingKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pRenderingInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRenderingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginRenderingKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBeginRenderingKHR", commandBuffer, pRenderingInfo); }
         Handles.MH_vkCmdBeginRenderingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginRenderingKHR, commandBuffer.segment(), pRenderingInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginRenderingKHR", e); }
     }
 
+    /// Invokes `vkCmdEndRenderingKHR`.
     /// ```
     /// void vkCmdEndRenderingKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer);
     /// ```
-    public static void vkCmdEndRenderingKHR(VkCommandBuffer commandBuffer) {
+    public static void vkCmdEndRenderingKHR(@NonNull VkCommandBuffer commandBuffer) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRenderingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndRenderingKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndRenderingKHR", commandBuffer); }
         Handles.MH_vkCmdEndRenderingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRenderingKHR, commandBuffer.segment()); }

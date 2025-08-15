@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_vertex_attribute_divisor` - device extension
 public final class VKKHRVertexAttributeDivisor {
     public static final int VK_KHR_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION = 1;
     public static final String VK_KHR_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME = "VK_KHR_vertex_attribute_divisor";

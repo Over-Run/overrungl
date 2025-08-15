@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VmaDetailedStatistics`.
 /// ## Layout
 /// ```
 /// struct VmaDetailedStatistics {
@@ -38,7 +40,7 @@ import overrungl.util.*;
 /// ```
 public final class VmaDetailedStatistics extends GroupType {
     /// The struct layout of `VmaDetailedStatistics`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         VmaStatistics.LAYOUT.withName("statistics"),
         ValueLayout.JAVA_INT.withName("unusedRangeCount"),
         ValueLayout.JAVA_LONG.withName("allocationSizeMin"),

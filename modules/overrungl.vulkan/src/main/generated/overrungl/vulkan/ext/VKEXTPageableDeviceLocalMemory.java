@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_pageable_device_local_memory` - device extension
 public final class VKEXTPageableDeviceLocalMemory {
     public static final int VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_SPEC_VERSION = 1;
     public static final String VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory";
@@ -32,10 +34,11 @@ public final class VKEXTPageableDeviceLocalMemory {
 
     private VKEXTPageableDeviceLocalMemory() {}
 
+    /// Invokes `vkSetDeviceMemoryPriorityEXT`.
     /// ```
     /// void vkSetDeviceMemoryPriorityEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDeviceMemory memory, float priority);
     /// ```
-    public static void vkSetDeviceMemoryPriorityEXT(VkDevice device, long memory, float priority) {
+    public static void vkSetDeviceMemoryPriorityEXT(@NonNull VkDevice device, long memory, float priority) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetDeviceMemoryPriorityEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetDeviceMemoryPriorityEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkSetDeviceMemoryPriorityEXT", device, memory, priority); }
         Handles.MH_vkSetDeviceMemoryPriorityEXT.invokeExact(device.capabilities().PFN_vkSetDeviceMemoryPriorityEXT, device.segment(), memory, priority); }

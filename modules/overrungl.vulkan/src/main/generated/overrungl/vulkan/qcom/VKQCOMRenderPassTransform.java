@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.qcom;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_QCOM_render_pass_transform` - device extension
 public final class VKQCOMRenderPassTransform {
     public static final int VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 5;
     public static final String VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform";

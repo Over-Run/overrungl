@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.oes;
-
+/// `GL_OES_compressed_paletted_texture`
 public final class GLOESCompressedPalettedTexture {
     public static final int GL_PALETTE4_RGB8_OES = 0x8B90;
     public static final int GL_PALETTE4_RGBA8_OES = 0x8B91;

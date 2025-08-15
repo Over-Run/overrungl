@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_directfb_surface` - instance extension
 public final class VKEXTDirectfbSurface {
     public static final int VK_EXT_DIRECTFB_SURFACE_SPEC_VERSION = 1;
     public static final String VK_EXT_DIRECTFB_SURFACE_EXTENSION_NAME = "VK_EXT_directfb_surface";
@@ -33,20 +35,22 @@ public final class VKEXTDirectfbSurface {
 
     private VKEXTDirectfbSurface() {}
 
+    /// Invokes `vkCreateDirectFBSurfaceEXT`.
     /// ```
     /// (int) VkResult vkCreateDirectFBSurfaceEXT((struct VkInstance*) VkInstance instance, const VkDirectFBSurfaceCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
-    public static int vkCreateDirectFBSurfaceEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public static int vkCreateDirectFBSurfaceEXT(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateDirectFBSurfaceEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDirectFBSurfaceEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateDirectFBSurfaceEXT", instance, pCreateInfo, pAllocator, pSurface); }
         return (int) Handles.MH_vkCreateDirectFBSurfaceEXT.invokeExact(instance.capabilities().PFN_vkCreateDirectFBSurfaceEXT, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDirectFBSurfaceEXT", e); }
     }
 
+    /// Invokes `vkGetPhysicalDeviceDirectFBPresentationSupportEXT`.
     /// ```
     /// (uint32_t) VkBool32 vkGetPhysicalDeviceDirectFBPresentationSupportEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, IDirectFB* dfb);
     /// ```
-    public static int vkGetPhysicalDeviceDirectFBPresentationSupportEXT(VkPhysicalDevice physicalDevice, int queueFamilyIndex, MemorySegment dfb) {
+    public static int vkGetPhysicalDeviceDirectFBPresentationSupportEXT(@NonNull VkPhysicalDevice physicalDevice, int queueFamilyIndex, @NonNull MemorySegment dfb) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceDirectFBPresentationSupportEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceDirectFBPresentationSupportEXT", physicalDevice, queueFamilyIndex, dfb); }
         return (int) Handles.MH_vkGetPhysicalDeviceDirectFBPresentationSupportEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT, physicalDevice.segment(), queueFamilyIndex, dfb); }

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeH265ReferenceListsInfo`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH265ReferenceListsInfo {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeH265ReferenceListsInfo extends GroupType {
     /// The struct layout of `StdVideoEncodeH265ReferenceListsInfo`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoEncodeH265ReferenceListsInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_active_minus1"),
         ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_active_minus1"),

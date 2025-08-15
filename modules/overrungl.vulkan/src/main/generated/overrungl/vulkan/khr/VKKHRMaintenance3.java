@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_maintenance3` - device extension
 public final class VKKHRMaintenance3 {
     public static final int VK_KHR_MAINTENANCE_3_SPEC_VERSION = 1;
     public static final String VK_KHR_MAINTENANCE_3_EXTENSION_NAME = "VK_KHR_maintenance3";
@@ -35,10 +37,11 @@ public final class VKKHRMaintenance3 {
 
     private VKKHRMaintenance3() {}
 
+    /// Invokes `vkGetDescriptorSetLayoutSupportKHR`.
     /// ```
     /// void vkGetDescriptorSetLayoutSupportKHR((struct VkDevice*) VkDevice device, const VkDescriptorSetLayoutCreateInfo* pCreateInfo, VkDescriptorSetLayoutSupport* pSupport);
     /// ```
-    public static void vkGetDescriptorSetLayoutSupportKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pSupport) {
+    public static void vkGetDescriptorSetLayoutSupportKHR(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pSupport) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutSupportKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutSupportKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDescriptorSetLayoutSupportKHR", device, pCreateInfo, pSupport); }
         Handles.MH_vkGetDescriptorSetLayoutSupportKHR.invokeExact(device.capabilities().PFN_vkGetDescriptorSetLayoutSupportKHR, device.segment(), pCreateInfo, pSupport); }

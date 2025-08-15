@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_multiview` - device extension
 public final class VKKHRMultiview {
     public static final int VK_KHR_MULTIVIEW_SPEC_VERSION = 1;
     public static final String VK_KHR_MULTIVIEW_EXTENSION_NAME = "VK_KHR_multiview";

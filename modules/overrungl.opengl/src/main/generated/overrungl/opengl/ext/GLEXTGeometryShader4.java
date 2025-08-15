@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_geometry_shader4`
 public final class GLEXTGeometryShader4 {
     public static final int GL_GEOMETRY_SHADER_EXT = 0x8DD9;
     public static final int GL_GEOMETRY_VERTICES_OUT_EXT = 0x8DDA;
@@ -48,15 +48,16 @@ public final class GLEXTGeometryShader4 {
     public static final class Handles {
         public static final MethodHandle MH_glProgramParameteriEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glProgramParameteriEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glProgramParameteriEXT = func.invoke("glProgramParameteriEXT", "glProgramParameteri");
         }
     }
 
-    public GLEXTGeometryShader4(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTGeometryShader4(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glProgramParameteriEXT`.
     /// ```
     /// void glProgramParameteriEXT((unsigned int) GLuint program, (unsigned int) GLenum pname, (int) GLint value);
     /// ```

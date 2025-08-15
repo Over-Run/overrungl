@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.amd;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_AMD_vertex_shader_tessellator`
 public final class GLAMDVertexShaderTessellator {
     public static final int GL_SAMPLER_BUFFER_AMD = 0x9001;
     public static final int GL_INT_SAMPLER_BUFFER_AMD = 0x9002;
@@ -37,16 +37,17 @@ public final class GLAMDVertexShaderTessellator {
         public static final MethodHandle MH_glTessellationModeAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTessellationFactorAMD;
         public final MemorySegment PFN_glTessellationModeAMD;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTessellationFactorAMD = func.invoke("glTessellationFactorAMD");
             PFN_glTessellationModeAMD = func.invoke("glTessellationModeAMD");
         }
     }
 
-    public GLAMDVertexShaderTessellator(overrungl.opengl.GLLoadFunc func) {
+    public GLAMDVertexShaderTessellator(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTessellationFactorAMD`.
     /// ```
     /// void glTessellationFactorAMD(((float) khronos_float_t) GLfloat factor);
     /// ```
@@ -57,6 +58,7 @@ public final class GLAMDVertexShaderTessellator {
         catch (Throwable e) { throw new RuntimeException("error in TessellationFactorAMD", e); }
     }
 
+    /// Invokes `glTessellationModeAMD`.
     /// ```
     /// void glTessellationModeAMD((unsigned int) GLenum mode);
     /// ```

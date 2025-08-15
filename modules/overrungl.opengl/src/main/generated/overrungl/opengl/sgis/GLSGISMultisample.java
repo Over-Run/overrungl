@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgis;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_SGIS_multisample`
 public final class GLSGISMultisample {
     public static final int GL_MULTISAMPLE_SGIS = 0x809D;
     public static final int GL_SAMPLE_ALPHA_TO_MASK_SGIS = 0x809E;
@@ -46,16 +46,17 @@ public final class GLSGISMultisample {
         public static final MethodHandle MH_glSamplePatternSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glSampleMaskSGIS;
         public final MemorySegment PFN_glSamplePatternSGIS;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glSampleMaskSGIS = func.invoke("glSampleMaskSGIS", "glSampleMaskEXT");
             PFN_glSamplePatternSGIS = func.invoke("glSamplePatternSGIS", "glSamplePatternEXT");
         }
     }
 
-    public GLSGISMultisample(overrungl.opengl.GLLoadFunc func) {
+    public GLSGISMultisample(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glSampleMaskSGIS`.
     /// ```
     /// void glSampleMaskSGIS(((float) khronos_float_t) GLclampf value, GLboolean invert);
     /// ```
@@ -66,6 +67,7 @@ public final class GLSGISMultisample {
         catch (Throwable e) { throw new RuntimeException("error in SampleMaskSGIS", e); }
     }
 
+    /// Invokes `glSamplePatternSGIS`.
     /// ```
     /// void glSamplePatternSGIS((unsigned int) GLenum pattern);
     /// ```

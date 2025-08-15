@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeH264SliceHeader`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH264SliceHeader {
@@ -42,7 +44,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeH264SliceHeader extends GroupType {
     /// The struct layout of `StdVideoEncodeH264SliceHeader`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoEncodeH264SliceHeaderFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_INT.withName("first_mb_in_slice"),
         ValueLayout.JAVA_INT.withName("slice_type"),

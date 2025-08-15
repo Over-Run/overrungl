@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.khr;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_KHR_parallel_shader_compile`
 public final class GLKHRParallelShaderCompile {
     public static final int GL_MAX_SHADER_COMPILER_THREADS_KHR = 0x91B0;
     public static final int GL_COMPLETION_STATUS_KHR = 0x91B1;
@@ -30,15 +30,16 @@ public final class GLKHRParallelShaderCompile {
     public static final class Handles {
         public static final MethodHandle MH_glMaxShaderCompilerThreadsKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMaxShaderCompilerThreadsKHR;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glMaxShaderCompilerThreadsKHR = func.invoke("glMaxShaderCompilerThreadsKHR");
         }
     }
 
-    public GLKHRParallelShaderCompile(overrungl.opengl.GLLoadFunc func) {
+    public GLKHRParallelShaderCompile(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glMaxShaderCompilerThreadsKHR`.
     /// ```
     /// void glMaxShaderCompilerThreadsKHR((unsigned int) GLuint count);
     /// ```

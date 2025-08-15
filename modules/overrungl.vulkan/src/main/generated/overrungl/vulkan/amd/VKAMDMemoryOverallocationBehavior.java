@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.amd;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_AMD_memory_overallocation_behavior` - device extension
 public final class VKAMDMemoryOverallocationBehavior {
     public static final int VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD = 0;
     public static final int VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD = 1;

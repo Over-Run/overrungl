@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPipelineCacheHeaderVersionSafetyCriticalOne`.
 /// ## Layout
 /// ```
 /// struct VkPipelineCacheHeaderVersionSafetyCriticalOne {
@@ -38,7 +40,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends GroupType {
     /// The struct layout of `VkPipelineCacheHeaderVersionSafetyCriticalOne`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkPipelineCacheHeaderVersionOne.LAYOUT.withName("headerVersionOne"),
         ValueLayout.JAVA_INT.withName("validationVersion"),
         ValueLayout.JAVA_INT.withName("implementationData"),

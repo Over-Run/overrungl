@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPushConstantRange`.
 /// ## Layout
 /// ```
 /// struct VkPushConstantRange {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPushConstantRange extends GroupType {
     /// The struct layout of `VkPushConstantRange`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("stageFlags"),
         ValueLayout.JAVA_INT.withName("offset"),
         ValueLayout.JAVA_INT.withName("size")

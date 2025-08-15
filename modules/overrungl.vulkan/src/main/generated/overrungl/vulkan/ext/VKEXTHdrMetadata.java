@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_hdr_metadata` - device extension
 public final class VKEXTHdrMetadata {
     public static final int VK_EXT_HDR_METADATA_SPEC_VERSION = 3;
     public static final String VK_EXT_HDR_METADATA_EXTENSION_NAME = "VK_EXT_hdr_metadata";
@@ -32,10 +34,11 @@ public final class VKEXTHdrMetadata {
 
     private VKEXTHdrMetadata() {}
 
+    /// Invokes `vkSetHdrMetadataEXT`.
     /// ```
     /// void vkSetHdrMetadataEXT((struct VkDevice*) VkDevice device, uint32_t swapchainCount, const VkSwapchainKHR* pSwapchains, const VkHdrMetadataEXT* pMetadata);
     /// ```
-    public static void vkSetHdrMetadataEXT(VkDevice device, int swapchainCount, MemorySegment pSwapchains, MemorySegment pMetadata) {
+    public static void vkSetHdrMetadataEXT(@NonNull VkDevice device, int swapchainCount, @NonNull MemorySegment pSwapchains, @NonNull MemorySegment pMetadata) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetHdrMetadataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetHdrMetadataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkSetHdrMetadataEXT", device, swapchainCount, pSwapchains, pMetadata); }
         Handles.MH_vkSetHdrMetadataEXT.invokeExact(device.capabilities().PFN_vkSetHdrMetadataEXT, device.segment(), swapchainCount, pSwapchains, pMetadata); }

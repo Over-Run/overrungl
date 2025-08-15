@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_video_decode_queue` - device extension
 public final class VKKHRVideoDecodeQueue {
     public static final int VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR = 0x00000001;
     public static final int VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR = 0x00000002;
@@ -56,10 +58,11 @@ public final class VKKHRVideoDecodeQueue {
 
     private VKKHRVideoDecodeQueue() {}
 
+    /// Invokes `vkCmdDecodeVideoKHR`.
     /// ```
     /// void vkCmdDecodeVideoKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkVideoDecodeInfoKHR* pDecodeInfo);
     /// ```
-    public static void vkCmdDecodeVideoKHR(VkCommandBuffer commandBuffer, MemorySegment pDecodeInfo) {
+    public static void vkCmdDecodeVideoKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pDecodeInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecodeVideoKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDecodeVideoKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDecodeVideoKHR", commandBuffer, pDecodeInfo); }
         Handles.MH_vkCmdDecodeVideoKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdDecodeVideoKHR, commandBuffer.segment(), pDecodeInfo); }

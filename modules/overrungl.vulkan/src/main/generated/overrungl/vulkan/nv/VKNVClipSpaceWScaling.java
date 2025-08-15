@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_clip_space_w_scaling` - device extension
 public final class VKNVClipSpaceWScaling {
     public static final int VK_NV_CLIP_SPACE_W_SCALING_SPEC_VERSION = 1;
     public static final String VK_NV_CLIP_SPACE_W_SCALING_EXTENSION_NAME = "VK_NV_clip_space_w_scaling";
@@ -33,10 +35,11 @@ public final class VKNVClipSpaceWScaling {
 
     private VKNVClipSpaceWScaling() {}
 
+    /// Invokes `vkCmdSetViewportWScalingNV`.
     /// ```
     /// void vkCmdSetViewportWScalingNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkViewportWScalingNV* pViewportWScalings);
     /// ```
-    public static void vkCmdSetViewportWScalingNV(VkCommandBuffer commandBuffer, int firstViewport, int viewportCount, MemorySegment pViewportWScalings) {
+    public static void vkCmdSetViewportWScalingNV(@NonNull VkCommandBuffer commandBuffer, int firstViewport, int viewportCount, @NonNull MemorySegment pViewportWScalings) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetViewportWScalingNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetViewportWScalingNV", commandBuffer, firstViewport, viewportCount, pViewportWScalings); }
         Handles.MH_vkCmdSetViewportWScalingNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingNV, commandBuffer.segment(), firstViewport, viewportCount, pViewportWScalings); }

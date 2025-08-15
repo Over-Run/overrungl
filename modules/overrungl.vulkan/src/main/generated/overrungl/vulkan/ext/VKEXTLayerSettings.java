@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_layer_settings` - instance extension
 public final class VKEXTLayerSettings {
     public static final int VK_LAYER_SETTING_TYPE_BOOL32_EXT = 0;
     public static final int VK_LAYER_SETTING_TYPE_INT32_EXT = 1;

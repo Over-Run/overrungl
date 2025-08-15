@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_memory_object_sparse`
 public final class GLNVMemoryObjectSparse {
     private final Handles handles;
     public static final class Handles {
@@ -34,17 +34,18 @@ public final class GLNVMemoryObjectSparse {
         public final MemorySegment PFN_glTexPageCommitmentMemNV;
         public final MemorySegment PFN_glNamedBufferPageCommitmentMemNV;
         public final MemorySegment PFN_glTexturePageCommitmentMemNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBufferPageCommitmentMemNV = func.invoke("glBufferPageCommitmentMemNV");
             PFN_glTexPageCommitmentMemNV = func.invoke("glTexPageCommitmentMemNV");PFN_glNamedBufferPageCommitmentMemNV = func.invoke("glNamedBufferPageCommitmentMemNV");
             PFN_glTexturePageCommitmentMemNV = func.invoke("glTexturePageCommitmentMemNV");
         }
     }
 
-    public GLNVMemoryObjectSparse(overrungl.opengl.GLLoadFunc func) {
+    public GLNVMemoryObjectSparse(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBufferPageCommitmentMemNV`.
     /// ```
     /// void glBufferPageCommitmentMemNV((unsigned int) GLenum target, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 memOffset, GLboolean commit);
     /// ```
@@ -55,6 +56,7 @@ public final class GLNVMemoryObjectSparse {
         catch (Throwable e) { throw new RuntimeException("error in BufferPageCommitmentMemNV", e); }
     }
 
+    /// Invokes `glTexPageCommitmentMemNV`.
     /// ```
     /// void glTexPageCommitmentMemNV((unsigned int) GLenum target, (int) GLint layer, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset, GLboolean commit);
     /// ```
@@ -65,6 +67,7 @@ public final class GLNVMemoryObjectSparse {
         catch (Throwable e) { throw new RuntimeException("error in TexPageCommitmentMemNV", e); }
     }
 
+    /// Invokes `glNamedBufferPageCommitmentMemNV`.
     /// ```
     /// void glNamedBufferPageCommitmentMemNV((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 memOffset, GLboolean commit);
     /// ```
@@ -75,6 +78,7 @@ public final class GLNVMemoryObjectSparse {
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferPageCommitmentMemNV", e); }
     }
 
+    /// Invokes `glTexturePageCommitmentMemNV`.
     /// ```
     /// void glTexturePageCommitmentMemNV((unsigned int) GLuint texture, (int) GLint layer, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset, GLboolean commit);
     /// ```

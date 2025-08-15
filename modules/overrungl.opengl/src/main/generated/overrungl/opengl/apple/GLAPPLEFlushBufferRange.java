@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.apple;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_APPLE_flush_buffer_range`
 public final class GLAPPLEFlushBufferRange {
     public static final int GL_BUFFER_SERIALIZED_MODIFY_APPLE = 0x8A12;
     public static final int GL_BUFFER_FLUSHING_UNMAP_APPLE = 0x8A13;
@@ -32,16 +32,17 @@ public final class GLAPPLEFlushBufferRange {
         public static final MethodHandle MH_glFlushMappedBufferRangeAPPLE = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glBufferParameteriAPPLE;
         public final MemorySegment PFN_glFlushMappedBufferRangeAPPLE;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBufferParameteriAPPLE = func.invoke("glBufferParameteriAPPLE");
             PFN_glFlushMappedBufferRangeAPPLE = func.invoke("glFlushMappedBufferRangeAPPLE", "glFlushMappedBufferRange");
         }
     }
 
-    public GLAPPLEFlushBufferRange(overrungl.opengl.GLLoadFunc func) {
+    public GLAPPLEFlushBufferRange(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBufferParameteriAPPLE`.
     /// ```
     /// void glBufferParameteriAPPLE((unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -52,6 +53,7 @@ public final class GLAPPLEFlushBufferRange {
         catch (Throwable e) { throw new RuntimeException("error in BufferParameteriAPPLE", e); }
     }
 
+    /// Invokes `glFlushMappedBufferRangeAPPLE`.
     /// ```
     /// void glFlushMappedBufferRangeAPPLE((unsigned int) GLenum target, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```

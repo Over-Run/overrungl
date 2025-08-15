@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_buffer_storage`
 public final class GLARBBufferStorage {
     public static final int GL_MAP_READ_BIT = 0x0001;
     public static final int GL_MAP_WRITE_BIT = 0x0002;
@@ -37,19 +37,20 @@ public final class GLARBBufferStorage {
     public static final class Handles {
         public static final MethodHandle MH_glBufferStorage = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBufferStorage;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBufferStorage = func.invoke("glBufferStorage");
         }
     }
 
-    public GLARBBufferStorage(overrungl.opengl.GLLoadFunc func) {
+    public GLARBBufferStorage(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBufferStorage`.
     /// ```
     /// void glBufferStorage((unsigned int) GLenum target, ((signed long long) khronos_ssize_t) GLsizeiptr size, const void* data, (unsigned int) GLbitfield flags);
     /// ```
-    public void BufferStorage(int target, long size, MemorySegment data, int flags) {
+    public void BufferStorage(int target, long size, @NonNull MemorySegment data, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferStorage)) throw new GLSymbolNotFoundError("Symbol not found: glBufferStorage");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBufferStorage", target, size, data, flags); }
         Handles.MH_glBufferStorage.invokeExact(handles.PFN_glBufferStorage, target, size, data, flags); }

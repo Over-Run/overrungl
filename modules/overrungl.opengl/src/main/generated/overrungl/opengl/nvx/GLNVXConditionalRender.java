@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nvx;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NVX_conditional_render`
 public final class GLNVXConditionalRender {
     private final Handles handles;
     public static final class Handles {
@@ -30,16 +30,17 @@ public final class GLNVXConditionalRender {
         public static final MethodHandle MH_glEndConditionalRenderNVX = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glBeginConditionalRenderNVX;
         public final MemorySegment PFN_glEndConditionalRenderNVX;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBeginConditionalRenderNVX = func.invoke("glBeginConditionalRenderNVX");
             PFN_glEndConditionalRenderNVX = func.invoke("glEndConditionalRenderNVX", "glEndConditionalRender");
         }
     }
 
-    public GLNVXConditionalRender(overrungl.opengl.GLLoadFunc func) {
+    public GLNVXConditionalRender(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBeginConditionalRenderNVX`.
     /// ```
     /// void glBeginConditionalRenderNVX((unsigned int) GLuint id);
     /// ```
@@ -50,6 +51,7 @@ public final class GLNVXConditionalRender {
         catch (Throwable e) { throw new RuntimeException("error in BeginConditionalRenderNVX", e); }
     }
 
+    /// Invokes `glEndConditionalRenderNVX`.
     /// ```
     /// void glEndConditionalRenderNVX();
     /// ```

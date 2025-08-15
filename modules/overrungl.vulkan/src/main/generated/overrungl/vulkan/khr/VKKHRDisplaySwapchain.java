@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_display_swapchain` - device extension
 public final class VKKHRDisplaySwapchain {
     public static final int VK_KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION = 10;
     public static final String VK_KHR_DISPLAY_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_display_swapchain";
@@ -33,10 +35,11 @@ public final class VKKHRDisplaySwapchain {
 
     private VKKHRDisplaySwapchain() {}
 
+    /// Invokes `vkCreateSharedSwapchainsKHR`.
     /// ```
     /// (int) VkResult vkCreateSharedSwapchainsKHR((struct VkDevice*) VkDevice device, uint32_t swapchainCount, const VkSwapchainCreateInfoKHR* pCreateInfos, const VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchains);
     /// ```
-    public static int vkCreateSharedSwapchainsKHR(VkDevice device, int swapchainCount, MemorySegment pCreateInfos, MemorySegment pAllocator, MemorySegment pSwapchains) {
+    public static int vkCreateSharedSwapchainsKHR(@NonNull VkDevice device, int swapchainCount, @NonNull MemorySegment pCreateInfos, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSwapchains) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateSharedSwapchainsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateSharedSwapchainsKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateSharedSwapchainsKHR", device, swapchainCount, pCreateInfos, pAllocator, pSwapchains); }
         return (int) Handles.MH_vkCreateSharedSwapchainsKHR.invokeExact(device.capabilities().PFN_vkCreateSharedSwapchainsKHR, device.segment(), swapchainCount, pCreateInfos, pAllocator, pSwapchains); }

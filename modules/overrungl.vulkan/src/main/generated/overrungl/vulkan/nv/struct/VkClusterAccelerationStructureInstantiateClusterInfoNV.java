@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkClusterAccelerationStructureInstantiateClusterInfoNV`.
 /// ## Layout
 /// ```
 /// struct VkClusterAccelerationStructureInstantiateClusterInfoNV {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class VkClusterAccelerationStructureInstantiateClusterInfoNV extends GroupType {
     /// The struct layout of `VkClusterAccelerationStructureInstantiateClusterInfoNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("clusterIdOffset"), -1,
         ValueLayout.JAVA_INT.withName("geometryIndexOffset"), 24,
         ValueLayout.JAVA_INT.withName("reserved"), 8,

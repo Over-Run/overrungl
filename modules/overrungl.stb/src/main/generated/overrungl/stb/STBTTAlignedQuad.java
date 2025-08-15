@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `STBTTAlignedQuad`.
 /// ## Layout
 /// ```
 /// struct STBTTAlignedQuad {
@@ -40,7 +42,7 @@ import overrungl.util.*;
 /// ```
 public final class STBTTAlignedQuad extends GroupType {
     /// The struct layout of `STBTTAlignedQuad`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("x0"),
         ValueLayout.JAVA_FLOAT.withName("y0"),
         ValueLayout.JAVA_FLOAT.withName("s0"),

@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_video_encode_queue` - device extension
 public final class VKKHRVideoEncodeQueue {
     public static final int VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR = 0x00000001;
     public static final int VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR = 0x00000002;
@@ -89,30 +91,33 @@ public final class VKKHRVideoEncodeQueue {
 
     private VKKHRVideoEncodeQueue() {}
 
+    /// Invokes `vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* pQualityLevelInfo, VkVideoEncodeQualityLevelPropertiesKHR* pQualityLevelProperties);
     /// ```
-    public static int vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pQualityLevelInfo, MemorySegment pQualityLevelProperties) {
+    public static int vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pQualityLevelInfo, @NonNull MemorySegment pQualityLevelProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR", physicalDevice, pQualityLevelInfo, pQualityLevelProperties); }
         return (int) Handles.MH_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR, physicalDevice.segment(), pQualityLevelInfo, pQualityLevelProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR", e); }
     }
 
+    /// Invokes `vkGetEncodedVideoSessionParametersKHR`.
     /// ```
     /// (int) VkResult vkGetEncodedVideoSessionParametersKHR((struct VkDevice*) VkDevice device, const VkVideoEncodeSessionParametersGetInfoKHR* pVideoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* pFeedbackInfo, size_t* pDataSize, void* pData);
     /// ```
-    public static int vkGetEncodedVideoSessionParametersKHR(VkDevice device, MemorySegment pVideoSessionParametersInfo, MemorySegment pFeedbackInfo, MemorySegment pDataSize, MemorySegment pData) {
+    public static int vkGetEncodedVideoSessionParametersKHR(@NonNull VkDevice device, @NonNull MemorySegment pVideoSessionParametersInfo, @NonNull MemorySegment pFeedbackInfo, @NonNull MemorySegment pDataSize, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetEncodedVideoSessionParametersKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetEncodedVideoSessionParametersKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetEncodedVideoSessionParametersKHR", device, pVideoSessionParametersInfo, pFeedbackInfo, pDataSize, pData); }
         return (int) Handles.MH_vkGetEncodedVideoSessionParametersKHR.invokeExact(device.capabilities().PFN_vkGetEncodedVideoSessionParametersKHR, device.segment(), pVideoSessionParametersInfo, pFeedbackInfo, pDataSize, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetEncodedVideoSessionParametersKHR", e); }
     }
 
+    /// Invokes `vkCmdEncodeVideoKHR`.
     /// ```
     /// void vkCmdEncodeVideoKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkVideoEncodeInfoKHR* pEncodeInfo);
     /// ```
-    public static void vkCmdEncodeVideoKHR(VkCommandBuffer commandBuffer, MemorySegment pEncodeInfo) {
+    public static void vkCmdEncodeVideoKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pEncodeInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEncodeVideoKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEncodeVideoKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEncodeVideoKHR", commandBuffer, pEncodeInfo); }
         Handles.MH_vkCmdEncodeVideoKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEncodeVideoKHR, commandBuffer.segment(), pEncodeInfo); }

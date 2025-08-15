@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_validation_features` - instance extension
 public final class VKEXTValidationFeatures {
     public static final int VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT = 0;
     public static final int VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT = 1;

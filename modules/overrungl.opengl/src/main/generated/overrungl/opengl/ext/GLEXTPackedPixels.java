@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
+/// `GL_EXT_packed_pixels`
 public final class GLEXTPackedPixels {
     public static final int GL_UNSIGNED_BYTE_3_3_2_EXT = 0x8032;
     public static final int GL_UNSIGNED_SHORT_4_4_4_4_EXT = 0x8033;

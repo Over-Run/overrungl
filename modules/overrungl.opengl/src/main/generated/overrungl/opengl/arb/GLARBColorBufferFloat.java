@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_color_buffer_float`
 public final class GLARBColorBufferFloat {
     public static final int GL_RGBA_FLOAT_MODE_ARB = 0x8820;
     public static final int GL_CLAMP_VERTEX_COLOR_ARB = 0x891A;
@@ -33,15 +33,16 @@ public final class GLARBColorBufferFloat {
     public static final class Handles {
         public static final MethodHandle MH_glClampColorARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glClampColorARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glClampColorARB = func.invoke("glClampColorARB", "glClampColor");
         }
     }
 
-    public GLARBColorBufferFloat(overrungl.opengl.GLLoadFunc func) {
+    public GLARBColorBufferFloat(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glClampColorARB`.
     /// ```
     /// void glClampColorARB((unsigned int) GLenum target, (unsigned int) GLenum clamp);
     /// ```

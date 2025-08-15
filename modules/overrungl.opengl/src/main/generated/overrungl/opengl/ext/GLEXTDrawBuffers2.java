@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_draw_buffers2`
 public final class GLEXTDrawBuffers2 {
     private final Handles handles;
     public static final class Handles {
@@ -38,7 +38,7 @@ public final class GLEXTDrawBuffers2 {
         public final MemorySegment PFN_glEnableIndexedEXT;
         public final MemorySegment PFN_glDisableIndexedEXT;
         public final MemorySegment PFN_glIsEnabledIndexedEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glColorMaskIndexedEXT = func.invoke("glColorMaskIndexedEXT", "glColorMaski");
             PFN_glGetBooleanIndexedvEXT = func.invoke("glGetBooleanIndexedvEXT", "glGetBooleani_v");
             PFN_glGetIntegerIndexedvEXT = func.invoke("glGetIntegerIndexedvEXT", "glGetIntegeri_v");
@@ -48,10 +48,11 @@ public final class GLEXTDrawBuffers2 {
         }
     }
 
-    public GLEXTDrawBuffers2(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTDrawBuffers2(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glColorMaskIndexedEXT`.
     /// ```
     /// void glColorMaskIndexedEXT((unsigned int) GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
     /// ```
@@ -62,26 +63,29 @@ public final class GLEXTDrawBuffers2 {
         catch (Throwable e) { throw new RuntimeException("error in ColorMaskIndexedEXT", e); }
     }
 
+    /// Invokes `glGetBooleanIndexedvEXT`.
     /// ```
     /// void glGetBooleanIndexedvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, GLboolean* data);
     /// ```
-    public void GetBooleanIndexedvEXT(int target, int index, MemorySegment data) {
+    public void GetBooleanIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBooleanIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetBooleanIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetBooleanIndexedvEXT", target, index, data); }
         Handles.MH_glGetBooleanIndexedvEXT.invokeExact(handles.PFN_glGetBooleanIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetBooleanIndexedvEXT", e); }
     }
 
+    /// Invokes `glGetIntegerIndexedvEXT`.
     /// ```
     /// void glGetIntegerIndexedvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, GLint* data);
     /// ```
-    public void GetIntegerIndexedvEXT(int target, int index, MemorySegment data) {
+    public void GetIntegerIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetIntegerIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetIntegerIndexedvEXT", target, index, data); }
         Handles.MH_glGetIntegerIndexedvEXT.invokeExact(handles.PFN_glGetIntegerIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetIntegerIndexedvEXT", e); }
     }
 
+    /// Invokes `glEnableIndexedEXT`.
     /// ```
     /// void glEnableIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
     /// ```
@@ -92,6 +96,7 @@ public final class GLEXTDrawBuffers2 {
         catch (Throwable e) { throw new RuntimeException("error in EnableIndexedEXT", e); }
     }
 
+    /// Invokes `glDisableIndexedEXT`.
     /// ```
     /// void glDisableIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
     /// ```
@@ -102,6 +107,7 @@ public final class GLEXTDrawBuffers2 {
         catch (Throwable e) { throw new RuntimeException("error in DisableIndexedEXT", e); }
     }
 
+    /// Invokes `glIsEnabledIndexedEXT`.
     /// ```
     /// GLboolean glIsEnabledIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
     /// ```

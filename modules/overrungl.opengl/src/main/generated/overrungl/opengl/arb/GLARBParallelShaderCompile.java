@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_parallel_shader_compile`
 public final class GLARBParallelShaderCompile {
     public static final int GL_MAX_SHADER_COMPILER_THREADS_ARB = 0x91B0;
     public static final int GL_COMPLETION_STATUS_ARB = 0x91B1;
@@ -30,15 +30,16 @@ public final class GLARBParallelShaderCompile {
     public static final class Handles {
         public static final MethodHandle MH_glMaxShaderCompilerThreadsARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMaxShaderCompilerThreadsARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glMaxShaderCompilerThreadsARB = func.invoke("glMaxShaderCompilerThreadsARB", "glMaxShaderCompilerThreadsKHR");
         }
     }
 
-    public GLARBParallelShaderCompile(overrungl.opengl.GLLoadFunc func) {
+    public GLARBParallelShaderCompile(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glMaxShaderCompilerThreadsARB`.
     /// ```
     /// void glMaxShaderCompilerThreadsARB((unsigned int) GLuint count);
     /// ```

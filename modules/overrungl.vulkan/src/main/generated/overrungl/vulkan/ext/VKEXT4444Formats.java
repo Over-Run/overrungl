@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_4444_formats` - device extension
 public final class VKEXT4444Formats {
     public static final int VK_EXT_4444_FORMATS_SPEC_VERSION = 1;
     public static final String VK_EXT_4444_FORMATS_EXTENSION_NAME = "VK_EXT_4444_formats";

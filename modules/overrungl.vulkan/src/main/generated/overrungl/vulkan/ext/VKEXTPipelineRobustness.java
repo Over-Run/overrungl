@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_pipeline_robustness` - device extension
 public final class VKEXTPipelineRobustness {
     public static final int VK_EXT_PIPELINE_ROBUSTNESS_SPEC_VERSION = 1;
     public static final String VK_EXT_PIPELINE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_pipeline_robustness";

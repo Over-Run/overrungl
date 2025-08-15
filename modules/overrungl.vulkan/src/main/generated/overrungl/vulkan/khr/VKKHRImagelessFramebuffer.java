@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_imageless_framebuffer` - device extension
 public final class VKKHRImagelessFramebuffer {
     public static final int VK_KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION = 1;
     public static final String VK_KHR_IMAGELESS_FRAMEBUFFER_EXTENSION_NAME = "VK_KHR_imageless_framebuffer";

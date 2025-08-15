@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_light_texture`
 public final class GLEXTLightTexture {
     public static final int GL_FRAGMENT_MATERIAL_EXT = 0x8349;
     public static final int GL_FRAGMENT_NORMAL_EXT = 0x834A;
@@ -42,17 +42,18 @@ public final class GLEXTLightTexture {
         public final MemorySegment PFN_glApplyTextureEXT;
         public final MemorySegment PFN_glTextureLightEXT;
         public final MemorySegment PFN_glTextureMaterialEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glApplyTextureEXT = func.invoke("glApplyTextureEXT");
             PFN_glTextureLightEXT = func.invoke("glTextureLightEXT");
             PFN_glTextureMaterialEXT = func.invoke("glTextureMaterialEXT");
         }
     }
 
-    public GLEXTLightTexture(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTLightTexture(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glApplyTextureEXT`.
     /// ```
     /// void glApplyTextureEXT((unsigned int) GLenum mode);
     /// ```
@@ -63,6 +64,7 @@ public final class GLEXTLightTexture {
         catch (Throwable e) { throw new RuntimeException("error in ApplyTextureEXT", e); }
     }
 
+    /// Invokes `glTextureLightEXT`.
     /// ```
     /// void glTextureLightEXT((unsigned int) GLenum pname);
     /// ```
@@ -73,6 +75,7 @@ public final class GLEXTLightTexture {
         catch (Throwable e) { throw new RuntimeException("error in TextureLightEXT", e); }
     }
 
+    /// Invokes `glTextureMaterialEXT`.
     /// ```
     /// void glTextureMaterialEXT((unsigned int) GLenum face, (unsigned int) GLenum mode);
     /// ```

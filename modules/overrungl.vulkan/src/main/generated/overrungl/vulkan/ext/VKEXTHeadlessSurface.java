@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_headless_surface` - instance extension
 public final class VKEXTHeadlessSurface {
     public static final int VK_EXT_HEADLESS_SURFACE_SPEC_VERSION = 1;
     public static final String VK_EXT_HEADLESS_SURFACE_EXTENSION_NAME = "VK_EXT_headless_surface";
@@ -32,10 +34,11 @@ public final class VKEXTHeadlessSurface {
 
     private VKEXTHeadlessSurface() {}
 
+    /// Invokes `vkCreateHeadlessSurfaceEXT`.
     /// ```
     /// (int) VkResult vkCreateHeadlessSurfaceEXT((struct VkInstance*) VkInstance instance, const VkHeadlessSurfaceCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
-    public static int vkCreateHeadlessSurfaceEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public static int vkCreateHeadlessSurfaceEXT(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateHeadlessSurfaceEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateHeadlessSurfaceEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateHeadlessSurfaceEXT", instance, pCreateInfo, pAllocator, pSurface); }
         return (int) Handles.MH_vkCreateHeadlessSurfaceEXT.invokeExact(instance.capabilities().PFN_vkCreateHeadlessSurfaceEXT, instance.segment(), pCreateInfo, pAllocator, pSurface); }

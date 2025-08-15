@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_query_resource`
 public final class GLNVQueryResource {
     public static final int GL_QUERY_RESOURCE_TYPE_VIDMEM_ALLOC_NV = 0x9540;
     public static final int GL_QUERY_RESOURCE_MEMTYPE_VIDMEM_NV = 0x9542;
@@ -34,19 +34,20 @@ public final class GLNVQueryResource {
     public static final class Handles {
         public static final MethodHandle MH_glQueryResourceNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glQueryResourceNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glQueryResourceNV = func.invoke("glQueryResourceNV");
         }
     }
 
-    public GLNVQueryResource(overrungl.opengl.GLLoadFunc func) {
+    public GLNVQueryResource(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glQueryResourceNV`.
     /// ```
     /// (int) GLint glQueryResourceNV((unsigned int) GLenum queryType, (int) GLint tagId, (unsigned int) GLuint count, GLint* buffer);
     /// ```
-    public int QueryResourceNV(int queryType, int tagId, int count, MemorySegment buffer) {
+    public int QueryResourceNV(int queryType, int tagId, int count, @NonNull MemorySegment buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glQueryResourceNV)) throw new GLSymbolNotFoundError("Symbol not found: glQueryResourceNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glQueryResourceNV", queryType, tagId, count, buffer); }
         return (int) Handles.MH_glQueryResourceNV.invokeExact(handles.PFN_glQueryResourceNV, queryType, tagId, count, buffer); }

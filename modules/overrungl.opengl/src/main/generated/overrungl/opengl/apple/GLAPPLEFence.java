@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.apple;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_APPLE_fence`
 public final class GLAPPLEFence {
     public static final int GL_DRAW_PIXELS_APPLE = 0x8A0A;
     public static final int GL_FENCE_APPLE = 0x8A0B;
@@ -44,7 +44,7 @@ public final class GLAPPLEFence {
         public final MemorySegment PFN_glFinishFenceAPPLE;
         public final MemorySegment PFN_glTestObjectAPPLE;
         public final MemorySegment PFN_glFinishObjectAPPLE;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGenFencesAPPLE = func.invoke("glGenFencesAPPLE");
             PFN_glDeleteFencesAPPLE = func.invoke("glDeleteFencesAPPLE");
             PFN_glSetFenceAPPLE = func.invoke("glSetFenceAPPLE");
@@ -56,30 +56,33 @@ public final class GLAPPLEFence {
         }
     }
 
-    public GLAPPLEFence(overrungl.opengl.GLLoadFunc func) {
+    public GLAPPLEFence(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGenFencesAPPLE`.
     /// ```
     /// void glGenFencesAPPLE((int) GLsizei n, GLuint* fences);
     /// ```
-    public void GenFencesAPPLE(int n, MemorySegment fences) {
+    public void GenFencesAPPLE(int n, @NonNull MemorySegment fences) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenFencesAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glGenFencesAPPLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenFencesAPPLE", n, fences); }
         Handles.MH_glGenFencesAPPLE.invokeExact(handles.PFN_glGenFencesAPPLE, n, fences); }
         catch (Throwable e) { throw new RuntimeException("error in GenFencesAPPLE", e); }
     }
 
+    /// Invokes `glDeleteFencesAPPLE`.
     /// ```
     /// void glDeleteFencesAPPLE((int) GLsizei n, const GLuint* fences);
     /// ```
-    public void DeleteFencesAPPLE(int n, MemorySegment fences) {
+    public void DeleteFencesAPPLE(int n, @NonNull MemorySegment fences) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFencesAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteFencesAPPLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteFencesAPPLE", n, fences); }
         Handles.MH_glDeleteFencesAPPLE.invokeExact(handles.PFN_glDeleteFencesAPPLE, n, fences); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteFencesAPPLE", e); }
     }
 
+    /// Invokes `glSetFenceAPPLE`.
     /// ```
     /// void glSetFenceAPPLE((unsigned int) GLuint fence);
     /// ```
@@ -90,6 +93,7 @@ public final class GLAPPLEFence {
         catch (Throwable e) { throw new RuntimeException("error in SetFenceAPPLE", e); }
     }
 
+    /// Invokes `glIsFenceAPPLE`.
     /// ```
     /// GLboolean glIsFenceAPPLE((unsigned int) GLuint fence);
     /// ```
@@ -100,6 +104,7 @@ public final class GLAPPLEFence {
         catch (Throwable e) { throw new RuntimeException("error in IsFenceAPPLE", e); }
     }
 
+    /// Invokes `glTestFenceAPPLE`.
     /// ```
     /// GLboolean glTestFenceAPPLE((unsigned int) GLuint fence);
     /// ```
@@ -110,6 +115,7 @@ public final class GLAPPLEFence {
         catch (Throwable e) { throw new RuntimeException("error in TestFenceAPPLE", e); }
     }
 
+    /// Invokes `glFinishFenceAPPLE`.
     /// ```
     /// void glFinishFenceAPPLE((unsigned int) GLuint fence);
     /// ```
@@ -120,6 +126,7 @@ public final class GLAPPLEFence {
         catch (Throwable e) { throw new RuntimeException("error in FinishFenceAPPLE", e); }
     }
 
+    /// Invokes `glTestObjectAPPLE`.
     /// ```
     /// GLboolean glTestObjectAPPLE((unsigned int) GLenum object, (unsigned int) GLuint name);
     /// ```
@@ -130,6 +137,7 @@ public final class GLAPPLEFence {
         catch (Throwable e) { throw new RuntimeException("error in TestObjectAPPLE", e); }
     }
 
+    /// Invokes `glFinishObjectAPPLE`.
     /// ```
     /// void glFinishObjectAPPLE((unsigned int) GLenum object, (int) GLint name);
     /// ```

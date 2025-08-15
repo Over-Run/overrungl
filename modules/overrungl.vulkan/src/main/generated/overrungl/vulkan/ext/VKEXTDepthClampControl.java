@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_depth_clamp_control` - device extension
 public final class VKEXTDepthClampControl {
     public static final int VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT = 0;
     public static final int VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT = 1;
@@ -36,10 +38,11 @@ public final class VKEXTDepthClampControl {
 
     private VKEXTDepthClampControl() {}
 
+    /// Invokes `vkCmdSetDepthClampRangeEXT`.
     /// ```
     /// void vkCmdSetDepthClampRangeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkDepthClampModeEXT depthClampMode, const VkDepthClampRangeEXT* pDepthClampRange);
     /// ```
-    public static void vkCmdSetDepthClampRangeEXT(VkCommandBuffer commandBuffer, int depthClampMode, MemorySegment pDepthClampRange) {
+    public static void vkCmdSetDepthClampRangeEXT(@NonNull VkCommandBuffer commandBuffer, int depthClampMode, @NonNull MemorySegment pDepthClampRange) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthClampRangeEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDepthClampRangeEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetDepthClampRangeEXT", commandBuffer, depthClampMode, pDepthClampRange); }
         Handles.MH_vkCmdSetDepthClampRangeEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDepthClampRangeEXT, commandBuffer.segment(), depthClampMode, pDepthClampRange); }

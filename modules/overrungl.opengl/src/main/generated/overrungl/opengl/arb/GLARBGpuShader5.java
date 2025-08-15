@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
+/// `GL_ARB_gpu_shader5`
 public final class GLARBGpuShader5 {
     public static final int GL_GEOMETRY_SHADER_INVOCATIONS = 0x887F;
     public static final int GL_MAX_GEOMETRY_SHADER_INVOCATIONS = 0x8E5A;

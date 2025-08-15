@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeH264WeightTable`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH264WeightTable {
@@ -43,7 +45,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeH264WeightTable extends GroupType {
     /// The struct layout of `StdVideoEncodeH264WeightTable`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoEncodeH264WeightTableFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("luma_log2_weight_denom"),
         ValueLayout.JAVA_BYTE.withName("chroma_log2_weight_denom"),

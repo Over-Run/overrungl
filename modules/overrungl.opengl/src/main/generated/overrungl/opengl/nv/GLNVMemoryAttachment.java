@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_memory_attachment`
 public final class GLNVMemoryAttachment {
     public static final int GL_ATTACHED_MEMORY_OBJECT_NV = 0x95A4;
     public static final int GL_ATTACHED_MEMORY_OFFSET_NV = 0x95A5;
@@ -48,7 +48,7 @@ public final class GLNVMemoryAttachment {
         public final MemorySegment PFN_glBufferAttachMemoryNV;
         public final MemorySegment PFN_glTextureAttachMemoryNV;
         public final MemorySegment PFN_glNamedBufferAttachMemoryNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGetMemoryObjectDetachedResourcesuivNV = func.invoke("glGetMemoryObjectDetachedResourcesuivNV");
             PFN_glResetMemoryObjectParameterNV = func.invoke("glResetMemoryObjectParameterNV");
             PFN_glTexAttachMemoryNV = func.invoke("glTexAttachMemoryNV");
@@ -57,20 +57,22 @@ public final class GLNVMemoryAttachment {
         }
     }
 
-    public GLNVMemoryAttachment(overrungl.opengl.GLLoadFunc func) {
+    public GLNVMemoryAttachment(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGetMemoryObjectDetachedResourcesuivNV`.
     /// ```
     /// void glGetMemoryObjectDetachedResourcesuivNV((unsigned int) GLuint memory, (unsigned int) GLenum pname, (int) GLint first, (int) GLsizei count, GLuint* params);
     /// ```
-    public void GetMemoryObjectDetachedResourcesuivNV(int memory, int pname, int first, int count, MemorySegment params) {
+    public void GetMemoryObjectDetachedResourcesuivNV(int memory, int pname, int first, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMemoryObjectDetachedResourcesuivNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetMemoryObjectDetachedResourcesuivNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMemoryObjectDetachedResourcesuivNV", memory, pname, first, count, params); }
         Handles.MH_glGetMemoryObjectDetachedResourcesuivNV.invokeExact(handles.PFN_glGetMemoryObjectDetachedResourcesuivNV, memory, pname, first, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMemoryObjectDetachedResourcesuivNV", e); }
     }
 
+    /// Invokes `glResetMemoryObjectParameterNV`.
     /// ```
     /// void glResetMemoryObjectParameterNV((unsigned int) GLuint memory, (unsigned int) GLenum pname);
     /// ```
@@ -81,6 +83,7 @@ public final class GLNVMemoryAttachment {
         catch (Throwable e) { throw new RuntimeException("error in ResetMemoryObjectParameterNV", e); }
     }
 
+    /// Invokes `glTexAttachMemoryNV`.
     /// ```
     /// void glTexAttachMemoryNV((unsigned int) GLenum target, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
@@ -91,6 +94,7 @@ public final class GLNVMemoryAttachment {
         catch (Throwable e) { throw new RuntimeException("error in TexAttachMemoryNV", e); }
     }
 
+    /// Invokes `glBufferAttachMemoryNV`.
     /// ```
     /// void glBufferAttachMemoryNV((unsigned int) GLenum target, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
@@ -101,6 +105,7 @@ public final class GLNVMemoryAttachment {
         catch (Throwable e) { throw new RuntimeException("error in BufferAttachMemoryNV", e); }
     }
 
+    /// Invokes `glTextureAttachMemoryNV`.
     /// ```
     /// void glTextureAttachMemoryNV((unsigned int) GLuint texture, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
@@ -111,6 +116,7 @@ public final class GLNVMemoryAttachment {
         catch (Throwable e) { throw new RuntimeException("error in TextureAttachMemoryNV", e); }
     }
 
+    /// Invokes `glNamedBufferAttachMemoryNV`.
     /// ```
     /// void glNamedBufferAttachMemoryNV((unsigned int) GLuint buffer, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```

@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_fragment_density_map` - device extension
 public final class VKEXTFragmentDensityMap {
     public static final int VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION = 2;
     public static final String VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME = "VK_EXT_fragment_density_map";

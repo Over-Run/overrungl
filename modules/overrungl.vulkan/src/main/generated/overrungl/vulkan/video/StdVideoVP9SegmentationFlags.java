@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoVP9SegmentationFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoVP9SegmentationFlags {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoVP9SegmentationFlags extends GroupType {
     /// The struct layout of `StdVideoVP9SegmentationFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("segmentation_update_map"), 1,
         ValueLayout.JAVA_INT.withName("segmentation_temporal_update"), 1,
         ValueLayout.JAVA_INT.withName("segmentation_update_data"), 1,

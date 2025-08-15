@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_depth_bounds_test`
 public final class GLEXTDepthBoundsTest {
     public static final int GL_DEPTH_BOUNDS_TEST_EXT = 0x8890;
     public static final int GL_DEPTH_BOUNDS_EXT = 0x8891;
@@ -30,15 +30,16 @@ public final class GLEXTDepthBoundsTest {
     public static final class Handles {
         public static final MethodHandle MH_glDepthBoundsEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
         public final MemorySegment PFN_glDepthBoundsEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDepthBoundsEXT = func.invoke("glDepthBoundsEXT");
         }
     }
 
-    public GLEXTDepthBoundsTest(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTDepthBoundsTest(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDepthBoundsEXT`.
     /// ```
     /// void glDepthBoundsEXT((double) GLclampd zmin, (double) GLclampd zmax);
     /// ```

@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_maintenance5` - device extension
 public final class VKKHRMaintenance5 {
     public static final int VK_KHR_MAINTENANCE_5_SPEC_VERSION = 1;
     public static final String VK_KHR_MAINTENANCE_5_EXTENSION_NAME = "VK_KHR_maintenance5";
@@ -102,40 +104,44 @@ public final class VKKHRMaintenance5 {
 
     private VKKHRMaintenance5() {}
 
+    /// Invokes `vkCmdBindIndexBuffer2KHR`.
     /// ```
     /// void vkCmdBindIndexBuffer2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, (uint64_t) VkDeviceSize size, (int) VkIndexType indexType);
     /// ```
-    public static void vkCmdBindIndexBuffer2KHR(VkCommandBuffer commandBuffer, long buffer, long offset, long size, int indexType) {
+    public static void vkCmdBindIndexBuffer2KHR(@NonNull VkCommandBuffer commandBuffer, long buffer, long offset, long size, int indexType) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindIndexBuffer2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindIndexBuffer2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBindIndexBuffer2KHR", commandBuffer, buffer, offset, size, indexType); }
         Handles.MH_vkCmdBindIndexBuffer2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindIndexBuffer2KHR, commandBuffer.segment(), buffer, offset, size, indexType); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindIndexBuffer2KHR", e); }
     }
 
+    /// Invokes `vkGetRenderingAreaGranularityKHR`.
     /// ```
     /// void vkGetRenderingAreaGranularityKHR((struct VkDevice*) VkDevice device, const VkRenderingAreaInfo* pRenderingAreaInfo, VkExtent2D* pGranularity);
     /// ```
-    public static void vkGetRenderingAreaGranularityKHR(VkDevice device, MemorySegment pRenderingAreaInfo, MemorySegment pGranularity) {
+    public static void vkGetRenderingAreaGranularityKHR(@NonNull VkDevice device, @NonNull MemorySegment pRenderingAreaInfo, @NonNull MemorySegment pGranularity) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetRenderingAreaGranularityKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetRenderingAreaGranularityKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetRenderingAreaGranularityKHR", device, pRenderingAreaInfo, pGranularity); }
         Handles.MH_vkGetRenderingAreaGranularityKHR.invokeExact(device.capabilities().PFN_vkGetRenderingAreaGranularityKHR, device.segment(), pRenderingAreaInfo, pGranularity); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetRenderingAreaGranularityKHR", e); }
     }
 
+    /// Invokes `vkGetDeviceImageSubresourceLayoutKHR`.
     /// ```
     /// void vkGetDeviceImageSubresourceLayoutKHR((struct VkDevice*) VkDevice device, const VkDeviceImageSubresourceInfo* pInfo, VkSubresourceLayout2* pLayout);
     /// ```
-    public static void vkGetDeviceImageSubresourceLayoutKHR(VkDevice device, MemorySegment pInfo, MemorySegment pLayout) {
+    public static void vkGetDeviceImageSubresourceLayoutKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pLayout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceImageSubresourceLayoutKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceImageSubresourceLayoutKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceImageSubresourceLayoutKHR", device, pInfo, pLayout); }
         Handles.MH_vkGetDeviceImageSubresourceLayoutKHR.invokeExact(device.capabilities().PFN_vkGetDeviceImageSubresourceLayoutKHR, device.segment(), pInfo, pLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceImageSubresourceLayoutKHR", e); }
     }
 
+    /// Invokes `vkGetImageSubresourceLayout2KHR`.
     /// ```
     /// void vkGetImageSubresourceLayout2KHR((struct VkDevice*) VkDevice device, (uint64_t) VkImage image, const VkImageSubresource2* pSubresource, VkSubresourceLayout2* pLayout);
     /// ```
-    public static void vkGetImageSubresourceLayout2KHR(VkDevice device, long image, MemorySegment pSubresource, MemorySegment pLayout) {
+    public static void vkGetImageSubresourceLayout2KHR(@NonNull VkDevice device, long image, @NonNull MemorySegment pSubresource, @NonNull MemorySegment pLayout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageSubresourceLayout2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetImageSubresourceLayout2KHR", device, image, pSubresource, pLayout); }
         Handles.MH_vkGetImageSubresourceLayout2KHR.invokeExact(device.capabilities().PFN_vkGetImageSubresourceLayout2KHR, device.segment(), image, pSubresource, pLayout); }

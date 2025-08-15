@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_vertex_attrib_binding`
 public final class GLARBVertexAttribBinding {
     public static final int GL_VERTEX_ATTRIB_BINDING = 0x82D4;
     public static final int GL_VERTEX_ATTRIB_RELATIVE_OFFSET = 0x82D5;
@@ -45,7 +45,7 @@ public final class GLARBVertexAttribBinding {
         public final MemorySegment PFN_glVertexAttribLFormat;
         public final MemorySegment PFN_glVertexAttribBinding;
         public final MemorySegment PFN_glVertexBindingDivisor;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBindVertexBuffer = func.invoke("glBindVertexBuffer");
             PFN_glVertexAttribFormat = func.invoke("glVertexAttribFormat");
             PFN_glVertexAttribIFormat = func.invoke("glVertexAttribIFormat");
@@ -55,10 +55,11 @@ public final class GLARBVertexAttribBinding {
         }
     }
 
-    public GLARBVertexAttribBinding(overrungl.opengl.GLLoadFunc func) {
+    public GLARBVertexAttribBinding(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBindVertexBuffer`.
     /// ```
     /// void glBindVertexBuffer((unsigned int) GLuint bindingindex, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, (int) GLsizei stride);
     /// ```
@@ -69,6 +70,7 @@ public final class GLARBVertexAttribBinding {
         catch (Throwable e) { throw new RuntimeException("error in BindVertexBuffer", e); }
     }
 
+    /// Invokes `glVertexAttribFormat`.
     /// ```
     /// void glVertexAttribFormat((unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, GLboolean normalized, (unsigned int) GLuint relativeoffset);
     /// ```
@@ -79,6 +81,7 @@ public final class GLARBVertexAttribBinding {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribFormat", e); }
     }
 
+    /// Invokes `glVertexAttribIFormat`.
     /// ```
     /// void glVertexAttribIFormat((unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, (unsigned int) GLuint relativeoffset);
     /// ```
@@ -89,6 +92,7 @@ public final class GLARBVertexAttribBinding {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribIFormat", e); }
     }
 
+    /// Invokes `glVertexAttribLFormat`.
     /// ```
     /// void glVertexAttribLFormat((unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, (unsigned int) GLuint relativeoffset);
     /// ```
@@ -99,6 +103,7 @@ public final class GLARBVertexAttribBinding {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribLFormat", e); }
     }
 
+    /// Invokes `glVertexAttribBinding`.
     /// ```
     /// void glVertexAttribBinding((unsigned int) GLuint attribindex, (unsigned int) GLuint bindingindex);
     /// ```
@@ -109,6 +114,7 @@ public final class GLARBVertexAttribBinding {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribBinding", e); }
     }
 
+    /// Invokes `glVertexBindingDivisor`.
     /// ```
     /// void glVertexBindingDivisor((unsigned int) GLuint bindingindex, (unsigned int) GLuint divisor);
     /// ```

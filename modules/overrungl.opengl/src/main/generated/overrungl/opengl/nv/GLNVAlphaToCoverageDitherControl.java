@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_alpha_to_coverage_dither_control`
 public final class GLNVAlphaToCoverageDitherControl {
     public static final int GL_ALPHA_TO_COVERAGE_DITHER_DEFAULT_NV = 0x934D;
     public static final int GL_ALPHA_TO_COVERAGE_DITHER_ENABLE_NV = 0x934E;
@@ -32,15 +32,16 @@ public final class GLNVAlphaToCoverageDitherControl {
     public static final class Handles {
         public static final MethodHandle MH_glAlphaToCoverageDitherControlNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glAlphaToCoverageDitherControlNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glAlphaToCoverageDitherControlNV = func.invoke("glAlphaToCoverageDitherControlNV");
         }
     }
 
-    public GLNVAlphaToCoverageDitherControl(overrungl.opengl.GLLoadFunc func) {
+    public GLNVAlphaToCoverageDitherControl(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glAlphaToCoverageDitherControlNV`.
     /// ```
     /// void glAlphaToCoverageDitherControlNV((unsigned int) GLenum mode);
     /// ```

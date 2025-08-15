@@ -18,9 +18,11 @@
 package overrungl.vulkan.huawei;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_HUAWEI_subpass_shading` - device extension
 public final class VKHUAWEISubpassShading {
     public static final int VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 3;
     public static final String VK_HUAWEI_SUBPASS_SHADING_EXTENSION_NAME = "VK_HUAWEI_subpass_shading";
@@ -39,20 +41,22 @@ public final class VKHUAWEISubpassShading {
 
     private VKHUAWEISubpassShading() {}
 
+    /// Invokes `vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI`.
     /// ```
     /// (int) VkResult vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI((struct VkDevice*) VkDevice device, (uint64_t) VkRenderPass renderpass, VkExtent2D* pMaxWorkgroupSize);
     /// ```
-    public static int vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(VkDevice device, long renderpass, MemorySegment pMaxWorkgroupSize) {
+    public static int vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(@NonNull VkDevice device, long renderpass, @NonNull MemorySegment pMaxWorkgroupSize) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI", device, renderpass, pMaxWorkgroupSize); }
         return (int) Handles.MH_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI.invokeExact(device.capabilities().PFN_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI, device.segment(), renderpass, pMaxWorkgroupSize); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI", e); }
     }
 
+    /// Invokes `vkCmdSubpassShadingHUAWEI`.
     /// ```
     /// void vkCmdSubpassShadingHUAWEI((struct VkCommandBuffer*) VkCommandBuffer commandBuffer);
     /// ```
-    public static void vkCmdSubpassShadingHUAWEI(VkCommandBuffer commandBuffer) {
+    public static void vkCmdSubpassShadingHUAWEI(@NonNull VkCommandBuffer commandBuffer) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSubpassShadingHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSubpassShadingHUAWEI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSubpassShadingHUAWEI", commandBuffer); }
         Handles.MH_vkCmdSubpassShadingHUAWEI.invokeExact(commandBuffer.capabilities().PFN_vkCmdSubpassShadingHUAWEI, commandBuffer.segment()); }

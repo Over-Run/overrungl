@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPhysicalDeviceMaintenance5Properties`.
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMaintenance5Properties {
@@ -40,7 +42,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPhysicalDeviceMaintenance5Properties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMaintenance5Properties`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("earlyFragmentMultisampleCoverageAfterSampleCounting"),

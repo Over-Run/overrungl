@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoAV1TileInfoFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoAV1TileInfoFlags {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoAV1TileInfoFlags extends GroupType {
     /// The struct layout of `StdVideoAV1TileInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("uniform_tile_spacing_flag"), 1,
         ValueLayout.JAVA_INT.withName("reserved"), 31
     );

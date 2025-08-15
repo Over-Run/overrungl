@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_bind_memory2` - device extension
 public final class VKKHRBindMemory2 {
     public static final int VK_KHR_BIND_MEMORY_2_SPEC_VERSION = 1;
     public static final String VK_KHR_BIND_MEMORY_2_EXTENSION_NAME = "VK_KHR_bind_memory2";
@@ -35,20 +37,22 @@ public final class VKKHRBindMemory2 {
 
     private VKKHRBindMemory2() {}
 
+    /// Invokes `vkBindBufferMemory2KHR`.
     /// ```
     /// (int) VkResult vkBindBufferMemory2KHR((struct VkDevice*) VkDevice device, uint32_t bindInfoCount, const VkBindBufferMemoryInfo* pBindInfos);
     /// ```
-    public static int vkBindBufferMemory2KHR(VkDevice device, int bindInfoCount, MemorySegment pBindInfos) {
+    public static int vkBindBufferMemory2KHR(@NonNull VkDevice device, int bindInfoCount, @NonNull MemorySegment pBindInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindBufferMemory2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkBindBufferMemory2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkBindBufferMemory2KHR", device, bindInfoCount, pBindInfos); }
         return (int) Handles.MH_vkBindBufferMemory2KHR.invokeExact(device.capabilities().PFN_vkBindBufferMemory2KHR, device.segment(), bindInfoCount, pBindInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkBindBufferMemory2KHR", e); }
     }
 
+    /// Invokes `vkBindImageMemory2KHR`.
     /// ```
     /// (int) VkResult vkBindImageMemory2KHR((struct VkDevice*) VkDevice device, uint32_t bindInfoCount, const VkBindImageMemoryInfo* pBindInfos);
     /// ```
-    public static int vkBindImageMemory2KHR(VkDevice device, int bindInfoCount, MemorySegment pBindInfos) {
+    public static int vkBindImageMemory2KHR(@NonNull VkDevice device, int bindInfoCount, @NonNull MemorySegment pBindInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindImageMemory2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkBindImageMemory2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkBindImageMemory2KHR", device, bindInfoCount, pBindInfos); }
         return (int) Handles.MH_vkBindImageMemory2KHR.invokeExact(device.capabilities().PFN_vkBindImageMemory2KHR, device.segment(), bindInfoCount, pBindInfos); }

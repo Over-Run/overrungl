@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_fragment_shading_rate_enums` - device extension
 public final class VKNVFragmentShadingRateEnums {
     public static final int VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV = 0;
     public static final int VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV = 1;
@@ -48,10 +50,11 @@ public final class VKNVFragmentShadingRateEnums {
 
     private VKNVFragmentShadingRateEnums() {}
 
+    /// Invokes `vkCmdSetFragmentShadingRateEnumNV`.
     /// ```
     /// void vkCmdSetFragmentShadingRateEnumNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkFragmentShadingRateNV shadingRate, (int) VkFragmentShadingRateCombinerOpKHR combinerOps[2]);
     /// ```
-    public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, int shadingRate, MemorySegment combinerOps) {
+    public static void vkCmdSetFragmentShadingRateEnumNV(@NonNull VkCommandBuffer commandBuffer, int shadingRate, @NonNull MemorySegment combinerOps) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetFragmentShadingRateEnumNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetFragmentShadingRateEnumNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetFragmentShadingRateEnumNV", commandBuffer, shadingRate, combinerOps); }
         Handles.MH_vkCmdSetFragmentShadingRateEnumNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetFragmentShadingRateEnumNV, commandBuffer.segment(), shadingRate, combinerOps); }

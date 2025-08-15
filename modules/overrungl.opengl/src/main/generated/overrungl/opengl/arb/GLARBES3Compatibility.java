@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
+/// `GL_ARB_ES3_compatibility`
 public final class GLARBES3Compatibility {
     public static final int GL_COMPRESSED_RGB8_ETC2 = 0x9274;
     public static final int GL_COMPRESSED_SRGB8_ETC2 = 0x9275;

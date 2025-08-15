@@ -16,28 +16,29 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_shader_framebuffer_fetch_non_coherent`
 public final class GLEXTShaderFramebufferFetchNonCoherent {
     public static final int GL_FRAGMENT_SHADER_DISCARDS_SAMPLES_EXT = 0x8A52;
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_glFramebufferFetchBarrierEXT = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFramebufferFetchBarrierEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glFramebufferFetchBarrierEXT = func.invoke("glFramebufferFetchBarrierEXT");
         }
     }
 
-    public GLEXTShaderFramebufferFetchNonCoherent(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTShaderFramebufferFetchNonCoherent(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glFramebufferFetchBarrierEXT`.
     /// ```
     /// void glFramebufferFetchBarrierEXT();
     /// ```

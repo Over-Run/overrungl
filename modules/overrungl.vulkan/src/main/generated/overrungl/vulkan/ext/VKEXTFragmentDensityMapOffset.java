@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_fragment_density_map_offset` - device extension
 public final class VKEXTFragmentDensityMapOffset {
     public static final int VK_EXT_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 1;
     public static final String VK_EXT_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_EXT_fragment_density_map_offset";
@@ -36,10 +38,11 @@ public final class VKEXTFragmentDensityMapOffset {
 
     private VKEXTFragmentDensityMapOffset() {}
 
+    /// Invokes `vkCmdEndRendering2EXT`.
     /// ```
     /// void vkCmdEndRendering2EXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingEndInfoEXT* pRenderingEndInfo);
     /// ```
-    public static void vkCmdEndRendering2EXT(VkCommandBuffer commandBuffer, MemorySegment pRenderingEndInfo) {
+    public static void vkCmdEndRendering2EXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pRenderingEndInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRendering2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndRendering2EXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndRendering2EXT", commandBuffer, pRenderingEndInfo); }
         Handles.MH_vkCmdEndRendering2EXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRendering2EXT, commandBuffer.segment(), pRenderingEndInfo); }

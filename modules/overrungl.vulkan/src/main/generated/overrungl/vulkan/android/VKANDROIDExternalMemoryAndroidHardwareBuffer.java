@@ -18,9 +18,11 @@
 package overrungl.vulkan.android;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_ANDROID_external_memory_android_hardware_buffer` - device extension
 public final class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     public static final int VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION = 5;
     public static final String VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer";
@@ -40,20 +42,22 @@ public final class VKANDROIDExternalMemoryAndroidHardwareBuffer {
 
     private VKANDROIDExternalMemoryAndroidHardwareBuffer() {}
 
+    /// Invokes `vkGetAndroidHardwareBufferPropertiesANDROID`.
     /// ```
     /// (int) VkResult vkGetAndroidHardwareBufferPropertiesANDROID((struct VkDevice*) VkDevice device, const struct AHardwareBuffer * buffer, VkAndroidHardwareBufferPropertiesANDROID* pProperties);
     /// ```
-    public static int vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, MemorySegment buffer, MemorySegment pProperties) {
+    public static int vkGetAndroidHardwareBufferPropertiesANDROID(@NonNull VkDevice device, @NonNull MemorySegment buffer, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAndroidHardwareBufferPropertiesANDROID)) throw new VKSymbolNotFoundError("Symbol not found: vkGetAndroidHardwareBufferPropertiesANDROID");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetAndroidHardwareBufferPropertiesANDROID", device, buffer, pProperties); }
         return (int) Handles.MH_vkGetAndroidHardwareBufferPropertiesANDROID.invokeExact(device.capabilities().PFN_vkGetAndroidHardwareBufferPropertiesANDROID, device.segment(), buffer, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetAndroidHardwareBufferPropertiesANDROID", e); }
     }
 
+    /// Invokes `vkGetMemoryAndroidHardwareBufferANDROID`.
     /// ```
     /// (int) VkResult vkGetMemoryAndroidHardwareBufferANDROID((struct VkDevice*) VkDevice device, const VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo, struct AHardwareBuffer ** pBuffer);
     /// ```
-    public static int vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, MemorySegment pInfo, MemorySegment pBuffer) {
+    public static int vkGetMemoryAndroidHardwareBufferANDROID(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pBuffer) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryAndroidHardwareBufferANDROID)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryAndroidHardwareBufferANDROID");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMemoryAndroidHardwareBufferANDROID", device, pInfo, pBuffer); }
         return (int) Handles.MH_vkGetMemoryAndroidHardwareBufferANDROID.invokeExact(device.capabilities().PFN_vkGetMemoryAndroidHardwareBufferANDROID, device.segment(), pInfo, pBuffer); }

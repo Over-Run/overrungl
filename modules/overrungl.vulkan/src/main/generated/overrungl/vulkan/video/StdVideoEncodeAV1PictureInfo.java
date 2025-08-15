@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeAV1PictureInfo`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeAV1PictureInfo {
@@ -59,7 +61,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeAV1PictureInfo extends GroupType {
     /// The struct layout of `StdVideoEncodeAV1PictureInfo`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoEncodeAV1PictureInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_INT.withName("frame_type"),
         ValueLayout.JAVA_INT.withName("frame_presentation_time"),

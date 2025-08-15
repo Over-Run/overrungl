@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_provoking_vertex` - device extension
 public final class VKEXTProvokingVertex {
     public static final int VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT = 0;
     public static final int VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT = 1;

@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_external_memory_metal` - device extension
 public final class VKEXTExternalMemoryMetal {
     public static final int VK_EXT_EXTERNAL_MEMORY_METAL_SPEC_VERSION = 1;
     public static final String VK_EXT_EXTERNAL_MEMORY_METAL_EXTENSION_NAME = "VK_EXT_external_memory_metal";
@@ -38,20 +40,22 @@ public final class VKEXTExternalMemoryMetal {
 
     private VKEXTExternalMemoryMetal() {}
 
+    /// Invokes `vkGetMemoryMetalHandleEXT`.
     /// ```
     /// (int) VkResult vkGetMemoryMetalHandleEXT((struct VkDevice*) VkDevice device, const VkMemoryGetMetalHandleInfoEXT* pGetMetalHandleInfo, void** pHandle);
     /// ```
-    public static int vkGetMemoryMetalHandleEXT(VkDevice device, MemorySegment pGetMetalHandleInfo, MemorySegment pHandle) {
+    public static int vkGetMemoryMetalHandleEXT(@NonNull VkDevice device, @NonNull MemorySegment pGetMetalHandleInfo, @NonNull MemorySegment pHandle) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryMetalHandleEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryMetalHandleEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMemoryMetalHandleEXT", device, pGetMetalHandleInfo, pHandle); }
         return (int) Handles.MH_vkGetMemoryMetalHandleEXT.invokeExact(device.capabilities().PFN_vkGetMemoryMetalHandleEXT, device.segment(), pGetMetalHandleInfo, pHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryMetalHandleEXT", e); }
     }
 
+    /// Invokes `vkGetMemoryMetalHandlePropertiesEXT`.
     /// ```
     /// (int) VkResult vkGetMemoryMetalHandlePropertiesEXT((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, const void* pHandle, VkMemoryMetalHandlePropertiesEXT* pMemoryMetalHandleProperties);
     /// ```
-    public static int vkGetMemoryMetalHandlePropertiesEXT(VkDevice device, int handleType, MemorySegment pHandle, MemorySegment pMemoryMetalHandleProperties) {
+    public static int vkGetMemoryMetalHandlePropertiesEXT(@NonNull VkDevice device, int handleType, @NonNull MemorySegment pHandle, @NonNull MemorySegment pMemoryMetalHandleProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryMetalHandlePropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryMetalHandlePropertiesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMemoryMetalHandlePropertiesEXT", device, handleType, pHandle, pMemoryMetalHandleProperties); }
         return (int) Handles.MH_vkGetMemoryMetalHandlePropertiesEXT.invokeExact(device.capabilities().PFN_vkGetMemoryMetalHandlePropertiesEXT, device.segment(), handleType, pHandle, pMemoryMetalHandleProperties); }

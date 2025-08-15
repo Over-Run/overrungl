@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_validation_flags` - instance extension
 public final class VKEXTValidationFlags {
     public static final int VK_VALIDATION_CHECK_ALL_EXT = 0;
     public static final int VK_VALIDATION_CHECK_SHADERS_EXT = 1;
