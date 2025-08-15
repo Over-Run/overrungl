@@ -25,7 +25,7 @@ import overrungl.gen.file.unsigned_char_boolean
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
 
-// gl.xml updated: 2025-07-23
+// gl.xml updated: 2025-08-15
 
 const val openglPackage = "overrungl.opengl"
 fun extPackage(vendor: String): String {
