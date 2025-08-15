@@ -54,6 +54,7 @@ public final class STBRectPack {
         public final MemorySegment PFN_stbrp_setup_allow_out_of_mem;
         /// The function address of `stbrp_setup_heuristic`.
         public final MemorySegment PFN_stbrp_setup_heuristic;
+
         private Handles() {
             var _lookup = STBLibrary.lookup();
             PFN_stbrp_pack_rects = _lookup.findOrThrow("stbrp_pack_rects");
@@ -61,7 +62,8 @@ public final class STBRectPack {
             PFN_stbrp_setup_allow_out_of_mem = _lookup.findOrThrow("stbrp_setup_allow_out_of_mem");
             PFN_stbrp_setup_heuristic = _lookup.findOrThrow("stbrp_setup_heuristic");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

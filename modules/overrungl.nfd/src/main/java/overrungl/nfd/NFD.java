@@ -141,6 +141,7 @@ public final class NFD {
         public final MemorySegment PFN_NFD_PathSet_EnumNextN;
         /// The function address of `NFD_PathSet_Free`.
         public final MemorySegment PFN_NFD_PathSet_Free;
+
         private Handles() {
             var _lookup = NFDLibrary.lookup();
             PFN_NFD_FreePathN = _lookup.findOrThrow("NFD_FreePathN");
@@ -166,7 +167,8 @@ public final class NFD {
             PFN_NFD_PathSet_EnumNextN = _lookup.findOrThrow("NFD_PathSet_EnumNextN");
             PFN_NFD_PathSet_Free = _lookup.findOrThrow("NFD_PathSet_Free");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

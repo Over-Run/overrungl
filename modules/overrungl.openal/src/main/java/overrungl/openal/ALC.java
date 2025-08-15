@@ -141,6 +141,7 @@ public final class ALC {
         public final MemorySegment PFN_alcCaptureStop;
         /// The function address of `alcCaptureSamples`.
         public final MemorySegment PFN_alcCaptureSamples;
+
         private Handles() {
             var _lookup = OpenALLibrary.lookup();
             PFN_alcCreateContext = _lookup.findOrThrow("alcCreateContext");
@@ -164,7 +165,8 @@ public final class ALC {
             PFN_alcCaptureStop = _lookup.findOrThrow("alcCaptureStop");
             PFN_alcCaptureSamples = _lookup.findOrThrow("alcCaptureSamples");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

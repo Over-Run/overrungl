@@ -211,6 +211,7 @@ public final class STBImage {
         public final MemorySegment PFN_stbi_zlib_decode_noheader_malloc;
         /// The function address of `stbi_zlib_decode_noheader_buffer`.
         public final MemorySegment PFN_stbi_zlib_decode_noheader_buffer;
+
         private Handles() {
             var _lookup = STBLibrary.lookup();
             PFN_stbi_load_from_memory = _lookup.findOrThrow("stbi_load_from_memory");
@@ -257,7 +258,8 @@ public final class STBImage {
             PFN_stbi_zlib_decode_noheader_malloc = _lookup.findOrThrow("stbi_zlib_decode_noheader_malloc");
             PFN_stbi_zlib_decode_noheader_buffer = _lookup.findOrThrow("stbi_zlib_decode_noheader_buffer");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

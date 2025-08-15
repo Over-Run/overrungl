@@ -58,6 +58,7 @@ public final class STBPerlin {
         public final MemorySegment PFN_stb_perlin_turbulence_noise3;
         /// The function address of `stb_perlin_noise3_wrap_nonpow2`.
         public final MemorySegment PFN_stb_perlin_noise3_wrap_nonpow2;
+
         private Handles() {
             var _lookup = STBLibrary.lookup();
             PFN_stb_perlin_noise3 = _lookup.findOrThrow("stb_perlin_noise3");
@@ -67,7 +68,8 @@ public final class STBPerlin {
             PFN_stb_perlin_turbulence_noise3 = _lookup.findOrThrow("stb_perlin_turbulence_noise3");
             PFN_stb_perlin_noise3_wrap_nonpow2 = _lookup.findOrThrow("stb_perlin_noise3_wrap_nonpow2");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

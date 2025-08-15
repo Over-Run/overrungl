@@ -163,6 +163,7 @@ public final class STBImageResize2 {
         public final MemorySegment PFN_stbir_build_samplers_with_splits;
         /// The function address of `stbir_resize_extended_split`.
         public final MemorySegment PFN_stbir_resize_extended_split;
+
         private Handles() {
             var _lookup = STBLibrary.lookup();
             PFN_stbir_resize_uint8_srgb = _lookup.findOrThrow("stbir_resize_uint8_srgb");
@@ -188,7 +189,8 @@ public final class STBImageResize2 {
             PFN_stbir_build_samplers_with_splits = _lookup.findOrThrow("stbir_build_samplers_with_splits");
             PFN_stbir_resize_extended_split = _lookup.findOrThrow("stbir_resize_extended_split");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

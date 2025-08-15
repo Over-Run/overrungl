@@ -164,6 +164,7 @@ public final class STBVorbis {
         public final MemorySegment PFN_stb_vorbis_get_samples_short_interleaved;
         /// The function address of `stb_vorbis_get_samples_short`.
         public final MemorySegment PFN_stb_vorbis_get_samples_short;
+
         private Handles() {
             var _lookup = STBLibrary.lookup();
             PFN_stb_vorbis_get_info = _lookup.findOrThrow("stb_vorbis_get_info");
@@ -194,7 +195,8 @@ public final class STBVorbis {
             PFN_stb_vorbis_get_samples_short_interleaved = _lookup.findOrThrow("stb_vorbis_get_samples_short_interleaved");
             PFN_stb_vorbis_get_samples_short = _lookup.findOrThrow("stb_vorbis_get_samples_short");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

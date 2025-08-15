@@ -142,6 +142,7 @@ public final class GLFWNative {
         public final MemorySegment PFN_glfwGetOSMesaDepthBuffer;
         /// The function address of `glfwGetOSMesaContext`.
         public final MemorySegment PFN_glfwGetOSMesaContext;
+
         private Handles() {
             var _lookup = GLFWLibrary.lookup();
             PFN_glfwGetWin32Adapter = _lookup.find("glfwGetWin32Adapter").orElse(MemorySegment.NULL);
@@ -170,7 +171,8 @@ public final class GLFWNative {
             PFN_glfwGetOSMesaDepthBuffer = _lookup.find("glfwGetOSMesaDepthBuffer").orElse(MemorySegment.NULL);
             PFN_glfwGetOSMesaContext = _lookup.find("glfwGetOSMesaContext").orElse(MemorySegment.NULL);
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }
