@@ -335,6 +335,7 @@ public final class STBTrueType {
         public final MemorySegment PFN_stbtt_CompareUTF8toUTF16_bigendian;
         /// The function address of `stbtt_GetFontNameString`.
         public final MemorySegment PFN_stbtt_GetFontNameString;
+
         private Handles() {
             var _lookup = STBLibrary.lookup();
             PFN_stbtt_BakeFontBitmap = _lookup.findOrThrow("stbtt_BakeFontBitmap");
@@ -397,7 +398,8 @@ public final class STBTrueType {
             PFN_stbtt_CompareUTF8toUTF16_bigendian = _lookup.findOrThrow("stbtt_CompareUTF8toUTF16_bigendian");
             PFN_stbtt_GetFontNameString = _lookup.findOrThrow("stbtt_GetFontNameString");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

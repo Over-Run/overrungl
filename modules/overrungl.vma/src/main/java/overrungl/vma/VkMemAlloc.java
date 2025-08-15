@@ -382,6 +382,7 @@ public final class VkMemAlloc {
         public final MemorySegment PFN_vmaBuildStatsString;
         /// The function address of `vmaFreeStatsString`.
         public final MemorySegment PFN_vmaFreeStatsString;
+
         private Handles() {
             var _lookup = VulkanMemoryAllocatorLibrary.lookup();
             PFN_vmaCreateAllocator = _lookup.findOrThrow("vmaCreateAllocator");
@@ -455,7 +456,8 @@ public final class VkMemAlloc {
             PFN_vmaBuildStatsString = _lookup.findOrThrow("vmaBuildStatsString");
             PFN_vmaFreeStatsString = _lookup.findOrThrow("vmaFreeStatsString");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

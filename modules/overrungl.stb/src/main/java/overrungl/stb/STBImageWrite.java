@@ -78,6 +78,7 @@ public final class STBImageWrite {
         public final MemorySegment PFN_stbi_write_jpg_to_func;
         /// The function address of `stbi_flip_vertically_on_write`.
         public final MemorySegment PFN_stbi_flip_vertically_on_write;
+
         private Handles() {
             var _lookup = STBLibrary.lookup();
             PFN_stbi_write_png = _lookup.findOrThrow("stbi_write_png");
@@ -92,7 +93,8 @@ public final class STBImageWrite {
             PFN_stbi_write_jpg_to_func = _lookup.findOrThrow("stbi_write_jpg_to_func");
             PFN_stbi_flip_vertically_on_write = _lookup.findOrThrow("stbi_flip_vertically_on_write");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

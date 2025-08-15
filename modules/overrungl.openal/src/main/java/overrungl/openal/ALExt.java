@@ -1727,6 +1727,7 @@ public final class ALExt {
         public final MemorySegment PFN_EAXSetBufferModeDirect;
         /// The function address of `EAXGetBufferModeDirect`.
         public final MemorySegment PFN_EAXGetBufferModeDirect;
+
         private Handles() {
             var _lookup = OpenALLibrary.lookup();
             PFN_alBufferDataStatic = _lookup.findOrThrow("alBufferDataStatic");
@@ -1969,7 +1970,8 @@ public final class ALExt {
             PFN_EAXSetBufferModeDirect = _lookup.findOrThrow("EAXSetBufferModeDirect");
             PFN_EAXGetBufferModeDirect = _lookup.findOrThrow("EAXGetBufferModeDirect");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

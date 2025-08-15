@@ -54,6 +54,7 @@ public final class STBEasyFont {
         public final MemorySegment PFN_stb_easy_font_width;
         /// The function address of `stb_easy_font_height`.
         public final MemorySegment PFN_stb_easy_font_height;
+
         private Handles() {
             var _lookup = STBLibrary.lookup();
             PFN_stb_easy_font_get_spacing = _lookup.findOrThrow("stb_easy_font_get_spacing");
@@ -62,7 +63,8 @@ public final class STBEasyFont {
             PFN_stb_easy_font_width = _lookup.findOrThrow("stb_easy_font_width");
             PFN_stb_easy_font_height = _lookup.findOrThrow("stb_easy_font_height");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

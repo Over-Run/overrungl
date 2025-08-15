@@ -861,6 +861,7 @@ public final class GLFW {
         public final MemorySegment PFN_glfwGetPhysicalDevicePresentationSupport;
         /// The function address of `glfwCreateWindowSurface`.
         public final MemorySegment PFN_glfwCreateWindowSurface;
+
         private Handles() {
             var _lookup = GLFWLibrary.lookup();
             PFN_glfwInit = _lookup.findOrThrow("glfwInit");
@@ -987,7 +988,8 @@ public final class GLFW {
             PFN_glfwGetPhysicalDevicePresentationSupport = _lookup.findOrThrow("glfwGetPhysicalDevicePresentationSupport");
             PFN_glfwCreateWindowSurface = _lookup.findOrThrow("glfwCreateWindowSurface");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

@@ -395,6 +395,7 @@ public final class AL {
         public final MemorySegment PFN_alGetBuffer3i;
         /// The function address of `alGetBufferiv`.
         public final MemorySegment PFN_alGetBufferiv;
+
         private Handles() {
             var _lookup = OpenALLibrary.lookup();
             PFN_alEnable = _lookup.findOrThrow("alEnable");
@@ -471,7 +472,8 @@ public final class AL {
             PFN_alGetBuffer3i = _lookup.findOrThrow("alGetBuffer3i");
             PFN_alGetBufferiv = _lookup.findOrThrow("alGetBufferiv");
         }
-        private static Handles get() {
+
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }

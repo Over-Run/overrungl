@@ -550,7 +550,8 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     sb.appendLine(", value); return this; }")
                 }
                 if (member.pair.type is GroupLayoutType) {
-                    val typeJavaName = "${if (member.pair.type.packageName != null) "${member.pair.type.packageName}." else ""}${member.pair.type.name}"
+                    val typeJavaName =
+                        "${if (member.pair.type.packageName != null) "${member.pair.type.packageName}." else ""}${member.pair.type.name}"
                     sb.appendLine(
                         """
                             |    /// Accepts `${member.pair.name}` with the given function.
@@ -671,7 +672,8 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     sb.appendLine(", value); return this; }")
                 }
                 if (member.pair.type is GroupLayoutType) {
-                    val typeJavaName = "${if (member.pair.type.packageName != null) "${member.pair.type.packageName}." else ""}${member.pair.type.name}"
+                    val typeJavaName =
+                        "${if (member.pair.type.packageName != null) "${member.pair.type.packageName}." else ""}${member.pair.type.name}"
                     sb.appendLine(
                         """
                             |    /// Accepts `${member.pair.name}` with the given function.
@@ -753,6 +755,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                 sb.appendLine("        public final MemorySegment PFN_$entrypoint;")
             }
         }
+        sb.appendLine()
         sb.appendLine("        private Handles() {")
         sb.appendLine("            var _lookup = $symbolLookup;")
         interpreter.functions.forEach { (entrypoint, func) ->
@@ -766,9 +769,10 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
             }
         }
         sb.appendLine("        }")
+        sb.appendLine()
         sb.appendLine(
             """
-                |        private static Handles get() {
+                |        public static Handles get() {
                 |            final class Holder {
                 |                static final Handles instance = new Handles();
                 |            }
