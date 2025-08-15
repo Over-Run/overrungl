@@ -35,7 +35,7 @@ public final class GLFWLibrary {
 
     /// Sets a custom symbol lookup for module `glfw`.
     ///
-    /// This doesn't take effect after `GLFWLibrary::lookup()` had invoked.
+    /// This doesn't take effect if `GLFWLibrary::lookup()` had been invoked.
     /// @param lookup the custom symbol lookup
     public static void useLookup(SymbolLookup lookup) { customLookup = lookup; }
 

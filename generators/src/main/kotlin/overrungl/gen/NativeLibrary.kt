@@ -49,7 +49,7 @@ fun generateLookupAccessor(
 
                     /// Sets a custom symbol lookup for module `$moduleName`.
                     ///
-                    /// This doesn't take effect after `$className::lookup()` had invoked.
+                    /// This doesn't take effect if `$className::lookup()` had been invoked.
                     /// @param lookup the custom symbol lookup
                     public static void useLookup(SymbolLookup lookup) { customLookup = lookup; }
 

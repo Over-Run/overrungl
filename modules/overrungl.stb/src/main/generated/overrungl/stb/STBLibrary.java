@@ -35,7 +35,7 @@ public final class STBLibrary {
 
     /// Sets a custom symbol lookup for module `stb`.
     ///
-    /// This doesn't take effect after `STBLibrary::lookup()` had invoked.
+    /// This doesn't take effect if `STBLibrary::lookup()` had been invoked.
     /// @param lookup the custom symbol lookup
     public static void useLookup(SymbolLookup lookup) { customLookup = lookup; }
 
