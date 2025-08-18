@@ -41,7 +41,7 @@ void main() {
     var gl = new GL(GLFW::glfwGetProcAddress);
     // invoke OpenGL functions via instance methods
     gl.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    // for Vulkan, load function with GLFW
+    // for Vulkan, load functions with GLFW
     VK.create(GLFW::glfwGetInstanceProcAddress);
 }
 ```
@@ -70,7 +70,7 @@ Feel free to ask questions as long as you have searched in discussions and found
 
 ## Import as a Dependency
 
-We provided a modules customizer [here](https://over-run.github.io/overrungl-gen/).
+We provided a modules customizer [here](https://over-run.github.io/overrungl-gen/). The customizer is the recommended way to generate dependency declarations.
 
 - Platform Maven coordinate: `io.github.over-run:overrungl-bom`
 - Core module Maven coordinate: `io.github.over-run:overrungl`
@@ -83,10 +83,11 @@ dependencies {
     implementation(platform("io.github.over-run:overrungl-bom:<VERSION>"))
     implementation("io.github.over-run:overrungl")
     implementation("io.github.over-run:overrungl-glfw")
+    runtimeOnly("io.github.over-run:overrungl-glfw::natives-<OS>-<ARCH>")
 }
 ```
 
-### Using -SNAPSHOT Versions
+<!--### Using -SNAPSHOT Versions
 
 We publish `-SNAPSHOT` versions frequently.
 
@@ -98,7 +99,7 @@ and include this maven repository:
 repositories {
     maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
 }
-```
+```-->
 
 ### Enable native access
 
