@@ -114,7 +114,7 @@ public class GL33Test {
         }
 
         glfwMakeContextCurrent(window);
-        if (VSYNC) glfwSwapInterval(1);
+        glfwSwapInterval(VSYNC ? 1 : 0);
 
         glfwShowWindow(window);
     }
