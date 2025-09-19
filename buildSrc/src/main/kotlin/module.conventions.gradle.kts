@@ -131,9 +131,11 @@ configurations {
     }
 }
 
+tasks.named("assemble") {
+    dependsOn(sourcesJar, javadocJar)
+}
+
 artifacts {
-    add("archives", sourcesJar)
-    add("archives", javadocJar)
     add("instrumentedJars", instrumentedJar)
 }
 
