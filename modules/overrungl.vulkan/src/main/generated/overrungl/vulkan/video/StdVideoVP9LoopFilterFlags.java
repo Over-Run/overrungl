@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoVP9LoopFilterFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoVP9LoopFilterFlags {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoVP9LoopFilterFlags extends GroupType {
     /// The struct layout of `StdVideoVP9LoopFilterFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("loop_filter_delta_enabled"), 1,
         ValueLayout.JAVA_INT.withName("loop_filter_delta_update"), 1,
         ValueLayout.JAVA_INT.withName("reserved"), 30

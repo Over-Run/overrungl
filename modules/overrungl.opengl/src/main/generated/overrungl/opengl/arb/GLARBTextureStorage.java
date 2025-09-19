@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_texture_storage`
 public final class GLARBTextureStorage {
     public static final int GL_TEXTURE_IMMUTABLE_FORMAT = 0x912F;
     private final Handles handles;
@@ -33,17 +33,18 @@ public final class GLARBTextureStorage {
         public final MemorySegment PFN_glTexStorage1D;
         public final MemorySegment PFN_glTexStorage2D;
         public final MemorySegment PFN_glTexStorage3D;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTexStorage1D = func.invoke("glTexStorage1D");
             PFN_glTexStorage2D = func.invoke("glTexStorage2D");
             PFN_glTexStorage3D = func.invoke("glTexStorage3D");
         }
     }
 
-    public GLARBTextureStorage(overrungl.opengl.GLLoadFunc func) {
+    public GLARBTextureStorage(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTexStorage1D`.
     /// ```
     /// void glTexStorage1D((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width);
     /// ```
@@ -54,6 +55,7 @@ public final class GLARBTextureStorage {
         catch (Throwable e) { throw new RuntimeException("error in TexStorage1D", e); }
     }
 
+    /// Invokes `glTexStorage2D`.
     /// ```
     /// void glTexStorage2D((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -64,6 +66,7 @@ public final class GLARBTextureStorage {
         catch (Throwable e) { throw new RuntimeException("error in TexStorage2D", e); }
     }
 
+    /// Invokes `glTexStorage3D`.
     /// ```
     /// void glTexStorage3D((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```

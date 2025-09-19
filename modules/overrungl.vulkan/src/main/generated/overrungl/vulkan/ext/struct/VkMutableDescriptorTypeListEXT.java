@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkMutableDescriptorTypeListEXT`.
 /// ## Layout
 /// ```
 /// struct VkMutableDescriptorTypeListEXT {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class VkMutableDescriptorTypeListEXT extends GroupType {
     /// The struct layout of `VkMutableDescriptorTypeListEXT`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("descriptorTypeCount"),
         ValueLayout.ADDRESS.withName("pDescriptorTypes")
     );

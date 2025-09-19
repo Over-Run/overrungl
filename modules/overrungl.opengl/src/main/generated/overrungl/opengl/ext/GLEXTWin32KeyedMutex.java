@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_win32_keyed_mutex`
 public final class GLEXTWin32KeyedMutex {
     private final Handles handles;
     public static final class Handles {
@@ -30,16 +30,17 @@ public final class GLEXTWin32KeyedMutex {
         public static final MethodHandle MH_glReleaseKeyedMutexWin32EXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glAcquireKeyedMutexWin32EXT;
         public final MemorySegment PFN_glReleaseKeyedMutexWin32EXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glAcquireKeyedMutexWin32EXT = func.invoke("glAcquireKeyedMutexWin32EXT");
             PFN_glReleaseKeyedMutexWin32EXT = func.invoke("glReleaseKeyedMutexWin32EXT");
         }
     }
 
-    public GLEXTWin32KeyedMutex(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTWin32KeyedMutex(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glAcquireKeyedMutexWin32EXT`.
     /// ```
     /// GLboolean glAcquireKeyedMutexWin32EXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 key, (unsigned int) GLuint timeout);
     /// ```
@@ -50,6 +51,7 @@ public final class GLEXTWin32KeyedMutex {
         catch (Throwable e) { throw new RuntimeException("error in AcquireKeyedMutexWin32EXT", e); }
     }
 
+    /// Invokes `glReleaseKeyedMutexWin32EXT`.
     /// ```
     /// GLboolean glReleaseKeyedMutexWin32EXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 key);
     /// ```

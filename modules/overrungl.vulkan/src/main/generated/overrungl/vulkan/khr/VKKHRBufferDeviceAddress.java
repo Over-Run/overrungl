@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_buffer_device_address` - device extension
 public final class VKKHRBufferDeviceAddress {
     public static final int VK_KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 1;
     public static final String VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_KHR_buffer_device_address";
@@ -43,30 +45,33 @@ public final class VKKHRBufferDeviceAddress {
 
     private VKKHRBufferDeviceAddress() {}
 
+    /// Invokes `vkGetBufferDeviceAddressKHR`.
     /// ```
     /// (uint64_t) VkDeviceAddress vkGetBufferDeviceAddressKHR((struct VkDevice*) VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
     /// ```
-    public static long vkGetBufferDeviceAddressKHR(VkDevice device, MemorySegment pInfo) {
+    public static long vkGetBufferDeviceAddressKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferDeviceAddressKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetBufferDeviceAddressKHR", device, pInfo); }
         return (long) Handles.MH_vkGetBufferDeviceAddressKHR.invokeExact(device.capabilities().PFN_vkGetBufferDeviceAddressKHR, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferDeviceAddressKHR", e); }
     }
 
+    /// Invokes `vkGetBufferOpaqueCaptureAddressKHR`.
     /// ```
     /// uint64_t vkGetBufferOpaqueCaptureAddressKHR((struct VkDevice*) VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
     /// ```
-    public static long vkGetBufferOpaqueCaptureAddressKHR(VkDevice device, MemorySegment pInfo) {
+    public static long vkGetBufferOpaqueCaptureAddressKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferOpaqueCaptureAddressKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferOpaqueCaptureAddressKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetBufferOpaqueCaptureAddressKHR", device, pInfo); }
         return (long) Handles.MH_vkGetBufferOpaqueCaptureAddressKHR.invokeExact(device.capabilities().PFN_vkGetBufferOpaqueCaptureAddressKHR, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferOpaqueCaptureAddressKHR", e); }
     }
 
+    /// Invokes `vkGetDeviceMemoryOpaqueCaptureAddressKHR`.
     /// ```
     /// uint64_t vkGetDeviceMemoryOpaqueCaptureAddressKHR((struct VkDevice*) VkDevice device, const VkDeviceMemoryOpaqueCaptureAddressInfo* pInfo);
     /// ```
-    public static long vkGetDeviceMemoryOpaqueCaptureAddressKHR(VkDevice device, MemorySegment pInfo) {
+    public static long vkGetDeviceMemoryOpaqueCaptureAddressKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceMemoryOpaqueCaptureAddressKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceMemoryOpaqueCaptureAddressKHR", device, pInfo); }
         return (long) Handles.MH_vkGetDeviceMemoryOpaqueCaptureAddressKHR.invokeExact(device.capabilities().PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR, device.segment(), pInfo); }

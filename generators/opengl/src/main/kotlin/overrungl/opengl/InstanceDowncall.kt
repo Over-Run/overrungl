@@ -24,8 +24,9 @@ import kotlin.io.path.Path
 import kotlin.io.path.createParentDirectories
 
 class InstanceDowncall(
-    packageName: String,
-    name: String,
+    private val packageName: String,
+    private val name: String,
+    private val description: String,
     action: InstanceDowncall.() -> Unit
 ) {
     var modifier: String? = null
@@ -41,7 +42,7 @@ class InstanceDowncall(
 
     init {
         action()
-        write(packageName, name)
+        write()
     }
 
     fun extends(name: String) {
@@ -57,26 +58,26 @@ class InstanceDowncall(
         methods.add(method)
     }
 
-    fun write(packageName: String, name: String) {
+    fun write() {
         val path = Path("src/main/generated/${packageName.replace('.', '/')}/$name.java")
             .createParentDirectories()
         val sb = StringBuilder()
 
         sb.appendLine(commentedFileHeader)
         sb.appendLine("package $packageName;")
-        sb.appendLine()
         if (handleFields.isNotEmpty()) {
             sb.appendLine(
                 """
                     import java.lang.foreign.*;
                     import java.lang.invoke.*;
-                    import static overrungl.internal.RuntimeHelper.*;
+                    import org.jspecify.annotations.*;
                     import overrungl.util.*;
                 """.trimIndent()
             )
             if (packageName != openglPackage) sb.appendLine("import overrungl.opengl.*;")
-            sb.appendLine()
+            sb.appendLine("import static overrungl.internal.RuntimeHelper.*;")
         }
+        sb.appendLine("/// $description")
         sb.append("public")
         if (modifier != null) {
             sb.append(" ")

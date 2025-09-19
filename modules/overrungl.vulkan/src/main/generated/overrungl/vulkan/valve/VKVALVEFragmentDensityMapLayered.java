@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.valve;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_VALVE_fragment_density_map_layered` - device extension
 public final class VKVALVEFragmentDensityMapLayered {
     public static final int VK_VALVE_FRAGMENT_DENSITY_MAP_LAYERED_SPEC_VERSION = 1;
     public static final String VK_VALVE_FRAGMENT_DENSITY_MAP_LAYERED_EXTENSION_NAME = "VK_VALVE_fragment_density_map_layered";

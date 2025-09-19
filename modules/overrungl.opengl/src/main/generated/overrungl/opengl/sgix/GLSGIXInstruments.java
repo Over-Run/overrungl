@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_SGIX_instruments`
 public final class GLSGIXInstruments {
     public static final int GL_INSTRUMENT_BUFFER_POINTER_SGIX = 0x8180;
     public static final int GL_INSTRUMENT_MEASUREMENTS_SGIX = 0x8181;
@@ -40,7 +40,7 @@ public final class GLSGIXInstruments {
         public final MemorySegment PFN_glReadInstrumentsSGIX;
         public final MemorySegment PFN_glStartInstrumentsSGIX;
         public final MemorySegment PFN_glStopInstrumentsSGIX;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGetInstrumentsSGIX = func.invoke("glGetInstrumentsSGIX");
             PFN_glInstrumentsBufferSGIX = func.invoke("glInstrumentsBufferSGIX");
             PFN_glPollInstrumentsSGIX = func.invoke("glPollInstrumentsSGIX");
@@ -50,10 +50,11 @@ public final class GLSGIXInstruments {
         }
     }
 
-    public GLSGIXInstruments(overrungl.opengl.GLLoadFunc func) {
+    public GLSGIXInstruments(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGetInstrumentsSGIX`.
     /// ```
     /// (int) GLint glGetInstrumentsSGIX();
     /// ```
@@ -64,26 +65,29 @@ public final class GLSGIXInstruments {
         catch (Throwable e) { throw new RuntimeException("error in GetInstrumentsSGIX", e); }
     }
 
+    /// Invokes `glInstrumentsBufferSGIX`.
     /// ```
     /// void glInstrumentsBufferSGIX((int) GLsizei size, GLint* buffer);
     /// ```
-    public void InstrumentsBufferSGIX(int size, MemorySegment buffer) {
+    public void InstrumentsBufferSGIX(int size, @NonNull MemorySegment buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInstrumentsBufferSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glInstrumentsBufferSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInstrumentsBufferSGIX", size, buffer); }
         Handles.MH_glInstrumentsBufferSGIX.invokeExact(handles.PFN_glInstrumentsBufferSGIX, size, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in InstrumentsBufferSGIX", e); }
     }
 
+    /// Invokes `glPollInstrumentsSGIX`.
     /// ```
     /// (int) GLint glPollInstrumentsSGIX(GLint* marker_p);
     /// ```
-    public int PollInstrumentsSGIX(MemorySegment marker_p) {
+    public int PollInstrumentsSGIX(@NonNull MemorySegment marker_p) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPollInstrumentsSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glPollInstrumentsSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPollInstrumentsSGIX", marker_p); }
         return (int) Handles.MH_glPollInstrumentsSGIX.invokeExact(handles.PFN_glPollInstrumentsSGIX, marker_p); }
         catch (Throwable e) { throw new RuntimeException("error in PollInstrumentsSGIX", e); }
     }
 
+    /// Invokes `glReadInstrumentsSGIX`.
     /// ```
     /// void glReadInstrumentsSGIX((int) GLint marker);
     /// ```
@@ -94,6 +98,7 @@ public final class GLSGIXInstruments {
         catch (Throwable e) { throw new RuntimeException("error in ReadInstrumentsSGIX", e); }
     }
 
+    /// Invokes `glStartInstrumentsSGIX`.
     /// ```
     /// void glStartInstrumentsSGIX();
     /// ```
@@ -104,6 +109,7 @@ public final class GLSGIXInstruments {
         catch (Throwable e) { throw new RuntimeException("error in StartInstrumentsSGIX", e); }
     }
 
+    /// Invokes `glStopInstrumentsSGIX`.
     /// ```
     /// void glStopInstrumentsSGIX((int) GLint marker);
     /// ```

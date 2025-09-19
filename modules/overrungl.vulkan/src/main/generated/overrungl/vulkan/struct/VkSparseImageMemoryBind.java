@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkSparseImageMemoryBind`.
 /// ## Layout
 /// ```
 /// struct VkSparseImageMemoryBind {
@@ -38,7 +40,7 @@ import overrungl.util.*;
 /// ```
 public final class VkSparseImageMemoryBind extends GroupType {
     /// The struct layout of `VkSparseImageMemoryBind`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkImageSubresource.LAYOUT.withName("subresource"),
         overrungl.vulkan.struct.VkOffset3D.LAYOUT.withName("offset"),
         overrungl.vulkan.struct.VkExtent3D.LAYOUT.withName("extent"),

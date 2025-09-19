@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR`.
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderSubgroupRotate"),

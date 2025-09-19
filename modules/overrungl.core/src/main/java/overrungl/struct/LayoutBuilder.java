@@ -22,6 +22,7 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.StructLayout;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /// A builder of [StructLayout] which automatically computes the padding between elements.
 ///
@@ -34,7 +35,8 @@ public final class LayoutBuilder {
     /// {@return a struct with padding computed}
     ///
     /// @param elements the memory layouts of the elements
-    public static StructLayout struct(MemoryLayout... elements) {
+    public static @NonNull StructLayout struct(@NonNull MemoryLayout @NonNull ... elements) {
+        Objects.requireNonNull(elements);
         List<MemoryLayout> list = new ArrayList<>();
         long offset = 0L;
         long align = 0L;
@@ -61,7 +63,7 @@ public final class LayoutBuilder {
     ///
     /// @param elements the element arranged with order: `MemoryLayout`, `int`...
     /// @return the struct layout
-    public static StructLayout bitfields(Object @NonNull ... elements) {
+    public static @NonNull StructLayout bitfields(@NonNull Object @NonNull ... elements) {
         if (elements.length % 2 != 0)
             throw new IllegalArgumentException("Not multiple of 2: " + elements.length);
         List<MemoryLayout> list = new ArrayList<>();

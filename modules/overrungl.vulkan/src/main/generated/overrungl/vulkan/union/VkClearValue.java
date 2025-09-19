@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkClearValue`.
 /// ## Layout
 /// ```
 /// union VkClearValue {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class VkClearValue extends GroupType {
     /// The union layout of `VkClearValue`.
-    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         overrungl.vulkan.union.VkClearColorValue.LAYOUT.withName("color"),
         overrungl.vulkan.struct.VkClearDepthStencilValue.LAYOUT.withName("depthStencil")
     );

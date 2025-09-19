@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoDecodeAV1ReferenceInfoFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoDecodeAV1ReferenceInfoFlags {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoDecodeAV1ReferenceInfoFlags extends GroupType {
     /// The struct layout of `StdVideoDecodeAV1ReferenceInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("disable_frame_end_update_cdf"), 1,
         ValueLayout.JAVA_INT.withName("segmentation_enabled"), 1,
         ValueLayout.JAVA_INT.withName("reserved"), 30

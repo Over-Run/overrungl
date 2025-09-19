@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_device_memory_report` - device extension
 public final class VKEXTDeviceMemoryReport {
     public static final int VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT = 0;
     public static final int VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT = 1;

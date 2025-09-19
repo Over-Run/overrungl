@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_image_compression_control` - device extension
 public final class VKEXTImageCompressionControl {
     public static final int VK_IMAGE_COMPRESSION_DEFAULT_EXT = 0;
     public static final int VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT = 0x00000001;
@@ -66,10 +68,11 @@ public final class VKEXTImageCompressionControl {
 
     private VKEXTImageCompressionControl() {}
 
+    /// Invokes `vkGetImageSubresourceLayout2EXT`.
     /// ```
     /// void vkGetImageSubresourceLayout2EXT((struct VkDevice*) VkDevice device, (uint64_t) VkImage image, const VkImageSubresource2* pSubresource, VkSubresourceLayout2* pLayout);
     /// ```
-    public static void vkGetImageSubresourceLayout2EXT(VkDevice device, long image, MemorySegment pSubresource, MemorySegment pLayout) {
+    public static void vkGetImageSubresourceLayout2EXT(@NonNull VkDevice device, long image, @NonNull MemorySegment pSubresource, @NonNull MemorySegment pLayout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageSubresourceLayout2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2EXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetImageSubresourceLayout2EXT", device, image, pSubresource, pLayout); }
         Handles.MH_vkGetImageSubresourceLayout2EXT.invokeExact(device.capabilities().PFN_vkGetImageSubresourceLayout2EXT, device.segment(), image, pSubresource, pLayout); }

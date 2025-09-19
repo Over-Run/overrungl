@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_framebuffer_blit_layers`
 public final class GLEXTFramebufferBlitLayers {
     private final Handles handles;
     public static final class Handles {
@@ -30,16 +30,17 @@ public final class GLEXTFramebufferBlitLayers {
         public static final MethodHandle MH_glBlitFramebufferLayerEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlitFramebufferLayersEXT;
         public final MemorySegment PFN_glBlitFramebufferLayerEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBlitFramebufferLayersEXT = func.invoke("glBlitFramebufferLayersEXT");
             PFN_glBlitFramebufferLayerEXT = func.invoke("glBlitFramebufferLayerEXT");
         }
     }
 
-    public GLEXTFramebufferBlitLayers(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTFramebufferBlitLayers(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBlitFramebufferLayersEXT`.
     /// ```
     /// void glBlitFramebufferLayersEXT((int) GLint srcX0, (int) GLint srcY0, (int) GLint srcX1, (int) GLint srcY1, (int) GLint dstX0, (int) GLint dstY0, (int) GLint dstX1, (int) GLint dstY1, (unsigned int) GLbitfield mask, (unsigned int) GLenum filter);
     /// ```
@@ -50,6 +51,7 @@ public final class GLEXTFramebufferBlitLayers {
         catch (Throwable e) { throw new RuntimeException("error in BlitFramebufferLayersEXT", e); }
     }
 
+    /// Invokes `glBlitFramebufferLayerEXT`.
     /// ```
     /// void glBlitFramebufferLayerEXT((int) GLint srcX0, (int) GLint srcY0, (int) GLint srcX1, (int) GLint srcY1, (int) GLint srcLayer, (int) GLint dstX0, (int) GLint dstY0, (int) GLint dstX1, (int) GLint dstY1, (int) GLint dstLayer, (unsigned int) GLbitfield mask, (unsigned int) GLenum filter);
     /// ```

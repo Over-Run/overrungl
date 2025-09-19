@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_ray_tracing` - device extension
 public final class VKNVRayTracing {
     public static final int VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV = 0;
     public static final int VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV = 1;
@@ -95,120 +97,132 @@ public final class VKNVRayTracing {
 
     private VKNVRayTracing() {}
 
+    /// Invokes `vkCreateAccelerationStructureNV`.
     /// ```
     /// (int) VkResult vkCreateAccelerationStructureNV((struct VkDevice*) VkDevice device, const VkAccelerationStructureCreateInfoNV* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkAccelerationStructureNV* pAccelerationStructure);
     /// ```
-    public static int vkCreateAccelerationStructureNV(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pAccelerationStructure) {
+    public static int vkCreateAccelerationStructureNV(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pAccelerationStructure) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateAccelerationStructureNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateAccelerationStructureNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateAccelerationStructureNV", device, pCreateInfo, pAllocator, pAccelerationStructure); }
         return (int) Handles.MH_vkCreateAccelerationStructureNV.invokeExact(device.capabilities().PFN_vkCreateAccelerationStructureNV, device.segment(), pCreateInfo, pAllocator, pAccelerationStructure); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateAccelerationStructureNV", e); }
     }
 
+    /// Invokes `vkDestroyAccelerationStructureNV`.
     /// ```
     /// void vkDestroyAccelerationStructureNV((struct VkDevice*) VkDevice device, (uint64_t) VkAccelerationStructureNV accelerationStructure, const VkAllocationCallbacks* pAllocator);
     /// ```
-    public static void vkDestroyAccelerationStructureNV(VkDevice device, long accelerationStructure, MemorySegment pAllocator) {
+    public static void vkDestroyAccelerationStructureNV(@NonNull VkDevice device, long accelerationStructure, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyAccelerationStructureNV)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyAccelerationStructureNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyAccelerationStructureNV", device, accelerationStructure, pAllocator); }
         Handles.MH_vkDestroyAccelerationStructureNV.invokeExact(device.capabilities().PFN_vkDestroyAccelerationStructureNV, device.segment(), accelerationStructure, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyAccelerationStructureNV", e); }
     }
 
+    /// Invokes `vkGetAccelerationStructureMemoryRequirementsNV`.
     /// ```
     /// void vkGetAccelerationStructureMemoryRequirementsNV((struct VkDevice*) VkDevice device, const VkAccelerationStructureMemoryRequirementsInfoNV* pInfo, VkMemoryRequirements2KHR* pMemoryRequirements);
     /// ```
-    public static void vkGetAccelerationStructureMemoryRequirementsNV(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
+    public static void vkGetAccelerationStructureMemoryRequirementsNV(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAccelerationStructureMemoryRequirementsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetAccelerationStructureMemoryRequirementsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetAccelerationStructureMemoryRequirementsNV", device, pInfo, pMemoryRequirements); }
         Handles.MH_vkGetAccelerationStructureMemoryRequirementsNV.invokeExact(device.capabilities().PFN_vkGetAccelerationStructureMemoryRequirementsNV, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetAccelerationStructureMemoryRequirementsNV", e); }
     }
 
+    /// Invokes `vkBindAccelerationStructureMemoryNV`.
     /// ```
     /// (int) VkResult vkBindAccelerationStructureMemoryNV((struct VkDevice*) VkDevice device, uint32_t bindInfoCount, const VkBindAccelerationStructureMemoryInfoNV* pBindInfos);
     /// ```
-    public static int vkBindAccelerationStructureMemoryNV(VkDevice device, int bindInfoCount, MemorySegment pBindInfos) {
+    public static int vkBindAccelerationStructureMemoryNV(@NonNull VkDevice device, int bindInfoCount, @NonNull MemorySegment pBindInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindAccelerationStructureMemoryNV)) throw new VKSymbolNotFoundError("Symbol not found: vkBindAccelerationStructureMemoryNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkBindAccelerationStructureMemoryNV", device, bindInfoCount, pBindInfos); }
         return (int) Handles.MH_vkBindAccelerationStructureMemoryNV.invokeExact(device.capabilities().PFN_vkBindAccelerationStructureMemoryNV, device.segment(), bindInfoCount, pBindInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkBindAccelerationStructureMemoryNV", e); }
     }
 
+    /// Invokes `vkCmdBuildAccelerationStructureNV`.
     /// ```
     /// void vkCmdBuildAccelerationStructureNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkAccelerationStructureInfoNV* pInfo, (uint64_t) VkBuffer instanceData, (uint64_t) VkDeviceSize instanceOffset, (uint32_t) VkBool32 update, (uint64_t) VkAccelerationStructureNV dst, (uint64_t) VkAccelerationStructureNV src, (uint64_t) VkBuffer scratch, (uint64_t) VkDeviceSize scratchOffset);
     /// ```
-    public static void vkCmdBuildAccelerationStructureNV(VkCommandBuffer commandBuffer, MemorySegment pInfo, long instanceData, long instanceOffset, int update, long dst, long src, long scratch, long scratchOffset) {
+    public static void vkCmdBuildAccelerationStructureNV(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pInfo, long instanceData, long instanceOffset, int update, long dst, long src, long scratch, long scratchOffset) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildAccelerationStructureNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBuildAccelerationStructureNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBuildAccelerationStructureNV", commandBuffer, pInfo, instanceData, instanceOffset, update, dst, src, scratch, scratchOffset); }
         Handles.MH_vkCmdBuildAccelerationStructureNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildAccelerationStructureNV, commandBuffer.segment(), pInfo, instanceData, instanceOffset, update, dst, src, scratch, scratchOffset); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBuildAccelerationStructureNV", e); }
     }
 
+    /// Invokes `vkCmdCopyAccelerationStructureNV`.
     /// ```
     /// void vkCmdCopyAccelerationStructureNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkAccelerationStructureNV dst, (uint64_t) VkAccelerationStructureNV src, (int) VkCopyAccelerationStructureModeKHR mode);
     /// ```
-    public static void vkCmdCopyAccelerationStructureNV(VkCommandBuffer commandBuffer, long dst, long src, int mode) {
+    public static void vkCmdCopyAccelerationStructureNV(@NonNull VkCommandBuffer commandBuffer, long dst, long src, int mode) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyAccelerationStructureNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyAccelerationStructureNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyAccelerationStructureNV", commandBuffer, dst, src, mode); }
         Handles.MH_vkCmdCopyAccelerationStructureNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyAccelerationStructureNV, commandBuffer.segment(), dst, src, mode); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyAccelerationStructureNV", e); }
     }
 
+    /// Invokes `vkCmdTraceRaysNV`.
     /// ```
     /// void vkCmdTraceRaysNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer raygenShaderBindingTableBuffer, (uint64_t) VkDeviceSize raygenShaderBindingOffset, (uint64_t) VkBuffer missShaderBindingTableBuffer, (uint64_t) VkDeviceSize missShaderBindingOffset, (uint64_t) VkDeviceSize missShaderBindingStride, (uint64_t) VkBuffer hitShaderBindingTableBuffer, (uint64_t) VkDeviceSize hitShaderBindingOffset, (uint64_t) VkDeviceSize hitShaderBindingStride, (uint64_t) VkBuffer callableShaderBindingTableBuffer, (uint64_t) VkDeviceSize callableShaderBindingOffset, (uint64_t) VkDeviceSize callableShaderBindingStride, uint32_t width, uint32_t height, uint32_t depth);
     /// ```
-    public static void vkCmdTraceRaysNV(VkCommandBuffer commandBuffer, long raygenShaderBindingTableBuffer, long raygenShaderBindingOffset, long missShaderBindingTableBuffer, long missShaderBindingOffset, long missShaderBindingStride, long hitShaderBindingTableBuffer, long hitShaderBindingOffset, long hitShaderBindingStride, long callableShaderBindingTableBuffer, long callableShaderBindingOffset, long callableShaderBindingStride, int width, int height, int depth) {
+    public static void vkCmdTraceRaysNV(@NonNull VkCommandBuffer commandBuffer, long raygenShaderBindingTableBuffer, long raygenShaderBindingOffset, long missShaderBindingTableBuffer, long missShaderBindingOffset, long missShaderBindingStride, long hitShaderBindingTableBuffer, long hitShaderBindingOffset, long hitShaderBindingStride, long callableShaderBindingTableBuffer, long callableShaderBindingOffset, long callableShaderBindingStride, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdTraceRaysNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdTraceRaysNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdTraceRaysNV", commandBuffer, raygenShaderBindingTableBuffer, raygenShaderBindingOffset, missShaderBindingTableBuffer, missShaderBindingOffset, missShaderBindingStride, hitShaderBindingTableBuffer, hitShaderBindingOffset, hitShaderBindingStride, callableShaderBindingTableBuffer, callableShaderBindingOffset, callableShaderBindingStride, width, height, depth); }
         Handles.MH_vkCmdTraceRaysNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdTraceRaysNV, commandBuffer.segment(), raygenShaderBindingTableBuffer, raygenShaderBindingOffset, missShaderBindingTableBuffer, missShaderBindingOffset, missShaderBindingStride, hitShaderBindingTableBuffer, hitShaderBindingOffset, hitShaderBindingStride, callableShaderBindingTableBuffer, callableShaderBindingOffset, callableShaderBindingStride, width, height, depth); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdTraceRaysNV", e); }
     }
 
+    /// Invokes `vkCreateRayTracingPipelinesNV`.
     /// ```
     /// (int) VkResult vkCreateRayTracingPipelinesNV((struct VkDevice*) VkDevice device, (uint64_t) VkPipelineCache pipelineCache, uint32_t createInfoCount, const VkRayTracingPipelineCreateInfoNV* pCreateInfos, const VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
     /// ```
-    public static int vkCreateRayTracingPipelinesNV(VkDevice device, long pipelineCache, int createInfoCount, MemorySegment pCreateInfos, MemorySegment pAllocator, MemorySegment pPipelines) {
+    public static int vkCreateRayTracingPipelinesNV(@NonNull VkDevice device, long pipelineCache, int createInfoCount, @NonNull MemorySegment pCreateInfos, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pPipelines) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateRayTracingPipelinesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateRayTracingPipelinesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateRayTracingPipelinesNV", device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines); }
         return (int) Handles.MH_vkCreateRayTracingPipelinesNV.invokeExact(device.capabilities().PFN_vkCreateRayTracingPipelinesNV, device.segment(), pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateRayTracingPipelinesNV", e); }
     }
 
+    /// Invokes `vkGetRayTracingShaderGroupHandlesNV`.
     /// ```
     /// (int) VkResult vkGetRayTracingShaderGroupHandlesNV((struct VkDevice*) VkDevice device, (uint64_t) VkPipeline pipeline, uint32_t firstGroup, uint32_t groupCount, size_t dataSize, void* pData);
     /// ```
-    public static int vkGetRayTracingShaderGroupHandlesNV(VkDevice device, long pipeline, int firstGroup, int groupCount, long dataSize, MemorySegment pData) {
+    public static int vkGetRayTracingShaderGroupHandlesNV(@NonNull VkDevice device, long pipeline, int firstGroup, int groupCount, long dataSize, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetRayTracingShaderGroupHandlesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetRayTracingShaderGroupHandlesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetRayTracingShaderGroupHandlesNV", device, pipeline, firstGroup, groupCount, dataSize, pData); }
         return (int) Handles.MH_vkGetRayTracingShaderGroupHandlesNV.invoke(device.capabilities().PFN_vkGetRayTracingShaderGroupHandlesNV, device.segment(), pipeline, firstGroup, groupCount, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, dataSize), pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetRayTracingShaderGroupHandlesNV", e); }
     }
 
+    /// Invokes `vkGetAccelerationStructureHandleNV`.
     /// ```
     /// (int) VkResult vkGetAccelerationStructureHandleNV((struct VkDevice*) VkDevice device, (uint64_t) VkAccelerationStructureNV accelerationStructure, size_t dataSize, void* pData);
     /// ```
-    public static int vkGetAccelerationStructureHandleNV(VkDevice device, long accelerationStructure, long dataSize, MemorySegment pData) {
+    public static int vkGetAccelerationStructureHandleNV(@NonNull VkDevice device, long accelerationStructure, long dataSize, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAccelerationStructureHandleNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetAccelerationStructureHandleNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetAccelerationStructureHandleNV", device, accelerationStructure, dataSize, pData); }
         return (int) Handles.MH_vkGetAccelerationStructureHandleNV.invoke(device.capabilities().PFN_vkGetAccelerationStructureHandleNV, device.segment(), accelerationStructure, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, dataSize), pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetAccelerationStructureHandleNV", e); }
     }
 
+    /// Invokes `vkCmdWriteAccelerationStructuresPropertiesNV`.
     /// ```
     /// void vkCmdWriteAccelerationStructuresPropertiesNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t accelerationStructureCount, const VkAccelerationStructureNV* pAccelerationStructures, (int) VkQueryType queryType, (uint64_t) VkQueryPool queryPool, uint32_t firstQuery);
     /// ```
-    public static void vkCmdWriteAccelerationStructuresPropertiesNV(VkCommandBuffer commandBuffer, int accelerationStructureCount, MemorySegment pAccelerationStructures, int queryType, long queryPool, int firstQuery) {
+    public static void vkCmdWriteAccelerationStructuresPropertiesNV(@NonNull VkCommandBuffer commandBuffer, int accelerationStructureCount, @NonNull MemorySegment pAccelerationStructures, int queryType, long queryPool, int firstQuery) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteAccelerationStructuresPropertiesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdWriteAccelerationStructuresPropertiesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdWriteAccelerationStructuresPropertiesNV", commandBuffer, accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery); }
         Handles.MH_vkCmdWriteAccelerationStructuresPropertiesNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdWriteAccelerationStructuresPropertiesNV, commandBuffer.segment(), accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdWriteAccelerationStructuresPropertiesNV", e); }
     }
 
+    /// Invokes `vkCompileDeferredNV`.
     /// ```
     /// (int) VkResult vkCompileDeferredNV((struct VkDevice*) VkDevice device, (uint64_t) VkPipeline pipeline, uint32_t shader);
     /// ```
-    public static int vkCompileDeferredNV(VkDevice device, long pipeline, int shader) {
+    public static int vkCompileDeferredNV(@NonNull VkDevice device, long pipeline, int shader) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCompileDeferredNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCompileDeferredNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCompileDeferredNV", device, pipeline, shader); }
         return (int) Handles.MH_vkCompileDeferredNV.invokeExact(device.capabilities().PFN_vkCompileDeferredNV, device.segment(), pipeline, shader); }

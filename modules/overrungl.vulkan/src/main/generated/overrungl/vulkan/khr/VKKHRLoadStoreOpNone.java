@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_load_store_op_none` - device extension
 public final class VKKHRLoadStoreOpNone {
     public static final int VK_KHR_LOAD_STORE_OP_NONE_SPEC_VERSION = 1;
     public static final String VK_KHR_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_KHR_load_store_op_none";

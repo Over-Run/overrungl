@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_performance_query` - device extension
 public final class VKKHRPerformanceQuery {
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR = 0x00000001;
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_KHR = 0x00000001;
@@ -70,40 +72,44 @@ public final class VKKHRPerformanceQuery {
 
     private VKKHRPerformanceQuery() {}
 
+    /// Invokes `vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR`.
     /// ```
     /// (int) VkResult vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, uint32_t* pCounterCount, VkPerformanceCounterKHR* pCounters, VkPerformanceCounterDescriptionKHR* pCounterDescriptions);
     /// ```
-    public static int vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(VkPhysicalDevice physicalDevice, int queueFamilyIndex, MemorySegment pCounterCount, MemorySegment pCounters, MemorySegment pCounterDescriptions) {
+    public static int vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(@NonNull VkPhysicalDevice physicalDevice, int queueFamilyIndex, @NonNull MemorySegment pCounterCount, @NonNull MemorySegment pCounters, @NonNull MemorySegment pCounterDescriptions) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR", physicalDevice, queueFamilyIndex, pCounterCount, pCounters, pCounterDescriptions); }
         return (int) Handles.MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR.invokeExact(physicalDevice.capabilities().PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR, physicalDevice.segment(), queueFamilyIndex, pCounterCount, pCounters, pCounterDescriptions); }
         catch (Throwable e) { throw new RuntimeException("error in vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR", e); }
     }
 
+    /// Invokes `vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR`.
     /// ```
     /// void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkQueryPoolPerformanceCreateInfoKHR* pPerformanceQueryCreateInfo, uint32_t* pNumPasses);
     /// ```
-    public static void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(VkPhysicalDevice physicalDevice, MemorySegment pPerformanceQueryCreateInfo, MemorySegment pNumPasses) {
+    public static void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pPerformanceQueryCreateInfo, @NonNull MemorySegment pNumPasses) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR", physicalDevice, pPerformanceQueryCreateInfo, pNumPasses); }
         Handles.MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR, physicalDevice.segment(), pPerformanceQueryCreateInfo, pNumPasses); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR", e); }
     }
 
+    /// Invokes `vkAcquireProfilingLockKHR`.
     /// ```
     /// (int) VkResult vkAcquireProfilingLockKHR((struct VkDevice*) VkDevice device, const VkAcquireProfilingLockInfoKHR* pInfo);
     /// ```
-    public static int vkAcquireProfilingLockKHR(VkDevice device, MemorySegment pInfo) {
+    public static int vkAcquireProfilingLockKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquireProfilingLockKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireProfilingLockKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkAcquireProfilingLockKHR", device, pInfo); }
         return (int) Handles.MH_vkAcquireProfilingLockKHR.invokeExact(device.capabilities().PFN_vkAcquireProfilingLockKHR, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireProfilingLockKHR", e); }
     }
 
+    /// Invokes `vkReleaseProfilingLockKHR`.
     /// ```
     /// void vkReleaseProfilingLockKHR((struct VkDevice*) VkDevice device);
     /// ```
-    public static void vkReleaseProfilingLockKHR(VkDevice device) {
+    public static void vkReleaseProfilingLockKHR(@NonNull VkDevice device) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleaseProfilingLockKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkReleaseProfilingLockKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkReleaseProfilingLockKHR", device); }
         Handles.MH_vkReleaseProfilingLockKHR.invokeExact(device.capabilities().PFN_vkReleaseProfilingLockKHR, device.segment()); }

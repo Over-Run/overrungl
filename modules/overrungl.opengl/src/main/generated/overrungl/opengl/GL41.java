@@ -16,12 +16,12 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// Constants and functions of OpenGL 4.1.
 public class GL41 extends GL40 {
     public static final int GL_FIXED = 0x140C;
     public static final int GL_IMPLEMENTATION_COLOR_READ_TYPE = 0x8B9A;
@@ -333,6 +333,7 @@ public class GL41 extends GL40 {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glReleaseShaderCompiler`.
     /// ```
     /// void glReleaseShaderCompiler();
     /// ```
@@ -343,26 +344,29 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ReleaseShaderCompiler", e); }
     }
 
+    /// Invokes `glShaderBinary`.
     /// ```
     /// void glShaderBinary((int) GLsizei count, const GLuint* shaders, (unsigned int) GLenum binaryFormat, const void* binary, (int) GLsizei length);
     /// ```
-    public void ShaderBinary(int count, MemorySegment shaders, int binaryFormat, MemorySegment binary, int length) {
+    public void ShaderBinary(int count, @NonNull MemorySegment shaders, int binaryFormat, @NonNull MemorySegment binary, int length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderBinary)) throw new GLSymbolNotFoundError("Symbol not found: glShaderBinary");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glShaderBinary", count, shaders, binaryFormat, binary, length); }
         Handles.MH_glShaderBinary.invokeExact(handles.PFN_glShaderBinary, count, shaders, binaryFormat, binary, length); }
         catch (Throwable e) { throw new RuntimeException("error in ShaderBinary", e); }
     }
 
+    /// Invokes `glGetShaderPrecisionFormat`.
     /// ```
     /// void glGetShaderPrecisionFormat((unsigned int) GLenum shadertype, (unsigned int) GLenum precisiontype, GLint* range, GLint* precision);
     /// ```
-    public void GetShaderPrecisionFormat(int shadertype, int precisiontype, MemorySegment range, MemorySegment precision) {
+    public void GetShaderPrecisionFormat(int shadertype, int precisiontype, @NonNull MemorySegment range, @NonNull MemorySegment precision) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetShaderPrecisionFormat)) throw new GLSymbolNotFoundError("Symbol not found: glGetShaderPrecisionFormat");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetShaderPrecisionFormat", shadertype, precisiontype, range, precision); }
         Handles.MH_glGetShaderPrecisionFormat.invokeExact(handles.PFN_glGetShaderPrecisionFormat, shadertype, precisiontype, range, precision); }
         catch (Throwable e) { throw new RuntimeException("error in GetShaderPrecisionFormat", e); }
     }
 
+    /// Invokes `glDepthRangef`.
     /// ```
     /// void glDepthRangef(((float) khronos_float_t) GLfloat n, ((float) khronos_float_t) GLfloat f);
     /// ```
@@ -373,6 +377,7 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in DepthRangef", e); }
     }
 
+    /// Invokes `glClearDepthf`.
     /// ```
     /// void glClearDepthf(((float) khronos_float_t) GLfloat d);
     /// ```
@@ -383,26 +388,29 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ClearDepthf", e); }
     }
 
+    /// Invokes `glGetProgramBinary`.
     /// ```
     /// void glGetProgramBinary((unsigned int) GLuint program, (int) GLsizei bufSize, GLsizei* length, GLenum* binaryFormat, void* binary);
     /// ```
-    public void GetProgramBinary(int program, int bufSize, MemorySegment length, MemorySegment binaryFormat, MemorySegment binary) {
+    public void GetProgramBinary(int program, int bufSize, @NonNull MemorySegment length, @NonNull MemorySegment binaryFormat, @NonNull MemorySegment binary) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramBinary)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramBinary");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramBinary", program, bufSize, length, binaryFormat, binary); }
         Handles.MH_glGetProgramBinary.invokeExact(handles.PFN_glGetProgramBinary, program, bufSize, length, binaryFormat, binary); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramBinary", e); }
     }
 
+    /// Invokes `glProgramBinary`.
     /// ```
     /// void glProgramBinary((unsigned int) GLuint program, (unsigned int) GLenum binaryFormat, const void* binary, (int) GLsizei length);
     /// ```
-    public void ProgramBinary(int program, int binaryFormat, MemorySegment binary, int length) {
+    public void ProgramBinary(int program, int binaryFormat, @NonNull MemorySegment binary, int length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramBinary)) throw new GLSymbolNotFoundError("Symbol not found: glProgramBinary");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramBinary", program, binaryFormat, binary, length); }
         Handles.MH_glProgramBinary.invokeExact(handles.PFN_glProgramBinary, program, binaryFormat, binary, length); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramBinary", e); }
     }
 
+    /// Invokes `glProgramParameteri`.
     /// ```
     /// void glProgramParameteri((unsigned int) GLuint program, (unsigned int) GLenum pname, (int) GLint value);
     /// ```
@@ -413,6 +421,7 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramParameteri", e); }
     }
 
+    /// Invokes `glUseProgramStages`.
     /// ```
     /// void glUseProgramStages((unsigned int) GLuint pipeline, (unsigned int) GLbitfield stages, (unsigned int) GLuint program);
     /// ```
@@ -423,6 +432,7 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in UseProgramStages", e); }
     }
 
+    /// Invokes `glActiveShaderProgram`.
     /// ```
     /// void glActiveShaderProgram((unsigned int) GLuint pipeline, (unsigned int) GLuint program);
     /// ```
@@ -433,16 +443,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ActiveShaderProgram", e); }
     }
 
+    /// Invokes `glCreateShaderProgramv`.
     /// ```
     /// (unsigned int) GLuint glCreateShaderProgramv((unsigned int) GLenum type, (int) GLsizei count, const GLchar* const * strings);
     /// ```
-    public int CreateShaderProgramv(int type, int count, MemorySegment strings) {
+    public int CreateShaderProgramv(int type, int count, @NonNull MemorySegment strings) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateShaderProgramv)) throw new GLSymbolNotFoundError("Symbol not found: glCreateShaderProgramv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateShaderProgramv", type, count, strings); }
         return (int) Handles.MH_glCreateShaderProgramv.invokeExact(handles.PFN_glCreateShaderProgramv, type, count, strings); }
         catch (Throwable e) { throw new RuntimeException("error in CreateShaderProgramv", e); }
     }
 
+    /// Invokes `glBindProgramPipeline`.
     /// ```
     /// void glBindProgramPipeline((unsigned int) GLuint pipeline);
     /// ```
@@ -453,26 +465,29 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in BindProgramPipeline", e); }
     }
 
+    /// Invokes `glDeleteProgramPipelines`.
     /// ```
     /// void glDeleteProgramPipelines((int) GLsizei n, const GLuint* pipelines);
     /// ```
-    public void DeleteProgramPipelines(int n, MemorySegment pipelines) {
+    public void DeleteProgramPipelines(int n, @NonNull MemorySegment pipelines) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteProgramPipelines)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteProgramPipelines");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteProgramPipelines", n, pipelines); }
         Handles.MH_glDeleteProgramPipelines.invokeExact(handles.PFN_glDeleteProgramPipelines, n, pipelines); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteProgramPipelines", e); }
     }
 
+    /// Invokes `glGenProgramPipelines`.
     /// ```
     /// void glGenProgramPipelines((int) GLsizei n, GLuint* pipelines);
     /// ```
-    public void GenProgramPipelines(int n, MemorySegment pipelines) {
+    public void GenProgramPipelines(int n, @NonNull MemorySegment pipelines) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenProgramPipelines)) throw new GLSymbolNotFoundError("Symbol not found: glGenProgramPipelines");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenProgramPipelines", n, pipelines); }
         Handles.MH_glGenProgramPipelines.invokeExact(handles.PFN_glGenProgramPipelines, n, pipelines); }
         catch (Throwable e) { throw new RuntimeException("error in GenProgramPipelines", e); }
     }
 
+    /// Invokes `glIsProgramPipeline`.
     /// ```
     /// GLboolean glIsProgramPipeline((unsigned int) GLuint pipeline);
     /// ```
@@ -483,16 +498,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in IsProgramPipeline", e); }
     }
 
+    /// Invokes `glGetProgramPipelineiv`.
     /// ```
     /// void glGetProgramPipelineiv((unsigned int) GLuint pipeline, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetProgramPipelineiv(int pipeline, int pname, MemorySegment params) {
+    public void GetProgramPipelineiv(int pipeline, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramPipelineiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramPipelineiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramPipelineiv", pipeline, pname, params); }
         Handles.MH_glGetProgramPipelineiv.invokeExact(handles.PFN_glGetProgramPipelineiv, pipeline, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramPipelineiv", e); }
     }
 
+    /// Invokes `glProgramUniform1i`.
     /// ```
     /// void glProgramUniform1i((unsigned int) GLuint program, (int) GLint location, (int) GLint v0);
     /// ```
@@ -503,16 +520,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1i", e); }
     }
 
+    /// Invokes `glProgramUniform1iv`.
     /// ```
     /// void glProgramUniform1iv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
-    public void ProgramUniform1iv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform1iv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1iv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1iv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1iv", program, location, count, value); }
         Handles.MH_glProgramUniform1iv.invokeExact(handles.PFN_glProgramUniform1iv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1iv", e); }
     }
 
+    /// Invokes `glProgramUniform1f`.
     /// ```
     /// void glProgramUniform1f((unsigned int) GLuint program, (int) GLint location, ((float) khronos_float_t) GLfloat v0);
     /// ```
@@ -523,16 +542,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1f", e); }
     }
 
+    /// Invokes `glProgramUniform1fv`.
     /// ```
     /// void glProgramUniform1fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
-    public void ProgramUniform1fv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform1fv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1fv", program, location, count, value); }
         Handles.MH_glProgramUniform1fv.invokeExact(handles.PFN_glProgramUniform1fv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1fv", e); }
     }
 
+    /// Invokes `glProgramUniform1d`.
     /// ```
     /// void glProgramUniform1d((unsigned int) GLuint program, (int) GLint location, (double) GLdouble v0);
     /// ```
@@ -543,16 +564,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1d", e); }
     }
 
+    /// Invokes `glProgramUniform1dv`.
     /// ```
     /// void glProgramUniform1dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void ProgramUniform1dv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform1dv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1dv", program, location, count, value); }
         Handles.MH_glProgramUniform1dv.invokeExact(handles.PFN_glProgramUniform1dv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1dv", e); }
     }
 
+    /// Invokes `glProgramUniform1ui`.
     /// ```
     /// void glProgramUniform1ui((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLuint v0);
     /// ```
@@ -563,16 +586,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1ui", e); }
     }
 
+    /// Invokes `glProgramUniform1uiv`.
     /// ```
     /// void glProgramUniform1uiv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void ProgramUniform1uiv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform1uiv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1uiv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1uiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1uiv", program, location, count, value); }
         Handles.MH_glProgramUniform1uiv.invokeExact(handles.PFN_glProgramUniform1uiv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1uiv", e); }
     }
 
+    /// Invokes `glProgramUniform2i`.
     /// ```
     /// void glProgramUniform2i((unsigned int) GLuint program, (int) GLint location, (int) GLint v0, (int) GLint v1);
     /// ```
@@ -583,16 +608,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2i", e); }
     }
 
+    /// Invokes `glProgramUniform2iv`.
     /// ```
     /// void glProgramUniform2iv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
-    public void ProgramUniform2iv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform2iv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2iv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2iv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2iv", program, location, count, value); }
         Handles.MH_glProgramUniform2iv.invokeExact(handles.PFN_glProgramUniform2iv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2iv", e); }
     }
 
+    /// Invokes `glProgramUniform2f`.
     /// ```
     /// void glProgramUniform2f((unsigned int) GLuint program, (int) GLint location, ((float) khronos_float_t) GLfloat v0, ((float) khronos_float_t) GLfloat v1);
     /// ```
@@ -603,16 +630,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2f", e); }
     }
 
+    /// Invokes `glProgramUniform2fv`.
     /// ```
     /// void glProgramUniform2fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
-    public void ProgramUniform2fv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform2fv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2fv", program, location, count, value); }
         Handles.MH_glProgramUniform2fv.invokeExact(handles.PFN_glProgramUniform2fv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2fv", e); }
     }
 
+    /// Invokes `glProgramUniform2d`.
     /// ```
     /// void glProgramUniform2d((unsigned int) GLuint program, (int) GLint location, (double) GLdouble v0, (double) GLdouble v1);
     /// ```
@@ -623,16 +652,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2d", e); }
     }
 
+    /// Invokes `glProgramUniform2dv`.
     /// ```
     /// void glProgramUniform2dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void ProgramUniform2dv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform2dv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2dv", program, location, count, value); }
         Handles.MH_glProgramUniform2dv.invokeExact(handles.PFN_glProgramUniform2dv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2dv", e); }
     }
 
+    /// Invokes `glProgramUniform2ui`.
     /// ```
     /// void glProgramUniform2ui((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1);
     /// ```
@@ -643,16 +674,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2ui", e); }
     }
 
+    /// Invokes `glProgramUniform2uiv`.
     /// ```
     /// void glProgramUniform2uiv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void ProgramUniform2uiv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform2uiv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2uiv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2uiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2uiv", program, location, count, value); }
         Handles.MH_glProgramUniform2uiv.invokeExact(handles.PFN_glProgramUniform2uiv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2uiv", e); }
     }
 
+    /// Invokes `glProgramUniform3i`.
     /// ```
     /// void glProgramUniform3i((unsigned int) GLuint program, (int) GLint location, (int) GLint v0, (int) GLint v1, (int) GLint v2);
     /// ```
@@ -663,16 +696,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3i", e); }
     }
 
+    /// Invokes `glProgramUniform3iv`.
     /// ```
     /// void glProgramUniform3iv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
-    public void ProgramUniform3iv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform3iv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3iv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3iv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3iv", program, location, count, value); }
         Handles.MH_glProgramUniform3iv.invokeExact(handles.PFN_glProgramUniform3iv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3iv", e); }
     }
 
+    /// Invokes `glProgramUniform3f`.
     /// ```
     /// void glProgramUniform3f((unsigned int) GLuint program, (int) GLint location, ((float) khronos_float_t) GLfloat v0, ((float) khronos_float_t) GLfloat v1, ((float) khronos_float_t) GLfloat v2);
     /// ```
@@ -683,16 +718,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3f", e); }
     }
 
+    /// Invokes `glProgramUniform3fv`.
     /// ```
     /// void glProgramUniform3fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
-    public void ProgramUniform3fv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform3fv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3fv", program, location, count, value); }
         Handles.MH_glProgramUniform3fv.invokeExact(handles.PFN_glProgramUniform3fv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3fv", e); }
     }
 
+    /// Invokes `glProgramUniform3d`.
     /// ```
     /// void glProgramUniform3d((unsigned int) GLuint program, (int) GLint location, (double) GLdouble v0, (double) GLdouble v1, (double) GLdouble v2);
     /// ```
@@ -703,16 +740,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3d", e); }
     }
 
+    /// Invokes `glProgramUniform3dv`.
     /// ```
     /// void glProgramUniform3dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void ProgramUniform3dv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform3dv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3dv", program, location, count, value); }
         Handles.MH_glProgramUniform3dv.invokeExact(handles.PFN_glProgramUniform3dv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3dv", e); }
     }
 
+    /// Invokes `glProgramUniform3ui`.
     /// ```
     /// void glProgramUniform3ui((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1, (unsigned int) GLuint v2);
     /// ```
@@ -723,16 +762,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3ui", e); }
     }
 
+    /// Invokes `glProgramUniform3uiv`.
     /// ```
     /// void glProgramUniform3uiv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void ProgramUniform3uiv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform3uiv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3uiv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3uiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3uiv", program, location, count, value); }
         Handles.MH_glProgramUniform3uiv.invokeExact(handles.PFN_glProgramUniform3uiv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3uiv", e); }
     }
 
+    /// Invokes `glProgramUniform4i`.
     /// ```
     /// void glProgramUniform4i((unsigned int) GLuint program, (int) GLint location, (int) GLint v0, (int) GLint v1, (int) GLint v2, (int) GLint v3);
     /// ```
@@ -743,16 +784,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4i", e); }
     }
 
+    /// Invokes `glProgramUniform4iv`.
     /// ```
     /// void glProgramUniform4iv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
-    public void ProgramUniform4iv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform4iv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4iv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4iv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4iv", program, location, count, value); }
         Handles.MH_glProgramUniform4iv.invokeExact(handles.PFN_glProgramUniform4iv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4iv", e); }
     }
 
+    /// Invokes `glProgramUniform4f`.
     /// ```
     /// void glProgramUniform4f((unsigned int) GLuint program, (int) GLint location, ((float) khronos_float_t) GLfloat v0, ((float) khronos_float_t) GLfloat v1, ((float) khronos_float_t) GLfloat v2, ((float) khronos_float_t) GLfloat v3);
     /// ```
@@ -763,16 +806,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4f", e); }
     }
 
+    /// Invokes `glProgramUniform4fv`.
     /// ```
     /// void glProgramUniform4fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
-    public void ProgramUniform4fv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform4fv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4fv", program, location, count, value); }
         Handles.MH_glProgramUniform4fv.invokeExact(handles.PFN_glProgramUniform4fv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4fv", e); }
     }
 
+    /// Invokes `glProgramUniform4d`.
     /// ```
     /// void glProgramUniform4d((unsigned int) GLuint program, (int) GLint location, (double) GLdouble v0, (double) GLdouble v1, (double) GLdouble v2, (double) GLdouble v3);
     /// ```
@@ -783,16 +828,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4d", e); }
     }
 
+    /// Invokes `glProgramUniform4dv`.
     /// ```
     /// void glProgramUniform4dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
-    public void ProgramUniform4dv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform4dv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4dv", program, location, count, value); }
         Handles.MH_glProgramUniform4dv.invokeExact(handles.PFN_glProgramUniform4dv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4dv", e); }
     }
 
+    /// Invokes `glProgramUniform4ui`.
     /// ```
     /// void glProgramUniform4ui((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1, (unsigned int) GLuint v2, (unsigned int) GLuint v3);
     /// ```
@@ -803,196 +850,216 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4ui", e); }
     }
 
+    /// Invokes `glProgramUniform4uiv`.
     /// ```
     /// void glProgramUniform4uiv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
-    public void ProgramUniform4uiv(int program, int location, int count, MemorySegment value) {
+    public void ProgramUniform4uiv(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4uiv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4uiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4uiv", program, location, count, value); }
         Handles.MH_glProgramUniform4uiv.invokeExact(handles.PFN_glProgramUniform4uiv, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4uiv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2fv`.
     /// ```
     /// void glProgramUniformMatrix2fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix2fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2fv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2fv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2fv.invokeExact(handles.PFN_glProgramUniformMatrix2fv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2fv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3fv`.
     /// ```
     /// void glProgramUniformMatrix3fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix3fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3fv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3fv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3fv.invokeExact(handles.PFN_glProgramUniformMatrix3fv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3fv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4fv`.
     /// ```
     /// void glProgramUniformMatrix4fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix4fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4fv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4fv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4fv.invokeExact(handles.PFN_glProgramUniformMatrix4fv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4fv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2dv`.
     /// ```
     /// void glProgramUniformMatrix2dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix2dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2dv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2dv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2dv.invokeExact(handles.PFN_glProgramUniformMatrix2dv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2dv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3dv`.
     /// ```
     /// void glProgramUniformMatrix3dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix3dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3dv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3dv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3dv.invokeExact(handles.PFN_glProgramUniformMatrix3dv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3dv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4dv`.
     /// ```
     /// void glProgramUniformMatrix4dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix4dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4dv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4dv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4dv.invokeExact(handles.PFN_glProgramUniformMatrix4dv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4dv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2x3fv`.
     /// ```
     /// void glProgramUniformMatrix2x3fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix2x3fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2x3fv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x3fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x3fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x3fv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2x3fv.invokeExact(handles.PFN_glProgramUniformMatrix2x3fv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x3fv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3x2fv`.
     /// ```
     /// void glProgramUniformMatrix3x2fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix3x2fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3x2fv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x2fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x2fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x2fv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3x2fv.invokeExact(handles.PFN_glProgramUniformMatrix3x2fv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x2fv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2x4fv`.
     /// ```
     /// void glProgramUniformMatrix2x4fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix2x4fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2x4fv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x4fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x4fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x4fv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2x4fv.invokeExact(handles.PFN_glProgramUniformMatrix2x4fv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x4fv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4x2fv`.
     /// ```
     /// void glProgramUniformMatrix4x2fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix4x2fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4x2fv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x2fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x2fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x2fv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4x2fv.invokeExact(handles.PFN_glProgramUniformMatrix4x2fv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x2fv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3x4fv`.
     /// ```
     /// void glProgramUniformMatrix3x4fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix3x4fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3x4fv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x4fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x4fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x4fv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3x4fv.invokeExact(handles.PFN_glProgramUniformMatrix3x4fv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x4fv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4x3fv`.
     /// ```
     /// void glProgramUniformMatrix4x3fv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
-    public void ProgramUniformMatrix4x3fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4x3fv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x3fv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x3fv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x3fv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4x3fv.invokeExact(handles.PFN_glProgramUniformMatrix4x3fv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x3fv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2x3dv`.
     /// ```
     /// void glProgramUniformMatrix2x3dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix2x3dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2x3dv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x3dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x3dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x3dv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2x3dv.invokeExact(handles.PFN_glProgramUniformMatrix2x3dv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x3dv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3x2dv`.
     /// ```
     /// void glProgramUniformMatrix3x2dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix3x2dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3x2dv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x2dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x2dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x2dv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3x2dv.invokeExact(handles.PFN_glProgramUniformMatrix3x2dv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x2dv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix2x4dv`.
     /// ```
     /// void glProgramUniformMatrix2x4dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix2x4dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix2x4dv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x4dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x4dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x4dv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix2x4dv.invokeExact(handles.PFN_glProgramUniformMatrix2x4dv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x4dv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4x2dv`.
     /// ```
     /// void glProgramUniformMatrix4x2dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix4x2dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4x2dv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x2dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x2dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x2dv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4x2dv.invokeExact(handles.PFN_glProgramUniformMatrix4x2dv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x2dv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix3x4dv`.
     /// ```
     /// void glProgramUniformMatrix3x4dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix3x4dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix3x4dv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x4dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x4dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x4dv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix3x4dv.invokeExact(handles.PFN_glProgramUniformMatrix3x4dv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x4dv", e); }
     }
 
+    /// Invokes `glProgramUniformMatrix4x3dv`.
     /// ```
     /// void glProgramUniformMatrix4x3dv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
-    public void ProgramUniformMatrix4x3dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+    public void ProgramUniformMatrix4x3dv(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x3dv)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x3dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x3dv", program, location, count, transpose, value); }
         Handles.MH_glProgramUniformMatrix4x3dv.invokeExact(handles.PFN_glProgramUniformMatrix4x3dv, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x3dv", e); }
     }
 
+    /// Invokes `glValidateProgramPipeline`.
     /// ```
     /// void glValidateProgramPipeline((unsigned int) GLuint pipeline);
     /// ```
@@ -1003,16 +1070,18 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ValidateProgramPipeline", e); }
     }
 
+    /// Invokes `glGetProgramPipelineInfoLog`.
     /// ```
     /// void glGetProgramPipelineInfoLog((unsigned int) GLuint pipeline, (int) GLsizei bufSize, GLsizei* length, GLchar* infoLog);
     /// ```
-    public void GetProgramPipelineInfoLog(int pipeline, int bufSize, MemorySegment length, MemorySegment infoLog) {
+    public void GetProgramPipelineInfoLog(int pipeline, int bufSize, @NonNull MemorySegment length, @NonNull MemorySegment infoLog) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramPipelineInfoLog)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramPipelineInfoLog");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramPipelineInfoLog", pipeline, bufSize, length, infoLog); }
         Handles.MH_glGetProgramPipelineInfoLog.invokeExact(handles.PFN_glGetProgramPipelineInfoLog, pipeline, bufSize, length, infoLog); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramPipelineInfoLog", e); }
     }
 
+    /// Invokes `glVertexAttribL1d`.
     /// ```
     /// void glVertexAttribL1d((unsigned int) GLuint index, (double) GLdouble x);
     /// ```
@@ -1023,6 +1092,7 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL1d", e); }
     }
 
+    /// Invokes `glVertexAttribL2d`.
     /// ```
     /// void glVertexAttribL2d((unsigned int) GLuint index, (double) GLdouble x, (double) GLdouble y);
     /// ```
@@ -1033,6 +1103,7 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL2d", e); }
     }
 
+    /// Invokes `glVertexAttribL3d`.
     /// ```
     /// void glVertexAttribL3d((unsigned int) GLuint index, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
@@ -1043,6 +1114,7 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL3d", e); }
     }
 
+    /// Invokes `glVertexAttribL4d`.
     /// ```
     /// void glVertexAttribL4d((unsigned int) GLuint index, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z, (double) GLdouble w);
     /// ```
@@ -1053,76 +1125,84 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL4d", e); }
     }
 
+    /// Invokes `glVertexAttribL1dv`.
     /// ```
     /// void glVertexAttribL1dv((unsigned int) GLuint index, const GLdouble* v);
     /// ```
-    public void VertexAttribL1dv(int index, MemorySegment v) {
+    public void VertexAttribL1dv(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL1dv)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL1dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL1dv", index, v); }
         Handles.MH_glVertexAttribL1dv.invokeExact(handles.PFN_glVertexAttribL1dv, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL1dv", e); }
     }
 
+    /// Invokes `glVertexAttribL2dv`.
     /// ```
     /// void glVertexAttribL2dv((unsigned int) GLuint index, const GLdouble* v);
     /// ```
-    public void VertexAttribL2dv(int index, MemorySegment v) {
+    public void VertexAttribL2dv(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL2dv)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL2dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL2dv", index, v); }
         Handles.MH_glVertexAttribL2dv.invokeExact(handles.PFN_glVertexAttribL2dv, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL2dv", e); }
     }
 
+    /// Invokes `glVertexAttribL3dv`.
     /// ```
     /// void glVertexAttribL3dv((unsigned int) GLuint index, const GLdouble* v);
     /// ```
-    public void VertexAttribL3dv(int index, MemorySegment v) {
+    public void VertexAttribL3dv(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL3dv)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL3dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL3dv", index, v); }
         Handles.MH_glVertexAttribL3dv.invokeExact(handles.PFN_glVertexAttribL3dv, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL3dv", e); }
     }
 
+    /// Invokes `glVertexAttribL4dv`.
     /// ```
     /// void glVertexAttribL4dv((unsigned int) GLuint index, const GLdouble* v);
     /// ```
-    public void VertexAttribL4dv(int index, MemorySegment v) {
+    public void VertexAttribL4dv(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL4dv)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL4dv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL4dv", index, v); }
         Handles.MH_glVertexAttribL4dv.invokeExact(handles.PFN_glVertexAttribL4dv, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL4dv", e); }
     }
 
+    /// Invokes `glVertexAttribLPointer`.
     /// ```
     /// void glVertexAttribLPointer((unsigned int) GLuint index, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, const void* pointer);
     /// ```
-    public void VertexAttribLPointer(int index, int size, int type, int stride, MemorySegment pointer) {
+    public void VertexAttribLPointer(int index, int size, int type, int stride, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribLPointer)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribLPointer");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribLPointer", index, size, type, stride, pointer); }
         Handles.MH_glVertexAttribLPointer.invokeExact(handles.PFN_glVertexAttribLPointer, index, size, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribLPointer", e); }
     }
 
+    /// Invokes `glGetVertexAttribLdv`.
     /// ```
     /// void glGetVertexAttribLdv((unsigned int) GLuint index, (unsigned int) GLenum pname, GLdouble* params);
     /// ```
-    public void GetVertexAttribLdv(int index, int pname, MemorySegment params) {
+    public void GetVertexAttribLdv(int index, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribLdv)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribLdv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexAttribLdv", index, pname, params); }
         Handles.MH_glGetVertexAttribLdv.invokeExact(handles.PFN_glGetVertexAttribLdv, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexAttribLdv", e); }
     }
 
+    /// Invokes `glViewportArrayv`.
     /// ```
     /// void glViewportArrayv((unsigned int) GLuint first, (int) GLsizei count, const GLfloat* v);
     /// ```
-    public void ViewportArrayv(int first, int count, MemorySegment v) {
+    public void ViewportArrayv(int first, int count, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glViewportArrayv)) throw new GLSymbolNotFoundError("Symbol not found: glViewportArrayv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glViewportArrayv", first, count, v); }
         Handles.MH_glViewportArrayv.invokeExact(handles.PFN_glViewportArrayv, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in ViewportArrayv", e); }
     }
 
+    /// Invokes `glViewportIndexedf`.
     /// ```
     /// void glViewportIndexedf((unsigned int) GLuint index, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat w, ((float) khronos_float_t) GLfloat h);
     /// ```
@@ -1133,26 +1213,29 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ViewportIndexedf", e); }
     }
 
+    /// Invokes `glViewportIndexedfv`.
     /// ```
     /// void glViewportIndexedfv((unsigned int) GLuint index, const GLfloat* v);
     /// ```
-    public void ViewportIndexedfv(int index, MemorySegment v) {
+    public void ViewportIndexedfv(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glViewportIndexedfv)) throw new GLSymbolNotFoundError("Symbol not found: glViewportIndexedfv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glViewportIndexedfv", index, v); }
         Handles.MH_glViewportIndexedfv.invokeExact(handles.PFN_glViewportIndexedfv, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in ViewportIndexedfv", e); }
     }
 
+    /// Invokes `glScissorArrayv`.
     /// ```
     /// void glScissorArrayv((unsigned int) GLuint first, (int) GLsizei count, const GLint* v);
     /// ```
-    public void ScissorArrayv(int first, int count, MemorySegment v) {
+    public void ScissorArrayv(int first, int count, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissorArrayv)) throw new GLSymbolNotFoundError("Symbol not found: glScissorArrayv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glScissorArrayv", first, count, v); }
         Handles.MH_glScissorArrayv.invokeExact(handles.PFN_glScissorArrayv, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in ScissorArrayv", e); }
     }
 
+    /// Invokes `glScissorIndexed`.
     /// ```
     /// void glScissorIndexed((unsigned int) GLuint index, (int) GLint left, (int) GLint bottom, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -1163,26 +1246,29 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in ScissorIndexed", e); }
     }
 
+    /// Invokes `glScissorIndexedv`.
     /// ```
     /// void glScissorIndexedv((unsigned int) GLuint index, const GLint* v);
     /// ```
-    public void ScissorIndexedv(int index, MemorySegment v) {
+    public void ScissorIndexedv(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissorIndexedv)) throw new GLSymbolNotFoundError("Symbol not found: glScissorIndexedv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glScissorIndexedv", index, v); }
         Handles.MH_glScissorIndexedv.invokeExact(handles.PFN_glScissorIndexedv, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in ScissorIndexedv", e); }
     }
 
+    /// Invokes `glDepthRangeArrayv`.
     /// ```
     /// void glDepthRangeArrayv((unsigned int) GLuint first, (int) GLsizei count, const GLdouble* v);
     /// ```
-    public void DepthRangeArrayv(int first, int count, MemorySegment v) {
+    public void DepthRangeArrayv(int first, int count, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangeArrayv)) throw new GLSymbolNotFoundError("Symbol not found: glDepthRangeArrayv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDepthRangeArrayv", first, count, v); }
         Handles.MH_glDepthRangeArrayv.invokeExact(handles.PFN_glDepthRangeArrayv, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in DepthRangeArrayv", e); }
     }
 
+    /// Invokes `glDepthRangeIndexed`.
     /// ```
     /// void glDepthRangeIndexed((unsigned int) GLuint index, (double) GLdouble n, (double) GLdouble f);
     /// ```
@@ -1193,20 +1279,22 @@ public class GL41 extends GL40 {
         catch (Throwable e) { throw new RuntimeException("error in DepthRangeIndexed", e); }
     }
 
+    /// Invokes `glGetFloati_v`.
     /// ```
     /// void glGetFloati_v((unsigned int) GLenum target, (unsigned int) GLuint index, GLfloat* data);
     /// ```
-    public void GetFloati_v(int target, int index, MemorySegment data) {
+    public void GetFloati_v(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFloati_v)) throw new GLSymbolNotFoundError("Symbol not found: glGetFloati_v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFloati_v", target, index, data); }
         Handles.MH_glGetFloati_v.invokeExact(handles.PFN_glGetFloati_v, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetFloati_v", e); }
     }
 
+    /// Invokes `glGetDoublei_v`.
     /// ```
     /// void glGetDoublei_v((unsigned int) GLenum target, (unsigned int) GLuint index, GLdouble* data);
     /// ```
-    public void GetDoublei_v(int target, int index, MemorySegment data) {
+    public void GetDoublei_v(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDoublei_v)) throw new GLSymbolNotFoundError("Symbol not found: glGetDoublei_v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetDoublei_v", target, index, data); }
         Handles.MH_glGetDoublei_v.invokeExact(handles.PFN_glGetDoublei_v, target, index, data); }

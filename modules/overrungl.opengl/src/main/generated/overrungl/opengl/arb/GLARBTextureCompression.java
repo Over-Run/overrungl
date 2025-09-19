@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_texture_compression`
 public final class GLARBTextureCompression {
     public static final int GL_COMPRESSED_ALPHA_ARB = 0x84E9;
     public static final int GL_COMPRESSED_LUMINANCE_ARB = 0x84EA;
@@ -51,7 +51,7 @@ public final class GLARBTextureCompression {
         public final MemorySegment PFN_glCompressedTexSubImage2DARB;
         public final MemorySegment PFN_glCompressedTexSubImage1DARB;
         public final MemorySegment PFN_glGetCompressedTexImageARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glCompressedTexImage3DARB = func.invoke("glCompressedTexImage3DARB", "glCompressedTexImage3D");
             PFN_glCompressedTexImage2DARB = func.invoke("glCompressedTexImage2DARB", "glCompressedTexImage2D");
             PFN_glCompressedTexImage1DARB = func.invoke("glCompressedTexImage1DARB", "glCompressedTexImage1D");
@@ -62,74 +62,81 @@ public final class GLARBTextureCompression {
         }
     }
 
-    public GLARBTextureCompression(overrungl.opengl.GLLoadFunc func) {
+    public GLARBTextureCompression(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glCompressedTexImage3DARB`.
     /// ```
     /// void glCompressedTexImage3DARB((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLint border, (int) GLsizei imageSize, const void* data);
     /// ```
-    public void CompressedTexImage3DARB(int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, MemorySegment data) {
+    public void CompressedTexImage3DARB(int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage3DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexImage3DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexImage3DARB", target, level, internalformat, width, height, depth, border, imageSize, data); }
         Handles.MH_glCompressedTexImage3DARB.invokeExact(handles.PFN_glCompressedTexImage3DARB, target, level, internalformat, width, height, depth, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexImage3DARB", e); }
     }
 
+    /// Invokes `glCompressedTexImage2DARB`.
     /// ```
     /// void glCompressedTexImage2DARB((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLint border, (int) GLsizei imageSize, const void* data);
     /// ```
-    public void CompressedTexImage2DARB(int target, int level, int internalformat, int width, int height, int border, int imageSize, MemorySegment data) {
+    public void CompressedTexImage2DARB(int target, int level, int internalformat, int width, int height, int border, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage2DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexImage2DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexImage2DARB", target, level, internalformat, width, height, border, imageSize, data); }
         Handles.MH_glCompressedTexImage2DARB.invokeExact(handles.PFN_glCompressedTexImage2DARB, target, level, internalformat, width, height, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexImage2DARB", e); }
     }
 
+    /// Invokes `glCompressedTexImage1DARB`.
     /// ```
     /// void glCompressedTexImage1DARB((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLint border, (int) GLsizei imageSize, const void* data);
     /// ```
-    public void CompressedTexImage1DARB(int target, int level, int internalformat, int width, int border, int imageSize, MemorySegment data) {
+    public void CompressedTexImage1DARB(int target, int level, int internalformat, int width, int border, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage1DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexImage1DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexImage1DARB", target, level, internalformat, width, border, imageSize, data); }
         Handles.MH_glCompressedTexImage1DARB.invokeExact(handles.PFN_glCompressedTexImage1DARB, target, level, internalformat, width, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexImage1DARB", e); }
     }
 
+    /// Invokes `glCompressedTexSubImage3DARB`.
     /// ```
     /// void glCompressedTexSubImage3DARB((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* data);
     /// ```
-    public void CompressedTexSubImage3DARB(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, MemorySegment data) {
+    public void CompressedTexSubImage3DARB(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage3DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexSubImage3DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexSubImage3DARB", target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
         Handles.MH_glCompressedTexSubImage3DARB.invokeExact(handles.PFN_glCompressedTexSubImage3DARB, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexSubImage3DARB", e); }
     }
 
+    /// Invokes `glCompressedTexSubImage2DARB`.
     /// ```
     /// void glCompressedTexSubImage2DARB((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* data);
     /// ```
-    public void CompressedTexSubImage2DARB(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, MemorySegment data) {
+    public void CompressedTexSubImage2DARB(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage2DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexSubImage2DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexSubImage2DARB", target, level, xoffset, yoffset, width, height, format, imageSize, data); }
         Handles.MH_glCompressedTexSubImage2DARB.invokeExact(handles.PFN_glCompressedTexSubImage2DARB, target, level, xoffset, yoffset, width, height, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexSubImage2DARB", e); }
     }
 
+    /// Invokes `glCompressedTexSubImage1DARB`.
     /// ```
     /// void glCompressedTexSubImage1DARB((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLsizei width, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* data);
     /// ```
-    public void CompressedTexSubImage1DARB(int target, int level, int xoffset, int width, int format, int imageSize, MemorySegment data) {
+    public void CompressedTexSubImage1DARB(int target, int level, int xoffset, int width, int format, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage1DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexSubImage1DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexSubImage1DARB", target, level, xoffset, width, format, imageSize, data); }
         Handles.MH_glCompressedTexSubImage1DARB.invokeExact(handles.PFN_glCompressedTexSubImage1DARB, target, level, xoffset, width, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexSubImage1DARB", e); }
     }
 
+    /// Invokes `glGetCompressedTexImageARB`.
     /// ```
     /// void glGetCompressedTexImageARB((unsigned int) GLenum target, (int) GLint level, void* img);
     /// ```
-    public void GetCompressedTexImageARB(int target, int level, MemorySegment img) {
+    public void GetCompressedTexImageARB(int target, int level, @NonNull MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedTexImageARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetCompressedTexImageARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetCompressedTexImageARB", target, level, img); }
         Handles.MH_glGetCompressedTexImageARB.invokeExact(handles.PFN_glGetCompressedTexImageARB, target, level, img); }

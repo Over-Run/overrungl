@@ -16,12 +16,12 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// Constants and functions of OpenGL 1.1.
 public class GL11 extends GL10 {
     public static final int GL_COLOR_LOGIC_OP = 0x0BF2;
     public static final int GL_POLYGON_OFFSET_UNITS = 0x2A00;
@@ -103,6 +103,7 @@ public class GL11 extends GL10 {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDrawArrays`.
     /// ```
     /// void glDrawArrays((unsigned int) GLenum mode, (int) GLint first, (int) GLsizei count);
     /// ```
@@ -113,16 +114,18 @@ public class GL11 extends GL10 {
         catch (Throwable e) { throw new RuntimeException("error in DrawArrays", e); }
     }
 
+    /// Invokes `glDrawElements`.
     /// ```
     /// void glDrawElements((unsigned int) GLenum mode, (int) GLsizei count, (unsigned int) GLenum type, const void* indices);
     /// ```
-    public void DrawElements(int mode, int count, int type, MemorySegment indices) {
+    public void DrawElements(int mode, int count, int type, @NonNull MemorySegment indices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElements)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElements");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElements", mode, count, type, indices); }
         Handles.MH_glDrawElements.invokeExact(handles.PFN_glDrawElements, mode, count, type, indices); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElements", e); }
     }
 
+    /// Invokes `glPolygonOffset`.
     /// ```
     /// void glPolygonOffset(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat units);
     /// ```
@@ -133,6 +136,7 @@ public class GL11 extends GL10 {
         catch (Throwable e) { throw new RuntimeException("error in PolygonOffset", e); }
     }
 
+    /// Invokes `glCopyTexImage1D`.
     /// ```
     /// void glCopyTexImage1D((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLint border);
     /// ```
@@ -143,6 +147,7 @@ public class GL11 extends GL10 {
         catch (Throwable e) { throw new RuntimeException("error in CopyTexImage1D", e); }
     }
 
+    /// Invokes `glCopyTexImage2D`.
     /// ```
     /// void glCopyTexImage2D((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height, (int) GLint border);
     /// ```
@@ -153,6 +158,7 @@ public class GL11 extends GL10 {
         catch (Throwable e) { throw new RuntimeException("error in CopyTexImage2D", e); }
     }
 
+    /// Invokes `glCopyTexSubImage1D`.
     /// ```
     /// void glCopyTexSubImage1D((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint x, (int) GLint y, (int) GLsizei width);
     /// ```
@@ -163,6 +169,7 @@ public class GL11 extends GL10 {
         catch (Throwable e) { throw new RuntimeException("error in CopyTexSubImage1D", e); }
     }
 
+    /// Invokes `glCopyTexSubImage2D`.
     /// ```
     /// void glCopyTexSubImage2D((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -173,26 +180,29 @@ public class GL11 extends GL10 {
         catch (Throwable e) { throw new RuntimeException("error in CopyTexSubImage2D", e); }
     }
 
+    /// Invokes `glTexSubImage1D`.
     /// ```
     /// void glTexSubImage1D((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLsizei width, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void TexSubImage1D(int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
+    public void TexSubImage1D(int target, int level, int xoffset, int width, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage1D)) throw new GLSymbolNotFoundError("Symbol not found: glTexSubImage1D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexSubImage1D", target, level, xoffset, width, format, type, pixels); }
         Handles.MH_glTexSubImage1D.invokeExact(handles.PFN_glTexSubImage1D, target, level, xoffset, width, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexSubImage1D", e); }
     }
 
+    /// Invokes `glTexSubImage2D`.
     /// ```
     /// void glTexSubImage2D((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void TexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
+    public void TexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage2D)) throw new GLSymbolNotFoundError("Symbol not found: glTexSubImage2D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexSubImage2D", target, level, xoffset, yoffset, width, height, format, type, pixels); }
         Handles.MH_glTexSubImage2D.invokeExact(handles.PFN_glTexSubImage2D, target, level, xoffset, yoffset, width, height, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexSubImage2D", e); }
     }
 
+    /// Invokes `glBindTexture`.
     /// ```
     /// void glBindTexture((unsigned int) GLenum target, (unsigned int) GLuint texture);
     /// ```
@@ -203,26 +213,29 @@ public class GL11 extends GL10 {
         catch (Throwable e) { throw new RuntimeException("error in BindTexture", e); }
     }
 
+    /// Invokes `glDeleteTextures`.
     /// ```
     /// void glDeleteTextures((int) GLsizei n, const GLuint* textures);
     /// ```
-    public void DeleteTextures(int n, MemorySegment textures) {
+    public void DeleteTextures(int n, @NonNull MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteTextures)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteTextures");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteTextures", n, textures); }
         Handles.MH_glDeleteTextures.invokeExact(handles.PFN_glDeleteTextures, n, textures); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteTextures", e); }
     }
 
+    /// Invokes `glGenTextures`.
     /// ```
     /// void glGenTextures((int) GLsizei n, GLuint* textures);
     /// ```
-    public void GenTextures(int n, MemorySegment textures) {
+    public void GenTextures(int n, @NonNull MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenTextures)) throw new GLSymbolNotFoundError("Symbol not found: glGenTextures");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenTextures", n, textures); }
         Handles.MH_glGenTextures.invokeExact(handles.PFN_glGenTextures, n, textures); }
         catch (Throwable e) { throw new RuntimeException("error in GenTextures", e); }
     }
 
+    /// Invokes `glIsTexture`.
     /// ```
     /// GLboolean glIsTexture((unsigned int) GLuint texture);
     /// ```

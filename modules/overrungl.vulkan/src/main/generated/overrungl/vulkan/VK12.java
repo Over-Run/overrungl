@@ -18,8 +18,10 @@
 package overrungl.vulkan;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// Constants and functions of Vulkan 1.2.
 public final class VK12 {
     public static final int VK_DRIVER_ID_AMD_PROPRIETARY = 1;
     public static final int VK_DRIVER_ID_AMD_OPEN_SOURCE = 2;
@@ -152,130 +154,143 @@ public final class VK12 {
 
     private VK12() {}
 
+    /// Invokes `vkCmdDrawIndirectCount`.
     /// ```
     /// void vkCmdDrawIndirectCount((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, (uint64_t) VkBuffer countBuffer, (uint64_t) VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride);
     /// ```
-    public static void vkCmdDrawIndirectCount(VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
+    public static void vkCmdDrawIndirectCount(@NonNull VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndirectCount)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawIndirectCount");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDrawIndirectCount", commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         Handles.MH_vkCmdDrawIndirectCount.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndirectCount, commandBuffer.segment(), buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndirectCount", e); }
     }
 
+    /// Invokes `vkCmdDrawIndexedIndirectCount`.
     /// ```
     /// void vkCmdDrawIndexedIndirectCount((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, (uint64_t) VkBuffer countBuffer, (uint64_t) VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride);
     /// ```
-    public static void vkCmdDrawIndexedIndirectCount(VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
+    public static void vkCmdDrawIndexedIndirectCount(@NonNull VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndexedIndirectCount)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawIndexedIndirectCount");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDrawIndexedIndirectCount", commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         Handles.MH_vkCmdDrawIndexedIndirectCount.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndexedIndirectCount, commandBuffer.segment(), buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndexedIndirectCount", e); }
     }
 
+    /// Invokes `vkCreateRenderPass2`.
     /// ```
     /// (int) VkResult vkCreateRenderPass2((struct VkDevice*) VkDevice device, const VkRenderPassCreateInfo2* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkRenderPass* pRenderPass);
     /// ```
-    public static int vkCreateRenderPass2(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pRenderPass) {
+    public static int vkCreateRenderPass2(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pRenderPass) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateRenderPass2)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateRenderPass2");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateRenderPass2", device, pCreateInfo, pAllocator, pRenderPass); }
         return (int) Handles.MH_vkCreateRenderPass2.invokeExact(device.capabilities().PFN_vkCreateRenderPass2, device.segment(), pCreateInfo, pAllocator, pRenderPass); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateRenderPass2", e); }
     }
 
+    /// Invokes `vkCmdBeginRenderPass2`.
     /// ```
     /// void vkCmdBeginRenderPass2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderPassBeginInfo* pRenderPassBegin, const VkSubpassBeginInfo* pSubpassBeginInfo);
     /// ```
-    public static void vkCmdBeginRenderPass2(VkCommandBuffer commandBuffer, MemorySegment pRenderPassBegin, MemorySegment pSubpassBeginInfo) {
+    public static void vkCmdBeginRenderPass2(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pRenderPassBegin, @NonNull MemorySegment pSubpassBeginInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRenderPass2)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginRenderPass2");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBeginRenderPass2", commandBuffer, pRenderPassBegin, pSubpassBeginInfo); }
         Handles.MH_vkCmdBeginRenderPass2.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginRenderPass2, commandBuffer.segment(), pRenderPassBegin, pSubpassBeginInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginRenderPass2", e); }
     }
 
+    /// Invokes `vkCmdNextSubpass2`.
     /// ```
     /// void vkCmdNextSubpass2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkSubpassBeginInfo* pSubpassBeginInfo, const VkSubpassEndInfo* pSubpassEndInfo);
     /// ```
-    public static void vkCmdNextSubpass2(VkCommandBuffer commandBuffer, MemorySegment pSubpassBeginInfo, MemorySegment pSubpassEndInfo) {
+    public static void vkCmdNextSubpass2(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pSubpassBeginInfo, @NonNull MemorySegment pSubpassEndInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdNextSubpass2)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdNextSubpass2");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdNextSubpass2", commandBuffer, pSubpassBeginInfo, pSubpassEndInfo); }
         Handles.MH_vkCmdNextSubpass2.invokeExact(commandBuffer.capabilities().PFN_vkCmdNextSubpass2, commandBuffer.segment(), pSubpassBeginInfo, pSubpassEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdNextSubpass2", e); }
     }
 
+    /// Invokes `vkCmdEndRenderPass2`.
     /// ```
     /// void vkCmdEndRenderPass2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkSubpassEndInfo* pSubpassEndInfo);
     /// ```
-    public static void vkCmdEndRenderPass2(VkCommandBuffer commandBuffer, MemorySegment pSubpassEndInfo) {
+    public static void vkCmdEndRenderPass2(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pSubpassEndInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRenderPass2)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndRenderPass2");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndRenderPass2", commandBuffer, pSubpassEndInfo); }
         Handles.MH_vkCmdEndRenderPass2.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRenderPass2, commandBuffer.segment(), pSubpassEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndRenderPass2", e); }
     }
 
+    /// Invokes `vkResetQueryPool`.
     /// ```
     /// void vkResetQueryPool((struct VkDevice*) VkDevice device, (uint64_t) VkQueryPool queryPool, uint32_t firstQuery, uint32_t queryCount);
     /// ```
-    public static void vkResetQueryPool(VkDevice device, long queryPool, int firstQuery, int queryCount) {
+    public static void vkResetQueryPool(@NonNull VkDevice device, long queryPool, int firstQuery, int queryCount) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkResetQueryPool)) throw new VKSymbolNotFoundError("Symbol not found: vkResetQueryPool");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkResetQueryPool", device, queryPool, firstQuery, queryCount); }
         Handles.MH_vkResetQueryPool.invokeExact(device.capabilities().PFN_vkResetQueryPool, device.segment(), queryPool, firstQuery, queryCount); }
         catch (Throwable e) { throw new RuntimeException("error in vkResetQueryPool", e); }
     }
 
+    /// Invokes `vkGetSemaphoreCounterValue`.
     /// ```
     /// (int) VkResult vkGetSemaphoreCounterValue((struct VkDevice*) VkDevice device, (uint64_t) VkSemaphore semaphore, uint64_t* pValue);
     /// ```
-    public static int vkGetSemaphoreCounterValue(VkDevice device, long semaphore, MemorySegment pValue) {
+    public static int vkGetSemaphoreCounterValue(@NonNull VkDevice device, long semaphore, @NonNull MemorySegment pValue) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreCounterValue)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSemaphoreCounterValue");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetSemaphoreCounterValue", device, semaphore, pValue); }
         return (int) Handles.MH_vkGetSemaphoreCounterValue.invokeExact(device.capabilities().PFN_vkGetSemaphoreCounterValue, device.segment(), semaphore, pValue); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSemaphoreCounterValue", e); }
     }
 
+    /// Invokes `vkWaitSemaphores`.
     /// ```
     /// (int) VkResult vkWaitSemaphores((struct VkDevice*) VkDevice device, const VkSemaphoreWaitInfo* pWaitInfo, uint64_t timeout);
     /// ```
-    public static int vkWaitSemaphores(VkDevice device, MemorySegment pWaitInfo, long timeout) {
+    public static int vkWaitSemaphores(@NonNull VkDevice device, @NonNull MemorySegment pWaitInfo, long timeout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkWaitSemaphores)) throw new VKSymbolNotFoundError("Symbol not found: vkWaitSemaphores");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkWaitSemaphores", device, pWaitInfo, timeout); }
         return (int) Handles.MH_vkWaitSemaphores.invokeExact(device.capabilities().PFN_vkWaitSemaphores, device.segment(), pWaitInfo, timeout); }
         catch (Throwable e) { throw new RuntimeException("error in vkWaitSemaphores", e); }
     }
 
+    /// Invokes `vkSignalSemaphore`.
     /// ```
     /// (int) VkResult vkSignalSemaphore((struct VkDevice*) VkDevice device, const VkSemaphoreSignalInfo* pSignalInfo);
     /// ```
-    public static int vkSignalSemaphore(VkDevice device, MemorySegment pSignalInfo) {
+    public static int vkSignalSemaphore(@NonNull VkDevice device, @NonNull MemorySegment pSignalInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSignalSemaphore)) throw new VKSymbolNotFoundError("Symbol not found: vkSignalSemaphore");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkSignalSemaphore", device, pSignalInfo); }
         return (int) Handles.MH_vkSignalSemaphore.invokeExact(device.capabilities().PFN_vkSignalSemaphore, device.segment(), pSignalInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSignalSemaphore", e); }
     }
 
+    /// Invokes `vkGetBufferDeviceAddress`.
     /// ```
     /// (uint64_t) VkDeviceAddress vkGetBufferDeviceAddress((struct VkDevice*) VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
     /// ```
-    public static long vkGetBufferDeviceAddress(VkDevice device, MemorySegment pInfo) {
+    public static long vkGetBufferDeviceAddress(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferDeviceAddress)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddress");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetBufferDeviceAddress", device, pInfo); }
         return (long) Handles.MH_vkGetBufferDeviceAddress.invokeExact(device.capabilities().PFN_vkGetBufferDeviceAddress, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferDeviceAddress", e); }
     }
 
+    /// Invokes `vkGetBufferOpaqueCaptureAddress`.
     /// ```
     /// uint64_t vkGetBufferOpaqueCaptureAddress((struct VkDevice*) VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
     /// ```
-    public static long vkGetBufferOpaqueCaptureAddress(VkDevice device, MemorySegment pInfo) {
+    public static long vkGetBufferOpaqueCaptureAddress(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferOpaqueCaptureAddress)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferOpaqueCaptureAddress");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetBufferOpaqueCaptureAddress", device, pInfo); }
         return (long) Handles.MH_vkGetBufferOpaqueCaptureAddress.invokeExact(device.capabilities().PFN_vkGetBufferOpaqueCaptureAddress, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferOpaqueCaptureAddress", e); }
     }
 
+    /// Invokes `vkGetDeviceMemoryOpaqueCaptureAddress`.
     /// ```
     /// uint64_t vkGetDeviceMemoryOpaqueCaptureAddress((struct VkDevice*) VkDevice device, const VkDeviceMemoryOpaqueCaptureAddressInfo* pInfo);
     /// ```
-    public static long vkGetDeviceMemoryOpaqueCaptureAddress(VkDevice device, MemorySegment pInfo) {
+    public static long vkGetDeviceMemoryOpaqueCaptureAddress(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceMemoryOpaqueCaptureAddress)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceMemoryOpaqueCaptureAddress");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceMemoryOpaqueCaptureAddress", device, pInfo); }
         return (long) Handles.MH_vkGetDeviceMemoryOpaqueCaptureAddress.invokeExact(device.capabilities().PFN_vkGetDeviceMemoryOpaqueCaptureAddress, device.segment(), pInfo); }

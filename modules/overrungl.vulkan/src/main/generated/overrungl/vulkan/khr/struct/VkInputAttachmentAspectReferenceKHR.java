@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkInputAttachmentAspectReferenceKHR`.
 /// ## Layout
 /// ```
 /// struct VkInputAttachmentAspectReferenceKHR {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkInputAttachmentAspectReferenceKHR extends GroupType {
     /// The struct layout of `VkInputAttachmentAspectReferenceKHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("subpass"),
         ValueLayout.JAVA_INT.withName("inputAttachmentIndex"),
         ValueLayout.JAVA_INT.withName("aspectMask")

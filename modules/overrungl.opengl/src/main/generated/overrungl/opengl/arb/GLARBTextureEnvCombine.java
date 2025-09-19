@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
+/// `GL_ARB_texture_env_combine`
 public final class GLARBTextureEnvCombine {
     public static final int GL_COMBINE_ARB = 0x8570;
     public static final int GL_COMBINE_RGB_ARB = 0x8571;

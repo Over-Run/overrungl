@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_external_semaphore_fd` - device extension
 public final class VKKHRExternalSemaphoreFd {
     public static final int VK_KHR_EXTERNAL_SEMAPHORE_FD_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME = "VK_KHR_external_semaphore_fd";
@@ -34,20 +36,22 @@ public final class VKKHRExternalSemaphoreFd {
 
     private VKKHRExternalSemaphoreFd() {}
 
+    /// Invokes `vkImportSemaphoreFdKHR`.
     /// ```
     /// (int) VkResult vkImportSemaphoreFdKHR((struct VkDevice*) VkDevice device, const VkImportSemaphoreFdInfoKHR* pImportSemaphoreFdInfo);
     /// ```
-    public static int vkImportSemaphoreFdKHR(VkDevice device, MemorySegment pImportSemaphoreFdInfo) {
+    public static int vkImportSemaphoreFdKHR(@NonNull VkDevice device, @NonNull MemorySegment pImportSemaphoreFdInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkImportSemaphoreFdKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkImportSemaphoreFdKHR", device, pImportSemaphoreFdInfo); }
         return (int) Handles.MH_vkImportSemaphoreFdKHR.invokeExact(device.capabilities().PFN_vkImportSemaphoreFdKHR, device.segment(), pImportSemaphoreFdInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkImportSemaphoreFdKHR", e); }
     }
 
+    /// Invokes `vkGetSemaphoreFdKHR`.
     /// ```
     /// (int) VkResult vkGetSemaphoreFdKHR((struct VkDevice*) VkDevice device, const VkSemaphoreGetFdInfoKHR* pGetFdInfo, int* pFd);
     /// ```
-    public static int vkGetSemaphoreFdKHR(VkDevice device, MemorySegment pGetFdInfo, MemorySegment pFd) {
+    public static int vkGetSemaphoreFdKHR(@NonNull VkDevice device, @NonNull MemorySegment pGetFdInfo, @NonNull MemorySegment pFd) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSemaphoreFdKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetSemaphoreFdKHR", device, pGetFdInfo, pFd); }
         return (int) Handles.MH_vkGetSemaphoreFdKHR.invokeExact(device.capabilities().PFN_vkGetSemaphoreFdKHR, device.segment(), pGetFdInfo, pFd); }

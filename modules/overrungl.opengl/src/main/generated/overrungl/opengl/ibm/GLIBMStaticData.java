@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ibm;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_IBM_static_data`
 public final class GLIBMStaticData {
     public static final int GL_ALL_STATIC_DATA_IBM = 103060;
     public static final int GL_STATIC_VERTEX_ARRAY_IBM = 103061;
@@ -30,15 +30,16 @@ public final class GLIBMStaticData {
     public static final class Handles {
         public static final MethodHandle MH_glFlushStaticDataIBM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glFlushStaticDataIBM;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glFlushStaticDataIBM = func.invoke("glFlushStaticDataIBM");
         }
     }
 
-    public GLIBMStaticData(overrungl.opengl.GLLoadFunc func) {
+    public GLIBMStaticData(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glFlushStaticDataIBM`.
     /// ```
     /// void glFlushStaticDataIBM((unsigned int) GLenum target);
     /// ```

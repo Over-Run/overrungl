@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_internalformat_query2`
 public final class GLARBInternalformatQuery2 {
     public static final int GL_IMAGE_FORMAT_COMPATIBILITY_TYPE = 0x90C7;
     public static final int GL_NUM_SAMPLE_COUNTS = 0x9380;
@@ -162,19 +162,20 @@ public final class GLARBInternalformatQuery2 {
     public static final class Handles {
         public static final MethodHandle MH_glGetInternalformati64v = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetInternalformati64v;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGetInternalformati64v = func.invoke("glGetInternalformati64v");
         }
     }
 
-    public GLARBInternalformatQuery2(overrungl.opengl.GLLoadFunc func) {
+    public GLARBInternalformatQuery2(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGetInternalformati64v`.
     /// ```
     /// void glGetInternalformati64v((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLenum pname, (int) GLsizei count, GLint64* params);
     /// ```
-    public void GetInternalformati64v(int target, int internalformat, int pname, int count, MemorySegment params) {
+    public void GetInternalformati64v(int target, int internalformat, int pname, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformati64v)) throw new GLSymbolNotFoundError("Symbol not found: glGetInternalformati64v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInternalformati64v", target, internalformat, pname, count, params); }
         Handles.MH_glGetInternalformati64v.invokeExact(handles.PFN_glGetInternalformati64v, target, internalformat, pname, count, params); }

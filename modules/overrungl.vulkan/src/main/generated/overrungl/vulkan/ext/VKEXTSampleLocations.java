@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_sample_locations` - device extension
 public final class VKEXTSampleLocations {
     public static final int VK_EXT_SAMPLE_LOCATIONS_SPEC_VERSION = 1;
     public static final String VK_EXT_SAMPLE_LOCATIONS_EXTENSION_NAME = "VK_EXT_sample_locations";
@@ -39,20 +41,22 @@ public final class VKEXTSampleLocations {
 
     private VKEXTSampleLocations() {}
 
+    /// Invokes `vkCmdSetSampleLocationsEXT`.
     /// ```
     /// void vkCmdSetSampleLocationsEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkSampleLocationsInfoEXT* pSampleLocationsInfo);
     /// ```
-    public static void vkCmdSetSampleLocationsEXT(VkCommandBuffer commandBuffer, MemorySegment pSampleLocationsInfo) {
+    public static void vkCmdSetSampleLocationsEXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pSampleLocationsInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetSampleLocationsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetSampleLocationsEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetSampleLocationsEXT", commandBuffer, pSampleLocationsInfo); }
         Handles.MH_vkCmdSetSampleLocationsEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetSampleLocationsEXT, commandBuffer.segment(), pSampleLocationsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetSampleLocationsEXT", e); }
     }
 
+    /// Invokes `vkGetPhysicalDeviceMultisamplePropertiesEXT`.
     /// ```
     /// void vkGetPhysicalDeviceMultisamplePropertiesEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (int) VkSampleCountFlagBits samples, VkMultisamplePropertiesEXT* pMultisampleProperties);
     /// ```
-    public static void vkGetPhysicalDeviceMultisamplePropertiesEXT(VkPhysicalDevice physicalDevice, int samples, MemorySegment pMultisampleProperties) {
+    public static void vkGetPhysicalDeviceMultisamplePropertiesEXT(@NonNull VkPhysicalDevice physicalDevice, int samples, @NonNull MemorySegment pMultisampleProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceMultisamplePropertiesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceMultisamplePropertiesEXT", physicalDevice, samples, pMultisampleProperties); }
         Handles.MH_vkGetPhysicalDeviceMultisamplePropertiesEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT, physicalDevice.segment(), samples, pMultisampleProperties); }

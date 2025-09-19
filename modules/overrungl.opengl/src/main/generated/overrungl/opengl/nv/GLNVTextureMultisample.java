@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_texture_multisample`
 public final class GLNVTextureMultisample {
     public static final int GL_TEXTURE_COVERAGE_SAMPLES_NV = 0x9045;
     public static final int GL_TEXTURE_COLOR_SAMPLES_NV = 0x9046;
@@ -40,7 +40,7 @@ public final class GLNVTextureMultisample {
         public final MemorySegment PFN_glTextureImage3DMultisampleNV;
         public final MemorySegment PFN_glTextureImage2DMultisampleCoverageNV;
         public final MemorySegment PFN_glTextureImage3DMultisampleCoverageNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTexImage2DMultisampleCoverageNV = func.invoke("glTexImage2DMultisampleCoverageNV");
             PFN_glTexImage3DMultisampleCoverageNV = func.invoke("glTexImage3DMultisampleCoverageNV");PFN_glTextureImage2DMultisampleNV = func.invoke("glTextureImage2DMultisampleNV");
             PFN_glTextureImage3DMultisampleNV = func.invoke("glTextureImage3DMultisampleNV");
@@ -49,10 +49,11 @@ public final class GLNVTextureMultisample {
         }
     }
 
-    public GLNVTextureMultisample(overrungl.opengl.GLLoadFunc func) {
+    public GLNVTextureMultisample(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTexImage2DMultisampleCoverageNV`.
     /// ```
     /// void glTexImage2DMultisampleCoverageNV((unsigned int) GLenum target, (int) GLsizei coverageSamples, (int) GLsizei colorSamples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedSampleLocations);
     /// ```
@@ -63,6 +64,7 @@ public final class GLNVTextureMultisample {
         catch (Throwable e) { throw new RuntimeException("error in TexImage2DMultisampleCoverageNV", e); }
     }
 
+    /// Invokes `glTexImage3DMultisampleCoverageNV`.
     /// ```
     /// void glTexImage3DMultisampleCoverageNV((unsigned int) GLenum target, (int) GLsizei coverageSamples, (int) GLsizei colorSamples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedSampleLocations);
     /// ```
@@ -73,6 +75,7 @@ public final class GLNVTextureMultisample {
         catch (Throwable e) { throw new RuntimeException("error in TexImage3DMultisampleCoverageNV", e); }
     }
 
+    /// Invokes `glTextureImage2DMultisampleNV`.
     /// ```
     /// void glTextureImage2DMultisampleNV((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei samples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedSampleLocations);
     /// ```
@@ -83,6 +86,7 @@ public final class GLNVTextureMultisample {
         catch (Throwable e) { throw new RuntimeException("error in TextureImage2DMultisampleNV", e); }
     }
 
+    /// Invokes `glTextureImage3DMultisampleNV`.
     /// ```
     /// void glTextureImage3DMultisampleNV((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei samples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedSampleLocations);
     /// ```
@@ -93,6 +97,7 @@ public final class GLNVTextureMultisample {
         catch (Throwable e) { throw new RuntimeException("error in TextureImage3DMultisampleNV", e); }
     }
 
+    /// Invokes `glTextureImage2DMultisampleCoverageNV`.
     /// ```
     /// void glTextureImage2DMultisampleCoverageNV((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei coverageSamples, (int) GLsizei colorSamples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedSampleLocations);
     /// ```
@@ -103,6 +108,7 @@ public final class GLNVTextureMultisample {
         catch (Throwable e) { throw new RuntimeException("error in TextureImage2DMultisampleCoverageNV", e); }
     }
 
+    /// Invokes `glTextureImage3DMultisampleCoverageNV`.
     /// ```
     /// void glTextureImage3DMultisampleCoverageNV((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei coverageSamples, (int) GLsizei colorSamples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedSampleLocations);
     /// ```

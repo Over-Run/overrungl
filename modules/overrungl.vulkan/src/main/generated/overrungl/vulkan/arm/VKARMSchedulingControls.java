@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.arm;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_ARM_scheduling_controls` - device extension
 public final class VKARMSchedulingControls {
     public static final long VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM = 0x00000001L;
     public static final int VK_ARM_SCHEDULING_CONTROLS_SPEC_VERSION = 1;

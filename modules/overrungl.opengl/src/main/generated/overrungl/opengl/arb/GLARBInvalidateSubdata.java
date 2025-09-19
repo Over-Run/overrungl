@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_invalidate_subdata`
 public final class GLARBInvalidateSubdata {
     private final Handles handles;
     public static final class Handles {
@@ -38,7 +38,7 @@ public final class GLARBInvalidateSubdata {
         public final MemorySegment PFN_glInvalidateBufferData;
         public final MemorySegment PFN_glInvalidateFramebuffer;
         public final MemorySegment PFN_glInvalidateSubFramebuffer;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glInvalidateTexSubImage = func.invoke("glInvalidateTexSubImage");
             PFN_glInvalidateTexImage = func.invoke("glInvalidateTexImage");
             PFN_glInvalidateBufferSubData = func.invoke("glInvalidateBufferSubData");
@@ -48,10 +48,11 @@ public final class GLARBInvalidateSubdata {
         }
     }
 
-    public GLARBInvalidateSubdata(overrungl.opengl.GLLoadFunc func) {
+    public GLARBInvalidateSubdata(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glInvalidateTexSubImage`.
     /// ```
     /// void glInvalidateTexSubImage((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```
@@ -62,6 +63,7 @@ public final class GLARBInvalidateSubdata {
         catch (Throwable e) { throw new RuntimeException("error in InvalidateTexSubImage", e); }
     }
 
+    /// Invokes `glInvalidateTexImage`.
     /// ```
     /// void glInvalidateTexImage((unsigned int) GLuint texture, (int) GLint level);
     /// ```
@@ -72,6 +74,7 @@ public final class GLARBInvalidateSubdata {
         catch (Throwable e) { throw new RuntimeException("error in InvalidateTexImage", e); }
     }
 
+    /// Invokes `glInvalidateBufferSubData`.
     /// ```
     /// void glInvalidateBufferSubData((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr length);
     /// ```
@@ -82,6 +85,7 @@ public final class GLARBInvalidateSubdata {
         catch (Throwable e) { throw new RuntimeException("error in InvalidateBufferSubData", e); }
     }
 
+    /// Invokes `glInvalidateBufferData`.
     /// ```
     /// void glInvalidateBufferData((unsigned int) GLuint buffer);
     /// ```
@@ -92,20 +96,22 @@ public final class GLARBInvalidateSubdata {
         catch (Throwable e) { throw new RuntimeException("error in InvalidateBufferData", e); }
     }
 
+    /// Invokes `glInvalidateFramebuffer`.
     /// ```
     /// void glInvalidateFramebuffer((unsigned int) GLenum target, (int) GLsizei numAttachments, const GLenum* attachments);
     /// ```
-    public void InvalidateFramebuffer(int target, int numAttachments, MemorySegment attachments) {
+    public void InvalidateFramebuffer(int target, int numAttachments, @NonNull MemorySegment attachments) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateFramebuffer)) throw new GLSymbolNotFoundError("Symbol not found: glInvalidateFramebuffer");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInvalidateFramebuffer", target, numAttachments, attachments); }
         Handles.MH_glInvalidateFramebuffer.invokeExact(handles.PFN_glInvalidateFramebuffer, target, numAttachments, attachments); }
         catch (Throwable e) { throw new RuntimeException("error in InvalidateFramebuffer", e); }
     }
 
+    /// Invokes `glInvalidateSubFramebuffer`.
     /// ```
     /// void glInvalidateSubFramebuffer((unsigned int) GLenum target, (int) GLsizei numAttachments, const GLenum* attachments, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
-    public void InvalidateSubFramebuffer(int target, int numAttachments, MemorySegment attachments, int x, int y, int width, int height) {
+    public void InvalidateSubFramebuffer(int target, int numAttachments, @NonNull MemorySegment attachments, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateSubFramebuffer)) throw new GLSymbolNotFoundError("Symbol not found: glInvalidateSubFramebuffer");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInvalidateSubFramebuffer", target, numAttachments, attachments, x, y, width, height); }
         Handles.MH_glInvalidateSubFramebuffer.invokeExact(handles.PFN_glInvalidateSubFramebuffer, target, numAttachments, attachments, x, y, width, height); }

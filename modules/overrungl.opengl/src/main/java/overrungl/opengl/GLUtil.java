@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import org.jspecify.annotations.NonNull;
 import overrungl.OverrunGL;
 import overrungl.opengl.amd.GLAMDDebugOutput;
 import overrungl.opengl.amd.GLDebugProcAMD;
@@ -27,6 +28,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import static overrungl.OverrunGL.apiLog;
@@ -45,6 +47,13 @@ public final class GLUtil {
     private GLUtil() {
     }
 
+    /// A callback that can be removed.
+    @FunctionalInterface
+    public interface Removable {
+        /// Removes the callback.
+        void remove();
+    }
+
     /**
      * Detects the best debug output functionality to use and creates a callback that prints information to
      * {@link OverrunGL#apiLogger() API Logger}.
@@ -56,14 +65,15 @@ public final class GLUtil {
      * @param gl    the OpenGL context.
      * @param flags the OpenGL flags.
      * @param func  the loading function
+     * @return a function to remove the callback
      */
-    public static void setupDebugMessageCallback(
+    public static @NonNull Removable setupDebugMessageCallback(
         Arena arena,
         GL43 gl,
-        GLFlags flags,
+        @NonNull GLFlags flags,
         GLLoadFunc func
     ) {
-        setupDebugMessageCallback(arena, gl, flags, func, OverrunGL.apiLogger());
+        return setupDebugMessageCallback(arena, gl, flags, func, OverrunGL.apiLogger());
     }
 
     /**
@@ -78,14 +88,16 @@ public final class GLUtil {
      * @param flags  the OpenGL flags.
      * @param func   the loading function
      * @param logger the output logger.
+     * @return a function to remove the callback
      */
-    public static void setupDebugMessageCallback(
+    public static @NonNull Removable setupDebugMessageCallback(
         Arena arena,
         GL43 gl,
-        GLFlags flags,
+        @NonNull GLFlags flags,
         GLLoadFunc func,
-        Consumer<String> logger
+        @NonNull Consumer<String> logger
     ) {
+        Objects.requireNonNull(logger);
         if (flags.GL43 || flags.GL_KHR_debug) {
             if (flags.GL43) {
                 apiLog("[GL] Using OpenGL 4.3 for error logging.");
@@ -119,11 +131,13 @@ public final class GLUtil {
                     gl.Enable(GL_DEBUG_OUTPUT);
                 }
             }
+            return () -> gl.DebugMessageCallback(MemorySegment.NULL, MemorySegment.NULL);
         }
 
         if (flags.GL_ARB_debug_output) {
             apiLog("[GL] Using ARB_debug_output for error logging.");
-            new GLARBDebugOutput(func).DebugMessageCallbackARB(GLDebugProc.alloc(arena, (source, type, id, severity, _, message, _) -> {
+            GLARBDebugOutput debugOutput = new GLARBDebugOutput(func);
+            debugOutput.DebugMessageCallbackARB(GLDebugProc.alloc(arena, (source, type, id, severity, _, message, _) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] ARB_debug_output message\n");
                 printDetail(sb, "ID", "0x" + Integer.toHexString(id).toUpperCase(Locale.ROOT));
@@ -137,11 +151,13 @@ public final class GLUtil {
                 }
                 logger.accept(sb.toString());
             }), MemorySegment.NULL);
+            return () -> debugOutput.DebugMessageCallbackARB(MemorySegment.NULL, MemorySegment.NULL);
         }
 
         if (flags.GL_AMD_debug_output) {
             apiLog("[GL] Using AMD_debug_output for error logging.");
-            new GLAMDDebugOutput(func).DebugMessageCallbackAMD(GLDebugProcAMD.alloc(arena, (id, category, severity, _, message, _) -> {
+            GLAMDDebugOutput debugOutput = new GLAMDDebugOutput(func);
+            debugOutput.DebugMessageCallbackAMD(GLDebugProcAMD.alloc(arena, (id, category, severity, _, message, _) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] AMD_debug_output message\n");
                 printDetail(sb, "ID", "0x" + Integer.toHexString(id).toUpperCase(Locale.ROOT));
@@ -154,9 +170,12 @@ public final class GLUtil {
                 }
                 logger.accept(sb.toString());
             }), MemorySegment.NULL);
+            return () -> debugOutput.DebugMessageCallbackAMD(MemorySegment.NULL, MemorySegment.NULL);
         }
 
         apiLog("[GL] No debug output implementation is available.");
+        return () -> {
+        };
     }
 
     private static void printDetail(StringBuilder sb, String type, String message) {

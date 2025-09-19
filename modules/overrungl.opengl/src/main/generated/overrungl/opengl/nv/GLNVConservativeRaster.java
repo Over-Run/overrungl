@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_conservative_raster`
 public final class GLNVConservativeRaster {
     public static final int GL_CONSERVATIVE_RASTERIZATION_NV = 0x9346;
     public static final int GL_SUBPIXEL_PRECISION_BIAS_X_BITS_NV = 0x9347;
@@ -32,15 +32,16 @@ public final class GLNVConservativeRaster {
     public static final class Handles {
         public static final MethodHandle MH_glSubpixelPrecisionBiasNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glSubpixelPrecisionBiasNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glSubpixelPrecisionBiasNV = func.invoke("glSubpixelPrecisionBiasNV");
         }
     }
 
-    public GLNVConservativeRaster(overrungl.opengl.GLLoadFunc func) {
+    public GLNVConservativeRaster(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glSubpixelPrecisionBiasNV`.
     /// ```
     /// void glSubpixelPrecisionBiasNV((unsigned int) GLuint xbits, (unsigned int) GLuint ybits);
     /// ```

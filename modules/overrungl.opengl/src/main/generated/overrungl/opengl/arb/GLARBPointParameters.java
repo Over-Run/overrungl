@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_point_parameters`
 public final class GLARBPointParameters {
     public static final int GL_POINT_SIZE_MIN_ARB = 0x8126;
     public static final int GL_POINT_SIZE_MAX_ARB = 0x8127;
@@ -34,16 +34,17 @@ public final class GLARBPointParameters {
         public static final MethodHandle MH_glPointParameterfvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPointParameterfARB;
         public final MemorySegment PFN_glPointParameterfvARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glPointParameterfARB = func.invoke("glPointParameterfARB", "glPointParameterf");
             PFN_glPointParameterfvARB = func.invoke("glPointParameterfvARB", "glPointParameterfv");
         }
     }
 
-    public GLARBPointParameters(overrungl.opengl.GLLoadFunc func) {
+    public GLARBPointParameters(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glPointParameterfARB`.
     /// ```
     /// void glPointParameterfARB((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
@@ -54,10 +55,11 @@ public final class GLARBPointParameters {
         catch (Throwable e) { throw new RuntimeException("error in PointParameterfARB", e); }
     }
 
+    /// Invokes `glPointParameterfvARB`.
     /// ```
     /// void glPointParameterfvARB((unsigned int) GLenum pname, const GLfloat* params);
     /// ```
-    public void PointParameterfvARB(int pname, MemorySegment params) {
+    public void PointParameterfvARB(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterfvARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameterfvARB", pname, params); }
         Handles.MH_glPointParameterfvARB.invokeExact(handles.PFN_glPointParameterfvARB, pname, params); }

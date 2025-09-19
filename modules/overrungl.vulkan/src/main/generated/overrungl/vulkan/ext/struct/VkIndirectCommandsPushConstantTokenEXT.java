@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkIndirectCommandsPushConstantTokenEXT`.
 /// ## Layout
 /// ```
 /// struct VkIndirectCommandsPushConstantTokenEXT {
@@ -33,7 +35,7 @@ import overrungl.util.*;
 /// ```
 public final class VkIndirectCommandsPushConstantTokenEXT extends GroupType {
     /// The struct layout of `VkIndirectCommandsPushConstantTokenEXT`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkPushConstantRange.LAYOUT.withName("updateRange")
     );
     /// The byte offset of `updateRange`.

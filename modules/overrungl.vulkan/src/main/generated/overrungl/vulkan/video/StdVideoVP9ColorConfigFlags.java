@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoVP9ColorConfigFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoVP9ColorConfigFlags {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoVP9ColorConfigFlags extends GroupType {
     /// The struct layout of `StdVideoVP9ColorConfigFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("color_range"), 1,
         ValueLayout.JAVA_INT.withName("reserved"), 31
     );

@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.khr;
-
+/// `GL_KHR_shader_subgroup`
 public final class GLKHRShaderSubgroup {
     public static final int GL_SUBGROUP_SIZE_KHR = 0x9532;
     public static final int GL_SUBGROUP_SUPPORTED_STAGES_KHR = 0x9533;

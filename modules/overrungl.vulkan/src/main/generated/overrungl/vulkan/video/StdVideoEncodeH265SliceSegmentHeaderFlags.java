@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeH265SliceSegmentHeaderFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH265SliceSegmentHeaderFlags {
@@ -45,7 +47,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeH265SliceSegmentHeaderFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("first_slice_segment_in_pic_flag"), 1,
         ValueLayout.JAVA_INT.withName("dependent_slice_segment_flag"), 1,
         ValueLayout.JAVA_INT.withName("slice_sao_luma_flag"), 1,

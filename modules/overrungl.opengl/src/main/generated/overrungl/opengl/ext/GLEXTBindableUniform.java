@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_bindable_uniform`
 public final class GLEXTBindableUniform {
     public static final int GL_MAX_VERTEX_BINDABLE_UNIFORMS_EXT = 0x8DE2;
     public static final int GL_MAX_FRAGMENT_BINDABLE_UNIFORMS_EXT = 0x8DE3;
@@ -38,17 +38,18 @@ public final class GLEXTBindableUniform {
         public final MemorySegment PFN_glUniformBufferEXT;
         public final MemorySegment PFN_glGetUniformBufferSizeEXT;
         public final MemorySegment PFN_glGetUniformOffsetEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glUniformBufferEXT = func.invoke("glUniformBufferEXT");
             PFN_glGetUniformBufferSizeEXT = func.invoke("glGetUniformBufferSizeEXT");
             PFN_glGetUniformOffsetEXT = func.invoke("glGetUniformOffsetEXT");
         }
     }
 
-    public GLEXTBindableUniform(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTBindableUniform(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glUniformBufferEXT`.
     /// ```
     /// void glUniformBufferEXT((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLuint buffer);
     /// ```
@@ -59,6 +60,7 @@ public final class GLEXTBindableUniform {
         catch (Throwable e) { throw new RuntimeException("error in UniformBufferEXT", e); }
     }
 
+    /// Invokes `glGetUniformBufferSizeEXT`.
     /// ```
     /// (int) GLint glGetUniformBufferSizeEXT((unsigned int) GLuint program, (int) GLint location);
     /// ```
@@ -69,6 +71,7 @@ public final class GLEXTBindableUniform {
         catch (Throwable e) { throw new RuntimeException("error in GetUniformBufferSizeEXT", e); }
     }
 
+    /// Invokes `glGetUniformOffsetEXT`.
     /// ```
     /// ((signed long long) khronos_intptr_t) GLintptr glGetUniformOffsetEXT((unsigned int) GLuint program, (int) GLint location);
     /// ```

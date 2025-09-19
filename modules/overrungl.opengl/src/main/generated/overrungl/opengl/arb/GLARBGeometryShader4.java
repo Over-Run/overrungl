@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_geometry_shader4`
 public final class GLARBGeometryShader4 {
     public static final int GL_LINES_ADJACENCY_ARB = 0x000A;
     public static final int GL_LINE_STRIP_ADJACENCY_ARB = 0x000B;
@@ -54,7 +54,7 @@ public final class GLARBGeometryShader4 {
         public final MemorySegment PFN_glFramebufferTextureARB;
         public final MemorySegment PFN_glFramebufferTextureLayerARB;
         public final MemorySegment PFN_glFramebufferTextureFaceARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glProgramParameteriARB = func.invoke("glProgramParameteriARB", "glProgramParameteri");
             PFN_glFramebufferTextureARB = func.invoke("glFramebufferTextureARB", "glFramebufferTexture");
             PFN_glFramebufferTextureLayerARB = func.invoke("glFramebufferTextureLayerARB", "glFramebufferTextureLayer");
@@ -62,10 +62,11 @@ public final class GLARBGeometryShader4 {
         }
     }
 
-    public GLARBGeometryShader4(overrungl.opengl.GLLoadFunc func) {
+    public GLARBGeometryShader4(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glProgramParameteriARB`.
     /// ```
     /// void glProgramParameteriARB((unsigned int) GLuint program, (unsigned int) GLenum pname, (int) GLint value);
     /// ```
@@ -76,6 +77,7 @@ public final class GLARBGeometryShader4 {
         catch (Throwable e) { throw new RuntimeException("error in ProgramParameteriARB", e); }
     }
 
+    /// Invokes `glFramebufferTextureARB`.
     /// ```
     /// void glFramebufferTextureARB((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
@@ -86,6 +88,7 @@ public final class GLARBGeometryShader4 {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureARB", e); }
     }
 
+    /// Invokes `glFramebufferTextureLayerARB`.
     /// ```
     /// void glFramebufferTextureLayerARB((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint layer);
     /// ```
@@ -96,6 +99,7 @@ public final class GLARBGeometryShader4 {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureLayerARB", e); }
     }
 
+    /// Invokes `glFramebufferTextureFaceARB`.
     /// ```
     /// void glFramebufferTextureFaceARB((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLenum face);
     /// ```

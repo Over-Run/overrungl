@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_present_wait` - device extension
 public final class VKKHRPresentWait {
     public static final int VK_KHR_PRESENT_WAIT_SPEC_VERSION = 1;
     public static final String VK_KHR_PRESENT_WAIT_EXTENSION_NAME = "VK_KHR_present_wait";
@@ -32,10 +34,11 @@ public final class VKKHRPresentWait {
 
     private VKKHRPresentWait() {}
 
+    /// Invokes `vkWaitForPresentKHR`.
     /// ```
     /// (int) VkResult vkWaitForPresentKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, uint64_t presentId, uint64_t timeout);
     /// ```
-    public static int vkWaitForPresentKHR(VkDevice device, long swapchain, long presentId, long timeout) {
+    public static int vkWaitForPresentKHR(@NonNull VkDevice device, long swapchain, long presentId, long timeout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkWaitForPresentKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkWaitForPresentKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkWaitForPresentKHR", device, swapchain, presentId, timeout); }
         return (int) Handles.MH_vkWaitForPresentKHR.invokeExact(device.capabilities().PFN_vkWaitForPresentKHR, device.segment(), swapchain, presentId, timeout); }

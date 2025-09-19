@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `STBTT__bitmap`.
 /// ## Layout
 /// ```
 /// struct STBTT__bitmap {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class STBTT__bitmap extends GroupType {
     /// The struct layout of `STBTT__bitmap`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("w"),
         ValueLayout.JAVA_INT.withName("h"),
         ValueLayout.JAVA_INT.withName("stride"),

@@ -16,12 +16,12 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// Constants and functions of OpenGL 4.6.
 public class GL46 extends GL45 {
     public static final int GL_SHADER_BINARY_FORMAT_SPIR_V = 0x9551;
     public static final int GL_SPIR_V_BINARY = 0x9552;
@@ -68,36 +68,40 @@ public class GL46 extends GL45 {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glSpecializeShader`.
     /// ```
     /// void glSpecializeShader((unsigned int) GLuint shader, const GLchar* pEntryPoint, (unsigned int) GLuint numSpecializationConstants, const GLuint* pConstantIndex, const GLuint* pConstantValue);
     /// ```
-    public void SpecializeShader(int shader, MemorySegment pEntryPoint, int numSpecializationConstants, MemorySegment pConstantIndex, MemorySegment pConstantValue) {
+    public void SpecializeShader(int shader, @NonNull MemorySegment pEntryPoint, int numSpecializationConstants, @NonNull MemorySegment pConstantIndex, @NonNull MemorySegment pConstantValue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSpecializeShader)) throw new GLSymbolNotFoundError("Symbol not found: glSpecializeShader");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSpecializeShader", shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
         Handles.MH_glSpecializeShader.invokeExact(handles.PFN_glSpecializeShader, shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
         catch (Throwable e) { throw new RuntimeException("error in SpecializeShader", e); }
     }
 
+    /// Invokes `glMultiDrawArraysIndirectCount`.
     /// ```
     /// void glMultiDrawArraysIndirectCount((unsigned int) GLenum mode, const void* indirect, ((signed long long) khronos_intptr_t) GLintptr drawcount, (int) GLsizei maxdrawcount, (int) GLsizei stride);
     /// ```
-    public void MultiDrawArraysIndirectCount(int mode, MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
+    public void MultiDrawArraysIndirectCount(int mode, @NonNull MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectCount)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCount");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawArraysIndirectCount", mode, indirect, drawcount, maxdrawcount, stride); }
         Handles.MH_glMultiDrawArraysIndirectCount.invokeExact(handles.PFN_glMultiDrawArraysIndirectCount, mode, indirect, drawcount, maxdrawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysIndirectCount", e); }
     }
 
+    /// Invokes `glMultiDrawElementsIndirectCount`.
     /// ```
     /// void glMultiDrawElementsIndirectCount((unsigned int) GLenum mode, (unsigned int) GLenum type, const void* indirect, ((signed long long) khronos_intptr_t) GLintptr drawcount, (int) GLsizei maxdrawcount, (int) GLsizei stride);
     /// ```
-    public void MultiDrawElementsIndirectCount(int mode, int type, MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
+    public void MultiDrawElementsIndirectCount(int mode, int type, @NonNull MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectCount)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCount");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawElementsIndirectCount", mode, type, indirect, drawcount, maxdrawcount, stride); }
         Handles.MH_glMultiDrawElementsIndirectCount.invokeExact(handles.PFN_glMultiDrawElementsIndirectCount, mode, type, indirect, drawcount, maxdrawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsIndirectCount", e); }
     }
 
+    /// Invokes `glPolygonOffsetClamp`.
     /// ```
     /// void glPolygonOffsetClamp(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat units, ((float) khronos_float_t) GLfloat clamp);
     /// ```

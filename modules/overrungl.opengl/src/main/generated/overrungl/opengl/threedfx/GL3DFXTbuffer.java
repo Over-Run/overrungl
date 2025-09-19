@@ -16,27 +16,28 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.threedfx;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_3DFX_tbuffer`
 public final class GL3DFXTbuffer {
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_glTbufferMask3DFX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTbufferMask3DFX;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTbufferMask3DFX = func.invoke("glTbufferMask3DFX");
         }
     }
 
-    public GL3DFXTbuffer(overrungl.opengl.GLLoadFunc func) {
+    public GL3DFXTbuffer(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTbufferMask3DFX`.
     /// ```
     /// void glTbufferMask3DFX((unsigned int) GLuint mask);
     /// ```

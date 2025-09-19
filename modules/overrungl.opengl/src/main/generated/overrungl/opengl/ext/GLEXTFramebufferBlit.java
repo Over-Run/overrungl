@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_framebuffer_blit`
 public final class GLEXTFramebufferBlit {
     public static final int GL_READ_FRAMEBUFFER_EXT = 0x8CA8;
     public static final int GL_DRAW_FRAMEBUFFER_EXT = 0x8CA9;
@@ -32,15 +32,16 @@ public final class GLEXTFramebufferBlit {
     public static final class Handles {
         public static final MethodHandle MH_glBlitFramebufferEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlitFramebufferEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBlitFramebufferEXT = func.invoke("glBlitFramebufferEXT", "glBlitFramebuffer");
         }
     }
 
-    public GLEXTFramebufferBlit(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTFramebufferBlit(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBlitFramebufferEXT`.
     /// ```
     /// void glBlitFramebufferEXT((int) GLint srcX0, (int) GLint srcY0, (int) GLint srcX1, (int) GLint srcY1, (int) GLint dstX0, (int) GLint dstY0, (int) GLint dstX1, (int) GLint dstY1, (unsigned int) GLbitfield mask, (unsigned int) GLenum filter);
     /// ```

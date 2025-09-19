@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.amd;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_AMD_stencil_operation_extended`
 public final class GLAMDStencilOperationExtended {
     public static final int GL_SET_AMD = 0x874A;
     public static final int GL_REPLACE_VALUE_AMD = 0x874B;
@@ -32,15 +32,16 @@ public final class GLAMDStencilOperationExtended {
     public static final class Handles {
         public static final MethodHandle MH_glStencilOpValueAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glStencilOpValueAMD;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glStencilOpValueAMD = func.invoke("glStencilOpValueAMD");
         }
     }
 
-    public GLAMDStencilOperationExtended(overrungl.opengl.GLLoadFunc func) {
+    public GLAMDStencilOperationExtended(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glStencilOpValueAMD`.
     /// ```
     /// void glStencilOpValueAMD((unsigned int) GLenum face, (unsigned int) GLuint value);
     /// ```

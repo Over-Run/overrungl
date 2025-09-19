@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
+/// `GL_ARB_texture_rg`
 public final class GLARBTextureRg {
     public static final int GL_RG = 0x8227;
     public static final int GL_RG_INTEGER = 0x8228;

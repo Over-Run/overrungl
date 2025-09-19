@@ -35,7 +35,7 @@ public final class VulkanMemoryAllocatorLibrary {
 
     /// Sets a custom symbol lookup for module `vma`.
     ///
-    /// This doesn't take effect after `VulkanMemoryAllocatorLibrary::lookup()` had invoked.
+    /// This doesn't take effect if `VulkanMemoryAllocatorLibrary::lookup()` had been invoked.
     /// @param lookup the custom symbol lookup
     public static void useLookup(SymbolLookup lookup) { customLookup = lookup; }
 

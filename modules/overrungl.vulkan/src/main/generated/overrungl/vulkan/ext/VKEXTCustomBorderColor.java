@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_custom_border_color` - device extension
 public final class VKEXTCustomBorderColor {
     public static final int VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION = 12;
     public static final String VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME = "VK_EXT_custom_border_color";

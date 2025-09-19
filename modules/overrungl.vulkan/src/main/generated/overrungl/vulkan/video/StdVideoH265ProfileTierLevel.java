@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH265ProfileTierLevel`.
 /// ## Layout
 /// ```
 /// struct StdVideoH265ProfileTierLevel {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH265ProfileTierLevel extends GroupType {
     /// The struct layout of `StdVideoH265ProfileTierLevel`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoH265ProfileTierLevelFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_INT.withName("general_profile_idc"),
         ValueLayout.JAVA_INT.withName("general_level_idc")

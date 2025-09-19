@@ -18,9 +18,11 @@
 package overrungl.vulkan.arm;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_ARM_data_graph` - device extension
 public final class VKARMDataGraph {
     public static final int VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM = 0;
     public static final int VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ARM = 0;
@@ -78,110 +80,121 @@ public final class VKARMDataGraph {
 
     private VKARMDataGraph() {}
 
+    /// Invokes `vkCreateDataGraphPipelinesARM`.
     /// ```
     /// (int) VkResult vkCreateDataGraphPipelinesARM((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR deferredOperation, (uint64_t) VkPipelineCache pipelineCache, uint32_t createInfoCount, const VkDataGraphPipelineCreateInfoARM* pCreateInfos, const VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
     /// ```
-    public static int vkCreateDataGraphPipelinesARM(VkDevice device, long deferredOperation, long pipelineCache, int createInfoCount, MemorySegment pCreateInfos, MemorySegment pAllocator, MemorySegment pPipelines) {
+    public static int vkCreateDataGraphPipelinesARM(@NonNull VkDevice device, long deferredOperation, long pipelineCache, int createInfoCount, @NonNull MemorySegment pCreateInfos, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pPipelines) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateDataGraphPipelinesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDataGraphPipelinesARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateDataGraphPipelinesARM", device, deferredOperation, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines); }
         return (int) Handles.MH_vkCreateDataGraphPipelinesARM.invokeExact(device.capabilities().PFN_vkCreateDataGraphPipelinesARM, device.segment(), deferredOperation, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDataGraphPipelinesARM", e); }
     }
 
+    /// Invokes `vkCreateDataGraphPipelineSessionARM`.
     /// ```
     /// (int) VkResult vkCreateDataGraphPipelineSessionARM((struct VkDevice*) VkDevice device, const VkDataGraphPipelineSessionCreateInfoARM* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDataGraphPipelineSessionARM* pSession);
     /// ```
-    public static int vkCreateDataGraphPipelineSessionARM(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSession) {
+    public static int vkCreateDataGraphPipelineSessionARM(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSession) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateDataGraphPipelineSessionARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDataGraphPipelineSessionARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateDataGraphPipelineSessionARM", device, pCreateInfo, pAllocator, pSession); }
         return (int) Handles.MH_vkCreateDataGraphPipelineSessionARM.invokeExact(device.capabilities().PFN_vkCreateDataGraphPipelineSessionARM, device.segment(), pCreateInfo, pAllocator, pSession); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDataGraphPipelineSessionARM", e); }
     }
 
+    /// Invokes `vkGetDataGraphPipelineSessionBindPointRequirementsARM`.
     /// ```
     /// (int) VkResult vkGetDataGraphPipelineSessionBindPointRequirementsARM((struct VkDevice*) VkDevice device, const VkDataGraphPipelineSessionBindPointRequirementsInfoARM* pInfo, uint32_t* pBindPointRequirementCount, VkDataGraphPipelineSessionBindPointRequirementARM* pBindPointRequirements);
     /// ```
-    public static int vkGetDataGraphPipelineSessionBindPointRequirementsARM(VkDevice device, MemorySegment pInfo, MemorySegment pBindPointRequirementCount, MemorySegment pBindPointRequirements) {
+    public static int vkGetDataGraphPipelineSessionBindPointRequirementsARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pBindPointRequirementCount, @NonNull MemorySegment pBindPointRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDataGraphPipelineSessionBindPointRequirementsARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDataGraphPipelineSessionBindPointRequirementsARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDataGraphPipelineSessionBindPointRequirementsARM", device, pInfo, pBindPointRequirementCount, pBindPointRequirements); }
         return (int) Handles.MH_vkGetDataGraphPipelineSessionBindPointRequirementsARM.invokeExact(device.capabilities().PFN_vkGetDataGraphPipelineSessionBindPointRequirementsARM, device.segment(), pInfo, pBindPointRequirementCount, pBindPointRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDataGraphPipelineSessionBindPointRequirementsARM", e); }
     }
 
+    /// Invokes `vkGetDataGraphPipelineSessionMemoryRequirementsARM`.
     /// ```
     /// void vkGetDataGraphPipelineSessionMemoryRequirementsARM((struct VkDevice*) VkDevice device, const VkDataGraphPipelineSessionMemoryRequirementsInfoARM* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
-    public static void vkGetDataGraphPipelineSessionMemoryRequirementsARM(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
+    public static void vkGetDataGraphPipelineSessionMemoryRequirementsARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDataGraphPipelineSessionMemoryRequirementsARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDataGraphPipelineSessionMemoryRequirementsARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDataGraphPipelineSessionMemoryRequirementsARM", device, pInfo, pMemoryRequirements); }
         Handles.MH_vkGetDataGraphPipelineSessionMemoryRequirementsARM.invokeExact(device.capabilities().PFN_vkGetDataGraphPipelineSessionMemoryRequirementsARM, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDataGraphPipelineSessionMemoryRequirementsARM", e); }
     }
 
+    /// Invokes `vkBindDataGraphPipelineSessionMemoryARM`.
     /// ```
     /// (int) VkResult vkBindDataGraphPipelineSessionMemoryARM((struct VkDevice*) VkDevice device, uint32_t bindInfoCount, const VkBindDataGraphPipelineSessionMemoryInfoARM* pBindInfos);
     /// ```
-    public static int vkBindDataGraphPipelineSessionMemoryARM(VkDevice device, int bindInfoCount, MemorySegment pBindInfos) {
+    public static int vkBindDataGraphPipelineSessionMemoryARM(@NonNull VkDevice device, int bindInfoCount, @NonNull MemorySegment pBindInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindDataGraphPipelineSessionMemoryARM)) throw new VKSymbolNotFoundError("Symbol not found: vkBindDataGraphPipelineSessionMemoryARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkBindDataGraphPipelineSessionMemoryARM", device, bindInfoCount, pBindInfos); }
         return (int) Handles.MH_vkBindDataGraphPipelineSessionMemoryARM.invokeExact(device.capabilities().PFN_vkBindDataGraphPipelineSessionMemoryARM, device.segment(), bindInfoCount, pBindInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkBindDataGraphPipelineSessionMemoryARM", e); }
     }
 
+    /// Invokes `vkDestroyDataGraphPipelineSessionARM`.
     /// ```
     /// void vkDestroyDataGraphPipelineSessionARM((struct VkDevice*) VkDevice device, (uint64_t) VkDataGraphPipelineSessionARM session, const VkAllocationCallbacks* pAllocator);
     /// ```
-    public static void vkDestroyDataGraphPipelineSessionARM(VkDevice device, long session, MemorySegment pAllocator) {
+    public static void vkDestroyDataGraphPipelineSessionARM(@NonNull VkDevice device, long session, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyDataGraphPipelineSessionARM)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyDataGraphPipelineSessionARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyDataGraphPipelineSessionARM", device, session, pAllocator); }
         Handles.MH_vkDestroyDataGraphPipelineSessionARM.invokeExact(device.capabilities().PFN_vkDestroyDataGraphPipelineSessionARM, device.segment(), session, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyDataGraphPipelineSessionARM", e); }
     }
 
+    /// Invokes `vkCmdDispatchDataGraphARM`.
     /// ```
     /// void vkCmdDispatchDataGraphARM((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDataGraphPipelineSessionARM session, const VkDataGraphPipelineDispatchInfoARM* pInfo);
     /// ```
-    public static void vkCmdDispatchDataGraphARM(VkCommandBuffer commandBuffer, long session, MemorySegment pInfo) {
+    public static void vkCmdDispatchDataGraphARM(@NonNull VkCommandBuffer commandBuffer, long session, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDispatchDataGraphARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDispatchDataGraphARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDispatchDataGraphARM", commandBuffer, session, pInfo); }
         Handles.MH_vkCmdDispatchDataGraphARM.invokeExact(commandBuffer.capabilities().PFN_vkCmdDispatchDataGraphARM, commandBuffer.segment(), session, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDispatchDataGraphARM", e); }
     }
 
+    /// Invokes `vkGetDataGraphPipelineAvailablePropertiesARM`.
     /// ```
     /// (int) VkResult vkGetDataGraphPipelineAvailablePropertiesARM((struct VkDevice*) VkDevice device, const VkDataGraphPipelineInfoARM* pPipelineInfo, uint32_t* pPropertiesCount, VkDataGraphPipelinePropertyARM* pProperties);
     /// ```
-    public static int vkGetDataGraphPipelineAvailablePropertiesARM(VkDevice device, MemorySegment pPipelineInfo, MemorySegment pPropertiesCount, MemorySegment pProperties) {
+    public static int vkGetDataGraphPipelineAvailablePropertiesARM(@NonNull VkDevice device, @NonNull MemorySegment pPipelineInfo, @NonNull MemorySegment pPropertiesCount, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDataGraphPipelineAvailablePropertiesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDataGraphPipelineAvailablePropertiesARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDataGraphPipelineAvailablePropertiesARM", device, pPipelineInfo, pPropertiesCount, pProperties); }
         return (int) Handles.MH_vkGetDataGraphPipelineAvailablePropertiesARM.invokeExact(device.capabilities().PFN_vkGetDataGraphPipelineAvailablePropertiesARM, device.segment(), pPipelineInfo, pPropertiesCount, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDataGraphPipelineAvailablePropertiesARM", e); }
     }
 
+    /// Invokes `vkGetDataGraphPipelinePropertiesARM`.
     /// ```
     /// (int) VkResult vkGetDataGraphPipelinePropertiesARM((struct VkDevice*) VkDevice device, const VkDataGraphPipelineInfoARM* pPipelineInfo, uint32_t propertiesCount, VkDataGraphPipelinePropertyQueryResultARM* pProperties);
     /// ```
-    public static int vkGetDataGraphPipelinePropertiesARM(VkDevice device, MemorySegment pPipelineInfo, int propertiesCount, MemorySegment pProperties) {
+    public static int vkGetDataGraphPipelinePropertiesARM(@NonNull VkDevice device, @NonNull MemorySegment pPipelineInfo, int propertiesCount, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDataGraphPipelinePropertiesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDataGraphPipelinePropertiesARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDataGraphPipelinePropertiesARM", device, pPipelineInfo, propertiesCount, pProperties); }
         return (int) Handles.MH_vkGetDataGraphPipelinePropertiesARM.invokeExact(device.capabilities().PFN_vkGetDataGraphPipelinePropertiesARM, device.segment(), pPipelineInfo, propertiesCount, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDataGraphPipelinePropertiesARM", e); }
     }
 
+    /// Invokes `vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, uint32_t* pQueueFamilyDataGraphPropertyCount, VkQueueFamilyDataGraphPropertiesARM* pQueueFamilyDataGraphProperties);
     /// ```
-    public static int vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM(VkPhysicalDevice physicalDevice, int queueFamilyIndex, MemorySegment pQueueFamilyDataGraphPropertyCount, MemorySegment pQueueFamilyDataGraphProperties) {
+    public static int vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM(@NonNull VkPhysicalDevice physicalDevice, int queueFamilyIndex, @NonNull MemorySegment pQueueFamilyDataGraphPropertyCount, @NonNull MemorySegment pQueueFamilyDataGraphProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM", physicalDevice, queueFamilyIndex, pQueueFamilyDataGraphPropertyCount, pQueueFamilyDataGraphProperties); }
         return (int) Handles.MH_vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM, physicalDevice.segment(), queueFamilyIndex, pQueueFamilyDataGraphPropertyCount, pQueueFamilyDataGraphProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM", e); }
     }
 
+    /// Invokes `vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM`.
     /// ```
     /// void vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* pQueueFamilyDataGraphProcessingEngineInfo, VkQueueFamilyDataGraphProcessingEnginePropertiesARM* pQueueFamilyDataGraphProcessingEngineProperties);
     /// ```
-    public static void vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM(VkPhysicalDevice physicalDevice, MemorySegment pQueueFamilyDataGraphProcessingEngineInfo, MemorySegment pQueueFamilyDataGraphProcessingEngineProperties) {
+    public static void vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pQueueFamilyDataGraphProcessingEngineInfo, @NonNull MemorySegment pQueueFamilyDataGraphProcessingEngineProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM", physicalDevice, pQueueFamilyDataGraphProcessingEngineInfo, pQueueFamilyDataGraphProcessingEngineProperties); }
         Handles.MH_vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM, physicalDevice.segment(), pQueueFamilyDataGraphProcessingEngineInfo, pQueueFamilyDataGraphProcessingEngineProperties); }

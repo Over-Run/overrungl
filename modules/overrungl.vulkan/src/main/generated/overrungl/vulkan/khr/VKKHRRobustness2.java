@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_robustness2` - device extension
 public final class VKKHRRobustness2 {
     public static final int VK_KHR_ROBUSTNESS_2_SPEC_VERSION = 1;
     public static final String VK_KHR_ROBUSTNESS_2_EXTENSION_NAME = "VK_KHR_robustness2";

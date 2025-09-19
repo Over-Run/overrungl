@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.msft;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_MSFT_layered_driver` - device extension
 public final class VKMSFTLayeredDriver {
     public static final int VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT = 0;
     public static final int VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT = 1;

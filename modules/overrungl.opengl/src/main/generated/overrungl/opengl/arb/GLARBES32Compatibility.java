@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_ES3_2_compatibility`
 public final class GLARBES32Compatibility {
     public static final int GL_PRIMITIVE_BOUNDING_BOX_ARB = 0x92BE;
     public static final int GL_MULTISAMPLE_LINE_WIDTH_RANGE_ARB = 0x9381;
@@ -31,15 +31,16 @@ public final class GLARBES32Compatibility {
     public static final class Handles {
         public static final MethodHandle MH_glPrimitiveBoundingBoxARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glPrimitiveBoundingBoxARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glPrimitiveBoundingBoxARB = func.invoke("glPrimitiveBoundingBoxARB", "glPrimitiveBoundingBox");
         }
     }
 
-    public GLARBES32Compatibility(overrungl.opengl.GLLoadFunc func) {
+    public GLARBES32Compatibility(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glPrimitiveBoundingBoxARB`.
     /// ```
     /// void glPrimitiveBoundingBoxARB(((float) khronos_float_t) GLfloat minX, ((float) khronos_float_t) GLfloat minY, ((float) khronos_float_t) GLfloat minZ, ((float) khronos_float_t) GLfloat minW, ((float) khronos_float_t) GLfloat maxX, ((float) khronos_float_t) GLfloat maxY, ((float) khronos_float_t) GLfloat maxZ, ((float) khronos_float_t) GLfloat maxW);
     /// ```

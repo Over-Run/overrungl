@@ -28,4 +28,5 @@ module overrungl.openal {
 
     requires transitive overrungl.core;
     requires static org.graalvm.nativeimage;
+    requires org.jspecify;
 }

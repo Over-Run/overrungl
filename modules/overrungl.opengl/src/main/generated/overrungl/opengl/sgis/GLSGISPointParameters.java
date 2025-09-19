@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgis;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_SGIS_point_parameters`
 public final class GLSGISPointParameters {
     public static final int GL_POINT_SIZE_MIN_SGIS = 0x8126;
     public static final int GL_POINT_SIZE_MAX_SGIS = 0x8127;
@@ -34,16 +34,17 @@ public final class GLSGISPointParameters {
         public static final MethodHandle MH_glPointParameterfvSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPointParameterfSGIS;
         public final MemorySegment PFN_glPointParameterfvSGIS;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glPointParameterfSGIS = func.invoke("glPointParameterfSGIS", "glPointParameterf");
             PFN_glPointParameterfvSGIS = func.invoke("glPointParameterfvSGIS", "glPointParameterfv");
         }
     }
 
-    public GLSGISPointParameters(overrungl.opengl.GLLoadFunc func) {
+    public GLSGISPointParameters(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glPointParameterfSGIS`.
     /// ```
     /// void glPointParameterfSGIS((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
@@ -54,10 +55,11 @@ public final class GLSGISPointParameters {
         catch (Throwable e) { throw new RuntimeException("error in PointParameterfSGIS", e); }
     }
 
+    /// Invokes `glPointParameterfvSGIS`.
     /// ```
     /// void glPointParameterfvSGIS((unsigned int) GLenum pname, const GLfloat* params);
     /// ```
-    public void PointParameterfvSGIS(int pname, MemorySegment params) {
+    public void PointParameterfvSGIS(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterfvSGIS");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameterfvSGIS", pname, params); }
         Handles.MH_glPointParameterfvSGIS.invokeExact(handles.PFN_glPointParameterfvSGIS, pname, params); }

@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.arm;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_ARM_render_pass_striped` - device extension
 public final class VKARMRenderPassStriped {
     public static final int VK_ARM_RENDER_PASS_STRIPED_SPEC_VERSION = 1;
     public static final String VK_ARM_RENDER_PASS_STRIPED_EXTENSION_NAME = "VK_ARM_render_pass_striped";

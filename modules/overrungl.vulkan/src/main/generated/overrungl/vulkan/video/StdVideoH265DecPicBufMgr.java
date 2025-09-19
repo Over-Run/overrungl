@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH265DecPicBufMgr`.
 /// ## Layout
 /// ```
 /// struct StdVideoH265DecPicBufMgr {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH265DecPicBufMgr extends GroupType {
     /// The struct layout of `StdVideoH265DecPicBufMgr`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_INT).withName("max_latency_increase_plus1"),
         MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("max_dec_pic_buffering_minus1"),
         MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("max_num_reorder_pics")

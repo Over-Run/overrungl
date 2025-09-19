@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH265ShortTermRefPicSet`.
 /// ## Layout
 /// ```
 /// struct StdVideoH265ShortTermRefPicSet {
@@ -46,7 +48,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH265ShortTermRefPicSet extends GroupType {
     /// The struct layout of `StdVideoH265ShortTermRefPicSet`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoH265ShortTermRefPicSetFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_INT.withName("delta_idx_minus1"),
         ValueLayout.JAVA_SHORT.withName("use_delta_flag"),

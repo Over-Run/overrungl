@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkAccelerationStructureMatrixMotionInstanceNV`.
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureMatrixMotionInstanceNV {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class VkAccelerationStructureMatrixMotionInstanceNV extends GroupType {
     /// The struct layout of `VkAccelerationStructureMatrixMotionInstanceNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         overrungl.vulkan.khr.struct.VkTransformMatrixKHR.LAYOUT.withName("transformT0"), -1,
         overrungl.vulkan.khr.struct.VkTransformMatrixKHR.LAYOUT.withName("transformT1"), -1,
         ValueLayout.JAVA_INT.withName("instanceCustomIndex"), 24,

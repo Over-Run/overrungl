@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_driver_properties` - device extension
 public final class VKKHRDriverProperties {
     public static final int VK_KHR_DRIVER_PROPERTIES_SPEC_VERSION = 1;
     public static final String VK_KHR_DRIVER_PROPERTIES_EXTENSION_NAME = "VK_KHR_driver_properties";

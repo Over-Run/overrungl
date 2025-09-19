@@ -264,6 +264,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
             |import java.lang.foreign.MemoryLayout.PathElement;
             |import java.lang.invoke.*;
             |import java.util.function.*;
+            |import org.jspecify.annotations.*;
             |import overrungl.struct.*;
             |import overrungl.util.*;
         """.trimMargin()
@@ -275,6 +276,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         if (groupClass.imports.isNotEmpty()) {
             sb.appendLine()
         }
+        sb.appendLine("/// Represents `${groupClass.name}`.")
         sb.appendLine("/// ## Layout")
         sb.appendLine("/// ```")
         sb.appendLine("/// ${groupClass.kind.typedef} ${groupClass.name} {")
@@ -296,7 +298,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
 
         // layout
         sb.appendLine("    /// The ${groupClass.kind.typedef} layout of `$className`.")
-        sb.appendLine("    public static final GroupLayout LAYOUT = ${groupClass.kind.layoutBuilder}(")
+        sb.appendLine("    public static final ${groupClass.kind.memoryLayoutType} LAYOUT = ${groupClass.kind.layoutBuilder}(")
         groupClass.members.forEachIndexed { index, it ->
             sb.append("""        ${groupMemberLayout(it.pair).memoryLayout}.withName("${it.pair.name}")""")
             if (groupClass.kind == GroupTypeKind.BITFIELD) {
@@ -550,7 +552,8 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     sb.appendLine(", value); return this; }")
                 }
                 if (member.pair.type is GroupLayoutType) {
-                    val typeJavaName = "${if (member.pair.type.packageName != null) "${member.pair.type.packageName}." else ""}${member.pair.type.name}"
+                    val typeJavaName =
+                        "${if (member.pair.type.packageName != null) "${member.pair.type.packageName}." else ""}${member.pair.type.name}"
                     sb.appendLine(
                         """
                             |    /// Accepts `${member.pair.name}` with the given function.
@@ -671,7 +674,8 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     sb.appendLine(", value); return this; }")
                 }
                 if (member.pair.type is GroupLayoutType) {
-                    val typeJavaName = "${if (member.pair.type.packageName != null) "${member.pair.type.packageName}." else ""}${member.pair.type.name}"
+                    val typeJavaName =
+                        "${if (member.pair.type.packageName != null) "${member.pair.type.packageName}." else ""}${member.pair.type.name}"
                     sb.appendLine(
                         """
                             |    /// Accepts `${member.pair.name}` with the given function.
@@ -740,7 +744,9 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         // method handles
         interpreter.functions.forEach { (entrypoint, func) ->
             if (func.body == null) {
-                sb.appendLine("        /// The method handle of `$entrypoint`.")
+                sb.append("        /// The method handle of [`$entrypoint`][")
+                writeFunctionAsJavadocRef(sb, func)
+                sb.appendLine("].")
                 val functionDescriptor = functionDescriptor(func)
                 sb.appendLine("        public static final MethodHandle MH_$entrypoint = downcallHandle($functionDescriptor);")
                 nativeImageDowncallDescriptors.add(functionDescriptor)
@@ -749,10 +755,13 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         // function addresses
         interpreter.functions.forEach { (entrypoint, func) ->
             if (func.body == null) {
-                sb.appendLine("        /// The function address of `$entrypoint`.")
+                sb.append("        /// The function address of [`$entrypoint`][")
+                writeFunctionAsJavadocRef(sb, func)
+                sb.appendLine("].")
                 sb.appendLine("        public final MemorySegment PFN_$entrypoint;")
             }
         }
+        sb.appendLine()
         sb.appendLine("        private Handles() {")
         sb.appendLine("            var _lookup = $symbolLookup;")
         interpreter.functions.forEach { (entrypoint, func) ->
@@ -766,9 +775,11 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
             }
         }
         sb.appendLine("        }")
+        sb.appendLine()
         sb.appendLine(
             """
-                |        private static Handles get() {
+                |        /// {@return this}
+                |        public static Handles get() {
                 |            final class Holder {
                 |                static final Handles instance = new Handles();
                 |            }
@@ -842,6 +853,21 @@ fun functionDescriptor(func: DefinitionFunction) = buildString {
     append(")")
 }
 
+val typesWithoutAnnotation = hashMapOf(
+    "boolean" to null,
+    "char" to null,
+    "byte" to null,
+    "short" to null,
+    "int" to null,
+    "long" to null,
+    "float" to null,
+    "double" to null,
+    "void" to null
+)
+
+fun insertNonNullAnnotation(type: String) =
+    if (typesWithoutAnnotation.containsKey(type)) type else "@NonNull $type"
+
 fun writeFunction(
     sb: StringBuilder,
     func: DefinitionFunction,
@@ -853,6 +879,7 @@ fun writeFunction(
 
     sb.appendLine(
         """
+            |    /// Invokes `${func.entrypoint}`.
             |    /// ```
             |    /// ${func.returnType.originalName} ${func.entrypoint}(${
             func.parameters.joinToString { p ->
@@ -870,11 +897,13 @@ fun writeFunction(
         sb.append("static ")
     }
     sb.appendLine(
-        "${func.returnType.javaType} ${func.name}(${
-            if (func.requireAllocator) "SegmentAllocator __allocator${if (func.parameters.isNotEmpty()) ", " else ""}"
+        "${insertNonNullAnnotation(func.returnType.javaType)} ${func.name}(${
+            if (func.requireAllocator) "@NonNull SegmentAllocator __allocator${if (func.parameters.isNotEmpty()) ", " else ""}"
             else ""
         }${
-            func.parameters.joinToString { p -> "${if (p.dimensions.isNotEmpty()) "MemorySegment" else p.type.javaType} ${p.name}" }
+            func.parameters.joinToString { p ->
+                "${insertNonNullAnnotation(if (p.dimensions.isNotEmpty()) "MemorySegment" else p.type.javaType)} ${p.name}"
+            }
         }) {")
     if (func.body != null) {
         sb.appendLine(func.body.prependIndent("        "))
@@ -912,4 +941,12 @@ fun writeFunction(
     }
     sb.appendLine("    }")
     sb.appendLine()
+}
+
+fun writeFunctionAsJavadocRef(
+    sb: StringBuilder,
+    func: DefinitionFunction
+) {
+    sb.append("#")
+    sb.append(func.name)
 }

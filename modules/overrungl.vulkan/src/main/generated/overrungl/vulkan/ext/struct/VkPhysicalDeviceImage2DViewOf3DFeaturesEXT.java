@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`.
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPhysicalDeviceImage2DViewOf3DFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("image2DViewOf3D"),

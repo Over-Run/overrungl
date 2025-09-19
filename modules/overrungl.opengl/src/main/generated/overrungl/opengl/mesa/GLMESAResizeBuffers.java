@@ -16,27 +16,28 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.mesa;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_MESA_resize_buffers`
 public final class GLMESAResizeBuffers {
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_glResizeBuffersMESA = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glResizeBuffersMESA;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glResizeBuffersMESA = func.invoke("glResizeBuffersMESA");
         }
     }
 
-    public GLMESAResizeBuffers(overrungl.opengl.GLLoadFunc func) {
+    public GLMESAResizeBuffers(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glResizeBuffersMESA`.
     /// ```
     /// void glResizeBuffersMESA();
     /// ```

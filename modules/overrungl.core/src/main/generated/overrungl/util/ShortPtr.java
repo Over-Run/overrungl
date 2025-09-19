@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `ShortPtr`.
 /// ## Layout
 /// ```
 /// struct ShortPtr {
@@ -33,7 +35,7 @@ import overrungl.util.*;
 /// ```
 public final class ShortPtr extends GroupType {
     /// The struct layout of `ShortPtr`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_SHORT.withName("value")
     );
     /// The byte offset of `value`.

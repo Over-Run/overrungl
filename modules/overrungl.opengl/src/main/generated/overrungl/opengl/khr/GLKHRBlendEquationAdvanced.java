@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.khr;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_KHR_blend_equation_advanced`
 public final class GLKHRBlendEquationAdvanced {
     public static final int GL_MULTIPLY_KHR = 0x9294;
     public static final int GL_SCREEN_KHR = 0x9295;
@@ -43,15 +43,16 @@ public final class GLKHRBlendEquationAdvanced {
     public static final class Handles {
         public static final MethodHandle MH_glBlendBarrierKHR = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glBlendBarrierKHR;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBlendBarrierKHR = func.invoke("glBlendBarrierKHR", "glBlendBarrier");
         }
     }
 
-    public GLKHRBlendEquationAdvanced(overrungl.opengl.GLLoadFunc func) {
+    public GLKHRBlendEquationAdvanced(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBlendBarrierKHR`.
     /// ```
     /// void glBlendBarrierKHR();
     /// ```

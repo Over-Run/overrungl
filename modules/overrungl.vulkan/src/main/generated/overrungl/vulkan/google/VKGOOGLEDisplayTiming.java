@@ -18,9 +18,11 @@
 package overrungl.vulkan.google;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_GOOGLE_display_timing` - device extension
 public final class VKGOOGLEDisplayTiming {
     public static final int VK_GOOGLE_DISPLAY_TIMING_SPEC_VERSION = 1;
     public static final String VK_GOOGLE_DISPLAY_TIMING_EXTENSION_NAME = "VK_GOOGLE_display_timing";
@@ -33,20 +35,22 @@ public final class VKGOOGLEDisplayTiming {
 
     private VKGOOGLEDisplayTiming() {}
 
+    /// Invokes `vkGetRefreshCycleDurationGOOGLE`.
     /// ```
     /// (int) VkResult vkGetRefreshCycleDurationGOOGLE((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, VkRefreshCycleDurationGOOGLE* pDisplayTimingProperties);
     /// ```
-    public static int vkGetRefreshCycleDurationGOOGLE(VkDevice device, long swapchain, MemorySegment pDisplayTimingProperties) {
+    public static int vkGetRefreshCycleDurationGOOGLE(@NonNull VkDevice device, long swapchain, @NonNull MemorySegment pDisplayTimingProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetRefreshCycleDurationGOOGLE)) throw new VKSymbolNotFoundError("Symbol not found: vkGetRefreshCycleDurationGOOGLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetRefreshCycleDurationGOOGLE", device, swapchain, pDisplayTimingProperties); }
         return (int) Handles.MH_vkGetRefreshCycleDurationGOOGLE.invokeExact(device.capabilities().PFN_vkGetRefreshCycleDurationGOOGLE, device.segment(), swapchain, pDisplayTimingProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetRefreshCycleDurationGOOGLE", e); }
     }
 
+    /// Invokes `vkGetPastPresentationTimingGOOGLE`.
     /// ```
     /// (int) VkResult vkGetPastPresentationTimingGOOGLE((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, uint32_t* pPresentationTimingCount, VkPastPresentationTimingGOOGLE* pPresentationTimings);
     /// ```
-    public static int vkGetPastPresentationTimingGOOGLE(VkDevice device, long swapchain, MemorySegment pPresentationTimingCount, MemorySegment pPresentationTimings) {
+    public static int vkGetPastPresentationTimingGOOGLE(@NonNull VkDevice device, long swapchain, @NonNull MemorySegment pPresentationTimingCount, @NonNull MemorySegment pPresentationTimings) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPastPresentationTimingGOOGLE)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPastPresentationTimingGOOGLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPastPresentationTimingGOOGLE", device, swapchain, pPresentationTimingCount, pPresentationTimings); }
         return (int) Handles.MH_vkGetPastPresentationTimingGOOGLE.invokeExact(device.capabilities().PFN_vkGetPastPresentationTimingGOOGLE, device.segment(), swapchain, pPresentationTimingCount, pPresentationTimings); }

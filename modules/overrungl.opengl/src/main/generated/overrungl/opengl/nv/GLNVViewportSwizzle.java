@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_viewport_swizzle`
 public final class GLNVViewportSwizzle {
     public static final int GL_VIEWPORT_SWIZZLE_POSITIVE_X_NV = 0x9350;
     public static final int GL_VIEWPORT_SWIZZLE_NEGATIVE_X_NV = 0x9351;
@@ -40,15 +40,16 @@ public final class GLNVViewportSwizzle {
     public static final class Handles {
         public static final MethodHandle MH_glViewportSwizzleNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glViewportSwizzleNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glViewportSwizzleNV = func.invoke("glViewportSwizzleNV");
         }
     }
 
-    public GLNVViewportSwizzle(overrungl.opengl.GLLoadFunc func) {
+    public GLNVViewportSwizzle(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glViewportSwizzleNV`.
     /// ```
     /// void glViewportSwizzleNV((unsigned int) GLuint index, (unsigned int) GLenum swizzlex, (unsigned int) GLenum swizzley, (unsigned int) GLenum swizzlez, (unsigned int) GLenum swizzlew);
     /// ```

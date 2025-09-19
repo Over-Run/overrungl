@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkClearRect`.
 /// ## Layout
 /// ```
 /// struct VkClearRect {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkClearRect extends GroupType {
     /// The struct layout of `VkClearRect`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkRect2D.LAYOUT.withName("rect"),
         ValueLayout.JAVA_INT.withName("baseArrayLayer"),
         ValueLayout.JAVA_INT.withName("layerCount")

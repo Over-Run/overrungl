@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_line_rasterization` - device extension
 public final class VKKHRLineRasterization {
     public static final int VK_KHR_LINE_RASTERIZATION_SPEC_VERSION = 1;
     public static final String VK_KHR_LINE_RASTERIZATION_EXTENSION_NAME = "VK_KHR_line_rasterization";
@@ -39,10 +41,11 @@ public final class VKKHRLineRasterization {
 
     private VKKHRLineRasterization() {}
 
+    /// Invokes `vkCmdSetLineStippleKHR`.
     /// ```
     /// void vkCmdSetLineStippleKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t lineStippleFactor, uint16_t lineStipplePattern);
     /// ```
-    public static void vkCmdSetLineStippleKHR(VkCommandBuffer commandBuffer, int lineStippleFactor, short lineStipplePattern) {
+    public static void vkCmdSetLineStippleKHR(@NonNull VkCommandBuffer commandBuffer, int lineStippleFactor, short lineStipplePattern) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineStippleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetLineStippleKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetLineStippleKHR", commandBuffer, lineStippleFactor, lineStipplePattern); }
         Handles.MH_vkCmdSetLineStippleKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetLineStippleKHR, commandBuffer.segment(), lineStippleFactor, lineStipplePattern); }

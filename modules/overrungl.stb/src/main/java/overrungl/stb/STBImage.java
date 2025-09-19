@@ -16,6 +16,8 @@
 
 package overrungl.stb;
 
+import org.jspecify.annotations.NonNull;
+
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
@@ -39,178 +41,179 @@ public final class STBImage {
     //endregion
     /// Method handles.
     public static final class Handles {
-        /// The method handle of `stbi_load_from_memory`.
+        /// The method handle of [`stbi_load_from_memory`][#stbi_load_from_memory].
         public static final MethodHandle MH_stbi_load_from_memory = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_load_from_callbacks`.
+        /// The method handle of [`stbi_load_from_callbacks`][#stbi_load_from_callbacks].
         public static final MethodHandle MH_stbi_load_from_callbacks = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_load`.
+        /// The method handle of [`stbi_load`][#stbi_load].
         public static final MethodHandle MH_stbi_load = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_load_from_file`.
+        /// The method handle of [`stbi_load_from_file`][#stbi_load_from_file].
         public static final MethodHandle MH_stbi_load_from_file = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_load_gif_from_memory`.
+        /// The method handle of [`stbi_load_gif_from_memory`][#stbi_load_gif_from_memory].
         public static final MethodHandle MH_stbi_load_gif_from_memory = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_load_16_from_memory`.
+        /// The method handle of [`stbi_load_16_from_memory`][#stbi_load_16_from_memory].
         public static final MethodHandle MH_stbi_load_16_from_memory = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_load_16_from_callbacks`.
+        /// The method handle of [`stbi_load_16_from_callbacks`][#stbi_load_16_from_callbacks].
         public static final MethodHandle MH_stbi_load_16_from_callbacks = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_load_16`.
+        /// The method handle of [`stbi_load_16`][#stbi_load_16].
         public static final MethodHandle MH_stbi_load_16 = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_load_from_file_16`.
+        /// The method handle of [`stbi_load_from_file_16`][#stbi_load_from_file_16].
         public static final MethodHandle MH_stbi_load_from_file_16 = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_loadf_from_memory`.
+        /// The method handle of [`stbi_loadf_from_memory`][#stbi_loadf_from_memory].
         public static final MethodHandle MH_stbi_loadf_from_memory = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_loadf_from_callbacks`.
+        /// The method handle of [`stbi_loadf_from_callbacks`][#stbi_loadf_from_callbacks].
         public static final MethodHandle MH_stbi_loadf_from_callbacks = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_loadf`.
+        /// The method handle of [`stbi_loadf`][#stbi_loadf].
         public static final MethodHandle MH_stbi_loadf = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_loadf_from_file`.
+        /// The method handle of [`stbi_loadf_from_file`][#stbi_loadf_from_file].
         public static final MethodHandle MH_stbi_loadf_from_file = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_hdr_to_ldr_gamma`.
+        /// The method handle of [`stbi_hdr_to_ldr_gamma`][#stbi_hdr_to_ldr_gamma].
         public static final MethodHandle MH_stbi_hdr_to_ldr_gamma = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-        /// The method handle of `stbi_hdr_to_ldr_scale`.
+        /// The method handle of [`stbi_hdr_to_ldr_scale`][#stbi_hdr_to_ldr_scale].
         public static final MethodHandle MH_stbi_hdr_to_ldr_scale = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-        /// The method handle of `stbi_ldr_to_hdr_gamma`.
+        /// The method handle of [`stbi_ldr_to_hdr_gamma`][#stbi_ldr_to_hdr_gamma].
         public static final MethodHandle MH_stbi_ldr_to_hdr_gamma = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-        /// The method handle of `stbi_ldr_to_hdr_scale`.
+        /// The method handle of [`stbi_ldr_to_hdr_scale`][#stbi_ldr_to_hdr_scale].
         public static final MethodHandle MH_stbi_ldr_to_hdr_scale = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-        /// The method handle of `stbi_is_hdr_from_callbacks`.
+        /// The method handle of [`stbi_is_hdr_from_callbacks`][#stbi_is_hdr_from_callbacks].
         public static final MethodHandle MH_stbi_is_hdr_from_callbacks = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_is_hdr_from_memory`.
+        /// The method handle of [`stbi_is_hdr_from_memory`][#stbi_is_hdr_from_memory].
         public static final MethodHandle MH_stbi_is_hdr_from_memory = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_is_hdr`.
+        /// The method handle of [`stbi_is_hdr`][#stbi_is_hdr].
         public static final MethodHandle MH_stbi_is_hdr = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_is_hdr_from_file`.
+        /// The method handle of [`stbi_is_hdr_from_file`][#stbi_is_hdr_from_file].
         public static final MethodHandle MH_stbi_is_hdr_from_file = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_failure_reason`.
+        /// The method handle of [`stbi_failure_reason`][#stbi_failure_reason].
         public static final MethodHandle MH_stbi_failure_reason = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS));
-        /// The method handle of `stbi_image_free`.
+        /// The method handle of [`stbi_image_free`][#stbi_image_free].
         public static final MethodHandle MH_stbi_image_free = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        /// The method handle of `stbi_info_from_memory`.
+        /// The method handle of [`stbi_info_from_memory`][#stbi_info_from_memory].
         public static final MethodHandle MH_stbi_info_from_memory = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_info_from_callbacks`.
+        /// The method handle of [`stbi_info_from_callbacks`][#stbi_info_from_callbacks].
         public static final MethodHandle MH_stbi_info_from_callbacks = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_is_16_bit_from_memory`.
+        /// The method handle of [`stbi_is_16_bit_from_memory`][#stbi_is_16_bit_from_memory].
         public static final MethodHandle MH_stbi_is_16_bit_from_memory = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_is_16_bit_from_callbacks`.
+        /// The method handle of [`stbi_is_16_bit_from_callbacks`][#stbi_is_16_bit_from_callbacks].
         public static final MethodHandle MH_stbi_is_16_bit_from_callbacks = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_info`.
+        /// The method handle of [`stbi_info`][#stbi_info].
         public static final MethodHandle MH_stbi_info = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_info_from_file`.
+        /// The method handle of [`stbi_info_from_file`][#stbi_info_from_file].
         public static final MethodHandle MH_stbi_info_from_file = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_is_16_bit`.
+        /// The method handle of [`stbi_is_16_bit`][#stbi_is_16_bit].
         public static final MethodHandle MH_stbi_is_16_bit = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_is_16_bit_from_file`.
+        /// The method handle of [`stbi_is_16_bit_from_file`][#stbi_is_16_bit_from_file].
         public static final MethodHandle MH_stbi_is_16_bit_from_file = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_set_unpremultiply_on_load`.
+        /// The method handle of [`stbi_set_unpremultiply_on_load`][#stbi_set_unpremultiply_on_load].
         public static final MethodHandle MH_stbi_set_unpremultiply_on_load = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_convert_iphone_png_to_rgb`.
+        /// The method handle of [`stbi_convert_iphone_png_to_rgb`][#stbi_convert_iphone_png_to_rgb].
         public static final MethodHandle MH_stbi_convert_iphone_png_to_rgb = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_set_flip_vertically_on_load`.
+        /// The method handle of [`stbi_set_flip_vertically_on_load`][#stbi_set_flip_vertically_on_load].
         public static final MethodHandle MH_stbi_set_flip_vertically_on_load = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_set_unpremultiply_on_load_thread`.
+        /// The method handle of [`stbi_set_unpremultiply_on_load_thread`][#stbi_set_unpremultiply_on_load_thread].
         public static final MethodHandle MH_stbi_set_unpremultiply_on_load_thread = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_convert_iphone_png_to_rgb_thread`.
+        /// The method handle of [`stbi_convert_iphone_png_to_rgb_thread`][#stbi_convert_iphone_png_to_rgb_thread].
         public static final MethodHandle MH_stbi_convert_iphone_png_to_rgb_thread = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_set_flip_vertically_on_load_thread`.
+        /// The method handle of [`stbi_set_flip_vertically_on_load_thread`][#stbi_set_flip_vertically_on_load_thread].
         public static final MethodHandle MH_stbi_set_flip_vertically_on_load_thread = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_zlib_decode_malloc_guesssize`.
+        /// The method handle of [`stbi_zlib_decode_malloc_guesssize`][#stbi_zlib_decode_malloc_guesssize].
         public static final MethodHandle MH_stbi_zlib_decode_malloc_guesssize = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_zlib_decode_malloc_guesssize_headerflag`.
+        /// The method handle of [`stbi_zlib_decode_malloc_guesssize_headerflag`][#stbi_zlib_decode_malloc_guesssize_headerflag].
         public static final MethodHandle MH_stbi_zlib_decode_malloc_guesssize_headerflag = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_zlib_decode_malloc`.
+        /// The method handle of [`stbi_zlib_decode_malloc`][#stbi_zlib_decode_malloc].
         public static final MethodHandle MH_stbi_zlib_decode_malloc = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_zlib_decode_buffer`.
+        /// The method handle of [`stbi_zlib_decode_buffer`][#stbi_zlib_decode_buffer].
         public static final MethodHandle MH_stbi_zlib_decode_buffer = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbi_zlib_decode_noheader_malloc`.
+        /// The method handle of [`stbi_zlib_decode_noheader_malloc`][#stbi_zlib_decode_noheader_malloc].
         public static final MethodHandle MH_stbi_zlib_decode_noheader_malloc = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        /// The method handle of `stbi_zlib_decode_noheader_buffer`.
+        /// The method handle of [`stbi_zlib_decode_noheader_buffer`][#stbi_zlib_decode_noheader_buffer].
         public static final MethodHandle MH_stbi_zlib_decode_noheader_buffer = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The function address of `stbi_load_from_memory`.
+        /// The function address of [`stbi_load_from_memory`][#stbi_load_from_memory].
         public final MemorySegment PFN_stbi_load_from_memory;
-        /// The function address of `stbi_load_from_callbacks`.
+        /// The function address of [`stbi_load_from_callbacks`][#stbi_load_from_callbacks].
         public final MemorySegment PFN_stbi_load_from_callbacks;
-        /// The function address of `stbi_load`.
+        /// The function address of [`stbi_load`][#stbi_load].
         public final MemorySegment PFN_stbi_load;
-        /// The function address of `stbi_load_from_file`.
+        /// The function address of [`stbi_load_from_file`][#stbi_load_from_file].
         public final MemorySegment PFN_stbi_load_from_file;
-        /// The function address of `stbi_load_gif_from_memory`.
+        /// The function address of [`stbi_load_gif_from_memory`][#stbi_load_gif_from_memory].
         public final MemorySegment PFN_stbi_load_gif_from_memory;
-        /// The function address of `stbi_load_16_from_memory`.
+        /// The function address of [`stbi_load_16_from_memory`][#stbi_load_16_from_memory].
         public final MemorySegment PFN_stbi_load_16_from_memory;
-        /// The function address of `stbi_load_16_from_callbacks`.
+        /// The function address of [`stbi_load_16_from_callbacks`][#stbi_load_16_from_callbacks].
         public final MemorySegment PFN_stbi_load_16_from_callbacks;
-        /// The function address of `stbi_load_16`.
+        /// The function address of [`stbi_load_16`][#stbi_load_16].
         public final MemorySegment PFN_stbi_load_16;
-        /// The function address of `stbi_load_from_file_16`.
+        /// The function address of [`stbi_load_from_file_16`][#stbi_load_from_file_16].
         public final MemorySegment PFN_stbi_load_from_file_16;
-        /// The function address of `stbi_loadf_from_memory`.
+        /// The function address of [`stbi_loadf_from_memory`][#stbi_loadf_from_memory].
         public final MemorySegment PFN_stbi_loadf_from_memory;
-        /// The function address of `stbi_loadf_from_callbacks`.
+        /// The function address of [`stbi_loadf_from_callbacks`][#stbi_loadf_from_callbacks].
         public final MemorySegment PFN_stbi_loadf_from_callbacks;
-        /// The function address of `stbi_loadf`.
+        /// The function address of [`stbi_loadf`][#stbi_loadf].
         public final MemorySegment PFN_stbi_loadf;
-        /// The function address of `stbi_loadf_from_file`.
+        /// The function address of [`stbi_loadf_from_file`][#stbi_loadf_from_file].
         public final MemorySegment PFN_stbi_loadf_from_file;
-        /// The function address of `stbi_hdr_to_ldr_gamma`.
+        /// The function address of [`stbi_hdr_to_ldr_gamma`][#stbi_hdr_to_ldr_gamma].
         public final MemorySegment PFN_stbi_hdr_to_ldr_gamma;
-        /// The function address of `stbi_hdr_to_ldr_scale`.
+        /// The function address of [`stbi_hdr_to_ldr_scale`][#stbi_hdr_to_ldr_scale].
         public final MemorySegment PFN_stbi_hdr_to_ldr_scale;
-        /// The function address of `stbi_ldr_to_hdr_gamma`.
+        /// The function address of [`stbi_ldr_to_hdr_gamma`][#stbi_ldr_to_hdr_gamma].
         public final MemorySegment PFN_stbi_ldr_to_hdr_gamma;
-        /// The function address of `stbi_ldr_to_hdr_scale`.
+        /// The function address of [`stbi_ldr_to_hdr_scale`][#stbi_ldr_to_hdr_scale].
         public final MemorySegment PFN_stbi_ldr_to_hdr_scale;
-        /// The function address of `stbi_is_hdr_from_callbacks`.
+        /// The function address of [`stbi_is_hdr_from_callbacks`][#stbi_is_hdr_from_callbacks].
         public final MemorySegment PFN_stbi_is_hdr_from_callbacks;
-        /// The function address of `stbi_is_hdr_from_memory`.
+        /// The function address of [`stbi_is_hdr_from_memory`][#stbi_is_hdr_from_memory].
         public final MemorySegment PFN_stbi_is_hdr_from_memory;
-        /// The function address of `stbi_is_hdr`.
+        /// The function address of [`stbi_is_hdr`][#stbi_is_hdr].
         public final MemorySegment PFN_stbi_is_hdr;
-        /// The function address of `stbi_is_hdr_from_file`.
+        /// The function address of [`stbi_is_hdr_from_file`][#stbi_is_hdr_from_file].
         public final MemorySegment PFN_stbi_is_hdr_from_file;
-        /// The function address of `stbi_failure_reason`.
+        /// The function address of [`stbi_failure_reason`][#stbi_failure_reason].
         public final MemorySegment PFN_stbi_failure_reason;
-        /// The function address of `stbi_image_free`.
+        /// The function address of [`stbi_image_free`][#stbi_image_free].
         public final MemorySegment PFN_stbi_image_free;
-        /// The function address of `stbi_info_from_memory`.
+        /// The function address of [`stbi_info_from_memory`][#stbi_info_from_memory].
         public final MemorySegment PFN_stbi_info_from_memory;
-        /// The function address of `stbi_info_from_callbacks`.
+        /// The function address of [`stbi_info_from_callbacks`][#stbi_info_from_callbacks].
         public final MemorySegment PFN_stbi_info_from_callbacks;
-        /// The function address of `stbi_is_16_bit_from_memory`.
+        /// The function address of [`stbi_is_16_bit_from_memory`][#stbi_is_16_bit_from_memory].
         public final MemorySegment PFN_stbi_is_16_bit_from_memory;
-        /// The function address of `stbi_is_16_bit_from_callbacks`.
+        /// The function address of [`stbi_is_16_bit_from_callbacks`][#stbi_is_16_bit_from_callbacks].
         public final MemorySegment PFN_stbi_is_16_bit_from_callbacks;
-        /// The function address of `stbi_info`.
+        /// The function address of [`stbi_info`][#stbi_info].
         public final MemorySegment PFN_stbi_info;
-        /// The function address of `stbi_info_from_file`.
+        /// The function address of [`stbi_info_from_file`][#stbi_info_from_file].
         public final MemorySegment PFN_stbi_info_from_file;
-        /// The function address of `stbi_is_16_bit`.
+        /// The function address of [`stbi_is_16_bit`][#stbi_is_16_bit].
         public final MemorySegment PFN_stbi_is_16_bit;
-        /// The function address of `stbi_is_16_bit_from_file`.
+        /// The function address of [`stbi_is_16_bit_from_file`][#stbi_is_16_bit_from_file].
         public final MemorySegment PFN_stbi_is_16_bit_from_file;
-        /// The function address of `stbi_set_unpremultiply_on_load`.
+        /// The function address of [`stbi_set_unpremultiply_on_load`][#stbi_set_unpremultiply_on_load].
         public final MemorySegment PFN_stbi_set_unpremultiply_on_load;
-        /// The function address of `stbi_convert_iphone_png_to_rgb`.
+        /// The function address of [`stbi_convert_iphone_png_to_rgb`][#stbi_convert_iphone_png_to_rgb].
         public final MemorySegment PFN_stbi_convert_iphone_png_to_rgb;
-        /// The function address of `stbi_set_flip_vertically_on_load`.
+        /// The function address of [`stbi_set_flip_vertically_on_load`][#stbi_set_flip_vertically_on_load].
         public final MemorySegment PFN_stbi_set_flip_vertically_on_load;
-        /// The function address of `stbi_set_unpremultiply_on_load_thread`.
+        /// The function address of [`stbi_set_unpremultiply_on_load_thread`][#stbi_set_unpremultiply_on_load_thread].
         public final MemorySegment PFN_stbi_set_unpremultiply_on_load_thread;
-        /// The function address of `stbi_convert_iphone_png_to_rgb_thread`.
+        /// The function address of [`stbi_convert_iphone_png_to_rgb_thread`][#stbi_convert_iphone_png_to_rgb_thread].
         public final MemorySegment PFN_stbi_convert_iphone_png_to_rgb_thread;
-        /// The function address of `stbi_set_flip_vertically_on_load_thread`.
+        /// The function address of [`stbi_set_flip_vertically_on_load_thread`][#stbi_set_flip_vertically_on_load_thread].
         public final MemorySegment PFN_stbi_set_flip_vertically_on_load_thread;
-        /// The function address of `stbi_zlib_decode_malloc_guesssize`.
+        /// The function address of [`stbi_zlib_decode_malloc_guesssize`][#stbi_zlib_decode_malloc_guesssize].
         public final MemorySegment PFN_stbi_zlib_decode_malloc_guesssize;
-        /// The function address of `stbi_zlib_decode_malloc_guesssize_headerflag`.
+        /// The function address of [`stbi_zlib_decode_malloc_guesssize_headerflag`][#stbi_zlib_decode_malloc_guesssize_headerflag].
         public final MemorySegment PFN_stbi_zlib_decode_malloc_guesssize_headerflag;
-        /// The function address of `stbi_zlib_decode_malloc`.
+        /// The function address of [`stbi_zlib_decode_malloc`][#stbi_zlib_decode_malloc].
         public final MemorySegment PFN_stbi_zlib_decode_malloc;
-        /// The function address of `stbi_zlib_decode_buffer`.
+        /// The function address of [`stbi_zlib_decode_buffer`][#stbi_zlib_decode_buffer].
         public final MemorySegment PFN_stbi_zlib_decode_buffer;
-        /// The function address of `stbi_zlib_decode_noheader_malloc`.
+        /// The function address of [`stbi_zlib_decode_noheader_malloc`][#stbi_zlib_decode_noheader_malloc].
         public final MemorySegment PFN_stbi_zlib_decode_noheader_malloc;
-        /// The function address of `stbi_zlib_decode_noheader_buffer`.
+        /// The function address of [`stbi_zlib_decode_noheader_buffer`][#stbi_zlib_decode_noheader_buffer].
         public final MemorySegment PFN_stbi_zlib_decode_noheader_buffer;
+
         private Handles() {
             var _lookup = STBLibrary.lookup();
             PFN_stbi_load_from_memory = _lookup.findOrThrow("stbi_load_from_memory");
@@ -257,7 +260,9 @@ public final class STBImage {
             PFN_stbi_zlib_decode_noheader_malloc = _lookup.findOrThrow("stbi_zlib_decode_noheader_malloc");
             PFN_stbi_zlib_decode_noheader_buffer = _lookup.findOrThrow("stbi_zlib_decode_noheader_buffer");
         }
-        private static Handles get() {
+
+        /// {@return this}
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }
@@ -265,123 +270,137 @@ public final class STBImage {
         }
     }
 
+    /// Invokes `stbi_load_from_memory`.
     /// ```
     /// stbi_uc* stbi_load_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_load_from_memory(MemorySegment buffer, int len, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_load_from_memory(@NonNull MemorySegment buffer, int len, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_load_from_memory", buffer, len, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_load_from_memory.invokeExact(Handles.get().PFN_stbi_load_from_memory, buffer, len, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_memory", e); }
     }
 
+    /// Invokes `stbi_load_from_callbacks`.
     /// ```
     /// stbi_uc* stbi_load_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_load_from_callbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_load_from_callbacks(@NonNull MemorySegment clbk, @NonNull MemorySegment user, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_load_from_callbacks", clbk, user, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_load_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_callbacks", e); }
     }
 
+    /// Invokes `stbi_load`.
     /// ```
     /// stbi_uc* stbi_load(char const * filename, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_load(MemorySegment filename, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_load(@NonNull MemorySegment filename, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_load", filename, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_load.invokeExact(Handles.get().PFN_stbi_load, filename, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_load", e); }
     }
 
+    /// Invokes `stbi_load_from_file`.
     /// ```
     /// stbi_uc* stbi_load_from_file(FILE* f, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_load_from_file(MemorySegment f, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_load_from_file(@NonNull MemorySegment f, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_load_from_file", f, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_load_from_file.invokeExact(Handles.get().PFN_stbi_load_from_file, f, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_file", e); }
     }
 
+    /// Invokes `stbi_load_gif_from_memory`.
     /// ```
     /// stbi_uc* stbi_load_gif_from_memory(stbi_uc const * buffer, int len, int** delays, int* x, int* y, int* z, int* comp, int req_comp);
     /// ```
-    public static MemorySegment stbi_load_gif_from_memory(MemorySegment buffer, int len, MemorySegment delays, MemorySegment x, MemorySegment y, MemorySegment z, MemorySegment comp, int req_comp) {
+    public static @NonNull MemorySegment stbi_load_gif_from_memory(@NonNull MemorySegment buffer, int len, @NonNull MemorySegment delays, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment z, @NonNull MemorySegment comp, int req_comp) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_load_gif_from_memory", buffer, len, delays, x, y, z, comp, req_comp); }
         return (MemorySegment) Handles.MH_stbi_load_gif_from_memory.invokeExact(Handles.get().PFN_stbi_load_gif_from_memory, buffer, len, delays, x, y, z, comp, req_comp); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_load_gif_from_memory", e); }
     }
 
+    /// Invokes `stbi_load_16_from_memory`.
     /// ```
     /// stbi_us* stbi_load_16_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_load_16_from_memory(MemorySegment buffer, int len, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_load_16_from_memory(@NonNull MemorySegment buffer, int len, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_load_16_from_memory", buffer, len, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_load_16_from_memory.invokeExact(Handles.get().PFN_stbi_load_16_from_memory, buffer, len, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_load_16_from_memory", e); }
     }
 
+    /// Invokes `stbi_load_16_from_callbacks`.
     /// ```
     /// stbi_us* stbi_load_16_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_load_16_from_callbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_load_16_from_callbacks(@NonNull MemorySegment clbk, @NonNull MemorySegment user, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_load_16_from_callbacks", clbk, user, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_load_16_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_16_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_load_16_from_callbacks", e); }
     }
 
+    /// Invokes `stbi_load_16`.
     /// ```
     /// stbi_us* stbi_load_16(char const * filename, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_load_16(MemorySegment filename, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_load_16(@NonNull MemorySegment filename, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_load_16", filename, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_load_16.invokeExact(Handles.get().PFN_stbi_load_16, filename, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_load_16", e); }
     }
 
+    /// Invokes `stbi_load_from_file_16`.
     /// ```
     /// stbi_us* stbi_load_from_file_16(FILE* f, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_load_from_file_16(MemorySegment f, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_load_from_file_16(@NonNull MemorySegment f, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_load_from_file_16", f, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_load_from_file_16.invokeExact(Handles.get().PFN_stbi_load_from_file_16, f, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_file_16", e); }
     }
 
+    /// Invokes `stbi_loadf_from_memory`.
     /// ```
     /// float* stbi_loadf_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_loadf_from_memory(MemorySegment buffer, int len, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_loadf_from_memory(@NonNull MemorySegment buffer, int len, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_loadf_from_memory", buffer, len, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_loadf_from_memory.invokeExact(Handles.get().PFN_stbi_loadf_from_memory, buffer, len, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_memory", e); }
     }
 
+    /// Invokes `stbi_loadf_from_callbacks`.
     /// ```
     /// float* stbi_loadf_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_loadf_from_callbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_loadf_from_callbacks(@NonNull MemorySegment clbk, @NonNull MemorySegment user, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_loadf_from_callbacks", clbk, user, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_loadf_from_callbacks.invokeExact(Handles.get().PFN_stbi_loadf_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_callbacks", e); }
     }
 
+    /// Invokes `stbi_loadf`.
     /// ```
     /// float* stbi_loadf(char const * filename, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_loadf(MemorySegment filename, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_loadf(@NonNull MemorySegment filename, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_loadf", filename, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_loadf.invokeExact(Handles.get().PFN_stbi_loadf, filename, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_loadf", e); }
     }
 
+    /// Invokes `stbi_loadf_from_file`.
     /// ```
     /// float* stbi_loadf_from_file(FILE* f, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
-    public static MemorySegment stbi_loadf_from_file(MemorySegment f, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
+    public static @NonNull MemorySegment stbi_loadf_from_file(@NonNull MemorySegment f, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment channels_in_file, int desired_channels) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_loadf_from_file", f, x, y, channels_in_file, desired_channels); }
         return (MemorySegment) Handles.MH_stbi_loadf_from_file.invokeExact(Handles.get().PFN_stbi_loadf_from_file, f, x, y, channels_in_file, desired_channels); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_file", e); }
     }
 
+    /// Invokes `stbi_hdr_to_ldr_gamma`.
     /// ```
     /// void stbi_hdr_to_ldr_gamma(float gamma);
     /// ```
@@ -391,6 +410,7 @@ public final class STBImage {
         catch (Throwable e) { throw new RuntimeException("error in stbi_hdr_to_ldr_gamma", e); }
     }
 
+    /// Invokes `stbi_hdr_to_ldr_scale`.
     /// ```
     /// void stbi_hdr_to_ldr_scale(float scale);
     /// ```
@@ -400,6 +420,7 @@ public final class STBImage {
         catch (Throwable e) { throw new RuntimeException("error in stbi_hdr_to_ldr_scale", e); }
     }
 
+    /// Invokes `stbi_ldr_to_hdr_gamma`.
     /// ```
     /// void stbi_ldr_to_hdr_gamma(float gamma);
     /// ```
@@ -409,6 +430,7 @@ public final class STBImage {
         catch (Throwable e) { throw new RuntimeException("error in stbi_ldr_to_hdr_gamma", e); }
     }
 
+    /// Invokes `stbi_ldr_to_hdr_scale`.
     /// ```
     /// void stbi_ldr_to_hdr_scale(float scale);
     /// ```
@@ -418,132 +440,147 @@ public final class STBImage {
         catch (Throwable e) { throw new RuntimeException("error in stbi_ldr_to_hdr_scale", e); }
     }
 
+    /// Invokes `stbi_is_hdr_from_callbacks`.
     /// ```
     /// (int) STBbool stbi_is_hdr_from_callbacks(stbi_io_callbacks const * clbk, void* user);
     /// ```
-    public static boolean stbi_is_hdr_from_callbacks(MemorySegment clbk, MemorySegment user) {
+    public static boolean stbi_is_hdr_from_callbacks(@NonNull MemorySegment clbk, @NonNull MemorySegment user) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_is_hdr_from_callbacks", clbk, user); }
         return (((int) Handles.MH_stbi_is_hdr_from_callbacks.invokeExact(Handles.get().PFN_stbi_is_hdr_from_callbacks, clbk, user)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_callbacks", e); }
     }
 
+    /// Invokes `stbi_is_hdr_from_memory`.
     /// ```
     /// (int) STBbool stbi_is_hdr_from_memory(stbi_uc const * buffer, int len);
     /// ```
-    public static boolean stbi_is_hdr_from_memory(MemorySegment buffer, int len) {
+    public static boolean stbi_is_hdr_from_memory(@NonNull MemorySegment buffer, int len) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_is_hdr_from_memory", buffer, len); }
         return (((int) Handles.MH_stbi_is_hdr_from_memory.invokeExact(Handles.get().PFN_stbi_is_hdr_from_memory, buffer, len)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_memory", e); }
     }
 
+    /// Invokes `stbi_is_hdr`.
     /// ```
     /// (int) STBbool stbi_is_hdr(char const * filename);
     /// ```
-    public static boolean stbi_is_hdr(MemorySegment filename) {
+    public static boolean stbi_is_hdr(@NonNull MemorySegment filename) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_is_hdr", filename); }
         return (((int) Handles.MH_stbi_is_hdr.invokeExact(Handles.get().PFN_stbi_is_hdr, filename)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr", e); }
     }
 
+    /// Invokes `stbi_is_hdr_from_file`.
     /// ```
     /// (int) STBbool stbi_is_hdr_from_file(FILE* f);
     /// ```
-    public static boolean stbi_is_hdr_from_file(MemorySegment f) {
+    public static boolean stbi_is_hdr_from_file(@NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_is_hdr_from_file", f); }
         return (((int) Handles.MH_stbi_is_hdr_from_file.invokeExact(Handles.get().PFN_stbi_is_hdr_from_file, f)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_file", e); }
     }
 
+    /// Invokes `stbi_failure_reason`.
     /// ```
     /// const char* stbi_failure_reason();
     /// ```
-    public static MemorySegment stbi_failure_reason() {
+    public static @NonNull MemorySegment stbi_failure_reason() {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_failure_reason"); }
         return (MemorySegment) Handles.MH_stbi_failure_reason.invokeExact(Handles.get().PFN_stbi_failure_reason); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_failure_reason", e); }
     }
 
+    /// Invokes `stbi_image_free`.
     /// ```
     /// void stbi_image_free(void* retval_from_stbi_load);
     /// ```
-    public static void stbi_image_free(MemorySegment retval_from_stbi_load) {
+    public static void stbi_image_free(@NonNull MemorySegment retval_from_stbi_load) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_image_free", retval_from_stbi_load); }
         Handles.MH_stbi_image_free.invokeExact(Handles.get().PFN_stbi_image_free, retval_from_stbi_load); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_image_free", e); }
     }
 
+    /// Invokes `stbi_info_from_memory`.
     /// ```
     /// (int) STBbool stbi_info_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* comp);
     /// ```
-    public static boolean stbi_info_from_memory(MemorySegment buffer, int len, MemorySegment x, MemorySegment y, MemorySegment comp) {
+    public static boolean stbi_info_from_memory(@NonNull MemorySegment buffer, int len, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment comp) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_info_from_memory", buffer, len, x, y, comp); }
         return (((int) Handles.MH_stbi_info_from_memory.invokeExact(Handles.get().PFN_stbi_info_from_memory, buffer, len, x, y, comp)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_memory", e); }
     }
 
+    /// Invokes `stbi_info_from_callbacks`.
     /// ```
     /// (int) STBbool stbi_info_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* comp);
     /// ```
-    public static boolean stbi_info_from_callbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment comp) {
+    public static boolean stbi_info_from_callbacks(@NonNull MemorySegment clbk, @NonNull MemorySegment user, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment comp) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_info_from_callbacks", clbk, user, x, y, comp); }
         return (((int) Handles.MH_stbi_info_from_callbacks.invokeExact(Handles.get().PFN_stbi_info_from_callbacks, clbk, user, x, y, comp)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_callbacks", e); }
     }
 
+    /// Invokes `stbi_is_16_bit_from_memory`.
     /// ```
     /// (int) STBbool stbi_is_16_bit_from_memory(stbi_uc const * buffer, int len);
     /// ```
-    public static boolean stbi_is_16_bit_from_memory(MemorySegment buffer, int len) {
+    public static boolean stbi_is_16_bit_from_memory(@NonNull MemorySegment buffer, int len) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_is_16_bit_from_memory", buffer, len); }
         return (((int) Handles.MH_stbi_is_16_bit_from_memory.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_memory, buffer, len)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_memory", e); }
     }
 
+    /// Invokes `stbi_is_16_bit_from_callbacks`.
     /// ```
     /// (int) STBbool stbi_is_16_bit_from_callbacks(stbi_io_callbacks const * clbk, void* user);
     /// ```
-    public static boolean stbi_is_16_bit_from_callbacks(MemorySegment clbk, MemorySegment user) {
+    public static boolean stbi_is_16_bit_from_callbacks(@NonNull MemorySegment clbk, @NonNull MemorySegment user) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_is_16_bit_from_callbacks", clbk, user); }
         return (((int) Handles.MH_stbi_is_16_bit_from_callbacks.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_callbacks, clbk, user)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_callbacks", e); }
     }
 
+    /// Invokes `stbi_info`.
     /// ```
     /// (int) STBbool stbi_info(char const * filename, int* x, int* y, int* comp);
     /// ```
-    public static boolean stbi_info(MemorySegment filename, MemorySegment x, MemorySegment y, MemorySegment comp) {
+    public static boolean stbi_info(@NonNull MemorySegment filename, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment comp) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_info", filename, x, y, comp); }
         return (((int) Handles.MH_stbi_info.invokeExact(Handles.get().PFN_stbi_info, filename, x, y, comp)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_info", e); }
     }
 
+    /// Invokes `stbi_info_from_file`.
     /// ```
     /// (int) STBbool stbi_info_from_file(FILE* f, int* x, int* y, int* comp);
     /// ```
-    public static boolean stbi_info_from_file(MemorySegment f, MemorySegment x, MemorySegment y, MemorySegment comp) {
+    public static boolean stbi_info_from_file(@NonNull MemorySegment f, @NonNull MemorySegment x, @NonNull MemorySegment y, @NonNull MemorySegment comp) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_info_from_file", f, x, y, comp); }
         return (((int) Handles.MH_stbi_info_from_file.invokeExact(Handles.get().PFN_stbi_info_from_file, f, x, y, comp)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_file", e); }
     }
 
+    /// Invokes `stbi_is_16_bit`.
     /// ```
     /// (int) STBbool stbi_is_16_bit(char const * filename);
     /// ```
-    public static boolean stbi_is_16_bit(MemorySegment filename) {
+    public static boolean stbi_is_16_bit(@NonNull MemorySegment filename) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_is_16_bit", filename); }
         return (((int) Handles.MH_stbi_is_16_bit.invokeExact(Handles.get().PFN_stbi_is_16_bit, filename)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit", e); }
     }
 
+    /// Invokes `stbi_is_16_bit_from_file`.
     /// ```
     /// (int) STBbool stbi_is_16_bit_from_file(FILE* f);
     /// ```
-    public static boolean stbi_is_16_bit_from_file(MemorySegment f) {
+    public static boolean stbi_is_16_bit_from_file(@NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_is_16_bit_from_file", f); }
         return (((int) Handles.MH_stbi_is_16_bit_from_file.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_file, f)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_file", e); }
     }
 
+    /// Invokes `stbi_set_unpremultiply_on_load`.
     /// ```
     /// void stbi_set_unpremultiply_on_load((int) STBbool flag_true_if_should_unpremultiply);
     /// ```
@@ -553,6 +590,7 @@ public final class STBImage {
         catch (Throwable e) { throw new RuntimeException("error in stbi_set_unpremultiply_on_load", e); }
     }
 
+    /// Invokes `stbi_convert_iphone_png_to_rgb`.
     /// ```
     /// void stbi_convert_iphone_png_to_rgb((int) STBbool flag_true_if_should_convert);
     /// ```
@@ -562,6 +600,7 @@ public final class STBImage {
         catch (Throwable e) { throw new RuntimeException("error in stbi_convert_iphone_png_to_rgb", e); }
     }
 
+    /// Invokes `stbi_set_flip_vertically_on_load`.
     /// ```
     /// void stbi_set_flip_vertically_on_load((int) STBbool flag_true_if_should_flip);
     /// ```
@@ -571,6 +610,7 @@ public final class STBImage {
         catch (Throwable e) { throw new RuntimeException("error in stbi_set_flip_vertically_on_load", e); }
     }
 
+    /// Invokes `stbi_set_unpremultiply_on_load_thread`.
     /// ```
     /// void stbi_set_unpremultiply_on_load_thread((int) STBbool flag_true_if_should_unpremultiply);
     /// ```
@@ -580,6 +620,7 @@ public final class STBImage {
         catch (Throwable e) { throw new RuntimeException("error in stbi_set_unpremultiply_on_load_thread", e); }
     }
 
+    /// Invokes `stbi_convert_iphone_png_to_rgb_thread`.
     /// ```
     /// void stbi_convert_iphone_png_to_rgb_thread((int) STBbool flag_true_if_should_convert);
     /// ```
@@ -589,6 +630,7 @@ public final class STBImage {
         catch (Throwable e) { throw new RuntimeException("error in stbi_convert_iphone_png_to_rgb_thread", e); }
     }
 
+    /// Invokes `stbi_set_flip_vertically_on_load_thread`.
     /// ```
     /// void stbi_set_flip_vertically_on_load_thread((int) STBbool flag_true_if_should_flip);
     /// ```
@@ -598,55 +640,61 @@ public final class STBImage {
         catch (Throwable e) { throw new RuntimeException("error in stbi_set_flip_vertically_on_load_thread", e); }
     }
 
+    /// Invokes `stbi_zlib_decode_malloc_guesssize`.
     /// ```
     /// char* stbi_zlib_decode_malloc_guesssize(const char* buffer, int len, int initial_size, int* outlen);
     /// ```
-    public static MemorySegment stbi_zlib_decode_malloc_guesssize(MemorySegment buffer, int len, int initial_size, MemorySegment outlen) {
+    public static @NonNull MemorySegment stbi_zlib_decode_malloc_guesssize(@NonNull MemorySegment buffer, int len, int initial_size, @NonNull MemorySegment outlen) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_zlib_decode_malloc_guesssize", buffer, len, initial_size, outlen); }
         return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc_guesssize.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc_guesssize, buffer, len, initial_size, outlen); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize", e); }
     }
 
+    /// Invokes `stbi_zlib_decode_malloc_guesssize_headerflag`.
     /// ```
     /// char* stbi_zlib_decode_malloc_guesssize_headerflag(const char* buffer, int len, int initial_size, int* outlen, int parse_header);
     /// ```
-    public static MemorySegment stbi_zlib_decode_malloc_guesssize_headerflag(MemorySegment buffer, int len, int initial_size, MemorySegment outlen, int parse_header) {
+    public static @NonNull MemorySegment stbi_zlib_decode_malloc_guesssize_headerflag(@NonNull MemorySegment buffer, int len, int initial_size, @NonNull MemorySegment outlen, int parse_header) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_zlib_decode_malloc_guesssize_headerflag", buffer, len, initial_size, outlen, parse_header); }
         return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc_guesssize_headerflag.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc_guesssize_headerflag, buffer, len, initial_size, outlen, parse_header); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize_headerflag", e); }
     }
 
+    /// Invokes `stbi_zlib_decode_malloc`.
     /// ```
     /// char* stbi_zlib_decode_malloc(const char* buffer, int len, int* outlen);
     /// ```
-    public static MemorySegment stbi_zlib_decode_malloc(MemorySegment buffer, int len, MemorySegment outlen) {
+    public static @NonNull MemorySegment stbi_zlib_decode_malloc(@NonNull MemorySegment buffer, int len, @NonNull MemorySegment outlen) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_zlib_decode_malloc", buffer, len, outlen); }
         return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc, buffer, len, outlen); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc", e); }
     }
 
+    /// Invokes `stbi_zlib_decode_buffer`.
     /// ```
     /// int stbi_zlib_decode_buffer(char* obuffer, int olen, const char* ibuffer, int ilen);
     /// ```
-    public static int stbi_zlib_decode_buffer(MemorySegment obuffer, int olen, MemorySegment ibuffer, int ilen) {
+    public static int stbi_zlib_decode_buffer(@NonNull MemorySegment obuffer, int olen, @NonNull MemorySegment ibuffer, int ilen) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_zlib_decode_buffer", obuffer, olen, ibuffer, ilen); }
         return (int) Handles.MH_stbi_zlib_decode_buffer.invokeExact(Handles.get().PFN_stbi_zlib_decode_buffer, obuffer, olen, ibuffer, ilen); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_buffer", e); }
     }
 
+    /// Invokes `stbi_zlib_decode_noheader_malloc`.
     /// ```
     /// char* stbi_zlib_decode_noheader_malloc(const char* buffer, int len, int* outlen);
     /// ```
-    public static MemorySegment stbi_zlib_decode_noheader_malloc(MemorySegment buffer, int len, MemorySegment outlen) {
+    public static @NonNull MemorySegment stbi_zlib_decode_noheader_malloc(@NonNull MemorySegment buffer, int len, @NonNull MemorySegment outlen) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_zlib_decode_noheader_malloc", buffer, len, outlen); }
         return (MemorySegment) Handles.MH_stbi_zlib_decode_noheader_malloc.invokeExact(Handles.get().PFN_stbi_zlib_decode_noheader_malloc, buffer, len, outlen); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_noheader_malloc", e); }
     }
 
+    /// Invokes `stbi_zlib_decode_noheader_buffer`.
     /// ```
     /// int stbi_zlib_decode_noheader_buffer(char* obuffer, int olen, const char* ibuffer, int ilen);
     /// ```
-    public static int stbi_zlib_decode_noheader_buffer(MemorySegment obuffer, int olen, MemorySegment ibuffer, int ilen) {
+    public static int stbi_zlib_decode_noheader_buffer(@NonNull MemorySegment obuffer, int olen, @NonNull MemorySegment ibuffer, int ilen) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_zlib_decode_noheader_buffer", obuffer, olen, ibuffer, ilen); }
         return (int) Handles.MH_stbi_zlib_decode_noheader_buffer.invokeExact(Handles.get().PFN_stbi_zlib_decode_noheader_buffer, obuffer, olen, ibuffer, ilen); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_noheader_buffer", e); }

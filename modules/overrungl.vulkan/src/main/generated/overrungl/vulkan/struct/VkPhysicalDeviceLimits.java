@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPhysicalDeviceLimits`.
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceLimits {
@@ -138,7 +140,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPhysicalDeviceLimits extends GroupType {
     /// The struct layout of `VkPhysicalDeviceLimits`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("maxImageDimension1D"),
         ValueLayout.JAVA_INT.withName("maxImageDimension2D"),
         ValueLayout.JAVA_INT.withName("maxImageDimension3D"),

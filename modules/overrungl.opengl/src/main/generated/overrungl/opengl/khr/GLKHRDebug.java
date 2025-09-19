@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.khr;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_KHR_debug`
 public final class GLKHRDebug {
     public static final int GL_DEBUG_OUTPUT_SYNCHRONOUS = 0x8242;
     public static final int GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH = 0x8243;
@@ -151,7 +151,7 @@ public final class GLKHRDebug {
         public final MemorySegment PFN_glObjectPtrLabelKHR;
         public final MemorySegment PFN_glGetObjectPtrLabelKHR;
         public final MemorySegment PFN_glGetPointervKHR;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDebugMessageControl = func.invoke("glDebugMessageControl");
             PFN_glDebugMessageInsert = func.invoke("glDebugMessageInsert");
             PFN_glDebugMessageCallback = func.invoke("glDebugMessageCallback");
@@ -176,60 +176,66 @@ public final class GLKHRDebug {
         }
     }
 
-    public GLKHRDebug(overrungl.opengl.GLLoadFunc func) {
+    public GLKHRDebug(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDebugMessageControl`.
     /// ```
     /// void glDebugMessageControl((unsigned int) GLenum source, (unsigned int) GLenum type, (unsigned int) GLenum severity, (int) GLsizei count, const GLuint* ids, GLboolean enabled);
     /// ```
-    public void DebugMessageControl(int source, int type, int severity, int count, MemorySegment ids, boolean enabled) {
+    public void DebugMessageControl(int source, int type, int severity, int count, @NonNull MemorySegment ids, boolean enabled) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageControl)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageControl");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDebugMessageControl", source, type, severity, count, ids, enabled); }
         Handles.MH_glDebugMessageControl.invokeExact(handles.PFN_glDebugMessageControl, source, type, severity, count, ids, ((enabled) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageControl", e); }
     }
 
+    /// Invokes `glDebugMessageInsert`.
     /// ```
     /// void glDebugMessageInsert((unsigned int) GLenum source, (unsigned int) GLenum type, (unsigned int) GLuint id, (unsigned int) GLenum severity, (int) GLsizei length, const GLchar* buf);
     /// ```
-    public void DebugMessageInsert(int source, int type, int id, int severity, int length, MemorySegment buf) {
+    public void DebugMessageInsert(int source, int type, int id, int severity, int length, @NonNull MemorySegment buf) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageInsert)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageInsert");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDebugMessageInsert", source, type, id, severity, length, buf); }
         Handles.MH_glDebugMessageInsert.invokeExact(handles.PFN_glDebugMessageInsert, source, type, id, severity, length, buf); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageInsert", e); }
     }
 
+    /// Invokes `glDebugMessageCallback`.
     /// ```
     /// void glDebugMessageCallback((void (*GLDebugProc)((unsigned int) GLenum source, (unsigned int) GLenum type, (unsigned int) GLuint id, (unsigned int) GLenum severity, (int) GLsizei length, const GLchar* message, const void* userParam)) GLDEBUGPROC callback, const void* userParam);
     /// ```
-    public void DebugMessageCallback(MemorySegment callback, MemorySegment userParam) {
+    public void DebugMessageCallback(@NonNull MemorySegment callback, @NonNull MemorySegment userParam) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageCallback)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageCallback");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDebugMessageCallback", callback, userParam); }
         Handles.MH_glDebugMessageCallback.invokeExact(handles.PFN_glDebugMessageCallback, callback, userParam); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageCallback", e); }
     }
 
+    /// Invokes `glGetDebugMessageLog`.
     /// ```
     /// (unsigned int) GLuint glGetDebugMessageLog((unsigned int) GLuint count, (int) GLsizei bufSize, GLenum* sources, GLenum* types, GLuint* ids, GLenum* severities, GLsizei* lengths, GLchar* messageLog);
     /// ```
-    public int GetDebugMessageLog(int count, int bufSize, MemorySegment sources, MemorySegment types, MemorySegment ids, MemorySegment severities, MemorySegment lengths, MemorySegment messageLog) {
+    public int GetDebugMessageLog(int count, int bufSize, @NonNull MemorySegment sources, @NonNull MemorySegment types, @NonNull MemorySegment ids, @NonNull MemorySegment severities, @NonNull MemorySegment lengths, @NonNull MemorySegment messageLog) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDebugMessageLog)) throw new GLSymbolNotFoundError("Symbol not found: glGetDebugMessageLog");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetDebugMessageLog", count, bufSize, sources, types, ids, severities, lengths, messageLog); }
         return (int) Handles.MH_glGetDebugMessageLog.invokeExact(handles.PFN_glGetDebugMessageLog, count, bufSize, sources, types, ids, severities, lengths, messageLog); }
         catch (Throwable e) { throw new RuntimeException("error in GetDebugMessageLog", e); }
     }
 
+    /// Invokes `glPushDebugGroup`.
     /// ```
     /// void glPushDebugGroup((unsigned int) GLenum source, (unsigned int) GLuint id, (int) GLsizei length, const GLchar* message);
     /// ```
-    public void PushDebugGroup(int source, int id, int length, MemorySegment message) {
+    public void PushDebugGroup(int source, int id, int length, @NonNull MemorySegment message) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPushDebugGroup)) throw new GLSymbolNotFoundError("Symbol not found: glPushDebugGroup");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPushDebugGroup", source, id, length, message); }
         Handles.MH_glPushDebugGroup.invokeExact(handles.PFN_glPushDebugGroup, source, id, length, message); }
         catch (Throwable e) { throw new RuntimeException("error in PushDebugGroup", e); }
     }
 
+    /// Invokes `glPopDebugGroup`.
     /// ```
     /// void glPopDebugGroup();
     /// ```
@@ -240,106 +246,117 @@ public final class GLKHRDebug {
         catch (Throwable e) { throw new RuntimeException("error in PopDebugGroup", e); }
     }
 
+    /// Invokes `glObjectLabel`.
     /// ```
     /// void glObjectLabel((unsigned int) GLenum identifier, (unsigned int) GLuint name, (int) GLsizei length, const GLchar* label);
     /// ```
-    public void ObjectLabel(int identifier, int name, int length, MemorySegment label) {
+    public void ObjectLabel(int identifier, int name, int length, @NonNull MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glObjectLabel)) throw new GLSymbolNotFoundError("Symbol not found: glObjectLabel");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glObjectLabel", identifier, name, length, label); }
         Handles.MH_glObjectLabel.invokeExact(handles.PFN_glObjectLabel, identifier, name, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in ObjectLabel", e); }
     }
 
+    /// Invokes `glGetObjectLabel`.
     /// ```
     /// void glGetObjectLabel((unsigned int) GLenum identifier, (unsigned int) GLuint name, (int) GLsizei bufSize, GLsizei* length, GLchar* label);
     /// ```
-    public void GetObjectLabel(int identifier, int name, int bufSize, MemorySegment length, MemorySegment label) {
+    public void GetObjectLabel(int identifier, int name, int bufSize, @NonNull MemorySegment length, @NonNull MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectLabel)) throw new GLSymbolNotFoundError("Symbol not found: glGetObjectLabel");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetObjectLabel", identifier, name, bufSize, length, label); }
         Handles.MH_glGetObjectLabel.invokeExact(handles.PFN_glGetObjectLabel, identifier, name, bufSize, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in GetObjectLabel", e); }
     }
 
+    /// Invokes `glObjectPtrLabel`.
     /// ```
     /// void glObjectPtrLabel(const void* ptr, (int) GLsizei length, const GLchar* label);
     /// ```
-    public void ObjectPtrLabel(MemorySegment ptr, int length, MemorySegment label) {
+    public void ObjectPtrLabel(@NonNull MemorySegment ptr, int length, @NonNull MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glObjectPtrLabel)) throw new GLSymbolNotFoundError("Symbol not found: glObjectPtrLabel");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glObjectPtrLabel", ptr, length, label); }
         Handles.MH_glObjectPtrLabel.invokeExact(handles.PFN_glObjectPtrLabel, ptr, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in ObjectPtrLabel", e); }
     }
 
+    /// Invokes `glGetObjectPtrLabel`.
     /// ```
     /// void glGetObjectPtrLabel(const void* ptr, (int) GLsizei bufSize, GLsizei* length, GLchar* label);
     /// ```
-    public void GetObjectPtrLabel(MemorySegment ptr, int bufSize, MemorySegment length, MemorySegment label) {
+    public void GetObjectPtrLabel(@NonNull MemorySegment ptr, int bufSize, @NonNull MemorySegment length, @NonNull MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectPtrLabel)) throw new GLSymbolNotFoundError("Symbol not found: glGetObjectPtrLabel");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetObjectPtrLabel", ptr, bufSize, length, label); }
         Handles.MH_glGetObjectPtrLabel.invokeExact(handles.PFN_glGetObjectPtrLabel, ptr, bufSize, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in GetObjectPtrLabel", e); }
     }
 
+    /// Invokes `glGetPointerv`.
     /// ```
     /// void glGetPointerv((unsigned int) GLenum pname, void** params);
     /// ```
-    public void GetPointerv(int pname, MemorySegment params) {
+    public void GetPointerv(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPointerv)) throw new GLSymbolNotFoundError("Symbol not found: glGetPointerv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPointerv", pname, params); }
         Handles.MH_glGetPointerv.invokeExact(handles.PFN_glGetPointerv, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetPointerv", e); }
     }
 
+    /// Invokes `glDebugMessageControlKHR`.
     /// ```
     /// void glDebugMessageControlKHR((unsigned int) GLenum source, (unsigned int) GLenum type, (unsigned int) GLenum severity, (int) GLsizei count, const GLuint* ids, GLboolean enabled);
     /// ```
-    public void DebugMessageControlKHR(int source, int type, int severity, int count, MemorySegment ids, boolean enabled) {
+    public void DebugMessageControlKHR(int source, int type, int severity, int count, @NonNull MemorySegment ids, boolean enabled) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageControlKHR)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageControlKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDebugMessageControlKHR", source, type, severity, count, ids, enabled); }
         Handles.MH_glDebugMessageControlKHR.invokeExact(handles.PFN_glDebugMessageControlKHR, source, type, severity, count, ids, ((enabled) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageControlKHR", e); }
     }
 
+    /// Invokes `glDebugMessageInsertKHR`.
     /// ```
     /// void glDebugMessageInsertKHR((unsigned int) GLenum source, (unsigned int) GLenum type, (unsigned int) GLuint id, (unsigned int) GLenum severity, (int) GLsizei length, const GLchar* buf);
     /// ```
-    public void DebugMessageInsertKHR(int source, int type, int id, int severity, int length, MemorySegment buf) {
+    public void DebugMessageInsertKHR(int source, int type, int id, int severity, int length, @NonNull MemorySegment buf) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageInsertKHR)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageInsertKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDebugMessageInsertKHR", source, type, id, severity, length, buf); }
         Handles.MH_glDebugMessageInsertKHR.invokeExact(handles.PFN_glDebugMessageInsertKHR, source, type, id, severity, length, buf); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageInsertKHR", e); }
     }
 
+    /// Invokes `glDebugMessageCallbackKHR`.
     /// ```
     /// void glDebugMessageCallbackKHR(((void (*GLDebugProc)((unsigned int) GLenum source, (unsigned int) GLenum type, (unsigned int) GLuint id, (unsigned int) GLenum severity, (int) GLsizei length, const GLchar* message, const void* userParam)) GLDEBUGPROC) GLDEBUGPROCKHR callback, const void* userParam);
     /// ```
-    public void DebugMessageCallbackKHR(MemorySegment callback, MemorySegment userParam) {
+    public void DebugMessageCallbackKHR(@NonNull MemorySegment callback, @NonNull MemorySegment userParam) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageCallbackKHR)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageCallbackKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDebugMessageCallbackKHR", callback, userParam); }
         Handles.MH_glDebugMessageCallbackKHR.invokeExact(handles.PFN_glDebugMessageCallbackKHR, callback, userParam); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageCallbackKHR", e); }
     }
 
+    /// Invokes `glGetDebugMessageLogKHR`.
     /// ```
     /// (unsigned int) GLuint glGetDebugMessageLogKHR((unsigned int) GLuint count, (int) GLsizei bufSize, GLenum* sources, GLenum* types, GLuint* ids, GLenum* severities, GLsizei* lengths, GLchar* messageLog);
     /// ```
-    public int GetDebugMessageLogKHR(int count, int bufSize, MemorySegment sources, MemorySegment types, MemorySegment ids, MemorySegment severities, MemorySegment lengths, MemorySegment messageLog) {
+    public int GetDebugMessageLogKHR(int count, int bufSize, @NonNull MemorySegment sources, @NonNull MemorySegment types, @NonNull MemorySegment ids, @NonNull MemorySegment severities, @NonNull MemorySegment lengths, @NonNull MemorySegment messageLog) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDebugMessageLogKHR)) throw new GLSymbolNotFoundError("Symbol not found: glGetDebugMessageLogKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetDebugMessageLogKHR", count, bufSize, sources, types, ids, severities, lengths, messageLog); }
         return (int) Handles.MH_glGetDebugMessageLogKHR.invokeExact(handles.PFN_glGetDebugMessageLogKHR, count, bufSize, sources, types, ids, severities, lengths, messageLog); }
         catch (Throwable e) { throw new RuntimeException("error in GetDebugMessageLogKHR", e); }
     }
 
+    /// Invokes `glPushDebugGroupKHR`.
     /// ```
     /// void glPushDebugGroupKHR((unsigned int) GLenum source, (unsigned int) GLuint id, (int) GLsizei length, const GLchar* message);
     /// ```
-    public void PushDebugGroupKHR(int source, int id, int length, MemorySegment message) {
+    public void PushDebugGroupKHR(int source, int id, int length, @NonNull MemorySegment message) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPushDebugGroupKHR)) throw new GLSymbolNotFoundError("Symbol not found: glPushDebugGroupKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPushDebugGroupKHR", source, id, length, message); }
         Handles.MH_glPushDebugGroupKHR.invokeExact(handles.PFN_glPushDebugGroupKHR, source, id, length, message); }
         catch (Throwable e) { throw new RuntimeException("error in PushDebugGroupKHR", e); }
     }
 
+    /// Invokes `glPopDebugGroupKHR`.
     /// ```
     /// void glPopDebugGroupKHR();
     /// ```
@@ -350,50 +367,55 @@ public final class GLKHRDebug {
         catch (Throwable e) { throw new RuntimeException("error in PopDebugGroupKHR", e); }
     }
 
+    /// Invokes `glObjectLabelKHR`.
     /// ```
     /// void glObjectLabelKHR((unsigned int) GLenum identifier, (unsigned int) GLuint name, (int) GLsizei length, const GLchar* label);
     /// ```
-    public void ObjectLabelKHR(int identifier, int name, int length, MemorySegment label) {
+    public void ObjectLabelKHR(int identifier, int name, int length, @NonNull MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glObjectLabelKHR)) throw new GLSymbolNotFoundError("Symbol not found: glObjectLabelKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glObjectLabelKHR", identifier, name, length, label); }
         Handles.MH_glObjectLabelKHR.invokeExact(handles.PFN_glObjectLabelKHR, identifier, name, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in ObjectLabelKHR", e); }
     }
 
+    /// Invokes `glGetObjectLabelKHR`.
     /// ```
     /// void glGetObjectLabelKHR((unsigned int) GLenum identifier, (unsigned int) GLuint name, (int) GLsizei bufSize, GLsizei* length, GLchar* label);
     /// ```
-    public void GetObjectLabelKHR(int identifier, int name, int bufSize, MemorySegment length, MemorySegment label) {
+    public void GetObjectLabelKHR(int identifier, int name, int bufSize, @NonNull MemorySegment length, @NonNull MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectLabelKHR)) throw new GLSymbolNotFoundError("Symbol not found: glGetObjectLabelKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetObjectLabelKHR", identifier, name, bufSize, length, label); }
         Handles.MH_glGetObjectLabelKHR.invokeExact(handles.PFN_glGetObjectLabelKHR, identifier, name, bufSize, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in GetObjectLabelKHR", e); }
     }
 
+    /// Invokes `glObjectPtrLabelKHR`.
     /// ```
     /// void glObjectPtrLabelKHR(const void* ptr, (int) GLsizei length, const GLchar* label);
     /// ```
-    public void ObjectPtrLabelKHR(MemorySegment ptr, int length, MemorySegment label) {
+    public void ObjectPtrLabelKHR(@NonNull MemorySegment ptr, int length, @NonNull MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glObjectPtrLabelKHR)) throw new GLSymbolNotFoundError("Symbol not found: glObjectPtrLabelKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glObjectPtrLabelKHR", ptr, length, label); }
         Handles.MH_glObjectPtrLabelKHR.invokeExact(handles.PFN_glObjectPtrLabelKHR, ptr, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in ObjectPtrLabelKHR", e); }
     }
 
+    /// Invokes `glGetObjectPtrLabelKHR`.
     /// ```
     /// void glGetObjectPtrLabelKHR(const void* ptr, (int) GLsizei bufSize, GLsizei* length, GLchar* label);
     /// ```
-    public void GetObjectPtrLabelKHR(MemorySegment ptr, int bufSize, MemorySegment length, MemorySegment label) {
+    public void GetObjectPtrLabelKHR(@NonNull MemorySegment ptr, int bufSize, @NonNull MemorySegment length, @NonNull MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectPtrLabelKHR)) throw new GLSymbolNotFoundError("Symbol not found: glGetObjectPtrLabelKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetObjectPtrLabelKHR", ptr, bufSize, length, label); }
         Handles.MH_glGetObjectPtrLabelKHR.invokeExact(handles.PFN_glGetObjectPtrLabelKHR, ptr, bufSize, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in GetObjectPtrLabelKHR", e); }
     }
 
+    /// Invokes `glGetPointervKHR`.
     /// ```
     /// void glGetPointervKHR((unsigned int) GLenum pname, void** params);
     /// ```
-    public void GetPointervKHR(int pname, MemorySegment params) {
+    public void GetPointervKHR(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPointervKHR)) throw new GLSymbolNotFoundError("Symbol not found: glGetPointervKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPointervKHR", pname, params); }
         Handles.MH_glGetPointervKHR.invokeExact(handles.PFN_glGetPointervKHR, pname, params); }

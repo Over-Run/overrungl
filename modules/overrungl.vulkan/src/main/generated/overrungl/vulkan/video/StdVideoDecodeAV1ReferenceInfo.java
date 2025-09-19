@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoDecodeAV1ReferenceInfo`.
 /// ## Layout
 /// ```
 /// struct StdVideoDecodeAV1ReferenceInfo {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoDecodeAV1ReferenceInfo extends GroupType {
     /// The struct layout of `StdVideoDecodeAV1ReferenceInfo`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoDecodeAV1ReferenceInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("frame_type"),
         ValueLayout.JAVA_BYTE.withName("RefFrameSignBias"),

@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgis;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_SGIS_fog_function`
 public final class GLSGISFogFunction {
     public static final int GL_FOG_FUNC_SGIS = 0x812A;
     public static final int GL_FOG_FUNC_POINTS_SGIS = 0x812B;
@@ -33,30 +33,32 @@ public final class GLSGISFogFunction {
         public static final MethodHandle MH_glGetFogFuncSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFogFuncSGIS;
         public final MemorySegment PFN_glGetFogFuncSGIS;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glFogFuncSGIS = func.invoke("glFogFuncSGIS");
             PFN_glGetFogFuncSGIS = func.invoke("glGetFogFuncSGIS");
         }
     }
 
-    public GLSGISFogFunction(overrungl.opengl.GLLoadFunc func) {
+    public GLSGISFogFunction(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glFogFuncSGIS`.
     /// ```
     /// void glFogFuncSGIS((int) GLsizei n, const GLfloat* points);
     /// ```
-    public void FogFuncSGIS(int n, MemorySegment points) {
+    public void FogFuncSGIS(int n, @NonNull MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glFogFuncSGIS");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFogFuncSGIS", n, points); }
         Handles.MH_glFogFuncSGIS.invokeExact(handles.PFN_glFogFuncSGIS, n, points); }
         catch (Throwable e) { throw new RuntimeException("error in FogFuncSGIS", e); }
     }
 
+    /// Invokes `glGetFogFuncSGIS`.
     /// ```
     /// void glGetFogFuncSGIS(GLfloat* points);
     /// ```
-    public void GetFogFuncSGIS(MemorySegment points) {
+    public void GetFogFuncSGIS(@NonNull MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFogFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glGetFogFuncSGIS");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFogFuncSGIS", points); }
         Handles.MH_glGetFogFuncSGIS.invokeExact(handles.PFN_glGetFogFuncSGIS, points); }

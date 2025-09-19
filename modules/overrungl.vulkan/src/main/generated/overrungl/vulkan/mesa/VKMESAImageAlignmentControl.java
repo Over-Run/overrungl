@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.mesa;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_MESA_image_alignment_control` - device extension
 public final class VKMESAImageAlignmentControl {
     public static final int VK_MESA_IMAGE_ALIGNMENT_CONTROL_SPEC_VERSION = 1;
     public static final String VK_MESA_IMAGE_ALIGNMENT_CONTROL_EXTENSION_NAME = "VK_MESA_image_alignment_control";

@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_per_stage_descriptor_set` - device extension
 public final class VKNVPerStageDescriptorSet {
     public static final int VK_NV_PER_STAGE_DESCRIPTOR_SET_SPEC_VERSION = 1;
     public static final String VK_NV_PER_STAGE_DESCRIPTOR_SET_EXTENSION_NAME = "VK_NV_per_stage_descriptor_set";

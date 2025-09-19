@@ -47,6 +47,7 @@ public class GL33Test {
     private Arena windowArena;
     private MemorySegment window;
     private GL gl;
+    private GLUtil.Removable debugMessageCallback;
     private int program;
     private int rotationMat;
     private int vao, vbo, ebo, mbo;
@@ -67,6 +68,9 @@ public class GL33Test {
         glDelete(vbo, gl::DeleteBuffers);
         glDelete(ebo, gl::DeleteBuffers);
         glDelete(mbo, gl::DeleteBuffers);
+        if (debugMessageCallback != null) {
+            debugMessageCallback.remove();
+        }
 
         glfwDestroyWindow(window);
         windowArena.close();
@@ -110,7 +114,7 @@ public class GL33Test {
         }
 
         glfwMakeContextCurrent(window);
-        if (VSYNC) glfwSwapInterval(1);
+        glfwSwapInterval(VSYNC ? 1 : 0);
 
         glfwShowWindow(window);
     }
@@ -120,7 +124,7 @@ public class GL33Test {
         gl = new GL(glLoadFunc);
 
         var flags = new GLFlags(glLoadFunc);
-        GLUtil.setupDebugMessageCallback(Arena.global(), gl, flags, glLoadFunc);
+        debugMessageCallback = GLUtil.setupDebugMessageCallback(Arena.global(), gl, flags, glLoadFunc);
         gl.ClearColor(0.4f, 0.6f, 0.9f, 1.0f);
         program = gl.CreateProgram();
         int vsh = gl.CreateShader(GL_VERTEX_SHADER);

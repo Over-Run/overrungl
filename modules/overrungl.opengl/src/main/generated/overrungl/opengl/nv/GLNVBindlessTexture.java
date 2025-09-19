@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_bindless_texture`
 public final class GLNVBindlessTexture {
     private final Handles handles;
     public static final class Handles {
@@ -52,7 +52,7 @@ public final class GLNVBindlessTexture {
         public final MemorySegment PFN_glProgramUniformHandleui64vNV;
         public final MemorySegment PFN_glIsTextureHandleResidentNV;
         public final MemorySegment PFN_glIsImageHandleResidentNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGetTextureHandleNV = func.invoke("glGetTextureHandleNV");
             PFN_glGetTextureSamplerHandleNV = func.invoke("glGetTextureSamplerHandleNV");
             PFN_glMakeTextureHandleResidentNV = func.invoke("glMakeTextureHandleResidentNV");
@@ -69,10 +69,11 @@ public final class GLNVBindlessTexture {
         }
     }
 
-    public GLNVBindlessTexture(overrungl.opengl.GLLoadFunc func) {
+    public GLNVBindlessTexture(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGetTextureHandleNV`.
     /// ```
     /// ((uint64_t) khronos_uint64_t) GLuint64 glGetTextureHandleNV((unsigned int) GLuint texture);
     /// ```
@@ -83,6 +84,7 @@ public final class GLNVBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in GetTextureHandleNV", e); }
     }
 
+    /// Invokes `glGetTextureSamplerHandleNV`.
     /// ```
     /// ((uint64_t) khronos_uint64_t) GLuint64 glGetTextureSamplerHandleNV((unsigned int) GLuint texture, (unsigned int) GLuint sampler);
     /// ```
@@ -93,6 +95,7 @@ public final class GLNVBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in GetTextureSamplerHandleNV", e); }
     }
 
+    /// Invokes `glMakeTextureHandleResidentNV`.
     /// ```
     /// void glMakeTextureHandleResidentNV(((uint64_t) khronos_uint64_t) GLuint64 handle);
     /// ```
@@ -103,6 +106,7 @@ public final class GLNVBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in MakeTextureHandleResidentNV", e); }
     }
 
+    /// Invokes `glMakeTextureHandleNonResidentNV`.
     /// ```
     /// void glMakeTextureHandleNonResidentNV(((uint64_t) khronos_uint64_t) GLuint64 handle);
     /// ```
@@ -113,6 +117,7 @@ public final class GLNVBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in MakeTextureHandleNonResidentNV", e); }
     }
 
+    /// Invokes `glGetImageHandleNV`.
     /// ```
     /// ((uint64_t) khronos_uint64_t) GLuint64 glGetImageHandleNV((unsigned int) GLuint texture, (int) GLint level, GLboolean layered, (int) GLint layer, (unsigned int) GLenum format);
     /// ```
@@ -123,6 +128,7 @@ public final class GLNVBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in GetImageHandleNV", e); }
     }
 
+    /// Invokes `glMakeImageHandleResidentNV`.
     /// ```
     /// void glMakeImageHandleResidentNV(((uint64_t) khronos_uint64_t) GLuint64 handle, (unsigned int) GLenum access);
     /// ```
@@ -133,6 +139,7 @@ public final class GLNVBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in MakeImageHandleResidentNV", e); }
     }
 
+    /// Invokes `glMakeImageHandleNonResidentNV`.
     /// ```
     /// void glMakeImageHandleNonResidentNV(((uint64_t) khronos_uint64_t) GLuint64 handle);
     /// ```
@@ -143,6 +150,7 @@ public final class GLNVBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in MakeImageHandleNonResidentNV", e); }
     }
 
+    /// Invokes `glUniformHandleui64NV`.
     /// ```
     /// void glUniformHandleui64NV((int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 value);
     /// ```
@@ -153,16 +161,18 @@ public final class GLNVBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in UniformHandleui64NV", e); }
     }
 
+    /// Invokes `glUniformHandleui64vNV`.
     /// ```
     /// void glUniformHandleui64vNV((int) GLint location, (int) GLsizei count, const GLuint64* value);
     /// ```
-    public void UniformHandleui64vNV(int location, int count, MemorySegment value) {
+    public void UniformHandleui64vNV(int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformHandleui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glUniformHandleui64vNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformHandleui64vNV", location, count, value); }
         Handles.MH_glUniformHandleui64vNV.invokeExact(handles.PFN_glUniformHandleui64vNV, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformHandleui64vNV", e); }
     }
 
+    /// Invokes `glProgramUniformHandleui64NV`.
     /// ```
     /// void glProgramUniformHandleui64NV((unsigned int) GLuint program, (int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 value);
     /// ```
@@ -173,16 +183,18 @@ public final class GLNVBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformHandleui64NV", e); }
     }
 
+    /// Invokes `glProgramUniformHandleui64vNV`.
     /// ```
     /// void glProgramUniformHandleui64vNV((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint64* values);
     /// ```
-    public void ProgramUniformHandleui64vNV(int program, int location, int count, MemorySegment values) {
+    public void ProgramUniformHandleui64vNV(int program, int location, int count, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformHandleui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformHandleui64vNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformHandleui64vNV", program, location, count, values); }
         Handles.MH_glProgramUniformHandleui64vNV.invokeExact(handles.PFN_glProgramUniformHandleui64vNV, program, location, count, values); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformHandleui64vNV", e); }
     }
 
+    /// Invokes `glIsTextureHandleResidentNV`.
     /// ```
     /// GLboolean glIsTextureHandleResidentNV(((uint64_t) khronos_uint64_t) GLuint64 handle);
     /// ```
@@ -193,6 +205,7 @@ public final class GLNVBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in IsTextureHandleResidentNV", e); }
     }
 
+    /// Invokes `glIsImageHandleResidentNV`.
     /// ```
     /// GLboolean glIsImageHandleResidentNV(((uint64_t) khronos_uint64_t) GLuint64 handle);
     /// ```

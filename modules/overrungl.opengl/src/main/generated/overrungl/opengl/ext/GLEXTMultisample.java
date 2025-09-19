@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_multisample`
 public final class GLEXTMultisample {
     public static final int GL_MULTISAMPLE_EXT = 0x809D;
     public static final int GL_SAMPLE_ALPHA_TO_MASK_EXT = 0x809E;
@@ -47,16 +47,17 @@ public final class GLEXTMultisample {
         public static final MethodHandle MH_glSamplePatternEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glSampleMaskEXT;
         public final MemorySegment PFN_glSamplePatternEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glSampleMaskEXT = func.invoke("glSampleMaskEXT");
             PFN_glSamplePatternEXT = func.invoke("glSamplePatternEXT");
         }
     }
 
-    public GLEXTMultisample(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTMultisample(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glSampleMaskEXT`.
     /// ```
     /// void glSampleMaskEXT(((float) khronos_float_t) GLclampf value, GLboolean invert);
     /// ```
@@ -67,6 +68,7 @@ public final class GLEXTMultisample {
         catch (Throwable e) { throw new RuntimeException("error in SampleMaskEXT", e); }
     }
 
+    /// Invokes `glSamplePatternEXT`.
     /// ```
     /// void glSamplePatternEXT((unsigned int) GLenum pattern);
     /// ```

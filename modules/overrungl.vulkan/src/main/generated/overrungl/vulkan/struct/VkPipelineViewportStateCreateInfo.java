@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPipelineViewportStateCreateInfo`.
 /// ## Layout
 /// ```
 /// struct VkPipelineViewportStateCreateInfo {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPipelineViewportStateCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineViewportStateCreateInfo`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),

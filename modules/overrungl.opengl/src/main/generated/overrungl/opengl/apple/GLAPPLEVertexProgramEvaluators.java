@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.apple;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_APPLE_vertex_program_evaluators`
 public final class GLAPPLEVertexProgramEvaluators {
     public static final int GL_VERTEX_ATTRIB_MAP1_APPLE = 0x8A00;
     public static final int GL_VERTEX_ATTRIB_MAP2_APPLE = 0x8A01;
@@ -50,7 +50,7 @@ public final class GLAPPLEVertexProgramEvaluators {
         public final MemorySegment PFN_glMapVertexAttrib1fAPPLE;
         public final MemorySegment PFN_glMapVertexAttrib2dAPPLE;
         public final MemorySegment PFN_glMapVertexAttrib2fAPPLE;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glEnableVertexAttribAPPLE = func.invoke("glEnableVertexAttribAPPLE");
             PFN_glDisableVertexAttribAPPLE = func.invoke("glDisableVertexAttribAPPLE");
             PFN_glIsVertexAttribEnabledAPPLE = func.invoke("glIsVertexAttribEnabledAPPLE");
@@ -61,10 +61,11 @@ public final class GLAPPLEVertexProgramEvaluators {
         }
     }
 
-    public GLAPPLEVertexProgramEvaluators(overrungl.opengl.GLLoadFunc func) {
+    public GLAPPLEVertexProgramEvaluators(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glEnableVertexAttribAPPLE`.
     /// ```
     /// void glEnableVertexAttribAPPLE((unsigned int) GLuint index, (unsigned int) GLenum pname);
     /// ```
@@ -75,6 +76,7 @@ public final class GLAPPLEVertexProgramEvaluators {
         catch (Throwable e) { throw new RuntimeException("error in EnableVertexAttribAPPLE", e); }
     }
 
+    /// Invokes `glDisableVertexAttribAPPLE`.
     /// ```
     /// void glDisableVertexAttribAPPLE((unsigned int) GLuint index, (unsigned int) GLenum pname);
     /// ```
@@ -85,6 +87,7 @@ public final class GLAPPLEVertexProgramEvaluators {
         catch (Throwable e) { throw new RuntimeException("error in DisableVertexAttribAPPLE", e); }
     }
 
+    /// Invokes `glIsVertexAttribEnabledAPPLE`.
     /// ```
     /// GLboolean glIsVertexAttribEnabledAPPLE((unsigned int) GLuint index, (unsigned int) GLenum pname);
     /// ```
@@ -95,40 +98,44 @@ public final class GLAPPLEVertexProgramEvaluators {
         catch (Throwable e) { throw new RuntimeException("error in IsVertexAttribEnabledAPPLE", e); }
     }
 
+    /// Invokes `glMapVertexAttrib1dAPPLE`.
     /// ```
     /// void glMapVertexAttrib1dAPPLE((unsigned int) GLuint index, (unsigned int) GLuint size, (double) GLdouble u1, (double) GLdouble u2, (int) GLint stride, (int) GLint order, const GLdouble* points);
     /// ```
-    public void MapVertexAttrib1dAPPLE(int index, int size, double u1, double u2, int stride, int order, MemorySegment points) {
+    public void MapVertexAttrib1dAPPLE(int index, int size, double u1, double u2, int stride, int order, @NonNull MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapVertexAttrib1dAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glMapVertexAttrib1dAPPLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapVertexAttrib1dAPPLE", index, size, u1, u2, stride, order, points); }
         Handles.MH_glMapVertexAttrib1dAPPLE.invokeExact(handles.PFN_glMapVertexAttrib1dAPPLE, index, size, u1, u2, stride, order, points); }
         catch (Throwable e) { throw new RuntimeException("error in MapVertexAttrib1dAPPLE", e); }
     }
 
+    /// Invokes `glMapVertexAttrib1fAPPLE`.
     /// ```
     /// void glMapVertexAttrib1fAPPLE((unsigned int) GLuint index, (unsigned int) GLuint size, ((float) khronos_float_t) GLfloat u1, ((float) khronos_float_t) GLfloat u2, (int) GLint stride, (int) GLint order, const GLfloat* points);
     /// ```
-    public void MapVertexAttrib1fAPPLE(int index, int size, float u1, float u2, int stride, int order, MemorySegment points) {
+    public void MapVertexAttrib1fAPPLE(int index, int size, float u1, float u2, int stride, int order, @NonNull MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapVertexAttrib1fAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glMapVertexAttrib1fAPPLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapVertexAttrib1fAPPLE", index, size, u1, u2, stride, order, points); }
         Handles.MH_glMapVertexAttrib1fAPPLE.invokeExact(handles.PFN_glMapVertexAttrib1fAPPLE, index, size, u1, u2, stride, order, points); }
         catch (Throwable e) { throw new RuntimeException("error in MapVertexAttrib1fAPPLE", e); }
     }
 
+    /// Invokes `glMapVertexAttrib2dAPPLE`.
     /// ```
     /// void glMapVertexAttrib2dAPPLE((unsigned int) GLuint index, (unsigned int) GLuint size, (double) GLdouble u1, (double) GLdouble u2, (int) GLint ustride, (int) GLint uorder, (double) GLdouble v1, (double) GLdouble v2, (int) GLint vstride, (int) GLint vorder, const GLdouble* points);
     /// ```
-    public void MapVertexAttrib2dAPPLE(int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, MemorySegment points) {
+    public void MapVertexAttrib2dAPPLE(int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, @NonNull MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapVertexAttrib2dAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glMapVertexAttrib2dAPPLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapVertexAttrib2dAPPLE", index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points); }
         Handles.MH_glMapVertexAttrib2dAPPLE.invokeExact(handles.PFN_glMapVertexAttrib2dAPPLE, index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points); }
         catch (Throwable e) { throw new RuntimeException("error in MapVertexAttrib2dAPPLE", e); }
     }
 
+    /// Invokes `glMapVertexAttrib2fAPPLE`.
     /// ```
     /// void glMapVertexAttrib2fAPPLE((unsigned int) GLuint index, (unsigned int) GLuint size, ((float) khronos_float_t) GLfloat u1, ((float) khronos_float_t) GLfloat u2, (int) GLint ustride, (int) GLint uorder, ((float) khronos_float_t) GLfloat v1, ((float) khronos_float_t) GLfloat v2, (int) GLint vstride, (int) GLint vorder, const GLfloat* points);
     /// ```
-    public void MapVertexAttrib2fAPPLE(int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, MemorySegment points) {
+    public void MapVertexAttrib2fAPPLE(int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, @NonNull MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapVertexAttrib2fAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glMapVertexAttrib2fAPPLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapVertexAttrib2fAPPLE", index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points); }
         Handles.MH_glMapVertexAttrib2fAPPLE.invokeExact(handles.PFN_glMapVertexAttrib2fAPPLE, index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points); }

@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_image_2d_view_of_3d` - device extension
 public final class VKEXTImage2dViewOf3d {
     public static final int VK_EXT_IMAGE_2D_VIEW_OF_3D_SPEC_VERSION = 1;
     public static final String VK_EXT_IMAGE_2D_VIEW_OF_3D_EXTENSION_NAME = "VK_EXT_image_2d_view_of_3d";

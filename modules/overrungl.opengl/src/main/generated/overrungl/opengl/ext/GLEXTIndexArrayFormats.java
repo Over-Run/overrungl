@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
+/// `GL_EXT_index_array_formats`
 public final class GLEXTIndexArrayFormats {
     public static final int GL_IUI_V2F_EXT = 0x81AD;
     public static final int GL_IUI_V3F_EXT = 0x81AE;

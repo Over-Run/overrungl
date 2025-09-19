@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_sparse_buffer`
 public final class GLARBSparseBuffer {
     public static final int GL_SPARSE_STORAGE_BIT_ARB = 0x0400;
     public static final int GL_SPARSE_BUFFER_PAGE_SIZE_ARB = 0x82F8;
@@ -34,15 +34,16 @@ public final class GLARBSparseBuffer {
         public final MemorySegment PFN_glBufferPageCommitmentARB;
         public final MemorySegment PFN_glNamedBufferPageCommitmentEXT;
         public final MemorySegment PFN_glNamedBufferPageCommitmentARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBufferPageCommitmentARB = func.invoke("glBufferPageCommitmentARB");PFN_glNamedBufferPageCommitmentEXT = func.invoke("glNamedBufferPageCommitmentEXT");PFN_glNamedBufferPageCommitmentARB = func.invoke("glNamedBufferPageCommitmentARB");
         }
     }
 
-    public GLARBSparseBuffer(overrungl.opengl.GLLoadFunc func) {
+    public GLARBSparseBuffer(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBufferPageCommitmentARB`.
     /// ```
     /// void glBufferPageCommitmentARB((unsigned int) GLenum target, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, GLboolean commit);
     /// ```
@@ -53,6 +54,7 @@ public final class GLARBSparseBuffer {
         catch (Throwable e) { throw new RuntimeException("error in BufferPageCommitmentARB", e); }
     }
 
+    /// Invokes `glNamedBufferPageCommitmentEXT`.
     /// ```
     /// void glNamedBufferPageCommitmentEXT((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, GLboolean commit);
     /// ```
@@ -63,6 +65,7 @@ public final class GLARBSparseBuffer {
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferPageCommitmentEXT", e); }
     }
 
+    /// Invokes `glNamedBufferPageCommitmentARB`.
     /// ```
     /// void glNamedBufferPageCommitmentARB((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, GLboolean commit);
     /// ```

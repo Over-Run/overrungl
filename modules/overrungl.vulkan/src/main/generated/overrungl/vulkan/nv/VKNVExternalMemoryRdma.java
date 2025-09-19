@@ -18,9 +18,11 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_NV_external_memory_rdma` - device extension
 public final class VKNVExternalMemoryRdma {
     public static final int VK_NV_EXTERNAL_MEMORY_RDMA_SPEC_VERSION = 1;
     public static final String VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma";
@@ -35,10 +37,11 @@ public final class VKNVExternalMemoryRdma {
 
     private VKNVExternalMemoryRdma() {}
 
+    /// Invokes `vkGetMemoryRemoteAddressNV`.
     /// ```
     /// (int) VkResult vkGetMemoryRemoteAddressNV((struct VkDevice*) VkDevice device, const VkMemoryGetRemoteAddressInfoNV* pMemoryGetRemoteAddressInfo, VkRemoteAddressNV* pAddress);
     /// ```
-    public static int vkGetMemoryRemoteAddressNV(VkDevice device, MemorySegment pMemoryGetRemoteAddressInfo, MemorySegment pAddress) {
+    public static int vkGetMemoryRemoteAddressNV(@NonNull VkDevice device, @NonNull MemorySegment pMemoryGetRemoteAddressInfo, @NonNull MemorySegment pAddress) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryRemoteAddressNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryRemoteAddressNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMemoryRemoteAddressNV", device, pMemoryGetRemoteAddressInfo, pAddress); }
         return (int) Handles.MH_vkGetMemoryRemoteAddressNV.invokeExact(device.capabilities().PFN_vkGetMemoryRemoteAddressNV, device.segment(), pMemoryGetRemoteAddressInfo, pAddress); }

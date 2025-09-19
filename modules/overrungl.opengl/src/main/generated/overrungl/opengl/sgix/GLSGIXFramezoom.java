@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_SGIX_framezoom`
 public final class GLSGIXFramezoom {
     public static final int GL_FRAMEZOOM_SGIX = 0x818B;
     public static final int GL_FRAMEZOOM_FACTOR_SGIX = 0x818C;
@@ -31,15 +31,16 @@ public final class GLSGIXFramezoom {
     public static final class Handles {
         public static final MethodHandle MH_glFrameZoomSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glFrameZoomSGIX;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glFrameZoomSGIX = func.invoke("glFrameZoomSGIX");
         }
     }
 
-    public GLSGIXFramezoom(overrungl.opengl.GLLoadFunc func) {
+    public GLSGIXFramezoom(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glFrameZoomSGIX`.
     /// ```
     /// void glFrameZoomSGIX((int) GLint factor);
     /// ```

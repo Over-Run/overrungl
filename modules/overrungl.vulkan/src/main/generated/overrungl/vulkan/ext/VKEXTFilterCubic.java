@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_filter_cubic` - device extension
 public final class VKEXTFilterCubic {
     public static final int VK_EXT_FILTER_CUBIC_SPEC_VERSION = 3;
     public static final String VK_EXT_FILTER_CUBIC_EXTENSION_NAME = "VK_EXT_filter_cubic";

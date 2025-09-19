@@ -28,8 +28,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
 import kotlin.io.path.createParentDirectories
 
-// vk.xml: 2025-08-07
-// video.xml: 2025-08-07
+// vk.xml: 2025-08-15
+// video.xml: 2025-08-15
 
 const val vulkanPackage = "overrungl.vulkan"
 
@@ -708,7 +708,7 @@ fun main() {
                 }
             }
 
-            vkDowncalls += VkDowncall(vulkanPackage, className) {
+            vkDowncalls += VkDowncall(vulkanPackage, className, "Constants and functions of Vulkan $featureNumber.") {
                 if (featureNumber == "1.0") {
                     defineVkVersion.forEach { (k, v) ->
                         fields.add(
@@ -743,51 +743,55 @@ fun main() {
     val extensionDowncalls = mutableMapOf<String, VkDowncall>()
     for (i in 0 until extensionNodeList.length) {
         val extensionNode = extensionNodeList.item(i) as Element
-        if (extensionNode.getAttribute("supported").split(',').contains("vulkan")) {
-            val rawName = extensionNode.getAttribute("name")
-            val extName = rawName
-                .split('_')
-                .joinToString("") { it.replaceFirstChar(Char::uppercaseChar) }
-            val extVendor = rawName
-                .substringAfter("VK_")
-                .substringBefore('_')
-                .lowercase()
-            extensionVendors.add(extVendor)
-            val packageName = "$vulkanPackage.$extVendor"
+        val supportedString = extensionNode.getAttribute("supported")
+        if (supportedString == "disabled" || !supportedString.split(',').contains("vulkan")) {
+            continue
+        }
 
-            val extReqTypes = mutableListOf<String>()
-            val extReqCommands = mutableListOf<String>()
-            val extReqEnums = mutableListOf<String>()
-            val requireNodeList = extensionNode.getElementsByTagName("require")
-            for (i1 in 0 until requireNodeList.length) {
-                val requireNode = requireNodeList.item(i1) as Element
-                for (i2 in 0 until requireNode.childNodes.length) {
-                    val childNode = requireNode.childNodes.item(i2)
-                    if (childNode is Element) {
-                        when (childNode.tagName) {
-                            "type" -> extReqTypes.add(childNode.getAttribute("name"))
-                            "command" -> extReqCommands.add(childNode.getAttribute("name"))
-                            "enum" -> {
-                                val name = childNode.getAttribute("name")
-                                extReqEnums.add(name)
-                                if (childNode.hasAttribute("extends") && !childNode.hasAttribute("alias")) {
-                                    val extends = childNode.getAttribute("extends")
-                                    vkEnumDefineClassMap.getOrPut(extends) { mutableListOf() }
-                                        .add("$packageName.$extName" to name)
-                                }
+        val rawName = extensionNode.getAttribute("name")
+        val extName = rawName
+            .split('_')
+            .joinToString("") { it.replaceFirstChar(Char::uppercaseChar) }
+        val extVendor = rawName
+            .substringAfter("VK_")
+            .substringBefore('_')
+            .lowercase()
+        extensionVendors.add(extVendor)
+        val packageName = "$vulkanPackage.$extVendor"
+
+        val extReqTypes = mutableListOf<String>()
+        val extReqCommands = mutableListOf<String>()
+        val extReqEnums = mutableListOf<String>()
+        val requireNodeList = extensionNode.getElementsByTagName("require")
+        for (i1 in 0 until requireNodeList.length) {
+            val requireNode = requireNodeList.item(i1) as Element
+            for (i2 in 0 until requireNode.childNodes.length) {
+                val childNode = requireNode.childNodes.item(i2)
+                if (childNode is Element) {
+                    when (childNode.tagName) {
+                        "type" -> extReqTypes.add(childNode.getAttribute("name"))
+                        "command" -> extReqCommands.add(childNode.getAttribute("name"))
+                        "enum" -> {
+                            val name = childNode.getAttribute("name")
+                            extReqEnums.add(name)
+                            if (childNode.hasAttribute("extends") && !childNode.hasAttribute("alias")) {
+                                val extends = childNode.getAttribute("extends")
+                                vkEnumDefineClassMap.getOrPut(extends) { mutableListOf() }
+                                    .add("$packageName.$extName" to name)
                             }
                         }
                     }
                 }
             }
-
-            val downcall = VkDowncall(packageName, extName) {
-                addReqTypes(interpreter = definitionFile.interpreter, extReqTypes)
-                addReqEnums(interpreter = definitionFile.interpreter, extReqEnums)
-                addReqCommand(interpreter = definitionFile.interpreter, extReqCommands, commandAliasMap)
-            }
-            extensionDowncalls[rawName] = downcall
         }
+
+        val typeString = extensionNode.getAttribute("type")
+        val downcall = VkDowncall(packageName, extName, "`$rawName` - $typeString extension") {
+            addReqTypes(interpreter = definitionFile.interpreter, extReqTypes)
+            addReqEnums(interpreter = definitionFile.interpreter, extReqEnums)
+            addReqCommand(interpreter = definitionFile.interpreter, extReqCommands, commandAliasMap)
+        }
+        extensionDowncalls[rawName] = downcall
     }
 
     vkDowncalls.forEach { it.write() }
@@ -844,6 +848,7 @@ fun main() {
         appendLine()
         appendLine("    requires transitive overrungl.core;")
         appendLine("    requires static org.graalvm.nativeimage;")
+        appendLine("    requires static org.jspecify;")
         appendLine("}")
         appendLine()
     })

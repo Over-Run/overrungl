@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`.
 /// ## Layout
 /// ```
 /// struct VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV extends GroupType {
     /// The struct layout of `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("clusterReferencesCount"),
         ValueLayout.JAVA_INT.withName("clusterReferencesStride"),
         ValueLayout.JAVA_LONG.withName("clusterReferences")

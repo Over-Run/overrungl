@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sun;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_SUN_mesh_array`
 public final class GLSUNMeshArray {
     public static final int GL_QUAD_MESH_SUN = 0x8614;
     public static final int GL_TRIANGLE_MESH_SUN = 0x8615;
@@ -30,15 +30,16 @@ public final class GLSUNMeshArray {
     public static final class Handles {
         public static final MethodHandle MH_glDrawMeshArraysSUN = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDrawMeshArraysSUN;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDrawMeshArraysSUN = func.invoke("glDrawMeshArraysSUN");
         }
     }
 
-    public GLSUNMeshArray(overrungl.opengl.GLLoadFunc func) {
+    public GLSUNMeshArray(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDrawMeshArraysSUN`.
     /// ```
     /// void glDrawMeshArraysSUN((unsigned int) GLenum mode, (int) GLint first, (int) GLsizei count, (int) GLsizei width);
     /// ```

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkDescriptorImageInfo`.
 /// ## Layout
 /// ```
 /// struct VkDescriptorImageInfo {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkDescriptorImageInfo extends GroupType {
     /// The struct layout of `VkDescriptorImageInfo`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("sampler"),
         ValueLayout.JAVA_LONG.withName("imageView"),
         ValueLayout.JAVA_INT.withName("imageLayout")

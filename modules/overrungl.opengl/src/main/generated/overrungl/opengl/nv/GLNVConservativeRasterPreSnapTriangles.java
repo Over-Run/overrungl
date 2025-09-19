@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_conservative_raster_pre_snap_triangles`
 public final class GLNVConservativeRasterPreSnapTriangles {
     public static final int GL_CONSERVATIVE_RASTER_MODE_NV = 0x954D;
     public static final int GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV = 0x954E;
@@ -31,15 +31,16 @@ public final class GLNVConservativeRasterPreSnapTriangles {
     public static final class Handles {
         public static final MethodHandle MH_glConservativeRasterParameteriNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glConservativeRasterParameteriNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glConservativeRasterParameteriNV = func.invoke("glConservativeRasterParameteriNV");
         }
     }
 
-    public GLNVConservativeRasterPreSnapTriangles(overrungl.opengl.GLLoadFunc func) {
+    public GLNVConservativeRasterPreSnapTriangles(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glConservativeRasterParameteriNV`.
     /// ```
     /// void glConservativeRasterParameteriNV((unsigned int) GLenum pname, (int) GLint param);
     /// ```

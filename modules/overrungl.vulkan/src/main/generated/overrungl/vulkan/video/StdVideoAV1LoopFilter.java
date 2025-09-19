@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoAV1LoopFilter`.
 /// ## Layout
 /// ```
 /// struct StdVideoAV1LoopFilter {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoAV1LoopFilter extends GroupType {
     /// The struct layout of `StdVideoAV1LoopFilter`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoAV1LoopFilterFlags.LAYOUT.withName("flags"),
         MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_BYTE).withName("loop_filter_level"),
         ValueLayout.JAVA_BYTE.withName("loop_filter_sharpness"),

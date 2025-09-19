@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_swapchain_maintenance1` - device extension
 public final class VKKHRSwapchainMaintenance1 {
     public static final int VK_KHR_SWAPCHAIN_MAINTENANCE_1_SPEC_VERSION = 1;
     public static final String VK_KHR_SWAPCHAIN_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_swapchain_maintenance1";
@@ -38,10 +40,11 @@ public final class VKKHRSwapchainMaintenance1 {
 
     private VKKHRSwapchainMaintenance1() {}
 
+    /// Invokes `vkReleaseSwapchainImagesKHR`.
     /// ```
     /// (int) VkResult vkReleaseSwapchainImagesKHR((struct VkDevice*) VkDevice device, const VkReleaseSwapchainImagesInfoKHR* pReleaseInfo);
     /// ```
-    public static int vkReleaseSwapchainImagesKHR(VkDevice device, MemorySegment pReleaseInfo) {
+    public static int vkReleaseSwapchainImagesKHR(@NonNull VkDevice device, @NonNull MemorySegment pReleaseInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleaseSwapchainImagesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkReleaseSwapchainImagesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkReleaseSwapchainImagesKHR", device, pReleaseInfo); }
         return (int) Handles.MH_vkReleaseSwapchainImagesKHR.invokeExact(device.capabilities().PFN_vkReleaseSwapchainImagesKHR, device.segment(), pReleaseInfo); }

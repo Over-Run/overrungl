@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.qcom;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_QCOM_filter_cubic_clamp` - device extension
 public final class VKQCOMFilterCubicClamp {
     public static final int VK_QCOM_FILTER_CUBIC_CLAMP_SPEC_VERSION = 1;
     public static final String VK_QCOM_FILTER_CUBIC_CLAMP_EXTENSION_NAME = "VK_QCOM_filter_cubic_clamp";

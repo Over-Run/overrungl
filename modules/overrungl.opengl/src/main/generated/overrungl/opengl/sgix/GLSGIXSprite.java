@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_SGIX_sprite`
 public final class GLSGIXSprite {
     public static final int GL_SPRITE_SGIX = 0x8148;
     public static final int GL_SPRITE_MODE_SGIX = 0x8149;
@@ -41,7 +41,7 @@ public final class GLSGIXSprite {
         public final MemorySegment PFN_glSpriteParameterfvSGIX;
         public final MemorySegment PFN_glSpriteParameteriSGIX;
         public final MemorySegment PFN_glSpriteParameterivSGIX;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glSpriteParameterfSGIX = func.invoke("glSpriteParameterfSGIX");
             PFN_glSpriteParameterfvSGIX = func.invoke("glSpriteParameterfvSGIX");
             PFN_glSpriteParameteriSGIX = func.invoke("glSpriteParameteriSGIX");
@@ -49,10 +49,11 @@ public final class GLSGIXSprite {
         }
     }
 
-    public GLSGIXSprite(overrungl.opengl.GLLoadFunc func) {
+    public GLSGIXSprite(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glSpriteParameterfSGIX`.
     /// ```
     /// void glSpriteParameterfSGIX((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
@@ -63,16 +64,18 @@ public final class GLSGIXSprite {
         catch (Throwable e) { throw new RuntimeException("error in SpriteParameterfSGIX", e); }
     }
 
+    /// Invokes `glSpriteParameterfvSGIX`.
     /// ```
     /// void glSpriteParameterfvSGIX((unsigned int) GLenum pname, const GLfloat* params);
     /// ```
-    public void SpriteParameterfvSGIX(int pname, MemorySegment params) {
+    public void SpriteParameterfvSGIX(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSpriteParameterfvSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glSpriteParameterfvSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSpriteParameterfvSGIX", pname, params); }
         Handles.MH_glSpriteParameterfvSGIX.invokeExact(handles.PFN_glSpriteParameterfvSGIX, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in SpriteParameterfvSGIX", e); }
     }
 
+    /// Invokes `glSpriteParameteriSGIX`.
     /// ```
     /// void glSpriteParameteriSGIX((unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -83,10 +86,11 @@ public final class GLSGIXSprite {
         catch (Throwable e) { throw new RuntimeException("error in SpriteParameteriSGIX", e); }
     }
 
+    /// Invokes `glSpriteParameterivSGIX`.
     /// ```
     /// void glSpriteParameterivSGIX((unsigned int) GLenum pname, const GLint* params);
     /// ```
-    public void SpriteParameterivSGIX(int pname, MemorySegment params) {
+    public void SpriteParameterivSGIX(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSpriteParameterivSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glSpriteParameterivSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSpriteParameterivSGIX", pname, params); }
         Handles.MH_glSpriteParameterivSGIX.invokeExact(handles.PFN_glSpriteParameterivSGIX, pname, params); }

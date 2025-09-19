@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_texture_buffer_object`
 public final class GLEXTTextureBufferObject {
     public static final int GL_TEXTURE_BUFFER_EXT = 0x8C2A;
     public static final int GL_MAX_TEXTURE_BUFFER_SIZE_EXT = 0x8C2B;
@@ -33,15 +33,16 @@ public final class GLEXTTextureBufferObject {
     public static final class Handles {
         public static final MethodHandle MH_glTexBufferEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTexBufferEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTexBufferEXT = func.invoke("glTexBufferEXT", "glTexBuffer");
         }
     }
 
-    public GLEXTTextureBufferObject(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTTextureBufferObject(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTexBufferEXT`.
     /// ```
     /// void glTexBufferEXT((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer);
     /// ```

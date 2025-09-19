@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkBufferCopy`.
 /// ## Layout
 /// ```
 /// struct VkBufferCopy {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkBufferCopy extends GroupType {
     /// The struct layout of `VkBufferCopy`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("srcOffset"),
         ValueLayout.JAVA_LONG.withName("dstOffset"),
         ValueLayout.JAVA_LONG.withName("size")

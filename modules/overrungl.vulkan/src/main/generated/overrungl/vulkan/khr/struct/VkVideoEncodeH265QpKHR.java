@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkVideoEncodeH265QpKHR`.
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH265QpKHR {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkVideoEncodeH265QpKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeH265QpKHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("qpI"),
         ValueLayout.JAVA_INT.withName("qpP"),
         ValueLayout.JAVA_INT.withName("qpB")

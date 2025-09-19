@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgi;
-
+/// `GL_SGI_color_matrix`
 public final class GLSGIColorMatrix {
     public static final int GL_COLOR_MATRIX_SGI = 0x80B1;
     public static final int GL_COLOR_MATRIX_STACK_DEPTH_SGI = 0x80B2;

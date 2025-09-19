@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_direct_state_access`
 public final class GLARBDirectStateAccess {
     public static final int GL_TEXTURE_TARGET = 0x1006;
     public static final int GL_QUERY_TARGET = 0x82EA;
@@ -233,7 +233,7 @@ public final class GLARBDirectStateAccess {
         public final MemorySegment PFN_glGetQueryBufferObjectiv;
         public final MemorySegment PFN_glGetQueryBufferObjectui64v;
         public final MemorySegment PFN_glGetQueryBufferObjectuiv;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glCreateTransformFeedbacks = func.invoke("glCreateTransformFeedbacks");
             PFN_glTransformFeedbackBufferBase = func.invoke("glTransformFeedbackBufferBase");
             PFN_glTransformFeedbackBufferRange = func.invoke("glTransformFeedbackBufferRange");
@@ -326,20 +326,22 @@ public final class GLARBDirectStateAccess {
         }
     }
 
-    public GLARBDirectStateAccess(overrungl.opengl.GLLoadFunc func) {
+    public GLARBDirectStateAccess(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glCreateTransformFeedbacks`.
     /// ```
     /// void glCreateTransformFeedbacks((int) GLsizei n, GLuint* ids);
     /// ```
-    public void CreateTransformFeedbacks(int n, MemorySegment ids) {
+    public void CreateTransformFeedbacks(int n, @NonNull MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateTransformFeedbacks)) throw new GLSymbolNotFoundError("Symbol not found: glCreateTransformFeedbacks");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateTransformFeedbacks", n, ids); }
         Handles.MH_glCreateTransformFeedbacks.invokeExact(handles.PFN_glCreateTransformFeedbacks, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in CreateTransformFeedbacks", e); }
     }
 
+    /// Invokes `glTransformFeedbackBufferBase`.
     /// ```
     /// void glTransformFeedbackBufferBase((unsigned int) GLuint xfb, (unsigned int) GLuint index, (unsigned int) GLuint buffer);
     /// ```
@@ -350,6 +352,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TransformFeedbackBufferBase", e); }
     }
 
+    /// Invokes `glTransformFeedbackBufferRange`.
     /// ```
     /// void glTransformFeedbackBufferRange((unsigned int) GLuint xfb, (unsigned int) GLuint index, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```
@@ -360,76 +363,84 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TransformFeedbackBufferRange", e); }
     }
 
+    /// Invokes `glGetTransformFeedbackiv`.
     /// ```
     /// void glGetTransformFeedbackiv((unsigned int) GLuint xfb, (unsigned int) GLenum pname, GLint* param);
     /// ```
-    public void GetTransformFeedbackiv(int xfb, int pname, MemorySegment param) {
+    public void GetTransformFeedbackiv(int xfb, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTransformFeedbackiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetTransformFeedbackiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTransformFeedbackiv", xfb, pname, param); }
         Handles.MH_glGetTransformFeedbackiv.invokeExact(handles.PFN_glGetTransformFeedbackiv, xfb, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetTransformFeedbackiv", e); }
     }
 
+    /// Invokes `glGetTransformFeedbacki_v`.
     /// ```
     /// void glGetTransformFeedbacki_v((unsigned int) GLuint xfb, (unsigned int) GLenum pname, (unsigned int) GLuint index, GLint* param);
     /// ```
-    public void GetTransformFeedbacki_v(int xfb, int pname, int index, MemorySegment param) {
+    public void GetTransformFeedbacki_v(int xfb, int pname, int index, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTransformFeedbacki_v)) throw new GLSymbolNotFoundError("Symbol not found: glGetTransformFeedbacki_v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTransformFeedbacki_v", xfb, pname, index, param); }
         Handles.MH_glGetTransformFeedbacki_v.invokeExact(handles.PFN_glGetTransformFeedbacki_v, xfb, pname, index, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetTransformFeedbacki_v", e); }
     }
 
+    /// Invokes `glGetTransformFeedbacki64_v`.
     /// ```
     /// void glGetTransformFeedbacki64_v((unsigned int) GLuint xfb, (unsigned int) GLenum pname, (unsigned int) GLuint index, GLint64* param);
     /// ```
-    public void GetTransformFeedbacki64_v(int xfb, int pname, int index, MemorySegment param) {
+    public void GetTransformFeedbacki64_v(int xfb, int pname, int index, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTransformFeedbacki64_v)) throw new GLSymbolNotFoundError("Symbol not found: glGetTransformFeedbacki64_v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTransformFeedbacki64_v", xfb, pname, index, param); }
         Handles.MH_glGetTransformFeedbacki64_v.invokeExact(handles.PFN_glGetTransformFeedbacki64_v, xfb, pname, index, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetTransformFeedbacki64_v", e); }
     }
 
+    /// Invokes `glCreateBuffers`.
     /// ```
     /// void glCreateBuffers((int) GLsizei n, GLuint* buffers);
     /// ```
-    public void CreateBuffers(int n, MemorySegment buffers) {
+    public void CreateBuffers(int n, @NonNull MemorySegment buffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateBuffers)) throw new GLSymbolNotFoundError("Symbol not found: glCreateBuffers");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateBuffers", n, buffers); }
         Handles.MH_glCreateBuffers.invokeExact(handles.PFN_glCreateBuffers, n, buffers); }
         catch (Throwable e) { throw new RuntimeException("error in CreateBuffers", e); }
     }
 
+    /// Invokes `glNamedBufferStorage`.
     /// ```
     /// void glNamedBufferStorage((unsigned int) GLuint buffer, ((signed long long) khronos_ssize_t) GLsizeiptr size, const void* data, (unsigned int) GLbitfield flags);
     /// ```
-    public void NamedBufferStorage(int buffer, long size, MemorySegment data, int flags) {
+    public void NamedBufferStorage(int buffer, long size, @NonNull MemorySegment data, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferStorage)) throw new GLSymbolNotFoundError("Symbol not found: glNamedBufferStorage");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedBufferStorage", buffer, size, data, flags); }
         Handles.MH_glNamedBufferStorage.invokeExact(handles.PFN_glNamedBufferStorage, buffer, size, data, flags); }
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferStorage", e); }
     }
 
+    /// Invokes `glNamedBufferData`.
     /// ```
     /// void glNamedBufferData((unsigned int) GLuint buffer, ((signed long long) khronos_ssize_t) GLsizeiptr size, const void* data, (unsigned int) GLenum usage);
     /// ```
-    public void NamedBufferData(int buffer, long size, MemorySegment data, int usage) {
+    public void NamedBufferData(int buffer, long size, @NonNull MemorySegment data, int usage) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferData)) throw new GLSymbolNotFoundError("Symbol not found: glNamedBufferData");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedBufferData", buffer, size, data, usage); }
         Handles.MH_glNamedBufferData.invokeExact(handles.PFN_glNamedBufferData, buffer, size, data, usage); }
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferData", e); }
     }
 
+    /// Invokes `glNamedBufferSubData`.
     /// ```
     /// void glNamedBufferSubData((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, const void* data);
     /// ```
-    public void NamedBufferSubData(int buffer, long offset, long size, MemorySegment data) {
+    public void NamedBufferSubData(int buffer, long offset, long size, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferSubData)) throw new GLSymbolNotFoundError("Symbol not found: glNamedBufferSubData");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedBufferSubData", buffer, offset, size, data); }
         Handles.MH_glNamedBufferSubData.invokeExact(handles.PFN_glNamedBufferSubData, buffer, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferSubData", e); }
     }
 
+    /// Invokes `glCopyNamedBufferSubData`.
     /// ```
     /// void glCopyNamedBufferSubData((unsigned int) GLuint readBuffer, (unsigned int) GLuint writeBuffer, ((signed long long) khronos_intptr_t) GLintptr readOffset, ((signed long long) khronos_intptr_t) GLintptr writeOffset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```
@@ -440,46 +451,51 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyNamedBufferSubData", e); }
     }
 
+    /// Invokes `glClearNamedBufferData`.
     /// ```
     /// void glClearNamedBufferData((unsigned int) GLuint buffer, (unsigned int) GLenum internalformat, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* data);
     /// ```
-    public void ClearNamedBufferData(int buffer, int internalformat, int format, int type, MemorySegment data) {
+    public void ClearNamedBufferData(int buffer, int internalformat, int format, int type, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedBufferData)) throw new GLSymbolNotFoundError("Symbol not found: glClearNamedBufferData");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearNamedBufferData", buffer, internalformat, format, type, data); }
         Handles.MH_glClearNamedBufferData.invokeExact(handles.PFN_glClearNamedBufferData, buffer, internalformat, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ClearNamedBufferData", e); }
     }
 
+    /// Invokes `glClearNamedBufferSubData`.
     /// ```
     /// void glClearNamedBufferSubData((unsigned int) GLuint buffer, (unsigned int) GLenum internalformat, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* data);
     /// ```
-    public void ClearNamedBufferSubData(int buffer, int internalformat, long offset, long size, int format, int type, MemorySegment data) {
+    public void ClearNamedBufferSubData(int buffer, int internalformat, long offset, long size, int format, int type, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedBufferSubData)) throw new GLSymbolNotFoundError("Symbol not found: glClearNamedBufferSubData");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearNamedBufferSubData", buffer, internalformat, offset, size, format, type, data); }
         Handles.MH_glClearNamedBufferSubData.invokeExact(handles.PFN_glClearNamedBufferSubData, buffer, internalformat, offset, size, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ClearNamedBufferSubData", e); }
     }
 
+    /// Invokes `glMapNamedBuffer`.
     /// ```
     /// void* glMapNamedBuffer((unsigned int) GLuint buffer, (unsigned int) GLenum access);
     /// ```
-    public MemorySegment MapNamedBuffer(int buffer, int access) {
+    public @NonNull MemorySegment MapNamedBuffer(int buffer, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapNamedBuffer)) throw new GLSymbolNotFoundError("Symbol not found: glMapNamedBuffer");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapNamedBuffer", buffer, access); }
         return (MemorySegment) Handles.MH_glMapNamedBuffer.invokeExact(handles.PFN_glMapNamedBuffer, buffer, access); }
         catch (Throwable e) { throw new RuntimeException("error in MapNamedBuffer", e); }
     }
 
+    /// Invokes `glMapNamedBufferRange`.
     /// ```
     /// void* glMapNamedBufferRange((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr length, (unsigned int) GLbitfield access);
     /// ```
-    public MemorySegment MapNamedBufferRange(int buffer, long offset, long length, int access) {
+    public @NonNull MemorySegment MapNamedBufferRange(int buffer, long offset, long length, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapNamedBufferRange)) throw new GLSymbolNotFoundError("Symbol not found: glMapNamedBufferRange");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapNamedBufferRange", buffer, offset, length, access); }
         return (MemorySegment) Handles.MH_glMapNamedBufferRange.invokeExact(handles.PFN_glMapNamedBufferRange, buffer, offset, length, access); }
         catch (Throwable e) { throw new RuntimeException("error in MapNamedBufferRange", e); }
     }
 
+    /// Invokes `glUnmapNamedBuffer`.
     /// ```
     /// GLboolean glUnmapNamedBuffer((unsigned int) GLuint buffer);
     /// ```
@@ -490,6 +506,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in UnmapNamedBuffer", e); }
     }
 
+    /// Invokes `glFlushMappedNamedBufferRange`.
     /// ```
     /// void glFlushMappedNamedBufferRange((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr length);
     /// ```
@@ -500,56 +517,62 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in FlushMappedNamedBufferRange", e); }
     }
 
+    /// Invokes `glGetNamedBufferParameteriv`.
     /// ```
     /// void glGetNamedBufferParameteriv((unsigned int) GLuint buffer, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetNamedBufferParameteriv(int buffer, int pname, MemorySegment params) {
+    public void GetNamedBufferParameteriv(int buffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedBufferParameteriv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedBufferParameteriv", buffer, pname, params); }
         Handles.MH_glGetNamedBufferParameteriv.invokeExact(handles.PFN_glGetNamedBufferParameteriv, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferParameteriv", e); }
     }
 
+    /// Invokes `glGetNamedBufferParameteri64v`.
     /// ```
     /// void glGetNamedBufferParameteri64v((unsigned int) GLuint buffer, (unsigned int) GLenum pname, GLint64* params);
     /// ```
-    public void GetNamedBufferParameteri64v(int buffer, int pname, MemorySegment params) {
+    public void GetNamedBufferParameteri64v(int buffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferParameteri64v)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedBufferParameteri64v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedBufferParameteri64v", buffer, pname, params); }
         Handles.MH_glGetNamedBufferParameteri64v.invokeExact(handles.PFN_glGetNamedBufferParameteri64v, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferParameteri64v", e); }
     }
 
+    /// Invokes `glGetNamedBufferPointerv`.
     /// ```
     /// void glGetNamedBufferPointerv((unsigned int) GLuint buffer, (unsigned int) GLenum pname, void** params);
     /// ```
-    public void GetNamedBufferPointerv(int buffer, int pname, MemorySegment params) {
+    public void GetNamedBufferPointerv(int buffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferPointerv)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedBufferPointerv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedBufferPointerv", buffer, pname, params); }
         Handles.MH_glGetNamedBufferPointerv.invokeExact(handles.PFN_glGetNamedBufferPointerv, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferPointerv", e); }
     }
 
+    /// Invokes `glGetNamedBufferSubData`.
     /// ```
     /// void glGetNamedBufferSubData((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, void* data);
     /// ```
-    public void GetNamedBufferSubData(int buffer, long offset, long size, MemorySegment data) {
+    public void GetNamedBufferSubData(int buffer, long offset, long size, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferSubData)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedBufferSubData");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedBufferSubData", buffer, offset, size, data); }
         Handles.MH_glGetNamedBufferSubData.invokeExact(handles.PFN_glGetNamedBufferSubData, buffer, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferSubData", e); }
     }
 
+    /// Invokes `glCreateFramebuffers`.
     /// ```
     /// void glCreateFramebuffers((int) GLsizei n, GLuint* framebuffers);
     /// ```
-    public void CreateFramebuffers(int n, MemorySegment framebuffers) {
+    public void CreateFramebuffers(int n, @NonNull MemorySegment framebuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateFramebuffers)) throw new GLSymbolNotFoundError("Symbol not found: glCreateFramebuffers");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateFramebuffers", n, framebuffers); }
         Handles.MH_glCreateFramebuffers.invokeExact(handles.PFN_glCreateFramebuffers, n, framebuffers); }
         catch (Throwable e) { throw new RuntimeException("error in CreateFramebuffers", e); }
     }
 
+    /// Invokes `glNamedFramebufferRenderbuffer`.
     /// ```
     /// void glNamedFramebufferRenderbuffer((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLenum renderbuffertarget, (unsigned int) GLuint renderbuffer);
     /// ```
@@ -560,6 +583,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferRenderbuffer", e); }
     }
 
+    /// Invokes `glNamedFramebufferParameteri`.
     /// ```
     /// void glNamedFramebufferParameteri((unsigned int) GLuint framebuffer, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -570,6 +594,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferParameteri", e); }
     }
 
+    /// Invokes `glNamedFramebufferTexture`.
     /// ```
     /// void glNamedFramebufferTexture((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
@@ -580,6 +605,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTexture", e); }
     }
 
+    /// Invokes `glNamedFramebufferTextureLayer`.
     /// ```
     /// void glNamedFramebufferTextureLayer((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint layer);
     /// ```
@@ -590,6 +616,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTextureLayer", e); }
     }
 
+    /// Invokes `glNamedFramebufferDrawBuffer`.
     /// ```
     /// void glNamedFramebufferDrawBuffer((unsigned int) GLuint framebuffer, (unsigned int) GLenum buf);
     /// ```
@@ -600,16 +627,18 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferDrawBuffer", e); }
     }
 
+    /// Invokes `glNamedFramebufferDrawBuffers`.
     /// ```
     /// void glNamedFramebufferDrawBuffers((unsigned int) GLuint framebuffer, (int) GLsizei n, const GLenum* bufs);
     /// ```
-    public void NamedFramebufferDrawBuffers(int framebuffer, int n, MemorySegment bufs) {
+    public void NamedFramebufferDrawBuffers(int framebuffer, int n, @NonNull MemorySegment bufs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferDrawBuffers)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferDrawBuffers");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedFramebufferDrawBuffers", framebuffer, n, bufs); }
         Handles.MH_glNamedFramebufferDrawBuffers.invokeExact(handles.PFN_glNamedFramebufferDrawBuffers, framebuffer, n, bufs); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferDrawBuffers", e); }
     }
 
+    /// Invokes `glNamedFramebufferReadBuffer`.
     /// ```
     /// void glNamedFramebufferReadBuffer((unsigned int) GLuint framebuffer, (unsigned int) GLenum src);
     /// ```
@@ -620,56 +649,62 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferReadBuffer", e); }
     }
 
+    /// Invokes `glInvalidateNamedFramebufferData`.
     /// ```
     /// void glInvalidateNamedFramebufferData((unsigned int) GLuint framebuffer, (int) GLsizei numAttachments, const GLenum* attachments);
     /// ```
-    public void InvalidateNamedFramebufferData(int framebuffer, int numAttachments, MemorySegment attachments) {
+    public void InvalidateNamedFramebufferData(int framebuffer, int numAttachments, @NonNull MemorySegment attachments) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateNamedFramebufferData)) throw new GLSymbolNotFoundError("Symbol not found: glInvalidateNamedFramebufferData");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInvalidateNamedFramebufferData", framebuffer, numAttachments, attachments); }
         Handles.MH_glInvalidateNamedFramebufferData.invokeExact(handles.PFN_glInvalidateNamedFramebufferData, framebuffer, numAttachments, attachments); }
         catch (Throwable e) { throw new RuntimeException("error in InvalidateNamedFramebufferData", e); }
     }
 
+    /// Invokes `glInvalidateNamedFramebufferSubData`.
     /// ```
     /// void glInvalidateNamedFramebufferSubData((unsigned int) GLuint framebuffer, (int) GLsizei numAttachments, const GLenum* attachments, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
-    public void InvalidateNamedFramebufferSubData(int framebuffer, int numAttachments, MemorySegment attachments, int x, int y, int width, int height) {
+    public void InvalidateNamedFramebufferSubData(int framebuffer, int numAttachments, @NonNull MemorySegment attachments, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateNamedFramebufferSubData)) throw new GLSymbolNotFoundError("Symbol not found: glInvalidateNamedFramebufferSubData");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInvalidateNamedFramebufferSubData", framebuffer, numAttachments, attachments, x, y, width, height); }
         Handles.MH_glInvalidateNamedFramebufferSubData.invokeExact(handles.PFN_glInvalidateNamedFramebufferSubData, framebuffer, numAttachments, attachments, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in InvalidateNamedFramebufferSubData", e); }
     }
 
+    /// Invokes `glClearNamedFramebufferiv`.
     /// ```
     /// void glClearNamedFramebufferiv((unsigned int) GLuint framebuffer, (unsigned int) GLenum buffer, (int) GLint drawbuffer, const GLint* value);
     /// ```
-    public void ClearNamedFramebufferiv(int framebuffer, int buffer, int drawbuffer, MemorySegment value) {
+    public void ClearNamedFramebufferiv(int framebuffer, int buffer, int drawbuffer, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedFramebufferiv)) throw new GLSymbolNotFoundError("Symbol not found: glClearNamedFramebufferiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearNamedFramebufferiv", framebuffer, buffer, drawbuffer, value); }
         Handles.MH_glClearNamedFramebufferiv.invokeExact(handles.PFN_glClearNamedFramebufferiv, framebuffer, buffer, drawbuffer, value); }
         catch (Throwable e) { throw new RuntimeException("error in ClearNamedFramebufferiv", e); }
     }
 
+    /// Invokes `glClearNamedFramebufferuiv`.
     /// ```
     /// void glClearNamedFramebufferuiv((unsigned int) GLuint framebuffer, (unsigned int) GLenum buffer, (int) GLint drawbuffer, const GLuint* value);
     /// ```
-    public void ClearNamedFramebufferuiv(int framebuffer, int buffer, int drawbuffer, MemorySegment value) {
+    public void ClearNamedFramebufferuiv(int framebuffer, int buffer, int drawbuffer, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedFramebufferuiv)) throw new GLSymbolNotFoundError("Symbol not found: glClearNamedFramebufferuiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearNamedFramebufferuiv", framebuffer, buffer, drawbuffer, value); }
         Handles.MH_glClearNamedFramebufferuiv.invokeExact(handles.PFN_glClearNamedFramebufferuiv, framebuffer, buffer, drawbuffer, value); }
         catch (Throwable e) { throw new RuntimeException("error in ClearNamedFramebufferuiv", e); }
     }
 
+    /// Invokes `glClearNamedFramebufferfv`.
     /// ```
     /// void glClearNamedFramebufferfv((unsigned int) GLuint framebuffer, (unsigned int) GLenum buffer, (int) GLint drawbuffer, const GLfloat* value);
     /// ```
-    public void ClearNamedFramebufferfv(int framebuffer, int buffer, int drawbuffer, MemorySegment value) {
+    public void ClearNamedFramebufferfv(int framebuffer, int buffer, int drawbuffer, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedFramebufferfv)) throw new GLSymbolNotFoundError("Symbol not found: glClearNamedFramebufferfv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearNamedFramebufferfv", framebuffer, buffer, drawbuffer, value); }
         Handles.MH_glClearNamedFramebufferfv.invokeExact(handles.PFN_glClearNamedFramebufferfv, framebuffer, buffer, drawbuffer, value); }
         catch (Throwable e) { throw new RuntimeException("error in ClearNamedFramebufferfv", e); }
     }
 
+    /// Invokes `glClearNamedFramebufferfi`.
     /// ```
     /// void glClearNamedFramebufferfi((unsigned int) GLuint framebuffer, (unsigned int) GLenum buffer, (int) GLint drawbuffer, ((float) khronos_float_t) GLfloat depth, (int) GLint stencil);
     /// ```
@@ -680,6 +715,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in ClearNamedFramebufferfi", e); }
     }
 
+    /// Invokes `glBlitNamedFramebuffer`.
     /// ```
     /// void glBlitNamedFramebuffer((unsigned int) GLuint readFramebuffer, (unsigned int) GLuint drawFramebuffer, (int) GLint srcX0, (int) GLint srcY0, (int) GLint srcX1, (int) GLint srcY1, (int) GLint dstX0, (int) GLint dstY0, (int) GLint dstX1, (int) GLint dstY1, (unsigned int) GLbitfield mask, (unsigned int) GLenum filter);
     /// ```
@@ -690,6 +726,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in BlitNamedFramebuffer", e); }
     }
 
+    /// Invokes `glCheckNamedFramebufferStatus`.
     /// ```
     /// (unsigned int) GLenum glCheckNamedFramebufferStatus((unsigned int) GLuint framebuffer, (unsigned int) GLenum target);
     /// ```
@@ -700,36 +737,40 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CheckNamedFramebufferStatus", e); }
     }
 
+    /// Invokes `glGetNamedFramebufferParameteriv`.
     /// ```
     /// void glGetNamedFramebufferParameteriv((unsigned int) GLuint framebuffer, (unsigned int) GLenum pname, GLint* param);
     /// ```
-    public void GetNamedFramebufferParameteriv(int framebuffer, int pname, MemorySegment param) {
+    public void GetNamedFramebufferParameteriv(int framebuffer, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedFramebufferParameteriv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedFramebufferParameteriv", framebuffer, pname, param); }
         Handles.MH_glGetNamedFramebufferParameteriv.invokeExact(handles.PFN_glGetNamedFramebufferParameteriv, framebuffer, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedFramebufferParameteriv", e); }
     }
 
+    /// Invokes `glGetNamedFramebufferAttachmentParameteriv`.
     /// ```
     /// void glGetNamedFramebufferAttachmentParameteriv((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetNamedFramebufferAttachmentParameteriv(int framebuffer, int attachment, int pname, MemorySegment params) {
+    public void GetNamedFramebufferAttachmentParameteriv(int framebuffer, int attachment, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferAttachmentParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedFramebufferAttachmentParameteriv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedFramebufferAttachmentParameteriv", framebuffer, attachment, pname, params); }
         Handles.MH_glGetNamedFramebufferAttachmentParameteriv.invokeExact(handles.PFN_glGetNamedFramebufferAttachmentParameteriv, framebuffer, attachment, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedFramebufferAttachmentParameteriv", e); }
     }
 
+    /// Invokes `glCreateRenderbuffers`.
     /// ```
     /// void glCreateRenderbuffers((int) GLsizei n, GLuint* renderbuffers);
     /// ```
-    public void CreateRenderbuffers(int n, MemorySegment renderbuffers) {
+    public void CreateRenderbuffers(int n, @NonNull MemorySegment renderbuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateRenderbuffers)) throw new GLSymbolNotFoundError("Symbol not found: glCreateRenderbuffers");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateRenderbuffers", n, renderbuffers); }
         Handles.MH_glCreateRenderbuffers.invokeExact(handles.PFN_glCreateRenderbuffers, n, renderbuffers); }
         catch (Throwable e) { throw new RuntimeException("error in CreateRenderbuffers", e); }
     }
 
+    /// Invokes `glNamedRenderbufferStorage`.
     /// ```
     /// void glNamedRenderbufferStorage((unsigned int) GLuint renderbuffer, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -740,6 +781,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorage", e); }
     }
 
+    /// Invokes `glNamedRenderbufferStorageMultisample`.
     /// ```
     /// void glNamedRenderbufferStorageMultisample((unsigned int) GLuint renderbuffer, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -750,26 +792,29 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorageMultisample", e); }
     }
 
+    /// Invokes `glGetNamedRenderbufferParameteriv`.
     /// ```
     /// void glGetNamedRenderbufferParameteriv((unsigned int) GLuint renderbuffer, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetNamedRenderbufferParameteriv(int renderbuffer, int pname, MemorySegment params) {
+    public void GetNamedRenderbufferParameteriv(int renderbuffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedRenderbufferParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedRenderbufferParameteriv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedRenderbufferParameteriv", renderbuffer, pname, params); }
         Handles.MH_glGetNamedRenderbufferParameteriv.invokeExact(handles.PFN_glGetNamedRenderbufferParameteriv, renderbuffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedRenderbufferParameteriv", e); }
     }
 
+    /// Invokes `glCreateTextures`.
     /// ```
     /// void glCreateTextures((unsigned int) GLenum target, (int) GLsizei n, GLuint* textures);
     /// ```
-    public void CreateTextures(int target, int n, MemorySegment textures) {
+    public void CreateTextures(int target, int n, @NonNull MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateTextures)) throw new GLSymbolNotFoundError("Symbol not found: glCreateTextures");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateTextures", target, n, textures); }
         Handles.MH_glCreateTextures.invokeExact(handles.PFN_glCreateTextures, target, n, textures); }
         catch (Throwable e) { throw new RuntimeException("error in CreateTextures", e); }
     }
 
+    /// Invokes `glTextureBuffer`.
     /// ```
     /// void glTextureBuffer((unsigned int) GLuint texture, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer);
     /// ```
@@ -780,6 +825,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureBuffer", e); }
     }
 
+    /// Invokes `glTextureBufferRange`.
     /// ```
     /// void glTextureBufferRange((unsigned int) GLuint texture, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```
@@ -790,6 +836,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureBufferRange", e); }
     }
 
+    /// Invokes `glTextureStorage1D`.
     /// ```
     /// void glTextureStorage1D((unsigned int) GLuint texture, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width);
     /// ```
@@ -800,6 +847,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage1D", e); }
     }
 
+    /// Invokes `glTextureStorage2D`.
     /// ```
     /// void glTextureStorage2D((unsigned int) GLuint texture, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -810,6 +858,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage2D", e); }
     }
 
+    /// Invokes `glTextureStorage3D`.
     /// ```
     /// void glTextureStorage3D((unsigned int) GLuint texture, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```
@@ -820,6 +869,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage3D", e); }
     }
 
+    /// Invokes `glTextureStorage2DMultisample`.
     /// ```
     /// void glTextureStorage2DMultisample((unsigned int) GLuint texture, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedsamplelocations);
     /// ```
@@ -830,6 +880,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage2DMultisample", e); }
     }
 
+    /// Invokes `glTextureStorage3DMultisample`.
     /// ```
     /// void glTextureStorage3DMultisample((unsigned int) GLuint texture, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedsamplelocations);
     /// ```
@@ -840,66 +891,73 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage3DMultisample", e); }
     }
 
+    /// Invokes `glTextureSubImage1D`.
     /// ```
     /// void glTextureSubImage1D((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLsizei width, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void TextureSubImage1D(int texture, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
+    public void TextureSubImage1D(int texture, int level, int xoffset, int width, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage1D)) throw new GLSymbolNotFoundError("Symbol not found: glTextureSubImage1D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureSubImage1D", texture, level, xoffset, width, format, type, pixels); }
         Handles.MH_glTextureSubImage1D.invokeExact(handles.PFN_glTextureSubImage1D, texture, level, xoffset, width, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureSubImage1D", e); }
     }
 
+    /// Invokes `glTextureSubImage2D`.
     /// ```
     /// void glTextureSubImage2D((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void TextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
+    public void TextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage2D)) throw new GLSymbolNotFoundError("Symbol not found: glTextureSubImage2D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureSubImage2D", texture, level, xoffset, yoffset, width, height, format, type, pixels); }
         Handles.MH_glTextureSubImage2D.invokeExact(handles.PFN_glTextureSubImage2D, texture, level, xoffset, yoffset, width, height, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureSubImage2D", e); }
     }
 
+    /// Invokes `glTextureSubImage3D`.
     /// ```
     /// void glTextureSubImage3D((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
-    public void TextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
+    public void TextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage3D)) throw new GLSymbolNotFoundError("Symbol not found: glTextureSubImage3D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureSubImage3D", texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         Handles.MH_glTextureSubImage3D.invokeExact(handles.PFN_glTextureSubImage3D, texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureSubImage3D", e); }
     }
 
+    /// Invokes `glCompressedTextureSubImage1D`.
     /// ```
     /// void glCompressedTextureSubImage1D((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLsizei width, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* data);
     /// ```
-    public void CompressedTextureSubImage1D(int texture, int level, int xoffset, int width, int format, int imageSize, MemorySegment data) {
+    public void CompressedTextureSubImage1D(int texture, int level, int xoffset, int width, int format, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage1D)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureSubImage1D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureSubImage1D", texture, level, xoffset, width, format, imageSize, data); }
         Handles.MH_glCompressedTextureSubImage1D.invokeExact(handles.PFN_glCompressedTextureSubImage1D, texture, level, xoffset, width, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage1D", e); }
     }
 
+    /// Invokes `glCompressedTextureSubImage2D`.
     /// ```
     /// void glCompressedTextureSubImage2D((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* data);
     /// ```
-    public void CompressedTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, MemorySegment data) {
+    public void CompressedTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage2D)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureSubImage2D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureSubImage2D", texture, level, xoffset, yoffset, width, height, format, imageSize, data); }
         Handles.MH_glCompressedTextureSubImage2D.invokeExact(handles.PFN_glCompressedTextureSubImage2D, texture, level, xoffset, yoffset, width, height, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage2D", e); }
     }
 
+    /// Invokes `glCompressedTextureSubImage3D`.
     /// ```
     /// void glCompressedTextureSubImage3D((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* data);
     /// ```
-    public void CompressedTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, MemorySegment data) {
+    public void CompressedTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage3D)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureSubImage3D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureSubImage3D", texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
         Handles.MH_glCompressedTextureSubImage3D.invokeExact(handles.PFN_glCompressedTextureSubImage3D, texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage3D", e); }
     }
 
+    /// Invokes `glCopyTextureSubImage1D`.
     /// ```
     /// void glCopyTextureSubImage1D((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint x, (int) GLint y, (int) GLsizei width);
     /// ```
@@ -910,6 +968,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage1D", e); }
     }
 
+    /// Invokes `glCopyTextureSubImage2D`.
     /// ```
     /// void glCopyTextureSubImage2D((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -920,6 +979,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage2D", e); }
     }
 
+    /// Invokes `glCopyTextureSubImage3D`.
     /// ```
     /// void glCopyTextureSubImage3D((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -930,6 +990,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage3D", e); }
     }
 
+    /// Invokes `glTextureParameterf`.
     /// ```
     /// void glTextureParameterf((unsigned int) GLuint texture, (unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
@@ -940,16 +1001,18 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterf", e); }
     }
 
+    /// Invokes `glTextureParameterfv`.
     /// ```
     /// void glTextureParameterfv((unsigned int) GLuint texture, (unsigned int) GLenum pname, const GLfloat* param);
     /// ```
-    public void TextureParameterfv(int texture, int pname, MemorySegment param) {
+    public void TextureParameterfv(int texture, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterfv)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterfv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterfv", texture, pname, param); }
         Handles.MH_glTextureParameterfv.invokeExact(handles.PFN_glTextureParameterfv, texture, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterfv", e); }
     }
 
+    /// Invokes `glTextureParameteri`.
     /// ```
     /// void glTextureParameteri((unsigned int) GLuint texture, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -960,36 +1023,40 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in TextureParameteri", e); }
     }
 
+    /// Invokes `glTextureParameterIiv`.
     /// ```
     /// void glTextureParameterIiv((unsigned int) GLuint texture, (unsigned int) GLenum pname, const GLint* params);
     /// ```
-    public void TextureParameterIiv(int texture, int pname, MemorySegment params) {
+    public void TextureParameterIiv(int texture, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterIiv)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterIiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterIiv", texture, pname, params); }
         Handles.MH_glTextureParameterIiv.invokeExact(handles.PFN_glTextureParameterIiv, texture, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterIiv", e); }
     }
 
+    /// Invokes `glTextureParameterIuiv`.
     /// ```
     /// void glTextureParameterIuiv((unsigned int) GLuint texture, (unsigned int) GLenum pname, const GLuint* params);
     /// ```
-    public void TextureParameterIuiv(int texture, int pname, MemorySegment params) {
+    public void TextureParameterIuiv(int texture, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterIuiv)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterIuiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterIuiv", texture, pname, params); }
         Handles.MH_glTextureParameterIuiv.invokeExact(handles.PFN_glTextureParameterIuiv, texture, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterIuiv", e); }
     }
 
+    /// Invokes `glTextureParameteriv`.
     /// ```
     /// void glTextureParameteriv((unsigned int) GLuint texture, (unsigned int) GLenum pname, const GLint* param);
     /// ```
-    public void TextureParameteriv(int texture, int pname, MemorySegment param) {
+    public void TextureParameteriv(int texture, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameteriv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameteriv", texture, pname, param); }
         Handles.MH_glTextureParameteriv.invokeExact(handles.PFN_glTextureParameteriv, texture, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameteriv", e); }
     }
 
+    /// Invokes `glGenerateTextureMipmap`.
     /// ```
     /// void glGenerateTextureMipmap((unsigned int) GLuint texture);
     /// ```
@@ -1000,6 +1067,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in GenerateTextureMipmap", e); }
     }
 
+    /// Invokes `glBindTextureUnit`.
     /// ```
     /// void glBindTextureUnit((unsigned int) GLuint unit, (unsigned int) GLuint texture);
     /// ```
@@ -1010,96 +1078,106 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in BindTextureUnit", e); }
     }
 
+    /// Invokes `glGetTextureImage`.
     /// ```
     /// void glGetTextureImage((unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLenum format, (unsigned int) GLenum type, (int) GLsizei bufSize, void* pixels);
     /// ```
-    public void GetTextureImage(int texture, int level, int format, int type, int bufSize, MemorySegment pixels) {
+    public void GetTextureImage(int texture, int level, int format, int type, int bufSize, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureImage)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureImage");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureImage", texture, level, format, type, bufSize, pixels); }
         Handles.MH_glGetTextureImage.invokeExact(handles.PFN_glGetTextureImage, texture, level, format, type, bufSize, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureImage", e); }
     }
 
+    /// Invokes `glGetCompressedTextureImage`.
     /// ```
     /// void glGetCompressedTextureImage((unsigned int) GLuint texture, (int) GLint level, (int) GLsizei bufSize, void* pixels);
     /// ```
-    public void GetCompressedTextureImage(int texture, int level, int bufSize, MemorySegment pixels) {
+    public void GetCompressedTextureImage(int texture, int level, int bufSize, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedTextureImage)) throw new GLSymbolNotFoundError("Symbol not found: glGetCompressedTextureImage");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetCompressedTextureImage", texture, level, bufSize, pixels); }
         Handles.MH_glGetCompressedTextureImage.invokeExact(handles.PFN_glGetCompressedTextureImage, texture, level, bufSize, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in GetCompressedTextureImage", e); }
     }
 
+    /// Invokes `glGetTextureLevelParameterfv`.
     /// ```
     /// void glGetTextureLevelParameterfv((unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetTextureLevelParameterfv(int texture, int level, int pname, MemorySegment params) {
+    public void GetTextureLevelParameterfv(int texture, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureLevelParameterfv)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureLevelParameterfv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureLevelParameterfv", texture, level, pname, params); }
         Handles.MH_glGetTextureLevelParameterfv.invokeExact(handles.PFN_glGetTextureLevelParameterfv, texture, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureLevelParameterfv", e); }
     }
 
+    /// Invokes `glGetTextureLevelParameteriv`.
     /// ```
     /// void glGetTextureLevelParameteriv((unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetTextureLevelParameteriv(int texture, int level, int pname, MemorySegment params) {
+    public void GetTextureLevelParameteriv(int texture, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureLevelParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureLevelParameteriv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureLevelParameteriv", texture, level, pname, params); }
         Handles.MH_glGetTextureLevelParameteriv.invokeExact(handles.PFN_glGetTextureLevelParameteriv, texture, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureLevelParameteriv", e); }
     }
 
+    /// Invokes `glGetTextureParameterfv`.
     /// ```
     /// void glGetTextureParameterfv((unsigned int) GLuint texture, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
-    public void GetTextureParameterfv(int texture, int pname, MemorySegment params) {
+    public void GetTextureParameterfv(int texture, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterfv)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameterfv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameterfv", texture, pname, params); }
         Handles.MH_glGetTextureParameterfv.invokeExact(handles.PFN_glGetTextureParameterfv, texture, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterfv", e); }
     }
 
+    /// Invokes `glGetTextureParameterIiv`.
     /// ```
     /// void glGetTextureParameterIiv((unsigned int) GLuint texture, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetTextureParameterIiv(int texture, int pname, MemorySegment params) {
+    public void GetTextureParameterIiv(int texture, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterIiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameterIiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameterIiv", texture, pname, params); }
         Handles.MH_glGetTextureParameterIiv.invokeExact(handles.PFN_glGetTextureParameterIiv, texture, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterIiv", e); }
     }
 
+    /// Invokes `glGetTextureParameterIuiv`.
     /// ```
     /// void glGetTextureParameterIuiv((unsigned int) GLuint texture, (unsigned int) GLenum pname, GLuint* params);
     /// ```
-    public void GetTextureParameterIuiv(int texture, int pname, MemorySegment params) {
+    public void GetTextureParameterIuiv(int texture, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterIuiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameterIuiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameterIuiv", texture, pname, params); }
         Handles.MH_glGetTextureParameterIuiv.invokeExact(handles.PFN_glGetTextureParameterIuiv, texture, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterIuiv", e); }
     }
 
+    /// Invokes `glGetTextureParameteriv`.
     /// ```
     /// void glGetTextureParameteriv((unsigned int) GLuint texture, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetTextureParameteriv(int texture, int pname, MemorySegment params) {
+    public void GetTextureParameteriv(int texture, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameteriv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameteriv", texture, pname, params); }
         Handles.MH_glGetTextureParameteriv.invokeExact(handles.PFN_glGetTextureParameteriv, texture, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameteriv", e); }
     }
 
+    /// Invokes `glCreateVertexArrays`.
     /// ```
     /// void glCreateVertexArrays((int) GLsizei n, GLuint* arrays);
     /// ```
-    public void CreateVertexArrays(int n, MemorySegment arrays) {
+    public void CreateVertexArrays(int n, @NonNull MemorySegment arrays) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateVertexArrays)) throw new GLSymbolNotFoundError("Symbol not found: glCreateVertexArrays");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateVertexArrays", n, arrays); }
         Handles.MH_glCreateVertexArrays.invokeExact(handles.PFN_glCreateVertexArrays, n, arrays); }
         catch (Throwable e) { throw new RuntimeException("error in CreateVertexArrays", e); }
     }
 
+    /// Invokes `glDisableVertexArrayAttrib`.
     /// ```
     /// void glDisableVertexArrayAttrib((unsigned int) GLuint vaobj, (unsigned int) GLuint index);
     /// ```
@@ -1110,6 +1188,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in DisableVertexArrayAttrib", e); }
     }
 
+    /// Invokes `glEnableVertexArrayAttrib`.
     /// ```
     /// void glEnableVertexArrayAttrib((unsigned int) GLuint vaobj, (unsigned int) GLuint index);
     /// ```
@@ -1120,6 +1199,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in EnableVertexArrayAttrib", e); }
     }
 
+    /// Invokes `glVertexArrayElementBuffer`.
     /// ```
     /// void glVertexArrayElementBuffer((unsigned int) GLuint vaobj, (unsigned int) GLuint buffer);
     /// ```
@@ -1130,6 +1210,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayElementBuffer", e); }
     }
 
+    /// Invokes `glVertexArrayVertexBuffer`.
     /// ```
     /// void glVertexArrayVertexBuffer((unsigned int) GLuint vaobj, (unsigned int) GLuint bindingindex, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, (int) GLsizei stride);
     /// ```
@@ -1140,16 +1221,18 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexBuffer", e); }
     }
 
+    /// Invokes `glVertexArrayVertexBuffers`.
     /// ```
     /// void glVertexArrayVertexBuffers((unsigned int) GLuint vaobj, (unsigned int) GLuint first, (int) GLsizei count, const GLuint* buffers, const GLintptr* offsets, const GLsizei* strides);
     /// ```
-    public void VertexArrayVertexBuffers(int vaobj, int first, int count, MemorySegment buffers, MemorySegment offsets, MemorySegment strides) {
+    public void VertexArrayVertexBuffers(int vaobj, int first, int count, @NonNull MemorySegment buffers, @NonNull MemorySegment offsets, @NonNull MemorySegment strides) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexBuffers)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayVertexBuffers");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayVertexBuffers", vaobj, first, count, buffers, offsets, strides); }
         Handles.MH_glVertexArrayVertexBuffers.invokeExact(handles.PFN_glVertexArrayVertexBuffers, vaobj, first, count, buffers, offsets, strides); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexBuffers", e); }
     }
 
+    /// Invokes `glVertexArrayAttribBinding`.
     /// ```
     /// void glVertexArrayAttribBinding((unsigned int) GLuint vaobj, (unsigned int) GLuint attribindex, (unsigned int) GLuint bindingindex);
     /// ```
@@ -1160,6 +1243,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayAttribBinding", e); }
     }
 
+    /// Invokes `glVertexArrayAttribFormat`.
     /// ```
     /// void glVertexArrayAttribFormat((unsigned int) GLuint vaobj, (unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, GLboolean normalized, (unsigned int) GLuint relativeoffset);
     /// ```
@@ -1170,6 +1254,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayAttribFormat", e); }
     }
 
+    /// Invokes `glVertexArrayAttribIFormat`.
     /// ```
     /// void glVertexArrayAttribIFormat((unsigned int) GLuint vaobj, (unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, (unsigned int) GLuint relativeoffset);
     /// ```
@@ -1180,6 +1265,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayAttribIFormat", e); }
     }
 
+    /// Invokes `glVertexArrayAttribLFormat`.
     /// ```
     /// void glVertexArrayAttribLFormat((unsigned int) GLuint vaobj, (unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, (unsigned int) GLuint relativeoffset);
     /// ```
@@ -1190,6 +1276,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayAttribLFormat", e); }
     }
 
+    /// Invokes `glVertexArrayBindingDivisor`.
     /// ```
     /// void glVertexArrayBindingDivisor((unsigned int) GLuint vaobj, (unsigned int) GLuint bindingindex, (unsigned int) GLuint divisor);
     /// ```
@@ -1200,66 +1287,73 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayBindingDivisor", e); }
     }
 
+    /// Invokes `glGetVertexArrayiv`.
     /// ```
     /// void glGetVertexArrayiv((unsigned int) GLuint vaobj, (unsigned int) GLenum pname, GLint* param);
     /// ```
-    public void GetVertexArrayiv(int vaobj, int pname, MemorySegment param) {
+    public void GetVertexArrayiv(int vaobj, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexArrayiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexArrayiv", vaobj, pname, param); }
         Handles.MH_glGetVertexArrayiv.invokeExact(handles.PFN_glGetVertexArrayiv, vaobj, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayiv", e); }
     }
 
+    /// Invokes `glGetVertexArrayIndexediv`.
     /// ```
     /// void glGetVertexArrayIndexediv((unsigned int) GLuint vaobj, (unsigned int) GLuint index, (unsigned int) GLenum pname, GLint* param);
     /// ```
-    public void GetVertexArrayIndexediv(int vaobj, int index, int pname, MemorySegment param) {
+    public void GetVertexArrayIndexediv(int vaobj, int index, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayIndexediv)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexArrayIndexediv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexArrayIndexediv", vaobj, index, pname, param); }
         Handles.MH_glGetVertexArrayIndexediv.invokeExact(handles.PFN_glGetVertexArrayIndexediv, vaobj, index, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayIndexediv", e); }
     }
 
+    /// Invokes `glGetVertexArrayIndexed64iv`.
     /// ```
     /// void glGetVertexArrayIndexed64iv((unsigned int) GLuint vaobj, (unsigned int) GLuint index, (unsigned int) GLenum pname, GLint64* param);
     /// ```
-    public void GetVertexArrayIndexed64iv(int vaobj, int index, int pname, MemorySegment param) {
+    public void GetVertexArrayIndexed64iv(int vaobj, int index, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayIndexed64iv)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexArrayIndexed64iv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexArrayIndexed64iv", vaobj, index, pname, param); }
         Handles.MH_glGetVertexArrayIndexed64iv.invokeExact(handles.PFN_glGetVertexArrayIndexed64iv, vaobj, index, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayIndexed64iv", e); }
     }
 
+    /// Invokes `glCreateSamplers`.
     /// ```
     /// void glCreateSamplers((int) GLsizei n, GLuint* samplers);
     /// ```
-    public void CreateSamplers(int n, MemorySegment samplers) {
+    public void CreateSamplers(int n, @NonNull MemorySegment samplers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateSamplers)) throw new GLSymbolNotFoundError("Symbol not found: glCreateSamplers");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateSamplers", n, samplers); }
         Handles.MH_glCreateSamplers.invokeExact(handles.PFN_glCreateSamplers, n, samplers); }
         catch (Throwable e) { throw new RuntimeException("error in CreateSamplers", e); }
     }
 
+    /// Invokes `glCreateProgramPipelines`.
     /// ```
     /// void glCreateProgramPipelines((int) GLsizei n, GLuint* pipelines);
     /// ```
-    public void CreateProgramPipelines(int n, MemorySegment pipelines) {
+    public void CreateProgramPipelines(int n, @NonNull MemorySegment pipelines) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateProgramPipelines)) throw new GLSymbolNotFoundError("Symbol not found: glCreateProgramPipelines");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateProgramPipelines", n, pipelines); }
         Handles.MH_glCreateProgramPipelines.invokeExact(handles.PFN_glCreateProgramPipelines, n, pipelines); }
         catch (Throwable e) { throw new RuntimeException("error in CreateProgramPipelines", e); }
     }
 
+    /// Invokes `glCreateQueries`.
     /// ```
     /// void glCreateQueries((unsigned int) GLenum target, (int) GLsizei n, GLuint* ids);
     /// ```
-    public void CreateQueries(int target, int n, MemorySegment ids) {
+    public void CreateQueries(int target, int n, @NonNull MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateQueries)) throw new GLSymbolNotFoundError("Symbol not found: glCreateQueries");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateQueries", target, n, ids); }
         Handles.MH_glCreateQueries.invokeExact(handles.PFN_glCreateQueries, target, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in CreateQueries", e); }
     }
 
+    /// Invokes `glGetQueryBufferObjecti64v`.
     /// ```
     /// void glGetQueryBufferObjecti64v((unsigned int) GLuint id, (unsigned int) GLuint buffer, (unsigned int) GLenum pname, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -1270,6 +1364,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in GetQueryBufferObjecti64v", e); }
     }
 
+    /// Invokes `glGetQueryBufferObjectiv`.
     /// ```
     /// void glGetQueryBufferObjectiv((unsigned int) GLuint id, (unsigned int) GLuint buffer, (unsigned int) GLenum pname, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -1280,6 +1375,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in GetQueryBufferObjectiv", e); }
     }
 
+    /// Invokes `glGetQueryBufferObjectui64v`.
     /// ```
     /// void glGetQueryBufferObjectui64v((unsigned int) GLuint id, (unsigned int) GLuint buffer, (unsigned int) GLenum pname, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
@@ -1290,6 +1386,7 @@ public final class GLARBDirectStateAccess {
         catch (Throwable e) { throw new RuntimeException("error in GetQueryBufferObjectui64v", e); }
     }
 
+    /// Invokes `glGetQueryBufferObjectuiv`.
     /// ```
     /// void glGetQueryBufferObjectuiv((unsigned int) GLuint id, (unsigned int) GLuint buffer, (unsigned int) GLenum pname, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```

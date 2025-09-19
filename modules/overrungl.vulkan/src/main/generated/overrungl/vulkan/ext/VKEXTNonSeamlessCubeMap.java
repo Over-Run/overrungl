@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_non_seamless_cube_map` - device extension
 public final class VKEXTNonSeamlessCubeMap {
     public static final int VK_EXT_NON_SEAMLESS_CUBE_MAP_SPEC_VERSION = 1;
     public static final String VK_EXT_NON_SEAMLESS_CUBE_MAP_EXTENSION_NAME = "VK_EXT_non_seamless_cube_map";

@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_sampler_filter_minmax` - device extension
 public final class VKEXTSamplerFilterMinmax {
     public static final int VK_EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION = 2;
     public static final String VK_EXT_SAMPLER_FILTER_MINMAX_EXTENSION_NAME = "VK_EXT_sampler_filter_minmax";

@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
+/// `GL_ARB_texture_rectangle`
 public final class GLARBTextureRectangle {
     public static final int GL_TEXTURE_RECTANGLE_ARB = 0x84F5;
     public static final int GL_TEXTURE_BINDING_RECTANGLE_ARB = 0x84F6;

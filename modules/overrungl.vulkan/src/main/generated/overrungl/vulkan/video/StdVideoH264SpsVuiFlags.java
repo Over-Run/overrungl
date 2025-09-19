@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH264SpsVuiFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoH264SpsVuiFlags {
@@ -44,7 +46,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH264SpsVuiFlags extends GroupType {
     /// The struct layout of `StdVideoH264SpsVuiFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("aspect_ratio_info_present_flag"), 1,
         ValueLayout.JAVA_INT.withName("overscan_info_present_flag"), 1,
         ValueLayout.JAVA_INT.withName("overscan_appropriate_flag"), 1,

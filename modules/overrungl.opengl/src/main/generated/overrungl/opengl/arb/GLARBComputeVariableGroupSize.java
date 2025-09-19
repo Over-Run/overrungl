@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_compute_variable_group_size`
 public final class GLARBComputeVariableGroupSize {
     public static final int GL_MAX_COMPUTE_VARIABLE_GROUP_INVOCATIONS_ARB = 0x9344;
     public static final int GL_MAX_COMPUTE_FIXED_GROUP_INVOCATIONS_ARB = 0x90EB;
@@ -32,15 +32,16 @@ public final class GLARBComputeVariableGroupSize {
     public static final class Handles {
         public static final MethodHandle MH_glDispatchComputeGroupSizeARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDispatchComputeGroupSizeARB;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDispatchComputeGroupSizeARB = func.invoke("glDispatchComputeGroupSizeARB");
         }
     }
 
-    public GLARBComputeVariableGroupSize(overrungl.opengl.GLLoadFunc func) {
+    public GLARBComputeVariableGroupSize(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDispatchComputeGroupSizeARB`.
     /// ```
     /// void glDispatchComputeGroupSizeARB((unsigned int) GLuint num_groups_x, (unsigned int) GLuint num_groups_y, (unsigned int) GLuint num_groups_z, (unsigned int) GLuint group_size_x, (unsigned int) GLuint group_size_y, (unsigned int) GLuint group_size_z);
     /// ```

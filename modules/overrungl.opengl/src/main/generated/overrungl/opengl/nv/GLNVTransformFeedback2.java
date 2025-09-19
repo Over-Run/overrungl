@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_transform_feedback2`
 public final class GLNVTransformFeedback2 {
     public static final int GL_TRANSFORM_FEEDBACK_NV = 0x8E22;
     public static final int GL_TRANSFORM_FEEDBACK_BUFFER_PAUSED_NV = 0x8E23;
@@ -44,7 +44,7 @@ public final class GLNVTransformFeedback2 {
         public final MemorySegment PFN_glPauseTransformFeedbackNV;
         public final MemorySegment PFN_glResumeTransformFeedbackNV;
         public final MemorySegment PFN_glDrawTransformFeedbackNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBindTransformFeedbackNV = func.invoke("glBindTransformFeedbackNV");
             PFN_glDeleteTransformFeedbacksNV = func.invoke("glDeleteTransformFeedbacksNV", "glDeleteTransformFeedbacks");
             PFN_glGenTransformFeedbacksNV = func.invoke("glGenTransformFeedbacksNV", "glGenTransformFeedbacks");
@@ -55,10 +55,11 @@ public final class GLNVTransformFeedback2 {
         }
     }
 
-    public GLNVTransformFeedback2(overrungl.opengl.GLLoadFunc func) {
+    public GLNVTransformFeedback2(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBindTransformFeedbackNV`.
     /// ```
     /// void glBindTransformFeedbackNV((unsigned int) GLenum target, (unsigned int) GLuint id);
     /// ```
@@ -69,26 +70,29 @@ public final class GLNVTransformFeedback2 {
         catch (Throwable e) { throw new RuntimeException("error in BindTransformFeedbackNV", e); }
     }
 
+    /// Invokes `glDeleteTransformFeedbacksNV`.
     /// ```
     /// void glDeleteTransformFeedbacksNV((int) GLsizei n, const GLuint* ids);
     /// ```
-    public void DeleteTransformFeedbacksNV(int n, MemorySegment ids) {
+    public void DeleteTransformFeedbacksNV(int n, @NonNull MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteTransformFeedbacksNV)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteTransformFeedbacksNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteTransformFeedbacksNV", n, ids); }
         Handles.MH_glDeleteTransformFeedbacksNV.invokeExact(handles.PFN_glDeleteTransformFeedbacksNV, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteTransformFeedbacksNV", e); }
     }
 
+    /// Invokes `glGenTransformFeedbacksNV`.
     /// ```
     /// void glGenTransformFeedbacksNV((int) GLsizei n, GLuint* ids);
     /// ```
-    public void GenTransformFeedbacksNV(int n, MemorySegment ids) {
+    public void GenTransformFeedbacksNV(int n, @NonNull MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenTransformFeedbacksNV)) throw new GLSymbolNotFoundError("Symbol not found: glGenTransformFeedbacksNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenTransformFeedbacksNV", n, ids); }
         Handles.MH_glGenTransformFeedbacksNV.invokeExact(handles.PFN_glGenTransformFeedbacksNV, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in GenTransformFeedbacksNV", e); }
     }
 
+    /// Invokes `glIsTransformFeedbackNV`.
     /// ```
     /// GLboolean glIsTransformFeedbackNV((unsigned int) GLuint id);
     /// ```
@@ -99,6 +103,7 @@ public final class GLNVTransformFeedback2 {
         catch (Throwable e) { throw new RuntimeException("error in IsTransformFeedbackNV", e); }
     }
 
+    /// Invokes `glPauseTransformFeedbackNV`.
     /// ```
     /// void glPauseTransformFeedbackNV();
     /// ```
@@ -109,6 +114,7 @@ public final class GLNVTransformFeedback2 {
         catch (Throwable e) { throw new RuntimeException("error in PauseTransformFeedbackNV", e); }
     }
 
+    /// Invokes `glResumeTransformFeedbackNV`.
     /// ```
     /// void glResumeTransformFeedbackNV();
     /// ```
@@ -119,6 +125,7 @@ public final class GLNVTransformFeedback2 {
         catch (Throwable e) { throw new RuntimeException("error in ResumeTransformFeedbackNV", e); }
     }
 
+    /// Invokes `glDrawTransformFeedbackNV`.
     /// ```
     /// void glDrawTransformFeedbackNV((unsigned int) GLenum mode, (unsigned int) GLuint id);
     /// ```

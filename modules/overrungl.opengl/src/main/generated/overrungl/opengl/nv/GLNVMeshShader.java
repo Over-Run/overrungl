@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_mesh_shader`
 public final class GLNVMeshShader {
     public static final int GL_MESH_SHADER_NV = 0x9559;
     public static final int GL_TASK_SHADER_NV = 0x955A;
@@ -82,7 +82,7 @@ public final class GLNVMeshShader {
         public final MemorySegment PFN_glDrawMeshTasksIndirectNV;
         public final MemorySegment PFN_glMultiDrawMeshTasksIndirectNV;
         public final MemorySegment PFN_glMultiDrawMeshTasksIndirectCountNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDrawMeshTasksNV = func.invoke("glDrawMeshTasksNV");
             PFN_glDrawMeshTasksIndirectNV = func.invoke("glDrawMeshTasksIndirectNV");
             PFN_glMultiDrawMeshTasksIndirectNV = func.invoke("glMultiDrawMeshTasksIndirectNV");
@@ -90,10 +90,11 @@ public final class GLNVMeshShader {
         }
     }
 
-    public GLNVMeshShader(overrungl.opengl.GLLoadFunc func) {
+    public GLNVMeshShader(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDrawMeshTasksNV`.
     /// ```
     /// void glDrawMeshTasksNV((unsigned int) GLuint first, (unsigned int) GLuint count);
     /// ```
@@ -104,6 +105,7 @@ public final class GLNVMeshShader {
         catch (Throwable e) { throw new RuntimeException("error in DrawMeshTasksNV", e); }
     }
 
+    /// Invokes `glDrawMeshTasksIndirectNV`.
     /// ```
     /// void glDrawMeshTasksIndirectNV(((signed long long) khronos_intptr_t) GLintptr indirect);
     /// ```
@@ -114,6 +116,7 @@ public final class GLNVMeshShader {
         catch (Throwable e) { throw new RuntimeException("error in DrawMeshTasksIndirectNV", e); }
     }
 
+    /// Invokes `glMultiDrawMeshTasksIndirectNV`.
     /// ```
     /// void glMultiDrawMeshTasksIndirectNV(((signed long long) khronos_intptr_t) GLintptr indirect, (int) GLsizei drawcount, (int) GLsizei stride);
     /// ```
@@ -124,6 +127,7 @@ public final class GLNVMeshShader {
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawMeshTasksIndirectNV", e); }
     }
 
+    /// Invokes `glMultiDrawMeshTasksIndirectCountNV`.
     /// ```
     /// void glMultiDrawMeshTasksIndirectCountNV(((signed long long) khronos_intptr_t) GLintptr indirect, ((signed long long) khronos_intptr_t) GLintptr drawcount, (int) GLsizei maxdrawcount, (int) GLsizei stride);
     /// ```

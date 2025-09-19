@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_external_semaphore_capabilities` - instance extension
 public final class VKKHRExternalSemaphoreCapabilities {
     public static final int VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_semaphore_capabilities";
@@ -42,10 +44,11 @@ public final class VKKHRExternalSemaphoreCapabilities {
 
     private VKKHRExternalSemaphoreCapabilities() {}
 
+    /// Invokes `vkGetPhysicalDeviceExternalSemaphorePropertiesKHR`.
     /// ```
     /// void vkGetPhysicalDeviceExternalSemaphorePropertiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo, VkExternalSemaphoreProperties* pExternalSemaphoreProperties);
     /// ```
-    public static void vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pExternalSemaphoreInfo, MemorySegment pExternalSemaphoreProperties) {
+    public static void vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pExternalSemaphoreInfo, @NonNull MemorySegment pExternalSemaphoreProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalSemaphorePropertiesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceExternalSemaphorePropertiesKHR", physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties); }
         Handles.MH_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR, physicalDevice.segment(), pExternalSemaphoreInfo, pExternalSemaphoreProperties); }

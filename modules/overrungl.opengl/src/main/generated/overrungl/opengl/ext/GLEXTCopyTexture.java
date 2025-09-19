@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_copy_texture`
 public final class GLEXTCopyTexture {
     private final Handles handles;
     public static final class Handles {
@@ -36,7 +36,7 @@ public final class GLEXTCopyTexture {
         public final MemorySegment PFN_glCopyTexSubImage1DEXT;
         public final MemorySegment PFN_glCopyTexSubImage2DEXT;
         public final MemorySegment PFN_glCopyTexSubImage3DEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glCopyTexImage1DEXT = func.invoke("glCopyTexImage1DEXT", "glCopyTexImage1D");
             PFN_glCopyTexImage2DEXT = func.invoke("glCopyTexImage2DEXT", "glCopyTexImage2D");
             PFN_glCopyTexSubImage1DEXT = func.invoke("glCopyTexSubImage1DEXT", "glCopyTexSubImage1D");
@@ -45,10 +45,11 @@ public final class GLEXTCopyTexture {
         }
     }
 
-    public GLEXTCopyTexture(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTCopyTexture(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glCopyTexImage1DEXT`.
     /// ```
     /// void glCopyTexImage1DEXT((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLint border);
     /// ```
@@ -59,6 +60,7 @@ public final class GLEXTCopyTexture {
         catch (Throwable e) { throw new RuntimeException("error in CopyTexImage1DEXT", e); }
     }
 
+    /// Invokes `glCopyTexImage2DEXT`.
     /// ```
     /// void glCopyTexImage2DEXT((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height, (int) GLint border);
     /// ```
@@ -69,6 +71,7 @@ public final class GLEXTCopyTexture {
         catch (Throwable e) { throw new RuntimeException("error in CopyTexImage2DEXT", e); }
     }
 
+    /// Invokes `glCopyTexSubImage1DEXT`.
     /// ```
     /// void glCopyTexSubImage1DEXT((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint x, (int) GLint y, (int) GLsizei width);
     /// ```
@@ -79,6 +82,7 @@ public final class GLEXTCopyTexture {
         catch (Throwable e) { throw new RuntimeException("error in CopyTexSubImage1DEXT", e); }
     }
 
+    /// Invokes `glCopyTexSubImage2DEXT`.
     /// ```
     /// void glCopyTexSubImage2DEXT((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -89,6 +93,7 @@ public final class GLEXTCopyTexture {
         catch (Throwable e) { throw new RuntimeException("error in CopyTexSubImage2DEXT", e); }
     }
 
+    /// Invokes `glCopyTexSubImage3DEXT`.
     /// ```
     /// void glCopyTexSubImage3DEXT((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```

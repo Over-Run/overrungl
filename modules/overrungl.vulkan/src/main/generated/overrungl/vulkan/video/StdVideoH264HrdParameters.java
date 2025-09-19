@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoH264HrdParameters`.
 /// ## Layout
 /// ```
 /// struct StdVideoH264HrdParameters {
@@ -43,7 +45,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoH264HrdParameters extends GroupType {
     /// The struct layout of `StdVideoH264HrdParameters`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("cpb_cnt_minus1"),
         ValueLayout.JAVA_BYTE.withName("bit_rate_scale"),
         ValueLayout.JAVA_BYTE.withName("cpb_size_scale"),

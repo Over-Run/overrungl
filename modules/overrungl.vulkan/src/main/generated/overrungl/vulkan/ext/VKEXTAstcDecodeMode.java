@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_astc_decode_mode` - device extension
 public final class VKEXTAstcDecodeMode {
     public static final int VK_EXT_ASTC_DECODE_MODE_SPEC_VERSION = 1;
     public static final String VK_EXT_ASTC_DECODE_MODE_EXTENSION_NAME = "VK_EXT_astc_decode_mode";

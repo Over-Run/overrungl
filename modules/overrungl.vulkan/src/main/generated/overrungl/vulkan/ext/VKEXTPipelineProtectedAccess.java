@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_pipeline_protected_access` - device extension
 public final class VKEXTPipelineProtectedAccess {
     public static final int VK_EXT_PIPELINE_PROTECTED_ACCESS_SPEC_VERSION = 1;
     public static final String VK_EXT_PIPELINE_PROTECTED_ACCESS_EXTENSION_NAME = "VK_EXT_pipeline_protected_access";

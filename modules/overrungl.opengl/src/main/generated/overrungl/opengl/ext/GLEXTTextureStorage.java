@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_texture_storage`
 public final class GLEXTTextureStorage {
     public static final int GL_TEXTURE_IMMUTABLE_FORMAT_EXT = 0x912F;
     public static final int GL_ALPHA8_EXT = 0x803C;
@@ -61,7 +61,7 @@ public final class GLEXTTextureStorage {
         public final MemorySegment PFN_glTextureStorage1DEXT;
         public final MemorySegment PFN_glTextureStorage2DEXT;
         public final MemorySegment PFN_glTextureStorage3DEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTexStorage1DEXT = func.invoke("glTexStorage1DEXT", "glTexStorage1D");
             PFN_glTexStorage2DEXT = func.invoke("glTexStorage2DEXT", "glTexStorage2D");
             PFN_glTexStorage3DEXT = func.invoke("glTexStorage3DEXT", "glTexStorage3D");PFN_glTextureStorage1DEXT = func.invoke("glTextureStorage1DEXT");
@@ -70,10 +70,11 @@ public final class GLEXTTextureStorage {
         }
     }
 
-    public GLEXTTextureStorage(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTTextureStorage(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTexStorage1DEXT`.
     /// ```
     /// void glTexStorage1DEXT((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width);
     /// ```
@@ -84,6 +85,7 @@ public final class GLEXTTextureStorage {
         catch (Throwable e) { throw new RuntimeException("error in TexStorage1DEXT", e); }
     }
 
+    /// Invokes `glTexStorage2DEXT`.
     /// ```
     /// void glTexStorage2DEXT((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -94,6 +96,7 @@ public final class GLEXTTextureStorage {
         catch (Throwable e) { throw new RuntimeException("error in TexStorage2DEXT", e); }
     }
 
+    /// Invokes `glTexStorage3DEXT`.
     /// ```
     /// void glTexStorage3DEXT((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```
@@ -104,6 +107,7 @@ public final class GLEXTTextureStorage {
         catch (Throwable e) { throw new RuntimeException("error in TexStorage3DEXT", e); }
     }
 
+    /// Invokes `glTextureStorage1DEXT`.
     /// ```
     /// void glTextureStorage1DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width);
     /// ```
@@ -114,6 +118,7 @@ public final class GLEXTTextureStorage {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage1DEXT", e); }
     }
 
+    /// Invokes `glTextureStorage2DEXT`.
     /// ```
     /// void glTextureStorage2DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -124,6 +129,7 @@ public final class GLEXTTextureStorage {
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage2DEXT", e); }
     }
 
+    /// Invokes `glTextureStorage3DEXT`.
     /// ```
     /// void glTextureStorage3DEXT((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```

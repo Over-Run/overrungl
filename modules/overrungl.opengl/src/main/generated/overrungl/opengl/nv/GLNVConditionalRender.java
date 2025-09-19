@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_conditional_render`
 public final class GLNVConditionalRender {
     public static final int GL_QUERY_WAIT_NV = 0x8E13;
     public static final int GL_QUERY_NO_WAIT_NV = 0x8E14;
@@ -34,16 +34,17 @@ public final class GLNVConditionalRender {
         public static final MethodHandle MH_glEndConditionalRenderNV = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glBeginConditionalRenderNV;
         public final MemorySegment PFN_glEndConditionalRenderNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBeginConditionalRenderNV = func.invoke("glBeginConditionalRenderNV", "glBeginConditionalRender");
             PFN_glEndConditionalRenderNV = func.invoke("glEndConditionalRenderNV", "glEndConditionalRender");
         }
     }
 
-    public GLNVConditionalRender(overrungl.opengl.GLLoadFunc func) {
+    public GLNVConditionalRender(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBeginConditionalRenderNV`.
     /// ```
     /// void glBeginConditionalRenderNV((unsigned int) GLuint id, (unsigned int) GLenum mode);
     /// ```
@@ -54,6 +55,7 @@ public final class GLNVConditionalRender {
         catch (Throwable e) { throw new RuntimeException("error in BeginConditionalRenderNV", e); }
     }
 
+    /// Invokes `glEndConditionalRenderNV`.
     /// ```
     /// void glEndConditionalRenderNV();
     /// ```

@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.oes;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_OES_single_precision`
 public final class GLOESSinglePrecision {
     private final Handles handles;
     public static final class Handles {
@@ -38,7 +38,7 @@ public final class GLOESSinglePrecision {
         public final MemorySegment PFN_glFrustumfOES;
         public final MemorySegment PFN_glGetClipPlanefOES;
         public final MemorySegment PFN_glOrthofOES;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glClearDepthfOES = func.invoke("glClearDepthfOES", "glClearDepthf");
             PFN_glClipPlanefOES = func.invoke("glClipPlanefOES");
             PFN_glDepthRangefOES = func.invoke("glDepthRangefOES", "glDepthRangef");
@@ -48,10 +48,11 @@ public final class GLOESSinglePrecision {
         }
     }
 
-    public GLOESSinglePrecision(overrungl.opengl.GLLoadFunc func) {
+    public GLOESSinglePrecision(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glClearDepthfOES`.
     /// ```
     /// void glClearDepthfOES(((float) khronos_float_t) GLclampf depth);
     /// ```
@@ -62,16 +63,18 @@ public final class GLOESSinglePrecision {
         catch (Throwable e) { throw new RuntimeException("error in ClearDepthfOES", e); }
     }
 
+    /// Invokes `glClipPlanefOES`.
     /// ```
     /// void glClipPlanefOES((unsigned int) GLenum plane, const GLfloat* equation);
     /// ```
-    public void ClipPlanefOES(int plane, MemorySegment equation) {
+    public void ClipPlanefOES(int plane, @NonNull MemorySegment equation) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClipPlanefOES)) throw new GLSymbolNotFoundError("Symbol not found: glClipPlanefOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClipPlanefOES", plane, equation); }
         Handles.MH_glClipPlanefOES.invokeExact(handles.PFN_glClipPlanefOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in ClipPlanefOES", e); }
     }
 
+    /// Invokes `glDepthRangefOES`.
     /// ```
     /// void glDepthRangefOES(((float) khronos_float_t) GLclampf n, ((float) khronos_float_t) GLclampf f);
     /// ```
@@ -82,6 +85,7 @@ public final class GLOESSinglePrecision {
         catch (Throwable e) { throw new RuntimeException("error in DepthRangefOES", e); }
     }
 
+    /// Invokes `glFrustumfOES`.
     /// ```
     /// void glFrustumfOES(((float) khronos_float_t) GLfloat l, ((float) khronos_float_t) GLfloat r, ((float) khronos_float_t) GLfloat b, ((float) khronos_float_t) GLfloat t, ((float) khronos_float_t) GLfloat n, ((float) khronos_float_t) GLfloat f);
     /// ```
@@ -92,16 +96,18 @@ public final class GLOESSinglePrecision {
         catch (Throwable e) { throw new RuntimeException("error in FrustumfOES", e); }
     }
 
+    /// Invokes `glGetClipPlanefOES`.
     /// ```
     /// void glGetClipPlanefOES((unsigned int) GLenum plane, GLfloat* equation);
     /// ```
-    public void GetClipPlanefOES(int plane, MemorySegment equation) {
+    public void GetClipPlanefOES(int plane, @NonNull MemorySegment equation) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetClipPlanefOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetClipPlanefOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetClipPlanefOES", plane, equation); }
         Handles.MH_glGetClipPlanefOES.invokeExact(handles.PFN_glGetClipPlanefOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in GetClipPlanefOES", e); }
     }
 
+    /// Invokes `glOrthofOES`.
     /// ```
     /// void glOrthofOES(((float) khronos_float_t) GLfloat l, ((float) khronos_float_t) GLfloat r, ((float) khronos_float_t) GLfloat b, ((float) khronos_float_t) GLfloat t, ((float) khronos_float_t) GLfloat n, ((float) khronos_float_t) GLfloat f);
     /// ```

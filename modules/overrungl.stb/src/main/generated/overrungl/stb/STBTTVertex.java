@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `STBTTVertex`.
 /// ## Layout
 /// ```
 /// struct STBTTVertex {
@@ -40,7 +42,7 @@ import overrungl.util.*;
 /// ```
 public final class STBTTVertex extends GroupType {
     /// The struct layout of `STBTTVertex`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_SHORT.withName("x"),
         ValueLayout.JAVA_SHORT.withName("y"),
         ValueLayout.JAVA_SHORT.withName("cx"),

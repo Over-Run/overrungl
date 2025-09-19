@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_blend_func_extended`
 public final class GLARBBlendFuncExtended {
     public static final int GL_SRC1_COLOR = 0x88F9;
     public static final int GL_SRC1_ALPHA = 0x8589;
@@ -35,30 +35,32 @@ public final class GLARBBlendFuncExtended {
         public static final MethodHandle MH_glGetFragDataIndex = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBindFragDataLocationIndexed;
         public final MemorySegment PFN_glGetFragDataIndex;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glBindFragDataLocationIndexed = func.invoke("glBindFragDataLocationIndexed");
             PFN_glGetFragDataIndex = func.invoke("glGetFragDataIndex");
         }
     }
 
-    public GLARBBlendFuncExtended(overrungl.opengl.GLLoadFunc func) {
+    public GLARBBlendFuncExtended(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glBindFragDataLocationIndexed`.
     /// ```
     /// void glBindFragDataLocationIndexed((unsigned int) GLuint program, (unsigned int) GLuint colorNumber, (unsigned int) GLuint index, const GLchar* name);
     /// ```
-    public void BindFragDataLocationIndexed(int program, int colorNumber, int index, MemorySegment name) {
+    public void BindFragDataLocationIndexed(int program, int colorNumber, int index, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindFragDataLocationIndexed)) throw new GLSymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindFragDataLocationIndexed", program, colorNumber, index, name); }
         Handles.MH_glBindFragDataLocationIndexed.invokeExact(handles.PFN_glBindFragDataLocationIndexed, program, colorNumber, index, name); }
         catch (Throwable e) { throw new RuntimeException("error in BindFragDataLocationIndexed", e); }
     }
 
+    /// Invokes `glGetFragDataIndex`.
     /// ```
     /// (int) GLint glGetFragDataIndex((unsigned int) GLuint program, const GLchar* name);
     /// ```
-    public int GetFragDataIndex(int program, MemorySegment name) {
+    public int GetFragDataIndex(int program, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFragDataIndex)) throw new GLSymbolNotFoundError("Symbol not found: glGetFragDataIndex");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFragDataIndex", program, name); }
         return (int) Handles.MH_glGetFragDataIndex.invokeExact(handles.PFN_glGetFragDataIndex, program, name); }

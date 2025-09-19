@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_shader_bfloat16` - device extension
 public final class VKKHRShaderBfloat16 {
     public static final int VK_KHR_SHADER_BFLOAT16_SPEC_VERSION = 1;
     public static final String VK_KHR_SHADER_BFLOAT16_EXTENSION_NAME = "VK_KHR_shader_bfloat16";

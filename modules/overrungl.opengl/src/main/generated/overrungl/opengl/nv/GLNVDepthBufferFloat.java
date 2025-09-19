@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NV_depth_buffer_float`
 public final class GLNVDepthBufferFloat {
     public static final int GL_DEPTH_COMPONENT32F_NV = 0x8DAB;
     public static final int GL_DEPTH32F_STENCIL8_NV = 0x8DAC;
@@ -36,17 +36,18 @@ public final class GLNVDepthBufferFloat {
         public final MemorySegment PFN_glDepthRangedNV;
         public final MemorySegment PFN_glClearDepthdNV;
         public final MemorySegment PFN_glDepthBoundsdNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDepthRangedNV = func.invoke("glDepthRangedNV");
             PFN_glClearDepthdNV = func.invoke("glClearDepthdNV");
             PFN_glDepthBoundsdNV = func.invoke("glDepthBoundsdNV");
         }
     }
 
-    public GLNVDepthBufferFloat(overrungl.opengl.GLLoadFunc func) {
+    public GLNVDepthBufferFloat(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDepthRangedNV`.
     /// ```
     /// void glDepthRangedNV((double) GLdouble zNear, (double) GLdouble zFar);
     /// ```
@@ -57,6 +58,7 @@ public final class GLNVDepthBufferFloat {
         catch (Throwable e) { throw new RuntimeException("error in DepthRangedNV", e); }
     }
 
+    /// Invokes `glClearDepthdNV`.
     /// ```
     /// void glClearDepthdNV((double) GLdouble depth);
     /// ```
@@ -67,6 +69,7 @@ public final class GLNVDepthBufferFloat {
         catch (Throwable e) { throw new RuntimeException("error in ClearDepthdNV", e); }
     }
 
+    /// Invokes `glDepthBoundsdNV`.
     /// ```
     /// void glDepthBoundsdNV((double) GLdouble zmin, (double) GLdouble zmax);
     /// ```

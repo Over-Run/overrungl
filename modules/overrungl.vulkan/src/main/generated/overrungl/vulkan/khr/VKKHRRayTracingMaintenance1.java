@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_ray_tracing_maintenance1` - device extension
 public final class VKKHRRayTracingMaintenance1 {
     public static final int VK_KHR_RAY_TRACING_MAINTENANCE_1_SPEC_VERSION = 1;
     public static final String VK_KHR_RAY_TRACING_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_ray_tracing_maintenance1";
@@ -37,10 +39,11 @@ public final class VKKHRRayTracingMaintenance1 {
 
     private VKKHRRayTracingMaintenance1() {}
 
+    /// Invokes `vkCmdTraceRaysIndirect2KHR`.
     /// ```
     /// void vkCmdTraceRaysIndirect2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress indirectDeviceAddress);
     /// ```
-    public static void vkCmdTraceRaysIndirect2KHR(VkCommandBuffer commandBuffer, long indirectDeviceAddress) {
+    public static void vkCmdTraceRaysIndirect2KHR(@NonNull VkCommandBuffer commandBuffer, long indirectDeviceAddress) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdTraceRaysIndirect2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdTraceRaysIndirect2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdTraceRaysIndirect2KHR", commandBuffer, indirectDeviceAddress); }
         Handles.MH_vkCmdTraceRaysIndirect2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdTraceRaysIndirect2KHR, commandBuffer.segment(), indirectDeviceAddress); }

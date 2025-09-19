@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeAV1OperatingPointInfoFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeAV1OperatingPointInfoFlags {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeAV1OperatingPointInfoFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeAV1OperatingPointInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("decoder_model_present_for_this_op"), 1,
         ValueLayout.JAVA_INT.withName("low_delay_mode_flag"), 1,
         ValueLayout.JAVA_INT.withName("initial_display_delay_present_for_this_op"), 1,

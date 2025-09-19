@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_transform_feedback3`
 public final class GLARBTransformFeedback3 {
     public static final int GL_MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70;
     public static final int GL_MAX_VERTEX_STREAMS = 0x8E71;
@@ -36,7 +36,7 @@ public final class GLARBTransformFeedback3 {
         public final MemorySegment PFN_glBeginQueryIndexed;
         public final MemorySegment PFN_glEndQueryIndexed;
         public final MemorySegment PFN_glGetQueryIndexediv;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glDrawTransformFeedbackStream = func.invoke("glDrawTransformFeedbackStream");
             PFN_glBeginQueryIndexed = func.invoke("glBeginQueryIndexed");
             PFN_glEndQueryIndexed = func.invoke("glEndQueryIndexed");
@@ -44,10 +44,11 @@ public final class GLARBTransformFeedback3 {
         }
     }
 
-    public GLARBTransformFeedback3(overrungl.opengl.GLLoadFunc func) {
+    public GLARBTransformFeedback3(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glDrawTransformFeedbackStream`.
     /// ```
     /// void glDrawTransformFeedbackStream((unsigned int) GLenum mode, (unsigned int) GLuint id, (unsigned int) GLuint stream);
     /// ```
@@ -58,6 +59,7 @@ public final class GLARBTransformFeedback3 {
         catch (Throwable e) { throw new RuntimeException("error in DrawTransformFeedbackStream", e); }
     }
 
+    /// Invokes `glBeginQueryIndexed`.
     /// ```
     /// void glBeginQueryIndexed((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint id);
     /// ```
@@ -68,6 +70,7 @@ public final class GLARBTransformFeedback3 {
         catch (Throwable e) { throw new RuntimeException("error in BeginQueryIndexed", e); }
     }
 
+    /// Invokes `glEndQueryIndexed`.
     /// ```
     /// void glEndQueryIndexed((unsigned int) GLenum target, (unsigned int) GLuint index);
     /// ```
@@ -78,10 +81,11 @@ public final class GLARBTransformFeedback3 {
         catch (Throwable e) { throw new RuntimeException("error in EndQueryIndexed", e); }
     }
 
+    /// Invokes `glGetQueryIndexediv`.
     /// ```
     /// void glGetQueryIndexediv((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetQueryIndexediv(int target, int index, int pname, MemorySegment params) {
+    public void GetQueryIndexediv(int target, int index, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryIndexediv)) throw new GLSymbolNotFoundError("Symbol not found: glGetQueryIndexediv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetQueryIndexediv", target, index, pname, params); }
         Handles.MH_glGetQueryIndexediv.invokeExact(handles.PFN_glGetQueryIndexediv, target, index, pname, params); }

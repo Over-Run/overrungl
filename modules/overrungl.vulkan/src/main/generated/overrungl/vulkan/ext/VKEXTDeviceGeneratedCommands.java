@@ -18,9 +18,11 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_EXT_device_generated_commands` - device extension
 public final class VKEXTDeviceGeneratedCommands {
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT = 0;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT = 1;
@@ -77,90 +79,99 @@ public final class VKEXTDeviceGeneratedCommands {
 
     private VKEXTDeviceGeneratedCommands() {}
 
+    /// Invokes `vkGetGeneratedCommandsMemoryRequirementsEXT`.
     /// ```
     /// void vkGetGeneratedCommandsMemoryRequirementsEXT((struct VkDevice*) VkDevice device, const VkGeneratedCommandsMemoryRequirementsInfoEXT* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
-    public static void vkGetGeneratedCommandsMemoryRequirementsEXT(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
+    public static void vkGetGeneratedCommandsMemoryRequirementsEXT(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetGeneratedCommandsMemoryRequirementsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetGeneratedCommandsMemoryRequirementsEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetGeneratedCommandsMemoryRequirementsEXT", device, pInfo, pMemoryRequirements); }
         Handles.MH_vkGetGeneratedCommandsMemoryRequirementsEXT.invokeExact(device.capabilities().PFN_vkGetGeneratedCommandsMemoryRequirementsEXT, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetGeneratedCommandsMemoryRequirementsEXT", e); }
     }
 
+    /// Invokes `vkCmdPreprocessGeneratedCommandsEXT`.
     /// ```
     /// void vkCmdPreprocessGeneratedCommandsEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkGeneratedCommandsInfoEXT* pGeneratedCommandsInfo, (struct VkCommandBuffer*) VkCommandBuffer stateCommandBuffer);
     /// ```
-    public static void vkCmdPreprocessGeneratedCommandsEXT(VkCommandBuffer commandBuffer, MemorySegment pGeneratedCommandsInfo, MemorySegment stateCommandBuffer) {
+    public static void vkCmdPreprocessGeneratedCommandsEXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pGeneratedCommandsInfo, @NonNull MemorySegment stateCommandBuffer) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPreprocessGeneratedCommandsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPreprocessGeneratedCommandsEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdPreprocessGeneratedCommandsEXT", commandBuffer, pGeneratedCommandsInfo, stateCommandBuffer); }
         Handles.MH_vkCmdPreprocessGeneratedCommandsEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdPreprocessGeneratedCommandsEXT, commandBuffer.segment(), pGeneratedCommandsInfo, stateCommandBuffer); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPreprocessGeneratedCommandsEXT", e); }
     }
 
+    /// Invokes `vkCmdExecuteGeneratedCommandsEXT`.
     /// ```
     /// void vkCmdExecuteGeneratedCommandsEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 isPreprocessed, const VkGeneratedCommandsInfoEXT* pGeneratedCommandsInfo);
     /// ```
-    public static void vkCmdExecuteGeneratedCommandsEXT(VkCommandBuffer commandBuffer, int isPreprocessed, MemorySegment pGeneratedCommandsInfo) {
+    public static void vkCmdExecuteGeneratedCommandsEXT(@NonNull VkCommandBuffer commandBuffer, int isPreprocessed, @NonNull MemorySegment pGeneratedCommandsInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdExecuteGeneratedCommandsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdExecuteGeneratedCommandsEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdExecuteGeneratedCommandsEXT", commandBuffer, isPreprocessed, pGeneratedCommandsInfo); }
         Handles.MH_vkCmdExecuteGeneratedCommandsEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdExecuteGeneratedCommandsEXT, commandBuffer.segment(), isPreprocessed, pGeneratedCommandsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdExecuteGeneratedCommandsEXT", e); }
     }
 
+    /// Invokes `vkCreateIndirectCommandsLayoutEXT`.
     /// ```
     /// (int) VkResult vkCreateIndirectCommandsLayoutEXT((struct VkDevice*) VkDevice device, const VkIndirectCommandsLayoutCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkIndirectCommandsLayoutEXT* pIndirectCommandsLayout);
     /// ```
-    public static int vkCreateIndirectCommandsLayoutEXT(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pIndirectCommandsLayout) {
+    public static int vkCreateIndirectCommandsLayoutEXT(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pIndirectCommandsLayout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateIndirectCommandsLayoutEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateIndirectCommandsLayoutEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateIndirectCommandsLayoutEXT", device, pCreateInfo, pAllocator, pIndirectCommandsLayout); }
         return (int) Handles.MH_vkCreateIndirectCommandsLayoutEXT.invokeExact(device.capabilities().PFN_vkCreateIndirectCommandsLayoutEXT, device.segment(), pCreateInfo, pAllocator, pIndirectCommandsLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateIndirectCommandsLayoutEXT", e); }
     }
 
+    /// Invokes `vkDestroyIndirectCommandsLayoutEXT`.
     /// ```
     /// void vkDestroyIndirectCommandsLayoutEXT((struct VkDevice*) VkDevice device, (uint64_t) VkIndirectCommandsLayoutEXT indirectCommandsLayout, const VkAllocationCallbacks* pAllocator);
     /// ```
-    public static void vkDestroyIndirectCommandsLayoutEXT(VkDevice device, long indirectCommandsLayout, MemorySegment pAllocator) {
+    public static void vkDestroyIndirectCommandsLayoutEXT(@NonNull VkDevice device, long indirectCommandsLayout, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyIndirectCommandsLayoutEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyIndirectCommandsLayoutEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyIndirectCommandsLayoutEXT", device, indirectCommandsLayout, pAllocator); }
         Handles.MH_vkDestroyIndirectCommandsLayoutEXT.invokeExact(device.capabilities().PFN_vkDestroyIndirectCommandsLayoutEXT, device.segment(), indirectCommandsLayout, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyIndirectCommandsLayoutEXT", e); }
     }
 
+    /// Invokes `vkCreateIndirectExecutionSetEXT`.
     /// ```
     /// (int) VkResult vkCreateIndirectExecutionSetEXT((struct VkDevice*) VkDevice device, const VkIndirectExecutionSetCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkIndirectExecutionSetEXT* pIndirectExecutionSet);
     /// ```
-    public static int vkCreateIndirectExecutionSetEXT(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pIndirectExecutionSet) {
+    public static int vkCreateIndirectExecutionSetEXT(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pIndirectExecutionSet) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateIndirectExecutionSetEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateIndirectExecutionSetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateIndirectExecutionSetEXT", device, pCreateInfo, pAllocator, pIndirectExecutionSet); }
         return (int) Handles.MH_vkCreateIndirectExecutionSetEXT.invokeExact(device.capabilities().PFN_vkCreateIndirectExecutionSetEXT, device.segment(), pCreateInfo, pAllocator, pIndirectExecutionSet); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateIndirectExecutionSetEXT", e); }
     }
 
+    /// Invokes `vkDestroyIndirectExecutionSetEXT`.
     /// ```
     /// void vkDestroyIndirectExecutionSetEXT((struct VkDevice*) VkDevice device, (uint64_t) VkIndirectExecutionSetEXT indirectExecutionSet, const VkAllocationCallbacks* pAllocator);
     /// ```
-    public static void vkDestroyIndirectExecutionSetEXT(VkDevice device, long indirectExecutionSet, MemorySegment pAllocator) {
+    public static void vkDestroyIndirectExecutionSetEXT(@NonNull VkDevice device, long indirectExecutionSet, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyIndirectExecutionSetEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyIndirectExecutionSetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyIndirectExecutionSetEXT", device, indirectExecutionSet, pAllocator); }
         Handles.MH_vkDestroyIndirectExecutionSetEXT.invokeExact(device.capabilities().PFN_vkDestroyIndirectExecutionSetEXT, device.segment(), indirectExecutionSet, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyIndirectExecutionSetEXT", e); }
     }
 
+    /// Invokes `vkUpdateIndirectExecutionSetPipelineEXT`.
     /// ```
     /// void vkUpdateIndirectExecutionSetPipelineEXT((struct VkDevice*) VkDevice device, (uint64_t) VkIndirectExecutionSetEXT indirectExecutionSet, uint32_t executionSetWriteCount, const VkWriteIndirectExecutionSetPipelineEXT* pExecutionSetWrites);
     /// ```
-    public static void vkUpdateIndirectExecutionSetPipelineEXT(VkDevice device, long indirectExecutionSet, int executionSetWriteCount, MemorySegment pExecutionSetWrites) {
+    public static void vkUpdateIndirectExecutionSetPipelineEXT(@NonNull VkDevice device, long indirectExecutionSet, int executionSetWriteCount, @NonNull MemorySegment pExecutionSetWrites) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkUpdateIndirectExecutionSetPipelineEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkUpdateIndirectExecutionSetPipelineEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkUpdateIndirectExecutionSetPipelineEXT", device, indirectExecutionSet, executionSetWriteCount, pExecutionSetWrites); }
         Handles.MH_vkUpdateIndirectExecutionSetPipelineEXT.invokeExact(device.capabilities().PFN_vkUpdateIndirectExecutionSetPipelineEXT, device.segment(), indirectExecutionSet, executionSetWriteCount, pExecutionSetWrites); }
         catch (Throwable e) { throw new RuntimeException("error in vkUpdateIndirectExecutionSetPipelineEXT", e); }
     }
 
+    /// Invokes `vkUpdateIndirectExecutionSetShaderEXT`.
     /// ```
     /// void vkUpdateIndirectExecutionSetShaderEXT((struct VkDevice*) VkDevice device, (uint64_t) VkIndirectExecutionSetEXT indirectExecutionSet, uint32_t executionSetWriteCount, const VkWriteIndirectExecutionSetShaderEXT* pExecutionSetWrites);
     /// ```
-    public static void vkUpdateIndirectExecutionSetShaderEXT(VkDevice device, long indirectExecutionSet, int executionSetWriteCount, MemorySegment pExecutionSetWrites) {
+    public static void vkUpdateIndirectExecutionSetShaderEXT(@NonNull VkDevice device, long indirectExecutionSet, int executionSetWriteCount, @NonNull MemorySegment pExecutionSetWrites) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkUpdateIndirectExecutionSetShaderEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkUpdateIndirectExecutionSetShaderEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkUpdateIndirectExecutionSetShaderEXT", device, indirectExecutionSet, executionSetWriteCount, pExecutionSetWrites); }
         Handles.MH_vkUpdateIndirectExecutionSetShaderEXT.invokeExact(device.capabilities().PFN_vkUpdateIndirectExecutionSetShaderEXT, device.segment(), indirectExecutionSet, executionSetWriteCount, pExecutionSetWrites); }

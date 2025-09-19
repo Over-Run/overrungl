@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkAttachmentDescription`.
 /// ## Layout
 /// ```
 /// struct VkAttachmentDescription {
@@ -41,7 +43,7 @@ import overrungl.util.*;
 /// ```
 public final class VkAttachmentDescription extends GroupType {
     /// The struct layout of `VkAttachmentDescription`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_INT.withName("samples"),

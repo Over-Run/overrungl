@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_EXT_texture_perturb_normal`
 public final class GLEXTTexturePerturbNormal {
     public static final int GL_PERTURB_EXT = 0x85AE;
     public static final int GL_TEXTURE_NORMAL_EXT = 0x85AF;
@@ -30,15 +30,16 @@ public final class GLEXTTexturePerturbNormal {
     public static final class Handles {
         public static final MethodHandle MH_glTextureNormalEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTextureNormalEXT;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glTextureNormalEXT = func.invoke("glTextureNormalEXT");
         }
     }
 
-    public GLEXTTexturePerturbNormal(overrungl.opengl.GLLoadFunc func) {
+    public GLEXTTexturePerturbNormal(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glTextureNormalEXT`.
     /// ```
     /// void glTextureNormalEXT((unsigned int) GLenum mode);
     /// ```

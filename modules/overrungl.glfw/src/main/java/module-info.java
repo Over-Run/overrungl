@@ -27,4 +27,5 @@ module overrungl.glfw {
 
     requires transitive overrungl.core;
     requires static org.graalvm.nativeimage;
+    requires static org.jspecify;
 }

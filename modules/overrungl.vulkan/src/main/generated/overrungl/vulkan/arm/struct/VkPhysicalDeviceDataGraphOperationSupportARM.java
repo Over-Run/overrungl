@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPhysicalDeviceDataGraphOperationSupportARM`.
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDataGraphOperationSupportARM {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupType {
     /// The struct layout of `VkPhysicalDeviceDataGraphOperationSupportARM`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("operationType"),
         MemoryLayout.sequenceLayout(128, ValueLayout.JAVA_BYTE).withName("name"),
         ValueLayout.JAVA_INT.withName("version")

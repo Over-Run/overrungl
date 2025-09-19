@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.pgi;
-
+/// `GL_PGI_vertex_hints`
 public final class GLPGIVertexHints {
     public static final int GL_VERTEX_DATA_HINT_PGI = 0x1A22A;
     public static final int GL_VERTEX_CONSISTENT_HINT_PGI = 0x1A22B;

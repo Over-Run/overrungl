@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_android_surface` - instance extension
 public final class VKKHRAndroidSurface {
     public static final int VK_KHR_ANDROID_SURFACE_SPEC_VERSION = 6;
     public static final String VK_KHR_ANDROID_SURFACE_EXTENSION_NAME = "VK_KHR_android_surface";
@@ -32,10 +34,11 @@ public final class VKKHRAndroidSurface {
 
     private VKKHRAndroidSurface() {}
 
+    /// Invokes `vkCreateAndroidSurfaceKHR`.
     /// ```
     /// (int) VkResult vkCreateAndroidSurfaceKHR((struct VkInstance*) VkInstance instance, const VkAndroidSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
-    public static int vkCreateAndroidSurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public static int vkCreateAndroidSurfaceKHR(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateAndroidSurfaceKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateAndroidSurfaceKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateAndroidSurfaceKHR", instance, pCreateInfo, pAllocator, pSurface); }
         return (int) Handles.MH_vkCreateAndroidSurfaceKHR.invokeExact(instance.capabilities().PFN_vkCreateAndroidSurfaceKHR, instance.segment(), pCreateInfo, pAllocator, pSurface); }

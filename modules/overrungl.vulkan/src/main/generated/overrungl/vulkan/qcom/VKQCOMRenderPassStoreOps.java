@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.qcom;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_QCOM_render_pass_store_ops` - device extension
 public final class VKQCOMRenderPassStoreOps {
     public static final int VK_QCOM_RENDER_PASS_STORE_OPS_SPEC_VERSION = 2;
     public static final String VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops";

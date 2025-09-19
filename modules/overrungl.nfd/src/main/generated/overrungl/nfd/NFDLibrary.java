@@ -35,7 +35,7 @@ public final class NFDLibrary {
 
     /// Sets a custom symbol lookup for module `nfd`.
     ///
-    /// This doesn't take effect after `NFDLibrary::lookup()` had invoked.
+    /// This doesn't take effect if `NFDLibrary::lookup()` had been invoked.
     /// @param lookup the custom symbol lookup
     public static void useLookup(SymbolLookup lookup) { customLookup = lookup; }
 

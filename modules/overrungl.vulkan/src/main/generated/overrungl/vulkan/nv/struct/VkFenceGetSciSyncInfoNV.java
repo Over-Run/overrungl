@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkFenceGetSciSyncInfoNV`.
 /// ## Layout
 /// ```
 /// struct VkFenceGetSciSyncInfoNV {
@@ -36,7 +38,7 @@ import overrungl.util.*;
 /// ```
 public final class VkFenceGetSciSyncInfoNV extends GroupType {
     /// The struct layout of `VkFenceGetSciSyncInfoNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("fence"),

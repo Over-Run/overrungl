@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoAV1TimingInfoFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoAV1TimingInfoFlags {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoAV1TimingInfoFlags extends GroupType {
     /// The struct layout of `StdVideoAV1TimingInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("equal_picture_interval"), 1,
         ValueLayout.JAVA_INT.withName("reserved"), 31
     );

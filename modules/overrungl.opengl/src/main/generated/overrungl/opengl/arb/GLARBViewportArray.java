@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_viewport_array`
 public final class GLARBViewportArray {
     public static final int GL_SCISSOR_BOX = 0x0C10;
     public static final int GL_VIEWPORT = 0x0BA2;
@@ -63,7 +63,7 @@ public final class GLARBViewportArray {
         public final MemorySegment PFN_glGetDoublei_v;
         public final MemorySegment PFN_glDepthRangeArraydvNV;
         public final MemorySegment PFN_glDepthRangeIndexeddNV;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glViewportArrayv = func.invoke("glViewportArrayv");
             PFN_glViewportIndexedf = func.invoke("glViewportIndexedf");
             PFN_glViewportIndexedfv = func.invoke("glViewportIndexedfv");
@@ -78,20 +78,22 @@ public final class GLARBViewportArray {
         }
     }
 
-    public GLARBViewportArray(overrungl.opengl.GLLoadFunc func) {
+    public GLARBViewportArray(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glViewportArrayv`.
     /// ```
     /// void glViewportArrayv((unsigned int) GLuint first, (int) GLsizei count, const GLfloat* v);
     /// ```
-    public void ViewportArrayv(int first, int count, MemorySegment v) {
+    public void ViewportArrayv(int first, int count, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glViewportArrayv)) throw new GLSymbolNotFoundError("Symbol not found: glViewportArrayv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glViewportArrayv", first, count, v); }
         Handles.MH_glViewportArrayv.invokeExact(handles.PFN_glViewportArrayv, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in ViewportArrayv", e); }
     }
 
+    /// Invokes `glViewportIndexedf`.
     /// ```
     /// void glViewportIndexedf((unsigned int) GLuint index, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat w, ((float) khronos_float_t) GLfloat h);
     /// ```
@@ -102,26 +104,29 @@ public final class GLARBViewportArray {
         catch (Throwable e) { throw new RuntimeException("error in ViewportIndexedf", e); }
     }
 
+    /// Invokes `glViewportIndexedfv`.
     /// ```
     /// void glViewportIndexedfv((unsigned int) GLuint index, const GLfloat* v);
     /// ```
-    public void ViewportIndexedfv(int index, MemorySegment v) {
+    public void ViewportIndexedfv(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glViewportIndexedfv)) throw new GLSymbolNotFoundError("Symbol not found: glViewportIndexedfv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glViewportIndexedfv", index, v); }
         Handles.MH_glViewportIndexedfv.invokeExact(handles.PFN_glViewportIndexedfv, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in ViewportIndexedfv", e); }
     }
 
+    /// Invokes `glScissorArrayv`.
     /// ```
     /// void glScissorArrayv((unsigned int) GLuint first, (int) GLsizei count, const GLint* v);
     /// ```
-    public void ScissorArrayv(int first, int count, MemorySegment v) {
+    public void ScissorArrayv(int first, int count, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissorArrayv)) throw new GLSymbolNotFoundError("Symbol not found: glScissorArrayv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glScissorArrayv", first, count, v); }
         Handles.MH_glScissorArrayv.invokeExact(handles.PFN_glScissorArrayv, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in ScissorArrayv", e); }
     }
 
+    /// Invokes `glScissorIndexed`.
     /// ```
     /// void glScissorIndexed((unsigned int) GLuint index, (int) GLint left, (int) GLint bottom, (int) GLsizei width, (int) GLsizei height);
     /// ```
@@ -132,26 +137,29 @@ public final class GLARBViewportArray {
         catch (Throwable e) { throw new RuntimeException("error in ScissorIndexed", e); }
     }
 
+    /// Invokes `glScissorIndexedv`.
     /// ```
     /// void glScissorIndexedv((unsigned int) GLuint index, const GLint* v);
     /// ```
-    public void ScissorIndexedv(int index, MemorySegment v) {
+    public void ScissorIndexedv(int index, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissorIndexedv)) throw new GLSymbolNotFoundError("Symbol not found: glScissorIndexedv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glScissorIndexedv", index, v); }
         Handles.MH_glScissorIndexedv.invokeExact(handles.PFN_glScissorIndexedv, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in ScissorIndexedv", e); }
     }
 
+    /// Invokes `glDepthRangeArrayv`.
     /// ```
     /// void glDepthRangeArrayv((unsigned int) GLuint first, (int) GLsizei count, const GLdouble* v);
     /// ```
-    public void DepthRangeArrayv(int first, int count, MemorySegment v) {
+    public void DepthRangeArrayv(int first, int count, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangeArrayv)) throw new GLSymbolNotFoundError("Symbol not found: glDepthRangeArrayv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDepthRangeArrayv", first, count, v); }
         Handles.MH_glDepthRangeArrayv.invokeExact(handles.PFN_glDepthRangeArrayv, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in DepthRangeArrayv", e); }
     }
 
+    /// Invokes `glDepthRangeIndexed`.
     /// ```
     /// void glDepthRangeIndexed((unsigned int) GLuint index, (double) GLdouble n, (double) GLdouble f);
     /// ```
@@ -162,36 +170,40 @@ public final class GLARBViewportArray {
         catch (Throwable e) { throw new RuntimeException("error in DepthRangeIndexed", e); }
     }
 
+    /// Invokes `glGetFloati_v`.
     /// ```
     /// void glGetFloati_v((unsigned int) GLenum target, (unsigned int) GLuint index, GLfloat* data);
     /// ```
-    public void GetFloati_v(int target, int index, MemorySegment data) {
+    public void GetFloati_v(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFloati_v)) throw new GLSymbolNotFoundError("Symbol not found: glGetFloati_v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFloati_v", target, index, data); }
         Handles.MH_glGetFloati_v.invokeExact(handles.PFN_glGetFloati_v, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetFloati_v", e); }
     }
 
+    /// Invokes `glGetDoublei_v`.
     /// ```
     /// void glGetDoublei_v((unsigned int) GLenum target, (unsigned int) GLuint index, GLdouble* data);
     /// ```
-    public void GetDoublei_v(int target, int index, MemorySegment data) {
+    public void GetDoublei_v(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDoublei_v)) throw new GLSymbolNotFoundError("Symbol not found: glGetDoublei_v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetDoublei_v", target, index, data); }
         Handles.MH_glGetDoublei_v.invokeExact(handles.PFN_glGetDoublei_v, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetDoublei_v", e); }
     }
 
+    /// Invokes `glDepthRangeArraydvNV`.
     /// ```
     /// void glDepthRangeArraydvNV((unsigned int) GLuint first, (int) GLsizei count, const GLdouble* v);
     /// ```
-    public void DepthRangeArraydvNV(int first, int count, MemorySegment v) {
+    public void DepthRangeArraydvNV(int first, int count, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangeArraydvNV)) throw new GLSymbolNotFoundError("Symbol not found: glDepthRangeArraydvNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDepthRangeArraydvNV", first, count, v); }
         Handles.MH_glDepthRangeArraydvNV.invokeExact(handles.PFN_glDepthRangeArraydvNV, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in DepthRangeArraydvNV", e); }
     }
 
+    /// Invokes `glDepthRangeIndexeddNV`.
     /// ```
     /// void glDepthRangeIndexeddNV((unsigned int) GLuint index, (double) GLdouble n, (double) GLdouble f);
     /// ```

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkMultiDrawIndexedInfoEXT`.
 /// ## Layout
 /// ```
 /// struct VkMultiDrawIndexedInfoEXT {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkMultiDrawIndexedInfoEXT extends GroupType {
     /// The struct layout of `VkMultiDrawIndexedInfoEXT`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("firstIndex"),
         ValueLayout.JAVA_INT.withName("indexCount"),
         ValueLayout.JAVA_INT.withName("vertexOffset")

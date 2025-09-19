@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkClusterAccelerationStructureOpInputNV`.
 /// ## Layout
 /// ```
 /// union VkClusterAccelerationStructureOpInputNV {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkClusterAccelerationStructureOpInputNV extends GroupType {
     /// The union layout of `VkClusterAccelerationStructureOpInputNV`.
-    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.ADDRESS.withName("pClustersBottomLevel"),
         ValueLayout.ADDRESS.withName("pTriangleClusters"),
         ValueLayout.ADDRESS.withName("pMoveObjects")

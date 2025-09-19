@@ -22,11 +22,13 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
 import static overrungl.vulkan.VK10.*;
 
+/// Represents `VmaTotalStatistics`.
 /// ## Layout
 /// ```
 /// struct VmaTotalStatistics {
@@ -37,7 +39,7 @@ import static overrungl.vulkan.VK10.*;
 /// ```
 public final class VmaTotalStatistics extends GroupType {
     /// The struct layout of `VmaTotalStatistics`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(VK_MAX_MEMORY_TYPES, VmaDetailedStatistics.LAYOUT).withName("memoryType"),
         MemoryLayout.sequenceLayout(VK_MAX_MEMORY_HEAPS, VmaDetailedStatistics.LAYOUT).withName("memoryHeap"),
         VmaDetailedStatistics.LAYOUT.withName("total")

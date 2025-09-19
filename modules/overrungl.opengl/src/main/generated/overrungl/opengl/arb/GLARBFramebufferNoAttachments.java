@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_framebuffer_no_attachments`
 public final class GLARBFramebufferNoAttachments {
     public static final int GL_FRAMEBUFFER_DEFAULT_WIDTH = 0x9310;
     public static final int GL_FRAMEBUFFER_DEFAULT_HEIGHT = 0x9311;
@@ -39,16 +39,17 @@ public final class GLARBFramebufferNoAttachments {
         public static final MethodHandle MH_glGetFramebufferParameteriv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFramebufferParameteri;
         public final MemorySegment PFN_glGetFramebufferParameteriv;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glFramebufferParameteri = func.invoke("glFramebufferParameteri");
             PFN_glGetFramebufferParameteriv = func.invoke("glGetFramebufferParameteriv");
         }
     }
 
-    public GLARBFramebufferNoAttachments(overrungl.opengl.GLLoadFunc func) {
+    public GLARBFramebufferNoAttachments(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glFramebufferParameteri`.
     /// ```
     /// void glFramebufferParameteri((unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
@@ -59,10 +60,11 @@ public final class GLARBFramebufferNoAttachments {
         catch (Throwable e) { throw new RuntimeException("error in FramebufferParameteri", e); }
     }
 
+    /// Invokes `glGetFramebufferParameteriv`.
     /// ```
     /// void glGetFramebufferParameteriv((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
-    public void GetFramebufferParameteriv(int target, int pname, MemorySegment params) {
+    public void GetFramebufferParameteriv(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetFramebufferParameteriv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFramebufferParameteriv", target, pname, params); }
         Handles.MH_glGetFramebufferParameteriv.invokeExact(handles.PFN_glGetFramebufferParameteriv, target, pname, params); }

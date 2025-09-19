@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
-
+/// `GL_NV_fog_distance`
 public final class GLNVFogDistance {
     public static final int GL_FOG_DISTANCE_MODE_NV = 0x855A;
     public static final int GL_EYE_RADIAL_NV = 0x855B;

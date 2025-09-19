@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkShaderStatisticsInfoAMD`.
 /// ## Layout
 /// ```
 /// struct VkShaderStatisticsInfoAMD {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class VkShaderStatisticsInfoAMD extends GroupType {
     /// The struct layout of `VkShaderStatisticsInfoAMD`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("shaderStageMask"),
         overrungl.vulkan.amd.struct.VkShaderResourceUsageAMD.LAYOUT.withName("resourceUsage"),
         ValueLayout.JAVA_INT.withName("numPhysicalVgprs"),

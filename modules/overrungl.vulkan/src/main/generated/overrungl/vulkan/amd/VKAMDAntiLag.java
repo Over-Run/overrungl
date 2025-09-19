@@ -18,9 +18,11 @@
 package overrungl.vulkan.amd;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_AMD_anti_lag` - device extension
 public final class VKAMDAntiLag {
     public static final int VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD = 0;
     public static final int VK_ANTI_LAG_MODE_ON_AMD = 1;
@@ -39,10 +41,11 @@ public final class VKAMDAntiLag {
 
     private VKAMDAntiLag() {}
 
+    /// Invokes `vkAntiLagUpdateAMD`.
     /// ```
     /// void vkAntiLagUpdateAMD((struct VkDevice*) VkDevice device, const VkAntiLagDataAMD* pData);
     /// ```
-    public static void vkAntiLagUpdateAMD(VkDevice device, MemorySegment pData) {
+    public static void vkAntiLagUpdateAMD(@NonNull VkDevice device, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAntiLagUpdateAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkAntiLagUpdateAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkAntiLagUpdateAMD", device, pData); }
         Handles.MH_vkAntiLagUpdateAMD.invokeExact(device.capabilities().PFN_vkAntiLagUpdateAMD, device.segment(), pData); }

@@ -25,7 +25,7 @@ import overrungl.gen.file.unsigned_char_boolean
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
 
-// gl.xml updated: 2025-07-23
+// gl.xml updated: 2025-08-15
 
 const val openglPackage = "overrungl.opengl"
 fun extPackage(vendor: String): String {
@@ -240,7 +240,11 @@ fun main() {
 
         method(
             (commandsFile.interpreter.functions()[command.name] ?: error(command.name))
-                .copy(name = command.name.substring(2), entrypoint = command.name, symbolNotFoundError = "GLSymbolNotFoundError")
+                .copy(
+                    name = command.name.substring(2),
+                    entrypoint = command.name,
+                    symbolNotFoundError = "GLSymbolNotFoundError"
+                )
         )
     }
 
@@ -248,7 +252,11 @@ fun main() {
     val featureAddedEnums = mutableListOf<String>()
     val featureAddedCommands = mutableListOf<String>()
     features.forEach { feature ->
-        InstanceDowncall(openglPackage, "GL${feature.number.replace(".", "")}") {
+        InstanceDowncall(
+            openglPackage,
+            "GL${feature.number.replace(".", "")}",
+            "Constants and functions of OpenGL ${feature.number}."
+        ) {
             featureExtends[feature.number]?.also { extends("GL${it}") }
             constructorParam = "GLLoadFunc func"
             handlesConstructorCode = buildString {
@@ -344,12 +352,12 @@ fun main() {
                 val vendor = extension.name.substring(3).substringBefore('_')
                 val className = extension.name.split('_')
                     .joinToString("") { it.replaceFirstChar(Char::uppercaseChar) }
-                InstanceDowncall(extPackage(vendor), className) {
+                InstanceDowncall(extPackage(vendor), className, "`${extension.name}`") {
                     modifier = "final"
                     if (extension.requires.all { it.commands.isEmpty() }) {
                         constructorModifier = "private"
                     } else {
-                        constructorParam = "overrungl.opengl.GLLoadFunc func"
+                        constructorParam = "GLLoadFunc func"
                         handlesConstructorCode = buildString {
                             extension.requires.forEach { require ->
                                 require.commands.forEachIndexed { index, command ->
@@ -397,6 +405,7 @@ fun main() {
                     |
                     |    requires transitive overrungl.core;
                     |    requires static org.graalvm.nativeimage;
+                    |    requires static org.jspecify;
                 """.trimMargin()
             )
             appendLine("}")

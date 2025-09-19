@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
+/// `GL_ARB_pipeline_statistics_query`
 public final class GLARBPipelineStatisticsQuery {
     public static final int GL_VERTICES_SUBMITTED_ARB = 0x82EE;
     public static final int GL_PRIMITIVES_SUBMITTED_ARB = 0x82EF;

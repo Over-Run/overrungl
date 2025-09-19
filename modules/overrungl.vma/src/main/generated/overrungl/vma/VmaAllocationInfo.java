@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VmaAllocationInfo`.
 /// ## Layout
 /// ```
 /// struct VmaAllocationInfo {
@@ -39,7 +41,7 @@ import overrungl.util.*;
 /// ```
 public final class VmaAllocationInfo extends GroupType {
     /// The struct layout of `VmaAllocationInfo`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("memoryType"),
         ValueLayout.JAVA_LONG.withName("deviceMemory"),
         ValueLayout.JAVA_LONG.withName("offset"),

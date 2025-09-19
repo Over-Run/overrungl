@@ -18,9 +18,11 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_get_surface_capabilities2` - instance extension
 public final class VKKHRGetSurfaceCapabilities2 {
     public static final int VK_KHR_GET_SURFACE_CAPABILITIES_2_SPEC_VERSION = 1;
     public static final String VK_KHR_GET_SURFACE_CAPABILITIES_2_EXTENSION_NAME = "VK_KHR_get_surface_capabilities2";
@@ -35,20 +37,22 @@ public final class VKKHRGetSurfaceCapabilities2 {
 
     private VKKHRGetSurfaceCapabilities2() {}
 
+    /// Invokes `vkGetPhysicalDeviceSurfaceCapabilities2KHR`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceSurfaceCapabilities2KHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, VkSurfaceCapabilities2KHR* pSurfaceCapabilities);
     /// ```
-    public static int vkGetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, MemorySegment pSurfaceInfo, MemorySegment pSurfaceCapabilities) {
+    public static int vkGetPhysicalDeviceSurfaceCapabilities2KHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pSurfaceInfo, @NonNull MemorySegment pSurfaceCapabilities) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceCapabilities2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceSurfaceCapabilities2KHR", physicalDevice, pSurfaceInfo, pSurfaceCapabilities); }
         return (int) Handles.MH_vkGetPhysicalDeviceSurfaceCapabilities2KHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR, physicalDevice.segment(), pSurfaceInfo, pSurfaceCapabilities); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceSurfaceCapabilities2KHR", e); }
     }
 
+    /// Invokes `vkGetPhysicalDeviceSurfaceFormats2KHR`.
     /// ```
     /// (int) VkResult vkGetPhysicalDeviceSurfaceFormats2KHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, uint32_t* pSurfaceFormatCount, VkSurfaceFormat2KHR* pSurfaceFormats);
     /// ```
-    public static int vkGetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, MemorySegment pSurfaceInfo, MemorySegment pSurfaceFormatCount, MemorySegment pSurfaceFormats) {
+    public static int vkGetPhysicalDeviceSurfaceFormats2KHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pSurfaceInfo, @NonNull MemorySegment pSurfaceFormatCount, @NonNull MemorySegment pSurfaceFormats) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceFormats2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceFormats2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceSurfaceFormats2KHR", physicalDevice, pSurfaceInfo, pSurfaceFormatCount, pSurfaceFormats); }
         return (int) Handles.MH_vkGetPhysicalDeviceSurfaceFormats2KHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceFormats2KHR, physicalDevice.segment(), pSurfaceInfo, pSurfaceFormatCount, pSurfaceFormats); }

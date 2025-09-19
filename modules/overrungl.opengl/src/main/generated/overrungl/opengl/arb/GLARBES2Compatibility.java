@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_ES2_compatibility`
 public final class GLARBES2Compatibility {
     public static final int GL_FIXED = 0x140C;
     public static final int GL_IMPLEMENTATION_COLOR_READ_TYPE = 0x8B9A;
@@ -52,7 +52,7 @@ public final class GLARBES2Compatibility {
         public final MemorySegment PFN_glGetShaderPrecisionFormat;
         public final MemorySegment PFN_glDepthRangef;
         public final MemorySegment PFN_glClearDepthf;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glReleaseShaderCompiler = func.invoke("glReleaseShaderCompiler");
             PFN_glShaderBinary = func.invoke("glShaderBinary");
             PFN_glGetShaderPrecisionFormat = func.invoke("glGetShaderPrecisionFormat");
@@ -61,10 +61,11 @@ public final class GLARBES2Compatibility {
         }
     }
 
-    public GLARBES2Compatibility(overrungl.opengl.GLLoadFunc func) {
+    public GLARBES2Compatibility(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glReleaseShaderCompiler`.
     /// ```
     /// void glReleaseShaderCompiler();
     /// ```
@@ -75,26 +76,29 @@ public final class GLARBES2Compatibility {
         catch (Throwable e) { throw new RuntimeException("error in ReleaseShaderCompiler", e); }
     }
 
+    /// Invokes `glShaderBinary`.
     /// ```
     /// void glShaderBinary((int) GLsizei count, const GLuint* shaders, (unsigned int) GLenum binaryFormat, const void* binary, (int) GLsizei length);
     /// ```
-    public void ShaderBinary(int count, MemorySegment shaders, int binaryFormat, MemorySegment binary, int length) {
+    public void ShaderBinary(int count, @NonNull MemorySegment shaders, int binaryFormat, @NonNull MemorySegment binary, int length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderBinary)) throw new GLSymbolNotFoundError("Symbol not found: glShaderBinary");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glShaderBinary", count, shaders, binaryFormat, binary, length); }
         Handles.MH_glShaderBinary.invokeExact(handles.PFN_glShaderBinary, count, shaders, binaryFormat, binary, length); }
         catch (Throwable e) { throw new RuntimeException("error in ShaderBinary", e); }
     }
 
+    /// Invokes `glGetShaderPrecisionFormat`.
     /// ```
     /// void glGetShaderPrecisionFormat((unsigned int) GLenum shadertype, (unsigned int) GLenum precisiontype, GLint* range, GLint* precision);
     /// ```
-    public void GetShaderPrecisionFormat(int shadertype, int precisiontype, MemorySegment range, MemorySegment precision) {
+    public void GetShaderPrecisionFormat(int shadertype, int precisiontype, @NonNull MemorySegment range, @NonNull MemorySegment precision) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetShaderPrecisionFormat)) throw new GLSymbolNotFoundError("Symbol not found: glGetShaderPrecisionFormat");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetShaderPrecisionFormat", shadertype, precisiontype, range, precision); }
         Handles.MH_glGetShaderPrecisionFormat.invokeExact(handles.PFN_glGetShaderPrecisionFormat, shadertype, precisiontype, range, precision); }
         catch (Throwable e) { throw new RuntimeException("error in GetShaderPrecisionFormat", e); }
     }
 
+    /// Invokes `glDepthRangef`.
     /// ```
     /// void glDepthRangef(((float) khronos_float_t) GLfloat n, ((float) khronos_float_t) GLfloat f);
     /// ```
@@ -105,6 +109,7 @@ public final class GLARBES2Compatibility {
         catch (Throwable e) { throw new RuntimeException("error in DepthRangef", e); }
     }
 
+    /// Invokes `glClearDepthf`.
     /// ```
     /// void glClearDepthf(((float) khronos_float_t) GLfloat d);
     /// ```

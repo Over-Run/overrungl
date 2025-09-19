@@ -16,32 +16,33 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_ARB_internalformat_query`
 public final class GLARBInternalformatQuery {
     public static final int GL_NUM_SAMPLE_COUNTS = 0x9380;
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_glGetInternalformativ = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetInternalformativ;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glGetInternalformativ = func.invoke("glGetInternalformativ");
         }
     }
 
-    public GLARBInternalformatQuery(overrungl.opengl.GLLoadFunc func) {
+    public GLARBInternalformatQuery(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glGetInternalformativ`.
     /// ```
     /// void glGetInternalformativ((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLenum pname, (int) GLsizei count, GLint* params);
     /// ```
-    public void GetInternalformativ(int target, int internalformat, int pname, int count, MemorySegment params) {
+    public void GetInternalformativ(int target, int internalformat, int pname, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformativ)) throw new GLSymbolNotFoundError("Symbol not found: glGetInternalformativ");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInternalformativ", target, internalformat, pname, count, params); }
         Handles.MH_glGetInternalformativ.invokeExact(handles.PFN_glGetInternalformativ, target, internalformat, pname, count, params); }

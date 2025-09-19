@@ -132,10 +132,10 @@ data class PointerType(
     override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
 }
 
-enum class GroupTypeKind(val typedef: String, val layoutBuilder: String) {
-    STRUCT("struct", "LayoutBuilder.struct"),
-    UNION("union", "MemoryLayout.unionLayout"),
-    BITFIELD("struct", "LayoutBuilder.bitfields")
+enum class GroupTypeKind(val typedef: String, val layoutBuilder: String, val memoryLayoutType: String) {
+    STRUCT("struct", "LayoutBuilder.struct", "StructLayout"),
+    UNION("union", "MemoryLayout.unionLayout", "UnionLayout"),
+    BITFIELD("struct", "LayoutBuilder.bitfields", "StructLayout")
 }
 
 data class GroupLayoutType(

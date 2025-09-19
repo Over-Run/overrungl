@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPartitionedAccelerationStructureWriteInstanceDataNV`.
 /// ## Layout
 /// ```
 /// struct VkPartitionedAccelerationStructureWriteInstanceDataNV {
@@ -41,7 +43,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPartitionedAccelerationStructureWriteInstanceDataNV extends GroupType {
     /// The struct layout of `VkPartitionedAccelerationStructureWriteInstanceDataNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.khr.struct.VkTransformMatrixKHR.LAYOUT.withName("transform"),
         MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_FLOAT).withName("explicitAABB"),
         ValueLayout.JAVA_INT.withName("instanceID"),

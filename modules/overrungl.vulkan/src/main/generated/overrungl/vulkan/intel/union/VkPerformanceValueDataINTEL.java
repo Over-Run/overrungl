@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPerformanceValueDataINTEL`.
 /// ## Layout
 /// ```
 /// union VkPerformanceValueDataINTEL {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPerformanceValueDataINTEL extends GroupType {
     /// The union layout of `VkPerformanceValueDataINTEL`.
-    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.JAVA_INT.withName("value32"),
         ValueLayout.JAVA_LONG.withName("value64"),
         ValueLayout.JAVA_FLOAT.withName("valueFloat"),

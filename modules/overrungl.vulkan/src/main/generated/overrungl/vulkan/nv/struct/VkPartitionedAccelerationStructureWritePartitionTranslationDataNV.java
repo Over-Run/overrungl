@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`.
 /// ## Layout
 /// ```
 /// struct VkPartitionedAccelerationStructureWritePartitionTranslationDataNV {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class VkPartitionedAccelerationStructureWritePartitionTranslationDataNV extends GroupType {
     /// The struct layout of `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("partitionIndex"),
         MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_FLOAT).withName("partitionTranslation")
     );

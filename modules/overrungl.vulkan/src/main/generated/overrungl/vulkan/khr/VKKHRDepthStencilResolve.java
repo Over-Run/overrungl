@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_depth_stencil_resolve` - device extension
 public final class VKKHRDepthStencilResolve {
     public static final int VK_KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION = 1;
     public static final String VK_KHR_DEPTH_STENCIL_RESOLVE_EXTENSION_NAME = "VK_KHR_depth_stencil_resolve";

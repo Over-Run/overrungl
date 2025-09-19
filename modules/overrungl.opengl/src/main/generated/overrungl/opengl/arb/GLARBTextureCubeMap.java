@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
-
+/// `GL_ARB_texture_cube_map`
 public final class GLARBTextureCubeMap {
     public static final int GL_NORMAL_MAP_ARB = 0x8511;
     public static final int GL_REFLECTION_MAP_ARB = 0x8512;

@@ -16,13 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nvx;
-
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
-
+import static overrungl.internal.RuntimeHelper.*;
+/// `GL_NVX_linked_gpu_multicast`
 public final class GLNVXLinkedGpuMulticast {
     public static final int GL_LGPU_SEPARATE_STORAGE_BIT_NVX = 0x0800;
     public static final int GL_MAX_LGPU_GPUS_NVX = 0x92BA;
@@ -34,27 +34,29 @@ public final class GLNVXLinkedGpuMulticast {
         public final MemorySegment PFN_glLGPUNamedBufferSubDataNVX;
         public final MemorySegment PFN_glLGPUCopyImageSubDataNVX;
         public final MemorySegment PFN_glLGPUInterlockNVX;
-        private Handles(overrungl.opengl.GLLoadFunc func) {
+        private Handles(GLLoadFunc func) {
             PFN_glLGPUNamedBufferSubDataNVX = func.invoke("glLGPUNamedBufferSubDataNVX");
             PFN_glLGPUCopyImageSubDataNVX = func.invoke("glLGPUCopyImageSubDataNVX");
             PFN_glLGPUInterlockNVX = func.invoke("glLGPUInterlockNVX");
         }
     }
 
-    public GLNVXLinkedGpuMulticast(overrungl.opengl.GLLoadFunc func) {
+    public GLNVXLinkedGpuMulticast(GLLoadFunc func) {
         this.handles = new Handles(func);
     }
 
+    /// Invokes `glLGPUNamedBufferSubDataNVX`.
     /// ```
     /// void glLGPUNamedBufferSubDataNVX((unsigned int) GLbitfield gpuMask, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, const void* data);
     /// ```
-    public void LGPUNamedBufferSubDataNVX(int gpuMask, int buffer, long offset, long size, MemorySegment data) {
+    public void LGPUNamedBufferSubDataNVX(int gpuMask, int buffer, long offset, long size, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLGPUNamedBufferSubDataNVX)) throw new GLSymbolNotFoundError("Symbol not found: glLGPUNamedBufferSubDataNVX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLGPUNamedBufferSubDataNVX", gpuMask, buffer, offset, size, data); }
         Handles.MH_glLGPUNamedBufferSubDataNVX.invokeExact(handles.PFN_glLGPUNamedBufferSubDataNVX, gpuMask, buffer, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in LGPUNamedBufferSubDataNVX", e); }
     }
 
+    /// Invokes `glLGPUCopyImageSubDataNVX`.
     /// ```
     /// void glLGPUCopyImageSubDataNVX((unsigned int) GLuint sourceGpu, (unsigned int) GLbitfield destinationGpuMask, (unsigned int) GLuint srcName, (unsigned int) GLenum srcTarget, (int) GLint srcLevel, (int) GLint srcX, (int) GLint srxY, (int) GLint srcZ, (unsigned int) GLuint dstName, (unsigned int) GLenum dstTarget, (int) GLint dstLevel, (int) GLint dstX, (int) GLint dstY, (int) GLint dstZ, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```
@@ -65,6 +67,7 @@ public final class GLNVXLinkedGpuMulticast {
         catch (Throwable e) { throw new RuntimeException("error in LGPUCopyImageSubDataNVX", e); }
     }
 
+    /// Invokes `glLGPUInterlockNVX`.
     /// ```
     /// void glLGPUInterlockNVX();
     /// ```

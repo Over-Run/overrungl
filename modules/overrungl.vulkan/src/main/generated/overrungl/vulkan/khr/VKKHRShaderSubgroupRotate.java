@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_KHR_shader_subgroup_rotate` - device extension
 public final class VKKHRShaderSubgroupRotate {
     public static final int VK_KHR_SHADER_SUBGROUP_ROTATE_SPEC_VERSION = 2;
     public static final String VK_KHR_SHADER_SUBGROUP_ROTATE_EXTENSION_NAME = "VK_KHR_shader_subgroup_rotate";

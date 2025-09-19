@@ -34,30 +34,31 @@ public final class STBPerlin {
     //endregion
     /// Method handles.
     public static final class Handles {
-        /// The method handle of `stb_perlin_noise3`.
+        /// The method handle of [`stb_perlin_noise3`][#stb_perlin_noise3].
         public static final MethodHandle MH_stb_perlin_noise3 = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        /// The method handle of `stb_perlin_noise3_seed`.
+        /// The method handle of [`stb_perlin_noise3_seed`][#stb_perlin_noise3_seed].
         public static final MethodHandle MH_stb_perlin_noise3_seed = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        /// The method handle of `stb_perlin_ridge_noise3`.
+        /// The method handle of [`stb_perlin_ridge_noise3`][#stb_perlin_ridge_noise3].
         public static final MethodHandle MH_stb_perlin_ridge_noise3 = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
-        /// The method handle of `stb_perlin_fbm_noise3`.
+        /// The method handle of [`stb_perlin_fbm_noise3`][#stb_perlin_fbm_noise3].
         public static final MethodHandle MH_stb_perlin_fbm_noise3 = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
-        /// The method handle of `stb_perlin_turbulence_noise3`.
+        /// The method handle of [`stb_perlin_turbulence_noise3`][#stb_perlin_turbulence_noise3].
         public static final MethodHandle MH_stb_perlin_turbulence_noise3 = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
-        /// The method handle of `stb_perlin_noise3_wrap_nonpow2`.
+        /// The method handle of [`stb_perlin_noise3_wrap_nonpow2`][#stb_perlin_noise3_wrap_nonpow2].
         public static final MethodHandle MH_stb_perlin_noise3_wrap_nonpow2 = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
-        /// The function address of `stb_perlin_noise3`.
+        /// The function address of [`stb_perlin_noise3`][#stb_perlin_noise3].
         public final MemorySegment PFN_stb_perlin_noise3;
-        /// The function address of `stb_perlin_noise3_seed`.
+        /// The function address of [`stb_perlin_noise3_seed`][#stb_perlin_noise3_seed].
         public final MemorySegment PFN_stb_perlin_noise3_seed;
-        /// The function address of `stb_perlin_ridge_noise3`.
+        /// The function address of [`stb_perlin_ridge_noise3`][#stb_perlin_ridge_noise3].
         public final MemorySegment PFN_stb_perlin_ridge_noise3;
-        /// The function address of `stb_perlin_fbm_noise3`.
+        /// The function address of [`stb_perlin_fbm_noise3`][#stb_perlin_fbm_noise3].
         public final MemorySegment PFN_stb_perlin_fbm_noise3;
-        /// The function address of `stb_perlin_turbulence_noise3`.
+        /// The function address of [`stb_perlin_turbulence_noise3`][#stb_perlin_turbulence_noise3].
         public final MemorySegment PFN_stb_perlin_turbulence_noise3;
-        /// The function address of `stb_perlin_noise3_wrap_nonpow2`.
+        /// The function address of [`stb_perlin_noise3_wrap_nonpow2`][#stb_perlin_noise3_wrap_nonpow2].
         public final MemorySegment PFN_stb_perlin_noise3_wrap_nonpow2;
+
         private Handles() {
             var _lookup = STBLibrary.lookup();
             PFN_stb_perlin_noise3 = _lookup.findOrThrow("stb_perlin_noise3");
@@ -67,7 +68,9 @@ public final class STBPerlin {
             PFN_stb_perlin_turbulence_noise3 = _lookup.findOrThrow("stb_perlin_turbulence_noise3");
             PFN_stb_perlin_noise3_wrap_nonpow2 = _lookup.findOrThrow("stb_perlin_noise3_wrap_nonpow2");
         }
-        private static Handles get() {
+
+        /// {@return this}
+        public static Handles get() {
             final class Holder {
                 static final Handles instance = new Handles();
             }
@@ -75,6 +78,7 @@ public final class STBPerlin {
         }
     }
 
+    /// Invokes `stb_perlin_noise3`.
     /// ```
     /// float stb_perlin_noise3(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap);
     /// ```
@@ -84,6 +88,7 @@ public final class STBPerlin {
         catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3", e); }
     }
 
+    /// Invokes `stb_perlin_noise3_seed`.
     /// ```
     /// float stb_perlin_noise3_seed(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, int seed);
     /// ```
@@ -93,6 +98,7 @@ public final class STBPerlin {
         catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3_seed", e); }
     }
 
+    /// Invokes `stb_perlin_ridge_noise3`.
     /// ```
     /// float stb_perlin_ridge_noise3(float x, float y, float z, float lacunarity, float gain, float offset, int octaves);
     /// ```
@@ -102,6 +108,7 @@ public final class STBPerlin {
         catch (Throwable e) { throw new RuntimeException("error in stb_perlin_ridge_noise3", e); }
     }
 
+    /// Invokes `stb_perlin_fbm_noise3`.
     /// ```
     /// float stb_perlin_fbm_noise3(float x, float y, float z, float lacunarity, float gain, int octaves);
     /// ```
@@ -111,6 +118,7 @@ public final class STBPerlin {
         catch (Throwable e) { throw new RuntimeException("error in stb_perlin_fbm_noise3", e); }
     }
 
+    /// Invokes `stb_perlin_turbulence_noise3`.
     /// ```
     /// float stb_perlin_turbulence_noise3(float x, float y, float z, float lacunarity, float gain, int octaves);
     /// ```
@@ -120,6 +128,7 @@ public final class STBPerlin {
         catch (Throwable e) { throw new RuntimeException("error in stb_perlin_turbulence_noise3", e); }
     }
 
+    /// Invokes `stb_perlin_noise3_wrap_nonpow2`.
     /// ```
     /// float stb_perlin_noise3_wrap_nonpow2(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, unsigned char seed);
     /// ```

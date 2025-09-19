@@ -17,6 +17,8 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.lunarg;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_LUNARG_direct_driver_loading` - instance extension
 public final class VKLUNARGDirectDriverLoading {
     public static final int VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG = 0;
     public static final int VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG = 1;

@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoAV1Segmentation`.
 /// ## Layout
 /// ```
 /// struct StdVideoAV1Segmentation {
@@ -34,7 +36,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoAV1Segmentation extends GroupType {
     /// The struct layout of `StdVideoAV1Segmentation`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("FeatureEnabled"),
         MemoryLayout.sequenceLayout(8, MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_SHORT)).withName("FeatureData")
     );

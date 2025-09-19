@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkSubresourceLayout`.
 /// ## Layout
 /// ```
 /// struct VkSubresourceLayout {
@@ -37,7 +39,7 @@ import overrungl.util.*;
 /// ```
 public final class VkSubresourceLayout extends GroupType {
     /// The struct layout of `VkSubresourceLayout`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("offset"),
         ValueLayout.JAVA_LONG.withName("size"),
         ValueLayout.JAVA_LONG.withName("rowPitch"),

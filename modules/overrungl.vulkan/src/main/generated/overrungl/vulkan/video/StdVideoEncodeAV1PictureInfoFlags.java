@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `StdVideoEncodeAV1PictureInfoFlags`.
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeAV1PictureInfoFlags {
@@ -62,7 +64,7 @@ import overrungl.util.*;
 /// ```
 public final class StdVideoEncodeAV1PictureInfoFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeAV1PictureInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+    public static final StructLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("error_resilient_mode"), 1,
         ValueLayout.JAVA_INT.withName("disable_cdf_update"), 1,
         ValueLayout.JAVA_INT.withName("use_superres"), 1,

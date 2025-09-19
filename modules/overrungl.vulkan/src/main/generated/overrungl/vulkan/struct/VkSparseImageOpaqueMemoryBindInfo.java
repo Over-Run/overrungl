@@ -22,9 +22,11 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import java.util.function.*;
+import org.jspecify.annotations.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
+/// Represents `VkSparseImageOpaqueMemoryBindInfo`.
 /// ## Layout
 /// ```
 /// struct VkSparseImageOpaqueMemoryBindInfo {
@@ -35,7 +37,7 @@ import overrungl.util.*;
 /// ```
 public final class VkSparseImageOpaqueMemoryBindInfo extends GroupType {
     /// The struct layout of `VkSparseImageOpaqueMemoryBindInfo`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("image"),
         ValueLayout.JAVA_INT.withName("bindCount"),
         ValueLayout.ADDRESS.withName("pBinds")

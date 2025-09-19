@@ -18,9 +18,11 @@
 package overrungl.vulkan.amd;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import static overrungl.internal.RuntimeHelper.*;
+import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import static overrungl.internal.RuntimeHelper.*;
+/// `VK_AMD_shader_info` - device extension
 public final class VKAMDShaderInfo {
     public static final int VK_SHADER_INFO_TYPE_STATISTICS_AMD = 0;
     public static final int VK_SHADER_INFO_TYPE_BINARY_AMD = 1;
@@ -34,10 +36,11 @@ public final class VKAMDShaderInfo {
 
     private VKAMDShaderInfo() {}
 
+    /// Invokes `vkGetShaderInfoAMD`.
     /// ```
     /// (int) VkResult vkGetShaderInfoAMD((struct VkDevice*) VkDevice device, (uint64_t) VkPipeline pipeline, (int) VkShaderStageFlagBits shaderStage, (int) VkShaderInfoTypeAMD infoType, size_t* pInfoSize, void* pInfo);
     /// ```
-    public static int vkGetShaderInfoAMD(VkDevice device, long pipeline, int shaderStage, int infoType, MemorySegment pInfoSize, MemorySegment pInfo) {
+    public static int vkGetShaderInfoAMD(@NonNull VkDevice device, long pipeline, int shaderStage, int infoType, @NonNull MemorySegment pInfoSize, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetShaderInfoAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkGetShaderInfoAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetShaderInfoAMD", device, pipeline, shaderStage, infoType, pInfoSize, pInfo); }
         return (int) Handles.MH_vkGetShaderInfoAMD.invokeExact(device.capabilities().PFN_vkGetShaderInfoAMD, device.segment(), pipeline, shaderStage, infoType, pInfoSize, pInfo); }
