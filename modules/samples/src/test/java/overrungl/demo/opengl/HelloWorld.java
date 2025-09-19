@@ -27,11 +27,12 @@ import static overrungl.opengl.GL.*;
 static final int INIT_WIDTH = 300;
 static final int INIT_HEIGHT = 300;
 /// The arena of the window
-Arena windowArena;
+Arena windowArena = null;
 /// The window handle
 MemorySegment window = MemorySegment.NULL;
-/// The OpenGL context
-GL gl = null;
+/// The OpenGL context.
+/// We use scoped value to ensure OpenGL functions only be called from main thread
+static final ScopedValue<GL> GL_VALUE = ScopedValue.newInstance();
 
 void start() {
     // Set up an error callback. The default implementation
@@ -67,9 +68,7 @@ void start() {
     // Create the window
     // As glfwCreateWindow copies the string,
     // we can use MemoryUtil::allocString to allocate a string managed with GC.
-    window = glfwCreateWindow(INIT_WIDTH, INIT_HEIGHT, MemoryUtil.allocString("Hello World!"), MemorySegment.NULL, MemorySegment.NULL)
-        // associate the window with the given arena
-        .reinterpret(windowArena, null);
+    window = glfwCreateWindow(INIT_WIDTH, INIT_HEIGHT, MemoryUtil.allocString("Hello World!"), MemorySegment.NULL, MemorySegment.NULL);
     if (MemoryUtil.isNullPointer(window)) {
         throw new IllegalStateException("Failed to create the GLFW window");
     }
@@ -83,8 +82,8 @@ void start() {
     }));
     glfwSetFramebufferSizeCallback(window, GLFWFramebufferSizeFun.alloc(windowArena, (_, width, height) -> {
         // Resize the viewport
-        if (gl != null) {
-            gl.Viewport(0, 0, width, height);
+        if (GL_VALUE.isBound()) {
+            GL_VALUE.get().Viewport(0, 0, width, height);
         }
     }));
 
@@ -95,13 +94,15 @@ void start() {
 
     // Load OpenGL capabilities with GLFW.
     // This uses core profile, which cannot access deprecated and removed functions.
-    gl = new GL(GLFW::glfwGetProcAddress);
-    initGL(gl);
-
-    run();
+    ScopedValue.where(GL_VALUE, new GL(GLFW::glfwGetProcAddress))
+        .run(() -> {
+            initGL();
+            run();
+        });
 }
 
-void initGL(GL gl) {
+void initGL() {
+    GL gl = GL_VALUE.get();
     // Set the clear color
     gl.ClearColor(0.4f, 0.6f, 0.9f, 1.0f);
 }
@@ -113,11 +114,12 @@ void run() {
         // Poll for window events. The key callback above will only be
         // invoked during this call.
         glfwPollEvents();
-        render(gl);
+        render();
     }
 }
 
-void render(GL gl) {
+void render() {
+    GL gl = GL_VALUE.get();
     // clear the framebuffer
     gl.Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // swap the color buffers
@@ -135,7 +137,6 @@ void dispose() {
 }
 
 void main() {
-    IO.println();
     try {
         start();
     } finally {
