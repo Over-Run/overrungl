@@ -6,6 +6,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+!/doc/build/
 
 ### IntelliJ IDEA ###
 .idea/

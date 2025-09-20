@@ -1,10 +1,8 @@
-# Internal Documentation
-
-## Publishing
+# Publishing
 
 To publish this library, you need a GPG key and the write permission of Maven Central.
 
-### CI
+## CI
 
 - [glfw](https://github.com/Over-Run/glfw-ci)
 - [nfd](https://github.com/Over-Run/nfd-ci)
@@ -12,7 +10,7 @@ To publish this library, you need a GPG key and the write permission of Maven Ce
 - [stb](https://github.com/Over-Run/stb-ci)
 - [vma](https://github.com/Over-Run/VulkanMemoryAllocator-ci)
 
-### Packing Natives
+## Packing Natives
 
 The build script packs the native libraries into jars.
 

@@ -26,7 +26,7 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class VKOHOSSurface {
     public static final int VK_OHOS_SURFACE_SPEC_VERSION = 1;
     public static final String VK_OHOS_SURFACE_EXTENSION_NAME = "VK_OHOS_surface";
-    public static final int VK_STRUCTURE_TYPE_OH_SURFACE_CREATE_INFO_OHOS = 1000587000;
+    public static final int VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS = 1000685000;
     public static final class Handles {
         public static final MethodHandle MH_vkCreateSurfaceOHOS = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}

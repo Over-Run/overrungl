@@ -31,7 +31,7 @@ import overrungl.util.*;
 /// ```
 /// struct VkShaderRequiredSubgroupSizeCreateInfoEXT {
 ///     (int) VkStructureType sType;
-///     void* pNext;
+///     const void* pNext;
 ///     uint32_t requiredSubgroupSize;
 /// };
 /// ```
