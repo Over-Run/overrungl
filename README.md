@@ -1,19 +1,15 @@
 # OverrunGL - Overrun Game Library
 
-![License](https://img.shields.io/github/license/Over-Run/overrungl)
-
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.over-run/overrungl)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.over-run/overrungl?server=https%3A%2F%2Fs01.oss.sonatype.org)
 
 [![Java CI with Gradle](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml/badge.svg?event=push)](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8279/badge)](https://www.bestpractices.dev/projects/8279)
+<!--[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8279/badge)](https://www.bestpractices.dev/projects/8279)-->
 
 ## Overview
 
 ```java
 void main() {
-    // invoke native functions via static methods
-    glfwInit();
     // use MemorySegment to represent memory addresses
     MemorySegment window = glfwCreateWindow(
         800, 600,
@@ -22,33 +18,30 @@ void main() {
         MemorySegment.NULL,
         MemorySegment.NULL
     );
-    
+
     int width, height;
-    // use MemoryStack for one-time and quick allocation
-    try (var stack = MemoryStack.pushLocal()) {
-        // use MemoryStack::alloc*Ptr to allocate memory
-        var pWidth = stack.allocIntPtr();
-        var pHeight = stack.allocIntPtr();
-        
-        glfwGetFramebufferSize(window, pWidth.segment(), pHeight.segment());
-        
-        // use accessors in *Ptr to read and write memory
-        width = pWidth.value();
-        height = pHeight.value();
+    // use Arena to allocate off-heap memory
+    try (var arena = Arena.ofConfined()) {
+        // use ValueLayout to represent memory layout
+        var pWidth = arena.allocate(ValueLayout.JAVA_INT);
+        var pHeight = arena.allocate(ValueLayout.JAVA_INT);
+
+        glfwGetFramebufferSize(window, pWidth, pHeight);
+
+        width = pWidth.get(ValueLayout.JAVA_INT, 0);
+        height = pHeight.get(ValueLayout.JAVA_INT, 0);
     }
-    
+
     // for OpenGL, create instance of wrappers
     var gl = new GL(GLFW::glfwGetProcAddress);
     // invoke OpenGL functions via instance methods
     gl.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    // for Vulkan, load functions with GLFW
-    VK.create(GLFW::glfwGetInstanceProcAddress);
 }
 ```
 
 ## Introduction
 
-Overrun Game Library is a high-performance library implemented with Java 24,
+Overrun Game Library is a high-performance library implemented with Java 25,
 which enables cross-platform access to a set of C library bindings, providing various useful utilities.
 
 ### Comparing with LWJGL 3
@@ -61,20 +54,20 @@ as well as providing better memory management.
 
 ## Getting Started
 
-You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
+You can check the [wiki](https://github.com/Over-Run/overrungl/wiki) or
 the [samples](modules/samples/src/test/java/overrungl/demo).
 
-Check [discussions](https://github.com/Over-Run/overrungl/discussions) in case you have trouble in setup works, such as environment configuring.
-
-Feel free to ask questions as long as you have searched in discussions and found no one had the same question.
+Feel free to ask questions in [discussions](https://github.com/Over-Run/overrungl/discussions) in case you have trouble in setup works, such as environment configuring.
 
 ## Import as a Dependency
 
-We provided a modules customizer [here](https://over-run.github.io/overrungl-gen/). The customizer is the recommended way to generate dependency declarations.
+The [modules customizer](https://over-run.github.io/overrungl-gen/) is the recommended way to generate dependency declarations.
 
-- Platform Maven coordinate: `io.github.over-run:overrungl-bom`
-- Core module Maven coordinate: `io.github.over-run:overrungl`
-- For others: `io.github.over-run:overrungl-<module-name>`
+Maven coordinates for your information:
+
+- Maven coordinate of Bill of Materials: `io.github.over-run:overrungl-bom`
+- Maven coordinate of core module: `io.github.over-run:overrungl`
+- Others: `io.github.over-run:overrungl-<module-name>`
 
 For example:
 
@@ -104,7 +97,7 @@ repositories {
 ### Enable native access
 
 You must enable the access to restricted methods by adding a VM argument or a manifest attribute.
-The customizer has already included this.
+The customizer can generate a list of modules to be enabled.
 
 ```
 --enable-native-access=overrungl.core,...
