@@ -80,7 +80,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: |
-          24
+          25
         distribution: 'graalvm'
     - name: Grant execute permission for gradlew
       if: ${{ runner.os != 'Windows' }}

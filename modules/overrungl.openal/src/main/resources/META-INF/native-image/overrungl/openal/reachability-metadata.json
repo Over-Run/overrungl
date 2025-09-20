@@ -1,7 +1,0 @@
-{
-  "resources": [
-    {
-      "glob": "openal/**/*openal.*"
-    }
-  ]
-}
