@@ -35,31 +35,31 @@ public final class VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoAR
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `dimension`.
     public static final long OFFSET_dimension = LAYOUT.byteOffset(PathElement.groupElement("dimension"));
     /// The memory layout of `dimension`.
     public static final MemoryLayout LAYOUT_dimension = LAYOUT.select(PathElement.groupElement("dimension"));
     /// The [VarHandle] of `dimension` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dimension = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dimension"));
+    public static final Supplier<VarHandle> VH_dimension = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dimension")));
     /// The byte offset of `zeroCount`.
     public static final long OFFSET_zeroCount = LAYOUT.byteOffset(PathElement.groupElement("zeroCount"));
     /// The memory layout of `zeroCount`.
     public static final MemoryLayout LAYOUT_zeroCount = LAYOUT.select(PathElement.groupElement("zeroCount"));
     /// The [VarHandle] of `zeroCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_zeroCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("zeroCount"));
+    public static final Supplier<VarHandle> VH_zeroCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("zeroCount")));
     /// The byte offset of `groupSize`.
     public static final long OFFSET_groupSize = LAYOUT.byteOffset(PathElement.groupElement("groupSize"));
     /// The memory layout of `groupSize`.
     public static final MemoryLayout LAYOUT_groupSize = LAYOUT.select(PathElement.groupElement("groupSize"));
     /// The [VarHandle] of `groupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_groupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("groupSize"));
+    public static final Supplier<VarHandle> VH_groupSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("groupSize")));
 
     /// Creates `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoAR
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoAR
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoAR
     /// {@return `dimension` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dimension(MemorySegment segment, long index) { return (int) VH_dimension.get(segment, 0L, index); }
+    public static int dimension(MemorySegment segment, long index) { return (int) VH_dimension.get().get(segment, 0L, index); }
     /// {@return `dimension`}
     public int dimension() { return dimension(this.segment(), 0L); }
     /// Sets `dimension` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dimension(MemorySegment segment, long index, int value) { VH_dimension.set(segment, 0L, index, value); }
+    public static void dimension(MemorySegment segment, long index, int value) { VH_dimension.get().set(segment, 0L, index, value); }
     /// Sets `dimension` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoAR
     /// {@return `zeroCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int zeroCount(MemorySegment segment, long index) { return (int) VH_zeroCount.get(segment, 0L, index); }
+    public static int zeroCount(MemorySegment segment, long index) { return (int) VH_zeroCount.get().get(segment, 0L, index); }
     /// {@return `zeroCount`}
     public int zeroCount() { return zeroCount(this.segment(), 0L); }
     /// Sets `zeroCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void zeroCount(MemorySegment segment, long index, int value) { VH_zeroCount.set(segment, 0L, index, value); }
+    public static void zeroCount(MemorySegment segment, long index, int value) { VH_zeroCount.get().set(segment, 0L, index, value); }
     /// Sets `zeroCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoAR
     /// {@return `groupSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int groupSize(MemorySegment segment, long index) { return (int) VH_groupSize.get(segment, 0L, index); }
+    public static int groupSize(MemorySegment segment, long index) { return (int) VH_groupSize.get().get(segment, 0L, index); }
     /// {@return `groupSize`}
     public int groupSize() { return groupSize(this.segment(), 0L); }
     /// Sets `groupSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void groupSize(MemorySegment segment, long index, int value) { VH_groupSize.set(segment, 0L, index, value); }
+    public static void groupSize(MemorySegment segment, long index, int value) { VH_groupSize.get().set(segment, 0L, index, value); }
     /// Sets `groupSize` with the given value.
     /// @param value the value
     /// @return `this`

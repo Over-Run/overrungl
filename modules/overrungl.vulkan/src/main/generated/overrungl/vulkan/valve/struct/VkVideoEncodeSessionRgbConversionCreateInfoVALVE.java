@@ -37,37 +37,37 @@ public final class VkVideoEncodeSessionRgbConversionCreateInfoVALVE extends Grou
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `rgbModel`.
     public static final long OFFSET_rgbModel = LAYOUT.byteOffset(PathElement.groupElement("rgbModel"));
     /// The memory layout of `rgbModel`.
     public static final MemoryLayout LAYOUT_rgbModel = LAYOUT.select(PathElement.groupElement("rgbModel"));
     /// The [VarHandle] of `rgbModel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rgbModel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rgbModel"));
+    public static final Supplier<VarHandle> VH_rgbModel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rgbModel")));
     /// The byte offset of `rgbRange`.
     public static final long OFFSET_rgbRange = LAYOUT.byteOffset(PathElement.groupElement("rgbRange"));
     /// The memory layout of `rgbRange`.
     public static final MemoryLayout LAYOUT_rgbRange = LAYOUT.select(PathElement.groupElement("rgbRange"));
     /// The [VarHandle] of `rgbRange` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rgbRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rgbRange"));
+    public static final Supplier<VarHandle> VH_rgbRange = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rgbRange")));
     /// The byte offset of `xChromaOffset`.
     public static final long OFFSET_xChromaOffset = LAYOUT.byteOffset(PathElement.groupElement("xChromaOffset"));
     /// The memory layout of `xChromaOffset`.
     public static final MemoryLayout LAYOUT_xChromaOffset = LAYOUT.select(PathElement.groupElement("xChromaOffset"));
     /// The [VarHandle] of `xChromaOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_xChromaOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xChromaOffset"));
+    public static final Supplier<VarHandle> VH_xChromaOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("xChromaOffset")));
     /// The byte offset of `yChromaOffset`.
     public static final long OFFSET_yChromaOffset = LAYOUT.byteOffset(PathElement.groupElement("yChromaOffset"));
     /// The memory layout of `yChromaOffset`.
     public static final MemoryLayout LAYOUT_yChromaOffset = LAYOUT.select(PathElement.groupElement("yChromaOffset"));
     /// The [VarHandle] of `yChromaOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_yChromaOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("yChromaOffset"));
+    public static final Supplier<VarHandle> VH_yChromaOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("yChromaOffset")));
 
     /// Creates `VkVideoEncodeSessionRgbConversionCreateInfoVALVE` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkVideoEncodeSessionRgbConversionCreateInfoVALVE extends Grou
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkVideoEncodeSessionRgbConversionCreateInfoVALVE extends Grou
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkVideoEncodeSessionRgbConversionCreateInfoVALVE extends Grou
     /// {@return `rgbModel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rgbModel(MemorySegment segment, long index) { return (int) VH_rgbModel.get(segment, 0L, index); }
+    public static int rgbModel(MemorySegment segment, long index) { return (int) VH_rgbModel.get().get(segment, 0L, index); }
     /// {@return `rgbModel`}
     public int rgbModel() { return rgbModel(this.segment(), 0L); }
     /// Sets `rgbModel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rgbModel(MemorySegment segment, long index, int value) { VH_rgbModel.set(segment, 0L, index, value); }
+    public static void rgbModel(MemorySegment segment, long index, int value) { VH_rgbModel.get().set(segment, 0L, index, value); }
     /// Sets `rgbModel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkVideoEncodeSessionRgbConversionCreateInfoVALVE extends Grou
     /// {@return `rgbRange` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rgbRange(MemorySegment segment, long index) { return (int) VH_rgbRange.get(segment, 0L, index); }
+    public static int rgbRange(MemorySegment segment, long index) { return (int) VH_rgbRange.get().get(segment, 0L, index); }
     /// {@return `rgbRange`}
     public int rgbRange() { return rgbRange(this.segment(), 0L); }
     /// Sets `rgbRange` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rgbRange(MemorySegment segment, long index, int value) { VH_rgbRange.set(segment, 0L, index, value); }
+    public static void rgbRange(MemorySegment segment, long index, int value) { VH_rgbRange.get().set(segment, 0L, index, value); }
     /// Sets `rgbRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkVideoEncodeSessionRgbConversionCreateInfoVALVE extends Grou
     /// {@return `xChromaOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int xChromaOffset(MemorySegment segment, long index) { return (int) VH_xChromaOffset.get(segment, 0L, index); }
+    public static int xChromaOffset(MemorySegment segment, long index) { return (int) VH_xChromaOffset.get().get(segment, 0L, index); }
     /// {@return `xChromaOffset`}
     public int xChromaOffset() { return xChromaOffset(this.segment(), 0L); }
     /// Sets `xChromaOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void xChromaOffset(MemorySegment segment, long index, int value) { VH_xChromaOffset.set(segment, 0L, index, value); }
+    public static void xChromaOffset(MemorySegment segment, long index, int value) { VH_xChromaOffset.get().set(segment, 0L, index, value); }
     /// Sets `xChromaOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkVideoEncodeSessionRgbConversionCreateInfoVALVE extends Grou
     /// {@return `yChromaOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int yChromaOffset(MemorySegment segment, long index) { return (int) VH_yChromaOffset.get(segment, 0L, index); }
+    public static int yChromaOffset(MemorySegment segment, long index) { return (int) VH_yChromaOffset.get().get(segment, 0L, index); }
     /// {@return `yChromaOffset`}
     public int yChromaOffset() { return yChromaOffset(this.segment(), 0L); }
     /// Sets `yChromaOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void yChromaOffset(MemorySegment segment, long index, int value) { VH_yChromaOffset.set(segment, 0L, index, value); }
+    public static void yChromaOffset(MemorySegment segment, long index, int value) { VH_yChromaOffset.get().set(segment, 0L, index, value); }
     /// Sets `yChromaOffset` with the given value.
     /// @param value the value
     /// @return `this`

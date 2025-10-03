@@ -31,19 +31,19 @@ public final class VkMicromapTriangleEXT extends GroupType {
     /// The memory layout of `dataOffset`.
     public static final MemoryLayout LAYOUT_dataOffset = LAYOUT.select(PathElement.groupElement("dataOffset"));
     /// The [VarHandle] of `dataOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dataOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataOffset"));
+    public static final Supplier<VarHandle> VH_dataOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataOffset")));
     /// The byte offset of `subdivisionLevel`.
     public static final long OFFSET_subdivisionLevel = LAYOUT.byteOffset(PathElement.groupElement("subdivisionLevel"));
     /// The memory layout of `subdivisionLevel`.
     public static final MemoryLayout LAYOUT_subdivisionLevel = LAYOUT.select(PathElement.groupElement("subdivisionLevel"));
     /// The [VarHandle] of `subdivisionLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subdivisionLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subdivisionLevel"));
+    public static final Supplier<VarHandle> VH_subdivisionLevel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subdivisionLevel")));
     /// The byte offset of `format`.
     public static final long OFFSET_format = LAYOUT.byteOffset(PathElement.groupElement("format"));
     /// The memory layout of `format`.
     public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
     /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
+    public static final Supplier<VarHandle> VH_format = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("format")));
 
     /// Creates `VkMicromapTriangleEXT` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkMicromapTriangleEXT extends GroupType {
     /// {@return `dataOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dataOffset(MemorySegment segment, long index) { return (int) VH_dataOffset.get(segment, 0L, index); }
+    public static int dataOffset(MemorySegment segment, long index) { return (int) VH_dataOffset.get().get(segment, 0L, index); }
     /// {@return `dataOffset`}
     public int dataOffset() { return dataOffset(this.segment(), 0L); }
     /// Sets `dataOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dataOffset(MemorySegment segment, long index, int value) { VH_dataOffset.set(segment, 0L, index, value); }
+    public static void dataOffset(MemorySegment segment, long index, int value) { VH_dataOffset.get().set(segment, 0L, index, value); }
     /// Sets `dataOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkMicromapTriangleEXT extends GroupType {
     /// {@return `subdivisionLevel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short subdivisionLevel(MemorySegment segment, long index) { return (short) VH_subdivisionLevel.get(segment, 0L, index); }
+    public static short subdivisionLevel(MemorySegment segment, long index) { return (short) VH_subdivisionLevel.get().get(segment, 0L, index); }
     /// {@return `subdivisionLevel`}
     public short subdivisionLevel() { return subdivisionLevel(this.segment(), 0L); }
     /// Sets `subdivisionLevel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subdivisionLevel(MemorySegment segment, long index, short value) { VH_subdivisionLevel.set(segment, 0L, index, value); }
+    public static void subdivisionLevel(MemorySegment segment, long index, short value) { VH_subdivisionLevel.get().set(segment, 0L, index, value); }
     /// Sets `subdivisionLevel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkMicromapTriangleEXT extends GroupType {
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short format(MemorySegment segment, long index) { return (short) VH_format.get(segment, 0L, index); }
+    public static short format(MemorySegment segment, long index) { return (short) VH_format.get().get(segment, 0L, index); }
     /// {@return `format`}
     public short format() { return format(this.segment(), 0L); }
     /// Sets `format` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void format(MemorySegment segment, long index, short value) { VH_format.set(segment, 0L, index, value); }
+    public static void format(MemorySegment segment, long index, short value) { VH_format.get().set(segment, 0L, index, value); }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`

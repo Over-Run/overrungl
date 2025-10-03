@@ -31,19 +31,19 @@ public final class VkMemoryRequirements extends GroupType {
     /// The memory layout of `size`.
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final Supplier<VarHandle> VH_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("size")));
     /// The byte offset of `alignment`.
     public static final long OFFSET_alignment = LAYOUT.byteOffset(PathElement.groupElement("alignment"));
     /// The memory layout of `alignment`.
     public static final MemoryLayout LAYOUT_alignment = LAYOUT.select(PathElement.groupElement("alignment"));
     /// The [VarHandle] of `alignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_alignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("alignment"));
+    public static final Supplier<VarHandle> VH_alignment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("alignment")));
     /// The byte offset of `memoryTypeBits`.
     public static final long OFFSET_memoryTypeBits = LAYOUT.byteOffset(PathElement.groupElement("memoryTypeBits"));
     /// The memory layout of `memoryTypeBits`.
     public static final MemoryLayout LAYOUT_memoryTypeBits = LAYOUT.select(PathElement.groupElement("memoryTypeBits"));
     /// The [VarHandle] of `memoryTypeBits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryTypeBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryTypeBits"));
+    public static final Supplier<VarHandle> VH_memoryTypeBits = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryTypeBits")));
 
     /// Creates `VkMemoryRequirements` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkMemoryRequirements extends GroupType {
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long size(MemorySegment segment, long index) { return (long) VH_size.get(segment, 0L, index); }
+    public static long size(MemorySegment segment, long index) { return (long) VH_size.get().get(segment, 0L, index); }
     /// {@return `size`}
     public long size() { return size(this.segment(), 0L); }
     /// Sets `size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void size(MemorySegment segment, long index, long value) { VH_size.set(segment, 0L, index, value); }
+    public static void size(MemorySegment segment, long index, long value) { VH_size.get().set(segment, 0L, index, value); }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkMemoryRequirements extends GroupType {
     /// {@return `alignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long alignment(MemorySegment segment, long index) { return (long) VH_alignment.get(segment, 0L, index); }
+    public static long alignment(MemorySegment segment, long index) { return (long) VH_alignment.get().get(segment, 0L, index); }
     /// {@return `alignment`}
     public long alignment() { return alignment(this.segment(), 0L); }
     /// Sets `alignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void alignment(MemorySegment segment, long index, long value) { VH_alignment.set(segment, 0L, index, value); }
+    public static void alignment(MemorySegment segment, long index, long value) { VH_alignment.get().set(segment, 0L, index, value); }
     /// Sets `alignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkMemoryRequirements extends GroupType {
     /// {@return `memoryTypeBits` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int memoryTypeBits(MemorySegment segment, long index) { return (int) VH_memoryTypeBits.get(segment, 0L, index); }
+    public static int memoryTypeBits(MemorySegment segment, long index) { return (int) VH_memoryTypeBits.get().get(segment, 0L, index); }
     /// {@return `memoryTypeBits`}
     public int memoryTypeBits() { return memoryTypeBits(this.segment(), 0L); }
     /// Sets `memoryTypeBits` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memoryTypeBits(MemorySegment segment, long index, int value) { VH_memoryTypeBits.set(segment, 0L, index, value); }
+    public static void memoryTypeBits(MemorySegment segment, long index, int value) { VH_memoryTypeBits.get().set(segment, 0L, index, value); }
     /// Sets `memoryTypeBits` with the given value.
     /// @param value the value
     /// @return `this`

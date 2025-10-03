@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,12 +11,12 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLARBInvalidateSubdata {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glInvalidateTexSubImage = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glInvalidateTexImage = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glInvalidateBufferSubData = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glInvalidateBufferData = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glInvalidateFramebuffer = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glInvalidateSubFramebuffer = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glInvalidateTexSubImage = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glInvalidateTexImage = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glInvalidateBufferSubData = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glInvalidateBufferData = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glInvalidateFramebuffer = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glInvalidateSubFramebuffer = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glInvalidateTexSubImage;
         public final MemorySegment PFN_glInvalidateTexImage;
         public final MemorySegment PFN_glInvalidateBufferSubData;
@@ -43,7 +44,7 @@ public final class GLARBInvalidateSubdata {
     public void InvalidateTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateTexSubImage)) throw new GLSymbolNotFoundError("Symbol not found: glInvalidateTexSubImage");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInvalidateTexSubImage", texture, level, xoffset, yoffset, zoffset, width, height, depth); }
-        Handles.MH_glInvalidateTexSubImage.invokeExact(handles.PFN_glInvalidateTexSubImage, texture, level, xoffset, yoffset, zoffset, width, height, depth); }
+        Handles.MH_glInvalidateTexSubImage.get().invokeExact(handles.PFN_glInvalidateTexSubImage, texture, level, xoffset, yoffset, zoffset, width, height, depth); }
         catch (Throwable e) { throw new RuntimeException("error in InvalidateTexSubImage", e); }
     }
 
@@ -54,7 +55,7 @@ public final class GLARBInvalidateSubdata {
     public void InvalidateTexImage(int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateTexImage)) throw new GLSymbolNotFoundError("Symbol not found: glInvalidateTexImage");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInvalidateTexImage", texture, level); }
-        Handles.MH_glInvalidateTexImage.invokeExact(handles.PFN_glInvalidateTexImage, texture, level); }
+        Handles.MH_glInvalidateTexImage.get().invokeExact(handles.PFN_glInvalidateTexImage, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in InvalidateTexImage", e); }
     }
 
@@ -65,7 +66,7 @@ public final class GLARBInvalidateSubdata {
     public void InvalidateBufferSubData(int buffer, long offset, long length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateBufferSubData)) throw new GLSymbolNotFoundError("Symbol not found: glInvalidateBufferSubData");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInvalidateBufferSubData", buffer, offset, length); }
-        Handles.MH_glInvalidateBufferSubData.invokeExact(handles.PFN_glInvalidateBufferSubData, buffer, offset, length); }
+        Handles.MH_glInvalidateBufferSubData.get().invokeExact(handles.PFN_glInvalidateBufferSubData, buffer, offset, length); }
         catch (Throwable e) { throw new RuntimeException("error in InvalidateBufferSubData", e); }
     }
 
@@ -76,7 +77,7 @@ public final class GLARBInvalidateSubdata {
     public void InvalidateBufferData(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateBufferData)) throw new GLSymbolNotFoundError("Symbol not found: glInvalidateBufferData");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInvalidateBufferData", buffer); }
-        Handles.MH_glInvalidateBufferData.invokeExact(handles.PFN_glInvalidateBufferData, buffer); }
+        Handles.MH_glInvalidateBufferData.get().invokeExact(handles.PFN_glInvalidateBufferData, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in InvalidateBufferData", e); }
     }
 
@@ -87,7 +88,7 @@ public final class GLARBInvalidateSubdata {
     public void InvalidateFramebuffer(int target, int numAttachments, @NonNull MemorySegment attachments) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateFramebuffer)) throw new GLSymbolNotFoundError("Symbol not found: glInvalidateFramebuffer");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInvalidateFramebuffer", target, numAttachments, attachments); }
-        Handles.MH_glInvalidateFramebuffer.invokeExact(handles.PFN_glInvalidateFramebuffer, target, numAttachments, attachments); }
+        Handles.MH_glInvalidateFramebuffer.get().invokeExact(handles.PFN_glInvalidateFramebuffer, target, numAttachments, attachments); }
         catch (Throwable e) { throw new RuntimeException("error in InvalidateFramebuffer", e); }
     }
 
@@ -98,7 +99,7 @@ public final class GLARBInvalidateSubdata {
     public void InvalidateSubFramebuffer(int target, int numAttachments, @NonNull MemorySegment attachments, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateSubFramebuffer)) throw new GLSymbolNotFoundError("Symbol not found: glInvalidateSubFramebuffer");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInvalidateSubFramebuffer", target, numAttachments, attachments, x, y, width, height); }
-        Handles.MH_glInvalidateSubFramebuffer.invokeExact(handles.PFN_glInvalidateSubFramebuffer, target, numAttachments, attachments, x, y, width, height); }
+        Handles.MH_glInvalidateSubFramebuffer.get().invokeExact(handles.PFN_glInvalidateSubFramebuffer, target, numAttachments, attachments, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in InvalidateSubFramebuffer", e); }
     }
 

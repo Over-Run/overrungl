@@ -37,37 +37,37 @@ public final class VkVideoEncodeH264GopRemainingFrameInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `useGopRemainingFrames`.
     public static final long OFFSET_useGopRemainingFrames = LAYOUT.byteOffset(PathElement.groupElement("useGopRemainingFrames"));
     /// The memory layout of `useGopRemainingFrames`.
     public static final MemoryLayout LAYOUT_useGopRemainingFrames = LAYOUT.select(PathElement.groupElement("useGopRemainingFrames"));
     /// The [VarHandle] of `useGopRemainingFrames` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_useGopRemainingFrames = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useGopRemainingFrames"));
+    public static final Supplier<VarHandle> VH_useGopRemainingFrames = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("useGopRemainingFrames")));
     /// The byte offset of `gopRemainingI`.
     public static final long OFFSET_gopRemainingI = LAYOUT.byteOffset(PathElement.groupElement("gopRemainingI"));
     /// The memory layout of `gopRemainingI`.
     public static final MemoryLayout LAYOUT_gopRemainingI = LAYOUT.select(PathElement.groupElement("gopRemainingI"));
     /// The [VarHandle] of `gopRemainingI` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_gopRemainingI = LAYOUT.arrayElementVarHandle(PathElement.groupElement("gopRemainingI"));
+    public static final Supplier<VarHandle> VH_gopRemainingI = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("gopRemainingI")));
     /// The byte offset of `gopRemainingP`.
     public static final long OFFSET_gopRemainingP = LAYOUT.byteOffset(PathElement.groupElement("gopRemainingP"));
     /// The memory layout of `gopRemainingP`.
     public static final MemoryLayout LAYOUT_gopRemainingP = LAYOUT.select(PathElement.groupElement("gopRemainingP"));
     /// The [VarHandle] of `gopRemainingP` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_gopRemainingP = LAYOUT.arrayElementVarHandle(PathElement.groupElement("gopRemainingP"));
+    public static final Supplier<VarHandle> VH_gopRemainingP = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("gopRemainingP")));
     /// The byte offset of `gopRemainingB`.
     public static final long OFFSET_gopRemainingB = LAYOUT.byteOffset(PathElement.groupElement("gopRemainingB"));
     /// The memory layout of `gopRemainingB`.
     public static final MemoryLayout LAYOUT_gopRemainingB = LAYOUT.select(PathElement.groupElement("gopRemainingB"));
     /// The [VarHandle] of `gopRemainingB` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_gopRemainingB = LAYOUT.arrayElementVarHandle(PathElement.groupElement("gopRemainingB"));
+    public static final Supplier<VarHandle> VH_gopRemainingB = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("gopRemainingB")));
 
     /// Creates `VkVideoEncodeH264GopRemainingFrameInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkVideoEncodeH264GopRemainingFrameInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkVideoEncodeH264GopRemainingFrameInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkVideoEncodeH264GopRemainingFrameInfoKHR extends GroupType {
     /// {@return `useGopRemainingFrames` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int useGopRemainingFrames(MemorySegment segment, long index) { return (int) VH_useGopRemainingFrames.get(segment, 0L, index); }
+    public static int useGopRemainingFrames(MemorySegment segment, long index) { return (int) VH_useGopRemainingFrames.get().get(segment, 0L, index); }
     /// {@return `useGopRemainingFrames`}
     public int useGopRemainingFrames() { return useGopRemainingFrames(this.segment(), 0L); }
     /// Sets `useGopRemainingFrames` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void useGopRemainingFrames(MemorySegment segment, long index, int value) { VH_useGopRemainingFrames.set(segment, 0L, index, value); }
+    public static void useGopRemainingFrames(MemorySegment segment, long index, int value) { VH_useGopRemainingFrames.get().set(segment, 0L, index, value); }
     /// Sets `useGopRemainingFrames` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkVideoEncodeH264GopRemainingFrameInfoKHR extends GroupType {
     /// {@return `gopRemainingI` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int gopRemainingI(MemorySegment segment, long index) { return (int) VH_gopRemainingI.get(segment, 0L, index); }
+    public static int gopRemainingI(MemorySegment segment, long index) { return (int) VH_gopRemainingI.get().get(segment, 0L, index); }
     /// {@return `gopRemainingI`}
     public int gopRemainingI() { return gopRemainingI(this.segment(), 0L); }
     /// Sets `gopRemainingI` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void gopRemainingI(MemorySegment segment, long index, int value) { VH_gopRemainingI.set(segment, 0L, index, value); }
+    public static void gopRemainingI(MemorySegment segment, long index, int value) { VH_gopRemainingI.get().set(segment, 0L, index, value); }
     /// Sets `gopRemainingI` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkVideoEncodeH264GopRemainingFrameInfoKHR extends GroupType {
     /// {@return `gopRemainingP` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int gopRemainingP(MemorySegment segment, long index) { return (int) VH_gopRemainingP.get(segment, 0L, index); }
+    public static int gopRemainingP(MemorySegment segment, long index) { return (int) VH_gopRemainingP.get().get(segment, 0L, index); }
     /// {@return `gopRemainingP`}
     public int gopRemainingP() { return gopRemainingP(this.segment(), 0L); }
     /// Sets `gopRemainingP` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void gopRemainingP(MemorySegment segment, long index, int value) { VH_gopRemainingP.set(segment, 0L, index, value); }
+    public static void gopRemainingP(MemorySegment segment, long index, int value) { VH_gopRemainingP.get().set(segment, 0L, index, value); }
     /// Sets `gopRemainingP` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkVideoEncodeH264GopRemainingFrameInfoKHR extends GroupType {
     /// {@return `gopRemainingB` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int gopRemainingB(MemorySegment segment, long index) { return (int) VH_gopRemainingB.get(segment, 0L, index); }
+    public static int gopRemainingB(MemorySegment segment, long index) { return (int) VH_gopRemainingB.get().get(segment, 0L, index); }
     /// {@return `gopRemainingB`}
     public int gopRemainingB() { return gopRemainingB(this.segment(), 0L); }
     /// Sets `gopRemainingB` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void gopRemainingB(MemorySegment segment, long index, int value) { VH_gopRemainingB.set(segment, 0L, index, value); }
+    public static void gopRemainingB(MemorySegment segment, long index, int value) { VH_gopRemainingB.get().set(segment, 0L, index, value); }
     /// Sets `gopRemainingB` with the given value.
     /// @param value the value
     /// @return `this`

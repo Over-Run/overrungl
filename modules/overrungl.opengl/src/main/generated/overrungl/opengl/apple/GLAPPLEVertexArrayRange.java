@@ -2,6 +2,7 @@
 package overrungl.opengl.apple;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -17,9 +18,9 @@ public final class GLAPPLEVertexArrayRange {
     public static final int GL_STORAGE_SHARED_APPLE = 0x85BF;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glVertexArrayRangeAPPLE = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glFlushVertexArrayRangeAPPLE = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexArrayParameteriAPPLE = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glVertexArrayRangeAPPLE = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glFlushVertexArrayRangeAPPLE = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayParameteriAPPLE = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glVertexArrayRangeAPPLE;
         public final MemorySegment PFN_glFlushVertexArrayRangeAPPLE;
         public final MemorySegment PFN_glVertexArrayParameteriAPPLE;
@@ -41,7 +42,7 @@ public final class GLAPPLEVertexArrayRange {
     public void VertexArrayRangeAPPLE(int length, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayRangeAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayRangeAPPLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayRangeAPPLE", length, pointer); }
-        Handles.MH_glVertexArrayRangeAPPLE.invokeExact(handles.PFN_glVertexArrayRangeAPPLE, length, pointer); }
+        Handles.MH_glVertexArrayRangeAPPLE.get().invokeExact(handles.PFN_glVertexArrayRangeAPPLE, length, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayRangeAPPLE", e); }
     }
 
@@ -52,7 +53,7 @@ public final class GLAPPLEVertexArrayRange {
     public void FlushVertexArrayRangeAPPLE(int length, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushVertexArrayRangeAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glFlushVertexArrayRangeAPPLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFlushVertexArrayRangeAPPLE", length, pointer); }
-        Handles.MH_glFlushVertexArrayRangeAPPLE.invokeExact(handles.PFN_glFlushVertexArrayRangeAPPLE, length, pointer); }
+        Handles.MH_glFlushVertexArrayRangeAPPLE.get().invokeExact(handles.PFN_glFlushVertexArrayRangeAPPLE, length, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in FlushVertexArrayRangeAPPLE", e); }
     }
 
@@ -63,7 +64,7 @@ public final class GLAPPLEVertexArrayRange {
     public void VertexArrayParameteriAPPLE(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayParameteriAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayParameteriAPPLE");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayParameteriAPPLE", pname, param); }
-        Handles.MH_glVertexArrayParameteriAPPLE.invokeExact(handles.PFN_glVertexArrayParameteriAPPLE, pname, param); }
+        Handles.MH_glVertexArrayParameteriAPPLE.get().invokeExact(handles.PFN_glVertexArrayParameteriAPPLE, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayParameteriAPPLE", e); }
     }
 

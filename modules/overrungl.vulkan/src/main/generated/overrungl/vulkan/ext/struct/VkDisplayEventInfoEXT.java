@@ -31,19 +31,19 @@ public final class VkDisplayEventInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `displayEvent`.
     public static final long OFFSET_displayEvent = LAYOUT.byteOffset(PathElement.groupElement("displayEvent"));
     /// The memory layout of `displayEvent`.
     public static final MemoryLayout LAYOUT_displayEvent = LAYOUT.select(PathElement.groupElement("displayEvent"));
     /// The [VarHandle] of `displayEvent` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_displayEvent = LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayEvent"));
+    public static final Supplier<VarHandle> VH_displayEvent = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayEvent")));
 
     /// Creates `VkDisplayEventInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkDisplayEventInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkDisplayEventInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDisplayEventInfoEXT extends GroupType {
     /// {@return `displayEvent` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int displayEvent(MemorySegment segment, long index) { return (int) VH_displayEvent.get(segment, 0L, index); }
+    public static int displayEvent(MemorySegment segment, long index) { return (int) VH_displayEvent.get().get(segment, 0L, index); }
     /// {@return `displayEvent`}
     public int displayEvent() { return displayEvent(this.segment(), 0L); }
     /// Sets `displayEvent` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void displayEvent(MemorySegment segment, long index, int value) { VH_displayEvent.set(segment, 0L, index, value); }
+    public static void displayEvent(MemorySegment segment, long index, int value) { VH_displayEvent.get().set(segment, 0L, index, value); }
     /// Sets `displayEvent` with the given value.
     /// @param value the value
     /// @return `this`

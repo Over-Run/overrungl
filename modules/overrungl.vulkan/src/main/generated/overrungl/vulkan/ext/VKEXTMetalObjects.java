@@ -2,6 +2,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -29,7 +30,7 @@ public final class VKEXTMetalObjects {
     public static final int VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT = 1000311010;
     public static final int VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT = 1000311011;
     public static final class Handles {
-        public static final MethodHandle MH_vkExportMetalObjectsEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkExportMetalObjectsEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -42,7 +43,7 @@ public final class VKEXTMetalObjects {
     public static void vkExportMetalObjectsEXT(@NonNull VkDevice device, @NonNull MemorySegment pMetalObjectsInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkExportMetalObjectsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkExportMetalObjectsEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkExportMetalObjectsEXT", device, pMetalObjectsInfo); }
-        Handles.MH_vkExportMetalObjectsEXT.invokeExact(device.capabilities().PFN_vkExportMetalObjectsEXT, device.segment(), pMetalObjectsInfo); }
+        Handles.MH_vkExportMetalObjectsEXT.get().invokeExact(device.capabilities().PFN_vkExportMetalObjectsEXT, device.segment(), pMetalObjectsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkExportMetalObjectsEXT", e); }
     }
 

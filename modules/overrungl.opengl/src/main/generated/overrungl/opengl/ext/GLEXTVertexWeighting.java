@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -23,9 +24,9 @@ public final class GLEXTVertexWeighting {
     public static final int GL_VERTEX_WEIGHT_ARRAY_POINTER_EXT = 0x8510;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glVertexWeightfEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glVertexWeightfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexWeightPointerEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glVertexWeightfEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glVertexWeightfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glVertexWeightPointerEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glVertexWeightfEXT;
         public final MemorySegment PFN_glVertexWeightfvEXT;
         public final MemorySegment PFN_glVertexWeightPointerEXT;
@@ -47,7 +48,7 @@ public final class GLEXTVertexWeighting {
     public void VertexWeightfEXT(float weight) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexWeightfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexWeightfEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexWeightfEXT", weight); }
-        Handles.MH_glVertexWeightfEXT.invokeExact(handles.PFN_glVertexWeightfEXT, weight); }
+        Handles.MH_glVertexWeightfEXT.get().invokeExact(handles.PFN_glVertexWeightfEXT, weight); }
         catch (Throwable e) { throw new RuntimeException("error in VertexWeightfEXT", e); }
     }
 
@@ -58,7 +59,7 @@ public final class GLEXTVertexWeighting {
     public void VertexWeightfvEXT(@NonNull MemorySegment weight) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexWeightfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexWeightfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexWeightfvEXT", weight); }
-        Handles.MH_glVertexWeightfvEXT.invokeExact(handles.PFN_glVertexWeightfvEXT, weight); }
+        Handles.MH_glVertexWeightfvEXT.get().invokeExact(handles.PFN_glVertexWeightfvEXT, weight); }
         catch (Throwable e) { throw new RuntimeException("error in VertexWeightfvEXT", e); }
     }
 
@@ -69,7 +70,7 @@ public final class GLEXTVertexWeighting {
     public void VertexWeightPointerEXT(int size, int type, int stride, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexWeightPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexWeightPointerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexWeightPointerEXT", size, type, stride, pointer); }
-        Handles.MH_glVertexWeightPointerEXT.invokeExact(handles.PFN_glVertexWeightPointerEXT, size, type, stride, pointer); }
+        Handles.MH_glVertexWeightPointerEXT.get().invokeExact(handles.PFN_glVertexWeightPointerEXT, size, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in VertexWeightPointerEXT", e); }
     }
 

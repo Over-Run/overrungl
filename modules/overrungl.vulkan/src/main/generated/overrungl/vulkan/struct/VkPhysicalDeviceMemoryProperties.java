@@ -33,7 +33,7 @@ public final class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// The memory layout of `memoryTypeCount`.
     public static final MemoryLayout LAYOUT_memoryTypeCount = LAYOUT.select(PathElement.groupElement("memoryTypeCount"));
     /// The [VarHandle] of `memoryTypeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryTypeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryTypeCount"));
+    public static final Supplier<VarHandle> VH_memoryTypeCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryTypeCount")));
     /// The byte offset of `memoryTypes`.
     public static final long OFFSET_memoryTypes = LAYOUT.byteOffset(PathElement.groupElement("memoryTypes"));
     /// The memory layout of `memoryTypes`.
@@ -43,7 +43,7 @@ public final class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// The memory layout of `memoryHeapCount`.
     public static final MemoryLayout LAYOUT_memoryHeapCount = LAYOUT.select(PathElement.groupElement("memoryHeapCount"));
     /// The [VarHandle] of `memoryHeapCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryHeapCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryHeapCount"));
+    public static final Supplier<VarHandle> VH_memoryHeapCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryHeapCount")));
     /// The byte offset of `memoryHeaps`.
     public static final long OFFSET_memoryHeaps = LAYOUT.byteOffset(PathElement.groupElement("memoryHeaps"));
     /// The memory layout of `memoryHeaps`.
@@ -98,14 +98,14 @@ public final class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// {@return `memoryTypeCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int memoryTypeCount(MemorySegment segment, long index) { return (int) VH_memoryTypeCount.get(segment, 0L, index); }
+    public static int memoryTypeCount(MemorySegment segment, long index) { return (int) VH_memoryTypeCount.get().get(segment, 0L, index); }
     /// {@return `memoryTypeCount`}
     public int memoryTypeCount() { return memoryTypeCount(this.segment(), 0L); }
     /// Sets `memoryTypeCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memoryTypeCount(MemorySegment segment, long index, int value) { VH_memoryTypeCount.set(segment, 0L, index, value); }
+    public static void memoryTypeCount(MemorySegment segment, long index, int value) { VH_memoryTypeCount.get().set(segment, 0L, index, value); }
     /// Sets `memoryTypeCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// {@return `memoryHeapCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int memoryHeapCount(MemorySegment segment, long index) { return (int) VH_memoryHeapCount.get(segment, 0L, index); }
+    public static int memoryHeapCount(MemorySegment segment, long index) { return (int) VH_memoryHeapCount.get().get(segment, 0L, index); }
     /// {@return `memoryHeapCount`}
     public int memoryHeapCount() { return memoryHeapCount(this.segment(), 0L); }
     /// Sets `memoryHeapCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memoryHeapCount(MemorySegment segment, long index, int value) { VH_memoryHeapCount.set(segment, 0L, index, value); }
+    public static void memoryHeapCount(MemorySegment segment, long index, int value) { VH_memoryHeapCount.get().set(segment, 0L, index, value); }
     /// Sets `memoryHeapCount` with the given value.
     /// @param value the value
     /// @return `this`

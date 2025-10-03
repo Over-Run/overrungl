@@ -37,37 +37,37 @@ public final class VkPerformanceCounterKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `unit`.
     public static final long OFFSET_unit = LAYOUT.byteOffset(PathElement.groupElement("unit"));
     /// The memory layout of `unit`.
     public static final MemoryLayout LAYOUT_unit = LAYOUT.select(PathElement.groupElement("unit"));
     /// The [VarHandle] of `unit` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_unit = LAYOUT.arrayElementVarHandle(PathElement.groupElement("unit"));
+    public static final Supplier<VarHandle> VH_unit = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("unit")));
     /// The byte offset of `scope`.
     public static final long OFFSET_scope = LAYOUT.byteOffset(PathElement.groupElement("scope"));
     /// The memory layout of `scope`.
     public static final MemoryLayout LAYOUT_scope = LAYOUT.select(PathElement.groupElement("scope"));
     /// The [VarHandle] of `scope` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_scope = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scope"));
+    public static final Supplier<VarHandle> VH_scope = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("scope")));
     /// The byte offset of `storage`.
     public static final long OFFSET_storage = LAYOUT.byteOffset(PathElement.groupElement("storage"));
     /// The memory layout of `storage`.
     public static final MemoryLayout LAYOUT_storage = LAYOUT.select(PathElement.groupElement("storage"));
     /// The [VarHandle] of `storage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storage"));
+    public static final Supplier<VarHandle> VH_storage = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storage")));
     /// The byte offset of `uuid`.
     public static final long OFFSET_uuid = LAYOUT.byteOffset(PathElement.groupElement("uuid"));
     /// The memory layout of `uuid`.
     public static final MemoryLayout LAYOUT_uuid = LAYOUT.select(PathElement.groupElement("uuid"));
     /// The [VarHandle] of `uuid` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_uuid = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uuid"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_uuid = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("uuid"), PathElement.sequenceElement()));
 
     /// Creates `VkPerformanceCounterKHR` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPerformanceCounterKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPerformanceCounterKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPerformanceCounterKHR extends GroupType {
     /// {@return `unit` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int unit(MemorySegment segment, long index) { return (int) VH_unit.get(segment, 0L, index); }
+    public static int unit(MemorySegment segment, long index) { return (int) VH_unit.get().get(segment, 0L, index); }
     /// {@return `unit`}
     public int unit() { return unit(this.segment(), 0L); }
     /// Sets `unit` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void unit(MemorySegment segment, long index, int value) { VH_unit.set(segment, 0L, index, value); }
+    public static void unit(MemorySegment segment, long index, int value) { VH_unit.get().set(segment, 0L, index, value); }
     /// Sets `unit` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPerformanceCounterKHR extends GroupType {
     /// {@return `scope` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int scope(MemorySegment segment, long index) { return (int) VH_scope.get(segment, 0L, index); }
+    public static int scope(MemorySegment segment, long index) { return (int) VH_scope.get().get(segment, 0L, index); }
     /// {@return `scope`}
     public int scope() { return scope(this.segment(), 0L); }
     /// Sets `scope` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void scope(MemorySegment segment, long index, int value) { VH_scope.set(segment, 0L, index, value); }
+    public static void scope(MemorySegment segment, long index, int value) { VH_scope.get().set(segment, 0L, index, value); }
     /// Sets `scope` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPerformanceCounterKHR extends GroupType {
     /// {@return `storage` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int storage(MemorySegment segment, long index) { return (int) VH_storage.get(segment, 0L, index); }
+    public static int storage(MemorySegment segment, long index) { return (int) VH_storage.get().get(segment, 0L, index); }
     /// {@return `storage`}
     public int storage() { return storage(this.segment(), 0L); }
     /// Sets `storage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storage(MemorySegment segment, long index, int value) { VH_storage.set(segment, 0L, index, value); }
+    public static void storage(MemorySegment segment, long index, int value) { VH_storage.get().set(segment, 0L, index, value); }
     /// Sets `storage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -203,7 +203,7 @@ public final class VkPerformanceCounterKHR extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte uuid(MemorySegment segment, long index, long index0) { return (byte) VH_uuid.get(segment, 0L, index, index0); }
+    public static byte uuid(MemorySegment segment, long index, long index0) { return (byte) VH_uuid.get().get(segment, 0L, index, index0); }
     /// {@return `uuid`}
     public MemorySegment uuid() { return uuid(this.segment(), 0L); }
     /// {@return `uuid`}
@@ -219,7 +219,7 @@ public final class VkPerformanceCounterKHR extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void uuid(MemorySegment segment, long index, long index0, byte value) { VH_uuid.set(segment, 0L, index, index0, value); }
+    public static void uuid(MemorySegment segment, long index, long index0, byte value) { VH_uuid.get().set(segment, 0L, index, index0, value); }
     /// Sets `uuid` with the given value.
     /// @param value the value
     /// @return `this`

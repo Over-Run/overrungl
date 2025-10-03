@@ -41,49 +41,49 @@ public final class VkCooperativeVectorPropertiesNV extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `inputType`.
     public static final long OFFSET_inputType = LAYOUT.byteOffset(PathElement.groupElement("inputType"));
     /// The memory layout of `inputType`.
     public static final MemoryLayout LAYOUT_inputType = LAYOUT.select(PathElement.groupElement("inputType"));
     /// The [VarHandle] of `inputType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_inputType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("inputType"));
+    public static final Supplier<VarHandle> VH_inputType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("inputType")));
     /// The byte offset of `inputInterpretation`.
     public static final long OFFSET_inputInterpretation = LAYOUT.byteOffset(PathElement.groupElement("inputInterpretation"));
     /// The memory layout of `inputInterpretation`.
     public static final MemoryLayout LAYOUT_inputInterpretation = LAYOUT.select(PathElement.groupElement("inputInterpretation"));
     /// The [VarHandle] of `inputInterpretation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_inputInterpretation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("inputInterpretation"));
+    public static final Supplier<VarHandle> VH_inputInterpretation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("inputInterpretation")));
     /// The byte offset of `matrixInterpretation`.
     public static final long OFFSET_matrixInterpretation = LAYOUT.byteOffset(PathElement.groupElement("matrixInterpretation"));
     /// The memory layout of `matrixInterpretation`.
     public static final MemoryLayout LAYOUT_matrixInterpretation = LAYOUT.select(PathElement.groupElement("matrixInterpretation"));
     /// The [VarHandle] of `matrixInterpretation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_matrixInterpretation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("matrixInterpretation"));
+    public static final Supplier<VarHandle> VH_matrixInterpretation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("matrixInterpretation")));
     /// The byte offset of `biasInterpretation`.
     public static final long OFFSET_biasInterpretation = LAYOUT.byteOffset(PathElement.groupElement("biasInterpretation"));
     /// The memory layout of `biasInterpretation`.
     public static final MemoryLayout LAYOUT_biasInterpretation = LAYOUT.select(PathElement.groupElement("biasInterpretation"));
     /// The [VarHandle] of `biasInterpretation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_biasInterpretation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("biasInterpretation"));
+    public static final Supplier<VarHandle> VH_biasInterpretation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("biasInterpretation")));
     /// The byte offset of `resultType`.
     public static final long OFFSET_resultType = LAYOUT.byteOffset(PathElement.groupElement("resultType"));
     /// The memory layout of `resultType`.
     public static final MemoryLayout LAYOUT_resultType = LAYOUT.select(PathElement.groupElement("resultType"));
     /// The [VarHandle] of `resultType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_resultType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resultType"));
+    public static final Supplier<VarHandle> VH_resultType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("resultType")));
     /// The byte offset of `transpose`.
     public static final long OFFSET_transpose = LAYOUT.byteOffset(PathElement.groupElement("transpose"));
     /// The memory layout of `transpose`.
     public static final MemoryLayout LAYOUT_transpose = LAYOUT.select(PathElement.groupElement("transpose"));
     /// The [VarHandle] of `transpose` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_transpose = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transpose"));
+    public static final Supplier<VarHandle> VH_transpose = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("transpose")));
 
     /// Creates `VkCooperativeVectorPropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkCooperativeVectorPropertiesNV extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkCooperativeVectorPropertiesNV extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkCooperativeVectorPropertiesNV extends GroupType {
     /// {@return `inputType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int inputType(MemorySegment segment, long index) { return (int) VH_inputType.get(segment, 0L, index); }
+    public static int inputType(MemorySegment segment, long index) { return (int) VH_inputType.get().get(segment, 0L, index); }
     /// {@return `inputType`}
     public int inputType() { return inputType(this.segment(), 0L); }
     /// Sets `inputType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void inputType(MemorySegment segment, long index, int value) { VH_inputType.set(segment, 0L, index, value); }
+    public static void inputType(MemorySegment segment, long index, int value) { VH_inputType.get().set(segment, 0L, index, value); }
     /// Sets `inputType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkCooperativeVectorPropertiesNV extends GroupType {
     /// {@return `inputInterpretation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int inputInterpretation(MemorySegment segment, long index) { return (int) VH_inputInterpretation.get(segment, 0L, index); }
+    public static int inputInterpretation(MemorySegment segment, long index) { return (int) VH_inputInterpretation.get().get(segment, 0L, index); }
     /// {@return `inputInterpretation`}
     public int inputInterpretation() { return inputInterpretation(this.segment(), 0L); }
     /// Sets `inputInterpretation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void inputInterpretation(MemorySegment segment, long index, int value) { VH_inputInterpretation.set(segment, 0L, index, value); }
+    public static void inputInterpretation(MemorySegment segment, long index, int value) { VH_inputInterpretation.get().set(segment, 0L, index, value); }
     /// Sets `inputInterpretation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkCooperativeVectorPropertiesNV extends GroupType {
     /// {@return `matrixInterpretation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int matrixInterpretation(MemorySegment segment, long index) { return (int) VH_matrixInterpretation.get(segment, 0L, index); }
+    public static int matrixInterpretation(MemorySegment segment, long index) { return (int) VH_matrixInterpretation.get().get(segment, 0L, index); }
     /// {@return `matrixInterpretation`}
     public int matrixInterpretation() { return matrixInterpretation(this.segment(), 0L); }
     /// Sets `matrixInterpretation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void matrixInterpretation(MemorySegment segment, long index, int value) { VH_matrixInterpretation.set(segment, 0L, index, value); }
+    public static void matrixInterpretation(MemorySegment segment, long index, int value) { VH_matrixInterpretation.get().set(segment, 0L, index, value); }
     /// Sets `matrixInterpretation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkCooperativeVectorPropertiesNV extends GroupType {
     /// {@return `biasInterpretation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int biasInterpretation(MemorySegment segment, long index) { return (int) VH_biasInterpretation.get(segment, 0L, index); }
+    public static int biasInterpretation(MemorySegment segment, long index) { return (int) VH_biasInterpretation.get().get(segment, 0L, index); }
     /// {@return `biasInterpretation`}
     public int biasInterpretation() { return biasInterpretation(this.segment(), 0L); }
     /// Sets `biasInterpretation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void biasInterpretation(MemorySegment segment, long index, int value) { VH_biasInterpretation.set(segment, 0L, index, value); }
+    public static void biasInterpretation(MemorySegment segment, long index, int value) { VH_biasInterpretation.get().set(segment, 0L, index, value); }
     /// Sets `biasInterpretation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkCooperativeVectorPropertiesNV extends GroupType {
     /// {@return `resultType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int resultType(MemorySegment segment, long index) { return (int) VH_resultType.get(segment, 0L, index); }
+    public static int resultType(MemorySegment segment, long index) { return (int) VH_resultType.get().get(segment, 0L, index); }
     /// {@return `resultType`}
     public int resultType() { return resultType(this.segment(), 0L); }
     /// Sets `resultType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void resultType(MemorySegment segment, long index, int value) { VH_resultType.set(segment, 0L, index, value); }
+    public static void resultType(MemorySegment segment, long index, int value) { VH_resultType.get().set(segment, 0L, index, value); }
     /// Sets `resultType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkCooperativeVectorPropertiesNV extends GroupType {
     /// {@return `transpose` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int transpose(MemorySegment segment, long index) { return (int) VH_transpose.get(segment, 0L, index); }
+    public static int transpose(MemorySegment segment, long index) { return (int) VH_transpose.get().get(segment, 0L, index); }
     /// {@return `transpose`}
     public int transpose() { return transpose(this.segment(), 0L); }
     /// Sets `transpose` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void transpose(MemorySegment segment, long index, int value) { VH_transpose.set(segment, 0L, index, value); }
+    public static void transpose(MemorySegment segment, long index, int value) { VH_transpose.get().set(segment, 0L, index, value); }
     /// Sets `transpose` with the given value.
     /// @param value the value
     /// @return `this`

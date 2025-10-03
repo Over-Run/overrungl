@@ -59,13 +59,13 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// The memory layout of `clusterID`.
     public static final MemoryLayout LAYOUT_clusterID = LAYOUT.select(PathElement.groupElement("clusterID"));
     /// The [VarHandle] of `clusterID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterID"));
+    public static final Supplier<VarHandle> VH_clusterID = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterID")));
     /// The byte offset of `clusterFlags`.
     public static final long OFFSET_clusterFlags = LAYOUT.byteOffset(PathElement.groupElement("clusterFlags"));
     /// The memory layout of `clusterFlags`.
     public static final MemoryLayout LAYOUT_clusterFlags = LAYOUT.select(PathElement.groupElement("clusterFlags"));
     /// The [VarHandle] of `clusterFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterFlags"));
+    public static final Supplier<VarHandle> VH_clusterFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterFlags")));
     /// The byte offset of `baseGeometryIndexAndGeometryFlags`.
     public static final long OFFSET_baseGeometryIndexAndGeometryFlags = LAYOUT.byteOffset(PathElement.groupElement("baseGeometryIndexAndGeometryFlags"));
     /// The memory layout of `baseGeometryIndexAndGeometryFlags`.
@@ -75,55 +75,55 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// The memory layout of `indexBufferStride`.
     public static final MemoryLayout LAYOUT_indexBufferStride = LAYOUT.select(PathElement.groupElement("indexBufferStride"));
     /// The [VarHandle] of `indexBufferStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexBufferStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexBufferStride"));
+    public static final Supplier<VarHandle> VH_indexBufferStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexBufferStride")));
     /// The byte offset of `vertexBufferStride`.
     public static final long OFFSET_vertexBufferStride = LAYOUT.byteOffset(PathElement.groupElement("vertexBufferStride"));
     /// The memory layout of `vertexBufferStride`.
     public static final MemoryLayout LAYOUT_vertexBufferStride = LAYOUT.select(PathElement.groupElement("vertexBufferStride"));
     /// The [VarHandle] of `vertexBufferStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexBufferStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexBufferStride"));
+    public static final Supplier<VarHandle> VH_vertexBufferStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexBufferStride")));
     /// The byte offset of `geometryIndexAndFlagsBufferStride`.
     public static final long OFFSET_geometryIndexAndFlagsBufferStride = LAYOUT.byteOffset(PathElement.groupElement("geometryIndexAndFlagsBufferStride"));
     /// The memory layout of `geometryIndexAndFlagsBufferStride`.
     public static final MemoryLayout LAYOUT_geometryIndexAndFlagsBufferStride = LAYOUT.select(PathElement.groupElement("geometryIndexAndFlagsBufferStride"));
     /// The [VarHandle] of `geometryIndexAndFlagsBufferStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_geometryIndexAndFlagsBufferStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("geometryIndexAndFlagsBufferStride"));
+    public static final Supplier<VarHandle> VH_geometryIndexAndFlagsBufferStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("geometryIndexAndFlagsBufferStride")));
     /// The byte offset of `opacityMicromapIndexBufferStride`.
     public static final long OFFSET_opacityMicromapIndexBufferStride = LAYOUT.byteOffset(PathElement.groupElement("opacityMicromapIndexBufferStride"));
     /// The memory layout of `opacityMicromapIndexBufferStride`.
     public static final MemoryLayout LAYOUT_opacityMicromapIndexBufferStride = LAYOUT.select(PathElement.groupElement("opacityMicromapIndexBufferStride"));
     /// The [VarHandle] of `opacityMicromapIndexBufferStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_opacityMicromapIndexBufferStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("opacityMicromapIndexBufferStride"));
+    public static final Supplier<VarHandle> VH_opacityMicromapIndexBufferStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("opacityMicromapIndexBufferStride")));
     /// The byte offset of `indexBuffer`.
     public static final long OFFSET_indexBuffer = LAYOUT.byteOffset(PathElement.groupElement("indexBuffer"));
     /// The memory layout of `indexBuffer`.
     public static final MemoryLayout LAYOUT_indexBuffer = LAYOUT.select(PathElement.groupElement("indexBuffer"));
     /// The [VarHandle] of `indexBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexBuffer"));
+    public static final Supplier<VarHandle> VH_indexBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexBuffer")));
     /// The byte offset of `vertexBuffer`.
     public static final long OFFSET_vertexBuffer = LAYOUT.byteOffset(PathElement.groupElement("vertexBuffer"));
     /// The memory layout of `vertexBuffer`.
     public static final MemoryLayout LAYOUT_vertexBuffer = LAYOUT.select(PathElement.groupElement("vertexBuffer"));
     /// The [VarHandle] of `vertexBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexBuffer"));
+    public static final Supplier<VarHandle> VH_vertexBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexBuffer")));
     /// The byte offset of `geometryIndexAndFlagsBuffer`.
     public static final long OFFSET_geometryIndexAndFlagsBuffer = LAYOUT.byteOffset(PathElement.groupElement("geometryIndexAndFlagsBuffer"));
     /// The memory layout of `geometryIndexAndFlagsBuffer`.
     public static final MemoryLayout LAYOUT_geometryIndexAndFlagsBuffer = LAYOUT.select(PathElement.groupElement("geometryIndexAndFlagsBuffer"));
     /// The [VarHandle] of `geometryIndexAndFlagsBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_geometryIndexAndFlagsBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("geometryIndexAndFlagsBuffer"));
+    public static final Supplier<VarHandle> VH_geometryIndexAndFlagsBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("geometryIndexAndFlagsBuffer")));
     /// The byte offset of `opacityMicromapArray`.
     public static final long OFFSET_opacityMicromapArray = LAYOUT.byteOffset(PathElement.groupElement("opacityMicromapArray"));
     /// The memory layout of `opacityMicromapArray`.
     public static final MemoryLayout LAYOUT_opacityMicromapArray = LAYOUT.select(PathElement.groupElement("opacityMicromapArray"));
     /// The [VarHandle] of `opacityMicromapArray` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_opacityMicromapArray = LAYOUT.arrayElementVarHandle(PathElement.groupElement("opacityMicromapArray"));
+    public static final Supplier<VarHandle> VH_opacityMicromapArray = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("opacityMicromapArray")));
     /// The byte offset of `opacityMicromapIndexBuffer`.
     public static final long OFFSET_opacityMicromapIndexBuffer = LAYOUT.byteOffset(PathElement.groupElement("opacityMicromapIndexBuffer"));
     /// The memory layout of `opacityMicromapIndexBuffer`.
     public static final MemoryLayout LAYOUT_opacityMicromapIndexBuffer = LAYOUT.select(PathElement.groupElement("opacityMicromapIndexBuffer"));
     /// The [VarHandle] of `opacityMicromapIndexBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_opacityMicromapIndexBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("opacityMicromapIndexBuffer"));
+    public static final Supplier<VarHandle> VH_opacityMicromapIndexBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("opacityMicromapIndexBuffer")));
 
     /// Creates `VkClusterAccelerationStructureBuildTriangleClusterInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -174,14 +174,14 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// {@return `clusterID` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clusterID(MemorySegment segment, long index) { return (int) VH_clusterID.get(segment, 0L, index); }
+    public static int clusterID(MemorySegment segment, long index) { return (int) VH_clusterID.get().get(segment, 0L, index); }
     /// {@return `clusterID`}
     public int clusterID() { return clusterID(this.segment(), 0L); }
     /// Sets `clusterID` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterID(MemorySegment segment, long index, int value) { VH_clusterID.set(segment, 0L, index, value); }
+    public static void clusterID(MemorySegment segment, long index, int value) { VH_clusterID.get().set(segment, 0L, index, value); }
     /// Sets `clusterID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// {@return `clusterFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clusterFlags(MemorySegment segment, long index) { return (int) VH_clusterFlags.get(segment, 0L, index); }
+    public static int clusterFlags(MemorySegment segment, long index) { return (int) VH_clusterFlags.get().get(segment, 0L, index); }
     /// {@return `clusterFlags`}
     public int clusterFlags() { return clusterFlags(this.segment(), 0L); }
     /// Sets `clusterFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterFlags(MemorySegment segment, long index, int value) { VH_clusterFlags.set(segment, 0L, index, value); }
+    public static void clusterFlags(MemorySegment segment, long index, int value) { VH_clusterFlags.get().set(segment, 0L, index, value); }
     /// Sets `clusterFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -226,14 +226,14 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// {@return `indexBufferStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short indexBufferStride(MemorySegment segment, long index) { return (short) VH_indexBufferStride.get(segment, 0L, index); }
+    public static short indexBufferStride(MemorySegment segment, long index) { return (short) VH_indexBufferStride.get().get(segment, 0L, index); }
     /// {@return `indexBufferStride`}
     public short indexBufferStride() { return indexBufferStride(this.segment(), 0L); }
     /// Sets `indexBufferStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void indexBufferStride(MemorySegment segment, long index, short value) { VH_indexBufferStride.set(segment, 0L, index, value); }
+    public static void indexBufferStride(MemorySegment segment, long index, short value) { VH_indexBufferStride.get().set(segment, 0L, index, value); }
     /// Sets `indexBufferStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -242,14 +242,14 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// {@return `vertexBufferStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short vertexBufferStride(MemorySegment segment, long index) { return (short) VH_vertexBufferStride.get(segment, 0L, index); }
+    public static short vertexBufferStride(MemorySegment segment, long index) { return (short) VH_vertexBufferStride.get().get(segment, 0L, index); }
     /// {@return `vertexBufferStride`}
     public short vertexBufferStride() { return vertexBufferStride(this.segment(), 0L); }
     /// Sets `vertexBufferStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexBufferStride(MemorySegment segment, long index, short value) { VH_vertexBufferStride.set(segment, 0L, index, value); }
+    public static void vertexBufferStride(MemorySegment segment, long index, short value) { VH_vertexBufferStride.get().set(segment, 0L, index, value); }
     /// Sets `vertexBufferStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -258,14 +258,14 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// {@return `geometryIndexAndFlagsBufferStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short geometryIndexAndFlagsBufferStride(MemorySegment segment, long index) { return (short) VH_geometryIndexAndFlagsBufferStride.get(segment, 0L, index); }
+    public static short geometryIndexAndFlagsBufferStride(MemorySegment segment, long index) { return (short) VH_geometryIndexAndFlagsBufferStride.get().get(segment, 0L, index); }
     /// {@return `geometryIndexAndFlagsBufferStride`}
     public short geometryIndexAndFlagsBufferStride() { return geometryIndexAndFlagsBufferStride(this.segment(), 0L); }
     /// Sets `geometryIndexAndFlagsBufferStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void geometryIndexAndFlagsBufferStride(MemorySegment segment, long index, short value) { VH_geometryIndexAndFlagsBufferStride.set(segment, 0L, index, value); }
+    public static void geometryIndexAndFlagsBufferStride(MemorySegment segment, long index, short value) { VH_geometryIndexAndFlagsBufferStride.get().set(segment, 0L, index, value); }
     /// Sets `geometryIndexAndFlagsBufferStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -274,14 +274,14 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// {@return `opacityMicromapIndexBufferStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short opacityMicromapIndexBufferStride(MemorySegment segment, long index) { return (short) VH_opacityMicromapIndexBufferStride.get(segment, 0L, index); }
+    public static short opacityMicromapIndexBufferStride(MemorySegment segment, long index) { return (short) VH_opacityMicromapIndexBufferStride.get().get(segment, 0L, index); }
     /// {@return `opacityMicromapIndexBufferStride`}
     public short opacityMicromapIndexBufferStride() { return opacityMicromapIndexBufferStride(this.segment(), 0L); }
     /// Sets `opacityMicromapIndexBufferStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void opacityMicromapIndexBufferStride(MemorySegment segment, long index, short value) { VH_opacityMicromapIndexBufferStride.set(segment, 0L, index, value); }
+    public static void opacityMicromapIndexBufferStride(MemorySegment segment, long index, short value) { VH_opacityMicromapIndexBufferStride.get().set(segment, 0L, index, value); }
     /// Sets `opacityMicromapIndexBufferStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -290,14 +290,14 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// {@return `indexBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long indexBuffer(MemorySegment segment, long index) { return (long) VH_indexBuffer.get(segment, 0L, index); }
+    public static long indexBuffer(MemorySegment segment, long index) { return (long) VH_indexBuffer.get().get(segment, 0L, index); }
     /// {@return `indexBuffer`}
     public long indexBuffer() { return indexBuffer(this.segment(), 0L); }
     /// Sets `indexBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void indexBuffer(MemorySegment segment, long index, long value) { VH_indexBuffer.set(segment, 0L, index, value); }
+    public static void indexBuffer(MemorySegment segment, long index, long value) { VH_indexBuffer.get().set(segment, 0L, index, value); }
     /// Sets `indexBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -306,14 +306,14 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// {@return `vertexBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long vertexBuffer(MemorySegment segment, long index) { return (long) VH_vertexBuffer.get(segment, 0L, index); }
+    public static long vertexBuffer(MemorySegment segment, long index) { return (long) VH_vertexBuffer.get().get(segment, 0L, index); }
     /// {@return `vertexBuffer`}
     public long vertexBuffer() { return vertexBuffer(this.segment(), 0L); }
     /// Sets `vertexBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexBuffer(MemorySegment segment, long index, long value) { VH_vertexBuffer.set(segment, 0L, index, value); }
+    public static void vertexBuffer(MemorySegment segment, long index, long value) { VH_vertexBuffer.get().set(segment, 0L, index, value); }
     /// Sets `vertexBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -322,14 +322,14 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// {@return `geometryIndexAndFlagsBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long geometryIndexAndFlagsBuffer(MemorySegment segment, long index) { return (long) VH_geometryIndexAndFlagsBuffer.get(segment, 0L, index); }
+    public static long geometryIndexAndFlagsBuffer(MemorySegment segment, long index) { return (long) VH_geometryIndexAndFlagsBuffer.get().get(segment, 0L, index); }
     /// {@return `geometryIndexAndFlagsBuffer`}
     public long geometryIndexAndFlagsBuffer() { return geometryIndexAndFlagsBuffer(this.segment(), 0L); }
     /// Sets `geometryIndexAndFlagsBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void geometryIndexAndFlagsBuffer(MemorySegment segment, long index, long value) { VH_geometryIndexAndFlagsBuffer.set(segment, 0L, index, value); }
+    public static void geometryIndexAndFlagsBuffer(MemorySegment segment, long index, long value) { VH_geometryIndexAndFlagsBuffer.get().set(segment, 0L, index, value); }
     /// Sets `geometryIndexAndFlagsBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -338,14 +338,14 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// {@return `opacityMicromapArray` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long opacityMicromapArray(MemorySegment segment, long index) { return (long) VH_opacityMicromapArray.get(segment, 0L, index); }
+    public static long opacityMicromapArray(MemorySegment segment, long index) { return (long) VH_opacityMicromapArray.get().get(segment, 0L, index); }
     /// {@return `opacityMicromapArray`}
     public long opacityMicromapArray() { return opacityMicromapArray(this.segment(), 0L); }
     /// Sets `opacityMicromapArray` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void opacityMicromapArray(MemorySegment segment, long index, long value) { VH_opacityMicromapArray.set(segment, 0L, index, value); }
+    public static void opacityMicromapArray(MemorySegment segment, long index, long value) { VH_opacityMicromapArray.get().set(segment, 0L, index, value); }
     /// Sets `opacityMicromapArray` with the given value.
     /// @param value the value
     /// @return `this`
@@ -354,14 +354,14 @@ public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV exte
     /// {@return `opacityMicromapIndexBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long opacityMicromapIndexBuffer(MemorySegment segment, long index) { return (long) VH_opacityMicromapIndexBuffer.get(segment, 0L, index); }
+    public static long opacityMicromapIndexBuffer(MemorySegment segment, long index) { return (long) VH_opacityMicromapIndexBuffer.get().get(segment, 0L, index); }
     /// {@return `opacityMicromapIndexBuffer`}
     public long opacityMicromapIndexBuffer() { return opacityMicromapIndexBuffer(this.segment(), 0L); }
     /// Sets `opacityMicromapIndexBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void opacityMicromapIndexBuffer(MemorySegment segment, long index, long value) { VH_opacityMicromapIndexBuffer.set(segment, 0L, index, value); }
+    public static void opacityMicromapIndexBuffer(MemorySegment segment, long index, long value) { VH_opacityMicromapIndexBuffer.get().set(segment, 0L, index, value); }
     /// Sets `opacityMicromapIndexBuffer` with the given value.
     /// @param value the value
     /// @return `this`

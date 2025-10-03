@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceSparseProperties extends GroupType {
     /// The memory layout of `residencyStandard2DBlockShape`.
     public static final MemoryLayout LAYOUT_residencyStandard2DBlockShape = LAYOUT.select(PathElement.groupElement("residencyStandard2DBlockShape"));
     /// The [VarHandle] of `residencyStandard2DBlockShape` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_residencyStandard2DBlockShape = LAYOUT.arrayElementVarHandle(PathElement.groupElement("residencyStandard2DBlockShape"));
+    public static final Supplier<VarHandle> VH_residencyStandard2DBlockShape = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("residencyStandard2DBlockShape")));
     /// The byte offset of `residencyStandard2DMultisampleBlockShape`.
     public static final long OFFSET_residencyStandard2DMultisampleBlockShape = LAYOUT.byteOffset(PathElement.groupElement("residencyStandard2DMultisampleBlockShape"));
     /// The memory layout of `residencyStandard2DMultisampleBlockShape`.
     public static final MemoryLayout LAYOUT_residencyStandard2DMultisampleBlockShape = LAYOUT.select(PathElement.groupElement("residencyStandard2DMultisampleBlockShape"));
     /// The [VarHandle] of `residencyStandard2DMultisampleBlockShape` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_residencyStandard2DMultisampleBlockShape = LAYOUT.arrayElementVarHandle(PathElement.groupElement("residencyStandard2DMultisampleBlockShape"));
+    public static final Supplier<VarHandle> VH_residencyStandard2DMultisampleBlockShape = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("residencyStandard2DMultisampleBlockShape")));
     /// The byte offset of `residencyStandard3DBlockShape`.
     public static final long OFFSET_residencyStandard3DBlockShape = LAYOUT.byteOffset(PathElement.groupElement("residencyStandard3DBlockShape"));
     /// The memory layout of `residencyStandard3DBlockShape`.
     public static final MemoryLayout LAYOUT_residencyStandard3DBlockShape = LAYOUT.select(PathElement.groupElement("residencyStandard3DBlockShape"));
     /// The [VarHandle] of `residencyStandard3DBlockShape` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_residencyStandard3DBlockShape = LAYOUT.arrayElementVarHandle(PathElement.groupElement("residencyStandard3DBlockShape"));
+    public static final Supplier<VarHandle> VH_residencyStandard3DBlockShape = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("residencyStandard3DBlockShape")));
     /// The byte offset of `residencyAlignedMipSize`.
     public static final long OFFSET_residencyAlignedMipSize = LAYOUT.byteOffset(PathElement.groupElement("residencyAlignedMipSize"));
     /// The memory layout of `residencyAlignedMipSize`.
     public static final MemoryLayout LAYOUT_residencyAlignedMipSize = LAYOUT.select(PathElement.groupElement("residencyAlignedMipSize"));
     /// The [VarHandle] of `residencyAlignedMipSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_residencyAlignedMipSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("residencyAlignedMipSize"));
+    public static final Supplier<VarHandle> VH_residencyAlignedMipSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("residencyAlignedMipSize")));
     /// The byte offset of `residencyNonResidentStrict`.
     public static final long OFFSET_residencyNonResidentStrict = LAYOUT.byteOffset(PathElement.groupElement("residencyNonResidentStrict"));
     /// The memory layout of `residencyNonResidentStrict`.
     public static final MemoryLayout LAYOUT_residencyNonResidentStrict = LAYOUT.select(PathElement.groupElement("residencyNonResidentStrict"));
     /// The [VarHandle] of `residencyNonResidentStrict` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_residencyNonResidentStrict = LAYOUT.arrayElementVarHandle(PathElement.groupElement("residencyNonResidentStrict"));
+    public static final Supplier<VarHandle> VH_residencyNonResidentStrict = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("residencyNonResidentStrict")));
 
     /// Creates `VkPhysicalDeviceSparseProperties` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceSparseProperties extends GroupType {
     /// {@return `residencyStandard2DBlockShape` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int residencyStandard2DBlockShape(MemorySegment segment, long index) { return (int) VH_residencyStandard2DBlockShape.get(segment, 0L, index); }
+    public static int residencyStandard2DBlockShape(MemorySegment segment, long index) { return (int) VH_residencyStandard2DBlockShape.get().get(segment, 0L, index); }
     /// {@return `residencyStandard2DBlockShape`}
     public int residencyStandard2DBlockShape() { return residencyStandard2DBlockShape(this.segment(), 0L); }
     /// Sets `residencyStandard2DBlockShape` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void residencyStandard2DBlockShape(MemorySegment segment, long index, int value) { VH_residencyStandard2DBlockShape.set(segment, 0L, index, value); }
+    public static void residencyStandard2DBlockShape(MemorySegment segment, long index, int value) { VH_residencyStandard2DBlockShape.get().set(segment, 0L, index, value); }
     /// Sets `residencyStandard2DBlockShape` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceSparseProperties extends GroupType {
     /// {@return `residencyStandard2DMultisampleBlockShape` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int residencyStandard2DMultisampleBlockShape(MemorySegment segment, long index) { return (int) VH_residencyStandard2DMultisampleBlockShape.get(segment, 0L, index); }
+    public static int residencyStandard2DMultisampleBlockShape(MemorySegment segment, long index) { return (int) VH_residencyStandard2DMultisampleBlockShape.get().get(segment, 0L, index); }
     /// {@return `residencyStandard2DMultisampleBlockShape`}
     public int residencyStandard2DMultisampleBlockShape() { return residencyStandard2DMultisampleBlockShape(this.segment(), 0L); }
     /// Sets `residencyStandard2DMultisampleBlockShape` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void residencyStandard2DMultisampleBlockShape(MemorySegment segment, long index, int value) { VH_residencyStandard2DMultisampleBlockShape.set(segment, 0L, index, value); }
+    public static void residencyStandard2DMultisampleBlockShape(MemorySegment segment, long index, int value) { VH_residencyStandard2DMultisampleBlockShape.get().set(segment, 0L, index, value); }
     /// Sets `residencyStandard2DMultisampleBlockShape` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceSparseProperties extends GroupType {
     /// {@return `residencyStandard3DBlockShape` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int residencyStandard3DBlockShape(MemorySegment segment, long index) { return (int) VH_residencyStandard3DBlockShape.get(segment, 0L, index); }
+    public static int residencyStandard3DBlockShape(MemorySegment segment, long index) { return (int) VH_residencyStandard3DBlockShape.get().get(segment, 0L, index); }
     /// {@return `residencyStandard3DBlockShape`}
     public int residencyStandard3DBlockShape() { return residencyStandard3DBlockShape(this.segment(), 0L); }
     /// Sets `residencyStandard3DBlockShape` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void residencyStandard3DBlockShape(MemorySegment segment, long index, int value) { VH_residencyStandard3DBlockShape.set(segment, 0L, index, value); }
+    public static void residencyStandard3DBlockShape(MemorySegment segment, long index, int value) { VH_residencyStandard3DBlockShape.get().set(segment, 0L, index, value); }
     /// Sets `residencyStandard3DBlockShape` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceSparseProperties extends GroupType {
     /// {@return `residencyAlignedMipSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int residencyAlignedMipSize(MemorySegment segment, long index) { return (int) VH_residencyAlignedMipSize.get(segment, 0L, index); }
+    public static int residencyAlignedMipSize(MemorySegment segment, long index) { return (int) VH_residencyAlignedMipSize.get().get(segment, 0L, index); }
     /// {@return `residencyAlignedMipSize`}
     public int residencyAlignedMipSize() { return residencyAlignedMipSize(this.segment(), 0L); }
     /// Sets `residencyAlignedMipSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void residencyAlignedMipSize(MemorySegment segment, long index, int value) { VH_residencyAlignedMipSize.set(segment, 0L, index, value); }
+    public static void residencyAlignedMipSize(MemorySegment segment, long index, int value) { VH_residencyAlignedMipSize.get().set(segment, 0L, index, value); }
     /// Sets `residencyAlignedMipSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceSparseProperties extends GroupType {
     /// {@return `residencyNonResidentStrict` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int residencyNonResidentStrict(MemorySegment segment, long index) { return (int) VH_residencyNonResidentStrict.get(segment, 0L, index); }
+    public static int residencyNonResidentStrict(MemorySegment segment, long index) { return (int) VH_residencyNonResidentStrict.get().get(segment, 0L, index); }
     /// {@return `residencyNonResidentStrict`}
     public int residencyNonResidentStrict() { return residencyNonResidentStrict(this.segment(), 0L); }
     /// Sets `residencyNonResidentStrict` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void residencyNonResidentStrict(MemorySegment segment, long index, int value) { VH_residencyNonResidentStrict.set(segment, 0L, index, value); }
+    public static void residencyNonResidentStrict(MemorySegment segment, long index, int value) { VH_residencyNonResidentStrict.get().set(segment, 0L, index, value); }
     /// Sets `residencyNonResidentStrict` with the given value.
     /// @param value the value
     /// @return `this`

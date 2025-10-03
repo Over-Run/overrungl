@@ -2,6 +2,7 @@
 package overrungl.opengl.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -17,7 +18,7 @@ public final class GLNVInternalformatSampleQuery {
     public static final int GL_CONFORMANT_NV = 0x9374;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetInternalformatSampleivNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glGetInternalformatSampleivNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glGetInternalformatSampleivNV;
         private Handles(GLLoadFunc func) {
             PFN_glGetInternalformatSampleivNV = func.invoke("glGetInternalformatSampleivNV");
@@ -35,7 +36,7 @@ public final class GLNVInternalformatSampleQuery {
     public void GetInternalformatSampleivNV(int target, int internalformat, int samples, int pname, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformatSampleivNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetInternalformatSampleivNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInternalformatSampleivNV", target, internalformat, samples, pname, count, params); }
-        Handles.MH_glGetInternalformatSampleivNV.invokeExact(handles.PFN_glGetInternalformatSampleivNV, target, internalformat, samples, pname, count, params); }
+        Handles.MH_glGetInternalformatSampleivNV.get().invokeExact(handles.PFN_glGetInternalformatSampleivNV, target, internalformat, samples, pname, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetInternalformatSampleivNV", e); }
     }
 

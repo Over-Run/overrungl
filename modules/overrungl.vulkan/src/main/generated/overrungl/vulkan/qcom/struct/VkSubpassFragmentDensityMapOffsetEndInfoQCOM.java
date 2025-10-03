@@ -33,25 +33,25 @@ public final class VkSubpassFragmentDensityMapOffsetEndInfoQCOM extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `fragmentDensityOffsetCount`.
     public static final long OFFSET_fragmentDensityOffsetCount = LAYOUT.byteOffset(PathElement.groupElement("fragmentDensityOffsetCount"));
     /// The memory layout of `fragmentDensityOffsetCount`.
     public static final MemoryLayout LAYOUT_fragmentDensityOffsetCount = LAYOUT.select(PathElement.groupElement("fragmentDensityOffsetCount"));
     /// The [VarHandle] of `fragmentDensityOffsetCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentDensityOffsetCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentDensityOffsetCount"));
+    public static final Supplier<VarHandle> VH_fragmentDensityOffsetCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentDensityOffsetCount")));
     /// The byte offset of `pFragmentDensityOffsets`.
     public static final long OFFSET_pFragmentDensityOffsets = LAYOUT.byteOffset(PathElement.groupElement("pFragmentDensityOffsets"));
     /// The memory layout of `pFragmentDensityOffsets`.
     public static final MemoryLayout LAYOUT_pFragmentDensityOffsets = LAYOUT.select(PathElement.groupElement("pFragmentDensityOffsets"));
     /// The [VarHandle] of `pFragmentDensityOffsets` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pFragmentDensityOffsets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFragmentDensityOffsets"));
+    public static final Supplier<VarHandle> VH_pFragmentDensityOffsets = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFragmentDensityOffsets")));
 
     /// Creates `VkSubpassFragmentDensityMapOffsetEndInfoQCOM` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkSubpassFragmentDensityMapOffsetEndInfoQCOM extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkSubpassFragmentDensityMapOffsetEndInfoQCOM extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkSubpassFragmentDensityMapOffsetEndInfoQCOM extends GroupTyp
     /// {@return `fragmentDensityOffsetCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fragmentDensityOffsetCount(MemorySegment segment, long index) { return (int) VH_fragmentDensityOffsetCount.get(segment, 0L, index); }
+    public static int fragmentDensityOffsetCount(MemorySegment segment, long index) { return (int) VH_fragmentDensityOffsetCount.get().get(segment, 0L, index); }
     /// {@return `fragmentDensityOffsetCount`}
     public int fragmentDensityOffsetCount() { return fragmentDensityOffsetCount(this.segment(), 0L); }
     /// Sets `fragmentDensityOffsetCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fragmentDensityOffsetCount(MemorySegment segment, long index, int value) { VH_fragmentDensityOffsetCount.set(segment, 0L, index, value); }
+    public static void fragmentDensityOffsetCount(MemorySegment segment, long index, int value) { VH_fragmentDensityOffsetCount.get().set(segment, 0L, index, value); }
     /// Sets `fragmentDensityOffsetCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkSubpassFragmentDensityMapOffsetEndInfoQCOM extends GroupTyp
     /// {@return `pFragmentDensityOffsets` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pFragmentDensityOffsets(MemorySegment segment, long index) { return (MemorySegment) VH_pFragmentDensityOffsets.get(segment, 0L, index); }
+    public static MemorySegment pFragmentDensityOffsets(MemorySegment segment, long index) { return (MemorySegment) VH_pFragmentDensityOffsets.get().get(segment, 0L, index); }
     /// {@return `pFragmentDensityOffsets`}
     public MemorySegment pFragmentDensityOffsets() { return pFragmentDensityOffsets(this.segment(), 0L); }
     /// Sets `pFragmentDensityOffsets` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pFragmentDensityOffsets(MemorySegment segment, long index, MemorySegment value) { VH_pFragmentDensityOffsets.set(segment, 0L, index, value); }
+    public static void pFragmentDensityOffsets(MemorySegment segment, long index, MemorySegment value) { VH_pFragmentDensityOffsets.get().set(segment, 0L, index, value); }
     /// Sets `pFragmentDensityOffsets` with the given value.
     /// @param value the value
     /// @return `this`

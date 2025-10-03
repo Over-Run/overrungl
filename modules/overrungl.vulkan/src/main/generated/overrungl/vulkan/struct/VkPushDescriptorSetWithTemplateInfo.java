@@ -37,37 +37,37 @@ public final class VkPushDescriptorSetWithTemplateInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `descriptorUpdateTemplate`.
     public static final long OFFSET_descriptorUpdateTemplate = LAYOUT.byteOffset(PathElement.groupElement("descriptorUpdateTemplate"));
     /// The memory layout of `descriptorUpdateTemplate`.
     public static final MemoryLayout LAYOUT_descriptorUpdateTemplate = LAYOUT.select(PathElement.groupElement("descriptorUpdateTemplate"));
     /// The [VarHandle] of `descriptorUpdateTemplate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorUpdateTemplate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorUpdateTemplate"));
+    public static final Supplier<VarHandle> VH_descriptorUpdateTemplate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorUpdateTemplate")));
     /// The byte offset of `layout`.
     public static final long OFFSET_layout = LAYOUT.byteOffset(PathElement.groupElement("layout"));
     /// The memory layout of `layout`.
     public static final MemoryLayout LAYOUT_layout = LAYOUT.select(PathElement.groupElement("layout"));
     /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
+    public static final Supplier<VarHandle> VH_layout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout")));
     /// The byte offset of `set`.
     public static final long OFFSET_set = LAYOUT.byteOffset(PathElement.groupElement("set"));
     /// The memory layout of `set`.
     public static final MemoryLayout LAYOUT_set = LAYOUT.select(PathElement.groupElement("set"));
     /// The [VarHandle] of `set` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_set = LAYOUT.arrayElementVarHandle(PathElement.groupElement("set"));
+    public static final Supplier<VarHandle> VH_set = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("set")));
     /// The byte offset of `pData`.
     public static final long OFFSET_pData = LAYOUT.byteOffset(PathElement.groupElement("pData"));
     /// The memory layout of `pData`.
     public static final MemoryLayout LAYOUT_pData = LAYOUT.select(PathElement.groupElement("pData"));
     /// The [VarHandle] of `pData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pData"));
+    public static final Supplier<VarHandle> VH_pData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pData")));
 
     /// Creates `VkPushDescriptorSetWithTemplateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPushDescriptorSetWithTemplateInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPushDescriptorSetWithTemplateInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPushDescriptorSetWithTemplateInfo extends GroupType {
     /// {@return `descriptorUpdateTemplate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long descriptorUpdateTemplate(MemorySegment segment, long index) { return (long) VH_descriptorUpdateTemplate.get(segment, 0L, index); }
+    public static long descriptorUpdateTemplate(MemorySegment segment, long index) { return (long) VH_descriptorUpdateTemplate.get().get(segment, 0L, index); }
     /// {@return `descriptorUpdateTemplate`}
     public long descriptorUpdateTemplate() { return descriptorUpdateTemplate(this.segment(), 0L); }
     /// Sets `descriptorUpdateTemplate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorUpdateTemplate(MemorySegment segment, long index, long value) { VH_descriptorUpdateTemplate.set(segment, 0L, index, value); }
+    public static void descriptorUpdateTemplate(MemorySegment segment, long index, long value) { VH_descriptorUpdateTemplate.get().set(segment, 0L, index, value); }
     /// Sets `descriptorUpdateTemplate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPushDescriptorSetWithTemplateInfo extends GroupType {
     /// {@return `layout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long layout(MemorySegment segment, long index) { return (long) VH_layout.get(segment, 0L, index); }
+    public static long layout(MemorySegment segment, long index) { return (long) VH_layout.get().get(segment, 0L, index); }
     /// {@return `layout`}
     public long layout() { return layout(this.segment(), 0L); }
     /// Sets `layout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void layout(MemorySegment segment, long index, long value) { VH_layout.set(segment, 0L, index, value); }
+    public static void layout(MemorySegment segment, long index, long value) { VH_layout.get().set(segment, 0L, index, value); }
     /// Sets `layout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPushDescriptorSetWithTemplateInfo extends GroupType {
     /// {@return `set` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int set(MemorySegment segment, long index) { return (int) VH_set.get(segment, 0L, index); }
+    public static int set(MemorySegment segment, long index) { return (int) VH_set.get().get(segment, 0L, index); }
     /// {@return `set`}
     public int set() { return set(this.segment(), 0L); }
     /// Sets `set` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void set(MemorySegment segment, long index, int value) { VH_set.set(segment, 0L, index, value); }
+    public static void set(MemorySegment segment, long index, int value) { VH_set.get().set(segment, 0L, index, value); }
     /// Sets `set` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPushDescriptorSetWithTemplateInfo extends GroupType {
     /// {@return `pData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pData(MemorySegment segment, long index) { return (MemorySegment) VH_pData.get(segment, 0L, index); }
+    public static MemorySegment pData(MemorySegment segment, long index) { return (MemorySegment) VH_pData.get().get(segment, 0L, index); }
     /// {@return `pData`}
     public MemorySegment pData() { return pData(this.segment(), 0L); }
     /// Sets `pData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pData(MemorySegment segment, long index, MemorySegment value) { VH_pData.set(segment, 0L, index, value); }
+    public static void pData(MemorySegment segment, long index, MemorySegment value) { VH_pData.get().set(segment, 0L, index, value); }
     /// Sets `pData` with the given value.
     /// @param value the value
     /// @return `this`

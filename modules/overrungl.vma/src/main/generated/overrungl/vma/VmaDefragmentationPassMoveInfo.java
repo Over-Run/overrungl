@@ -29,13 +29,13 @@ public final class VmaDefragmentationPassMoveInfo extends GroupType {
     /// The memory layout of `moveCount`.
     public static final MemoryLayout LAYOUT_moveCount = LAYOUT.select(PathElement.groupElement("moveCount"));
     /// The [VarHandle] of `moveCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_moveCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("moveCount"));
+    public static final Supplier<VarHandle> VH_moveCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("moveCount")));
     /// The byte offset of `pMoves`.
     public static final long OFFSET_pMoves = LAYOUT.byteOffset(PathElement.groupElement("pMoves"));
     /// The memory layout of `pMoves`.
     public static final MemoryLayout LAYOUT_pMoves = LAYOUT.select(PathElement.groupElement("pMoves"));
     /// The [VarHandle] of `pMoves` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pMoves = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMoves"));
+    public static final Supplier<VarHandle> VH_pMoves = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMoves")));
 
     /// Creates `VmaDefragmentationPassMoveInfo` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VmaDefragmentationPassMoveInfo extends GroupType {
     /// {@return `moveCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int moveCount(MemorySegment segment, long index) { return (int) VH_moveCount.get(segment, 0L, index); }
+    public static int moveCount(MemorySegment segment, long index) { return (int) VH_moveCount.get().get(segment, 0L, index); }
     /// {@return `moveCount`}
     public int moveCount() { return moveCount(this.segment(), 0L); }
     /// Sets `moveCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void moveCount(MemorySegment segment, long index, int value) { VH_moveCount.set(segment, 0L, index, value); }
+    public static void moveCount(MemorySegment segment, long index, int value) { VH_moveCount.get().set(segment, 0L, index, value); }
     /// Sets `moveCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VmaDefragmentationPassMoveInfo extends GroupType {
     /// {@return `pMoves` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pMoves(MemorySegment segment, long index) { return (MemorySegment) VH_pMoves.get(segment, 0L, index); }
+    public static MemorySegment pMoves(MemorySegment segment, long index) { return (MemorySegment) VH_pMoves.get().get(segment, 0L, index); }
     /// {@return `pMoves`}
     public MemorySegment pMoves() { return pMoves(this.segment(), 0L); }
     /// Sets `pMoves` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pMoves(MemorySegment segment, long index, MemorySegment value) { VH_pMoves.set(segment, 0L, index, value); }
+    public static void pMoves(MemorySegment segment, long index, MemorySegment value) { VH_pMoves.get().set(segment, 0L, index, value); }
     /// Sets `pMoves` with the given value.
     /// @param value the value
     /// @return `this`

@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -14,7 +15,7 @@ public final class GLEXTBlendMinmax {
     public static final int GL_BLEND_EQUATION_EXT = 0x8009;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBlendEquationEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glBlendEquationEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glBlendEquationEXT;
         private Handles(GLLoadFunc func) {
             PFN_glBlendEquationEXT = func.invoke("glBlendEquationEXT", "glBlendEquation");
@@ -32,7 +33,7 @@ public final class GLEXTBlendMinmax {
     public void BlendEquationEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBlendEquationEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendEquationEXT", mode); }
-        Handles.MH_glBlendEquationEXT.invokeExact(handles.PFN_glBlendEquationEXT, mode); }
+        Handles.MH_glBlendEquationEXT.get().invokeExact(handles.PFN_glBlendEquationEXT, mode); }
         catch (Throwable e) { throw new RuntimeException("error in BlendEquationEXT", e); }
     }
 

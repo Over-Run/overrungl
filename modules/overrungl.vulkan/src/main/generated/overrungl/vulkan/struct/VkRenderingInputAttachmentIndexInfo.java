@@ -37,37 +37,37 @@ public final class VkRenderingInputAttachmentIndexInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `colorAttachmentCount`.
     public static final long OFFSET_colorAttachmentCount = LAYOUT.byteOffset(PathElement.groupElement("colorAttachmentCount"));
     /// The memory layout of `colorAttachmentCount`.
     public static final MemoryLayout LAYOUT_colorAttachmentCount = LAYOUT.select(PathElement.groupElement("colorAttachmentCount"));
     /// The [VarHandle] of `colorAttachmentCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_colorAttachmentCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachmentCount"));
+    public static final Supplier<VarHandle> VH_colorAttachmentCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachmentCount")));
     /// The byte offset of `pColorAttachmentInputIndices`.
     public static final long OFFSET_pColorAttachmentInputIndices = LAYOUT.byteOffset(PathElement.groupElement("pColorAttachmentInputIndices"));
     /// The memory layout of `pColorAttachmentInputIndices`.
     public static final MemoryLayout LAYOUT_pColorAttachmentInputIndices = LAYOUT.select(PathElement.groupElement("pColorAttachmentInputIndices"));
     /// The [VarHandle] of `pColorAttachmentInputIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pColorAttachmentInputIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorAttachmentInputIndices"));
+    public static final Supplier<VarHandle> VH_pColorAttachmentInputIndices = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorAttachmentInputIndices")));
     /// The byte offset of `pDepthInputAttachmentIndex`.
     public static final long OFFSET_pDepthInputAttachmentIndex = LAYOUT.byteOffset(PathElement.groupElement("pDepthInputAttachmentIndex"));
     /// The memory layout of `pDepthInputAttachmentIndex`.
     public static final MemoryLayout LAYOUT_pDepthInputAttachmentIndex = LAYOUT.select(PathElement.groupElement("pDepthInputAttachmentIndex"));
     /// The [VarHandle] of `pDepthInputAttachmentIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDepthInputAttachmentIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDepthInputAttachmentIndex"));
+    public static final Supplier<VarHandle> VH_pDepthInputAttachmentIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDepthInputAttachmentIndex")));
     /// The byte offset of `pStencilInputAttachmentIndex`.
     public static final long OFFSET_pStencilInputAttachmentIndex = LAYOUT.byteOffset(PathElement.groupElement("pStencilInputAttachmentIndex"));
     /// The memory layout of `pStencilInputAttachmentIndex`.
     public static final MemoryLayout LAYOUT_pStencilInputAttachmentIndex = LAYOUT.select(PathElement.groupElement("pStencilInputAttachmentIndex"));
     /// The [VarHandle] of `pStencilInputAttachmentIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStencilInputAttachmentIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStencilInputAttachmentIndex"));
+    public static final Supplier<VarHandle> VH_pStencilInputAttachmentIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStencilInputAttachmentIndex")));
 
     /// Creates `VkRenderingInputAttachmentIndexInfo` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkRenderingInputAttachmentIndexInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkRenderingInputAttachmentIndexInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkRenderingInputAttachmentIndexInfo extends GroupType {
     /// {@return `colorAttachmentCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int colorAttachmentCount(MemorySegment segment, long index) { return (int) VH_colorAttachmentCount.get(segment, 0L, index); }
+    public static int colorAttachmentCount(MemorySegment segment, long index) { return (int) VH_colorAttachmentCount.get().get(segment, 0L, index); }
     /// {@return `colorAttachmentCount`}
     public int colorAttachmentCount() { return colorAttachmentCount(this.segment(), 0L); }
     /// Sets `colorAttachmentCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void colorAttachmentCount(MemorySegment segment, long index, int value) { VH_colorAttachmentCount.set(segment, 0L, index, value); }
+    public static void colorAttachmentCount(MemorySegment segment, long index, int value) { VH_colorAttachmentCount.get().set(segment, 0L, index, value); }
     /// Sets `colorAttachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkRenderingInputAttachmentIndexInfo extends GroupType {
     /// {@return `pColorAttachmentInputIndices` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pColorAttachmentInputIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pColorAttachmentInputIndices.get(segment, 0L, index); }
+    public static MemorySegment pColorAttachmentInputIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pColorAttachmentInputIndices.get().get(segment, 0L, index); }
     /// {@return `pColorAttachmentInputIndices`}
     public MemorySegment pColorAttachmentInputIndices() { return pColorAttachmentInputIndices(this.segment(), 0L); }
     /// Sets `pColorAttachmentInputIndices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pColorAttachmentInputIndices(MemorySegment segment, long index, MemorySegment value) { VH_pColorAttachmentInputIndices.set(segment, 0L, index, value); }
+    public static void pColorAttachmentInputIndices(MemorySegment segment, long index, MemorySegment value) { VH_pColorAttachmentInputIndices.get().set(segment, 0L, index, value); }
     /// Sets `pColorAttachmentInputIndices` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkRenderingInputAttachmentIndexInfo extends GroupType {
     /// {@return `pDepthInputAttachmentIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDepthInputAttachmentIndex(MemorySegment segment, long index) { return (MemorySegment) VH_pDepthInputAttachmentIndex.get(segment, 0L, index); }
+    public static MemorySegment pDepthInputAttachmentIndex(MemorySegment segment, long index) { return (MemorySegment) VH_pDepthInputAttachmentIndex.get().get(segment, 0L, index); }
     /// {@return `pDepthInputAttachmentIndex`}
     public MemorySegment pDepthInputAttachmentIndex() { return pDepthInputAttachmentIndex(this.segment(), 0L); }
     /// Sets `pDepthInputAttachmentIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDepthInputAttachmentIndex(MemorySegment segment, long index, MemorySegment value) { VH_pDepthInputAttachmentIndex.set(segment, 0L, index, value); }
+    public static void pDepthInputAttachmentIndex(MemorySegment segment, long index, MemorySegment value) { VH_pDepthInputAttachmentIndex.get().set(segment, 0L, index, value); }
     /// Sets `pDepthInputAttachmentIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkRenderingInputAttachmentIndexInfo extends GroupType {
     /// {@return `pStencilInputAttachmentIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStencilInputAttachmentIndex(MemorySegment segment, long index) { return (MemorySegment) VH_pStencilInputAttachmentIndex.get(segment, 0L, index); }
+    public static MemorySegment pStencilInputAttachmentIndex(MemorySegment segment, long index) { return (MemorySegment) VH_pStencilInputAttachmentIndex.get().get(segment, 0L, index); }
     /// {@return `pStencilInputAttachmentIndex`}
     public MemorySegment pStencilInputAttachmentIndex() { return pStencilInputAttachmentIndex(this.segment(), 0L); }
     /// Sets `pStencilInputAttachmentIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStencilInputAttachmentIndex(MemorySegment segment, long index, MemorySegment value) { VH_pStencilInputAttachmentIndex.set(segment, 0L, index, value); }
+    public static void pStencilInputAttachmentIndex(MemorySegment segment, long index, MemorySegment value) { VH_pStencilInputAttachmentIndex.get().set(segment, 0L, index, value); }
     /// Sets `pStencilInputAttachmentIndex` with the given value.
     /// @param value the value
     /// @return `this`

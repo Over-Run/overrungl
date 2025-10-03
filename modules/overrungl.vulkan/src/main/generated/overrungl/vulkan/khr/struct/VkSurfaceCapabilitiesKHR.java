@@ -45,13 +45,13 @@ public final class VkSurfaceCapabilitiesKHR extends GroupType {
     /// The memory layout of `minImageCount`.
     public static final MemoryLayout LAYOUT_minImageCount = LAYOUT.select(PathElement.groupElement("minImageCount"));
     /// The [VarHandle] of `minImageCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minImageCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minImageCount"));
+    public static final Supplier<VarHandle> VH_minImageCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minImageCount")));
     /// The byte offset of `maxImageCount`.
     public static final long OFFSET_maxImageCount = LAYOUT.byteOffset(PathElement.groupElement("maxImageCount"));
     /// The memory layout of `maxImageCount`.
     public static final MemoryLayout LAYOUT_maxImageCount = LAYOUT.select(PathElement.groupElement("maxImageCount"));
     /// The [VarHandle] of `maxImageCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxImageCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImageCount"));
+    public static final Supplier<VarHandle> VH_maxImageCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImageCount")));
     /// The byte offset of `currentExtent`.
     public static final long OFFSET_currentExtent = LAYOUT.byteOffset(PathElement.groupElement("currentExtent"));
     /// The memory layout of `currentExtent`.
@@ -69,31 +69,31 @@ public final class VkSurfaceCapabilitiesKHR extends GroupType {
     /// The memory layout of `maxImageArrayLayers`.
     public static final MemoryLayout LAYOUT_maxImageArrayLayers = LAYOUT.select(PathElement.groupElement("maxImageArrayLayers"));
     /// The [VarHandle] of `maxImageArrayLayers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxImageArrayLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImageArrayLayers"));
+    public static final Supplier<VarHandle> VH_maxImageArrayLayers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImageArrayLayers")));
     /// The byte offset of `supportedTransforms`.
     public static final long OFFSET_supportedTransforms = LAYOUT.byteOffset(PathElement.groupElement("supportedTransforms"));
     /// The memory layout of `supportedTransforms`.
     public static final MemoryLayout LAYOUT_supportedTransforms = LAYOUT.select(PathElement.groupElement("supportedTransforms"));
     /// The [VarHandle] of `supportedTransforms` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedTransforms = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedTransforms"));
+    public static final Supplier<VarHandle> VH_supportedTransforms = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedTransforms")));
     /// The byte offset of `currentTransform`.
     public static final long OFFSET_currentTransform = LAYOUT.byteOffset(PathElement.groupElement("currentTransform"));
     /// The memory layout of `currentTransform`.
     public static final MemoryLayout LAYOUT_currentTransform = LAYOUT.select(PathElement.groupElement("currentTransform"));
     /// The [VarHandle] of `currentTransform` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_currentTransform = LAYOUT.arrayElementVarHandle(PathElement.groupElement("currentTransform"));
+    public static final Supplier<VarHandle> VH_currentTransform = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("currentTransform")));
     /// The byte offset of `supportedCompositeAlpha`.
     public static final long OFFSET_supportedCompositeAlpha = LAYOUT.byteOffset(PathElement.groupElement("supportedCompositeAlpha"));
     /// The memory layout of `supportedCompositeAlpha`.
     public static final MemoryLayout LAYOUT_supportedCompositeAlpha = LAYOUT.select(PathElement.groupElement("supportedCompositeAlpha"));
     /// The [VarHandle] of `supportedCompositeAlpha` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedCompositeAlpha = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedCompositeAlpha"));
+    public static final Supplier<VarHandle> VH_supportedCompositeAlpha = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedCompositeAlpha")));
     /// The byte offset of `supportedUsageFlags`.
     public static final long OFFSET_supportedUsageFlags = LAYOUT.byteOffset(PathElement.groupElement("supportedUsageFlags"));
     /// The memory layout of `supportedUsageFlags`.
     public static final MemoryLayout LAYOUT_supportedUsageFlags = LAYOUT.select(PathElement.groupElement("supportedUsageFlags"));
     /// The [VarHandle] of `supportedUsageFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedUsageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedUsageFlags"));
+    public static final Supplier<VarHandle> VH_supportedUsageFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedUsageFlags")));
 
     /// Creates `VkSurfaceCapabilitiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -144,14 +144,14 @@ public final class VkSurfaceCapabilitiesKHR extends GroupType {
     /// {@return `minImageCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minImageCount(MemorySegment segment, long index) { return (int) VH_minImageCount.get(segment, 0L, index); }
+    public static int minImageCount(MemorySegment segment, long index) { return (int) VH_minImageCount.get().get(segment, 0L, index); }
     /// {@return `minImageCount`}
     public int minImageCount() { return minImageCount(this.segment(), 0L); }
     /// Sets `minImageCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minImageCount(MemorySegment segment, long index, int value) { VH_minImageCount.set(segment, 0L, index, value); }
+    public static void minImageCount(MemorySegment segment, long index, int value) { VH_minImageCount.get().set(segment, 0L, index, value); }
     /// Sets `minImageCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -160,14 +160,14 @@ public final class VkSurfaceCapabilitiesKHR extends GroupType {
     /// {@return `maxImageCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxImageCount(MemorySegment segment, long index) { return (int) VH_maxImageCount.get(segment, 0L, index); }
+    public static int maxImageCount(MemorySegment segment, long index) { return (int) VH_maxImageCount.get().get(segment, 0L, index); }
     /// {@return `maxImageCount`}
     public int maxImageCount() { return maxImageCount(this.segment(), 0L); }
     /// Sets `maxImageCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxImageCount(MemorySegment segment, long index, int value) { VH_maxImageCount.set(segment, 0L, index, value); }
+    public static void maxImageCount(MemorySegment segment, long index, int value) { VH_maxImageCount.get().set(segment, 0L, index, value); }
     /// Sets `maxImageCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -236,14 +236,14 @@ public final class VkSurfaceCapabilitiesKHR extends GroupType {
     /// {@return `maxImageArrayLayers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxImageArrayLayers(MemorySegment segment, long index) { return (int) VH_maxImageArrayLayers.get(segment, 0L, index); }
+    public static int maxImageArrayLayers(MemorySegment segment, long index) { return (int) VH_maxImageArrayLayers.get().get(segment, 0L, index); }
     /// {@return `maxImageArrayLayers`}
     public int maxImageArrayLayers() { return maxImageArrayLayers(this.segment(), 0L); }
     /// Sets `maxImageArrayLayers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxImageArrayLayers(MemorySegment segment, long index, int value) { VH_maxImageArrayLayers.set(segment, 0L, index, value); }
+    public static void maxImageArrayLayers(MemorySegment segment, long index, int value) { VH_maxImageArrayLayers.get().set(segment, 0L, index, value); }
     /// Sets `maxImageArrayLayers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -252,14 +252,14 @@ public final class VkSurfaceCapabilitiesKHR extends GroupType {
     /// {@return `supportedTransforms` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedTransforms(MemorySegment segment, long index) { return (int) VH_supportedTransforms.get(segment, 0L, index); }
+    public static int supportedTransforms(MemorySegment segment, long index) { return (int) VH_supportedTransforms.get().get(segment, 0L, index); }
     /// {@return `supportedTransforms`}
     public int supportedTransforms() { return supportedTransforms(this.segment(), 0L); }
     /// Sets `supportedTransforms` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedTransforms(MemorySegment segment, long index, int value) { VH_supportedTransforms.set(segment, 0L, index, value); }
+    public static void supportedTransforms(MemorySegment segment, long index, int value) { VH_supportedTransforms.get().set(segment, 0L, index, value); }
     /// Sets `supportedTransforms` with the given value.
     /// @param value the value
     /// @return `this`
@@ -268,14 +268,14 @@ public final class VkSurfaceCapabilitiesKHR extends GroupType {
     /// {@return `currentTransform` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int currentTransform(MemorySegment segment, long index) { return (int) VH_currentTransform.get(segment, 0L, index); }
+    public static int currentTransform(MemorySegment segment, long index) { return (int) VH_currentTransform.get().get(segment, 0L, index); }
     /// {@return `currentTransform`}
     public int currentTransform() { return currentTransform(this.segment(), 0L); }
     /// Sets `currentTransform` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void currentTransform(MemorySegment segment, long index, int value) { VH_currentTransform.set(segment, 0L, index, value); }
+    public static void currentTransform(MemorySegment segment, long index, int value) { VH_currentTransform.get().set(segment, 0L, index, value); }
     /// Sets `currentTransform` with the given value.
     /// @param value the value
     /// @return `this`
@@ -284,14 +284,14 @@ public final class VkSurfaceCapabilitiesKHR extends GroupType {
     /// {@return `supportedCompositeAlpha` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedCompositeAlpha(MemorySegment segment, long index) { return (int) VH_supportedCompositeAlpha.get(segment, 0L, index); }
+    public static int supportedCompositeAlpha(MemorySegment segment, long index) { return (int) VH_supportedCompositeAlpha.get().get(segment, 0L, index); }
     /// {@return `supportedCompositeAlpha`}
     public int supportedCompositeAlpha() { return supportedCompositeAlpha(this.segment(), 0L); }
     /// Sets `supportedCompositeAlpha` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedCompositeAlpha(MemorySegment segment, long index, int value) { VH_supportedCompositeAlpha.set(segment, 0L, index, value); }
+    public static void supportedCompositeAlpha(MemorySegment segment, long index, int value) { VH_supportedCompositeAlpha.get().set(segment, 0L, index, value); }
     /// Sets `supportedCompositeAlpha` with the given value.
     /// @param value the value
     /// @return `this`
@@ -300,14 +300,14 @@ public final class VkSurfaceCapabilitiesKHR extends GroupType {
     /// {@return `supportedUsageFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedUsageFlags(MemorySegment segment, long index) { return (int) VH_supportedUsageFlags.get(segment, 0L, index); }
+    public static int supportedUsageFlags(MemorySegment segment, long index) { return (int) VH_supportedUsageFlags.get().get(segment, 0L, index); }
     /// {@return `supportedUsageFlags`}
     public int supportedUsageFlags() { return supportedUsageFlags(this.segment(), 0L); }
     /// Sets `supportedUsageFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedUsageFlags(MemorySegment segment, long index, int value) { VH_supportedUsageFlags.set(segment, 0L, index, value); }
+    public static void supportedUsageFlags(MemorySegment segment, long index, int value) { VH_supportedUsageFlags.get().set(segment, 0L, index, value); }
     /// Sets `supportedUsageFlags` with the given value.
     /// @param value the value
     /// @return `this`

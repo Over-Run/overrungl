@@ -39,43 +39,43 @@ public final class VkPipelineVertexInputStateCreateInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `vertexBindingDescriptionCount`.
     public static final long OFFSET_vertexBindingDescriptionCount = LAYOUT.byteOffset(PathElement.groupElement("vertexBindingDescriptionCount"));
     /// The memory layout of `vertexBindingDescriptionCount`.
     public static final MemoryLayout LAYOUT_vertexBindingDescriptionCount = LAYOUT.select(PathElement.groupElement("vertexBindingDescriptionCount"));
     /// The [VarHandle] of `vertexBindingDescriptionCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexBindingDescriptionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexBindingDescriptionCount"));
+    public static final Supplier<VarHandle> VH_vertexBindingDescriptionCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexBindingDescriptionCount")));
     /// The byte offset of `pVertexBindingDescriptions`.
     public static final long OFFSET_pVertexBindingDescriptions = LAYOUT.byteOffset(PathElement.groupElement("pVertexBindingDescriptions"));
     /// The memory layout of `pVertexBindingDescriptions`.
     public static final MemoryLayout LAYOUT_pVertexBindingDescriptions = LAYOUT.select(PathElement.groupElement("pVertexBindingDescriptions"));
     /// The [VarHandle] of `pVertexBindingDescriptions` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pVertexBindingDescriptions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVertexBindingDescriptions"));
+    public static final Supplier<VarHandle> VH_pVertexBindingDescriptions = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVertexBindingDescriptions")));
     /// The byte offset of `vertexAttributeDescriptionCount`.
     public static final long OFFSET_vertexAttributeDescriptionCount = LAYOUT.byteOffset(PathElement.groupElement("vertexAttributeDescriptionCount"));
     /// The memory layout of `vertexAttributeDescriptionCount`.
     public static final MemoryLayout LAYOUT_vertexAttributeDescriptionCount = LAYOUT.select(PathElement.groupElement("vertexAttributeDescriptionCount"));
     /// The [VarHandle] of `vertexAttributeDescriptionCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexAttributeDescriptionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexAttributeDescriptionCount"));
+    public static final Supplier<VarHandle> VH_vertexAttributeDescriptionCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexAttributeDescriptionCount")));
     /// The byte offset of `pVertexAttributeDescriptions`.
     public static final long OFFSET_pVertexAttributeDescriptions = LAYOUT.byteOffset(PathElement.groupElement("pVertexAttributeDescriptions"));
     /// The memory layout of `pVertexAttributeDescriptions`.
     public static final MemoryLayout LAYOUT_pVertexAttributeDescriptions = LAYOUT.select(PathElement.groupElement("pVertexAttributeDescriptions"));
     /// The [VarHandle] of `pVertexAttributeDescriptions` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pVertexAttributeDescriptions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVertexAttributeDescriptions"));
+    public static final Supplier<VarHandle> VH_pVertexAttributeDescriptions = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVertexAttributeDescriptions")));
 
     /// Creates `VkPipelineVertexInputStateCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkPipelineVertexInputStateCreateInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPipelineVertexInputStateCreateInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPipelineVertexInputStateCreateInfo extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPipelineVertexInputStateCreateInfo extends GroupType {
     /// {@return `vertexBindingDescriptionCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertexBindingDescriptionCount(MemorySegment segment, long index) { return (int) VH_vertexBindingDescriptionCount.get(segment, 0L, index); }
+    public static int vertexBindingDescriptionCount(MemorySegment segment, long index) { return (int) VH_vertexBindingDescriptionCount.get().get(segment, 0L, index); }
     /// {@return `vertexBindingDescriptionCount`}
     public int vertexBindingDescriptionCount() { return vertexBindingDescriptionCount(this.segment(), 0L); }
     /// Sets `vertexBindingDescriptionCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexBindingDescriptionCount(MemorySegment segment, long index, int value) { VH_vertexBindingDescriptionCount.set(segment, 0L, index, value); }
+    public static void vertexBindingDescriptionCount(MemorySegment segment, long index, int value) { VH_vertexBindingDescriptionCount.get().set(segment, 0L, index, value); }
     /// Sets `vertexBindingDescriptionCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkPipelineVertexInputStateCreateInfo extends GroupType {
     /// {@return `pVertexBindingDescriptions` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pVertexBindingDescriptions(MemorySegment segment, long index) { return (MemorySegment) VH_pVertexBindingDescriptions.get(segment, 0L, index); }
+    public static MemorySegment pVertexBindingDescriptions(MemorySegment segment, long index) { return (MemorySegment) VH_pVertexBindingDescriptions.get().get(segment, 0L, index); }
     /// {@return `pVertexBindingDescriptions`}
     public MemorySegment pVertexBindingDescriptions() { return pVertexBindingDescriptions(this.segment(), 0L); }
     /// Sets `pVertexBindingDescriptions` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pVertexBindingDescriptions(MemorySegment segment, long index, MemorySegment value) { VH_pVertexBindingDescriptions.set(segment, 0L, index, value); }
+    public static void pVertexBindingDescriptions(MemorySegment segment, long index, MemorySegment value) { VH_pVertexBindingDescriptions.get().set(segment, 0L, index, value); }
     /// Sets `pVertexBindingDescriptions` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkPipelineVertexInputStateCreateInfo extends GroupType {
     /// {@return `vertexAttributeDescriptionCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertexAttributeDescriptionCount(MemorySegment segment, long index) { return (int) VH_vertexAttributeDescriptionCount.get(segment, 0L, index); }
+    public static int vertexAttributeDescriptionCount(MemorySegment segment, long index) { return (int) VH_vertexAttributeDescriptionCount.get().get(segment, 0L, index); }
     /// {@return `vertexAttributeDescriptionCount`}
     public int vertexAttributeDescriptionCount() { return vertexAttributeDescriptionCount(this.segment(), 0L); }
     /// Sets `vertexAttributeDescriptionCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexAttributeDescriptionCount(MemorySegment segment, long index, int value) { VH_vertexAttributeDescriptionCount.set(segment, 0L, index, value); }
+    public static void vertexAttributeDescriptionCount(MemorySegment segment, long index, int value) { VH_vertexAttributeDescriptionCount.get().set(segment, 0L, index, value); }
     /// Sets `vertexAttributeDescriptionCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkPipelineVertexInputStateCreateInfo extends GroupType {
     /// {@return `pVertexAttributeDescriptions` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pVertexAttributeDescriptions(MemorySegment segment, long index) { return (MemorySegment) VH_pVertexAttributeDescriptions.get(segment, 0L, index); }
+    public static MemorySegment pVertexAttributeDescriptions(MemorySegment segment, long index) { return (MemorySegment) VH_pVertexAttributeDescriptions.get().get(segment, 0L, index); }
     /// {@return `pVertexAttributeDescriptions`}
     public MemorySegment pVertexAttributeDescriptions() { return pVertexAttributeDescriptions(this.segment(), 0L); }
     /// Sets `pVertexAttributeDescriptions` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pVertexAttributeDescriptions(MemorySegment segment, long index, MemorySegment value) { VH_pVertexAttributeDescriptions.set(segment, 0L, index, value); }
+    public static void pVertexAttributeDescriptions(MemorySegment segment, long index, MemorySegment value) { VH_pVertexAttributeDescriptions.get().set(segment, 0L, index, value); }
     /// Sets `pVertexAttributeDescriptions` with the given value.
     /// @param value the value
     /// @return `this`

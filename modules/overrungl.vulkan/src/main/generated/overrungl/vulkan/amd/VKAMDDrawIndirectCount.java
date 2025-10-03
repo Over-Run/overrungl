@@ -2,6 +2,7 @@
 package overrungl.vulkan.amd;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -11,8 +12,8 @@ public final class VKAMDDrawIndirectCount {
     public static final int VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION = 2;
     public static final String VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_AMD_draw_indirect_count";
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdDrawIndirectCountAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkCmdDrawIndexedIndirectCountAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_vkCmdDrawIndirectCountAMD = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_vkCmdDrawIndexedIndirectCountAMD = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         private Handles() {}
     }
 
@@ -25,7 +26,7 @@ public final class VKAMDDrawIndirectCount {
     public static void vkCmdDrawIndirectCountAMD(@NonNull VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndirectCountAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawIndirectCountAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDrawIndirectCountAMD", commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
-        Handles.MH_vkCmdDrawIndirectCountAMD.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndirectCountAMD, commandBuffer.segment(), buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
+        Handles.MH_vkCmdDrawIndirectCountAMD.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndirectCountAMD, commandBuffer.segment(), buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndirectCountAMD", e); }
     }
 
@@ -36,7 +37,7 @@ public final class VKAMDDrawIndirectCount {
     public static void vkCmdDrawIndexedIndirectCountAMD(@NonNull VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndexedIndirectCountAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawIndexedIndirectCountAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDrawIndexedIndirectCountAMD", commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
-        Handles.MH_vkCmdDrawIndexedIndirectCountAMD.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndexedIndirectCountAMD, commandBuffer.segment(), buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
+        Handles.MH_vkCmdDrawIndexedIndirectCountAMD.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndexedIndirectCountAMD, commandBuffer.segment(), buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndexedIndirectCountAMD", e); }
     }
 

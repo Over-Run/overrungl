@@ -2,6 +2,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -20,8 +21,8 @@ public final class VKKHRCopyMemoryIndirect {
     public static final long VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR = 0x400000000000L;
     public static final long VK_FORMAT_FEATURE_2_COPY_IMAGE_INDIRECT_DST_BIT_KHR = 0x800000000000000L;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdCopyMemoryIndirectKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdCopyMemoryToImageIndirectKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkCmdCopyMemoryIndirectKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdCopyMemoryToImageIndirectKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -34,7 +35,7 @@ public final class VKKHRCopyMemoryIndirect {
     public static void vkCmdCopyMemoryIndirectKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pCopyMemoryIndirectInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMemoryIndirectKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyMemoryIndirectKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyMemoryIndirectKHR", commandBuffer, pCopyMemoryIndirectInfo); }
-        Handles.MH_vkCmdCopyMemoryIndirectKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryIndirectKHR, commandBuffer.segment(), pCopyMemoryIndirectInfo); }
+        Handles.MH_vkCmdCopyMemoryIndirectKHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryIndirectKHR, commandBuffer.segment(), pCopyMemoryIndirectInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyMemoryIndirectKHR", e); }
     }
 
@@ -45,7 +46,7 @@ public final class VKKHRCopyMemoryIndirect {
     public static void vkCmdCopyMemoryToImageIndirectKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pCopyMemoryToImageIndirectInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToImageIndirectKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyMemoryToImageIndirectKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyMemoryToImageIndirectKHR", commandBuffer, pCopyMemoryToImageIndirectInfo); }
-        Handles.MH_vkCmdCopyMemoryToImageIndirectKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToImageIndirectKHR, commandBuffer.segment(), pCopyMemoryToImageIndirectInfo); }
+        Handles.MH_vkCmdCopyMemoryToImageIndirectKHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToImageIndirectKHR, commandBuffer.segment(), pCopyMemoryToImageIndirectInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyMemoryToImageIndirectKHR", e); }
     }
 

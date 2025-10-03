@@ -35,31 +35,31 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `dfb`.
     public static final long OFFSET_dfb = LAYOUT.byteOffset(PathElement.groupElement("dfb"));
     /// The memory layout of `dfb`.
     public static final MemoryLayout LAYOUT_dfb = LAYOUT.select(PathElement.groupElement("dfb"));
     /// The [VarHandle] of `dfb` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dfb = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dfb"));
+    public static final Supplier<VarHandle> VH_dfb = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dfb")));
     /// The byte offset of `surface`.
     public static final long OFFSET_surface = LAYOUT.byteOffset(PathElement.groupElement("surface"));
     /// The memory layout of `surface`.
     public static final MemoryLayout LAYOUT_surface = LAYOUT.select(PathElement.groupElement("surface"));
     /// The [VarHandle] of `surface` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_surface = LAYOUT.arrayElementVarHandle(PathElement.groupElement("surface"));
+    public static final Supplier<VarHandle> VH_surface = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("surface")));
 
     /// Creates `VkDirectFBSurfaceCreateInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends GroupType {
     /// {@return `dfb` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment dfb(MemorySegment segment, long index) { return (MemorySegment) VH_dfb.get(segment, 0L, index); }
+    public static MemorySegment dfb(MemorySegment segment, long index) { return (MemorySegment) VH_dfb.get().get(segment, 0L, index); }
     /// {@return `dfb`}
     public MemorySegment dfb() { return dfb(this.segment(), 0L); }
     /// Sets `dfb` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dfb(MemorySegment segment, long index, MemorySegment value) { VH_dfb.set(segment, 0L, index, value); }
+    public static void dfb(MemorySegment segment, long index, MemorySegment value) { VH_dfb.get().set(segment, 0L, index, value); }
     /// Sets `dfb` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends GroupType {
     /// {@return `surface` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment surface(MemorySegment segment, long index) { return (MemorySegment) VH_surface.get(segment, 0L, index); }
+    public static MemorySegment surface(MemorySegment segment, long index) { return (MemorySegment) VH_surface.get().get(segment, 0L, index); }
     /// {@return `surface`}
     public MemorySegment surface() { return surface(this.segment(), 0L); }
     /// Sets `surface` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void surface(MemorySegment segment, long index, MemorySegment value) { VH_surface.set(segment, 0L, index, value); }
+    public static void surface(MemorySegment segment, long index, MemorySegment value) { VH_surface.get().set(segment, 0L, index, value); }
     /// Sets `surface` with the given value.
     /// @param value the value
     /// @return `this`

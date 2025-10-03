@@ -37,37 +37,37 @@ public final class VkTensorCopyARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `dimensionCount`.
     public static final long OFFSET_dimensionCount = LAYOUT.byteOffset(PathElement.groupElement("dimensionCount"));
     /// The memory layout of `dimensionCount`.
     public static final MemoryLayout LAYOUT_dimensionCount = LAYOUT.select(PathElement.groupElement("dimensionCount"));
     /// The [VarHandle] of `dimensionCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dimensionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dimensionCount"));
+    public static final Supplier<VarHandle> VH_dimensionCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dimensionCount")));
     /// The byte offset of `pSrcOffset`.
     public static final long OFFSET_pSrcOffset = LAYOUT.byteOffset(PathElement.groupElement("pSrcOffset"));
     /// The memory layout of `pSrcOffset`.
     public static final MemoryLayout LAYOUT_pSrcOffset = LAYOUT.select(PathElement.groupElement("pSrcOffset"));
     /// The [VarHandle] of `pSrcOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pSrcOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSrcOffset"));
+    public static final Supplier<VarHandle> VH_pSrcOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSrcOffset")));
     /// The byte offset of `pDstOffset`.
     public static final long OFFSET_pDstOffset = LAYOUT.byteOffset(PathElement.groupElement("pDstOffset"));
     /// The memory layout of `pDstOffset`.
     public static final MemoryLayout LAYOUT_pDstOffset = LAYOUT.select(PathElement.groupElement("pDstOffset"));
     /// The [VarHandle] of `pDstOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDstOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDstOffset"));
+    public static final Supplier<VarHandle> VH_pDstOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDstOffset")));
     /// The byte offset of `pExtent`.
     public static final long OFFSET_pExtent = LAYOUT.byteOffset(PathElement.groupElement("pExtent"));
     /// The memory layout of `pExtent`.
     public static final MemoryLayout LAYOUT_pExtent = LAYOUT.select(PathElement.groupElement("pExtent"));
     /// The [VarHandle] of `pExtent` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pExtent = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pExtent"));
+    public static final Supplier<VarHandle> VH_pExtent = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pExtent")));
 
     /// Creates `VkTensorCopyARM` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkTensorCopyARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkTensorCopyARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkTensorCopyARM extends GroupType {
     /// {@return `dimensionCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dimensionCount(MemorySegment segment, long index) { return (int) VH_dimensionCount.get(segment, 0L, index); }
+    public static int dimensionCount(MemorySegment segment, long index) { return (int) VH_dimensionCount.get().get(segment, 0L, index); }
     /// {@return `dimensionCount`}
     public int dimensionCount() { return dimensionCount(this.segment(), 0L); }
     /// Sets `dimensionCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dimensionCount(MemorySegment segment, long index, int value) { VH_dimensionCount.set(segment, 0L, index, value); }
+    public static void dimensionCount(MemorySegment segment, long index, int value) { VH_dimensionCount.get().set(segment, 0L, index, value); }
     /// Sets `dimensionCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkTensorCopyARM extends GroupType {
     /// {@return `pSrcOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pSrcOffset(MemorySegment segment, long index) { return (MemorySegment) VH_pSrcOffset.get(segment, 0L, index); }
+    public static MemorySegment pSrcOffset(MemorySegment segment, long index) { return (MemorySegment) VH_pSrcOffset.get().get(segment, 0L, index); }
     /// {@return `pSrcOffset`}
     public MemorySegment pSrcOffset() { return pSrcOffset(this.segment(), 0L); }
     /// Sets `pSrcOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pSrcOffset(MemorySegment segment, long index, MemorySegment value) { VH_pSrcOffset.set(segment, 0L, index, value); }
+    public static void pSrcOffset(MemorySegment segment, long index, MemorySegment value) { VH_pSrcOffset.get().set(segment, 0L, index, value); }
     /// Sets `pSrcOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkTensorCopyARM extends GroupType {
     /// {@return `pDstOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDstOffset(MemorySegment segment, long index) { return (MemorySegment) VH_pDstOffset.get(segment, 0L, index); }
+    public static MemorySegment pDstOffset(MemorySegment segment, long index) { return (MemorySegment) VH_pDstOffset.get().get(segment, 0L, index); }
     /// {@return `pDstOffset`}
     public MemorySegment pDstOffset() { return pDstOffset(this.segment(), 0L); }
     /// Sets `pDstOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDstOffset(MemorySegment segment, long index, MemorySegment value) { VH_pDstOffset.set(segment, 0L, index, value); }
+    public static void pDstOffset(MemorySegment segment, long index, MemorySegment value) { VH_pDstOffset.get().set(segment, 0L, index, value); }
     /// Sets `pDstOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkTensorCopyARM extends GroupType {
     /// {@return `pExtent` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pExtent(MemorySegment segment, long index) { return (MemorySegment) VH_pExtent.get(segment, 0L, index); }
+    public static MemorySegment pExtent(MemorySegment segment, long index) { return (MemorySegment) VH_pExtent.get().get(segment, 0L, index); }
     /// {@return `pExtent`}
     public MemorySegment pExtent() { return pExtent(this.segment(), 0L); }
     /// Sets `pExtent` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pExtent(MemorySegment segment, long index, MemorySegment value) { VH_pExtent.set(segment, 0L, index, value); }
+    public static void pExtent(MemorySegment segment, long index, MemorySegment value) { VH_pExtent.get().set(segment, 0L, index, value); }
     /// Sets `pExtent` with the given value.
     /// @param value the value
     /// @return `this`

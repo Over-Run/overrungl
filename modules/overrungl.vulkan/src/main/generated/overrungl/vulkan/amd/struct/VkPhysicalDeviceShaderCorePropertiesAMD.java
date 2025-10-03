@@ -57,97 +57,97 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderEngineCount`.
     public static final long OFFSET_shaderEngineCount = LAYOUT.byteOffset(PathElement.groupElement("shaderEngineCount"));
     /// The memory layout of `shaderEngineCount`.
     public static final MemoryLayout LAYOUT_shaderEngineCount = LAYOUT.select(PathElement.groupElement("shaderEngineCount"));
     /// The [VarHandle] of `shaderEngineCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderEngineCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderEngineCount"));
+    public static final Supplier<VarHandle> VH_shaderEngineCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderEngineCount")));
     /// The byte offset of `shaderArraysPerEngineCount`.
     public static final long OFFSET_shaderArraysPerEngineCount = LAYOUT.byteOffset(PathElement.groupElement("shaderArraysPerEngineCount"));
     /// The memory layout of `shaderArraysPerEngineCount`.
     public static final MemoryLayout LAYOUT_shaderArraysPerEngineCount = LAYOUT.select(PathElement.groupElement("shaderArraysPerEngineCount"));
     /// The [VarHandle] of `shaderArraysPerEngineCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderArraysPerEngineCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderArraysPerEngineCount"));
+    public static final Supplier<VarHandle> VH_shaderArraysPerEngineCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderArraysPerEngineCount")));
     /// The byte offset of `computeUnitsPerShaderArray`.
     public static final long OFFSET_computeUnitsPerShaderArray = LAYOUT.byteOffset(PathElement.groupElement("computeUnitsPerShaderArray"));
     /// The memory layout of `computeUnitsPerShaderArray`.
     public static final MemoryLayout LAYOUT_computeUnitsPerShaderArray = LAYOUT.select(PathElement.groupElement("computeUnitsPerShaderArray"));
     /// The [VarHandle] of `computeUnitsPerShaderArray` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_computeUnitsPerShaderArray = LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeUnitsPerShaderArray"));
+    public static final Supplier<VarHandle> VH_computeUnitsPerShaderArray = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeUnitsPerShaderArray")));
     /// The byte offset of `simdPerComputeUnit`.
     public static final long OFFSET_simdPerComputeUnit = LAYOUT.byteOffset(PathElement.groupElement("simdPerComputeUnit"));
     /// The memory layout of `simdPerComputeUnit`.
     public static final MemoryLayout LAYOUT_simdPerComputeUnit = LAYOUT.select(PathElement.groupElement("simdPerComputeUnit"));
     /// The [VarHandle] of `simdPerComputeUnit` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_simdPerComputeUnit = LAYOUT.arrayElementVarHandle(PathElement.groupElement("simdPerComputeUnit"));
+    public static final Supplier<VarHandle> VH_simdPerComputeUnit = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("simdPerComputeUnit")));
     /// The byte offset of `wavefrontsPerSimd`.
     public static final long OFFSET_wavefrontsPerSimd = LAYOUT.byteOffset(PathElement.groupElement("wavefrontsPerSimd"));
     /// The memory layout of `wavefrontsPerSimd`.
     public static final MemoryLayout LAYOUT_wavefrontsPerSimd = LAYOUT.select(PathElement.groupElement("wavefrontsPerSimd"));
     /// The [VarHandle] of `wavefrontsPerSimd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_wavefrontsPerSimd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("wavefrontsPerSimd"));
+    public static final Supplier<VarHandle> VH_wavefrontsPerSimd = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("wavefrontsPerSimd")));
     /// The byte offset of `wavefrontSize`.
     public static final long OFFSET_wavefrontSize = LAYOUT.byteOffset(PathElement.groupElement("wavefrontSize"));
     /// The memory layout of `wavefrontSize`.
     public static final MemoryLayout LAYOUT_wavefrontSize = LAYOUT.select(PathElement.groupElement("wavefrontSize"));
     /// The [VarHandle] of `wavefrontSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_wavefrontSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("wavefrontSize"));
+    public static final Supplier<VarHandle> VH_wavefrontSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("wavefrontSize")));
     /// The byte offset of `sgprsPerSimd`.
     public static final long OFFSET_sgprsPerSimd = LAYOUT.byteOffset(PathElement.groupElement("sgprsPerSimd"));
     /// The memory layout of `sgprsPerSimd`.
     public static final MemoryLayout LAYOUT_sgprsPerSimd = LAYOUT.select(PathElement.groupElement("sgprsPerSimd"));
     /// The [VarHandle] of `sgprsPerSimd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sgprsPerSimd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sgprsPerSimd"));
+    public static final Supplier<VarHandle> VH_sgprsPerSimd = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sgprsPerSimd")));
     /// The byte offset of `minSgprAllocation`.
     public static final long OFFSET_minSgprAllocation = LAYOUT.byteOffset(PathElement.groupElement("minSgprAllocation"));
     /// The memory layout of `minSgprAllocation`.
     public static final MemoryLayout LAYOUT_minSgprAllocation = LAYOUT.select(PathElement.groupElement("minSgprAllocation"));
     /// The [VarHandle] of `minSgprAllocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minSgprAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSgprAllocation"));
+    public static final Supplier<VarHandle> VH_minSgprAllocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSgprAllocation")));
     /// The byte offset of `maxSgprAllocation`.
     public static final long OFFSET_maxSgprAllocation = LAYOUT.byteOffset(PathElement.groupElement("maxSgprAllocation"));
     /// The memory layout of `maxSgprAllocation`.
     public static final MemoryLayout LAYOUT_maxSgprAllocation = LAYOUT.select(PathElement.groupElement("maxSgprAllocation"));
     /// The [VarHandle] of `maxSgprAllocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSgprAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSgprAllocation"));
+    public static final Supplier<VarHandle> VH_maxSgprAllocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSgprAllocation")));
     /// The byte offset of `sgprAllocationGranularity`.
     public static final long OFFSET_sgprAllocationGranularity = LAYOUT.byteOffset(PathElement.groupElement("sgprAllocationGranularity"));
     /// The memory layout of `sgprAllocationGranularity`.
     public static final MemoryLayout LAYOUT_sgprAllocationGranularity = LAYOUT.select(PathElement.groupElement("sgprAllocationGranularity"));
     /// The [VarHandle] of `sgprAllocationGranularity` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sgprAllocationGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sgprAllocationGranularity"));
+    public static final Supplier<VarHandle> VH_sgprAllocationGranularity = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sgprAllocationGranularity")));
     /// The byte offset of `vgprsPerSimd`.
     public static final long OFFSET_vgprsPerSimd = LAYOUT.byteOffset(PathElement.groupElement("vgprsPerSimd"));
     /// The memory layout of `vgprsPerSimd`.
     public static final MemoryLayout LAYOUT_vgprsPerSimd = LAYOUT.select(PathElement.groupElement("vgprsPerSimd"));
     /// The [VarHandle] of `vgprsPerSimd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vgprsPerSimd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vgprsPerSimd"));
+    public static final Supplier<VarHandle> VH_vgprsPerSimd = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vgprsPerSimd")));
     /// The byte offset of `minVgprAllocation`.
     public static final long OFFSET_minVgprAllocation = LAYOUT.byteOffset(PathElement.groupElement("minVgprAllocation"));
     /// The memory layout of `minVgprAllocation`.
     public static final MemoryLayout LAYOUT_minVgprAllocation = LAYOUT.select(PathElement.groupElement("minVgprAllocation"));
     /// The [VarHandle] of `minVgprAllocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minVgprAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minVgprAllocation"));
+    public static final Supplier<VarHandle> VH_minVgprAllocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minVgprAllocation")));
     /// The byte offset of `maxVgprAllocation`.
     public static final long OFFSET_maxVgprAllocation = LAYOUT.byteOffset(PathElement.groupElement("maxVgprAllocation"));
     /// The memory layout of `maxVgprAllocation`.
     public static final MemoryLayout LAYOUT_maxVgprAllocation = LAYOUT.select(PathElement.groupElement("maxVgprAllocation"));
     /// The [VarHandle] of `maxVgprAllocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxVgprAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxVgprAllocation"));
+    public static final Supplier<VarHandle> VH_maxVgprAllocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxVgprAllocation")));
     /// The byte offset of `vgprAllocationGranularity`.
     public static final long OFFSET_vgprAllocationGranularity = LAYOUT.byteOffset(PathElement.groupElement("vgprAllocationGranularity"));
     /// The memory layout of `vgprAllocationGranularity`.
     public static final MemoryLayout LAYOUT_vgprAllocationGranularity = LAYOUT.select(PathElement.groupElement("vgprAllocationGranularity"));
     /// The [VarHandle] of `vgprAllocationGranularity` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vgprAllocationGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vgprAllocationGranularity"));
+    public static final Supplier<VarHandle> VH_vgprAllocationGranularity = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vgprAllocationGranularity")));
 
     /// Creates `VkPhysicalDeviceShaderCorePropertiesAMD` with the given segment.
     /// @param segment      the memory segment
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `shaderEngineCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderEngineCount(MemorySegment segment, long index) { return (int) VH_shaderEngineCount.get(segment, 0L, index); }
+    public static int shaderEngineCount(MemorySegment segment, long index) { return (int) VH_shaderEngineCount.get().get(segment, 0L, index); }
     /// {@return `shaderEngineCount`}
     public int shaderEngineCount() { return shaderEngineCount(this.segment(), 0L); }
     /// Sets `shaderEngineCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderEngineCount(MemorySegment segment, long index, int value) { VH_shaderEngineCount.set(segment, 0L, index, value); }
+    public static void shaderEngineCount(MemorySegment segment, long index, int value) { VH_shaderEngineCount.get().set(segment, 0L, index, value); }
     /// Sets `shaderEngineCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `shaderArraysPerEngineCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderArraysPerEngineCount(MemorySegment segment, long index) { return (int) VH_shaderArraysPerEngineCount.get(segment, 0L, index); }
+    public static int shaderArraysPerEngineCount(MemorySegment segment, long index) { return (int) VH_shaderArraysPerEngineCount.get().get(segment, 0L, index); }
     /// {@return `shaderArraysPerEngineCount`}
     public int shaderArraysPerEngineCount() { return shaderArraysPerEngineCount(this.segment(), 0L); }
     /// Sets `shaderArraysPerEngineCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderArraysPerEngineCount(MemorySegment segment, long index, int value) { VH_shaderArraysPerEngineCount.set(segment, 0L, index, value); }
+    public static void shaderArraysPerEngineCount(MemorySegment segment, long index, int value) { VH_shaderArraysPerEngineCount.get().set(segment, 0L, index, value); }
     /// Sets `shaderArraysPerEngineCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `computeUnitsPerShaderArray` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int computeUnitsPerShaderArray(MemorySegment segment, long index) { return (int) VH_computeUnitsPerShaderArray.get(segment, 0L, index); }
+    public static int computeUnitsPerShaderArray(MemorySegment segment, long index) { return (int) VH_computeUnitsPerShaderArray.get().get(segment, 0L, index); }
     /// {@return `computeUnitsPerShaderArray`}
     public int computeUnitsPerShaderArray() { return computeUnitsPerShaderArray(this.segment(), 0L); }
     /// Sets `computeUnitsPerShaderArray` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void computeUnitsPerShaderArray(MemorySegment segment, long index, int value) { VH_computeUnitsPerShaderArray.set(segment, 0L, index, value); }
+    public static void computeUnitsPerShaderArray(MemorySegment segment, long index, int value) { VH_computeUnitsPerShaderArray.get().set(segment, 0L, index, value); }
     /// Sets `computeUnitsPerShaderArray` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `simdPerComputeUnit` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int simdPerComputeUnit(MemorySegment segment, long index) { return (int) VH_simdPerComputeUnit.get(segment, 0L, index); }
+    public static int simdPerComputeUnit(MemorySegment segment, long index) { return (int) VH_simdPerComputeUnit.get().get(segment, 0L, index); }
     /// {@return `simdPerComputeUnit`}
     public int simdPerComputeUnit() { return simdPerComputeUnit(this.segment(), 0L); }
     /// Sets `simdPerComputeUnit` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void simdPerComputeUnit(MemorySegment segment, long index, int value) { VH_simdPerComputeUnit.set(segment, 0L, index, value); }
+    public static void simdPerComputeUnit(MemorySegment segment, long index, int value) { VH_simdPerComputeUnit.get().set(segment, 0L, index, value); }
     /// Sets `simdPerComputeUnit` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `wavefrontsPerSimd` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int wavefrontsPerSimd(MemorySegment segment, long index) { return (int) VH_wavefrontsPerSimd.get(segment, 0L, index); }
+    public static int wavefrontsPerSimd(MemorySegment segment, long index) { return (int) VH_wavefrontsPerSimd.get().get(segment, 0L, index); }
     /// {@return `wavefrontsPerSimd`}
     public int wavefrontsPerSimd() { return wavefrontsPerSimd(this.segment(), 0L); }
     /// Sets `wavefrontsPerSimd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void wavefrontsPerSimd(MemorySegment segment, long index, int value) { VH_wavefrontsPerSimd.set(segment, 0L, index, value); }
+    public static void wavefrontsPerSimd(MemorySegment segment, long index, int value) { VH_wavefrontsPerSimd.get().set(segment, 0L, index, value); }
     /// Sets `wavefrontsPerSimd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,14 +310,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `wavefrontSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int wavefrontSize(MemorySegment segment, long index) { return (int) VH_wavefrontSize.get(segment, 0L, index); }
+    public static int wavefrontSize(MemorySegment segment, long index) { return (int) VH_wavefrontSize.get().get(segment, 0L, index); }
     /// {@return `wavefrontSize`}
     public int wavefrontSize() { return wavefrontSize(this.segment(), 0L); }
     /// Sets `wavefrontSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void wavefrontSize(MemorySegment segment, long index, int value) { VH_wavefrontSize.set(segment, 0L, index, value); }
+    public static void wavefrontSize(MemorySegment segment, long index, int value) { VH_wavefrontSize.get().set(segment, 0L, index, value); }
     /// Sets `wavefrontSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,14 +326,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `sgprsPerSimd` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sgprsPerSimd(MemorySegment segment, long index) { return (int) VH_sgprsPerSimd.get(segment, 0L, index); }
+    public static int sgprsPerSimd(MemorySegment segment, long index) { return (int) VH_sgprsPerSimd.get().get(segment, 0L, index); }
     /// {@return `sgprsPerSimd`}
     public int sgprsPerSimd() { return sgprsPerSimd(this.segment(), 0L); }
     /// Sets `sgprsPerSimd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sgprsPerSimd(MemorySegment segment, long index, int value) { VH_sgprsPerSimd.set(segment, 0L, index, value); }
+    public static void sgprsPerSimd(MemorySegment segment, long index, int value) { VH_sgprsPerSimd.get().set(segment, 0L, index, value); }
     /// Sets `sgprsPerSimd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,14 +342,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `minSgprAllocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minSgprAllocation(MemorySegment segment, long index) { return (int) VH_minSgprAllocation.get(segment, 0L, index); }
+    public static int minSgprAllocation(MemorySegment segment, long index) { return (int) VH_minSgprAllocation.get().get(segment, 0L, index); }
     /// {@return `minSgprAllocation`}
     public int minSgprAllocation() { return minSgprAllocation(this.segment(), 0L); }
     /// Sets `minSgprAllocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minSgprAllocation(MemorySegment segment, long index, int value) { VH_minSgprAllocation.set(segment, 0L, index, value); }
+    public static void minSgprAllocation(MemorySegment segment, long index, int value) { VH_minSgprAllocation.get().set(segment, 0L, index, value); }
     /// Sets `minSgprAllocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -358,14 +358,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `maxSgprAllocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxSgprAllocation(MemorySegment segment, long index) { return (int) VH_maxSgprAllocation.get(segment, 0L, index); }
+    public static int maxSgprAllocation(MemorySegment segment, long index) { return (int) VH_maxSgprAllocation.get().get(segment, 0L, index); }
     /// {@return `maxSgprAllocation`}
     public int maxSgprAllocation() { return maxSgprAllocation(this.segment(), 0L); }
     /// Sets `maxSgprAllocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxSgprAllocation(MemorySegment segment, long index, int value) { VH_maxSgprAllocation.set(segment, 0L, index, value); }
+    public static void maxSgprAllocation(MemorySegment segment, long index, int value) { VH_maxSgprAllocation.get().set(segment, 0L, index, value); }
     /// Sets `maxSgprAllocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -374,14 +374,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `sgprAllocationGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sgprAllocationGranularity(MemorySegment segment, long index) { return (int) VH_sgprAllocationGranularity.get(segment, 0L, index); }
+    public static int sgprAllocationGranularity(MemorySegment segment, long index) { return (int) VH_sgprAllocationGranularity.get().get(segment, 0L, index); }
     /// {@return `sgprAllocationGranularity`}
     public int sgprAllocationGranularity() { return sgprAllocationGranularity(this.segment(), 0L); }
     /// Sets `sgprAllocationGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sgprAllocationGranularity(MemorySegment segment, long index, int value) { VH_sgprAllocationGranularity.set(segment, 0L, index, value); }
+    public static void sgprAllocationGranularity(MemorySegment segment, long index, int value) { VH_sgprAllocationGranularity.get().set(segment, 0L, index, value); }
     /// Sets `sgprAllocationGranularity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -390,14 +390,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `vgprsPerSimd` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vgprsPerSimd(MemorySegment segment, long index) { return (int) VH_vgprsPerSimd.get(segment, 0L, index); }
+    public static int vgprsPerSimd(MemorySegment segment, long index) { return (int) VH_vgprsPerSimd.get().get(segment, 0L, index); }
     /// {@return `vgprsPerSimd`}
     public int vgprsPerSimd() { return vgprsPerSimd(this.segment(), 0L); }
     /// Sets `vgprsPerSimd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vgprsPerSimd(MemorySegment segment, long index, int value) { VH_vgprsPerSimd.set(segment, 0L, index, value); }
+    public static void vgprsPerSimd(MemorySegment segment, long index, int value) { VH_vgprsPerSimd.get().set(segment, 0L, index, value); }
     /// Sets `vgprsPerSimd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -406,14 +406,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `minVgprAllocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minVgprAllocation(MemorySegment segment, long index) { return (int) VH_minVgprAllocation.get(segment, 0L, index); }
+    public static int minVgprAllocation(MemorySegment segment, long index) { return (int) VH_minVgprAllocation.get().get(segment, 0L, index); }
     /// {@return `minVgprAllocation`}
     public int minVgprAllocation() { return minVgprAllocation(this.segment(), 0L); }
     /// Sets `minVgprAllocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minVgprAllocation(MemorySegment segment, long index, int value) { VH_minVgprAllocation.set(segment, 0L, index, value); }
+    public static void minVgprAllocation(MemorySegment segment, long index, int value) { VH_minVgprAllocation.get().set(segment, 0L, index, value); }
     /// Sets `minVgprAllocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -422,14 +422,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `maxVgprAllocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxVgprAllocation(MemorySegment segment, long index) { return (int) VH_maxVgprAllocation.get(segment, 0L, index); }
+    public static int maxVgprAllocation(MemorySegment segment, long index) { return (int) VH_maxVgprAllocation.get().get(segment, 0L, index); }
     /// {@return `maxVgprAllocation`}
     public int maxVgprAllocation() { return maxVgprAllocation(this.segment(), 0L); }
     /// Sets `maxVgprAllocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxVgprAllocation(MemorySegment segment, long index, int value) { VH_maxVgprAllocation.set(segment, 0L, index, value); }
+    public static void maxVgprAllocation(MemorySegment segment, long index, int value) { VH_maxVgprAllocation.get().set(segment, 0L, index, value); }
     /// Sets `maxVgprAllocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -438,14 +438,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// {@return `vgprAllocationGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vgprAllocationGranularity(MemorySegment segment, long index) { return (int) VH_vgprAllocationGranularity.get(segment, 0L, index); }
+    public static int vgprAllocationGranularity(MemorySegment segment, long index) { return (int) VH_vgprAllocationGranularity.get().get(segment, 0L, index); }
     /// {@return `vgprAllocationGranularity`}
     public int vgprAllocationGranularity() { return vgprAllocationGranularity(this.segment(), 0L); }
     /// Sets `vgprAllocationGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vgprAllocationGranularity(MemorySegment segment, long index, int value) { VH_vgprAllocationGranularity.set(segment, 0L, index, value); }
+    public static void vgprAllocationGranularity(MemorySegment segment, long index, int value) { VH_vgprAllocationGranularity.get().set(segment, 0L, index, value); }
     /// Sets `vgprAllocationGranularity` with the given value.
     /// @param value the value
     /// @return `this`

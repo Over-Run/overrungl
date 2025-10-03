@@ -2,6 +2,7 @@
 package overrungl.vulkan.fuchsia;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -15,8 +16,8 @@ public final class VKFUCHSIAExternalMemory {
     public static final int VK_STRUCTURE_TYPE_MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA = 1000364002;
     public static final int VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA = 0x00000800;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetMemoryZirconHandleFUCHSIA = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetMemoryZirconHandlePropertiesFUCHSIA = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkGetMemoryZirconHandleFUCHSIA = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetMemoryZirconHandlePropertiesFUCHSIA = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -29,7 +30,7 @@ public final class VKFUCHSIAExternalMemory {
     public static int vkGetMemoryZirconHandleFUCHSIA(@NonNull VkDevice device, @NonNull MemorySegment pGetZirconHandleInfo, @NonNull MemorySegment pZirconHandle) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryZirconHandleFUCHSIA)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandleFUCHSIA");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMemoryZirconHandleFUCHSIA", device, pGetZirconHandleInfo, pZirconHandle); }
-        return (int) Handles.MH_vkGetMemoryZirconHandleFUCHSIA.invokeExact(device.capabilities().PFN_vkGetMemoryZirconHandleFUCHSIA, device.segment(), pGetZirconHandleInfo, pZirconHandle); }
+        return (int) Handles.MH_vkGetMemoryZirconHandleFUCHSIA.get().invokeExact(device.capabilities().PFN_vkGetMemoryZirconHandleFUCHSIA, device.segment(), pGetZirconHandleInfo, pZirconHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryZirconHandleFUCHSIA", e); }
     }
 
@@ -40,7 +41,7 @@ public final class VKFUCHSIAExternalMemory {
     public static int vkGetMemoryZirconHandlePropertiesFUCHSIA(@NonNull VkDevice device, int handleType, int zirconHandle, @NonNull MemorySegment pMemoryZirconHandleProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandlePropertiesFUCHSIA");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMemoryZirconHandlePropertiesFUCHSIA", device, handleType, zirconHandle, pMemoryZirconHandleProperties); }
-        return (int) Handles.MH_vkGetMemoryZirconHandlePropertiesFUCHSIA.invokeExact(device.capabilities().PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA, device.segment(), handleType, zirconHandle, pMemoryZirconHandleProperties); }
+        return (int) Handles.MH_vkGetMemoryZirconHandlePropertiesFUCHSIA.get().invokeExact(device.capabilities().PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA, device.segment(), handleType, zirconHandle, pMemoryZirconHandleProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryZirconHandlePropertiesFUCHSIA", e); }
     }
 

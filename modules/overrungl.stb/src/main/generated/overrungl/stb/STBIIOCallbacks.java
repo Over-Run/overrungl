@@ -31,19 +31,19 @@ public final class STBIIOCallbacks extends GroupType {
     /// The memory layout of `read`.
     public static final MemoryLayout LAYOUT_read = LAYOUT.select(PathElement.groupElement("read"));
     /// The [VarHandle] of `read` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_read = LAYOUT.arrayElementVarHandle(PathElement.groupElement("read"));
+    public static final Supplier<VarHandle> VH_read = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("read")));
     /// The byte offset of `skip`.
     public static final long OFFSET_skip = LAYOUT.byteOffset(PathElement.groupElement("skip"));
     /// The memory layout of `skip`.
     public static final MemoryLayout LAYOUT_skip = LAYOUT.select(PathElement.groupElement("skip"));
     /// The [VarHandle] of `skip` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_skip = LAYOUT.arrayElementVarHandle(PathElement.groupElement("skip"));
+    public static final Supplier<VarHandle> VH_skip = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("skip")));
     /// The byte offset of `eof`.
     public static final long OFFSET_eof = LAYOUT.byteOffset(PathElement.groupElement("eof"));
     /// The memory layout of `eof`.
     public static final MemoryLayout LAYOUT_eof = LAYOUT.select(PathElement.groupElement("eof"));
     /// The [VarHandle] of `eof` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_eof = LAYOUT.arrayElementVarHandle(PathElement.groupElement("eof"));
+    public static final Supplier<VarHandle> VH_eof = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("eof")));
 
     /// Creates `STBIIOCallbacks` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class STBIIOCallbacks extends GroupType {
     /// {@return `read` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment read(MemorySegment segment, long index) { return (MemorySegment) VH_read.get(segment, 0L, index); }
+    public static MemorySegment read(MemorySegment segment, long index) { return (MemorySegment) VH_read.get().get(segment, 0L, index); }
     /// {@return `read`}
     public MemorySegment read() { return read(this.segment(), 0L); }
     /// Sets `read` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void read(MemorySegment segment, long index, MemorySegment value) { VH_read.set(segment, 0L, index, value); }
+    public static void read(MemorySegment segment, long index, MemorySegment value) { VH_read.get().set(segment, 0L, index, value); }
     /// Sets `read` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class STBIIOCallbacks extends GroupType {
     /// {@return `skip` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment skip(MemorySegment segment, long index) { return (MemorySegment) VH_skip.get(segment, 0L, index); }
+    public static MemorySegment skip(MemorySegment segment, long index) { return (MemorySegment) VH_skip.get().get(segment, 0L, index); }
     /// {@return `skip`}
     public MemorySegment skip() { return skip(this.segment(), 0L); }
     /// Sets `skip` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void skip(MemorySegment segment, long index, MemorySegment value) { VH_skip.set(segment, 0L, index, value); }
+    public static void skip(MemorySegment segment, long index, MemorySegment value) { VH_skip.get().set(segment, 0L, index, value); }
     /// Sets `skip` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class STBIIOCallbacks extends GroupType {
     /// {@return `eof` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment eof(MemorySegment segment, long index) { return (MemorySegment) VH_eof.get(segment, 0L, index); }
+    public static MemorySegment eof(MemorySegment segment, long index) { return (MemorySegment) VH_eof.get().get(segment, 0L, index); }
     /// {@return `eof`}
     public MemorySegment eof() { return eof(this.segment(), 0L); }
     /// Sets `eof` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void eof(MemorySegment segment, long index, MemorySegment value) { VH_eof.set(segment, 0L, index, value); }
+    public static void eof(MemorySegment segment, long index, MemorySegment value) { VH_eof.get().set(segment, 0L, index, value); }
     /// Sets `eof` with the given value.
     /// @param value the value
     /// @return `this`

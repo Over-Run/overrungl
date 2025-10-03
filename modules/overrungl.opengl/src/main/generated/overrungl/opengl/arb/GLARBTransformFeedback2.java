@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -14,13 +15,13 @@ public final class GLARBTransformFeedback2 {
     public static final int GL_TRANSFORM_FEEDBACK_BINDING = 0x8E25;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBindTransformFeedback = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDeleteTransformFeedbacks = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGenTransformFeedbacks = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsTransformFeedback = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPauseTransformFeedback = downcallHandle(FunctionDescriptor.ofVoid());
-        public static final MethodHandle MH_glResumeTransformFeedback = downcallHandle(FunctionDescriptor.ofVoid());
-        public static final MethodHandle MH_glDrawTransformFeedback = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glBindTransformFeedback = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDeleteTransformFeedbacks = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGenTransformFeedbacks = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glIsTransformFeedback = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPauseTransformFeedback = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
+        public static final Supplier<MethodHandle> MH_glResumeTransformFeedback = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
+        public static final Supplier<MethodHandle> MH_glDrawTransformFeedback = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glBindTransformFeedback;
         public final MemorySegment PFN_glDeleteTransformFeedbacks;
         public final MemorySegment PFN_glGenTransformFeedbacks;
@@ -50,7 +51,7 @@ public final class GLARBTransformFeedback2 {
     public void BindTransformFeedback(int target, int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindTransformFeedback)) throw new GLSymbolNotFoundError("Symbol not found: glBindTransformFeedback");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindTransformFeedback", target, id); }
-        Handles.MH_glBindTransformFeedback.invokeExact(handles.PFN_glBindTransformFeedback, target, id); }
+        Handles.MH_glBindTransformFeedback.get().invokeExact(handles.PFN_glBindTransformFeedback, target, id); }
         catch (Throwable e) { throw new RuntimeException("error in BindTransformFeedback", e); }
     }
 
@@ -61,7 +62,7 @@ public final class GLARBTransformFeedback2 {
     public void DeleteTransformFeedbacks(int n, @NonNull MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteTransformFeedbacks)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteTransformFeedbacks");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteTransformFeedbacks", n, ids); }
-        Handles.MH_glDeleteTransformFeedbacks.invokeExact(handles.PFN_glDeleteTransformFeedbacks, n, ids); }
+        Handles.MH_glDeleteTransformFeedbacks.get().invokeExact(handles.PFN_glDeleteTransformFeedbacks, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteTransformFeedbacks", e); }
     }
 
@@ -72,7 +73,7 @@ public final class GLARBTransformFeedback2 {
     public void GenTransformFeedbacks(int n, @NonNull MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenTransformFeedbacks)) throw new GLSymbolNotFoundError("Symbol not found: glGenTransformFeedbacks");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenTransformFeedbacks", n, ids); }
-        Handles.MH_glGenTransformFeedbacks.invokeExact(handles.PFN_glGenTransformFeedbacks, n, ids); }
+        Handles.MH_glGenTransformFeedbacks.get().invokeExact(handles.PFN_glGenTransformFeedbacks, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in GenTransformFeedbacks", e); }
     }
 
@@ -83,7 +84,7 @@ public final class GLARBTransformFeedback2 {
     public boolean IsTransformFeedback(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsTransformFeedback)) throw new GLSymbolNotFoundError("Symbol not found: glIsTransformFeedback");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIsTransformFeedback", id); }
-        return (((byte) Handles.MH_glIsTransformFeedback.invokeExact(handles.PFN_glIsTransformFeedback, id)) != 0); }
+        return (((byte) Handles.MH_glIsTransformFeedback.get().invokeExact(handles.PFN_glIsTransformFeedback, id)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsTransformFeedback", e); }
     }
 
@@ -94,7 +95,7 @@ public final class GLARBTransformFeedback2 {
     public void PauseTransformFeedback() {
         if (MemoryUtil.isNullPointer(handles.PFN_glPauseTransformFeedback)) throw new GLSymbolNotFoundError("Symbol not found: glPauseTransformFeedback");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPauseTransformFeedback"); }
-        Handles.MH_glPauseTransformFeedback.invokeExact(handles.PFN_glPauseTransformFeedback); }
+        Handles.MH_glPauseTransformFeedback.get().invokeExact(handles.PFN_glPauseTransformFeedback); }
         catch (Throwable e) { throw new RuntimeException("error in PauseTransformFeedback", e); }
     }
 
@@ -105,7 +106,7 @@ public final class GLARBTransformFeedback2 {
     public void ResumeTransformFeedback() {
         if (MemoryUtil.isNullPointer(handles.PFN_glResumeTransformFeedback)) throw new GLSymbolNotFoundError("Symbol not found: glResumeTransformFeedback");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glResumeTransformFeedback"); }
-        Handles.MH_glResumeTransformFeedback.invokeExact(handles.PFN_glResumeTransformFeedback); }
+        Handles.MH_glResumeTransformFeedback.get().invokeExact(handles.PFN_glResumeTransformFeedback); }
         catch (Throwable e) { throw new RuntimeException("error in ResumeTransformFeedback", e); }
     }
 
@@ -116,7 +117,7 @@ public final class GLARBTransformFeedback2 {
     public void DrawTransformFeedback(int mode, int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawTransformFeedback)) throw new GLSymbolNotFoundError("Symbol not found: glDrawTransformFeedback");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawTransformFeedback", mode, id); }
-        Handles.MH_glDrawTransformFeedback.invokeExact(handles.PFN_glDrawTransformFeedback, mode, id); }
+        Handles.MH_glDrawTransformFeedback.get().invokeExact(handles.PFN_glDrawTransformFeedback, mode, id); }
         catch (Throwable e) { throw new RuntimeException("error in DrawTransformFeedback", e); }
     }
 

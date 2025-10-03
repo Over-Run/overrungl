@@ -2,6 +2,7 @@
 package overrungl.opengl.nvx;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -12,9 +13,9 @@ public final class GLNVXLinkedGpuMulticast {
     public static final int GL_MAX_LGPU_GPUS_NVX = 0x92BA;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glLGPUNamedBufferSubDataNVX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glLGPUCopyImageSubDataNVX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glLGPUInterlockNVX = downcallHandle(FunctionDescriptor.ofVoid());
+        public static final Supplier<MethodHandle> MH_glLGPUNamedBufferSubDataNVX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glLGPUCopyImageSubDataNVX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glLGPUInterlockNVX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
         public final MemorySegment PFN_glLGPUNamedBufferSubDataNVX;
         public final MemorySegment PFN_glLGPUCopyImageSubDataNVX;
         public final MemorySegment PFN_glLGPUInterlockNVX;
@@ -36,7 +37,7 @@ public final class GLNVXLinkedGpuMulticast {
     public void LGPUNamedBufferSubDataNVX(int gpuMask, int buffer, long offset, long size, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLGPUNamedBufferSubDataNVX)) throw new GLSymbolNotFoundError("Symbol not found: glLGPUNamedBufferSubDataNVX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLGPUNamedBufferSubDataNVX", gpuMask, buffer, offset, size, data); }
-        Handles.MH_glLGPUNamedBufferSubDataNVX.invokeExact(handles.PFN_glLGPUNamedBufferSubDataNVX, gpuMask, buffer, offset, size, data); }
+        Handles.MH_glLGPUNamedBufferSubDataNVX.get().invokeExact(handles.PFN_glLGPUNamedBufferSubDataNVX, gpuMask, buffer, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in LGPUNamedBufferSubDataNVX", e); }
     }
 
@@ -47,7 +48,7 @@ public final class GLNVXLinkedGpuMulticast {
     public void LGPUCopyImageSubDataNVX(int sourceGpu, int destinationGpuMask, int srcName, int srcTarget, int srcLevel, int srcX, int srxY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLGPUCopyImageSubDataNVX)) throw new GLSymbolNotFoundError("Symbol not found: glLGPUCopyImageSubDataNVX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLGPUCopyImageSubDataNVX", sourceGpu, destinationGpuMask, srcName, srcTarget, srcLevel, srcX, srxY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth); }
-        Handles.MH_glLGPUCopyImageSubDataNVX.invokeExact(handles.PFN_glLGPUCopyImageSubDataNVX, sourceGpu, destinationGpuMask, srcName, srcTarget, srcLevel, srcX, srxY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth); }
+        Handles.MH_glLGPUCopyImageSubDataNVX.get().invokeExact(handles.PFN_glLGPUCopyImageSubDataNVX, sourceGpu, destinationGpuMask, srcName, srcTarget, srcLevel, srcX, srxY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth); }
         catch (Throwable e) { throw new RuntimeException("error in LGPUCopyImageSubDataNVX", e); }
     }
 
@@ -58,7 +59,7 @@ public final class GLNVXLinkedGpuMulticast {
     public void LGPUInterlockNVX() {
         if (MemoryUtil.isNullPointer(handles.PFN_glLGPUInterlockNVX)) throw new GLSymbolNotFoundError("Symbol not found: glLGPUInterlockNVX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLGPUInterlockNVX"); }
-        Handles.MH_glLGPUInterlockNVX.invokeExact(handles.PFN_glLGPUInterlockNVX); }
+        Handles.MH_glLGPUInterlockNVX.get().invokeExact(handles.PFN_glLGPUInterlockNVX); }
         catch (Throwable e) { throw new RuntimeException("error in LGPUInterlockNVX", e); }
     }
 

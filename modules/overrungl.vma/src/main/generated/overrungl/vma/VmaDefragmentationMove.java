@@ -31,19 +31,19 @@ public final class VmaDefragmentationMove extends GroupType {
     /// The memory layout of `operation`.
     public static final MemoryLayout LAYOUT_operation = LAYOUT.select(PathElement.groupElement("operation"));
     /// The [VarHandle] of `operation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_operation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("operation"));
+    public static final Supplier<VarHandle> VH_operation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("operation")));
     /// The byte offset of `srcAllocation`.
     public static final long OFFSET_srcAllocation = LAYOUT.byteOffset(PathElement.groupElement("srcAllocation"));
     /// The memory layout of `srcAllocation`.
     public static final MemoryLayout LAYOUT_srcAllocation = LAYOUT.select(PathElement.groupElement("srcAllocation"));
     /// The [VarHandle] of `srcAllocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAllocation"));
+    public static final Supplier<VarHandle> VH_srcAllocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAllocation")));
     /// The byte offset of `dstTmpAllocation`.
     public static final long OFFSET_dstTmpAllocation = LAYOUT.byteOffset(PathElement.groupElement("dstTmpAllocation"));
     /// The memory layout of `dstTmpAllocation`.
     public static final MemoryLayout LAYOUT_dstTmpAllocation = LAYOUT.select(PathElement.groupElement("dstTmpAllocation"));
     /// The [VarHandle] of `dstTmpAllocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstTmpAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstTmpAllocation"));
+    public static final Supplier<VarHandle> VH_dstTmpAllocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstTmpAllocation")));
 
     /// Creates `VmaDefragmentationMove` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VmaDefragmentationMove extends GroupType {
     /// {@return `operation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int operation(MemorySegment segment, long index) { return (int) VH_operation.get(segment, 0L, index); }
+    public static int operation(MemorySegment segment, long index) { return (int) VH_operation.get().get(segment, 0L, index); }
     /// {@return `operation`}
     public int operation() { return operation(this.segment(), 0L); }
     /// Sets `operation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void operation(MemorySegment segment, long index, int value) { VH_operation.set(segment, 0L, index, value); }
+    public static void operation(MemorySegment segment, long index, int value) { VH_operation.get().set(segment, 0L, index, value); }
     /// Sets `operation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VmaDefragmentationMove extends GroupType {
     /// {@return `srcAllocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment srcAllocation(MemorySegment segment, long index) { return (MemorySegment) VH_srcAllocation.get(segment, 0L, index); }
+    public static MemorySegment srcAllocation(MemorySegment segment, long index) { return (MemorySegment) VH_srcAllocation.get().get(segment, 0L, index); }
     /// {@return `srcAllocation`}
     public MemorySegment srcAllocation() { return srcAllocation(this.segment(), 0L); }
     /// Sets `srcAllocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcAllocation(MemorySegment segment, long index, MemorySegment value) { VH_srcAllocation.set(segment, 0L, index, value); }
+    public static void srcAllocation(MemorySegment segment, long index, MemorySegment value) { VH_srcAllocation.get().set(segment, 0L, index, value); }
     /// Sets `srcAllocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VmaDefragmentationMove extends GroupType {
     /// {@return `dstTmpAllocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment dstTmpAllocation(MemorySegment segment, long index) { return (MemorySegment) VH_dstTmpAllocation.get(segment, 0L, index); }
+    public static MemorySegment dstTmpAllocation(MemorySegment segment, long index) { return (MemorySegment) VH_dstTmpAllocation.get().get(segment, 0L, index); }
     /// {@return `dstTmpAllocation`}
     public MemorySegment dstTmpAllocation() { return dstTmpAllocation(this.segment(), 0L); }
     /// Sets `dstTmpAllocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstTmpAllocation(MemorySegment segment, long index, MemorySegment value) { VH_dstTmpAllocation.set(segment, 0L, index, value); }
+    public static void dstTmpAllocation(MemorySegment segment, long index, MemorySegment value) { VH_dstTmpAllocation.get().set(segment, 0L, index, value); }
     /// Sets `dstTmpAllocation` with the given value.
     /// @param value the value
     /// @return `this`

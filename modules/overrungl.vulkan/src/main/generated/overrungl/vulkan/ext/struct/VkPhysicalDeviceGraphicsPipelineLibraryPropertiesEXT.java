@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT extends 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `graphicsPipelineLibraryFastLinking`.
     public static final long OFFSET_graphicsPipelineLibraryFastLinking = LAYOUT.byteOffset(PathElement.groupElement("graphicsPipelineLibraryFastLinking"));
     /// The memory layout of `graphicsPipelineLibraryFastLinking`.
     public static final MemoryLayout LAYOUT_graphicsPipelineLibraryFastLinking = LAYOUT.select(PathElement.groupElement("graphicsPipelineLibraryFastLinking"));
     /// The [VarHandle] of `graphicsPipelineLibraryFastLinking` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_graphicsPipelineLibraryFastLinking = LAYOUT.arrayElementVarHandle(PathElement.groupElement("graphicsPipelineLibraryFastLinking"));
+    public static final Supplier<VarHandle> VH_graphicsPipelineLibraryFastLinking = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("graphicsPipelineLibraryFastLinking")));
     /// The byte offset of `graphicsPipelineLibraryIndependentInterpolationDecoration`.
     public static final long OFFSET_graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT.byteOffset(PathElement.groupElement("graphicsPipelineLibraryIndependentInterpolationDecoration"));
     /// The memory layout of `graphicsPipelineLibraryIndependentInterpolationDecoration`.
     public static final MemoryLayout LAYOUT_graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT.select(PathElement.groupElement("graphicsPipelineLibraryIndependentInterpolationDecoration"));
     /// The [VarHandle] of `graphicsPipelineLibraryIndependentInterpolationDecoration` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT.arrayElementVarHandle(PathElement.groupElement("graphicsPipelineLibraryIndependentInterpolationDecoration"));
+    public static final Supplier<VarHandle> VH_graphicsPipelineLibraryIndependentInterpolationDecoration = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("graphicsPipelineLibraryIndependentInterpolationDecoration")));
 
     /// Creates `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT extends 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT extends 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT extends 
     /// {@return `graphicsPipelineLibraryFastLinking` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int graphicsPipelineLibraryFastLinking(MemorySegment segment, long index) { return (int) VH_graphicsPipelineLibraryFastLinking.get(segment, 0L, index); }
+    public static int graphicsPipelineLibraryFastLinking(MemorySegment segment, long index) { return (int) VH_graphicsPipelineLibraryFastLinking.get().get(segment, 0L, index); }
     /// {@return `graphicsPipelineLibraryFastLinking`}
     public int graphicsPipelineLibraryFastLinking() { return graphicsPipelineLibraryFastLinking(this.segment(), 0L); }
     /// Sets `graphicsPipelineLibraryFastLinking` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void graphicsPipelineLibraryFastLinking(MemorySegment segment, long index, int value) { VH_graphicsPipelineLibraryFastLinking.set(segment, 0L, index, value); }
+    public static void graphicsPipelineLibraryFastLinking(MemorySegment segment, long index, int value) { VH_graphicsPipelineLibraryFastLinking.get().set(segment, 0L, index, value); }
     /// Sets `graphicsPipelineLibraryFastLinking` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT extends 
     /// {@return `graphicsPipelineLibraryIndependentInterpolationDecoration` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int graphicsPipelineLibraryIndependentInterpolationDecoration(MemorySegment segment, long index) { return (int) VH_graphicsPipelineLibraryIndependentInterpolationDecoration.get(segment, 0L, index); }
+    public static int graphicsPipelineLibraryIndependentInterpolationDecoration(MemorySegment segment, long index) { return (int) VH_graphicsPipelineLibraryIndependentInterpolationDecoration.get().get(segment, 0L, index); }
     /// {@return `graphicsPipelineLibraryIndependentInterpolationDecoration`}
     public int graphicsPipelineLibraryIndependentInterpolationDecoration() { return graphicsPipelineLibraryIndependentInterpolationDecoration(this.segment(), 0L); }
     /// Sets `graphicsPipelineLibraryIndependentInterpolationDecoration` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void graphicsPipelineLibraryIndependentInterpolationDecoration(MemorySegment segment, long index, int value) { VH_graphicsPipelineLibraryIndependentInterpolationDecoration.set(segment, 0L, index, value); }
+    public static void graphicsPipelineLibraryIndependentInterpolationDecoration(MemorySegment segment, long index, int value) { VH_graphicsPipelineLibraryIndependentInterpolationDecoration.get().set(segment, 0L, index, value); }
     /// Sets `graphicsPipelineLibraryIndependentInterpolationDecoration` with the given value.
     /// @param value the value
     /// @return `this`

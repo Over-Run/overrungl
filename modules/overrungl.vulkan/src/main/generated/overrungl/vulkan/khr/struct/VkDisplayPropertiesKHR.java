@@ -39,13 +39,13 @@ public final class VkDisplayPropertiesKHR extends GroupType {
     /// The memory layout of `display`.
     public static final MemoryLayout LAYOUT_display = LAYOUT.select(PathElement.groupElement("display"));
     /// The [VarHandle] of `display` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_display = LAYOUT.arrayElementVarHandle(PathElement.groupElement("display"));
+    public static final Supplier<VarHandle> VH_display = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("display")));
     /// The byte offset of `displayName`.
     public static final long OFFSET_displayName = LAYOUT.byteOffset(PathElement.groupElement("displayName"));
     /// The memory layout of `displayName`.
     public static final MemoryLayout LAYOUT_displayName = LAYOUT.select(PathElement.groupElement("displayName"));
     /// The [VarHandle] of `displayName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_displayName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayName"));
+    public static final Supplier<VarHandle> VH_displayName = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayName")));
     /// The byte offset of `physicalDimensions`.
     public static final long OFFSET_physicalDimensions = LAYOUT.byteOffset(PathElement.groupElement("physicalDimensions"));
     /// The memory layout of `physicalDimensions`.
@@ -59,19 +59,19 @@ public final class VkDisplayPropertiesKHR extends GroupType {
     /// The memory layout of `supportedTransforms`.
     public static final MemoryLayout LAYOUT_supportedTransforms = LAYOUT.select(PathElement.groupElement("supportedTransforms"));
     /// The [VarHandle] of `supportedTransforms` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedTransforms = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedTransforms"));
+    public static final Supplier<VarHandle> VH_supportedTransforms = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedTransforms")));
     /// The byte offset of `planeReorderPossible`.
     public static final long OFFSET_planeReorderPossible = LAYOUT.byteOffset(PathElement.groupElement("planeReorderPossible"));
     /// The memory layout of `planeReorderPossible`.
     public static final MemoryLayout LAYOUT_planeReorderPossible = LAYOUT.select(PathElement.groupElement("planeReorderPossible"));
     /// The [VarHandle] of `planeReorderPossible` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_planeReorderPossible = LAYOUT.arrayElementVarHandle(PathElement.groupElement("planeReorderPossible"));
+    public static final Supplier<VarHandle> VH_planeReorderPossible = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("planeReorderPossible")));
     /// The byte offset of `persistentContent`.
     public static final long OFFSET_persistentContent = LAYOUT.byteOffset(PathElement.groupElement("persistentContent"));
     /// The memory layout of `persistentContent`.
     public static final MemoryLayout LAYOUT_persistentContent = LAYOUT.select(PathElement.groupElement("persistentContent"));
     /// The [VarHandle] of `persistentContent` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_persistentContent = LAYOUT.arrayElementVarHandle(PathElement.groupElement("persistentContent"));
+    public static final Supplier<VarHandle> VH_persistentContent = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("persistentContent")));
 
     /// Creates `VkDisplayPropertiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -122,14 +122,14 @@ public final class VkDisplayPropertiesKHR extends GroupType {
     /// {@return `display` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long display(MemorySegment segment, long index) { return (long) VH_display.get(segment, 0L, index); }
+    public static long display(MemorySegment segment, long index) { return (long) VH_display.get().get(segment, 0L, index); }
     /// {@return `display`}
     public long display() { return display(this.segment(), 0L); }
     /// Sets `display` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void display(MemorySegment segment, long index, long value) { VH_display.set(segment, 0L, index, value); }
+    public static void display(MemorySegment segment, long index, long value) { VH_display.get().set(segment, 0L, index, value); }
     /// Sets `display` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,14 +138,14 @@ public final class VkDisplayPropertiesKHR extends GroupType {
     /// {@return `displayName` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment displayName(MemorySegment segment, long index) { return (MemorySegment) VH_displayName.get(segment, 0L, index); }
+    public static MemorySegment displayName(MemorySegment segment, long index) { return (MemorySegment) VH_displayName.get().get(segment, 0L, index); }
     /// {@return `displayName`}
     public MemorySegment displayName() { return displayName(this.segment(), 0L); }
     /// Sets `displayName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void displayName(MemorySegment segment, long index, MemorySegment value) { VH_displayName.set(segment, 0L, index, value); }
+    public static void displayName(MemorySegment segment, long index, MemorySegment value) { VH_displayName.get().set(segment, 0L, index, value); }
     /// Sets `displayName` with the given value.
     /// @param value the value
     /// @return `this`
@@ -194,14 +194,14 @@ public final class VkDisplayPropertiesKHR extends GroupType {
     /// {@return `supportedTransforms` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedTransforms(MemorySegment segment, long index) { return (int) VH_supportedTransforms.get(segment, 0L, index); }
+    public static int supportedTransforms(MemorySegment segment, long index) { return (int) VH_supportedTransforms.get().get(segment, 0L, index); }
     /// {@return `supportedTransforms`}
     public int supportedTransforms() { return supportedTransforms(this.segment(), 0L); }
     /// Sets `supportedTransforms` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedTransforms(MemorySegment segment, long index, int value) { VH_supportedTransforms.set(segment, 0L, index, value); }
+    public static void supportedTransforms(MemorySegment segment, long index, int value) { VH_supportedTransforms.get().set(segment, 0L, index, value); }
     /// Sets `supportedTransforms` with the given value.
     /// @param value the value
     /// @return `this`
@@ -210,14 +210,14 @@ public final class VkDisplayPropertiesKHR extends GroupType {
     /// {@return `planeReorderPossible` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int planeReorderPossible(MemorySegment segment, long index) { return (int) VH_planeReorderPossible.get(segment, 0L, index); }
+    public static int planeReorderPossible(MemorySegment segment, long index) { return (int) VH_planeReorderPossible.get().get(segment, 0L, index); }
     /// {@return `planeReorderPossible`}
     public int planeReorderPossible() { return planeReorderPossible(this.segment(), 0L); }
     /// Sets `planeReorderPossible` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void planeReorderPossible(MemorySegment segment, long index, int value) { VH_planeReorderPossible.set(segment, 0L, index, value); }
+    public static void planeReorderPossible(MemorySegment segment, long index, int value) { VH_planeReorderPossible.get().set(segment, 0L, index, value); }
     /// Sets `planeReorderPossible` with the given value.
     /// @param value the value
     /// @return `this`
@@ -226,14 +226,14 @@ public final class VkDisplayPropertiesKHR extends GroupType {
     /// {@return `persistentContent` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int persistentContent(MemorySegment segment, long index) { return (int) VH_persistentContent.get(segment, 0L, index); }
+    public static int persistentContent(MemorySegment segment, long index) { return (int) VH_persistentContent.get().get(segment, 0L, index); }
     /// {@return `persistentContent`}
     public int persistentContent() { return persistentContent(this.segment(), 0L); }
     /// Sets `persistentContent` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void persistentContent(MemorySegment segment, long index, int value) { VH_persistentContent.set(segment, 0L, index, value); }
+    public static void persistentContent(MemorySegment segment, long index, int value) { VH_persistentContent.get().set(segment, 0L, index, value); }
     /// Sets `persistentContent` with the given value.
     /// @param value the value
     /// @return `this`

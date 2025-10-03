@@ -2,6 +2,7 @@
 package overrungl.opengl.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -29,23 +30,23 @@ public final class GLNVCommandList {
     public static final int GL_FRONT_FACE_COMMAND_NV = 0x0012;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glCreateStatesNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDeleteStatesNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsStateNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glStateCaptureNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetCommandHeaderNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetStageIndexNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDrawCommandsNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDrawCommandsAddressNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDrawCommandsStatesNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDrawCommandsStatesAddressNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCreateCommandListsNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDeleteCommandListsNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsCommandListNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glListDrawCommandsStatesClientNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCommandListSegmentsNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCompileCommandListNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCallCommandListNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glCreateStatesNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glDeleteStatesNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glIsStateNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glStateCaptureNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetCommandHeaderNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetStageIndexNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDrawCommandsNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDrawCommandsAddressNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDrawCommandsStatesNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDrawCommandsStatesAddressNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCreateCommandListsNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glDeleteCommandListsNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glIsCommandListNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glListDrawCommandsStatesClientNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCommandListSegmentsNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCompileCommandListNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCallCommandListNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glCreateStatesNV;
         public final MemorySegment PFN_glDeleteStatesNV;
         public final MemorySegment PFN_glIsStateNV;
@@ -95,7 +96,7 @@ public final class GLNVCommandList {
     public void CreateStatesNV(int n, @NonNull MemorySegment states) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateStatesNV)) throw new GLSymbolNotFoundError("Symbol not found: glCreateStatesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateStatesNV", n, states); }
-        Handles.MH_glCreateStatesNV.invokeExact(handles.PFN_glCreateStatesNV, n, states); }
+        Handles.MH_glCreateStatesNV.get().invokeExact(handles.PFN_glCreateStatesNV, n, states); }
         catch (Throwable e) { throw new RuntimeException("error in CreateStatesNV", e); }
     }
 
@@ -106,7 +107,7 @@ public final class GLNVCommandList {
     public void DeleteStatesNV(int n, @NonNull MemorySegment states) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteStatesNV)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteStatesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteStatesNV", n, states); }
-        Handles.MH_glDeleteStatesNV.invokeExact(handles.PFN_glDeleteStatesNV, n, states); }
+        Handles.MH_glDeleteStatesNV.get().invokeExact(handles.PFN_glDeleteStatesNV, n, states); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteStatesNV", e); }
     }
 
@@ -117,7 +118,7 @@ public final class GLNVCommandList {
     public boolean IsStateNV(int state) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsStateNV)) throw new GLSymbolNotFoundError("Symbol not found: glIsStateNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIsStateNV", state); }
-        return (((byte) Handles.MH_glIsStateNV.invokeExact(handles.PFN_glIsStateNV, state)) != 0); }
+        return (((byte) Handles.MH_glIsStateNV.get().invokeExact(handles.PFN_glIsStateNV, state)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsStateNV", e); }
     }
 
@@ -128,7 +129,7 @@ public final class GLNVCommandList {
     public void StateCaptureNV(int state, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStateCaptureNV)) throw new GLSymbolNotFoundError("Symbol not found: glStateCaptureNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glStateCaptureNV", state, mode); }
-        Handles.MH_glStateCaptureNV.invokeExact(handles.PFN_glStateCaptureNV, state, mode); }
+        Handles.MH_glStateCaptureNV.get().invokeExact(handles.PFN_glStateCaptureNV, state, mode); }
         catch (Throwable e) { throw new RuntimeException("error in StateCaptureNV", e); }
     }
 
@@ -139,7 +140,7 @@ public final class GLNVCommandList {
     public int GetCommandHeaderNV(int tokenID, int size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCommandHeaderNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetCommandHeaderNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetCommandHeaderNV", tokenID, size); }
-        return (int) Handles.MH_glGetCommandHeaderNV.invokeExact(handles.PFN_glGetCommandHeaderNV, tokenID, size); }
+        return (int) Handles.MH_glGetCommandHeaderNV.get().invokeExact(handles.PFN_glGetCommandHeaderNV, tokenID, size); }
         catch (Throwable e) { throw new RuntimeException("error in GetCommandHeaderNV", e); }
     }
 
@@ -150,7 +151,7 @@ public final class GLNVCommandList {
     public short GetStageIndexNV(int shadertype) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetStageIndexNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetStageIndexNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetStageIndexNV", shadertype); }
-        return (short) Handles.MH_glGetStageIndexNV.invokeExact(handles.PFN_glGetStageIndexNV, shadertype); }
+        return (short) Handles.MH_glGetStageIndexNV.get().invokeExact(handles.PFN_glGetStageIndexNV, shadertype); }
         catch (Throwable e) { throw new RuntimeException("error in GetStageIndexNV", e); }
     }
 
@@ -161,7 +162,7 @@ public final class GLNVCommandList {
     public void DrawCommandsNV(int primitiveMode, int buffer, @NonNull MemorySegment indirects, @NonNull MemorySegment sizes, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawCommandsNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawCommandsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawCommandsNV", primitiveMode, buffer, indirects, sizes, count); }
-        Handles.MH_glDrawCommandsNV.invokeExact(handles.PFN_glDrawCommandsNV, primitiveMode, buffer, indirects, sizes, count); }
+        Handles.MH_glDrawCommandsNV.get().invokeExact(handles.PFN_glDrawCommandsNV, primitiveMode, buffer, indirects, sizes, count); }
         catch (Throwable e) { throw new RuntimeException("error in DrawCommandsNV", e); }
     }
 
@@ -172,7 +173,7 @@ public final class GLNVCommandList {
     public void DrawCommandsAddressNV(int primitiveMode, @NonNull MemorySegment indirects, @NonNull MemorySegment sizes, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawCommandsAddressNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawCommandsAddressNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawCommandsAddressNV", primitiveMode, indirects, sizes, count); }
-        Handles.MH_glDrawCommandsAddressNV.invokeExact(handles.PFN_glDrawCommandsAddressNV, primitiveMode, indirects, sizes, count); }
+        Handles.MH_glDrawCommandsAddressNV.get().invokeExact(handles.PFN_glDrawCommandsAddressNV, primitiveMode, indirects, sizes, count); }
         catch (Throwable e) { throw new RuntimeException("error in DrawCommandsAddressNV", e); }
     }
 
@@ -183,7 +184,7 @@ public final class GLNVCommandList {
     public void DrawCommandsStatesNV(int buffer, @NonNull MemorySegment indirects, @NonNull MemorySegment sizes, @NonNull MemorySegment states, @NonNull MemorySegment fbos, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawCommandsStatesNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawCommandsStatesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawCommandsStatesNV", buffer, indirects, sizes, states, fbos, count); }
-        Handles.MH_glDrawCommandsStatesNV.invokeExact(handles.PFN_glDrawCommandsStatesNV, buffer, indirects, sizes, states, fbos, count); }
+        Handles.MH_glDrawCommandsStatesNV.get().invokeExact(handles.PFN_glDrawCommandsStatesNV, buffer, indirects, sizes, states, fbos, count); }
         catch (Throwable e) { throw new RuntimeException("error in DrawCommandsStatesNV", e); }
     }
 
@@ -194,7 +195,7 @@ public final class GLNVCommandList {
     public void DrawCommandsStatesAddressNV(@NonNull MemorySegment indirects, @NonNull MemorySegment sizes, @NonNull MemorySegment states, @NonNull MemorySegment fbos, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawCommandsStatesAddressNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawCommandsStatesAddressNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawCommandsStatesAddressNV", indirects, sizes, states, fbos, count); }
-        Handles.MH_glDrawCommandsStatesAddressNV.invokeExact(handles.PFN_glDrawCommandsStatesAddressNV, indirects, sizes, states, fbos, count); }
+        Handles.MH_glDrawCommandsStatesAddressNV.get().invokeExact(handles.PFN_glDrawCommandsStatesAddressNV, indirects, sizes, states, fbos, count); }
         catch (Throwable e) { throw new RuntimeException("error in DrawCommandsStatesAddressNV", e); }
     }
 
@@ -205,7 +206,7 @@ public final class GLNVCommandList {
     public void CreateCommandListsNV(int n, @NonNull MemorySegment lists) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateCommandListsNV)) throw new GLSymbolNotFoundError("Symbol not found: glCreateCommandListsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateCommandListsNV", n, lists); }
-        Handles.MH_glCreateCommandListsNV.invokeExact(handles.PFN_glCreateCommandListsNV, n, lists); }
+        Handles.MH_glCreateCommandListsNV.get().invokeExact(handles.PFN_glCreateCommandListsNV, n, lists); }
         catch (Throwable e) { throw new RuntimeException("error in CreateCommandListsNV", e); }
     }
 
@@ -216,7 +217,7 @@ public final class GLNVCommandList {
     public void DeleteCommandListsNV(int n, @NonNull MemorySegment lists) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteCommandListsNV)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteCommandListsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteCommandListsNV", n, lists); }
-        Handles.MH_glDeleteCommandListsNV.invokeExact(handles.PFN_glDeleteCommandListsNV, n, lists); }
+        Handles.MH_glDeleteCommandListsNV.get().invokeExact(handles.PFN_glDeleteCommandListsNV, n, lists); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteCommandListsNV", e); }
     }
 
@@ -227,7 +228,7 @@ public final class GLNVCommandList {
     public boolean IsCommandListNV(int list) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsCommandListNV)) throw new GLSymbolNotFoundError("Symbol not found: glIsCommandListNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIsCommandListNV", list); }
-        return (((byte) Handles.MH_glIsCommandListNV.invokeExact(handles.PFN_glIsCommandListNV, list)) != 0); }
+        return (((byte) Handles.MH_glIsCommandListNV.get().invokeExact(handles.PFN_glIsCommandListNV, list)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsCommandListNV", e); }
     }
 
@@ -238,7 +239,7 @@ public final class GLNVCommandList {
     public void ListDrawCommandsStatesClientNV(int list, int segment, @NonNull MemorySegment indirects, @NonNull MemorySegment sizes, @NonNull MemorySegment states, @NonNull MemorySegment fbos, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glListDrawCommandsStatesClientNV)) throw new GLSymbolNotFoundError("Symbol not found: glListDrawCommandsStatesClientNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glListDrawCommandsStatesClientNV", list, segment, indirects, sizes, states, fbos, count); }
-        Handles.MH_glListDrawCommandsStatesClientNV.invokeExact(handles.PFN_glListDrawCommandsStatesClientNV, list, segment, indirects, sizes, states, fbos, count); }
+        Handles.MH_glListDrawCommandsStatesClientNV.get().invokeExact(handles.PFN_glListDrawCommandsStatesClientNV, list, segment, indirects, sizes, states, fbos, count); }
         catch (Throwable e) { throw new RuntimeException("error in ListDrawCommandsStatesClientNV", e); }
     }
 
@@ -249,7 +250,7 @@ public final class GLNVCommandList {
     public void CommandListSegmentsNV(int list, int segments) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCommandListSegmentsNV)) throw new GLSymbolNotFoundError("Symbol not found: glCommandListSegmentsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCommandListSegmentsNV", list, segments); }
-        Handles.MH_glCommandListSegmentsNV.invokeExact(handles.PFN_glCommandListSegmentsNV, list, segments); }
+        Handles.MH_glCommandListSegmentsNV.get().invokeExact(handles.PFN_glCommandListSegmentsNV, list, segments); }
         catch (Throwable e) { throw new RuntimeException("error in CommandListSegmentsNV", e); }
     }
 
@@ -260,7 +261,7 @@ public final class GLNVCommandList {
     public void CompileCommandListNV(int list) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompileCommandListNV)) throw new GLSymbolNotFoundError("Symbol not found: glCompileCommandListNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompileCommandListNV", list); }
-        Handles.MH_glCompileCommandListNV.invokeExact(handles.PFN_glCompileCommandListNV, list); }
+        Handles.MH_glCompileCommandListNV.get().invokeExact(handles.PFN_glCompileCommandListNV, list); }
         catch (Throwable e) { throw new RuntimeException("error in CompileCommandListNV", e); }
     }
 
@@ -271,7 +272,7 @@ public final class GLNVCommandList {
     public void CallCommandListNV(int list) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCallCommandListNV)) throw new GLSymbolNotFoundError("Symbol not found: glCallCommandListNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCallCommandListNV", list); }
-        Handles.MH_glCallCommandListNV.invokeExact(handles.PFN_glCallCommandListNV, list); }
+        Handles.MH_glCallCommandListNV.get().invokeExact(handles.PFN_glCallCommandListNV, list); }
         catch (Throwable e) { throw new RuntimeException("error in CallCommandListNV", e); }
     }
 

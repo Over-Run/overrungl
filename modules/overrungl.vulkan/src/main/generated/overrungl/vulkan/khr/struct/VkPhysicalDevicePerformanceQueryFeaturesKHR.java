@@ -33,25 +33,25 @@ public final class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupType
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `performanceCounterQueryPools`.
     public static final long OFFSET_performanceCounterQueryPools = LAYOUT.byteOffset(PathElement.groupElement("performanceCounterQueryPools"));
     /// The memory layout of `performanceCounterQueryPools`.
     public static final MemoryLayout LAYOUT_performanceCounterQueryPools = LAYOUT.select(PathElement.groupElement("performanceCounterQueryPools"));
     /// The [VarHandle] of `performanceCounterQueryPools` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_performanceCounterQueryPools = LAYOUT.arrayElementVarHandle(PathElement.groupElement("performanceCounterQueryPools"));
+    public static final Supplier<VarHandle> VH_performanceCounterQueryPools = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("performanceCounterQueryPools")));
     /// The byte offset of `performanceCounterMultipleQueryPools`.
     public static final long OFFSET_performanceCounterMultipleQueryPools = LAYOUT.byteOffset(PathElement.groupElement("performanceCounterMultipleQueryPools"));
     /// The memory layout of `performanceCounterMultipleQueryPools`.
     public static final MemoryLayout LAYOUT_performanceCounterMultipleQueryPools = LAYOUT.select(PathElement.groupElement("performanceCounterMultipleQueryPools"));
     /// The [VarHandle] of `performanceCounterMultipleQueryPools` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_performanceCounterMultipleQueryPools = LAYOUT.arrayElementVarHandle(PathElement.groupElement("performanceCounterMultipleQueryPools"));
+    public static final Supplier<VarHandle> VH_performanceCounterMultipleQueryPools = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("performanceCounterMultipleQueryPools")));
 
     /// Creates `VkPhysicalDevicePerformanceQueryFeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupType
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupType
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupType
     /// {@return `performanceCounterQueryPools` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int performanceCounterQueryPools(MemorySegment segment, long index) { return (int) VH_performanceCounterQueryPools.get(segment, 0L, index); }
+    public static int performanceCounterQueryPools(MemorySegment segment, long index) { return (int) VH_performanceCounterQueryPools.get().get(segment, 0L, index); }
     /// {@return `performanceCounterQueryPools`}
     public int performanceCounterQueryPools() { return performanceCounterQueryPools(this.segment(), 0L); }
     /// Sets `performanceCounterQueryPools` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void performanceCounterQueryPools(MemorySegment segment, long index, int value) { VH_performanceCounterQueryPools.set(segment, 0L, index, value); }
+    public static void performanceCounterQueryPools(MemorySegment segment, long index, int value) { VH_performanceCounterQueryPools.get().set(segment, 0L, index, value); }
     /// Sets `performanceCounterQueryPools` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupType
     /// {@return `performanceCounterMultipleQueryPools` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int performanceCounterMultipleQueryPools(MemorySegment segment, long index) { return (int) VH_performanceCounterMultipleQueryPools.get(segment, 0L, index); }
+    public static int performanceCounterMultipleQueryPools(MemorySegment segment, long index) { return (int) VH_performanceCounterMultipleQueryPools.get().get(segment, 0L, index); }
     /// {@return `performanceCounterMultipleQueryPools`}
     public int performanceCounterMultipleQueryPools() { return performanceCounterMultipleQueryPools(this.segment(), 0L); }
     /// Sets `performanceCounterMultipleQueryPools` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void performanceCounterMultipleQueryPools(MemorySegment segment, long index, int value) { VH_performanceCounterMultipleQueryPools.set(segment, 0L, index, value); }
+    public static void performanceCounterMultipleQueryPools(MemorySegment segment, long index, int value) { VH_performanceCounterMultipleQueryPools.get().set(segment, 0L, index, value); }
     /// Sets `performanceCounterMultipleQueryPools` with the given value.
     /// @param value the value
     /// @return `this`

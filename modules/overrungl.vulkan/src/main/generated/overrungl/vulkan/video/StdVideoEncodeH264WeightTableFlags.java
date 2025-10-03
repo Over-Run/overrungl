@@ -33,25 +33,25 @@ public final class StdVideoEncodeH264WeightTableFlags extends GroupType {
     /// The memory layout of `luma_weight_l0_flag`.
     public static final MemoryLayout LAYOUT_luma_weight_l0_flag = LAYOUT.select(PathElement.groupElement("luma_weight_l0_flag"));
     /// The [VarHandle] of `luma_weight_l0_flag` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_luma_weight_l0_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("luma_weight_l0_flag"));
+    public static final Supplier<VarHandle> VH_luma_weight_l0_flag = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("luma_weight_l0_flag")));
     /// The byte offset of `chroma_weight_l0_flag`.
     public static final long OFFSET_chroma_weight_l0_flag = LAYOUT.byteOffset(PathElement.groupElement("chroma_weight_l0_flag"));
     /// The memory layout of `chroma_weight_l0_flag`.
     public static final MemoryLayout LAYOUT_chroma_weight_l0_flag = LAYOUT.select(PathElement.groupElement("chroma_weight_l0_flag"));
     /// The [VarHandle] of `chroma_weight_l0_flag` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_chroma_weight_l0_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("chroma_weight_l0_flag"));
+    public static final Supplier<VarHandle> VH_chroma_weight_l0_flag = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("chroma_weight_l0_flag")));
     /// The byte offset of `luma_weight_l1_flag`.
     public static final long OFFSET_luma_weight_l1_flag = LAYOUT.byteOffset(PathElement.groupElement("luma_weight_l1_flag"));
     /// The memory layout of `luma_weight_l1_flag`.
     public static final MemoryLayout LAYOUT_luma_weight_l1_flag = LAYOUT.select(PathElement.groupElement("luma_weight_l1_flag"));
     /// The [VarHandle] of `luma_weight_l1_flag` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_luma_weight_l1_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("luma_weight_l1_flag"));
+    public static final Supplier<VarHandle> VH_luma_weight_l1_flag = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("luma_weight_l1_flag")));
     /// The byte offset of `chroma_weight_l1_flag`.
     public static final long OFFSET_chroma_weight_l1_flag = LAYOUT.byteOffset(PathElement.groupElement("chroma_weight_l1_flag"));
     /// The memory layout of `chroma_weight_l1_flag`.
     public static final MemoryLayout LAYOUT_chroma_weight_l1_flag = LAYOUT.select(PathElement.groupElement("chroma_weight_l1_flag"));
     /// The [VarHandle] of `chroma_weight_l1_flag` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_chroma_weight_l1_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("chroma_weight_l1_flag"));
+    public static final Supplier<VarHandle> VH_chroma_weight_l1_flag = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("chroma_weight_l1_flag")));
 
     /// Creates `StdVideoEncodeH264WeightTableFlags` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class StdVideoEncodeH264WeightTableFlags extends GroupType {
     /// {@return `luma_weight_l0_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int luma_weight_l0_flag(MemorySegment segment, long index) { return (int) VH_luma_weight_l0_flag.get(segment, 0L, index); }
+    public static int luma_weight_l0_flag(MemorySegment segment, long index) { return (int) VH_luma_weight_l0_flag.get().get(segment, 0L, index); }
     /// {@return `luma_weight_l0_flag`}
     public int luma_weight_l0_flag() { return luma_weight_l0_flag(this.segment(), 0L); }
     /// Sets `luma_weight_l0_flag` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void luma_weight_l0_flag(MemorySegment segment, long index, int value) { VH_luma_weight_l0_flag.set(segment, 0L, index, value); }
+    public static void luma_weight_l0_flag(MemorySegment segment, long index, int value) { VH_luma_weight_l0_flag.get().set(segment, 0L, index, value); }
     /// Sets `luma_weight_l0_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class StdVideoEncodeH264WeightTableFlags extends GroupType {
     /// {@return `chroma_weight_l0_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int chroma_weight_l0_flag(MemorySegment segment, long index) { return (int) VH_chroma_weight_l0_flag.get(segment, 0L, index); }
+    public static int chroma_weight_l0_flag(MemorySegment segment, long index) { return (int) VH_chroma_weight_l0_flag.get().get(segment, 0L, index); }
     /// {@return `chroma_weight_l0_flag`}
     public int chroma_weight_l0_flag() { return chroma_weight_l0_flag(this.segment(), 0L); }
     /// Sets `chroma_weight_l0_flag` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void chroma_weight_l0_flag(MemorySegment segment, long index, int value) { VH_chroma_weight_l0_flag.set(segment, 0L, index, value); }
+    public static void chroma_weight_l0_flag(MemorySegment segment, long index, int value) { VH_chroma_weight_l0_flag.get().set(segment, 0L, index, value); }
     /// Sets `chroma_weight_l0_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class StdVideoEncodeH264WeightTableFlags extends GroupType {
     /// {@return `luma_weight_l1_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int luma_weight_l1_flag(MemorySegment segment, long index) { return (int) VH_luma_weight_l1_flag.get(segment, 0L, index); }
+    public static int luma_weight_l1_flag(MemorySegment segment, long index) { return (int) VH_luma_weight_l1_flag.get().get(segment, 0L, index); }
     /// {@return `luma_weight_l1_flag`}
     public int luma_weight_l1_flag() { return luma_weight_l1_flag(this.segment(), 0L); }
     /// Sets `luma_weight_l1_flag` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void luma_weight_l1_flag(MemorySegment segment, long index, int value) { VH_luma_weight_l1_flag.set(segment, 0L, index, value); }
+    public static void luma_weight_l1_flag(MemorySegment segment, long index, int value) { VH_luma_weight_l1_flag.get().set(segment, 0L, index, value); }
     /// Sets `luma_weight_l1_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class StdVideoEncodeH264WeightTableFlags extends GroupType {
     /// {@return `chroma_weight_l1_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int chroma_weight_l1_flag(MemorySegment segment, long index) { return (int) VH_chroma_weight_l1_flag.get(segment, 0L, index); }
+    public static int chroma_weight_l1_flag(MemorySegment segment, long index) { return (int) VH_chroma_weight_l1_flag.get().get(segment, 0L, index); }
     /// {@return `chroma_weight_l1_flag`}
     public int chroma_weight_l1_flag() { return chroma_weight_l1_flag(this.segment(), 0L); }
     /// Sets `chroma_weight_l1_flag` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void chroma_weight_l1_flag(MemorySegment segment, long index, int value) { VH_chroma_weight_l1_flag.set(segment, 0L, index, value); }
+    public static void chroma_weight_l1_flag(MemorySegment segment, long index, int value) { VH_chroma_weight_l1_flag.get().set(segment, 0L, index, value); }
     /// Sets `chroma_weight_l1_flag` with the given value.
     /// @param value the value
     /// @return `this`

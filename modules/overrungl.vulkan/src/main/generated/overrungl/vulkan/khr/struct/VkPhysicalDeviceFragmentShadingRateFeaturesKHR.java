@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends GroupT
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pipelineFragmentShadingRate`.
     public static final long OFFSET_pipelineFragmentShadingRate = LAYOUT.byteOffset(PathElement.groupElement("pipelineFragmentShadingRate"));
     /// The memory layout of `pipelineFragmentShadingRate`.
     public static final MemoryLayout LAYOUT_pipelineFragmentShadingRate = LAYOUT.select(PathElement.groupElement("pipelineFragmentShadingRate"));
     /// The [VarHandle] of `pipelineFragmentShadingRate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineFragmentShadingRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineFragmentShadingRate"));
+    public static final Supplier<VarHandle> VH_pipelineFragmentShadingRate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineFragmentShadingRate")));
     /// The byte offset of `primitiveFragmentShadingRate`.
     public static final long OFFSET_primitiveFragmentShadingRate = LAYOUT.byteOffset(PathElement.groupElement("primitiveFragmentShadingRate"));
     /// The memory layout of `primitiveFragmentShadingRate`.
     public static final MemoryLayout LAYOUT_primitiveFragmentShadingRate = LAYOUT.select(PathElement.groupElement("primitiveFragmentShadingRate"));
     /// The [VarHandle] of `primitiveFragmentShadingRate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_primitiveFragmentShadingRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primitiveFragmentShadingRate"));
+    public static final Supplier<VarHandle> VH_primitiveFragmentShadingRate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("primitiveFragmentShadingRate")));
     /// The byte offset of `attachmentFragmentShadingRate`.
     public static final long OFFSET_attachmentFragmentShadingRate = LAYOUT.byteOffset(PathElement.groupElement("attachmentFragmentShadingRate"));
     /// The memory layout of `attachmentFragmentShadingRate`.
     public static final MemoryLayout LAYOUT_attachmentFragmentShadingRate = LAYOUT.select(PathElement.groupElement("attachmentFragmentShadingRate"));
     /// The [VarHandle] of `attachmentFragmentShadingRate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_attachmentFragmentShadingRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentFragmentShadingRate"));
+    public static final Supplier<VarHandle> VH_attachmentFragmentShadingRate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentFragmentShadingRate")));
 
     /// Creates `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends GroupT
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends GroupT
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends GroupT
     /// {@return `pipelineFragmentShadingRate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineFragmentShadingRate(MemorySegment segment, long index) { return (int) VH_pipelineFragmentShadingRate.get(segment, 0L, index); }
+    public static int pipelineFragmentShadingRate(MemorySegment segment, long index) { return (int) VH_pipelineFragmentShadingRate.get().get(segment, 0L, index); }
     /// {@return `pipelineFragmentShadingRate`}
     public int pipelineFragmentShadingRate() { return pipelineFragmentShadingRate(this.segment(), 0L); }
     /// Sets `pipelineFragmentShadingRate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineFragmentShadingRate(MemorySegment segment, long index, int value) { VH_pipelineFragmentShadingRate.set(segment, 0L, index, value); }
+    public static void pipelineFragmentShadingRate(MemorySegment segment, long index, int value) { VH_pipelineFragmentShadingRate.get().set(segment, 0L, index, value); }
     /// Sets `pipelineFragmentShadingRate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends GroupT
     /// {@return `primitiveFragmentShadingRate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int primitiveFragmentShadingRate(MemorySegment segment, long index) { return (int) VH_primitiveFragmentShadingRate.get(segment, 0L, index); }
+    public static int primitiveFragmentShadingRate(MemorySegment segment, long index) { return (int) VH_primitiveFragmentShadingRate.get().get(segment, 0L, index); }
     /// {@return `primitiveFragmentShadingRate`}
     public int primitiveFragmentShadingRate() { return primitiveFragmentShadingRate(this.segment(), 0L); }
     /// Sets `primitiveFragmentShadingRate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void primitiveFragmentShadingRate(MemorySegment segment, long index, int value) { VH_primitiveFragmentShadingRate.set(segment, 0L, index, value); }
+    public static void primitiveFragmentShadingRate(MemorySegment segment, long index, int value) { VH_primitiveFragmentShadingRate.get().set(segment, 0L, index, value); }
     /// Sets `primitiveFragmentShadingRate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends GroupT
     /// {@return `attachmentFragmentShadingRate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int attachmentFragmentShadingRate(MemorySegment segment, long index) { return (int) VH_attachmentFragmentShadingRate.get(segment, 0L, index); }
+    public static int attachmentFragmentShadingRate(MemorySegment segment, long index) { return (int) VH_attachmentFragmentShadingRate.get().get(segment, 0L, index); }
     /// {@return `attachmentFragmentShadingRate`}
     public int attachmentFragmentShadingRate() { return attachmentFragmentShadingRate(this.segment(), 0L); }
     /// Sets `attachmentFragmentShadingRate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void attachmentFragmentShadingRate(MemorySegment segment, long index, int value) { VH_attachmentFragmentShadingRate.set(segment, 0L, index, value); }
+    public static void attachmentFragmentShadingRate(MemorySegment segment, long index, int value) { VH_attachmentFragmentShadingRate.get().set(segment, 0L, index, value); }
     /// Sets `attachmentFragmentShadingRate` with the given value.
     /// @param value the value
     /// @return `this`

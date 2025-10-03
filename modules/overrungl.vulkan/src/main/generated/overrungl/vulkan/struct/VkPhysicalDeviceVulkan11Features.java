@@ -53,85 +53,85 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `storageBuffer16BitAccess`.
     public static final long OFFSET_storageBuffer16BitAccess = LAYOUT.byteOffset(PathElement.groupElement("storageBuffer16BitAccess"));
     /// The memory layout of `storageBuffer16BitAccess`.
     public static final MemoryLayout LAYOUT_storageBuffer16BitAccess = LAYOUT.select(PathElement.groupElement("storageBuffer16BitAccess"));
     /// The [VarHandle] of `storageBuffer16BitAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storageBuffer16BitAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageBuffer16BitAccess"));
+    public static final Supplier<VarHandle> VH_storageBuffer16BitAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageBuffer16BitAccess")));
     /// The byte offset of `uniformAndStorageBuffer16BitAccess`.
     public static final long OFFSET_uniformAndStorageBuffer16BitAccess = LAYOUT.byteOffset(PathElement.groupElement("uniformAndStorageBuffer16BitAccess"));
     /// The memory layout of `uniformAndStorageBuffer16BitAccess`.
     public static final MemoryLayout LAYOUT_uniformAndStorageBuffer16BitAccess = LAYOUT.select(PathElement.groupElement("uniformAndStorageBuffer16BitAccess"));
     /// The [VarHandle] of `uniformAndStorageBuffer16BitAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_uniformAndStorageBuffer16BitAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformAndStorageBuffer16BitAccess"));
+    public static final Supplier<VarHandle> VH_uniformAndStorageBuffer16BitAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformAndStorageBuffer16BitAccess")));
     /// The byte offset of `storagePushConstant16`.
     public static final long OFFSET_storagePushConstant16 = LAYOUT.byteOffset(PathElement.groupElement("storagePushConstant16"));
     /// The memory layout of `storagePushConstant16`.
     public static final MemoryLayout LAYOUT_storagePushConstant16 = LAYOUT.select(PathElement.groupElement("storagePushConstant16"));
     /// The [VarHandle] of `storagePushConstant16` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storagePushConstant16 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storagePushConstant16"));
+    public static final Supplier<VarHandle> VH_storagePushConstant16 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storagePushConstant16")));
     /// The byte offset of `storageInputOutput16`.
     public static final long OFFSET_storageInputOutput16 = LAYOUT.byteOffset(PathElement.groupElement("storageInputOutput16"));
     /// The memory layout of `storageInputOutput16`.
     public static final MemoryLayout LAYOUT_storageInputOutput16 = LAYOUT.select(PathElement.groupElement("storageInputOutput16"));
     /// The [VarHandle] of `storageInputOutput16` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storageInputOutput16 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageInputOutput16"));
+    public static final Supplier<VarHandle> VH_storageInputOutput16 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageInputOutput16")));
     /// The byte offset of `multiview`.
     public static final long OFFSET_multiview = LAYOUT.byteOffset(PathElement.groupElement("multiview"));
     /// The memory layout of `multiview`.
     public static final MemoryLayout LAYOUT_multiview = LAYOUT.select(PathElement.groupElement("multiview"));
     /// The [VarHandle] of `multiview` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_multiview = LAYOUT.arrayElementVarHandle(PathElement.groupElement("multiview"));
+    public static final Supplier<VarHandle> VH_multiview = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("multiview")));
     /// The byte offset of `multiviewGeometryShader`.
     public static final long OFFSET_multiviewGeometryShader = LAYOUT.byteOffset(PathElement.groupElement("multiviewGeometryShader"));
     /// The memory layout of `multiviewGeometryShader`.
     public static final MemoryLayout LAYOUT_multiviewGeometryShader = LAYOUT.select(PathElement.groupElement("multiviewGeometryShader"));
     /// The [VarHandle] of `multiviewGeometryShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_multiviewGeometryShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("multiviewGeometryShader"));
+    public static final Supplier<VarHandle> VH_multiviewGeometryShader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("multiviewGeometryShader")));
     /// The byte offset of `multiviewTessellationShader`.
     public static final long OFFSET_multiviewTessellationShader = LAYOUT.byteOffset(PathElement.groupElement("multiviewTessellationShader"));
     /// The memory layout of `multiviewTessellationShader`.
     public static final MemoryLayout LAYOUT_multiviewTessellationShader = LAYOUT.select(PathElement.groupElement("multiviewTessellationShader"));
     /// The [VarHandle] of `multiviewTessellationShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_multiviewTessellationShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("multiviewTessellationShader"));
+    public static final Supplier<VarHandle> VH_multiviewTessellationShader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("multiviewTessellationShader")));
     /// The byte offset of `variablePointersStorageBuffer`.
     public static final long OFFSET_variablePointersStorageBuffer = LAYOUT.byteOffset(PathElement.groupElement("variablePointersStorageBuffer"));
     /// The memory layout of `variablePointersStorageBuffer`.
     public static final MemoryLayout LAYOUT_variablePointersStorageBuffer = LAYOUT.select(PathElement.groupElement("variablePointersStorageBuffer"));
     /// The [VarHandle] of `variablePointersStorageBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_variablePointersStorageBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("variablePointersStorageBuffer"));
+    public static final Supplier<VarHandle> VH_variablePointersStorageBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("variablePointersStorageBuffer")));
     /// The byte offset of `variablePointers`.
     public static final long OFFSET_variablePointers = LAYOUT.byteOffset(PathElement.groupElement("variablePointers"));
     /// The memory layout of `variablePointers`.
     public static final MemoryLayout LAYOUT_variablePointers = LAYOUT.select(PathElement.groupElement("variablePointers"));
     /// The [VarHandle] of `variablePointers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_variablePointers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("variablePointers"));
+    public static final Supplier<VarHandle> VH_variablePointers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("variablePointers")));
     /// The byte offset of `protectedMemory`.
     public static final long OFFSET_protectedMemory = LAYOUT.byteOffset(PathElement.groupElement("protectedMemory"));
     /// The memory layout of `protectedMemory`.
     public static final MemoryLayout LAYOUT_protectedMemory = LAYOUT.select(PathElement.groupElement("protectedMemory"));
     /// The [VarHandle] of `protectedMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_protectedMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("protectedMemory"));
+    public static final Supplier<VarHandle> VH_protectedMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("protectedMemory")));
     /// The byte offset of `samplerYcbcrConversion`.
     public static final long OFFSET_samplerYcbcrConversion = LAYOUT.byteOffset(PathElement.groupElement("samplerYcbcrConversion"));
     /// The memory layout of `samplerYcbcrConversion`.
     public static final MemoryLayout LAYOUT_samplerYcbcrConversion = LAYOUT.select(PathElement.groupElement("samplerYcbcrConversion"));
     /// The [VarHandle] of `samplerYcbcrConversion` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_samplerYcbcrConversion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerYcbcrConversion"));
+    public static final Supplier<VarHandle> VH_samplerYcbcrConversion = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerYcbcrConversion")));
     /// The byte offset of `shaderDrawParameters`.
     public static final long OFFSET_shaderDrawParameters = LAYOUT.byteOffset(PathElement.groupElement("shaderDrawParameters"));
     /// The memory layout of `shaderDrawParameters`.
     public static final MemoryLayout LAYOUT_shaderDrawParameters = LAYOUT.select(PathElement.groupElement("shaderDrawParameters"));
     /// The [VarHandle] of `shaderDrawParameters` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderDrawParameters = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDrawParameters"));
+    public static final Supplier<VarHandle> VH_shaderDrawParameters = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDrawParameters")));
 
     /// Creates `VkPhysicalDeviceVulkan11Features` with the given segment.
     /// @param segment      the memory segment
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `storageBuffer16BitAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int storageBuffer16BitAccess(MemorySegment segment, long index) { return (int) VH_storageBuffer16BitAccess.get(segment, 0L, index); }
+    public static int storageBuffer16BitAccess(MemorySegment segment, long index) { return (int) VH_storageBuffer16BitAccess.get().get(segment, 0L, index); }
     /// {@return `storageBuffer16BitAccess`}
     public int storageBuffer16BitAccess() { return storageBuffer16BitAccess(this.segment(), 0L); }
     /// Sets `storageBuffer16BitAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storageBuffer16BitAccess(MemorySegment segment, long index, int value) { VH_storageBuffer16BitAccess.set(segment, 0L, index, value); }
+    public static void storageBuffer16BitAccess(MemorySegment segment, long index, int value) { VH_storageBuffer16BitAccess.get().set(segment, 0L, index, value); }
     /// Sets `storageBuffer16BitAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `uniformAndStorageBuffer16BitAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int uniformAndStorageBuffer16BitAccess(MemorySegment segment, long index) { return (int) VH_uniformAndStorageBuffer16BitAccess.get(segment, 0L, index); }
+    public static int uniformAndStorageBuffer16BitAccess(MemorySegment segment, long index) { return (int) VH_uniformAndStorageBuffer16BitAccess.get().get(segment, 0L, index); }
     /// {@return `uniformAndStorageBuffer16BitAccess`}
     public int uniformAndStorageBuffer16BitAccess() { return uniformAndStorageBuffer16BitAccess(this.segment(), 0L); }
     /// Sets `uniformAndStorageBuffer16BitAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void uniformAndStorageBuffer16BitAccess(MemorySegment segment, long index, int value) { VH_uniformAndStorageBuffer16BitAccess.set(segment, 0L, index, value); }
+    public static void uniformAndStorageBuffer16BitAccess(MemorySegment segment, long index, int value) { VH_uniformAndStorageBuffer16BitAccess.get().set(segment, 0L, index, value); }
     /// Sets `uniformAndStorageBuffer16BitAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `storagePushConstant16` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int storagePushConstant16(MemorySegment segment, long index) { return (int) VH_storagePushConstant16.get(segment, 0L, index); }
+    public static int storagePushConstant16(MemorySegment segment, long index) { return (int) VH_storagePushConstant16.get().get(segment, 0L, index); }
     /// {@return `storagePushConstant16`}
     public int storagePushConstant16() { return storagePushConstant16(this.segment(), 0L); }
     /// Sets `storagePushConstant16` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storagePushConstant16(MemorySegment segment, long index, int value) { VH_storagePushConstant16.set(segment, 0L, index, value); }
+    public static void storagePushConstant16(MemorySegment segment, long index, int value) { VH_storagePushConstant16.get().set(segment, 0L, index, value); }
     /// Sets `storagePushConstant16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `storageInputOutput16` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int storageInputOutput16(MemorySegment segment, long index) { return (int) VH_storageInputOutput16.get(segment, 0L, index); }
+    public static int storageInputOutput16(MemorySegment segment, long index) { return (int) VH_storageInputOutput16.get().get(segment, 0L, index); }
     /// {@return `storageInputOutput16`}
     public int storageInputOutput16() { return storageInputOutput16(this.segment(), 0L); }
     /// Sets `storageInputOutput16` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storageInputOutput16(MemorySegment segment, long index, int value) { VH_storageInputOutput16.set(segment, 0L, index, value); }
+    public static void storageInputOutput16(MemorySegment segment, long index, int value) { VH_storageInputOutput16.get().set(segment, 0L, index, value); }
     /// Sets `storageInputOutput16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `multiview` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int multiview(MemorySegment segment, long index) { return (int) VH_multiview.get(segment, 0L, index); }
+    public static int multiview(MemorySegment segment, long index) { return (int) VH_multiview.get().get(segment, 0L, index); }
     /// {@return `multiview`}
     public int multiview() { return multiview(this.segment(), 0L); }
     /// Sets `multiview` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void multiview(MemorySegment segment, long index, int value) { VH_multiview.set(segment, 0L, index, value); }
+    public static void multiview(MemorySegment segment, long index, int value) { VH_multiview.get().set(segment, 0L, index, value); }
     /// Sets `multiview` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `multiviewGeometryShader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int multiviewGeometryShader(MemorySegment segment, long index) { return (int) VH_multiviewGeometryShader.get(segment, 0L, index); }
+    public static int multiviewGeometryShader(MemorySegment segment, long index) { return (int) VH_multiviewGeometryShader.get().get(segment, 0L, index); }
     /// {@return `multiviewGeometryShader`}
     public int multiviewGeometryShader() { return multiviewGeometryShader(this.segment(), 0L); }
     /// Sets `multiviewGeometryShader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void multiviewGeometryShader(MemorySegment segment, long index, int value) { VH_multiviewGeometryShader.set(segment, 0L, index, value); }
+    public static void multiviewGeometryShader(MemorySegment segment, long index, int value) { VH_multiviewGeometryShader.get().set(segment, 0L, index, value); }
     /// Sets `multiviewGeometryShader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,14 +310,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `multiviewTessellationShader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int multiviewTessellationShader(MemorySegment segment, long index) { return (int) VH_multiviewTessellationShader.get(segment, 0L, index); }
+    public static int multiviewTessellationShader(MemorySegment segment, long index) { return (int) VH_multiviewTessellationShader.get().get(segment, 0L, index); }
     /// {@return `multiviewTessellationShader`}
     public int multiviewTessellationShader() { return multiviewTessellationShader(this.segment(), 0L); }
     /// Sets `multiviewTessellationShader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void multiviewTessellationShader(MemorySegment segment, long index, int value) { VH_multiviewTessellationShader.set(segment, 0L, index, value); }
+    public static void multiviewTessellationShader(MemorySegment segment, long index, int value) { VH_multiviewTessellationShader.get().set(segment, 0L, index, value); }
     /// Sets `multiviewTessellationShader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,14 +326,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `variablePointersStorageBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int variablePointersStorageBuffer(MemorySegment segment, long index) { return (int) VH_variablePointersStorageBuffer.get(segment, 0L, index); }
+    public static int variablePointersStorageBuffer(MemorySegment segment, long index) { return (int) VH_variablePointersStorageBuffer.get().get(segment, 0L, index); }
     /// {@return `variablePointersStorageBuffer`}
     public int variablePointersStorageBuffer() { return variablePointersStorageBuffer(this.segment(), 0L); }
     /// Sets `variablePointersStorageBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void variablePointersStorageBuffer(MemorySegment segment, long index, int value) { VH_variablePointersStorageBuffer.set(segment, 0L, index, value); }
+    public static void variablePointersStorageBuffer(MemorySegment segment, long index, int value) { VH_variablePointersStorageBuffer.get().set(segment, 0L, index, value); }
     /// Sets `variablePointersStorageBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,14 +342,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `variablePointers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int variablePointers(MemorySegment segment, long index) { return (int) VH_variablePointers.get(segment, 0L, index); }
+    public static int variablePointers(MemorySegment segment, long index) { return (int) VH_variablePointers.get().get(segment, 0L, index); }
     /// {@return `variablePointers`}
     public int variablePointers() { return variablePointers(this.segment(), 0L); }
     /// Sets `variablePointers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void variablePointers(MemorySegment segment, long index, int value) { VH_variablePointers.set(segment, 0L, index, value); }
+    public static void variablePointers(MemorySegment segment, long index, int value) { VH_variablePointers.get().set(segment, 0L, index, value); }
     /// Sets `variablePointers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -358,14 +358,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `protectedMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int protectedMemory(MemorySegment segment, long index) { return (int) VH_protectedMemory.get(segment, 0L, index); }
+    public static int protectedMemory(MemorySegment segment, long index) { return (int) VH_protectedMemory.get().get(segment, 0L, index); }
     /// {@return `protectedMemory`}
     public int protectedMemory() { return protectedMemory(this.segment(), 0L); }
     /// Sets `protectedMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void protectedMemory(MemorySegment segment, long index, int value) { VH_protectedMemory.set(segment, 0L, index, value); }
+    public static void protectedMemory(MemorySegment segment, long index, int value) { VH_protectedMemory.get().set(segment, 0L, index, value); }
     /// Sets `protectedMemory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -374,14 +374,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `samplerYcbcrConversion` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int samplerYcbcrConversion(MemorySegment segment, long index) { return (int) VH_samplerYcbcrConversion.get(segment, 0L, index); }
+    public static int samplerYcbcrConversion(MemorySegment segment, long index) { return (int) VH_samplerYcbcrConversion.get().get(segment, 0L, index); }
     /// {@return `samplerYcbcrConversion`}
     public int samplerYcbcrConversion() { return samplerYcbcrConversion(this.segment(), 0L); }
     /// Sets `samplerYcbcrConversion` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void samplerYcbcrConversion(MemorySegment segment, long index, int value) { VH_samplerYcbcrConversion.set(segment, 0L, index, value); }
+    public static void samplerYcbcrConversion(MemorySegment segment, long index, int value) { VH_samplerYcbcrConversion.get().set(segment, 0L, index, value); }
     /// Sets `samplerYcbcrConversion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -390,14 +390,14 @@ public final class VkPhysicalDeviceVulkan11Features extends GroupType {
     /// {@return `shaderDrawParameters` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderDrawParameters(MemorySegment segment, long index) { return (int) VH_shaderDrawParameters.get(segment, 0L, index); }
+    public static int shaderDrawParameters(MemorySegment segment, long index) { return (int) VH_shaderDrawParameters.get().get(segment, 0L, index); }
     /// {@return `shaderDrawParameters`}
     public int shaderDrawParameters() { return shaderDrawParameters(this.segment(), 0L); }
     /// Sets `shaderDrawParameters` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderDrawParameters(MemorySegment segment, long index, int value) { VH_shaderDrawParameters.set(segment, 0L, index, value); }
+    public static void shaderDrawParameters(MemorySegment segment, long index, int value) { VH_shaderDrawParameters.get().set(segment, 0L, index, value); }
     /// Sets `shaderDrawParameters` with the given value.
     /// @param value the value
     /// @return `this`

@@ -33,25 +33,25 @@ public final class VkSemaphoreTypeCreateInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `semaphoreType`.
     public static final long OFFSET_semaphoreType = LAYOUT.byteOffset(PathElement.groupElement("semaphoreType"));
     /// The memory layout of `semaphoreType`.
     public static final MemoryLayout LAYOUT_semaphoreType = LAYOUT.select(PathElement.groupElement("semaphoreType"));
     /// The [VarHandle] of `semaphoreType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_semaphoreType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphoreType"));
+    public static final Supplier<VarHandle> VH_semaphoreType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphoreType")));
     /// The byte offset of `initialValue`.
     public static final long OFFSET_initialValue = LAYOUT.byteOffset(PathElement.groupElement("initialValue"));
     /// The memory layout of `initialValue`.
     public static final MemoryLayout LAYOUT_initialValue = LAYOUT.select(PathElement.groupElement("initialValue"));
     /// The [VarHandle] of `initialValue` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_initialValue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("initialValue"));
+    public static final Supplier<VarHandle> VH_initialValue = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("initialValue")));
 
     /// Creates `VkSemaphoreTypeCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkSemaphoreTypeCreateInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkSemaphoreTypeCreateInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkSemaphoreTypeCreateInfo extends GroupType {
     /// {@return `semaphoreType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int semaphoreType(MemorySegment segment, long index) { return (int) VH_semaphoreType.get(segment, 0L, index); }
+    public static int semaphoreType(MemorySegment segment, long index) { return (int) VH_semaphoreType.get().get(segment, 0L, index); }
     /// {@return `semaphoreType`}
     public int semaphoreType() { return semaphoreType(this.segment(), 0L); }
     /// Sets `semaphoreType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void semaphoreType(MemorySegment segment, long index, int value) { VH_semaphoreType.set(segment, 0L, index, value); }
+    public static void semaphoreType(MemorySegment segment, long index, int value) { VH_semaphoreType.get().set(segment, 0L, index, value); }
     /// Sets `semaphoreType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkSemaphoreTypeCreateInfo extends GroupType {
     /// {@return `initialValue` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long initialValue(MemorySegment segment, long index) { return (long) VH_initialValue.get(segment, 0L, index); }
+    public static long initialValue(MemorySegment segment, long index) { return (long) VH_initialValue.get().get(segment, 0L, index); }
     /// {@return `initialValue`}
     public long initialValue() { return initialValue(this.segment(), 0L); }
     /// Sets `initialValue` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void initialValue(MemorySegment segment, long index, long value) { VH_initialValue.set(segment, 0L, index, value); }
+    public static void initialValue(MemorySegment segment, long index, long value) { VH_initialValue.get().set(segment, 0L, index, value); }
     /// Sets `initialValue` with the given value.
     /// @param value the value
     /// @return `this`

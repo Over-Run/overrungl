@@ -39,43 +39,43 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends GroupType
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pipelineBinaryInternalCache`.
     public static final long OFFSET_pipelineBinaryInternalCache = LAYOUT.byteOffset(PathElement.groupElement("pipelineBinaryInternalCache"));
     /// The memory layout of `pipelineBinaryInternalCache`.
     public static final MemoryLayout LAYOUT_pipelineBinaryInternalCache = LAYOUT.select(PathElement.groupElement("pipelineBinaryInternalCache"));
     /// The [VarHandle] of `pipelineBinaryInternalCache` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineBinaryInternalCache = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBinaryInternalCache"));
+    public static final Supplier<VarHandle> VH_pipelineBinaryInternalCache = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBinaryInternalCache")));
     /// The byte offset of `pipelineBinaryInternalCacheControl`.
     public static final long OFFSET_pipelineBinaryInternalCacheControl = LAYOUT.byteOffset(PathElement.groupElement("pipelineBinaryInternalCacheControl"));
     /// The memory layout of `pipelineBinaryInternalCacheControl`.
     public static final MemoryLayout LAYOUT_pipelineBinaryInternalCacheControl = LAYOUT.select(PathElement.groupElement("pipelineBinaryInternalCacheControl"));
     /// The [VarHandle] of `pipelineBinaryInternalCacheControl` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineBinaryInternalCacheControl = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBinaryInternalCacheControl"));
+    public static final Supplier<VarHandle> VH_pipelineBinaryInternalCacheControl = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBinaryInternalCacheControl")));
     /// The byte offset of `pipelineBinaryPrefersInternalCache`.
     public static final long OFFSET_pipelineBinaryPrefersInternalCache = LAYOUT.byteOffset(PathElement.groupElement("pipelineBinaryPrefersInternalCache"));
     /// The memory layout of `pipelineBinaryPrefersInternalCache`.
     public static final MemoryLayout LAYOUT_pipelineBinaryPrefersInternalCache = LAYOUT.select(PathElement.groupElement("pipelineBinaryPrefersInternalCache"));
     /// The [VarHandle] of `pipelineBinaryPrefersInternalCache` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineBinaryPrefersInternalCache = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBinaryPrefersInternalCache"));
+    public static final Supplier<VarHandle> VH_pipelineBinaryPrefersInternalCache = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBinaryPrefersInternalCache")));
     /// The byte offset of `pipelineBinaryPrecompiledInternalCache`.
     public static final long OFFSET_pipelineBinaryPrecompiledInternalCache = LAYOUT.byteOffset(PathElement.groupElement("pipelineBinaryPrecompiledInternalCache"));
     /// The memory layout of `pipelineBinaryPrecompiledInternalCache`.
     public static final MemoryLayout LAYOUT_pipelineBinaryPrecompiledInternalCache = LAYOUT.select(PathElement.groupElement("pipelineBinaryPrecompiledInternalCache"));
     /// The [VarHandle] of `pipelineBinaryPrecompiledInternalCache` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineBinaryPrecompiledInternalCache = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBinaryPrecompiledInternalCache"));
+    public static final Supplier<VarHandle> VH_pipelineBinaryPrecompiledInternalCache = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBinaryPrecompiledInternalCache")));
     /// The byte offset of `pipelineBinaryCompressedData`.
     public static final long OFFSET_pipelineBinaryCompressedData = LAYOUT.byteOffset(PathElement.groupElement("pipelineBinaryCompressedData"));
     /// The memory layout of `pipelineBinaryCompressedData`.
     public static final MemoryLayout LAYOUT_pipelineBinaryCompressedData = LAYOUT.select(PathElement.groupElement("pipelineBinaryCompressedData"));
     /// The [VarHandle] of `pipelineBinaryCompressedData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineBinaryCompressedData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBinaryCompressedData"));
+    public static final Supplier<VarHandle> VH_pipelineBinaryCompressedData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBinaryCompressedData")));
 
     /// Creates `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends GroupType
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends GroupType
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends GroupType
     /// {@return `pipelineBinaryInternalCache` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineBinaryInternalCache(MemorySegment segment, long index) { return (int) VH_pipelineBinaryInternalCache.get(segment, 0L, index); }
+    public static int pipelineBinaryInternalCache(MemorySegment segment, long index) { return (int) VH_pipelineBinaryInternalCache.get().get(segment, 0L, index); }
     /// {@return `pipelineBinaryInternalCache`}
     public int pipelineBinaryInternalCache() { return pipelineBinaryInternalCache(this.segment(), 0L); }
     /// Sets `pipelineBinaryInternalCache` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineBinaryInternalCache(MemorySegment segment, long index, int value) { VH_pipelineBinaryInternalCache.set(segment, 0L, index, value); }
+    public static void pipelineBinaryInternalCache(MemorySegment segment, long index, int value) { VH_pipelineBinaryInternalCache.get().set(segment, 0L, index, value); }
     /// Sets `pipelineBinaryInternalCache` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends GroupType
     /// {@return `pipelineBinaryInternalCacheControl` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineBinaryInternalCacheControl(MemorySegment segment, long index) { return (int) VH_pipelineBinaryInternalCacheControl.get(segment, 0L, index); }
+    public static int pipelineBinaryInternalCacheControl(MemorySegment segment, long index) { return (int) VH_pipelineBinaryInternalCacheControl.get().get(segment, 0L, index); }
     /// {@return `pipelineBinaryInternalCacheControl`}
     public int pipelineBinaryInternalCacheControl() { return pipelineBinaryInternalCacheControl(this.segment(), 0L); }
     /// Sets `pipelineBinaryInternalCacheControl` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineBinaryInternalCacheControl(MemorySegment segment, long index, int value) { VH_pipelineBinaryInternalCacheControl.set(segment, 0L, index, value); }
+    public static void pipelineBinaryInternalCacheControl(MemorySegment segment, long index, int value) { VH_pipelineBinaryInternalCacheControl.get().set(segment, 0L, index, value); }
     /// Sets `pipelineBinaryInternalCacheControl` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends GroupType
     /// {@return `pipelineBinaryPrefersInternalCache` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineBinaryPrefersInternalCache(MemorySegment segment, long index) { return (int) VH_pipelineBinaryPrefersInternalCache.get(segment, 0L, index); }
+    public static int pipelineBinaryPrefersInternalCache(MemorySegment segment, long index) { return (int) VH_pipelineBinaryPrefersInternalCache.get().get(segment, 0L, index); }
     /// {@return `pipelineBinaryPrefersInternalCache`}
     public int pipelineBinaryPrefersInternalCache() { return pipelineBinaryPrefersInternalCache(this.segment(), 0L); }
     /// Sets `pipelineBinaryPrefersInternalCache` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineBinaryPrefersInternalCache(MemorySegment segment, long index, int value) { VH_pipelineBinaryPrefersInternalCache.set(segment, 0L, index, value); }
+    public static void pipelineBinaryPrefersInternalCache(MemorySegment segment, long index, int value) { VH_pipelineBinaryPrefersInternalCache.get().set(segment, 0L, index, value); }
     /// Sets `pipelineBinaryPrefersInternalCache` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends GroupType
     /// {@return `pipelineBinaryPrecompiledInternalCache` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineBinaryPrecompiledInternalCache(MemorySegment segment, long index) { return (int) VH_pipelineBinaryPrecompiledInternalCache.get(segment, 0L, index); }
+    public static int pipelineBinaryPrecompiledInternalCache(MemorySegment segment, long index) { return (int) VH_pipelineBinaryPrecompiledInternalCache.get().get(segment, 0L, index); }
     /// {@return `pipelineBinaryPrecompiledInternalCache`}
     public int pipelineBinaryPrecompiledInternalCache() { return pipelineBinaryPrecompiledInternalCache(this.segment(), 0L); }
     /// Sets `pipelineBinaryPrecompiledInternalCache` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineBinaryPrecompiledInternalCache(MemorySegment segment, long index, int value) { VH_pipelineBinaryPrecompiledInternalCache.set(segment, 0L, index, value); }
+    public static void pipelineBinaryPrecompiledInternalCache(MemorySegment segment, long index, int value) { VH_pipelineBinaryPrecompiledInternalCache.get().set(segment, 0L, index, value); }
     /// Sets `pipelineBinaryPrecompiledInternalCache` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends GroupType
     /// {@return `pipelineBinaryCompressedData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineBinaryCompressedData(MemorySegment segment, long index) { return (int) VH_pipelineBinaryCompressedData.get(segment, 0L, index); }
+    public static int pipelineBinaryCompressedData(MemorySegment segment, long index) { return (int) VH_pipelineBinaryCompressedData.get().get(segment, 0L, index); }
     /// {@return `pipelineBinaryCompressedData`}
     public int pipelineBinaryCompressedData() { return pipelineBinaryCompressedData(this.segment(), 0L); }
     /// Sets `pipelineBinaryCompressedData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineBinaryCompressedData(MemorySegment segment, long index, int value) { VH_pipelineBinaryCompressedData.set(segment, 0L, index, value); }
+    public static void pipelineBinaryCompressedData(MemorySegment segment, long index, int value) { VH_pipelineBinaryCompressedData.get().set(segment, 0L, index, value); }
     /// Sets `pipelineBinaryCompressedData` with the given value.
     /// @param value the value
     /// @return `this`

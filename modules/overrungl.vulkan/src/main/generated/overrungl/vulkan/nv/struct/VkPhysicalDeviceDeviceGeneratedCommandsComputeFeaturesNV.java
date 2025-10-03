@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV exte
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `deviceGeneratedCompute`.
     public static final long OFFSET_deviceGeneratedCompute = LAYOUT.byteOffset(PathElement.groupElement("deviceGeneratedCompute"));
     /// The memory layout of `deviceGeneratedCompute`.
     public static final MemoryLayout LAYOUT_deviceGeneratedCompute = LAYOUT.select(PathElement.groupElement("deviceGeneratedCompute"));
     /// The [VarHandle] of `deviceGeneratedCompute` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceGeneratedCompute = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceGeneratedCompute"));
+    public static final Supplier<VarHandle> VH_deviceGeneratedCompute = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceGeneratedCompute")));
     /// The byte offset of `deviceGeneratedComputePipelines`.
     public static final long OFFSET_deviceGeneratedComputePipelines = LAYOUT.byteOffset(PathElement.groupElement("deviceGeneratedComputePipelines"));
     /// The memory layout of `deviceGeneratedComputePipelines`.
     public static final MemoryLayout LAYOUT_deviceGeneratedComputePipelines = LAYOUT.select(PathElement.groupElement("deviceGeneratedComputePipelines"));
     /// The [VarHandle] of `deviceGeneratedComputePipelines` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceGeneratedComputePipelines = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceGeneratedComputePipelines"));
+    public static final Supplier<VarHandle> VH_deviceGeneratedComputePipelines = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceGeneratedComputePipelines")));
     /// The byte offset of `deviceGeneratedComputeCaptureReplay`.
     public static final long OFFSET_deviceGeneratedComputeCaptureReplay = LAYOUT.byteOffset(PathElement.groupElement("deviceGeneratedComputeCaptureReplay"));
     /// The memory layout of `deviceGeneratedComputeCaptureReplay`.
     public static final MemoryLayout LAYOUT_deviceGeneratedComputeCaptureReplay = LAYOUT.select(PathElement.groupElement("deviceGeneratedComputeCaptureReplay"));
     /// The [VarHandle] of `deviceGeneratedComputeCaptureReplay` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceGeneratedComputeCaptureReplay = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceGeneratedComputeCaptureReplay"));
+    public static final Supplier<VarHandle> VH_deviceGeneratedComputeCaptureReplay = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceGeneratedComputeCaptureReplay")));
 
     /// Creates `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV exte
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV exte
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV exte
     /// {@return `deviceGeneratedCompute` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceGeneratedCompute(MemorySegment segment, long index) { return (int) VH_deviceGeneratedCompute.get(segment, 0L, index); }
+    public static int deviceGeneratedCompute(MemorySegment segment, long index) { return (int) VH_deviceGeneratedCompute.get().get(segment, 0L, index); }
     /// {@return `deviceGeneratedCompute`}
     public int deviceGeneratedCompute() { return deviceGeneratedCompute(this.segment(), 0L); }
     /// Sets `deviceGeneratedCompute` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceGeneratedCompute(MemorySegment segment, long index, int value) { VH_deviceGeneratedCompute.set(segment, 0L, index, value); }
+    public static void deviceGeneratedCompute(MemorySegment segment, long index, int value) { VH_deviceGeneratedCompute.get().set(segment, 0L, index, value); }
     /// Sets `deviceGeneratedCompute` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV exte
     /// {@return `deviceGeneratedComputePipelines` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceGeneratedComputePipelines(MemorySegment segment, long index) { return (int) VH_deviceGeneratedComputePipelines.get(segment, 0L, index); }
+    public static int deviceGeneratedComputePipelines(MemorySegment segment, long index) { return (int) VH_deviceGeneratedComputePipelines.get().get(segment, 0L, index); }
     /// {@return `deviceGeneratedComputePipelines`}
     public int deviceGeneratedComputePipelines() { return deviceGeneratedComputePipelines(this.segment(), 0L); }
     /// Sets `deviceGeneratedComputePipelines` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceGeneratedComputePipelines(MemorySegment segment, long index, int value) { VH_deviceGeneratedComputePipelines.set(segment, 0L, index, value); }
+    public static void deviceGeneratedComputePipelines(MemorySegment segment, long index, int value) { VH_deviceGeneratedComputePipelines.get().set(segment, 0L, index, value); }
     /// Sets `deviceGeneratedComputePipelines` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV exte
     /// {@return `deviceGeneratedComputeCaptureReplay` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceGeneratedComputeCaptureReplay(MemorySegment segment, long index) { return (int) VH_deviceGeneratedComputeCaptureReplay.get(segment, 0L, index); }
+    public static int deviceGeneratedComputeCaptureReplay(MemorySegment segment, long index) { return (int) VH_deviceGeneratedComputeCaptureReplay.get().get(segment, 0L, index); }
     /// {@return `deviceGeneratedComputeCaptureReplay`}
     public int deviceGeneratedComputeCaptureReplay() { return deviceGeneratedComputeCaptureReplay(this.segment(), 0L); }
     /// Sets `deviceGeneratedComputeCaptureReplay` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceGeneratedComputeCaptureReplay(MemorySegment segment, long index, int value) { VH_deviceGeneratedComputeCaptureReplay.set(segment, 0L, index, value); }
+    public static void deviceGeneratedComputeCaptureReplay(MemorySegment segment, long index, int value) { VH_deviceGeneratedComputeCaptureReplay.get().set(segment, 0L, index, value); }
     /// Sets `deviceGeneratedComputeCaptureReplay` with the given value.
     /// @param value the value
     /// @return `this`

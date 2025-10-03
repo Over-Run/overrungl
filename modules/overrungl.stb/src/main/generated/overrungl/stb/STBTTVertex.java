@@ -41,49 +41,49 @@ public final class STBTTVertex extends GroupType {
     /// The memory layout of `x`.
     public static final MemoryLayout LAYOUT_x = LAYOUT.select(PathElement.groupElement("x"));
     /// The [VarHandle] of `x` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("x"));
+    public static final Supplier<VarHandle> VH_x = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("x")));
     /// The byte offset of `y`.
     public static final long OFFSET_y = LAYOUT.byteOffset(PathElement.groupElement("y"));
     /// The memory layout of `y`.
     public static final MemoryLayout LAYOUT_y = LAYOUT.select(PathElement.groupElement("y"));
     /// The [VarHandle] of `y` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y"));
+    public static final Supplier<VarHandle> VH_y = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("y")));
     /// The byte offset of `cx`.
     public static final long OFFSET_cx = LAYOUT.byteOffset(PathElement.groupElement("cx"));
     /// The memory layout of `cx`.
     public static final MemoryLayout LAYOUT_cx = LAYOUT.select(PathElement.groupElement("cx"));
     /// The [VarHandle] of `cx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cx"));
+    public static final Supplier<VarHandle> VH_cx = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cx")));
     /// The byte offset of `cy`.
     public static final long OFFSET_cy = LAYOUT.byteOffset(PathElement.groupElement("cy"));
     /// The memory layout of `cy`.
     public static final MemoryLayout LAYOUT_cy = LAYOUT.select(PathElement.groupElement("cy"));
     /// The [VarHandle] of `cy` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cy = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cy"));
+    public static final Supplier<VarHandle> VH_cy = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cy")));
     /// The byte offset of `cx1`.
     public static final long OFFSET_cx1 = LAYOUT.byteOffset(PathElement.groupElement("cx1"));
     /// The memory layout of `cx1`.
     public static final MemoryLayout LAYOUT_cx1 = LAYOUT.select(PathElement.groupElement("cx1"));
     /// The [VarHandle] of `cx1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cx1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cx1"));
+    public static final Supplier<VarHandle> VH_cx1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cx1")));
     /// The byte offset of `cy1`.
     public static final long OFFSET_cy1 = LAYOUT.byteOffset(PathElement.groupElement("cy1"));
     /// The memory layout of `cy1`.
     public static final MemoryLayout LAYOUT_cy1 = LAYOUT.select(PathElement.groupElement("cy1"));
     /// The [VarHandle] of `cy1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cy1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cy1"));
+    public static final Supplier<VarHandle> VH_cy1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cy1")));
     /// The byte offset of `type`.
     public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
     /// The memory layout of `type`.
     public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
     /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
+    public static final Supplier<VarHandle> VH_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("type")));
     /// The byte offset of `padding`.
     public static final long OFFSET_padding = LAYOUT.byteOffset(PathElement.groupElement("padding"));
     /// The memory layout of `padding`.
     public static final MemoryLayout LAYOUT_padding = LAYOUT.select(PathElement.groupElement("padding"));
     /// The [VarHandle] of `padding` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_padding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("padding"));
+    public static final Supplier<VarHandle> VH_padding = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("padding")));
 
     /// Creates `STBTTVertex` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class STBTTVertex extends GroupType {
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short x(MemorySegment segment, long index) { return (short) VH_x.get(segment, 0L, index); }
+    public static short x(MemorySegment segment, long index) { return (short) VH_x.get().get(segment, 0L, index); }
     /// {@return `x`}
     public short x() { return x(this.segment(), 0L); }
     /// Sets `x` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void x(MemorySegment segment, long index, short value) { VH_x.set(segment, 0L, index, value); }
+    public static void x(MemorySegment segment, long index, short value) { VH_x.get().set(segment, 0L, index, value); }
     /// Sets `x` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class STBTTVertex extends GroupType {
     /// {@return `y` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short y(MemorySegment segment, long index) { return (short) VH_y.get(segment, 0L, index); }
+    public static short y(MemorySegment segment, long index) { return (short) VH_y.get().get(segment, 0L, index); }
     /// {@return `y`}
     public short y() { return y(this.segment(), 0L); }
     /// Sets `y` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void y(MemorySegment segment, long index, short value) { VH_y.set(segment, 0L, index, value); }
+    public static void y(MemorySegment segment, long index, short value) { VH_y.get().set(segment, 0L, index, value); }
     /// Sets `y` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class STBTTVertex extends GroupType {
     /// {@return `cx` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short cx(MemorySegment segment, long index) { return (short) VH_cx.get(segment, 0L, index); }
+    public static short cx(MemorySegment segment, long index) { return (short) VH_cx.get().get(segment, 0L, index); }
     /// {@return `cx`}
     public short cx() { return cx(this.segment(), 0L); }
     /// Sets `cx` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cx(MemorySegment segment, long index, short value) { VH_cx.set(segment, 0L, index, value); }
+    public static void cx(MemorySegment segment, long index, short value) { VH_cx.get().set(segment, 0L, index, value); }
     /// Sets `cx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class STBTTVertex extends GroupType {
     /// {@return `cy` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short cy(MemorySegment segment, long index) { return (short) VH_cy.get(segment, 0L, index); }
+    public static short cy(MemorySegment segment, long index) { return (short) VH_cy.get().get(segment, 0L, index); }
     /// {@return `cy`}
     public short cy() { return cy(this.segment(), 0L); }
     /// Sets `cy` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cy(MemorySegment segment, long index, short value) { VH_cy.set(segment, 0L, index, value); }
+    public static void cy(MemorySegment segment, long index, short value) { VH_cy.get().set(segment, 0L, index, value); }
     /// Sets `cy` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class STBTTVertex extends GroupType {
     /// {@return `cx1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short cx1(MemorySegment segment, long index) { return (short) VH_cx1.get(segment, 0L, index); }
+    public static short cx1(MemorySegment segment, long index) { return (short) VH_cx1.get().get(segment, 0L, index); }
     /// {@return `cx1`}
     public short cx1() { return cx1(this.segment(), 0L); }
     /// Sets `cx1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cx1(MemorySegment segment, long index, short value) { VH_cx1.set(segment, 0L, index, value); }
+    public static void cx1(MemorySegment segment, long index, short value) { VH_cx1.get().set(segment, 0L, index, value); }
     /// Sets `cx1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class STBTTVertex extends GroupType {
     /// {@return `cy1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short cy1(MemorySegment segment, long index) { return (short) VH_cy1.get(segment, 0L, index); }
+    public static short cy1(MemorySegment segment, long index) { return (short) VH_cy1.get().get(segment, 0L, index); }
     /// {@return `cy1`}
     public short cy1() { return cy1(this.segment(), 0L); }
     /// Sets `cy1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cy1(MemorySegment segment, long index, short value) { VH_cy1.set(segment, 0L, index, value); }
+    public static void cy1(MemorySegment segment, long index, short value) { VH_cy1.get().set(segment, 0L, index, value); }
     /// Sets `cy1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class STBTTVertex extends GroupType {
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte type(MemorySegment segment, long index) { return (byte) VH_type.get(segment, 0L, index); }
+    public static byte type(MemorySegment segment, long index) { return (byte) VH_type.get().get(segment, 0L, index); }
     /// {@return `type`}
     public byte type() { return type(this.segment(), 0L); }
     /// Sets `type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void type(MemorySegment segment, long index, byte value) { VH_type.set(segment, 0L, index, value); }
+    public static void type(MemorySegment segment, long index, byte value) { VH_type.get().set(segment, 0L, index, value); }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class STBTTVertex extends GroupType {
     /// {@return `padding` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte padding(MemorySegment segment, long index) { return (byte) VH_padding.get(segment, 0L, index); }
+    public static byte padding(MemorySegment segment, long index) { return (byte) VH_padding.get().get(segment, 0L, index); }
     /// {@return `padding`}
     public byte padding() { return padding(this.segment(), 0L); }
     /// Sets `padding` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void padding(MemorySegment segment, long index, byte value) { VH_padding.set(segment, 0L, index, value); }
+    public static void padding(MemorySegment segment, long index, byte value) { VH_padding.get().set(segment, 0L, index, value); }
     /// Sets `padding` with the given value.
     /// @param value the value
     /// @return `this`

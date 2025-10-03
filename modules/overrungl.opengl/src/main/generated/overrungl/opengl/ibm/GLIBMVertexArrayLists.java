@@ -2,6 +2,7 @@
 package overrungl.opengl.ibm;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -26,14 +27,14 @@ public final class GLIBMVertexArrayLists {
     public static final int GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM = 103087;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glColorPointerListIBM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glSecondaryColorPointerListIBM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glEdgeFlagPointerListIBM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFogCoordPointerListIBM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glIndexPointerListIBM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNormalPointerListIBM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexCoordPointerListIBM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexPointerListIBM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glColorPointerListIBM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glSecondaryColorPointerListIBM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glEdgeFlagPointerListIBM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFogCoordPointerListIBM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glIndexPointerListIBM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNormalPointerListIBM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexCoordPointerListIBM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glVertexPointerListIBM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glColorPointerListIBM;
         public final MemorySegment PFN_glSecondaryColorPointerListIBM;
         public final MemorySegment PFN_glEdgeFlagPointerListIBM;
@@ -65,7 +66,7 @@ public final class GLIBMVertexArrayLists {
     public void ColorPointerListIBM(int size, int type, int stride, @NonNull MemorySegment pointer, int ptrstride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorPointerListIBM)) throw new GLSymbolNotFoundError("Symbol not found: glColorPointerListIBM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColorPointerListIBM", size, type, stride, pointer, ptrstride); }
-        Handles.MH_glColorPointerListIBM.invokeExact(handles.PFN_glColorPointerListIBM, size, type, stride, pointer, ptrstride); }
+        Handles.MH_glColorPointerListIBM.get().invokeExact(handles.PFN_glColorPointerListIBM, size, type, stride, pointer, ptrstride); }
         catch (Throwable e) { throw new RuntimeException("error in ColorPointerListIBM", e); }
     }
 
@@ -76,7 +77,7 @@ public final class GLIBMVertexArrayLists {
     public void SecondaryColorPointerListIBM(int size, int type, int stride, @NonNull MemorySegment pointer, int ptrstride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColorPointerListIBM)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColorPointerListIBM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSecondaryColorPointerListIBM", size, type, stride, pointer, ptrstride); }
-        Handles.MH_glSecondaryColorPointerListIBM.invokeExact(handles.PFN_glSecondaryColorPointerListIBM, size, type, stride, pointer, ptrstride); }
+        Handles.MH_glSecondaryColorPointerListIBM.get().invokeExact(handles.PFN_glSecondaryColorPointerListIBM, size, type, stride, pointer, ptrstride); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColorPointerListIBM", e); }
     }
 
@@ -87,7 +88,7 @@ public final class GLIBMVertexArrayLists {
     public void EdgeFlagPointerListIBM(int stride, @NonNull MemorySegment pointer, int ptrstride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEdgeFlagPointerListIBM)) throw new GLSymbolNotFoundError("Symbol not found: glEdgeFlagPointerListIBM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEdgeFlagPointerListIBM", stride, pointer, ptrstride); }
-        Handles.MH_glEdgeFlagPointerListIBM.invokeExact(handles.PFN_glEdgeFlagPointerListIBM, stride, pointer, ptrstride); }
+        Handles.MH_glEdgeFlagPointerListIBM.get().invokeExact(handles.PFN_glEdgeFlagPointerListIBM, stride, pointer, ptrstride); }
         catch (Throwable e) { throw new RuntimeException("error in EdgeFlagPointerListIBM", e); }
     }
 
@@ -98,7 +99,7 @@ public final class GLIBMVertexArrayLists {
     public void FogCoordPointerListIBM(int type, int stride, @NonNull MemorySegment pointer, int ptrstride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogCoordPointerListIBM)) throw new GLSymbolNotFoundError("Symbol not found: glFogCoordPointerListIBM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFogCoordPointerListIBM", type, stride, pointer, ptrstride); }
-        Handles.MH_glFogCoordPointerListIBM.invokeExact(handles.PFN_glFogCoordPointerListIBM, type, stride, pointer, ptrstride); }
+        Handles.MH_glFogCoordPointerListIBM.get().invokeExact(handles.PFN_glFogCoordPointerListIBM, type, stride, pointer, ptrstride); }
         catch (Throwable e) { throw new RuntimeException("error in FogCoordPointerListIBM", e); }
     }
 
@@ -109,7 +110,7 @@ public final class GLIBMVertexArrayLists {
     public void IndexPointerListIBM(int type, int stride, @NonNull MemorySegment pointer, int ptrstride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexPointerListIBM)) throw new GLSymbolNotFoundError("Symbol not found: glIndexPointerListIBM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIndexPointerListIBM", type, stride, pointer, ptrstride); }
-        Handles.MH_glIndexPointerListIBM.invokeExact(handles.PFN_glIndexPointerListIBM, type, stride, pointer, ptrstride); }
+        Handles.MH_glIndexPointerListIBM.get().invokeExact(handles.PFN_glIndexPointerListIBM, type, stride, pointer, ptrstride); }
         catch (Throwable e) { throw new RuntimeException("error in IndexPointerListIBM", e); }
     }
 
@@ -120,7 +121,7 @@ public final class GLIBMVertexArrayLists {
     public void NormalPointerListIBM(int type, int stride, @NonNull MemorySegment pointer, int ptrstride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalPointerListIBM)) throw new GLSymbolNotFoundError("Symbol not found: glNormalPointerListIBM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalPointerListIBM", type, stride, pointer, ptrstride); }
-        Handles.MH_glNormalPointerListIBM.invokeExact(handles.PFN_glNormalPointerListIBM, type, stride, pointer, ptrstride); }
+        Handles.MH_glNormalPointerListIBM.get().invokeExact(handles.PFN_glNormalPointerListIBM, type, stride, pointer, ptrstride); }
         catch (Throwable e) { throw new RuntimeException("error in NormalPointerListIBM", e); }
     }
 
@@ -131,7 +132,7 @@ public final class GLIBMVertexArrayLists {
     public void TexCoordPointerListIBM(int size, int type, int stride, @NonNull MemorySegment pointer, int ptrstride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordPointerListIBM)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoordPointerListIBM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoordPointerListIBM", size, type, stride, pointer, ptrstride); }
-        Handles.MH_glTexCoordPointerListIBM.invokeExact(handles.PFN_glTexCoordPointerListIBM, size, type, stride, pointer, ptrstride); }
+        Handles.MH_glTexCoordPointerListIBM.get().invokeExact(handles.PFN_glTexCoordPointerListIBM, size, type, stride, pointer, ptrstride); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoordPointerListIBM", e); }
     }
 
@@ -142,7 +143,7 @@ public final class GLIBMVertexArrayLists {
     public void VertexPointerListIBM(int size, int type, int stride, @NonNull MemorySegment pointer, int ptrstride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexPointerListIBM)) throw new GLSymbolNotFoundError("Symbol not found: glVertexPointerListIBM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexPointerListIBM", size, type, stride, pointer, ptrstride); }
-        Handles.MH_glVertexPointerListIBM.invokeExact(handles.PFN_glVertexPointerListIBM, size, type, stride, pointer, ptrstride); }
+        Handles.MH_glVertexPointerListIBM.get().invokeExact(handles.PFN_glVertexPointerListIBM, size, type, stride, pointer, ptrstride); }
         catch (Throwable e) { throw new RuntimeException("error in VertexPointerListIBM", e); }
     }
 

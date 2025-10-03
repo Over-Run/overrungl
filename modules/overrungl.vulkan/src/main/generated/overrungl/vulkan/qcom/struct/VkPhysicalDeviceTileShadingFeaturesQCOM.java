@@ -57,97 +57,97 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `tileShading`.
     public static final long OFFSET_tileShading = LAYOUT.byteOffset(PathElement.groupElement("tileShading"));
     /// The memory layout of `tileShading`.
     public static final MemoryLayout LAYOUT_tileShading = LAYOUT.select(PathElement.groupElement("tileShading"));
     /// The [VarHandle] of `tileShading` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShading = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShading"));
+    public static final Supplier<VarHandle> VH_tileShading = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShading")));
     /// The byte offset of `tileShadingFragmentStage`.
     public static final long OFFSET_tileShadingFragmentStage = LAYOUT.byteOffset(PathElement.groupElement("tileShadingFragmentStage"));
     /// The memory layout of `tileShadingFragmentStage`.
     public static final MemoryLayout LAYOUT_tileShadingFragmentStage = LAYOUT.select(PathElement.groupElement("tileShadingFragmentStage"));
     /// The [VarHandle] of `tileShadingFragmentStage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingFragmentStage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingFragmentStage"));
+    public static final Supplier<VarHandle> VH_tileShadingFragmentStage = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingFragmentStage")));
     /// The byte offset of `tileShadingColorAttachments`.
     public static final long OFFSET_tileShadingColorAttachments = LAYOUT.byteOffset(PathElement.groupElement("tileShadingColorAttachments"));
     /// The memory layout of `tileShadingColorAttachments`.
     public static final MemoryLayout LAYOUT_tileShadingColorAttachments = LAYOUT.select(PathElement.groupElement("tileShadingColorAttachments"));
     /// The [VarHandle] of `tileShadingColorAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingColorAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingColorAttachments"));
+    public static final Supplier<VarHandle> VH_tileShadingColorAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingColorAttachments")));
     /// The byte offset of `tileShadingDepthAttachments`.
     public static final long OFFSET_tileShadingDepthAttachments = LAYOUT.byteOffset(PathElement.groupElement("tileShadingDepthAttachments"));
     /// The memory layout of `tileShadingDepthAttachments`.
     public static final MemoryLayout LAYOUT_tileShadingDepthAttachments = LAYOUT.select(PathElement.groupElement("tileShadingDepthAttachments"));
     /// The [VarHandle] of `tileShadingDepthAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingDepthAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingDepthAttachments"));
+    public static final Supplier<VarHandle> VH_tileShadingDepthAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingDepthAttachments")));
     /// The byte offset of `tileShadingStencilAttachments`.
     public static final long OFFSET_tileShadingStencilAttachments = LAYOUT.byteOffset(PathElement.groupElement("tileShadingStencilAttachments"));
     /// The memory layout of `tileShadingStencilAttachments`.
     public static final MemoryLayout LAYOUT_tileShadingStencilAttachments = LAYOUT.select(PathElement.groupElement("tileShadingStencilAttachments"));
     /// The [VarHandle] of `tileShadingStencilAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingStencilAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingStencilAttachments"));
+    public static final Supplier<VarHandle> VH_tileShadingStencilAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingStencilAttachments")));
     /// The byte offset of `tileShadingInputAttachments`.
     public static final long OFFSET_tileShadingInputAttachments = LAYOUT.byteOffset(PathElement.groupElement("tileShadingInputAttachments"));
     /// The memory layout of `tileShadingInputAttachments`.
     public static final MemoryLayout LAYOUT_tileShadingInputAttachments = LAYOUT.select(PathElement.groupElement("tileShadingInputAttachments"));
     /// The [VarHandle] of `tileShadingInputAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingInputAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingInputAttachments"));
+    public static final Supplier<VarHandle> VH_tileShadingInputAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingInputAttachments")));
     /// The byte offset of `tileShadingSampledAttachments`.
     public static final long OFFSET_tileShadingSampledAttachments = LAYOUT.byteOffset(PathElement.groupElement("tileShadingSampledAttachments"));
     /// The memory layout of `tileShadingSampledAttachments`.
     public static final MemoryLayout LAYOUT_tileShadingSampledAttachments = LAYOUT.select(PathElement.groupElement("tileShadingSampledAttachments"));
     /// The [VarHandle] of `tileShadingSampledAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingSampledAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingSampledAttachments"));
+    public static final Supplier<VarHandle> VH_tileShadingSampledAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingSampledAttachments")));
     /// The byte offset of `tileShadingPerTileDraw`.
     public static final long OFFSET_tileShadingPerTileDraw = LAYOUT.byteOffset(PathElement.groupElement("tileShadingPerTileDraw"));
     /// The memory layout of `tileShadingPerTileDraw`.
     public static final MemoryLayout LAYOUT_tileShadingPerTileDraw = LAYOUT.select(PathElement.groupElement("tileShadingPerTileDraw"));
     /// The [VarHandle] of `tileShadingPerTileDraw` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingPerTileDraw = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingPerTileDraw"));
+    public static final Supplier<VarHandle> VH_tileShadingPerTileDraw = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingPerTileDraw")));
     /// The byte offset of `tileShadingPerTileDispatch`.
     public static final long OFFSET_tileShadingPerTileDispatch = LAYOUT.byteOffset(PathElement.groupElement("tileShadingPerTileDispatch"));
     /// The memory layout of `tileShadingPerTileDispatch`.
     public static final MemoryLayout LAYOUT_tileShadingPerTileDispatch = LAYOUT.select(PathElement.groupElement("tileShadingPerTileDispatch"));
     /// The [VarHandle] of `tileShadingPerTileDispatch` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingPerTileDispatch = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingPerTileDispatch"));
+    public static final Supplier<VarHandle> VH_tileShadingPerTileDispatch = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingPerTileDispatch")));
     /// The byte offset of `tileShadingDispatchTile`.
     public static final long OFFSET_tileShadingDispatchTile = LAYOUT.byteOffset(PathElement.groupElement("tileShadingDispatchTile"));
     /// The memory layout of `tileShadingDispatchTile`.
     public static final MemoryLayout LAYOUT_tileShadingDispatchTile = LAYOUT.select(PathElement.groupElement("tileShadingDispatchTile"));
     /// The [VarHandle] of `tileShadingDispatchTile` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingDispatchTile = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingDispatchTile"));
+    public static final Supplier<VarHandle> VH_tileShadingDispatchTile = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingDispatchTile")));
     /// The byte offset of `tileShadingApron`.
     public static final long OFFSET_tileShadingApron = LAYOUT.byteOffset(PathElement.groupElement("tileShadingApron"));
     /// The memory layout of `tileShadingApron`.
     public static final MemoryLayout LAYOUT_tileShadingApron = LAYOUT.select(PathElement.groupElement("tileShadingApron"));
     /// The [VarHandle] of `tileShadingApron` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingApron = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingApron"));
+    public static final Supplier<VarHandle> VH_tileShadingApron = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingApron")));
     /// The byte offset of `tileShadingAnisotropicApron`.
     public static final long OFFSET_tileShadingAnisotropicApron = LAYOUT.byteOffset(PathElement.groupElement("tileShadingAnisotropicApron"));
     /// The memory layout of `tileShadingAnisotropicApron`.
     public static final MemoryLayout LAYOUT_tileShadingAnisotropicApron = LAYOUT.select(PathElement.groupElement("tileShadingAnisotropicApron"));
     /// The [VarHandle] of `tileShadingAnisotropicApron` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingAnisotropicApron = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingAnisotropicApron"));
+    public static final Supplier<VarHandle> VH_tileShadingAnisotropicApron = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingAnisotropicApron")));
     /// The byte offset of `tileShadingAtomicOps`.
     public static final long OFFSET_tileShadingAtomicOps = LAYOUT.byteOffset(PathElement.groupElement("tileShadingAtomicOps"));
     /// The memory layout of `tileShadingAtomicOps`.
     public static final MemoryLayout LAYOUT_tileShadingAtomicOps = LAYOUT.select(PathElement.groupElement("tileShadingAtomicOps"));
     /// The [VarHandle] of `tileShadingAtomicOps` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingAtomicOps = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingAtomicOps"));
+    public static final Supplier<VarHandle> VH_tileShadingAtomicOps = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingAtomicOps")));
     /// The byte offset of `tileShadingImageProcessing`.
     public static final long OFFSET_tileShadingImageProcessing = LAYOUT.byteOffset(PathElement.groupElement("tileShadingImageProcessing"));
     /// The memory layout of `tileShadingImageProcessing`.
     public static final MemoryLayout LAYOUT_tileShadingImageProcessing = LAYOUT.select(PathElement.groupElement("tileShadingImageProcessing"));
     /// The [VarHandle] of `tileShadingImageProcessing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileShadingImageProcessing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingImageProcessing"));
+    public static final Supplier<VarHandle> VH_tileShadingImageProcessing = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingImageProcessing")));
 
     /// Creates `VkPhysicalDeviceTileShadingFeaturesQCOM` with the given segment.
     /// @param segment      the memory segment
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShading` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShading(MemorySegment segment, long index) { return (int) VH_tileShading.get(segment, 0L, index); }
+    public static int tileShading(MemorySegment segment, long index) { return (int) VH_tileShading.get().get(segment, 0L, index); }
     /// {@return `tileShading`}
     public int tileShading() { return tileShading(this.segment(), 0L); }
     /// Sets `tileShading` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShading(MemorySegment segment, long index, int value) { VH_tileShading.set(segment, 0L, index, value); }
+    public static void tileShading(MemorySegment segment, long index, int value) { VH_tileShading.get().set(segment, 0L, index, value); }
     /// Sets `tileShading` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingFragmentStage` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingFragmentStage(MemorySegment segment, long index) { return (int) VH_tileShadingFragmentStage.get(segment, 0L, index); }
+    public static int tileShadingFragmentStage(MemorySegment segment, long index) { return (int) VH_tileShadingFragmentStage.get().get(segment, 0L, index); }
     /// {@return `tileShadingFragmentStage`}
     public int tileShadingFragmentStage() { return tileShadingFragmentStage(this.segment(), 0L); }
     /// Sets `tileShadingFragmentStage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingFragmentStage(MemorySegment segment, long index, int value) { VH_tileShadingFragmentStage.set(segment, 0L, index, value); }
+    public static void tileShadingFragmentStage(MemorySegment segment, long index, int value) { VH_tileShadingFragmentStage.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingFragmentStage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingColorAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingColorAttachments(MemorySegment segment, long index) { return (int) VH_tileShadingColorAttachments.get(segment, 0L, index); }
+    public static int tileShadingColorAttachments(MemorySegment segment, long index) { return (int) VH_tileShadingColorAttachments.get().get(segment, 0L, index); }
     /// {@return `tileShadingColorAttachments`}
     public int tileShadingColorAttachments() { return tileShadingColorAttachments(this.segment(), 0L); }
     /// Sets `tileShadingColorAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingColorAttachments(MemorySegment segment, long index, int value) { VH_tileShadingColorAttachments.set(segment, 0L, index, value); }
+    public static void tileShadingColorAttachments(MemorySegment segment, long index, int value) { VH_tileShadingColorAttachments.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingColorAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingDepthAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingDepthAttachments(MemorySegment segment, long index) { return (int) VH_tileShadingDepthAttachments.get(segment, 0L, index); }
+    public static int tileShadingDepthAttachments(MemorySegment segment, long index) { return (int) VH_tileShadingDepthAttachments.get().get(segment, 0L, index); }
     /// {@return `tileShadingDepthAttachments`}
     public int tileShadingDepthAttachments() { return tileShadingDepthAttachments(this.segment(), 0L); }
     /// Sets `tileShadingDepthAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingDepthAttachments(MemorySegment segment, long index, int value) { VH_tileShadingDepthAttachments.set(segment, 0L, index, value); }
+    public static void tileShadingDepthAttachments(MemorySegment segment, long index, int value) { VH_tileShadingDepthAttachments.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingDepthAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingStencilAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingStencilAttachments(MemorySegment segment, long index) { return (int) VH_tileShadingStencilAttachments.get(segment, 0L, index); }
+    public static int tileShadingStencilAttachments(MemorySegment segment, long index) { return (int) VH_tileShadingStencilAttachments.get().get(segment, 0L, index); }
     /// {@return `tileShadingStencilAttachments`}
     public int tileShadingStencilAttachments() { return tileShadingStencilAttachments(this.segment(), 0L); }
     /// Sets `tileShadingStencilAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingStencilAttachments(MemorySegment segment, long index, int value) { VH_tileShadingStencilAttachments.set(segment, 0L, index, value); }
+    public static void tileShadingStencilAttachments(MemorySegment segment, long index, int value) { VH_tileShadingStencilAttachments.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingStencilAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,14 +310,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingInputAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingInputAttachments(MemorySegment segment, long index) { return (int) VH_tileShadingInputAttachments.get(segment, 0L, index); }
+    public static int tileShadingInputAttachments(MemorySegment segment, long index) { return (int) VH_tileShadingInputAttachments.get().get(segment, 0L, index); }
     /// {@return `tileShadingInputAttachments`}
     public int tileShadingInputAttachments() { return tileShadingInputAttachments(this.segment(), 0L); }
     /// Sets `tileShadingInputAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingInputAttachments(MemorySegment segment, long index, int value) { VH_tileShadingInputAttachments.set(segment, 0L, index, value); }
+    public static void tileShadingInputAttachments(MemorySegment segment, long index, int value) { VH_tileShadingInputAttachments.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingInputAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,14 +326,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingSampledAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingSampledAttachments(MemorySegment segment, long index) { return (int) VH_tileShadingSampledAttachments.get(segment, 0L, index); }
+    public static int tileShadingSampledAttachments(MemorySegment segment, long index) { return (int) VH_tileShadingSampledAttachments.get().get(segment, 0L, index); }
     /// {@return `tileShadingSampledAttachments`}
     public int tileShadingSampledAttachments() { return tileShadingSampledAttachments(this.segment(), 0L); }
     /// Sets `tileShadingSampledAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingSampledAttachments(MemorySegment segment, long index, int value) { VH_tileShadingSampledAttachments.set(segment, 0L, index, value); }
+    public static void tileShadingSampledAttachments(MemorySegment segment, long index, int value) { VH_tileShadingSampledAttachments.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingSampledAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,14 +342,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingPerTileDraw` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingPerTileDraw(MemorySegment segment, long index) { return (int) VH_tileShadingPerTileDraw.get(segment, 0L, index); }
+    public static int tileShadingPerTileDraw(MemorySegment segment, long index) { return (int) VH_tileShadingPerTileDraw.get().get(segment, 0L, index); }
     /// {@return `tileShadingPerTileDraw`}
     public int tileShadingPerTileDraw() { return tileShadingPerTileDraw(this.segment(), 0L); }
     /// Sets `tileShadingPerTileDraw` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingPerTileDraw(MemorySegment segment, long index, int value) { VH_tileShadingPerTileDraw.set(segment, 0L, index, value); }
+    public static void tileShadingPerTileDraw(MemorySegment segment, long index, int value) { VH_tileShadingPerTileDraw.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingPerTileDraw` with the given value.
     /// @param value the value
     /// @return `this`
@@ -358,14 +358,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingPerTileDispatch` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingPerTileDispatch(MemorySegment segment, long index) { return (int) VH_tileShadingPerTileDispatch.get(segment, 0L, index); }
+    public static int tileShadingPerTileDispatch(MemorySegment segment, long index) { return (int) VH_tileShadingPerTileDispatch.get().get(segment, 0L, index); }
     /// {@return `tileShadingPerTileDispatch`}
     public int tileShadingPerTileDispatch() { return tileShadingPerTileDispatch(this.segment(), 0L); }
     /// Sets `tileShadingPerTileDispatch` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingPerTileDispatch(MemorySegment segment, long index, int value) { VH_tileShadingPerTileDispatch.set(segment, 0L, index, value); }
+    public static void tileShadingPerTileDispatch(MemorySegment segment, long index, int value) { VH_tileShadingPerTileDispatch.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingPerTileDispatch` with the given value.
     /// @param value the value
     /// @return `this`
@@ -374,14 +374,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingDispatchTile` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingDispatchTile(MemorySegment segment, long index) { return (int) VH_tileShadingDispatchTile.get(segment, 0L, index); }
+    public static int tileShadingDispatchTile(MemorySegment segment, long index) { return (int) VH_tileShadingDispatchTile.get().get(segment, 0L, index); }
     /// {@return `tileShadingDispatchTile`}
     public int tileShadingDispatchTile() { return tileShadingDispatchTile(this.segment(), 0L); }
     /// Sets `tileShadingDispatchTile` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingDispatchTile(MemorySegment segment, long index, int value) { VH_tileShadingDispatchTile.set(segment, 0L, index, value); }
+    public static void tileShadingDispatchTile(MemorySegment segment, long index, int value) { VH_tileShadingDispatchTile.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingDispatchTile` with the given value.
     /// @param value the value
     /// @return `this`
@@ -390,14 +390,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingApron` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingApron(MemorySegment segment, long index) { return (int) VH_tileShadingApron.get(segment, 0L, index); }
+    public static int tileShadingApron(MemorySegment segment, long index) { return (int) VH_tileShadingApron.get().get(segment, 0L, index); }
     /// {@return `tileShadingApron`}
     public int tileShadingApron() { return tileShadingApron(this.segment(), 0L); }
     /// Sets `tileShadingApron` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingApron(MemorySegment segment, long index, int value) { VH_tileShadingApron.set(segment, 0L, index, value); }
+    public static void tileShadingApron(MemorySegment segment, long index, int value) { VH_tileShadingApron.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingApron` with the given value.
     /// @param value the value
     /// @return `this`
@@ -406,14 +406,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingAnisotropicApron` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingAnisotropicApron(MemorySegment segment, long index) { return (int) VH_tileShadingAnisotropicApron.get(segment, 0L, index); }
+    public static int tileShadingAnisotropicApron(MemorySegment segment, long index) { return (int) VH_tileShadingAnisotropicApron.get().get(segment, 0L, index); }
     /// {@return `tileShadingAnisotropicApron`}
     public int tileShadingAnisotropicApron() { return tileShadingAnisotropicApron(this.segment(), 0L); }
     /// Sets `tileShadingAnisotropicApron` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingAnisotropicApron(MemorySegment segment, long index, int value) { VH_tileShadingAnisotropicApron.set(segment, 0L, index, value); }
+    public static void tileShadingAnisotropicApron(MemorySegment segment, long index, int value) { VH_tileShadingAnisotropicApron.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingAnisotropicApron` with the given value.
     /// @param value the value
     /// @return `this`
@@ -422,14 +422,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingAtomicOps` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingAtomicOps(MemorySegment segment, long index) { return (int) VH_tileShadingAtomicOps.get(segment, 0L, index); }
+    public static int tileShadingAtomicOps(MemorySegment segment, long index) { return (int) VH_tileShadingAtomicOps.get().get(segment, 0L, index); }
     /// {@return `tileShadingAtomicOps`}
     public int tileShadingAtomicOps() { return tileShadingAtomicOps(this.segment(), 0L); }
     /// Sets `tileShadingAtomicOps` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingAtomicOps(MemorySegment segment, long index, int value) { VH_tileShadingAtomicOps.set(segment, 0L, index, value); }
+    public static void tileShadingAtomicOps(MemorySegment segment, long index, int value) { VH_tileShadingAtomicOps.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingAtomicOps` with the given value.
     /// @param value the value
     /// @return `this`
@@ -438,14 +438,14 @@ public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// {@return `tileShadingImageProcessing` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileShadingImageProcessing(MemorySegment segment, long index) { return (int) VH_tileShadingImageProcessing.get(segment, 0L, index); }
+    public static int tileShadingImageProcessing(MemorySegment segment, long index) { return (int) VH_tileShadingImageProcessing.get().get(segment, 0L, index); }
     /// {@return `tileShadingImageProcessing`}
     public int tileShadingImageProcessing() { return tileShadingImageProcessing(this.segment(), 0L); }
     /// Sets `tileShadingImageProcessing` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileShadingImageProcessing(MemorySegment segment, long index, int value) { VH_tileShadingImageProcessing.set(segment, 0L, index, value); }
+    public static void tileShadingImageProcessing(MemorySegment segment, long index, int value) { VH_tileShadingImageProcessing.get().set(segment, 0L, index, value); }
     /// Sets `tileShadingImageProcessing` with the given value.
     /// @param value the value
     /// @return `this`

@@ -33,25 +33,25 @@ public final class VkQueueFamilyDataGraphProcessingEnginePropertiesARM extends G
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `foreignSemaphoreHandleTypes`.
     public static final long OFFSET_foreignSemaphoreHandleTypes = LAYOUT.byteOffset(PathElement.groupElement("foreignSemaphoreHandleTypes"));
     /// The memory layout of `foreignSemaphoreHandleTypes`.
     public static final MemoryLayout LAYOUT_foreignSemaphoreHandleTypes = LAYOUT.select(PathElement.groupElement("foreignSemaphoreHandleTypes"));
     /// The [VarHandle] of `foreignSemaphoreHandleTypes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_foreignSemaphoreHandleTypes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("foreignSemaphoreHandleTypes"));
+    public static final Supplier<VarHandle> VH_foreignSemaphoreHandleTypes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("foreignSemaphoreHandleTypes")));
     /// The byte offset of `foreignMemoryHandleTypes`.
     public static final long OFFSET_foreignMemoryHandleTypes = LAYOUT.byteOffset(PathElement.groupElement("foreignMemoryHandleTypes"));
     /// The memory layout of `foreignMemoryHandleTypes`.
     public static final MemoryLayout LAYOUT_foreignMemoryHandleTypes = LAYOUT.select(PathElement.groupElement("foreignMemoryHandleTypes"));
     /// The [VarHandle] of `foreignMemoryHandleTypes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_foreignMemoryHandleTypes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("foreignMemoryHandleTypes"));
+    public static final Supplier<VarHandle> VH_foreignMemoryHandleTypes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("foreignMemoryHandleTypes")));
 
     /// Creates `VkQueueFamilyDataGraphProcessingEnginePropertiesARM` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkQueueFamilyDataGraphProcessingEnginePropertiesARM extends G
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkQueueFamilyDataGraphProcessingEnginePropertiesARM extends G
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkQueueFamilyDataGraphProcessingEnginePropertiesARM extends G
     /// {@return `foreignSemaphoreHandleTypes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int foreignSemaphoreHandleTypes(MemorySegment segment, long index) { return (int) VH_foreignSemaphoreHandleTypes.get(segment, 0L, index); }
+    public static int foreignSemaphoreHandleTypes(MemorySegment segment, long index) { return (int) VH_foreignSemaphoreHandleTypes.get().get(segment, 0L, index); }
     /// {@return `foreignSemaphoreHandleTypes`}
     public int foreignSemaphoreHandleTypes() { return foreignSemaphoreHandleTypes(this.segment(), 0L); }
     /// Sets `foreignSemaphoreHandleTypes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void foreignSemaphoreHandleTypes(MemorySegment segment, long index, int value) { VH_foreignSemaphoreHandleTypes.set(segment, 0L, index, value); }
+    public static void foreignSemaphoreHandleTypes(MemorySegment segment, long index, int value) { VH_foreignSemaphoreHandleTypes.get().set(segment, 0L, index, value); }
     /// Sets `foreignSemaphoreHandleTypes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkQueueFamilyDataGraphProcessingEnginePropertiesARM extends G
     /// {@return `foreignMemoryHandleTypes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int foreignMemoryHandleTypes(MemorySegment segment, long index) { return (int) VH_foreignMemoryHandleTypes.get(segment, 0L, index); }
+    public static int foreignMemoryHandleTypes(MemorySegment segment, long index) { return (int) VH_foreignMemoryHandleTypes.get().get(segment, 0L, index); }
     /// {@return `foreignMemoryHandleTypes`}
     public int foreignMemoryHandleTypes() { return foreignMemoryHandleTypes(this.segment(), 0L); }
     /// Sets `foreignMemoryHandleTypes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void foreignMemoryHandleTypes(MemorySegment segment, long index, int value) { VH_foreignMemoryHandleTypes.set(segment, 0L, index, value); }
+    public static void foreignMemoryHandleTypes(MemorySegment segment, long index, int value) { VH_foreignMemoryHandleTypes.get().set(segment, 0L, index, value); }
     /// Sets `foreignMemoryHandleTypes` with the given value.
     /// @param value the value
     /// @return `this`

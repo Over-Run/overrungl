@@ -41,49 +41,49 @@ public final class VkPipelineColorBlendStateCreateInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `logicOpEnable`.
     public static final long OFFSET_logicOpEnable = LAYOUT.byteOffset(PathElement.groupElement("logicOpEnable"));
     /// The memory layout of `logicOpEnable`.
     public static final MemoryLayout LAYOUT_logicOpEnable = LAYOUT.select(PathElement.groupElement("logicOpEnable"));
     /// The [VarHandle] of `logicOpEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_logicOpEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("logicOpEnable"));
+    public static final Supplier<VarHandle> VH_logicOpEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("logicOpEnable")));
     /// The byte offset of `logicOp`.
     public static final long OFFSET_logicOp = LAYOUT.byteOffset(PathElement.groupElement("logicOp"));
     /// The memory layout of `logicOp`.
     public static final MemoryLayout LAYOUT_logicOp = LAYOUT.select(PathElement.groupElement("logicOp"));
     /// The [VarHandle] of `logicOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_logicOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("logicOp"));
+    public static final Supplier<VarHandle> VH_logicOp = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("logicOp")));
     /// The byte offset of `attachmentCount`.
     public static final long OFFSET_attachmentCount = LAYOUT.byteOffset(PathElement.groupElement("attachmentCount"));
     /// The memory layout of `attachmentCount`.
     public static final MemoryLayout LAYOUT_attachmentCount = LAYOUT.select(PathElement.groupElement("attachmentCount"));
     /// The [VarHandle] of `attachmentCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_attachmentCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentCount"));
+    public static final Supplier<VarHandle> VH_attachmentCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentCount")));
     /// The byte offset of `pAttachments`.
     public static final long OFFSET_pAttachments = LAYOUT.byteOffset(PathElement.groupElement("pAttachments"));
     /// The memory layout of `pAttachments`.
     public static final MemoryLayout LAYOUT_pAttachments = LAYOUT.select(PathElement.groupElement("pAttachments"));
     /// The [VarHandle] of `pAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAttachments"));
+    public static final Supplier<VarHandle> VH_pAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAttachments")));
     /// The byte offset of `blendConstants`.
     public static final long OFFSET_blendConstants = LAYOUT.byteOffset(PathElement.groupElement("blendConstants"));
     /// The memory layout of `blendConstants`.
     public static final MemoryLayout LAYOUT_blendConstants = LAYOUT.select(PathElement.groupElement("blendConstants"));
     /// The [VarHandle] of `blendConstants` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_blendConstants = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blendConstants"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_blendConstants = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("blendConstants"), PathElement.sequenceElement()));
 
     /// Creates `VkPipelineColorBlendStateCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkPipelineColorBlendStateCreateInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPipelineColorBlendStateCreateInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPipelineColorBlendStateCreateInfo extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPipelineColorBlendStateCreateInfo extends GroupType {
     /// {@return `logicOpEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int logicOpEnable(MemorySegment segment, long index) { return (int) VH_logicOpEnable.get(segment, 0L, index); }
+    public static int logicOpEnable(MemorySegment segment, long index) { return (int) VH_logicOpEnable.get().get(segment, 0L, index); }
     /// {@return `logicOpEnable`}
     public int logicOpEnable() { return logicOpEnable(this.segment(), 0L); }
     /// Sets `logicOpEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void logicOpEnable(MemorySegment segment, long index, int value) { VH_logicOpEnable.set(segment, 0L, index, value); }
+    public static void logicOpEnable(MemorySegment segment, long index, int value) { VH_logicOpEnable.get().set(segment, 0L, index, value); }
     /// Sets `logicOpEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPipelineColorBlendStateCreateInfo extends GroupType {
     /// {@return `logicOp` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int logicOp(MemorySegment segment, long index) { return (int) VH_logicOp.get(segment, 0L, index); }
+    public static int logicOp(MemorySegment segment, long index) { return (int) VH_logicOp.get().get(segment, 0L, index); }
     /// {@return `logicOp`}
     public int logicOp() { return logicOp(this.segment(), 0L); }
     /// Sets `logicOp` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void logicOp(MemorySegment segment, long index, int value) { VH_logicOp.set(segment, 0L, index, value); }
+    public static void logicOp(MemorySegment segment, long index, int value) { VH_logicOp.get().set(segment, 0L, index, value); }
     /// Sets `logicOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPipelineColorBlendStateCreateInfo extends GroupType {
     /// {@return `attachmentCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int attachmentCount(MemorySegment segment, long index) { return (int) VH_attachmentCount.get(segment, 0L, index); }
+    public static int attachmentCount(MemorySegment segment, long index) { return (int) VH_attachmentCount.get().get(segment, 0L, index); }
     /// {@return `attachmentCount`}
     public int attachmentCount() { return attachmentCount(this.segment(), 0L); }
     /// Sets `attachmentCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void attachmentCount(MemorySegment segment, long index, int value) { VH_attachmentCount.set(segment, 0L, index, value); }
+    public static void attachmentCount(MemorySegment segment, long index, int value) { VH_attachmentCount.get().set(segment, 0L, index, value); }
     /// Sets `attachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPipelineColorBlendStateCreateInfo extends GroupType {
     /// {@return `pAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pAttachments(MemorySegment segment, long index) { return (MemorySegment) VH_pAttachments.get(segment, 0L, index); }
+    public static MemorySegment pAttachments(MemorySegment segment, long index) { return (MemorySegment) VH_pAttachments.get().get(segment, 0L, index); }
     /// {@return `pAttachments`}
     public MemorySegment pAttachments() { return pAttachments(this.segment(), 0L); }
     /// Sets `pAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pAttachments(MemorySegment segment, long index, MemorySegment value) { VH_pAttachments.set(segment, 0L, index, value); }
+    public static void pAttachments(MemorySegment segment, long index, MemorySegment value) { VH_pAttachments.get().set(segment, 0L, index, value); }
     /// Sets `pAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -251,7 +251,7 @@ public final class VkPipelineColorBlendStateCreateInfo extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static float blendConstants(MemorySegment segment, long index, long index0) { return (float) VH_blendConstants.get(segment, 0L, index, index0); }
+    public static float blendConstants(MemorySegment segment, long index, long index0) { return (float) VH_blendConstants.get().get(segment, 0L, index, index0); }
     /// {@return `blendConstants`}
     public MemorySegment blendConstants() { return blendConstants(this.segment(), 0L); }
     /// {@return `blendConstants`}
@@ -267,7 +267,7 @@ public final class VkPipelineColorBlendStateCreateInfo extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void blendConstants(MemorySegment segment, long index, long index0, float value) { VH_blendConstants.set(segment, 0L, index, index0, value); }
+    public static void blendConstants(MemorySegment segment, long index, long index0, float value) { VH_blendConstants.get().set(segment, 0L, index, index0, value); }
     /// Sets `blendConstants` with the given value.
     /// @param value the value
     /// @return `this`

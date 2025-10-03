@@ -35,31 +35,31 @@ public final class VkVideoDecodeH265InlineSessionParametersInfoKHR extends Group
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pStdVPS`.
     public static final long OFFSET_pStdVPS = LAYOUT.byteOffset(PathElement.groupElement("pStdVPS"));
     /// The memory layout of `pStdVPS`.
     public static final MemoryLayout LAYOUT_pStdVPS = LAYOUT.select(PathElement.groupElement("pStdVPS"));
     /// The [VarHandle] of `pStdVPS` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStdVPS = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdVPS"));
+    public static final Supplier<VarHandle> VH_pStdVPS = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdVPS")));
     /// The byte offset of `pStdSPS`.
     public static final long OFFSET_pStdSPS = LAYOUT.byteOffset(PathElement.groupElement("pStdSPS"));
     /// The memory layout of `pStdSPS`.
     public static final MemoryLayout LAYOUT_pStdSPS = LAYOUT.select(PathElement.groupElement("pStdSPS"));
     /// The [VarHandle] of `pStdSPS` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStdSPS = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdSPS"));
+    public static final Supplier<VarHandle> VH_pStdSPS = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdSPS")));
     /// The byte offset of `pStdPPS`.
     public static final long OFFSET_pStdPPS = LAYOUT.byteOffset(PathElement.groupElement("pStdPPS"));
     /// The memory layout of `pStdPPS`.
     public static final MemoryLayout LAYOUT_pStdPPS = LAYOUT.select(PathElement.groupElement("pStdPPS"));
     /// The [VarHandle] of `pStdPPS` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStdPPS = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdPPS"));
+    public static final Supplier<VarHandle> VH_pStdPPS = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdPPS")));
 
     /// Creates `VkVideoDecodeH265InlineSessionParametersInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkVideoDecodeH265InlineSessionParametersInfoKHR extends Group
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkVideoDecodeH265InlineSessionParametersInfoKHR extends Group
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkVideoDecodeH265InlineSessionParametersInfoKHR extends Group
     /// {@return `pStdVPS` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStdVPS(MemorySegment segment, long index) { return (MemorySegment) VH_pStdVPS.get(segment, 0L, index); }
+    public static MemorySegment pStdVPS(MemorySegment segment, long index) { return (MemorySegment) VH_pStdVPS.get().get(segment, 0L, index); }
     /// {@return `pStdVPS`}
     public MemorySegment pStdVPS() { return pStdVPS(this.segment(), 0L); }
     /// Sets `pStdVPS` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStdVPS(MemorySegment segment, long index, MemorySegment value) { VH_pStdVPS.set(segment, 0L, index, value); }
+    public static void pStdVPS(MemorySegment segment, long index, MemorySegment value) { VH_pStdVPS.get().set(segment, 0L, index, value); }
     /// Sets `pStdVPS` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkVideoDecodeH265InlineSessionParametersInfoKHR extends Group
     /// {@return `pStdSPS` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStdSPS(MemorySegment segment, long index) { return (MemorySegment) VH_pStdSPS.get(segment, 0L, index); }
+    public static MemorySegment pStdSPS(MemorySegment segment, long index) { return (MemorySegment) VH_pStdSPS.get().get(segment, 0L, index); }
     /// {@return `pStdSPS`}
     public MemorySegment pStdSPS() { return pStdSPS(this.segment(), 0L); }
     /// Sets `pStdSPS` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStdSPS(MemorySegment segment, long index, MemorySegment value) { VH_pStdSPS.set(segment, 0L, index, value); }
+    public static void pStdSPS(MemorySegment segment, long index, MemorySegment value) { VH_pStdSPS.get().set(segment, 0L, index, value); }
     /// Sets `pStdSPS` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkVideoDecodeH265InlineSessionParametersInfoKHR extends Group
     /// {@return `pStdPPS` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStdPPS(MemorySegment segment, long index) { return (MemorySegment) VH_pStdPPS.get(segment, 0L, index); }
+    public static MemorySegment pStdPPS(MemorySegment segment, long index) { return (MemorySegment) VH_pStdPPS.get().get(segment, 0L, index); }
     /// {@return `pStdPPS`}
     public MemorySegment pStdPPS() { return pStdPPS(this.segment(), 0L); }
     /// Sets `pStdPPS` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStdPPS(MemorySegment segment, long index, MemorySegment value) { VH_pStdPPS.set(segment, 0L, index, value); }
+    public static void pStdPPS(MemorySegment segment, long index, MemorySegment value) { VH_pStdPPS.get().set(segment, 0L, index, value); }
     /// Sets `pStdPPS` with the given value.
     /// @param value the value
     /// @return `this`

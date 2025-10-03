@@ -2,6 +2,7 @@
 package overrungl.opengl.sun;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -12,7 +13,7 @@ public final class GLSUNMeshArray {
     public static final int GL_TRIANGLE_MESH_SUN = 0x8615;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDrawMeshArraysSUN = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glDrawMeshArraysSUN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glDrawMeshArraysSUN;
         private Handles(GLLoadFunc func) {
             PFN_glDrawMeshArraysSUN = func.invoke("glDrawMeshArraysSUN");
@@ -30,7 +31,7 @@ public final class GLSUNMeshArray {
     public void DrawMeshArraysSUN(int mode, int first, int count, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshArraysSUN)) throw new GLSymbolNotFoundError("Symbol not found: glDrawMeshArraysSUN");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawMeshArraysSUN", mode, first, count, width); }
-        Handles.MH_glDrawMeshArraysSUN.invokeExact(handles.PFN_glDrawMeshArraysSUN, mode, first, count, width); }
+        Handles.MH_glDrawMeshArraysSUN.get().invokeExact(handles.PFN_glDrawMeshArraysSUN, mode, first, count, width); }
         catch (Throwable e) { throw new RuntimeException("error in DrawMeshArraysSUN", e); }
     }
 

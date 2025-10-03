@@ -65,121 +65,121 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `deviceNoDynamicHostAllocations`.
     public static final long OFFSET_deviceNoDynamicHostAllocations = LAYOUT.byteOffset(PathElement.groupElement("deviceNoDynamicHostAllocations"));
     /// The memory layout of `deviceNoDynamicHostAllocations`.
     public static final MemoryLayout LAYOUT_deviceNoDynamicHostAllocations = LAYOUT.select(PathElement.groupElement("deviceNoDynamicHostAllocations"));
     /// The [VarHandle] of `deviceNoDynamicHostAllocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceNoDynamicHostAllocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceNoDynamicHostAllocations"));
+    public static final Supplier<VarHandle> VH_deviceNoDynamicHostAllocations = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceNoDynamicHostAllocations")));
     /// The byte offset of `deviceDestroyFreesMemory`.
     public static final long OFFSET_deviceDestroyFreesMemory = LAYOUT.byteOffset(PathElement.groupElement("deviceDestroyFreesMemory"));
     /// The memory layout of `deviceDestroyFreesMemory`.
     public static final MemoryLayout LAYOUT_deviceDestroyFreesMemory = LAYOUT.select(PathElement.groupElement("deviceDestroyFreesMemory"));
     /// The [VarHandle] of `deviceDestroyFreesMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceDestroyFreesMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceDestroyFreesMemory"));
+    public static final Supplier<VarHandle> VH_deviceDestroyFreesMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceDestroyFreesMemory")));
     /// The byte offset of `commandPoolMultipleCommandBuffersRecording`.
     public static final long OFFSET_commandPoolMultipleCommandBuffersRecording = LAYOUT.byteOffset(PathElement.groupElement("commandPoolMultipleCommandBuffersRecording"));
     /// The memory layout of `commandPoolMultipleCommandBuffersRecording`.
     public static final MemoryLayout LAYOUT_commandPoolMultipleCommandBuffersRecording = LAYOUT.select(PathElement.groupElement("commandPoolMultipleCommandBuffersRecording"));
     /// The [VarHandle] of `commandPoolMultipleCommandBuffersRecording` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandPoolMultipleCommandBuffersRecording = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolMultipleCommandBuffersRecording"));
+    public static final Supplier<VarHandle> VH_commandPoolMultipleCommandBuffersRecording = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolMultipleCommandBuffersRecording")));
     /// The byte offset of `commandPoolResetCommandBuffer`.
     public static final long OFFSET_commandPoolResetCommandBuffer = LAYOUT.byteOffset(PathElement.groupElement("commandPoolResetCommandBuffer"));
     /// The memory layout of `commandPoolResetCommandBuffer`.
     public static final MemoryLayout LAYOUT_commandPoolResetCommandBuffer = LAYOUT.select(PathElement.groupElement("commandPoolResetCommandBuffer"));
     /// The [VarHandle] of `commandPoolResetCommandBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandPoolResetCommandBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolResetCommandBuffer"));
+    public static final Supplier<VarHandle> VH_commandPoolResetCommandBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolResetCommandBuffer")));
     /// The byte offset of `commandBufferSimultaneousUse`.
     public static final long OFFSET_commandBufferSimultaneousUse = LAYOUT.byteOffset(PathElement.groupElement("commandBufferSimultaneousUse"));
     /// The memory layout of `commandBufferSimultaneousUse`.
     public static final MemoryLayout LAYOUT_commandBufferSimultaneousUse = LAYOUT.select(PathElement.groupElement("commandBufferSimultaneousUse"));
     /// The [VarHandle] of `commandBufferSimultaneousUse` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandBufferSimultaneousUse = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferSimultaneousUse"));
+    public static final Supplier<VarHandle> VH_commandBufferSimultaneousUse = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferSimultaneousUse")));
     /// The byte offset of `secondaryCommandBufferNullOrImagelessFramebuffer`.
     public static final long OFFSET_secondaryCommandBufferNullOrImagelessFramebuffer = LAYOUT.byteOffset(PathElement.groupElement("secondaryCommandBufferNullOrImagelessFramebuffer"));
     /// The memory layout of `secondaryCommandBufferNullOrImagelessFramebuffer`.
     public static final MemoryLayout LAYOUT_secondaryCommandBufferNullOrImagelessFramebuffer = LAYOUT.select(PathElement.groupElement("secondaryCommandBufferNullOrImagelessFramebuffer"));
     /// The [VarHandle] of `secondaryCommandBufferNullOrImagelessFramebuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_secondaryCommandBufferNullOrImagelessFramebuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("secondaryCommandBufferNullOrImagelessFramebuffer"));
+    public static final Supplier<VarHandle> VH_secondaryCommandBufferNullOrImagelessFramebuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("secondaryCommandBufferNullOrImagelessFramebuffer")));
     /// The byte offset of `recycleDescriptorSetMemory`.
     public static final long OFFSET_recycleDescriptorSetMemory = LAYOUT.byteOffset(PathElement.groupElement("recycleDescriptorSetMemory"));
     /// The memory layout of `recycleDescriptorSetMemory`.
     public static final MemoryLayout LAYOUT_recycleDescriptorSetMemory = LAYOUT.select(PathElement.groupElement("recycleDescriptorSetMemory"));
     /// The [VarHandle] of `recycleDescriptorSetMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_recycleDescriptorSetMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("recycleDescriptorSetMemory"));
+    public static final Supplier<VarHandle> VH_recycleDescriptorSetMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("recycleDescriptorSetMemory")));
     /// The byte offset of `recyclePipelineMemory`.
     public static final long OFFSET_recyclePipelineMemory = LAYOUT.byteOffset(PathElement.groupElement("recyclePipelineMemory"));
     /// The memory layout of `recyclePipelineMemory`.
     public static final MemoryLayout LAYOUT_recyclePipelineMemory = LAYOUT.select(PathElement.groupElement("recyclePipelineMemory"));
     /// The [VarHandle] of `recyclePipelineMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_recyclePipelineMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("recyclePipelineMemory"));
+    public static final Supplier<VarHandle> VH_recyclePipelineMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("recyclePipelineMemory")));
     /// The byte offset of `maxRenderPassSubpasses`.
     public static final long OFFSET_maxRenderPassSubpasses = LAYOUT.byteOffset(PathElement.groupElement("maxRenderPassSubpasses"));
     /// The memory layout of `maxRenderPassSubpasses`.
     public static final MemoryLayout LAYOUT_maxRenderPassSubpasses = LAYOUT.select(PathElement.groupElement("maxRenderPassSubpasses"));
     /// The [VarHandle] of `maxRenderPassSubpasses` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxRenderPassSubpasses = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRenderPassSubpasses"));
+    public static final Supplier<VarHandle> VH_maxRenderPassSubpasses = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRenderPassSubpasses")));
     /// The byte offset of `maxRenderPassDependencies`.
     public static final long OFFSET_maxRenderPassDependencies = LAYOUT.byteOffset(PathElement.groupElement("maxRenderPassDependencies"));
     /// The memory layout of `maxRenderPassDependencies`.
     public static final MemoryLayout LAYOUT_maxRenderPassDependencies = LAYOUT.select(PathElement.groupElement("maxRenderPassDependencies"));
     /// The [VarHandle] of `maxRenderPassDependencies` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxRenderPassDependencies = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRenderPassDependencies"));
+    public static final Supplier<VarHandle> VH_maxRenderPassDependencies = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRenderPassDependencies")));
     /// The byte offset of `maxSubpassInputAttachments`.
     public static final long OFFSET_maxSubpassInputAttachments = LAYOUT.byteOffset(PathElement.groupElement("maxSubpassInputAttachments"));
     /// The memory layout of `maxSubpassInputAttachments`.
     public static final MemoryLayout LAYOUT_maxSubpassInputAttachments = LAYOUT.select(PathElement.groupElement("maxSubpassInputAttachments"));
     /// The [VarHandle] of `maxSubpassInputAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSubpassInputAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubpassInputAttachments"));
+    public static final Supplier<VarHandle> VH_maxSubpassInputAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubpassInputAttachments")));
     /// The byte offset of `maxSubpassPreserveAttachments`.
     public static final long OFFSET_maxSubpassPreserveAttachments = LAYOUT.byteOffset(PathElement.groupElement("maxSubpassPreserveAttachments"));
     /// The memory layout of `maxSubpassPreserveAttachments`.
     public static final MemoryLayout LAYOUT_maxSubpassPreserveAttachments = LAYOUT.select(PathElement.groupElement("maxSubpassPreserveAttachments"));
     /// The [VarHandle] of `maxSubpassPreserveAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSubpassPreserveAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubpassPreserveAttachments"));
+    public static final Supplier<VarHandle> VH_maxSubpassPreserveAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubpassPreserveAttachments")));
     /// The byte offset of `maxFramebufferAttachments`.
     public static final long OFFSET_maxFramebufferAttachments = LAYOUT.byteOffset(PathElement.groupElement("maxFramebufferAttachments"));
     /// The memory layout of `maxFramebufferAttachments`.
     public static final MemoryLayout LAYOUT_maxFramebufferAttachments = LAYOUT.select(PathElement.groupElement("maxFramebufferAttachments"));
     /// The [VarHandle] of `maxFramebufferAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxFramebufferAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFramebufferAttachments"));
+    public static final Supplier<VarHandle> VH_maxFramebufferAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFramebufferAttachments")));
     /// The byte offset of `maxDescriptorSetLayoutBindings`.
     public static final long OFFSET_maxDescriptorSetLayoutBindings = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetLayoutBindings"));
     /// The memory layout of `maxDescriptorSetLayoutBindings`.
     public static final MemoryLayout LAYOUT_maxDescriptorSetLayoutBindings = LAYOUT.select(PathElement.groupElement("maxDescriptorSetLayoutBindings"));
     /// The [VarHandle] of `maxDescriptorSetLayoutBindings` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetLayoutBindings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetLayoutBindings"));
+    public static final Supplier<VarHandle> VH_maxDescriptorSetLayoutBindings = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetLayoutBindings")));
     /// The byte offset of `maxQueryFaultCount`.
     public static final long OFFSET_maxQueryFaultCount = LAYOUT.byteOffset(PathElement.groupElement("maxQueryFaultCount"));
     /// The memory layout of `maxQueryFaultCount`.
     public static final MemoryLayout LAYOUT_maxQueryFaultCount = LAYOUT.select(PathElement.groupElement("maxQueryFaultCount"));
     /// The [VarHandle] of `maxQueryFaultCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxQueryFaultCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQueryFaultCount"));
+    public static final Supplier<VarHandle> VH_maxQueryFaultCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQueryFaultCount")));
     /// The byte offset of `maxCallbackFaultCount`.
     public static final long OFFSET_maxCallbackFaultCount = LAYOUT.byteOffset(PathElement.groupElement("maxCallbackFaultCount"));
     /// The memory layout of `maxCallbackFaultCount`.
     public static final MemoryLayout LAYOUT_maxCallbackFaultCount = LAYOUT.select(PathElement.groupElement("maxCallbackFaultCount"));
     /// The [VarHandle] of `maxCallbackFaultCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxCallbackFaultCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCallbackFaultCount"));
+    public static final Supplier<VarHandle> VH_maxCallbackFaultCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCallbackFaultCount")));
     /// The byte offset of `maxCommandPoolCommandBuffers`.
     public static final long OFFSET_maxCommandPoolCommandBuffers = LAYOUT.byteOffset(PathElement.groupElement("maxCommandPoolCommandBuffers"));
     /// The memory layout of `maxCommandPoolCommandBuffers`.
     public static final MemoryLayout LAYOUT_maxCommandPoolCommandBuffers = LAYOUT.select(PathElement.groupElement("maxCommandPoolCommandBuffers"));
     /// The [VarHandle] of `maxCommandPoolCommandBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxCommandPoolCommandBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCommandPoolCommandBuffers"));
+    public static final Supplier<VarHandle> VH_maxCommandPoolCommandBuffers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCommandPoolCommandBuffers")));
     /// The byte offset of `maxCommandBufferSize`.
     public static final long OFFSET_maxCommandBufferSize = LAYOUT.byteOffset(PathElement.groupElement("maxCommandBufferSize"));
     /// The memory layout of `maxCommandBufferSize`.
     public static final MemoryLayout LAYOUT_maxCommandBufferSize = LAYOUT.select(PathElement.groupElement("maxCommandBufferSize"));
     /// The [VarHandle] of `maxCommandBufferSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxCommandBufferSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCommandBufferSize"));
+    public static final Supplier<VarHandle> VH_maxCommandBufferSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCommandBufferSize")));
 
     /// Creates `VkPhysicalDeviceVulkanSC10Properties` with the given segment.
     /// @param segment      the memory segment
@@ -230,14 +230,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `deviceNoDynamicHostAllocations` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceNoDynamicHostAllocations(MemorySegment segment, long index) { return (int) VH_deviceNoDynamicHostAllocations.get(segment, 0L, index); }
+    public static int deviceNoDynamicHostAllocations(MemorySegment segment, long index) { return (int) VH_deviceNoDynamicHostAllocations.get().get(segment, 0L, index); }
     /// {@return `deviceNoDynamicHostAllocations`}
     public int deviceNoDynamicHostAllocations() { return deviceNoDynamicHostAllocations(this.segment(), 0L); }
     /// Sets `deviceNoDynamicHostAllocations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceNoDynamicHostAllocations(MemorySegment segment, long index, int value) { VH_deviceNoDynamicHostAllocations.set(segment, 0L, index, value); }
+    public static void deviceNoDynamicHostAllocations(MemorySegment segment, long index, int value) { VH_deviceNoDynamicHostAllocations.get().set(segment, 0L, index, value); }
     /// Sets `deviceNoDynamicHostAllocations` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `deviceDestroyFreesMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceDestroyFreesMemory(MemorySegment segment, long index) { return (int) VH_deviceDestroyFreesMemory.get(segment, 0L, index); }
+    public static int deviceDestroyFreesMemory(MemorySegment segment, long index) { return (int) VH_deviceDestroyFreesMemory.get().get(segment, 0L, index); }
     /// {@return `deviceDestroyFreesMemory`}
     public int deviceDestroyFreesMemory() { return deviceDestroyFreesMemory(this.segment(), 0L); }
     /// Sets `deviceDestroyFreesMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceDestroyFreesMemory(MemorySegment segment, long index, int value) { VH_deviceDestroyFreesMemory.set(segment, 0L, index, value); }
+    public static void deviceDestroyFreesMemory(MemorySegment segment, long index, int value) { VH_deviceDestroyFreesMemory.get().set(segment, 0L, index, value); }
     /// Sets `deviceDestroyFreesMemory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `commandPoolMultipleCommandBuffersRecording` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int commandPoolMultipleCommandBuffersRecording(MemorySegment segment, long index) { return (int) VH_commandPoolMultipleCommandBuffersRecording.get(segment, 0L, index); }
+    public static int commandPoolMultipleCommandBuffersRecording(MemorySegment segment, long index) { return (int) VH_commandPoolMultipleCommandBuffersRecording.get().get(segment, 0L, index); }
     /// {@return `commandPoolMultipleCommandBuffersRecording`}
     public int commandPoolMultipleCommandBuffersRecording() { return commandPoolMultipleCommandBuffersRecording(this.segment(), 0L); }
     /// Sets `commandPoolMultipleCommandBuffersRecording` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandPoolMultipleCommandBuffersRecording(MemorySegment segment, long index, int value) { VH_commandPoolMultipleCommandBuffersRecording.set(segment, 0L, index, value); }
+    public static void commandPoolMultipleCommandBuffersRecording(MemorySegment segment, long index, int value) { VH_commandPoolMultipleCommandBuffersRecording.get().set(segment, 0L, index, value); }
     /// Sets `commandPoolMultipleCommandBuffersRecording` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,14 +310,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `commandPoolResetCommandBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int commandPoolResetCommandBuffer(MemorySegment segment, long index) { return (int) VH_commandPoolResetCommandBuffer.get(segment, 0L, index); }
+    public static int commandPoolResetCommandBuffer(MemorySegment segment, long index) { return (int) VH_commandPoolResetCommandBuffer.get().get(segment, 0L, index); }
     /// {@return `commandPoolResetCommandBuffer`}
     public int commandPoolResetCommandBuffer() { return commandPoolResetCommandBuffer(this.segment(), 0L); }
     /// Sets `commandPoolResetCommandBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandPoolResetCommandBuffer(MemorySegment segment, long index, int value) { VH_commandPoolResetCommandBuffer.set(segment, 0L, index, value); }
+    public static void commandPoolResetCommandBuffer(MemorySegment segment, long index, int value) { VH_commandPoolResetCommandBuffer.get().set(segment, 0L, index, value); }
     /// Sets `commandPoolResetCommandBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,14 +326,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `commandBufferSimultaneousUse` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int commandBufferSimultaneousUse(MemorySegment segment, long index) { return (int) VH_commandBufferSimultaneousUse.get(segment, 0L, index); }
+    public static int commandBufferSimultaneousUse(MemorySegment segment, long index) { return (int) VH_commandBufferSimultaneousUse.get().get(segment, 0L, index); }
     /// {@return `commandBufferSimultaneousUse`}
     public int commandBufferSimultaneousUse() { return commandBufferSimultaneousUse(this.segment(), 0L); }
     /// Sets `commandBufferSimultaneousUse` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandBufferSimultaneousUse(MemorySegment segment, long index, int value) { VH_commandBufferSimultaneousUse.set(segment, 0L, index, value); }
+    public static void commandBufferSimultaneousUse(MemorySegment segment, long index, int value) { VH_commandBufferSimultaneousUse.get().set(segment, 0L, index, value); }
     /// Sets `commandBufferSimultaneousUse` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,14 +342,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `secondaryCommandBufferNullOrImagelessFramebuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int secondaryCommandBufferNullOrImagelessFramebuffer(MemorySegment segment, long index) { return (int) VH_secondaryCommandBufferNullOrImagelessFramebuffer.get(segment, 0L, index); }
+    public static int secondaryCommandBufferNullOrImagelessFramebuffer(MemorySegment segment, long index) { return (int) VH_secondaryCommandBufferNullOrImagelessFramebuffer.get().get(segment, 0L, index); }
     /// {@return `secondaryCommandBufferNullOrImagelessFramebuffer`}
     public int secondaryCommandBufferNullOrImagelessFramebuffer() { return secondaryCommandBufferNullOrImagelessFramebuffer(this.segment(), 0L); }
     /// Sets `secondaryCommandBufferNullOrImagelessFramebuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void secondaryCommandBufferNullOrImagelessFramebuffer(MemorySegment segment, long index, int value) { VH_secondaryCommandBufferNullOrImagelessFramebuffer.set(segment, 0L, index, value); }
+    public static void secondaryCommandBufferNullOrImagelessFramebuffer(MemorySegment segment, long index, int value) { VH_secondaryCommandBufferNullOrImagelessFramebuffer.get().set(segment, 0L, index, value); }
     /// Sets `secondaryCommandBufferNullOrImagelessFramebuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -358,14 +358,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `recycleDescriptorSetMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int recycleDescriptorSetMemory(MemorySegment segment, long index) { return (int) VH_recycleDescriptorSetMemory.get(segment, 0L, index); }
+    public static int recycleDescriptorSetMemory(MemorySegment segment, long index) { return (int) VH_recycleDescriptorSetMemory.get().get(segment, 0L, index); }
     /// {@return `recycleDescriptorSetMemory`}
     public int recycleDescriptorSetMemory() { return recycleDescriptorSetMemory(this.segment(), 0L); }
     /// Sets `recycleDescriptorSetMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void recycleDescriptorSetMemory(MemorySegment segment, long index, int value) { VH_recycleDescriptorSetMemory.set(segment, 0L, index, value); }
+    public static void recycleDescriptorSetMemory(MemorySegment segment, long index, int value) { VH_recycleDescriptorSetMemory.get().set(segment, 0L, index, value); }
     /// Sets `recycleDescriptorSetMemory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -374,14 +374,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `recyclePipelineMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int recyclePipelineMemory(MemorySegment segment, long index) { return (int) VH_recyclePipelineMemory.get(segment, 0L, index); }
+    public static int recyclePipelineMemory(MemorySegment segment, long index) { return (int) VH_recyclePipelineMemory.get().get(segment, 0L, index); }
     /// {@return `recyclePipelineMemory`}
     public int recyclePipelineMemory() { return recyclePipelineMemory(this.segment(), 0L); }
     /// Sets `recyclePipelineMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void recyclePipelineMemory(MemorySegment segment, long index, int value) { VH_recyclePipelineMemory.set(segment, 0L, index, value); }
+    public static void recyclePipelineMemory(MemorySegment segment, long index, int value) { VH_recyclePipelineMemory.get().set(segment, 0L, index, value); }
     /// Sets `recyclePipelineMemory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -390,14 +390,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `maxRenderPassSubpasses` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxRenderPassSubpasses(MemorySegment segment, long index) { return (int) VH_maxRenderPassSubpasses.get(segment, 0L, index); }
+    public static int maxRenderPassSubpasses(MemorySegment segment, long index) { return (int) VH_maxRenderPassSubpasses.get().get(segment, 0L, index); }
     /// {@return `maxRenderPassSubpasses`}
     public int maxRenderPassSubpasses() { return maxRenderPassSubpasses(this.segment(), 0L); }
     /// Sets `maxRenderPassSubpasses` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxRenderPassSubpasses(MemorySegment segment, long index, int value) { VH_maxRenderPassSubpasses.set(segment, 0L, index, value); }
+    public static void maxRenderPassSubpasses(MemorySegment segment, long index, int value) { VH_maxRenderPassSubpasses.get().set(segment, 0L, index, value); }
     /// Sets `maxRenderPassSubpasses` with the given value.
     /// @param value the value
     /// @return `this`
@@ -406,14 +406,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `maxRenderPassDependencies` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxRenderPassDependencies(MemorySegment segment, long index) { return (int) VH_maxRenderPassDependencies.get(segment, 0L, index); }
+    public static int maxRenderPassDependencies(MemorySegment segment, long index) { return (int) VH_maxRenderPassDependencies.get().get(segment, 0L, index); }
     /// {@return `maxRenderPassDependencies`}
     public int maxRenderPassDependencies() { return maxRenderPassDependencies(this.segment(), 0L); }
     /// Sets `maxRenderPassDependencies` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxRenderPassDependencies(MemorySegment segment, long index, int value) { VH_maxRenderPassDependencies.set(segment, 0L, index, value); }
+    public static void maxRenderPassDependencies(MemorySegment segment, long index, int value) { VH_maxRenderPassDependencies.get().set(segment, 0L, index, value); }
     /// Sets `maxRenderPassDependencies` with the given value.
     /// @param value the value
     /// @return `this`
@@ -422,14 +422,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `maxSubpassInputAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxSubpassInputAttachments(MemorySegment segment, long index) { return (int) VH_maxSubpassInputAttachments.get(segment, 0L, index); }
+    public static int maxSubpassInputAttachments(MemorySegment segment, long index) { return (int) VH_maxSubpassInputAttachments.get().get(segment, 0L, index); }
     /// {@return `maxSubpassInputAttachments`}
     public int maxSubpassInputAttachments() { return maxSubpassInputAttachments(this.segment(), 0L); }
     /// Sets `maxSubpassInputAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxSubpassInputAttachments(MemorySegment segment, long index, int value) { VH_maxSubpassInputAttachments.set(segment, 0L, index, value); }
+    public static void maxSubpassInputAttachments(MemorySegment segment, long index, int value) { VH_maxSubpassInputAttachments.get().set(segment, 0L, index, value); }
     /// Sets `maxSubpassInputAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -438,14 +438,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `maxSubpassPreserveAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxSubpassPreserveAttachments(MemorySegment segment, long index) { return (int) VH_maxSubpassPreserveAttachments.get(segment, 0L, index); }
+    public static int maxSubpassPreserveAttachments(MemorySegment segment, long index) { return (int) VH_maxSubpassPreserveAttachments.get().get(segment, 0L, index); }
     /// {@return `maxSubpassPreserveAttachments`}
     public int maxSubpassPreserveAttachments() { return maxSubpassPreserveAttachments(this.segment(), 0L); }
     /// Sets `maxSubpassPreserveAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxSubpassPreserveAttachments(MemorySegment segment, long index, int value) { VH_maxSubpassPreserveAttachments.set(segment, 0L, index, value); }
+    public static void maxSubpassPreserveAttachments(MemorySegment segment, long index, int value) { VH_maxSubpassPreserveAttachments.get().set(segment, 0L, index, value); }
     /// Sets `maxSubpassPreserveAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -454,14 +454,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `maxFramebufferAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxFramebufferAttachments(MemorySegment segment, long index) { return (int) VH_maxFramebufferAttachments.get(segment, 0L, index); }
+    public static int maxFramebufferAttachments(MemorySegment segment, long index) { return (int) VH_maxFramebufferAttachments.get().get(segment, 0L, index); }
     /// {@return `maxFramebufferAttachments`}
     public int maxFramebufferAttachments() { return maxFramebufferAttachments(this.segment(), 0L); }
     /// Sets `maxFramebufferAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxFramebufferAttachments(MemorySegment segment, long index, int value) { VH_maxFramebufferAttachments.set(segment, 0L, index, value); }
+    public static void maxFramebufferAttachments(MemorySegment segment, long index, int value) { VH_maxFramebufferAttachments.get().set(segment, 0L, index, value); }
     /// Sets `maxFramebufferAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -470,14 +470,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `maxDescriptorSetLayoutBindings` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxDescriptorSetLayoutBindings(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetLayoutBindings.get(segment, 0L, index); }
+    public static int maxDescriptorSetLayoutBindings(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetLayoutBindings.get().get(segment, 0L, index); }
     /// {@return `maxDescriptorSetLayoutBindings`}
     public int maxDescriptorSetLayoutBindings() { return maxDescriptorSetLayoutBindings(this.segment(), 0L); }
     /// Sets `maxDescriptorSetLayoutBindings` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxDescriptorSetLayoutBindings(MemorySegment segment, long index, int value) { VH_maxDescriptorSetLayoutBindings.set(segment, 0L, index, value); }
+    public static void maxDescriptorSetLayoutBindings(MemorySegment segment, long index, int value) { VH_maxDescriptorSetLayoutBindings.get().set(segment, 0L, index, value); }
     /// Sets `maxDescriptorSetLayoutBindings` with the given value.
     /// @param value the value
     /// @return `this`
@@ -486,14 +486,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `maxQueryFaultCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxQueryFaultCount(MemorySegment segment, long index) { return (int) VH_maxQueryFaultCount.get(segment, 0L, index); }
+    public static int maxQueryFaultCount(MemorySegment segment, long index) { return (int) VH_maxQueryFaultCount.get().get(segment, 0L, index); }
     /// {@return `maxQueryFaultCount`}
     public int maxQueryFaultCount() { return maxQueryFaultCount(this.segment(), 0L); }
     /// Sets `maxQueryFaultCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxQueryFaultCount(MemorySegment segment, long index, int value) { VH_maxQueryFaultCount.set(segment, 0L, index, value); }
+    public static void maxQueryFaultCount(MemorySegment segment, long index, int value) { VH_maxQueryFaultCount.get().set(segment, 0L, index, value); }
     /// Sets `maxQueryFaultCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -502,14 +502,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `maxCallbackFaultCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxCallbackFaultCount(MemorySegment segment, long index) { return (int) VH_maxCallbackFaultCount.get(segment, 0L, index); }
+    public static int maxCallbackFaultCount(MemorySegment segment, long index) { return (int) VH_maxCallbackFaultCount.get().get(segment, 0L, index); }
     /// {@return `maxCallbackFaultCount`}
     public int maxCallbackFaultCount() { return maxCallbackFaultCount(this.segment(), 0L); }
     /// Sets `maxCallbackFaultCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxCallbackFaultCount(MemorySegment segment, long index, int value) { VH_maxCallbackFaultCount.set(segment, 0L, index, value); }
+    public static void maxCallbackFaultCount(MemorySegment segment, long index, int value) { VH_maxCallbackFaultCount.get().set(segment, 0L, index, value); }
     /// Sets `maxCallbackFaultCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -518,14 +518,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `maxCommandPoolCommandBuffers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxCommandPoolCommandBuffers(MemorySegment segment, long index) { return (int) VH_maxCommandPoolCommandBuffers.get(segment, 0L, index); }
+    public static int maxCommandPoolCommandBuffers(MemorySegment segment, long index) { return (int) VH_maxCommandPoolCommandBuffers.get().get(segment, 0L, index); }
     /// {@return `maxCommandPoolCommandBuffers`}
     public int maxCommandPoolCommandBuffers() { return maxCommandPoolCommandBuffers(this.segment(), 0L); }
     /// Sets `maxCommandPoolCommandBuffers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxCommandPoolCommandBuffers(MemorySegment segment, long index, int value) { VH_maxCommandPoolCommandBuffers.set(segment, 0L, index, value); }
+    public static void maxCommandPoolCommandBuffers(MemorySegment segment, long index, int value) { VH_maxCommandPoolCommandBuffers.get().set(segment, 0L, index, value); }
     /// Sets `maxCommandPoolCommandBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -534,14 +534,14 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// {@return `maxCommandBufferSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long maxCommandBufferSize(MemorySegment segment, long index) { return (long) VH_maxCommandBufferSize.get(segment, 0L, index); }
+    public static long maxCommandBufferSize(MemorySegment segment, long index) { return (long) VH_maxCommandBufferSize.get().get(segment, 0L, index); }
     /// {@return `maxCommandBufferSize`}
     public long maxCommandBufferSize() { return maxCommandBufferSize(this.segment(), 0L); }
     /// Sets `maxCommandBufferSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxCommandBufferSize(MemorySegment segment, long index, long value) { VH_maxCommandBufferSize.set(segment, 0L, index, value); }
+    public static void maxCommandBufferSize(MemorySegment segment, long index, long value) { VH_maxCommandBufferSize.get().set(segment, 0L, index, value); }
     /// Sets `maxCommandBufferSize` with the given value.
     /// @param value the value
     /// @return `this`

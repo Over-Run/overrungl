@@ -37,37 +37,37 @@ public final class VkPipelineExecutablePropertiesKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `stages`.
     public static final long OFFSET_stages = LAYOUT.byteOffset(PathElement.groupElement("stages"));
     /// The memory layout of `stages`.
     public static final MemoryLayout LAYOUT_stages = LAYOUT.select(PathElement.groupElement("stages"));
     /// The [VarHandle] of `stages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stages"));
+    public static final Supplier<VarHandle> VH_stages = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stages")));
     /// The byte offset of `name`.
     public static final long OFFSET_name = LAYOUT.byteOffset(PathElement.groupElement("name"));
     /// The memory layout of `name`.
     public static final MemoryLayout LAYOUT_name = LAYOUT.select(PathElement.groupElement("name"));
     /// The [VarHandle] of `name` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_name = LAYOUT.arrayElementVarHandle(PathElement.groupElement("name"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_name = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("name"), PathElement.sequenceElement()));
     /// The byte offset of `description`.
     public static final long OFFSET_description = LAYOUT.byteOffset(PathElement.groupElement("description"));
     /// The memory layout of `description`.
     public static final MemoryLayout LAYOUT_description = LAYOUT.select(PathElement.groupElement("description"));
     /// The [VarHandle] of `description` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_description = LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_description = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement()));
     /// The byte offset of `subgroupSize`.
     public static final long OFFSET_subgroupSize = LAYOUT.byteOffset(PathElement.groupElement("subgroupSize"));
     /// The memory layout of `subgroupSize`.
     public static final MemoryLayout LAYOUT_subgroupSize = LAYOUT.select(PathElement.groupElement("subgroupSize"));
     /// The [VarHandle] of `subgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subgroupSize"));
+    public static final Supplier<VarHandle> VH_subgroupSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subgroupSize")));
 
     /// Creates `VkPipelineExecutablePropertiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPipelineExecutablePropertiesKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPipelineExecutablePropertiesKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPipelineExecutablePropertiesKHR extends GroupType {
     /// {@return `stages` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stages(MemorySegment segment, long index) { return (int) VH_stages.get(segment, 0L, index); }
+    public static int stages(MemorySegment segment, long index) { return (int) VH_stages.get().get(segment, 0L, index); }
     /// {@return `stages`}
     public int stages() { return stages(this.segment(), 0L); }
     /// Sets `stages` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stages(MemorySegment segment, long index, int value) { VH_stages.set(segment, 0L, index, value); }
+    public static void stages(MemorySegment segment, long index, int value) { VH_stages.get().set(segment, 0L, index, value); }
     /// Sets `stages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -171,7 +171,7 @@ public final class VkPipelineExecutablePropertiesKHR extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte name(MemorySegment segment, long index, long index0) { return (byte) VH_name.get(segment, 0L, index, index0); }
+    public static byte name(MemorySegment segment, long index, long index0) { return (byte) VH_name.get().get(segment, 0L, index, index0); }
     /// {@return `name`}
     public MemorySegment name() { return name(this.segment(), 0L); }
     /// {@return `name`}
@@ -187,7 +187,7 @@ public final class VkPipelineExecutablePropertiesKHR extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void name(MemorySegment segment, long index, long index0, byte value) { VH_name.set(segment, 0L, index, index0, value); }
+    public static void name(MemorySegment segment, long index, long index0, byte value) { VH_name.get().set(segment, 0L, index, index0, value); }
     /// Sets `name` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,7 +206,7 @@ public final class VkPipelineExecutablePropertiesKHR extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get(segment, 0L, index, index0); }
+    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get().get(segment, 0L, index, index0); }
     /// {@return `description`}
     public MemorySegment description() { return description(this.segment(), 0L); }
     /// {@return `description`}
@@ -222,7 +222,7 @@ public final class VkPipelineExecutablePropertiesKHR extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.set(segment, 0L, index, index0, value); }
+    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.get().set(segment, 0L, index, index0, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
@@ -236,14 +236,14 @@ public final class VkPipelineExecutablePropertiesKHR extends GroupType {
     /// {@return `subgroupSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int subgroupSize(MemorySegment segment, long index) { return (int) VH_subgroupSize.get(segment, 0L, index); }
+    public static int subgroupSize(MemorySegment segment, long index) { return (int) VH_subgroupSize.get().get(segment, 0L, index); }
     /// {@return `subgroupSize`}
     public int subgroupSize() { return subgroupSize(this.segment(), 0L); }
     /// Sets `subgroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subgroupSize(MemorySegment segment, long index, int value) { VH_subgroupSize.set(segment, 0L, index, value); }
+    public static void subgroupSize(MemorySegment segment, long index, int value) { VH_subgroupSize.get().set(segment, 0L, index, value); }
     /// Sets `subgroupSize` with the given value.
     /// @param value the value
     /// @return `this`

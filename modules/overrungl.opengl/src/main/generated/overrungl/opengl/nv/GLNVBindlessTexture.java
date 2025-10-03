@@ -2,6 +2,7 @@
 package overrungl.opengl.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,19 +11,19 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLNVBindlessTexture {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetTextureHandleNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetTextureSamplerHandleNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMakeTextureHandleResidentNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glMakeTextureHandleNonResidentNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glGetImageHandleNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMakeImageHandleResidentNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMakeImageHandleNonResidentNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glUniformHandleui64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glUniformHandleui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformHandleui64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glProgramUniformHandleui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsTextureHandleResidentNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glIsImageHandleResidentNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_glGetTextureHandleNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetTextureSamplerHandleNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMakeTextureHandleResidentNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glMakeTextureHandleNonResidentNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glGetImageHandleNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMakeImageHandleResidentNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMakeImageHandleNonResidentNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glUniformHandleui64NV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glUniformHandleui64vNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformHandleui64NV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformHandleui64vNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glIsTextureHandleResidentNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glIsImageHandleResidentNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_LONG)));
         public final MemorySegment PFN_glGetTextureHandleNV;
         public final MemorySegment PFN_glGetTextureSamplerHandleNV;
         public final MemorySegment PFN_glMakeTextureHandleResidentNV;
@@ -64,7 +65,7 @@ public final class GLNVBindlessTexture {
     public long GetTextureHandleNV(int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureHandleNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureHandleNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureHandleNV", texture); }
-        return (long) Handles.MH_glGetTextureHandleNV.invokeExact(handles.PFN_glGetTextureHandleNV, texture); }
+        return (long) Handles.MH_glGetTextureHandleNV.get().invokeExact(handles.PFN_glGetTextureHandleNV, texture); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureHandleNV", e); }
     }
 
@@ -75,7 +76,7 @@ public final class GLNVBindlessTexture {
     public long GetTextureSamplerHandleNV(int texture, int sampler) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureSamplerHandleNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureSamplerHandleNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureSamplerHandleNV", texture, sampler); }
-        return (long) Handles.MH_glGetTextureSamplerHandleNV.invokeExact(handles.PFN_glGetTextureSamplerHandleNV, texture, sampler); }
+        return (long) Handles.MH_glGetTextureSamplerHandleNV.get().invokeExact(handles.PFN_glGetTextureSamplerHandleNV, texture, sampler); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureSamplerHandleNV", e); }
     }
 
@@ -86,7 +87,7 @@ public final class GLNVBindlessTexture {
     public void MakeTextureHandleResidentNV(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeTextureHandleResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glMakeTextureHandleResidentNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMakeTextureHandleResidentNV", handle); }
-        Handles.MH_glMakeTextureHandleResidentNV.invokeExact(handles.PFN_glMakeTextureHandleResidentNV, handle); }
+        Handles.MH_glMakeTextureHandleResidentNV.get().invokeExact(handles.PFN_glMakeTextureHandleResidentNV, handle); }
         catch (Throwable e) { throw new RuntimeException("error in MakeTextureHandleResidentNV", e); }
     }
 
@@ -97,7 +98,7 @@ public final class GLNVBindlessTexture {
     public void MakeTextureHandleNonResidentNV(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeTextureHandleNonResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glMakeTextureHandleNonResidentNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMakeTextureHandleNonResidentNV", handle); }
-        Handles.MH_glMakeTextureHandleNonResidentNV.invokeExact(handles.PFN_glMakeTextureHandleNonResidentNV, handle); }
+        Handles.MH_glMakeTextureHandleNonResidentNV.get().invokeExact(handles.PFN_glMakeTextureHandleNonResidentNV, handle); }
         catch (Throwable e) { throw new RuntimeException("error in MakeTextureHandleNonResidentNV", e); }
     }
 
@@ -108,7 +109,7 @@ public final class GLNVBindlessTexture {
     public long GetImageHandleNV(int texture, int level, boolean layered, int layer, int format) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetImageHandleNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetImageHandleNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetImageHandleNV", texture, level, layered, layer, format); }
-        return (long) Handles.MH_glGetImageHandleNV.invokeExact(handles.PFN_glGetImageHandleNV, texture, level, ((layered) ? (byte)1 : (byte)0), layer, format); }
+        return (long) Handles.MH_glGetImageHandleNV.get().invokeExact(handles.PFN_glGetImageHandleNV, texture, level, ((layered) ? (byte)1 : (byte)0), layer, format); }
         catch (Throwable e) { throw new RuntimeException("error in GetImageHandleNV", e); }
     }
 
@@ -119,7 +120,7 @@ public final class GLNVBindlessTexture {
     public void MakeImageHandleResidentNV(long handle, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeImageHandleResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glMakeImageHandleResidentNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMakeImageHandleResidentNV", handle, access); }
-        Handles.MH_glMakeImageHandleResidentNV.invokeExact(handles.PFN_glMakeImageHandleResidentNV, handle, access); }
+        Handles.MH_glMakeImageHandleResidentNV.get().invokeExact(handles.PFN_glMakeImageHandleResidentNV, handle, access); }
         catch (Throwable e) { throw new RuntimeException("error in MakeImageHandleResidentNV", e); }
     }
 
@@ -130,7 +131,7 @@ public final class GLNVBindlessTexture {
     public void MakeImageHandleNonResidentNV(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeImageHandleNonResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glMakeImageHandleNonResidentNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMakeImageHandleNonResidentNV", handle); }
-        Handles.MH_glMakeImageHandleNonResidentNV.invokeExact(handles.PFN_glMakeImageHandleNonResidentNV, handle); }
+        Handles.MH_glMakeImageHandleNonResidentNV.get().invokeExact(handles.PFN_glMakeImageHandleNonResidentNV, handle); }
         catch (Throwable e) { throw new RuntimeException("error in MakeImageHandleNonResidentNV", e); }
     }
 
@@ -141,7 +142,7 @@ public final class GLNVBindlessTexture {
     public void UniformHandleui64NV(int location, long value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformHandleui64NV)) throw new GLSymbolNotFoundError("Symbol not found: glUniformHandleui64NV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformHandleui64NV", location, value); }
-        Handles.MH_glUniformHandleui64NV.invokeExact(handles.PFN_glUniformHandleui64NV, location, value); }
+        Handles.MH_glUniformHandleui64NV.get().invokeExact(handles.PFN_glUniformHandleui64NV, location, value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformHandleui64NV", e); }
     }
 
@@ -152,7 +153,7 @@ public final class GLNVBindlessTexture {
     public void UniformHandleui64vNV(int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformHandleui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glUniformHandleui64vNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformHandleui64vNV", location, count, value); }
-        Handles.MH_glUniformHandleui64vNV.invokeExact(handles.PFN_glUniformHandleui64vNV, location, count, value); }
+        Handles.MH_glUniformHandleui64vNV.get().invokeExact(handles.PFN_glUniformHandleui64vNV, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformHandleui64vNV", e); }
     }
 
@@ -163,7 +164,7 @@ public final class GLNVBindlessTexture {
     public void ProgramUniformHandleui64NV(int program, int location, long value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformHandleui64NV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformHandleui64NV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformHandleui64NV", program, location, value); }
-        Handles.MH_glProgramUniformHandleui64NV.invokeExact(handles.PFN_glProgramUniformHandleui64NV, program, location, value); }
+        Handles.MH_glProgramUniformHandleui64NV.get().invokeExact(handles.PFN_glProgramUniformHandleui64NV, program, location, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformHandleui64NV", e); }
     }
 
@@ -174,7 +175,7 @@ public final class GLNVBindlessTexture {
     public void ProgramUniformHandleui64vNV(int program, int location, int count, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformHandleui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformHandleui64vNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformHandleui64vNV", program, location, count, values); }
-        Handles.MH_glProgramUniformHandleui64vNV.invokeExact(handles.PFN_glProgramUniformHandleui64vNV, program, location, count, values); }
+        Handles.MH_glProgramUniformHandleui64vNV.get().invokeExact(handles.PFN_glProgramUniformHandleui64vNV, program, location, count, values); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformHandleui64vNV", e); }
     }
 
@@ -185,7 +186,7 @@ public final class GLNVBindlessTexture {
     public boolean IsTextureHandleResidentNV(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsTextureHandleResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glIsTextureHandleResidentNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIsTextureHandleResidentNV", handle); }
-        return (((byte) Handles.MH_glIsTextureHandleResidentNV.invokeExact(handles.PFN_glIsTextureHandleResidentNV, handle)) != 0); }
+        return (((byte) Handles.MH_glIsTextureHandleResidentNV.get().invokeExact(handles.PFN_glIsTextureHandleResidentNV, handle)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsTextureHandleResidentNV", e); }
     }
 
@@ -196,7 +197,7 @@ public final class GLNVBindlessTexture {
     public boolean IsImageHandleResidentNV(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsImageHandleResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glIsImageHandleResidentNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIsImageHandleResidentNV", handle); }
-        return (((byte) Handles.MH_glIsImageHandleResidentNV.invokeExact(handles.PFN_glIsImageHandleResidentNV, handle)) != 0); }
+        return (((byte) Handles.MH_glIsImageHandleResidentNV.get().invokeExact(handles.PFN_glIsImageHandleResidentNV, handle)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsImageHandleResidentNV", e); }
     }
 

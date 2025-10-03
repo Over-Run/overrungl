@@ -33,25 +33,25 @@ public final class VkPipelineBinaryKeyKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `keySize`.
     public static final long OFFSET_keySize = LAYOUT.byteOffset(PathElement.groupElement("keySize"));
     /// The memory layout of `keySize`.
     public static final MemoryLayout LAYOUT_keySize = LAYOUT.select(PathElement.groupElement("keySize"));
     /// The [VarHandle] of `keySize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_keySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("keySize"));
+    public static final Supplier<VarHandle> VH_keySize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("keySize")));
     /// The byte offset of `key`.
     public static final long OFFSET_key = LAYOUT.byteOffset(PathElement.groupElement("key"));
     /// The memory layout of `key`.
     public static final MemoryLayout LAYOUT_key = LAYOUT.select(PathElement.groupElement("key"));
     /// The [VarHandle] of `key` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_key = LAYOUT.arrayElementVarHandle(PathElement.groupElement("key"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_key = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("key"), PathElement.sequenceElement()));
 
     /// Creates `VkPipelineBinaryKeyKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPipelineBinaryKeyKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPipelineBinaryKeyKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPipelineBinaryKeyKHR extends GroupType {
     /// {@return `keySize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int keySize(MemorySegment segment, long index) { return (int) VH_keySize.get(segment, 0L, index); }
+    public static int keySize(MemorySegment segment, long index) { return (int) VH_keySize.get().get(segment, 0L, index); }
     /// {@return `keySize`}
     public int keySize() { return keySize(this.segment(), 0L); }
     /// Sets `keySize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void keySize(MemorySegment segment, long index, int value) { VH_keySize.set(segment, 0L, index, value); }
+    public static void keySize(MemorySegment segment, long index, int value) { VH_keySize.get().set(segment, 0L, index, value); }
     /// Sets `keySize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -155,7 +155,7 @@ public final class VkPipelineBinaryKeyKHR extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte key(MemorySegment segment, long index, long index0) { return (byte) VH_key.get(segment, 0L, index, index0); }
+    public static byte key(MemorySegment segment, long index, long index0) { return (byte) VH_key.get().get(segment, 0L, index, index0); }
     /// {@return `key`}
     public MemorySegment key() { return key(this.segment(), 0L); }
     /// {@return `key`}
@@ -171,7 +171,7 @@ public final class VkPipelineBinaryKeyKHR extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void key(MemorySegment segment, long index, long index0, byte value) { VH_key.set(segment, 0L, index, index0, value); }
+    public static void key(MemorySegment segment, long index, long index0, byte value) { VH_key.get().set(segment, 0L, index, index0, value); }
     /// Sets `key` with the given value.
     /// @param value the value
     /// @return `this`

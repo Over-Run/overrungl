@@ -45,19 +45,19 @@ public final class VkRenderingInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `renderArea`.
     public static final long OFFSET_renderArea = LAYOUT.byteOffset(PathElement.groupElement("renderArea"));
     /// The memory layout of `renderArea`.
@@ -67,37 +67,37 @@ public final class VkRenderingInfoKHR extends GroupType {
     /// The memory layout of `layerCount`.
     public static final MemoryLayout LAYOUT_layerCount = LAYOUT.select(PathElement.groupElement("layerCount"));
     /// The [VarHandle] of `layerCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_layerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layerCount"));
+    public static final Supplier<VarHandle> VH_layerCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("layerCount")));
     /// The byte offset of `viewMask`.
     public static final long OFFSET_viewMask = LAYOUT.byteOffset(PathElement.groupElement("viewMask"));
     /// The memory layout of `viewMask`.
     public static final MemoryLayout LAYOUT_viewMask = LAYOUT.select(PathElement.groupElement("viewMask"));
     /// The [VarHandle] of `viewMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_viewMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewMask"));
+    public static final Supplier<VarHandle> VH_viewMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewMask")));
     /// The byte offset of `colorAttachmentCount`.
     public static final long OFFSET_colorAttachmentCount = LAYOUT.byteOffset(PathElement.groupElement("colorAttachmentCount"));
     /// The memory layout of `colorAttachmentCount`.
     public static final MemoryLayout LAYOUT_colorAttachmentCount = LAYOUT.select(PathElement.groupElement("colorAttachmentCount"));
     /// The [VarHandle] of `colorAttachmentCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_colorAttachmentCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachmentCount"));
+    public static final Supplier<VarHandle> VH_colorAttachmentCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachmentCount")));
     /// The byte offset of `pColorAttachments`.
     public static final long OFFSET_pColorAttachments = LAYOUT.byteOffset(PathElement.groupElement("pColorAttachments"));
     /// The memory layout of `pColorAttachments`.
     public static final MemoryLayout LAYOUT_pColorAttachments = LAYOUT.select(PathElement.groupElement("pColorAttachments"));
     /// The [VarHandle] of `pColorAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pColorAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorAttachments"));
+    public static final Supplier<VarHandle> VH_pColorAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorAttachments")));
     /// The byte offset of `pDepthAttachment`.
     public static final long OFFSET_pDepthAttachment = LAYOUT.byteOffset(PathElement.groupElement("pDepthAttachment"));
     /// The memory layout of `pDepthAttachment`.
     public static final MemoryLayout LAYOUT_pDepthAttachment = LAYOUT.select(PathElement.groupElement("pDepthAttachment"));
     /// The [VarHandle] of `pDepthAttachment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDepthAttachment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDepthAttachment"));
+    public static final Supplier<VarHandle> VH_pDepthAttachment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDepthAttachment")));
     /// The byte offset of `pStencilAttachment`.
     public static final long OFFSET_pStencilAttachment = LAYOUT.byteOffset(PathElement.groupElement("pStencilAttachment"));
     /// The memory layout of `pStencilAttachment`.
     public static final MemoryLayout LAYOUT_pStencilAttachment = LAYOUT.select(PathElement.groupElement("pStencilAttachment"));
     /// The [VarHandle] of `pStencilAttachment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStencilAttachment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStencilAttachment"));
+    public static final Supplier<VarHandle> VH_pStencilAttachment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStencilAttachment")));
 
     /// Creates `VkRenderingInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -148,14 +148,14 @@ public final class VkRenderingInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,14 +164,14 @@ public final class VkRenderingInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -180,14 +180,14 @@ public final class VkRenderingInfoKHR extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -216,14 +216,14 @@ public final class VkRenderingInfoKHR extends GroupType {
     /// {@return `layerCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int layerCount(MemorySegment segment, long index) { return (int) VH_layerCount.get(segment, 0L, index); }
+    public static int layerCount(MemorySegment segment, long index) { return (int) VH_layerCount.get().get(segment, 0L, index); }
     /// {@return `layerCount`}
     public int layerCount() { return layerCount(this.segment(), 0L); }
     /// Sets `layerCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void layerCount(MemorySegment segment, long index, int value) { VH_layerCount.set(segment, 0L, index, value); }
+    public static void layerCount(MemorySegment segment, long index, int value) { VH_layerCount.get().set(segment, 0L, index, value); }
     /// Sets `layerCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,14 +232,14 @@ public final class VkRenderingInfoKHR extends GroupType {
     /// {@return `viewMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int viewMask(MemorySegment segment, long index) { return (int) VH_viewMask.get(segment, 0L, index); }
+    public static int viewMask(MemorySegment segment, long index) { return (int) VH_viewMask.get().get(segment, 0L, index); }
     /// {@return `viewMask`}
     public int viewMask() { return viewMask(this.segment(), 0L); }
     /// Sets `viewMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void viewMask(MemorySegment segment, long index, int value) { VH_viewMask.set(segment, 0L, index, value); }
+    public static void viewMask(MemorySegment segment, long index, int value) { VH_viewMask.get().set(segment, 0L, index, value); }
     /// Sets `viewMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,14 +248,14 @@ public final class VkRenderingInfoKHR extends GroupType {
     /// {@return `colorAttachmentCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int colorAttachmentCount(MemorySegment segment, long index) { return (int) VH_colorAttachmentCount.get(segment, 0L, index); }
+    public static int colorAttachmentCount(MemorySegment segment, long index) { return (int) VH_colorAttachmentCount.get().get(segment, 0L, index); }
     /// {@return `colorAttachmentCount`}
     public int colorAttachmentCount() { return colorAttachmentCount(this.segment(), 0L); }
     /// Sets `colorAttachmentCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void colorAttachmentCount(MemorySegment segment, long index, int value) { VH_colorAttachmentCount.set(segment, 0L, index, value); }
+    public static void colorAttachmentCount(MemorySegment segment, long index, int value) { VH_colorAttachmentCount.get().set(segment, 0L, index, value); }
     /// Sets `colorAttachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -264,14 +264,14 @@ public final class VkRenderingInfoKHR extends GroupType {
     /// {@return `pColorAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pColorAttachments(MemorySegment segment, long index) { return (MemorySegment) VH_pColorAttachments.get(segment, 0L, index); }
+    public static MemorySegment pColorAttachments(MemorySegment segment, long index) { return (MemorySegment) VH_pColorAttachments.get().get(segment, 0L, index); }
     /// {@return `pColorAttachments`}
     public MemorySegment pColorAttachments() { return pColorAttachments(this.segment(), 0L); }
     /// Sets `pColorAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pColorAttachments(MemorySegment segment, long index, MemorySegment value) { VH_pColorAttachments.set(segment, 0L, index, value); }
+    public static void pColorAttachments(MemorySegment segment, long index, MemorySegment value) { VH_pColorAttachments.get().set(segment, 0L, index, value); }
     /// Sets `pColorAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -280,14 +280,14 @@ public final class VkRenderingInfoKHR extends GroupType {
     /// {@return `pDepthAttachment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDepthAttachment(MemorySegment segment, long index) { return (MemorySegment) VH_pDepthAttachment.get(segment, 0L, index); }
+    public static MemorySegment pDepthAttachment(MemorySegment segment, long index) { return (MemorySegment) VH_pDepthAttachment.get().get(segment, 0L, index); }
     /// {@return `pDepthAttachment`}
     public MemorySegment pDepthAttachment() { return pDepthAttachment(this.segment(), 0L); }
     /// Sets `pDepthAttachment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDepthAttachment(MemorySegment segment, long index, MemorySegment value) { VH_pDepthAttachment.set(segment, 0L, index, value); }
+    public static void pDepthAttachment(MemorySegment segment, long index, MemorySegment value) { VH_pDepthAttachment.get().set(segment, 0L, index, value); }
     /// Sets `pDepthAttachment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -296,14 +296,14 @@ public final class VkRenderingInfoKHR extends GroupType {
     /// {@return `pStencilAttachment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStencilAttachment(MemorySegment segment, long index) { return (MemorySegment) VH_pStencilAttachment.get(segment, 0L, index); }
+    public static MemorySegment pStencilAttachment(MemorySegment segment, long index) { return (MemorySegment) VH_pStencilAttachment.get().get(segment, 0L, index); }
     /// {@return `pStencilAttachment`}
     public MemorySegment pStencilAttachment() { return pStencilAttachment(this.segment(), 0L); }
     /// Sets `pStencilAttachment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStencilAttachment(MemorySegment segment, long index, MemorySegment value) { VH_pStencilAttachment.set(segment, 0L, index, value); }
+    public static void pStencilAttachment(MemorySegment segment, long index, MemorySegment value) { VH_pStencilAttachment.get().set(segment, 0L, index, value); }
     /// Sets `pStencilAttachment` with the given value.
     /// @param value the value
     /// @return `this`

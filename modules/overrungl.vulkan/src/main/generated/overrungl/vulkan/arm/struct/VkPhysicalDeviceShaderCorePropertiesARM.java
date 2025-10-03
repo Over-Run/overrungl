@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceShaderCorePropertiesARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pixelRate`.
     public static final long OFFSET_pixelRate = LAYOUT.byteOffset(PathElement.groupElement("pixelRate"));
     /// The memory layout of `pixelRate`.
     public static final MemoryLayout LAYOUT_pixelRate = LAYOUT.select(PathElement.groupElement("pixelRate"));
     /// The [VarHandle] of `pixelRate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pixelRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixelRate"));
+    public static final Supplier<VarHandle> VH_pixelRate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixelRate")));
     /// The byte offset of `texelRate`.
     public static final long OFFSET_texelRate = LAYOUT.byteOffset(PathElement.groupElement("texelRate"));
     /// The memory layout of `texelRate`.
     public static final MemoryLayout LAYOUT_texelRate = LAYOUT.select(PathElement.groupElement("texelRate"));
     /// The [VarHandle] of `texelRate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_texelRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("texelRate"));
+    public static final Supplier<VarHandle> VH_texelRate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("texelRate")));
     /// The byte offset of `fmaRate`.
     public static final long OFFSET_fmaRate = LAYOUT.byteOffset(PathElement.groupElement("fmaRate"));
     /// The memory layout of `fmaRate`.
     public static final MemoryLayout LAYOUT_fmaRate = LAYOUT.select(PathElement.groupElement("fmaRate"));
     /// The [VarHandle] of `fmaRate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fmaRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fmaRate"));
+    public static final Supplier<VarHandle> VH_fmaRate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fmaRate")));
 
     /// Creates `VkPhysicalDeviceShaderCorePropertiesARM` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesARM extends GroupType {
     /// {@return `pixelRate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pixelRate(MemorySegment segment, long index) { return (int) VH_pixelRate.get(segment, 0L, index); }
+    public static int pixelRate(MemorySegment segment, long index) { return (int) VH_pixelRate.get().get(segment, 0L, index); }
     /// {@return `pixelRate`}
     public int pixelRate() { return pixelRate(this.segment(), 0L); }
     /// Sets `pixelRate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pixelRate(MemorySegment segment, long index, int value) { VH_pixelRate.set(segment, 0L, index, value); }
+    public static void pixelRate(MemorySegment segment, long index, int value) { VH_pixelRate.get().set(segment, 0L, index, value); }
     /// Sets `pixelRate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesARM extends GroupType {
     /// {@return `texelRate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int texelRate(MemorySegment segment, long index) { return (int) VH_texelRate.get(segment, 0L, index); }
+    public static int texelRate(MemorySegment segment, long index) { return (int) VH_texelRate.get().get(segment, 0L, index); }
     /// {@return `texelRate`}
     public int texelRate() { return texelRate(this.segment(), 0L); }
     /// Sets `texelRate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void texelRate(MemorySegment segment, long index, int value) { VH_texelRate.set(segment, 0L, index, value); }
+    public static void texelRate(MemorySegment segment, long index, int value) { VH_texelRate.get().set(segment, 0L, index, value); }
     /// Sets `texelRate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceShaderCorePropertiesARM extends GroupType {
     /// {@return `fmaRate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fmaRate(MemorySegment segment, long index) { return (int) VH_fmaRate.get(segment, 0L, index); }
+    public static int fmaRate(MemorySegment segment, long index) { return (int) VH_fmaRate.get().get(segment, 0L, index); }
     /// {@return `fmaRate`}
     public int fmaRate() { return fmaRate(this.segment(), 0L); }
     /// Sets `fmaRate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fmaRate(MemorySegment segment, long index, int value) { VH_fmaRate.set(segment, 0L, index, value); }
+    public static void fmaRate(MemorySegment segment, long index, int value) { VH_fmaRate.get().set(segment, 0L, index, value); }
     /// Sets `fmaRate` with the given value.
     /// @param value the value
     /// @return `this`

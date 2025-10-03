@@ -39,7 +39,7 @@ public final class VkShaderStatisticsInfoAMD extends GroupType {
     /// The memory layout of `shaderStageMask`.
     public static final MemoryLayout LAYOUT_shaderStageMask = LAYOUT.select(PathElement.groupElement("shaderStageMask"));
     /// The [VarHandle] of `shaderStageMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStageMask"));
+    public static final Supplier<VarHandle> VH_shaderStageMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStageMask")));
     /// The byte offset of `resourceUsage`.
     public static final long OFFSET_resourceUsage = LAYOUT.byteOffset(PathElement.groupElement("resourceUsage"));
     /// The memory layout of `resourceUsage`.
@@ -49,31 +49,31 @@ public final class VkShaderStatisticsInfoAMD extends GroupType {
     /// The memory layout of `numPhysicalVgprs`.
     public static final MemoryLayout LAYOUT_numPhysicalVgprs = LAYOUT.select(PathElement.groupElement("numPhysicalVgprs"));
     /// The [VarHandle] of `numPhysicalVgprs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_numPhysicalVgprs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numPhysicalVgprs"));
+    public static final Supplier<VarHandle> VH_numPhysicalVgprs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("numPhysicalVgprs")));
     /// The byte offset of `numPhysicalSgprs`.
     public static final long OFFSET_numPhysicalSgprs = LAYOUT.byteOffset(PathElement.groupElement("numPhysicalSgprs"));
     /// The memory layout of `numPhysicalSgprs`.
     public static final MemoryLayout LAYOUT_numPhysicalSgprs = LAYOUT.select(PathElement.groupElement("numPhysicalSgprs"));
     /// The [VarHandle] of `numPhysicalSgprs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_numPhysicalSgprs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numPhysicalSgprs"));
+    public static final Supplier<VarHandle> VH_numPhysicalSgprs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("numPhysicalSgprs")));
     /// The byte offset of `numAvailableVgprs`.
     public static final long OFFSET_numAvailableVgprs = LAYOUT.byteOffset(PathElement.groupElement("numAvailableVgprs"));
     /// The memory layout of `numAvailableVgprs`.
     public static final MemoryLayout LAYOUT_numAvailableVgprs = LAYOUT.select(PathElement.groupElement("numAvailableVgprs"));
     /// The [VarHandle] of `numAvailableVgprs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_numAvailableVgprs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numAvailableVgprs"));
+    public static final Supplier<VarHandle> VH_numAvailableVgprs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("numAvailableVgprs")));
     /// The byte offset of `numAvailableSgprs`.
     public static final long OFFSET_numAvailableSgprs = LAYOUT.byteOffset(PathElement.groupElement("numAvailableSgprs"));
     /// The memory layout of `numAvailableSgprs`.
     public static final MemoryLayout LAYOUT_numAvailableSgprs = LAYOUT.select(PathElement.groupElement("numAvailableSgprs"));
     /// The [VarHandle] of `numAvailableSgprs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_numAvailableSgprs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numAvailableSgprs"));
+    public static final Supplier<VarHandle> VH_numAvailableSgprs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("numAvailableSgprs")));
     /// The byte offset of `computeWorkGroupSize`.
     public static final long OFFSET_computeWorkGroupSize = LAYOUT.byteOffset(PathElement.groupElement("computeWorkGroupSize"));
     /// The memory layout of `computeWorkGroupSize`.
     public static final MemoryLayout LAYOUT_computeWorkGroupSize = LAYOUT.select(PathElement.groupElement("computeWorkGroupSize"));
     /// The [VarHandle] of `computeWorkGroupSize` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_computeWorkGroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeWorkGroupSize"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_computeWorkGroupSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeWorkGroupSize"), PathElement.sequenceElement()));
 
     /// Creates `VkShaderStatisticsInfoAMD` with the given segment.
     /// @param segment      the memory segment
@@ -124,14 +124,14 @@ public final class VkShaderStatisticsInfoAMD extends GroupType {
     /// {@return `shaderStageMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderStageMask(MemorySegment segment, long index) { return (int) VH_shaderStageMask.get(segment, 0L, index); }
+    public static int shaderStageMask(MemorySegment segment, long index) { return (int) VH_shaderStageMask.get().get(segment, 0L, index); }
     /// {@return `shaderStageMask`}
     public int shaderStageMask() { return shaderStageMask(this.segment(), 0L); }
     /// Sets `shaderStageMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderStageMask(MemorySegment segment, long index, int value) { VH_shaderStageMask.set(segment, 0L, index, value); }
+    public static void shaderStageMask(MemorySegment segment, long index, int value) { VH_shaderStageMask.get().set(segment, 0L, index, value); }
     /// Sets `shaderStageMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -160,14 +160,14 @@ public final class VkShaderStatisticsInfoAMD extends GroupType {
     /// {@return `numPhysicalVgprs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int numPhysicalVgprs(MemorySegment segment, long index) { return (int) VH_numPhysicalVgprs.get(segment, 0L, index); }
+    public static int numPhysicalVgprs(MemorySegment segment, long index) { return (int) VH_numPhysicalVgprs.get().get(segment, 0L, index); }
     /// {@return `numPhysicalVgprs`}
     public int numPhysicalVgprs() { return numPhysicalVgprs(this.segment(), 0L); }
     /// Sets `numPhysicalVgprs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void numPhysicalVgprs(MemorySegment segment, long index, int value) { VH_numPhysicalVgprs.set(segment, 0L, index, value); }
+    public static void numPhysicalVgprs(MemorySegment segment, long index, int value) { VH_numPhysicalVgprs.get().set(segment, 0L, index, value); }
     /// Sets `numPhysicalVgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,14 +176,14 @@ public final class VkShaderStatisticsInfoAMD extends GroupType {
     /// {@return `numPhysicalSgprs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int numPhysicalSgprs(MemorySegment segment, long index) { return (int) VH_numPhysicalSgprs.get(segment, 0L, index); }
+    public static int numPhysicalSgprs(MemorySegment segment, long index) { return (int) VH_numPhysicalSgprs.get().get(segment, 0L, index); }
     /// {@return `numPhysicalSgprs`}
     public int numPhysicalSgprs() { return numPhysicalSgprs(this.segment(), 0L); }
     /// Sets `numPhysicalSgprs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void numPhysicalSgprs(MemorySegment segment, long index, int value) { VH_numPhysicalSgprs.set(segment, 0L, index, value); }
+    public static void numPhysicalSgprs(MemorySegment segment, long index, int value) { VH_numPhysicalSgprs.get().set(segment, 0L, index, value); }
     /// Sets `numPhysicalSgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -192,14 +192,14 @@ public final class VkShaderStatisticsInfoAMD extends GroupType {
     /// {@return `numAvailableVgprs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int numAvailableVgprs(MemorySegment segment, long index) { return (int) VH_numAvailableVgprs.get(segment, 0L, index); }
+    public static int numAvailableVgprs(MemorySegment segment, long index) { return (int) VH_numAvailableVgprs.get().get(segment, 0L, index); }
     /// {@return `numAvailableVgprs`}
     public int numAvailableVgprs() { return numAvailableVgprs(this.segment(), 0L); }
     /// Sets `numAvailableVgprs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void numAvailableVgprs(MemorySegment segment, long index, int value) { VH_numAvailableVgprs.set(segment, 0L, index, value); }
+    public static void numAvailableVgprs(MemorySegment segment, long index, int value) { VH_numAvailableVgprs.get().set(segment, 0L, index, value); }
     /// Sets `numAvailableVgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -208,14 +208,14 @@ public final class VkShaderStatisticsInfoAMD extends GroupType {
     /// {@return `numAvailableSgprs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int numAvailableSgprs(MemorySegment segment, long index) { return (int) VH_numAvailableSgprs.get(segment, 0L, index); }
+    public static int numAvailableSgprs(MemorySegment segment, long index) { return (int) VH_numAvailableSgprs.get().get(segment, 0L, index); }
     /// {@return `numAvailableSgprs`}
     public int numAvailableSgprs() { return numAvailableSgprs(this.segment(), 0L); }
     /// Sets `numAvailableSgprs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void numAvailableSgprs(MemorySegment segment, long index, int value) { VH_numAvailableSgprs.set(segment, 0L, index, value); }
+    public static void numAvailableSgprs(MemorySegment segment, long index, int value) { VH_numAvailableSgprs.get().set(segment, 0L, index, value); }
     /// Sets `numAvailableSgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -229,7 +229,7 @@ public final class VkShaderStatisticsInfoAMD extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int computeWorkGroupSize(MemorySegment segment, long index, long index0) { return (int) VH_computeWorkGroupSize.get(segment, 0L, index, index0); }
+    public static int computeWorkGroupSize(MemorySegment segment, long index, long index0) { return (int) VH_computeWorkGroupSize.get().get(segment, 0L, index, index0); }
     /// {@return `computeWorkGroupSize`}
     public MemorySegment computeWorkGroupSize() { return computeWorkGroupSize(this.segment(), 0L); }
     /// {@return `computeWorkGroupSize`}
@@ -245,7 +245,7 @@ public final class VkShaderStatisticsInfoAMD extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void computeWorkGroupSize(MemorySegment segment, long index, long index0, int value) { VH_computeWorkGroupSize.set(segment, 0L, index, index0, value); }
+    public static void computeWorkGroupSize(MemorySegment segment, long index, long index0, int value) { VH_computeWorkGroupSize.get().set(segment, 0L, index, index0, value); }
     /// Sets `computeWorkGroupSize` with the given value.
     /// @param value the value
     /// @return `this`

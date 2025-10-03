@@ -2,6 +2,7 @@
 package overrungl.opengl;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import static overrungl.internal.RuntimeHelper.*;
@@ -45,10 +46,10 @@ public class GL12 extends GL11 {
     public static final int GL_ALIASED_LINE_WIDTH_RANGE = 0x846E;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDrawRangeElements = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexImage3D = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexSubImage3D = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCopyTexSubImage3D = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glDrawRangeElements = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexImage3D = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexSubImage3D = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCopyTexSubImage3D = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glDrawRangeElements;
         public final MemorySegment PFN_glTexImage3D;
         public final MemorySegment PFN_glTexSubImage3D;
@@ -73,7 +74,7 @@ public class GL12 extends GL11 {
     public void DrawRangeElements(int mode, int start, int end, int count, int type, @NonNull MemorySegment indices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElements)) throw new GLSymbolNotFoundError("Symbol not found: glDrawRangeElements");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawRangeElements", mode, start, end, count, type, indices); }
-        Handles.MH_glDrawRangeElements.invokeExact(handles.PFN_glDrawRangeElements, mode, start, end, count, type, indices); }
+        Handles.MH_glDrawRangeElements.get().invokeExact(handles.PFN_glDrawRangeElements, mode, start, end, count, type, indices); }
         catch (Throwable e) { throw new RuntimeException("error in DrawRangeElements", e); }
     }
 
@@ -84,7 +85,7 @@ public class GL12 extends GL11 {
     public void TexImage3D(int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexImage3D)) throw new GLSymbolNotFoundError("Symbol not found: glTexImage3D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexImage3D", target, level, internalformat, width, height, depth, border, format, type, pixels); }
-        Handles.MH_glTexImage3D.invokeExact(handles.PFN_glTexImage3D, target, level, internalformat, width, height, depth, border, format, type, pixels); }
+        Handles.MH_glTexImage3D.get().invokeExact(handles.PFN_glTexImage3D, target, level, internalformat, width, height, depth, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexImage3D", e); }
     }
 
@@ -95,7 +96,7 @@ public class GL12 extends GL11 {
     public void TexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage3D)) throw new GLSymbolNotFoundError("Symbol not found: glTexSubImage3D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexSubImage3D", target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
-        Handles.MH_glTexSubImage3D.invokeExact(handles.PFN_glTexSubImage3D, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
+        Handles.MH_glTexSubImage3D.get().invokeExact(handles.PFN_glTexSubImage3D, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexSubImage3D", e); }
     }
 
@@ -106,7 +107,7 @@ public class GL12 extends GL11 {
     public void CopyTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexSubImage3D)) throw new GLSymbolNotFoundError("Symbol not found: glCopyTexSubImage3D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyTexSubImage3D", target, level, xoffset, yoffset, zoffset, x, y, width, height); }
-        Handles.MH_glCopyTexSubImage3D.invokeExact(handles.PFN_glCopyTexSubImage3D, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
+        Handles.MH_glCopyTexSubImage3D.get().invokeExact(handles.PFN_glCopyTexSubImage3D, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in CopyTexSubImage3D", e); }
     }
 

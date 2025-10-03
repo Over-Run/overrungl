@@ -2,6 +2,7 @@
 package overrungl.opengl.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,8 +11,8 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLNVBindlessMultiDrawIndirectCount {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glMultiDrawArraysIndirectBindlessCountNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiDrawElementsIndirectBindlessCountNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glMultiDrawArraysIndirectBindlessCountNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultiDrawElementsIndirectBindlessCountNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glMultiDrawArraysIndirectBindlessCountNV;
         public final MemorySegment PFN_glMultiDrawElementsIndirectBindlessCountNV;
         private Handles(GLLoadFunc func) {
@@ -31,7 +32,7 @@ public final class GLNVBindlessMultiDrawIndirectCount {
     public void MultiDrawArraysIndirectBindlessCountNV(int mode, @NonNull MemorySegment indirect, int drawCount, int maxDrawCount, int stride, int vertexBufferCount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectBindlessCountNV)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectBindlessCountNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawArraysIndirectBindlessCountNV", mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount); }
-        Handles.MH_glMultiDrawArraysIndirectBindlessCountNV.invokeExact(handles.PFN_glMultiDrawArraysIndirectBindlessCountNV, mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount); }
+        Handles.MH_glMultiDrawArraysIndirectBindlessCountNV.get().invokeExact(handles.PFN_glMultiDrawArraysIndirectBindlessCountNV, mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysIndirectBindlessCountNV", e); }
     }
 
@@ -42,7 +43,7 @@ public final class GLNVBindlessMultiDrawIndirectCount {
     public void MultiDrawElementsIndirectBindlessCountNV(int mode, int type, @NonNull MemorySegment indirect, int drawCount, int maxDrawCount, int stride, int vertexBufferCount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectBindlessCountNV)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectBindlessCountNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawElementsIndirectBindlessCountNV", mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount); }
-        Handles.MH_glMultiDrawElementsIndirectBindlessCountNV.invokeExact(handles.PFN_glMultiDrawElementsIndirectBindlessCountNV, mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount); }
+        Handles.MH_glMultiDrawElementsIndirectBindlessCountNV.get().invokeExact(handles.PFN_glMultiDrawElementsIndirectBindlessCountNV, mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsIndirectBindlessCountNV", e); }
     }
 

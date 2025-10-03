@@ -33,25 +33,25 @@ public final class VkFaultData extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `faultLevel`.
     public static final long OFFSET_faultLevel = LAYOUT.byteOffset(PathElement.groupElement("faultLevel"));
     /// The memory layout of `faultLevel`.
     public static final MemoryLayout LAYOUT_faultLevel = LAYOUT.select(PathElement.groupElement("faultLevel"));
     /// The [VarHandle] of `faultLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_faultLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("faultLevel"));
+    public static final Supplier<VarHandle> VH_faultLevel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("faultLevel")));
     /// The byte offset of `faultType`.
     public static final long OFFSET_faultType = LAYOUT.byteOffset(PathElement.groupElement("faultType"));
     /// The memory layout of `faultType`.
     public static final MemoryLayout LAYOUT_faultType = LAYOUT.select(PathElement.groupElement("faultType"));
     /// The [VarHandle] of `faultType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_faultType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("faultType"));
+    public static final Supplier<VarHandle> VH_faultType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("faultType")));
 
     /// Creates `VkFaultData` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkFaultData extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkFaultData extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkFaultData extends GroupType {
     /// {@return `faultLevel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int faultLevel(MemorySegment segment, long index) { return (int) VH_faultLevel.get(segment, 0L, index); }
+    public static int faultLevel(MemorySegment segment, long index) { return (int) VH_faultLevel.get().get(segment, 0L, index); }
     /// {@return `faultLevel`}
     public int faultLevel() { return faultLevel(this.segment(), 0L); }
     /// Sets `faultLevel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void faultLevel(MemorySegment segment, long index, int value) { VH_faultLevel.set(segment, 0L, index, value); }
+    public static void faultLevel(MemorySegment segment, long index, int value) { VH_faultLevel.get().set(segment, 0L, index, value); }
     /// Sets `faultLevel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkFaultData extends GroupType {
     /// {@return `faultType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int faultType(MemorySegment segment, long index) { return (int) VH_faultType.get(segment, 0L, index); }
+    public static int faultType(MemorySegment segment, long index) { return (int) VH_faultType.get().get(segment, 0L, index); }
     /// {@return `faultType`}
     public int faultType() { return faultType(this.segment(), 0L); }
     /// Sets `faultType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void faultType(MemorySegment segment, long index, int value) { VH_faultType.set(segment, 0L, index, value); }
+    public static void faultType(MemorySegment segment, long index, int value) { VH_faultType.get().set(segment, 0L, index, value); }
     /// Sets `faultType` with the given value.
     /// @param value the value
     /// @return `this`

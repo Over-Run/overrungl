@@ -29,13 +29,13 @@ public final class VkSurfaceFormatKHR extends GroupType {
     /// The memory layout of `format`.
     public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
     /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
+    public static final Supplier<VarHandle> VH_format = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("format")));
     /// The byte offset of `colorSpace`.
     public static final long OFFSET_colorSpace = LAYOUT.byteOffset(PathElement.groupElement("colorSpace"));
     /// The memory layout of `colorSpace`.
     public static final MemoryLayout LAYOUT_colorSpace = LAYOUT.select(PathElement.groupElement("colorSpace"));
     /// The [VarHandle] of `colorSpace` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_colorSpace = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorSpace"));
+    public static final Supplier<VarHandle> VH_colorSpace = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorSpace")));
 
     /// Creates `VkSurfaceFormatKHR` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkSurfaceFormatKHR extends GroupType {
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
+    public static int format(MemorySegment segment, long index) { return (int) VH_format.get().get(segment, 0L, index); }
     /// {@return `format`}
     public int format() { return format(this.segment(), 0L); }
     /// Sets `format` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void format(MemorySegment segment, long index, int value) { VH_format.set(segment, 0L, index, value); }
+    public static void format(MemorySegment segment, long index, int value) { VH_format.get().set(segment, 0L, index, value); }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkSurfaceFormatKHR extends GroupType {
     /// {@return `colorSpace` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int colorSpace(MemorySegment segment, long index) { return (int) VH_colorSpace.get(segment, 0L, index); }
+    public static int colorSpace(MemorySegment segment, long index) { return (int) VH_colorSpace.get().get(segment, 0L, index); }
     /// {@return `colorSpace`}
     public int colorSpace() { return colorSpace(this.segment(), 0L); }
     /// Sets `colorSpace` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void colorSpace(MemorySegment segment, long index, int value) { VH_colorSpace.set(segment, 0L, index, value); }
+    public static void colorSpace(MemorySegment segment, long index, int value) { VH_colorSpace.get().set(segment, 0L, index, value); }
     /// Sets `colorSpace` with the given value.
     /// @param value the value
     /// @return `this`

@@ -29,7 +29,7 @@ public final class NFDPickFolderArgs extends GroupType {
     /// The memory layout of `defaultPath`.
     public static final MemoryLayout LAYOUT_defaultPath = LAYOUT.select(PathElement.groupElement("defaultPath"));
     /// The [VarHandle] of `defaultPath` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_defaultPath = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultPath"));
+    public static final Supplier<VarHandle> VH_defaultPath = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultPath")));
     /// The byte offset of `parentWindow`.
     public static final long OFFSET_parentWindow = LAYOUT.byteOffset(PathElement.groupElement("parentWindow"));
     /// The memory layout of `parentWindow`.
@@ -84,14 +84,14 @@ public final class NFDPickFolderArgs extends GroupType {
     /// {@return `defaultPath` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment defaultPath(MemorySegment segment, long index) { return (MemorySegment) VH_defaultPath.get(segment, 0L, index); }
+    public static MemorySegment defaultPath(MemorySegment segment, long index) { return (MemorySegment) VH_defaultPath.get().get(segment, 0L, index); }
     /// {@return `defaultPath`}
     public MemorySegment defaultPath() { return defaultPath(this.segment(), 0L); }
     /// Sets `defaultPath` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void defaultPath(MemorySegment segment, long index, MemorySegment value) { VH_defaultPath.set(segment, 0L, index, value); }
+    public static void defaultPath(MemorySegment segment, long index, MemorySegment value) { VH_defaultPath.get().set(segment, 0L, index, value); }
     /// Sets `defaultPath` with the given value.
     /// @param value the value
     /// @return `this`

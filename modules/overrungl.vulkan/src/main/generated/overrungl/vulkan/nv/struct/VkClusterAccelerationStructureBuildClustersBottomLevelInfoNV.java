@@ -31,19 +31,19 @@ public final class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV 
     /// The memory layout of `clusterReferencesCount`.
     public static final MemoryLayout LAYOUT_clusterReferencesCount = LAYOUT.select(PathElement.groupElement("clusterReferencesCount"));
     /// The [VarHandle] of `clusterReferencesCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterReferencesCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterReferencesCount"));
+    public static final Supplier<VarHandle> VH_clusterReferencesCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterReferencesCount")));
     /// The byte offset of `clusterReferencesStride`.
     public static final long OFFSET_clusterReferencesStride = LAYOUT.byteOffset(PathElement.groupElement("clusterReferencesStride"));
     /// The memory layout of `clusterReferencesStride`.
     public static final MemoryLayout LAYOUT_clusterReferencesStride = LAYOUT.select(PathElement.groupElement("clusterReferencesStride"));
     /// The [VarHandle] of `clusterReferencesStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterReferencesStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterReferencesStride"));
+    public static final Supplier<VarHandle> VH_clusterReferencesStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterReferencesStride")));
     /// The byte offset of `clusterReferences`.
     public static final long OFFSET_clusterReferences = LAYOUT.byteOffset(PathElement.groupElement("clusterReferences"));
     /// The memory layout of `clusterReferences`.
     public static final MemoryLayout LAYOUT_clusterReferences = LAYOUT.select(PathElement.groupElement("clusterReferences"));
     /// The [VarHandle] of `clusterReferences` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterReferences = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterReferences"));
+    public static final Supplier<VarHandle> VH_clusterReferences = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterReferences")));
 
     /// Creates `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV 
     /// {@return `clusterReferencesCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clusterReferencesCount(MemorySegment segment, long index) { return (int) VH_clusterReferencesCount.get(segment, 0L, index); }
+    public static int clusterReferencesCount(MemorySegment segment, long index) { return (int) VH_clusterReferencesCount.get().get(segment, 0L, index); }
     /// {@return `clusterReferencesCount`}
     public int clusterReferencesCount() { return clusterReferencesCount(this.segment(), 0L); }
     /// Sets `clusterReferencesCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterReferencesCount(MemorySegment segment, long index, int value) { VH_clusterReferencesCount.set(segment, 0L, index, value); }
+    public static void clusterReferencesCount(MemorySegment segment, long index, int value) { VH_clusterReferencesCount.get().set(segment, 0L, index, value); }
     /// Sets `clusterReferencesCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV 
     /// {@return `clusterReferencesStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clusterReferencesStride(MemorySegment segment, long index) { return (int) VH_clusterReferencesStride.get(segment, 0L, index); }
+    public static int clusterReferencesStride(MemorySegment segment, long index) { return (int) VH_clusterReferencesStride.get().get(segment, 0L, index); }
     /// {@return `clusterReferencesStride`}
     public int clusterReferencesStride() { return clusterReferencesStride(this.segment(), 0L); }
     /// Sets `clusterReferencesStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterReferencesStride(MemorySegment segment, long index, int value) { VH_clusterReferencesStride.set(segment, 0L, index, value); }
+    public static void clusterReferencesStride(MemorySegment segment, long index, int value) { VH_clusterReferencesStride.get().set(segment, 0L, index, value); }
     /// Sets `clusterReferencesStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV 
     /// {@return `clusterReferences` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long clusterReferences(MemorySegment segment, long index) { return (long) VH_clusterReferences.get(segment, 0L, index); }
+    public static long clusterReferences(MemorySegment segment, long index) { return (long) VH_clusterReferences.get().get(segment, 0L, index); }
     /// {@return `clusterReferences`}
     public long clusterReferences() { return clusterReferences(this.segment(), 0L); }
     /// Sets `clusterReferences` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterReferences(MemorySegment segment, long index, long value) { VH_clusterReferences.set(segment, 0L, index, value); }
+    public static void clusterReferences(MemorySegment segment, long index, long value) { VH_clusterReferences.get().set(segment, 0L, index, value); }
     /// Sets `clusterReferences` with the given value.
     /// @param value the value
     /// @return `this`

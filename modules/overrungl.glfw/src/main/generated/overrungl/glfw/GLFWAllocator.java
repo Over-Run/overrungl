@@ -33,25 +33,25 @@ public final class GLFWAllocator extends GroupType {
     /// The memory layout of `allocate`.
     public static final MemoryLayout LAYOUT_allocate = LAYOUT.select(PathElement.groupElement("allocate"));
     /// The [VarHandle] of `allocate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_allocate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocate"));
+    public static final Supplier<VarHandle> VH_allocate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocate")));
     /// The byte offset of `reallocate`.
     public static final long OFFSET_reallocate = LAYOUT.byteOffset(PathElement.groupElement("reallocate"));
     /// The memory layout of `reallocate`.
     public static final MemoryLayout LAYOUT_reallocate = LAYOUT.select(PathElement.groupElement("reallocate"));
     /// The [VarHandle] of `reallocate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_reallocate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reallocate"));
+    public static final Supplier<VarHandle> VH_reallocate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("reallocate")));
     /// The byte offset of `deallocate`.
     public static final long OFFSET_deallocate = LAYOUT.byteOffset(PathElement.groupElement("deallocate"));
     /// The memory layout of `deallocate`.
     public static final MemoryLayout LAYOUT_deallocate = LAYOUT.select(PathElement.groupElement("deallocate"));
     /// The [VarHandle] of `deallocate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deallocate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deallocate"));
+    public static final Supplier<VarHandle> VH_deallocate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deallocate")));
     /// The byte offset of `user`.
     public static final long OFFSET_user = LAYOUT.byteOffset(PathElement.groupElement("user"));
     /// The memory layout of `user`.
     public static final MemoryLayout LAYOUT_user = LAYOUT.select(PathElement.groupElement("user"));
     /// The [VarHandle] of `user` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_user = LAYOUT.arrayElementVarHandle(PathElement.groupElement("user"));
+    public static final Supplier<VarHandle> VH_user = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("user")));
 
     /// Creates `GLFWAllocator` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class GLFWAllocator extends GroupType {
     /// {@return `allocate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment allocate(MemorySegment segment, long index) { return (MemorySegment) VH_allocate.get(segment, 0L, index); }
+    public static MemorySegment allocate(MemorySegment segment, long index) { return (MemorySegment) VH_allocate.get().get(segment, 0L, index); }
     /// {@return `allocate`}
     public MemorySegment allocate() { return allocate(this.segment(), 0L); }
     /// Sets `allocate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void allocate(MemorySegment segment, long index, MemorySegment value) { VH_allocate.set(segment, 0L, index, value); }
+    public static void allocate(MemorySegment segment, long index, MemorySegment value) { VH_allocate.get().set(segment, 0L, index, value); }
     /// Sets `allocate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class GLFWAllocator extends GroupType {
     /// {@return `reallocate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment reallocate(MemorySegment segment, long index) { return (MemorySegment) VH_reallocate.get(segment, 0L, index); }
+    public static MemorySegment reallocate(MemorySegment segment, long index) { return (MemorySegment) VH_reallocate.get().get(segment, 0L, index); }
     /// {@return `reallocate`}
     public MemorySegment reallocate() { return reallocate(this.segment(), 0L); }
     /// Sets `reallocate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void reallocate(MemorySegment segment, long index, MemorySegment value) { VH_reallocate.set(segment, 0L, index, value); }
+    public static void reallocate(MemorySegment segment, long index, MemorySegment value) { VH_reallocate.get().set(segment, 0L, index, value); }
     /// Sets `reallocate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class GLFWAllocator extends GroupType {
     /// {@return `deallocate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment deallocate(MemorySegment segment, long index) { return (MemorySegment) VH_deallocate.get(segment, 0L, index); }
+    public static MemorySegment deallocate(MemorySegment segment, long index) { return (MemorySegment) VH_deallocate.get().get(segment, 0L, index); }
     /// {@return `deallocate`}
     public MemorySegment deallocate() { return deallocate(this.segment(), 0L); }
     /// Sets `deallocate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deallocate(MemorySegment segment, long index, MemorySegment value) { VH_deallocate.set(segment, 0L, index, value); }
+    public static void deallocate(MemorySegment segment, long index, MemorySegment value) { VH_deallocate.get().set(segment, 0L, index, value); }
     /// Sets `deallocate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class GLFWAllocator extends GroupType {
     /// {@return `user` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment user(MemorySegment segment, long index) { return (MemorySegment) VH_user.get(segment, 0L, index); }
+    public static MemorySegment user(MemorySegment segment, long index) { return (MemorySegment) VH_user.get().get(segment, 0L, index); }
     /// {@return `user`}
     public MemorySegment user() { return user(this.segment(), 0L); }
     /// Sets `user` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void user(MemorySegment segment, long index, MemorySegment value) { VH_user.set(segment, 0L, index, value); }
+    public static void user(MemorySegment segment, long index, MemorySegment value) { VH_user.get().set(segment, 0L, index, value); }
     /// Sets `user` with the given value.
     /// @param value the value
     /// @return `this`

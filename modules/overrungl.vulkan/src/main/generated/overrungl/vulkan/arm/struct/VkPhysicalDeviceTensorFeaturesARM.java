@@ -41,49 +41,49 @@ public final class VkPhysicalDeviceTensorFeaturesARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `tensorNonPacked`.
     public static final long OFFSET_tensorNonPacked = LAYOUT.byteOffset(PathElement.groupElement("tensorNonPacked"));
     /// The memory layout of `tensorNonPacked`.
     public static final MemoryLayout LAYOUT_tensorNonPacked = LAYOUT.select(PathElement.groupElement("tensorNonPacked"));
     /// The [VarHandle] of `tensorNonPacked` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tensorNonPacked = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorNonPacked"));
+    public static final Supplier<VarHandle> VH_tensorNonPacked = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorNonPacked")));
     /// The byte offset of `shaderTensorAccess`.
     public static final long OFFSET_shaderTensorAccess = LAYOUT.byteOffset(PathElement.groupElement("shaderTensorAccess"));
     /// The memory layout of `shaderTensorAccess`.
     public static final MemoryLayout LAYOUT_shaderTensorAccess = LAYOUT.select(PathElement.groupElement("shaderTensorAccess"));
     /// The [VarHandle] of `shaderTensorAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderTensorAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTensorAccess"));
+    public static final Supplier<VarHandle> VH_shaderTensorAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTensorAccess")));
     /// The byte offset of `shaderStorageTensorArrayDynamicIndexing`.
     public static final long OFFSET_shaderStorageTensorArrayDynamicIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderStorageTensorArrayDynamicIndexing"));
     /// The memory layout of `shaderStorageTensorArrayDynamicIndexing`.
     public static final MemoryLayout LAYOUT_shaderStorageTensorArrayDynamicIndexing = LAYOUT.select(PathElement.groupElement("shaderStorageTensorArrayDynamicIndexing"));
     /// The [VarHandle] of `shaderStorageTensorArrayDynamicIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderStorageTensorArrayDynamicIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageTensorArrayDynamicIndexing"));
+    public static final Supplier<VarHandle> VH_shaderStorageTensorArrayDynamicIndexing = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageTensorArrayDynamicIndexing")));
     /// The byte offset of `shaderStorageTensorArrayNonUniformIndexing`.
     public static final long OFFSET_shaderStorageTensorArrayNonUniformIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderStorageTensorArrayNonUniformIndexing"));
     /// The memory layout of `shaderStorageTensorArrayNonUniformIndexing`.
     public static final MemoryLayout LAYOUT_shaderStorageTensorArrayNonUniformIndexing = LAYOUT.select(PathElement.groupElement("shaderStorageTensorArrayNonUniformIndexing"));
     /// The [VarHandle] of `shaderStorageTensorArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderStorageTensorArrayNonUniformIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageTensorArrayNonUniformIndexing"));
+    public static final Supplier<VarHandle> VH_shaderStorageTensorArrayNonUniformIndexing = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageTensorArrayNonUniformIndexing")));
     /// The byte offset of `descriptorBindingStorageTensorUpdateAfterBind`.
     public static final long OFFSET_descriptorBindingStorageTensorUpdateAfterBind = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingStorageTensorUpdateAfterBind"));
     /// The memory layout of `descriptorBindingStorageTensorUpdateAfterBind`.
     public static final MemoryLayout LAYOUT_descriptorBindingStorageTensorUpdateAfterBind = LAYOUT.select(PathElement.groupElement("descriptorBindingStorageTensorUpdateAfterBind"));
     /// The [VarHandle] of `descriptorBindingStorageTensorUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorBindingStorageTensorUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingStorageTensorUpdateAfterBind"));
+    public static final Supplier<VarHandle> VH_descriptorBindingStorageTensorUpdateAfterBind = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingStorageTensorUpdateAfterBind")));
     /// The byte offset of `tensors`.
     public static final long OFFSET_tensors = LAYOUT.byteOffset(PathElement.groupElement("tensors"));
     /// The memory layout of `tensors`.
     public static final MemoryLayout LAYOUT_tensors = LAYOUT.select(PathElement.groupElement("tensors"));
     /// The [VarHandle] of `tensors` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tensors = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensors"));
+    public static final Supplier<VarHandle> VH_tensors = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensors")));
 
     /// Creates `VkPhysicalDeviceTensorFeaturesARM` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceTensorFeaturesARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceTensorFeaturesARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceTensorFeaturesARM extends GroupType {
     /// {@return `tensorNonPacked` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tensorNonPacked(MemorySegment segment, long index) { return (int) VH_tensorNonPacked.get(segment, 0L, index); }
+    public static int tensorNonPacked(MemorySegment segment, long index) { return (int) VH_tensorNonPacked.get().get(segment, 0L, index); }
     /// {@return `tensorNonPacked`}
     public int tensorNonPacked() { return tensorNonPacked(this.segment(), 0L); }
     /// Sets `tensorNonPacked` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tensorNonPacked(MemorySegment segment, long index, int value) { VH_tensorNonPacked.set(segment, 0L, index, value); }
+    public static void tensorNonPacked(MemorySegment segment, long index, int value) { VH_tensorNonPacked.get().set(segment, 0L, index, value); }
     /// Sets `tensorNonPacked` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceTensorFeaturesARM extends GroupType {
     /// {@return `shaderTensorAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderTensorAccess(MemorySegment segment, long index) { return (int) VH_shaderTensorAccess.get(segment, 0L, index); }
+    public static int shaderTensorAccess(MemorySegment segment, long index) { return (int) VH_shaderTensorAccess.get().get(segment, 0L, index); }
     /// {@return `shaderTensorAccess`}
     public int shaderTensorAccess() { return shaderTensorAccess(this.segment(), 0L); }
     /// Sets `shaderTensorAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderTensorAccess(MemorySegment segment, long index, int value) { VH_shaderTensorAccess.set(segment, 0L, index, value); }
+    public static void shaderTensorAccess(MemorySegment segment, long index, int value) { VH_shaderTensorAccess.get().set(segment, 0L, index, value); }
     /// Sets `shaderTensorAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceTensorFeaturesARM extends GroupType {
     /// {@return `shaderStorageTensorArrayDynamicIndexing` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderStorageTensorArrayDynamicIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageTensorArrayDynamicIndexing.get(segment, 0L, index); }
+    public static int shaderStorageTensorArrayDynamicIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageTensorArrayDynamicIndexing.get().get(segment, 0L, index); }
     /// {@return `shaderStorageTensorArrayDynamicIndexing`}
     public int shaderStorageTensorArrayDynamicIndexing() { return shaderStorageTensorArrayDynamicIndexing(this.segment(), 0L); }
     /// Sets `shaderStorageTensorArrayDynamicIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderStorageTensorArrayDynamicIndexing(MemorySegment segment, long index, int value) { VH_shaderStorageTensorArrayDynamicIndexing.set(segment, 0L, index, value); }
+    public static void shaderStorageTensorArrayDynamicIndexing(MemorySegment segment, long index, int value) { VH_shaderStorageTensorArrayDynamicIndexing.get().set(segment, 0L, index, value); }
     /// Sets `shaderStorageTensorArrayDynamicIndexing` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPhysicalDeviceTensorFeaturesARM extends GroupType {
     /// {@return `shaderStorageTensorArrayNonUniformIndexing` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderStorageTensorArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageTensorArrayNonUniformIndexing.get(segment, 0L, index); }
+    public static int shaderStorageTensorArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageTensorArrayNonUniformIndexing.get().get(segment, 0L, index); }
     /// {@return `shaderStorageTensorArrayNonUniformIndexing`}
     public int shaderStorageTensorArrayNonUniformIndexing() { return shaderStorageTensorArrayNonUniformIndexing(this.segment(), 0L); }
     /// Sets `shaderStorageTensorArrayNonUniformIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderStorageTensorArrayNonUniformIndexing(MemorySegment segment, long index, int value) { VH_shaderStorageTensorArrayNonUniformIndexing.set(segment, 0L, index, value); }
+    public static void shaderStorageTensorArrayNonUniformIndexing(MemorySegment segment, long index, int value) { VH_shaderStorageTensorArrayNonUniformIndexing.get().set(segment, 0L, index, value); }
     /// Sets `shaderStorageTensorArrayNonUniformIndexing` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPhysicalDeviceTensorFeaturesARM extends GroupType {
     /// {@return `descriptorBindingStorageTensorUpdateAfterBind` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorBindingStorageTensorUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingStorageTensorUpdateAfterBind.get(segment, 0L, index); }
+    public static int descriptorBindingStorageTensorUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingStorageTensorUpdateAfterBind.get().get(segment, 0L, index); }
     /// {@return `descriptorBindingStorageTensorUpdateAfterBind`}
     public int descriptorBindingStorageTensorUpdateAfterBind() { return descriptorBindingStorageTensorUpdateAfterBind(this.segment(), 0L); }
     /// Sets `descriptorBindingStorageTensorUpdateAfterBind` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorBindingStorageTensorUpdateAfterBind(MemorySegment segment, long index, int value) { VH_descriptorBindingStorageTensorUpdateAfterBind.set(segment, 0L, index, value); }
+    public static void descriptorBindingStorageTensorUpdateAfterBind(MemorySegment segment, long index, int value) { VH_descriptorBindingStorageTensorUpdateAfterBind.get().set(segment, 0L, index, value); }
     /// Sets `descriptorBindingStorageTensorUpdateAfterBind` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPhysicalDeviceTensorFeaturesARM extends GroupType {
     /// {@return `tensors` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tensors(MemorySegment segment, long index) { return (int) VH_tensors.get(segment, 0L, index); }
+    public static int tensors(MemorySegment segment, long index) { return (int) VH_tensors.get().get(segment, 0L, index); }
     /// {@return `tensors`}
     public int tensors() { return tensors(this.segment(), 0L); }
     /// Sets `tensors` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tensors(MemorySegment segment, long index, int value) { VH_tensors.set(segment, 0L, index, value); }
+    public static void tensors(MemorySegment segment, long index, int value) { VH_tensors.get().set(segment, 0L, index, value); }
     /// Sets `tensors` with the given value.
     /// @param value the value
     /// @return `this`

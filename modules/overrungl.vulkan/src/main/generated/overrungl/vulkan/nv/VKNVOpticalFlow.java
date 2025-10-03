@@ -2,6 +2,7 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -58,11 +59,11 @@ public final class VKNVOpticalFlow {
     public static final long VK_FORMAT_FEATURE_2_OPTICAL_FLOW_VECTOR_BIT_NV = 0x20000000000L;
     public static final long VK_FORMAT_FEATURE_2_OPTICAL_FLOW_COST_BIT_NV = 0x40000000000L;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCreateOpticalFlowSessionNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyOpticalFlowSessionNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkBindOpticalFlowSessionImageNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkCmdOpticalFlowExecuteNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCreateOpticalFlowSessionNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkDestroyOpticalFlowSessionNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkBindOpticalFlowSessionImageNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_vkCmdOpticalFlowExecuteNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -75,7 +76,7 @@ public final class VKNVOpticalFlow {
     public static int vkGetPhysicalDeviceOpticalFlowImageFormatsNV(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pOpticalFlowImageFormatInfo, @NonNull MemorySegment pFormatCount, @NonNull MemorySegment pImageFormatProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceOpticalFlowImageFormatsNV", physicalDevice, pOpticalFlowImageFormatInfo, pFormatCount, pImageFormatProperties); }
-        return (int) Handles.MH_vkGetPhysicalDeviceOpticalFlowImageFormatsNV.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV, physicalDevice.segment(), pOpticalFlowImageFormatInfo, pFormatCount, pImageFormatProperties); }
+        return (int) Handles.MH_vkGetPhysicalDeviceOpticalFlowImageFormatsNV.get().invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV, physicalDevice.segment(), pOpticalFlowImageFormatInfo, pFormatCount, pImageFormatProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceOpticalFlowImageFormatsNV", e); }
     }
 
@@ -86,7 +87,7 @@ public final class VKNVOpticalFlow {
     public static int vkCreateOpticalFlowSessionNV(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSession) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateOpticalFlowSessionNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateOpticalFlowSessionNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateOpticalFlowSessionNV", device, pCreateInfo, pAllocator, pSession); }
-        return (int) Handles.MH_vkCreateOpticalFlowSessionNV.invokeExact(device.capabilities().PFN_vkCreateOpticalFlowSessionNV, device.segment(), pCreateInfo, pAllocator, pSession); }
+        return (int) Handles.MH_vkCreateOpticalFlowSessionNV.get().invokeExact(device.capabilities().PFN_vkCreateOpticalFlowSessionNV, device.segment(), pCreateInfo, pAllocator, pSession); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateOpticalFlowSessionNV", e); }
     }
 
@@ -97,7 +98,7 @@ public final class VKNVOpticalFlow {
     public static void vkDestroyOpticalFlowSessionNV(@NonNull VkDevice device, long session, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyOpticalFlowSessionNV)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyOpticalFlowSessionNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyOpticalFlowSessionNV", device, session, pAllocator); }
-        Handles.MH_vkDestroyOpticalFlowSessionNV.invokeExact(device.capabilities().PFN_vkDestroyOpticalFlowSessionNV, device.segment(), session, pAllocator); }
+        Handles.MH_vkDestroyOpticalFlowSessionNV.get().invokeExact(device.capabilities().PFN_vkDestroyOpticalFlowSessionNV, device.segment(), session, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyOpticalFlowSessionNV", e); }
     }
 
@@ -108,7 +109,7 @@ public final class VKNVOpticalFlow {
     public static int vkBindOpticalFlowSessionImageNV(@NonNull VkDevice device, long session, int bindingPoint, long view, int layout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindOpticalFlowSessionImageNV)) throw new VKSymbolNotFoundError("Symbol not found: vkBindOpticalFlowSessionImageNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkBindOpticalFlowSessionImageNV", device, session, bindingPoint, view, layout); }
-        return (int) Handles.MH_vkBindOpticalFlowSessionImageNV.invokeExact(device.capabilities().PFN_vkBindOpticalFlowSessionImageNV, device.segment(), session, bindingPoint, view, layout); }
+        return (int) Handles.MH_vkBindOpticalFlowSessionImageNV.get().invokeExact(device.capabilities().PFN_vkBindOpticalFlowSessionImageNV, device.segment(), session, bindingPoint, view, layout); }
         catch (Throwable e) { throw new RuntimeException("error in vkBindOpticalFlowSessionImageNV", e); }
     }
 
@@ -119,7 +120,7 @@ public final class VKNVOpticalFlow {
     public static void vkCmdOpticalFlowExecuteNV(@NonNull VkCommandBuffer commandBuffer, long session, @NonNull MemorySegment pExecuteInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdOpticalFlowExecuteNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdOpticalFlowExecuteNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdOpticalFlowExecuteNV", commandBuffer, session, pExecuteInfo); }
-        Handles.MH_vkCmdOpticalFlowExecuteNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdOpticalFlowExecuteNV, commandBuffer.segment(), session, pExecuteInfo); }
+        Handles.MH_vkCmdOpticalFlowExecuteNV.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdOpticalFlowExecuteNV, commandBuffer.segment(), session, pExecuteInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdOpticalFlowExecuteNV", e); }
     }
 

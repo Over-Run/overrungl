@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -12,7 +13,7 @@ public final class GLEXTStencilTwoSide {
     public static final int GL_ACTIVE_STENCIL_FACE_EXT = 0x8911;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glActiveStencilFaceEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glActiveStencilFaceEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glActiveStencilFaceEXT;
         private Handles(GLLoadFunc func) {
             PFN_glActiveStencilFaceEXT = func.invoke("glActiveStencilFaceEXT");
@@ -30,7 +31,7 @@ public final class GLEXTStencilTwoSide {
     public void ActiveStencilFaceEXT(int face) {
         if (MemoryUtil.isNullPointer(handles.PFN_glActiveStencilFaceEXT)) throw new GLSymbolNotFoundError("Symbol not found: glActiveStencilFaceEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glActiveStencilFaceEXT", face); }
-        Handles.MH_glActiveStencilFaceEXT.invokeExact(handles.PFN_glActiveStencilFaceEXT, face); }
+        Handles.MH_glActiveStencilFaceEXT.get().invokeExact(handles.PFN_glActiveStencilFaceEXT, face); }
         catch (Throwable e) { throw new RuntimeException("error in ActiveStencilFaceEXT", e); }
     }
 

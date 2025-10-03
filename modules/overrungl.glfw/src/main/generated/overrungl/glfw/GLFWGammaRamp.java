@@ -33,25 +33,25 @@ public final class GLFWGammaRamp extends GroupType {
     /// The memory layout of `red`.
     public static final MemoryLayout LAYOUT_red = LAYOUT.select(PathElement.groupElement("red"));
     /// The [VarHandle] of `red` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_red = LAYOUT.arrayElementVarHandle(PathElement.groupElement("red"));
+    public static final Supplier<VarHandle> VH_red = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("red")));
     /// The byte offset of `green`.
     public static final long OFFSET_green = LAYOUT.byteOffset(PathElement.groupElement("green"));
     /// The memory layout of `green`.
     public static final MemoryLayout LAYOUT_green = LAYOUT.select(PathElement.groupElement("green"));
     /// The [VarHandle] of `green` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_green = LAYOUT.arrayElementVarHandle(PathElement.groupElement("green"));
+    public static final Supplier<VarHandle> VH_green = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("green")));
     /// The byte offset of `blue`.
     public static final long OFFSET_blue = LAYOUT.byteOffset(PathElement.groupElement("blue"));
     /// The memory layout of `blue`.
     public static final MemoryLayout LAYOUT_blue = LAYOUT.select(PathElement.groupElement("blue"));
     /// The [VarHandle] of `blue` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_blue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blue"));
+    public static final Supplier<VarHandle> VH_blue = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("blue")));
     /// The byte offset of `size`.
     public static final long OFFSET_size = LAYOUT.byteOffset(PathElement.groupElement("size"));
     /// The memory layout of `size`.
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final Supplier<VarHandle> VH_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("size")));
 
     /// Creates `GLFWGammaRamp` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class GLFWGammaRamp extends GroupType {
     /// {@return `red` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment red(MemorySegment segment, long index) { return (MemorySegment) VH_red.get(segment, 0L, index); }
+    public static MemorySegment red(MemorySegment segment, long index) { return (MemorySegment) VH_red.get().get(segment, 0L, index); }
     /// {@return `red`}
     public MemorySegment red() { return red(this.segment(), 0L); }
     /// Sets `red` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void red(MemorySegment segment, long index, MemorySegment value) { VH_red.set(segment, 0L, index, value); }
+    public static void red(MemorySegment segment, long index, MemorySegment value) { VH_red.get().set(segment, 0L, index, value); }
     /// Sets `red` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class GLFWGammaRamp extends GroupType {
     /// {@return `green` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment green(MemorySegment segment, long index) { return (MemorySegment) VH_green.get(segment, 0L, index); }
+    public static MemorySegment green(MemorySegment segment, long index) { return (MemorySegment) VH_green.get().get(segment, 0L, index); }
     /// {@return `green`}
     public MemorySegment green() { return green(this.segment(), 0L); }
     /// Sets `green` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void green(MemorySegment segment, long index, MemorySegment value) { VH_green.set(segment, 0L, index, value); }
+    public static void green(MemorySegment segment, long index, MemorySegment value) { VH_green.get().set(segment, 0L, index, value); }
     /// Sets `green` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class GLFWGammaRamp extends GroupType {
     /// {@return `blue` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment blue(MemorySegment segment, long index) { return (MemorySegment) VH_blue.get(segment, 0L, index); }
+    public static MemorySegment blue(MemorySegment segment, long index) { return (MemorySegment) VH_blue.get().get(segment, 0L, index); }
     /// {@return `blue`}
     public MemorySegment blue() { return blue(this.segment(), 0L); }
     /// Sets `blue` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void blue(MemorySegment segment, long index, MemorySegment value) { VH_blue.set(segment, 0L, index, value); }
+    public static void blue(MemorySegment segment, long index, MemorySegment value) { VH_blue.get().set(segment, 0L, index, value); }
     /// Sets `blue` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class GLFWGammaRamp extends GroupType {
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int size(MemorySegment segment, long index) { return (int) VH_size.get(segment, 0L, index); }
+    public static int size(MemorySegment segment, long index) { return (int) VH_size.get().get(segment, 0L, index); }
     /// {@return `size`}
     public int size() { return size(this.segment(), 0L); }
     /// Sets `size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void size(MemorySegment segment, long index, int value) { VH_size.set(segment, 0L, index, value); }
+    public static void size(MemorySegment segment, long index, int value) { VH_size.get().set(segment, 0L, index, value); }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`

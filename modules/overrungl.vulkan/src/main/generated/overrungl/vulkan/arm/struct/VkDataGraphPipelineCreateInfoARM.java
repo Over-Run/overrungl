@@ -37,37 +37,37 @@ public final class VkDataGraphPipelineCreateInfoARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `layout`.
     public static final long OFFSET_layout = LAYOUT.byteOffset(PathElement.groupElement("layout"));
     /// The memory layout of `layout`.
     public static final MemoryLayout LAYOUT_layout = LAYOUT.select(PathElement.groupElement("layout"));
     /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
+    public static final Supplier<VarHandle> VH_layout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout")));
     /// The byte offset of `resourceInfoCount`.
     public static final long OFFSET_resourceInfoCount = LAYOUT.byteOffset(PathElement.groupElement("resourceInfoCount"));
     /// The memory layout of `resourceInfoCount`.
     public static final MemoryLayout LAYOUT_resourceInfoCount = LAYOUT.select(PathElement.groupElement("resourceInfoCount"));
     /// The [VarHandle] of `resourceInfoCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_resourceInfoCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resourceInfoCount"));
+    public static final Supplier<VarHandle> VH_resourceInfoCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("resourceInfoCount")));
     /// The byte offset of `pResourceInfos`.
     public static final long OFFSET_pResourceInfos = LAYOUT.byteOffset(PathElement.groupElement("pResourceInfos"));
     /// The memory layout of `pResourceInfos`.
     public static final MemoryLayout LAYOUT_pResourceInfos = LAYOUT.select(PathElement.groupElement("pResourceInfos"));
     /// The [VarHandle] of `pResourceInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pResourceInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pResourceInfos"));
+    public static final Supplier<VarHandle> VH_pResourceInfos = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pResourceInfos")));
 
     /// Creates `VkDataGraphPipelineCreateInfoARM` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkDataGraphPipelineCreateInfoARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkDataGraphPipelineCreateInfoARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkDataGraphPipelineCreateInfoARM extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long flags(MemorySegment segment, long index) { return (long) VH_flags.get(segment, 0L, index); }
+    public static long flags(MemorySegment segment, long index) { return (long) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public long flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, long value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, long value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkDataGraphPipelineCreateInfoARM extends GroupType {
     /// {@return `layout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long layout(MemorySegment segment, long index) { return (long) VH_layout.get(segment, 0L, index); }
+    public static long layout(MemorySegment segment, long index) { return (long) VH_layout.get().get(segment, 0L, index); }
     /// {@return `layout`}
     public long layout() { return layout(this.segment(), 0L); }
     /// Sets `layout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void layout(MemorySegment segment, long index, long value) { VH_layout.set(segment, 0L, index, value); }
+    public static void layout(MemorySegment segment, long index, long value) { VH_layout.get().set(segment, 0L, index, value); }
     /// Sets `layout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkDataGraphPipelineCreateInfoARM extends GroupType {
     /// {@return `resourceInfoCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int resourceInfoCount(MemorySegment segment, long index) { return (int) VH_resourceInfoCount.get(segment, 0L, index); }
+    public static int resourceInfoCount(MemorySegment segment, long index) { return (int) VH_resourceInfoCount.get().get(segment, 0L, index); }
     /// {@return `resourceInfoCount`}
     public int resourceInfoCount() { return resourceInfoCount(this.segment(), 0L); }
     /// Sets `resourceInfoCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void resourceInfoCount(MemorySegment segment, long index, int value) { VH_resourceInfoCount.set(segment, 0L, index, value); }
+    public static void resourceInfoCount(MemorySegment segment, long index, int value) { VH_resourceInfoCount.get().set(segment, 0L, index, value); }
     /// Sets `resourceInfoCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkDataGraphPipelineCreateInfoARM extends GroupType {
     /// {@return `pResourceInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pResourceInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pResourceInfos.get(segment, 0L, index); }
+    public static MemorySegment pResourceInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pResourceInfos.get().get(segment, 0L, index); }
     /// {@return `pResourceInfos`}
     public MemorySegment pResourceInfos() { return pResourceInfos(this.segment(), 0L); }
     /// Sets `pResourceInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pResourceInfos(MemorySegment segment, long index, MemorySegment value) { VH_pResourceInfos.set(segment, 0L, index, value); }
+    public static void pResourceInfos(MemorySegment segment, long index, MemorySegment value) { VH_pResourceInfos.get().set(segment, 0L, index, value); }
     /// Sets `pResourceInfos` with the given value.
     /// @param value the value
     /// @return `this`

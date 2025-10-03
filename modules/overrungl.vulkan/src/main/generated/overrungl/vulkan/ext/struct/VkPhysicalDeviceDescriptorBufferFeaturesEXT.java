@@ -37,37 +37,37 @@ public final class VkPhysicalDeviceDescriptorBufferFeaturesEXT extends GroupType
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `descriptorBuffer`.
     public static final long OFFSET_descriptorBuffer = LAYOUT.byteOffset(PathElement.groupElement("descriptorBuffer"));
     /// The memory layout of `descriptorBuffer`.
     public static final MemoryLayout LAYOUT_descriptorBuffer = LAYOUT.select(PathElement.groupElement("descriptorBuffer"));
     /// The [VarHandle] of `descriptorBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBuffer"));
+    public static final Supplier<VarHandle> VH_descriptorBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBuffer")));
     /// The byte offset of `descriptorBufferCaptureReplay`.
     public static final long OFFSET_descriptorBufferCaptureReplay = LAYOUT.byteOffset(PathElement.groupElement("descriptorBufferCaptureReplay"));
     /// The memory layout of `descriptorBufferCaptureReplay`.
     public static final MemoryLayout LAYOUT_descriptorBufferCaptureReplay = LAYOUT.select(PathElement.groupElement("descriptorBufferCaptureReplay"));
     /// The [VarHandle] of `descriptorBufferCaptureReplay` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorBufferCaptureReplay = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBufferCaptureReplay"));
+    public static final Supplier<VarHandle> VH_descriptorBufferCaptureReplay = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBufferCaptureReplay")));
     /// The byte offset of `descriptorBufferImageLayoutIgnored`.
     public static final long OFFSET_descriptorBufferImageLayoutIgnored = LAYOUT.byteOffset(PathElement.groupElement("descriptorBufferImageLayoutIgnored"));
     /// The memory layout of `descriptorBufferImageLayoutIgnored`.
     public static final MemoryLayout LAYOUT_descriptorBufferImageLayoutIgnored = LAYOUT.select(PathElement.groupElement("descriptorBufferImageLayoutIgnored"));
     /// The [VarHandle] of `descriptorBufferImageLayoutIgnored` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorBufferImageLayoutIgnored = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBufferImageLayoutIgnored"));
+    public static final Supplier<VarHandle> VH_descriptorBufferImageLayoutIgnored = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBufferImageLayoutIgnored")));
     /// The byte offset of `descriptorBufferPushDescriptors`.
     public static final long OFFSET_descriptorBufferPushDescriptors = LAYOUT.byteOffset(PathElement.groupElement("descriptorBufferPushDescriptors"));
     /// The memory layout of `descriptorBufferPushDescriptors`.
     public static final MemoryLayout LAYOUT_descriptorBufferPushDescriptors = LAYOUT.select(PathElement.groupElement("descriptorBufferPushDescriptors"));
     /// The [VarHandle] of `descriptorBufferPushDescriptors` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorBufferPushDescriptors = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBufferPushDescriptors"));
+    public static final Supplier<VarHandle> VH_descriptorBufferPushDescriptors = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBufferPushDescriptors")));
 
     /// Creates `VkPhysicalDeviceDescriptorBufferFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceDescriptorBufferFeaturesEXT extends GroupType
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceDescriptorBufferFeaturesEXT extends GroupType
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceDescriptorBufferFeaturesEXT extends GroupType
     /// {@return `descriptorBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorBuffer(MemorySegment segment, long index) { return (int) VH_descriptorBuffer.get(segment, 0L, index); }
+    public static int descriptorBuffer(MemorySegment segment, long index) { return (int) VH_descriptorBuffer.get().get(segment, 0L, index); }
     /// {@return `descriptorBuffer`}
     public int descriptorBuffer() { return descriptorBuffer(this.segment(), 0L); }
     /// Sets `descriptorBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorBuffer(MemorySegment segment, long index, int value) { VH_descriptorBuffer.set(segment, 0L, index, value); }
+    public static void descriptorBuffer(MemorySegment segment, long index, int value) { VH_descriptorBuffer.get().set(segment, 0L, index, value); }
     /// Sets `descriptorBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceDescriptorBufferFeaturesEXT extends GroupType
     /// {@return `descriptorBufferCaptureReplay` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorBufferCaptureReplay(MemorySegment segment, long index) { return (int) VH_descriptorBufferCaptureReplay.get(segment, 0L, index); }
+    public static int descriptorBufferCaptureReplay(MemorySegment segment, long index) { return (int) VH_descriptorBufferCaptureReplay.get().get(segment, 0L, index); }
     /// {@return `descriptorBufferCaptureReplay`}
     public int descriptorBufferCaptureReplay() { return descriptorBufferCaptureReplay(this.segment(), 0L); }
     /// Sets `descriptorBufferCaptureReplay` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorBufferCaptureReplay(MemorySegment segment, long index, int value) { VH_descriptorBufferCaptureReplay.set(segment, 0L, index, value); }
+    public static void descriptorBufferCaptureReplay(MemorySegment segment, long index, int value) { VH_descriptorBufferCaptureReplay.get().set(segment, 0L, index, value); }
     /// Sets `descriptorBufferCaptureReplay` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceDescriptorBufferFeaturesEXT extends GroupType
     /// {@return `descriptorBufferImageLayoutIgnored` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorBufferImageLayoutIgnored(MemorySegment segment, long index) { return (int) VH_descriptorBufferImageLayoutIgnored.get(segment, 0L, index); }
+    public static int descriptorBufferImageLayoutIgnored(MemorySegment segment, long index) { return (int) VH_descriptorBufferImageLayoutIgnored.get().get(segment, 0L, index); }
     /// {@return `descriptorBufferImageLayoutIgnored`}
     public int descriptorBufferImageLayoutIgnored() { return descriptorBufferImageLayoutIgnored(this.segment(), 0L); }
     /// Sets `descriptorBufferImageLayoutIgnored` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorBufferImageLayoutIgnored(MemorySegment segment, long index, int value) { VH_descriptorBufferImageLayoutIgnored.set(segment, 0L, index, value); }
+    public static void descriptorBufferImageLayoutIgnored(MemorySegment segment, long index, int value) { VH_descriptorBufferImageLayoutIgnored.get().set(segment, 0L, index, value); }
     /// Sets `descriptorBufferImageLayoutIgnored` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceDescriptorBufferFeaturesEXT extends GroupType
     /// {@return `descriptorBufferPushDescriptors` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorBufferPushDescriptors(MemorySegment segment, long index) { return (int) VH_descriptorBufferPushDescriptors.get(segment, 0L, index); }
+    public static int descriptorBufferPushDescriptors(MemorySegment segment, long index) { return (int) VH_descriptorBufferPushDescriptors.get().get(segment, 0L, index); }
     /// {@return `descriptorBufferPushDescriptors`}
     public int descriptorBufferPushDescriptors() { return descriptorBufferPushDescriptors(this.segment(), 0L); }
     /// Sets `descriptorBufferPushDescriptors` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorBufferPushDescriptors(MemorySegment segment, long index, int value) { VH_descriptorBufferPushDescriptors.set(segment, 0L, index, value); }
+    public static void descriptorBufferPushDescriptors(MemorySegment segment, long index, int value) { VH_descriptorBufferPushDescriptors.get().set(segment, 0L, index, value); }
     /// Sets `descriptorBufferPushDescriptors` with the given value.
     /// @param value the value
     /// @return `this`

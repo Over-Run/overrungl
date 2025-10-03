@@ -33,25 +33,25 @@ public final class VkDeviceGroupDeviceCreateInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `physicalDeviceCount`.
     public static final long OFFSET_physicalDeviceCount = LAYOUT.byteOffset(PathElement.groupElement("physicalDeviceCount"));
     /// The memory layout of `physicalDeviceCount`.
     public static final MemoryLayout LAYOUT_physicalDeviceCount = LAYOUT.select(PathElement.groupElement("physicalDeviceCount"));
     /// The [VarHandle] of `physicalDeviceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_physicalDeviceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalDeviceCount"));
+    public static final Supplier<VarHandle> VH_physicalDeviceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalDeviceCount")));
     /// The byte offset of `pPhysicalDevices`.
     public static final long OFFSET_pPhysicalDevices = LAYOUT.byteOffset(PathElement.groupElement("pPhysicalDevices"));
     /// The memory layout of `pPhysicalDevices`.
     public static final MemoryLayout LAYOUT_pPhysicalDevices = LAYOUT.select(PathElement.groupElement("pPhysicalDevices"));
     /// The [VarHandle] of `pPhysicalDevices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPhysicalDevices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPhysicalDevices"));
+    public static final Supplier<VarHandle> VH_pPhysicalDevices = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPhysicalDevices")));
 
     /// Creates `VkDeviceGroupDeviceCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkDeviceGroupDeviceCreateInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkDeviceGroupDeviceCreateInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkDeviceGroupDeviceCreateInfo extends GroupType {
     /// {@return `physicalDeviceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int physicalDeviceCount(MemorySegment segment, long index) { return (int) VH_physicalDeviceCount.get(segment, 0L, index); }
+    public static int physicalDeviceCount(MemorySegment segment, long index) { return (int) VH_physicalDeviceCount.get().get(segment, 0L, index); }
     /// {@return `physicalDeviceCount`}
     public int physicalDeviceCount() { return physicalDeviceCount(this.segment(), 0L); }
     /// Sets `physicalDeviceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void physicalDeviceCount(MemorySegment segment, long index, int value) { VH_physicalDeviceCount.set(segment, 0L, index, value); }
+    public static void physicalDeviceCount(MemorySegment segment, long index, int value) { VH_physicalDeviceCount.get().set(segment, 0L, index, value); }
     /// Sets `physicalDeviceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkDeviceGroupDeviceCreateInfo extends GroupType {
     /// {@return `pPhysicalDevices` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pPhysicalDevices(MemorySegment segment, long index) { return (MemorySegment) VH_pPhysicalDevices.get(segment, 0L, index); }
+    public static MemorySegment pPhysicalDevices(MemorySegment segment, long index) { return (MemorySegment) VH_pPhysicalDevices.get().get(segment, 0L, index); }
     /// {@return `pPhysicalDevices`}
     public MemorySegment pPhysicalDevices() { return pPhysicalDevices(this.segment(), 0L); }
     /// Sets `pPhysicalDevices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pPhysicalDevices(MemorySegment segment, long index, MemorySegment value) { VH_pPhysicalDevices.set(segment, 0L, index, value); }
+    public static void pPhysicalDevices(MemorySegment segment, long index, MemorySegment value) { VH_pPhysicalDevices.get().set(segment, 0L, index, value); }
     /// Sets `pPhysicalDevices` with the given value.
     /// @param value the value
     /// @return `this`

@@ -31,19 +31,19 @@ public final class VkDisplayModeStereoPropertiesNV extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `hdmi3DSupported`.
     public static final long OFFSET_hdmi3DSupported = LAYOUT.byteOffset(PathElement.groupElement("hdmi3DSupported"));
     /// The memory layout of `hdmi3DSupported`.
     public static final MemoryLayout LAYOUT_hdmi3DSupported = LAYOUT.select(PathElement.groupElement("hdmi3DSupported"));
     /// The [VarHandle] of `hdmi3DSupported` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hdmi3DSupported = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hdmi3DSupported"));
+    public static final Supplier<VarHandle> VH_hdmi3DSupported = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hdmi3DSupported")));
 
     /// Creates `VkDisplayModeStereoPropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkDisplayModeStereoPropertiesNV extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkDisplayModeStereoPropertiesNV extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDisplayModeStereoPropertiesNV extends GroupType {
     /// {@return `hdmi3DSupported` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int hdmi3DSupported(MemorySegment segment, long index) { return (int) VH_hdmi3DSupported.get(segment, 0L, index); }
+    public static int hdmi3DSupported(MemorySegment segment, long index) { return (int) VH_hdmi3DSupported.get().get(segment, 0L, index); }
     /// {@return `hdmi3DSupported`}
     public int hdmi3DSupported() { return hdmi3DSupported(this.segment(), 0L); }
     /// Sets `hdmi3DSupported` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void hdmi3DSupported(MemorySegment segment, long index, int value) { VH_hdmi3DSupported.set(segment, 0L, index, value); }
+    public static void hdmi3DSupported(MemorySegment segment, long index, int value) { VH_hdmi3DSupported.get().set(segment, 0L, index, value); }
     /// Sets `hdmi3DSupported` with the given value.
     /// @param value the value
     /// @return `this`

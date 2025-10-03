@@ -2,6 +2,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -16,11 +17,11 @@ public final class VKKHRDeferredHostOperations {
     public static final int VK_OPERATION_DEFERRED_KHR = 1000268002;
     public static final int VK_OPERATION_NOT_DEFERRED_KHR = 1000268003;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateDeferredOperationKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyDeferredOperationKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDeferredOperationMaxConcurrencyKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_vkGetDeferredOperationResultKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_vkDeferredOperationJoinKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_vkCreateDeferredOperationKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkDestroyDeferredOperationKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetDeferredOperationMaxConcurrencyKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_vkGetDeferredOperationResultKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_vkDeferredOperationJoinKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)));
         private Handles() {}
     }
 
@@ -33,7 +34,7 @@ public final class VKKHRDeferredHostOperations {
     public static int vkCreateDeferredOperationKHR(@NonNull VkDevice device, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pDeferredOperation) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateDeferredOperationKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDeferredOperationKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateDeferredOperationKHR", device, pAllocator, pDeferredOperation); }
-        return (int) Handles.MH_vkCreateDeferredOperationKHR.invokeExact(device.capabilities().PFN_vkCreateDeferredOperationKHR, device.segment(), pAllocator, pDeferredOperation); }
+        return (int) Handles.MH_vkCreateDeferredOperationKHR.get().invokeExact(device.capabilities().PFN_vkCreateDeferredOperationKHR, device.segment(), pAllocator, pDeferredOperation); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDeferredOperationKHR", e); }
     }
 
@@ -44,7 +45,7 @@ public final class VKKHRDeferredHostOperations {
     public static void vkDestroyDeferredOperationKHR(@NonNull VkDevice device, long operation, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyDeferredOperationKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyDeferredOperationKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyDeferredOperationKHR", device, operation, pAllocator); }
-        Handles.MH_vkDestroyDeferredOperationKHR.invokeExact(device.capabilities().PFN_vkDestroyDeferredOperationKHR, device.segment(), operation, pAllocator); }
+        Handles.MH_vkDestroyDeferredOperationKHR.get().invokeExact(device.capabilities().PFN_vkDestroyDeferredOperationKHR, device.segment(), operation, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyDeferredOperationKHR", e); }
     }
 
@@ -55,7 +56,7 @@ public final class VKKHRDeferredHostOperations {
     public static int vkGetDeferredOperationMaxConcurrencyKHR(@NonNull VkDevice device, long operation) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeferredOperationMaxConcurrencyKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeferredOperationMaxConcurrencyKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeferredOperationMaxConcurrencyKHR", device, operation); }
-        return (int) Handles.MH_vkGetDeferredOperationMaxConcurrencyKHR.invokeExact(device.capabilities().PFN_vkGetDeferredOperationMaxConcurrencyKHR, device.segment(), operation); }
+        return (int) Handles.MH_vkGetDeferredOperationMaxConcurrencyKHR.get().invokeExact(device.capabilities().PFN_vkGetDeferredOperationMaxConcurrencyKHR, device.segment(), operation); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeferredOperationMaxConcurrencyKHR", e); }
     }
 
@@ -66,7 +67,7 @@ public final class VKKHRDeferredHostOperations {
     public static int vkGetDeferredOperationResultKHR(@NonNull VkDevice device, long operation) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeferredOperationResultKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeferredOperationResultKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeferredOperationResultKHR", device, operation); }
-        return (int) Handles.MH_vkGetDeferredOperationResultKHR.invokeExact(device.capabilities().PFN_vkGetDeferredOperationResultKHR, device.segment(), operation); }
+        return (int) Handles.MH_vkGetDeferredOperationResultKHR.get().invokeExact(device.capabilities().PFN_vkGetDeferredOperationResultKHR, device.segment(), operation); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeferredOperationResultKHR", e); }
     }
 
@@ -77,7 +78,7 @@ public final class VKKHRDeferredHostOperations {
     public static int vkDeferredOperationJoinKHR(@NonNull VkDevice device, long operation) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDeferredOperationJoinKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDeferredOperationJoinKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDeferredOperationJoinKHR", device, operation); }
-        return (int) Handles.MH_vkDeferredOperationJoinKHR.invokeExact(device.capabilities().PFN_vkDeferredOperationJoinKHR, device.segment(), operation); }
+        return (int) Handles.MH_vkDeferredOperationJoinKHR.get().invokeExact(device.capabilities().PFN_vkDeferredOperationJoinKHR, device.segment(), operation); }
         catch (Throwable e) { throw new RuntimeException("error in vkDeferredOperationJoinKHR", e); }
     }
 

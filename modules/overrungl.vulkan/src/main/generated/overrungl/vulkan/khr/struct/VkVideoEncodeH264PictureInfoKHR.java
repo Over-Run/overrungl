@@ -37,37 +37,37 @@ public final class VkVideoEncodeH264PictureInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `naluSliceEntryCount`.
     public static final long OFFSET_naluSliceEntryCount = LAYOUT.byteOffset(PathElement.groupElement("naluSliceEntryCount"));
     /// The memory layout of `naluSliceEntryCount`.
     public static final MemoryLayout LAYOUT_naluSliceEntryCount = LAYOUT.select(PathElement.groupElement("naluSliceEntryCount"));
     /// The [VarHandle] of `naluSliceEntryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_naluSliceEntryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("naluSliceEntryCount"));
+    public static final Supplier<VarHandle> VH_naluSliceEntryCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("naluSliceEntryCount")));
     /// The byte offset of `pNaluSliceEntries`.
     public static final long OFFSET_pNaluSliceEntries = LAYOUT.byteOffset(PathElement.groupElement("pNaluSliceEntries"));
     /// The memory layout of `pNaluSliceEntries`.
     public static final MemoryLayout LAYOUT_pNaluSliceEntries = LAYOUT.select(PathElement.groupElement("pNaluSliceEntries"));
     /// The [VarHandle] of `pNaluSliceEntries` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNaluSliceEntries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNaluSliceEntries"));
+    public static final Supplier<VarHandle> VH_pNaluSliceEntries = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNaluSliceEntries")));
     /// The byte offset of `pStdPictureInfo`.
     public static final long OFFSET_pStdPictureInfo = LAYOUT.byteOffset(PathElement.groupElement("pStdPictureInfo"));
     /// The memory layout of `pStdPictureInfo`.
     public static final MemoryLayout LAYOUT_pStdPictureInfo = LAYOUT.select(PathElement.groupElement("pStdPictureInfo"));
     /// The [VarHandle] of `pStdPictureInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStdPictureInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdPictureInfo"));
+    public static final Supplier<VarHandle> VH_pStdPictureInfo = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdPictureInfo")));
     /// The byte offset of `generatePrefixNalu`.
     public static final long OFFSET_generatePrefixNalu = LAYOUT.byteOffset(PathElement.groupElement("generatePrefixNalu"));
     /// The memory layout of `generatePrefixNalu`.
     public static final MemoryLayout LAYOUT_generatePrefixNalu = LAYOUT.select(PathElement.groupElement("generatePrefixNalu"));
     /// The [VarHandle] of `generatePrefixNalu` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_generatePrefixNalu = LAYOUT.arrayElementVarHandle(PathElement.groupElement("generatePrefixNalu"));
+    public static final Supplier<VarHandle> VH_generatePrefixNalu = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("generatePrefixNalu")));
 
     /// Creates `VkVideoEncodeH264PictureInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkVideoEncodeH264PictureInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkVideoEncodeH264PictureInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkVideoEncodeH264PictureInfoKHR extends GroupType {
     /// {@return `naluSliceEntryCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int naluSliceEntryCount(MemorySegment segment, long index) { return (int) VH_naluSliceEntryCount.get(segment, 0L, index); }
+    public static int naluSliceEntryCount(MemorySegment segment, long index) { return (int) VH_naluSliceEntryCount.get().get(segment, 0L, index); }
     /// {@return `naluSliceEntryCount`}
     public int naluSliceEntryCount() { return naluSliceEntryCount(this.segment(), 0L); }
     /// Sets `naluSliceEntryCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void naluSliceEntryCount(MemorySegment segment, long index, int value) { VH_naluSliceEntryCount.set(segment, 0L, index, value); }
+    public static void naluSliceEntryCount(MemorySegment segment, long index, int value) { VH_naluSliceEntryCount.get().set(segment, 0L, index, value); }
     /// Sets `naluSliceEntryCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkVideoEncodeH264PictureInfoKHR extends GroupType {
     /// {@return `pNaluSliceEntries` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNaluSliceEntries(MemorySegment segment, long index) { return (MemorySegment) VH_pNaluSliceEntries.get(segment, 0L, index); }
+    public static MemorySegment pNaluSliceEntries(MemorySegment segment, long index) { return (MemorySegment) VH_pNaluSliceEntries.get().get(segment, 0L, index); }
     /// {@return `pNaluSliceEntries`}
     public MemorySegment pNaluSliceEntries() { return pNaluSliceEntries(this.segment(), 0L); }
     /// Sets `pNaluSliceEntries` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNaluSliceEntries(MemorySegment segment, long index, MemorySegment value) { VH_pNaluSliceEntries.set(segment, 0L, index, value); }
+    public static void pNaluSliceEntries(MemorySegment segment, long index, MemorySegment value) { VH_pNaluSliceEntries.get().set(segment, 0L, index, value); }
     /// Sets `pNaluSliceEntries` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkVideoEncodeH264PictureInfoKHR extends GroupType {
     /// {@return `pStdPictureInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStdPictureInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pStdPictureInfo.get(segment, 0L, index); }
+    public static MemorySegment pStdPictureInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pStdPictureInfo.get().get(segment, 0L, index); }
     /// {@return `pStdPictureInfo`}
     public MemorySegment pStdPictureInfo() { return pStdPictureInfo(this.segment(), 0L); }
     /// Sets `pStdPictureInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStdPictureInfo(MemorySegment segment, long index, MemorySegment value) { VH_pStdPictureInfo.set(segment, 0L, index, value); }
+    public static void pStdPictureInfo(MemorySegment segment, long index, MemorySegment value) { VH_pStdPictureInfo.get().set(segment, 0L, index, value); }
     /// Sets `pStdPictureInfo` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkVideoEncodeH264PictureInfoKHR extends GroupType {
     /// {@return `generatePrefixNalu` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int generatePrefixNalu(MemorySegment segment, long index) { return (int) VH_generatePrefixNalu.get(segment, 0L, index); }
+    public static int generatePrefixNalu(MemorySegment segment, long index) { return (int) VH_generatePrefixNalu.get().get(segment, 0L, index); }
     /// {@return `generatePrefixNalu`}
     public int generatePrefixNalu() { return generatePrefixNalu(this.segment(), 0L); }
     /// Sets `generatePrefixNalu` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void generatePrefixNalu(MemorySegment segment, long index, int value) { VH_generatePrefixNalu.set(segment, 0L, index, value); }
+    public static void generatePrefixNalu(MemorySegment segment, long index, int value) { VH_generatePrefixNalu.get().set(segment, 0L, index, value); }
     /// Sets `generatePrefixNalu` with the given value.
     /// @param value the value
     /// @return `this`

@@ -41,31 +41,31 @@ public final class VmaDetailedStatistics extends GroupType {
     /// The memory layout of `unusedRangeCount`.
     public static final MemoryLayout LAYOUT_unusedRangeCount = LAYOUT.select(PathElement.groupElement("unusedRangeCount"));
     /// The [VarHandle] of `unusedRangeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_unusedRangeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("unusedRangeCount"));
+    public static final Supplier<VarHandle> VH_unusedRangeCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("unusedRangeCount")));
     /// The byte offset of `allocationSizeMin`.
     public static final long OFFSET_allocationSizeMin = LAYOUT.byteOffset(PathElement.groupElement("allocationSizeMin"));
     /// The memory layout of `allocationSizeMin`.
     public static final MemoryLayout LAYOUT_allocationSizeMin = LAYOUT.select(PathElement.groupElement("allocationSizeMin"));
     /// The [VarHandle] of `allocationSizeMin` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_allocationSizeMin = LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocationSizeMin"));
+    public static final Supplier<VarHandle> VH_allocationSizeMin = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocationSizeMin")));
     /// The byte offset of `allocationSizeMax`.
     public static final long OFFSET_allocationSizeMax = LAYOUT.byteOffset(PathElement.groupElement("allocationSizeMax"));
     /// The memory layout of `allocationSizeMax`.
     public static final MemoryLayout LAYOUT_allocationSizeMax = LAYOUT.select(PathElement.groupElement("allocationSizeMax"));
     /// The [VarHandle] of `allocationSizeMax` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_allocationSizeMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocationSizeMax"));
+    public static final Supplier<VarHandle> VH_allocationSizeMax = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocationSizeMax")));
     /// The byte offset of `unusedRangeSizeMin`.
     public static final long OFFSET_unusedRangeSizeMin = LAYOUT.byteOffset(PathElement.groupElement("unusedRangeSizeMin"));
     /// The memory layout of `unusedRangeSizeMin`.
     public static final MemoryLayout LAYOUT_unusedRangeSizeMin = LAYOUT.select(PathElement.groupElement("unusedRangeSizeMin"));
     /// The [VarHandle] of `unusedRangeSizeMin` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_unusedRangeSizeMin = LAYOUT.arrayElementVarHandle(PathElement.groupElement("unusedRangeSizeMin"));
+    public static final Supplier<VarHandle> VH_unusedRangeSizeMin = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("unusedRangeSizeMin")));
     /// The byte offset of `unusedRangeSizeMax`.
     public static final long OFFSET_unusedRangeSizeMax = LAYOUT.byteOffset(PathElement.groupElement("unusedRangeSizeMax"));
     /// The memory layout of `unusedRangeSizeMax`.
     public static final MemoryLayout LAYOUT_unusedRangeSizeMax = LAYOUT.select(PathElement.groupElement("unusedRangeSizeMax"));
     /// The [VarHandle] of `unusedRangeSizeMax` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_unusedRangeSizeMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("unusedRangeSizeMax"));
+    public static final Supplier<VarHandle> VH_unusedRangeSizeMax = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("unusedRangeSizeMax")));
 
     /// Creates `VmaDetailedStatistics` with the given segment.
     /// @param segment      the memory segment
@@ -136,14 +136,14 @@ public final class VmaDetailedStatistics extends GroupType {
     /// {@return `unusedRangeCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int unusedRangeCount(MemorySegment segment, long index) { return (int) VH_unusedRangeCount.get(segment, 0L, index); }
+    public static int unusedRangeCount(MemorySegment segment, long index) { return (int) VH_unusedRangeCount.get().get(segment, 0L, index); }
     /// {@return `unusedRangeCount`}
     public int unusedRangeCount() { return unusedRangeCount(this.segment(), 0L); }
     /// Sets `unusedRangeCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void unusedRangeCount(MemorySegment segment, long index, int value) { VH_unusedRangeCount.set(segment, 0L, index, value); }
+    public static void unusedRangeCount(MemorySegment segment, long index, int value) { VH_unusedRangeCount.get().set(segment, 0L, index, value); }
     /// Sets `unusedRangeCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -152,14 +152,14 @@ public final class VmaDetailedStatistics extends GroupType {
     /// {@return `allocationSizeMin` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long allocationSizeMin(MemorySegment segment, long index) { return (long) VH_allocationSizeMin.get(segment, 0L, index); }
+    public static long allocationSizeMin(MemorySegment segment, long index) { return (long) VH_allocationSizeMin.get().get(segment, 0L, index); }
     /// {@return `allocationSizeMin`}
     public long allocationSizeMin() { return allocationSizeMin(this.segment(), 0L); }
     /// Sets `allocationSizeMin` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void allocationSizeMin(MemorySegment segment, long index, long value) { VH_allocationSizeMin.set(segment, 0L, index, value); }
+    public static void allocationSizeMin(MemorySegment segment, long index, long value) { VH_allocationSizeMin.get().set(segment, 0L, index, value); }
     /// Sets `allocationSizeMin` with the given value.
     /// @param value the value
     /// @return `this`
@@ -168,14 +168,14 @@ public final class VmaDetailedStatistics extends GroupType {
     /// {@return `allocationSizeMax` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long allocationSizeMax(MemorySegment segment, long index) { return (long) VH_allocationSizeMax.get(segment, 0L, index); }
+    public static long allocationSizeMax(MemorySegment segment, long index) { return (long) VH_allocationSizeMax.get().get(segment, 0L, index); }
     /// {@return `allocationSizeMax`}
     public long allocationSizeMax() { return allocationSizeMax(this.segment(), 0L); }
     /// Sets `allocationSizeMax` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void allocationSizeMax(MemorySegment segment, long index, long value) { VH_allocationSizeMax.set(segment, 0L, index, value); }
+    public static void allocationSizeMax(MemorySegment segment, long index, long value) { VH_allocationSizeMax.get().set(segment, 0L, index, value); }
     /// Sets `allocationSizeMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -184,14 +184,14 @@ public final class VmaDetailedStatistics extends GroupType {
     /// {@return `unusedRangeSizeMin` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long unusedRangeSizeMin(MemorySegment segment, long index) { return (long) VH_unusedRangeSizeMin.get(segment, 0L, index); }
+    public static long unusedRangeSizeMin(MemorySegment segment, long index) { return (long) VH_unusedRangeSizeMin.get().get(segment, 0L, index); }
     /// {@return `unusedRangeSizeMin`}
     public long unusedRangeSizeMin() { return unusedRangeSizeMin(this.segment(), 0L); }
     /// Sets `unusedRangeSizeMin` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void unusedRangeSizeMin(MemorySegment segment, long index, long value) { VH_unusedRangeSizeMin.set(segment, 0L, index, value); }
+    public static void unusedRangeSizeMin(MemorySegment segment, long index, long value) { VH_unusedRangeSizeMin.get().set(segment, 0L, index, value); }
     /// Sets `unusedRangeSizeMin` with the given value.
     /// @param value the value
     /// @return `this`
@@ -200,14 +200,14 @@ public final class VmaDetailedStatistics extends GroupType {
     /// {@return `unusedRangeSizeMax` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long unusedRangeSizeMax(MemorySegment segment, long index) { return (long) VH_unusedRangeSizeMax.get(segment, 0L, index); }
+    public static long unusedRangeSizeMax(MemorySegment segment, long index) { return (long) VH_unusedRangeSizeMax.get().get(segment, 0L, index); }
     /// {@return `unusedRangeSizeMax`}
     public long unusedRangeSizeMax() { return unusedRangeSizeMax(this.segment(), 0L); }
     /// Sets `unusedRangeSizeMax` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void unusedRangeSizeMax(MemorySegment segment, long index, long value) { VH_unusedRangeSizeMax.set(segment, 0L, index, value); }
+    public static void unusedRangeSizeMax(MemorySegment segment, long index, long value) { VH_unusedRangeSizeMax.get().set(segment, 0L, index, value); }
     /// Sets `unusedRangeSizeMax` with the given value.
     /// @param value the value
     /// @return `this`

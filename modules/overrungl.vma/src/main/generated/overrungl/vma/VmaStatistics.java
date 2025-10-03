@@ -33,25 +33,25 @@ public final class VmaStatistics extends GroupType {
     /// The memory layout of `blockCount`.
     public static final MemoryLayout LAYOUT_blockCount = LAYOUT.select(PathElement.groupElement("blockCount"));
     /// The [VarHandle] of `blockCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_blockCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockCount"));
+    public static final Supplier<VarHandle> VH_blockCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockCount")));
     /// The byte offset of `allocationCount`.
     public static final long OFFSET_allocationCount = LAYOUT.byteOffset(PathElement.groupElement("allocationCount"));
     /// The memory layout of `allocationCount`.
     public static final MemoryLayout LAYOUT_allocationCount = LAYOUT.select(PathElement.groupElement("allocationCount"));
     /// The [VarHandle] of `allocationCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_allocationCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocationCount"));
+    public static final Supplier<VarHandle> VH_allocationCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocationCount")));
     /// The byte offset of `blockBytes`.
     public static final long OFFSET_blockBytes = LAYOUT.byteOffset(PathElement.groupElement("blockBytes"));
     /// The memory layout of `blockBytes`.
     public static final MemoryLayout LAYOUT_blockBytes = LAYOUT.select(PathElement.groupElement("blockBytes"));
     /// The [VarHandle] of `blockBytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_blockBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockBytes"));
+    public static final Supplier<VarHandle> VH_blockBytes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockBytes")));
     /// The byte offset of `allocationBytes`.
     public static final long OFFSET_allocationBytes = LAYOUT.byteOffset(PathElement.groupElement("allocationBytes"));
     /// The memory layout of `allocationBytes`.
     public static final MemoryLayout LAYOUT_allocationBytes = LAYOUT.select(PathElement.groupElement("allocationBytes"));
     /// The [VarHandle] of `allocationBytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_allocationBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocationBytes"));
+    public static final Supplier<VarHandle> VH_allocationBytes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocationBytes")));
 
     /// Creates `VmaStatistics` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VmaStatistics extends GroupType {
     /// {@return `blockCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int blockCount(MemorySegment segment, long index) { return (int) VH_blockCount.get(segment, 0L, index); }
+    public static int blockCount(MemorySegment segment, long index) { return (int) VH_blockCount.get().get(segment, 0L, index); }
     /// {@return `blockCount`}
     public int blockCount() { return blockCount(this.segment(), 0L); }
     /// Sets `blockCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void blockCount(MemorySegment segment, long index, int value) { VH_blockCount.set(segment, 0L, index, value); }
+    public static void blockCount(MemorySegment segment, long index, int value) { VH_blockCount.get().set(segment, 0L, index, value); }
     /// Sets `blockCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VmaStatistics extends GroupType {
     /// {@return `allocationCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int allocationCount(MemorySegment segment, long index) { return (int) VH_allocationCount.get(segment, 0L, index); }
+    public static int allocationCount(MemorySegment segment, long index) { return (int) VH_allocationCount.get().get(segment, 0L, index); }
     /// {@return `allocationCount`}
     public int allocationCount() { return allocationCount(this.segment(), 0L); }
     /// Sets `allocationCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void allocationCount(MemorySegment segment, long index, int value) { VH_allocationCount.set(segment, 0L, index, value); }
+    public static void allocationCount(MemorySegment segment, long index, int value) { VH_allocationCount.get().set(segment, 0L, index, value); }
     /// Sets `allocationCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VmaStatistics extends GroupType {
     /// {@return `blockBytes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long blockBytes(MemorySegment segment, long index) { return (long) VH_blockBytes.get(segment, 0L, index); }
+    public static long blockBytes(MemorySegment segment, long index) { return (long) VH_blockBytes.get().get(segment, 0L, index); }
     /// {@return `blockBytes`}
     public long blockBytes() { return blockBytes(this.segment(), 0L); }
     /// Sets `blockBytes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void blockBytes(MemorySegment segment, long index, long value) { VH_blockBytes.set(segment, 0L, index, value); }
+    public static void blockBytes(MemorySegment segment, long index, long value) { VH_blockBytes.get().set(segment, 0L, index, value); }
     /// Sets `blockBytes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VmaStatistics extends GroupType {
     /// {@return `allocationBytes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long allocationBytes(MemorySegment segment, long index) { return (long) VH_allocationBytes.get(segment, 0L, index); }
+    public static long allocationBytes(MemorySegment segment, long index) { return (long) VH_allocationBytes.get().get(segment, 0L, index); }
     /// {@return `allocationBytes`}
     public long allocationBytes() { return allocationBytes(this.segment(), 0L); }
     /// Sets `allocationBytes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void allocationBytes(MemorySegment segment, long index, long value) { VH_allocationBytes.set(segment, 0L, index, value); }
+    public static void allocationBytes(MemorySegment segment, long index, long value) { VH_allocationBytes.get().set(segment, 0L, index, value); }
     /// Sets `allocationBytes` with the given value.
     /// @param value the value
     /// @return `this`

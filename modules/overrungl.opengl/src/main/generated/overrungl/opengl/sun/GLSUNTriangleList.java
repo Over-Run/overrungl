@@ -2,6 +2,7 @@
 package overrungl.opengl.sun;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -27,13 +28,13 @@ public final class GLSUNTriangleList {
     public static final int GL_R1UI_T2F_C4F_N3F_V3F_SUN = 0x85CB;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glReplacementCodeuiSUN = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glReplacementCodeusSUN = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glReplacementCodeubSUN = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glReplacementCodeuivSUN = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glReplacementCodeusvSUN = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glReplacementCodeubvSUN = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glReplacementCodePointerSUN = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glReplacementCodeuiSUN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glReplacementCodeusSUN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT)));
+        public static final Supplier<MethodHandle> MH_glReplacementCodeubSUN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glReplacementCodeuivSUN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glReplacementCodeusvSUN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glReplacementCodeubvSUN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glReplacementCodePointerSUN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glReplacementCodeuiSUN;
         public final MemorySegment PFN_glReplacementCodeusSUN;
         public final MemorySegment PFN_glReplacementCodeubSUN;
@@ -63,7 +64,7 @@ public final class GLSUNTriangleList {
     public void ReplacementCodeuiSUN(int code) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuiSUN)) throw new GLSymbolNotFoundError("Symbol not found: glReplacementCodeuiSUN");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glReplacementCodeuiSUN", code); }
-        Handles.MH_glReplacementCodeuiSUN.invokeExact(handles.PFN_glReplacementCodeuiSUN, code); }
+        Handles.MH_glReplacementCodeuiSUN.get().invokeExact(handles.PFN_glReplacementCodeuiSUN, code); }
         catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeuiSUN", e); }
     }
 
@@ -74,7 +75,7 @@ public final class GLSUNTriangleList {
     public void ReplacementCodeusSUN(short code) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeusSUN)) throw new GLSymbolNotFoundError("Symbol not found: glReplacementCodeusSUN");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glReplacementCodeusSUN", code); }
-        Handles.MH_glReplacementCodeusSUN.invokeExact(handles.PFN_glReplacementCodeusSUN, code); }
+        Handles.MH_glReplacementCodeusSUN.get().invokeExact(handles.PFN_glReplacementCodeusSUN, code); }
         catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeusSUN", e); }
     }
 
@@ -85,7 +86,7 @@ public final class GLSUNTriangleList {
     public void ReplacementCodeubSUN(byte code) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeubSUN)) throw new GLSymbolNotFoundError("Symbol not found: glReplacementCodeubSUN");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glReplacementCodeubSUN", code); }
-        Handles.MH_glReplacementCodeubSUN.invokeExact(handles.PFN_glReplacementCodeubSUN, code); }
+        Handles.MH_glReplacementCodeubSUN.get().invokeExact(handles.PFN_glReplacementCodeubSUN, code); }
         catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeubSUN", e); }
     }
 
@@ -96,7 +97,7 @@ public final class GLSUNTriangleList {
     public void ReplacementCodeuivSUN(@NonNull MemorySegment code) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuivSUN)) throw new GLSymbolNotFoundError("Symbol not found: glReplacementCodeuivSUN");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glReplacementCodeuivSUN", code); }
-        Handles.MH_glReplacementCodeuivSUN.invokeExact(handles.PFN_glReplacementCodeuivSUN, code); }
+        Handles.MH_glReplacementCodeuivSUN.get().invokeExact(handles.PFN_glReplacementCodeuivSUN, code); }
         catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeuivSUN", e); }
     }
 
@@ -107,7 +108,7 @@ public final class GLSUNTriangleList {
     public void ReplacementCodeusvSUN(@NonNull MemorySegment code) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeusvSUN)) throw new GLSymbolNotFoundError("Symbol not found: glReplacementCodeusvSUN");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glReplacementCodeusvSUN", code); }
-        Handles.MH_glReplacementCodeusvSUN.invokeExact(handles.PFN_glReplacementCodeusvSUN, code); }
+        Handles.MH_glReplacementCodeusvSUN.get().invokeExact(handles.PFN_glReplacementCodeusvSUN, code); }
         catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeusvSUN", e); }
     }
 
@@ -118,7 +119,7 @@ public final class GLSUNTriangleList {
     public void ReplacementCodeubvSUN(@NonNull MemorySegment code) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeubvSUN)) throw new GLSymbolNotFoundError("Symbol not found: glReplacementCodeubvSUN");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glReplacementCodeubvSUN", code); }
-        Handles.MH_glReplacementCodeubvSUN.invokeExact(handles.PFN_glReplacementCodeubvSUN, code); }
+        Handles.MH_glReplacementCodeubvSUN.get().invokeExact(handles.PFN_glReplacementCodeubvSUN, code); }
         catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeubvSUN", e); }
     }
 
@@ -129,7 +130,7 @@ public final class GLSUNTriangleList {
     public void ReplacementCodePointerSUN(int type, int stride, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodePointerSUN)) throw new GLSymbolNotFoundError("Symbol not found: glReplacementCodePointerSUN");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glReplacementCodePointerSUN", type, stride, pointer); }
-        Handles.MH_glReplacementCodePointerSUN.invokeExact(handles.PFN_glReplacementCodePointerSUN, type, stride, pointer); }
+        Handles.MH_glReplacementCodePointerSUN.get().invokeExact(handles.PFN_glReplacementCodePointerSUN, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in ReplacementCodePointerSUN", e); }
     }
 

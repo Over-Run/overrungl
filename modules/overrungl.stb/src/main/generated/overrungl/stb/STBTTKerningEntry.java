@@ -31,19 +31,19 @@ public final class STBTTKerningEntry extends GroupType {
     /// The memory layout of `glyph1`.
     public static final MemoryLayout LAYOUT_glyph1 = LAYOUT.select(PathElement.groupElement("glyph1"));
     /// The [VarHandle] of `glyph1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_glyph1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("glyph1"));
+    public static final Supplier<VarHandle> VH_glyph1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("glyph1")));
     /// The byte offset of `glyph2`.
     public static final long OFFSET_glyph2 = LAYOUT.byteOffset(PathElement.groupElement("glyph2"));
     /// The memory layout of `glyph2`.
     public static final MemoryLayout LAYOUT_glyph2 = LAYOUT.select(PathElement.groupElement("glyph2"));
     /// The [VarHandle] of `glyph2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_glyph2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("glyph2"));
+    public static final Supplier<VarHandle> VH_glyph2 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("glyph2")));
     /// The byte offset of `advance`.
     public static final long OFFSET_advance = LAYOUT.byteOffset(PathElement.groupElement("advance"));
     /// The memory layout of `advance`.
     public static final MemoryLayout LAYOUT_advance = LAYOUT.select(PathElement.groupElement("advance"));
     /// The [VarHandle] of `advance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_advance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advance"));
+    public static final Supplier<VarHandle> VH_advance = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("advance")));
 
     /// Creates `STBTTKerningEntry` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class STBTTKerningEntry extends GroupType {
     /// {@return `glyph1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int glyph1(MemorySegment segment, long index) { return (int) VH_glyph1.get(segment, 0L, index); }
+    public static int glyph1(MemorySegment segment, long index) { return (int) VH_glyph1.get().get(segment, 0L, index); }
     /// {@return `glyph1`}
     public int glyph1() { return glyph1(this.segment(), 0L); }
     /// Sets `glyph1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void glyph1(MemorySegment segment, long index, int value) { VH_glyph1.set(segment, 0L, index, value); }
+    public static void glyph1(MemorySegment segment, long index, int value) { VH_glyph1.get().set(segment, 0L, index, value); }
     /// Sets `glyph1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class STBTTKerningEntry extends GroupType {
     /// {@return `glyph2` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int glyph2(MemorySegment segment, long index) { return (int) VH_glyph2.get(segment, 0L, index); }
+    public static int glyph2(MemorySegment segment, long index) { return (int) VH_glyph2.get().get(segment, 0L, index); }
     /// {@return `glyph2`}
     public int glyph2() { return glyph2(this.segment(), 0L); }
     /// Sets `glyph2` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void glyph2(MemorySegment segment, long index, int value) { VH_glyph2.set(segment, 0L, index, value); }
+    public static void glyph2(MemorySegment segment, long index, int value) { VH_glyph2.get().set(segment, 0L, index, value); }
     /// Sets `glyph2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class STBTTKerningEntry extends GroupType {
     /// {@return `advance` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int advance(MemorySegment segment, long index) { return (int) VH_advance.get(segment, 0L, index); }
+    public static int advance(MemorySegment segment, long index) { return (int) VH_advance.get().get(segment, 0L, index); }
     /// {@return `advance`}
     public int advance() { return advance(this.segment(), 0L); }
     /// Sets `advance` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void advance(MemorySegment segment, long index, int value) { VH_advance.set(segment, 0L, index, value); }
+    public static void advance(MemorySegment segment, long index, int value) { VH_advance.get().set(segment, 0L, index, value); }
     /// Sets `advance` with the given value.
     /// @param value the value
     /// @return `this`

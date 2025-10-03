@@ -51,79 +51,79 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `depthClampEnable`.
     public static final long OFFSET_depthClampEnable = LAYOUT.byteOffset(PathElement.groupElement("depthClampEnable"));
     /// The memory layout of `depthClampEnable`.
     public static final MemoryLayout LAYOUT_depthClampEnable = LAYOUT.select(PathElement.groupElement("depthClampEnable"));
     /// The [VarHandle] of `depthClampEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthClampEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthClampEnable"));
+    public static final Supplier<VarHandle> VH_depthClampEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthClampEnable")));
     /// The byte offset of `rasterizerDiscardEnable`.
     public static final long OFFSET_rasterizerDiscardEnable = LAYOUT.byteOffset(PathElement.groupElement("rasterizerDiscardEnable"));
     /// The memory layout of `rasterizerDiscardEnable`.
     public static final MemoryLayout LAYOUT_rasterizerDiscardEnable = LAYOUT.select(PathElement.groupElement("rasterizerDiscardEnable"));
     /// The [VarHandle] of `rasterizerDiscardEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rasterizerDiscardEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizerDiscardEnable"));
+    public static final Supplier<VarHandle> VH_rasterizerDiscardEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizerDiscardEnable")));
     /// The byte offset of `polygonMode`.
     public static final long OFFSET_polygonMode = LAYOUT.byteOffset(PathElement.groupElement("polygonMode"));
     /// The memory layout of `polygonMode`.
     public static final MemoryLayout LAYOUT_polygonMode = LAYOUT.select(PathElement.groupElement("polygonMode"));
     /// The [VarHandle] of `polygonMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_polygonMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("polygonMode"));
+    public static final Supplier<VarHandle> VH_polygonMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("polygonMode")));
     /// The byte offset of `cullMode`.
     public static final long OFFSET_cullMode = LAYOUT.byteOffset(PathElement.groupElement("cullMode"));
     /// The memory layout of `cullMode`.
     public static final MemoryLayout LAYOUT_cullMode = LAYOUT.select(PathElement.groupElement("cullMode"));
     /// The [VarHandle] of `cullMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cullMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cullMode"));
+    public static final Supplier<VarHandle> VH_cullMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cullMode")));
     /// The byte offset of `frontFace`.
     public static final long OFFSET_frontFace = LAYOUT.byteOffset(PathElement.groupElement("frontFace"));
     /// The memory layout of `frontFace`.
     public static final MemoryLayout LAYOUT_frontFace = LAYOUT.select(PathElement.groupElement("frontFace"));
     /// The [VarHandle] of `frontFace` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_frontFace = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frontFace"));
+    public static final Supplier<VarHandle> VH_frontFace = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("frontFace")));
     /// The byte offset of `depthBiasEnable`.
     public static final long OFFSET_depthBiasEnable = LAYOUT.byteOffset(PathElement.groupElement("depthBiasEnable"));
     /// The memory layout of `depthBiasEnable`.
     public static final MemoryLayout LAYOUT_depthBiasEnable = LAYOUT.select(PathElement.groupElement("depthBiasEnable"));
     /// The [VarHandle] of `depthBiasEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthBiasEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasEnable"));
+    public static final Supplier<VarHandle> VH_depthBiasEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasEnable")));
     /// The byte offset of `depthBiasConstantFactor`.
     public static final long OFFSET_depthBiasConstantFactor = LAYOUT.byteOffset(PathElement.groupElement("depthBiasConstantFactor"));
     /// The memory layout of `depthBiasConstantFactor`.
     public static final MemoryLayout LAYOUT_depthBiasConstantFactor = LAYOUT.select(PathElement.groupElement("depthBiasConstantFactor"));
     /// The [VarHandle] of `depthBiasConstantFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthBiasConstantFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasConstantFactor"));
+    public static final Supplier<VarHandle> VH_depthBiasConstantFactor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasConstantFactor")));
     /// The byte offset of `depthBiasClamp`.
     public static final long OFFSET_depthBiasClamp = LAYOUT.byteOffset(PathElement.groupElement("depthBiasClamp"));
     /// The memory layout of `depthBiasClamp`.
     public static final MemoryLayout LAYOUT_depthBiasClamp = LAYOUT.select(PathElement.groupElement("depthBiasClamp"));
     /// The [VarHandle] of `depthBiasClamp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthBiasClamp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasClamp"));
+    public static final Supplier<VarHandle> VH_depthBiasClamp = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasClamp")));
     /// The byte offset of `depthBiasSlopeFactor`.
     public static final long OFFSET_depthBiasSlopeFactor = LAYOUT.byteOffset(PathElement.groupElement("depthBiasSlopeFactor"));
     /// The memory layout of `depthBiasSlopeFactor`.
     public static final MemoryLayout LAYOUT_depthBiasSlopeFactor = LAYOUT.select(PathElement.groupElement("depthBiasSlopeFactor"));
     /// The [VarHandle] of `depthBiasSlopeFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthBiasSlopeFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasSlopeFactor"));
+    public static final Supplier<VarHandle> VH_depthBiasSlopeFactor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasSlopeFactor")));
     /// The byte offset of `lineWidth`.
     public static final long OFFSET_lineWidth = LAYOUT.byteOffset(PathElement.groupElement("lineWidth"));
     /// The memory layout of `lineWidth`.
     public static final MemoryLayout LAYOUT_lineWidth = LAYOUT.select(PathElement.groupElement("lineWidth"));
     /// The [VarHandle] of `lineWidth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_lineWidth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineWidth"));
+    public static final Supplier<VarHandle> VH_lineWidth = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineWidth")));
 
     /// Creates `VkPipelineRasterizationStateCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -174,14 +174,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `depthClampEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int depthClampEnable(MemorySegment segment, long index) { return (int) VH_depthClampEnable.get(segment, 0L, index); }
+    public static int depthClampEnable(MemorySegment segment, long index) { return (int) VH_depthClampEnable.get().get(segment, 0L, index); }
     /// {@return `depthClampEnable`}
     public int depthClampEnable() { return depthClampEnable(this.segment(), 0L); }
     /// Sets `depthClampEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depthClampEnable(MemorySegment segment, long index, int value) { VH_depthClampEnable.set(segment, 0L, index, value); }
+    public static void depthClampEnable(MemorySegment segment, long index, int value) { VH_depthClampEnable.get().set(segment, 0L, index, value); }
     /// Sets `depthClampEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,14 +238,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `rasterizerDiscardEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rasterizerDiscardEnable(MemorySegment segment, long index) { return (int) VH_rasterizerDiscardEnable.get(segment, 0L, index); }
+    public static int rasterizerDiscardEnable(MemorySegment segment, long index) { return (int) VH_rasterizerDiscardEnable.get().get(segment, 0L, index); }
     /// {@return `rasterizerDiscardEnable`}
     public int rasterizerDiscardEnable() { return rasterizerDiscardEnable(this.segment(), 0L); }
     /// Sets `rasterizerDiscardEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rasterizerDiscardEnable(MemorySegment segment, long index, int value) { VH_rasterizerDiscardEnable.set(segment, 0L, index, value); }
+    public static void rasterizerDiscardEnable(MemorySegment segment, long index, int value) { VH_rasterizerDiscardEnable.get().set(segment, 0L, index, value); }
     /// Sets `rasterizerDiscardEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,14 +254,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `polygonMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int polygonMode(MemorySegment segment, long index) { return (int) VH_polygonMode.get(segment, 0L, index); }
+    public static int polygonMode(MemorySegment segment, long index) { return (int) VH_polygonMode.get().get(segment, 0L, index); }
     /// {@return `polygonMode`}
     public int polygonMode() { return polygonMode(this.segment(), 0L); }
     /// Sets `polygonMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void polygonMode(MemorySegment segment, long index, int value) { VH_polygonMode.set(segment, 0L, index, value); }
+    public static void polygonMode(MemorySegment segment, long index, int value) { VH_polygonMode.get().set(segment, 0L, index, value); }
     /// Sets `polygonMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -270,14 +270,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `cullMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cullMode(MemorySegment segment, long index) { return (int) VH_cullMode.get(segment, 0L, index); }
+    public static int cullMode(MemorySegment segment, long index) { return (int) VH_cullMode.get().get(segment, 0L, index); }
     /// {@return `cullMode`}
     public int cullMode() { return cullMode(this.segment(), 0L); }
     /// Sets `cullMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cullMode(MemorySegment segment, long index, int value) { VH_cullMode.set(segment, 0L, index, value); }
+    public static void cullMode(MemorySegment segment, long index, int value) { VH_cullMode.get().set(segment, 0L, index, value); }
     /// Sets `cullMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,14 +286,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `frontFace` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int frontFace(MemorySegment segment, long index) { return (int) VH_frontFace.get(segment, 0L, index); }
+    public static int frontFace(MemorySegment segment, long index) { return (int) VH_frontFace.get().get(segment, 0L, index); }
     /// {@return `frontFace`}
     public int frontFace() { return frontFace(this.segment(), 0L); }
     /// Sets `frontFace` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void frontFace(MemorySegment segment, long index, int value) { VH_frontFace.set(segment, 0L, index, value); }
+    public static void frontFace(MemorySegment segment, long index, int value) { VH_frontFace.get().set(segment, 0L, index, value); }
     /// Sets `frontFace` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,14 +302,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `depthBiasEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int depthBiasEnable(MemorySegment segment, long index) { return (int) VH_depthBiasEnable.get(segment, 0L, index); }
+    public static int depthBiasEnable(MemorySegment segment, long index) { return (int) VH_depthBiasEnable.get().get(segment, 0L, index); }
     /// {@return `depthBiasEnable`}
     public int depthBiasEnable() { return depthBiasEnable(this.segment(), 0L); }
     /// Sets `depthBiasEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depthBiasEnable(MemorySegment segment, long index, int value) { VH_depthBiasEnable.set(segment, 0L, index, value); }
+    public static void depthBiasEnable(MemorySegment segment, long index, int value) { VH_depthBiasEnable.get().set(segment, 0L, index, value); }
     /// Sets `depthBiasEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,14 +318,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `depthBiasConstantFactor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float depthBiasConstantFactor(MemorySegment segment, long index) { return (float) VH_depthBiasConstantFactor.get(segment, 0L, index); }
+    public static float depthBiasConstantFactor(MemorySegment segment, long index) { return (float) VH_depthBiasConstantFactor.get().get(segment, 0L, index); }
     /// {@return `depthBiasConstantFactor`}
     public float depthBiasConstantFactor() { return depthBiasConstantFactor(this.segment(), 0L); }
     /// Sets `depthBiasConstantFactor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depthBiasConstantFactor(MemorySegment segment, long index, float value) { VH_depthBiasConstantFactor.set(segment, 0L, index, value); }
+    public static void depthBiasConstantFactor(MemorySegment segment, long index, float value) { VH_depthBiasConstantFactor.get().set(segment, 0L, index, value); }
     /// Sets `depthBiasConstantFactor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -334,14 +334,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `depthBiasClamp` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float depthBiasClamp(MemorySegment segment, long index) { return (float) VH_depthBiasClamp.get(segment, 0L, index); }
+    public static float depthBiasClamp(MemorySegment segment, long index) { return (float) VH_depthBiasClamp.get().get(segment, 0L, index); }
     /// {@return `depthBiasClamp`}
     public float depthBiasClamp() { return depthBiasClamp(this.segment(), 0L); }
     /// Sets `depthBiasClamp` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depthBiasClamp(MemorySegment segment, long index, float value) { VH_depthBiasClamp.set(segment, 0L, index, value); }
+    public static void depthBiasClamp(MemorySegment segment, long index, float value) { VH_depthBiasClamp.get().set(segment, 0L, index, value); }
     /// Sets `depthBiasClamp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -350,14 +350,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `depthBiasSlopeFactor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float depthBiasSlopeFactor(MemorySegment segment, long index) { return (float) VH_depthBiasSlopeFactor.get(segment, 0L, index); }
+    public static float depthBiasSlopeFactor(MemorySegment segment, long index) { return (float) VH_depthBiasSlopeFactor.get().get(segment, 0L, index); }
     /// {@return `depthBiasSlopeFactor`}
     public float depthBiasSlopeFactor() { return depthBiasSlopeFactor(this.segment(), 0L); }
     /// Sets `depthBiasSlopeFactor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depthBiasSlopeFactor(MemorySegment segment, long index, float value) { VH_depthBiasSlopeFactor.set(segment, 0L, index, value); }
+    public static void depthBiasSlopeFactor(MemorySegment segment, long index, float value) { VH_depthBiasSlopeFactor.get().set(segment, 0L, index, value); }
     /// Sets `depthBiasSlopeFactor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,14 +366,14 @@ public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// {@return `lineWidth` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float lineWidth(MemorySegment segment, long index) { return (float) VH_lineWidth.get(segment, 0L, index); }
+    public static float lineWidth(MemorySegment segment, long index) { return (float) VH_lineWidth.get().get(segment, 0L, index); }
     /// {@return `lineWidth`}
     public float lineWidth() { return lineWidth(this.segment(), 0L); }
     /// Sets `lineWidth` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void lineWidth(MemorySegment segment, long index, float value) { VH_lineWidth.set(segment, 0L, index, value); }
+    public static void lineWidth(MemorySegment segment, long index, float value) { VH_lineWidth.get().set(segment, 0L, index, value); }
     /// Sets `lineWidth` with the given value.
     /// @param value the value
     /// @return `this`

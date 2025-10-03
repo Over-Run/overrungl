@@ -79,145 +79,145 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// The memory layout of `grain_scaling_minus_8`.
     public static final MemoryLayout LAYOUT_grain_scaling_minus_8 = LAYOUT.select(PathElement.groupElement("grain_scaling_minus_8"));
     /// The [VarHandle] of `grain_scaling_minus_8` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_grain_scaling_minus_8 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("grain_scaling_minus_8"));
+    public static final Supplier<VarHandle> VH_grain_scaling_minus_8 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("grain_scaling_minus_8")));
     /// The byte offset of `ar_coeff_lag`.
     public static final long OFFSET_ar_coeff_lag = LAYOUT.byteOffset(PathElement.groupElement("ar_coeff_lag"));
     /// The memory layout of `ar_coeff_lag`.
     public static final MemoryLayout LAYOUT_ar_coeff_lag = LAYOUT.select(PathElement.groupElement("ar_coeff_lag"));
     /// The [VarHandle] of `ar_coeff_lag` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ar_coeff_lag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ar_coeff_lag"));
+    public static final Supplier<VarHandle> VH_ar_coeff_lag = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ar_coeff_lag")));
     /// The byte offset of `ar_coeff_shift_minus_6`.
     public static final long OFFSET_ar_coeff_shift_minus_6 = LAYOUT.byteOffset(PathElement.groupElement("ar_coeff_shift_minus_6"));
     /// The memory layout of `ar_coeff_shift_minus_6`.
     public static final MemoryLayout LAYOUT_ar_coeff_shift_minus_6 = LAYOUT.select(PathElement.groupElement("ar_coeff_shift_minus_6"));
     /// The [VarHandle] of `ar_coeff_shift_minus_6` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ar_coeff_shift_minus_6 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ar_coeff_shift_minus_6"));
+    public static final Supplier<VarHandle> VH_ar_coeff_shift_minus_6 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ar_coeff_shift_minus_6")));
     /// The byte offset of `grain_scale_shift`.
     public static final long OFFSET_grain_scale_shift = LAYOUT.byteOffset(PathElement.groupElement("grain_scale_shift"));
     /// The memory layout of `grain_scale_shift`.
     public static final MemoryLayout LAYOUT_grain_scale_shift = LAYOUT.select(PathElement.groupElement("grain_scale_shift"));
     /// The [VarHandle] of `grain_scale_shift` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_grain_scale_shift = LAYOUT.arrayElementVarHandle(PathElement.groupElement("grain_scale_shift"));
+    public static final Supplier<VarHandle> VH_grain_scale_shift = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("grain_scale_shift")));
     /// The byte offset of `grain_seed`.
     public static final long OFFSET_grain_seed = LAYOUT.byteOffset(PathElement.groupElement("grain_seed"));
     /// The memory layout of `grain_seed`.
     public static final MemoryLayout LAYOUT_grain_seed = LAYOUT.select(PathElement.groupElement("grain_seed"));
     /// The [VarHandle] of `grain_seed` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_grain_seed = LAYOUT.arrayElementVarHandle(PathElement.groupElement("grain_seed"));
+    public static final Supplier<VarHandle> VH_grain_seed = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("grain_seed")));
     /// The byte offset of `film_grain_params_ref_idx`.
     public static final long OFFSET_film_grain_params_ref_idx = LAYOUT.byteOffset(PathElement.groupElement("film_grain_params_ref_idx"));
     /// The memory layout of `film_grain_params_ref_idx`.
     public static final MemoryLayout LAYOUT_film_grain_params_ref_idx = LAYOUT.select(PathElement.groupElement("film_grain_params_ref_idx"));
     /// The [VarHandle] of `film_grain_params_ref_idx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_film_grain_params_ref_idx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("film_grain_params_ref_idx"));
+    public static final Supplier<VarHandle> VH_film_grain_params_ref_idx = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("film_grain_params_ref_idx")));
     /// The byte offset of `num_y_points`.
     public static final long OFFSET_num_y_points = LAYOUT.byteOffset(PathElement.groupElement("num_y_points"));
     /// The memory layout of `num_y_points`.
     public static final MemoryLayout LAYOUT_num_y_points = LAYOUT.select(PathElement.groupElement("num_y_points"));
     /// The [VarHandle] of `num_y_points` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_num_y_points = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_y_points"));
+    public static final Supplier<VarHandle> VH_num_y_points = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_y_points")));
     /// The byte offset of `point_y_value`.
     public static final long OFFSET_point_y_value = LAYOUT.byteOffset(PathElement.groupElement("point_y_value"));
     /// The memory layout of `point_y_value`.
     public static final MemoryLayout LAYOUT_point_y_value = LAYOUT.select(PathElement.groupElement("point_y_value"));
     /// The [VarHandle] of `point_y_value` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_point_y_value = LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_y_value"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_point_y_value = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_y_value"), PathElement.sequenceElement()));
     /// The byte offset of `point_y_scaling`.
     public static final long OFFSET_point_y_scaling = LAYOUT.byteOffset(PathElement.groupElement("point_y_scaling"));
     /// The memory layout of `point_y_scaling`.
     public static final MemoryLayout LAYOUT_point_y_scaling = LAYOUT.select(PathElement.groupElement("point_y_scaling"));
     /// The [VarHandle] of `point_y_scaling` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_point_y_scaling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_y_scaling"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_point_y_scaling = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_y_scaling"), PathElement.sequenceElement()));
     /// The byte offset of `num_cb_points`.
     public static final long OFFSET_num_cb_points = LAYOUT.byteOffset(PathElement.groupElement("num_cb_points"));
     /// The memory layout of `num_cb_points`.
     public static final MemoryLayout LAYOUT_num_cb_points = LAYOUT.select(PathElement.groupElement("num_cb_points"));
     /// The [VarHandle] of `num_cb_points` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_num_cb_points = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_cb_points"));
+    public static final Supplier<VarHandle> VH_num_cb_points = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_cb_points")));
     /// The byte offset of `point_cb_value`.
     public static final long OFFSET_point_cb_value = LAYOUT.byteOffset(PathElement.groupElement("point_cb_value"));
     /// The memory layout of `point_cb_value`.
     public static final MemoryLayout LAYOUT_point_cb_value = LAYOUT.select(PathElement.groupElement("point_cb_value"));
     /// The [VarHandle] of `point_cb_value` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_point_cb_value = LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_cb_value"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_point_cb_value = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_cb_value"), PathElement.sequenceElement()));
     /// The byte offset of `point_cb_scaling`.
     public static final long OFFSET_point_cb_scaling = LAYOUT.byteOffset(PathElement.groupElement("point_cb_scaling"));
     /// The memory layout of `point_cb_scaling`.
     public static final MemoryLayout LAYOUT_point_cb_scaling = LAYOUT.select(PathElement.groupElement("point_cb_scaling"));
     /// The [VarHandle] of `point_cb_scaling` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_point_cb_scaling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_cb_scaling"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_point_cb_scaling = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_cb_scaling"), PathElement.sequenceElement()));
     /// The byte offset of `num_cr_points`.
     public static final long OFFSET_num_cr_points = LAYOUT.byteOffset(PathElement.groupElement("num_cr_points"));
     /// The memory layout of `num_cr_points`.
     public static final MemoryLayout LAYOUT_num_cr_points = LAYOUT.select(PathElement.groupElement("num_cr_points"));
     /// The [VarHandle] of `num_cr_points` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_num_cr_points = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_cr_points"));
+    public static final Supplier<VarHandle> VH_num_cr_points = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_cr_points")));
     /// The byte offset of `point_cr_value`.
     public static final long OFFSET_point_cr_value = LAYOUT.byteOffset(PathElement.groupElement("point_cr_value"));
     /// The memory layout of `point_cr_value`.
     public static final MemoryLayout LAYOUT_point_cr_value = LAYOUT.select(PathElement.groupElement("point_cr_value"));
     /// The [VarHandle] of `point_cr_value` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_point_cr_value = LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_cr_value"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_point_cr_value = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_cr_value"), PathElement.sequenceElement()));
     /// The byte offset of `point_cr_scaling`.
     public static final long OFFSET_point_cr_scaling = LAYOUT.byteOffset(PathElement.groupElement("point_cr_scaling"));
     /// The memory layout of `point_cr_scaling`.
     public static final MemoryLayout LAYOUT_point_cr_scaling = LAYOUT.select(PathElement.groupElement("point_cr_scaling"));
     /// The [VarHandle] of `point_cr_scaling` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_point_cr_scaling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_cr_scaling"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_point_cr_scaling = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("point_cr_scaling"), PathElement.sequenceElement()));
     /// The byte offset of `ar_coeffs_y_plus_128`.
     public static final long OFFSET_ar_coeffs_y_plus_128 = LAYOUT.byteOffset(PathElement.groupElement("ar_coeffs_y_plus_128"));
     /// The memory layout of `ar_coeffs_y_plus_128`.
     public static final MemoryLayout LAYOUT_ar_coeffs_y_plus_128 = LAYOUT.select(PathElement.groupElement("ar_coeffs_y_plus_128"));
     /// The [VarHandle] of `ar_coeffs_y_plus_128` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_ar_coeffs_y_plus_128 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ar_coeffs_y_plus_128"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_ar_coeffs_y_plus_128 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ar_coeffs_y_plus_128"), PathElement.sequenceElement()));
     /// The byte offset of `ar_coeffs_cb_plus_128`.
     public static final long OFFSET_ar_coeffs_cb_plus_128 = LAYOUT.byteOffset(PathElement.groupElement("ar_coeffs_cb_plus_128"));
     /// The memory layout of `ar_coeffs_cb_plus_128`.
     public static final MemoryLayout LAYOUT_ar_coeffs_cb_plus_128 = LAYOUT.select(PathElement.groupElement("ar_coeffs_cb_plus_128"));
     /// The [VarHandle] of `ar_coeffs_cb_plus_128` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_ar_coeffs_cb_plus_128 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ar_coeffs_cb_plus_128"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_ar_coeffs_cb_plus_128 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ar_coeffs_cb_plus_128"), PathElement.sequenceElement()));
     /// The byte offset of `ar_coeffs_cr_plus_128`.
     public static final long OFFSET_ar_coeffs_cr_plus_128 = LAYOUT.byteOffset(PathElement.groupElement("ar_coeffs_cr_plus_128"));
     /// The memory layout of `ar_coeffs_cr_plus_128`.
     public static final MemoryLayout LAYOUT_ar_coeffs_cr_plus_128 = LAYOUT.select(PathElement.groupElement("ar_coeffs_cr_plus_128"));
     /// The [VarHandle] of `ar_coeffs_cr_plus_128` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_ar_coeffs_cr_plus_128 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ar_coeffs_cr_plus_128"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_ar_coeffs_cr_plus_128 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ar_coeffs_cr_plus_128"), PathElement.sequenceElement()));
     /// The byte offset of `cb_mult`.
     public static final long OFFSET_cb_mult = LAYOUT.byteOffset(PathElement.groupElement("cb_mult"));
     /// The memory layout of `cb_mult`.
     public static final MemoryLayout LAYOUT_cb_mult = LAYOUT.select(PathElement.groupElement("cb_mult"));
     /// The [VarHandle] of `cb_mult` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cb_mult = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cb_mult"));
+    public static final Supplier<VarHandle> VH_cb_mult = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cb_mult")));
     /// The byte offset of `cb_luma_mult`.
     public static final long OFFSET_cb_luma_mult = LAYOUT.byteOffset(PathElement.groupElement("cb_luma_mult"));
     /// The memory layout of `cb_luma_mult`.
     public static final MemoryLayout LAYOUT_cb_luma_mult = LAYOUT.select(PathElement.groupElement("cb_luma_mult"));
     /// The [VarHandle] of `cb_luma_mult` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cb_luma_mult = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cb_luma_mult"));
+    public static final Supplier<VarHandle> VH_cb_luma_mult = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cb_luma_mult")));
     /// The byte offset of `cb_offset`.
     public static final long OFFSET_cb_offset = LAYOUT.byteOffset(PathElement.groupElement("cb_offset"));
     /// The memory layout of `cb_offset`.
     public static final MemoryLayout LAYOUT_cb_offset = LAYOUT.select(PathElement.groupElement("cb_offset"));
     /// The [VarHandle] of `cb_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cb_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cb_offset"));
+    public static final Supplier<VarHandle> VH_cb_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cb_offset")));
     /// The byte offset of `cr_mult`.
     public static final long OFFSET_cr_mult = LAYOUT.byteOffset(PathElement.groupElement("cr_mult"));
     /// The memory layout of `cr_mult`.
     public static final MemoryLayout LAYOUT_cr_mult = LAYOUT.select(PathElement.groupElement("cr_mult"));
     /// The [VarHandle] of `cr_mult` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cr_mult = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cr_mult"));
+    public static final Supplier<VarHandle> VH_cr_mult = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cr_mult")));
     /// The byte offset of `cr_luma_mult`.
     public static final long OFFSET_cr_luma_mult = LAYOUT.byteOffset(PathElement.groupElement("cr_luma_mult"));
     /// The memory layout of `cr_luma_mult`.
     public static final MemoryLayout LAYOUT_cr_luma_mult = LAYOUT.select(PathElement.groupElement("cr_luma_mult"));
     /// The [VarHandle] of `cr_luma_mult` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cr_luma_mult = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cr_luma_mult"));
+    public static final Supplier<VarHandle> VH_cr_luma_mult = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cr_luma_mult")));
     /// The byte offset of `cr_offset`.
     public static final long OFFSET_cr_offset = LAYOUT.byteOffset(PathElement.groupElement("cr_offset"));
     /// The memory layout of `cr_offset`.
     public static final MemoryLayout LAYOUT_cr_offset = LAYOUT.select(PathElement.groupElement("cr_offset"));
     /// The [VarHandle] of `cr_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cr_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cr_offset"));
+    public static final Supplier<VarHandle> VH_cr_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cr_offset")));
 
     /// Creates `StdVideoAV1FilmGrain` with the given segment.
     /// @param segment      the memory segment
@@ -288,14 +288,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `grain_scaling_minus_8` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte grain_scaling_minus_8(MemorySegment segment, long index) { return (byte) VH_grain_scaling_minus_8.get(segment, 0L, index); }
+    public static byte grain_scaling_minus_8(MemorySegment segment, long index) { return (byte) VH_grain_scaling_minus_8.get().get(segment, 0L, index); }
     /// {@return `grain_scaling_minus_8`}
     public byte grain_scaling_minus_8() { return grain_scaling_minus_8(this.segment(), 0L); }
     /// Sets `grain_scaling_minus_8` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void grain_scaling_minus_8(MemorySegment segment, long index, byte value) { VH_grain_scaling_minus_8.set(segment, 0L, index, value); }
+    public static void grain_scaling_minus_8(MemorySegment segment, long index, byte value) { VH_grain_scaling_minus_8.get().set(segment, 0L, index, value); }
     /// Sets `grain_scaling_minus_8` with the given value.
     /// @param value the value
     /// @return `this`
@@ -304,14 +304,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `ar_coeff_lag` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte ar_coeff_lag(MemorySegment segment, long index) { return (byte) VH_ar_coeff_lag.get(segment, 0L, index); }
+    public static byte ar_coeff_lag(MemorySegment segment, long index) { return (byte) VH_ar_coeff_lag.get().get(segment, 0L, index); }
     /// {@return `ar_coeff_lag`}
     public byte ar_coeff_lag() { return ar_coeff_lag(this.segment(), 0L); }
     /// Sets `ar_coeff_lag` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ar_coeff_lag(MemorySegment segment, long index, byte value) { VH_ar_coeff_lag.set(segment, 0L, index, value); }
+    public static void ar_coeff_lag(MemorySegment segment, long index, byte value) { VH_ar_coeff_lag.get().set(segment, 0L, index, value); }
     /// Sets `ar_coeff_lag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -320,14 +320,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `ar_coeff_shift_minus_6` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte ar_coeff_shift_minus_6(MemorySegment segment, long index) { return (byte) VH_ar_coeff_shift_minus_6.get(segment, 0L, index); }
+    public static byte ar_coeff_shift_minus_6(MemorySegment segment, long index) { return (byte) VH_ar_coeff_shift_minus_6.get().get(segment, 0L, index); }
     /// {@return `ar_coeff_shift_minus_6`}
     public byte ar_coeff_shift_minus_6() { return ar_coeff_shift_minus_6(this.segment(), 0L); }
     /// Sets `ar_coeff_shift_minus_6` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ar_coeff_shift_minus_6(MemorySegment segment, long index, byte value) { VH_ar_coeff_shift_minus_6.set(segment, 0L, index, value); }
+    public static void ar_coeff_shift_minus_6(MemorySegment segment, long index, byte value) { VH_ar_coeff_shift_minus_6.get().set(segment, 0L, index, value); }
     /// Sets `ar_coeff_shift_minus_6` with the given value.
     /// @param value the value
     /// @return `this`
@@ -336,14 +336,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `grain_scale_shift` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte grain_scale_shift(MemorySegment segment, long index) { return (byte) VH_grain_scale_shift.get(segment, 0L, index); }
+    public static byte grain_scale_shift(MemorySegment segment, long index) { return (byte) VH_grain_scale_shift.get().get(segment, 0L, index); }
     /// {@return `grain_scale_shift`}
     public byte grain_scale_shift() { return grain_scale_shift(this.segment(), 0L); }
     /// Sets `grain_scale_shift` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void grain_scale_shift(MemorySegment segment, long index, byte value) { VH_grain_scale_shift.set(segment, 0L, index, value); }
+    public static void grain_scale_shift(MemorySegment segment, long index, byte value) { VH_grain_scale_shift.get().set(segment, 0L, index, value); }
     /// Sets `grain_scale_shift` with the given value.
     /// @param value the value
     /// @return `this`
@@ -352,14 +352,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `grain_seed` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short grain_seed(MemorySegment segment, long index) { return (short) VH_grain_seed.get(segment, 0L, index); }
+    public static short grain_seed(MemorySegment segment, long index) { return (short) VH_grain_seed.get().get(segment, 0L, index); }
     /// {@return `grain_seed`}
     public short grain_seed() { return grain_seed(this.segment(), 0L); }
     /// Sets `grain_seed` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void grain_seed(MemorySegment segment, long index, short value) { VH_grain_seed.set(segment, 0L, index, value); }
+    public static void grain_seed(MemorySegment segment, long index, short value) { VH_grain_seed.get().set(segment, 0L, index, value); }
     /// Sets `grain_seed` with the given value.
     /// @param value the value
     /// @return `this`
@@ -368,14 +368,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `film_grain_params_ref_idx` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte film_grain_params_ref_idx(MemorySegment segment, long index) { return (byte) VH_film_grain_params_ref_idx.get(segment, 0L, index); }
+    public static byte film_grain_params_ref_idx(MemorySegment segment, long index) { return (byte) VH_film_grain_params_ref_idx.get().get(segment, 0L, index); }
     /// {@return `film_grain_params_ref_idx`}
     public byte film_grain_params_ref_idx() { return film_grain_params_ref_idx(this.segment(), 0L); }
     /// Sets `film_grain_params_ref_idx` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void film_grain_params_ref_idx(MemorySegment segment, long index, byte value) { VH_film_grain_params_ref_idx.set(segment, 0L, index, value); }
+    public static void film_grain_params_ref_idx(MemorySegment segment, long index, byte value) { VH_film_grain_params_ref_idx.get().set(segment, 0L, index, value); }
     /// Sets `film_grain_params_ref_idx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -384,14 +384,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `num_y_points` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte num_y_points(MemorySegment segment, long index) { return (byte) VH_num_y_points.get(segment, 0L, index); }
+    public static byte num_y_points(MemorySegment segment, long index) { return (byte) VH_num_y_points.get().get(segment, 0L, index); }
     /// {@return `num_y_points`}
     public byte num_y_points() { return num_y_points(this.segment(), 0L); }
     /// Sets `num_y_points` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void num_y_points(MemorySegment segment, long index, byte value) { VH_num_y_points.set(segment, 0L, index, value); }
+    public static void num_y_points(MemorySegment segment, long index, byte value) { VH_num_y_points.get().set(segment, 0L, index, value); }
     /// Sets `num_y_points` with the given value.
     /// @param value the value
     /// @return `this`
@@ -405,7 +405,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte point_y_value(MemorySegment segment, long index, long index0) { return (byte) VH_point_y_value.get(segment, 0L, index, index0); }
+    public static byte point_y_value(MemorySegment segment, long index, long index0) { return (byte) VH_point_y_value.get().get(segment, 0L, index, index0); }
     /// {@return `point_y_value`}
     public MemorySegment point_y_value() { return point_y_value(this.segment(), 0L); }
     /// {@return `point_y_value`}
@@ -421,7 +421,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void point_y_value(MemorySegment segment, long index, long index0, byte value) { VH_point_y_value.set(segment, 0L, index, index0, value); }
+    public static void point_y_value(MemorySegment segment, long index, long index0, byte value) { VH_point_y_value.get().set(segment, 0L, index, index0, value); }
     /// Sets `point_y_value` with the given value.
     /// @param value the value
     /// @return `this`
@@ -440,7 +440,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte point_y_scaling(MemorySegment segment, long index, long index0) { return (byte) VH_point_y_scaling.get(segment, 0L, index, index0); }
+    public static byte point_y_scaling(MemorySegment segment, long index, long index0) { return (byte) VH_point_y_scaling.get().get(segment, 0L, index, index0); }
     /// {@return `point_y_scaling`}
     public MemorySegment point_y_scaling() { return point_y_scaling(this.segment(), 0L); }
     /// {@return `point_y_scaling`}
@@ -456,7 +456,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void point_y_scaling(MemorySegment segment, long index, long index0, byte value) { VH_point_y_scaling.set(segment, 0L, index, index0, value); }
+    public static void point_y_scaling(MemorySegment segment, long index, long index0, byte value) { VH_point_y_scaling.get().set(segment, 0L, index, index0, value); }
     /// Sets `point_y_scaling` with the given value.
     /// @param value the value
     /// @return `this`
@@ -470,14 +470,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `num_cb_points` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte num_cb_points(MemorySegment segment, long index) { return (byte) VH_num_cb_points.get(segment, 0L, index); }
+    public static byte num_cb_points(MemorySegment segment, long index) { return (byte) VH_num_cb_points.get().get(segment, 0L, index); }
     /// {@return `num_cb_points`}
     public byte num_cb_points() { return num_cb_points(this.segment(), 0L); }
     /// Sets `num_cb_points` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void num_cb_points(MemorySegment segment, long index, byte value) { VH_num_cb_points.set(segment, 0L, index, value); }
+    public static void num_cb_points(MemorySegment segment, long index, byte value) { VH_num_cb_points.get().set(segment, 0L, index, value); }
     /// Sets `num_cb_points` with the given value.
     /// @param value the value
     /// @return `this`
@@ -491,7 +491,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte point_cb_value(MemorySegment segment, long index, long index0) { return (byte) VH_point_cb_value.get(segment, 0L, index, index0); }
+    public static byte point_cb_value(MemorySegment segment, long index, long index0) { return (byte) VH_point_cb_value.get().get(segment, 0L, index, index0); }
     /// {@return `point_cb_value`}
     public MemorySegment point_cb_value() { return point_cb_value(this.segment(), 0L); }
     /// {@return `point_cb_value`}
@@ -507,7 +507,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void point_cb_value(MemorySegment segment, long index, long index0, byte value) { VH_point_cb_value.set(segment, 0L, index, index0, value); }
+    public static void point_cb_value(MemorySegment segment, long index, long index0, byte value) { VH_point_cb_value.get().set(segment, 0L, index, index0, value); }
     /// Sets `point_cb_value` with the given value.
     /// @param value the value
     /// @return `this`
@@ -526,7 +526,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte point_cb_scaling(MemorySegment segment, long index, long index0) { return (byte) VH_point_cb_scaling.get(segment, 0L, index, index0); }
+    public static byte point_cb_scaling(MemorySegment segment, long index, long index0) { return (byte) VH_point_cb_scaling.get().get(segment, 0L, index, index0); }
     /// {@return `point_cb_scaling`}
     public MemorySegment point_cb_scaling() { return point_cb_scaling(this.segment(), 0L); }
     /// {@return `point_cb_scaling`}
@@ -542,7 +542,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void point_cb_scaling(MemorySegment segment, long index, long index0, byte value) { VH_point_cb_scaling.set(segment, 0L, index, index0, value); }
+    public static void point_cb_scaling(MemorySegment segment, long index, long index0, byte value) { VH_point_cb_scaling.get().set(segment, 0L, index, index0, value); }
     /// Sets `point_cb_scaling` with the given value.
     /// @param value the value
     /// @return `this`
@@ -556,14 +556,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `num_cr_points` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte num_cr_points(MemorySegment segment, long index) { return (byte) VH_num_cr_points.get(segment, 0L, index); }
+    public static byte num_cr_points(MemorySegment segment, long index) { return (byte) VH_num_cr_points.get().get(segment, 0L, index); }
     /// {@return `num_cr_points`}
     public byte num_cr_points() { return num_cr_points(this.segment(), 0L); }
     /// Sets `num_cr_points` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void num_cr_points(MemorySegment segment, long index, byte value) { VH_num_cr_points.set(segment, 0L, index, value); }
+    public static void num_cr_points(MemorySegment segment, long index, byte value) { VH_num_cr_points.get().set(segment, 0L, index, value); }
     /// Sets `num_cr_points` with the given value.
     /// @param value the value
     /// @return `this`
@@ -577,7 +577,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte point_cr_value(MemorySegment segment, long index, long index0) { return (byte) VH_point_cr_value.get(segment, 0L, index, index0); }
+    public static byte point_cr_value(MemorySegment segment, long index, long index0) { return (byte) VH_point_cr_value.get().get(segment, 0L, index, index0); }
     /// {@return `point_cr_value`}
     public MemorySegment point_cr_value() { return point_cr_value(this.segment(), 0L); }
     /// {@return `point_cr_value`}
@@ -593,7 +593,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void point_cr_value(MemorySegment segment, long index, long index0, byte value) { VH_point_cr_value.set(segment, 0L, index, index0, value); }
+    public static void point_cr_value(MemorySegment segment, long index, long index0, byte value) { VH_point_cr_value.get().set(segment, 0L, index, index0, value); }
     /// Sets `point_cr_value` with the given value.
     /// @param value the value
     /// @return `this`
@@ -612,7 +612,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte point_cr_scaling(MemorySegment segment, long index, long index0) { return (byte) VH_point_cr_scaling.get(segment, 0L, index, index0); }
+    public static byte point_cr_scaling(MemorySegment segment, long index, long index0) { return (byte) VH_point_cr_scaling.get().get(segment, 0L, index, index0); }
     /// {@return `point_cr_scaling`}
     public MemorySegment point_cr_scaling() { return point_cr_scaling(this.segment(), 0L); }
     /// {@return `point_cr_scaling`}
@@ -628,7 +628,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void point_cr_scaling(MemorySegment segment, long index, long index0, byte value) { VH_point_cr_scaling.set(segment, 0L, index, index0, value); }
+    public static void point_cr_scaling(MemorySegment segment, long index, long index0, byte value) { VH_point_cr_scaling.get().set(segment, 0L, index, index0, value); }
     /// Sets `point_cr_scaling` with the given value.
     /// @param value the value
     /// @return `this`
@@ -647,7 +647,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte ar_coeffs_y_plus_128(MemorySegment segment, long index, long index0) { return (byte) VH_ar_coeffs_y_plus_128.get(segment, 0L, index, index0); }
+    public static byte ar_coeffs_y_plus_128(MemorySegment segment, long index, long index0) { return (byte) VH_ar_coeffs_y_plus_128.get().get(segment, 0L, index, index0); }
     /// {@return `ar_coeffs_y_plus_128`}
     public MemorySegment ar_coeffs_y_plus_128() { return ar_coeffs_y_plus_128(this.segment(), 0L); }
     /// {@return `ar_coeffs_y_plus_128`}
@@ -663,7 +663,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void ar_coeffs_y_plus_128(MemorySegment segment, long index, long index0, byte value) { VH_ar_coeffs_y_plus_128.set(segment, 0L, index, index0, value); }
+    public static void ar_coeffs_y_plus_128(MemorySegment segment, long index, long index0, byte value) { VH_ar_coeffs_y_plus_128.get().set(segment, 0L, index, index0, value); }
     /// Sets `ar_coeffs_y_plus_128` with the given value.
     /// @param value the value
     /// @return `this`
@@ -682,7 +682,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte ar_coeffs_cb_plus_128(MemorySegment segment, long index, long index0) { return (byte) VH_ar_coeffs_cb_plus_128.get(segment, 0L, index, index0); }
+    public static byte ar_coeffs_cb_plus_128(MemorySegment segment, long index, long index0) { return (byte) VH_ar_coeffs_cb_plus_128.get().get(segment, 0L, index, index0); }
     /// {@return `ar_coeffs_cb_plus_128`}
     public MemorySegment ar_coeffs_cb_plus_128() { return ar_coeffs_cb_plus_128(this.segment(), 0L); }
     /// {@return `ar_coeffs_cb_plus_128`}
@@ -698,7 +698,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void ar_coeffs_cb_plus_128(MemorySegment segment, long index, long index0, byte value) { VH_ar_coeffs_cb_plus_128.set(segment, 0L, index, index0, value); }
+    public static void ar_coeffs_cb_plus_128(MemorySegment segment, long index, long index0, byte value) { VH_ar_coeffs_cb_plus_128.get().set(segment, 0L, index, index0, value); }
     /// Sets `ar_coeffs_cb_plus_128` with the given value.
     /// @param value the value
     /// @return `this`
@@ -717,7 +717,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte ar_coeffs_cr_plus_128(MemorySegment segment, long index, long index0) { return (byte) VH_ar_coeffs_cr_plus_128.get(segment, 0L, index, index0); }
+    public static byte ar_coeffs_cr_plus_128(MemorySegment segment, long index, long index0) { return (byte) VH_ar_coeffs_cr_plus_128.get().get(segment, 0L, index, index0); }
     /// {@return `ar_coeffs_cr_plus_128`}
     public MemorySegment ar_coeffs_cr_plus_128() { return ar_coeffs_cr_plus_128(this.segment(), 0L); }
     /// {@return `ar_coeffs_cr_plus_128`}
@@ -733,7 +733,7 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void ar_coeffs_cr_plus_128(MemorySegment segment, long index, long index0, byte value) { VH_ar_coeffs_cr_plus_128.set(segment, 0L, index, index0, value); }
+    public static void ar_coeffs_cr_plus_128(MemorySegment segment, long index, long index0, byte value) { VH_ar_coeffs_cr_plus_128.get().set(segment, 0L, index, index0, value); }
     /// Sets `ar_coeffs_cr_plus_128` with the given value.
     /// @param value the value
     /// @return `this`
@@ -747,14 +747,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `cb_mult` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte cb_mult(MemorySegment segment, long index) { return (byte) VH_cb_mult.get(segment, 0L, index); }
+    public static byte cb_mult(MemorySegment segment, long index) { return (byte) VH_cb_mult.get().get(segment, 0L, index); }
     /// {@return `cb_mult`}
     public byte cb_mult() { return cb_mult(this.segment(), 0L); }
     /// Sets `cb_mult` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cb_mult(MemorySegment segment, long index, byte value) { VH_cb_mult.set(segment, 0L, index, value); }
+    public static void cb_mult(MemorySegment segment, long index, byte value) { VH_cb_mult.get().set(segment, 0L, index, value); }
     /// Sets `cb_mult` with the given value.
     /// @param value the value
     /// @return `this`
@@ -763,14 +763,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `cb_luma_mult` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte cb_luma_mult(MemorySegment segment, long index) { return (byte) VH_cb_luma_mult.get(segment, 0L, index); }
+    public static byte cb_luma_mult(MemorySegment segment, long index) { return (byte) VH_cb_luma_mult.get().get(segment, 0L, index); }
     /// {@return `cb_luma_mult`}
     public byte cb_luma_mult() { return cb_luma_mult(this.segment(), 0L); }
     /// Sets `cb_luma_mult` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cb_luma_mult(MemorySegment segment, long index, byte value) { VH_cb_luma_mult.set(segment, 0L, index, value); }
+    public static void cb_luma_mult(MemorySegment segment, long index, byte value) { VH_cb_luma_mult.get().set(segment, 0L, index, value); }
     /// Sets `cb_luma_mult` with the given value.
     /// @param value the value
     /// @return `this`
@@ -779,14 +779,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `cb_offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short cb_offset(MemorySegment segment, long index) { return (short) VH_cb_offset.get(segment, 0L, index); }
+    public static short cb_offset(MemorySegment segment, long index) { return (short) VH_cb_offset.get().get(segment, 0L, index); }
     /// {@return `cb_offset`}
     public short cb_offset() { return cb_offset(this.segment(), 0L); }
     /// Sets `cb_offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cb_offset(MemorySegment segment, long index, short value) { VH_cb_offset.set(segment, 0L, index, value); }
+    public static void cb_offset(MemorySegment segment, long index, short value) { VH_cb_offset.get().set(segment, 0L, index, value); }
     /// Sets `cb_offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -795,14 +795,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `cr_mult` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte cr_mult(MemorySegment segment, long index) { return (byte) VH_cr_mult.get(segment, 0L, index); }
+    public static byte cr_mult(MemorySegment segment, long index) { return (byte) VH_cr_mult.get().get(segment, 0L, index); }
     /// {@return `cr_mult`}
     public byte cr_mult() { return cr_mult(this.segment(), 0L); }
     /// Sets `cr_mult` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cr_mult(MemorySegment segment, long index, byte value) { VH_cr_mult.set(segment, 0L, index, value); }
+    public static void cr_mult(MemorySegment segment, long index, byte value) { VH_cr_mult.get().set(segment, 0L, index, value); }
     /// Sets `cr_mult` with the given value.
     /// @param value the value
     /// @return `this`
@@ -811,14 +811,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `cr_luma_mult` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte cr_luma_mult(MemorySegment segment, long index) { return (byte) VH_cr_luma_mult.get(segment, 0L, index); }
+    public static byte cr_luma_mult(MemorySegment segment, long index) { return (byte) VH_cr_luma_mult.get().get(segment, 0L, index); }
     /// {@return `cr_luma_mult`}
     public byte cr_luma_mult() { return cr_luma_mult(this.segment(), 0L); }
     /// Sets `cr_luma_mult` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cr_luma_mult(MemorySegment segment, long index, byte value) { VH_cr_luma_mult.set(segment, 0L, index, value); }
+    public static void cr_luma_mult(MemorySegment segment, long index, byte value) { VH_cr_luma_mult.get().set(segment, 0L, index, value); }
     /// Sets `cr_luma_mult` with the given value.
     /// @param value the value
     /// @return `this`
@@ -827,14 +827,14 @@ public final class StdVideoAV1FilmGrain extends GroupType {
     /// {@return `cr_offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short cr_offset(MemorySegment segment, long index) { return (short) VH_cr_offset.get(segment, 0L, index); }
+    public static short cr_offset(MemorySegment segment, long index) { return (short) VH_cr_offset.get().get(segment, 0L, index); }
     /// {@return `cr_offset`}
     public short cr_offset() { return cr_offset(this.segment(), 0L); }
     /// Sets `cr_offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cr_offset(MemorySegment segment, long index, short value) { VH_cr_offset.set(segment, 0L, index, value); }
+    public static void cr_offset(MemorySegment segment, long index, short value) { VH_cr_offset.get().set(segment, 0L, index, value); }
     /// Sets `cr_offset` with the given value.
     /// @param value the value
     /// @return `this`

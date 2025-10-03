@@ -31,19 +31,19 @@ public final class VmaVirtualBlockCreateInfo extends GroupType {
     /// The memory layout of `size`.
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final Supplier<VarHandle> VH_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("size")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `pAllocationCallbacks`.
     public static final long OFFSET_pAllocationCallbacks = LAYOUT.byteOffset(PathElement.groupElement("pAllocationCallbacks"));
     /// The memory layout of `pAllocationCallbacks`.
     public static final MemoryLayout LAYOUT_pAllocationCallbacks = LAYOUT.select(PathElement.groupElement("pAllocationCallbacks"));
     /// The [VarHandle] of `pAllocationCallbacks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pAllocationCallbacks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAllocationCallbacks"));
+    public static final Supplier<VarHandle> VH_pAllocationCallbacks = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAllocationCallbacks")));
 
     /// Creates `VmaVirtualBlockCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VmaVirtualBlockCreateInfo extends GroupType {
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long size(MemorySegment segment, long index) { return (long) VH_size.get(segment, 0L, index); }
+    public static long size(MemorySegment segment, long index) { return (long) VH_size.get().get(segment, 0L, index); }
     /// {@return `size`}
     public long size() { return size(this.segment(), 0L); }
     /// Sets `size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void size(MemorySegment segment, long index, long value) { VH_size.set(segment, 0L, index, value); }
+    public static void size(MemorySegment segment, long index, long value) { VH_size.get().set(segment, 0L, index, value); }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VmaVirtualBlockCreateInfo extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VmaVirtualBlockCreateInfo extends GroupType {
     /// {@return `pAllocationCallbacks` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pAllocationCallbacks(MemorySegment segment, long index) { return (MemorySegment) VH_pAllocationCallbacks.get(segment, 0L, index); }
+    public static MemorySegment pAllocationCallbacks(MemorySegment segment, long index) { return (MemorySegment) VH_pAllocationCallbacks.get().get(segment, 0L, index); }
     /// {@return `pAllocationCallbacks`}
     public MemorySegment pAllocationCallbacks() { return pAllocationCallbacks(this.segment(), 0L); }
     /// Sets `pAllocationCallbacks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pAllocationCallbacks(MemorySegment segment, long index, MemorySegment value) { VH_pAllocationCallbacks.set(segment, 0L, index, value); }
+    public static void pAllocationCallbacks(MemorySegment segment, long index, MemorySegment value) { VH_pAllocationCallbacks.get().set(segment, 0L, index, value); }
     /// Sets `pAllocationCallbacks` with the given value.
     /// @param value the value
     /// @return `this`

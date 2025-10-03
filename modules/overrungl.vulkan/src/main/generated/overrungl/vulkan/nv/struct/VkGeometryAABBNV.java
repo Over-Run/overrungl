@@ -37,37 +37,37 @@ public final class VkGeometryAABBNV extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `aabbData`.
     public static final long OFFSET_aabbData = LAYOUT.byteOffset(PathElement.groupElement("aabbData"));
     /// The memory layout of `aabbData`.
     public static final MemoryLayout LAYOUT_aabbData = LAYOUT.select(PathElement.groupElement("aabbData"));
     /// The [VarHandle] of `aabbData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_aabbData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("aabbData"));
+    public static final Supplier<VarHandle> VH_aabbData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("aabbData")));
     /// The byte offset of `numAABBs`.
     public static final long OFFSET_numAABBs = LAYOUT.byteOffset(PathElement.groupElement("numAABBs"));
     /// The memory layout of `numAABBs`.
     public static final MemoryLayout LAYOUT_numAABBs = LAYOUT.select(PathElement.groupElement("numAABBs"));
     /// The [VarHandle] of `numAABBs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_numAABBs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numAABBs"));
+    public static final Supplier<VarHandle> VH_numAABBs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("numAABBs")));
     /// The byte offset of `stride`.
     public static final long OFFSET_stride = LAYOUT.byteOffset(PathElement.groupElement("stride"));
     /// The memory layout of `stride`.
     public static final MemoryLayout LAYOUT_stride = LAYOUT.select(PathElement.groupElement("stride"));
     /// The [VarHandle] of `stride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride"));
+    public static final Supplier<VarHandle> VH_stride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride")));
     /// The byte offset of `offset`.
     public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
     /// The memory layout of `offset`.
     public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
     /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
+    public static final Supplier<VarHandle> VH_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset")));
 
     /// Creates `VkGeometryAABBNV` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkGeometryAABBNV extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkGeometryAABBNV extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkGeometryAABBNV extends GroupType {
     /// {@return `aabbData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long aabbData(MemorySegment segment, long index) { return (long) VH_aabbData.get(segment, 0L, index); }
+    public static long aabbData(MemorySegment segment, long index) { return (long) VH_aabbData.get().get(segment, 0L, index); }
     /// {@return `aabbData`}
     public long aabbData() { return aabbData(this.segment(), 0L); }
     /// Sets `aabbData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void aabbData(MemorySegment segment, long index, long value) { VH_aabbData.set(segment, 0L, index, value); }
+    public static void aabbData(MemorySegment segment, long index, long value) { VH_aabbData.get().set(segment, 0L, index, value); }
     /// Sets `aabbData` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkGeometryAABBNV extends GroupType {
     /// {@return `numAABBs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int numAABBs(MemorySegment segment, long index) { return (int) VH_numAABBs.get(segment, 0L, index); }
+    public static int numAABBs(MemorySegment segment, long index) { return (int) VH_numAABBs.get().get(segment, 0L, index); }
     /// {@return `numAABBs`}
     public int numAABBs() { return numAABBs(this.segment(), 0L); }
     /// Sets `numAABBs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void numAABBs(MemorySegment segment, long index, int value) { VH_numAABBs.set(segment, 0L, index, value); }
+    public static void numAABBs(MemorySegment segment, long index, int value) { VH_numAABBs.get().set(segment, 0L, index, value); }
     /// Sets `numAABBs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkGeometryAABBNV extends GroupType {
     /// {@return `stride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stride(MemorySegment segment, long index) { return (int) VH_stride.get(segment, 0L, index); }
+    public static int stride(MemorySegment segment, long index) { return (int) VH_stride.get().get(segment, 0L, index); }
     /// {@return `stride`}
     public int stride() { return stride(this.segment(), 0L); }
     /// Sets `stride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stride(MemorySegment segment, long index, int value) { VH_stride.set(segment, 0L, index, value); }
+    public static void stride(MemorySegment segment, long index, int value) { VH_stride.get().set(segment, 0L, index, value); }
     /// Sets `stride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkGeometryAABBNV extends GroupType {
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long offset(MemorySegment segment, long index) { return (long) VH_offset.get(segment, 0L, index); }
+    public static long offset(MemorySegment segment, long index) { return (long) VH_offset.get().get(segment, 0L, index); }
     /// {@return `offset`}
     public long offset() { return offset(this.segment(), 0L); }
     /// Sets `offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void offset(MemorySegment segment, long index, long value) { VH_offset.set(segment, 0L, index, value); }
+    public static void offset(MemorySegment segment, long index, long value) { VH_offset.get().set(segment, 0L, index, value); }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`

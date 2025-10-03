@@ -35,31 +35,31 @@ public final class VkImageCompressionControlEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `compressionControlPlaneCount`.
     public static final long OFFSET_compressionControlPlaneCount = LAYOUT.byteOffset(PathElement.groupElement("compressionControlPlaneCount"));
     /// The memory layout of `compressionControlPlaneCount`.
     public static final MemoryLayout LAYOUT_compressionControlPlaneCount = LAYOUT.select(PathElement.groupElement("compressionControlPlaneCount"));
     /// The [VarHandle] of `compressionControlPlaneCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_compressionControlPlaneCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("compressionControlPlaneCount"));
+    public static final Supplier<VarHandle> VH_compressionControlPlaneCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("compressionControlPlaneCount")));
     /// The byte offset of `pFixedRateFlags`.
     public static final long OFFSET_pFixedRateFlags = LAYOUT.byteOffset(PathElement.groupElement("pFixedRateFlags"));
     /// The memory layout of `pFixedRateFlags`.
     public static final MemoryLayout LAYOUT_pFixedRateFlags = LAYOUT.select(PathElement.groupElement("pFixedRateFlags"));
     /// The [VarHandle] of `pFixedRateFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pFixedRateFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFixedRateFlags"));
+    public static final Supplier<VarHandle> VH_pFixedRateFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFixedRateFlags")));
 
     /// Creates `VkImageCompressionControlEXT` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkImageCompressionControlEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkImageCompressionControlEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkImageCompressionControlEXT extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkImageCompressionControlEXT extends GroupType {
     /// {@return `compressionControlPlaneCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int compressionControlPlaneCount(MemorySegment segment, long index) { return (int) VH_compressionControlPlaneCount.get(segment, 0L, index); }
+    public static int compressionControlPlaneCount(MemorySegment segment, long index) { return (int) VH_compressionControlPlaneCount.get().get(segment, 0L, index); }
     /// {@return `compressionControlPlaneCount`}
     public int compressionControlPlaneCount() { return compressionControlPlaneCount(this.segment(), 0L); }
     /// Sets `compressionControlPlaneCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void compressionControlPlaneCount(MemorySegment segment, long index, int value) { VH_compressionControlPlaneCount.set(segment, 0L, index, value); }
+    public static void compressionControlPlaneCount(MemorySegment segment, long index, int value) { VH_compressionControlPlaneCount.get().set(segment, 0L, index, value); }
     /// Sets `compressionControlPlaneCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkImageCompressionControlEXT extends GroupType {
     /// {@return `pFixedRateFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pFixedRateFlags(MemorySegment segment, long index) { return (MemorySegment) VH_pFixedRateFlags.get(segment, 0L, index); }
+    public static MemorySegment pFixedRateFlags(MemorySegment segment, long index) { return (MemorySegment) VH_pFixedRateFlags.get().get(segment, 0L, index); }
     /// {@return `pFixedRateFlags`}
     public MemorySegment pFixedRateFlags() { return pFixedRateFlags(this.segment(), 0L); }
     /// Sets `pFixedRateFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pFixedRateFlags(MemorySegment segment, long index, MemorySegment value) { VH_pFixedRateFlags.set(segment, 0L, index, value); }
+    public static void pFixedRateFlags(MemorySegment segment, long index, MemorySegment value) { VH_pFixedRateFlags.get().set(segment, 0L, index, value); }
     /// Sets `pFixedRateFlags` with the given value.
     /// @param value the value
     /// @return `this`

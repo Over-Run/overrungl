@@ -29,7 +29,7 @@ public final class VkAttachmentSampleLocationsEXT extends GroupType {
     /// The memory layout of `attachmentIndex`.
     public static final MemoryLayout LAYOUT_attachmentIndex = LAYOUT.select(PathElement.groupElement("attachmentIndex"));
     /// The [VarHandle] of `attachmentIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_attachmentIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentIndex"));
+    public static final Supplier<VarHandle> VH_attachmentIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentIndex")));
     /// The byte offset of `sampleLocationsInfo`.
     public static final long OFFSET_sampleLocationsInfo = LAYOUT.byteOffset(PathElement.groupElement("sampleLocationsInfo"));
     /// The memory layout of `sampleLocationsInfo`.
@@ -84,14 +84,14 @@ public final class VkAttachmentSampleLocationsEXT extends GroupType {
     /// {@return `attachmentIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int attachmentIndex(MemorySegment segment, long index) { return (int) VH_attachmentIndex.get(segment, 0L, index); }
+    public static int attachmentIndex(MemorySegment segment, long index) { return (int) VH_attachmentIndex.get().get(segment, 0L, index); }
     /// {@return `attachmentIndex`}
     public int attachmentIndex() { return attachmentIndex(this.segment(), 0L); }
     /// Sets `attachmentIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void attachmentIndex(MemorySegment segment, long index, int value) { VH_attachmentIndex.set(segment, 0L, index, value); }
+    public static void attachmentIndex(MemorySegment segment, long index, int value) { VH_attachmentIndex.get().set(segment, 0L, index, value); }
     /// Sets `attachmentIndex` with the given value.
     /// @param value the value
     /// @return `this`

@@ -2,6 +2,7 @@
 package overrungl.opengl.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -20,9 +21,9 @@ public final class GLNVExplicitMultisample {
     public static final int GL_MAX_SAMPLE_MASK_WORDS_NV = 0x8E59;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetMultisamplefvNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glSampleMaskIndexedNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexRenderbufferNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glGetMultisamplefvNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glSampleMaskIndexedNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexRenderbufferNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glGetMultisamplefvNV;
         public final MemorySegment PFN_glSampleMaskIndexedNV;
         public final MemorySegment PFN_glTexRenderbufferNV;
@@ -44,7 +45,7 @@ public final class GLNVExplicitMultisample {
     public void GetMultisamplefvNV(int pname, int index, @NonNull MemorySegment val) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultisamplefvNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultisamplefvNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultisamplefvNV", pname, index, val); }
-        Handles.MH_glGetMultisamplefvNV.invokeExact(handles.PFN_glGetMultisamplefvNV, pname, index, val); }
+        Handles.MH_glGetMultisamplefvNV.get().invokeExact(handles.PFN_glGetMultisamplefvNV, pname, index, val); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultisamplefvNV", e); }
     }
 
@@ -55,7 +56,7 @@ public final class GLNVExplicitMultisample {
     public void SampleMaskIndexedNV(int index, int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskIndexedNV)) throw new GLSymbolNotFoundError("Symbol not found: glSampleMaskIndexedNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSampleMaskIndexedNV", index, mask); }
-        Handles.MH_glSampleMaskIndexedNV.invokeExact(handles.PFN_glSampleMaskIndexedNV, index, mask); }
+        Handles.MH_glSampleMaskIndexedNV.get().invokeExact(handles.PFN_glSampleMaskIndexedNV, index, mask); }
         catch (Throwable e) { throw new RuntimeException("error in SampleMaskIndexedNV", e); }
     }
 
@@ -66,7 +67,7 @@ public final class GLNVExplicitMultisample {
     public void TexRenderbufferNV(int target, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexRenderbufferNV)) throw new GLSymbolNotFoundError("Symbol not found: glTexRenderbufferNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexRenderbufferNV", target, renderbuffer); }
-        Handles.MH_glTexRenderbufferNV.invokeExact(handles.PFN_glTexRenderbufferNV, target, renderbuffer); }
+        Handles.MH_glTexRenderbufferNV.get().invokeExact(handles.PFN_glTexRenderbufferNV, target, renderbuffer); }
         catch (Throwable e) { throw new RuntimeException("error in TexRenderbufferNV", e); }
     }
 

@@ -31,19 +31,19 @@ public final class VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT extends Gr
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `vertexInputDynamicState`.
     public static final long OFFSET_vertexInputDynamicState = LAYOUT.byteOffset(PathElement.groupElement("vertexInputDynamicState"));
     /// The memory layout of `vertexInputDynamicState`.
     public static final MemoryLayout LAYOUT_vertexInputDynamicState = LAYOUT.select(PathElement.groupElement("vertexInputDynamicState"));
     /// The [VarHandle] of `vertexInputDynamicState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexInputDynamicState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexInputDynamicState"));
+    public static final Supplier<VarHandle> VH_vertexInputDynamicState = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexInputDynamicState")));
 
     /// Creates `VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT extends Gr
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT extends Gr
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT extends Gr
     /// {@return `vertexInputDynamicState` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertexInputDynamicState(MemorySegment segment, long index) { return (int) VH_vertexInputDynamicState.get(segment, 0L, index); }
+    public static int vertexInputDynamicState(MemorySegment segment, long index) { return (int) VH_vertexInputDynamicState.get().get(segment, 0L, index); }
     /// {@return `vertexInputDynamicState`}
     public int vertexInputDynamicState() { return vertexInputDynamicState(this.segment(), 0L); }
     /// Sets `vertexInputDynamicState` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexInputDynamicState(MemorySegment segment, long index, int value) { VH_vertexInputDynamicState.set(segment, 0L, index, value); }
+    public static void vertexInputDynamicState(MemorySegment segment, long index, int value) { VH_vertexInputDynamicState.get().set(segment, 0L, index, value); }
     /// Sets `vertexInputDynamicState` with the given value.
     /// @param value the value
     /// @return `this`

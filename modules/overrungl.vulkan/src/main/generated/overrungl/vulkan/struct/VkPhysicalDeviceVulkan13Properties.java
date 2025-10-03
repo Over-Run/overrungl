@@ -119,283 +119,283 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `minSubgroupSize`.
     public static final long OFFSET_minSubgroupSize = LAYOUT.byteOffset(PathElement.groupElement("minSubgroupSize"));
     /// The memory layout of `minSubgroupSize`.
     public static final MemoryLayout LAYOUT_minSubgroupSize = LAYOUT.select(PathElement.groupElement("minSubgroupSize"));
     /// The [VarHandle] of `minSubgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minSubgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSubgroupSize"));
+    public static final Supplier<VarHandle> VH_minSubgroupSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSubgroupSize")));
     /// The byte offset of `maxSubgroupSize`.
     public static final long OFFSET_maxSubgroupSize = LAYOUT.byteOffset(PathElement.groupElement("maxSubgroupSize"));
     /// The memory layout of `maxSubgroupSize`.
     public static final MemoryLayout LAYOUT_maxSubgroupSize = LAYOUT.select(PathElement.groupElement("maxSubgroupSize"));
     /// The [VarHandle] of `maxSubgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSubgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubgroupSize"));
+    public static final Supplier<VarHandle> VH_maxSubgroupSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubgroupSize")));
     /// The byte offset of `maxComputeWorkgroupSubgroups`.
     public static final long OFFSET_maxComputeWorkgroupSubgroups = LAYOUT.byteOffset(PathElement.groupElement("maxComputeWorkgroupSubgroups"));
     /// The memory layout of `maxComputeWorkgroupSubgroups`.
     public static final MemoryLayout LAYOUT_maxComputeWorkgroupSubgroups = LAYOUT.select(PathElement.groupElement("maxComputeWorkgroupSubgroups"));
     /// The [VarHandle] of `maxComputeWorkgroupSubgroups` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxComputeWorkgroupSubgroups = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxComputeWorkgroupSubgroups"));
+    public static final Supplier<VarHandle> VH_maxComputeWorkgroupSubgroups = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxComputeWorkgroupSubgroups")));
     /// The byte offset of `requiredSubgroupSizeStages`.
     public static final long OFFSET_requiredSubgroupSizeStages = LAYOUT.byteOffset(PathElement.groupElement("requiredSubgroupSizeStages"));
     /// The memory layout of `requiredSubgroupSizeStages`.
     public static final MemoryLayout LAYOUT_requiredSubgroupSizeStages = LAYOUT.select(PathElement.groupElement("requiredSubgroupSizeStages"));
     /// The [VarHandle] of `requiredSubgroupSizeStages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_requiredSubgroupSizeStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiredSubgroupSizeStages"));
+    public static final Supplier<VarHandle> VH_requiredSubgroupSizeStages = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiredSubgroupSizeStages")));
     /// The byte offset of `maxInlineUniformBlockSize`.
     public static final long OFFSET_maxInlineUniformBlockSize = LAYOUT.byteOffset(PathElement.groupElement("maxInlineUniformBlockSize"));
     /// The memory layout of `maxInlineUniformBlockSize`.
     public static final MemoryLayout LAYOUT_maxInlineUniformBlockSize = LAYOUT.select(PathElement.groupElement("maxInlineUniformBlockSize"));
     /// The [VarHandle] of `maxInlineUniformBlockSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxInlineUniformBlockSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInlineUniformBlockSize"));
+    public static final Supplier<VarHandle> VH_maxInlineUniformBlockSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInlineUniformBlockSize")));
     /// The byte offset of `maxPerStageDescriptorInlineUniformBlocks`.
     public static final long OFFSET_maxPerStageDescriptorInlineUniformBlocks = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorInlineUniformBlocks"));
     /// The memory layout of `maxPerStageDescriptorInlineUniformBlocks`.
     public static final MemoryLayout LAYOUT_maxPerStageDescriptorInlineUniformBlocks = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorInlineUniformBlocks"));
     /// The [VarHandle] of `maxPerStageDescriptorInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerStageDescriptorInlineUniformBlocks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorInlineUniformBlocks"));
+    public static final Supplier<VarHandle> VH_maxPerStageDescriptorInlineUniformBlocks = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorInlineUniformBlocks")));
     /// The byte offset of `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`.
     public static final long OFFSET_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks"));
     /// The memory layout of `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`.
     public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks"));
     /// The [VarHandle] of `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks"));
+    public static final Supplier<VarHandle> VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks")));
     /// The byte offset of `maxDescriptorSetInlineUniformBlocks`.
     public static final long OFFSET_maxDescriptorSetInlineUniformBlocks = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetInlineUniformBlocks"));
     /// The memory layout of `maxDescriptorSetInlineUniformBlocks`.
     public static final MemoryLayout LAYOUT_maxDescriptorSetInlineUniformBlocks = LAYOUT.select(PathElement.groupElement("maxDescriptorSetInlineUniformBlocks"));
     /// The [VarHandle] of `maxDescriptorSetInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetInlineUniformBlocks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetInlineUniformBlocks"));
+    public static final Supplier<VarHandle> VH_maxDescriptorSetInlineUniformBlocks = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetInlineUniformBlocks")));
     /// The byte offset of `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`.
     public static final long OFFSET_maxDescriptorSetUpdateAfterBindInlineUniformBlocks = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetUpdateAfterBindInlineUniformBlocks"));
     /// The memory layout of `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`.
     public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindInlineUniformBlocks = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindInlineUniformBlocks"));
     /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindInlineUniformBlocks"));
+    public static final Supplier<VarHandle> VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindInlineUniformBlocks")));
     /// The byte offset of `maxInlineUniformTotalSize`.
     public static final long OFFSET_maxInlineUniformTotalSize = LAYOUT.byteOffset(PathElement.groupElement("maxInlineUniformTotalSize"));
     /// The memory layout of `maxInlineUniformTotalSize`.
     public static final MemoryLayout LAYOUT_maxInlineUniformTotalSize = LAYOUT.select(PathElement.groupElement("maxInlineUniformTotalSize"));
     /// The [VarHandle] of `maxInlineUniformTotalSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxInlineUniformTotalSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInlineUniformTotalSize"));
+    public static final Supplier<VarHandle> VH_maxInlineUniformTotalSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInlineUniformTotalSize")));
     /// The byte offset of `integerDotProduct8BitUnsignedAccelerated`.
     public static final long OFFSET_integerDotProduct8BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct8BitUnsignedAccelerated"));
     /// The memory layout of `integerDotProduct8BitUnsignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct8BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct8BitUnsignedAccelerated"));
     /// The [VarHandle] of `integerDotProduct8BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct8BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct8BitUnsignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct8BitUnsignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct8BitUnsignedAccelerated")));
     /// The byte offset of `integerDotProduct8BitSignedAccelerated`.
     public static final long OFFSET_integerDotProduct8BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct8BitSignedAccelerated"));
     /// The memory layout of `integerDotProduct8BitSignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct8BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct8BitSignedAccelerated"));
     /// The [VarHandle] of `integerDotProduct8BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct8BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct8BitSignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct8BitSignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct8BitSignedAccelerated")));
     /// The byte offset of `integerDotProduct8BitMixedSignednessAccelerated`.
     public static final long OFFSET_integerDotProduct8BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct8BitMixedSignednessAccelerated"));
     /// The memory layout of `integerDotProduct8BitMixedSignednessAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct8BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct8BitMixedSignednessAccelerated"));
     /// The [VarHandle] of `integerDotProduct8BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct8BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct8BitMixedSignednessAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct8BitMixedSignednessAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct8BitMixedSignednessAccelerated")));
     /// The byte offset of `integerDotProduct4x8BitPackedUnsignedAccelerated`.
     public static final long OFFSET_integerDotProduct4x8BitPackedUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct4x8BitPackedUnsignedAccelerated"));
     /// The memory layout of `integerDotProduct4x8BitPackedUnsignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct4x8BitPackedUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct4x8BitPackedUnsignedAccelerated"));
     /// The [VarHandle] of `integerDotProduct4x8BitPackedUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct4x8BitPackedUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct4x8BitPackedUnsignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct4x8BitPackedUnsignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct4x8BitPackedUnsignedAccelerated")));
     /// The byte offset of `integerDotProduct4x8BitPackedSignedAccelerated`.
     public static final long OFFSET_integerDotProduct4x8BitPackedSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct4x8BitPackedSignedAccelerated"));
     /// The memory layout of `integerDotProduct4x8BitPackedSignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct4x8BitPackedSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct4x8BitPackedSignedAccelerated"));
     /// The [VarHandle] of `integerDotProduct4x8BitPackedSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct4x8BitPackedSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct4x8BitPackedSignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct4x8BitPackedSignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct4x8BitPackedSignedAccelerated")));
     /// The byte offset of `integerDotProduct4x8BitPackedMixedSignednessAccelerated`.
     public static final long OFFSET_integerDotProduct4x8BitPackedMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct4x8BitPackedMixedSignednessAccelerated"));
     /// The memory layout of `integerDotProduct4x8BitPackedMixedSignednessAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct4x8BitPackedMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct4x8BitPackedMixedSignednessAccelerated"));
     /// The [VarHandle] of `integerDotProduct4x8BitPackedMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct4x8BitPackedMixedSignednessAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct4x8BitPackedMixedSignednessAccelerated")));
     /// The byte offset of `integerDotProduct16BitUnsignedAccelerated`.
     public static final long OFFSET_integerDotProduct16BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct16BitUnsignedAccelerated"));
     /// The memory layout of `integerDotProduct16BitUnsignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct16BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct16BitUnsignedAccelerated"));
     /// The [VarHandle] of `integerDotProduct16BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct16BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct16BitUnsignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct16BitUnsignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct16BitUnsignedAccelerated")));
     /// The byte offset of `integerDotProduct16BitSignedAccelerated`.
     public static final long OFFSET_integerDotProduct16BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct16BitSignedAccelerated"));
     /// The memory layout of `integerDotProduct16BitSignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct16BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct16BitSignedAccelerated"));
     /// The [VarHandle] of `integerDotProduct16BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct16BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct16BitSignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct16BitSignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct16BitSignedAccelerated")));
     /// The byte offset of `integerDotProduct16BitMixedSignednessAccelerated`.
     public static final long OFFSET_integerDotProduct16BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct16BitMixedSignednessAccelerated"));
     /// The memory layout of `integerDotProduct16BitMixedSignednessAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct16BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct16BitMixedSignednessAccelerated"));
     /// The [VarHandle] of `integerDotProduct16BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct16BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct16BitMixedSignednessAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct16BitMixedSignednessAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct16BitMixedSignednessAccelerated")));
     /// The byte offset of `integerDotProduct32BitUnsignedAccelerated`.
     public static final long OFFSET_integerDotProduct32BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct32BitUnsignedAccelerated"));
     /// The memory layout of `integerDotProduct32BitUnsignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct32BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct32BitUnsignedAccelerated"));
     /// The [VarHandle] of `integerDotProduct32BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct32BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct32BitUnsignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct32BitUnsignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct32BitUnsignedAccelerated")));
     /// The byte offset of `integerDotProduct32BitSignedAccelerated`.
     public static final long OFFSET_integerDotProduct32BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct32BitSignedAccelerated"));
     /// The memory layout of `integerDotProduct32BitSignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct32BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct32BitSignedAccelerated"));
     /// The [VarHandle] of `integerDotProduct32BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct32BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct32BitSignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct32BitSignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct32BitSignedAccelerated")));
     /// The byte offset of `integerDotProduct32BitMixedSignednessAccelerated`.
     public static final long OFFSET_integerDotProduct32BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct32BitMixedSignednessAccelerated"));
     /// The memory layout of `integerDotProduct32BitMixedSignednessAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct32BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct32BitMixedSignednessAccelerated"));
     /// The [VarHandle] of `integerDotProduct32BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct32BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct32BitMixedSignednessAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct32BitMixedSignednessAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct32BitMixedSignednessAccelerated")));
     /// The byte offset of `integerDotProduct64BitUnsignedAccelerated`.
     public static final long OFFSET_integerDotProduct64BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct64BitUnsignedAccelerated"));
     /// The memory layout of `integerDotProduct64BitUnsignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct64BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct64BitUnsignedAccelerated"));
     /// The [VarHandle] of `integerDotProduct64BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct64BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct64BitUnsignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct64BitUnsignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct64BitUnsignedAccelerated")));
     /// The byte offset of `integerDotProduct64BitSignedAccelerated`.
     public static final long OFFSET_integerDotProduct64BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct64BitSignedAccelerated"));
     /// The memory layout of `integerDotProduct64BitSignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct64BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct64BitSignedAccelerated"));
     /// The [VarHandle] of `integerDotProduct64BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct64BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct64BitSignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct64BitSignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct64BitSignedAccelerated")));
     /// The byte offset of `integerDotProduct64BitMixedSignednessAccelerated`.
     public static final long OFFSET_integerDotProduct64BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct64BitMixedSignednessAccelerated"));
     /// The memory layout of `integerDotProduct64BitMixedSignednessAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProduct64BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct64BitMixedSignednessAccelerated"));
     /// The [VarHandle] of `integerDotProduct64BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProduct64BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct64BitMixedSignednessAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProduct64BitMixedSignednessAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct64BitMixedSignednessAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitUnsignedAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitUnsignedAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitUnsignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitUnsignedAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating8BitSignedAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating8BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitSignedAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating8BitSignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating8BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitSignedAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating8BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitSignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitSignedAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitUnsignedAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitUnsignedAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitUnsignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitUnsignedAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating16BitSignedAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating16BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitSignedAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating16BitSignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating16BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitSignedAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating16BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitSignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitSignedAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitUnsignedAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitUnsignedAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitUnsignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitUnsignedAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating32BitSignedAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating32BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitSignedAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating32BitSignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating32BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitSignedAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating32BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitSignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitSignedAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitUnsignedAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitUnsignedAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitUnsignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitUnsignedAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating64BitSignedAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating64BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitSignedAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating64BitSignedAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating64BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitSignedAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating64BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitSignedAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitSignedAccelerated")));
     /// The byte offset of `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated`.
     public static final long OFFSET_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"));
     /// The memory layout of `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated`.
     public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"));
     /// The [VarHandle] of `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"));
+    public static final Supplier<VarHandle> VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated")));
     /// The byte offset of `storageTexelBufferOffsetAlignmentBytes`.
     public static final long OFFSET_storageTexelBufferOffsetAlignmentBytes = LAYOUT.byteOffset(PathElement.groupElement("storageTexelBufferOffsetAlignmentBytes"));
     /// The memory layout of `storageTexelBufferOffsetAlignmentBytes`.
     public static final MemoryLayout LAYOUT_storageTexelBufferOffsetAlignmentBytes = LAYOUT.select(PathElement.groupElement("storageTexelBufferOffsetAlignmentBytes"));
     /// The [VarHandle] of `storageTexelBufferOffsetAlignmentBytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storageTexelBufferOffsetAlignmentBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageTexelBufferOffsetAlignmentBytes"));
+    public static final Supplier<VarHandle> VH_storageTexelBufferOffsetAlignmentBytes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageTexelBufferOffsetAlignmentBytes")));
     /// The byte offset of `storageTexelBufferOffsetSingleTexelAlignment`.
     public static final long OFFSET_storageTexelBufferOffsetSingleTexelAlignment = LAYOUT.byteOffset(PathElement.groupElement("storageTexelBufferOffsetSingleTexelAlignment"));
     /// The memory layout of `storageTexelBufferOffsetSingleTexelAlignment`.
     public static final MemoryLayout LAYOUT_storageTexelBufferOffsetSingleTexelAlignment = LAYOUT.select(PathElement.groupElement("storageTexelBufferOffsetSingleTexelAlignment"));
     /// The [VarHandle] of `storageTexelBufferOffsetSingleTexelAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storageTexelBufferOffsetSingleTexelAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageTexelBufferOffsetSingleTexelAlignment"));
+    public static final Supplier<VarHandle> VH_storageTexelBufferOffsetSingleTexelAlignment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageTexelBufferOffsetSingleTexelAlignment")));
     /// The byte offset of `uniformTexelBufferOffsetAlignmentBytes`.
     public static final long OFFSET_uniformTexelBufferOffsetAlignmentBytes = LAYOUT.byteOffset(PathElement.groupElement("uniformTexelBufferOffsetAlignmentBytes"));
     /// The memory layout of `uniformTexelBufferOffsetAlignmentBytes`.
     public static final MemoryLayout LAYOUT_uniformTexelBufferOffsetAlignmentBytes = LAYOUT.select(PathElement.groupElement("uniformTexelBufferOffsetAlignmentBytes"));
     /// The [VarHandle] of `uniformTexelBufferOffsetAlignmentBytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_uniformTexelBufferOffsetAlignmentBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformTexelBufferOffsetAlignmentBytes"));
+    public static final Supplier<VarHandle> VH_uniformTexelBufferOffsetAlignmentBytes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformTexelBufferOffsetAlignmentBytes")));
     /// The byte offset of `uniformTexelBufferOffsetSingleTexelAlignment`.
     public static final long OFFSET_uniformTexelBufferOffsetSingleTexelAlignment = LAYOUT.byteOffset(PathElement.groupElement("uniformTexelBufferOffsetSingleTexelAlignment"));
     /// The memory layout of `uniformTexelBufferOffsetSingleTexelAlignment`.
     public static final MemoryLayout LAYOUT_uniformTexelBufferOffsetSingleTexelAlignment = LAYOUT.select(PathElement.groupElement("uniformTexelBufferOffsetSingleTexelAlignment"));
     /// The [VarHandle] of `uniformTexelBufferOffsetSingleTexelAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_uniformTexelBufferOffsetSingleTexelAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformTexelBufferOffsetSingleTexelAlignment"));
+    public static final Supplier<VarHandle> VH_uniformTexelBufferOffsetSingleTexelAlignment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformTexelBufferOffsetSingleTexelAlignment")));
     /// The byte offset of `maxBufferSize`.
     public static final long OFFSET_maxBufferSize = LAYOUT.byteOffset(PathElement.groupElement("maxBufferSize"));
     /// The memory layout of `maxBufferSize`.
     public static final MemoryLayout LAYOUT_maxBufferSize = LAYOUT.select(PathElement.groupElement("maxBufferSize"));
     /// The [VarHandle] of `maxBufferSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxBufferSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBufferSize"));
+    public static final Supplier<VarHandle> VH_maxBufferSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBufferSize")));
 
     /// Creates `VkPhysicalDeviceVulkan13Properties` with the given segment.
     /// @param segment      the memory segment
@@ -446,14 +446,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -462,14 +462,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -478,14 +478,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `minSubgroupSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minSubgroupSize(MemorySegment segment, long index) { return (int) VH_minSubgroupSize.get(segment, 0L, index); }
+    public static int minSubgroupSize(MemorySegment segment, long index) { return (int) VH_minSubgroupSize.get().get(segment, 0L, index); }
     /// {@return `minSubgroupSize`}
     public int minSubgroupSize() { return minSubgroupSize(this.segment(), 0L); }
     /// Sets `minSubgroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minSubgroupSize(MemorySegment segment, long index, int value) { VH_minSubgroupSize.set(segment, 0L, index, value); }
+    public static void minSubgroupSize(MemorySegment segment, long index, int value) { VH_minSubgroupSize.get().set(segment, 0L, index, value); }
     /// Sets `minSubgroupSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -494,14 +494,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `maxSubgroupSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxSubgroupSize(MemorySegment segment, long index) { return (int) VH_maxSubgroupSize.get(segment, 0L, index); }
+    public static int maxSubgroupSize(MemorySegment segment, long index) { return (int) VH_maxSubgroupSize.get().get(segment, 0L, index); }
     /// {@return `maxSubgroupSize`}
     public int maxSubgroupSize() { return maxSubgroupSize(this.segment(), 0L); }
     /// Sets `maxSubgroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxSubgroupSize(MemorySegment segment, long index, int value) { VH_maxSubgroupSize.set(segment, 0L, index, value); }
+    public static void maxSubgroupSize(MemorySegment segment, long index, int value) { VH_maxSubgroupSize.get().set(segment, 0L, index, value); }
     /// Sets `maxSubgroupSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -510,14 +510,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `maxComputeWorkgroupSubgroups` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxComputeWorkgroupSubgroups(MemorySegment segment, long index) { return (int) VH_maxComputeWorkgroupSubgroups.get(segment, 0L, index); }
+    public static int maxComputeWorkgroupSubgroups(MemorySegment segment, long index) { return (int) VH_maxComputeWorkgroupSubgroups.get().get(segment, 0L, index); }
     /// {@return `maxComputeWorkgroupSubgroups`}
     public int maxComputeWorkgroupSubgroups() { return maxComputeWorkgroupSubgroups(this.segment(), 0L); }
     /// Sets `maxComputeWorkgroupSubgroups` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxComputeWorkgroupSubgroups(MemorySegment segment, long index, int value) { VH_maxComputeWorkgroupSubgroups.set(segment, 0L, index, value); }
+    public static void maxComputeWorkgroupSubgroups(MemorySegment segment, long index, int value) { VH_maxComputeWorkgroupSubgroups.get().set(segment, 0L, index, value); }
     /// Sets `maxComputeWorkgroupSubgroups` with the given value.
     /// @param value the value
     /// @return `this`
@@ -526,14 +526,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `requiredSubgroupSizeStages` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int requiredSubgroupSizeStages(MemorySegment segment, long index) { return (int) VH_requiredSubgroupSizeStages.get(segment, 0L, index); }
+    public static int requiredSubgroupSizeStages(MemorySegment segment, long index) { return (int) VH_requiredSubgroupSizeStages.get().get(segment, 0L, index); }
     /// {@return `requiredSubgroupSizeStages`}
     public int requiredSubgroupSizeStages() { return requiredSubgroupSizeStages(this.segment(), 0L); }
     /// Sets `requiredSubgroupSizeStages` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void requiredSubgroupSizeStages(MemorySegment segment, long index, int value) { VH_requiredSubgroupSizeStages.set(segment, 0L, index, value); }
+    public static void requiredSubgroupSizeStages(MemorySegment segment, long index, int value) { VH_requiredSubgroupSizeStages.get().set(segment, 0L, index, value); }
     /// Sets `requiredSubgroupSizeStages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -542,14 +542,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `maxInlineUniformBlockSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxInlineUniformBlockSize(MemorySegment segment, long index) { return (int) VH_maxInlineUniformBlockSize.get(segment, 0L, index); }
+    public static int maxInlineUniformBlockSize(MemorySegment segment, long index) { return (int) VH_maxInlineUniformBlockSize.get().get(segment, 0L, index); }
     /// {@return `maxInlineUniformBlockSize`}
     public int maxInlineUniformBlockSize() { return maxInlineUniformBlockSize(this.segment(), 0L); }
     /// Sets `maxInlineUniformBlockSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxInlineUniformBlockSize(MemorySegment segment, long index, int value) { VH_maxInlineUniformBlockSize.set(segment, 0L, index, value); }
+    public static void maxInlineUniformBlockSize(MemorySegment segment, long index, int value) { VH_maxInlineUniformBlockSize.get().set(segment, 0L, index, value); }
     /// Sets `maxInlineUniformBlockSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -558,14 +558,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `maxPerStageDescriptorInlineUniformBlocks` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorInlineUniformBlocks.get(segment, 0L, index); }
+    public static int maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorInlineUniformBlocks.get().get(segment, 0L, index); }
     /// {@return `maxPerStageDescriptorInlineUniformBlocks`}
     public int maxPerStageDescriptorInlineUniformBlocks() { return maxPerStageDescriptorInlineUniformBlocks(this.segment(), 0L); }
     /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorInlineUniformBlocks.set(segment, 0L, index, value); }
+    public static void maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorInlineUniformBlocks.get().set(segment, 0L, index, value); }
     /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
@@ -574,14 +574,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks.get(segment, 0L, index); }
+    public static int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks.get().get(segment, 0L, index); }
     /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`}
     public int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks() { return maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), 0L); }
     /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks.set(segment, 0L, index, value); }
+    public static void maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks.get().set(segment, 0L, index, value); }
     /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
@@ -590,14 +590,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `maxDescriptorSetInlineUniformBlocks` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxDescriptorSetInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetInlineUniformBlocks.get(segment, 0L, index); }
+    public static int maxDescriptorSetInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetInlineUniformBlocks.get().get(segment, 0L, index); }
     /// {@return `maxDescriptorSetInlineUniformBlocks`}
     public int maxDescriptorSetInlineUniformBlocks() { return maxDescriptorSetInlineUniformBlocks(this.segment(), 0L); }
     /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxDescriptorSetInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxDescriptorSetInlineUniformBlocks.set(segment, 0L, index, value); }
+    public static void maxDescriptorSetInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxDescriptorSetInlineUniformBlocks.get().set(segment, 0L, index, value); }
     /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
@@ -606,14 +606,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks.get(segment, 0L, index); }
+    public static int maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks.get().get(segment, 0L, index); }
     /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`}
     public int maxDescriptorSetUpdateAfterBindInlineUniformBlocks() { return maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), 0L); }
     /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks.set(segment, 0L, index, value); }
+    public static void maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks.get().set(segment, 0L, index, value); }
     /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
@@ -622,14 +622,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `maxInlineUniformTotalSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxInlineUniformTotalSize(MemorySegment segment, long index) { return (int) VH_maxInlineUniformTotalSize.get(segment, 0L, index); }
+    public static int maxInlineUniformTotalSize(MemorySegment segment, long index) { return (int) VH_maxInlineUniformTotalSize.get().get(segment, 0L, index); }
     /// {@return `maxInlineUniformTotalSize`}
     public int maxInlineUniformTotalSize() { return maxInlineUniformTotalSize(this.segment(), 0L); }
     /// Sets `maxInlineUniformTotalSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxInlineUniformTotalSize(MemorySegment segment, long index, int value) { VH_maxInlineUniformTotalSize.set(segment, 0L, index, value); }
+    public static void maxInlineUniformTotalSize(MemorySegment segment, long index, int value) { VH_maxInlineUniformTotalSize.get().set(segment, 0L, index, value); }
     /// Sets `maxInlineUniformTotalSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -638,14 +638,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct8BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct8BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitUnsignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct8BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitUnsignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct8BitUnsignedAccelerated`}
     public int integerDotProduct8BitUnsignedAccelerated() { return integerDotProduct8BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct8BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct8BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct8BitUnsignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct8BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct8BitUnsignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct8BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -654,14 +654,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct8BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct8BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitSignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct8BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitSignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct8BitSignedAccelerated`}
     public int integerDotProduct8BitSignedAccelerated() { return integerDotProduct8BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct8BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct8BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct8BitSignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct8BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct8BitSignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct8BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -670,14 +670,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct8BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct8BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct8BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitMixedSignednessAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct8BitMixedSignednessAccelerated`}
     public int integerDotProduct8BitMixedSignednessAccelerated() { return integerDotProduct8BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct8BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct8BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct8BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct8BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct8BitMixedSignednessAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct8BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -686,14 +686,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct4x8BitPackedUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedUnsignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedUnsignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct4x8BitPackedUnsignedAccelerated`}
     public int integerDotProduct4x8BitPackedUnsignedAccelerated() { return integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct4x8BitPackedUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct4x8BitPackedUnsignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct4x8BitPackedUnsignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct4x8BitPackedUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -702,14 +702,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct4x8BitPackedSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct4x8BitPackedSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedSignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct4x8BitPackedSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedSignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct4x8BitPackedSignedAccelerated`}
     public int integerDotProduct4x8BitPackedSignedAccelerated() { return integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct4x8BitPackedSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct4x8BitPackedSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct4x8BitPackedSignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct4x8BitPackedSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct4x8BitPackedSignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct4x8BitPackedSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -718,14 +718,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct4x8BitPackedMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct4x8BitPackedMixedSignednessAccelerated`}
     public int integerDotProduct4x8BitPackedMixedSignednessAccelerated() { return integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct4x8BitPackedMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct4x8BitPackedMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -734,14 +734,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct16BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct16BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitUnsignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct16BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitUnsignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct16BitUnsignedAccelerated`}
     public int integerDotProduct16BitUnsignedAccelerated() { return integerDotProduct16BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct16BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct16BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct16BitUnsignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct16BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct16BitUnsignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct16BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -750,14 +750,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct16BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct16BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitSignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct16BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitSignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct16BitSignedAccelerated`}
     public int integerDotProduct16BitSignedAccelerated() { return integerDotProduct16BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct16BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct16BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct16BitSignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct16BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct16BitSignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct16BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -766,14 +766,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct16BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct16BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct16BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitMixedSignednessAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct16BitMixedSignednessAccelerated`}
     public int integerDotProduct16BitMixedSignednessAccelerated() { return integerDotProduct16BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct16BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct16BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct16BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct16BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct16BitMixedSignednessAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct16BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -782,14 +782,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct32BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct32BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitUnsignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct32BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitUnsignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct32BitUnsignedAccelerated`}
     public int integerDotProduct32BitUnsignedAccelerated() { return integerDotProduct32BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct32BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct32BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct32BitUnsignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct32BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct32BitUnsignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct32BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -798,14 +798,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct32BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct32BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitSignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct32BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitSignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct32BitSignedAccelerated`}
     public int integerDotProduct32BitSignedAccelerated() { return integerDotProduct32BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct32BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct32BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct32BitSignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct32BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct32BitSignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct32BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -814,14 +814,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct32BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct32BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct32BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitMixedSignednessAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct32BitMixedSignednessAccelerated`}
     public int integerDotProduct32BitMixedSignednessAccelerated() { return integerDotProduct32BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct32BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct32BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct32BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct32BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct32BitMixedSignednessAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct32BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -830,14 +830,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct64BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct64BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitUnsignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct64BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitUnsignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct64BitUnsignedAccelerated`}
     public int integerDotProduct64BitUnsignedAccelerated() { return integerDotProduct64BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct64BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct64BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct64BitUnsignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct64BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct64BitUnsignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct64BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -846,14 +846,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct64BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct64BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitSignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct64BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitSignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct64BitSignedAccelerated`}
     public int integerDotProduct64BitSignedAccelerated() { return integerDotProduct64BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct64BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct64BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct64BitSignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct64BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct64BitSignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct64BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -862,14 +862,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProduct64BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProduct64BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    public static int integerDotProduct64BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitMixedSignednessAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProduct64BitMixedSignednessAccelerated`}
     public int integerDotProduct64BitMixedSignednessAccelerated() { return integerDotProduct64BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct64BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProduct64BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct64BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProduct64BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct64BitMixedSignednessAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProduct64BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -878,14 +878,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated`}
     public int integerDotProductAccumulatingSaturating8BitUnsignedAccelerated() { return integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -894,14 +894,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating8BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating8BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating8BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating8BitSignedAccelerated`}
     public int integerDotProductAccumulatingSaturating8BitSignedAccelerated() { return integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating8BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating8BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating8BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating8BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -910,14 +910,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated`}
     public int integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated() { return integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -926,14 +926,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated`}
     public int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated() { return integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -942,14 +942,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated`}
     public int integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated() { return integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -958,14 +958,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated`}
     public int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated() { return integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -974,14 +974,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated`}
     public int integerDotProductAccumulatingSaturating16BitUnsignedAccelerated() { return integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -990,14 +990,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating16BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating16BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating16BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating16BitSignedAccelerated`}
     public int integerDotProductAccumulatingSaturating16BitSignedAccelerated() { return integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating16BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating16BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating16BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating16BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1006,14 +1006,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated`}
     public int integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated() { return integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1022,14 +1022,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated`}
     public int integerDotProductAccumulatingSaturating32BitUnsignedAccelerated() { return integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1038,14 +1038,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating32BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating32BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating32BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating32BitSignedAccelerated`}
     public int integerDotProductAccumulatingSaturating32BitSignedAccelerated() { return integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating32BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating32BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating32BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating32BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1054,14 +1054,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated`}
     public int integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated() { return integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1070,14 +1070,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated`}
     public int integerDotProductAccumulatingSaturating64BitUnsignedAccelerated() { return integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1086,14 +1086,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating64BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating64BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating64BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating64BitSignedAccelerated`}
     public int integerDotProductAccumulatingSaturating64BitSignedAccelerated() { return integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating64BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating64BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating64BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating64BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1102,14 +1102,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    public static int integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated.get().get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated`}
     public int integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated() { return integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
+    public static void integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1118,14 +1118,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `storageTexelBufferOffsetAlignmentBytes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long storageTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index) { return (long) VH_storageTexelBufferOffsetAlignmentBytes.get(segment, 0L, index); }
+    public static long storageTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index) { return (long) VH_storageTexelBufferOffsetAlignmentBytes.get().get(segment, 0L, index); }
     /// {@return `storageTexelBufferOffsetAlignmentBytes`}
     public long storageTexelBufferOffsetAlignmentBytes() { return storageTexelBufferOffsetAlignmentBytes(this.segment(), 0L); }
     /// Sets `storageTexelBufferOffsetAlignmentBytes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storageTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index, long value) { VH_storageTexelBufferOffsetAlignmentBytes.set(segment, 0L, index, value); }
+    public static void storageTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index, long value) { VH_storageTexelBufferOffsetAlignmentBytes.get().set(segment, 0L, index, value); }
     /// Sets `storageTexelBufferOffsetAlignmentBytes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1134,14 +1134,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `storageTexelBufferOffsetSingleTexelAlignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index) { return (int) VH_storageTexelBufferOffsetSingleTexelAlignment.get(segment, 0L, index); }
+    public static int storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index) { return (int) VH_storageTexelBufferOffsetSingleTexelAlignment.get().get(segment, 0L, index); }
     /// {@return `storageTexelBufferOffsetSingleTexelAlignment`}
     public int storageTexelBufferOffsetSingleTexelAlignment() { return storageTexelBufferOffsetSingleTexelAlignment(this.segment(), 0L); }
     /// Sets `storageTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index, int value) { VH_storageTexelBufferOffsetSingleTexelAlignment.set(segment, 0L, index, value); }
+    public static void storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index, int value) { VH_storageTexelBufferOffsetSingleTexelAlignment.get().set(segment, 0L, index, value); }
     /// Sets `storageTexelBufferOffsetSingleTexelAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1150,14 +1150,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `uniformTexelBufferOffsetAlignmentBytes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index) { return (long) VH_uniformTexelBufferOffsetAlignmentBytes.get(segment, 0L, index); }
+    public static long uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index) { return (long) VH_uniformTexelBufferOffsetAlignmentBytes.get().get(segment, 0L, index); }
     /// {@return `uniformTexelBufferOffsetAlignmentBytes`}
     public long uniformTexelBufferOffsetAlignmentBytes() { return uniformTexelBufferOffsetAlignmentBytes(this.segment(), 0L); }
     /// Sets `uniformTexelBufferOffsetAlignmentBytes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index, long value) { VH_uniformTexelBufferOffsetAlignmentBytes.set(segment, 0L, index, value); }
+    public static void uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index, long value) { VH_uniformTexelBufferOffsetAlignmentBytes.get().set(segment, 0L, index, value); }
     /// Sets `uniformTexelBufferOffsetAlignmentBytes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1166,14 +1166,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `uniformTexelBufferOffsetSingleTexelAlignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index) { return (int) VH_uniformTexelBufferOffsetSingleTexelAlignment.get(segment, 0L, index); }
+    public static int uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index) { return (int) VH_uniformTexelBufferOffsetSingleTexelAlignment.get().get(segment, 0L, index); }
     /// {@return `uniformTexelBufferOffsetSingleTexelAlignment`}
     public int uniformTexelBufferOffsetSingleTexelAlignment() { return uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), 0L); }
     /// Sets `uniformTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index, int value) { VH_uniformTexelBufferOffsetSingleTexelAlignment.set(segment, 0L, index, value); }
+    public static void uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index, int value) { VH_uniformTexelBufferOffsetSingleTexelAlignment.get().set(segment, 0L, index, value); }
     /// Sets `uniformTexelBufferOffsetSingleTexelAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1182,14 +1182,14 @@ public final class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// {@return `maxBufferSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long maxBufferSize(MemorySegment segment, long index) { return (long) VH_maxBufferSize.get(segment, 0L, index); }
+    public static long maxBufferSize(MemorySegment segment, long index) { return (long) VH_maxBufferSize.get().get(segment, 0L, index); }
     /// {@return `maxBufferSize`}
     public long maxBufferSize() { return maxBufferSize(this.segment(), 0L); }
     /// Sets `maxBufferSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxBufferSize(MemorySegment segment, long index, long value) { VH_maxBufferSize.set(segment, 0L, index, value); }
+    public static void maxBufferSize(MemorySegment segment, long index, long value) { VH_maxBufferSize.get().set(segment, 0L, index, value); }
     /// Sets `maxBufferSize` with the given value.
     /// @param value the value
     /// @return `this`

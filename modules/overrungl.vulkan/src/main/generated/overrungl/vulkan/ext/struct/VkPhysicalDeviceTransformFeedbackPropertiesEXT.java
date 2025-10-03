@@ -49,73 +49,73 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `maxTransformFeedbackStreams`.
     public static final long OFFSET_maxTransformFeedbackStreams = LAYOUT.byteOffset(PathElement.groupElement("maxTransformFeedbackStreams"));
     /// The memory layout of `maxTransformFeedbackStreams`.
     public static final MemoryLayout LAYOUT_maxTransformFeedbackStreams = LAYOUT.select(PathElement.groupElement("maxTransformFeedbackStreams"));
     /// The [VarHandle] of `maxTransformFeedbackStreams` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTransformFeedbackStreams = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackStreams"));
+    public static final Supplier<VarHandle> VH_maxTransformFeedbackStreams = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackStreams")));
     /// The byte offset of `maxTransformFeedbackBuffers`.
     public static final long OFFSET_maxTransformFeedbackBuffers = LAYOUT.byteOffset(PathElement.groupElement("maxTransformFeedbackBuffers"));
     /// The memory layout of `maxTransformFeedbackBuffers`.
     public static final MemoryLayout LAYOUT_maxTransformFeedbackBuffers = LAYOUT.select(PathElement.groupElement("maxTransformFeedbackBuffers"));
     /// The [VarHandle] of `maxTransformFeedbackBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTransformFeedbackBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackBuffers"));
+    public static final Supplier<VarHandle> VH_maxTransformFeedbackBuffers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackBuffers")));
     /// The byte offset of `maxTransformFeedbackBufferSize`.
     public static final long OFFSET_maxTransformFeedbackBufferSize = LAYOUT.byteOffset(PathElement.groupElement("maxTransformFeedbackBufferSize"));
     /// The memory layout of `maxTransformFeedbackBufferSize`.
     public static final MemoryLayout LAYOUT_maxTransformFeedbackBufferSize = LAYOUT.select(PathElement.groupElement("maxTransformFeedbackBufferSize"));
     /// The [VarHandle] of `maxTransformFeedbackBufferSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTransformFeedbackBufferSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackBufferSize"));
+    public static final Supplier<VarHandle> VH_maxTransformFeedbackBufferSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackBufferSize")));
     /// The byte offset of `maxTransformFeedbackStreamDataSize`.
     public static final long OFFSET_maxTransformFeedbackStreamDataSize = LAYOUT.byteOffset(PathElement.groupElement("maxTransformFeedbackStreamDataSize"));
     /// The memory layout of `maxTransformFeedbackStreamDataSize`.
     public static final MemoryLayout LAYOUT_maxTransformFeedbackStreamDataSize = LAYOUT.select(PathElement.groupElement("maxTransformFeedbackStreamDataSize"));
     /// The [VarHandle] of `maxTransformFeedbackStreamDataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTransformFeedbackStreamDataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackStreamDataSize"));
+    public static final Supplier<VarHandle> VH_maxTransformFeedbackStreamDataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackStreamDataSize")));
     /// The byte offset of `maxTransformFeedbackBufferDataSize`.
     public static final long OFFSET_maxTransformFeedbackBufferDataSize = LAYOUT.byteOffset(PathElement.groupElement("maxTransformFeedbackBufferDataSize"));
     /// The memory layout of `maxTransformFeedbackBufferDataSize`.
     public static final MemoryLayout LAYOUT_maxTransformFeedbackBufferDataSize = LAYOUT.select(PathElement.groupElement("maxTransformFeedbackBufferDataSize"));
     /// The [VarHandle] of `maxTransformFeedbackBufferDataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTransformFeedbackBufferDataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackBufferDataSize"));
+    public static final Supplier<VarHandle> VH_maxTransformFeedbackBufferDataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackBufferDataSize")));
     /// The byte offset of `maxTransformFeedbackBufferDataStride`.
     public static final long OFFSET_maxTransformFeedbackBufferDataStride = LAYOUT.byteOffset(PathElement.groupElement("maxTransformFeedbackBufferDataStride"));
     /// The memory layout of `maxTransformFeedbackBufferDataStride`.
     public static final MemoryLayout LAYOUT_maxTransformFeedbackBufferDataStride = LAYOUT.select(PathElement.groupElement("maxTransformFeedbackBufferDataStride"));
     /// The [VarHandle] of `maxTransformFeedbackBufferDataStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTransformFeedbackBufferDataStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackBufferDataStride"));
+    public static final Supplier<VarHandle> VH_maxTransformFeedbackBufferDataStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTransformFeedbackBufferDataStride")));
     /// The byte offset of `transformFeedbackQueries`.
     public static final long OFFSET_transformFeedbackQueries = LAYOUT.byteOffset(PathElement.groupElement("transformFeedbackQueries"));
     /// The memory layout of `transformFeedbackQueries`.
     public static final MemoryLayout LAYOUT_transformFeedbackQueries = LAYOUT.select(PathElement.groupElement("transformFeedbackQueries"));
     /// The [VarHandle] of `transformFeedbackQueries` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_transformFeedbackQueries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedbackQueries"));
+    public static final Supplier<VarHandle> VH_transformFeedbackQueries = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedbackQueries")));
     /// The byte offset of `transformFeedbackStreamsLinesTriangles`.
     public static final long OFFSET_transformFeedbackStreamsLinesTriangles = LAYOUT.byteOffset(PathElement.groupElement("transformFeedbackStreamsLinesTriangles"));
     /// The memory layout of `transformFeedbackStreamsLinesTriangles`.
     public static final MemoryLayout LAYOUT_transformFeedbackStreamsLinesTriangles = LAYOUT.select(PathElement.groupElement("transformFeedbackStreamsLinesTriangles"));
     /// The [VarHandle] of `transformFeedbackStreamsLinesTriangles` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_transformFeedbackStreamsLinesTriangles = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedbackStreamsLinesTriangles"));
+    public static final Supplier<VarHandle> VH_transformFeedbackStreamsLinesTriangles = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedbackStreamsLinesTriangles")));
     /// The byte offset of `transformFeedbackRasterizationStreamSelect`.
     public static final long OFFSET_transformFeedbackRasterizationStreamSelect = LAYOUT.byteOffset(PathElement.groupElement("transformFeedbackRasterizationStreamSelect"));
     /// The memory layout of `transformFeedbackRasterizationStreamSelect`.
     public static final MemoryLayout LAYOUT_transformFeedbackRasterizationStreamSelect = LAYOUT.select(PathElement.groupElement("transformFeedbackRasterizationStreamSelect"));
     /// The [VarHandle] of `transformFeedbackRasterizationStreamSelect` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_transformFeedbackRasterizationStreamSelect = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedbackRasterizationStreamSelect"));
+    public static final Supplier<VarHandle> VH_transformFeedbackRasterizationStreamSelect = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedbackRasterizationStreamSelect")));
     /// The byte offset of `transformFeedbackDraw`.
     public static final long OFFSET_transformFeedbackDraw = LAYOUT.byteOffset(PathElement.groupElement("transformFeedbackDraw"));
     /// The memory layout of `transformFeedbackDraw`.
     public static final MemoryLayout LAYOUT_transformFeedbackDraw = LAYOUT.select(PathElement.groupElement("transformFeedbackDraw"));
     /// The [VarHandle] of `transformFeedbackDraw` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_transformFeedbackDraw = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedbackDraw"));
+    public static final Supplier<VarHandle> VH_transformFeedbackDraw = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedbackDraw")));
 
     /// Creates `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `maxTransformFeedbackStreams` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTransformFeedbackStreams(MemorySegment segment, long index) { return (int) VH_maxTransformFeedbackStreams.get(segment, 0L, index); }
+    public static int maxTransformFeedbackStreams(MemorySegment segment, long index) { return (int) VH_maxTransformFeedbackStreams.get().get(segment, 0L, index); }
     /// {@return `maxTransformFeedbackStreams`}
     public int maxTransformFeedbackStreams() { return maxTransformFeedbackStreams(this.segment(), 0L); }
     /// Sets `maxTransformFeedbackStreams` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTransformFeedbackStreams(MemorySegment segment, long index, int value) { VH_maxTransformFeedbackStreams.set(segment, 0L, index, value); }
+    public static void maxTransformFeedbackStreams(MemorySegment segment, long index, int value) { VH_maxTransformFeedbackStreams.get().set(segment, 0L, index, value); }
     /// Sets `maxTransformFeedbackStreams` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `maxTransformFeedbackBuffers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTransformFeedbackBuffers(MemorySegment segment, long index) { return (int) VH_maxTransformFeedbackBuffers.get(segment, 0L, index); }
+    public static int maxTransformFeedbackBuffers(MemorySegment segment, long index) { return (int) VH_maxTransformFeedbackBuffers.get().get(segment, 0L, index); }
     /// {@return `maxTransformFeedbackBuffers`}
     public int maxTransformFeedbackBuffers() { return maxTransformFeedbackBuffers(this.segment(), 0L); }
     /// Sets `maxTransformFeedbackBuffers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTransformFeedbackBuffers(MemorySegment segment, long index, int value) { VH_maxTransformFeedbackBuffers.set(segment, 0L, index, value); }
+    public static void maxTransformFeedbackBuffers(MemorySegment segment, long index, int value) { VH_maxTransformFeedbackBuffers.get().set(segment, 0L, index, value); }
     /// Sets `maxTransformFeedbackBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `maxTransformFeedbackBufferSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long maxTransformFeedbackBufferSize(MemorySegment segment, long index) { return (long) VH_maxTransformFeedbackBufferSize.get(segment, 0L, index); }
+    public static long maxTransformFeedbackBufferSize(MemorySegment segment, long index) { return (long) VH_maxTransformFeedbackBufferSize.get().get(segment, 0L, index); }
     /// {@return `maxTransformFeedbackBufferSize`}
     public long maxTransformFeedbackBufferSize() { return maxTransformFeedbackBufferSize(this.segment(), 0L); }
     /// Sets `maxTransformFeedbackBufferSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTransformFeedbackBufferSize(MemorySegment segment, long index, long value) { VH_maxTransformFeedbackBufferSize.set(segment, 0L, index, value); }
+    public static void maxTransformFeedbackBufferSize(MemorySegment segment, long index, long value) { VH_maxTransformFeedbackBufferSize.get().set(segment, 0L, index, value); }
     /// Sets `maxTransformFeedbackBufferSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `maxTransformFeedbackStreamDataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTransformFeedbackStreamDataSize(MemorySegment segment, long index) { return (int) VH_maxTransformFeedbackStreamDataSize.get(segment, 0L, index); }
+    public static int maxTransformFeedbackStreamDataSize(MemorySegment segment, long index) { return (int) VH_maxTransformFeedbackStreamDataSize.get().get(segment, 0L, index); }
     /// {@return `maxTransformFeedbackStreamDataSize`}
     public int maxTransformFeedbackStreamDataSize() { return maxTransformFeedbackStreamDataSize(this.segment(), 0L); }
     /// Sets `maxTransformFeedbackStreamDataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTransformFeedbackStreamDataSize(MemorySegment segment, long index, int value) { VH_maxTransformFeedbackStreamDataSize.set(segment, 0L, index, value); }
+    public static void maxTransformFeedbackStreamDataSize(MemorySegment segment, long index, int value) { VH_maxTransformFeedbackStreamDataSize.get().set(segment, 0L, index, value); }
     /// Sets `maxTransformFeedbackStreamDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `maxTransformFeedbackBufferDataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTransformFeedbackBufferDataSize(MemorySegment segment, long index) { return (int) VH_maxTransformFeedbackBufferDataSize.get(segment, 0L, index); }
+    public static int maxTransformFeedbackBufferDataSize(MemorySegment segment, long index) { return (int) VH_maxTransformFeedbackBufferDataSize.get().get(segment, 0L, index); }
     /// {@return `maxTransformFeedbackBufferDataSize`}
     public int maxTransformFeedbackBufferDataSize() { return maxTransformFeedbackBufferDataSize(this.segment(), 0L); }
     /// Sets `maxTransformFeedbackBufferDataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTransformFeedbackBufferDataSize(MemorySegment segment, long index, int value) { VH_maxTransformFeedbackBufferDataSize.set(segment, 0L, index, value); }
+    public static void maxTransformFeedbackBufferDataSize(MemorySegment segment, long index, int value) { VH_maxTransformFeedbackBufferDataSize.get().set(segment, 0L, index, value); }
     /// Sets `maxTransformFeedbackBufferDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `maxTransformFeedbackBufferDataStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTransformFeedbackBufferDataStride(MemorySegment segment, long index) { return (int) VH_maxTransformFeedbackBufferDataStride.get(segment, 0L, index); }
+    public static int maxTransformFeedbackBufferDataStride(MemorySegment segment, long index) { return (int) VH_maxTransformFeedbackBufferDataStride.get().get(segment, 0L, index); }
     /// {@return `maxTransformFeedbackBufferDataStride`}
     public int maxTransformFeedbackBufferDataStride() { return maxTransformFeedbackBufferDataStride(this.segment(), 0L); }
     /// Sets `maxTransformFeedbackBufferDataStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTransformFeedbackBufferDataStride(MemorySegment segment, long index, int value) { VH_maxTransformFeedbackBufferDataStride.set(segment, 0L, index, value); }
+    public static void maxTransformFeedbackBufferDataStride(MemorySegment segment, long index, int value) { VH_maxTransformFeedbackBufferDataStride.get().set(segment, 0L, index, value); }
     /// Sets `maxTransformFeedbackBufferDataStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `transformFeedbackQueries` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int transformFeedbackQueries(MemorySegment segment, long index) { return (int) VH_transformFeedbackQueries.get(segment, 0L, index); }
+    public static int transformFeedbackQueries(MemorySegment segment, long index) { return (int) VH_transformFeedbackQueries.get().get(segment, 0L, index); }
     /// {@return `transformFeedbackQueries`}
     public int transformFeedbackQueries() { return transformFeedbackQueries(this.segment(), 0L); }
     /// Sets `transformFeedbackQueries` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void transformFeedbackQueries(MemorySegment segment, long index, int value) { VH_transformFeedbackQueries.set(segment, 0L, index, value); }
+    public static void transformFeedbackQueries(MemorySegment segment, long index, int value) { VH_transformFeedbackQueries.get().set(segment, 0L, index, value); }
     /// Sets `transformFeedbackQueries` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,14 +310,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `transformFeedbackStreamsLinesTriangles` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int transformFeedbackStreamsLinesTriangles(MemorySegment segment, long index) { return (int) VH_transformFeedbackStreamsLinesTriangles.get(segment, 0L, index); }
+    public static int transformFeedbackStreamsLinesTriangles(MemorySegment segment, long index) { return (int) VH_transformFeedbackStreamsLinesTriangles.get().get(segment, 0L, index); }
     /// {@return `transformFeedbackStreamsLinesTriangles`}
     public int transformFeedbackStreamsLinesTriangles() { return transformFeedbackStreamsLinesTriangles(this.segment(), 0L); }
     /// Sets `transformFeedbackStreamsLinesTriangles` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void transformFeedbackStreamsLinesTriangles(MemorySegment segment, long index, int value) { VH_transformFeedbackStreamsLinesTriangles.set(segment, 0L, index, value); }
+    public static void transformFeedbackStreamsLinesTriangles(MemorySegment segment, long index, int value) { VH_transformFeedbackStreamsLinesTriangles.get().set(segment, 0L, index, value); }
     /// Sets `transformFeedbackStreamsLinesTriangles` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,14 +326,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `transformFeedbackRasterizationStreamSelect` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int transformFeedbackRasterizationStreamSelect(MemorySegment segment, long index) { return (int) VH_transformFeedbackRasterizationStreamSelect.get(segment, 0L, index); }
+    public static int transformFeedbackRasterizationStreamSelect(MemorySegment segment, long index) { return (int) VH_transformFeedbackRasterizationStreamSelect.get().get(segment, 0L, index); }
     /// {@return `transformFeedbackRasterizationStreamSelect`}
     public int transformFeedbackRasterizationStreamSelect() { return transformFeedbackRasterizationStreamSelect(this.segment(), 0L); }
     /// Sets `transformFeedbackRasterizationStreamSelect` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void transformFeedbackRasterizationStreamSelect(MemorySegment segment, long index, int value) { VH_transformFeedbackRasterizationStreamSelect.set(segment, 0L, index, value); }
+    public static void transformFeedbackRasterizationStreamSelect(MemorySegment segment, long index, int value) { VH_transformFeedbackRasterizationStreamSelect.get().set(segment, 0L, index, value); }
     /// Sets `transformFeedbackRasterizationStreamSelect` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,14 +342,14 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupT
     /// {@return `transformFeedbackDraw` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int transformFeedbackDraw(MemorySegment segment, long index) { return (int) VH_transformFeedbackDraw.get(segment, 0L, index); }
+    public static int transformFeedbackDraw(MemorySegment segment, long index) { return (int) VH_transformFeedbackDraw.get().get(segment, 0L, index); }
     /// {@return `transformFeedbackDraw`}
     public int transformFeedbackDraw() { return transformFeedbackDraw(this.segment(), 0L); }
     /// Sets `transformFeedbackDraw` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void transformFeedbackDraw(MemorySegment segment, long index, int value) { VH_transformFeedbackDraw.set(segment, 0L, index, value); }
+    public static void transformFeedbackDraw(MemorySegment segment, long index, int value) { VH_transformFeedbackDraw.get().set(segment, 0L, index, value); }
     /// Sets `transformFeedbackDraw` with the given value.
     /// @param value the value
     /// @return `this`

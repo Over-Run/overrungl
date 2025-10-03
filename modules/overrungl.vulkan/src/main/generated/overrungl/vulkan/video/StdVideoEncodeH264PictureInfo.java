@@ -49,55 +49,55 @@ public final class StdVideoEncodeH264PictureInfo extends GroupType {
     /// The memory layout of `seq_parameter_set_id`.
     public static final MemoryLayout LAYOUT_seq_parameter_set_id = LAYOUT.select(PathElement.groupElement("seq_parameter_set_id"));
     /// The [VarHandle] of `seq_parameter_set_id` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_seq_parameter_set_id = LAYOUT.arrayElementVarHandle(PathElement.groupElement("seq_parameter_set_id"));
+    public static final Supplier<VarHandle> VH_seq_parameter_set_id = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("seq_parameter_set_id")));
     /// The byte offset of `pic_parameter_set_id`.
     public static final long OFFSET_pic_parameter_set_id = LAYOUT.byteOffset(PathElement.groupElement("pic_parameter_set_id"));
     /// The memory layout of `pic_parameter_set_id`.
     public static final MemoryLayout LAYOUT_pic_parameter_set_id = LAYOUT.select(PathElement.groupElement("pic_parameter_set_id"));
     /// The [VarHandle] of `pic_parameter_set_id` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pic_parameter_set_id = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pic_parameter_set_id"));
+    public static final Supplier<VarHandle> VH_pic_parameter_set_id = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pic_parameter_set_id")));
     /// The byte offset of `idr_pic_id`.
     public static final long OFFSET_idr_pic_id = LAYOUT.byteOffset(PathElement.groupElement("idr_pic_id"));
     /// The memory layout of `idr_pic_id`.
     public static final MemoryLayout LAYOUT_idr_pic_id = LAYOUT.select(PathElement.groupElement("idr_pic_id"));
     /// The [VarHandle] of `idr_pic_id` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_idr_pic_id = LAYOUT.arrayElementVarHandle(PathElement.groupElement("idr_pic_id"));
+    public static final Supplier<VarHandle> VH_idr_pic_id = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("idr_pic_id")));
     /// The byte offset of `primary_pic_type`.
     public static final long OFFSET_primary_pic_type = LAYOUT.byteOffset(PathElement.groupElement("primary_pic_type"));
     /// The memory layout of `primary_pic_type`.
     public static final MemoryLayout LAYOUT_primary_pic_type = LAYOUT.select(PathElement.groupElement("primary_pic_type"));
     /// The [VarHandle] of `primary_pic_type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_primary_pic_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primary_pic_type"));
+    public static final Supplier<VarHandle> VH_primary_pic_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("primary_pic_type")));
     /// The byte offset of `frame_num`.
     public static final long OFFSET_frame_num = LAYOUT.byteOffset(PathElement.groupElement("frame_num"));
     /// The memory layout of `frame_num`.
     public static final MemoryLayout LAYOUT_frame_num = LAYOUT.select(PathElement.groupElement("frame_num"));
     /// The [VarHandle] of `frame_num` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_frame_num = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frame_num"));
+    public static final Supplier<VarHandle> VH_frame_num = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("frame_num")));
     /// The byte offset of `PicOrderCnt`.
     public static final long OFFSET_PicOrderCnt = LAYOUT.byteOffset(PathElement.groupElement("PicOrderCnt"));
     /// The memory layout of `PicOrderCnt`.
     public static final MemoryLayout LAYOUT_PicOrderCnt = LAYOUT.select(PathElement.groupElement("PicOrderCnt"));
     /// The [VarHandle] of `PicOrderCnt` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_PicOrderCnt = LAYOUT.arrayElementVarHandle(PathElement.groupElement("PicOrderCnt"));
+    public static final Supplier<VarHandle> VH_PicOrderCnt = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("PicOrderCnt")));
     /// The byte offset of `temporal_id`.
     public static final long OFFSET_temporal_id = LAYOUT.byteOffset(PathElement.groupElement("temporal_id"));
     /// The memory layout of `temporal_id`.
     public static final MemoryLayout LAYOUT_temporal_id = LAYOUT.select(PathElement.groupElement("temporal_id"));
     /// The [VarHandle] of `temporal_id` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_temporal_id = LAYOUT.arrayElementVarHandle(PathElement.groupElement("temporal_id"));
+    public static final Supplier<VarHandle> VH_temporal_id = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("temporal_id")));
     /// The byte offset of `reserved1`.
     public static final long OFFSET_reserved1 = LAYOUT.byteOffset(PathElement.groupElement("reserved1"));
     /// The memory layout of `reserved1`.
     public static final MemoryLayout LAYOUT_reserved1 = LAYOUT.select(PathElement.groupElement("reserved1"));
     /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_reserved1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"), PathElement.sequenceElement()));
     /// The byte offset of `pRefLists`.
     public static final long OFFSET_pRefLists = LAYOUT.byteOffset(PathElement.groupElement("pRefLists"));
     /// The memory layout of `pRefLists`.
     public static final MemoryLayout LAYOUT_pRefLists = LAYOUT.select(PathElement.groupElement("pRefLists"));
     /// The [VarHandle] of `pRefLists` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pRefLists = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRefLists"));
+    public static final Supplier<VarHandle> VH_pRefLists = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRefLists")));
 
     /// Creates `StdVideoEncodeH264PictureInfo` with the given segment.
     /// @param segment      the memory segment
@@ -168,14 +168,14 @@ public final class StdVideoEncodeH264PictureInfo extends GroupType {
     /// {@return `seq_parameter_set_id` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte seq_parameter_set_id(MemorySegment segment, long index) { return (byte) VH_seq_parameter_set_id.get(segment, 0L, index); }
+    public static byte seq_parameter_set_id(MemorySegment segment, long index) { return (byte) VH_seq_parameter_set_id.get().get(segment, 0L, index); }
     /// {@return `seq_parameter_set_id`}
     public byte seq_parameter_set_id() { return seq_parameter_set_id(this.segment(), 0L); }
     /// Sets `seq_parameter_set_id` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void seq_parameter_set_id(MemorySegment segment, long index, byte value) { VH_seq_parameter_set_id.set(segment, 0L, index, value); }
+    public static void seq_parameter_set_id(MemorySegment segment, long index, byte value) { VH_seq_parameter_set_id.get().set(segment, 0L, index, value); }
     /// Sets `seq_parameter_set_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -184,14 +184,14 @@ public final class StdVideoEncodeH264PictureInfo extends GroupType {
     /// {@return `pic_parameter_set_id` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte pic_parameter_set_id(MemorySegment segment, long index) { return (byte) VH_pic_parameter_set_id.get(segment, 0L, index); }
+    public static byte pic_parameter_set_id(MemorySegment segment, long index) { return (byte) VH_pic_parameter_set_id.get().get(segment, 0L, index); }
     /// {@return `pic_parameter_set_id`}
     public byte pic_parameter_set_id() { return pic_parameter_set_id(this.segment(), 0L); }
     /// Sets `pic_parameter_set_id` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pic_parameter_set_id(MemorySegment segment, long index, byte value) { VH_pic_parameter_set_id.set(segment, 0L, index, value); }
+    public static void pic_parameter_set_id(MemorySegment segment, long index, byte value) { VH_pic_parameter_set_id.get().set(segment, 0L, index, value); }
     /// Sets `pic_parameter_set_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -200,14 +200,14 @@ public final class StdVideoEncodeH264PictureInfo extends GroupType {
     /// {@return `idr_pic_id` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short idr_pic_id(MemorySegment segment, long index) { return (short) VH_idr_pic_id.get(segment, 0L, index); }
+    public static short idr_pic_id(MemorySegment segment, long index) { return (short) VH_idr_pic_id.get().get(segment, 0L, index); }
     /// {@return `idr_pic_id`}
     public short idr_pic_id() { return idr_pic_id(this.segment(), 0L); }
     /// Sets `idr_pic_id` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void idr_pic_id(MemorySegment segment, long index, short value) { VH_idr_pic_id.set(segment, 0L, index, value); }
+    public static void idr_pic_id(MemorySegment segment, long index, short value) { VH_idr_pic_id.get().set(segment, 0L, index, value); }
     /// Sets `idr_pic_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -216,14 +216,14 @@ public final class StdVideoEncodeH264PictureInfo extends GroupType {
     /// {@return `primary_pic_type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int primary_pic_type(MemorySegment segment, long index) { return (int) VH_primary_pic_type.get(segment, 0L, index); }
+    public static int primary_pic_type(MemorySegment segment, long index) { return (int) VH_primary_pic_type.get().get(segment, 0L, index); }
     /// {@return `primary_pic_type`}
     public int primary_pic_type() { return primary_pic_type(this.segment(), 0L); }
     /// Sets `primary_pic_type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void primary_pic_type(MemorySegment segment, long index, int value) { VH_primary_pic_type.set(segment, 0L, index, value); }
+    public static void primary_pic_type(MemorySegment segment, long index, int value) { VH_primary_pic_type.get().set(segment, 0L, index, value); }
     /// Sets `primary_pic_type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,14 +232,14 @@ public final class StdVideoEncodeH264PictureInfo extends GroupType {
     /// {@return `frame_num` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int frame_num(MemorySegment segment, long index) { return (int) VH_frame_num.get(segment, 0L, index); }
+    public static int frame_num(MemorySegment segment, long index) { return (int) VH_frame_num.get().get(segment, 0L, index); }
     /// {@return `frame_num`}
     public int frame_num() { return frame_num(this.segment(), 0L); }
     /// Sets `frame_num` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void frame_num(MemorySegment segment, long index, int value) { VH_frame_num.set(segment, 0L, index, value); }
+    public static void frame_num(MemorySegment segment, long index, int value) { VH_frame_num.get().set(segment, 0L, index, value); }
     /// Sets `frame_num` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,14 +248,14 @@ public final class StdVideoEncodeH264PictureInfo extends GroupType {
     /// {@return `PicOrderCnt` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int PicOrderCnt(MemorySegment segment, long index) { return (int) VH_PicOrderCnt.get(segment, 0L, index); }
+    public static int PicOrderCnt(MemorySegment segment, long index) { return (int) VH_PicOrderCnt.get().get(segment, 0L, index); }
     /// {@return `PicOrderCnt`}
     public int PicOrderCnt() { return PicOrderCnt(this.segment(), 0L); }
     /// Sets `PicOrderCnt` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void PicOrderCnt(MemorySegment segment, long index, int value) { VH_PicOrderCnt.set(segment, 0L, index, value); }
+    public static void PicOrderCnt(MemorySegment segment, long index, int value) { VH_PicOrderCnt.get().set(segment, 0L, index, value); }
     /// Sets `PicOrderCnt` with the given value.
     /// @param value the value
     /// @return `this`
@@ -264,14 +264,14 @@ public final class StdVideoEncodeH264PictureInfo extends GroupType {
     /// {@return `temporal_id` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte temporal_id(MemorySegment segment, long index) { return (byte) VH_temporal_id.get(segment, 0L, index); }
+    public static byte temporal_id(MemorySegment segment, long index) { return (byte) VH_temporal_id.get().get(segment, 0L, index); }
     /// {@return `temporal_id`}
     public byte temporal_id() { return temporal_id(this.segment(), 0L); }
     /// Sets `temporal_id` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void temporal_id(MemorySegment segment, long index, byte value) { VH_temporal_id.set(segment, 0L, index, value); }
+    public static void temporal_id(MemorySegment segment, long index, byte value) { VH_temporal_id.get().set(segment, 0L, index, value); }
     /// Sets `temporal_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -285,7 +285,7 @@ public final class StdVideoEncodeH264PictureInfo extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte reserved1(MemorySegment segment, long index, long index0) { return (byte) VH_reserved1.get(segment, 0L, index, index0); }
+    public static byte reserved1(MemorySegment segment, long index, long index0) { return (byte) VH_reserved1.get().get(segment, 0L, index, index0); }
     /// {@return `reserved1`}
     public MemorySegment reserved1() { return reserved1(this.segment(), 0L); }
     /// {@return `reserved1`}
@@ -301,7 +301,7 @@ public final class StdVideoEncodeH264PictureInfo extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void reserved1(MemorySegment segment, long index, long index0, byte value) { VH_reserved1.set(segment, 0L, index, index0, value); }
+    public static void reserved1(MemorySegment segment, long index, long index0, byte value) { VH_reserved1.get().set(segment, 0L, index, index0, value); }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -315,14 +315,14 @@ public final class StdVideoEncodeH264PictureInfo extends GroupType {
     /// {@return `pRefLists` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pRefLists(MemorySegment segment, long index) { return (MemorySegment) VH_pRefLists.get(segment, 0L, index); }
+    public static MemorySegment pRefLists(MemorySegment segment, long index) { return (MemorySegment) VH_pRefLists.get().get(segment, 0L, index); }
     /// {@return `pRefLists`}
     public MemorySegment pRefLists() { return pRefLists(this.segment(), 0L); }
     /// Sets `pRefLists` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pRefLists(MemorySegment segment, long index, MemorySegment value) { VH_pRefLists.set(segment, 0L, index, value); }
+    public static void pRefLists(MemorySegment segment, long index, MemorySegment value) { VH_pRefLists.get().set(segment, 0L, index, value); }
     /// Sets `pRefLists` with the given value.
     /// @param value the value
     /// @return `this`

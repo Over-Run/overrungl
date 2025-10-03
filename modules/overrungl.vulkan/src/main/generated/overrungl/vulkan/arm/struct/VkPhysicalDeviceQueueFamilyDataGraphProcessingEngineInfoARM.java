@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM e
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `queueFamilyIndex`.
     public static final long OFFSET_queueFamilyIndex = LAYOUT.byteOffset(PathElement.groupElement("queueFamilyIndex"));
     /// The memory layout of `queueFamilyIndex`.
     public static final MemoryLayout LAYOUT_queueFamilyIndex = LAYOUT.select(PathElement.groupElement("queueFamilyIndex"));
     /// The [VarHandle] of `queueFamilyIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_queueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyIndex"));
+    public static final Supplier<VarHandle> VH_queueFamilyIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyIndex")));
     /// The byte offset of `engineType`.
     public static final long OFFSET_engineType = LAYOUT.byteOffset(PathElement.groupElement("engineType"));
     /// The memory layout of `engineType`.
     public static final MemoryLayout LAYOUT_engineType = LAYOUT.select(PathElement.groupElement("engineType"));
     /// The [VarHandle] of `engineType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_engineType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("engineType"));
+    public static final Supplier<VarHandle> VH_engineType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("engineType")));
 
     /// Creates `VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM e
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM e
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM e
     /// {@return `queueFamilyIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int queueFamilyIndex(MemorySegment segment, long index) { return (int) VH_queueFamilyIndex.get(segment, 0L, index); }
+    public static int queueFamilyIndex(MemorySegment segment, long index) { return (int) VH_queueFamilyIndex.get().get(segment, 0L, index); }
     /// {@return `queueFamilyIndex`}
     public int queueFamilyIndex() { return queueFamilyIndex(this.segment(), 0L); }
     /// Sets `queueFamilyIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void queueFamilyIndex(MemorySegment segment, long index, int value) { VH_queueFamilyIndex.set(segment, 0L, index, value); }
+    public static void queueFamilyIndex(MemorySegment segment, long index, int value) { VH_queueFamilyIndex.get().set(segment, 0L, index, value); }
     /// Sets `queueFamilyIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM e
     /// {@return `engineType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int engineType(MemorySegment segment, long index) { return (int) VH_engineType.get(segment, 0L, index); }
+    public static int engineType(MemorySegment segment, long index) { return (int) VH_engineType.get().get(segment, 0L, index); }
     /// {@return `engineType`}
     public int engineType() { return engineType(this.segment(), 0L); }
     /// Sets `engineType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void engineType(MemorySegment segment, long index, int value) { VH_engineType.set(segment, 0L, index, value); }
+    public static void engineType(MemorySegment segment, long index, int value) { VH_engineType.get().set(segment, 0L, index, value); }
     /// Sets `engineType` with the given value.
     /// @param value the value
     /// @return `this`

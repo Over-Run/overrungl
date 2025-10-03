@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `robustBufferAccess2`.
     public static final long OFFSET_robustBufferAccess2 = LAYOUT.byteOffset(PathElement.groupElement("robustBufferAccess2"));
     /// The memory layout of `robustBufferAccess2`.
     public static final MemoryLayout LAYOUT_robustBufferAccess2 = LAYOUT.select(PathElement.groupElement("robustBufferAccess2"));
     /// The [VarHandle] of `robustBufferAccess2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_robustBufferAccess2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustBufferAccess2"));
+    public static final Supplier<VarHandle> VH_robustBufferAccess2 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustBufferAccess2")));
     /// The byte offset of `robustImageAccess2`.
     public static final long OFFSET_robustImageAccess2 = LAYOUT.byteOffset(PathElement.groupElement("robustImageAccess2"));
     /// The memory layout of `robustImageAccess2`.
     public static final MemoryLayout LAYOUT_robustImageAccess2 = LAYOUT.select(PathElement.groupElement("robustImageAccess2"));
     /// The [VarHandle] of `robustImageAccess2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_robustImageAccess2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustImageAccess2"));
+    public static final Supplier<VarHandle> VH_robustImageAccess2 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustImageAccess2")));
     /// The byte offset of `nullDescriptor`.
     public static final long OFFSET_nullDescriptor = LAYOUT.byteOffset(PathElement.groupElement("nullDescriptor"));
     /// The memory layout of `nullDescriptor`.
     public static final MemoryLayout LAYOUT_nullDescriptor = LAYOUT.select(PathElement.groupElement("nullDescriptor"));
     /// The [VarHandle] of `nullDescriptor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_nullDescriptor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nullDescriptor"));
+    public static final Supplier<VarHandle> VH_nullDescriptor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("nullDescriptor")));
 
     /// Creates `VkPhysicalDeviceRobustness2FeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
     /// {@return `robustBufferAccess2` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int robustBufferAccess2(MemorySegment segment, long index) { return (int) VH_robustBufferAccess2.get(segment, 0L, index); }
+    public static int robustBufferAccess2(MemorySegment segment, long index) { return (int) VH_robustBufferAccess2.get().get(segment, 0L, index); }
     /// {@return `robustBufferAccess2`}
     public int robustBufferAccess2() { return robustBufferAccess2(this.segment(), 0L); }
     /// Sets `robustBufferAccess2` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void robustBufferAccess2(MemorySegment segment, long index, int value) { VH_robustBufferAccess2.set(segment, 0L, index, value); }
+    public static void robustBufferAccess2(MemorySegment segment, long index, int value) { VH_robustBufferAccess2.get().set(segment, 0L, index, value); }
     /// Sets `robustBufferAccess2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
     /// {@return `robustImageAccess2` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int robustImageAccess2(MemorySegment segment, long index) { return (int) VH_robustImageAccess2.get(segment, 0L, index); }
+    public static int robustImageAccess2(MemorySegment segment, long index) { return (int) VH_robustImageAccess2.get().get(segment, 0L, index); }
     /// {@return `robustImageAccess2`}
     public int robustImageAccess2() { return robustImageAccess2(this.segment(), 0L); }
     /// Sets `robustImageAccess2` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void robustImageAccess2(MemorySegment segment, long index, int value) { VH_robustImageAccess2.set(segment, 0L, index, value); }
+    public static void robustImageAccess2(MemorySegment segment, long index, int value) { VH_robustImageAccess2.get().set(segment, 0L, index, value); }
     /// Sets `robustImageAccess2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
     /// {@return `nullDescriptor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int nullDescriptor(MemorySegment segment, long index) { return (int) VH_nullDescriptor.get(segment, 0L, index); }
+    public static int nullDescriptor(MemorySegment segment, long index) { return (int) VH_nullDescriptor.get().get(segment, 0L, index); }
     /// {@return `nullDescriptor`}
     public int nullDescriptor() { return nullDescriptor(this.segment(), 0L); }
     /// Sets `nullDescriptor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void nullDescriptor(MemorySegment segment, long index, int value) { VH_nullDescriptor.set(segment, 0L, index, value); }
+    public static void nullDescriptor(MemorySegment segment, long index, int value) { VH_nullDescriptor.get().set(segment, 0L, index, value); }
     /// Sets `nullDescriptor` with the given value.
     /// @param value the value
     /// @return `this`

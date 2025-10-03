@@ -31,19 +31,19 @@ public final class VkCoarseSampleLocationNV extends GroupType {
     /// The memory layout of `pixelX`.
     public static final MemoryLayout LAYOUT_pixelX = LAYOUT.select(PathElement.groupElement("pixelX"));
     /// The [VarHandle] of `pixelX` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pixelX = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixelX"));
+    public static final Supplier<VarHandle> VH_pixelX = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixelX")));
     /// The byte offset of `pixelY`.
     public static final long OFFSET_pixelY = LAYOUT.byteOffset(PathElement.groupElement("pixelY"));
     /// The memory layout of `pixelY`.
     public static final MemoryLayout LAYOUT_pixelY = LAYOUT.select(PathElement.groupElement("pixelY"));
     /// The [VarHandle] of `pixelY` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pixelY = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixelY"));
+    public static final Supplier<VarHandle> VH_pixelY = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixelY")));
     /// The byte offset of `sample`.
     public static final long OFFSET_sample = LAYOUT.byteOffset(PathElement.groupElement("sample"));
     /// The memory layout of `sample`.
     public static final MemoryLayout LAYOUT_sample = LAYOUT.select(PathElement.groupElement("sample"));
     /// The [VarHandle] of `sample` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sample = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sample"));
+    public static final Supplier<VarHandle> VH_sample = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sample")));
 
     /// Creates `VkCoarseSampleLocationNV` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkCoarseSampleLocationNV extends GroupType {
     /// {@return `pixelX` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pixelX(MemorySegment segment, long index) { return (int) VH_pixelX.get(segment, 0L, index); }
+    public static int pixelX(MemorySegment segment, long index) { return (int) VH_pixelX.get().get(segment, 0L, index); }
     /// {@return `pixelX`}
     public int pixelX() { return pixelX(this.segment(), 0L); }
     /// Sets `pixelX` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pixelX(MemorySegment segment, long index, int value) { VH_pixelX.set(segment, 0L, index, value); }
+    public static void pixelX(MemorySegment segment, long index, int value) { VH_pixelX.get().set(segment, 0L, index, value); }
     /// Sets `pixelX` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkCoarseSampleLocationNV extends GroupType {
     /// {@return `pixelY` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pixelY(MemorySegment segment, long index) { return (int) VH_pixelY.get(segment, 0L, index); }
+    public static int pixelY(MemorySegment segment, long index) { return (int) VH_pixelY.get().get(segment, 0L, index); }
     /// {@return `pixelY`}
     public int pixelY() { return pixelY(this.segment(), 0L); }
     /// Sets `pixelY` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pixelY(MemorySegment segment, long index, int value) { VH_pixelY.set(segment, 0L, index, value); }
+    public static void pixelY(MemorySegment segment, long index, int value) { VH_pixelY.get().set(segment, 0L, index, value); }
     /// Sets `pixelY` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkCoarseSampleLocationNV extends GroupType {
     /// {@return `sample` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sample(MemorySegment segment, long index) { return (int) VH_sample.get(segment, 0L, index); }
+    public static int sample(MemorySegment segment, long index) { return (int) VH_sample.get().get(segment, 0L, index); }
     /// {@return `sample`}
     public int sample() { return sample(this.segment(), 0L); }
     /// Sets `sample` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sample(MemorySegment segment, long index, int value) { VH_sample.set(segment, 0L, index, value); }
+    public static void sample(MemorySegment segment, long index, int value) { VH_sample.get().set(segment, 0L, index, value); }
     /// Sets `sample` with the given value.
     /// @param value the value
     /// @return `this`

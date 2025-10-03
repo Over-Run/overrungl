@@ -33,25 +33,25 @@ public final class VkComponentMapping extends GroupType {
     /// The memory layout of `r`.
     public static final MemoryLayout LAYOUT_r = LAYOUT.select(PathElement.groupElement("r"));
     /// The [VarHandle] of `r` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_r = LAYOUT.arrayElementVarHandle(PathElement.groupElement("r"));
+    public static final Supplier<VarHandle> VH_r = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("r")));
     /// The byte offset of `g`.
     public static final long OFFSET_g = LAYOUT.byteOffset(PathElement.groupElement("g"));
     /// The memory layout of `g`.
     public static final MemoryLayout LAYOUT_g = LAYOUT.select(PathElement.groupElement("g"));
     /// The [VarHandle] of `g` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_g = LAYOUT.arrayElementVarHandle(PathElement.groupElement("g"));
+    public static final Supplier<VarHandle> VH_g = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("g")));
     /// The byte offset of `b`.
     public static final long OFFSET_b = LAYOUT.byteOffset(PathElement.groupElement("b"));
     /// The memory layout of `b`.
     public static final MemoryLayout LAYOUT_b = LAYOUT.select(PathElement.groupElement("b"));
     /// The [VarHandle] of `b` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_b = LAYOUT.arrayElementVarHandle(PathElement.groupElement("b"));
+    public static final Supplier<VarHandle> VH_b = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("b")));
     /// The byte offset of `a`.
     public static final long OFFSET_a = LAYOUT.byteOffset(PathElement.groupElement("a"));
     /// The memory layout of `a`.
     public static final MemoryLayout LAYOUT_a = LAYOUT.select(PathElement.groupElement("a"));
     /// The [VarHandle] of `a` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_a = LAYOUT.arrayElementVarHandle(PathElement.groupElement("a"));
+    public static final Supplier<VarHandle> VH_a = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("a")));
 
     /// Creates `VkComponentMapping` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkComponentMapping extends GroupType {
     /// {@return `r` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int r(MemorySegment segment, long index) { return (int) VH_r.get(segment, 0L, index); }
+    public static int r(MemorySegment segment, long index) { return (int) VH_r.get().get(segment, 0L, index); }
     /// {@return `r`}
     public int r() { return r(this.segment(), 0L); }
     /// Sets `r` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void r(MemorySegment segment, long index, int value) { VH_r.set(segment, 0L, index, value); }
+    public static void r(MemorySegment segment, long index, int value) { VH_r.get().set(segment, 0L, index, value); }
     /// Sets `r` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkComponentMapping extends GroupType {
     /// {@return `g` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int g(MemorySegment segment, long index) { return (int) VH_g.get(segment, 0L, index); }
+    public static int g(MemorySegment segment, long index) { return (int) VH_g.get().get(segment, 0L, index); }
     /// {@return `g`}
     public int g() { return g(this.segment(), 0L); }
     /// Sets `g` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void g(MemorySegment segment, long index, int value) { VH_g.set(segment, 0L, index, value); }
+    public static void g(MemorySegment segment, long index, int value) { VH_g.get().set(segment, 0L, index, value); }
     /// Sets `g` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkComponentMapping extends GroupType {
     /// {@return `b` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int b(MemorySegment segment, long index) { return (int) VH_b.get(segment, 0L, index); }
+    public static int b(MemorySegment segment, long index) { return (int) VH_b.get().get(segment, 0L, index); }
     /// {@return `b`}
     public int b() { return b(this.segment(), 0L); }
     /// Sets `b` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void b(MemorySegment segment, long index, int value) { VH_b.set(segment, 0L, index, value); }
+    public static void b(MemorySegment segment, long index, int value) { VH_b.get().set(segment, 0L, index, value); }
     /// Sets `b` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkComponentMapping extends GroupType {
     /// {@return `a` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int a(MemorySegment segment, long index) { return (int) VH_a.get(segment, 0L, index); }
+    public static int a(MemorySegment segment, long index) { return (int) VH_a.get().get(segment, 0L, index); }
     /// {@return `a`}
     public int a() { return a(this.segment(), 0L); }
     /// Sets `a` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void a(MemorySegment segment, long index, int value) { VH_a.set(segment, 0L, index, value); }
+    public static void a(MemorySegment segment, long index, int value) { VH_a.get().set(segment, 0L, index, value); }
     /// Sets `a` with the given value.
     /// @param value the value
     /// @return `this`

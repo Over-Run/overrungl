@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceBufferDeviceAddressFeaturesKHR extends GroupT
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `bufferDeviceAddress`.
     public static final long OFFSET_bufferDeviceAddress = LAYOUT.byteOffset(PathElement.groupElement("bufferDeviceAddress"));
     /// The memory layout of `bufferDeviceAddress`.
     public static final MemoryLayout LAYOUT_bufferDeviceAddress = LAYOUT.select(PathElement.groupElement("bufferDeviceAddress"));
     /// The [VarHandle] of `bufferDeviceAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferDeviceAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferDeviceAddress"));
+    public static final Supplier<VarHandle> VH_bufferDeviceAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferDeviceAddress")));
     /// The byte offset of `bufferDeviceAddressCaptureReplay`.
     public static final long OFFSET_bufferDeviceAddressCaptureReplay = LAYOUT.byteOffset(PathElement.groupElement("bufferDeviceAddressCaptureReplay"));
     /// The memory layout of `bufferDeviceAddressCaptureReplay`.
     public static final MemoryLayout LAYOUT_bufferDeviceAddressCaptureReplay = LAYOUT.select(PathElement.groupElement("bufferDeviceAddressCaptureReplay"));
     /// The [VarHandle] of `bufferDeviceAddressCaptureReplay` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferDeviceAddressCaptureReplay = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferDeviceAddressCaptureReplay"));
+    public static final Supplier<VarHandle> VH_bufferDeviceAddressCaptureReplay = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferDeviceAddressCaptureReplay")));
     /// The byte offset of `bufferDeviceAddressMultiDevice`.
     public static final long OFFSET_bufferDeviceAddressMultiDevice = LAYOUT.byteOffset(PathElement.groupElement("bufferDeviceAddressMultiDevice"));
     /// The memory layout of `bufferDeviceAddressMultiDevice`.
     public static final MemoryLayout LAYOUT_bufferDeviceAddressMultiDevice = LAYOUT.select(PathElement.groupElement("bufferDeviceAddressMultiDevice"));
     /// The [VarHandle] of `bufferDeviceAddressMultiDevice` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferDeviceAddressMultiDevice = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferDeviceAddressMultiDevice"));
+    public static final Supplier<VarHandle> VH_bufferDeviceAddressMultiDevice = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferDeviceAddressMultiDevice")));
 
     /// Creates `VkPhysicalDeviceBufferDeviceAddressFeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceBufferDeviceAddressFeaturesKHR extends GroupT
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceBufferDeviceAddressFeaturesKHR extends GroupT
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceBufferDeviceAddressFeaturesKHR extends GroupT
     /// {@return `bufferDeviceAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferDeviceAddress(MemorySegment segment, long index) { return (int) VH_bufferDeviceAddress.get(segment, 0L, index); }
+    public static int bufferDeviceAddress(MemorySegment segment, long index) { return (int) VH_bufferDeviceAddress.get().get(segment, 0L, index); }
     /// {@return `bufferDeviceAddress`}
     public int bufferDeviceAddress() { return bufferDeviceAddress(this.segment(), 0L); }
     /// Sets `bufferDeviceAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferDeviceAddress(MemorySegment segment, long index, int value) { VH_bufferDeviceAddress.set(segment, 0L, index, value); }
+    public static void bufferDeviceAddress(MemorySegment segment, long index, int value) { VH_bufferDeviceAddress.get().set(segment, 0L, index, value); }
     /// Sets `bufferDeviceAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceBufferDeviceAddressFeaturesKHR extends GroupT
     /// {@return `bufferDeviceAddressCaptureReplay` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferDeviceAddressCaptureReplay(MemorySegment segment, long index) { return (int) VH_bufferDeviceAddressCaptureReplay.get(segment, 0L, index); }
+    public static int bufferDeviceAddressCaptureReplay(MemorySegment segment, long index) { return (int) VH_bufferDeviceAddressCaptureReplay.get().get(segment, 0L, index); }
     /// {@return `bufferDeviceAddressCaptureReplay`}
     public int bufferDeviceAddressCaptureReplay() { return bufferDeviceAddressCaptureReplay(this.segment(), 0L); }
     /// Sets `bufferDeviceAddressCaptureReplay` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferDeviceAddressCaptureReplay(MemorySegment segment, long index, int value) { VH_bufferDeviceAddressCaptureReplay.set(segment, 0L, index, value); }
+    public static void bufferDeviceAddressCaptureReplay(MemorySegment segment, long index, int value) { VH_bufferDeviceAddressCaptureReplay.get().set(segment, 0L, index, value); }
     /// Sets `bufferDeviceAddressCaptureReplay` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceBufferDeviceAddressFeaturesKHR extends GroupT
     /// {@return `bufferDeviceAddressMultiDevice` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferDeviceAddressMultiDevice(MemorySegment segment, long index) { return (int) VH_bufferDeviceAddressMultiDevice.get(segment, 0L, index); }
+    public static int bufferDeviceAddressMultiDevice(MemorySegment segment, long index) { return (int) VH_bufferDeviceAddressMultiDevice.get().get(segment, 0L, index); }
     /// {@return `bufferDeviceAddressMultiDevice`}
     public int bufferDeviceAddressMultiDevice() { return bufferDeviceAddressMultiDevice(this.segment(), 0L); }
     /// Sets `bufferDeviceAddressMultiDevice` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferDeviceAddressMultiDevice(MemorySegment segment, long index, int value) { VH_bufferDeviceAddressMultiDevice.set(segment, 0L, index, value); }
+    public static void bufferDeviceAddressMultiDevice(MemorySegment segment, long index, int value) { VH_bufferDeviceAddressMultiDevice.get().set(segment, 0L, index, value); }
     /// Sets `bufferDeviceAddressMultiDevice` with the given value.
     /// @param value the value
     /// @return `this`

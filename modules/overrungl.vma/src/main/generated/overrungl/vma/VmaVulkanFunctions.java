@@ -79,163 +79,163 @@ public final class VmaVulkanFunctions extends GroupType {
     /// The memory layout of `vkGetInstanceProcAddr`.
     public static final MemoryLayout LAYOUT_vkGetInstanceProcAddr = LAYOUT.select(PathElement.groupElement("vkGetInstanceProcAddr"));
     /// The [VarHandle] of `vkGetInstanceProcAddr` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetInstanceProcAddr = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetInstanceProcAddr"));
+    public static final Supplier<VarHandle> VH_vkGetInstanceProcAddr = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetInstanceProcAddr")));
     /// The byte offset of `vkGetDeviceProcAddr`.
     public static final long OFFSET_vkGetDeviceProcAddr = LAYOUT.byteOffset(PathElement.groupElement("vkGetDeviceProcAddr"));
     /// The memory layout of `vkGetDeviceProcAddr`.
     public static final MemoryLayout LAYOUT_vkGetDeviceProcAddr = LAYOUT.select(PathElement.groupElement("vkGetDeviceProcAddr"));
     /// The [VarHandle] of `vkGetDeviceProcAddr` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetDeviceProcAddr = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetDeviceProcAddr"));
+    public static final Supplier<VarHandle> VH_vkGetDeviceProcAddr = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetDeviceProcAddr")));
     /// The byte offset of `vkGetPhysicalDeviceProperties`.
     public static final long OFFSET_vkGetPhysicalDeviceProperties = LAYOUT.byteOffset(PathElement.groupElement("vkGetPhysicalDeviceProperties"));
     /// The memory layout of `vkGetPhysicalDeviceProperties`.
     public static final MemoryLayout LAYOUT_vkGetPhysicalDeviceProperties = LAYOUT.select(PathElement.groupElement("vkGetPhysicalDeviceProperties"));
     /// The [VarHandle] of `vkGetPhysicalDeviceProperties` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetPhysicalDeviceProperties = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetPhysicalDeviceProperties"));
+    public static final Supplier<VarHandle> VH_vkGetPhysicalDeviceProperties = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetPhysicalDeviceProperties")));
     /// The byte offset of `vkGetPhysicalDeviceMemoryProperties`.
     public static final long OFFSET_vkGetPhysicalDeviceMemoryProperties = LAYOUT.byteOffset(PathElement.groupElement("vkGetPhysicalDeviceMemoryProperties"));
     /// The memory layout of `vkGetPhysicalDeviceMemoryProperties`.
     public static final MemoryLayout LAYOUT_vkGetPhysicalDeviceMemoryProperties = LAYOUT.select(PathElement.groupElement("vkGetPhysicalDeviceMemoryProperties"));
     /// The [VarHandle] of `vkGetPhysicalDeviceMemoryProperties` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetPhysicalDeviceMemoryProperties = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetPhysicalDeviceMemoryProperties"));
+    public static final Supplier<VarHandle> VH_vkGetPhysicalDeviceMemoryProperties = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetPhysicalDeviceMemoryProperties")));
     /// The byte offset of `vkAllocateMemory`.
     public static final long OFFSET_vkAllocateMemory = LAYOUT.byteOffset(PathElement.groupElement("vkAllocateMemory"));
     /// The memory layout of `vkAllocateMemory`.
     public static final MemoryLayout LAYOUT_vkAllocateMemory = LAYOUT.select(PathElement.groupElement("vkAllocateMemory"));
     /// The [VarHandle] of `vkAllocateMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkAllocateMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkAllocateMemory"));
+    public static final Supplier<VarHandle> VH_vkAllocateMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkAllocateMemory")));
     /// The byte offset of `vkFreeMemory`.
     public static final long OFFSET_vkFreeMemory = LAYOUT.byteOffset(PathElement.groupElement("vkFreeMemory"));
     /// The memory layout of `vkFreeMemory`.
     public static final MemoryLayout LAYOUT_vkFreeMemory = LAYOUT.select(PathElement.groupElement("vkFreeMemory"));
     /// The [VarHandle] of `vkFreeMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkFreeMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkFreeMemory"));
+    public static final Supplier<VarHandle> VH_vkFreeMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkFreeMemory")));
     /// The byte offset of `vkMapMemory`.
     public static final long OFFSET_vkMapMemory = LAYOUT.byteOffset(PathElement.groupElement("vkMapMemory"));
     /// The memory layout of `vkMapMemory`.
     public static final MemoryLayout LAYOUT_vkMapMemory = LAYOUT.select(PathElement.groupElement("vkMapMemory"));
     /// The [VarHandle] of `vkMapMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkMapMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkMapMemory"));
+    public static final Supplier<VarHandle> VH_vkMapMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkMapMemory")));
     /// The byte offset of `vkUnmapMemory`.
     public static final long OFFSET_vkUnmapMemory = LAYOUT.byteOffset(PathElement.groupElement("vkUnmapMemory"));
     /// The memory layout of `vkUnmapMemory`.
     public static final MemoryLayout LAYOUT_vkUnmapMemory = LAYOUT.select(PathElement.groupElement("vkUnmapMemory"));
     /// The [VarHandle] of `vkUnmapMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkUnmapMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkUnmapMemory"));
+    public static final Supplier<VarHandle> VH_vkUnmapMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkUnmapMemory")));
     /// The byte offset of `vkFlushMappedMemoryRanges`.
     public static final long OFFSET_vkFlushMappedMemoryRanges = LAYOUT.byteOffset(PathElement.groupElement("vkFlushMappedMemoryRanges"));
     /// The memory layout of `vkFlushMappedMemoryRanges`.
     public static final MemoryLayout LAYOUT_vkFlushMappedMemoryRanges = LAYOUT.select(PathElement.groupElement("vkFlushMappedMemoryRanges"));
     /// The [VarHandle] of `vkFlushMappedMemoryRanges` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkFlushMappedMemoryRanges = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkFlushMappedMemoryRanges"));
+    public static final Supplier<VarHandle> VH_vkFlushMappedMemoryRanges = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkFlushMappedMemoryRanges")));
     /// The byte offset of `vkInvalidateMappedMemoryRanges`.
     public static final long OFFSET_vkInvalidateMappedMemoryRanges = LAYOUT.byteOffset(PathElement.groupElement("vkInvalidateMappedMemoryRanges"));
     /// The memory layout of `vkInvalidateMappedMemoryRanges`.
     public static final MemoryLayout LAYOUT_vkInvalidateMappedMemoryRanges = LAYOUT.select(PathElement.groupElement("vkInvalidateMappedMemoryRanges"));
     /// The [VarHandle] of `vkInvalidateMappedMemoryRanges` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkInvalidateMappedMemoryRanges = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkInvalidateMappedMemoryRanges"));
+    public static final Supplier<VarHandle> VH_vkInvalidateMappedMemoryRanges = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkInvalidateMappedMemoryRanges")));
     /// The byte offset of `vkBindBufferMemory`.
     public static final long OFFSET_vkBindBufferMemory = LAYOUT.byteOffset(PathElement.groupElement("vkBindBufferMemory"));
     /// The memory layout of `vkBindBufferMemory`.
     public static final MemoryLayout LAYOUT_vkBindBufferMemory = LAYOUT.select(PathElement.groupElement("vkBindBufferMemory"));
     /// The [VarHandle] of `vkBindBufferMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkBindBufferMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkBindBufferMemory"));
+    public static final Supplier<VarHandle> VH_vkBindBufferMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkBindBufferMemory")));
     /// The byte offset of `vkBindImageMemory`.
     public static final long OFFSET_vkBindImageMemory = LAYOUT.byteOffset(PathElement.groupElement("vkBindImageMemory"));
     /// The memory layout of `vkBindImageMemory`.
     public static final MemoryLayout LAYOUT_vkBindImageMemory = LAYOUT.select(PathElement.groupElement("vkBindImageMemory"));
     /// The [VarHandle] of `vkBindImageMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkBindImageMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkBindImageMemory"));
+    public static final Supplier<VarHandle> VH_vkBindImageMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkBindImageMemory")));
     /// The byte offset of `vkGetBufferMemoryRequirements`.
     public static final long OFFSET_vkGetBufferMemoryRequirements = LAYOUT.byteOffset(PathElement.groupElement("vkGetBufferMemoryRequirements"));
     /// The memory layout of `vkGetBufferMemoryRequirements`.
     public static final MemoryLayout LAYOUT_vkGetBufferMemoryRequirements = LAYOUT.select(PathElement.groupElement("vkGetBufferMemoryRequirements"));
     /// The [VarHandle] of `vkGetBufferMemoryRequirements` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetBufferMemoryRequirements = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetBufferMemoryRequirements"));
+    public static final Supplier<VarHandle> VH_vkGetBufferMemoryRequirements = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetBufferMemoryRequirements")));
     /// The byte offset of `vkGetImageMemoryRequirements`.
     public static final long OFFSET_vkGetImageMemoryRequirements = LAYOUT.byteOffset(PathElement.groupElement("vkGetImageMemoryRequirements"));
     /// The memory layout of `vkGetImageMemoryRequirements`.
     public static final MemoryLayout LAYOUT_vkGetImageMemoryRequirements = LAYOUT.select(PathElement.groupElement("vkGetImageMemoryRequirements"));
     /// The [VarHandle] of `vkGetImageMemoryRequirements` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetImageMemoryRequirements = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetImageMemoryRequirements"));
+    public static final Supplier<VarHandle> VH_vkGetImageMemoryRequirements = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetImageMemoryRequirements")));
     /// The byte offset of `vkCreateBuffer`.
     public static final long OFFSET_vkCreateBuffer = LAYOUT.byteOffset(PathElement.groupElement("vkCreateBuffer"));
     /// The memory layout of `vkCreateBuffer`.
     public static final MemoryLayout LAYOUT_vkCreateBuffer = LAYOUT.select(PathElement.groupElement("vkCreateBuffer"));
     /// The [VarHandle] of `vkCreateBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkCreateBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkCreateBuffer"));
+    public static final Supplier<VarHandle> VH_vkCreateBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkCreateBuffer")));
     /// The byte offset of `vkDestroyBuffer`.
     public static final long OFFSET_vkDestroyBuffer = LAYOUT.byteOffset(PathElement.groupElement("vkDestroyBuffer"));
     /// The memory layout of `vkDestroyBuffer`.
     public static final MemoryLayout LAYOUT_vkDestroyBuffer = LAYOUT.select(PathElement.groupElement("vkDestroyBuffer"));
     /// The [VarHandle] of `vkDestroyBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkDestroyBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkDestroyBuffer"));
+    public static final Supplier<VarHandle> VH_vkDestroyBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkDestroyBuffer")));
     /// The byte offset of `vkCreateImage`.
     public static final long OFFSET_vkCreateImage = LAYOUT.byteOffset(PathElement.groupElement("vkCreateImage"));
     /// The memory layout of `vkCreateImage`.
     public static final MemoryLayout LAYOUT_vkCreateImage = LAYOUT.select(PathElement.groupElement("vkCreateImage"));
     /// The [VarHandle] of `vkCreateImage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkCreateImage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkCreateImage"));
+    public static final Supplier<VarHandle> VH_vkCreateImage = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkCreateImage")));
     /// The byte offset of `vkDestroyImage`.
     public static final long OFFSET_vkDestroyImage = LAYOUT.byteOffset(PathElement.groupElement("vkDestroyImage"));
     /// The memory layout of `vkDestroyImage`.
     public static final MemoryLayout LAYOUT_vkDestroyImage = LAYOUT.select(PathElement.groupElement("vkDestroyImage"));
     /// The [VarHandle] of `vkDestroyImage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkDestroyImage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkDestroyImage"));
+    public static final Supplier<VarHandle> VH_vkDestroyImage = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkDestroyImage")));
     /// The byte offset of `vkCmdCopyBuffer`.
     public static final long OFFSET_vkCmdCopyBuffer = LAYOUT.byteOffset(PathElement.groupElement("vkCmdCopyBuffer"));
     /// The memory layout of `vkCmdCopyBuffer`.
     public static final MemoryLayout LAYOUT_vkCmdCopyBuffer = LAYOUT.select(PathElement.groupElement("vkCmdCopyBuffer"));
     /// The [VarHandle] of `vkCmdCopyBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkCmdCopyBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkCmdCopyBuffer"));
+    public static final Supplier<VarHandle> VH_vkCmdCopyBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkCmdCopyBuffer")));
     /// The byte offset of `vkGetBufferMemoryRequirements2KHR`.
     public static final long OFFSET_vkGetBufferMemoryRequirements2KHR = LAYOUT.byteOffset(PathElement.groupElement("vkGetBufferMemoryRequirements2KHR"));
     /// The memory layout of `vkGetBufferMemoryRequirements2KHR`.
     public static final MemoryLayout LAYOUT_vkGetBufferMemoryRequirements2KHR = LAYOUT.select(PathElement.groupElement("vkGetBufferMemoryRequirements2KHR"));
     /// The [VarHandle] of `vkGetBufferMemoryRequirements2KHR` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetBufferMemoryRequirements2KHR = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetBufferMemoryRequirements2KHR"));
+    public static final Supplier<VarHandle> VH_vkGetBufferMemoryRequirements2KHR = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetBufferMemoryRequirements2KHR")));
     /// The byte offset of `vkGetImageMemoryRequirements2KHR`.
     public static final long OFFSET_vkGetImageMemoryRequirements2KHR = LAYOUT.byteOffset(PathElement.groupElement("vkGetImageMemoryRequirements2KHR"));
     /// The memory layout of `vkGetImageMemoryRequirements2KHR`.
     public static final MemoryLayout LAYOUT_vkGetImageMemoryRequirements2KHR = LAYOUT.select(PathElement.groupElement("vkGetImageMemoryRequirements2KHR"));
     /// The [VarHandle] of `vkGetImageMemoryRequirements2KHR` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetImageMemoryRequirements2KHR = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetImageMemoryRequirements2KHR"));
+    public static final Supplier<VarHandle> VH_vkGetImageMemoryRequirements2KHR = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetImageMemoryRequirements2KHR")));
     /// The byte offset of `vkBindBufferMemory2KHR`.
     public static final long OFFSET_vkBindBufferMemory2KHR = LAYOUT.byteOffset(PathElement.groupElement("vkBindBufferMemory2KHR"));
     /// The memory layout of `vkBindBufferMemory2KHR`.
     public static final MemoryLayout LAYOUT_vkBindBufferMemory2KHR = LAYOUT.select(PathElement.groupElement("vkBindBufferMemory2KHR"));
     /// The [VarHandle] of `vkBindBufferMemory2KHR` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkBindBufferMemory2KHR = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkBindBufferMemory2KHR"));
+    public static final Supplier<VarHandle> VH_vkBindBufferMemory2KHR = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkBindBufferMemory2KHR")));
     /// The byte offset of `vkBindImageMemory2KHR`.
     public static final long OFFSET_vkBindImageMemory2KHR = LAYOUT.byteOffset(PathElement.groupElement("vkBindImageMemory2KHR"));
     /// The memory layout of `vkBindImageMemory2KHR`.
     public static final MemoryLayout LAYOUT_vkBindImageMemory2KHR = LAYOUT.select(PathElement.groupElement("vkBindImageMemory2KHR"));
     /// The [VarHandle] of `vkBindImageMemory2KHR` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkBindImageMemory2KHR = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkBindImageMemory2KHR"));
+    public static final Supplier<VarHandle> VH_vkBindImageMemory2KHR = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkBindImageMemory2KHR")));
     /// The byte offset of `vkGetPhysicalDeviceMemoryProperties2KHR`.
     public static final long OFFSET_vkGetPhysicalDeviceMemoryProperties2KHR = LAYOUT.byteOffset(PathElement.groupElement("vkGetPhysicalDeviceMemoryProperties2KHR"));
     /// The memory layout of `vkGetPhysicalDeviceMemoryProperties2KHR`.
     public static final MemoryLayout LAYOUT_vkGetPhysicalDeviceMemoryProperties2KHR = LAYOUT.select(PathElement.groupElement("vkGetPhysicalDeviceMemoryProperties2KHR"));
     /// The [VarHandle] of `vkGetPhysicalDeviceMemoryProperties2KHR` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetPhysicalDeviceMemoryProperties2KHR = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetPhysicalDeviceMemoryProperties2KHR"));
+    public static final Supplier<VarHandle> VH_vkGetPhysicalDeviceMemoryProperties2KHR = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetPhysicalDeviceMemoryProperties2KHR")));
     /// The byte offset of `vkGetDeviceBufferMemoryRequirements`.
     public static final long OFFSET_vkGetDeviceBufferMemoryRequirements = LAYOUT.byteOffset(PathElement.groupElement("vkGetDeviceBufferMemoryRequirements"));
     /// The memory layout of `vkGetDeviceBufferMemoryRequirements`.
     public static final MemoryLayout LAYOUT_vkGetDeviceBufferMemoryRequirements = LAYOUT.select(PathElement.groupElement("vkGetDeviceBufferMemoryRequirements"));
     /// The [VarHandle] of `vkGetDeviceBufferMemoryRequirements` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetDeviceBufferMemoryRequirements = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetDeviceBufferMemoryRequirements"));
+    public static final Supplier<VarHandle> VH_vkGetDeviceBufferMemoryRequirements = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetDeviceBufferMemoryRequirements")));
     /// The byte offset of `vkGetDeviceImageMemoryRequirements`.
     public static final long OFFSET_vkGetDeviceImageMemoryRequirements = LAYOUT.byteOffset(PathElement.groupElement("vkGetDeviceImageMemoryRequirements"));
     /// The memory layout of `vkGetDeviceImageMemoryRequirements`.
     public static final MemoryLayout LAYOUT_vkGetDeviceImageMemoryRequirements = LAYOUT.select(PathElement.groupElement("vkGetDeviceImageMemoryRequirements"));
     /// The [VarHandle] of `vkGetDeviceImageMemoryRequirements` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetDeviceImageMemoryRequirements = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetDeviceImageMemoryRequirements"));
+    public static final Supplier<VarHandle> VH_vkGetDeviceImageMemoryRequirements = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetDeviceImageMemoryRequirements")));
     /// The byte offset of `vkGetMemoryWin32HandleKHR`.
     public static final long OFFSET_vkGetMemoryWin32HandleKHR = LAYOUT.byteOffset(PathElement.groupElement("vkGetMemoryWin32HandleKHR"));
     /// The memory layout of `vkGetMemoryWin32HandleKHR`.
     public static final MemoryLayout LAYOUT_vkGetMemoryWin32HandleKHR = LAYOUT.select(PathElement.groupElement("vkGetMemoryWin32HandleKHR"));
     /// The [VarHandle] of `vkGetMemoryWin32HandleKHR` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vkGetMemoryWin32HandleKHR = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetMemoryWin32HandleKHR"));
+    public static final Supplier<VarHandle> VH_vkGetMemoryWin32HandleKHR = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetMemoryWin32HandleKHR")));
 
     /// Creates `VmaVulkanFunctions` with the given segment.
     /// @param segment      the memory segment
@@ -286,14 +286,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetInstanceProcAddr` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetInstanceProcAddr(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetInstanceProcAddr.get(segment, 0L, index); }
+    public static MemorySegment vkGetInstanceProcAddr(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetInstanceProcAddr.get().get(segment, 0L, index); }
     /// {@return `vkGetInstanceProcAddr`}
     public MemorySegment vkGetInstanceProcAddr() { return vkGetInstanceProcAddr(this.segment(), 0L); }
     /// Sets `vkGetInstanceProcAddr` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetInstanceProcAddr(MemorySegment segment, long index, MemorySegment value) { VH_vkGetInstanceProcAddr.set(segment, 0L, index, value); }
+    public static void vkGetInstanceProcAddr(MemorySegment segment, long index, MemorySegment value) { VH_vkGetInstanceProcAddr.get().set(segment, 0L, index, value); }
     /// Sets `vkGetInstanceProcAddr` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,14 +302,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetDeviceProcAddr` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetDeviceProcAddr(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetDeviceProcAddr.get(segment, 0L, index); }
+    public static MemorySegment vkGetDeviceProcAddr(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetDeviceProcAddr.get().get(segment, 0L, index); }
     /// {@return `vkGetDeviceProcAddr`}
     public MemorySegment vkGetDeviceProcAddr() { return vkGetDeviceProcAddr(this.segment(), 0L); }
     /// Sets `vkGetDeviceProcAddr` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetDeviceProcAddr(MemorySegment segment, long index, MemorySegment value) { VH_vkGetDeviceProcAddr.set(segment, 0L, index, value); }
+    public static void vkGetDeviceProcAddr(MemorySegment segment, long index, MemorySegment value) { VH_vkGetDeviceProcAddr.get().set(segment, 0L, index, value); }
     /// Sets `vkGetDeviceProcAddr` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,14 +318,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetPhysicalDeviceProperties` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetPhysicalDeviceProperties(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetPhysicalDeviceProperties.get(segment, 0L, index); }
+    public static MemorySegment vkGetPhysicalDeviceProperties(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetPhysicalDeviceProperties.get().get(segment, 0L, index); }
     /// {@return `vkGetPhysicalDeviceProperties`}
     public MemorySegment vkGetPhysicalDeviceProperties() { return vkGetPhysicalDeviceProperties(this.segment(), 0L); }
     /// Sets `vkGetPhysicalDeviceProperties` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetPhysicalDeviceProperties(MemorySegment segment, long index, MemorySegment value) { VH_vkGetPhysicalDeviceProperties.set(segment, 0L, index, value); }
+    public static void vkGetPhysicalDeviceProperties(MemorySegment segment, long index, MemorySegment value) { VH_vkGetPhysicalDeviceProperties.get().set(segment, 0L, index, value); }
     /// Sets `vkGetPhysicalDeviceProperties` with the given value.
     /// @param value the value
     /// @return `this`
@@ -334,14 +334,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetPhysicalDeviceMemoryProperties` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetPhysicalDeviceMemoryProperties(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetPhysicalDeviceMemoryProperties.get(segment, 0L, index); }
+    public static MemorySegment vkGetPhysicalDeviceMemoryProperties(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetPhysicalDeviceMemoryProperties.get().get(segment, 0L, index); }
     /// {@return `vkGetPhysicalDeviceMemoryProperties`}
     public MemorySegment vkGetPhysicalDeviceMemoryProperties() { return vkGetPhysicalDeviceMemoryProperties(this.segment(), 0L); }
     /// Sets `vkGetPhysicalDeviceMemoryProperties` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetPhysicalDeviceMemoryProperties(MemorySegment segment, long index, MemorySegment value) { VH_vkGetPhysicalDeviceMemoryProperties.set(segment, 0L, index, value); }
+    public static void vkGetPhysicalDeviceMemoryProperties(MemorySegment segment, long index, MemorySegment value) { VH_vkGetPhysicalDeviceMemoryProperties.get().set(segment, 0L, index, value); }
     /// Sets `vkGetPhysicalDeviceMemoryProperties` with the given value.
     /// @param value the value
     /// @return `this`
@@ -350,14 +350,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkAllocateMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkAllocateMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkAllocateMemory.get(segment, 0L, index); }
+    public static MemorySegment vkAllocateMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkAllocateMemory.get().get(segment, 0L, index); }
     /// {@return `vkAllocateMemory`}
     public MemorySegment vkAllocateMemory() { return vkAllocateMemory(this.segment(), 0L); }
     /// Sets `vkAllocateMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkAllocateMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkAllocateMemory.set(segment, 0L, index, value); }
+    public static void vkAllocateMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkAllocateMemory.get().set(segment, 0L, index, value); }
     /// Sets `vkAllocateMemory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,14 +366,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkFreeMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkFreeMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkFreeMemory.get(segment, 0L, index); }
+    public static MemorySegment vkFreeMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkFreeMemory.get().get(segment, 0L, index); }
     /// {@return `vkFreeMemory`}
     public MemorySegment vkFreeMemory() { return vkFreeMemory(this.segment(), 0L); }
     /// Sets `vkFreeMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkFreeMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkFreeMemory.set(segment, 0L, index, value); }
+    public static void vkFreeMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkFreeMemory.get().set(segment, 0L, index, value); }
     /// Sets `vkFreeMemory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -382,14 +382,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkMapMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkMapMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkMapMemory.get(segment, 0L, index); }
+    public static MemorySegment vkMapMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkMapMemory.get().get(segment, 0L, index); }
     /// {@return `vkMapMemory`}
     public MemorySegment vkMapMemory() { return vkMapMemory(this.segment(), 0L); }
     /// Sets `vkMapMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkMapMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkMapMemory.set(segment, 0L, index, value); }
+    public static void vkMapMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkMapMemory.get().set(segment, 0L, index, value); }
     /// Sets `vkMapMemory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -398,14 +398,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkUnmapMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkUnmapMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkUnmapMemory.get(segment, 0L, index); }
+    public static MemorySegment vkUnmapMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkUnmapMemory.get().get(segment, 0L, index); }
     /// {@return `vkUnmapMemory`}
     public MemorySegment vkUnmapMemory() { return vkUnmapMemory(this.segment(), 0L); }
     /// Sets `vkUnmapMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkUnmapMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkUnmapMemory.set(segment, 0L, index, value); }
+    public static void vkUnmapMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkUnmapMemory.get().set(segment, 0L, index, value); }
     /// Sets `vkUnmapMemory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -414,14 +414,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkFlushMappedMemoryRanges` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkFlushMappedMemoryRanges(MemorySegment segment, long index) { return (MemorySegment) VH_vkFlushMappedMemoryRanges.get(segment, 0L, index); }
+    public static MemorySegment vkFlushMappedMemoryRanges(MemorySegment segment, long index) { return (MemorySegment) VH_vkFlushMappedMemoryRanges.get().get(segment, 0L, index); }
     /// {@return `vkFlushMappedMemoryRanges`}
     public MemorySegment vkFlushMappedMemoryRanges() { return vkFlushMappedMemoryRanges(this.segment(), 0L); }
     /// Sets `vkFlushMappedMemoryRanges` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkFlushMappedMemoryRanges(MemorySegment segment, long index, MemorySegment value) { VH_vkFlushMappedMemoryRanges.set(segment, 0L, index, value); }
+    public static void vkFlushMappedMemoryRanges(MemorySegment segment, long index, MemorySegment value) { VH_vkFlushMappedMemoryRanges.get().set(segment, 0L, index, value); }
     /// Sets `vkFlushMappedMemoryRanges` with the given value.
     /// @param value the value
     /// @return `this`
@@ -430,14 +430,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkInvalidateMappedMemoryRanges` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkInvalidateMappedMemoryRanges(MemorySegment segment, long index) { return (MemorySegment) VH_vkInvalidateMappedMemoryRanges.get(segment, 0L, index); }
+    public static MemorySegment vkInvalidateMappedMemoryRanges(MemorySegment segment, long index) { return (MemorySegment) VH_vkInvalidateMappedMemoryRanges.get().get(segment, 0L, index); }
     /// {@return `vkInvalidateMappedMemoryRanges`}
     public MemorySegment vkInvalidateMappedMemoryRanges() { return vkInvalidateMappedMemoryRanges(this.segment(), 0L); }
     /// Sets `vkInvalidateMappedMemoryRanges` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkInvalidateMappedMemoryRanges(MemorySegment segment, long index, MemorySegment value) { VH_vkInvalidateMappedMemoryRanges.set(segment, 0L, index, value); }
+    public static void vkInvalidateMappedMemoryRanges(MemorySegment segment, long index, MemorySegment value) { VH_vkInvalidateMappedMemoryRanges.get().set(segment, 0L, index, value); }
     /// Sets `vkInvalidateMappedMemoryRanges` with the given value.
     /// @param value the value
     /// @return `this`
@@ -446,14 +446,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkBindBufferMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkBindBufferMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkBindBufferMemory.get(segment, 0L, index); }
+    public static MemorySegment vkBindBufferMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkBindBufferMemory.get().get(segment, 0L, index); }
     /// {@return `vkBindBufferMemory`}
     public MemorySegment vkBindBufferMemory() { return vkBindBufferMemory(this.segment(), 0L); }
     /// Sets `vkBindBufferMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkBindBufferMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkBindBufferMemory.set(segment, 0L, index, value); }
+    public static void vkBindBufferMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkBindBufferMemory.get().set(segment, 0L, index, value); }
     /// Sets `vkBindBufferMemory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -462,14 +462,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkBindImageMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkBindImageMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkBindImageMemory.get(segment, 0L, index); }
+    public static MemorySegment vkBindImageMemory(MemorySegment segment, long index) { return (MemorySegment) VH_vkBindImageMemory.get().get(segment, 0L, index); }
     /// {@return `vkBindImageMemory`}
     public MemorySegment vkBindImageMemory() { return vkBindImageMemory(this.segment(), 0L); }
     /// Sets `vkBindImageMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkBindImageMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkBindImageMemory.set(segment, 0L, index, value); }
+    public static void vkBindImageMemory(MemorySegment segment, long index, MemorySegment value) { VH_vkBindImageMemory.get().set(segment, 0L, index, value); }
     /// Sets `vkBindImageMemory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -478,14 +478,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetBufferMemoryRequirements` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetBufferMemoryRequirements(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetBufferMemoryRequirements.get(segment, 0L, index); }
+    public static MemorySegment vkGetBufferMemoryRequirements(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetBufferMemoryRequirements.get().get(segment, 0L, index); }
     /// {@return `vkGetBufferMemoryRequirements`}
     public MemorySegment vkGetBufferMemoryRequirements() { return vkGetBufferMemoryRequirements(this.segment(), 0L); }
     /// Sets `vkGetBufferMemoryRequirements` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetBufferMemoryRequirements(MemorySegment segment, long index, MemorySegment value) { VH_vkGetBufferMemoryRequirements.set(segment, 0L, index, value); }
+    public static void vkGetBufferMemoryRequirements(MemorySegment segment, long index, MemorySegment value) { VH_vkGetBufferMemoryRequirements.get().set(segment, 0L, index, value); }
     /// Sets `vkGetBufferMemoryRequirements` with the given value.
     /// @param value the value
     /// @return `this`
@@ -494,14 +494,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetImageMemoryRequirements` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetImageMemoryRequirements(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetImageMemoryRequirements.get(segment, 0L, index); }
+    public static MemorySegment vkGetImageMemoryRequirements(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetImageMemoryRequirements.get().get(segment, 0L, index); }
     /// {@return `vkGetImageMemoryRequirements`}
     public MemorySegment vkGetImageMemoryRequirements() { return vkGetImageMemoryRequirements(this.segment(), 0L); }
     /// Sets `vkGetImageMemoryRequirements` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetImageMemoryRequirements(MemorySegment segment, long index, MemorySegment value) { VH_vkGetImageMemoryRequirements.set(segment, 0L, index, value); }
+    public static void vkGetImageMemoryRequirements(MemorySegment segment, long index, MemorySegment value) { VH_vkGetImageMemoryRequirements.get().set(segment, 0L, index, value); }
     /// Sets `vkGetImageMemoryRequirements` with the given value.
     /// @param value the value
     /// @return `this`
@@ -510,14 +510,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkCreateBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkCreateBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_vkCreateBuffer.get(segment, 0L, index); }
+    public static MemorySegment vkCreateBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_vkCreateBuffer.get().get(segment, 0L, index); }
     /// {@return `vkCreateBuffer`}
     public MemorySegment vkCreateBuffer() { return vkCreateBuffer(this.segment(), 0L); }
     /// Sets `vkCreateBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkCreateBuffer(MemorySegment segment, long index, MemorySegment value) { VH_vkCreateBuffer.set(segment, 0L, index, value); }
+    public static void vkCreateBuffer(MemorySegment segment, long index, MemorySegment value) { VH_vkCreateBuffer.get().set(segment, 0L, index, value); }
     /// Sets `vkCreateBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -526,14 +526,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkDestroyBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkDestroyBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_vkDestroyBuffer.get(segment, 0L, index); }
+    public static MemorySegment vkDestroyBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_vkDestroyBuffer.get().get(segment, 0L, index); }
     /// {@return `vkDestroyBuffer`}
     public MemorySegment vkDestroyBuffer() { return vkDestroyBuffer(this.segment(), 0L); }
     /// Sets `vkDestroyBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkDestroyBuffer(MemorySegment segment, long index, MemorySegment value) { VH_vkDestroyBuffer.set(segment, 0L, index, value); }
+    public static void vkDestroyBuffer(MemorySegment segment, long index, MemorySegment value) { VH_vkDestroyBuffer.get().set(segment, 0L, index, value); }
     /// Sets `vkDestroyBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -542,14 +542,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkCreateImage` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkCreateImage(MemorySegment segment, long index) { return (MemorySegment) VH_vkCreateImage.get(segment, 0L, index); }
+    public static MemorySegment vkCreateImage(MemorySegment segment, long index) { return (MemorySegment) VH_vkCreateImage.get().get(segment, 0L, index); }
     /// {@return `vkCreateImage`}
     public MemorySegment vkCreateImage() { return vkCreateImage(this.segment(), 0L); }
     /// Sets `vkCreateImage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkCreateImage(MemorySegment segment, long index, MemorySegment value) { VH_vkCreateImage.set(segment, 0L, index, value); }
+    public static void vkCreateImage(MemorySegment segment, long index, MemorySegment value) { VH_vkCreateImage.get().set(segment, 0L, index, value); }
     /// Sets `vkCreateImage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -558,14 +558,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkDestroyImage` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkDestroyImage(MemorySegment segment, long index) { return (MemorySegment) VH_vkDestroyImage.get(segment, 0L, index); }
+    public static MemorySegment vkDestroyImage(MemorySegment segment, long index) { return (MemorySegment) VH_vkDestroyImage.get().get(segment, 0L, index); }
     /// {@return `vkDestroyImage`}
     public MemorySegment vkDestroyImage() { return vkDestroyImage(this.segment(), 0L); }
     /// Sets `vkDestroyImage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkDestroyImage(MemorySegment segment, long index, MemorySegment value) { VH_vkDestroyImage.set(segment, 0L, index, value); }
+    public static void vkDestroyImage(MemorySegment segment, long index, MemorySegment value) { VH_vkDestroyImage.get().set(segment, 0L, index, value); }
     /// Sets `vkDestroyImage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -574,14 +574,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkCmdCopyBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkCmdCopyBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_vkCmdCopyBuffer.get(segment, 0L, index); }
+    public static MemorySegment vkCmdCopyBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_vkCmdCopyBuffer.get().get(segment, 0L, index); }
     /// {@return `vkCmdCopyBuffer`}
     public MemorySegment vkCmdCopyBuffer() { return vkCmdCopyBuffer(this.segment(), 0L); }
     /// Sets `vkCmdCopyBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkCmdCopyBuffer(MemorySegment segment, long index, MemorySegment value) { VH_vkCmdCopyBuffer.set(segment, 0L, index, value); }
+    public static void vkCmdCopyBuffer(MemorySegment segment, long index, MemorySegment value) { VH_vkCmdCopyBuffer.get().set(segment, 0L, index, value); }
     /// Sets `vkCmdCopyBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -590,14 +590,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetBufferMemoryRequirements2KHR` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetBufferMemoryRequirements2KHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetBufferMemoryRequirements2KHR.get(segment, 0L, index); }
+    public static MemorySegment vkGetBufferMemoryRequirements2KHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetBufferMemoryRequirements2KHR.get().get(segment, 0L, index); }
     /// {@return `vkGetBufferMemoryRequirements2KHR`}
     public MemorySegment vkGetBufferMemoryRequirements2KHR() { return vkGetBufferMemoryRequirements2KHR(this.segment(), 0L); }
     /// Sets `vkGetBufferMemoryRequirements2KHR` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetBufferMemoryRequirements2KHR(MemorySegment segment, long index, MemorySegment value) { VH_vkGetBufferMemoryRequirements2KHR.set(segment, 0L, index, value); }
+    public static void vkGetBufferMemoryRequirements2KHR(MemorySegment segment, long index, MemorySegment value) { VH_vkGetBufferMemoryRequirements2KHR.get().set(segment, 0L, index, value); }
     /// Sets `vkGetBufferMemoryRequirements2KHR` with the given value.
     /// @param value the value
     /// @return `this`
@@ -606,14 +606,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetImageMemoryRequirements2KHR` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetImageMemoryRequirements2KHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetImageMemoryRequirements2KHR.get(segment, 0L, index); }
+    public static MemorySegment vkGetImageMemoryRequirements2KHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetImageMemoryRequirements2KHR.get().get(segment, 0L, index); }
     /// {@return `vkGetImageMemoryRequirements2KHR`}
     public MemorySegment vkGetImageMemoryRequirements2KHR() { return vkGetImageMemoryRequirements2KHR(this.segment(), 0L); }
     /// Sets `vkGetImageMemoryRequirements2KHR` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetImageMemoryRequirements2KHR(MemorySegment segment, long index, MemorySegment value) { VH_vkGetImageMemoryRequirements2KHR.set(segment, 0L, index, value); }
+    public static void vkGetImageMemoryRequirements2KHR(MemorySegment segment, long index, MemorySegment value) { VH_vkGetImageMemoryRequirements2KHR.get().set(segment, 0L, index, value); }
     /// Sets `vkGetImageMemoryRequirements2KHR` with the given value.
     /// @param value the value
     /// @return `this`
@@ -622,14 +622,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkBindBufferMemory2KHR` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkBindBufferMemory2KHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkBindBufferMemory2KHR.get(segment, 0L, index); }
+    public static MemorySegment vkBindBufferMemory2KHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkBindBufferMemory2KHR.get().get(segment, 0L, index); }
     /// {@return `vkBindBufferMemory2KHR`}
     public MemorySegment vkBindBufferMemory2KHR() { return vkBindBufferMemory2KHR(this.segment(), 0L); }
     /// Sets `vkBindBufferMemory2KHR` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkBindBufferMemory2KHR(MemorySegment segment, long index, MemorySegment value) { VH_vkBindBufferMemory2KHR.set(segment, 0L, index, value); }
+    public static void vkBindBufferMemory2KHR(MemorySegment segment, long index, MemorySegment value) { VH_vkBindBufferMemory2KHR.get().set(segment, 0L, index, value); }
     /// Sets `vkBindBufferMemory2KHR` with the given value.
     /// @param value the value
     /// @return `this`
@@ -638,14 +638,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkBindImageMemory2KHR` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkBindImageMemory2KHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkBindImageMemory2KHR.get(segment, 0L, index); }
+    public static MemorySegment vkBindImageMemory2KHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkBindImageMemory2KHR.get().get(segment, 0L, index); }
     /// {@return `vkBindImageMemory2KHR`}
     public MemorySegment vkBindImageMemory2KHR() { return vkBindImageMemory2KHR(this.segment(), 0L); }
     /// Sets `vkBindImageMemory2KHR` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkBindImageMemory2KHR(MemorySegment segment, long index, MemorySegment value) { VH_vkBindImageMemory2KHR.set(segment, 0L, index, value); }
+    public static void vkBindImageMemory2KHR(MemorySegment segment, long index, MemorySegment value) { VH_vkBindImageMemory2KHR.get().set(segment, 0L, index, value); }
     /// Sets `vkBindImageMemory2KHR` with the given value.
     /// @param value the value
     /// @return `this`
@@ -654,14 +654,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetPhysicalDeviceMemoryProperties2KHR` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetPhysicalDeviceMemoryProperties2KHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetPhysicalDeviceMemoryProperties2KHR.get(segment, 0L, index); }
+    public static MemorySegment vkGetPhysicalDeviceMemoryProperties2KHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetPhysicalDeviceMemoryProperties2KHR.get().get(segment, 0L, index); }
     /// {@return `vkGetPhysicalDeviceMemoryProperties2KHR`}
     public MemorySegment vkGetPhysicalDeviceMemoryProperties2KHR() { return vkGetPhysicalDeviceMemoryProperties2KHR(this.segment(), 0L); }
     /// Sets `vkGetPhysicalDeviceMemoryProperties2KHR` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetPhysicalDeviceMemoryProperties2KHR(MemorySegment segment, long index, MemorySegment value) { VH_vkGetPhysicalDeviceMemoryProperties2KHR.set(segment, 0L, index, value); }
+    public static void vkGetPhysicalDeviceMemoryProperties2KHR(MemorySegment segment, long index, MemorySegment value) { VH_vkGetPhysicalDeviceMemoryProperties2KHR.get().set(segment, 0L, index, value); }
     /// Sets `vkGetPhysicalDeviceMemoryProperties2KHR` with the given value.
     /// @param value the value
     /// @return `this`
@@ -670,14 +670,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetDeviceBufferMemoryRequirements` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetDeviceBufferMemoryRequirements(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetDeviceBufferMemoryRequirements.get(segment, 0L, index); }
+    public static MemorySegment vkGetDeviceBufferMemoryRequirements(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetDeviceBufferMemoryRequirements.get().get(segment, 0L, index); }
     /// {@return `vkGetDeviceBufferMemoryRequirements`}
     public MemorySegment vkGetDeviceBufferMemoryRequirements() { return vkGetDeviceBufferMemoryRequirements(this.segment(), 0L); }
     /// Sets `vkGetDeviceBufferMemoryRequirements` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetDeviceBufferMemoryRequirements(MemorySegment segment, long index, MemorySegment value) { VH_vkGetDeviceBufferMemoryRequirements.set(segment, 0L, index, value); }
+    public static void vkGetDeviceBufferMemoryRequirements(MemorySegment segment, long index, MemorySegment value) { VH_vkGetDeviceBufferMemoryRequirements.get().set(segment, 0L, index, value); }
     /// Sets `vkGetDeviceBufferMemoryRequirements` with the given value.
     /// @param value the value
     /// @return `this`
@@ -686,14 +686,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetDeviceImageMemoryRequirements` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetDeviceImageMemoryRequirements(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetDeviceImageMemoryRequirements.get(segment, 0L, index); }
+    public static MemorySegment vkGetDeviceImageMemoryRequirements(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetDeviceImageMemoryRequirements.get().get(segment, 0L, index); }
     /// {@return `vkGetDeviceImageMemoryRequirements`}
     public MemorySegment vkGetDeviceImageMemoryRequirements() { return vkGetDeviceImageMemoryRequirements(this.segment(), 0L); }
     /// Sets `vkGetDeviceImageMemoryRequirements` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetDeviceImageMemoryRequirements(MemorySegment segment, long index, MemorySegment value) { VH_vkGetDeviceImageMemoryRequirements.set(segment, 0L, index, value); }
+    public static void vkGetDeviceImageMemoryRequirements(MemorySegment segment, long index, MemorySegment value) { VH_vkGetDeviceImageMemoryRequirements.get().set(segment, 0L, index, value); }
     /// Sets `vkGetDeviceImageMemoryRequirements` with the given value.
     /// @param value the value
     /// @return `this`
@@ -702,14 +702,14 @@ public final class VmaVulkanFunctions extends GroupType {
     /// {@return `vkGetMemoryWin32HandleKHR` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vkGetMemoryWin32HandleKHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetMemoryWin32HandleKHR.get(segment, 0L, index); }
+    public static MemorySegment vkGetMemoryWin32HandleKHR(MemorySegment segment, long index) { return (MemorySegment) VH_vkGetMemoryWin32HandleKHR.get().get(segment, 0L, index); }
     /// {@return `vkGetMemoryWin32HandleKHR`}
     public MemorySegment vkGetMemoryWin32HandleKHR() { return vkGetMemoryWin32HandleKHR(this.segment(), 0L); }
     /// Sets `vkGetMemoryWin32HandleKHR` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vkGetMemoryWin32HandleKHR(MemorySegment segment, long index, MemorySegment value) { VH_vkGetMemoryWin32HandleKHR.set(segment, 0L, index, value); }
+    public static void vkGetMemoryWin32HandleKHR(MemorySegment segment, long index, MemorySegment value) { VH_vkGetMemoryWin32HandleKHR.get().set(segment, 0L, index, value); }
     /// Sets `vkGetMemoryWin32HandleKHR` with the given value.
     /// @param value the value
     /// @return `this`

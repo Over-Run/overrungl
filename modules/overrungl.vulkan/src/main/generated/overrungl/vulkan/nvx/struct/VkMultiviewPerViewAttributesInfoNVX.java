@@ -33,25 +33,25 @@ public final class VkMultiviewPerViewAttributesInfoNVX extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `perViewAttributes`.
     public static final long OFFSET_perViewAttributes = LAYOUT.byteOffset(PathElement.groupElement("perViewAttributes"));
     /// The memory layout of `perViewAttributes`.
     public static final MemoryLayout LAYOUT_perViewAttributes = LAYOUT.select(PathElement.groupElement("perViewAttributes"));
     /// The [VarHandle] of `perViewAttributes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_perViewAttributes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("perViewAttributes"));
+    public static final Supplier<VarHandle> VH_perViewAttributes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("perViewAttributes")));
     /// The byte offset of `perViewAttributesPositionXOnly`.
     public static final long OFFSET_perViewAttributesPositionXOnly = LAYOUT.byteOffset(PathElement.groupElement("perViewAttributesPositionXOnly"));
     /// The memory layout of `perViewAttributesPositionXOnly`.
     public static final MemoryLayout LAYOUT_perViewAttributesPositionXOnly = LAYOUT.select(PathElement.groupElement("perViewAttributesPositionXOnly"));
     /// The [VarHandle] of `perViewAttributesPositionXOnly` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_perViewAttributesPositionXOnly = LAYOUT.arrayElementVarHandle(PathElement.groupElement("perViewAttributesPositionXOnly"));
+    public static final Supplier<VarHandle> VH_perViewAttributesPositionXOnly = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("perViewAttributesPositionXOnly")));
 
     /// Creates `VkMultiviewPerViewAttributesInfoNVX` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkMultiviewPerViewAttributesInfoNVX extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkMultiviewPerViewAttributesInfoNVX extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkMultiviewPerViewAttributesInfoNVX extends GroupType {
     /// {@return `perViewAttributes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int perViewAttributes(MemorySegment segment, long index) { return (int) VH_perViewAttributes.get(segment, 0L, index); }
+    public static int perViewAttributes(MemorySegment segment, long index) { return (int) VH_perViewAttributes.get().get(segment, 0L, index); }
     /// {@return `perViewAttributes`}
     public int perViewAttributes() { return perViewAttributes(this.segment(), 0L); }
     /// Sets `perViewAttributes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void perViewAttributes(MemorySegment segment, long index, int value) { VH_perViewAttributes.set(segment, 0L, index, value); }
+    public static void perViewAttributes(MemorySegment segment, long index, int value) { VH_perViewAttributes.get().set(segment, 0L, index, value); }
     /// Sets `perViewAttributes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkMultiviewPerViewAttributesInfoNVX extends GroupType {
     /// {@return `perViewAttributesPositionXOnly` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int perViewAttributesPositionXOnly(MemorySegment segment, long index) { return (int) VH_perViewAttributesPositionXOnly.get(segment, 0L, index); }
+    public static int perViewAttributesPositionXOnly(MemorySegment segment, long index) { return (int) VH_perViewAttributesPositionXOnly.get().get(segment, 0L, index); }
     /// {@return `perViewAttributesPositionXOnly`}
     public int perViewAttributesPositionXOnly() { return perViewAttributesPositionXOnly(this.segment(), 0L); }
     /// Sets `perViewAttributesPositionXOnly` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void perViewAttributesPositionXOnly(MemorySegment segment, long index, int value) { VH_perViewAttributesPositionXOnly.set(segment, 0L, index, value); }
+    public static void perViewAttributesPositionXOnly(MemorySegment segment, long index, int value) { VH_perViewAttributesPositionXOnly.get().set(segment, 0L, index, value); }
     /// Sets `perViewAttributesPositionXOnly` with the given value.
     /// @param value the value
     /// @return `this`

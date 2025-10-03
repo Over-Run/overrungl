@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceShaderBfloat16FeaturesKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderBFloat16Type`.
     public static final long OFFSET_shaderBFloat16Type = LAYOUT.byteOffset(PathElement.groupElement("shaderBFloat16Type"));
     /// The memory layout of `shaderBFloat16Type`.
     public static final MemoryLayout LAYOUT_shaderBFloat16Type = LAYOUT.select(PathElement.groupElement("shaderBFloat16Type"));
     /// The [VarHandle] of `shaderBFloat16Type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBFloat16Type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBFloat16Type"));
+    public static final Supplier<VarHandle> VH_shaderBFloat16Type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBFloat16Type")));
     /// The byte offset of `shaderBFloat16DotProduct`.
     public static final long OFFSET_shaderBFloat16DotProduct = LAYOUT.byteOffset(PathElement.groupElement("shaderBFloat16DotProduct"));
     /// The memory layout of `shaderBFloat16DotProduct`.
     public static final MemoryLayout LAYOUT_shaderBFloat16DotProduct = LAYOUT.select(PathElement.groupElement("shaderBFloat16DotProduct"));
     /// The [VarHandle] of `shaderBFloat16DotProduct` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBFloat16DotProduct = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBFloat16DotProduct"));
+    public static final Supplier<VarHandle> VH_shaderBFloat16DotProduct = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBFloat16DotProduct")));
     /// The byte offset of `shaderBFloat16CooperativeMatrix`.
     public static final long OFFSET_shaderBFloat16CooperativeMatrix = LAYOUT.byteOffset(PathElement.groupElement("shaderBFloat16CooperativeMatrix"));
     /// The memory layout of `shaderBFloat16CooperativeMatrix`.
     public static final MemoryLayout LAYOUT_shaderBFloat16CooperativeMatrix = LAYOUT.select(PathElement.groupElement("shaderBFloat16CooperativeMatrix"));
     /// The [VarHandle] of `shaderBFloat16CooperativeMatrix` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBFloat16CooperativeMatrix = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBFloat16CooperativeMatrix"));
+    public static final Supplier<VarHandle> VH_shaderBFloat16CooperativeMatrix = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBFloat16CooperativeMatrix")));
 
     /// Creates `VkPhysicalDeviceShaderBfloat16FeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceShaderBfloat16FeaturesKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceShaderBfloat16FeaturesKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceShaderBfloat16FeaturesKHR extends GroupType {
     /// {@return `shaderBFloat16Type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBFloat16Type(MemorySegment segment, long index) { return (int) VH_shaderBFloat16Type.get(segment, 0L, index); }
+    public static int shaderBFloat16Type(MemorySegment segment, long index) { return (int) VH_shaderBFloat16Type.get().get(segment, 0L, index); }
     /// {@return `shaderBFloat16Type`}
     public int shaderBFloat16Type() { return shaderBFloat16Type(this.segment(), 0L); }
     /// Sets `shaderBFloat16Type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBFloat16Type(MemorySegment segment, long index, int value) { VH_shaderBFloat16Type.set(segment, 0L, index, value); }
+    public static void shaderBFloat16Type(MemorySegment segment, long index, int value) { VH_shaderBFloat16Type.get().set(segment, 0L, index, value); }
     /// Sets `shaderBFloat16Type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceShaderBfloat16FeaturesKHR extends GroupType {
     /// {@return `shaderBFloat16DotProduct` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBFloat16DotProduct(MemorySegment segment, long index) { return (int) VH_shaderBFloat16DotProduct.get(segment, 0L, index); }
+    public static int shaderBFloat16DotProduct(MemorySegment segment, long index) { return (int) VH_shaderBFloat16DotProduct.get().get(segment, 0L, index); }
     /// {@return `shaderBFloat16DotProduct`}
     public int shaderBFloat16DotProduct() { return shaderBFloat16DotProduct(this.segment(), 0L); }
     /// Sets `shaderBFloat16DotProduct` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBFloat16DotProduct(MemorySegment segment, long index, int value) { VH_shaderBFloat16DotProduct.set(segment, 0L, index, value); }
+    public static void shaderBFloat16DotProduct(MemorySegment segment, long index, int value) { VH_shaderBFloat16DotProduct.get().set(segment, 0L, index, value); }
     /// Sets `shaderBFloat16DotProduct` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceShaderBfloat16FeaturesKHR extends GroupType {
     /// {@return `shaderBFloat16CooperativeMatrix` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBFloat16CooperativeMatrix(MemorySegment segment, long index) { return (int) VH_shaderBFloat16CooperativeMatrix.get(segment, 0L, index); }
+    public static int shaderBFloat16CooperativeMatrix(MemorySegment segment, long index) { return (int) VH_shaderBFloat16CooperativeMatrix.get().get(segment, 0L, index); }
     /// {@return `shaderBFloat16CooperativeMatrix`}
     public int shaderBFloat16CooperativeMatrix() { return shaderBFloat16CooperativeMatrix(this.segment(), 0L); }
     /// Sets `shaderBFloat16CooperativeMatrix` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBFloat16CooperativeMatrix(MemorySegment segment, long index, int value) { VH_shaderBFloat16CooperativeMatrix.set(segment, 0L, index, value); }
+    public static void shaderBFloat16CooperativeMatrix(MemorySegment segment, long index, int value) { VH_shaderBFloat16CooperativeMatrix.get().set(segment, 0L, index, value); }
     /// Sets `shaderBFloat16CooperativeMatrix` with the given value.
     /// @param value the value
     /// @return `this`

@@ -35,13 +35,13 @@ public final class StdVideoH265ProfileTierLevel extends GroupType {
     /// The memory layout of `general_profile_idc`.
     public static final MemoryLayout LAYOUT_general_profile_idc = LAYOUT.select(PathElement.groupElement("general_profile_idc"));
     /// The [VarHandle] of `general_profile_idc` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_general_profile_idc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("general_profile_idc"));
+    public static final Supplier<VarHandle> VH_general_profile_idc = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("general_profile_idc")));
     /// The byte offset of `general_level_idc`.
     public static final long OFFSET_general_level_idc = LAYOUT.byteOffset(PathElement.groupElement("general_level_idc"));
     /// The memory layout of `general_level_idc`.
     public static final MemoryLayout LAYOUT_general_level_idc = LAYOUT.select(PathElement.groupElement("general_level_idc"));
     /// The [VarHandle] of `general_level_idc` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_general_level_idc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("general_level_idc"));
+    public static final Supplier<VarHandle> VH_general_level_idc = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("general_level_idc")));
 
     /// Creates `StdVideoH265ProfileTierLevel` with the given segment.
     /// @param segment      the memory segment
@@ -112,14 +112,14 @@ public final class StdVideoH265ProfileTierLevel extends GroupType {
     /// {@return `general_profile_idc` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int general_profile_idc(MemorySegment segment, long index) { return (int) VH_general_profile_idc.get(segment, 0L, index); }
+    public static int general_profile_idc(MemorySegment segment, long index) { return (int) VH_general_profile_idc.get().get(segment, 0L, index); }
     /// {@return `general_profile_idc`}
     public int general_profile_idc() { return general_profile_idc(this.segment(), 0L); }
     /// Sets `general_profile_idc` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void general_profile_idc(MemorySegment segment, long index, int value) { VH_general_profile_idc.set(segment, 0L, index, value); }
+    public static void general_profile_idc(MemorySegment segment, long index, int value) { VH_general_profile_idc.get().set(segment, 0L, index, value); }
     /// Sets `general_profile_idc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -128,14 +128,14 @@ public final class StdVideoH265ProfileTierLevel extends GroupType {
     /// {@return `general_level_idc` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int general_level_idc(MemorySegment segment, long index) { return (int) VH_general_level_idc.get(segment, 0L, index); }
+    public static int general_level_idc(MemorySegment segment, long index) { return (int) VH_general_level_idc.get().get(segment, 0L, index); }
     /// {@return `general_level_idc`}
     public int general_level_idc() { return general_level_idc(this.segment(), 0L); }
     /// Sets `general_level_idc` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void general_level_idc(MemorySegment segment, long index, int value) { VH_general_level_idc.set(segment, 0L, index, value); }
+    public static void general_level_idc(MemorySegment segment, long index, int value) { VH_general_level_idc.get().set(segment, 0L, index, value); }
     /// Sets `general_level_idc` with the given value.
     /// @param value the value
     /// @return `this`

@@ -29,13 +29,13 @@ public final class VkDrawMeshTasksIndirectCommandNV extends GroupType {
     /// The memory layout of `taskCount`.
     public static final MemoryLayout LAYOUT_taskCount = LAYOUT.select(PathElement.groupElement("taskCount"));
     /// The [VarHandle] of `taskCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_taskCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("taskCount"));
+    public static final Supplier<VarHandle> VH_taskCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("taskCount")));
     /// The byte offset of `firstTask`.
     public static final long OFFSET_firstTask = LAYOUT.byteOffset(PathElement.groupElement("firstTask"));
     /// The memory layout of `firstTask`.
     public static final MemoryLayout LAYOUT_firstTask = LAYOUT.select(PathElement.groupElement("firstTask"));
     /// The [VarHandle] of `firstTask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_firstTask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstTask"));
+    public static final Supplier<VarHandle> VH_firstTask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstTask")));
 
     /// Creates `VkDrawMeshTasksIndirectCommandNV` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkDrawMeshTasksIndirectCommandNV extends GroupType {
     /// {@return `taskCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int taskCount(MemorySegment segment, long index) { return (int) VH_taskCount.get(segment, 0L, index); }
+    public static int taskCount(MemorySegment segment, long index) { return (int) VH_taskCount.get().get(segment, 0L, index); }
     /// {@return `taskCount`}
     public int taskCount() { return taskCount(this.segment(), 0L); }
     /// Sets `taskCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void taskCount(MemorySegment segment, long index, int value) { VH_taskCount.set(segment, 0L, index, value); }
+    public static void taskCount(MemorySegment segment, long index, int value) { VH_taskCount.get().set(segment, 0L, index, value); }
     /// Sets `taskCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkDrawMeshTasksIndirectCommandNV extends GroupType {
     /// {@return `firstTask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int firstTask(MemorySegment segment, long index) { return (int) VH_firstTask.get(segment, 0L, index); }
+    public static int firstTask(MemorySegment segment, long index) { return (int) VH_firstTask.get().get(segment, 0L, index); }
     /// {@return `firstTask`}
     public int firstTask() { return firstTask(this.segment(), 0L); }
     /// Sets `firstTask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void firstTask(MemorySegment segment, long index, int value) { VH_firstTask.set(segment, 0L, index, value); }
+    public static void firstTask(MemorySegment segment, long index, int value) { VH_firstTask.get().set(segment, 0L, index, value); }
     /// Sets `firstTask` with the given value.
     /// @param value the value
     /// @return `this`

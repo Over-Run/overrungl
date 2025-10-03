@@ -231,9 +231,9 @@ fun main() {
         handleFields.add(
             InstanceDowncallField(
                 modifier = "public static final",
-                type = "MethodHandle",
+                type = "Supplier<MethodHandle>",
                 name = "MH_${command.name}",
-                value = "downcallHandle($descriptor)"
+                value = "StableValue.supplier(() -> downcallHandle($descriptor))"
             )
         )
 

@@ -29,13 +29,13 @@ public final class StdVideoAV1LoopRestoration extends GroupType {
     /// The memory layout of `FrameRestorationType`.
     public static final MemoryLayout LAYOUT_FrameRestorationType = LAYOUT.select(PathElement.groupElement("FrameRestorationType"));
     /// The [VarHandle] of `FrameRestorationType` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_FrameRestorationType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("FrameRestorationType"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_FrameRestorationType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("FrameRestorationType"), PathElement.sequenceElement()));
     /// The byte offset of `LoopRestorationSize`.
     public static final long OFFSET_LoopRestorationSize = LAYOUT.byteOffset(PathElement.groupElement("LoopRestorationSize"));
     /// The memory layout of `LoopRestorationSize`.
     public static final MemoryLayout LAYOUT_LoopRestorationSize = LAYOUT.select(PathElement.groupElement("LoopRestorationSize"));
     /// The [VarHandle] of `LoopRestorationSize` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_LoopRestorationSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("LoopRestorationSize"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_LoopRestorationSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("LoopRestorationSize"), PathElement.sequenceElement()));
 
     /// Creates `StdVideoAV1LoopRestoration` with the given segment.
     /// @param segment      the memory segment
@@ -91,7 +91,7 @@ public final class StdVideoAV1LoopRestoration extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int FrameRestorationType(MemorySegment segment, long index, long index0) { return (int) VH_FrameRestorationType.get(segment, 0L, index, index0); }
+    public static int FrameRestorationType(MemorySegment segment, long index, long index0) { return (int) VH_FrameRestorationType.get().get(segment, 0L, index, index0); }
     /// {@return `FrameRestorationType`}
     public MemorySegment FrameRestorationType() { return FrameRestorationType(this.segment(), 0L); }
     /// {@return `FrameRestorationType`}
@@ -107,7 +107,7 @@ public final class StdVideoAV1LoopRestoration extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void FrameRestorationType(MemorySegment segment, long index, long index0, int value) { VH_FrameRestorationType.set(segment, 0L, index, index0, value); }
+    public static void FrameRestorationType(MemorySegment segment, long index, long index0, int value) { VH_FrameRestorationType.get().set(segment, 0L, index, index0, value); }
     /// Sets `FrameRestorationType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,7 +126,7 @@ public final class StdVideoAV1LoopRestoration extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static short LoopRestorationSize(MemorySegment segment, long index, long index0) { return (short) VH_LoopRestorationSize.get(segment, 0L, index, index0); }
+    public static short LoopRestorationSize(MemorySegment segment, long index, long index0) { return (short) VH_LoopRestorationSize.get().get(segment, 0L, index, index0); }
     /// {@return `LoopRestorationSize`}
     public MemorySegment LoopRestorationSize() { return LoopRestorationSize(this.segment(), 0L); }
     /// {@return `LoopRestorationSize`}
@@ -142,7 +142,7 @@ public final class StdVideoAV1LoopRestoration extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void LoopRestorationSize(MemorySegment segment, long index, long index0, short value) { VH_LoopRestorationSize.set(segment, 0L, index, index0, value); }
+    public static void LoopRestorationSize(MemorySegment segment, long index, long index0, short value) { VH_LoopRestorationSize.get().set(segment, 0L, index, index0, value); }
     /// Sets `LoopRestorationSize` with the given value.
     /// @param value the value
     /// @return `this`

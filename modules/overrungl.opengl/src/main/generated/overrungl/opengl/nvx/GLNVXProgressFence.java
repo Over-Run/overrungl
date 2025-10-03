@@ -2,6 +2,7 @@
 package overrungl.opengl.nvx;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,10 +11,10 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLNVXProgressFence {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glCreateProgressFenceNVX = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glSignalSemaphoreui64NVX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWaitSemaphoreui64NVX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glClientWaitSemaphoreui64NVX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glCreateProgressFenceNVX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glSignalSemaphoreui64NVX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glWaitSemaphoreui64NVX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glClientWaitSemaphoreui64NVX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glCreateProgressFenceNVX;
         public final MemorySegment PFN_glSignalSemaphoreui64NVX;
         public final MemorySegment PFN_glWaitSemaphoreui64NVX;
@@ -37,7 +38,7 @@ public final class GLNVXProgressFence {
     public int CreateProgressFenceNVX() {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateProgressFenceNVX)) throw new GLSymbolNotFoundError("Symbol not found: glCreateProgressFenceNVX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateProgressFenceNVX"); }
-        return (int) Handles.MH_glCreateProgressFenceNVX.invokeExact(handles.PFN_glCreateProgressFenceNVX); }
+        return (int) Handles.MH_glCreateProgressFenceNVX.get().invokeExact(handles.PFN_glCreateProgressFenceNVX); }
         catch (Throwable e) { throw new RuntimeException("error in CreateProgressFenceNVX", e); }
     }
 
@@ -48,7 +49,7 @@ public final class GLNVXProgressFence {
     public void SignalSemaphoreui64NVX(int signalGpu, int fenceObjectCount, @NonNull MemorySegment semaphoreArray, @NonNull MemorySegment fenceValueArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSignalSemaphoreui64NVX)) throw new GLSymbolNotFoundError("Symbol not found: glSignalSemaphoreui64NVX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSignalSemaphoreui64NVX", signalGpu, fenceObjectCount, semaphoreArray, fenceValueArray); }
-        Handles.MH_glSignalSemaphoreui64NVX.invokeExact(handles.PFN_glSignalSemaphoreui64NVX, signalGpu, fenceObjectCount, semaphoreArray, fenceValueArray); }
+        Handles.MH_glSignalSemaphoreui64NVX.get().invokeExact(handles.PFN_glSignalSemaphoreui64NVX, signalGpu, fenceObjectCount, semaphoreArray, fenceValueArray); }
         catch (Throwable e) { throw new RuntimeException("error in SignalSemaphoreui64NVX", e); }
     }
 
@@ -59,7 +60,7 @@ public final class GLNVXProgressFence {
     public void WaitSemaphoreui64NVX(int waitGpu, int fenceObjectCount, @NonNull MemorySegment semaphoreArray, @NonNull MemorySegment fenceValueArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWaitSemaphoreui64NVX)) throw new GLSymbolNotFoundError("Symbol not found: glWaitSemaphoreui64NVX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glWaitSemaphoreui64NVX", waitGpu, fenceObjectCount, semaphoreArray, fenceValueArray); }
-        Handles.MH_glWaitSemaphoreui64NVX.invokeExact(handles.PFN_glWaitSemaphoreui64NVX, waitGpu, fenceObjectCount, semaphoreArray, fenceValueArray); }
+        Handles.MH_glWaitSemaphoreui64NVX.get().invokeExact(handles.PFN_glWaitSemaphoreui64NVX, waitGpu, fenceObjectCount, semaphoreArray, fenceValueArray); }
         catch (Throwable e) { throw new RuntimeException("error in WaitSemaphoreui64NVX", e); }
     }
 
@@ -70,7 +71,7 @@ public final class GLNVXProgressFence {
     public void ClientWaitSemaphoreui64NVX(int fenceObjectCount, @NonNull MemorySegment semaphoreArray, @NonNull MemorySegment fenceValueArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClientWaitSemaphoreui64NVX)) throw new GLSymbolNotFoundError("Symbol not found: glClientWaitSemaphoreui64NVX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClientWaitSemaphoreui64NVX", fenceObjectCount, semaphoreArray, fenceValueArray); }
-        Handles.MH_glClientWaitSemaphoreui64NVX.invokeExact(handles.PFN_glClientWaitSemaphoreui64NVX, fenceObjectCount, semaphoreArray, fenceValueArray); }
+        Handles.MH_glClientWaitSemaphoreui64NVX.get().invokeExact(handles.PFN_glClientWaitSemaphoreui64NVX, fenceObjectCount, semaphoreArray, fenceValueArray); }
         catch (Throwable e) { throw new RuntimeException("error in ClientWaitSemaphoreui64NVX", e); }
     }
 

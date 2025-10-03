@@ -49,73 +49,73 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `MGranularity`.
     public static final long OFFSET_MGranularity = LAYOUT.byteOffset(PathElement.groupElement("MGranularity"));
     /// The memory layout of `MGranularity`.
     public static final MemoryLayout LAYOUT_MGranularity = LAYOUT.select(PathElement.groupElement("MGranularity"));
     /// The [VarHandle] of `MGranularity` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_MGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("MGranularity"));
+    public static final Supplier<VarHandle> VH_MGranularity = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("MGranularity")));
     /// The byte offset of `NGranularity`.
     public static final long OFFSET_NGranularity = LAYOUT.byteOffset(PathElement.groupElement("NGranularity"));
     /// The memory layout of `NGranularity`.
     public static final MemoryLayout LAYOUT_NGranularity = LAYOUT.select(PathElement.groupElement("NGranularity"));
     /// The [VarHandle] of `NGranularity` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_NGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("NGranularity"));
+    public static final Supplier<VarHandle> VH_NGranularity = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("NGranularity")));
     /// The byte offset of `KGranularity`.
     public static final long OFFSET_KGranularity = LAYOUT.byteOffset(PathElement.groupElement("KGranularity"));
     /// The memory layout of `KGranularity`.
     public static final MemoryLayout LAYOUT_KGranularity = LAYOUT.select(PathElement.groupElement("KGranularity"));
     /// The [VarHandle] of `KGranularity` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_KGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("KGranularity"));
+    public static final Supplier<VarHandle> VH_KGranularity = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("KGranularity")));
     /// The byte offset of `AType`.
     public static final long OFFSET_AType = LAYOUT.byteOffset(PathElement.groupElement("AType"));
     /// The memory layout of `AType`.
     public static final MemoryLayout LAYOUT_AType = LAYOUT.select(PathElement.groupElement("AType"));
     /// The [VarHandle] of `AType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_AType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("AType"));
+    public static final Supplier<VarHandle> VH_AType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("AType")));
     /// The byte offset of `BType`.
     public static final long OFFSET_BType = LAYOUT.byteOffset(PathElement.groupElement("BType"));
     /// The memory layout of `BType`.
     public static final MemoryLayout LAYOUT_BType = LAYOUT.select(PathElement.groupElement("BType"));
     /// The [VarHandle] of `BType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_BType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("BType"));
+    public static final Supplier<VarHandle> VH_BType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("BType")));
     /// The byte offset of `CType`.
     public static final long OFFSET_CType = LAYOUT.byteOffset(PathElement.groupElement("CType"));
     /// The memory layout of `CType`.
     public static final MemoryLayout LAYOUT_CType = LAYOUT.select(PathElement.groupElement("CType"));
     /// The [VarHandle] of `CType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_CType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("CType"));
+    public static final Supplier<VarHandle> VH_CType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("CType")));
     /// The byte offset of `ResultType`.
     public static final long OFFSET_ResultType = LAYOUT.byteOffset(PathElement.groupElement("ResultType"));
     /// The memory layout of `ResultType`.
     public static final MemoryLayout LAYOUT_ResultType = LAYOUT.select(PathElement.groupElement("ResultType"));
     /// The [VarHandle] of `ResultType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ResultType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ResultType"));
+    public static final Supplier<VarHandle> VH_ResultType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ResultType")));
     /// The byte offset of `saturatingAccumulation`.
     public static final long OFFSET_saturatingAccumulation = LAYOUT.byteOffset(PathElement.groupElement("saturatingAccumulation"));
     /// The memory layout of `saturatingAccumulation`.
     public static final MemoryLayout LAYOUT_saturatingAccumulation = LAYOUT.select(PathElement.groupElement("saturatingAccumulation"));
     /// The [VarHandle] of `saturatingAccumulation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_saturatingAccumulation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("saturatingAccumulation"));
+    public static final Supplier<VarHandle> VH_saturatingAccumulation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("saturatingAccumulation")));
     /// The byte offset of `scope`.
     public static final long OFFSET_scope = LAYOUT.byteOffset(PathElement.groupElement("scope"));
     /// The memory layout of `scope`.
     public static final MemoryLayout LAYOUT_scope = LAYOUT.select(PathElement.groupElement("scope"));
     /// The [VarHandle] of `scope` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_scope = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scope"));
+    public static final Supplier<VarHandle> VH_scope = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("scope")));
     /// The byte offset of `workgroupInvocations`.
     public static final long OFFSET_workgroupInvocations = LAYOUT.byteOffset(PathElement.groupElement("workgroupInvocations"));
     /// The memory layout of `workgroupInvocations`.
     public static final MemoryLayout LAYOUT_workgroupInvocations = LAYOUT.select(PathElement.groupElement("workgroupInvocations"));
     /// The [VarHandle] of `workgroupInvocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_workgroupInvocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupInvocations"));
+    public static final Supplier<VarHandle> VH_workgroupInvocations = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupInvocations")));
 
     /// Creates `VkCooperativeMatrixFlexibleDimensionsPropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -166,14 +166,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `MGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int MGranularity(MemorySegment segment, long index) { return (int) VH_MGranularity.get(segment, 0L, index); }
+    public static int MGranularity(MemorySegment segment, long index) { return (int) VH_MGranularity.get().get(segment, 0L, index); }
     /// {@return `MGranularity`}
     public int MGranularity() { return MGranularity(this.segment(), 0L); }
     /// Sets `MGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void MGranularity(MemorySegment segment, long index, int value) { VH_MGranularity.set(segment, 0L, index, value); }
+    public static void MGranularity(MemorySegment segment, long index, int value) { VH_MGranularity.get().set(segment, 0L, index, value); }
     /// Sets `MGranularity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `NGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int NGranularity(MemorySegment segment, long index) { return (int) VH_NGranularity.get(segment, 0L, index); }
+    public static int NGranularity(MemorySegment segment, long index) { return (int) VH_NGranularity.get().get(segment, 0L, index); }
     /// {@return `NGranularity`}
     public int NGranularity() { return NGranularity(this.segment(), 0L); }
     /// Sets `NGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void NGranularity(MemorySegment segment, long index, int value) { VH_NGranularity.set(segment, 0L, index, value); }
+    public static void NGranularity(MemorySegment segment, long index, int value) { VH_NGranularity.get().set(segment, 0L, index, value); }
     /// Sets `NGranularity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `KGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int KGranularity(MemorySegment segment, long index) { return (int) VH_KGranularity.get(segment, 0L, index); }
+    public static int KGranularity(MemorySegment segment, long index) { return (int) VH_KGranularity.get().get(segment, 0L, index); }
     /// {@return `KGranularity`}
     public int KGranularity() { return KGranularity(this.segment(), 0L); }
     /// Sets `KGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void KGranularity(MemorySegment segment, long index, int value) { VH_KGranularity.set(segment, 0L, index, value); }
+    public static void KGranularity(MemorySegment segment, long index, int value) { VH_KGranularity.get().set(segment, 0L, index, value); }
     /// Sets `KGranularity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `AType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int AType(MemorySegment segment, long index) { return (int) VH_AType.get(segment, 0L, index); }
+    public static int AType(MemorySegment segment, long index) { return (int) VH_AType.get().get(segment, 0L, index); }
     /// {@return `AType`}
     public int AType() { return AType(this.segment(), 0L); }
     /// Sets `AType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void AType(MemorySegment segment, long index, int value) { VH_AType.set(segment, 0L, index, value); }
+    public static void AType(MemorySegment segment, long index, int value) { VH_AType.get().set(segment, 0L, index, value); }
     /// Sets `AType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `BType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int BType(MemorySegment segment, long index) { return (int) VH_BType.get(segment, 0L, index); }
+    public static int BType(MemorySegment segment, long index) { return (int) VH_BType.get().get(segment, 0L, index); }
     /// {@return `BType`}
     public int BType() { return BType(this.segment(), 0L); }
     /// Sets `BType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void BType(MemorySegment segment, long index, int value) { VH_BType.set(segment, 0L, index, value); }
+    public static void BType(MemorySegment segment, long index, int value) { VH_BType.get().set(segment, 0L, index, value); }
     /// Sets `BType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `CType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int CType(MemorySegment segment, long index) { return (int) VH_CType.get(segment, 0L, index); }
+    public static int CType(MemorySegment segment, long index) { return (int) VH_CType.get().get(segment, 0L, index); }
     /// {@return `CType`}
     public int CType() { return CType(this.segment(), 0L); }
     /// Sets `CType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void CType(MemorySegment segment, long index, int value) { VH_CType.set(segment, 0L, index, value); }
+    public static void CType(MemorySegment segment, long index, int value) { VH_CType.get().set(segment, 0L, index, value); }
     /// Sets `CType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `ResultType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int ResultType(MemorySegment segment, long index) { return (int) VH_ResultType.get(segment, 0L, index); }
+    public static int ResultType(MemorySegment segment, long index) { return (int) VH_ResultType.get().get(segment, 0L, index); }
     /// {@return `ResultType`}
     public int ResultType() { return ResultType(this.segment(), 0L); }
     /// Sets `ResultType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ResultType(MemorySegment segment, long index, int value) { VH_ResultType.set(segment, 0L, index, value); }
+    public static void ResultType(MemorySegment segment, long index, int value) { VH_ResultType.get().set(segment, 0L, index, value); }
     /// Sets `ResultType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,14 +310,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `saturatingAccumulation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int saturatingAccumulation(MemorySegment segment, long index) { return (int) VH_saturatingAccumulation.get(segment, 0L, index); }
+    public static int saturatingAccumulation(MemorySegment segment, long index) { return (int) VH_saturatingAccumulation.get().get(segment, 0L, index); }
     /// {@return `saturatingAccumulation`}
     public int saturatingAccumulation() { return saturatingAccumulation(this.segment(), 0L); }
     /// Sets `saturatingAccumulation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void saturatingAccumulation(MemorySegment segment, long index, int value) { VH_saturatingAccumulation.set(segment, 0L, index, value); }
+    public static void saturatingAccumulation(MemorySegment segment, long index, int value) { VH_saturatingAccumulation.get().set(segment, 0L, index, value); }
     /// Sets `saturatingAccumulation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,14 +326,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `scope` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int scope(MemorySegment segment, long index) { return (int) VH_scope.get(segment, 0L, index); }
+    public static int scope(MemorySegment segment, long index) { return (int) VH_scope.get().get(segment, 0L, index); }
     /// {@return `scope`}
     public int scope() { return scope(this.segment(), 0L); }
     /// Sets `scope` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void scope(MemorySegment segment, long index, int value) { VH_scope.set(segment, 0L, index, value); }
+    public static void scope(MemorySegment segment, long index, int value) { VH_scope.get().set(segment, 0L, index, value); }
     /// Sets `scope` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,14 +342,14 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Gro
     /// {@return `workgroupInvocations` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int workgroupInvocations(MemorySegment segment, long index) { return (int) VH_workgroupInvocations.get(segment, 0L, index); }
+    public static int workgroupInvocations(MemorySegment segment, long index) { return (int) VH_workgroupInvocations.get().get(segment, 0L, index); }
     /// {@return `workgroupInvocations`}
     public int workgroupInvocations() { return workgroupInvocations(this.segment(), 0L); }
     /// Sets `workgroupInvocations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void workgroupInvocations(MemorySegment segment, long index, int value) { VH_workgroupInvocations.set(segment, 0L, index, value); }
+    public static void workgroupInvocations(MemorySegment segment, long index, int value) { VH_workgroupInvocations.get().set(segment, 0L, index, value); }
     /// Sets `workgroupInvocations` with the given value.
     /// @param value the value
     /// @return `this`

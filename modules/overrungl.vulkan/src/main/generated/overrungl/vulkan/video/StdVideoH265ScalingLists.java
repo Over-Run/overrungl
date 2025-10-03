@@ -37,37 +37,37 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// The memory layout of `ScalingList4x4`.
     public static final MemoryLayout LAYOUT_ScalingList4x4 = LAYOUT.select(PathElement.groupElement("ScalingList4x4"));
     /// The [VarHandle] of `ScalingList4x4` of type `(MemorySegment base, long baseOffset, long index, long index0, long index1)MemorySegment`.
-    public static final VarHandle VH_ScalingList4x4 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList4x4"), PathElement.sequenceElement(), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_ScalingList4x4 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList4x4"), PathElement.sequenceElement(), PathElement.sequenceElement()));
     /// The byte offset of `ScalingList8x8`.
     public static final long OFFSET_ScalingList8x8 = LAYOUT.byteOffset(PathElement.groupElement("ScalingList8x8"));
     /// The memory layout of `ScalingList8x8`.
     public static final MemoryLayout LAYOUT_ScalingList8x8 = LAYOUT.select(PathElement.groupElement("ScalingList8x8"));
     /// The [VarHandle] of `ScalingList8x8` of type `(MemorySegment base, long baseOffset, long index, long index0, long index1)MemorySegment`.
-    public static final VarHandle VH_ScalingList8x8 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList8x8"), PathElement.sequenceElement(), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_ScalingList8x8 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList8x8"), PathElement.sequenceElement(), PathElement.sequenceElement()));
     /// The byte offset of `ScalingList16x16`.
     public static final long OFFSET_ScalingList16x16 = LAYOUT.byteOffset(PathElement.groupElement("ScalingList16x16"));
     /// The memory layout of `ScalingList16x16`.
     public static final MemoryLayout LAYOUT_ScalingList16x16 = LAYOUT.select(PathElement.groupElement("ScalingList16x16"));
     /// The [VarHandle] of `ScalingList16x16` of type `(MemorySegment base, long baseOffset, long index, long index0, long index1)MemorySegment`.
-    public static final VarHandle VH_ScalingList16x16 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList16x16"), PathElement.sequenceElement(), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_ScalingList16x16 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList16x16"), PathElement.sequenceElement(), PathElement.sequenceElement()));
     /// The byte offset of `ScalingList32x32`.
     public static final long OFFSET_ScalingList32x32 = LAYOUT.byteOffset(PathElement.groupElement("ScalingList32x32"));
     /// The memory layout of `ScalingList32x32`.
     public static final MemoryLayout LAYOUT_ScalingList32x32 = LAYOUT.select(PathElement.groupElement("ScalingList32x32"));
     /// The [VarHandle] of `ScalingList32x32` of type `(MemorySegment base, long baseOffset, long index, long index0, long index1)MemorySegment`.
-    public static final VarHandle VH_ScalingList32x32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList32x32"), PathElement.sequenceElement(), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_ScalingList32x32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList32x32"), PathElement.sequenceElement(), PathElement.sequenceElement()));
     /// The byte offset of `ScalingListDCCoef16x16`.
     public static final long OFFSET_ScalingListDCCoef16x16 = LAYOUT.byteOffset(PathElement.groupElement("ScalingListDCCoef16x16"));
     /// The memory layout of `ScalingListDCCoef16x16`.
     public static final MemoryLayout LAYOUT_ScalingListDCCoef16x16 = LAYOUT.select(PathElement.groupElement("ScalingListDCCoef16x16"));
     /// The [VarHandle] of `ScalingListDCCoef16x16` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_ScalingListDCCoef16x16 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingListDCCoef16x16"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_ScalingListDCCoef16x16 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingListDCCoef16x16"), PathElement.sequenceElement()));
     /// The byte offset of `ScalingListDCCoef32x32`.
     public static final long OFFSET_ScalingListDCCoef32x32 = LAYOUT.byteOffset(PathElement.groupElement("ScalingListDCCoef32x32"));
     /// The memory layout of `ScalingListDCCoef32x32`.
     public static final MemoryLayout LAYOUT_ScalingListDCCoef32x32 = LAYOUT.select(PathElement.groupElement("ScalingListDCCoef32x32"));
     /// The [VarHandle] of `ScalingListDCCoef32x32` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_ScalingListDCCoef32x32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingListDCCoef32x32"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_ScalingListDCCoef32x32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingListDCCoef32x32"), PathElement.sequenceElement()));
 
     /// Creates `StdVideoH265ScalingLists` with the given segment.
     /// @param segment      the memory segment
@@ -124,7 +124,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
-    public static byte ScalingList4x4(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList4x4.get(segment, 0L, index, index0, index1); }
+    public static byte ScalingList4x4(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList4x4.get().get(segment, 0L, index, index0, index1); }
     /// {@return `ScalingList4x4`}
     public MemorySegment ScalingList4x4() { return ScalingList4x4(this.segment(), 0L); }
     /// {@return `ScalingList4x4`}
@@ -142,7 +142,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
     /// @param value the value
-    public static void ScalingList4x4(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList4x4.set(segment, 0L, index, index0, index1, value); }
+    public static void ScalingList4x4(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList4x4.get().set(segment, 0L, index, index0, index1, value); }
     /// Sets `ScalingList4x4` with the given value.
     /// @param value the value
     /// @return `this`
@@ -163,7 +163,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
-    public static byte ScalingList8x8(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList8x8.get(segment, 0L, index, index0, index1); }
+    public static byte ScalingList8x8(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList8x8.get().get(segment, 0L, index, index0, index1); }
     /// {@return `ScalingList8x8`}
     public MemorySegment ScalingList8x8() { return ScalingList8x8(this.segment(), 0L); }
     /// {@return `ScalingList8x8`}
@@ -181,7 +181,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
     /// @param value the value
-    public static void ScalingList8x8(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList8x8.set(segment, 0L, index, index0, index1, value); }
+    public static void ScalingList8x8(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList8x8.get().set(segment, 0L, index, index0, index1, value); }
     /// Sets `ScalingList8x8` with the given value.
     /// @param value the value
     /// @return `this`
@@ -202,7 +202,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
-    public static byte ScalingList16x16(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList16x16.get(segment, 0L, index, index0, index1); }
+    public static byte ScalingList16x16(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList16x16.get().get(segment, 0L, index, index0, index1); }
     /// {@return `ScalingList16x16`}
     public MemorySegment ScalingList16x16() { return ScalingList16x16(this.segment(), 0L); }
     /// {@return `ScalingList16x16`}
@@ -220,7 +220,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
     /// @param value the value
-    public static void ScalingList16x16(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList16x16.set(segment, 0L, index, index0, index1, value); }
+    public static void ScalingList16x16(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList16x16.get().set(segment, 0L, index, index0, index1, value); }
     /// Sets `ScalingList16x16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -241,7 +241,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
-    public static byte ScalingList32x32(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList32x32.get(segment, 0L, index, index0, index1); }
+    public static byte ScalingList32x32(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList32x32.get().get(segment, 0L, index, index0, index1); }
     /// {@return `ScalingList32x32`}
     public MemorySegment ScalingList32x32() { return ScalingList32x32(this.segment(), 0L); }
     /// {@return `ScalingList32x32`}
@@ -259,7 +259,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
     /// @param value the value
-    public static void ScalingList32x32(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList32x32.set(segment, 0L, index, index0, index1, value); }
+    public static void ScalingList32x32(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList32x32.get().set(segment, 0L, index, index0, index1, value); }
     /// Sets `ScalingList32x32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -279,7 +279,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte ScalingListDCCoef16x16(MemorySegment segment, long index, long index0) { return (byte) VH_ScalingListDCCoef16x16.get(segment, 0L, index, index0); }
+    public static byte ScalingListDCCoef16x16(MemorySegment segment, long index, long index0) { return (byte) VH_ScalingListDCCoef16x16.get().get(segment, 0L, index, index0); }
     /// {@return `ScalingListDCCoef16x16`}
     public MemorySegment ScalingListDCCoef16x16() { return ScalingListDCCoef16x16(this.segment(), 0L); }
     /// {@return `ScalingListDCCoef16x16`}
@@ -295,7 +295,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void ScalingListDCCoef16x16(MemorySegment segment, long index, long index0, byte value) { VH_ScalingListDCCoef16x16.set(segment, 0L, index, index0, value); }
+    public static void ScalingListDCCoef16x16(MemorySegment segment, long index, long index0, byte value) { VH_ScalingListDCCoef16x16.get().set(segment, 0L, index, index0, value); }
     /// Sets `ScalingListDCCoef16x16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -314,7 +314,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte ScalingListDCCoef32x32(MemorySegment segment, long index, long index0) { return (byte) VH_ScalingListDCCoef32x32.get(segment, 0L, index, index0); }
+    public static byte ScalingListDCCoef32x32(MemorySegment segment, long index, long index0) { return (byte) VH_ScalingListDCCoef32x32.get().get(segment, 0L, index, index0); }
     /// {@return `ScalingListDCCoef32x32`}
     public MemorySegment ScalingListDCCoef32x32() { return ScalingListDCCoef32x32(this.segment(), 0L); }
     /// {@return `ScalingListDCCoef32x32`}
@@ -330,7 +330,7 @@ public final class StdVideoH265ScalingLists extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void ScalingListDCCoef32x32(MemorySegment segment, long index, long index0, byte value) { VH_ScalingListDCCoef32x32.set(segment, 0L, index, index0, value); }
+    public static void ScalingListDCCoef32x32(MemorySegment segment, long index, long index0, byte value) { VH_ScalingListDCCoef32x32.get().set(segment, 0L, index, index0, value); }
     /// Sets `ScalingListDCCoef32x32` with the given value.
     /// @param value the value
     /// @return `this`

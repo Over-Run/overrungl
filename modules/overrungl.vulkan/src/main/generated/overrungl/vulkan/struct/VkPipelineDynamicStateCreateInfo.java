@@ -35,31 +35,31 @@ public final class VkPipelineDynamicStateCreateInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `dynamicStateCount`.
     public static final long OFFSET_dynamicStateCount = LAYOUT.byteOffset(PathElement.groupElement("dynamicStateCount"));
     /// The memory layout of `dynamicStateCount`.
     public static final MemoryLayout LAYOUT_dynamicStateCount = LAYOUT.select(PathElement.groupElement("dynamicStateCount"));
     /// The [VarHandle] of `dynamicStateCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dynamicStateCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicStateCount"));
+    public static final Supplier<VarHandle> VH_dynamicStateCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicStateCount")));
     /// The byte offset of `pDynamicStates`.
     public static final long OFFSET_pDynamicStates = LAYOUT.byteOffset(PathElement.groupElement("pDynamicStates"));
     /// The memory layout of `pDynamicStates`.
     public static final MemoryLayout LAYOUT_pDynamicStates = LAYOUT.select(PathElement.groupElement("pDynamicStates"));
     /// The [VarHandle] of `pDynamicStates` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDynamicStates = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDynamicStates"));
+    public static final Supplier<VarHandle> VH_pDynamicStates = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDynamicStates")));
 
     /// Creates `VkPipelineDynamicStateCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPipelineDynamicStateCreateInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPipelineDynamicStateCreateInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPipelineDynamicStateCreateInfo extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPipelineDynamicStateCreateInfo extends GroupType {
     /// {@return `dynamicStateCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dynamicStateCount(MemorySegment segment, long index) { return (int) VH_dynamicStateCount.get(segment, 0L, index); }
+    public static int dynamicStateCount(MemorySegment segment, long index) { return (int) VH_dynamicStateCount.get().get(segment, 0L, index); }
     /// {@return `dynamicStateCount`}
     public int dynamicStateCount() { return dynamicStateCount(this.segment(), 0L); }
     /// Sets `dynamicStateCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dynamicStateCount(MemorySegment segment, long index, int value) { VH_dynamicStateCount.set(segment, 0L, index, value); }
+    public static void dynamicStateCount(MemorySegment segment, long index, int value) { VH_dynamicStateCount.get().set(segment, 0L, index, value); }
     /// Sets `dynamicStateCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPipelineDynamicStateCreateInfo extends GroupType {
     /// {@return `pDynamicStates` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDynamicStates(MemorySegment segment, long index) { return (MemorySegment) VH_pDynamicStates.get(segment, 0L, index); }
+    public static MemorySegment pDynamicStates(MemorySegment segment, long index) { return (MemorySegment) VH_pDynamicStates.get().get(segment, 0L, index); }
     /// {@return `pDynamicStates`}
     public MemorySegment pDynamicStates() { return pDynamicStates(this.segment(), 0L); }
     /// Sets `pDynamicStates` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDynamicStates(MemorySegment segment, long index, MemorySegment value) { VH_pDynamicStates.set(segment, 0L, index, value); }
+    public static void pDynamicStates(MemorySegment segment, long index, MemorySegment value) { VH_pDynamicStates.get().set(segment, 0L, index, value); }
     /// Sets `pDynamicStates` with the given value.
     /// @param value the value
     /// @return `this`

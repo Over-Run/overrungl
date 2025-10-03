@@ -27,7 +27,7 @@ public final class NFDPathSetEnum extends GroupType {
     /// The memory layout of `ptr`.
     public static final MemoryLayout LAYOUT_ptr = LAYOUT.select(PathElement.groupElement("ptr"));
     /// The [VarHandle] of `ptr` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ptr = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ptr"));
+    public static final Supplier<VarHandle> VH_ptr = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ptr")));
 
     /// Creates `NFDPathSetEnum` with the given segment.
     /// @param segment      the memory segment
@@ -78,14 +78,14 @@ public final class NFDPathSetEnum extends GroupType {
     /// {@return `ptr` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment ptr(MemorySegment segment, long index) { return (MemorySegment) VH_ptr.get(segment, 0L, index); }
+    public static MemorySegment ptr(MemorySegment segment, long index) { return (MemorySegment) VH_ptr.get().get(segment, 0L, index); }
     /// {@return `ptr`}
     public MemorySegment ptr() { return ptr(this.segment(), 0L); }
     /// Sets `ptr` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ptr(MemorySegment segment, long index, MemorySegment value) { VH_ptr.set(segment, 0L, index, value); }
+    public static void ptr(MemorySegment segment, long index, MemorySegment value) { VH_ptr.get().set(segment, 0L, index, value); }
     /// Sets `ptr` with the given value.
     /// @param value the value
     /// @return `this`

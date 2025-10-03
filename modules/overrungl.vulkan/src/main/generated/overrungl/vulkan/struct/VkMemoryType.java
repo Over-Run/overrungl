@@ -29,13 +29,13 @@ public final class VkMemoryType extends GroupType {
     /// The memory layout of `propertyFlags`.
     public static final MemoryLayout LAYOUT_propertyFlags = LAYOUT.select(PathElement.groupElement("propertyFlags"));
     /// The [VarHandle] of `propertyFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_propertyFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("propertyFlags"));
+    public static final Supplier<VarHandle> VH_propertyFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("propertyFlags")));
     /// The byte offset of `heapIndex`.
     public static final long OFFSET_heapIndex = LAYOUT.byteOffset(PathElement.groupElement("heapIndex"));
     /// The memory layout of `heapIndex`.
     public static final MemoryLayout LAYOUT_heapIndex = LAYOUT.select(PathElement.groupElement("heapIndex"));
     /// The [VarHandle] of `heapIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_heapIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("heapIndex"));
+    public static final Supplier<VarHandle> VH_heapIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("heapIndex")));
 
     /// Creates `VkMemoryType` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkMemoryType extends GroupType {
     /// {@return `propertyFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int propertyFlags(MemorySegment segment, long index) { return (int) VH_propertyFlags.get(segment, 0L, index); }
+    public static int propertyFlags(MemorySegment segment, long index) { return (int) VH_propertyFlags.get().get(segment, 0L, index); }
     /// {@return `propertyFlags`}
     public int propertyFlags() { return propertyFlags(this.segment(), 0L); }
     /// Sets `propertyFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void propertyFlags(MemorySegment segment, long index, int value) { VH_propertyFlags.set(segment, 0L, index, value); }
+    public static void propertyFlags(MemorySegment segment, long index, int value) { VH_propertyFlags.get().set(segment, 0L, index, value); }
     /// Sets `propertyFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkMemoryType extends GroupType {
     /// {@return `heapIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int heapIndex(MemorySegment segment, long index) { return (int) VH_heapIndex.get(segment, 0L, index); }
+    public static int heapIndex(MemorySegment segment, long index) { return (int) VH_heapIndex.get().get(segment, 0L, index); }
     /// {@return `heapIndex`}
     public int heapIndex() { return heapIndex(this.segment(), 0L); }
     /// Sets `heapIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void heapIndex(MemorySegment segment, long index, int value) { VH_heapIndex.set(segment, 0L, index, value); }
+    public static void heapIndex(MemorySegment segment, long index, int value) { VH_heapIndex.get().set(segment, 0L, index, value); }
     /// Sets `heapIndex` with the given value.
     /// @param value the value
     /// @return `this`

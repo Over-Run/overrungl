@@ -97,217 +97,217 @@ public final class STBIR_RESIZE extends GroupType {
     /// The memory layout of `user_data`.
     public static final MemoryLayout LAYOUT_user_data = LAYOUT.select(PathElement.groupElement("user_data"));
     /// The [VarHandle] of `user_data` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_user_data = LAYOUT.arrayElementVarHandle(PathElement.groupElement("user_data"));
+    public static final Supplier<VarHandle> VH_user_data = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("user_data")));
     /// The byte offset of `input_pixels`.
     public static final long OFFSET_input_pixels = LAYOUT.byteOffset(PathElement.groupElement("input_pixels"));
     /// The memory layout of `input_pixels`.
     public static final MemoryLayout LAYOUT_input_pixels = LAYOUT.select(PathElement.groupElement("input_pixels"));
     /// The [VarHandle] of `input_pixels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_input_pixels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_pixels"));
+    public static final Supplier<VarHandle> VH_input_pixels = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_pixels")));
     /// The byte offset of `input_w`.
     public static final long OFFSET_input_w = LAYOUT.byteOffset(PathElement.groupElement("input_w"));
     /// The memory layout of `input_w`.
     public static final MemoryLayout LAYOUT_input_w = LAYOUT.select(PathElement.groupElement("input_w"));
     /// The [VarHandle] of `input_w` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_input_w = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_w"));
+    public static final Supplier<VarHandle> VH_input_w = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_w")));
     /// The byte offset of `input_h`.
     public static final long OFFSET_input_h = LAYOUT.byteOffset(PathElement.groupElement("input_h"));
     /// The memory layout of `input_h`.
     public static final MemoryLayout LAYOUT_input_h = LAYOUT.select(PathElement.groupElement("input_h"));
     /// The [VarHandle] of `input_h` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_input_h = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_h"));
+    public static final Supplier<VarHandle> VH_input_h = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_h")));
     /// The byte offset of `input_s0`.
     public static final long OFFSET_input_s0 = LAYOUT.byteOffset(PathElement.groupElement("input_s0"));
     /// The memory layout of `input_s0`.
     public static final MemoryLayout LAYOUT_input_s0 = LAYOUT.select(PathElement.groupElement("input_s0"));
     /// The [VarHandle] of `input_s0` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_input_s0 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_s0"));
+    public static final Supplier<VarHandle> VH_input_s0 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_s0")));
     /// The byte offset of `input_t0`.
     public static final long OFFSET_input_t0 = LAYOUT.byteOffset(PathElement.groupElement("input_t0"));
     /// The memory layout of `input_t0`.
     public static final MemoryLayout LAYOUT_input_t0 = LAYOUT.select(PathElement.groupElement("input_t0"));
     /// The [VarHandle] of `input_t0` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_input_t0 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_t0"));
+    public static final Supplier<VarHandle> VH_input_t0 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_t0")));
     /// The byte offset of `input_s1`.
     public static final long OFFSET_input_s1 = LAYOUT.byteOffset(PathElement.groupElement("input_s1"));
     /// The memory layout of `input_s1`.
     public static final MemoryLayout LAYOUT_input_s1 = LAYOUT.select(PathElement.groupElement("input_s1"));
     /// The [VarHandle] of `input_s1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_input_s1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_s1"));
+    public static final Supplier<VarHandle> VH_input_s1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_s1")));
     /// The byte offset of `input_t1`.
     public static final long OFFSET_input_t1 = LAYOUT.byteOffset(PathElement.groupElement("input_t1"));
     /// The memory layout of `input_t1`.
     public static final MemoryLayout LAYOUT_input_t1 = LAYOUT.select(PathElement.groupElement("input_t1"));
     /// The [VarHandle] of `input_t1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_input_t1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_t1"));
+    public static final Supplier<VarHandle> VH_input_t1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_t1")));
     /// The byte offset of `input_cb`.
     public static final long OFFSET_input_cb = LAYOUT.byteOffset(PathElement.groupElement("input_cb"));
     /// The memory layout of `input_cb`.
     public static final MemoryLayout LAYOUT_input_cb = LAYOUT.select(PathElement.groupElement("input_cb"));
     /// The [VarHandle] of `input_cb` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_input_cb = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_cb"));
+    public static final Supplier<VarHandle> VH_input_cb = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_cb")));
     /// The byte offset of `output_pixels`.
     public static final long OFFSET_output_pixels = LAYOUT.byteOffset(PathElement.groupElement("output_pixels"));
     /// The memory layout of `output_pixels`.
     public static final MemoryLayout LAYOUT_output_pixels = LAYOUT.select(PathElement.groupElement("output_pixels"));
     /// The [VarHandle] of `output_pixels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_output_pixels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_pixels"));
+    public static final Supplier<VarHandle> VH_output_pixels = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_pixels")));
     /// The byte offset of `output_w`.
     public static final long OFFSET_output_w = LAYOUT.byteOffset(PathElement.groupElement("output_w"));
     /// The memory layout of `output_w`.
     public static final MemoryLayout LAYOUT_output_w = LAYOUT.select(PathElement.groupElement("output_w"));
     /// The [VarHandle] of `output_w` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_output_w = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_w"));
+    public static final Supplier<VarHandle> VH_output_w = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_w")));
     /// The byte offset of `output_h`.
     public static final long OFFSET_output_h = LAYOUT.byteOffset(PathElement.groupElement("output_h"));
     /// The memory layout of `output_h`.
     public static final MemoryLayout LAYOUT_output_h = LAYOUT.select(PathElement.groupElement("output_h"));
     /// The [VarHandle] of `output_h` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_output_h = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_h"));
+    public static final Supplier<VarHandle> VH_output_h = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_h")));
     /// The byte offset of `output_subx`.
     public static final long OFFSET_output_subx = LAYOUT.byteOffset(PathElement.groupElement("output_subx"));
     /// The memory layout of `output_subx`.
     public static final MemoryLayout LAYOUT_output_subx = LAYOUT.select(PathElement.groupElement("output_subx"));
     /// The [VarHandle] of `output_subx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_output_subx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_subx"));
+    public static final Supplier<VarHandle> VH_output_subx = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_subx")));
     /// The byte offset of `output_suby`.
     public static final long OFFSET_output_suby = LAYOUT.byteOffset(PathElement.groupElement("output_suby"));
     /// The memory layout of `output_suby`.
     public static final MemoryLayout LAYOUT_output_suby = LAYOUT.select(PathElement.groupElement("output_suby"));
     /// The [VarHandle] of `output_suby` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_output_suby = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_suby"));
+    public static final Supplier<VarHandle> VH_output_suby = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_suby")));
     /// The byte offset of `output_subw`.
     public static final long OFFSET_output_subw = LAYOUT.byteOffset(PathElement.groupElement("output_subw"));
     /// The memory layout of `output_subw`.
     public static final MemoryLayout LAYOUT_output_subw = LAYOUT.select(PathElement.groupElement("output_subw"));
     /// The [VarHandle] of `output_subw` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_output_subw = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_subw"));
+    public static final Supplier<VarHandle> VH_output_subw = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_subw")));
     /// The byte offset of `output_subh`.
     public static final long OFFSET_output_subh = LAYOUT.byteOffset(PathElement.groupElement("output_subh"));
     /// The memory layout of `output_subh`.
     public static final MemoryLayout LAYOUT_output_subh = LAYOUT.select(PathElement.groupElement("output_subh"));
     /// The [VarHandle] of `output_subh` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_output_subh = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_subh"));
+    public static final Supplier<VarHandle> VH_output_subh = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_subh")));
     /// The byte offset of `output_cb`.
     public static final long OFFSET_output_cb = LAYOUT.byteOffset(PathElement.groupElement("output_cb"));
     /// The memory layout of `output_cb`.
     public static final MemoryLayout LAYOUT_output_cb = LAYOUT.select(PathElement.groupElement("output_cb"));
     /// The [VarHandle] of `output_cb` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_output_cb = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_cb"));
+    public static final Supplier<VarHandle> VH_output_cb = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_cb")));
     /// The byte offset of `input_stride_in_bytes`.
     public static final long OFFSET_input_stride_in_bytes = LAYOUT.byteOffset(PathElement.groupElement("input_stride_in_bytes"));
     /// The memory layout of `input_stride_in_bytes`.
     public static final MemoryLayout LAYOUT_input_stride_in_bytes = LAYOUT.select(PathElement.groupElement("input_stride_in_bytes"));
     /// The [VarHandle] of `input_stride_in_bytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_input_stride_in_bytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_stride_in_bytes"));
+    public static final Supplier<VarHandle> VH_input_stride_in_bytes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_stride_in_bytes")));
     /// The byte offset of `output_stride_in_bytes`.
     public static final long OFFSET_output_stride_in_bytes = LAYOUT.byteOffset(PathElement.groupElement("output_stride_in_bytes"));
     /// The memory layout of `output_stride_in_bytes`.
     public static final MemoryLayout LAYOUT_output_stride_in_bytes = LAYOUT.select(PathElement.groupElement("output_stride_in_bytes"));
     /// The [VarHandle] of `output_stride_in_bytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_output_stride_in_bytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_stride_in_bytes"));
+    public static final Supplier<VarHandle> VH_output_stride_in_bytes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_stride_in_bytes")));
     /// The byte offset of `splits`.
     public static final long OFFSET_splits = LAYOUT.byteOffset(PathElement.groupElement("splits"));
     /// The memory layout of `splits`.
     public static final MemoryLayout LAYOUT_splits = LAYOUT.select(PathElement.groupElement("splits"));
     /// The [VarHandle] of `splits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_splits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("splits"));
+    public static final Supplier<VarHandle> VH_splits = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("splits")));
     /// The byte offset of `fast_alpha`.
     public static final long OFFSET_fast_alpha = LAYOUT.byteOffset(PathElement.groupElement("fast_alpha"));
     /// The memory layout of `fast_alpha`.
     public static final MemoryLayout LAYOUT_fast_alpha = LAYOUT.select(PathElement.groupElement("fast_alpha"));
     /// The [VarHandle] of `fast_alpha` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fast_alpha = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fast_alpha"));
+    public static final Supplier<VarHandle> VH_fast_alpha = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fast_alpha")));
     /// The byte offset of `needs_rebuild`.
     public static final long OFFSET_needs_rebuild = LAYOUT.byteOffset(PathElement.groupElement("needs_rebuild"));
     /// The memory layout of `needs_rebuild`.
     public static final MemoryLayout LAYOUT_needs_rebuild = LAYOUT.select(PathElement.groupElement("needs_rebuild"));
     /// The [VarHandle] of `needs_rebuild` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_needs_rebuild = LAYOUT.arrayElementVarHandle(PathElement.groupElement("needs_rebuild"));
+    public static final Supplier<VarHandle> VH_needs_rebuild = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("needs_rebuild")));
     /// The byte offset of `called_alloc`.
     public static final long OFFSET_called_alloc = LAYOUT.byteOffset(PathElement.groupElement("called_alloc"));
     /// The memory layout of `called_alloc`.
     public static final MemoryLayout LAYOUT_called_alloc = LAYOUT.select(PathElement.groupElement("called_alloc"));
     /// The [VarHandle] of `called_alloc` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_called_alloc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("called_alloc"));
+    public static final Supplier<VarHandle> VH_called_alloc = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("called_alloc")));
     /// The byte offset of `input_pixel_layout_public`.
     public static final long OFFSET_input_pixel_layout_public = LAYOUT.byteOffset(PathElement.groupElement("input_pixel_layout_public"));
     /// The memory layout of `input_pixel_layout_public`.
     public static final MemoryLayout LAYOUT_input_pixel_layout_public = LAYOUT.select(PathElement.groupElement("input_pixel_layout_public"));
     /// The [VarHandle] of `input_pixel_layout_public` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_input_pixel_layout_public = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_pixel_layout_public"));
+    public static final Supplier<VarHandle> VH_input_pixel_layout_public = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_pixel_layout_public")));
     /// The byte offset of `output_pixel_layout_public`.
     public static final long OFFSET_output_pixel_layout_public = LAYOUT.byteOffset(PathElement.groupElement("output_pixel_layout_public"));
     /// The memory layout of `output_pixel_layout_public`.
     public static final MemoryLayout LAYOUT_output_pixel_layout_public = LAYOUT.select(PathElement.groupElement("output_pixel_layout_public"));
     /// The [VarHandle] of `output_pixel_layout_public` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_output_pixel_layout_public = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_pixel_layout_public"));
+    public static final Supplier<VarHandle> VH_output_pixel_layout_public = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_pixel_layout_public")));
     /// The byte offset of `input_data_type`.
     public static final long OFFSET_input_data_type = LAYOUT.byteOffset(PathElement.groupElement("input_data_type"));
     /// The memory layout of `input_data_type`.
     public static final MemoryLayout LAYOUT_input_data_type = LAYOUT.select(PathElement.groupElement("input_data_type"));
     /// The [VarHandle] of `input_data_type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_input_data_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_data_type"));
+    public static final Supplier<VarHandle> VH_input_data_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_data_type")));
     /// The byte offset of `output_data_type`.
     public static final long OFFSET_output_data_type = LAYOUT.byteOffset(PathElement.groupElement("output_data_type"));
     /// The memory layout of `output_data_type`.
     public static final MemoryLayout LAYOUT_output_data_type = LAYOUT.select(PathElement.groupElement("output_data_type"));
     /// The [VarHandle] of `output_data_type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_output_data_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_data_type"));
+    public static final Supplier<VarHandle> VH_output_data_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_data_type")));
     /// The byte offset of `horizontal_filter`.
     public static final long OFFSET_horizontal_filter = LAYOUT.byteOffset(PathElement.groupElement("horizontal_filter"));
     /// The memory layout of `horizontal_filter`.
     public static final MemoryLayout LAYOUT_horizontal_filter = LAYOUT.select(PathElement.groupElement("horizontal_filter"));
     /// The [VarHandle] of `horizontal_filter` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_horizontal_filter = LAYOUT.arrayElementVarHandle(PathElement.groupElement("horizontal_filter"));
+    public static final Supplier<VarHandle> VH_horizontal_filter = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("horizontal_filter")));
     /// The byte offset of `vertical_filter`.
     public static final long OFFSET_vertical_filter = LAYOUT.byteOffset(PathElement.groupElement("vertical_filter"));
     /// The memory layout of `vertical_filter`.
     public static final MemoryLayout LAYOUT_vertical_filter = LAYOUT.select(PathElement.groupElement("vertical_filter"));
     /// The [VarHandle] of `vertical_filter` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertical_filter = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertical_filter"));
+    public static final Supplier<VarHandle> VH_vertical_filter = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertical_filter")));
     /// The byte offset of `horizontal_edge`.
     public static final long OFFSET_horizontal_edge = LAYOUT.byteOffset(PathElement.groupElement("horizontal_edge"));
     /// The memory layout of `horizontal_edge`.
     public static final MemoryLayout LAYOUT_horizontal_edge = LAYOUT.select(PathElement.groupElement("horizontal_edge"));
     /// The [VarHandle] of `horizontal_edge` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_horizontal_edge = LAYOUT.arrayElementVarHandle(PathElement.groupElement("horizontal_edge"));
+    public static final Supplier<VarHandle> VH_horizontal_edge = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("horizontal_edge")));
     /// The byte offset of `vertical_edge`.
     public static final long OFFSET_vertical_edge = LAYOUT.byteOffset(PathElement.groupElement("vertical_edge"));
     /// The memory layout of `vertical_edge`.
     public static final MemoryLayout LAYOUT_vertical_edge = LAYOUT.select(PathElement.groupElement("vertical_edge"));
     /// The [VarHandle] of `vertical_edge` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertical_edge = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertical_edge"));
+    public static final Supplier<VarHandle> VH_vertical_edge = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertical_edge")));
     /// The byte offset of `horizontal_filter_kernel`.
     public static final long OFFSET_horizontal_filter_kernel = LAYOUT.byteOffset(PathElement.groupElement("horizontal_filter_kernel"));
     /// The memory layout of `horizontal_filter_kernel`.
     public static final MemoryLayout LAYOUT_horizontal_filter_kernel = LAYOUT.select(PathElement.groupElement("horizontal_filter_kernel"));
     /// The [VarHandle] of `horizontal_filter_kernel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_horizontal_filter_kernel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("horizontal_filter_kernel"));
+    public static final Supplier<VarHandle> VH_horizontal_filter_kernel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("horizontal_filter_kernel")));
     /// The byte offset of `horizontal_filter_support`.
     public static final long OFFSET_horizontal_filter_support = LAYOUT.byteOffset(PathElement.groupElement("horizontal_filter_support"));
     /// The memory layout of `horizontal_filter_support`.
     public static final MemoryLayout LAYOUT_horizontal_filter_support = LAYOUT.select(PathElement.groupElement("horizontal_filter_support"));
     /// The [VarHandle] of `horizontal_filter_support` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_horizontal_filter_support = LAYOUT.arrayElementVarHandle(PathElement.groupElement("horizontal_filter_support"));
+    public static final Supplier<VarHandle> VH_horizontal_filter_support = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("horizontal_filter_support")));
     /// The byte offset of `vertical_filter_kernel`.
     public static final long OFFSET_vertical_filter_kernel = LAYOUT.byteOffset(PathElement.groupElement("vertical_filter_kernel"));
     /// The memory layout of `vertical_filter_kernel`.
     public static final MemoryLayout LAYOUT_vertical_filter_kernel = LAYOUT.select(PathElement.groupElement("vertical_filter_kernel"));
     /// The [VarHandle] of `vertical_filter_kernel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertical_filter_kernel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertical_filter_kernel"));
+    public static final Supplier<VarHandle> VH_vertical_filter_kernel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertical_filter_kernel")));
     /// The byte offset of `vertical_filter_support`.
     public static final long OFFSET_vertical_filter_support = LAYOUT.byteOffset(PathElement.groupElement("vertical_filter_support"));
     /// The memory layout of `vertical_filter_support`.
     public static final MemoryLayout LAYOUT_vertical_filter_support = LAYOUT.select(PathElement.groupElement("vertical_filter_support"));
     /// The [VarHandle] of `vertical_filter_support` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertical_filter_support = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertical_filter_support"));
+    public static final Supplier<VarHandle> VH_vertical_filter_support = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertical_filter_support")));
     /// The byte offset of `samplers`.
     public static final long OFFSET_samplers = LAYOUT.byteOffset(PathElement.groupElement("samplers"));
     /// The memory layout of `samplers`.
     public static final MemoryLayout LAYOUT_samplers = LAYOUT.select(PathElement.groupElement("samplers"));
     /// The [VarHandle] of `samplers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_samplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplers"));
+    public static final Supplier<VarHandle> VH_samplers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplers")));
 
     /// Creates `STBIR_RESIZE` with the given segment.
     /// @param segment      the memory segment
@@ -358,14 +358,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `user_data` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment user_data(MemorySegment segment, long index) { return (MemorySegment) VH_user_data.get(segment, 0L, index); }
+    public static MemorySegment user_data(MemorySegment segment, long index) { return (MemorySegment) VH_user_data.get().get(segment, 0L, index); }
     /// {@return `user_data`}
     public MemorySegment user_data() { return user_data(this.segment(), 0L); }
     /// Sets `user_data` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void user_data(MemorySegment segment, long index, MemorySegment value) { VH_user_data.set(segment, 0L, index, value); }
+    public static void user_data(MemorySegment segment, long index, MemorySegment value) { VH_user_data.get().set(segment, 0L, index, value); }
     /// Sets `user_data` with the given value.
     /// @param value the value
     /// @return `this`
@@ -374,14 +374,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `input_pixels` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment input_pixels(MemorySegment segment, long index) { return (MemorySegment) VH_input_pixels.get(segment, 0L, index); }
+    public static MemorySegment input_pixels(MemorySegment segment, long index) { return (MemorySegment) VH_input_pixels.get().get(segment, 0L, index); }
     /// {@return `input_pixels`}
     public MemorySegment input_pixels() { return input_pixels(this.segment(), 0L); }
     /// Sets `input_pixels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void input_pixels(MemorySegment segment, long index, MemorySegment value) { VH_input_pixels.set(segment, 0L, index, value); }
+    public static void input_pixels(MemorySegment segment, long index, MemorySegment value) { VH_input_pixels.get().set(segment, 0L, index, value); }
     /// Sets `input_pixels` with the given value.
     /// @param value the value
     /// @return `this`
@@ -390,14 +390,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `input_w` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int input_w(MemorySegment segment, long index) { return (int) VH_input_w.get(segment, 0L, index); }
+    public static int input_w(MemorySegment segment, long index) { return (int) VH_input_w.get().get(segment, 0L, index); }
     /// {@return `input_w`}
     public int input_w() { return input_w(this.segment(), 0L); }
     /// Sets `input_w` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void input_w(MemorySegment segment, long index, int value) { VH_input_w.set(segment, 0L, index, value); }
+    public static void input_w(MemorySegment segment, long index, int value) { VH_input_w.get().set(segment, 0L, index, value); }
     /// Sets `input_w` with the given value.
     /// @param value the value
     /// @return `this`
@@ -406,14 +406,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `input_h` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int input_h(MemorySegment segment, long index) { return (int) VH_input_h.get(segment, 0L, index); }
+    public static int input_h(MemorySegment segment, long index) { return (int) VH_input_h.get().get(segment, 0L, index); }
     /// {@return `input_h`}
     public int input_h() { return input_h(this.segment(), 0L); }
     /// Sets `input_h` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void input_h(MemorySegment segment, long index, int value) { VH_input_h.set(segment, 0L, index, value); }
+    public static void input_h(MemorySegment segment, long index, int value) { VH_input_h.get().set(segment, 0L, index, value); }
     /// Sets `input_h` with the given value.
     /// @param value the value
     /// @return `this`
@@ -422,14 +422,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `input_s0` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static double input_s0(MemorySegment segment, long index) { return (double) VH_input_s0.get(segment, 0L, index); }
+    public static double input_s0(MemorySegment segment, long index) { return (double) VH_input_s0.get().get(segment, 0L, index); }
     /// {@return `input_s0`}
     public double input_s0() { return input_s0(this.segment(), 0L); }
     /// Sets `input_s0` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void input_s0(MemorySegment segment, long index, double value) { VH_input_s0.set(segment, 0L, index, value); }
+    public static void input_s0(MemorySegment segment, long index, double value) { VH_input_s0.get().set(segment, 0L, index, value); }
     /// Sets `input_s0` with the given value.
     /// @param value the value
     /// @return `this`
@@ -438,14 +438,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `input_t0` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static double input_t0(MemorySegment segment, long index) { return (double) VH_input_t0.get(segment, 0L, index); }
+    public static double input_t0(MemorySegment segment, long index) { return (double) VH_input_t0.get().get(segment, 0L, index); }
     /// {@return `input_t0`}
     public double input_t0() { return input_t0(this.segment(), 0L); }
     /// Sets `input_t0` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void input_t0(MemorySegment segment, long index, double value) { VH_input_t0.set(segment, 0L, index, value); }
+    public static void input_t0(MemorySegment segment, long index, double value) { VH_input_t0.get().set(segment, 0L, index, value); }
     /// Sets `input_t0` with the given value.
     /// @param value the value
     /// @return `this`
@@ -454,14 +454,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `input_s1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static double input_s1(MemorySegment segment, long index) { return (double) VH_input_s1.get(segment, 0L, index); }
+    public static double input_s1(MemorySegment segment, long index) { return (double) VH_input_s1.get().get(segment, 0L, index); }
     /// {@return `input_s1`}
     public double input_s1() { return input_s1(this.segment(), 0L); }
     /// Sets `input_s1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void input_s1(MemorySegment segment, long index, double value) { VH_input_s1.set(segment, 0L, index, value); }
+    public static void input_s1(MemorySegment segment, long index, double value) { VH_input_s1.get().set(segment, 0L, index, value); }
     /// Sets `input_s1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -470,14 +470,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `input_t1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static double input_t1(MemorySegment segment, long index) { return (double) VH_input_t1.get(segment, 0L, index); }
+    public static double input_t1(MemorySegment segment, long index) { return (double) VH_input_t1.get().get(segment, 0L, index); }
     /// {@return `input_t1`}
     public double input_t1() { return input_t1(this.segment(), 0L); }
     /// Sets `input_t1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void input_t1(MemorySegment segment, long index, double value) { VH_input_t1.set(segment, 0L, index, value); }
+    public static void input_t1(MemorySegment segment, long index, double value) { VH_input_t1.get().set(segment, 0L, index, value); }
     /// Sets `input_t1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -486,14 +486,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `input_cb` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment input_cb(MemorySegment segment, long index) { return (MemorySegment) VH_input_cb.get(segment, 0L, index); }
+    public static MemorySegment input_cb(MemorySegment segment, long index) { return (MemorySegment) VH_input_cb.get().get(segment, 0L, index); }
     /// {@return `input_cb`}
     public MemorySegment input_cb() { return input_cb(this.segment(), 0L); }
     /// Sets `input_cb` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void input_cb(MemorySegment segment, long index, MemorySegment value) { VH_input_cb.set(segment, 0L, index, value); }
+    public static void input_cb(MemorySegment segment, long index, MemorySegment value) { VH_input_cb.get().set(segment, 0L, index, value); }
     /// Sets `input_cb` with the given value.
     /// @param value the value
     /// @return `this`
@@ -502,14 +502,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `output_pixels` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment output_pixels(MemorySegment segment, long index) { return (MemorySegment) VH_output_pixels.get(segment, 0L, index); }
+    public static MemorySegment output_pixels(MemorySegment segment, long index) { return (MemorySegment) VH_output_pixels.get().get(segment, 0L, index); }
     /// {@return `output_pixels`}
     public MemorySegment output_pixels() { return output_pixels(this.segment(), 0L); }
     /// Sets `output_pixels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void output_pixels(MemorySegment segment, long index, MemorySegment value) { VH_output_pixels.set(segment, 0L, index, value); }
+    public static void output_pixels(MemorySegment segment, long index, MemorySegment value) { VH_output_pixels.get().set(segment, 0L, index, value); }
     /// Sets `output_pixels` with the given value.
     /// @param value the value
     /// @return `this`
@@ -518,14 +518,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `output_w` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int output_w(MemorySegment segment, long index) { return (int) VH_output_w.get(segment, 0L, index); }
+    public static int output_w(MemorySegment segment, long index) { return (int) VH_output_w.get().get(segment, 0L, index); }
     /// {@return `output_w`}
     public int output_w() { return output_w(this.segment(), 0L); }
     /// Sets `output_w` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void output_w(MemorySegment segment, long index, int value) { VH_output_w.set(segment, 0L, index, value); }
+    public static void output_w(MemorySegment segment, long index, int value) { VH_output_w.get().set(segment, 0L, index, value); }
     /// Sets `output_w` with the given value.
     /// @param value the value
     /// @return `this`
@@ -534,14 +534,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `output_h` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int output_h(MemorySegment segment, long index) { return (int) VH_output_h.get(segment, 0L, index); }
+    public static int output_h(MemorySegment segment, long index) { return (int) VH_output_h.get().get(segment, 0L, index); }
     /// {@return `output_h`}
     public int output_h() { return output_h(this.segment(), 0L); }
     /// Sets `output_h` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void output_h(MemorySegment segment, long index, int value) { VH_output_h.set(segment, 0L, index, value); }
+    public static void output_h(MemorySegment segment, long index, int value) { VH_output_h.get().set(segment, 0L, index, value); }
     /// Sets `output_h` with the given value.
     /// @param value the value
     /// @return `this`
@@ -550,14 +550,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `output_subx` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int output_subx(MemorySegment segment, long index) { return (int) VH_output_subx.get(segment, 0L, index); }
+    public static int output_subx(MemorySegment segment, long index) { return (int) VH_output_subx.get().get(segment, 0L, index); }
     /// {@return `output_subx`}
     public int output_subx() { return output_subx(this.segment(), 0L); }
     /// Sets `output_subx` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void output_subx(MemorySegment segment, long index, int value) { VH_output_subx.set(segment, 0L, index, value); }
+    public static void output_subx(MemorySegment segment, long index, int value) { VH_output_subx.get().set(segment, 0L, index, value); }
     /// Sets `output_subx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -566,14 +566,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `output_suby` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int output_suby(MemorySegment segment, long index) { return (int) VH_output_suby.get(segment, 0L, index); }
+    public static int output_suby(MemorySegment segment, long index) { return (int) VH_output_suby.get().get(segment, 0L, index); }
     /// {@return `output_suby`}
     public int output_suby() { return output_suby(this.segment(), 0L); }
     /// Sets `output_suby` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void output_suby(MemorySegment segment, long index, int value) { VH_output_suby.set(segment, 0L, index, value); }
+    public static void output_suby(MemorySegment segment, long index, int value) { VH_output_suby.get().set(segment, 0L, index, value); }
     /// Sets `output_suby` with the given value.
     /// @param value the value
     /// @return `this`
@@ -582,14 +582,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `output_subw` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int output_subw(MemorySegment segment, long index) { return (int) VH_output_subw.get(segment, 0L, index); }
+    public static int output_subw(MemorySegment segment, long index) { return (int) VH_output_subw.get().get(segment, 0L, index); }
     /// {@return `output_subw`}
     public int output_subw() { return output_subw(this.segment(), 0L); }
     /// Sets `output_subw` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void output_subw(MemorySegment segment, long index, int value) { VH_output_subw.set(segment, 0L, index, value); }
+    public static void output_subw(MemorySegment segment, long index, int value) { VH_output_subw.get().set(segment, 0L, index, value); }
     /// Sets `output_subw` with the given value.
     /// @param value the value
     /// @return `this`
@@ -598,14 +598,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `output_subh` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int output_subh(MemorySegment segment, long index) { return (int) VH_output_subh.get(segment, 0L, index); }
+    public static int output_subh(MemorySegment segment, long index) { return (int) VH_output_subh.get().get(segment, 0L, index); }
     /// {@return `output_subh`}
     public int output_subh() { return output_subh(this.segment(), 0L); }
     /// Sets `output_subh` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void output_subh(MemorySegment segment, long index, int value) { VH_output_subh.set(segment, 0L, index, value); }
+    public static void output_subh(MemorySegment segment, long index, int value) { VH_output_subh.get().set(segment, 0L, index, value); }
     /// Sets `output_subh` with the given value.
     /// @param value the value
     /// @return `this`
@@ -614,14 +614,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `output_cb` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment output_cb(MemorySegment segment, long index) { return (MemorySegment) VH_output_cb.get(segment, 0L, index); }
+    public static MemorySegment output_cb(MemorySegment segment, long index) { return (MemorySegment) VH_output_cb.get().get(segment, 0L, index); }
     /// {@return `output_cb`}
     public MemorySegment output_cb() { return output_cb(this.segment(), 0L); }
     /// Sets `output_cb` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void output_cb(MemorySegment segment, long index, MemorySegment value) { VH_output_cb.set(segment, 0L, index, value); }
+    public static void output_cb(MemorySegment segment, long index, MemorySegment value) { VH_output_cb.get().set(segment, 0L, index, value); }
     /// Sets `output_cb` with the given value.
     /// @param value the value
     /// @return `this`
@@ -630,14 +630,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `input_stride_in_bytes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int input_stride_in_bytes(MemorySegment segment, long index) { return (int) VH_input_stride_in_bytes.get(segment, 0L, index); }
+    public static int input_stride_in_bytes(MemorySegment segment, long index) { return (int) VH_input_stride_in_bytes.get().get(segment, 0L, index); }
     /// {@return `input_stride_in_bytes`}
     public int input_stride_in_bytes() { return input_stride_in_bytes(this.segment(), 0L); }
     /// Sets `input_stride_in_bytes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void input_stride_in_bytes(MemorySegment segment, long index, int value) { VH_input_stride_in_bytes.set(segment, 0L, index, value); }
+    public static void input_stride_in_bytes(MemorySegment segment, long index, int value) { VH_input_stride_in_bytes.get().set(segment, 0L, index, value); }
     /// Sets `input_stride_in_bytes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -646,14 +646,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `output_stride_in_bytes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int output_stride_in_bytes(MemorySegment segment, long index) { return (int) VH_output_stride_in_bytes.get(segment, 0L, index); }
+    public static int output_stride_in_bytes(MemorySegment segment, long index) { return (int) VH_output_stride_in_bytes.get().get(segment, 0L, index); }
     /// {@return `output_stride_in_bytes`}
     public int output_stride_in_bytes() { return output_stride_in_bytes(this.segment(), 0L); }
     /// Sets `output_stride_in_bytes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void output_stride_in_bytes(MemorySegment segment, long index, int value) { VH_output_stride_in_bytes.set(segment, 0L, index, value); }
+    public static void output_stride_in_bytes(MemorySegment segment, long index, int value) { VH_output_stride_in_bytes.get().set(segment, 0L, index, value); }
     /// Sets `output_stride_in_bytes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -662,14 +662,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `splits` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int splits(MemorySegment segment, long index) { return (int) VH_splits.get(segment, 0L, index); }
+    public static int splits(MemorySegment segment, long index) { return (int) VH_splits.get().get(segment, 0L, index); }
     /// {@return `splits`}
     public int splits() { return splits(this.segment(), 0L); }
     /// Sets `splits` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void splits(MemorySegment segment, long index, int value) { VH_splits.set(segment, 0L, index, value); }
+    public static void splits(MemorySegment segment, long index, int value) { VH_splits.get().set(segment, 0L, index, value); }
     /// Sets `splits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -678,14 +678,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `fast_alpha` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fast_alpha(MemorySegment segment, long index) { return (int) VH_fast_alpha.get(segment, 0L, index); }
+    public static int fast_alpha(MemorySegment segment, long index) { return (int) VH_fast_alpha.get().get(segment, 0L, index); }
     /// {@return `fast_alpha`}
     public int fast_alpha() { return fast_alpha(this.segment(), 0L); }
     /// Sets `fast_alpha` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fast_alpha(MemorySegment segment, long index, int value) { VH_fast_alpha.set(segment, 0L, index, value); }
+    public static void fast_alpha(MemorySegment segment, long index, int value) { VH_fast_alpha.get().set(segment, 0L, index, value); }
     /// Sets `fast_alpha` with the given value.
     /// @param value the value
     /// @return `this`
@@ -694,14 +694,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `needs_rebuild` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int needs_rebuild(MemorySegment segment, long index) { return (int) VH_needs_rebuild.get(segment, 0L, index); }
+    public static int needs_rebuild(MemorySegment segment, long index) { return (int) VH_needs_rebuild.get().get(segment, 0L, index); }
     /// {@return `needs_rebuild`}
     public int needs_rebuild() { return needs_rebuild(this.segment(), 0L); }
     /// Sets `needs_rebuild` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void needs_rebuild(MemorySegment segment, long index, int value) { VH_needs_rebuild.set(segment, 0L, index, value); }
+    public static void needs_rebuild(MemorySegment segment, long index, int value) { VH_needs_rebuild.get().set(segment, 0L, index, value); }
     /// Sets `needs_rebuild` with the given value.
     /// @param value the value
     /// @return `this`
@@ -710,14 +710,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `called_alloc` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int called_alloc(MemorySegment segment, long index) { return (int) VH_called_alloc.get(segment, 0L, index); }
+    public static int called_alloc(MemorySegment segment, long index) { return (int) VH_called_alloc.get().get(segment, 0L, index); }
     /// {@return `called_alloc`}
     public int called_alloc() { return called_alloc(this.segment(), 0L); }
     /// Sets `called_alloc` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void called_alloc(MemorySegment segment, long index, int value) { VH_called_alloc.set(segment, 0L, index, value); }
+    public static void called_alloc(MemorySegment segment, long index, int value) { VH_called_alloc.get().set(segment, 0L, index, value); }
     /// Sets `called_alloc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -726,14 +726,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `input_pixel_layout_public` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int input_pixel_layout_public(MemorySegment segment, long index) { return (int) VH_input_pixel_layout_public.get(segment, 0L, index); }
+    public static int input_pixel_layout_public(MemorySegment segment, long index) { return (int) VH_input_pixel_layout_public.get().get(segment, 0L, index); }
     /// {@return `input_pixel_layout_public`}
     public int input_pixel_layout_public() { return input_pixel_layout_public(this.segment(), 0L); }
     /// Sets `input_pixel_layout_public` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void input_pixel_layout_public(MemorySegment segment, long index, int value) { VH_input_pixel_layout_public.set(segment, 0L, index, value); }
+    public static void input_pixel_layout_public(MemorySegment segment, long index, int value) { VH_input_pixel_layout_public.get().set(segment, 0L, index, value); }
     /// Sets `input_pixel_layout_public` with the given value.
     /// @param value the value
     /// @return `this`
@@ -742,14 +742,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `output_pixel_layout_public` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int output_pixel_layout_public(MemorySegment segment, long index) { return (int) VH_output_pixel_layout_public.get(segment, 0L, index); }
+    public static int output_pixel_layout_public(MemorySegment segment, long index) { return (int) VH_output_pixel_layout_public.get().get(segment, 0L, index); }
     /// {@return `output_pixel_layout_public`}
     public int output_pixel_layout_public() { return output_pixel_layout_public(this.segment(), 0L); }
     /// Sets `output_pixel_layout_public` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void output_pixel_layout_public(MemorySegment segment, long index, int value) { VH_output_pixel_layout_public.set(segment, 0L, index, value); }
+    public static void output_pixel_layout_public(MemorySegment segment, long index, int value) { VH_output_pixel_layout_public.get().set(segment, 0L, index, value); }
     /// Sets `output_pixel_layout_public` with the given value.
     /// @param value the value
     /// @return `this`
@@ -758,14 +758,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `input_data_type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int input_data_type(MemorySegment segment, long index) { return (int) VH_input_data_type.get(segment, 0L, index); }
+    public static int input_data_type(MemorySegment segment, long index) { return (int) VH_input_data_type.get().get(segment, 0L, index); }
     /// {@return `input_data_type`}
     public int input_data_type() { return input_data_type(this.segment(), 0L); }
     /// Sets `input_data_type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void input_data_type(MemorySegment segment, long index, int value) { VH_input_data_type.set(segment, 0L, index, value); }
+    public static void input_data_type(MemorySegment segment, long index, int value) { VH_input_data_type.get().set(segment, 0L, index, value); }
     /// Sets `input_data_type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -774,14 +774,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `output_data_type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int output_data_type(MemorySegment segment, long index) { return (int) VH_output_data_type.get(segment, 0L, index); }
+    public static int output_data_type(MemorySegment segment, long index) { return (int) VH_output_data_type.get().get(segment, 0L, index); }
     /// {@return `output_data_type`}
     public int output_data_type() { return output_data_type(this.segment(), 0L); }
     /// Sets `output_data_type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void output_data_type(MemorySegment segment, long index, int value) { VH_output_data_type.set(segment, 0L, index, value); }
+    public static void output_data_type(MemorySegment segment, long index, int value) { VH_output_data_type.get().set(segment, 0L, index, value); }
     /// Sets `output_data_type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -790,14 +790,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `horizontal_filter` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int horizontal_filter(MemorySegment segment, long index) { return (int) VH_horizontal_filter.get(segment, 0L, index); }
+    public static int horizontal_filter(MemorySegment segment, long index) { return (int) VH_horizontal_filter.get().get(segment, 0L, index); }
     /// {@return `horizontal_filter`}
     public int horizontal_filter() { return horizontal_filter(this.segment(), 0L); }
     /// Sets `horizontal_filter` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void horizontal_filter(MemorySegment segment, long index, int value) { VH_horizontal_filter.set(segment, 0L, index, value); }
+    public static void horizontal_filter(MemorySegment segment, long index, int value) { VH_horizontal_filter.get().set(segment, 0L, index, value); }
     /// Sets `horizontal_filter` with the given value.
     /// @param value the value
     /// @return `this`
@@ -806,14 +806,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `vertical_filter` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertical_filter(MemorySegment segment, long index) { return (int) VH_vertical_filter.get(segment, 0L, index); }
+    public static int vertical_filter(MemorySegment segment, long index) { return (int) VH_vertical_filter.get().get(segment, 0L, index); }
     /// {@return `vertical_filter`}
     public int vertical_filter() { return vertical_filter(this.segment(), 0L); }
     /// Sets `vertical_filter` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertical_filter(MemorySegment segment, long index, int value) { VH_vertical_filter.set(segment, 0L, index, value); }
+    public static void vertical_filter(MemorySegment segment, long index, int value) { VH_vertical_filter.get().set(segment, 0L, index, value); }
     /// Sets `vertical_filter` with the given value.
     /// @param value the value
     /// @return `this`
@@ -822,14 +822,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `horizontal_edge` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int horizontal_edge(MemorySegment segment, long index) { return (int) VH_horizontal_edge.get(segment, 0L, index); }
+    public static int horizontal_edge(MemorySegment segment, long index) { return (int) VH_horizontal_edge.get().get(segment, 0L, index); }
     /// {@return `horizontal_edge`}
     public int horizontal_edge() { return horizontal_edge(this.segment(), 0L); }
     /// Sets `horizontal_edge` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void horizontal_edge(MemorySegment segment, long index, int value) { VH_horizontal_edge.set(segment, 0L, index, value); }
+    public static void horizontal_edge(MemorySegment segment, long index, int value) { VH_horizontal_edge.get().set(segment, 0L, index, value); }
     /// Sets `horizontal_edge` with the given value.
     /// @param value the value
     /// @return `this`
@@ -838,14 +838,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `vertical_edge` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertical_edge(MemorySegment segment, long index) { return (int) VH_vertical_edge.get(segment, 0L, index); }
+    public static int vertical_edge(MemorySegment segment, long index) { return (int) VH_vertical_edge.get().get(segment, 0L, index); }
     /// {@return `vertical_edge`}
     public int vertical_edge() { return vertical_edge(this.segment(), 0L); }
     /// Sets `vertical_edge` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertical_edge(MemorySegment segment, long index, int value) { VH_vertical_edge.set(segment, 0L, index, value); }
+    public static void vertical_edge(MemorySegment segment, long index, int value) { VH_vertical_edge.get().set(segment, 0L, index, value); }
     /// Sets `vertical_edge` with the given value.
     /// @param value the value
     /// @return `this`
@@ -854,14 +854,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `horizontal_filter_kernel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment horizontal_filter_kernel(MemorySegment segment, long index) { return (MemorySegment) VH_horizontal_filter_kernel.get(segment, 0L, index); }
+    public static MemorySegment horizontal_filter_kernel(MemorySegment segment, long index) { return (MemorySegment) VH_horizontal_filter_kernel.get().get(segment, 0L, index); }
     /// {@return `horizontal_filter_kernel`}
     public MemorySegment horizontal_filter_kernel() { return horizontal_filter_kernel(this.segment(), 0L); }
     /// Sets `horizontal_filter_kernel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void horizontal_filter_kernel(MemorySegment segment, long index, MemorySegment value) { VH_horizontal_filter_kernel.set(segment, 0L, index, value); }
+    public static void horizontal_filter_kernel(MemorySegment segment, long index, MemorySegment value) { VH_horizontal_filter_kernel.get().set(segment, 0L, index, value); }
     /// Sets `horizontal_filter_kernel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -870,14 +870,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `horizontal_filter_support` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment horizontal_filter_support(MemorySegment segment, long index) { return (MemorySegment) VH_horizontal_filter_support.get(segment, 0L, index); }
+    public static MemorySegment horizontal_filter_support(MemorySegment segment, long index) { return (MemorySegment) VH_horizontal_filter_support.get().get(segment, 0L, index); }
     /// {@return `horizontal_filter_support`}
     public MemorySegment horizontal_filter_support() { return horizontal_filter_support(this.segment(), 0L); }
     /// Sets `horizontal_filter_support` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void horizontal_filter_support(MemorySegment segment, long index, MemorySegment value) { VH_horizontal_filter_support.set(segment, 0L, index, value); }
+    public static void horizontal_filter_support(MemorySegment segment, long index, MemorySegment value) { VH_horizontal_filter_support.get().set(segment, 0L, index, value); }
     /// Sets `horizontal_filter_support` with the given value.
     /// @param value the value
     /// @return `this`
@@ -886,14 +886,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `vertical_filter_kernel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vertical_filter_kernel(MemorySegment segment, long index) { return (MemorySegment) VH_vertical_filter_kernel.get(segment, 0L, index); }
+    public static MemorySegment vertical_filter_kernel(MemorySegment segment, long index) { return (MemorySegment) VH_vertical_filter_kernel.get().get(segment, 0L, index); }
     /// {@return `vertical_filter_kernel`}
     public MemorySegment vertical_filter_kernel() { return vertical_filter_kernel(this.segment(), 0L); }
     /// Sets `vertical_filter_kernel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertical_filter_kernel(MemorySegment segment, long index, MemorySegment value) { VH_vertical_filter_kernel.set(segment, 0L, index, value); }
+    public static void vertical_filter_kernel(MemorySegment segment, long index, MemorySegment value) { VH_vertical_filter_kernel.get().set(segment, 0L, index, value); }
     /// Sets `vertical_filter_kernel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -902,14 +902,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `vertical_filter_support` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vertical_filter_support(MemorySegment segment, long index) { return (MemorySegment) VH_vertical_filter_support.get(segment, 0L, index); }
+    public static MemorySegment vertical_filter_support(MemorySegment segment, long index) { return (MemorySegment) VH_vertical_filter_support.get().get(segment, 0L, index); }
     /// {@return `vertical_filter_support`}
     public MemorySegment vertical_filter_support() { return vertical_filter_support(this.segment(), 0L); }
     /// Sets `vertical_filter_support` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertical_filter_support(MemorySegment segment, long index, MemorySegment value) { VH_vertical_filter_support.set(segment, 0L, index, value); }
+    public static void vertical_filter_support(MemorySegment segment, long index, MemorySegment value) { VH_vertical_filter_support.get().set(segment, 0L, index, value); }
     /// Sets `vertical_filter_support` with the given value.
     /// @param value the value
     /// @return `this`
@@ -918,14 +918,14 @@ public final class STBIR_RESIZE extends GroupType {
     /// {@return `samplers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment samplers(MemorySegment segment, long index) { return (MemorySegment) VH_samplers.get(segment, 0L, index); }
+    public static MemorySegment samplers(MemorySegment segment, long index) { return (MemorySegment) VH_samplers.get().get(segment, 0L, index); }
     /// {@return `samplers`}
     public MemorySegment samplers() { return samplers(this.segment(), 0L); }
     /// Sets `samplers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void samplers(MemorySegment segment, long index, MemorySegment value) { VH_samplers.set(segment, 0L, index, value); }
+    public static void samplers(MemorySegment segment, long index, MemorySegment value) { VH_samplers.get().set(segment, 0L, index, value); }
     /// Sets `samplers` with the given value.
     /// @param value the value
     /// @return `this`

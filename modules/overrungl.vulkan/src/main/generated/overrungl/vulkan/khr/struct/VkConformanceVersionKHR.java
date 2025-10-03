@@ -33,25 +33,25 @@ public final class VkConformanceVersionKHR extends GroupType {
     /// The memory layout of `major`.
     public static final MemoryLayout LAYOUT_major = LAYOUT.select(PathElement.groupElement("major"));
     /// The [VarHandle] of `major` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_major = LAYOUT.arrayElementVarHandle(PathElement.groupElement("major"));
+    public static final Supplier<VarHandle> VH_major = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("major")));
     /// The byte offset of `minor`.
     public static final long OFFSET_minor = LAYOUT.byteOffset(PathElement.groupElement("minor"));
     /// The memory layout of `minor`.
     public static final MemoryLayout LAYOUT_minor = LAYOUT.select(PathElement.groupElement("minor"));
     /// The [VarHandle] of `minor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minor"));
+    public static final Supplier<VarHandle> VH_minor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minor")));
     /// The byte offset of `subminor`.
     public static final long OFFSET_subminor = LAYOUT.byteOffset(PathElement.groupElement("subminor"));
     /// The memory layout of `subminor`.
     public static final MemoryLayout LAYOUT_subminor = LAYOUT.select(PathElement.groupElement("subminor"));
     /// The [VarHandle] of `subminor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subminor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subminor"));
+    public static final Supplier<VarHandle> VH_subminor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subminor")));
     /// The byte offset of `patch`.
     public static final long OFFSET_patch = LAYOUT.byteOffset(PathElement.groupElement("patch"));
     /// The memory layout of `patch`.
     public static final MemoryLayout LAYOUT_patch = LAYOUT.select(PathElement.groupElement("patch"));
     /// The [VarHandle] of `patch` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_patch = LAYOUT.arrayElementVarHandle(PathElement.groupElement("patch"));
+    public static final Supplier<VarHandle> VH_patch = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("patch")));
 
     /// Creates `VkConformanceVersionKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkConformanceVersionKHR extends GroupType {
     /// {@return `major` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte major(MemorySegment segment, long index) { return (byte) VH_major.get(segment, 0L, index); }
+    public static byte major(MemorySegment segment, long index) { return (byte) VH_major.get().get(segment, 0L, index); }
     /// {@return `major`}
     public byte major() { return major(this.segment(), 0L); }
     /// Sets `major` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void major(MemorySegment segment, long index, byte value) { VH_major.set(segment, 0L, index, value); }
+    public static void major(MemorySegment segment, long index, byte value) { VH_major.get().set(segment, 0L, index, value); }
     /// Sets `major` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkConformanceVersionKHR extends GroupType {
     /// {@return `minor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte minor(MemorySegment segment, long index) { return (byte) VH_minor.get(segment, 0L, index); }
+    public static byte minor(MemorySegment segment, long index) { return (byte) VH_minor.get().get(segment, 0L, index); }
     /// {@return `minor`}
     public byte minor() { return minor(this.segment(), 0L); }
     /// Sets `minor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minor(MemorySegment segment, long index, byte value) { VH_minor.set(segment, 0L, index, value); }
+    public static void minor(MemorySegment segment, long index, byte value) { VH_minor.get().set(segment, 0L, index, value); }
     /// Sets `minor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkConformanceVersionKHR extends GroupType {
     /// {@return `subminor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte subminor(MemorySegment segment, long index) { return (byte) VH_subminor.get(segment, 0L, index); }
+    public static byte subminor(MemorySegment segment, long index) { return (byte) VH_subminor.get().get(segment, 0L, index); }
     /// {@return `subminor`}
     public byte subminor() { return subminor(this.segment(), 0L); }
     /// Sets `subminor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subminor(MemorySegment segment, long index, byte value) { VH_subminor.set(segment, 0L, index, value); }
+    public static void subminor(MemorySegment segment, long index, byte value) { VH_subminor.get().set(segment, 0L, index, value); }
     /// Sets `subminor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkConformanceVersionKHR extends GroupType {
     /// {@return `patch` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte patch(MemorySegment segment, long index) { return (byte) VH_patch.get(segment, 0L, index); }
+    public static byte patch(MemorySegment segment, long index) { return (byte) VH_patch.get().get(segment, 0L, index); }
     /// {@return `patch`}
     public byte patch() { return patch(this.segment(), 0L); }
     /// Sets `patch` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void patch(MemorySegment segment, long index, byte value) { VH_patch.set(segment, 0L, index, value); }
+    public static void patch(MemorySegment segment, long index, byte value) { VH_patch.get().set(segment, 0L, index, value); }
     /// Sets `patch` with the given value.
     /// @param value the value
     /// @return `this`

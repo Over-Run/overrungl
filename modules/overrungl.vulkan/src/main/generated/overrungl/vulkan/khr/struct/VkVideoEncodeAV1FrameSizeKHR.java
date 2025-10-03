@@ -31,19 +31,19 @@ public final class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
     /// The memory layout of `intraFrameSize`.
     public static final MemoryLayout LAYOUT_intraFrameSize = LAYOUT.select(PathElement.groupElement("intraFrameSize"));
     /// The [VarHandle] of `intraFrameSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_intraFrameSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("intraFrameSize"));
+    public static final Supplier<VarHandle> VH_intraFrameSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("intraFrameSize")));
     /// The byte offset of `predictiveFrameSize`.
     public static final long OFFSET_predictiveFrameSize = LAYOUT.byteOffset(PathElement.groupElement("predictiveFrameSize"));
     /// The memory layout of `predictiveFrameSize`.
     public static final MemoryLayout LAYOUT_predictiveFrameSize = LAYOUT.select(PathElement.groupElement("predictiveFrameSize"));
     /// The [VarHandle] of `predictiveFrameSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_predictiveFrameSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("predictiveFrameSize"));
+    public static final Supplier<VarHandle> VH_predictiveFrameSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("predictiveFrameSize")));
     /// The byte offset of `bipredictiveFrameSize`.
     public static final long OFFSET_bipredictiveFrameSize = LAYOUT.byteOffset(PathElement.groupElement("bipredictiveFrameSize"));
     /// The memory layout of `bipredictiveFrameSize`.
     public static final MemoryLayout LAYOUT_bipredictiveFrameSize = LAYOUT.select(PathElement.groupElement("bipredictiveFrameSize"));
     /// The [VarHandle] of `bipredictiveFrameSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bipredictiveFrameSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bipredictiveFrameSize"));
+    public static final Supplier<VarHandle> VH_bipredictiveFrameSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bipredictiveFrameSize")));
 
     /// Creates `VkVideoEncodeAV1FrameSizeKHR` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
     /// {@return `intraFrameSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int intraFrameSize(MemorySegment segment, long index) { return (int) VH_intraFrameSize.get(segment, 0L, index); }
+    public static int intraFrameSize(MemorySegment segment, long index) { return (int) VH_intraFrameSize.get().get(segment, 0L, index); }
     /// {@return `intraFrameSize`}
     public int intraFrameSize() { return intraFrameSize(this.segment(), 0L); }
     /// Sets `intraFrameSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void intraFrameSize(MemorySegment segment, long index, int value) { VH_intraFrameSize.set(segment, 0L, index, value); }
+    public static void intraFrameSize(MemorySegment segment, long index, int value) { VH_intraFrameSize.get().set(segment, 0L, index, value); }
     /// Sets `intraFrameSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
     /// {@return `predictiveFrameSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int predictiveFrameSize(MemorySegment segment, long index) { return (int) VH_predictiveFrameSize.get(segment, 0L, index); }
+    public static int predictiveFrameSize(MemorySegment segment, long index) { return (int) VH_predictiveFrameSize.get().get(segment, 0L, index); }
     /// {@return `predictiveFrameSize`}
     public int predictiveFrameSize() { return predictiveFrameSize(this.segment(), 0L); }
     /// Sets `predictiveFrameSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void predictiveFrameSize(MemorySegment segment, long index, int value) { VH_predictiveFrameSize.set(segment, 0L, index, value); }
+    public static void predictiveFrameSize(MemorySegment segment, long index, int value) { VH_predictiveFrameSize.get().set(segment, 0L, index, value); }
     /// Sets `predictiveFrameSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
     /// {@return `bipredictiveFrameSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bipredictiveFrameSize(MemorySegment segment, long index) { return (int) VH_bipredictiveFrameSize.get(segment, 0L, index); }
+    public static int bipredictiveFrameSize(MemorySegment segment, long index) { return (int) VH_bipredictiveFrameSize.get().get(segment, 0L, index); }
     /// {@return `bipredictiveFrameSize`}
     public int bipredictiveFrameSize() { return bipredictiveFrameSize(this.segment(), 0L); }
     /// Sets `bipredictiveFrameSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bipredictiveFrameSize(MemorySegment segment, long index, int value) { VH_bipredictiveFrameSize.set(segment, 0L, index, value); }
+    public static void bipredictiveFrameSize(MemorySegment segment, long index, int value) { VH_bipredictiveFrameSize.get().set(segment, 0L, index, value); }
     /// Sets `bipredictiveFrameSize` with the given value.
     /// @param value the value
     /// @return `this`

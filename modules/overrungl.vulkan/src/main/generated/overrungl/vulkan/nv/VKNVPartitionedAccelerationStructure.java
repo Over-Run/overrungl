@@ -2,6 +2,7 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -27,8 +28,8 @@ public final class VKNVPartitionedAccelerationStructure {
     public static final int VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV = 1000570000;
     public static final int VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV = (~0);
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPartitionedAccelerationStructuresBuildSizesNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBuildPartitionedAccelerationStructuresNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkGetPartitionedAccelerationStructuresBuildSizesNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdBuildPartitionedAccelerationStructuresNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -41,7 +42,7 @@ public final class VKNVPartitionedAccelerationStructure {
     public static void vkGetPartitionedAccelerationStructuresBuildSizesNV(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pSizeInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPartitionedAccelerationStructuresBuildSizesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPartitionedAccelerationStructuresBuildSizesNV", device, pInfo, pSizeInfo); }
-        Handles.MH_vkGetPartitionedAccelerationStructuresBuildSizesNV.invokeExact(device.capabilities().PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV, device.segment(), pInfo, pSizeInfo); }
+        Handles.MH_vkGetPartitionedAccelerationStructuresBuildSizesNV.get().invokeExact(device.capabilities().PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV, device.segment(), pInfo, pSizeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPartitionedAccelerationStructuresBuildSizesNV", e); }
     }
 
@@ -52,7 +53,7 @@ public final class VKNVPartitionedAccelerationStructure {
     public static void vkCmdBuildPartitionedAccelerationStructuresNV(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pBuildInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildPartitionedAccelerationStructuresNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBuildPartitionedAccelerationStructuresNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBuildPartitionedAccelerationStructuresNV", commandBuffer, pBuildInfo); }
-        Handles.MH_vkCmdBuildPartitionedAccelerationStructuresNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildPartitionedAccelerationStructuresNV, commandBuffer.segment(), pBuildInfo); }
+        Handles.MH_vkCmdBuildPartitionedAccelerationStructuresNV.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildPartitionedAccelerationStructuresNV, commandBuffer.segment(), pBuildInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBuildPartitionedAccelerationStructuresNV", e); }
     }
 

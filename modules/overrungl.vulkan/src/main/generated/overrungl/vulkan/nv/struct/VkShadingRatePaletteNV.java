@@ -29,13 +29,13 @@ public final class VkShadingRatePaletteNV extends GroupType {
     /// The memory layout of `shadingRatePaletteEntryCount`.
     public static final MemoryLayout LAYOUT_shadingRatePaletteEntryCount = LAYOUT.select(PathElement.groupElement("shadingRatePaletteEntryCount"));
     /// The [VarHandle] of `shadingRatePaletteEntryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shadingRatePaletteEntryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRatePaletteEntryCount"));
+    public static final Supplier<VarHandle> VH_shadingRatePaletteEntryCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRatePaletteEntryCount")));
     /// The byte offset of `pShadingRatePaletteEntries`.
     public static final long OFFSET_pShadingRatePaletteEntries = LAYOUT.byteOffset(PathElement.groupElement("pShadingRatePaletteEntries"));
     /// The memory layout of `pShadingRatePaletteEntries`.
     public static final MemoryLayout LAYOUT_pShadingRatePaletteEntries = LAYOUT.select(PathElement.groupElement("pShadingRatePaletteEntries"));
     /// The [VarHandle] of `pShadingRatePaletteEntries` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pShadingRatePaletteEntries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pShadingRatePaletteEntries"));
+    public static final Supplier<VarHandle> VH_pShadingRatePaletteEntries = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pShadingRatePaletteEntries")));
 
     /// Creates `VkShadingRatePaletteNV` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkShadingRatePaletteNV extends GroupType {
     /// {@return `shadingRatePaletteEntryCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shadingRatePaletteEntryCount(MemorySegment segment, long index) { return (int) VH_shadingRatePaletteEntryCount.get(segment, 0L, index); }
+    public static int shadingRatePaletteEntryCount(MemorySegment segment, long index) { return (int) VH_shadingRatePaletteEntryCount.get().get(segment, 0L, index); }
     /// {@return `shadingRatePaletteEntryCount`}
     public int shadingRatePaletteEntryCount() { return shadingRatePaletteEntryCount(this.segment(), 0L); }
     /// Sets `shadingRatePaletteEntryCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shadingRatePaletteEntryCount(MemorySegment segment, long index, int value) { VH_shadingRatePaletteEntryCount.set(segment, 0L, index, value); }
+    public static void shadingRatePaletteEntryCount(MemorySegment segment, long index, int value) { VH_shadingRatePaletteEntryCount.get().set(segment, 0L, index, value); }
     /// Sets `shadingRatePaletteEntryCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkShadingRatePaletteNV extends GroupType {
     /// {@return `pShadingRatePaletteEntries` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pShadingRatePaletteEntries(MemorySegment segment, long index) { return (MemorySegment) VH_pShadingRatePaletteEntries.get(segment, 0L, index); }
+    public static MemorySegment pShadingRatePaletteEntries(MemorySegment segment, long index) { return (MemorySegment) VH_pShadingRatePaletteEntries.get().get(segment, 0L, index); }
     /// {@return `pShadingRatePaletteEntries`}
     public MemorySegment pShadingRatePaletteEntries() { return pShadingRatePaletteEntries(this.segment(), 0L); }
     /// Sets `pShadingRatePaletteEntries` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pShadingRatePaletteEntries(MemorySegment segment, long index, MemorySegment value) { VH_pShadingRatePaletteEntries.set(segment, 0L, index, value); }
+    public static void pShadingRatePaletteEntries(MemorySegment segment, long index, MemorySegment value) { VH_pShadingRatePaletteEntries.get().set(segment, 0L, index, value); }
     /// Sets `pShadingRatePaletteEntries` with the given value.
     /// @param value the value
     /// @return `this`

@@ -41,13 +41,13 @@ public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `imageCreateInfo`.
     public static final long OFFSET_imageCreateInfo = LAYOUT.byteOffset(PathElement.groupElement("imageCreateInfo"));
     /// The memory layout of `imageCreateInfo`.
@@ -57,31 +57,31 @@ public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// The memory layout of `requiredFormatFeatures`.
     public static final MemoryLayout LAYOUT_requiredFormatFeatures = LAYOUT.select(PathElement.groupElement("requiredFormatFeatures"));
     /// The [VarHandle] of `requiredFormatFeatures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_requiredFormatFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiredFormatFeatures"));
+    public static final Supplier<VarHandle> VH_requiredFormatFeatures = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiredFormatFeatures")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `sysmemPixelFormat`.
     public static final long OFFSET_sysmemPixelFormat = LAYOUT.byteOffset(PathElement.groupElement("sysmemPixelFormat"));
     /// The memory layout of `sysmemPixelFormat`.
     public static final MemoryLayout LAYOUT_sysmemPixelFormat = LAYOUT.select(PathElement.groupElement("sysmemPixelFormat"));
     /// The [VarHandle] of `sysmemPixelFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sysmemPixelFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemPixelFormat"));
+    public static final Supplier<VarHandle> VH_sysmemPixelFormat = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemPixelFormat")));
     /// The byte offset of `colorSpaceCount`.
     public static final long OFFSET_colorSpaceCount = LAYOUT.byteOffset(PathElement.groupElement("colorSpaceCount"));
     /// The memory layout of `colorSpaceCount`.
     public static final MemoryLayout LAYOUT_colorSpaceCount = LAYOUT.select(PathElement.groupElement("colorSpaceCount"));
     /// The [VarHandle] of `colorSpaceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_colorSpaceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorSpaceCount"));
+    public static final Supplier<VarHandle> VH_colorSpaceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorSpaceCount")));
     /// The byte offset of `pColorSpaces`.
     public static final long OFFSET_pColorSpaces = LAYOUT.byteOffset(PathElement.groupElement("pColorSpaces"));
     /// The memory layout of `pColorSpaces`.
     public static final MemoryLayout LAYOUT_pColorSpaces = LAYOUT.select(PathElement.groupElement("pColorSpaces"));
     /// The [VarHandle] of `pColorSpaces` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pColorSpaces = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorSpaces"));
+    public static final Supplier<VarHandle> VH_pColorSpaces = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorSpaces")));
 
     /// Creates `VkImageFormatConstraintsInfoFUCHSIA` with the given segment.
     /// @param segment      the memory segment
@@ -132,14 +132,14 @@ public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -148,14 +148,14 @@ public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -184,14 +184,14 @@ public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `requiredFormatFeatures` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int requiredFormatFeatures(MemorySegment segment, long index) { return (int) VH_requiredFormatFeatures.get(segment, 0L, index); }
+    public static int requiredFormatFeatures(MemorySegment segment, long index) { return (int) VH_requiredFormatFeatures.get().get(segment, 0L, index); }
     /// {@return `requiredFormatFeatures`}
     public int requiredFormatFeatures() { return requiredFormatFeatures(this.segment(), 0L); }
     /// Sets `requiredFormatFeatures` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void requiredFormatFeatures(MemorySegment segment, long index, int value) { VH_requiredFormatFeatures.set(segment, 0L, index, value); }
+    public static void requiredFormatFeatures(MemorySegment segment, long index, int value) { VH_requiredFormatFeatures.get().set(segment, 0L, index, value); }
     /// Sets `requiredFormatFeatures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -200,14 +200,14 @@ public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -216,14 +216,14 @@ public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `sysmemPixelFormat` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long sysmemPixelFormat(MemorySegment segment, long index) { return (long) VH_sysmemPixelFormat.get(segment, 0L, index); }
+    public static long sysmemPixelFormat(MemorySegment segment, long index) { return (long) VH_sysmemPixelFormat.get().get(segment, 0L, index); }
     /// {@return `sysmemPixelFormat`}
     public long sysmemPixelFormat() { return sysmemPixelFormat(this.segment(), 0L); }
     /// Sets `sysmemPixelFormat` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sysmemPixelFormat(MemorySegment segment, long index, long value) { VH_sysmemPixelFormat.set(segment, 0L, index, value); }
+    public static void sysmemPixelFormat(MemorySegment segment, long index, long value) { VH_sysmemPixelFormat.get().set(segment, 0L, index, value); }
     /// Sets `sysmemPixelFormat` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,14 +232,14 @@ public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `colorSpaceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int colorSpaceCount(MemorySegment segment, long index) { return (int) VH_colorSpaceCount.get(segment, 0L, index); }
+    public static int colorSpaceCount(MemorySegment segment, long index) { return (int) VH_colorSpaceCount.get().get(segment, 0L, index); }
     /// {@return `colorSpaceCount`}
     public int colorSpaceCount() { return colorSpaceCount(this.segment(), 0L); }
     /// Sets `colorSpaceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void colorSpaceCount(MemorySegment segment, long index, int value) { VH_colorSpaceCount.set(segment, 0L, index, value); }
+    public static void colorSpaceCount(MemorySegment segment, long index, int value) { VH_colorSpaceCount.get().set(segment, 0L, index, value); }
     /// Sets `colorSpaceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,14 +248,14 @@ public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `pColorSpaces` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pColorSpaces(MemorySegment segment, long index) { return (MemorySegment) VH_pColorSpaces.get(segment, 0L, index); }
+    public static MemorySegment pColorSpaces(MemorySegment segment, long index) { return (MemorySegment) VH_pColorSpaces.get().get(segment, 0L, index); }
     /// {@return `pColorSpaces`}
     public MemorySegment pColorSpaces() { return pColorSpaces(this.segment(), 0L); }
     /// Sets `pColorSpaces` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pColorSpaces(MemorySegment segment, long index, MemorySegment value) { VH_pColorSpaces.set(segment, 0L, index, value); }
+    public static void pColorSpaces(MemorySegment segment, long index, MemorySegment value) { VH_pColorSpaces.get().set(segment, 0L, index, value); }
     /// Sets `pColorSpaces` with the given value.
     /// @param value the value
     /// @return `this`

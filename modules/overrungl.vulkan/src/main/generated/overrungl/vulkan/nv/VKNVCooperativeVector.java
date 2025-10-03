@@ -2,6 +2,7 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -35,9 +36,9 @@ public final class VKNVCooperativeVector {
     public static final int VK_COMPONENT_TYPE_FLOAT_E5M2_NV = 1000567003;
     public static final long VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV = 0x100000000000L;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeVectorPropertiesNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkConvertCooperativeVectorMatrixNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdConvertCooperativeVectorMatrixNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkGetPhysicalDeviceCooperativeVectorPropertiesNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkConvertCooperativeVectorMatrixNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdConvertCooperativeVectorMatrixNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -50,7 +51,7 @@ public final class VKNVCooperativeVector {
     public static int vkGetPhysicalDeviceCooperativeVectorPropertiesNV(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pPropertyCount, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeVectorPropertiesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceCooperativeVectorPropertiesNV", physicalDevice, pPropertyCount, pProperties); }
-        return (int) Handles.MH_vkGetPhysicalDeviceCooperativeVectorPropertiesNV.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV, physicalDevice.segment(), pPropertyCount, pProperties); }
+        return (int) Handles.MH_vkGetPhysicalDeviceCooperativeVectorPropertiesNV.get().invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV, physicalDevice.segment(), pPropertyCount, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceCooperativeVectorPropertiesNV", e); }
     }
 
@@ -61,7 +62,7 @@ public final class VKNVCooperativeVector {
     public static int vkConvertCooperativeVectorMatrixNV(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkConvertCooperativeVectorMatrixNV)) throw new VKSymbolNotFoundError("Symbol not found: vkConvertCooperativeVectorMatrixNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkConvertCooperativeVectorMatrixNV", device, pInfo); }
-        return (int) Handles.MH_vkConvertCooperativeVectorMatrixNV.invokeExact(device.capabilities().PFN_vkConvertCooperativeVectorMatrixNV, device.segment(), pInfo); }
+        return (int) Handles.MH_vkConvertCooperativeVectorMatrixNV.get().invokeExact(device.capabilities().PFN_vkConvertCooperativeVectorMatrixNV, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkConvertCooperativeVectorMatrixNV", e); }
     }
 
@@ -72,7 +73,7 @@ public final class VKNVCooperativeVector {
     public static void vkCmdConvertCooperativeVectorMatrixNV(@NonNull VkCommandBuffer commandBuffer, int infoCount, @NonNull MemorySegment pInfos) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdConvertCooperativeVectorMatrixNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdConvertCooperativeVectorMatrixNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdConvertCooperativeVectorMatrixNV", commandBuffer, infoCount, pInfos); }
-        Handles.MH_vkCmdConvertCooperativeVectorMatrixNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdConvertCooperativeVectorMatrixNV, commandBuffer.segment(), infoCount, pInfos); }
+        Handles.MH_vkCmdConvertCooperativeVectorMatrixNV.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdConvertCooperativeVectorMatrixNV, commandBuffer.segment(), infoCount, pInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdConvertCooperativeVectorMatrixNV", e); }
     }
 

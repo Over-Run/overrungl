@@ -47,7 +47,7 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends GroupTy
     /// The memory layout of `accelerationStructureReference`.
     public static final MemoryLayout LAYOUT_accelerationStructureReference = LAYOUT.select(PathElement.groupElement("accelerationStructureReference"));
     /// The [VarHandle] of `accelerationStructureReference` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_accelerationStructureReference = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureReference"));
+    public static final Supplier<VarHandle> VH_accelerationStructureReference = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureReference")));
 
     /// Creates `VkAccelerationStructureMatrixMotionInstanceNV` with the given segment.
     /// @param segment      the memory segment
@@ -138,14 +138,14 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends GroupTy
     /// {@return `accelerationStructureReference` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long accelerationStructureReference(MemorySegment segment, long index) { return (long) VH_accelerationStructureReference.get(segment, 0L, index); }
+    public static long accelerationStructureReference(MemorySegment segment, long index) { return (long) VH_accelerationStructureReference.get().get(segment, 0L, index); }
     /// {@return `accelerationStructureReference`}
     public long accelerationStructureReference() { return accelerationStructureReference(this.segment(), 0L); }
     /// Sets `accelerationStructureReference` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void accelerationStructureReference(MemorySegment segment, long index, long value) { VH_accelerationStructureReference.set(segment, 0L, index, value); }
+    public static void accelerationStructureReference(MemorySegment segment, long index, long value) { VH_accelerationStructureReference.get().set(segment, 0L, index, value); }
     /// Sets `accelerationStructureReference` with the given value.
     /// @param value the value
     /// @return `this`

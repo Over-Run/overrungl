@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends Gr
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `clustercullingShader`.
     public static final long OFFSET_clustercullingShader = LAYOUT.byteOffset(PathElement.groupElement("clustercullingShader"));
     /// The memory layout of `clustercullingShader`.
     public static final MemoryLayout LAYOUT_clustercullingShader = LAYOUT.select(PathElement.groupElement("clustercullingShader"));
     /// The [VarHandle] of `clustercullingShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clustercullingShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clustercullingShader"));
+    public static final Supplier<VarHandle> VH_clustercullingShader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clustercullingShader")));
     /// The byte offset of `multiviewClusterCullingShader`.
     public static final long OFFSET_multiviewClusterCullingShader = LAYOUT.byteOffset(PathElement.groupElement("multiviewClusterCullingShader"));
     /// The memory layout of `multiviewClusterCullingShader`.
     public static final MemoryLayout LAYOUT_multiviewClusterCullingShader = LAYOUT.select(PathElement.groupElement("multiviewClusterCullingShader"));
     /// The [VarHandle] of `multiviewClusterCullingShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_multiviewClusterCullingShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("multiviewClusterCullingShader"));
+    public static final Supplier<VarHandle> VH_multiviewClusterCullingShader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("multiviewClusterCullingShader")));
 
     /// Creates `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends Gr
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends Gr
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends Gr
     /// {@return `clustercullingShader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clustercullingShader(MemorySegment segment, long index) { return (int) VH_clustercullingShader.get(segment, 0L, index); }
+    public static int clustercullingShader(MemorySegment segment, long index) { return (int) VH_clustercullingShader.get().get(segment, 0L, index); }
     /// {@return `clustercullingShader`}
     public int clustercullingShader() { return clustercullingShader(this.segment(), 0L); }
     /// Sets `clustercullingShader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clustercullingShader(MemorySegment segment, long index, int value) { VH_clustercullingShader.set(segment, 0L, index, value); }
+    public static void clustercullingShader(MemorySegment segment, long index, int value) { VH_clustercullingShader.get().set(segment, 0L, index, value); }
     /// Sets `clustercullingShader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends Gr
     /// {@return `multiviewClusterCullingShader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int multiviewClusterCullingShader(MemorySegment segment, long index) { return (int) VH_multiviewClusterCullingShader.get(segment, 0L, index); }
+    public static int multiviewClusterCullingShader(MemorySegment segment, long index) { return (int) VH_multiviewClusterCullingShader.get().get(segment, 0L, index); }
     /// {@return `multiviewClusterCullingShader`}
     public int multiviewClusterCullingShader() { return multiviewClusterCullingShader(this.segment(), 0L); }
     /// Sets `multiviewClusterCullingShader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void multiviewClusterCullingShader(MemorySegment segment, long index, int value) { VH_multiviewClusterCullingShader.set(segment, 0L, index, value); }
+    public static void multiviewClusterCullingShader(MemorySegment segment, long index, int value) { VH_multiviewClusterCullingShader.get().set(segment, 0L, index, value); }
     /// Sets `multiviewClusterCullingShader` with the given value.
     /// @param value the value
     /// @return `this`

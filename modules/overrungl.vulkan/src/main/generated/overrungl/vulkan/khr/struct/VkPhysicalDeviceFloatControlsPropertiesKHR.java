@@ -63,115 +63,115 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `denormBehaviorIndependence`.
     public static final long OFFSET_denormBehaviorIndependence = LAYOUT.byteOffset(PathElement.groupElement("denormBehaviorIndependence"));
     /// The memory layout of `denormBehaviorIndependence`.
     public static final MemoryLayout LAYOUT_denormBehaviorIndependence = LAYOUT.select(PathElement.groupElement("denormBehaviorIndependence"));
     /// The [VarHandle] of `denormBehaviorIndependence` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_denormBehaviorIndependence = LAYOUT.arrayElementVarHandle(PathElement.groupElement("denormBehaviorIndependence"));
+    public static final Supplier<VarHandle> VH_denormBehaviorIndependence = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("denormBehaviorIndependence")));
     /// The byte offset of `roundingModeIndependence`.
     public static final long OFFSET_roundingModeIndependence = LAYOUT.byteOffset(PathElement.groupElement("roundingModeIndependence"));
     /// The memory layout of `roundingModeIndependence`.
     public static final MemoryLayout LAYOUT_roundingModeIndependence = LAYOUT.select(PathElement.groupElement("roundingModeIndependence"));
     /// The [VarHandle] of `roundingModeIndependence` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_roundingModeIndependence = LAYOUT.arrayElementVarHandle(PathElement.groupElement("roundingModeIndependence"));
+    public static final Supplier<VarHandle> VH_roundingModeIndependence = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("roundingModeIndependence")));
     /// The byte offset of `shaderSignedZeroInfNanPreserveFloat16`.
     public static final long OFFSET_shaderSignedZeroInfNanPreserveFloat16 = LAYOUT.byteOffset(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat16"));
     /// The memory layout of `shaderSignedZeroInfNanPreserveFloat16`.
     public static final MemoryLayout LAYOUT_shaderSignedZeroInfNanPreserveFloat16 = LAYOUT.select(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat16"));
     /// The [VarHandle] of `shaderSignedZeroInfNanPreserveFloat16` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSignedZeroInfNanPreserveFloat16 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat16"));
+    public static final Supplier<VarHandle> VH_shaderSignedZeroInfNanPreserveFloat16 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat16")));
     /// The byte offset of `shaderSignedZeroInfNanPreserveFloat32`.
     public static final long OFFSET_shaderSignedZeroInfNanPreserveFloat32 = LAYOUT.byteOffset(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat32"));
     /// The memory layout of `shaderSignedZeroInfNanPreserveFloat32`.
     public static final MemoryLayout LAYOUT_shaderSignedZeroInfNanPreserveFloat32 = LAYOUT.select(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat32"));
     /// The [VarHandle] of `shaderSignedZeroInfNanPreserveFloat32` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSignedZeroInfNanPreserveFloat32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat32"));
+    public static final Supplier<VarHandle> VH_shaderSignedZeroInfNanPreserveFloat32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat32")));
     /// The byte offset of `shaderSignedZeroInfNanPreserveFloat64`.
     public static final long OFFSET_shaderSignedZeroInfNanPreserveFloat64 = LAYOUT.byteOffset(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat64"));
     /// The memory layout of `shaderSignedZeroInfNanPreserveFloat64`.
     public static final MemoryLayout LAYOUT_shaderSignedZeroInfNanPreserveFloat64 = LAYOUT.select(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat64"));
     /// The [VarHandle] of `shaderSignedZeroInfNanPreserveFloat64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSignedZeroInfNanPreserveFloat64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat64"));
+    public static final Supplier<VarHandle> VH_shaderSignedZeroInfNanPreserveFloat64 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat64")));
     /// The byte offset of `shaderDenormPreserveFloat16`.
     public static final long OFFSET_shaderDenormPreserveFloat16 = LAYOUT.byteOffset(PathElement.groupElement("shaderDenormPreserveFloat16"));
     /// The memory layout of `shaderDenormPreserveFloat16`.
     public static final MemoryLayout LAYOUT_shaderDenormPreserveFloat16 = LAYOUT.select(PathElement.groupElement("shaderDenormPreserveFloat16"));
     /// The [VarHandle] of `shaderDenormPreserveFloat16` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderDenormPreserveFloat16 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormPreserveFloat16"));
+    public static final Supplier<VarHandle> VH_shaderDenormPreserveFloat16 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormPreserveFloat16")));
     /// The byte offset of `shaderDenormPreserveFloat32`.
     public static final long OFFSET_shaderDenormPreserveFloat32 = LAYOUT.byteOffset(PathElement.groupElement("shaderDenormPreserveFloat32"));
     /// The memory layout of `shaderDenormPreserveFloat32`.
     public static final MemoryLayout LAYOUT_shaderDenormPreserveFloat32 = LAYOUT.select(PathElement.groupElement("shaderDenormPreserveFloat32"));
     /// The [VarHandle] of `shaderDenormPreserveFloat32` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderDenormPreserveFloat32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormPreserveFloat32"));
+    public static final Supplier<VarHandle> VH_shaderDenormPreserveFloat32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormPreserveFloat32")));
     /// The byte offset of `shaderDenormPreserveFloat64`.
     public static final long OFFSET_shaderDenormPreserveFloat64 = LAYOUT.byteOffset(PathElement.groupElement("shaderDenormPreserveFloat64"));
     /// The memory layout of `shaderDenormPreserveFloat64`.
     public static final MemoryLayout LAYOUT_shaderDenormPreserveFloat64 = LAYOUT.select(PathElement.groupElement("shaderDenormPreserveFloat64"));
     /// The [VarHandle] of `shaderDenormPreserveFloat64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderDenormPreserveFloat64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormPreserveFloat64"));
+    public static final Supplier<VarHandle> VH_shaderDenormPreserveFloat64 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormPreserveFloat64")));
     /// The byte offset of `shaderDenormFlushToZeroFloat16`.
     public static final long OFFSET_shaderDenormFlushToZeroFloat16 = LAYOUT.byteOffset(PathElement.groupElement("shaderDenormFlushToZeroFloat16"));
     /// The memory layout of `shaderDenormFlushToZeroFloat16`.
     public static final MemoryLayout LAYOUT_shaderDenormFlushToZeroFloat16 = LAYOUT.select(PathElement.groupElement("shaderDenormFlushToZeroFloat16"));
     /// The [VarHandle] of `shaderDenormFlushToZeroFloat16` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderDenormFlushToZeroFloat16 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormFlushToZeroFloat16"));
+    public static final Supplier<VarHandle> VH_shaderDenormFlushToZeroFloat16 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormFlushToZeroFloat16")));
     /// The byte offset of `shaderDenormFlushToZeroFloat32`.
     public static final long OFFSET_shaderDenormFlushToZeroFloat32 = LAYOUT.byteOffset(PathElement.groupElement("shaderDenormFlushToZeroFloat32"));
     /// The memory layout of `shaderDenormFlushToZeroFloat32`.
     public static final MemoryLayout LAYOUT_shaderDenormFlushToZeroFloat32 = LAYOUT.select(PathElement.groupElement("shaderDenormFlushToZeroFloat32"));
     /// The [VarHandle] of `shaderDenormFlushToZeroFloat32` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderDenormFlushToZeroFloat32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormFlushToZeroFloat32"));
+    public static final Supplier<VarHandle> VH_shaderDenormFlushToZeroFloat32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormFlushToZeroFloat32")));
     /// The byte offset of `shaderDenormFlushToZeroFloat64`.
     public static final long OFFSET_shaderDenormFlushToZeroFloat64 = LAYOUT.byteOffset(PathElement.groupElement("shaderDenormFlushToZeroFloat64"));
     /// The memory layout of `shaderDenormFlushToZeroFloat64`.
     public static final MemoryLayout LAYOUT_shaderDenormFlushToZeroFloat64 = LAYOUT.select(PathElement.groupElement("shaderDenormFlushToZeroFloat64"));
     /// The [VarHandle] of `shaderDenormFlushToZeroFloat64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderDenormFlushToZeroFloat64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormFlushToZeroFloat64"));
+    public static final Supplier<VarHandle> VH_shaderDenormFlushToZeroFloat64 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDenormFlushToZeroFloat64")));
     /// The byte offset of `shaderRoundingModeRTEFloat16`.
     public static final long OFFSET_shaderRoundingModeRTEFloat16 = LAYOUT.byteOffset(PathElement.groupElement("shaderRoundingModeRTEFloat16"));
     /// The memory layout of `shaderRoundingModeRTEFloat16`.
     public static final MemoryLayout LAYOUT_shaderRoundingModeRTEFloat16 = LAYOUT.select(PathElement.groupElement("shaderRoundingModeRTEFloat16"));
     /// The [VarHandle] of `shaderRoundingModeRTEFloat16` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderRoundingModeRTEFloat16 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTEFloat16"));
+    public static final Supplier<VarHandle> VH_shaderRoundingModeRTEFloat16 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTEFloat16")));
     /// The byte offset of `shaderRoundingModeRTEFloat32`.
     public static final long OFFSET_shaderRoundingModeRTEFloat32 = LAYOUT.byteOffset(PathElement.groupElement("shaderRoundingModeRTEFloat32"));
     /// The memory layout of `shaderRoundingModeRTEFloat32`.
     public static final MemoryLayout LAYOUT_shaderRoundingModeRTEFloat32 = LAYOUT.select(PathElement.groupElement("shaderRoundingModeRTEFloat32"));
     /// The [VarHandle] of `shaderRoundingModeRTEFloat32` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderRoundingModeRTEFloat32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTEFloat32"));
+    public static final Supplier<VarHandle> VH_shaderRoundingModeRTEFloat32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTEFloat32")));
     /// The byte offset of `shaderRoundingModeRTEFloat64`.
     public static final long OFFSET_shaderRoundingModeRTEFloat64 = LAYOUT.byteOffset(PathElement.groupElement("shaderRoundingModeRTEFloat64"));
     /// The memory layout of `shaderRoundingModeRTEFloat64`.
     public static final MemoryLayout LAYOUT_shaderRoundingModeRTEFloat64 = LAYOUT.select(PathElement.groupElement("shaderRoundingModeRTEFloat64"));
     /// The [VarHandle] of `shaderRoundingModeRTEFloat64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderRoundingModeRTEFloat64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTEFloat64"));
+    public static final Supplier<VarHandle> VH_shaderRoundingModeRTEFloat64 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTEFloat64")));
     /// The byte offset of `shaderRoundingModeRTZFloat16`.
     public static final long OFFSET_shaderRoundingModeRTZFloat16 = LAYOUT.byteOffset(PathElement.groupElement("shaderRoundingModeRTZFloat16"));
     /// The memory layout of `shaderRoundingModeRTZFloat16`.
     public static final MemoryLayout LAYOUT_shaderRoundingModeRTZFloat16 = LAYOUT.select(PathElement.groupElement("shaderRoundingModeRTZFloat16"));
     /// The [VarHandle] of `shaderRoundingModeRTZFloat16` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderRoundingModeRTZFloat16 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTZFloat16"));
+    public static final Supplier<VarHandle> VH_shaderRoundingModeRTZFloat16 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTZFloat16")));
     /// The byte offset of `shaderRoundingModeRTZFloat32`.
     public static final long OFFSET_shaderRoundingModeRTZFloat32 = LAYOUT.byteOffset(PathElement.groupElement("shaderRoundingModeRTZFloat32"));
     /// The memory layout of `shaderRoundingModeRTZFloat32`.
     public static final MemoryLayout LAYOUT_shaderRoundingModeRTZFloat32 = LAYOUT.select(PathElement.groupElement("shaderRoundingModeRTZFloat32"));
     /// The [VarHandle] of `shaderRoundingModeRTZFloat32` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderRoundingModeRTZFloat32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTZFloat32"));
+    public static final Supplier<VarHandle> VH_shaderRoundingModeRTZFloat32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTZFloat32")));
     /// The byte offset of `shaderRoundingModeRTZFloat64`.
     public static final long OFFSET_shaderRoundingModeRTZFloat64 = LAYOUT.byteOffset(PathElement.groupElement("shaderRoundingModeRTZFloat64"));
     /// The memory layout of `shaderRoundingModeRTZFloat64`.
     public static final MemoryLayout LAYOUT_shaderRoundingModeRTZFloat64 = LAYOUT.select(PathElement.groupElement("shaderRoundingModeRTZFloat64"));
     /// The [VarHandle] of `shaderRoundingModeRTZFloat64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderRoundingModeRTZFloat64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTZFloat64"));
+    public static final Supplier<VarHandle> VH_shaderRoundingModeRTZFloat64 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTZFloat64")));
 
     /// Creates `VkPhysicalDeviceFloatControlsPropertiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -222,14 +222,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,14 +238,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,14 +254,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `denormBehaviorIndependence` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int denormBehaviorIndependence(MemorySegment segment, long index) { return (int) VH_denormBehaviorIndependence.get(segment, 0L, index); }
+    public static int denormBehaviorIndependence(MemorySegment segment, long index) { return (int) VH_denormBehaviorIndependence.get().get(segment, 0L, index); }
     /// {@return `denormBehaviorIndependence`}
     public int denormBehaviorIndependence() { return denormBehaviorIndependence(this.segment(), 0L); }
     /// Sets `denormBehaviorIndependence` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void denormBehaviorIndependence(MemorySegment segment, long index, int value) { VH_denormBehaviorIndependence.set(segment, 0L, index, value); }
+    public static void denormBehaviorIndependence(MemorySegment segment, long index, int value) { VH_denormBehaviorIndependence.get().set(segment, 0L, index, value); }
     /// Sets `denormBehaviorIndependence` with the given value.
     /// @param value the value
     /// @return `this`
@@ -270,14 +270,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `roundingModeIndependence` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int roundingModeIndependence(MemorySegment segment, long index) { return (int) VH_roundingModeIndependence.get(segment, 0L, index); }
+    public static int roundingModeIndependence(MemorySegment segment, long index) { return (int) VH_roundingModeIndependence.get().get(segment, 0L, index); }
     /// {@return `roundingModeIndependence`}
     public int roundingModeIndependence() { return roundingModeIndependence(this.segment(), 0L); }
     /// Sets `roundingModeIndependence` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void roundingModeIndependence(MemorySegment segment, long index, int value) { VH_roundingModeIndependence.set(segment, 0L, index, value); }
+    public static void roundingModeIndependence(MemorySegment segment, long index, int value) { VH_roundingModeIndependence.get().set(segment, 0L, index, value); }
     /// Sets `roundingModeIndependence` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,14 +286,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderSignedZeroInfNanPreserveFloat16` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSignedZeroInfNanPreserveFloat16(MemorySegment segment, long index) { return (int) VH_shaderSignedZeroInfNanPreserveFloat16.get(segment, 0L, index); }
+    public static int shaderSignedZeroInfNanPreserveFloat16(MemorySegment segment, long index) { return (int) VH_shaderSignedZeroInfNanPreserveFloat16.get().get(segment, 0L, index); }
     /// {@return `shaderSignedZeroInfNanPreserveFloat16`}
     public int shaderSignedZeroInfNanPreserveFloat16() { return shaderSignedZeroInfNanPreserveFloat16(this.segment(), 0L); }
     /// Sets `shaderSignedZeroInfNanPreserveFloat16` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSignedZeroInfNanPreserveFloat16(MemorySegment segment, long index, int value) { VH_shaderSignedZeroInfNanPreserveFloat16.set(segment, 0L, index, value); }
+    public static void shaderSignedZeroInfNanPreserveFloat16(MemorySegment segment, long index, int value) { VH_shaderSignedZeroInfNanPreserveFloat16.get().set(segment, 0L, index, value); }
     /// Sets `shaderSignedZeroInfNanPreserveFloat16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,14 +302,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderSignedZeroInfNanPreserveFloat32` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSignedZeroInfNanPreserveFloat32(MemorySegment segment, long index) { return (int) VH_shaderSignedZeroInfNanPreserveFloat32.get(segment, 0L, index); }
+    public static int shaderSignedZeroInfNanPreserveFloat32(MemorySegment segment, long index) { return (int) VH_shaderSignedZeroInfNanPreserveFloat32.get().get(segment, 0L, index); }
     /// {@return `shaderSignedZeroInfNanPreserveFloat32`}
     public int shaderSignedZeroInfNanPreserveFloat32() { return shaderSignedZeroInfNanPreserveFloat32(this.segment(), 0L); }
     /// Sets `shaderSignedZeroInfNanPreserveFloat32` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSignedZeroInfNanPreserveFloat32(MemorySegment segment, long index, int value) { VH_shaderSignedZeroInfNanPreserveFloat32.set(segment, 0L, index, value); }
+    public static void shaderSignedZeroInfNanPreserveFloat32(MemorySegment segment, long index, int value) { VH_shaderSignedZeroInfNanPreserveFloat32.get().set(segment, 0L, index, value); }
     /// Sets `shaderSignedZeroInfNanPreserveFloat32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,14 +318,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderSignedZeroInfNanPreserveFloat64` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSignedZeroInfNanPreserveFloat64(MemorySegment segment, long index) { return (int) VH_shaderSignedZeroInfNanPreserveFloat64.get(segment, 0L, index); }
+    public static int shaderSignedZeroInfNanPreserveFloat64(MemorySegment segment, long index) { return (int) VH_shaderSignedZeroInfNanPreserveFloat64.get().get(segment, 0L, index); }
     /// {@return `shaderSignedZeroInfNanPreserveFloat64`}
     public int shaderSignedZeroInfNanPreserveFloat64() { return shaderSignedZeroInfNanPreserveFloat64(this.segment(), 0L); }
     /// Sets `shaderSignedZeroInfNanPreserveFloat64` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSignedZeroInfNanPreserveFloat64(MemorySegment segment, long index, int value) { VH_shaderSignedZeroInfNanPreserveFloat64.set(segment, 0L, index, value); }
+    public static void shaderSignedZeroInfNanPreserveFloat64(MemorySegment segment, long index, int value) { VH_shaderSignedZeroInfNanPreserveFloat64.get().set(segment, 0L, index, value); }
     /// Sets `shaderSignedZeroInfNanPreserveFloat64` with the given value.
     /// @param value the value
     /// @return `this`
@@ -334,14 +334,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderDenormPreserveFloat16` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderDenormPreserveFloat16(MemorySegment segment, long index) { return (int) VH_shaderDenormPreserveFloat16.get(segment, 0L, index); }
+    public static int shaderDenormPreserveFloat16(MemorySegment segment, long index) { return (int) VH_shaderDenormPreserveFloat16.get().get(segment, 0L, index); }
     /// {@return `shaderDenormPreserveFloat16`}
     public int shaderDenormPreserveFloat16() { return shaderDenormPreserveFloat16(this.segment(), 0L); }
     /// Sets `shaderDenormPreserveFloat16` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderDenormPreserveFloat16(MemorySegment segment, long index, int value) { VH_shaderDenormPreserveFloat16.set(segment, 0L, index, value); }
+    public static void shaderDenormPreserveFloat16(MemorySegment segment, long index, int value) { VH_shaderDenormPreserveFloat16.get().set(segment, 0L, index, value); }
     /// Sets `shaderDenormPreserveFloat16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -350,14 +350,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderDenormPreserveFloat32` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderDenormPreserveFloat32(MemorySegment segment, long index) { return (int) VH_shaderDenormPreserveFloat32.get(segment, 0L, index); }
+    public static int shaderDenormPreserveFloat32(MemorySegment segment, long index) { return (int) VH_shaderDenormPreserveFloat32.get().get(segment, 0L, index); }
     /// {@return `shaderDenormPreserveFloat32`}
     public int shaderDenormPreserveFloat32() { return shaderDenormPreserveFloat32(this.segment(), 0L); }
     /// Sets `shaderDenormPreserveFloat32` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderDenormPreserveFloat32(MemorySegment segment, long index, int value) { VH_shaderDenormPreserveFloat32.set(segment, 0L, index, value); }
+    public static void shaderDenormPreserveFloat32(MemorySegment segment, long index, int value) { VH_shaderDenormPreserveFloat32.get().set(segment, 0L, index, value); }
     /// Sets `shaderDenormPreserveFloat32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,14 +366,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderDenormPreserveFloat64` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderDenormPreserveFloat64(MemorySegment segment, long index) { return (int) VH_shaderDenormPreserveFloat64.get(segment, 0L, index); }
+    public static int shaderDenormPreserveFloat64(MemorySegment segment, long index) { return (int) VH_shaderDenormPreserveFloat64.get().get(segment, 0L, index); }
     /// {@return `shaderDenormPreserveFloat64`}
     public int shaderDenormPreserveFloat64() { return shaderDenormPreserveFloat64(this.segment(), 0L); }
     /// Sets `shaderDenormPreserveFloat64` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderDenormPreserveFloat64(MemorySegment segment, long index, int value) { VH_shaderDenormPreserveFloat64.set(segment, 0L, index, value); }
+    public static void shaderDenormPreserveFloat64(MemorySegment segment, long index, int value) { VH_shaderDenormPreserveFloat64.get().set(segment, 0L, index, value); }
     /// Sets `shaderDenormPreserveFloat64` with the given value.
     /// @param value the value
     /// @return `this`
@@ -382,14 +382,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderDenormFlushToZeroFloat16` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderDenormFlushToZeroFloat16(MemorySegment segment, long index) { return (int) VH_shaderDenormFlushToZeroFloat16.get(segment, 0L, index); }
+    public static int shaderDenormFlushToZeroFloat16(MemorySegment segment, long index) { return (int) VH_shaderDenormFlushToZeroFloat16.get().get(segment, 0L, index); }
     /// {@return `shaderDenormFlushToZeroFloat16`}
     public int shaderDenormFlushToZeroFloat16() { return shaderDenormFlushToZeroFloat16(this.segment(), 0L); }
     /// Sets `shaderDenormFlushToZeroFloat16` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderDenormFlushToZeroFloat16(MemorySegment segment, long index, int value) { VH_shaderDenormFlushToZeroFloat16.set(segment, 0L, index, value); }
+    public static void shaderDenormFlushToZeroFloat16(MemorySegment segment, long index, int value) { VH_shaderDenormFlushToZeroFloat16.get().set(segment, 0L, index, value); }
     /// Sets `shaderDenormFlushToZeroFloat16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -398,14 +398,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderDenormFlushToZeroFloat32` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderDenormFlushToZeroFloat32(MemorySegment segment, long index) { return (int) VH_shaderDenormFlushToZeroFloat32.get(segment, 0L, index); }
+    public static int shaderDenormFlushToZeroFloat32(MemorySegment segment, long index) { return (int) VH_shaderDenormFlushToZeroFloat32.get().get(segment, 0L, index); }
     /// {@return `shaderDenormFlushToZeroFloat32`}
     public int shaderDenormFlushToZeroFloat32() { return shaderDenormFlushToZeroFloat32(this.segment(), 0L); }
     /// Sets `shaderDenormFlushToZeroFloat32` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderDenormFlushToZeroFloat32(MemorySegment segment, long index, int value) { VH_shaderDenormFlushToZeroFloat32.set(segment, 0L, index, value); }
+    public static void shaderDenormFlushToZeroFloat32(MemorySegment segment, long index, int value) { VH_shaderDenormFlushToZeroFloat32.get().set(segment, 0L, index, value); }
     /// Sets `shaderDenormFlushToZeroFloat32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -414,14 +414,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderDenormFlushToZeroFloat64` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderDenormFlushToZeroFloat64(MemorySegment segment, long index) { return (int) VH_shaderDenormFlushToZeroFloat64.get(segment, 0L, index); }
+    public static int shaderDenormFlushToZeroFloat64(MemorySegment segment, long index) { return (int) VH_shaderDenormFlushToZeroFloat64.get().get(segment, 0L, index); }
     /// {@return `shaderDenormFlushToZeroFloat64`}
     public int shaderDenormFlushToZeroFloat64() { return shaderDenormFlushToZeroFloat64(this.segment(), 0L); }
     /// Sets `shaderDenormFlushToZeroFloat64` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderDenormFlushToZeroFloat64(MemorySegment segment, long index, int value) { VH_shaderDenormFlushToZeroFloat64.set(segment, 0L, index, value); }
+    public static void shaderDenormFlushToZeroFloat64(MemorySegment segment, long index, int value) { VH_shaderDenormFlushToZeroFloat64.get().set(segment, 0L, index, value); }
     /// Sets `shaderDenormFlushToZeroFloat64` with the given value.
     /// @param value the value
     /// @return `this`
@@ -430,14 +430,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderRoundingModeRTEFloat16` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderRoundingModeRTEFloat16(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTEFloat16.get(segment, 0L, index); }
+    public static int shaderRoundingModeRTEFloat16(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTEFloat16.get().get(segment, 0L, index); }
     /// {@return `shaderRoundingModeRTEFloat16`}
     public int shaderRoundingModeRTEFloat16() { return shaderRoundingModeRTEFloat16(this.segment(), 0L); }
     /// Sets `shaderRoundingModeRTEFloat16` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderRoundingModeRTEFloat16(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTEFloat16.set(segment, 0L, index, value); }
+    public static void shaderRoundingModeRTEFloat16(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTEFloat16.get().set(segment, 0L, index, value); }
     /// Sets `shaderRoundingModeRTEFloat16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -446,14 +446,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderRoundingModeRTEFloat32` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderRoundingModeRTEFloat32(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTEFloat32.get(segment, 0L, index); }
+    public static int shaderRoundingModeRTEFloat32(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTEFloat32.get().get(segment, 0L, index); }
     /// {@return `shaderRoundingModeRTEFloat32`}
     public int shaderRoundingModeRTEFloat32() { return shaderRoundingModeRTEFloat32(this.segment(), 0L); }
     /// Sets `shaderRoundingModeRTEFloat32` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderRoundingModeRTEFloat32(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTEFloat32.set(segment, 0L, index, value); }
+    public static void shaderRoundingModeRTEFloat32(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTEFloat32.get().set(segment, 0L, index, value); }
     /// Sets `shaderRoundingModeRTEFloat32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -462,14 +462,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderRoundingModeRTEFloat64` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderRoundingModeRTEFloat64(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTEFloat64.get(segment, 0L, index); }
+    public static int shaderRoundingModeRTEFloat64(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTEFloat64.get().get(segment, 0L, index); }
     /// {@return `shaderRoundingModeRTEFloat64`}
     public int shaderRoundingModeRTEFloat64() { return shaderRoundingModeRTEFloat64(this.segment(), 0L); }
     /// Sets `shaderRoundingModeRTEFloat64` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderRoundingModeRTEFloat64(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTEFloat64.set(segment, 0L, index, value); }
+    public static void shaderRoundingModeRTEFloat64(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTEFloat64.get().set(segment, 0L, index, value); }
     /// Sets `shaderRoundingModeRTEFloat64` with the given value.
     /// @param value the value
     /// @return `this`
@@ -478,14 +478,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderRoundingModeRTZFloat16` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderRoundingModeRTZFloat16(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTZFloat16.get(segment, 0L, index); }
+    public static int shaderRoundingModeRTZFloat16(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTZFloat16.get().get(segment, 0L, index); }
     /// {@return `shaderRoundingModeRTZFloat16`}
     public int shaderRoundingModeRTZFloat16() { return shaderRoundingModeRTZFloat16(this.segment(), 0L); }
     /// Sets `shaderRoundingModeRTZFloat16` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderRoundingModeRTZFloat16(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTZFloat16.set(segment, 0L, index, value); }
+    public static void shaderRoundingModeRTZFloat16(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTZFloat16.get().set(segment, 0L, index, value); }
     /// Sets `shaderRoundingModeRTZFloat16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -494,14 +494,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderRoundingModeRTZFloat32` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderRoundingModeRTZFloat32(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTZFloat32.get(segment, 0L, index); }
+    public static int shaderRoundingModeRTZFloat32(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTZFloat32.get().get(segment, 0L, index); }
     /// {@return `shaderRoundingModeRTZFloat32`}
     public int shaderRoundingModeRTZFloat32() { return shaderRoundingModeRTZFloat32(this.segment(), 0L); }
     /// Sets `shaderRoundingModeRTZFloat32` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderRoundingModeRTZFloat32(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTZFloat32.set(segment, 0L, index, value); }
+    public static void shaderRoundingModeRTZFloat32(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTZFloat32.get().set(segment, 0L, index, value); }
     /// Sets `shaderRoundingModeRTZFloat32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -510,14 +510,14 @@ public final class VkPhysicalDeviceFloatControlsPropertiesKHR extends GroupType 
     /// {@return `shaderRoundingModeRTZFloat64` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderRoundingModeRTZFloat64(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTZFloat64.get(segment, 0L, index); }
+    public static int shaderRoundingModeRTZFloat64(MemorySegment segment, long index) { return (int) VH_shaderRoundingModeRTZFloat64.get().get(segment, 0L, index); }
     /// {@return `shaderRoundingModeRTZFloat64`}
     public int shaderRoundingModeRTZFloat64() { return shaderRoundingModeRTZFloat64(this.segment(), 0L); }
     /// Sets `shaderRoundingModeRTZFloat64` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderRoundingModeRTZFloat64(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTZFloat64.set(segment, 0L, index, value); }
+    public static void shaderRoundingModeRTZFloat64(MemorySegment segment, long index, int value) { VH_shaderRoundingModeRTZFloat64.get().set(segment, 0L, index, value); }
     /// Sets `shaderRoundingModeRTZFloat64` with the given value.
     /// @param value the value
     /// @return `this`

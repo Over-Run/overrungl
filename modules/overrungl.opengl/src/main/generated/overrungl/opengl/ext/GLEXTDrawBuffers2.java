@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,12 +11,12 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLEXTDrawBuffers2 {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glColorMaskIndexedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glGetBooleanIndexedvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetIntegerIndexedvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glEnableIndexedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDisableIndexedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glIsEnabledIndexedEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glColorMaskIndexedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glGetBooleanIndexedvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetIntegerIndexedvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glEnableIndexedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDisableIndexedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glIsEnabledIndexedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glColorMaskIndexedEXT;
         public final MemorySegment PFN_glGetBooleanIndexedvEXT;
         public final MemorySegment PFN_glGetIntegerIndexedvEXT;
@@ -43,7 +44,7 @@ public final class GLEXTDrawBuffers2 {
     public void ColorMaskIndexedEXT(int index, boolean r, boolean g, boolean b, boolean a) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorMaskIndexedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glColorMaskIndexedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColorMaskIndexedEXT", index, r, g, b, a); }
-        Handles.MH_glColorMaskIndexedEXT.invokeExact(handles.PFN_glColorMaskIndexedEXT, index, ((r) ? (byte)1 : (byte)0), ((g) ? (byte)1 : (byte)0), ((b) ? (byte)1 : (byte)0), ((a) ? (byte)1 : (byte)0)); }
+        Handles.MH_glColorMaskIndexedEXT.get().invokeExact(handles.PFN_glColorMaskIndexedEXT, index, ((r) ? (byte)1 : (byte)0), ((g) ? (byte)1 : (byte)0), ((b) ? (byte)1 : (byte)0), ((a) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in ColorMaskIndexedEXT", e); }
     }
 
@@ -54,7 +55,7 @@ public final class GLEXTDrawBuffers2 {
     public void GetBooleanIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBooleanIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetBooleanIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetBooleanIndexedvEXT", target, index, data); }
-        Handles.MH_glGetBooleanIndexedvEXT.invokeExact(handles.PFN_glGetBooleanIndexedvEXT, target, index, data); }
+        Handles.MH_glGetBooleanIndexedvEXT.get().invokeExact(handles.PFN_glGetBooleanIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetBooleanIndexedvEXT", e); }
     }
 
@@ -65,7 +66,7 @@ public final class GLEXTDrawBuffers2 {
     public void GetIntegerIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetIntegerIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetIntegerIndexedvEXT", target, index, data); }
-        Handles.MH_glGetIntegerIndexedvEXT.invokeExact(handles.PFN_glGetIntegerIndexedvEXT, target, index, data); }
+        Handles.MH_glGetIntegerIndexedvEXT.get().invokeExact(handles.PFN_glGetIntegerIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetIntegerIndexedvEXT", e); }
     }
 
@@ -76,7 +77,7 @@ public final class GLEXTDrawBuffers2 {
     public void EnableIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableIndexedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glEnableIndexedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEnableIndexedEXT", target, index); }
-        Handles.MH_glEnableIndexedEXT.invokeExact(handles.PFN_glEnableIndexedEXT, target, index); }
+        Handles.MH_glEnableIndexedEXT.get().invokeExact(handles.PFN_glEnableIndexedEXT, target, index); }
         catch (Throwable e) { throw new RuntimeException("error in EnableIndexedEXT", e); }
     }
 
@@ -87,7 +88,7 @@ public final class GLEXTDrawBuffers2 {
     public void DisableIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableIndexedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDisableIndexedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDisableIndexedEXT", target, index); }
-        Handles.MH_glDisableIndexedEXT.invokeExact(handles.PFN_glDisableIndexedEXT, target, index); }
+        Handles.MH_glDisableIndexedEXT.get().invokeExact(handles.PFN_glDisableIndexedEXT, target, index); }
         catch (Throwable e) { throw new RuntimeException("error in DisableIndexedEXT", e); }
     }
 
@@ -98,7 +99,7 @@ public final class GLEXTDrawBuffers2 {
     public boolean IsEnabledIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsEnabledIndexedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glIsEnabledIndexedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIsEnabledIndexedEXT", target, index); }
-        return (((byte) Handles.MH_glIsEnabledIndexedEXT.invokeExact(handles.PFN_glIsEnabledIndexedEXT, target, index)) != 0); }
+        return (((byte) Handles.MH_glIsEnabledIndexedEXT.get().invokeExact(handles.PFN_glIsEnabledIndexedEXT, target, index)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsEnabledIndexedEXT", e); }
     }
 

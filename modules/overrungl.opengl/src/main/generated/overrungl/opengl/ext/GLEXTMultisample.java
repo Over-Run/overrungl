@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -27,8 +28,8 @@ public final class GLEXTMultisample {
     public static final int GL_MULTISAMPLE_BIT_EXT = 0x20000000;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glSampleMaskEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glSamplePatternEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glSampleMaskEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glSamplePatternEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glSampleMaskEXT;
         public final MemorySegment PFN_glSamplePatternEXT;
         private Handles(GLLoadFunc func) {
@@ -48,7 +49,7 @@ public final class GLEXTMultisample {
     public void SampleMaskEXT(float value, boolean invert) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSampleMaskEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSampleMaskEXT", value, invert); }
-        Handles.MH_glSampleMaskEXT.invokeExact(handles.PFN_glSampleMaskEXT, value, ((invert) ? (byte)1 : (byte)0)); }
+        Handles.MH_glSampleMaskEXT.get().invokeExact(handles.PFN_glSampleMaskEXT, value, ((invert) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in SampleMaskEXT", e); }
     }
 
@@ -59,7 +60,7 @@ public final class GLEXTMultisample {
     public void SamplePatternEXT(int pattern) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSamplePatternEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSamplePatternEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSamplePatternEXT", pattern); }
-        Handles.MH_glSamplePatternEXT.invokeExact(handles.PFN_glSamplePatternEXT, pattern); }
+        Handles.MH_glSamplePatternEXT.get().invokeExact(handles.PFN_glSamplePatternEXT, pattern); }
         catch (Throwable e) { throw new RuntimeException("error in SamplePatternEXT", e); }
     }
 

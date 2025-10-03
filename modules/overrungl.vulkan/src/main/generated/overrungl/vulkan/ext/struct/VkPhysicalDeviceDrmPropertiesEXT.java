@@ -41,49 +41,49 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `hasPrimary`.
     public static final long OFFSET_hasPrimary = LAYOUT.byteOffset(PathElement.groupElement("hasPrimary"));
     /// The memory layout of `hasPrimary`.
     public static final MemoryLayout LAYOUT_hasPrimary = LAYOUT.select(PathElement.groupElement("hasPrimary"));
     /// The [VarHandle] of `hasPrimary` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hasPrimary = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hasPrimary"));
+    public static final Supplier<VarHandle> VH_hasPrimary = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hasPrimary")));
     /// The byte offset of `hasRender`.
     public static final long OFFSET_hasRender = LAYOUT.byteOffset(PathElement.groupElement("hasRender"));
     /// The memory layout of `hasRender`.
     public static final MemoryLayout LAYOUT_hasRender = LAYOUT.select(PathElement.groupElement("hasRender"));
     /// The [VarHandle] of `hasRender` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hasRender = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hasRender"));
+    public static final Supplier<VarHandle> VH_hasRender = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hasRender")));
     /// The byte offset of `primaryMajor`.
     public static final long OFFSET_primaryMajor = LAYOUT.byteOffset(PathElement.groupElement("primaryMajor"));
     /// The memory layout of `primaryMajor`.
     public static final MemoryLayout LAYOUT_primaryMajor = LAYOUT.select(PathElement.groupElement("primaryMajor"));
     /// The [VarHandle] of `primaryMajor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_primaryMajor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primaryMajor"));
+    public static final Supplier<VarHandle> VH_primaryMajor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("primaryMajor")));
     /// The byte offset of `primaryMinor`.
     public static final long OFFSET_primaryMinor = LAYOUT.byteOffset(PathElement.groupElement("primaryMinor"));
     /// The memory layout of `primaryMinor`.
     public static final MemoryLayout LAYOUT_primaryMinor = LAYOUT.select(PathElement.groupElement("primaryMinor"));
     /// The [VarHandle] of `primaryMinor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_primaryMinor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primaryMinor"));
+    public static final Supplier<VarHandle> VH_primaryMinor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("primaryMinor")));
     /// The byte offset of `renderMajor`.
     public static final long OFFSET_renderMajor = LAYOUT.byteOffset(PathElement.groupElement("renderMajor"));
     /// The memory layout of `renderMajor`.
     public static final MemoryLayout LAYOUT_renderMajor = LAYOUT.select(PathElement.groupElement("renderMajor"));
     /// The [VarHandle] of `renderMajor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_renderMajor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderMajor"));
+    public static final Supplier<VarHandle> VH_renderMajor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderMajor")));
     /// The byte offset of `renderMinor`.
     public static final long OFFSET_renderMinor = LAYOUT.byteOffset(PathElement.groupElement("renderMinor"));
     /// The memory layout of `renderMinor`.
     public static final MemoryLayout LAYOUT_renderMinor = LAYOUT.select(PathElement.groupElement("renderMinor"));
     /// The [VarHandle] of `renderMinor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_renderMinor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderMinor"));
+    public static final Supplier<VarHandle> VH_renderMinor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderMinor")));
 
     /// Creates `VkPhysicalDeviceDrmPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// {@return `hasPrimary` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int hasPrimary(MemorySegment segment, long index) { return (int) VH_hasPrimary.get(segment, 0L, index); }
+    public static int hasPrimary(MemorySegment segment, long index) { return (int) VH_hasPrimary.get().get(segment, 0L, index); }
     /// {@return `hasPrimary`}
     public int hasPrimary() { return hasPrimary(this.segment(), 0L); }
     /// Sets `hasPrimary` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void hasPrimary(MemorySegment segment, long index, int value) { VH_hasPrimary.set(segment, 0L, index, value); }
+    public static void hasPrimary(MemorySegment segment, long index, int value) { VH_hasPrimary.get().set(segment, 0L, index, value); }
     /// Sets `hasPrimary` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// {@return `hasRender` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int hasRender(MemorySegment segment, long index) { return (int) VH_hasRender.get(segment, 0L, index); }
+    public static int hasRender(MemorySegment segment, long index) { return (int) VH_hasRender.get().get(segment, 0L, index); }
     /// {@return `hasRender`}
     public int hasRender() { return hasRender(this.segment(), 0L); }
     /// Sets `hasRender` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void hasRender(MemorySegment segment, long index, int value) { VH_hasRender.set(segment, 0L, index, value); }
+    public static void hasRender(MemorySegment segment, long index, int value) { VH_hasRender.get().set(segment, 0L, index, value); }
     /// Sets `hasRender` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// {@return `primaryMajor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long primaryMajor(MemorySegment segment, long index) { return (long) VH_primaryMajor.get(segment, 0L, index); }
+    public static long primaryMajor(MemorySegment segment, long index) { return (long) VH_primaryMajor.get().get(segment, 0L, index); }
     /// {@return `primaryMajor`}
     public long primaryMajor() { return primaryMajor(this.segment(), 0L); }
     /// Sets `primaryMajor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void primaryMajor(MemorySegment segment, long index, long value) { VH_primaryMajor.set(segment, 0L, index, value); }
+    public static void primaryMajor(MemorySegment segment, long index, long value) { VH_primaryMajor.get().set(segment, 0L, index, value); }
     /// Sets `primaryMajor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// {@return `primaryMinor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long primaryMinor(MemorySegment segment, long index) { return (long) VH_primaryMinor.get(segment, 0L, index); }
+    public static long primaryMinor(MemorySegment segment, long index) { return (long) VH_primaryMinor.get().get(segment, 0L, index); }
     /// {@return `primaryMinor`}
     public long primaryMinor() { return primaryMinor(this.segment(), 0L); }
     /// Sets `primaryMinor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void primaryMinor(MemorySegment segment, long index, long value) { VH_primaryMinor.set(segment, 0L, index, value); }
+    public static void primaryMinor(MemorySegment segment, long index, long value) { VH_primaryMinor.get().set(segment, 0L, index, value); }
     /// Sets `primaryMinor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// {@return `renderMajor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long renderMajor(MemorySegment segment, long index) { return (long) VH_renderMajor.get(segment, 0L, index); }
+    public static long renderMajor(MemorySegment segment, long index) { return (long) VH_renderMajor.get().get(segment, 0L, index); }
     /// {@return `renderMajor`}
     public long renderMajor() { return renderMajor(this.segment(), 0L); }
     /// Sets `renderMajor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void renderMajor(MemorySegment segment, long index, long value) { VH_renderMajor.set(segment, 0L, index, value); }
+    public static void renderMajor(MemorySegment segment, long index, long value) { VH_renderMajor.get().set(segment, 0L, index, value); }
     /// Sets `renderMajor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// {@return `renderMinor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long renderMinor(MemorySegment segment, long index) { return (long) VH_renderMinor.get(segment, 0L, index); }
+    public static long renderMinor(MemorySegment segment, long index) { return (long) VH_renderMinor.get().get(segment, 0L, index); }
     /// {@return `renderMinor`}
     public long renderMinor() { return renderMinor(this.segment(), 0L); }
     /// Sets `renderMinor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void renderMinor(MemorySegment segment, long index, long value) { VH_renderMinor.set(segment, 0L, index, value); }
+    public static void renderMinor(MemorySegment segment, long index, long value) { VH_renderMinor.get().set(segment, 0L, index, value); }
     /// Sets `renderMinor` with the given value.
     /// @param value the value
     /// @return `this`

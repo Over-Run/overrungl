@@ -31,19 +31,19 @@ public final class VmaDeviceMemoryCallbacks extends GroupType {
     /// The memory layout of `pfnAllocate`.
     public static final MemoryLayout LAYOUT_pfnAllocate = LAYOUT.select(PathElement.groupElement("pfnAllocate"));
     /// The [VarHandle] of `pfnAllocate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pfnAllocate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnAllocate"));
+    public static final Supplier<VarHandle> VH_pfnAllocate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnAllocate")));
     /// The byte offset of `pfnFree`.
     public static final long OFFSET_pfnFree = LAYOUT.byteOffset(PathElement.groupElement("pfnFree"));
     /// The memory layout of `pfnFree`.
     public static final MemoryLayout LAYOUT_pfnFree = LAYOUT.select(PathElement.groupElement("pfnFree"));
     /// The [VarHandle] of `pfnFree` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pfnFree = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnFree"));
+    public static final Supplier<VarHandle> VH_pfnFree = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnFree")));
     /// The byte offset of `pUserData`.
     public static final long OFFSET_pUserData = LAYOUT.byteOffset(PathElement.groupElement("pUserData"));
     /// The memory layout of `pUserData`.
     public static final MemoryLayout LAYOUT_pUserData = LAYOUT.select(PathElement.groupElement("pUserData"));
     /// The [VarHandle] of `pUserData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pUserData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pUserData"));
+    public static final Supplier<VarHandle> VH_pUserData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pUserData")));
 
     /// Creates `VmaDeviceMemoryCallbacks` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VmaDeviceMemoryCallbacks extends GroupType {
     /// {@return `pfnAllocate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pfnAllocate(MemorySegment segment, long index) { return (MemorySegment) VH_pfnAllocate.get(segment, 0L, index); }
+    public static MemorySegment pfnAllocate(MemorySegment segment, long index) { return (MemorySegment) VH_pfnAllocate.get().get(segment, 0L, index); }
     /// {@return `pfnAllocate`}
     public MemorySegment pfnAllocate() { return pfnAllocate(this.segment(), 0L); }
     /// Sets `pfnAllocate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pfnAllocate(MemorySegment segment, long index, MemorySegment value) { VH_pfnAllocate.set(segment, 0L, index, value); }
+    public static void pfnAllocate(MemorySegment segment, long index, MemorySegment value) { VH_pfnAllocate.get().set(segment, 0L, index, value); }
     /// Sets `pfnAllocate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VmaDeviceMemoryCallbacks extends GroupType {
     /// {@return `pfnFree` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pfnFree(MemorySegment segment, long index) { return (MemorySegment) VH_pfnFree.get(segment, 0L, index); }
+    public static MemorySegment pfnFree(MemorySegment segment, long index) { return (MemorySegment) VH_pfnFree.get().get(segment, 0L, index); }
     /// {@return `pfnFree`}
     public MemorySegment pfnFree() { return pfnFree(this.segment(), 0L); }
     /// Sets `pfnFree` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pfnFree(MemorySegment segment, long index, MemorySegment value) { VH_pfnFree.set(segment, 0L, index, value); }
+    public static void pfnFree(MemorySegment segment, long index, MemorySegment value) { VH_pfnFree.get().set(segment, 0L, index, value); }
     /// Sets `pfnFree` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VmaDeviceMemoryCallbacks extends GroupType {
     /// {@return `pUserData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pUserData(MemorySegment segment, long index) { return (MemorySegment) VH_pUserData.get(segment, 0L, index); }
+    public static MemorySegment pUserData(MemorySegment segment, long index) { return (MemorySegment) VH_pUserData.get().get(segment, 0L, index); }
     /// {@return `pUserData`}
     public MemorySegment pUserData() { return pUserData(this.segment(), 0L); }
     /// Sets `pUserData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pUserData(MemorySegment segment, long index, MemorySegment value) { VH_pUserData.set(segment, 0L, index, value); }
+    public static void pUserData(MemorySegment segment, long index, MemorySegment value) { VH_pUserData.get().set(segment, 0L, index, value); }
     /// Sets `pUserData` with the given value.
     /// @param value the value
     /// @return `this`

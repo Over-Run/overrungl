@@ -29,7 +29,7 @@ public final class VkSubpassSampleLocationsEXT extends GroupType {
     /// The memory layout of `subpassIndex`.
     public static final MemoryLayout LAYOUT_subpassIndex = LAYOUT.select(PathElement.groupElement("subpassIndex"));
     /// The [VarHandle] of `subpassIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subpassIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpassIndex"));
+    public static final Supplier<VarHandle> VH_subpassIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpassIndex")));
     /// The byte offset of `sampleLocationsInfo`.
     public static final long OFFSET_sampleLocationsInfo = LAYOUT.byteOffset(PathElement.groupElement("sampleLocationsInfo"));
     /// The memory layout of `sampleLocationsInfo`.
@@ -84,14 +84,14 @@ public final class VkSubpassSampleLocationsEXT extends GroupType {
     /// {@return `subpassIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int subpassIndex(MemorySegment segment, long index) { return (int) VH_subpassIndex.get(segment, 0L, index); }
+    public static int subpassIndex(MemorySegment segment, long index) { return (int) VH_subpassIndex.get().get(segment, 0L, index); }
     /// {@return `subpassIndex`}
     public int subpassIndex() { return subpassIndex(this.segment(), 0L); }
     /// Sets `subpassIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subpassIndex(MemorySegment segment, long index, int value) { VH_subpassIndex.set(segment, 0L, index, value); }
+    public static void subpassIndex(MemorySegment segment, long index, int value) { VH_subpassIndex.get().set(segment, 0L, index, value); }
     /// Sets `subpassIndex` with the given value.
     /// @param value the value
     /// @return `this`

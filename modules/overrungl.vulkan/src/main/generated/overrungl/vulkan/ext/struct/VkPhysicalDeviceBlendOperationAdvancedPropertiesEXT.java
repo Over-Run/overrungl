@@ -41,49 +41,49 @@ public final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends G
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `advancedBlendMaxColorAttachments`.
     public static final long OFFSET_advancedBlendMaxColorAttachments = LAYOUT.byteOffset(PathElement.groupElement("advancedBlendMaxColorAttachments"));
     /// The memory layout of `advancedBlendMaxColorAttachments`.
     public static final MemoryLayout LAYOUT_advancedBlendMaxColorAttachments = LAYOUT.select(PathElement.groupElement("advancedBlendMaxColorAttachments"));
     /// The [VarHandle] of `advancedBlendMaxColorAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_advancedBlendMaxColorAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendMaxColorAttachments"));
+    public static final Supplier<VarHandle> VH_advancedBlendMaxColorAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendMaxColorAttachments")));
     /// The byte offset of `advancedBlendIndependentBlend`.
     public static final long OFFSET_advancedBlendIndependentBlend = LAYOUT.byteOffset(PathElement.groupElement("advancedBlendIndependentBlend"));
     /// The memory layout of `advancedBlendIndependentBlend`.
     public static final MemoryLayout LAYOUT_advancedBlendIndependentBlend = LAYOUT.select(PathElement.groupElement("advancedBlendIndependentBlend"));
     /// The [VarHandle] of `advancedBlendIndependentBlend` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_advancedBlendIndependentBlend = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendIndependentBlend"));
+    public static final Supplier<VarHandle> VH_advancedBlendIndependentBlend = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendIndependentBlend")));
     /// The byte offset of `advancedBlendNonPremultipliedSrcColor`.
     public static final long OFFSET_advancedBlendNonPremultipliedSrcColor = LAYOUT.byteOffset(PathElement.groupElement("advancedBlendNonPremultipliedSrcColor"));
     /// The memory layout of `advancedBlendNonPremultipliedSrcColor`.
     public static final MemoryLayout LAYOUT_advancedBlendNonPremultipliedSrcColor = LAYOUT.select(PathElement.groupElement("advancedBlendNonPremultipliedSrcColor"));
     /// The [VarHandle] of `advancedBlendNonPremultipliedSrcColor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_advancedBlendNonPremultipliedSrcColor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendNonPremultipliedSrcColor"));
+    public static final Supplier<VarHandle> VH_advancedBlendNonPremultipliedSrcColor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendNonPremultipliedSrcColor")));
     /// The byte offset of `advancedBlendNonPremultipliedDstColor`.
     public static final long OFFSET_advancedBlendNonPremultipliedDstColor = LAYOUT.byteOffset(PathElement.groupElement("advancedBlendNonPremultipliedDstColor"));
     /// The memory layout of `advancedBlendNonPremultipliedDstColor`.
     public static final MemoryLayout LAYOUT_advancedBlendNonPremultipliedDstColor = LAYOUT.select(PathElement.groupElement("advancedBlendNonPremultipliedDstColor"));
     /// The [VarHandle] of `advancedBlendNonPremultipliedDstColor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_advancedBlendNonPremultipliedDstColor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendNonPremultipliedDstColor"));
+    public static final Supplier<VarHandle> VH_advancedBlendNonPremultipliedDstColor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendNonPremultipliedDstColor")));
     /// The byte offset of `advancedBlendCorrelatedOverlap`.
     public static final long OFFSET_advancedBlendCorrelatedOverlap = LAYOUT.byteOffset(PathElement.groupElement("advancedBlendCorrelatedOverlap"));
     /// The memory layout of `advancedBlendCorrelatedOverlap`.
     public static final MemoryLayout LAYOUT_advancedBlendCorrelatedOverlap = LAYOUT.select(PathElement.groupElement("advancedBlendCorrelatedOverlap"));
     /// The [VarHandle] of `advancedBlendCorrelatedOverlap` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_advancedBlendCorrelatedOverlap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendCorrelatedOverlap"));
+    public static final Supplier<VarHandle> VH_advancedBlendCorrelatedOverlap = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendCorrelatedOverlap")));
     /// The byte offset of `advancedBlendAllOperations`.
     public static final long OFFSET_advancedBlendAllOperations = LAYOUT.byteOffset(PathElement.groupElement("advancedBlendAllOperations"));
     /// The memory layout of `advancedBlendAllOperations`.
     public static final MemoryLayout LAYOUT_advancedBlendAllOperations = LAYOUT.select(PathElement.groupElement("advancedBlendAllOperations"));
     /// The [VarHandle] of `advancedBlendAllOperations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_advancedBlendAllOperations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendAllOperations"));
+    public static final Supplier<VarHandle> VH_advancedBlendAllOperations = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendAllOperations")));
 
     /// Creates `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends G
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends G
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends G
     /// {@return `advancedBlendMaxColorAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int advancedBlendMaxColorAttachments(MemorySegment segment, long index) { return (int) VH_advancedBlendMaxColorAttachments.get(segment, 0L, index); }
+    public static int advancedBlendMaxColorAttachments(MemorySegment segment, long index) { return (int) VH_advancedBlendMaxColorAttachments.get().get(segment, 0L, index); }
     /// {@return `advancedBlendMaxColorAttachments`}
     public int advancedBlendMaxColorAttachments() { return advancedBlendMaxColorAttachments(this.segment(), 0L); }
     /// Sets `advancedBlendMaxColorAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void advancedBlendMaxColorAttachments(MemorySegment segment, long index, int value) { VH_advancedBlendMaxColorAttachments.set(segment, 0L, index, value); }
+    public static void advancedBlendMaxColorAttachments(MemorySegment segment, long index, int value) { VH_advancedBlendMaxColorAttachments.get().set(segment, 0L, index, value); }
     /// Sets `advancedBlendMaxColorAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends G
     /// {@return `advancedBlendIndependentBlend` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int advancedBlendIndependentBlend(MemorySegment segment, long index) { return (int) VH_advancedBlendIndependentBlend.get(segment, 0L, index); }
+    public static int advancedBlendIndependentBlend(MemorySegment segment, long index) { return (int) VH_advancedBlendIndependentBlend.get().get(segment, 0L, index); }
     /// {@return `advancedBlendIndependentBlend`}
     public int advancedBlendIndependentBlend() { return advancedBlendIndependentBlend(this.segment(), 0L); }
     /// Sets `advancedBlendIndependentBlend` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void advancedBlendIndependentBlend(MemorySegment segment, long index, int value) { VH_advancedBlendIndependentBlend.set(segment, 0L, index, value); }
+    public static void advancedBlendIndependentBlend(MemorySegment segment, long index, int value) { VH_advancedBlendIndependentBlend.get().set(segment, 0L, index, value); }
     /// Sets `advancedBlendIndependentBlend` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends G
     /// {@return `advancedBlendNonPremultipliedSrcColor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int advancedBlendNonPremultipliedSrcColor(MemorySegment segment, long index) { return (int) VH_advancedBlendNonPremultipliedSrcColor.get(segment, 0L, index); }
+    public static int advancedBlendNonPremultipliedSrcColor(MemorySegment segment, long index) { return (int) VH_advancedBlendNonPremultipliedSrcColor.get().get(segment, 0L, index); }
     /// {@return `advancedBlendNonPremultipliedSrcColor`}
     public int advancedBlendNonPremultipliedSrcColor() { return advancedBlendNonPremultipliedSrcColor(this.segment(), 0L); }
     /// Sets `advancedBlendNonPremultipliedSrcColor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void advancedBlendNonPremultipliedSrcColor(MemorySegment segment, long index, int value) { VH_advancedBlendNonPremultipliedSrcColor.set(segment, 0L, index, value); }
+    public static void advancedBlendNonPremultipliedSrcColor(MemorySegment segment, long index, int value) { VH_advancedBlendNonPremultipliedSrcColor.get().set(segment, 0L, index, value); }
     /// Sets `advancedBlendNonPremultipliedSrcColor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends G
     /// {@return `advancedBlendNonPremultipliedDstColor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int advancedBlendNonPremultipliedDstColor(MemorySegment segment, long index) { return (int) VH_advancedBlendNonPremultipliedDstColor.get(segment, 0L, index); }
+    public static int advancedBlendNonPremultipliedDstColor(MemorySegment segment, long index) { return (int) VH_advancedBlendNonPremultipliedDstColor.get().get(segment, 0L, index); }
     /// {@return `advancedBlendNonPremultipliedDstColor`}
     public int advancedBlendNonPremultipliedDstColor() { return advancedBlendNonPremultipliedDstColor(this.segment(), 0L); }
     /// Sets `advancedBlendNonPremultipliedDstColor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void advancedBlendNonPremultipliedDstColor(MemorySegment segment, long index, int value) { VH_advancedBlendNonPremultipliedDstColor.set(segment, 0L, index, value); }
+    public static void advancedBlendNonPremultipliedDstColor(MemorySegment segment, long index, int value) { VH_advancedBlendNonPremultipliedDstColor.get().set(segment, 0L, index, value); }
     /// Sets `advancedBlendNonPremultipliedDstColor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends G
     /// {@return `advancedBlendCorrelatedOverlap` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int advancedBlendCorrelatedOverlap(MemorySegment segment, long index) { return (int) VH_advancedBlendCorrelatedOverlap.get(segment, 0L, index); }
+    public static int advancedBlendCorrelatedOverlap(MemorySegment segment, long index) { return (int) VH_advancedBlendCorrelatedOverlap.get().get(segment, 0L, index); }
     /// {@return `advancedBlendCorrelatedOverlap`}
     public int advancedBlendCorrelatedOverlap() { return advancedBlendCorrelatedOverlap(this.segment(), 0L); }
     /// Sets `advancedBlendCorrelatedOverlap` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void advancedBlendCorrelatedOverlap(MemorySegment segment, long index, int value) { VH_advancedBlendCorrelatedOverlap.set(segment, 0L, index, value); }
+    public static void advancedBlendCorrelatedOverlap(MemorySegment segment, long index, int value) { VH_advancedBlendCorrelatedOverlap.get().set(segment, 0L, index, value); }
     /// Sets `advancedBlendCorrelatedOverlap` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends G
     /// {@return `advancedBlendAllOperations` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int advancedBlendAllOperations(MemorySegment segment, long index) { return (int) VH_advancedBlendAllOperations.get(segment, 0L, index); }
+    public static int advancedBlendAllOperations(MemorySegment segment, long index) { return (int) VH_advancedBlendAllOperations.get().get(segment, 0L, index); }
     /// {@return `advancedBlendAllOperations`}
     public int advancedBlendAllOperations() { return advancedBlendAllOperations(this.segment(), 0L); }
     /// Sets `advancedBlendAllOperations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void advancedBlendAllOperations(MemorySegment segment, long index, int value) { VH_advancedBlendAllOperations.set(segment, 0L, index, value); }
+    public static void advancedBlendAllOperations(MemorySegment segment, long index, int value) { VH_advancedBlendAllOperations.get().set(segment, 0L, index, value); }
     /// Sets `advancedBlendAllOperations` with the given value.
     /// @param value the value
     /// @return `this`

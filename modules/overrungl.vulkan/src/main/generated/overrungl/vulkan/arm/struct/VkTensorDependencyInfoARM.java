@@ -33,25 +33,25 @@ public final class VkTensorDependencyInfoARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `tensorMemoryBarrierCount`.
     public static final long OFFSET_tensorMemoryBarrierCount = LAYOUT.byteOffset(PathElement.groupElement("tensorMemoryBarrierCount"));
     /// The memory layout of `tensorMemoryBarrierCount`.
     public static final MemoryLayout LAYOUT_tensorMemoryBarrierCount = LAYOUT.select(PathElement.groupElement("tensorMemoryBarrierCount"));
     /// The [VarHandle] of `tensorMemoryBarrierCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tensorMemoryBarrierCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorMemoryBarrierCount"));
+    public static final Supplier<VarHandle> VH_tensorMemoryBarrierCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorMemoryBarrierCount")));
     /// The byte offset of `pTensorMemoryBarriers`.
     public static final long OFFSET_pTensorMemoryBarriers = LAYOUT.byteOffset(PathElement.groupElement("pTensorMemoryBarriers"));
     /// The memory layout of `pTensorMemoryBarriers`.
     public static final MemoryLayout LAYOUT_pTensorMemoryBarriers = LAYOUT.select(PathElement.groupElement("pTensorMemoryBarriers"));
     /// The [VarHandle] of `pTensorMemoryBarriers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pTensorMemoryBarriers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTensorMemoryBarriers"));
+    public static final Supplier<VarHandle> VH_pTensorMemoryBarriers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTensorMemoryBarriers")));
 
     /// Creates `VkTensorDependencyInfoARM` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkTensorDependencyInfoARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkTensorDependencyInfoARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkTensorDependencyInfoARM extends GroupType {
     /// {@return `tensorMemoryBarrierCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tensorMemoryBarrierCount(MemorySegment segment, long index) { return (int) VH_tensorMemoryBarrierCount.get(segment, 0L, index); }
+    public static int tensorMemoryBarrierCount(MemorySegment segment, long index) { return (int) VH_tensorMemoryBarrierCount.get().get(segment, 0L, index); }
     /// {@return `tensorMemoryBarrierCount`}
     public int tensorMemoryBarrierCount() { return tensorMemoryBarrierCount(this.segment(), 0L); }
     /// Sets `tensorMemoryBarrierCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tensorMemoryBarrierCount(MemorySegment segment, long index, int value) { VH_tensorMemoryBarrierCount.set(segment, 0L, index, value); }
+    public static void tensorMemoryBarrierCount(MemorySegment segment, long index, int value) { VH_tensorMemoryBarrierCount.get().set(segment, 0L, index, value); }
     /// Sets `tensorMemoryBarrierCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkTensorDependencyInfoARM extends GroupType {
     /// {@return `pTensorMemoryBarriers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pTensorMemoryBarriers(MemorySegment segment, long index) { return (MemorySegment) VH_pTensorMemoryBarriers.get(segment, 0L, index); }
+    public static MemorySegment pTensorMemoryBarriers(MemorySegment segment, long index) { return (MemorySegment) VH_pTensorMemoryBarriers.get().get(segment, 0L, index); }
     /// {@return `pTensorMemoryBarriers`}
     public MemorySegment pTensorMemoryBarriers() { return pTensorMemoryBarriers(this.segment(), 0L); }
     /// Sets `pTensorMemoryBarriers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pTensorMemoryBarriers(MemorySegment segment, long index, MemorySegment value) { VH_pTensorMemoryBarriers.set(segment, 0L, index, value); }
+    public static void pTensorMemoryBarriers(MemorySegment segment, long index, MemorySegment value) { VH_pTensorMemoryBarriers.get().set(segment, 0L, index, value); }
     /// Sets `pTensorMemoryBarriers` with the given value.
     /// @param value the value
     /// @return `this`

@@ -2,6 +2,7 @@
 package overrungl.vulkan.android;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -19,8 +20,8 @@ public final class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     public static final int VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID = 1000129005;
     public static final int VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID = 1000129006;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetAndroidHardwareBufferPropertiesANDROID = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetMemoryAndroidHardwareBufferANDROID = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkGetAndroidHardwareBufferPropertiesANDROID = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetMemoryAndroidHardwareBufferANDROID = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -33,7 +34,7 @@ public final class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     public static int vkGetAndroidHardwareBufferPropertiesANDROID(@NonNull VkDevice device, @NonNull MemorySegment buffer, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAndroidHardwareBufferPropertiesANDROID)) throw new VKSymbolNotFoundError("Symbol not found: vkGetAndroidHardwareBufferPropertiesANDROID");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetAndroidHardwareBufferPropertiesANDROID", device, buffer, pProperties); }
-        return (int) Handles.MH_vkGetAndroidHardwareBufferPropertiesANDROID.invokeExact(device.capabilities().PFN_vkGetAndroidHardwareBufferPropertiesANDROID, device.segment(), buffer, pProperties); }
+        return (int) Handles.MH_vkGetAndroidHardwareBufferPropertiesANDROID.get().invokeExact(device.capabilities().PFN_vkGetAndroidHardwareBufferPropertiesANDROID, device.segment(), buffer, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetAndroidHardwareBufferPropertiesANDROID", e); }
     }
 
@@ -44,7 +45,7 @@ public final class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     public static int vkGetMemoryAndroidHardwareBufferANDROID(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pBuffer) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryAndroidHardwareBufferANDROID)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryAndroidHardwareBufferANDROID");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMemoryAndroidHardwareBufferANDROID", device, pInfo, pBuffer); }
-        return (int) Handles.MH_vkGetMemoryAndroidHardwareBufferANDROID.invokeExact(device.capabilities().PFN_vkGetMemoryAndroidHardwareBufferANDROID, device.segment(), pInfo, pBuffer); }
+        return (int) Handles.MH_vkGetMemoryAndroidHardwareBufferANDROID.get().invokeExact(device.capabilities().PFN_vkGetMemoryAndroidHardwareBufferANDROID, device.segment(), pInfo, pBuffer); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryAndroidHardwareBufferANDROID", e); }
     }
 

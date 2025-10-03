@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -57,12 +58,12 @@ public final class GLEXTTextureInteger {
     public static final int GL_RGBA_INTEGER_MODE_EXT = 0x8D9E;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glTexParameterIivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexParameterIuivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTexParameterIivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTexParameterIuivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glClearColorIiEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glClearColorIuiEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glTexParameterIivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexParameterIuivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTexParameterIivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTexParameterIuivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glClearColorIiEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glClearColorIuiEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glTexParameterIivEXT;
         public final MemorySegment PFN_glTexParameterIuivEXT;
         public final MemorySegment PFN_glGetTexParameterIivEXT;
@@ -90,7 +91,7 @@ public final class GLEXTTextureInteger {
     public void TexParameterIivEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexParameterIivEXT", target, pname, params); }
-        Handles.MH_glTexParameterIivEXT.invokeExact(handles.PFN_glTexParameterIivEXT, target, pname, params); }
+        Handles.MH_glTexParameterIivEXT.get().invokeExact(handles.PFN_glTexParameterIivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TexParameterIivEXT", e); }
     }
 
@@ -101,7 +102,7 @@ public final class GLEXTTextureInteger {
     public void TexParameterIuivEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexParameterIuivEXT", target, pname, params); }
-        Handles.MH_glTexParameterIuivEXT.invokeExact(handles.PFN_glTexParameterIuivEXT, target, pname, params); }
+        Handles.MH_glTexParameterIuivEXT.get().invokeExact(handles.PFN_glTexParameterIuivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TexParameterIuivEXT", e); }
     }
 
@@ -112,7 +113,7 @@ public final class GLEXTTextureInteger {
     public void GetTexParameterIivEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexParameterIivEXT", target, pname, params); }
-        Handles.MH_glGetTexParameterIivEXT.invokeExact(handles.PFN_glGetTexParameterIivEXT, target, pname, params); }
+        Handles.MH_glGetTexParameterIivEXT.get().invokeExact(handles.PFN_glGetTexParameterIivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexParameterIivEXT", e); }
     }
 
@@ -123,7 +124,7 @@ public final class GLEXTTextureInteger {
     public void GetTexParameterIuivEXT(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexParameterIuivEXT", target, pname, params); }
-        Handles.MH_glGetTexParameterIuivEXT.invokeExact(handles.PFN_glGetTexParameterIuivEXT, target, pname, params); }
+        Handles.MH_glGetTexParameterIuivEXT.get().invokeExact(handles.PFN_glGetTexParameterIuivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexParameterIuivEXT", e); }
     }
 
@@ -134,7 +135,7 @@ public final class GLEXTTextureInteger {
     public void ClearColorIiEXT(int red, int green, int blue, int alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearColorIiEXT)) throw new GLSymbolNotFoundError("Symbol not found: glClearColorIiEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearColorIiEXT", red, green, blue, alpha); }
-        Handles.MH_glClearColorIiEXT.invokeExact(handles.PFN_glClearColorIiEXT, red, green, blue, alpha); }
+        Handles.MH_glClearColorIiEXT.get().invokeExact(handles.PFN_glClearColorIiEXT, red, green, blue, alpha); }
         catch (Throwable e) { throw new RuntimeException("error in ClearColorIiEXT", e); }
     }
 
@@ -145,7 +146,7 @@ public final class GLEXTTextureInteger {
     public void ClearColorIuiEXT(int red, int green, int blue, int alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearColorIuiEXT)) throw new GLSymbolNotFoundError("Symbol not found: glClearColorIuiEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearColorIuiEXT", red, green, blue, alpha); }
-        Handles.MH_glClearColorIuiEXT.invokeExact(handles.PFN_glClearColorIuiEXT, red, green, blue, alpha); }
+        Handles.MH_glClearColorIuiEXT.get().invokeExact(handles.PFN_glClearColorIuiEXT, red, green, blue, alpha); }
         catch (Throwable e) { throw new RuntimeException("error in ClearColorIuiEXT", e); }
     }
 

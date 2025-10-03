@@ -95,211 +95,211 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `combinedImageSamplerDescriptorSingleArray`.
     public static final long OFFSET_combinedImageSamplerDescriptorSingleArray = LAYOUT.byteOffset(PathElement.groupElement("combinedImageSamplerDescriptorSingleArray"));
     /// The memory layout of `combinedImageSamplerDescriptorSingleArray`.
     public static final MemoryLayout LAYOUT_combinedImageSamplerDescriptorSingleArray = LAYOUT.select(PathElement.groupElement("combinedImageSamplerDescriptorSingleArray"));
     /// The [VarHandle] of `combinedImageSamplerDescriptorSingleArray` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_combinedImageSamplerDescriptorSingleArray = LAYOUT.arrayElementVarHandle(PathElement.groupElement("combinedImageSamplerDescriptorSingleArray"));
+    public static final Supplier<VarHandle> VH_combinedImageSamplerDescriptorSingleArray = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("combinedImageSamplerDescriptorSingleArray")));
     /// The byte offset of `bufferlessPushDescriptors`.
     public static final long OFFSET_bufferlessPushDescriptors = LAYOUT.byteOffset(PathElement.groupElement("bufferlessPushDescriptors"));
     /// The memory layout of `bufferlessPushDescriptors`.
     public static final MemoryLayout LAYOUT_bufferlessPushDescriptors = LAYOUT.select(PathElement.groupElement("bufferlessPushDescriptors"));
     /// The [VarHandle] of `bufferlessPushDescriptors` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferlessPushDescriptors = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferlessPushDescriptors"));
+    public static final Supplier<VarHandle> VH_bufferlessPushDescriptors = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferlessPushDescriptors")));
     /// The byte offset of `allowSamplerImageViewPostSubmitCreation`.
     public static final long OFFSET_allowSamplerImageViewPostSubmitCreation = LAYOUT.byteOffset(PathElement.groupElement("allowSamplerImageViewPostSubmitCreation"));
     /// The memory layout of `allowSamplerImageViewPostSubmitCreation`.
     public static final MemoryLayout LAYOUT_allowSamplerImageViewPostSubmitCreation = LAYOUT.select(PathElement.groupElement("allowSamplerImageViewPostSubmitCreation"));
     /// The [VarHandle] of `allowSamplerImageViewPostSubmitCreation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_allowSamplerImageViewPostSubmitCreation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("allowSamplerImageViewPostSubmitCreation"));
+    public static final Supplier<VarHandle> VH_allowSamplerImageViewPostSubmitCreation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("allowSamplerImageViewPostSubmitCreation")));
     /// The byte offset of `descriptorBufferOffsetAlignment`.
     public static final long OFFSET_descriptorBufferOffsetAlignment = LAYOUT.byteOffset(PathElement.groupElement("descriptorBufferOffsetAlignment"));
     /// The memory layout of `descriptorBufferOffsetAlignment`.
     public static final MemoryLayout LAYOUT_descriptorBufferOffsetAlignment = LAYOUT.select(PathElement.groupElement("descriptorBufferOffsetAlignment"));
     /// The [VarHandle] of `descriptorBufferOffsetAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorBufferOffsetAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBufferOffsetAlignment"));
+    public static final Supplier<VarHandle> VH_descriptorBufferOffsetAlignment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBufferOffsetAlignment")));
     /// The byte offset of `maxDescriptorBufferBindings`.
     public static final long OFFSET_maxDescriptorBufferBindings = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorBufferBindings"));
     /// The memory layout of `maxDescriptorBufferBindings`.
     public static final MemoryLayout LAYOUT_maxDescriptorBufferBindings = LAYOUT.select(PathElement.groupElement("maxDescriptorBufferBindings"));
     /// The [VarHandle] of `maxDescriptorBufferBindings` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorBufferBindings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorBufferBindings"));
+    public static final Supplier<VarHandle> VH_maxDescriptorBufferBindings = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorBufferBindings")));
     /// The byte offset of `maxResourceDescriptorBufferBindings`.
     public static final long OFFSET_maxResourceDescriptorBufferBindings = LAYOUT.byteOffset(PathElement.groupElement("maxResourceDescriptorBufferBindings"));
     /// The memory layout of `maxResourceDescriptorBufferBindings`.
     public static final MemoryLayout LAYOUT_maxResourceDescriptorBufferBindings = LAYOUT.select(PathElement.groupElement("maxResourceDescriptorBufferBindings"));
     /// The [VarHandle] of `maxResourceDescriptorBufferBindings` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxResourceDescriptorBufferBindings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxResourceDescriptorBufferBindings"));
+    public static final Supplier<VarHandle> VH_maxResourceDescriptorBufferBindings = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxResourceDescriptorBufferBindings")));
     /// The byte offset of `maxSamplerDescriptorBufferBindings`.
     public static final long OFFSET_maxSamplerDescriptorBufferBindings = LAYOUT.byteOffset(PathElement.groupElement("maxSamplerDescriptorBufferBindings"));
     /// The memory layout of `maxSamplerDescriptorBufferBindings`.
     public static final MemoryLayout LAYOUT_maxSamplerDescriptorBufferBindings = LAYOUT.select(PathElement.groupElement("maxSamplerDescriptorBufferBindings"));
     /// The [VarHandle] of `maxSamplerDescriptorBufferBindings` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSamplerDescriptorBufferBindings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSamplerDescriptorBufferBindings"));
+    public static final Supplier<VarHandle> VH_maxSamplerDescriptorBufferBindings = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSamplerDescriptorBufferBindings")));
     /// The byte offset of `maxEmbeddedImmutableSamplerBindings`.
     public static final long OFFSET_maxEmbeddedImmutableSamplerBindings = LAYOUT.byteOffset(PathElement.groupElement("maxEmbeddedImmutableSamplerBindings"));
     /// The memory layout of `maxEmbeddedImmutableSamplerBindings`.
     public static final MemoryLayout LAYOUT_maxEmbeddedImmutableSamplerBindings = LAYOUT.select(PathElement.groupElement("maxEmbeddedImmutableSamplerBindings"));
     /// The [VarHandle] of `maxEmbeddedImmutableSamplerBindings` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxEmbeddedImmutableSamplerBindings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxEmbeddedImmutableSamplerBindings"));
+    public static final Supplier<VarHandle> VH_maxEmbeddedImmutableSamplerBindings = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxEmbeddedImmutableSamplerBindings")));
     /// The byte offset of `maxEmbeddedImmutableSamplers`.
     public static final long OFFSET_maxEmbeddedImmutableSamplers = LAYOUT.byteOffset(PathElement.groupElement("maxEmbeddedImmutableSamplers"));
     /// The memory layout of `maxEmbeddedImmutableSamplers`.
     public static final MemoryLayout LAYOUT_maxEmbeddedImmutableSamplers = LAYOUT.select(PathElement.groupElement("maxEmbeddedImmutableSamplers"));
     /// The [VarHandle] of `maxEmbeddedImmutableSamplers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxEmbeddedImmutableSamplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxEmbeddedImmutableSamplers"));
+    public static final Supplier<VarHandle> VH_maxEmbeddedImmutableSamplers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxEmbeddedImmutableSamplers")));
     /// The byte offset of `bufferCaptureReplayDescriptorDataSize`.
     public static final long OFFSET_bufferCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PathElement.groupElement("bufferCaptureReplayDescriptorDataSize"));
     /// The memory layout of `bufferCaptureReplayDescriptorDataSize`.
     public static final MemoryLayout LAYOUT_bufferCaptureReplayDescriptorDataSize = LAYOUT.select(PathElement.groupElement("bufferCaptureReplayDescriptorDataSize"));
     /// The [VarHandle] of `bufferCaptureReplayDescriptorDataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferCaptureReplayDescriptorDataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCaptureReplayDescriptorDataSize"));
+    public static final Supplier<VarHandle> VH_bufferCaptureReplayDescriptorDataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCaptureReplayDescriptorDataSize")));
     /// The byte offset of `imageCaptureReplayDescriptorDataSize`.
     public static final long OFFSET_imageCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PathElement.groupElement("imageCaptureReplayDescriptorDataSize"));
     /// The memory layout of `imageCaptureReplayDescriptorDataSize`.
     public static final MemoryLayout LAYOUT_imageCaptureReplayDescriptorDataSize = LAYOUT.select(PathElement.groupElement("imageCaptureReplayDescriptorDataSize"));
     /// The [VarHandle] of `imageCaptureReplayDescriptorDataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageCaptureReplayDescriptorDataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCaptureReplayDescriptorDataSize"));
+    public static final Supplier<VarHandle> VH_imageCaptureReplayDescriptorDataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCaptureReplayDescriptorDataSize")));
     /// The byte offset of `imageViewCaptureReplayDescriptorDataSize`.
     public static final long OFFSET_imageViewCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PathElement.groupElement("imageViewCaptureReplayDescriptorDataSize"));
     /// The memory layout of `imageViewCaptureReplayDescriptorDataSize`.
     public static final MemoryLayout LAYOUT_imageViewCaptureReplayDescriptorDataSize = LAYOUT.select(PathElement.groupElement("imageViewCaptureReplayDescriptorDataSize"));
     /// The [VarHandle] of `imageViewCaptureReplayDescriptorDataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageViewCaptureReplayDescriptorDataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageViewCaptureReplayDescriptorDataSize"));
+    public static final Supplier<VarHandle> VH_imageViewCaptureReplayDescriptorDataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageViewCaptureReplayDescriptorDataSize")));
     /// The byte offset of `samplerCaptureReplayDescriptorDataSize`.
     public static final long OFFSET_samplerCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PathElement.groupElement("samplerCaptureReplayDescriptorDataSize"));
     /// The memory layout of `samplerCaptureReplayDescriptorDataSize`.
     public static final MemoryLayout LAYOUT_samplerCaptureReplayDescriptorDataSize = LAYOUT.select(PathElement.groupElement("samplerCaptureReplayDescriptorDataSize"));
     /// The [VarHandle] of `samplerCaptureReplayDescriptorDataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_samplerCaptureReplayDescriptorDataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerCaptureReplayDescriptorDataSize"));
+    public static final Supplier<VarHandle> VH_samplerCaptureReplayDescriptorDataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerCaptureReplayDescriptorDataSize")));
     /// The byte offset of `accelerationStructureCaptureReplayDescriptorDataSize`.
     public static final long OFFSET_accelerationStructureCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PathElement.groupElement("accelerationStructureCaptureReplayDescriptorDataSize"));
     /// The memory layout of `accelerationStructureCaptureReplayDescriptorDataSize`.
     public static final MemoryLayout LAYOUT_accelerationStructureCaptureReplayDescriptorDataSize = LAYOUT.select(PathElement.groupElement("accelerationStructureCaptureReplayDescriptorDataSize"));
     /// The [VarHandle] of `accelerationStructureCaptureReplayDescriptorDataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_accelerationStructureCaptureReplayDescriptorDataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureCaptureReplayDescriptorDataSize"));
+    public static final Supplier<VarHandle> VH_accelerationStructureCaptureReplayDescriptorDataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureCaptureReplayDescriptorDataSize")));
     /// The byte offset of `samplerDescriptorSize`.
     public static final long OFFSET_samplerDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("samplerDescriptorSize"));
     /// The memory layout of `samplerDescriptorSize`.
     public static final MemoryLayout LAYOUT_samplerDescriptorSize = LAYOUT.select(PathElement.groupElement("samplerDescriptorSize"));
     /// The [VarHandle] of `samplerDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_samplerDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerDescriptorSize"));
+    public static final Supplier<VarHandle> VH_samplerDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerDescriptorSize")));
     /// The byte offset of `combinedImageSamplerDescriptorSize`.
     public static final long OFFSET_combinedImageSamplerDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("combinedImageSamplerDescriptorSize"));
     /// The memory layout of `combinedImageSamplerDescriptorSize`.
     public static final MemoryLayout LAYOUT_combinedImageSamplerDescriptorSize = LAYOUT.select(PathElement.groupElement("combinedImageSamplerDescriptorSize"));
     /// The [VarHandle] of `combinedImageSamplerDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_combinedImageSamplerDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("combinedImageSamplerDescriptorSize"));
+    public static final Supplier<VarHandle> VH_combinedImageSamplerDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("combinedImageSamplerDescriptorSize")));
     /// The byte offset of `sampledImageDescriptorSize`.
     public static final long OFFSET_sampledImageDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("sampledImageDescriptorSize"));
     /// The memory layout of `sampledImageDescriptorSize`.
     public static final MemoryLayout LAYOUT_sampledImageDescriptorSize = LAYOUT.select(PathElement.groupElement("sampledImageDescriptorSize"));
     /// The [VarHandle] of `sampledImageDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sampledImageDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampledImageDescriptorSize"));
+    public static final Supplier<VarHandle> VH_sampledImageDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampledImageDescriptorSize")));
     /// The byte offset of `storageImageDescriptorSize`.
     public static final long OFFSET_storageImageDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("storageImageDescriptorSize"));
     /// The memory layout of `storageImageDescriptorSize`.
     public static final MemoryLayout LAYOUT_storageImageDescriptorSize = LAYOUT.select(PathElement.groupElement("storageImageDescriptorSize"));
     /// The [VarHandle] of `storageImageDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storageImageDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageImageDescriptorSize"));
+    public static final Supplier<VarHandle> VH_storageImageDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageImageDescriptorSize")));
     /// The byte offset of `uniformTexelBufferDescriptorSize`.
     public static final long OFFSET_uniformTexelBufferDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("uniformTexelBufferDescriptorSize"));
     /// The memory layout of `uniformTexelBufferDescriptorSize`.
     public static final MemoryLayout LAYOUT_uniformTexelBufferDescriptorSize = LAYOUT.select(PathElement.groupElement("uniformTexelBufferDescriptorSize"));
     /// The [VarHandle] of `uniformTexelBufferDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_uniformTexelBufferDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformTexelBufferDescriptorSize"));
+    public static final Supplier<VarHandle> VH_uniformTexelBufferDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformTexelBufferDescriptorSize")));
     /// The byte offset of `robustUniformTexelBufferDescriptorSize`.
     public static final long OFFSET_robustUniformTexelBufferDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("robustUniformTexelBufferDescriptorSize"));
     /// The memory layout of `robustUniformTexelBufferDescriptorSize`.
     public static final MemoryLayout LAYOUT_robustUniformTexelBufferDescriptorSize = LAYOUT.select(PathElement.groupElement("robustUniformTexelBufferDescriptorSize"));
     /// The [VarHandle] of `robustUniformTexelBufferDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_robustUniformTexelBufferDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustUniformTexelBufferDescriptorSize"));
+    public static final Supplier<VarHandle> VH_robustUniformTexelBufferDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustUniformTexelBufferDescriptorSize")));
     /// The byte offset of `storageTexelBufferDescriptorSize`.
     public static final long OFFSET_storageTexelBufferDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("storageTexelBufferDescriptorSize"));
     /// The memory layout of `storageTexelBufferDescriptorSize`.
     public static final MemoryLayout LAYOUT_storageTexelBufferDescriptorSize = LAYOUT.select(PathElement.groupElement("storageTexelBufferDescriptorSize"));
     /// The [VarHandle] of `storageTexelBufferDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storageTexelBufferDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageTexelBufferDescriptorSize"));
+    public static final Supplier<VarHandle> VH_storageTexelBufferDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageTexelBufferDescriptorSize")));
     /// The byte offset of `robustStorageTexelBufferDescriptorSize`.
     public static final long OFFSET_robustStorageTexelBufferDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("robustStorageTexelBufferDescriptorSize"));
     /// The memory layout of `robustStorageTexelBufferDescriptorSize`.
     public static final MemoryLayout LAYOUT_robustStorageTexelBufferDescriptorSize = LAYOUT.select(PathElement.groupElement("robustStorageTexelBufferDescriptorSize"));
     /// The [VarHandle] of `robustStorageTexelBufferDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_robustStorageTexelBufferDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustStorageTexelBufferDescriptorSize"));
+    public static final Supplier<VarHandle> VH_robustStorageTexelBufferDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustStorageTexelBufferDescriptorSize")));
     /// The byte offset of `uniformBufferDescriptorSize`.
     public static final long OFFSET_uniformBufferDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("uniformBufferDescriptorSize"));
     /// The memory layout of `uniformBufferDescriptorSize`.
     public static final MemoryLayout LAYOUT_uniformBufferDescriptorSize = LAYOUT.select(PathElement.groupElement("uniformBufferDescriptorSize"));
     /// The [VarHandle] of `uniformBufferDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_uniformBufferDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformBufferDescriptorSize"));
+    public static final Supplier<VarHandle> VH_uniformBufferDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformBufferDescriptorSize")));
     /// The byte offset of `robustUniformBufferDescriptorSize`.
     public static final long OFFSET_robustUniformBufferDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("robustUniformBufferDescriptorSize"));
     /// The memory layout of `robustUniformBufferDescriptorSize`.
     public static final MemoryLayout LAYOUT_robustUniformBufferDescriptorSize = LAYOUT.select(PathElement.groupElement("robustUniformBufferDescriptorSize"));
     /// The [VarHandle] of `robustUniformBufferDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_robustUniformBufferDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustUniformBufferDescriptorSize"));
+    public static final Supplier<VarHandle> VH_robustUniformBufferDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustUniformBufferDescriptorSize")));
     /// The byte offset of `storageBufferDescriptorSize`.
     public static final long OFFSET_storageBufferDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("storageBufferDescriptorSize"));
     /// The memory layout of `storageBufferDescriptorSize`.
     public static final MemoryLayout LAYOUT_storageBufferDescriptorSize = LAYOUT.select(PathElement.groupElement("storageBufferDescriptorSize"));
     /// The [VarHandle] of `storageBufferDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storageBufferDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageBufferDescriptorSize"));
+    public static final Supplier<VarHandle> VH_storageBufferDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageBufferDescriptorSize")));
     /// The byte offset of `robustStorageBufferDescriptorSize`.
     public static final long OFFSET_robustStorageBufferDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("robustStorageBufferDescriptorSize"));
     /// The memory layout of `robustStorageBufferDescriptorSize`.
     public static final MemoryLayout LAYOUT_robustStorageBufferDescriptorSize = LAYOUT.select(PathElement.groupElement("robustStorageBufferDescriptorSize"));
     /// The [VarHandle] of `robustStorageBufferDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_robustStorageBufferDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustStorageBufferDescriptorSize"));
+    public static final Supplier<VarHandle> VH_robustStorageBufferDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustStorageBufferDescriptorSize")));
     /// The byte offset of `inputAttachmentDescriptorSize`.
     public static final long OFFSET_inputAttachmentDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("inputAttachmentDescriptorSize"));
     /// The memory layout of `inputAttachmentDescriptorSize`.
     public static final MemoryLayout LAYOUT_inputAttachmentDescriptorSize = LAYOUT.select(PathElement.groupElement("inputAttachmentDescriptorSize"));
     /// The [VarHandle] of `inputAttachmentDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_inputAttachmentDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("inputAttachmentDescriptorSize"));
+    public static final Supplier<VarHandle> VH_inputAttachmentDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("inputAttachmentDescriptorSize")));
     /// The byte offset of `accelerationStructureDescriptorSize`.
     public static final long OFFSET_accelerationStructureDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("accelerationStructureDescriptorSize"));
     /// The memory layout of `accelerationStructureDescriptorSize`.
     public static final MemoryLayout LAYOUT_accelerationStructureDescriptorSize = LAYOUT.select(PathElement.groupElement("accelerationStructureDescriptorSize"));
     /// The [VarHandle] of `accelerationStructureDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_accelerationStructureDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureDescriptorSize"));
+    public static final Supplier<VarHandle> VH_accelerationStructureDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureDescriptorSize")));
     /// The byte offset of `maxSamplerDescriptorBufferRange`.
     public static final long OFFSET_maxSamplerDescriptorBufferRange = LAYOUT.byteOffset(PathElement.groupElement("maxSamplerDescriptorBufferRange"));
     /// The memory layout of `maxSamplerDescriptorBufferRange`.
     public static final MemoryLayout LAYOUT_maxSamplerDescriptorBufferRange = LAYOUT.select(PathElement.groupElement("maxSamplerDescriptorBufferRange"));
     /// The [VarHandle] of `maxSamplerDescriptorBufferRange` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSamplerDescriptorBufferRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSamplerDescriptorBufferRange"));
+    public static final Supplier<VarHandle> VH_maxSamplerDescriptorBufferRange = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSamplerDescriptorBufferRange")));
     /// The byte offset of `maxResourceDescriptorBufferRange`.
     public static final long OFFSET_maxResourceDescriptorBufferRange = LAYOUT.byteOffset(PathElement.groupElement("maxResourceDescriptorBufferRange"));
     /// The memory layout of `maxResourceDescriptorBufferRange`.
     public static final MemoryLayout LAYOUT_maxResourceDescriptorBufferRange = LAYOUT.select(PathElement.groupElement("maxResourceDescriptorBufferRange"));
     /// The [VarHandle] of `maxResourceDescriptorBufferRange` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxResourceDescriptorBufferRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxResourceDescriptorBufferRange"));
+    public static final Supplier<VarHandle> VH_maxResourceDescriptorBufferRange = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxResourceDescriptorBufferRange")));
     /// The byte offset of `samplerDescriptorBufferAddressSpaceSize`.
     public static final long OFFSET_samplerDescriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PathElement.groupElement("samplerDescriptorBufferAddressSpaceSize"));
     /// The memory layout of `samplerDescriptorBufferAddressSpaceSize`.
     public static final MemoryLayout LAYOUT_samplerDescriptorBufferAddressSpaceSize = LAYOUT.select(PathElement.groupElement("samplerDescriptorBufferAddressSpaceSize"));
     /// The [VarHandle] of `samplerDescriptorBufferAddressSpaceSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_samplerDescriptorBufferAddressSpaceSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerDescriptorBufferAddressSpaceSize"));
+    public static final Supplier<VarHandle> VH_samplerDescriptorBufferAddressSpaceSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerDescriptorBufferAddressSpaceSize")));
     /// The byte offset of `resourceDescriptorBufferAddressSpaceSize`.
     public static final long OFFSET_resourceDescriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PathElement.groupElement("resourceDescriptorBufferAddressSpaceSize"));
     /// The memory layout of `resourceDescriptorBufferAddressSpaceSize`.
     public static final MemoryLayout LAYOUT_resourceDescriptorBufferAddressSpaceSize = LAYOUT.select(PathElement.groupElement("resourceDescriptorBufferAddressSpaceSize"));
     /// The [VarHandle] of `resourceDescriptorBufferAddressSpaceSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_resourceDescriptorBufferAddressSpaceSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resourceDescriptorBufferAddressSpaceSize"));
+    public static final Supplier<VarHandle> VH_resourceDescriptorBufferAddressSpaceSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("resourceDescriptorBufferAddressSpaceSize")));
     /// The byte offset of `descriptorBufferAddressSpaceSize`.
     public static final long OFFSET_descriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PathElement.groupElement("descriptorBufferAddressSpaceSize"));
     /// The memory layout of `descriptorBufferAddressSpaceSize`.
     public static final MemoryLayout LAYOUT_descriptorBufferAddressSpaceSize = LAYOUT.select(PathElement.groupElement("descriptorBufferAddressSpaceSize"));
     /// The [VarHandle] of `descriptorBufferAddressSpaceSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorBufferAddressSpaceSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBufferAddressSpaceSize"));
+    public static final Supplier<VarHandle> VH_descriptorBufferAddressSpaceSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBufferAddressSpaceSize")));
 
     /// Creates `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -350,14 +350,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,14 +366,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -382,14 +382,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `combinedImageSamplerDescriptorSingleArray` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int combinedImageSamplerDescriptorSingleArray(MemorySegment segment, long index) { return (int) VH_combinedImageSamplerDescriptorSingleArray.get(segment, 0L, index); }
+    public static int combinedImageSamplerDescriptorSingleArray(MemorySegment segment, long index) { return (int) VH_combinedImageSamplerDescriptorSingleArray.get().get(segment, 0L, index); }
     /// {@return `combinedImageSamplerDescriptorSingleArray`}
     public int combinedImageSamplerDescriptorSingleArray() { return combinedImageSamplerDescriptorSingleArray(this.segment(), 0L); }
     /// Sets `combinedImageSamplerDescriptorSingleArray` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void combinedImageSamplerDescriptorSingleArray(MemorySegment segment, long index, int value) { VH_combinedImageSamplerDescriptorSingleArray.set(segment, 0L, index, value); }
+    public static void combinedImageSamplerDescriptorSingleArray(MemorySegment segment, long index, int value) { VH_combinedImageSamplerDescriptorSingleArray.get().set(segment, 0L, index, value); }
     /// Sets `combinedImageSamplerDescriptorSingleArray` with the given value.
     /// @param value the value
     /// @return `this`
@@ -398,14 +398,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `bufferlessPushDescriptors` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferlessPushDescriptors(MemorySegment segment, long index) { return (int) VH_bufferlessPushDescriptors.get(segment, 0L, index); }
+    public static int bufferlessPushDescriptors(MemorySegment segment, long index) { return (int) VH_bufferlessPushDescriptors.get().get(segment, 0L, index); }
     /// {@return `bufferlessPushDescriptors`}
     public int bufferlessPushDescriptors() { return bufferlessPushDescriptors(this.segment(), 0L); }
     /// Sets `bufferlessPushDescriptors` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferlessPushDescriptors(MemorySegment segment, long index, int value) { VH_bufferlessPushDescriptors.set(segment, 0L, index, value); }
+    public static void bufferlessPushDescriptors(MemorySegment segment, long index, int value) { VH_bufferlessPushDescriptors.get().set(segment, 0L, index, value); }
     /// Sets `bufferlessPushDescriptors` with the given value.
     /// @param value the value
     /// @return `this`
@@ -414,14 +414,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `allowSamplerImageViewPostSubmitCreation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int allowSamplerImageViewPostSubmitCreation(MemorySegment segment, long index) { return (int) VH_allowSamplerImageViewPostSubmitCreation.get(segment, 0L, index); }
+    public static int allowSamplerImageViewPostSubmitCreation(MemorySegment segment, long index) { return (int) VH_allowSamplerImageViewPostSubmitCreation.get().get(segment, 0L, index); }
     /// {@return `allowSamplerImageViewPostSubmitCreation`}
     public int allowSamplerImageViewPostSubmitCreation() { return allowSamplerImageViewPostSubmitCreation(this.segment(), 0L); }
     /// Sets `allowSamplerImageViewPostSubmitCreation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void allowSamplerImageViewPostSubmitCreation(MemorySegment segment, long index, int value) { VH_allowSamplerImageViewPostSubmitCreation.set(segment, 0L, index, value); }
+    public static void allowSamplerImageViewPostSubmitCreation(MemorySegment segment, long index, int value) { VH_allowSamplerImageViewPostSubmitCreation.get().set(segment, 0L, index, value); }
     /// Sets `allowSamplerImageViewPostSubmitCreation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -430,14 +430,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `descriptorBufferOffsetAlignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long descriptorBufferOffsetAlignment(MemorySegment segment, long index) { return (long) VH_descriptorBufferOffsetAlignment.get(segment, 0L, index); }
+    public static long descriptorBufferOffsetAlignment(MemorySegment segment, long index) { return (long) VH_descriptorBufferOffsetAlignment.get().get(segment, 0L, index); }
     /// {@return `descriptorBufferOffsetAlignment`}
     public long descriptorBufferOffsetAlignment() { return descriptorBufferOffsetAlignment(this.segment(), 0L); }
     /// Sets `descriptorBufferOffsetAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorBufferOffsetAlignment(MemorySegment segment, long index, long value) { VH_descriptorBufferOffsetAlignment.set(segment, 0L, index, value); }
+    public static void descriptorBufferOffsetAlignment(MemorySegment segment, long index, long value) { VH_descriptorBufferOffsetAlignment.get().set(segment, 0L, index, value); }
     /// Sets `descriptorBufferOffsetAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -446,14 +446,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `maxDescriptorBufferBindings` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxDescriptorBufferBindings(MemorySegment segment, long index) { return (int) VH_maxDescriptorBufferBindings.get(segment, 0L, index); }
+    public static int maxDescriptorBufferBindings(MemorySegment segment, long index) { return (int) VH_maxDescriptorBufferBindings.get().get(segment, 0L, index); }
     /// {@return `maxDescriptorBufferBindings`}
     public int maxDescriptorBufferBindings() { return maxDescriptorBufferBindings(this.segment(), 0L); }
     /// Sets `maxDescriptorBufferBindings` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxDescriptorBufferBindings(MemorySegment segment, long index, int value) { VH_maxDescriptorBufferBindings.set(segment, 0L, index, value); }
+    public static void maxDescriptorBufferBindings(MemorySegment segment, long index, int value) { VH_maxDescriptorBufferBindings.get().set(segment, 0L, index, value); }
     /// Sets `maxDescriptorBufferBindings` with the given value.
     /// @param value the value
     /// @return `this`
@@ -462,14 +462,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `maxResourceDescriptorBufferBindings` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxResourceDescriptorBufferBindings(MemorySegment segment, long index) { return (int) VH_maxResourceDescriptorBufferBindings.get(segment, 0L, index); }
+    public static int maxResourceDescriptorBufferBindings(MemorySegment segment, long index) { return (int) VH_maxResourceDescriptorBufferBindings.get().get(segment, 0L, index); }
     /// {@return `maxResourceDescriptorBufferBindings`}
     public int maxResourceDescriptorBufferBindings() { return maxResourceDescriptorBufferBindings(this.segment(), 0L); }
     /// Sets `maxResourceDescriptorBufferBindings` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxResourceDescriptorBufferBindings(MemorySegment segment, long index, int value) { VH_maxResourceDescriptorBufferBindings.set(segment, 0L, index, value); }
+    public static void maxResourceDescriptorBufferBindings(MemorySegment segment, long index, int value) { VH_maxResourceDescriptorBufferBindings.get().set(segment, 0L, index, value); }
     /// Sets `maxResourceDescriptorBufferBindings` with the given value.
     /// @param value the value
     /// @return `this`
@@ -478,14 +478,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `maxSamplerDescriptorBufferBindings` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxSamplerDescriptorBufferBindings(MemorySegment segment, long index) { return (int) VH_maxSamplerDescriptorBufferBindings.get(segment, 0L, index); }
+    public static int maxSamplerDescriptorBufferBindings(MemorySegment segment, long index) { return (int) VH_maxSamplerDescriptorBufferBindings.get().get(segment, 0L, index); }
     /// {@return `maxSamplerDescriptorBufferBindings`}
     public int maxSamplerDescriptorBufferBindings() { return maxSamplerDescriptorBufferBindings(this.segment(), 0L); }
     /// Sets `maxSamplerDescriptorBufferBindings` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxSamplerDescriptorBufferBindings(MemorySegment segment, long index, int value) { VH_maxSamplerDescriptorBufferBindings.set(segment, 0L, index, value); }
+    public static void maxSamplerDescriptorBufferBindings(MemorySegment segment, long index, int value) { VH_maxSamplerDescriptorBufferBindings.get().set(segment, 0L, index, value); }
     /// Sets `maxSamplerDescriptorBufferBindings` with the given value.
     /// @param value the value
     /// @return `this`
@@ -494,14 +494,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `maxEmbeddedImmutableSamplerBindings` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxEmbeddedImmutableSamplerBindings(MemorySegment segment, long index) { return (int) VH_maxEmbeddedImmutableSamplerBindings.get(segment, 0L, index); }
+    public static int maxEmbeddedImmutableSamplerBindings(MemorySegment segment, long index) { return (int) VH_maxEmbeddedImmutableSamplerBindings.get().get(segment, 0L, index); }
     /// {@return `maxEmbeddedImmutableSamplerBindings`}
     public int maxEmbeddedImmutableSamplerBindings() { return maxEmbeddedImmutableSamplerBindings(this.segment(), 0L); }
     /// Sets `maxEmbeddedImmutableSamplerBindings` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxEmbeddedImmutableSamplerBindings(MemorySegment segment, long index, int value) { VH_maxEmbeddedImmutableSamplerBindings.set(segment, 0L, index, value); }
+    public static void maxEmbeddedImmutableSamplerBindings(MemorySegment segment, long index, int value) { VH_maxEmbeddedImmutableSamplerBindings.get().set(segment, 0L, index, value); }
     /// Sets `maxEmbeddedImmutableSamplerBindings` with the given value.
     /// @param value the value
     /// @return `this`
@@ -510,14 +510,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `maxEmbeddedImmutableSamplers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxEmbeddedImmutableSamplers(MemorySegment segment, long index) { return (int) VH_maxEmbeddedImmutableSamplers.get(segment, 0L, index); }
+    public static int maxEmbeddedImmutableSamplers(MemorySegment segment, long index) { return (int) VH_maxEmbeddedImmutableSamplers.get().get(segment, 0L, index); }
     /// {@return `maxEmbeddedImmutableSamplers`}
     public int maxEmbeddedImmutableSamplers() { return maxEmbeddedImmutableSamplers(this.segment(), 0L); }
     /// Sets `maxEmbeddedImmutableSamplers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxEmbeddedImmutableSamplers(MemorySegment segment, long index, int value) { VH_maxEmbeddedImmutableSamplers.set(segment, 0L, index, value); }
+    public static void maxEmbeddedImmutableSamplers(MemorySegment segment, long index, int value) { VH_maxEmbeddedImmutableSamplers.get().set(segment, 0L, index, value); }
     /// Sets `maxEmbeddedImmutableSamplers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -526,14 +526,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `bufferCaptureReplayDescriptorDataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long bufferCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_bufferCaptureReplayDescriptorDataSize.get(segment, 0L, index)); }
+    public static long bufferCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_bufferCaptureReplayDescriptorDataSize.get().get(segment, 0L, index)); }
     /// {@return `bufferCaptureReplayDescriptorDataSize`}
     public long bufferCaptureReplayDescriptorDataSize() { return bufferCaptureReplayDescriptorDataSize(this.segment(), 0L); }
     /// Sets `bufferCaptureReplayDescriptorDataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_bufferCaptureReplayDescriptorDataSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void bufferCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_bufferCaptureReplayDescriptorDataSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `bufferCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -542,14 +542,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `imageCaptureReplayDescriptorDataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long imageCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_imageCaptureReplayDescriptorDataSize.get(segment, 0L, index)); }
+    public static long imageCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_imageCaptureReplayDescriptorDataSize.get().get(segment, 0L, index)); }
     /// {@return `imageCaptureReplayDescriptorDataSize`}
     public long imageCaptureReplayDescriptorDataSize() { return imageCaptureReplayDescriptorDataSize(this.segment(), 0L); }
     /// Sets `imageCaptureReplayDescriptorDataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_imageCaptureReplayDescriptorDataSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void imageCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_imageCaptureReplayDescriptorDataSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `imageCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -558,14 +558,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `imageViewCaptureReplayDescriptorDataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long imageViewCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_imageViewCaptureReplayDescriptorDataSize.get(segment, 0L, index)); }
+    public static long imageViewCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_imageViewCaptureReplayDescriptorDataSize.get().get(segment, 0L, index)); }
     /// {@return `imageViewCaptureReplayDescriptorDataSize`}
     public long imageViewCaptureReplayDescriptorDataSize() { return imageViewCaptureReplayDescriptorDataSize(this.segment(), 0L); }
     /// Sets `imageViewCaptureReplayDescriptorDataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageViewCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_imageViewCaptureReplayDescriptorDataSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void imageViewCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_imageViewCaptureReplayDescriptorDataSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `imageViewCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -574,14 +574,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `samplerCaptureReplayDescriptorDataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long samplerCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_samplerCaptureReplayDescriptorDataSize.get(segment, 0L, index)); }
+    public static long samplerCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_samplerCaptureReplayDescriptorDataSize.get().get(segment, 0L, index)); }
     /// {@return `samplerCaptureReplayDescriptorDataSize`}
     public long samplerCaptureReplayDescriptorDataSize() { return samplerCaptureReplayDescriptorDataSize(this.segment(), 0L); }
     /// Sets `samplerCaptureReplayDescriptorDataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void samplerCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_samplerCaptureReplayDescriptorDataSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void samplerCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_samplerCaptureReplayDescriptorDataSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `samplerCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -590,14 +590,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `accelerationStructureCaptureReplayDescriptorDataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long accelerationStructureCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_accelerationStructureCaptureReplayDescriptorDataSize.get(segment, 0L, index)); }
+    public static long accelerationStructureCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_accelerationStructureCaptureReplayDescriptorDataSize.get().get(segment, 0L, index)); }
     /// {@return `accelerationStructureCaptureReplayDescriptorDataSize`}
     public long accelerationStructureCaptureReplayDescriptorDataSize() { return accelerationStructureCaptureReplayDescriptorDataSize(this.segment(), 0L); }
     /// Sets `accelerationStructureCaptureReplayDescriptorDataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void accelerationStructureCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_accelerationStructureCaptureReplayDescriptorDataSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void accelerationStructureCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_accelerationStructureCaptureReplayDescriptorDataSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `accelerationStructureCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -606,14 +606,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `samplerDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long samplerDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_samplerDescriptorSize.get(segment, 0L, index)); }
+    public static long samplerDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_samplerDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `samplerDescriptorSize`}
     public long samplerDescriptorSize() { return samplerDescriptorSize(this.segment(), 0L); }
     /// Sets `samplerDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void samplerDescriptorSize(MemorySegment segment, long index, long value) { VH_samplerDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void samplerDescriptorSize(MemorySegment segment, long index, long value) { VH_samplerDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `samplerDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -622,14 +622,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `combinedImageSamplerDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long combinedImageSamplerDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_combinedImageSamplerDescriptorSize.get(segment, 0L, index)); }
+    public static long combinedImageSamplerDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_combinedImageSamplerDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `combinedImageSamplerDescriptorSize`}
     public long combinedImageSamplerDescriptorSize() { return combinedImageSamplerDescriptorSize(this.segment(), 0L); }
     /// Sets `combinedImageSamplerDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void combinedImageSamplerDescriptorSize(MemorySegment segment, long index, long value) { VH_combinedImageSamplerDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void combinedImageSamplerDescriptorSize(MemorySegment segment, long index, long value) { VH_combinedImageSamplerDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `combinedImageSamplerDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -638,14 +638,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `sampledImageDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long sampledImageDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_sampledImageDescriptorSize.get(segment, 0L, index)); }
+    public static long sampledImageDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_sampledImageDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `sampledImageDescriptorSize`}
     public long sampledImageDescriptorSize() { return sampledImageDescriptorSize(this.segment(), 0L); }
     /// Sets `sampledImageDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sampledImageDescriptorSize(MemorySegment segment, long index, long value) { VH_sampledImageDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void sampledImageDescriptorSize(MemorySegment segment, long index, long value) { VH_sampledImageDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `sampledImageDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -654,14 +654,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `storageImageDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long storageImageDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_storageImageDescriptorSize.get(segment, 0L, index)); }
+    public static long storageImageDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_storageImageDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `storageImageDescriptorSize`}
     public long storageImageDescriptorSize() { return storageImageDescriptorSize(this.segment(), 0L); }
     /// Sets `storageImageDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storageImageDescriptorSize(MemorySegment segment, long index, long value) { VH_storageImageDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void storageImageDescriptorSize(MemorySegment segment, long index, long value) { VH_storageImageDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `storageImageDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -670,14 +670,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `uniformTexelBufferDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long uniformTexelBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_uniformTexelBufferDescriptorSize.get(segment, 0L, index)); }
+    public static long uniformTexelBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_uniformTexelBufferDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `uniformTexelBufferDescriptorSize`}
     public long uniformTexelBufferDescriptorSize() { return uniformTexelBufferDescriptorSize(this.segment(), 0L); }
     /// Sets `uniformTexelBufferDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void uniformTexelBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_uniformTexelBufferDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void uniformTexelBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_uniformTexelBufferDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `uniformTexelBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -686,14 +686,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `robustUniformTexelBufferDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long robustUniformTexelBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_robustUniformTexelBufferDescriptorSize.get(segment, 0L, index)); }
+    public static long robustUniformTexelBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_robustUniformTexelBufferDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `robustUniformTexelBufferDescriptorSize`}
     public long robustUniformTexelBufferDescriptorSize() { return robustUniformTexelBufferDescriptorSize(this.segment(), 0L); }
     /// Sets `robustUniformTexelBufferDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void robustUniformTexelBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_robustUniformTexelBufferDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void robustUniformTexelBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_robustUniformTexelBufferDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `robustUniformTexelBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -702,14 +702,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `storageTexelBufferDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long storageTexelBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_storageTexelBufferDescriptorSize.get(segment, 0L, index)); }
+    public static long storageTexelBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_storageTexelBufferDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `storageTexelBufferDescriptorSize`}
     public long storageTexelBufferDescriptorSize() { return storageTexelBufferDescriptorSize(this.segment(), 0L); }
     /// Sets `storageTexelBufferDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storageTexelBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_storageTexelBufferDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void storageTexelBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_storageTexelBufferDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `storageTexelBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -718,14 +718,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `robustStorageTexelBufferDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long robustStorageTexelBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_robustStorageTexelBufferDescriptorSize.get(segment, 0L, index)); }
+    public static long robustStorageTexelBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_robustStorageTexelBufferDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `robustStorageTexelBufferDescriptorSize`}
     public long robustStorageTexelBufferDescriptorSize() { return robustStorageTexelBufferDescriptorSize(this.segment(), 0L); }
     /// Sets `robustStorageTexelBufferDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void robustStorageTexelBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_robustStorageTexelBufferDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void robustStorageTexelBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_robustStorageTexelBufferDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `robustStorageTexelBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -734,14 +734,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `uniformBufferDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long uniformBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_uniformBufferDescriptorSize.get(segment, 0L, index)); }
+    public static long uniformBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_uniformBufferDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `uniformBufferDescriptorSize`}
     public long uniformBufferDescriptorSize() { return uniformBufferDescriptorSize(this.segment(), 0L); }
     /// Sets `uniformBufferDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void uniformBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_uniformBufferDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void uniformBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_uniformBufferDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `uniformBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -750,14 +750,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `robustUniformBufferDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long robustUniformBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_robustUniformBufferDescriptorSize.get(segment, 0L, index)); }
+    public static long robustUniformBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_robustUniformBufferDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `robustUniformBufferDescriptorSize`}
     public long robustUniformBufferDescriptorSize() { return robustUniformBufferDescriptorSize(this.segment(), 0L); }
     /// Sets `robustUniformBufferDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void robustUniformBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_robustUniformBufferDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void robustUniformBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_robustUniformBufferDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `robustUniformBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -766,14 +766,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `storageBufferDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long storageBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_storageBufferDescriptorSize.get(segment, 0L, index)); }
+    public static long storageBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_storageBufferDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `storageBufferDescriptorSize`}
     public long storageBufferDescriptorSize() { return storageBufferDescriptorSize(this.segment(), 0L); }
     /// Sets `storageBufferDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storageBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_storageBufferDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void storageBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_storageBufferDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `storageBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -782,14 +782,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `robustStorageBufferDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long robustStorageBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_robustStorageBufferDescriptorSize.get(segment, 0L, index)); }
+    public static long robustStorageBufferDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_robustStorageBufferDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `robustStorageBufferDescriptorSize`}
     public long robustStorageBufferDescriptorSize() { return robustStorageBufferDescriptorSize(this.segment(), 0L); }
     /// Sets `robustStorageBufferDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void robustStorageBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_robustStorageBufferDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void robustStorageBufferDescriptorSize(MemorySegment segment, long index, long value) { VH_robustStorageBufferDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `robustStorageBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -798,14 +798,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `inputAttachmentDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long inputAttachmentDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_inputAttachmentDescriptorSize.get(segment, 0L, index)); }
+    public static long inputAttachmentDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_inputAttachmentDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `inputAttachmentDescriptorSize`}
     public long inputAttachmentDescriptorSize() { return inputAttachmentDescriptorSize(this.segment(), 0L); }
     /// Sets `inputAttachmentDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void inputAttachmentDescriptorSize(MemorySegment segment, long index, long value) { VH_inputAttachmentDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void inputAttachmentDescriptorSize(MemorySegment segment, long index, long value) { VH_inputAttachmentDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `inputAttachmentDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -814,14 +814,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `accelerationStructureDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long accelerationStructureDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_accelerationStructureDescriptorSize.get(segment, 0L, index)); }
+    public static long accelerationStructureDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_accelerationStructureDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `accelerationStructureDescriptorSize`}
     public long accelerationStructureDescriptorSize() { return accelerationStructureDescriptorSize(this.segment(), 0L); }
     /// Sets `accelerationStructureDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void accelerationStructureDescriptorSize(MemorySegment segment, long index, long value) { VH_accelerationStructureDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void accelerationStructureDescriptorSize(MemorySegment segment, long index, long value) { VH_accelerationStructureDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `accelerationStructureDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -830,14 +830,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `maxSamplerDescriptorBufferRange` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long maxSamplerDescriptorBufferRange(MemorySegment segment, long index) { return (long) VH_maxSamplerDescriptorBufferRange.get(segment, 0L, index); }
+    public static long maxSamplerDescriptorBufferRange(MemorySegment segment, long index) { return (long) VH_maxSamplerDescriptorBufferRange.get().get(segment, 0L, index); }
     /// {@return `maxSamplerDescriptorBufferRange`}
     public long maxSamplerDescriptorBufferRange() { return maxSamplerDescriptorBufferRange(this.segment(), 0L); }
     /// Sets `maxSamplerDescriptorBufferRange` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxSamplerDescriptorBufferRange(MemorySegment segment, long index, long value) { VH_maxSamplerDescriptorBufferRange.set(segment, 0L, index, value); }
+    public static void maxSamplerDescriptorBufferRange(MemorySegment segment, long index, long value) { VH_maxSamplerDescriptorBufferRange.get().set(segment, 0L, index, value); }
     /// Sets `maxSamplerDescriptorBufferRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -846,14 +846,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `maxResourceDescriptorBufferRange` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long maxResourceDescriptorBufferRange(MemorySegment segment, long index) { return (long) VH_maxResourceDescriptorBufferRange.get(segment, 0L, index); }
+    public static long maxResourceDescriptorBufferRange(MemorySegment segment, long index) { return (long) VH_maxResourceDescriptorBufferRange.get().get(segment, 0L, index); }
     /// {@return `maxResourceDescriptorBufferRange`}
     public long maxResourceDescriptorBufferRange() { return maxResourceDescriptorBufferRange(this.segment(), 0L); }
     /// Sets `maxResourceDescriptorBufferRange` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxResourceDescriptorBufferRange(MemorySegment segment, long index, long value) { VH_maxResourceDescriptorBufferRange.set(segment, 0L, index, value); }
+    public static void maxResourceDescriptorBufferRange(MemorySegment segment, long index, long value) { VH_maxResourceDescriptorBufferRange.get().set(segment, 0L, index, value); }
     /// Sets `maxResourceDescriptorBufferRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -862,14 +862,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `samplerDescriptorBufferAddressSpaceSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long samplerDescriptorBufferAddressSpaceSize(MemorySegment segment, long index) { return (long) VH_samplerDescriptorBufferAddressSpaceSize.get(segment, 0L, index); }
+    public static long samplerDescriptorBufferAddressSpaceSize(MemorySegment segment, long index) { return (long) VH_samplerDescriptorBufferAddressSpaceSize.get().get(segment, 0L, index); }
     /// {@return `samplerDescriptorBufferAddressSpaceSize`}
     public long samplerDescriptorBufferAddressSpaceSize() { return samplerDescriptorBufferAddressSpaceSize(this.segment(), 0L); }
     /// Sets `samplerDescriptorBufferAddressSpaceSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void samplerDescriptorBufferAddressSpaceSize(MemorySegment segment, long index, long value) { VH_samplerDescriptorBufferAddressSpaceSize.set(segment, 0L, index, value); }
+    public static void samplerDescriptorBufferAddressSpaceSize(MemorySegment segment, long index, long value) { VH_samplerDescriptorBufferAddressSpaceSize.get().set(segment, 0L, index, value); }
     /// Sets `samplerDescriptorBufferAddressSpaceSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -878,14 +878,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `resourceDescriptorBufferAddressSpaceSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long resourceDescriptorBufferAddressSpaceSize(MemorySegment segment, long index) { return (long) VH_resourceDescriptorBufferAddressSpaceSize.get(segment, 0L, index); }
+    public static long resourceDescriptorBufferAddressSpaceSize(MemorySegment segment, long index) { return (long) VH_resourceDescriptorBufferAddressSpaceSize.get().get(segment, 0L, index); }
     /// {@return `resourceDescriptorBufferAddressSpaceSize`}
     public long resourceDescriptorBufferAddressSpaceSize() { return resourceDescriptorBufferAddressSpaceSize(this.segment(), 0L); }
     /// Sets `resourceDescriptorBufferAddressSpaceSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void resourceDescriptorBufferAddressSpaceSize(MemorySegment segment, long index, long value) { VH_resourceDescriptorBufferAddressSpaceSize.set(segment, 0L, index, value); }
+    public static void resourceDescriptorBufferAddressSpaceSize(MemorySegment segment, long index, long value) { VH_resourceDescriptorBufferAddressSpaceSize.get().set(segment, 0L, index, value); }
     /// Sets `resourceDescriptorBufferAddressSpaceSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -894,14 +894,14 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupTy
     /// {@return `descriptorBufferAddressSpaceSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long descriptorBufferAddressSpaceSize(MemorySegment segment, long index) { return (long) VH_descriptorBufferAddressSpaceSize.get(segment, 0L, index); }
+    public static long descriptorBufferAddressSpaceSize(MemorySegment segment, long index) { return (long) VH_descriptorBufferAddressSpaceSize.get().get(segment, 0L, index); }
     /// {@return `descriptorBufferAddressSpaceSize`}
     public long descriptorBufferAddressSpaceSize() { return descriptorBufferAddressSpaceSize(this.segment(), 0L); }
     /// Sets `descriptorBufferAddressSpaceSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorBufferAddressSpaceSize(MemorySegment segment, long index, long value) { VH_descriptorBufferAddressSpaceSize.set(segment, 0L, index, value); }
+    public static void descriptorBufferAddressSpaceSize(MemorySegment segment, long index, long value) { VH_descriptorBufferAddressSpaceSize.get().set(segment, 0L, index, value); }
     /// Sets `descriptorBufferAddressSpaceSize` with the given value.
     /// @param value the value
     /// @return `this`

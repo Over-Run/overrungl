@@ -39,43 +39,43 @@ public final class VkSubpassDependency extends GroupType {
     /// The memory layout of `srcSubpass`.
     public static final MemoryLayout LAYOUT_srcSubpass = LAYOUT.select(PathElement.groupElement("srcSubpass"));
     /// The [VarHandle] of `srcSubpass` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcSubpass = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcSubpass"));
+    public static final Supplier<VarHandle> VH_srcSubpass = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcSubpass")));
     /// The byte offset of `dstSubpass`.
     public static final long OFFSET_dstSubpass = LAYOUT.byteOffset(PathElement.groupElement("dstSubpass"));
     /// The memory layout of `dstSubpass`.
     public static final MemoryLayout LAYOUT_dstSubpass = LAYOUT.select(PathElement.groupElement("dstSubpass"));
     /// The [VarHandle] of `dstSubpass` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstSubpass = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstSubpass"));
+    public static final Supplier<VarHandle> VH_dstSubpass = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstSubpass")));
     /// The byte offset of `srcStageMask`.
     public static final long OFFSET_srcStageMask = LAYOUT.byteOffset(PathElement.groupElement("srcStageMask"));
     /// The memory layout of `srcStageMask`.
     public static final MemoryLayout LAYOUT_srcStageMask = LAYOUT.select(PathElement.groupElement("srcStageMask"));
     /// The [VarHandle] of `srcStageMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcStageMask"));
+    public static final Supplier<VarHandle> VH_srcStageMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcStageMask")));
     /// The byte offset of `dstStageMask`.
     public static final long OFFSET_dstStageMask = LAYOUT.byteOffset(PathElement.groupElement("dstStageMask"));
     /// The memory layout of `dstStageMask`.
     public static final MemoryLayout LAYOUT_dstStageMask = LAYOUT.select(PathElement.groupElement("dstStageMask"));
     /// The [VarHandle] of `dstStageMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstStageMask"));
+    public static final Supplier<VarHandle> VH_dstStageMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstStageMask")));
     /// The byte offset of `srcAccessMask`.
     public static final long OFFSET_srcAccessMask = LAYOUT.byteOffset(PathElement.groupElement("srcAccessMask"));
     /// The memory layout of `srcAccessMask`.
     public static final MemoryLayout LAYOUT_srcAccessMask = LAYOUT.select(PathElement.groupElement("srcAccessMask"));
     /// The [VarHandle] of `srcAccessMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccessMask"));
+    public static final Supplier<VarHandle> VH_srcAccessMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccessMask")));
     /// The byte offset of `dstAccessMask`.
     public static final long OFFSET_dstAccessMask = LAYOUT.byteOffset(PathElement.groupElement("dstAccessMask"));
     /// The memory layout of `dstAccessMask`.
     public static final MemoryLayout LAYOUT_dstAccessMask = LAYOUT.select(PathElement.groupElement("dstAccessMask"));
     /// The [VarHandle] of `dstAccessMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAccessMask"));
+    public static final Supplier<VarHandle> VH_dstAccessMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAccessMask")));
     /// The byte offset of `dependencyFlags`.
     public static final long OFFSET_dependencyFlags = LAYOUT.byteOffset(PathElement.groupElement("dependencyFlags"));
     /// The memory layout of `dependencyFlags`.
     public static final MemoryLayout LAYOUT_dependencyFlags = LAYOUT.select(PathElement.groupElement("dependencyFlags"));
     /// The [VarHandle] of `dependencyFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dependencyFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dependencyFlags"));
+    public static final Supplier<VarHandle> VH_dependencyFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dependencyFlags")));
 
     /// Creates `VkSubpassDependency` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkSubpassDependency extends GroupType {
     /// {@return `srcSubpass` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int srcSubpass(MemorySegment segment, long index) { return (int) VH_srcSubpass.get(segment, 0L, index); }
+    public static int srcSubpass(MemorySegment segment, long index) { return (int) VH_srcSubpass.get().get(segment, 0L, index); }
     /// {@return `srcSubpass`}
     public int srcSubpass() { return srcSubpass(this.segment(), 0L); }
     /// Sets `srcSubpass` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcSubpass(MemorySegment segment, long index, int value) { VH_srcSubpass.set(segment, 0L, index, value); }
+    public static void srcSubpass(MemorySegment segment, long index, int value) { VH_srcSubpass.get().set(segment, 0L, index, value); }
     /// Sets `srcSubpass` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkSubpassDependency extends GroupType {
     /// {@return `dstSubpass` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dstSubpass(MemorySegment segment, long index) { return (int) VH_dstSubpass.get(segment, 0L, index); }
+    public static int dstSubpass(MemorySegment segment, long index) { return (int) VH_dstSubpass.get().get(segment, 0L, index); }
     /// {@return `dstSubpass`}
     public int dstSubpass() { return dstSubpass(this.segment(), 0L); }
     /// Sets `dstSubpass` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstSubpass(MemorySegment segment, long index, int value) { VH_dstSubpass.set(segment, 0L, index, value); }
+    public static void dstSubpass(MemorySegment segment, long index, int value) { VH_dstSubpass.get().set(segment, 0L, index, value); }
     /// Sets `dstSubpass` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkSubpassDependency extends GroupType {
     /// {@return `srcStageMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int srcStageMask(MemorySegment segment, long index) { return (int) VH_srcStageMask.get(segment, 0L, index); }
+    public static int srcStageMask(MemorySegment segment, long index) { return (int) VH_srcStageMask.get().get(segment, 0L, index); }
     /// {@return `srcStageMask`}
     public int srcStageMask() { return srcStageMask(this.segment(), 0L); }
     /// Sets `srcStageMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcStageMask(MemorySegment segment, long index, int value) { VH_srcStageMask.set(segment, 0L, index, value); }
+    public static void srcStageMask(MemorySegment segment, long index, int value) { VH_srcStageMask.get().set(segment, 0L, index, value); }
     /// Sets `srcStageMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkSubpassDependency extends GroupType {
     /// {@return `dstStageMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dstStageMask(MemorySegment segment, long index) { return (int) VH_dstStageMask.get(segment, 0L, index); }
+    public static int dstStageMask(MemorySegment segment, long index) { return (int) VH_dstStageMask.get().get(segment, 0L, index); }
     /// {@return `dstStageMask`}
     public int dstStageMask() { return dstStageMask(this.segment(), 0L); }
     /// Sets `dstStageMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstStageMask(MemorySegment segment, long index, int value) { VH_dstStageMask.set(segment, 0L, index, value); }
+    public static void dstStageMask(MemorySegment segment, long index, int value) { VH_dstStageMask.get().set(segment, 0L, index, value); }
     /// Sets `dstStageMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkSubpassDependency extends GroupType {
     /// {@return `srcAccessMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int srcAccessMask(MemorySegment segment, long index) { return (int) VH_srcAccessMask.get(segment, 0L, index); }
+    public static int srcAccessMask(MemorySegment segment, long index) { return (int) VH_srcAccessMask.get().get(segment, 0L, index); }
     /// {@return `srcAccessMask`}
     public int srcAccessMask() { return srcAccessMask(this.segment(), 0L); }
     /// Sets `srcAccessMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcAccessMask(MemorySegment segment, long index, int value) { VH_srcAccessMask.set(segment, 0L, index, value); }
+    public static void srcAccessMask(MemorySegment segment, long index, int value) { VH_srcAccessMask.get().set(segment, 0L, index, value); }
     /// Sets `srcAccessMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkSubpassDependency extends GroupType {
     /// {@return `dstAccessMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dstAccessMask(MemorySegment segment, long index) { return (int) VH_dstAccessMask.get(segment, 0L, index); }
+    public static int dstAccessMask(MemorySegment segment, long index) { return (int) VH_dstAccessMask.get().get(segment, 0L, index); }
     /// {@return `dstAccessMask`}
     public int dstAccessMask() { return dstAccessMask(this.segment(), 0L); }
     /// Sets `dstAccessMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstAccessMask(MemorySegment segment, long index, int value) { VH_dstAccessMask.set(segment, 0L, index, value); }
+    public static void dstAccessMask(MemorySegment segment, long index, int value) { VH_dstAccessMask.get().set(segment, 0L, index, value); }
     /// Sets `dstAccessMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkSubpassDependency extends GroupType {
     /// {@return `dependencyFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dependencyFlags(MemorySegment segment, long index) { return (int) VH_dependencyFlags.get(segment, 0L, index); }
+    public static int dependencyFlags(MemorySegment segment, long index) { return (int) VH_dependencyFlags.get().get(segment, 0L, index); }
     /// {@return `dependencyFlags`}
     public int dependencyFlags() { return dependencyFlags(this.segment(), 0L); }
     /// Sets `dependencyFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dependencyFlags(MemorySegment segment, long index, int value) { VH_dependencyFlags.set(segment, 0L, index, value); }
+    public static void dependencyFlags(MemorySegment segment, long index, int value) { VH_dependencyFlags.get().set(segment, 0L, index, value); }
     /// Sets `dependencyFlags` with the given value.
     /// @param value the value
     /// @return `this`

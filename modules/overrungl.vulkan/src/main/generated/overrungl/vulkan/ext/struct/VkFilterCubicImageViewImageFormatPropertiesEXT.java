@@ -33,25 +33,25 @@ public final class VkFilterCubicImageViewImageFormatPropertiesEXT extends GroupT
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `filterCubic`.
     public static final long OFFSET_filterCubic = LAYOUT.byteOffset(PathElement.groupElement("filterCubic"));
     /// The memory layout of `filterCubic`.
     public static final MemoryLayout LAYOUT_filterCubic = LAYOUT.select(PathElement.groupElement("filterCubic"));
     /// The [VarHandle] of `filterCubic` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_filterCubic = LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterCubic"));
+    public static final Supplier<VarHandle> VH_filterCubic = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterCubic")));
     /// The byte offset of `filterCubicMinmax`.
     public static final long OFFSET_filterCubicMinmax = LAYOUT.byteOffset(PathElement.groupElement("filterCubicMinmax"));
     /// The memory layout of `filterCubicMinmax`.
     public static final MemoryLayout LAYOUT_filterCubicMinmax = LAYOUT.select(PathElement.groupElement("filterCubicMinmax"));
     /// The [VarHandle] of `filterCubicMinmax` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_filterCubicMinmax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterCubicMinmax"));
+    public static final Supplier<VarHandle> VH_filterCubicMinmax = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterCubicMinmax")));
 
     /// Creates `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkFilterCubicImageViewImageFormatPropertiesEXT extends GroupT
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkFilterCubicImageViewImageFormatPropertiesEXT extends GroupT
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkFilterCubicImageViewImageFormatPropertiesEXT extends GroupT
     /// {@return `filterCubic` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int filterCubic(MemorySegment segment, long index) { return (int) VH_filterCubic.get(segment, 0L, index); }
+    public static int filterCubic(MemorySegment segment, long index) { return (int) VH_filterCubic.get().get(segment, 0L, index); }
     /// {@return `filterCubic`}
     public int filterCubic() { return filterCubic(this.segment(), 0L); }
     /// Sets `filterCubic` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void filterCubic(MemorySegment segment, long index, int value) { VH_filterCubic.set(segment, 0L, index, value); }
+    public static void filterCubic(MemorySegment segment, long index, int value) { VH_filterCubic.get().set(segment, 0L, index, value); }
     /// Sets `filterCubic` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkFilterCubicImageViewImageFormatPropertiesEXT extends GroupT
     /// {@return `filterCubicMinmax` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int filterCubicMinmax(MemorySegment segment, long index) { return (int) VH_filterCubicMinmax.get(segment, 0L, index); }
+    public static int filterCubicMinmax(MemorySegment segment, long index) { return (int) VH_filterCubicMinmax.get().get(segment, 0L, index); }
     /// {@return `filterCubicMinmax`}
     public int filterCubicMinmax() { return filterCubicMinmax(this.segment(), 0L); }
     /// Sets `filterCubicMinmax` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void filterCubicMinmax(MemorySegment segment, long index, int value) { VH_filterCubicMinmax.set(segment, 0L, index, value); }
+    public static void filterCubicMinmax(MemorySegment segment, long index, int value) { VH_filterCubicMinmax.get().set(segment, 0L, index, value); }
     /// Sets `filterCubicMinmax` with the given value.
     /// @param value the value
     /// @return `this`

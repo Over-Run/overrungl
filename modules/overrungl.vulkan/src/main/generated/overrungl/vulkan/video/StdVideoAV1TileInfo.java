@@ -49,55 +49,55 @@ public final class StdVideoAV1TileInfo extends GroupType {
     /// The memory layout of `TileCols`.
     public static final MemoryLayout LAYOUT_TileCols = LAYOUT.select(PathElement.groupElement("TileCols"));
     /// The [VarHandle] of `TileCols` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_TileCols = LAYOUT.arrayElementVarHandle(PathElement.groupElement("TileCols"));
+    public static final Supplier<VarHandle> VH_TileCols = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("TileCols")));
     /// The byte offset of `TileRows`.
     public static final long OFFSET_TileRows = LAYOUT.byteOffset(PathElement.groupElement("TileRows"));
     /// The memory layout of `TileRows`.
     public static final MemoryLayout LAYOUT_TileRows = LAYOUT.select(PathElement.groupElement("TileRows"));
     /// The [VarHandle] of `TileRows` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_TileRows = LAYOUT.arrayElementVarHandle(PathElement.groupElement("TileRows"));
+    public static final Supplier<VarHandle> VH_TileRows = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("TileRows")));
     /// The byte offset of `context_update_tile_id`.
     public static final long OFFSET_context_update_tile_id = LAYOUT.byteOffset(PathElement.groupElement("context_update_tile_id"));
     /// The memory layout of `context_update_tile_id`.
     public static final MemoryLayout LAYOUT_context_update_tile_id = LAYOUT.select(PathElement.groupElement("context_update_tile_id"));
     /// The [VarHandle] of `context_update_tile_id` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_context_update_tile_id = LAYOUT.arrayElementVarHandle(PathElement.groupElement("context_update_tile_id"));
+    public static final Supplier<VarHandle> VH_context_update_tile_id = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("context_update_tile_id")));
     /// The byte offset of `tile_size_bytes_minus_1`.
     public static final long OFFSET_tile_size_bytes_minus_1 = LAYOUT.byteOffset(PathElement.groupElement("tile_size_bytes_minus_1"));
     /// The memory layout of `tile_size_bytes_minus_1`.
     public static final MemoryLayout LAYOUT_tile_size_bytes_minus_1 = LAYOUT.select(PathElement.groupElement("tile_size_bytes_minus_1"));
     /// The [VarHandle] of `tile_size_bytes_minus_1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tile_size_bytes_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tile_size_bytes_minus_1"));
+    public static final Supplier<VarHandle> VH_tile_size_bytes_minus_1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tile_size_bytes_minus_1")));
     /// The byte offset of `reserved1`.
     public static final long OFFSET_reserved1 = LAYOUT.byteOffset(PathElement.groupElement("reserved1"));
     /// The memory layout of `reserved1`.
     public static final MemoryLayout LAYOUT_reserved1 = LAYOUT.select(PathElement.groupElement("reserved1"));
     /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_reserved1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"), PathElement.sequenceElement()));
     /// The byte offset of `pMiColStarts`.
     public static final long OFFSET_pMiColStarts = LAYOUT.byteOffset(PathElement.groupElement("pMiColStarts"));
     /// The memory layout of `pMiColStarts`.
     public static final MemoryLayout LAYOUT_pMiColStarts = LAYOUT.select(PathElement.groupElement("pMiColStarts"));
     /// The [VarHandle] of `pMiColStarts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pMiColStarts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMiColStarts"));
+    public static final Supplier<VarHandle> VH_pMiColStarts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMiColStarts")));
     /// The byte offset of `pMiRowStarts`.
     public static final long OFFSET_pMiRowStarts = LAYOUT.byteOffset(PathElement.groupElement("pMiRowStarts"));
     /// The memory layout of `pMiRowStarts`.
     public static final MemoryLayout LAYOUT_pMiRowStarts = LAYOUT.select(PathElement.groupElement("pMiRowStarts"));
     /// The [VarHandle] of `pMiRowStarts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pMiRowStarts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMiRowStarts"));
+    public static final Supplier<VarHandle> VH_pMiRowStarts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMiRowStarts")));
     /// The byte offset of `pWidthInSbsMinus1`.
     public static final long OFFSET_pWidthInSbsMinus1 = LAYOUT.byteOffset(PathElement.groupElement("pWidthInSbsMinus1"));
     /// The memory layout of `pWidthInSbsMinus1`.
     public static final MemoryLayout LAYOUT_pWidthInSbsMinus1 = LAYOUT.select(PathElement.groupElement("pWidthInSbsMinus1"));
     /// The [VarHandle] of `pWidthInSbsMinus1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pWidthInSbsMinus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWidthInSbsMinus1"));
+    public static final Supplier<VarHandle> VH_pWidthInSbsMinus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWidthInSbsMinus1")));
     /// The byte offset of `pHeightInSbsMinus1`.
     public static final long OFFSET_pHeightInSbsMinus1 = LAYOUT.byteOffset(PathElement.groupElement("pHeightInSbsMinus1"));
     /// The memory layout of `pHeightInSbsMinus1`.
     public static final MemoryLayout LAYOUT_pHeightInSbsMinus1 = LAYOUT.select(PathElement.groupElement("pHeightInSbsMinus1"));
     /// The [VarHandle] of `pHeightInSbsMinus1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pHeightInSbsMinus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pHeightInSbsMinus1"));
+    public static final Supplier<VarHandle> VH_pHeightInSbsMinus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pHeightInSbsMinus1")));
 
     /// Creates `StdVideoAV1TileInfo` with the given segment.
     /// @param segment      the memory segment
@@ -168,14 +168,14 @@ public final class StdVideoAV1TileInfo extends GroupType {
     /// {@return `TileCols` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte TileCols(MemorySegment segment, long index) { return (byte) VH_TileCols.get(segment, 0L, index); }
+    public static byte TileCols(MemorySegment segment, long index) { return (byte) VH_TileCols.get().get(segment, 0L, index); }
     /// {@return `TileCols`}
     public byte TileCols() { return TileCols(this.segment(), 0L); }
     /// Sets `TileCols` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void TileCols(MemorySegment segment, long index, byte value) { VH_TileCols.set(segment, 0L, index, value); }
+    public static void TileCols(MemorySegment segment, long index, byte value) { VH_TileCols.get().set(segment, 0L, index, value); }
     /// Sets `TileCols` with the given value.
     /// @param value the value
     /// @return `this`
@@ -184,14 +184,14 @@ public final class StdVideoAV1TileInfo extends GroupType {
     /// {@return `TileRows` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte TileRows(MemorySegment segment, long index) { return (byte) VH_TileRows.get(segment, 0L, index); }
+    public static byte TileRows(MemorySegment segment, long index) { return (byte) VH_TileRows.get().get(segment, 0L, index); }
     /// {@return `TileRows`}
     public byte TileRows() { return TileRows(this.segment(), 0L); }
     /// Sets `TileRows` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void TileRows(MemorySegment segment, long index, byte value) { VH_TileRows.set(segment, 0L, index, value); }
+    public static void TileRows(MemorySegment segment, long index, byte value) { VH_TileRows.get().set(segment, 0L, index, value); }
     /// Sets `TileRows` with the given value.
     /// @param value the value
     /// @return `this`
@@ -200,14 +200,14 @@ public final class StdVideoAV1TileInfo extends GroupType {
     /// {@return `context_update_tile_id` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short context_update_tile_id(MemorySegment segment, long index) { return (short) VH_context_update_tile_id.get(segment, 0L, index); }
+    public static short context_update_tile_id(MemorySegment segment, long index) { return (short) VH_context_update_tile_id.get().get(segment, 0L, index); }
     /// {@return `context_update_tile_id`}
     public short context_update_tile_id() { return context_update_tile_id(this.segment(), 0L); }
     /// Sets `context_update_tile_id` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void context_update_tile_id(MemorySegment segment, long index, short value) { VH_context_update_tile_id.set(segment, 0L, index, value); }
+    public static void context_update_tile_id(MemorySegment segment, long index, short value) { VH_context_update_tile_id.get().set(segment, 0L, index, value); }
     /// Sets `context_update_tile_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -216,14 +216,14 @@ public final class StdVideoAV1TileInfo extends GroupType {
     /// {@return `tile_size_bytes_minus_1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte tile_size_bytes_minus_1(MemorySegment segment, long index) { return (byte) VH_tile_size_bytes_minus_1.get(segment, 0L, index); }
+    public static byte tile_size_bytes_minus_1(MemorySegment segment, long index) { return (byte) VH_tile_size_bytes_minus_1.get().get(segment, 0L, index); }
     /// {@return `tile_size_bytes_minus_1`}
     public byte tile_size_bytes_minus_1() { return tile_size_bytes_minus_1(this.segment(), 0L); }
     /// Sets `tile_size_bytes_minus_1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tile_size_bytes_minus_1(MemorySegment segment, long index, byte value) { VH_tile_size_bytes_minus_1.set(segment, 0L, index, value); }
+    public static void tile_size_bytes_minus_1(MemorySegment segment, long index, byte value) { VH_tile_size_bytes_minus_1.get().set(segment, 0L, index, value); }
     /// Sets `tile_size_bytes_minus_1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -237,7 +237,7 @@ public final class StdVideoAV1TileInfo extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte reserved1(MemorySegment segment, long index, long index0) { return (byte) VH_reserved1.get(segment, 0L, index, index0); }
+    public static byte reserved1(MemorySegment segment, long index, long index0) { return (byte) VH_reserved1.get().get(segment, 0L, index, index0); }
     /// {@return `reserved1`}
     public MemorySegment reserved1() { return reserved1(this.segment(), 0L); }
     /// {@return `reserved1`}
@@ -253,7 +253,7 @@ public final class StdVideoAV1TileInfo extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void reserved1(MemorySegment segment, long index, long index0, byte value) { VH_reserved1.set(segment, 0L, index, index0, value); }
+    public static void reserved1(MemorySegment segment, long index, long index0, byte value) { VH_reserved1.get().set(segment, 0L, index, index0, value); }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -267,14 +267,14 @@ public final class StdVideoAV1TileInfo extends GroupType {
     /// {@return `pMiColStarts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pMiColStarts(MemorySegment segment, long index) { return (MemorySegment) VH_pMiColStarts.get(segment, 0L, index); }
+    public static MemorySegment pMiColStarts(MemorySegment segment, long index) { return (MemorySegment) VH_pMiColStarts.get().get(segment, 0L, index); }
     /// {@return `pMiColStarts`}
     public MemorySegment pMiColStarts() { return pMiColStarts(this.segment(), 0L); }
     /// Sets `pMiColStarts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pMiColStarts(MemorySegment segment, long index, MemorySegment value) { VH_pMiColStarts.set(segment, 0L, index, value); }
+    public static void pMiColStarts(MemorySegment segment, long index, MemorySegment value) { VH_pMiColStarts.get().set(segment, 0L, index, value); }
     /// Sets `pMiColStarts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -283,14 +283,14 @@ public final class StdVideoAV1TileInfo extends GroupType {
     /// {@return `pMiRowStarts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pMiRowStarts(MemorySegment segment, long index) { return (MemorySegment) VH_pMiRowStarts.get(segment, 0L, index); }
+    public static MemorySegment pMiRowStarts(MemorySegment segment, long index) { return (MemorySegment) VH_pMiRowStarts.get().get(segment, 0L, index); }
     /// {@return `pMiRowStarts`}
     public MemorySegment pMiRowStarts() { return pMiRowStarts(this.segment(), 0L); }
     /// Sets `pMiRowStarts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pMiRowStarts(MemorySegment segment, long index, MemorySegment value) { VH_pMiRowStarts.set(segment, 0L, index, value); }
+    public static void pMiRowStarts(MemorySegment segment, long index, MemorySegment value) { VH_pMiRowStarts.get().set(segment, 0L, index, value); }
     /// Sets `pMiRowStarts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -299,14 +299,14 @@ public final class StdVideoAV1TileInfo extends GroupType {
     /// {@return `pWidthInSbsMinus1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pWidthInSbsMinus1(MemorySegment segment, long index) { return (MemorySegment) VH_pWidthInSbsMinus1.get(segment, 0L, index); }
+    public static MemorySegment pWidthInSbsMinus1(MemorySegment segment, long index) { return (MemorySegment) VH_pWidthInSbsMinus1.get().get(segment, 0L, index); }
     /// {@return `pWidthInSbsMinus1`}
     public MemorySegment pWidthInSbsMinus1() { return pWidthInSbsMinus1(this.segment(), 0L); }
     /// Sets `pWidthInSbsMinus1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pWidthInSbsMinus1(MemorySegment segment, long index, MemorySegment value) { VH_pWidthInSbsMinus1.set(segment, 0L, index, value); }
+    public static void pWidthInSbsMinus1(MemorySegment segment, long index, MemorySegment value) { VH_pWidthInSbsMinus1.get().set(segment, 0L, index, value); }
     /// Sets `pWidthInSbsMinus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -315,14 +315,14 @@ public final class StdVideoAV1TileInfo extends GroupType {
     /// {@return `pHeightInSbsMinus1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pHeightInSbsMinus1(MemorySegment segment, long index) { return (MemorySegment) VH_pHeightInSbsMinus1.get(segment, 0L, index); }
+    public static MemorySegment pHeightInSbsMinus1(MemorySegment segment, long index) { return (MemorySegment) VH_pHeightInSbsMinus1.get().get(segment, 0L, index); }
     /// {@return `pHeightInSbsMinus1`}
     public MemorySegment pHeightInSbsMinus1() { return pHeightInSbsMinus1(this.segment(), 0L); }
     /// Sets `pHeightInSbsMinus1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pHeightInSbsMinus1(MemorySegment segment, long index, MemorySegment value) { VH_pHeightInSbsMinus1.set(segment, 0L, index, value); }
+    public static void pHeightInSbsMinus1(MemorySegment segment, long index, MemorySegment value) { VH_pHeightInSbsMinus1.get().set(segment, 0L, index, value); }
     /// Sets `pHeightInSbsMinus1` with the given value.
     /// @param value the value
     /// @return `this`

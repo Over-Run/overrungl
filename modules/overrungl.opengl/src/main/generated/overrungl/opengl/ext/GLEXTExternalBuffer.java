@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,8 +11,8 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLEXTExternalBuffer {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBufferStorageExternalEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedBufferStorageExternalEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glBufferStorageExternalEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedBufferStorageExternalEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glBufferStorageExternalEXT;
         public final MemorySegment PFN_glNamedBufferStorageExternalEXT;
         private Handles(GLLoadFunc func) {
@@ -31,7 +32,7 @@ public final class GLEXTExternalBuffer {
     public void BufferStorageExternalEXT(int target, long offset, long size, @NonNull MemorySegment clientBuffer, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferStorageExternalEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBufferStorageExternalEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBufferStorageExternalEXT", target, offset, size, clientBuffer, flags); }
-        Handles.MH_glBufferStorageExternalEXT.invokeExact(handles.PFN_glBufferStorageExternalEXT, target, offset, size, clientBuffer, flags); }
+        Handles.MH_glBufferStorageExternalEXT.get().invokeExact(handles.PFN_glBufferStorageExternalEXT, target, offset, size, clientBuffer, flags); }
         catch (Throwable e) { throw new RuntimeException("error in BufferStorageExternalEXT", e); }
     }
 
@@ -42,7 +43,7 @@ public final class GLEXTExternalBuffer {
     public void NamedBufferStorageExternalEXT(int buffer, long offset, long size, @NonNull MemorySegment clientBuffer, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferStorageExternalEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedBufferStorageExternalEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedBufferStorageExternalEXT", buffer, offset, size, clientBuffer, flags); }
-        Handles.MH_glNamedBufferStorageExternalEXT.invokeExact(handles.PFN_glNamedBufferStorageExternalEXT, buffer, offset, size, clientBuffer, flags); }
+        Handles.MH_glNamedBufferStorageExternalEXT.get().invokeExact(handles.PFN_glNamedBufferStorageExternalEXT, buffer, offset, size, clientBuffer, flags); }
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferStorageExternalEXT", e); }
     }
 

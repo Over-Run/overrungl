@@ -41,49 +41,49 @@ public final class VkRayTracingShaderGroupCreateInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `type`.
     public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
     /// The memory layout of `type`.
     public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
     /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
+    public static final Supplier<VarHandle> VH_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("type")));
     /// The byte offset of `generalShader`.
     public static final long OFFSET_generalShader = LAYOUT.byteOffset(PathElement.groupElement("generalShader"));
     /// The memory layout of `generalShader`.
     public static final MemoryLayout LAYOUT_generalShader = LAYOUT.select(PathElement.groupElement("generalShader"));
     /// The [VarHandle] of `generalShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_generalShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("generalShader"));
+    public static final Supplier<VarHandle> VH_generalShader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("generalShader")));
     /// The byte offset of `closestHitShader`.
     public static final long OFFSET_closestHitShader = LAYOUT.byteOffset(PathElement.groupElement("closestHitShader"));
     /// The memory layout of `closestHitShader`.
     public static final MemoryLayout LAYOUT_closestHitShader = LAYOUT.select(PathElement.groupElement("closestHitShader"));
     /// The [VarHandle] of `closestHitShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_closestHitShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("closestHitShader"));
+    public static final Supplier<VarHandle> VH_closestHitShader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("closestHitShader")));
     /// The byte offset of `anyHitShader`.
     public static final long OFFSET_anyHitShader = LAYOUT.byteOffset(PathElement.groupElement("anyHitShader"));
     /// The memory layout of `anyHitShader`.
     public static final MemoryLayout LAYOUT_anyHitShader = LAYOUT.select(PathElement.groupElement("anyHitShader"));
     /// The [VarHandle] of `anyHitShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_anyHitShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("anyHitShader"));
+    public static final Supplier<VarHandle> VH_anyHitShader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("anyHitShader")));
     /// The byte offset of `intersectionShader`.
     public static final long OFFSET_intersectionShader = LAYOUT.byteOffset(PathElement.groupElement("intersectionShader"));
     /// The memory layout of `intersectionShader`.
     public static final MemoryLayout LAYOUT_intersectionShader = LAYOUT.select(PathElement.groupElement("intersectionShader"));
     /// The [VarHandle] of `intersectionShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_intersectionShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("intersectionShader"));
+    public static final Supplier<VarHandle> VH_intersectionShader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("intersectionShader")));
     /// The byte offset of `pShaderGroupCaptureReplayHandle`.
     public static final long OFFSET_pShaderGroupCaptureReplayHandle = LAYOUT.byteOffset(PathElement.groupElement("pShaderGroupCaptureReplayHandle"));
     /// The memory layout of `pShaderGroupCaptureReplayHandle`.
     public static final MemoryLayout LAYOUT_pShaderGroupCaptureReplayHandle = LAYOUT.select(PathElement.groupElement("pShaderGroupCaptureReplayHandle"));
     /// The [VarHandle] of `pShaderGroupCaptureReplayHandle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pShaderGroupCaptureReplayHandle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pShaderGroupCaptureReplayHandle"));
+    public static final Supplier<VarHandle> VH_pShaderGroupCaptureReplayHandle = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pShaderGroupCaptureReplayHandle")));
 
     /// Creates `VkRayTracingShaderGroupCreateInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkRayTracingShaderGroupCreateInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkRayTracingShaderGroupCreateInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkRayTracingShaderGroupCreateInfoKHR extends GroupType {
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
+    public static int type(MemorySegment segment, long index) { return (int) VH_type.get().get(segment, 0L, index); }
     /// {@return `type`}
     public int type() { return type(this.segment(), 0L); }
     /// Sets `type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void type(MemorySegment segment, long index, int value) { VH_type.set(segment, 0L, index, value); }
+    public static void type(MemorySegment segment, long index, int value) { VH_type.get().set(segment, 0L, index, value); }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkRayTracingShaderGroupCreateInfoKHR extends GroupType {
     /// {@return `generalShader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int generalShader(MemorySegment segment, long index) { return (int) VH_generalShader.get(segment, 0L, index); }
+    public static int generalShader(MemorySegment segment, long index) { return (int) VH_generalShader.get().get(segment, 0L, index); }
     /// {@return `generalShader`}
     public int generalShader() { return generalShader(this.segment(), 0L); }
     /// Sets `generalShader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void generalShader(MemorySegment segment, long index, int value) { VH_generalShader.set(segment, 0L, index, value); }
+    public static void generalShader(MemorySegment segment, long index, int value) { VH_generalShader.get().set(segment, 0L, index, value); }
     /// Sets `generalShader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkRayTracingShaderGroupCreateInfoKHR extends GroupType {
     /// {@return `closestHitShader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int closestHitShader(MemorySegment segment, long index) { return (int) VH_closestHitShader.get(segment, 0L, index); }
+    public static int closestHitShader(MemorySegment segment, long index) { return (int) VH_closestHitShader.get().get(segment, 0L, index); }
     /// {@return `closestHitShader`}
     public int closestHitShader() { return closestHitShader(this.segment(), 0L); }
     /// Sets `closestHitShader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void closestHitShader(MemorySegment segment, long index, int value) { VH_closestHitShader.set(segment, 0L, index, value); }
+    public static void closestHitShader(MemorySegment segment, long index, int value) { VH_closestHitShader.get().set(segment, 0L, index, value); }
     /// Sets `closestHitShader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkRayTracingShaderGroupCreateInfoKHR extends GroupType {
     /// {@return `anyHitShader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int anyHitShader(MemorySegment segment, long index) { return (int) VH_anyHitShader.get(segment, 0L, index); }
+    public static int anyHitShader(MemorySegment segment, long index) { return (int) VH_anyHitShader.get().get(segment, 0L, index); }
     /// {@return `anyHitShader`}
     public int anyHitShader() { return anyHitShader(this.segment(), 0L); }
     /// Sets `anyHitShader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void anyHitShader(MemorySegment segment, long index, int value) { VH_anyHitShader.set(segment, 0L, index, value); }
+    public static void anyHitShader(MemorySegment segment, long index, int value) { VH_anyHitShader.get().set(segment, 0L, index, value); }
     /// Sets `anyHitShader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkRayTracingShaderGroupCreateInfoKHR extends GroupType {
     /// {@return `intersectionShader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int intersectionShader(MemorySegment segment, long index) { return (int) VH_intersectionShader.get(segment, 0L, index); }
+    public static int intersectionShader(MemorySegment segment, long index) { return (int) VH_intersectionShader.get().get(segment, 0L, index); }
     /// {@return `intersectionShader`}
     public int intersectionShader() { return intersectionShader(this.segment(), 0L); }
     /// Sets `intersectionShader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void intersectionShader(MemorySegment segment, long index, int value) { VH_intersectionShader.set(segment, 0L, index, value); }
+    public static void intersectionShader(MemorySegment segment, long index, int value) { VH_intersectionShader.get().set(segment, 0L, index, value); }
     /// Sets `intersectionShader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkRayTracingShaderGroupCreateInfoKHR extends GroupType {
     /// {@return `pShaderGroupCaptureReplayHandle` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pShaderGroupCaptureReplayHandle(MemorySegment segment, long index) { return (MemorySegment) VH_pShaderGroupCaptureReplayHandle.get(segment, 0L, index); }
+    public static MemorySegment pShaderGroupCaptureReplayHandle(MemorySegment segment, long index) { return (MemorySegment) VH_pShaderGroupCaptureReplayHandle.get().get(segment, 0L, index); }
     /// {@return `pShaderGroupCaptureReplayHandle`}
     public MemorySegment pShaderGroupCaptureReplayHandle() { return pShaderGroupCaptureReplayHandle(this.segment(), 0L); }
     /// Sets `pShaderGroupCaptureReplayHandle` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pShaderGroupCaptureReplayHandle(MemorySegment segment, long index, MemorySegment value) { VH_pShaderGroupCaptureReplayHandle.set(segment, 0L, index, value); }
+    public static void pShaderGroupCaptureReplayHandle(MemorySegment segment, long index, MemorySegment value) { VH_pShaderGroupCaptureReplayHandle.get().set(segment, 0L, index, value); }
     /// Sets `pShaderGroupCaptureReplayHandle` with the given value.
     /// @param value the value
     /// @return `this`

@@ -37,37 +37,37 @@ public final class VkD3D12FenceSubmitInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `waitSemaphoreValuesCount`.
     public static final long OFFSET_waitSemaphoreValuesCount = LAYOUT.byteOffset(PathElement.groupElement("waitSemaphoreValuesCount"));
     /// The memory layout of `waitSemaphoreValuesCount`.
     public static final MemoryLayout LAYOUT_waitSemaphoreValuesCount = LAYOUT.select(PathElement.groupElement("waitSemaphoreValuesCount"));
     /// The [VarHandle] of `waitSemaphoreValuesCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_waitSemaphoreValuesCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("waitSemaphoreValuesCount"));
+    public static final Supplier<VarHandle> VH_waitSemaphoreValuesCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("waitSemaphoreValuesCount")));
     /// The byte offset of `pWaitSemaphoreValues`.
     public static final long OFFSET_pWaitSemaphoreValues = LAYOUT.byteOffset(PathElement.groupElement("pWaitSemaphoreValues"));
     /// The memory layout of `pWaitSemaphoreValues`.
     public static final MemoryLayout LAYOUT_pWaitSemaphoreValues = LAYOUT.select(PathElement.groupElement("pWaitSemaphoreValues"));
     /// The [VarHandle] of `pWaitSemaphoreValues` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pWaitSemaphoreValues = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWaitSemaphoreValues"));
+    public static final Supplier<VarHandle> VH_pWaitSemaphoreValues = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWaitSemaphoreValues")));
     /// The byte offset of `signalSemaphoreValuesCount`.
     public static final long OFFSET_signalSemaphoreValuesCount = LAYOUT.byteOffset(PathElement.groupElement("signalSemaphoreValuesCount"));
     /// The memory layout of `signalSemaphoreValuesCount`.
     public static final MemoryLayout LAYOUT_signalSemaphoreValuesCount = LAYOUT.select(PathElement.groupElement("signalSemaphoreValuesCount"));
     /// The [VarHandle] of `signalSemaphoreValuesCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_signalSemaphoreValuesCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("signalSemaphoreValuesCount"));
+    public static final Supplier<VarHandle> VH_signalSemaphoreValuesCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("signalSemaphoreValuesCount")));
     /// The byte offset of `pSignalSemaphoreValues`.
     public static final long OFFSET_pSignalSemaphoreValues = LAYOUT.byteOffset(PathElement.groupElement("pSignalSemaphoreValues"));
     /// The memory layout of `pSignalSemaphoreValues`.
     public static final MemoryLayout LAYOUT_pSignalSemaphoreValues = LAYOUT.select(PathElement.groupElement("pSignalSemaphoreValues"));
     /// The [VarHandle] of `pSignalSemaphoreValues` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pSignalSemaphoreValues = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSignalSemaphoreValues"));
+    public static final Supplier<VarHandle> VH_pSignalSemaphoreValues = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSignalSemaphoreValues")));
 
     /// Creates `VkD3D12FenceSubmitInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkD3D12FenceSubmitInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkD3D12FenceSubmitInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkD3D12FenceSubmitInfoKHR extends GroupType {
     /// {@return `waitSemaphoreValuesCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int waitSemaphoreValuesCount(MemorySegment segment, long index) { return (int) VH_waitSemaphoreValuesCount.get(segment, 0L, index); }
+    public static int waitSemaphoreValuesCount(MemorySegment segment, long index) { return (int) VH_waitSemaphoreValuesCount.get().get(segment, 0L, index); }
     /// {@return `waitSemaphoreValuesCount`}
     public int waitSemaphoreValuesCount() { return waitSemaphoreValuesCount(this.segment(), 0L); }
     /// Sets `waitSemaphoreValuesCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void waitSemaphoreValuesCount(MemorySegment segment, long index, int value) { VH_waitSemaphoreValuesCount.set(segment, 0L, index, value); }
+    public static void waitSemaphoreValuesCount(MemorySegment segment, long index, int value) { VH_waitSemaphoreValuesCount.get().set(segment, 0L, index, value); }
     /// Sets `waitSemaphoreValuesCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkD3D12FenceSubmitInfoKHR extends GroupType {
     /// {@return `pWaitSemaphoreValues` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pWaitSemaphoreValues(MemorySegment segment, long index) { return (MemorySegment) VH_pWaitSemaphoreValues.get(segment, 0L, index); }
+    public static MemorySegment pWaitSemaphoreValues(MemorySegment segment, long index) { return (MemorySegment) VH_pWaitSemaphoreValues.get().get(segment, 0L, index); }
     /// {@return `pWaitSemaphoreValues`}
     public MemorySegment pWaitSemaphoreValues() { return pWaitSemaphoreValues(this.segment(), 0L); }
     /// Sets `pWaitSemaphoreValues` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pWaitSemaphoreValues(MemorySegment segment, long index, MemorySegment value) { VH_pWaitSemaphoreValues.set(segment, 0L, index, value); }
+    public static void pWaitSemaphoreValues(MemorySegment segment, long index, MemorySegment value) { VH_pWaitSemaphoreValues.get().set(segment, 0L, index, value); }
     /// Sets `pWaitSemaphoreValues` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkD3D12FenceSubmitInfoKHR extends GroupType {
     /// {@return `signalSemaphoreValuesCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int signalSemaphoreValuesCount(MemorySegment segment, long index) { return (int) VH_signalSemaphoreValuesCount.get(segment, 0L, index); }
+    public static int signalSemaphoreValuesCount(MemorySegment segment, long index) { return (int) VH_signalSemaphoreValuesCount.get().get(segment, 0L, index); }
     /// {@return `signalSemaphoreValuesCount`}
     public int signalSemaphoreValuesCount() { return signalSemaphoreValuesCount(this.segment(), 0L); }
     /// Sets `signalSemaphoreValuesCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void signalSemaphoreValuesCount(MemorySegment segment, long index, int value) { VH_signalSemaphoreValuesCount.set(segment, 0L, index, value); }
+    public static void signalSemaphoreValuesCount(MemorySegment segment, long index, int value) { VH_signalSemaphoreValuesCount.get().set(segment, 0L, index, value); }
     /// Sets `signalSemaphoreValuesCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkD3D12FenceSubmitInfoKHR extends GroupType {
     /// {@return `pSignalSemaphoreValues` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pSignalSemaphoreValues(MemorySegment segment, long index) { return (MemorySegment) VH_pSignalSemaphoreValues.get(segment, 0L, index); }
+    public static MemorySegment pSignalSemaphoreValues(MemorySegment segment, long index) { return (MemorySegment) VH_pSignalSemaphoreValues.get().get(segment, 0L, index); }
     /// {@return `pSignalSemaphoreValues`}
     public MemorySegment pSignalSemaphoreValues() { return pSignalSemaphoreValues(this.segment(), 0L); }
     /// Sets `pSignalSemaphoreValues` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pSignalSemaphoreValues(MemorySegment segment, long index, MemorySegment value) { VH_pSignalSemaphoreValues.set(segment, 0L, index, value); }
+    public static void pSignalSemaphoreValues(MemorySegment segment, long index, MemorySegment value) { VH_pSignalSemaphoreValues.get().set(segment, 0L, index, value); }
     /// Sets `pSignalSemaphoreValues` with the given value.
     /// @param value the value
     /// @return `this`

@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -19,7 +20,7 @@ public final class GLARBBufferStorage {
     public static final int GL_BUFFER_STORAGE_FLAGS = 0x8220;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBufferStorage = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glBufferStorage = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glBufferStorage;
         private Handles(GLLoadFunc func) {
             PFN_glBufferStorage = func.invoke("glBufferStorage");
@@ -37,7 +38,7 @@ public final class GLARBBufferStorage {
     public void BufferStorage(int target, long size, @NonNull MemorySegment data, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferStorage)) throw new GLSymbolNotFoundError("Symbol not found: glBufferStorage");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBufferStorage", target, size, data, flags); }
-        Handles.MH_glBufferStorage.invokeExact(handles.PFN_glBufferStorage, target, size, data, flags); }
+        Handles.MH_glBufferStorage.get().invokeExact(handles.PFN_glBufferStorage, target, size, data, flags); }
         catch (Throwable e) { throw new RuntimeException("error in BufferStorage", e); }
     }
 

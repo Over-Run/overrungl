@@ -37,13 +37,13 @@ public final class VkVideoPictureResourceInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `codedOffset`.
     public static final long OFFSET_codedOffset = LAYOUT.byteOffset(PathElement.groupElement("codedOffset"));
     /// The memory layout of `codedOffset`.
@@ -57,13 +57,13 @@ public final class VkVideoPictureResourceInfoKHR extends GroupType {
     /// The memory layout of `baseArrayLayer`.
     public static final MemoryLayout LAYOUT_baseArrayLayer = LAYOUT.select(PathElement.groupElement("baseArrayLayer"));
     /// The [VarHandle] of `baseArrayLayer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_baseArrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseArrayLayer"));
+    public static final Supplier<VarHandle> VH_baseArrayLayer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseArrayLayer")));
     /// The byte offset of `imageViewBinding`.
     public static final long OFFSET_imageViewBinding = LAYOUT.byteOffset(PathElement.groupElement("imageViewBinding"));
     /// The memory layout of `imageViewBinding`.
     public static final MemoryLayout LAYOUT_imageViewBinding = LAYOUT.select(PathElement.groupElement("imageViewBinding"));
     /// The [VarHandle] of `imageViewBinding` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageViewBinding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageViewBinding"));
+    public static final Supplier<VarHandle> VH_imageViewBinding = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageViewBinding")));
 
     /// Creates `VkVideoPictureResourceInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -114,14 +114,14 @@ public final class VkVideoPictureResourceInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -130,14 +130,14 @@ public final class VkVideoPictureResourceInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -186,14 +186,14 @@ public final class VkVideoPictureResourceInfoKHR extends GroupType {
     /// {@return `baseArrayLayer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int baseArrayLayer(MemorySegment segment, long index) { return (int) VH_baseArrayLayer.get(segment, 0L, index); }
+    public static int baseArrayLayer(MemorySegment segment, long index) { return (int) VH_baseArrayLayer.get().get(segment, 0L, index); }
     /// {@return `baseArrayLayer`}
     public int baseArrayLayer() { return baseArrayLayer(this.segment(), 0L); }
     /// Sets `baseArrayLayer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void baseArrayLayer(MemorySegment segment, long index, int value) { VH_baseArrayLayer.set(segment, 0L, index, value); }
+    public static void baseArrayLayer(MemorySegment segment, long index, int value) { VH_baseArrayLayer.get().set(segment, 0L, index, value); }
     /// Sets `baseArrayLayer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -202,14 +202,14 @@ public final class VkVideoPictureResourceInfoKHR extends GroupType {
     /// {@return `imageViewBinding` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long imageViewBinding(MemorySegment segment, long index) { return (long) VH_imageViewBinding.get(segment, 0L, index); }
+    public static long imageViewBinding(MemorySegment segment, long index) { return (long) VH_imageViewBinding.get().get(segment, 0L, index); }
     /// {@return `imageViewBinding`}
     public long imageViewBinding() { return imageViewBinding(this.segment(), 0L); }
     /// Sets `imageViewBinding` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageViewBinding(MemorySegment segment, long index, long value) { VH_imageViewBinding.set(segment, 0L, index, value); }
+    public static void imageViewBinding(MemorySegment segment, long index, long value) { VH_imageViewBinding.get().set(segment, 0L, index, value); }
     /// Sets `imageViewBinding` with the given value.
     /// @param value the value
     /// @return `this`

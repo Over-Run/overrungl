@@ -35,31 +35,31 @@ public final class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `coverageToColorEnable`.
     public static final long OFFSET_coverageToColorEnable = LAYOUT.byteOffset(PathElement.groupElement("coverageToColorEnable"));
     /// The memory layout of `coverageToColorEnable`.
     public static final MemoryLayout LAYOUT_coverageToColorEnable = LAYOUT.select(PathElement.groupElement("coverageToColorEnable"));
     /// The [VarHandle] of `coverageToColorEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_coverageToColorEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageToColorEnable"));
+    public static final Supplier<VarHandle> VH_coverageToColorEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageToColorEnable")));
     /// The byte offset of `coverageToColorLocation`.
     public static final long OFFSET_coverageToColorLocation = LAYOUT.byteOffset(PathElement.groupElement("coverageToColorLocation"));
     /// The memory layout of `coverageToColorLocation`.
     public static final MemoryLayout LAYOUT_coverageToColorLocation = LAYOUT.select(PathElement.groupElement("coverageToColorLocation"));
     /// The [VarHandle] of `coverageToColorLocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_coverageToColorLocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageToColorLocation"));
+    public static final Supplier<VarHandle> VH_coverageToColorLocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageToColorLocation")));
 
     /// Creates `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType 
     /// {@return `coverageToColorEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int coverageToColorEnable(MemorySegment segment, long index) { return (int) VH_coverageToColorEnable.get(segment, 0L, index); }
+    public static int coverageToColorEnable(MemorySegment segment, long index) { return (int) VH_coverageToColorEnable.get().get(segment, 0L, index); }
     /// {@return `coverageToColorEnable`}
     public int coverageToColorEnable() { return coverageToColorEnable(this.segment(), 0L); }
     /// Sets `coverageToColorEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void coverageToColorEnable(MemorySegment segment, long index, int value) { VH_coverageToColorEnable.set(segment, 0L, index, value); }
+    public static void coverageToColorEnable(MemorySegment segment, long index, int value) { VH_coverageToColorEnable.get().set(segment, 0L, index, value); }
     /// Sets `coverageToColorEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType 
     /// {@return `coverageToColorLocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int coverageToColorLocation(MemorySegment segment, long index) { return (int) VH_coverageToColorLocation.get(segment, 0L, index); }
+    public static int coverageToColorLocation(MemorySegment segment, long index) { return (int) VH_coverageToColorLocation.get().get(segment, 0L, index); }
     /// {@return `coverageToColorLocation`}
     public int coverageToColorLocation() { return coverageToColorLocation(this.segment(), 0L); }
     /// Sets `coverageToColorLocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void coverageToColorLocation(MemorySegment segment, long index, int value) { VH_coverageToColorLocation.set(segment, 0L, index, value); }
+    public static void coverageToColorLocation(MemorySegment segment, long index, int value) { VH_coverageToColorLocation.get().set(segment, 0L, index, value); }
     /// Sets `coverageToColorLocation` with the given value.
     /// @param value the value
     /// @return `this`

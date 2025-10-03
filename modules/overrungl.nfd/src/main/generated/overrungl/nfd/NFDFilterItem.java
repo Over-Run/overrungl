@@ -29,13 +29,13 @@ public final class NFDFilterItem extends GroupType {
     /// The memory layout of `name`.
     public static final MemoryLayout LAYOUT_name = LAYOUT.select(PathElement.groupElement("name"));
     /// The [VarHandle] of `name` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_name = LAYOUT.arrayElementVarHandle(PathElement.groupElement("name"));
+    public static final Supplier<VarHandle> VH_name = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("name")));
     /// The byte offset of `spec`.
     public static final long OFFSET_spec = LAYOUT.byteOffset(PathElement.groupElement("spec"));
     /// The memory layout of `spec`.
     public static final MemoryLayout LAYOUT_spec = LAYOUT.select(PathElement.groupElement("spec"));
     /// The [VarHandle] of `spec` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_spec = LAYOUT.arrayElementVarHandle(PathElement.groupElement("spec"));
+    public static final Supplier<VarHandle> VH_spec = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("spec")));
 
     /// Creates `NFDFilterItem` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class NFDFilterItem extends GroupType {
     /// {@return `name` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment name(MemorySegment segment, long index) { return (MemorySegment) VH_name.get(segment, 0L, index); }
+    public static MemorySegment name(MemorySegment segment, long index) { return (MemorySegment) VH_name.get().get(segment, 0L, index); }
     /// {@return `name`}
     public MemorySegment name() { return name(this.segment(), 0L); }
     /// Sets `name` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void name(MemorySegment segment, long index, MemorySegment value) { VH_name.set(segment, 0L, index, value); }
+    public static void name(MemorySegment segment, long index, MemorySegment value) { VH_name.get().set(segment, 0L, index, value); }
     /// Sets `name` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class NFDFilterItem extends GroupType {
     /// {@return `spec` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment spec(MemorySegment segment, long index) { return (MemorySegment) VH_spec.get(segment, 0L, index); }
+    public static MemorySegment spec(MemorySegment segment, long index) { return (MemorySegment) VH_spec.get().get(segment, 0L, index); }
     /// {@return `spec`}
     public MemorySegment spec() { return spec(this.segment(), 0L); }
     /// Sets `spec` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void spec(MemorySegment segment, long index, MemorySegment value) { VH_spec.set(segment, 0L, index, value); }
+    public static void spec(MemorySegment segment, long index, MemorySegment value) { VH_spec.get().set(segment, 0L, index, value); }
     /// Sets `spec` with the given value.
     /// @param value the value
     /// @return `this`

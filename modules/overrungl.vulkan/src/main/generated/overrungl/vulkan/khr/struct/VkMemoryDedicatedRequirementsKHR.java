@@ -33,25 +33,25 @@ public final class VkMemoryDedicatedRequirementsKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `prefersDedicatedAllocation`.
     public static final long OFFSET_prefersDedicatedAllocation = LAYOUT.byteOffset(PathElement.groupElement("prefersDedicatedAllocation"));
     /// The memory layout of `prefersDedicatedAllocation`.
     public static final MemoryLayout LAYOUT_prefersDedicatedAllocation = LAYOUT.select(PathElement.groupElement("prefersDedicatedAllocation"));
     /// The [VarHandle] of `prefersDedicatedAllocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_prefersDedicatedAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("prefersDedicatedAllocation"));
+    public static final Supplier<VarHandle> VH_prefersDedicatedAllocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("prefersDedicatedAllocation")));
     /// The byte offset of `requiresDedicatedAllocation`.
     public static final long OFFSET_requiresDedicatedAllocation = LAYOUT.byteOffset(PathElement.groupElement("requiresDedicatedAllocation"));
     /// The memory layout of `requiresDedicatedAllocation`.
     public static final MemoryLayout LAYOUT_requiresDedicatedAllocation = LAYOUT.select(PathElement.groupElement("requiresDedicatedAllocation"));
     /// The [VarHandle] of `requiresDedicatedAllocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_requiresDedicatedAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiresDedicatedAllocation"));
+    public static final Supplier<VarHandle> VH_requiresDedicatedAllocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiresDedicatedAllocation")));
 
     /// Creates `VkMemoryDedicatedRequirementsKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkMemoryDedicatedRequirementsKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkMemoryDedicatedRequirementsKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkMemoryDedicatedRequirementsKHR extends GroupType {
     /// {@return `prefersDedicatedAllocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int prefersDedicatedAllocation(MemorySegment segment, long index) { return (int) VH_prefersDedicatedAllocation.get(segment, 0L, index); }
+    public static int prefersDedicatedAllocation(MemorySegment segment, long index) { return (int) VH_prefersDedicatedAllocation.get().get(segment, 0L, index); }
     /// {@return `prefersDedicatedAllocation`}
     public int prefersDedicatedAllocation() { return prefersDedicatedAllocation(this.segment(), 0L); }
     /// Sets `prefersDedicatedAllocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void prefersDedicatedAllocation(MemorySegment segment, long index, int value) { VH_prefersDedicatedAllocation.set(segment, 0L, index, value); }
+    public static void prefersDedicatedAllocation(MemorySegment segment, long index, int value) { VH_prefersDedicatedAllocation.get().set(segment, 0L, index, value); }
     /// Sets `prefersDedicatedAllocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkMemoryDedicatedRequirementsKHR extends GroupType {
     /// {@return `requiresDedicatedAllocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int requiresDedicatedAllocation(MemorySegment segment, long index) { return (int) VH_requiresDedicatedAllocation.get(segment, 0L, index); }
+    public static int requiresDedicatedAllocation(MemorySegment segment, long index) { return (int) VH_requiresDedicatedAllocation.get().get(segment, 0L, index); }
     /// {@return `requiresDedicatedAllocation`}
     public int requiresDedicatedAllocation() { return requiresDedicatedAllocation(this.segment(), 0L); }
     /// Sets `requiresDedicatedAllocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void requiresDedicatedAllocation(MemorySegment segment, long index, int value) { VH_requiresDedicatedAllocation.set(segment, 0L, index, value); }
+    public static void requiresDedicatedAllocation(MemorySegment segment, long index, int value) { VH_requiresDedicatedAllocation.get().set(segment, 0L, index, value); }
     /// Sets `requiresDedicatedAllocation` with the given value.
     /// @param value the value
     /// @return `this`

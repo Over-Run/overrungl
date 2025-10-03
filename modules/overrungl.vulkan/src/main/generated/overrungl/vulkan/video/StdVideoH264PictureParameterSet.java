@@ -51,61 +51,61 @@ public final class StdVideoH264PictureParameterSet extends GroupType {
     /// The memory layout of `seq_parameter_set_id`.
     public static final MemoryLayout LAYOUT_seq_parameter_set_id = LAYOUT.select(PathElement.groupElement("seq_parameter_set_id"));
     /// The [VarHandle] of `seq_parameter_set_id` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_seq_parameter_set_id = LAYOUT.arrayElementVarHandle(PathElement.groupElement("seq_parameter_set_id"));
+    public static final Supplier<VarHandle> VH_seq_parameter_set_id = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("seq_parameter_set_id")));
     /// The byte offset of `pic_parameter_set_id`.
     public static final long OFFSET_pic_parameter_set_id = LAYOUT.byteOffset(PathElement.groupElement("pic_parameter_set_id"));
     /// The memory layout of `pic_parameter_set_id`.
     public static final MemoryLayout LAYOUT_pic_parameter_set_id = LAYOUT.select(PathElement.groupElement("pic_parameter_set_id"));
     /// The [VarHandle] of `pic_parameter_set_id` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pic_parameter_set_id = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pic_parameter_set_id"));
+    public static final Supplier<VarHandle> VH_pic_parameter_set_id = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pic_parameter_set_id")));
     /// The byte offset of `num_ref_idx_l0_default_active_minus1`.
     public static final long OFFSET_num_ref_idx_l0_default_active_minus1 = LAYOUT.byteOffset(PathElement.groupElement("num_ref_idx_l0_default_active_minus1"));
     /// The memory layout of `num_ref_idx_l0_default_active_minus1`.
     public static final MemoryLayout LAYOUT_num_ref_idx_l0_default_active_minus1 = LAYOUT.select(PathElement.groupElement("num_ref_idx_l0_default_active_minus1"));
     /// The [VarHandle] of `num_ref_idx_l0_default_active_minus1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_num_ref_idx_l0_default_active_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_ref_idx_l0_default_active_minus1"));
+    public static final Supplier<VarHandle> VH_num_ref_idx_l0_default_active_minus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_ref_idx_l0_default_active_minus1")));
     /// The byte offset of `num_ref_idx_l1_default_active_minus1`.
     public static final long OFFSET_num_ref_idx_l1_default_active_minus1 = LAYOUT.byteOffset(PathElement.groupElement("num_ref_idx_l1_default_active_minus1"));
     /// The memory layout of `num_ref_idx_l1_default_active_minus1`.
     public static final MemoryLayout LAYOUT_num_ref_idx_l1_default_active_minus1 = LAYOUT.select(PathElement.groupElement("num_ref_idx_l1_default_active_minus1"));
     /// The [VarHandle] of `num_ref_idx_l1_default_active_minus1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_num_ref_idx_l1_default_active_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_ref_idx_l1_default_active_minus1"));
+    public static final Supplier<VarHandle> VH_num_ref_idx_l1_default_active_minus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_ref_idx_l1_default_active_minus1")));
     /// The byte offset of `weighted_bipred_idc`.
     public static final long OFFSET_weighted_bipred_idc = LAYOUT.byteOffset(PathElement.groupElement("weighted_bipred_idc"));
     /// The memory layout of `weighted_bipred_idc`.
     public static final MemoryLayout LAYOUT_weighted_bipred_idc = LAYOUT.select(PathElement.groupElement("weighted_bipred_idc"));
     /// The [VarHandle] of `weighted_bipred_idc` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_weighted_bipred_idc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("weighted_bipred_idc"));
+    public static final Supplier<VarHandle> VH_weighted_bipred_idc = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("weighted_bipred_idc")));
     /// The byte offset of `pic_init_qp_minus26`.
     public static final long OFFSET_pic_init_qp_minus26 = LAYOUT.byteOffset(PathElement.groupElement("pic_init_qp_minus26"));
     /// The memory layout of `pic_init_qp_minus26`.
     public static final MemoryLayout LAYOUT_pic_init_qp_minus26 = LAYOUT.select(PathElement.groupElement("pic_init_qp_minus26"));
     /// The [VarHandle] of `pic_init_qp_minus26` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pic_init_qp_minus26 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pic_init_qp_minus26"));
+    public static final Supplier<VarHandle> VH_pic_init_qp_minus26 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pic_init_qp_minus26")));
     /// The byte offset of `pic_init_qs_minus26`.
     public static final long OFFSET_pic_init_qs_minus26 = LAYOUT.byteOffset(PathElement.groupElement("pic_init_qs_minus26"));
     /// The memory layout of `pic_init_qs_minus26`.
     public static final MemoryLayout LAYOUT_pic_init_qs_minus26 = LAYOUT.select(PathElement.groupElement("pic_init_qs_minus26"));
     /// The [VarHandle] of `pic_init_qs_minus26` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pic_init_qs_minus26 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pic_init_qs_minus26"));
+    public static final Supplier<VarHandle> VH_pic_init_qs_minus26 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pic_init_qs_minus26")));
     /// The byte offset of `chroma_qp_index_offset`.
     public static final long OFFSET_chroma_qp_index_offset = LAYOUT.byteOffset(PathElement.groupElement("chroma_qp_index_offset"));
     /// The memory layout of `chroma_qp_index_offset`.
     public static final MemoryLayout LAYOUT_chroma_qp_index_offset = LAYOUT.select(PathElement.groupElement("chroma_qp_index_offset"));
     /// The [VarHandle] of `chroma_qp_index_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_chroma_qp_index_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("chroma_qp_index_offset"));
+    public static final Supplier<VarHandle> VH_chroma_qp_index_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("chroma_qp_index_offset")));
     /// The byte offset of `second_chroma_qp_index_offset`.
     public static final long OFFSET_second_chroma_qp_index_offset = LAYOUT.byteOffset(PathElement.groupElement("second_chroma_qp_index_offset"));
     /// The memory layout of `second_chroma_qp_index_offset`.
     public static final MemoryLayout LAYOUT_second_chroma_qp_index_offset = LAYOUT.select(PathElement.groupElement("second_chroma_qp_index_offset"));
     /// The [VarHandle] of `second_chroma_qp_index_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_second_chroma_qp_index_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("second_chroma_qp_index_offset"));
+    public static final Supplier<VarHandle> VH_second_chroma_qp_index_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("second_chroma_qp_index_offset")));
     /// The byte offset of `pScalingLists`.
     public static final long OFFSET_pScalingLists = LAYOUT.byteOffset(PathElement.groupElement("pScalingLists"));
     /// The memory layout of `pScalingLists`.
     public static final MemoryLayout LAYOUT_pScalingLists = LAYOUT.select(PathElement.groupElement("pScalingLists"));
     /// The [VarHandle] of `pScalingLists` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pScalingLists = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pScalingLists"));
+    public static final Supplier<VarHandle> VH_pScalingLists = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pScalingLists")));
 
     /// Creates `StdVideoH264PictureParameterSet` with the given segment.
     /// @param segment      the memory segment
@@ -176,14 +176,14 @@ public final class StdVideoH264PictureParameterSet extends GroupType {
     /// {@return `seq_parameter_set_id` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte seq_parameter_set_id(MemorySegment segment, long index) { return (byte) VH_seq_parameter_set_id.get(segment, 0L, index); }
+    public static byte seq_parameter_set_id(MemorySegment segment, long index) { return (byte) VH_seq_parameter_set_id.get().get(segment, 0L, index); }
     /// {@return `seq_parameter_set_id`}
     public byte seq_parameter_set_id() { return seq_parameter_set_id(this.segment(), 0L); }
     /// Sets `seq_parameter_set_id` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void seq_parameter_set_id(MemorySegment segment, long index, byte value) { VH_seq_parameter_set_id.set(segment, 0L, index, value); }
+    public static void seq_parameter_set_id(MemorySegment segment, long index, byte value) { VH_seq_parameter_set_id.get().set(segment, 0L, index, value); }
     /// Sets `seq_parameter_set_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -192,14 +192,14 @@ public final class StdVideoH264PictureParameterSet extends GroupType {
     /// {@return `pic_parameter_set_id` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte pic_parameter_set_id(MemorySegment segment, long index) { return (byte) VH_pic_parameter_set_id.get(segment, 0L, index); }
+    public static byte pic_parameter_set_id(MemorySegment segment, long index) { return (byte) VH_pic_parameter_set_id.get().get(segment, 0L, index); }
     /// {@return `pic_parameter_set_id`}
     public byte pic_parameter_set_id() { return pic_parameter_set_id(this.segment(), 0L); }
     /// Sets `pic_parameter_set_id` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pic_parameter_set_id(MemorySegment segment, long index, byte value) { VH_pic_parameter_set_id.set(segment, 0L, index, value); }
+    public static void pic_parameter_set_id(MemorySegment segment, long index, byte value) { VH_pic_parameter_set_id.get().set(segment, 0L, index, value); }
     /// Sets `pic_parameter_set_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -208,14 +208,14 @@ public final class StdVideoH264PictureParameterSet extends GroupType {
     /// {@return `num_ref_idx_l0_default_active_minus1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte num_ref_idx_l0_default_active_minus1(MemorySegment segment, long index) { return (byte) VH_num_ref_idx_l0_default_active_minus1.get(segment, 0L, index); }
+    public static byte num_ref_idx_l0_default_active_minus1(MemorySegment segment, long index) { return (byte) VH_num_ref_idx_l0_default_active_minus1.get().get(segment, 0L, index); }
     /// {@return `num_ref_idx_l0_default_active_minus1`}
     public byte num_ref_idx_l0_default_active_minus1() { return num_ref_idx_l0_default_active_minus1(this.segment(), 0L); }
     /// Sets `num_ref_idx_l0_default_active_minus1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void num_ref_idx_l0_default_active_minus1(MemorySegment segment, long index, byte value) { VH_num_ref_idx_l0_default_active_minus1.set(segment, 0L, index, value); }
+    public static void num_ref_idx_l0_default_active_minus1(MemorySegment segment, long index, byte value) { VH_num_ref_idx_l0_default_active_minus1.get().set(segment, 0L, index, value); }
     /// Sets `num_ref_idx_l0_default_active_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,14 +224,14 @@ public final class StdVideoH264PictureParameterSet extends GroupType {
     /// {@return `num_ref_idx_l1_default_active_minus1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte num_ref_idx_l1_default_active_minus1(MemorySegment segment, long index) { return (byte) VH_num_ref_idx_l1_default_active_minus1.get(segment, 0L, index); }
+    public static byte num_ref_idx_l1_default_active_minus1(MemorySegment segment, long index) { return (byte) VH_num_ref_idx_l1_default_active_minus1.get().get(segment, 0L, index); }
     /// {@return `num_ref_idx_l1_default_active_minus1`}
     public byte num_ref_idx_l1_default_active_minus1() { return num_ref_idx_l1_default_active_minus1(this.segment(), 0L); }
     /// Sets `num_ref_idx_l1_default_active_minus1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void num_ref_idx_l1_default_active_minus1(MemorySegment segment, long index, byte value) { VH_num_ref_idx_l1_default_active_minus1.set(segment, 0L, index, value); }
+    public static void num_ref_idx_l1_default_active_minus1(MemorySegment segment, long index, byte value) { VH_num_ref_idx_l1_default_active_minus1.get().set(segment, 0L, index, value); }
     /// Sets `num_ref_idx_l1_default_active_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -240,14 +240,14 @@ public final class StdVideoH264PictureParameterSet extends GroupType {
     /// {@return `weighted_bipred_idc` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int weighted_bipred_idc(MemorySegment segment, long index) { return (int) VH_weighted_bipred_idc.get(segment, 0L, index); }
+    public static int weighted_bipred_idc(MemorySegment segment, long index) { return (int) VH_weighted_bipred_idc.get().get(segment, 0L, index); }
     /// {@return `weighted_bipred_idc`}
     public int weighted_bipred_idc() { return weighted_bipred_idc(this.segment(), 0L); }
     /// Sets `weighted_bipred_idc` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void weighted_bipred_idc(MemorySegment segment, long index, int value) { VH_weighted_bipred_idc.set(segment, 0L, index, value); }
+    public static void weighted_bipred_idc(MemorySegment segment, long index, int value) { VH_weighted_bipred_idc.get().set(segment, 0L, index, value); }
     /// Sets `weighted_bipred_idc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -256,14 +256,14 @@ public final class StdVideoH264PictureParameterSet extends GroupType {
     /// {@return `pic_init_qp_minus26` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte pic_init_qp_minus26(MemorySegment segment, long index) { return (byte) VH_pic_init_qp_minus26.get(segment, 0L, index); }
+    public static byte pic_init_qp_minus26(MemorySegment segment, long index) { return (byte) VH_pic_init_qp_minus26.get().get(segment, 0L, index); }
     /// {@return `pic_init_qp_minus26`}
     public byte pic_init_qp_minus26() { return pic_init_qp_minus26(this.segment(), 0L); }
     /// Sets `pic_init_qp_minus26` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pic_init_qp_minus26(MemorySegment segment, long index, byte value) { VH_pic_init_qp_minus26.set(segment, 0L, index, value); }
+    public static void pic_init_qp_minus26(MemorySegment segment, long index, byte value) { VH_pic_init_qp_minus26.get().set(segment, 0L, index, value); }
     /// Sets `pic_init_qp_minus26` with the given value.
     /// @param value the value
     /// @return `this`
@@ -272,14 +272,14 @@ public final class StdVideoH264PictureParameterSet extends GroupType {
     /// {@return `pic_init_qs_minus26` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte pic_init_qs_minus26(MemorySegment segment, long index) { return (byte) VH_pic_init_qs_minus26.get(segment, 0L, index); }
+    public static byte pic_init_qs_minus26(MemorySegment segment, long index) { return (byte) VH_pic_init_qs_minus26.get().get(segment, 0L, index); }
     /// {@return `pic_init_qs_minus26`}
     public byte pic_init_qs_minus26() { return pic_init_qs_minus26(this.segment(), 0L); }
     /// Sets `pic_init_qs_minus26` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pic_init_qs_minus26(MemorySegment segment, long index, byte value) { VH_pic_init_qs_minus26.set(segment, 0L, index, value); }
+    public static void pic_init_qs_minus26(MemorySegment segment, long index, byte value) { VH_pic_init_qs_minus26.get().set(segment, 0L, index, value); }
     /// Sets `pic_init_qs_minus26` with the given value.
     /// @param value the value
     /// @return `this`
@@ -288,14 +288,14 @@ public final class StdVideoH264PictureParameterSet extends GroupType {
     /// {@return `chroma_qp_index_offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte chroma_qp_index_offset(MemorySegment segment, long index) { return (byte) VH_chroma_qp_index_offset.get(segment, 0L, index); }
+    public static byte chroma_qp_index_offset(MemorySegment segment, long index) { return (byte) VH_chroma_qp_index_offset.get().get(segment, 0L, index); }
     /// {@return `chroma_qp_index_offset`}
     public byte chroma_qp_index_offset() { return chroma_qp_index_offset(this.segment(), 0L); }
     /// Sets `chroma_qp_index_offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void chroma_qp_index_offset(MemorySegment segment, long index, byte value) { VH_chroma_qp_index_offset.set(segment, 0L, index, value); }
+    public static void chroma_qp_index_offset(MemorySegment segment, long index, byte value) { VH_chroma_qp_index_offset.get().set(segment, 0L, index, value); }
     /// Sets `chroma_qp_index_offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -304,14 +304,14 @@ public final class StdVideoH264PictureParameterSet extends GroupType {
     /// {@return `second_chroma_qp_index_offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte second_chroma_qp_index_offset(MemorySegment segment, long index) { return (byte) VH_second_chroma_qp_index_offset.get(segment, 0L, index); }
+    public static byte second_chroma_qp_index_offset(MemorySegment segment, long index) { return (byte) VH_second_chroma_qp_index_offset.get().get(segment, 0L, index); }
     /// {@return `second_chroma_qp_index_offset`}
     public byte second_chroma_qp_index_offset() { return second_chroma_qp_index_offset(this.segment(), 0L); }
     /// Sets `second_chroma_qp_index_offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void second_chroma_qp_index_offset(MemorySegment segment, long index, byte value) { VH_second_chroma_qp_index_offset.set(segment, 0L, index, value); }
+    public static void second_chroma_qp_index_offset(MemorySegment segment, long index, byte value) { VH_second_chroma_qp_index_offset.get().set(segment, 0L, index, value); }
     /// Sets `second_chroma_qp_index_offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -320,14 +320,14 @@ public final class StdVideoH264PictureParameterSet extends GroupType {
     /// {@return `pScalingLists` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pScalingLists(MemorySegment segment, long index) { return (MemorySegment) VH_pScalingLists.get(segment, 0L, index); }
+    public static MemorySegment pScalingLists(MemorySegment segment, long index) { return (MemorySegment) VH_pScalingLists.get().get(segment, 0L, index); }
     /// {@return `pScalingLists`}
     public MemorySegment pScalingLists() { return pScalingLists(this.segment(), 0L); }
     /// Sets `pScalingLists` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pScalingLists(MemorySegment segment, long index, MemorySegment value) { VH_pScalingLists.set(segment, 0L, index, value); }
+    public static void pScalingLists(MemorySegment segment, long index, MemorySegment value) { VH_pScalingLists.get().set(segment, 0L, index, value); }
     /// Sets `pScalingLists` with the given value.
     /// @param value the value
     /// @return `this`

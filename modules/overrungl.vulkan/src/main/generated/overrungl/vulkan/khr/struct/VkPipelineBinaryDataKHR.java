@@ -29,13 +29,13 @@ public final class VkPipelineBinaryDataKHR extends GroupType {
     /// The memory layout of `dataSize`.
     public static final MemoryLayout LAYOUT_dataSize = LAYOUT.select(PathElement.groupElement("dataSize"));
     /// The [VarHandle] of `dataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataSize"));
+    public static final Supplier<VarHandle> VH_dataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataSize")));
     /// The byte offset of `pData`.
     public static final long OFFSET_pData = LAYOUT.byteOffset(PathElement.groupElement("pData"));
     /// The memory layout of `pData`.
     public static final MemoryLayout LAYOUT_pData = LAYOUT.select(PathElement.groupElement("pData"));
     /// The [VarHandle] of `pData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pData"));
+    public static final Supplier<VarHandle> VH_pData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pData")));
 
     /// Creates `VkPipelineBinaryDataKHR` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkPipelineBinaryDataKHR extends GroupType {
     /// {@return `dataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_dataSize.get(segment, 0L, index)); }
+    public static long dataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_dataSize.get().get(segment, 0L, index)); }
     /// {@return `dataSize`}
     public long dataSize() { return dataSize(this.segment(), 0L); }
     /// Sets `dataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dataSize(MemorySegment segment, long index, long value) { VH_dataSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void dataSize(MemorySegment segment, long index, long value) { VH_dataSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `dataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkPipelineBinaryDataKHR extends GroupType {
     /// {@return `pData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pData(MemorySegment segment, long index) { return (MemorySegment) VH_pData.get(segment, 0L, index); }
+    public static MemorySegment pData(MemorySegment segment, long index) { return (MemorySegment) VH_pData.get().get(segment, 0L, index); }
     /// {@return `pData`}
     public MemorySegment pData() { return pData(this.segment(), 0L); }
     /// Sets `pData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pData(MemorySegment segment, long index, MemorySegment value) { VH_pData.set(segment, 0L, index, value); }
+    public static void pData(MemorySegment segment, long index, MemorySegment value) { VH_pData.get().set(segment, 0L, index, value); }
     /// Sets `pData` with the given value.
     /// @param value the value
     /// @return `this`

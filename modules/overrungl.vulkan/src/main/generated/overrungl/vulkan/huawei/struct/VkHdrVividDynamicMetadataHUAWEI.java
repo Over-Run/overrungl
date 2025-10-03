@@ -33,25 +33,25 @@ public final class VkHdrVividDynamicMetadataHUAWEI extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `dynamicMetadataSize`.
     public static final long OFFSET_dynamicMetadataSize = LAYOUT.byteOffset(PathElement.groupElement("dynamicMetadataSize"));
     /// The memory layout of `dynamicMetadataSize`.
     public static final MemoryLayout LAYOUT_dynamicMetadataSize = LAYOUT.select(PathElement.groupElement("dynamicMetadataSize"));
     /// The [VarHandle] of `dynamicMetadataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dynamicMetadataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicMetadataSize"));
+    public static final Supplier<VarHandle> VH_dynamicMetadataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicMetadataSize")));
     /// The byte offset of `pDynamicMetadata`.
     public static final long OFFSET_pDynamicMetadata = LAYOUT.byteOffset(PathElement.groupElement("pDynamicMetadata"));
     /// The memory layout of `pDynamicMetadata`.
     public static final MemoryLayout LAYOUT_pDynamicMetadata = LAYOUT.select(PathElement.groupElement("pDynamicMetadata"));
     /// The [VarHandle] of `pDynamicMetadata` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDynamicMetadata = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDynamicMetadata"));
+    public static final Supplier<VarHandle> VH_pDynamicMetadata = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDynamicMetadata")));
 
     /// Creates `VkHdrVividDynamicMetadataHUAWEI` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkHdrVividDynamicMetadataHUAWEI extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkHdrVividDynamicMetadataHUAWEI extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkHdrVividDynamicMetadataHUAWEI extends GroupType {
     /// {@return `dynamicMetadataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dynamicMetadataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_dynamicMetadataSize.get(segment, 0L, index)); }
+    public static long dynamicMetadataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_dynamicMetadataSize.get().get(segment, 0L, index)); }
     /// {@return `dynamicMetadataSize`}
     public long dynamicMetadataSize() { return dynamicMetadataSize(this.segment(), 0L); }
     /// Sets `dynamicMetadataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dynamicMetadataSize(MemorySegment segment, long index, long value) { VH_dynamicMetadataSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void dynamicMetadataSize(MemorySegment segment, long index, long value) { VH_dynamicMetadataSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `dynamicMetadataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkHdrVividDynamicMetadataHUAWEI extends GroupType {
     /// {@return `pDynamicMetadata` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDynamicMetadata(MemorySegment segment, long index) { return (MemorySegment) VH_pDynamicMetadata.get(segment, 0L, index); }
+    public static MemorySegment pDynamicMetadata(MemorySegment segment, long index) { return (MemorySegment) VH_pDynamicMetadata.get().get(segment, 0L, index); }
     /// {@return `pDynamicMetadata`}
     public MemorySegment pDynamicMetadata() { return pDynamicMetadata(this.segment(), 0L); }
     /// Sets `pDynamicMetadata` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDynamicMetadata(MemorySegment segment, long index, MemorySegment value) { VH_pDynamicMetadata.set(segment, 0L, index, value); }
+    public static void pDynamicMetadata(MemorySegment segment, long index, MemorySegment value) { VH_pDynamicMetadata.get().set(segment, 0L, index, value); }
     /// Sets `pDynamicMetadata` with the given value.
     /// @param value the value
     /// @return `this`

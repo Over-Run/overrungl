@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -30,10 +31,10 @@ public final class GLARBGeometryShader4 {
     public static final int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER = 0x8CD4;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glProgramParameteriARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferTextureARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferTextureLayerARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferTextureFaceARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glProgramParameteriARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFramebufferTextureARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFramebufferTextureLayerARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFramebufferTextureFaceARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glProgramParameteriARB;
         public final MemorySegment PFN_glFramebufferTextureARB;
         public final MemorySegment PFN_glFramebufferTextureLayerARB;
@@ -57,7 +58,7 @@ public final class GLARBGeometryShader4 {
     public void ProgramParameteriARB(int program, int pname, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramParameteriARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramParameteriARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramParameteriARB", program, pname, value); }
-        Handles.MH_glProgramParameteriARB.invokeExact(handles.PFN_glProgramParameteriARB, program, pname, value); }
+        Handles.MH_glProgramParameteriARB.get().invokeExact(handles.PFN_glProgramParameteriARB, program, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramParameteriARB", e); }
     }
 
@@ -68,7 +69,7 @@ public final class GLARBGeometryShader4 {
     public void FramebufferTextureARB(int target, int attachment, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureARB)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferTextureARB", target, attachment, texture, level); }
-        Handles.MH_glFramebufferTextureARB.invokeExact(handles.PFN_glFramebufferTextureARB, target, attachment, texture, level); }
+        Handles.MH_glFramebufferTextureARB.get().invokeExact(handles.PFN_glFramebufferTextureARB, target, attachment, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureARB", e); }
     }
 
@@ -79,7 +80,7 @@ public final class GLARBGeometryShader4 {
     public void FramebufferTextureLayerARB(int target, int attachment, int texture, int level, int layer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayerARB)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureLayerARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferTextureLayerARB", target, attachment, texture, level, layer); }
-        Handles.MH_glFramebufferTextureLayerARB.invokeExact(handles.PFN_glFramebufferTextureLayerARB, target, attachment, texture, level, layer); }
+        Handles.MH_glFramebufferTextureLayerARB.get().invokeExact(handles.PFN_glFramebufferTextureLayerARB, target, attachment, texture, level, layer); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureLayerARB", e); }
     }
 
@@ -90,7 +91,7 @@ public final class GLARBGeometryShader4 {
     public void FramebufferTextureFaceARB(int target, int attachment, int texture, int level, int face) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureFaceARB)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureFaceARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferTextureFaceARB", target, attachment, texture, level, face); }
-        Handles.MH_glFramebufferTextureFaceARB.invokeExact(handles.PFN_glFramebufferTextureFaceARB, target, attachment, texture, level, face); }
+        Handles.MH_glFramebufferTextureFaceARB.get().invokeExact(handles.PFN_glFramebufferTextureFaceARB, target, attachment, texture, level, face); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureFaceARB", e); }
     }
 

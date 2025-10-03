@@ -39,43 +39,43 @@ public final class VkPhysicalDeviceRayTracingPipelineFeaturesKHR extends GroupTy
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `rayTracingPipeline`.
     public static final long OFFSET_rayTracingPipeline = LAYOUT.byteOffset(PathElement.groupElement("rayTracingPipeline"));
     /// The memory layout of `rayTracingPipeline`.
     public static final MemoryLayout LAYOUT_rayTracingPipeline = LAYOUT.select(PathElement.groupElement("rayTracingPipeline"));
     /// The [VarHandle] of `rayTracingPipeline` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rayTracingPipeline = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rayTracingPipeline"));
+    public static final Supplier<VarHandle> VH_rayTracingPipeline = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rayTracingPipeline")));
     /// The byte offset of `rayTracingPipelineShaderGroupHandleCaptureReplay`.
     public static final long OFFSET_rayTracingPipelineShaderGroupHandleCaptureReplay = LAYOUT.byteOffset(PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplay"));
     /// The memory layout of `rayTracingPipelineShaderGroupHandleCaptureReplay`.
     public static final MemoryLayout LAYOUT_rayTracingPipelineShaderGroupHandleCaptureReplay = LAYOUT.select(PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplay"));
     /// The [VarHandle] of `rayTracingPipelineShaderGroupHandleCaptureReplay` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rayTracingPipelineShaderGroupHandleCaptureReplay = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplay"));
+    public static final Supplier<VarHandle> VH_rayTracingPipelineShaderGroupHandleCaptureReplay = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplay")));
     /// The byte offset of `rayTracingPipelineShaderGroupHandleCaptureReplayMixed`.
     public static final long OFFSET_rayTracingPipelineShaderGroupHandleCaptureReplayMixed = LAYOUT.byteOffset(PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplayMixed"));
     /// The memory layout of `rayTracingPipelineShaderGroupHandleCaptureReplayMixed`.
     public static final MemoryLayout LAYOUT_rayTracingPipelineShaderGroupHandleCaptureReplayMixed = LAYOUT.select(PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplayMixed"));
     /// The [VarHandle] of `rayTracingPipelineShaderGroupHandleCaptureReplayMixed` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rayTracingPipelineShaderGroupHandleCaptureReplayMixed = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplayMixed"));
+    public static final Supplier<VarHandle> VH_rayTracingPipelineShaderGroupHandleCaptureReplayMixed = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplayMixed")));
     /// The byte offset of `rayTracingPipelineTraceRaysIndirect`.
     public static final long OFFSET_rayTracingPipelineTraceRaysIndirect = LAYOUT.byteOffset(PathElement.groupElement("rayTracingPipelineTraceRaysIndirect"));
     /// The memory layout of `rayTracingPipelineTraceRaysIndirect`.
     public static final MemoryLayout LAYOUT_rayTracingPipelineTraceRaysIndirect = LAYOUT.select(PathElement.groupElement("rayTracingPipelineTraceRaysIndirect"));
     /// The [VarHandle] of `rayTracingPipelineTraceRaysIndirect` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rayTracingPipelineTraceRaysIndirect = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rayTracingPipelineTraceRaysIndirect"));
+    public static final Supplier<VarHandle> VH_rayTracingPipelineTraceRaysIndirect = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rayTracingPipelineTraceRaysIndirect")));
     /// The byte offset of `rayTraversalPrimitiveCulling`.
     public static final long OFFSET_rayTraversalPrimitiveCulling = LAYOUT.byteOffset(PathElement.groupElement("rayTraversalPrimitiveCulling"));
     /// The memory layout of `rayTraversalPrimitiveCulling`.
     public static final MemoryLayout LAYOUT_rayTraversalPrimitiveCulling = LAYOUT.select(PathElement.groupElement("rayTraversalPrimitiveCulling"));
     /// The [VarHandle] of `rayTraversalPrimitiveCulling` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rayTraversalPrimitiveCulling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rayTraversalPrimitiveCulling"));
+    public static final Supplier<VarHandle> VH_rayTraversalPrimitiveCulling = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rayTraversalPrimitiveCulling")));
 
     /// Creates `VkPhysicalDeviceRayTracingPipelineFeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceRayTracingPipelineFeaturesKHR extends GroupTy
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceRayTracingPipelineFeaturesKHR extends GroupTy
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceRayTracingPipelineFeaturesKHR extends GroupTy
     /// {@return `rayTracingPipeline` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rayTracingPipeline(MemorySegment segment, long index) { return (int) VH_rayTracingPipeline.get(segment, 0L, index); }
+    public static int rayTracingPipeline(MemorySegment segment, long index) { return (int) VH_rayTracingPipeline.get().get(segment, 0L, index); }
     /// {@return `rayTracingPipeline`}
     public int rayTracingPipeline() { return rayTracingPipeline(this.segment(), 0L); }
     /// Sets `rayTracingPipeline` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rayTracingPipeline(MemorySegment segment, long index, int value) { VH_rayTracingPipeline.set(segment, 0L, index, value); }
+    public static void rayTracingPipeline(MemorySegment segment, long index, int value) { VH_rayTracingPipeline.get().set(segment, 0L, index, value); }
     /// Sets `rayTracingPipeline` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceRayTracingPipelineFeaturesKHR extends GroupTy
     /// {@return `rayTracingPipelineShaderGroupHandleCaptureReplay` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rayTracingPipelineShaderGroupHandleCaptureReplay(MemorySegment segment, long index) { return (int) VH_rayTracingPipelineShaderGroupHandleCaptureReplay.get(segment, 0L, index); }
+    public static int rayTracingPipelineShaderGroupHandleCaptureReplay(MemorySegment segment, long index) { return (int) VH_rayTracingPipelineShaderGroupHandleCaptureReplay.get().get(segment, 0L, index); }
     /// {@return `rayTracingPipelineShaderGroupHandleCaptureReplay`}
     public int rayTracingPipelineShaderGroupHandleCaptureReplay() { return rayTracingPipelineShaderGroupHandleCaptureReplay(this.segment(), 0L); }
     /// Sets `rayTracingPipelineShaderGroupHandleCaptureReplay` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rayTracingPipelineShaderGroupHandleCaptureReplay(MemorySegment segment, long index, int value) { VH_rayTracingPipelineShaderGroupHandleCaptureReplay.set(segment, 0L, index, value); }
+    public static void rayTracingPipelineShaderGroupHandleCaptureReplay(MemorySegment segment, long index, int value) { VH_rayTracingPipelineShaderGroupHandleCaptureReplay.get().set(segment, 0L, index, value); }
     /// Sets `rayTracingPipelineShaderGroupHandleCaptureReplay` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkPhysicalDeviceRayTracingPipelineFeaturesKHR extends GroupTy
     /// {@return `rayTracingPipelineShaderGroupHandleCaptureReplayMixed` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rayTracingPipelineShaderGroupHandleCaptureReplayMixed(MemorySegment segment, long index) { return (int) VH_rayTracingPipelineShaderGroupHandleCaptureReplayMixed.get(segment, 0L, index); }
+    public static int rayTracingPipelineShaderGroupHandleCaptureReplayMixed(MemorySegment segment, long index) { return (int) VH_rayTracingPipelineShaderGroupHandleCaptureReplayMixed.get().get(segment, 0L, index); }
     /// {@return `rayTracingPipelineShaderGroupHandleCaptureReplayMixed`}
     public int rayTracingPipelineShaderGroupHandleCaptureReplayMixed() { return rayTracingPipelineShaderGroupHandleCaptureReplayMixed(this.segment(), 0L); }
     /// Sets `rayTracingPipelineShaderGroupHandleCaptureReplayMixed` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rayTracingPipelineShaderGroupHandleCaptureReplayMixed(MemorySegment segment, long index, int value) { VH_rayTracingPipelineShaderGroupHandleCaptureReplayMixed.set(segment, 0L, index, value); }
+    public static void rayTracingPipelineShaderGroupHandleCaptureReplayMixed(MemorySegment segment, long index, int value) { VH_rayTracingPipelineShaderGroupHandleCaptureReplayMixed.get().set(segment, 0L, index, value); }
     /// Sets `rayTracingPipelineShaderGroupHandleCaptureReplayMixed` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkPhysicalDeviceRayTracingPipelineFeaturesKHR extends GroupTy
     /// {@return `rayTracingPipelineTraceRaysIndirect` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rayTracingPipelineTraceRaysIndirect(MemorySegment segment, long index) { return (int) VH_rayTracingPipelineTraceRaysIndirect.get(segment, 0L, index); }
+    public static int rayTracingPipelineTraceRaysIndirect(MemorySegment segment, long index) { return (int) VH_rayTracingPipelineTraceRaysIndirect.get().get(segment, 0L, index); }
     /// {@return `rayTracingPipelineTraceRaysIndirect`}
     public int rayTracingPipelineTraceRaysIndirect() { return rayTracingPipelineTraceRaysIndirect(this.segment(), 0L); }
     /// Sets `rayTracingPipelineTraceRaysIndirect` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rayTracingPipelineTraceRaysIndirect(MemorySegment segment, long index, int value) { VH_rayTracingPipelineTraceRaysIndirect.set(segment, 0L, index, value); }
+    public static void rayTracingPipelineTraceRaysIndirect(MemorySegment segment, long index, int value) { VH_rayTracingPipelineTraceRaysIndirect.get().set(segment, 0L, index, value); }
     /// Sets `rayTracingPipelineTraceRaysIndirect` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkPhysicalDeviceRayTracingPipelineFeaturesKHR extends GroupTy
     /// {@return `rayTraversalPrimitiveCulling` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rayTraversalPrimitiveCulling(MemorySegment segment, long index) { return (int) VH_rayTraversalPrimitiveCulling.get(segment, 0L, index); }
+    public static int rayTraversalPrimitiveCulling(MemorySegment segment, long index) { return (int) VH_rayTraversalPrimitiveCulling.get().get(segment, 0L, index); }
     /// {@return `rayTraversalPrimitiveCulling`}
     public int rayTraversalPrimitiveCulling() { return rayTraversalPrimitiveCulling(this.segment(), 0L); }
     /// Sets `rayTraversalPrimitiveCulling` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rayTraversalPrimitiveCulling(MemorySegment segment, long index, int value) { VH_rayTraversalPrimitiveCulling.set(segment, 0L, index, value); }
+    public static void rayTraversalPrimitiveCulling(MemorySegment segment, long index, int value) { VH_rayTraversalPrimitiveCulling.get().set(segment, 0L, index, value); }
     /// Sets `rayTraversalPrimitiveCulling` with the given value.
     /// @param value the value
     /// @return `this`

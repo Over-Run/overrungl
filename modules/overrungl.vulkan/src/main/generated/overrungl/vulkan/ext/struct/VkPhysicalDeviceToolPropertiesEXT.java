@@ -39,43 +39,43 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `name`.
     public static final long OFFSET_name = LAYOUT.byteOffset(PathElement.groupElement("name"));
     /// The memory layout of `name`.
     public static final MemoryLayout LAYOUT_name = LAYOUT.select(PathElement.groupElement("name"));
     /// The [VarHandle] of `name` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_name = LAYOUT.arrayElementVarHandle(PathElement.groupElement("name"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_name = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("name"), PathElement.sequenceElement()));
     /// The byte offset of `version`.
     public static final long OFFSET_version = LAYOUT.byteOffset(PathElement.groupElement("version"));
     /// The memory layout of `version`.
     public static final MemoryLayout LAYOUT_version = LAYOUT.select(PathElement.groupElement("version"));
     /// The [VarHandle] of `version` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_version = LAYOUT.arrayElementVarHandle(PathElement.groupElement("version"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_version = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("version"), PathElement.sequenceElement()));
     /// The byte offset of `purposes`.
     public static final long OFFSET_purposes = LAYOUT.byteOffset(PathElement.groupElement("purposes"));
     /// The memory layout of `purposes`.
     public static final MemoryLayout LAYOUT_purposes = LAYOUT.select(PathElement.groupElement("purposes"));
     /// The [VarHandle] of `purposes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_purposes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("purposes"));
+    public static final Supplier<VarHandle> VH_purposes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("purposes")));
     /// The byte offset of `description`.
     public static final long OFFSET_description = LAYOUT.byteOffset(PathElement.groupElement("description"));
     /// The memory layout of `description`.
     public static final MemoryLayout LAYOUT_description = LAYOUT.select(PathElement.groupElement("description"));
     /// The [VarHandle] of `description` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_description = LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_description = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement()));
     /// The byte offset of `layer`.
     public static final long OFFSET_layer = LAYOUT.byteOffset(PathElement.groupElement("layer"));
     /// The memory layout of `layer`.
     public static final MemoryLayout LAYOUT_layer = LAYOUT.select(PathElement.groupElement("layer"));
     /// The [VarHandle] of `layer` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_layer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layer"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_layer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("layer"), PathElement.sequenceElement()));
 
     /// Creates `VkPhysicalDeviceToolPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -163,7 +163,7 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte name(MemorySegment segment, long index, long index0) { return (byte) VH_name.get(segment, 0L, index, index0); }
+    public static byte name(MemorySegment segment, long index, long index0) { return (byte) VH_name.get().get(segment, 0L, index, index0); }
     /// {@return `name`}
     public MemorySegment name() { return name(this.segment(), 0L); }
     /// {@return `name`}
@@ -179,7 +179,7 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void name(MemorySegment segment, long index, long index0, byte value) { VH_name.set(segment, 0L, index, index0, value); }
+    public static void name(MemorySegment segment, long index, long index0, byte value) { VH_name.get().set(segment, 0L, index, index0, value); }
     /// Sets `name` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,7 +198,7 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte version(MemorySegment segment, long index, long index0) { return (byte) VH_version.get(segment, 0L, index, index0); }
+    public static byte version(MemorySegment segment, long index, long index0) { return (byte) VH_version.get().get(segment, 0L, index, index0); }
     /// {@return `version`}
     public MemorySegment version() { return version(this.segment(), 0L); }
     /// {@return `version`}
@@ -214,7 +214,7 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void version(MemorySegment segment, long index, long index0, byte value) { VH_version.set(segment, 0L, index, index0, value); }
+    public static void version(MemorySegment segment, long index, long index0, byte value) { VH_version.get().set(segment, 0L, index, index0, value); }
     /// Sets `version` with the given value.
     /// @param value the value
     /// @return `this`
@@ -228,14 +228,14 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// {@return `purposes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int purposes(MemorySegment segment, long index) { return (int) VH_purposes.get(segment, 0L, index); }
+    public static int purposes(MemorySegment segment, long index) { return (int) VH_purposes.get().get(segment, 0L, index); }
     /// {@return `purposes`}
     public int purposes() { return purposes(this.segment(), 0L); }
     /// Sets `purposes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void purposes(MemorySegment segment, long index, int value) { VH_purposes.set(segment, 0L, index, value); }
+    public static void purposes(MemorySegment segment, long index, int value) { VH_purposes.get().set(segment, 0L, index, value); }
     /// Sets `purposes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -249,7 +249,7 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get(segment, 0L, index, index0); }
+    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get().get(segment, 0L, index, index0); }
     /// {@return `description`}
     public MemorySegment description() { return description(this.segment(), 0L); }
     /// {@return `description`}
@@ -265,7 +265,7 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.set(segment, 0L, index, index0, value); }
+    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.get().set(segment, 0L, index, index0, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
@@ -284,7 +284,7 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte layer(MemorySegment segment, long index, long index0) { return (byte) VH_layer.get(segment, 0L, index, index0); }
+    public static byte layer(MemorySegment segment, long index, long index0) { return (byte) VH_layer.get().get(segment, 0L, index, index0); }
     /// {@return `layer`}
     public MemorySegment layer() { return layer(this.segment(), 0L); }
     /// {@return `layer`}
@@ -300,7 +300,7 @@ public final class VkPhysicalDeviceToolPropertiesEXT extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void layer(MemorySegment segment, long index, long index0, byte value) { VH_layer.set(segment, 0L, index, index0, value); }
+    public static void layer(MemorySegment segment, long index, long index0, byte value) { VH_layer.get().set(segment, 0L, index, index0, value); }
     /// Sets `layer` with the given value.
     /// @param value the value
     /// @return `this`

@@ -43,55 +43,55 @@ public final class STBTTPackedChar extends GroupType {
     /// The memory layout of `x0`.
     public static final MemoryLayout LAYOUT_x0 = LAYOUT.select(PathElement.groupElement("x0"));
     /// The [VarHandle] of `x0` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_x0 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("x0"));
+    public static final Supplier<VarHandle> VH_x0 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("x0")));
     /// The byte offset of `y0`.
     public static final long OFFSET_y0 = LAYOUT.byteOffset(PathElement.groupElement("y0"));
     /// The memory layout of `y0`.
     public static final MemoryLayout LAYOUT_y0 = LAYOUT.select(PathElement.groupElement("y0"));
     /// The [VarHandle] of `y0` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_y0 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y0"));
+    public static final Supplier<VarHandle> VH_y0 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("y0")));
     /// The byte offset of `x1`.
     public static final long OFFSET_x1 = LAYOUT.byteOffset(PathElement.groupElement("x1"));
     /// The memory layout of `x1`.
     public static final MemoryLayout LAYOUT_x1 = LAYOUT.select(PathElement.groupElement("x1"));
     /// The [VarHandle] of `x1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_x1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("x1"));
+    public static final Supplier<VarHandle> VH_x1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("x1")));
     /// The byte offset of `y1`.
     public static final long OFFSET_y1 = LAYOUT.byteOffset(PathElement.groupElement("y1"));
     /// The memory layout of `y1`.
     public static final MemoryLayout LAYOUT_y1 = LAYOUT.select(PathElement.groupElement("y1"));
     /// The [VarHandle] of `y1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_y1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y1"));
+    public static final Supplier<VarHandle> VH_y1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("y1")));
     /// The byte offset of `xoff`.
     public static final long OFFSET_xoff = LAYOUT.byteOffset(PathElement.groupElement("xoff"));
     /// The memory layout of `xoff`.
     public static final MemoryLayout LAYOUT_xoff = LAYOUT.select(PathElement.groupElement("xoff"));
     /// The [VarHandle] of `xoff` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_xoff = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xoff"));
+    public static final Supplier<VarHandle> VH_xoff = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("xoff")));
     /// The byte offset of `yoff`.
     public static final long OFFSET_yoff = LAYOUT.byteOffset(PathElement.groupElement("yoff"));
     /// The memory layout of `yoff`.
     public static final MemoryLayout LAYOUT_yoff = LAYOUT.select(PathElement.groupElement("yoff"));
     /// The [VarHandle] of `yoff` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_yoff = LAYOUT.arrayElementVarHandle(PathElement.groupElement("yoff"));
+    public static final Supplier<VarHandle> VH_yoff = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("yoff")));
     /// The byte offset of `xadvance`.
     public static final long OFFSET_xadvance = LAYOUT.byteOffset(PathElement.groupElement("xadvance"));
     /// The memory layout of `xadvance`.
     public static final MemoryLayout LAYOUT_xadvance = LAYOUT.select(PathElement.groupElement("xadvance"));
     /// The [VarHandle] of `xadvance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_xadvance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xadvance"));
+    public static final Supplier<VarHandle> VH_xadvance = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("xadvance")));
     /// The byte offset of `xoff2`.
     public static final long OFFSET_xoff2 = LAYOUT.byteOffset(PathElement.groupElement("xoff2"));
     /// The memory layout of `xoff2`.
     public static final MemoryLayout LAYOUT_xoff2 = LAYOUT.select(PathElement.groupElement("xoff2"));
     /// The [VarHandle] of `xoff2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_xoff2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xoff2"));
+    public static final Supplier<VarHandle> VH_xoff2 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("xoff2")));
     /// The byte offset of `yoff2`.
     public static final long OFFSET_yoff2 = LAYOUT.byteOffset(PathElement.groupElement("yoff2"));
     /// The memory layout of `yoff2`.
     public static final MemoryLayout LAYOUT_yoff2 = LAYOUT.select(PathElement.groupElement("yoff2"));
     /// The [VarHandle] of `yoff2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_yoff2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("yoff2"));
+    public static final Supplier<VarHandle> VH_yoff2 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("yoff2")));
 
     /// Creates `STBTTPackedChar` with the given segment.
     /// @param segment      the memory segment
@@ -142,14 +142,14 @@ public final class STBTTPackedChar extends GroupType {
     /// {@return `x0` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short x0(MemorySegment segment, long index) { return (short) VH_x0.get(segment, 0L, index); }
+    public static short x0(MemorySegment segment, long index) { return (short) VH_x0.get().get(segment, 0L, index); }
     /// {@return `x0`}
     public short x0() { return x0(this.segment(), 0L); }
     /// Sets `x0` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void x0(MemorySegment segment, long index, short value) { VH_x0.set(segment, 0L, index, value); }
+    public static void x0(MemorySegment segment, long index, short value) { VH_x0.get().set(segment, 0L, index, value); }
     /// Sets `x0` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class STBTTPackedChar extends GroupType {
     /// {@return `y0` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short y0(MemorySegment segment, long index) { return (short) VH_y0.get(segment, 0L, index); }
+    public static short y0(MemorySegment segment, long index) { return (short) VH_y0.get().get(segment, 0L, index); }
     /// {@return `y0`}
     public short y0() { return y0(this.segment(), 0L); }
     /// Sets `y0` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void y0(MemorySegment segment, long index, short value) { VH_y0.set(segment, 0L, index, value); }
+    public static void y0(MemorySegment segment, long index, short value) { VH_y0.get().set(segment, 0L, index, value); }
     /// Sets `y0` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class STBTTPackedChar extends GroupType {
     /// {@return `x1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short x1(MemorySegment segment, long index) { return (short) VH_x1.get(segment, 0L, index); }
+    public static short x1(MemorySegment segment, long index) { return (short) VH_x1.get().get(segment, 0L, index); }
     /// {@return `x1`}
     public short x1() { return x1(this.segment(), 0L); }
     /// Sets `x1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void x1(MemorySegment segment, long index, short value) { VH_x1.set(segment, 0L, index, value); }
+    public static void x1(MemorySegment segment, long index, short value) { VH_x1.get().set(segment, 0L, index, value); }
     /// Sets `x1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class STBTTPackedChar extends GroupType {
     /// {@return `y1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short y1(MemorySegment segment, long index) { return (short) VH_y1.get(segment, 0L, index); }
+    public static short y1(MemorySegment segment, long index) { return (short) VH_y1.get().get(segment, 0L, index); }
     /// {@return `y1`}
     public short y1() { return y1(this.segment(), 0L); }
     /// Sets `y1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void y1(MemorySegment segment, long index, short value) { VH_y1.set(segment, 0L, index, value); }
+    public static void y1(MemorySegment segment, long index, short value) { VH_y1.get().set(segment, 0L, index, value); }
     /// Sets `y1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class STBTTPackedChar extends GroupType {
     /// {@return `xoff` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float xoff(MemorySegment segment, long index) { return (float) VH_xoff.get(segment, 0L, index); }
+    public static float xoff(MemorySegment segment, long index) { return (float) VH_xoff.get().get(segment, 0L, index); }
     /// {@return `xoff`}
     public float xoff() { return xoff(this.segment(), 0L); }
     /// Sets `xoff` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void xoff(MemorySegment segment, long index, float value) { VH_xoff.set(segment, 0L, index, value); }
+    public static void xoff(MemorySegment segment, long index, float value) { VH_xoff.get().set(segment, 0L, index, value); }
     /// Sets `xoff` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class STBTTPackedChar extends GroupType {
     /// {@return `yoff` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float yoff(MemorySegment segment, long index) { return (float) VH_yoff.get(segment, 0L, index); }
+    public static float yoff(MemorySegment segment, long index) { return (float) VH_yoff.get().get(segment, 0L, index); }
     /// {@return `yoff`}
     public float yoff() { return yoff(this.segment(), 0L); }
     /// Sets `yoff` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void yoff(MemorySegment segment, long index, float value) { VH_yoff.set(segment, 0L, index, value); }
+    public static void yoff(MemorySegment segment, long index, float value) { VH_yoff.get().set(segment, 0L, index, value); }
     /// Sets `yoff` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,14 +238,14 @@ public final class STBTTPackedChar extends GroupType {
     /// {@return `xadvance` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float xadvance(MemorySegment segment, long index) { return (float) VH_xadvance.get(segment, 0L, index); }
+    public static float xadvance(MemorySegment segment, long index) { return (float) VH_xadvance.get().get(segment, 0L, index); }
     /// {@return `xadvance`}
     public float xadvance() { return xadvance(this.segment(), 0L); }
     /// Sets `xadvance` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void xadvance(MemorySegment segment, long index, float value) { VH_xadvance.set(segment, 0L, index, value); }
+    public static void xadvance(MemorySegment segment, long index, float value) { VH_xadvance.get().set(segment, 0L, index, value); }
     /// Sets `xadvance` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,14 +254,14 @@ public final class STBTTPackedChar extends GroupType {
     /// {@return `xoff2` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float xoff2(MemorySegment segment, long index) { return (float) VH_xoff2.get(segment, 0L, index); }
+    public static float xoff2(MemorySegment segment, long index) { return (float) VH_xoff2.get().get(segment, 0L, index); }
     /// {@return `xoff2`}
     public float xoff2() { return xoff2(this.segment(), 0L); }
     /// Sets `xoff2` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void xoff2(MemorySegment segment, long index, float value) { VH_xoff2.set(segment, 0L, index, value); }
+    public static void xoff2(MemorySegment segment, long index, float value) { VH_xoff2.get().set(segment, 0L, index, value); }
     /// Sets `xoff2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -270,14 +270,14 @@ public final class STBTTPackedChar extends GroupType {
     /// {@return `yoff2` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float yoff2(MemorySegment segment, long index) { return (float) VH_yoff2.get(segment, 0L, index); }
+    public static float yoff2(MemorySegment segment, long index) { return (float) VH_yoff2.get().get(segment, 0L, index); }
     /// {@return `yoff2`}
     public float yoff2() { return yoff2(this.segment(), 0L); }
     /// Sets `yoff2` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void yoff2(MemorySegment segment, long index, float value) { VH_yoff2.set(segment, 0L, index, value); }
+    public static void yoff2(MemorySegment segment, long index, float value) { VH_yoff2.get().set(segment, 0L, index, value); }
     /// Sets `yoff2` with the given value.
     /// @param value the value
     /// @return `this`

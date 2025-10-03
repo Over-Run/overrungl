@@ -33,25 +33,25 @@ public final class VkBindImageMemorySwapchainInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `swapchain`.
     public static final long OFFSET_swapchain = LAYOUT.byteOffset(PathElement.groupElement("swapchain"));
     /// The memory layout of `swapchain`.
     public static final MemoryLayout LAYOUT_swapchain = LAYOUT.select(PathElement.groupElement("swapchain"));
     /// The [VarHandle] of `swapchain` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_swapchain = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchain"));
+    public static final Supplier<VarHandle> VH_swapchain = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchain")));
     /// The byte offset of `imageIndex`.
     public static final long OFFSET_imageIndex = LAYOUT.byteOffset(PathElement.groupElement("imageIndex"));
     /// The memory layout of `imageIndex`.
     public static final MemoryLayout LAYOUT_imageIndex = LAYOUT.select(PathElement.groupElement("imageIndex"));
     /// The [VarHandle] of `imageIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageIndex"));
+    public static final Supplier<VarHandle> VH_imageIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageIndex")));
 
     /// Creates `VkBindImageMemorySwapchainInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkBindImageMemorySwapchainInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkBindImageMemorySwapchainInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkBindImageMemorySwapchainInfoKHR extends GroupType {
     /// {@return `swapchain` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long swapchain(MemorySegment segment, long index) { return (long) VH_swapchain.get(segment, 0L, index); }
+    public static long swapchain(MemorySegment segment, long index) { return (long) VH_swapchain.get().get(segment, 0L, index); }
     /// {@return `swapchain`}
     public long swapchain() { return swapchain(this.segment(), 0L); }
     /// Sets `swapchain` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void swapchain(MemorySegment segment, long index, long value) { VH_swapchain.set(segment, 0L, index, value); }
+    public static void swapchain(MemorySegment segment, long index, long value) { VH_swapchain.get().set(segment, 0L, index, value); }
     /// Sets `swapchain` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkBindImageMemorySwapchainInfoKHR extends GroupType {
     /// {@return `imageIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageIndex(MemorySegment segment, long index) { return (int) VH_imageIndex.get(segment, 0L, index); }
+    public static int imageIndex(MemorySegment segment, long index) { return (int) VH_imageIndex.get().get(segment, 0L, index); }
     /// {@return `imageIndex`}
     public int imageIndex() { return imageIndex(this.segment(), 0L); }
     /// Sets `imageIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageIndex(MemorySegment segment, long index, int value) { VH_imageIndex.set(segment, 0L, index, value); }
+    public static void imageIndex(MemorySegment segment, long index, int value) { VH_imageIndex.get().set(segment, 0L, index, value); }
     /// Sets `imageIndex` with the given value.
     /// @param value the value
     /// @return `this`

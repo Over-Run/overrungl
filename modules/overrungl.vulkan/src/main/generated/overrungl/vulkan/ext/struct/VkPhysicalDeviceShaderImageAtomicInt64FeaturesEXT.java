@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Gro
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderImageInt64Atomics`.
     public static final long OFFSET_shaderImageInt64Atomics = LAYOUT.byteOffset(PathElement.groupElement("shaderImageInt64Atomics"));
     /// The memory layout of `shaderImageInt64Atomics`.
     public static final MemoryLayout LAYOUT_shaderImageInt64Atomics = LAYOUT.select(PathElement.groupElement("shaderImageInt64Atomics"));
     /// The [VarHandle] of `shaderImageInt64Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderImageInt64Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderImageInt64Atomics"));
+    public static final Supplier<VarHandle> VH_shaderImageInt64Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderImageInt64Atomics")));
     /// The byte offset of `sparseImageInt64Atomics`.
     public static final long OFFSET_sparseImageInt64Atomics = LAYOUT.byteOffset(PathElement.groupElement("sparseImageInt64Atomics"));
     /// The memory layout of `sparseImageInt64Atomics`.
     public static final MemoryLayout LAYOUT_sparseImageInt64Atomics = LAYOUT.select(PathElement.groupElement("sparseImageInt64Atomics"));
     /// The [VarHandle] of `sparseImageInt64Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sparseImageInt64Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sparseImageInt64Atomics"));
+    public static final Supplier<VarHandle> VH_sparseImageInt64Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sparseImageInt64Atomics")));
 
     /// Creates `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Gro
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Gro
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Gro
     /// {@return `shaderImageInt64Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderImageInt64Atomics(MemorySegment segment, long index) { return (int) VH_shaderImageInt64Atomics.get(segment, 0L, index); }
+    public static int shaderImageInt64Atomics(MemorySegment segment, long index) { return (int) VH_shaderImageInt64Atomics.get().get(segment, 0L, index); }
     /// {@return `shaderImageInt64Atomics`}
     public int shaderImageInt64Atomics() { return shaderImageInt64Atomics(this.segment(), 0L); }
     /// Sets `shaderImageInt64Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderImageInt64Atomics(MemorySegment segment, long index, int value) { VH_shaderImageInt64Atomics.set(segment, 0L, index, value); }
+    public static void shaderImageInt64Atomics(MemorySegment segment, long index, int value) { VH_shaderImageInt64Atomics.get().set(segment, 0L, index, value); }
     /// Sets `shaderImageInt64Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Gro
     /// {@return `sparseImageInt64Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sparseImageInt64Atomics(MemorySegment segment, long index) { return (int) VH_sparseImageInt64Atomics.get(segment, 0L, index); }
+    public static int sparseImageInt64Atomics(MemorySegment segment, long index) { return (int) VH_sparseImageInt64Atomics.get().get(segment, 0L, index); }
     /// {@return `sparseImageInt64Atomics`}
     public int sparseImageInt64Atomics() { return sparseImageInt64Atomics(this.segment(), 0L); }
     /// Sets `sparseImageInt64Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sparseImageInt64Atomics(MemorySegment segment, long index, int value) { VH_sparseImageInt64Atomics.set(segment, 0L, index, value); }
+    public static void sparseImageInt64Atomics(MemorySegment segment, long index, int value) { VH_sparseImageInt64Atomics.get().set(segment, 0L, index, value); }
     /// Sets `sparseImageInt64Atomics` with the given value.
     /// @param value the value
     /// @return `this`

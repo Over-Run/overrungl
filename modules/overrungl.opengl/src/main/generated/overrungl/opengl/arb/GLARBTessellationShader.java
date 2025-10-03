@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -47,8 +48,8 @@ public final class GLARBTessellationShader {
     public static final int GL_TESS_CONTROL_SHADER = 0x8E88;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glPatchParameteri = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPatchParameterfv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glPatchParameteri = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPatchParameterfv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glPatchParameteri;
         public final MemorySegment PFN_glPatchParameterfv;
         private Handles(GLLoadFunc func) {
@@ -68,7 +69,7 @@ public final class GLARBTessellationShader {
     public void PatchParameteri(int pname, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPatchParameteri)) throw new GLSymbolNotFoundError("Symbol not found: glPatchParameteri");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPatchParameteri", pname, value); }
-        Handles.MH_glPatchParameteri.invokeExact(handles.PFN_glPatchParameteri, pname, value); }
+        Handles.MH_glPatchParameteri.get().invokeExact(handles.PFN_glPatchParameteri, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in PatchParameteri", e); }
     }
 
@@ -79,7 +80,7 @@ public final class GLARBTessellationShader {
     public void PatchParameterfv(int pname, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPatchParameterfv)) throw new GLSymbolNotFoundError("Symbol not found: glPatchParameterfv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPatchParameterfv", pname, values); }
-        Handles.MH_glPatchParameterfv.invokeExact(handles.PFN_glPatchParameterfv, pname, values); }
+        Handles.MH_glPatchParameterfv.get().invokeExact(handles.PFN_glPatchParameterfv, pname, values); }
         catch (Throwable e) { throw new RuntimeException("error in PatchParameterfv", e); }
     }
 

@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -144,7 +145,7 @@ public final class GLARBInternalformatQuery2 {
     public static final int GL_VIEW_CLASS_ASTC_12x12_RGBA = 0x9395;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetInternalformati64v = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glGetInternalformati64v = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glGetInternalformati64v;
         private Handles(GLLoadFunc func) {
             PFN_glGetInternalformati64v = func.invoke("glGetInternalformati64v");
@@ -162,7 +163,7 @@ public final class GLARBInternalformatQuery2 {
     public void GetInternalformati64v(int target, int internalformat, int pname, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformati64v)) throw new GLSymbolNotFoundError("Symbol not found: glGetInternalformati64v");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInternalformati64v", target, internalformat, pname, count, params); }
-        Handles.MH_glGetInternalformati64v.invokeExact(handles.PFN_glGetInternalformati64v, target, internalformat, pname, count, params); }
+        Handles.MH_glGetInternalformati64v.get().invokeExact(handles.PFN_glGetInternalformati64v, target, internalformat, pname, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetInternalformati64v", e); }
     }
 

@@ -37,37 +37,37 @@ public final class VkGraphicsPipelineShaderGroupsCreateInfoNV extends GroupType 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `groupCount`.
     public static final long OFFSET_groupCount = LAYOUT.byteOffset(PathElement.groupElement("groupCount"));
     /// The memory layout of `groupCount`.
     public static final MemoryLayout LAYOUT_groupCount = LAYOUT.select(PathElement.groupElement("groupCount"));
     /// The [VarHandle] of `groupCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_groupCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("groupCount"));
+    public static final Supplier<VarHandle> VH_groupCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("groupCount")));
     /// The byte offset of `pGroups`.
     public static final long OFFSET_pGroups = LAYOUT.byteOffset(PathElement.groupElement("pGroups"));
     /// The memory layout of `pGroups`.
     public static final MemoryLayout LAYOUT_pGroups = LAYOUT.select(PathElement.groupElement("pGroups"));
     /// The [VarHandle] of `pGroups` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pGroups = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pGroups"));
+    public static final Supplier<VarHandle> VH_pGroups = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pGroups")));
     /// The byte offset of `pipelineCount`.
     public static final long OFFSET_pipelineCount = LAYOUT.byteOffset(PathElement.groupElement("pipelineCount"));
     /// The memory layout of `pipelineCount`.
     public static final MemoryLayout LAYOUT_pipelineCount = LAYOUT.select(PathElement.groupElement("pipelineCount"));
     /// The [VarHandle] of `pipelineCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCount"));
+    public static final Supplier<VarHandle> VH_pipelineCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCount")));
     /// The byte offset of `pPipelines`.
     public static final long OFFSET_pPipelines = LAYOUT.byteOffset(PathElement.groupElement("pPipelines"));
     /// The memory layout of `pPipelines`.
     public static final MemoryLayout LAYOUT_pPipelines = LAYOUT.select(PathElement.groupElement("pPipelines"));
     /// The [VarHandle] of `pPipelines` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPipelines = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelines"));
+    public static final Supplier<VarHandle> VH_pPipelines = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelines")));
 
     /// Creates `VkGraphicsPipelineShaderGroupsCreateInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkGraphicsPipelineShaderGroupsCreateInfoNV extends GroupType 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkGraphicsPipelineShaderGroupsCreateInfoNV extends GroupType 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkGraphicsPipelineShaderGroupsCreateInfoNV extends GroupType 
     /// {@return `groupCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int groupCount(MemorySegment segment, long index) { return (int) VH_groupCount.get(segment, 0L, index); }
+    public static int groupCount(MemorySegment segment, long index) { return (int) VH_groupCount.get().get(segment, 0L, index); }
     /// {@return `groupCount`}
     public int groupCount() { return groupCount(this.segment(), 0L); }
     /// Sets `groupCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void groupCount(MemorySegment segment, long index, int value) { VH_groupCount.set(segment, 0L, index, value); }
+    public static void groupCount(MemorySegment segment, long index, int value) { VH_groupCount.get().set(segment, 0L, index, value); }
     /// Sets `groupCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkGraphicsPipelineShaderGroupsCreateInfoNV extends GroupType 
     /// {@return `pGroups` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pGroups(MemorySegment segment, long index) { return (MemorySegment) VH_pGroups.get(segment, 0L, index); }
+    public static MemorySegment pGroups(MemorySegment segment, long index) { return (MemorySegment) VH_pGroups.get().get(segment, 0L, index); }
     /// {@return `pGroups`}
     public MemorySegment pGroups() { return pGroups(this.segment(), 0L); }
     /// Sets `pGroups` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pGroups(MemorySegment segment, long index, MemorySegment value) { VH_pGroups.set(segment, 0L, index, value); }
+    public static void pGroups(MemorySegment segment, long index, MemorySegment value) { VH_pGroups.get().set(segment, 0L, index, value); }
     /// Sets `pGroups` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkGraphicsPipelineShaderGroupsCreateInfoNV extends GroupType 
     /// {@return `pipelineCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineCount(MemorySegment segment, long index) { return (int) VH_pipelineCount.get(segment, 0L, index); }
+    public static int pipelineCount(MemorySegment segment, long index) { return (int) VH_pipelineCount.get().get(segment, 0L, index); }
     /// {@return `pipelineCount`}
     public int pipelineCount() { return pipelineCount(this.segment(), 0L); }
     /// Sets `pipelineCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineCount(MemorySegment segment, long index, int value) { VH_pipelineCount.set(segment, 0L, index, value); }
+    public static void pipelineCount(MemorySegment segment, long index, int value) { VH_pipelineCount.get().set(segment, 0L, index, value); }
     /// Sets `pipelineCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkGraphicsPipelineShaderGroupsCreateInfoNV extends GroupType 
     /// {@return `pPipelines` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pPipelines(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelines.get(segment, 0L, index); }
+    public static MemorySegment pPipelines(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelines.get().get(segment, 0L, index); }
     /// {@return `pPipelines`}
     public MemorySegment pPipelines() { return pPipelines(this.segment(), 0L); }
     /// Sets `pPipelines` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pPipelines(MemorySegment segment, long index, MemorySegment value) { VH_pPipelines.set(segment, 0L, index, value); }
+    public static void pPipelines(MemorySegment segment, long index, MemorySegment value) { VH_pPipelines.get().set(segment, 0L, index, value); }
     /// Sets `pPipelines` with the given value.
     /// @param value the value
     /// @return `this`

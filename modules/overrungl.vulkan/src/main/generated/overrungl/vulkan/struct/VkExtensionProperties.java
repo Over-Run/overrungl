@@ -29,13 +29,13 @@ public final class VkExtensionProperties extends GroupType {
     /// The memory layout of `extensionName`.
     public static final MemoryLayout LAYOUT_extensionName = LAYOUT.select(PathElement.groupElement("extensionName"));
     /// The [VarHandle] of `extensionName` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_extensionName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extensionName"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_extensionName = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extensionName"), PathElement.sequenceElement()));
     /// The byte offset of `specVersion`.
     public static final long OFFSET_specVersion = LAYOUT.byteOffset(PathElement.groupElement("specVersion"));
     /// The memory layout of `specVersion`.
     public static final MemoryLayout LAYOUT_specVersion = LAYOUT.select(PathElement.groupElement("specVersion"));
     /// The [VarHandle] of `specVersion` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_specVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("specVersion"));
+    public static final Supplier<VarHandle> VH_specVersion = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("specVersion")));
 
     /// Creates `VkExtensionProperties` with the given segment.
     /// @param segment      the memory segment
@@ -91,7 +91,7 @@ public final class VkExtensionProperties extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte extensionName(MemorySegment segment, long index, long index0) { return (byte) VH_extensionName.get(segment, 0L, index, index0); }
+    public static byte extensionName(MemorySegment segment, long index, long index0) { return (byte) VH_extensionName.get().get(segment, 0L, index, index0); }
     /// {@return `extensionName`}
     public MemorySegment extensionName() { return extensionName(this.segment(), 0L); }
     /// {@return `extensionName`}
@@ -107,7 +107,7 @@ public final class VkExtensionProperties extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void extensionName(MemorySegment segment, long index, long index0, byte value) { VH_extensionName.set(segment, 0L, index, index0, value); }
+    public static void extensionName(MemorySegment segment, long index, long index0, byte value) { VH_extensionName.get().set(segment, 0L, index, index0, value); }
     /// Sets `extensionName` with the given value.
     /// @param value the value
     /// @return `this`
@@ -121,14 +121,14 @@ public final class VkExtensionProperties extends GroupType {
     /// {@return `specVersion` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int specVersion(MemorySegment segment, long index) { return (int) VH_specVersion.get(segment, 0L, index); }
+    public static int specVersion(MemorySegment segment, long index) { return (int) VH_specVersion.get().get(segment, 0L, index); }
     /// {@return `specVersion`}
     public int specVersion() { return specVersion(this.segment(), 0L); }
     /// Sets `specVersion` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void specVersion(MemorySegment segment, long index, int value) { VH_specVersion.set(segment, 0L, index, value); }
+    public static void specVersion(MemorySegment segment, long index, int value) { VH_specVersion.get().set(segment, 0L, index, value); }
     /// Sets `specVersion` with the given value.
     /// @param value the value
     /// @return `this`

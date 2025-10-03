@@ -2,6 +2,7 @@
 package overrungl.opengl;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import static overrungl.internal.RuntimeHelper.*;
@@ -31,10 +32,10 @@ public class GL46 extends GL45 {
     public static final int GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW = 0x82ED;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glSpecializeShader = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiDrawArraysIndirectCount = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiDrawElementsIndirectCount = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPolygonOffsetClamp = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_glSpecializeShader = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiDrawArraysIndirectCount = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultiDrawElementsIndirectCount = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPolygonOffsetClamp = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
         public final MemorySegment PFN_glSpecializeShader;
         public final MemorySegment PFN_glMultiDrawArraysIndirectCount;
         public final MemorySegment PFN_glMultiDrawElementsIndirectCount;
@@ -59,7 +60,7 @@ public class GL46 extends GL45 {
     public void SpecializeShader(int shader, @NonNull MemorySegment pEntryPoint, int numSpecializationConstants, @NonNull MemorySegment pConstantIndex, @NonNull MemorySegment pConstantValue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSpecializeShader)) throw new GLSymbolNotFoundError("Symbol not found: glSpecializeShader");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSpecializeShader", shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
-        Handles.MH_glSpecializeShader.invokeExact(handles.PFN_glSpecializeShader, shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
+        Handles.MH_glSpecializeShader.get().invokeExact(handles.PFN_glSpecializeShader, shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
         catch (Throwable e) { throw new RuntimeException("error in SpecializeShader", e); }
     }
 
@@ -70,7 +71,7 @@ public class GL46 extends GL45 {
     public void MultiDrawArraysIndirectCount(int mode, @NonNull MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectCount)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCount");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawArraysIndirectCount", mode, indirect, drawcount, maxdrawcount, stride); }
-        Handles.MH_glMultiDrawArraysIndirectCount.invokeExact(handles.PFN_glMultiDrawArraysIndirectCount, mode, indirect, drawcount, maxdrawcount, stride); }
+        Handles.MH_glMultiDrawArraysIndirectCount.get().invokeExact(handles.PFN_glMultiDrawArraysIndirectCount, mode, indirect, drawcount, maxdrawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysIndirectCount", e); }
     }
 
@@ -81,7 +82,7 @@ public class GL46 extends GL45 {
     public void MultiDrawElementsIndirectCount(int mode, int type, @NonNull MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectCount)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCount");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawElementsIndirectCount", mode, type, indirect, drawcount, maxdrawcount, stride); }
-        Handles.MH_glMultiDrawElementsIndirectCount.invokeExact(handles.PFN_glMultiDrawElementsIndirectCount, mode, type, indirect, drawcount, maxdrawcount, stride); }
+        Handles.MH_glMultiDrawElementsIndirectCount.get().invokeExact(handles.PFN_glMultiDrawElementsIndirectCount, mode, type, indirect, drawcount, maxdrawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsIndirectCount", e); }
     }
 
@@ -92,7 +93,7 @@ public class GL46 extends GL45 {
     public void PolygonOffsetClamp(float factor, float units, float clamp) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetClamp)) throw new GLSymbolNotFoundError("Symbol not found: glPolygonOffsetClamp");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPolygonOffsetClamp", factor, units, clamp); }
-        Handles.MH_glPolygonOffsetClamp.invokeExact(handles.PFN_glPolygonOffsetClamp, factor, units, clamp); }
+        Handles.MH_glPolygonOffsetClamp.get().invokeExact(handles.PFN_glPolygonOffsetClamp, factor, units, clamp); }
         catch (Throwable e) { throw new RuntimeException("error in PolygonOffsetClamp", e); }
     }
 

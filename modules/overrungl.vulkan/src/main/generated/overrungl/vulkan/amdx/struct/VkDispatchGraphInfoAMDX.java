@@ -33,13 +33,13 @@ public final class VkDispatchGraphInfoAMDX extends GroupType {
     /// The memory layout of `nodeIndex`.
     public static final MemoryLayout LAYOUT_nodeIndex = LAYOUT.select(PathElement.groupElement("nodeIndex"));
     /// The [VarHandle] of `nodeIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_nodeIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nodeIndex"));
+    public static final Supplier<VarHandle> VH_nodeIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("nodeIndex")));
     /// The byte offset of `payloadCount`.
     public static final long OFFSET_payloadCount = LAYOUT.byteOffset(PathElement.groupElement("payloadCount"));
     /// The memory layout of `payloadCount`.
     public static final MemoryLayout LAYOUT_payloadCount = LAYOUT.select(PathElement.groupElement("payloadCount"));
     /// The [VarHandle] of `payloadCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_payloadCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("payloadCount"));
+    public static final Supplier<VarHandle> VH_payloadCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("payloadCount")));
     /// The byte offset of `payloads`.
     public static final long OFFSET_payloads = LAYOUT.byteOffset(PathElement.groupElement("payloads"));
     /// The memory layout of `payloads`.
@@ -49,7 +49,7 @@ public final class VkDispatchGraphInfoAMDX extends GroupType {
     /// The memory layout of `payloadStride`.
     public static final MemoryLayout LAYOUT_payloadStride = LAYOUT.select(PathElement.groupElement("payloadStride"));
     /// The [VarHandle] of `payloadStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_payloadStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("payloadStride"));
+    public static final Supplier<VarHandle> VH_payloadStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("payloadStride")));
 
     /// Creates `VkDispatchGraphInfoAMDX` with the given segment.
     /// @param segment      the memory segment
@@ -100,14 +100,14 @@ public final class VkDispatchGraphInfoAMDX extends GroupType {
     /// {@return `nodeIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int nodeIndex(MemorySegment segment, long index) { return (int) VH_nodeIndex.get(segment, 0L, index); }
+    public static int nodeIndex(MemorySegment segment, long index) { return (int) VH_nodeIndex.get().get(segment, 0L, index); }
     /// {@return `nodeIndex`}
     public int nodeIndex() { return nodeIndex(this.segment(), 0L); }
     /// Sets `nodeIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void nodeIndex(MemorySegment segment, long index, int value) { VH_nodeIndex.set(segment, 0L, index, value); }
+    public static void nodeIndex(MemorySegment segment, long index, int value) { VH_nodeIndex.get().set(segment, 0L, index, value); }
     /// Sets `nodeIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -116,14 +116,14 @@ public final class VkDispatchGraphInfoAMDX extends GroupType {
     /// {@return `payloadCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int payloadCount(MemorySegment segment, long index) { return (int) VH_payloadCount.get(segment, 0L, index); }
+    public static int payloadCount(MemorySegment segment, long index) { return (int) VH_payloadCount.get().get(segment, 0L, index); }
     /// {@return `payloadCount`}
     public int payloadCount() { return payloadCount(this.segment(), 0L); }
     /// Sets `payloadCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void payloadCount(MemorySegment segment, long index, int value) { VH_payloadCount.set(segment, 0L, index, value); }
+    public static void payloadCount(MemorySegment segment, long index, int value) { VH_payloadCount.get().set(segment, 0L, index, value); }
     /// Sets `payloadCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -152,14 +152,14 @@ public final class VkDispatchGraphInfoAMDX extends GroupType {
     /// {@return `payloadStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long payloadStride(MemorySegment segment, long index) { return (long) VH_payloadStride.get(segment, 0L, index); }
+    public static long payloadStride(MemorySegment segment, long index) { return (long) VH_payloadStride.get().get(segment, 0L, index); }
     /// {@return `payloadStride`}
     public long payloadStride() { return payloadStride(this.segment(), 0L); }
     /// Sets `payloadStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void payloadStride(MemorySegment segment, long index, long value) { VH_payloadStride.set(segment, 0L, index, value); }
+    public static void payloadStride(MemorySegment segment, long index, long value) { VH_payloadStride.get().set(segment, 0L, index, value); }
     /// Sets `payloadStride` with the given value.
     /// @param value the value
     /// @return `this`

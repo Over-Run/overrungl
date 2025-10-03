@@ -39,25 +39,25 @@ public final class VkImageFormatProperties extends GroupType {
     /// The memory layout of `maxMipLevels`.
     public static final MemoryLayout LAYOUT_maxMipLevels = LAYOUT.select(PathElement.groupElement("maxMipLevels"));
     /// The [VarHandle] of `maxMipLevels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxMipLevels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMipLevels"));
+    public static final Supplier<VarHandle> VH_maxMipLevels = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMipLevels")));
     /// The byte offset of `maxArrayLayers`.
     public static final long OFFSET_maxArrayLayers = LAYOUT.byteOffset(PathElement.groupElement("maxArrayLayers"));
     /// The memory layout of `maxArrayLayers`.
     public static final MemoryLayout LAYOUT_maxArrayLayers = LAYOUT.select(PathElement.groupElement("maxArrayLayers"));
     /// The [VarHandle] of `maxArrayLayers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxArrayLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxArrayLayers"));
+    public static final Supplier<VarHandle> VH_maxArrayLayers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxArrayLayers")));
     /// The byte offset of `sampleCounts`.
     public static final long OFFSET_sampleCounts = LAYOUT.byteOffset(PathElement.groupElement("sampleCounts"));
     /// The memory layout of `sampleCounts`.
     public static final MemoryLayout LAYOUT_sampleCounts = LAYOUT.select(PathElement.groupElement("sampleCounts"));
     /// The [VarHandle] of `sampleCounts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleCounts"));
+    public static final Supplier<VarHandle> VH_sampleCounts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleCounts")));
     /// The byte offset of `maxResourceSize`.
     public static final long OFFSET_maxResourceSize = LAYOUT.byteOffset(PathElement.groupElement("maxResourceSize"));
     /// The memory layout of `maxResourceSize`.
     public static final MemoryLayout LAYOUT_maxResourceSize = LAYOUT.select(PathElement.groupElement("maxResourceSize"));
     /// The [VarHandle] of `maxResourceSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxResourceSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxResourceSize"));
+    public static final Supplier<VarHandle> VH_maxResourceSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxResourceSize")));
 
     /// Creates `VkImageFormatProperties` with the given segment.
     /// @param segment      the memory segment
@@ -128,14 +128,14 @@ public final class VkImageFormatProperties extends GroupType {
     /// {@return `maxMipLevels` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxMipLevels(MemorySegment segment, long index) { return (int) VH_maxMipLevels.get(segment, 0L, index); }
+    public static int maxMipLevels(MemorySegment segment, long index) { return (int) VH_maxMipLevels.get().get(segment, 0L, index); }
     /// {@return `maxMipLevels`}
     public int maxMipLevels() { return maxMipLevels(this.segment(), 0L); }
     /// Sets `maxMipLevels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxMipLevels(MemorySegment segment, long index, int value) { VH_maxMipLevels.set(segment, 0L, index, value); }
+    public static void maxMipLevels(MemorySegment segment, long index, int value) { VH_maxMipLevels.get().set(segment, 0L, index, value); }
     /// Sets `maxMipLevels` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,14 +144,14 @@ public final class VkImageFormatProperties extends GroupType {
     /// {@return `maxArrayLayers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxArrayLayers(MemorySegment segment, long index) { return (int) VH_maxArrayLayers.get(segment, 0L, index); }
+    public static int maxArrayLayers(MemorySegment segment, long index) { return (int) VH_maxArrayLayers.get().get(segment, 0L, index); }
     /// {@return `maxArrayLayers`}
     public int maxArrayLayers() { return maxArrayLayers(this.segment(), 0L); }
     /// Sets `maxArrayLayers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxArrayLayers(MemorySegment segment, long index, int value) { VH_maxArrayLayers.set(segment, 0L, index, value); }
+    public static void maxArrayLayers(MemorySegment segment, long index, int value) { VH_maxArrayLayers.get().set(segment, 0L, index, value); }
     /// Sets `maxArrayLayers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -160,14 +160,14 @@ public final class VkImageFormatProperties extends GroupType {
     /// {@return `sampleCounts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sampleCounts(MemorySegment segment, long index) { return (int) VH_sampleCounts.get(segment, 0L, index); }
+    public static int sampleCounts(MemorySegment segment, long index) { return (int) VH_sampleCounts.get().get(segment, 0L, index); }
     /// {@return `sampleCounts`}
     public int sampleCounts() { return sampleCounts(this.segment(), 0L); }
     /// Sets `sampleCounts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sampleCounts(MemorySegment segment, long index, int value) { VH_sampleCounts.set(segment, 0L, index, value); }
+    public static void sampleCounts(MemorySegment segment, long index, int value) { VH_sampleCounts.get().set(segment, 0L, index, value); }
     /// Sets `sampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,14 +176,14 @@ public final class VkImageFormatProperties extends GroupType {
     /// {@return `maxResourceSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long maxResourceSize(MemorySegment segment, long index) { return (long) VH_maxResourceSize.get(segment, 0L, index); }
+    public static long maxResourceSize(MemorySegment segment, long index) { return (long) VH_maxResourceSize.get().get(segment, 0L, index); }
     /// {@return `maxResourceSize`}
     public long maxResourceSize() { return maxResourceSize(this.segment(), 0L); }
     /// Sets `maxResourceSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxResourceSize(MemorySegment segment, long index, long value) { VH_maxResourceSize.set(segment, 0L, index, value); }
+    public static void maxResourceSize(MemorySegment segment, long index, long value) { VH_maxResourceSize.get().set(segment, 0L, index, value); }
     /// Sets `maxResourceSize` with the given value.
     /// @param value the value
     /// @return `this`

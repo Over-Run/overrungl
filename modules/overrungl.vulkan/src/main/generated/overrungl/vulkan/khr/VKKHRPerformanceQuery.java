@@ -2,6 +2,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -47,10 +48,10 @@ public final class VKKHRPerformanceQuery {
     public static final int VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_KHR = 1000116006;
     public static final int VK_STRUCTURE_TYPE_PERFORMANCE_QUERY_RESERVATION_INFO_KHR = 1000116007;
     public static final class Handles {
-        public static final MethodHandle MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkAcquireProfilingLockKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkReleaseProfilingLockKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkAcquireProfilingLockKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkReleaseProfilingLockKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -63,7 +64,7 @@ public final class VKKHRPerformanceQuery {
     public static int vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(@NonNull VkPhysicalDevice physicalDevice, int queueFamilyIndex, @NonNull MemorySegment pCounterCount, @NonNull MemorySegment pCounters, @NonNull MemorySegment pCounterDescriptions) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR", physicalDevice, queueFamilyIndex, pCounterCount, pCounters, pCounterDescriptions); }
-        return (int) Handles.MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR.invokeExact(physicalDevice.capabilities().PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR, physicalDevice.segment(), queueFamilyIndex, pCounterCount, pCounters, pCounterDescriptions); }
+        return (int) Handles.MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR.get().invokeExact(physicalDevice.capabilities().PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR, physicalDevice.segment(), queueFamilyIndex, pCounterCount, pCounters, pCounterDescriptions); }
         catch (Throwable e) { throw new RuntimeException("error in vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR", e); }
     }
 
@@ -74,7 +75,7 @@ public final class VKKHRPerformanceQuery {
     public static void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pPerformanceQueryCreateInfo, @NonNull MemorySegment pNumPasses) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR", physicalDevice, pPerformanceQueryCreateInfo, pNumPasses); }
-        Handles.MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR, physicalDevice.segment(), pPerformanceQueryCreateInfo, pNumPasses); }
+        Handles.MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR.get().invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR, physicalDevice.segment(), pPerformanceQueryCreateInfo, pNumPasses); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR", e); }
     }
 
@@ -85,7 +86,7 @@ public final class VKKHRPerformanceQuery {
     public static int vkAcquireProfilingLockKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquireProfilingLockKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireProfilingLockKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkAcquireProfilingLockKHR", device, pInfo); }
-        return (int) Handles.MH_vkAcquireProfilingLockKHR.invokeExact(device.capabilities().PFN_vkAcquireProfilingLockKHR, device.segment(), pInfo); }
+        return (int) Handles.MH_vkAcquireProfilingLockKHR.get().invokeExact(device.capabilities().PFN_vkAcquireProfilingLockKHR, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireProfilingLockKHR", e); }
     }
 
@@ -96,7 +97,7 @@ public final class VKKHRPerformanceQuery {
     public static void vkReleaseProfilingLockKHR(@NonNull VkDevice device) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleaseProfilingLockKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkReleaseProfilingLockKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkReleaseProfilingLockKHR", device); }
-        Handles.MH_vkReleaseProfilingLockKHR.invokeExact(device.capabilities().PFN_vkReleaseProfilingLockKHR, device.segment()); }
+        Handles.MH_vkReleaseProfilingLockKHR.get().invokeExact(device.capabilities().PFN_vkReleaseProfilingLockKHR, device.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkReleaseProfilingLockKHR", e); }
     }
 

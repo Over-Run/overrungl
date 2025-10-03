@@ -45,13 +45,13 @@ public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `input`.
     public static final long OFFSET_input = LAYOUT.byteOffset(PathElement.groupElement("input"));
     /// The memory layout of `input`.
@@ -61,13 +61,13 @@ public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupTyp
     /// The memory layout of `dstImplicitData`.
     public static final MemoryLayout LAYOUT_dstImplicitData = LAYOUT.select(PathElement.groupElement("dstImplicitData"));
     /// The [VarHandle] of `dstImplicitData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstImplicitData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstImplicitData"));
+    public static final Supplier<VarHandle> VH_dstImplicitData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstImplicitData")));
     /// The byte offset of `scratchData`.
     public static final long OFFSET_scratchData = LAYOUT.byteOffset(PathElement.groupElement("scratchData"));
     /// The memory layout of `scratchData`.
     public static final MemoryLayout LAYOUT_scratchData = LAYOUT.select(PathElement.groupElement("scratchData"));
     /// The [VarHandle] of `scratchData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_scratchData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scratchData"));
+    public static final Supplier<VarHandle> VH_scratchData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("scratchData")));
     /// The byte offset of `dstAddressesArray`.
     public static final long OFFSET_dstAddressesArray = LAYOUT.byteOffset(PathElement.groupElement("dstAddressesArray"));
     /// The memory layout of `dstAddressesArray`.
@@ -85,13 +85,13 @@ public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupTyp
     /// The memory layout of `srcInfosCount`.
     public static final MemoryLayout LAYOUT_srcInfosCount = LAYOUT.select(PathElement.groupElement("srcInfosCount"));
     /// The [VarHandle] of `srcInfosCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcInfosCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcInfosCount"));
+    public static final Supplier<VarHandle> VH_srcInfosCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcInfosCount")));
     /// The byte offset of `addressResolutionFlags`.
     public static final long OFFSET_addressResolutionFlags = LAYOUT.byteOffset(PathElement.groupElement("addressResolutionFlags"));
     /// The memory layout of `addressResolutionFlags`.
     public static final MemoryLayout LAYOUT_addressResolutionFlags = LAYOUT.select(PathElement.groupElement("addressResolutionFlags"));
     /// The [VarHandle] of `addressResolutionFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_addressResolutionFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("addressResolutionFlags"));
+    public static final Supplier<VarHandle> VH_addressResolutionFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("addressResolutionFlags")));
 
     /// Creates `VkClusterAccelerationStructureCommandsInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -142,14 +142,14 @@ public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -194,14 +194,14 @@ public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupTyp
     /// {@return `dstImplicitData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dstImplicitData(MemorySegment segment, long index) { return (long) VH_dstImplicitData.get(segment, 0L, index); }
+    public static long dstImplicitData(MemorySegment segment, long index) { return (long) VH_dstImplicitData.get().get(segment, 0L, index); }
     /// {@return `dstImplicitData`}
     public long dstImplicitData() { return dstImplicitData(this.segment(), 0L); }
     /// Sets `dstImplicitData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstImplicitData(MemorySegment segment, long index, long value) { VH_dstImplicitData.set(segment, 0L, index, value); }
+    public static void dstImplicitData(MemorySegment segment, long index, long value) { VH_dstImplicitData.get().set(segment, 0L, index, value); }
     /// Sets `dstImplicitData` with the given value.
     /// @param value the value
     /// @return `this`
@@ -210,14 +210,14 @@ public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupTyp
     /// {@return `scratchData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long scratchData(MemorySegment segment, long index) { return (long) VH_scratchData.get(segment, 0L, index); }
+    public static long scratchData(MemorySegment segment, long index) { return (long) VH_scratchData.get().get(segment, 0L, index); }
     /// {@return `scratchData`}
     public long scratchData() { return scratchData(this.segment(), 0L); }
     /// Sets `scratchData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void scratchData(MemorySegment segment, long index, long value) { VH_scratchData.set(segment, 0L, index, value); }
+    public static void scratchData(MemorySegment segment, long index, long value) { VH_scratchData.get().set(segment, 0L, index, value); }
     /// Sets `scratchData` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,14 +286,14 @@ public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupTyp
     /// {@return `srcInfosCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long srcInfosCount(MemorySegment segment, long index) { return (long) VH_srcInfosCount.get(segment, 0L, index); }
+    public static long srcInfosCount(MemorySegment segment, long index) { return (long) VH_srcInfosCount.get().get(segment, 0L, index); }
     /// {@return `srcInfosCount`}
     public long srcInfosCount() { return srcInfosCount(this.segment(), 0L); }
     /// Sets `srcInfosCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcInfosCount(MemorySegment segment, long index, long value) { VH_srcInfosCount.set(segment, 0L, index, value); }
+    public static void srcInfosCount(MemorySegment segment, long index, long value) { VH_srcInfosCount.get().set(segment, 0L, index, value); }
     /// Sets `srcInfosCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,14 +302,14 @@ public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupTyp
     /// {@return `addressResolutionFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int addressResolutionFlags(MemorySegment segment, long index) { return (int) VH_addressResolutionFlags.get(segment, 0L, index); }
+    public static int addressResolutionFlags(MemorySegment segment, long index) { return (int) VH_addressResolutionFlags.get().get(segment, 0L, index); }
     /// {@return `addressResolutionFlags`}
     public int addressResolutionFlags() { return addressResolutionFlags(this.segment(), 0L); }
     /// Sets `addressResolutionFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void addressResolutionFlags(MemorySegment segment, long index, int value) { VH_addressResolutionFlags.set(segment, 0L, index, value); }
+    public static void addressResolutionFlags(MemorySegment segment, long index, int value) { VH_addressResolutionFlags.get().set(segment, 0L, index, value); }
     /// Sets `addressResolutionFlags` with the given value.
     /// @param value the value
     /// @return `this`

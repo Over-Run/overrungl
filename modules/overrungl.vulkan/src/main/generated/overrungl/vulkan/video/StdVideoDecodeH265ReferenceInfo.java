@@ -33,7 +33,7 @@ public final class StdVideoDecodeH265ReferenceInfo extends GroupType {
     /// The memory layout of `PicOrderCntVal`.
     public static final MemoryLayout LAYOUT_PicOrderCntVal = LAYOUT.select(PathElement.groupElement("PicOrderCntVal"));
     /// The [VarHandle] of `PicOrderCntVal` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_PicOrderCntVal = LAYOUT.arrayElementVarHandle(PathElement.groupElement("PicOrderCntVal"));
+    public static final Supplier<VarHandle> VH_PicOrderCntVal = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("PicOrderCntVal")));
 
     /// Creates `StdVideoDecodeH265ReferenceInfo` with the given segment.
     /// @param segment      the memory segment
@@ -104,14 +104,14 @@ public final class StdVideoDecodeH265ReferenceInfo extends GroupType {
     /// {@return `PicOrderCntVal` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int PicOrderCntVal(MemorySegment segment, long index) { return (int) VH_PicOrderCntVal.get(segment, 0L, index); }
+    public static int PicOrderCntVal(MemorySegment segment, long index) { return (int) VH_PicOrderCntVal.get().get(segment, 0L, index); }
     /// {@return `PicOrderCntVal`}
     public int PicOrderCntVal() { return PicOrderCntVal(this.segment(), 0L); }
     /// Sets `PicOrderCntVal` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void PicOrderCntVal(MemorySegment segment, long index, int value) { VH_PicOrderCntVal.set(segment, 0L, index, value); }
+    public static void PicOrderCntVal(MemorySegment segment, long index, int value) { VH_PicOrderCntVal.get().set(segment, 0L, index, value); }
     /// Sets `PicOrderCntVal` with the given value.
     /// @param value the value
     /// @return `this`

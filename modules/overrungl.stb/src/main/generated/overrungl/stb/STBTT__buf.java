@@ -31,19 +31,19 @@ public final class STBTT__buf extends GroupType {
     /// The memory layout of `data`.
     public static final MemoryLayout LAYOUT_data = LAYOUT.select(PathElement.groupElement("data"));
     /// The [VarHandle] of `data` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_data = LAYOUT.arrayElementVarHandle(PathElement.groupElement("data"));
+    public static final Supplier<VarHandle> VH_data = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("data")));
     /// The byte offset of `cursor`.
     public static final long OFFSET_cursor = LAYOUT.byteOffset(PathElement.groupElement("cursor"));
     /// The memory layout of `cursor`.
     public static final MemoryLayout LAYOUT_cursor = LAYOUT.select(PathElement.groupElement("cursor"));
     /// The [VarHandle] of `cursor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cursor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cursor"));
+    public static final Supplier<VarHandle> VH_cursor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cursor")));
     /// The byte offset of `size`.
     public static final long OFFSET_size = LAYOUT.byteOffset(PathElement.groupElement("size"));
     /// The memory layout of `size`.
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final Supplier<VarHandle> VH_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("size")));
 
     /// Creates `STBTT__buf` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class STBTT__buf extends GroupType {
     /// {@return `data` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment data(MemorySegment segment, long index) { return (MemorySegment) VH_data.get(segment, 0L, index); }
+    public static MemorySegment data(MemorySegment segment, long index) { return (MemorySegment) VH_data.get().get(segment, 0L, index); }
     /// {@return `data`}
     public MemorySegment data() { return data(this.segment(), 0L); }
     /// Sets `data` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void data(MemorySegment segment, long index, MemorySegment value) { VH_data.set(segment, 0L, index, value); }
+    public static void data(MemorySegment segment, long index, MemorySegment value) { VH_data.get().set(segment, 0L, index, value); }
     /// Sets `data` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class STBTT__buf extends GroupType {
     /// {@return `cursor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cursor(MemorySegment segment, long index) { return (int) VH_cursor.get(segment, 0L, index); }
+    public static int cursor(MemorySegment segment, long index) { return (int) VH_cursor.get().get(segment, 0L, index); }
     /// {@return `cursor`}
     public int cursor() { return cursor(this.segment(), 0L); }
     /// Sets `cursor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cursor(MemorySegment segment, long index, int value) { VH_cursor.set(segment, 0L, index, value); }
+    public static void cursor(MemorySegment segment, long index, int value) { VH_cursor.get().set(segment, 0L, index, value); }
     /// Sets `cursor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class STBTT__buf extends GroupType {
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int size(MemorySegment segment, long index) { return (int) VH_size.get(segment, 0L, index); }
+    public static int size(MemorySegment segment, long index) { return (int) VH_size.get().get(segment, 0L, index); }
     /// {@return `size`}
     public int size() { return size(this.segment(), 0L); }
     /// Sets `size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void size(MemorySegment segment, long index, int value) { VH_size.set(segment, 0L, index, value); }
+    public static void size(MemorySegment segment, long index, int value) { VH_size.get().set(segment, 0L, index, value); }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`

@@ -33,25 +33,25 @@ public final class VkImageViewSlicedCreateInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `sliceOffset`.
     public static final long OFFSET_sliceOffset = LAYOUT.byteOffset(PathElement.groupElement("sliceOffset"));
     /// The memory layout of `sliceOffset`.
     public static final MemoryLayout LAYOUT_sliceOffset = LAYOUT.select(PathElement.groupElement("sliceOffset"));
     /// The [VarHandle] of `sliceOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sliceOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sliceOffset"));
+    public static final Supplier<VarHandle> VH_sliceOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sliceOffset")));
     /// The byte offset of `sliceCount`.
     public static final long OFFSET_sliceCount = LAYOUT.byteOffset(PathElement.groupElement("sliceCount"));
     /// The memory layout of `sliceCount`.
     public static final MemoryLayout LAYOUT_sliceCount = LAYOUT.select(PathElement.groupElement("sliceCount"));
     /// The [VarHandle] of `sliceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sliceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sliceCount"));
+    public static final Supplier<VarHandle> VH_sliceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sliceCount")));
 
     /// Creates `VkImageViewSlicedCreateInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkImageViewSlicedCreateInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkImageViewSlicedCreateInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkImageViewSlicedCreateInfoEXT extends GroupType {
     /// {@return `sliceOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sliceOffset(MemorySegment segment, long index) { return (int) VH_sliceOffset.get(segment, 0L, index); }
+    public static int sliceOffset(MemorySegment segment, long index) { return (int) VH_sliceOffset.get().get(segment, 0L, index); }
     /// {@return `sliceOffset`}
     public int sliceOffset() { return sliceOffset(this.segment(), 0L); }
     /// Sets `sliceOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sliceOffset(MemorySegment segment, long index, int value) { VH_sliceOffset.set(segment, 0L, index, value); }
+    public static void sliceOffset(MemorySegment segment, long index, int value) { VH_sliceOffset.get().set(segment, 0L, index, value); }
     /// Sets `sliceOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkImageViewSlicedCreateInfoEXT extends GroupType {
     /// {@return `sliceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sliceCount(MemorySegment segment, long index) { return (int) VH_sliceCount.get(segment, 0L, index); }
+    public static int sliceCount(MemorySegment segment, long index) { return (int) VH_sliceCount.get().get(segment, 0L, index); }
     /// {@return `sliceCount`}
     public int sliceCount() { return sliceCount(this.segment(), 0L); }
     /// Sets `sliceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sliceCount(MemorySegment segment, long index, int value) { VH_sliceCount.set(segment, 0L, index, value); }
+    public static void sliceCount(MemorySegment segment, long index, int value) { VH_sliceCount.get().set(segment, 0L, index, value); }
     /// Sets `sliceCount` with the given value.
     /// @param value the value
     /// @return `this`

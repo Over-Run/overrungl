@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV extend
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `spheres`.
     public static final long OFFSET_spheres = LAYOUT.byteOffset(PathElement.groupElement("spheres"));
     /// The memory layout of `spheres`.
     public static final MemoryLayout LAYOUT_spheres = LAYOUT.select(PathElement.groupElement("spheres"));
     /// The [VarHandle] of `spheres` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_spheres = LAYOUT.arrayElementVarHandle(PathElement.groupElement("spheres"));
+    public static final Supplier<VarHandle> VH_spheres = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("spheres")));
     /// The byte offset of `linearSweptSpheres`.
     public static final long OFFSET_linearSweptSpheres = LAYOUT.byteOffset(PathElement.groupElement("linearSweptSpheres"));
     /// The memory layout of `linearSweptSpheres`.
     public static final MemoryLayout LAYOUT_linearSweptSpheres = LAYOUT.select(PathElement.groupElement("linearSweptSpheres"));
     /// The [VarHandle] of `linearSweptSpheres` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_linearSweptSpheres = LAYOUT.arrayElementVarHandle(PathElement.groupElement("linearSweptSpheres"));
+    public static final Supplier<VarHandle> VH_linearSweptSpheres = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("linearSweptSpheres")));
 
     /// Creates `VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV extend
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV extend
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV extend
     /// {@return `spheres` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int spheres(MemorySegment segment, long index) { return (int) VH_spheres.get(segment, 0L, index); }
+    public static int spheres(MemorySegment segment, long index) { return (int) VH_spheres.get().get(segment, 0L, index); }
     /// {@return `spheres`}
     public int spheres() { return spheres(this.segment(), 0L); }
     /// Sets `spheres` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void spheres(MemorySegment segment, long index, int value) { VH_spheres.set(segment, 0L, index, value); }
+    public static void spheres(MemorySegment segment, long index, int value) { VH_spheres.get().set(segment, 0L, index, value); }
     /// Sets `spheres` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV extend
     /// {@return `linearSweptSpheres` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int linearSweptSpheres(MemorySegment segment, long index) { return (int) VH_linearSweptSpheres.get(segment, 0L, index); }
+    public static int linearSweptSpheres(MemorySegment segment, long index) { return (int) VH_linearSweptSpheres.get().get(segment, 0L, index); }
     /// {@return `linearSweptSpheres`}
     public int linearSweptSpheres() { return linearSweptSpheres(this.segment(), 0L); }
     /// Sets `linearSweptSpheres` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void linearSweptSpheres(MemorySegment segment, long index, int value) { VH_linearSweptSpheres.set(segment, 0L, index, value); }
+    public static void linearSweptSpheres(MemorySegment segment, long index, int value) { VH_linearSweptSpheres.get().set(segment, 0L, index, value); }
     /// Sets `linearSweptSpheres` with the given value.
     /// @param value the value
     /// @return `this`

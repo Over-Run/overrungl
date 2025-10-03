@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `rasterizationOrderColorAttachmentAccess`.
     public static final long OFFSET_rasterizationOrderColorAttachmentAccess = LAYOUT.byteOffset(PathElement.groupElement("rasterizationOrderColorAttachmentAccess"));
     /// The memory layout of `rasterizationOrderColorAttachmentAccess`.
     public static final MemoryLayout LAYOUT_rasterizationOrderColorAttachmentAccess = LAYOUT.select(PathElement.groupElement("rasterizationOrderColorAttachmentAccess"));
     /// The [VarHandle] of `rasterizationOrderColorAttachmentAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rasterizationOrderColorAttachmentAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationOrderColorAttachmentAccess"));
+    public static final Supplier<VarHandle> VH_rasterizationOrderColorAttachmentAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationOrderColorAttachmentAccess")));
     /// The byte offset of `rasterizationOrderDepthAttachmentAccess`.
     public static final long OFFSET_rasterizationOrderDepthAttachmentAccess = LAYOUT.byteOffset(PathElement.groupElement("rasterizationOrderDepthAttachmentAccess"));
     /// The memory layout of `rasterizationOrderDepthAttachmentAccess`.
     public static final MemoryLayout LAYOUT_rasterizationOrderDepthAttachmentAccess = LAYOUT.select(PathElement.groupElement("rasterizationOrderDepthAttachmentAccess"));
     /// The [VarHandle] of `rasterizationOrderDepthAttachmentAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rasterizationOrderDepthAttachmentAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationOrderDepthAttachmentAccess"));
+    public static final Supplier<VarHandle> VH_rasterizationOrderDepthAttachmentAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationOrderDepthAttachmentAccess")));
     /// The byte offset of `rasterizationOrderStencilAttachmentAccess`.
     public static final long OFFSET_rasterizationOrderStencilAttachmentAccess = LAYOUT.byteOffset(PathElement.groupElement("rasterizationOrderStencilAttachmentAccess"));
     /// The memory layout of `rasterizationOrderStencilAttachmentAccess`.
     public static final MemoryLayout LAYOUT_rasterizationOrderStencilAttachmentAccess = LAYOUT.select(PathElement.groupElement("rasterizationOrderStencilAttachmentAccess"));
     /// The [VarHandle] of `rasterizationOrderStencilAttachmentAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rasterizationOrderStencilAttachmentAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationOrderStencilAttachmentAccess"));
+    public static final Supplier<VarHandle> VH_rasterizationOrderStencilAttachmentAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationOrderStencilAttachmentAccess")));
 
     /// Creates `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM
     /// {@return `rasterizationOrderColorAttachmentAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rasterizationOrderColorAttachmentAccess(MemorySegment segment, long index) { return (int) VH_rasterizationOrderColorAttachmentAccess.get(segment, 0L, index); }
+    public static int rasterizationOrderColorAttachmentAccess(MemorySegment segment, long index) { return (int) VH_rasterizationOrderColorAttachmentAccess.get().get(segment, 0L, index); }
     /// {@return `rasterizationOrderColorAttachmentAccess`}
     public int rasterizationOrderColorAttachmentAccess() { return rasterizationOrderColorAttachmentAccess(this.segment(), 0L); }
     /// Sets `rasterizationOrderColorAttachmentAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rasterizationOrderColorAttachmentAccess(MemorySegment segment, long index, int value) { VH_rasterizationOrderColorAttachmentAccess.set(segment, 0L, index, value); }
+    public static void rasterizationOrderColorAttachmentAccess(MemorySegment segment, long index, int value) { VH_rasterizationOrderColorAttachmentAccess.get().set(segment, 0L, index, value); }
     /// Sets `rasterizationOrderColorAttachmentAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM
     /// {@return `rasterizationOrderDepthAttachmentAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rasterizationOrderDepthAttachmentAccess(MemorySegment segment, long index) { return (int) VH_rasterizationOrderDepthAttachmentAccess.get(segment, 0L, index); }
+    public static int rasterizationOrderDepthAttachmentAccess(MemorySegment segment, long index) { return (int) VH_rasterizationOrderDepthAttachmentAccess.get().get(segment, 0L, index); }
     /// {@return `rasterizationOrderDepthAttachmentAccess`}
     public int rasterizationOrderDepthAttachmentAccess() { return rasterizationOrderDepthAttachmentAccess(this.segment(), 0L); }
     /// Sets `rasterizationOrderDepthAttachmentAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rasterizationOrderDepthAttachmentAccess(MemorySegment segment, long index, int value) { VH_rasterizationOrderDepthAttachmentAccess.set(segment, 0L, index, value); }
+    public static void rasterizationOrderDepthAttachmentAccess(MemorySegment segment, long index, int value) { VH_rasterizationOrderDepthAttachmentAccess.get().set(segment, 0L, index, value); }
     /// Sets `rasterizationOrderDepthAttachmentAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM
     /// {@return `rasterizationOrderStencilAttachmentAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rasterizationOrderStencilAttachmentAccess(MemorySegment segment, long index) { return (int) VH_rasterizationOrderStencilAttachmentAccess.get(segment, 0L, index); }
+    public static int rasterizationOrderStencilAttachmentAccess(MemorySegment segment, long index) { return (int) VH_rasterizationOrderStencilAttachmentAccess.get().get(segment, 0L, index); }
     /// {@return `rasterizationOrderStencilAttachmentAccess`}
     public int rasterizationOrderStencilAttachmentAccess() { return rasterizationOrderStencilAttachmentAccess(this.segment(), 0L); }
     /// Sets `rasterizationOrderStencilAttachmentAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rasterizationOrderStencilAttachmentAccess(MemorySegment segment, long index, int value) { VH_rasterizationOrderStencilAttachmentAccess.set(segment, 0L, index, value); }
+    public static void rasterizationOrderStencilAttachmentAccess(MemorySegment segment, long index, int value) { VH_rasterizationOrderStencilAttachmentAccess.get().set(segment, 0L, index, value); }
     /// Sets `rasterizationOrderStencilAttachmentAccess` with the given value.
     /// @param value the value
     /// @return `this`

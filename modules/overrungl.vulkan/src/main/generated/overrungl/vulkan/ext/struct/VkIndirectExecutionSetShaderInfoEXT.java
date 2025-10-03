@@ -41,49 +41,49 @@ public final class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderCount`.
     public static final long OFFSET_shaderCount = LAYOUT.byteOffset(PathElement.groupElement("shaderCount"));
     /// The memory layout of `shaderCount`.
     public static final MemoryLayout LAYOUT_shaderCount = LAYOUT.select(PathElement.groupElement("shaderCount"));
     /// The [VarHandle] of `shaderCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderCount"));
+    public static final Supplier<VarHandle> VH_shaderCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderCount")));
     /// The byte offset of `pInitialShaders`.
     public static final long OFFSET_pInitialShaders = LAYOUT.byteOffset(PathElement.groupElement("pInitialShaders"));
     /// The memory layout of `pInitialShaders`.
     public static final MemoryLayout LAYOUT_pInitialShaders = LAYOUT.select(PathElement.groupElement("pInitialShaders"));
     /// The [VarHandle] of `pInitialShaders` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pInitialShaders = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pInitialShaders"));
+    public static final Supplier<VarHandle> VH_pInitialShaders = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pInitialShaders")));
     /// The byte offset of `pSetLayoutInfos`.
     public static final long OFFSET_pSetLayoutInfos = LAYOUT.byteOffset(PathElement.groupElement("pSetLayoutInfos"));
     /// The memory layout of `pSetLayoutInfos`.
     public static final MemoryLayout LAYOUT_pSetLayoutInfos = LAYOUT.select(PathElement.groupElement("pSetLayoutInfos"));
     /// The [VarHandle] of `pSetLayoutInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pSetLayoutInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSetLayoutInfos"));
+    public static final Supplier<VarHandle> VH_pSetLayoutInfos = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSetLayoutInfos")));
     /// The byte offset of `maxShaderCount`.
     public static final long OFFSET_maxShaderCount = LAYOUT.byteOffset(PathElement.groupElement("maxShaderCount"));
     /// The memory layout of `maxShaderCount`.
     public static final MemoryLayout LAYOUT_maxShaderCount = LAYOUT.select(PathElement.groupElement("maxShaderCount"));
     /// The [VarHandle] of `maxShaderCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxShaderCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxShaderCount"));
+    public static final Supplier<VarHandle> VH_maxShaderCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxShaderCount")));
     /// The byte offset of `pushConstantRangeCount`.
     public static final long OFFSET_pushConstantRangeCount = LAYOUT.byteOffset(PathElement.groupElement("pushConstantRangeCount"));
     /// The memory layout of `pushConstantRangeCount`.
     public static final MemoryLayout LAYOUT_pushConstantRangeCount = LAYOUT.select(PathElement.groupElement("pushConstantRangeCount"));
     /// The [VarHandle] of `pushConstantRangeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pushConstantRangeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pushConstantRangeCount"));
+    public static final Supplier<VarHandle> VH_pushConstantRangeCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pushConstantRangeCount")));
     /// The byte offset of `pPushConstantRanges`.
     public static final long OFFSET_pPushConstantRanges = LAYOUT.byteOffset(PathElement.groupElement("pPushConstantRanges"));
     /// The memory layout of `pPushConstantRanges`.
     public static final MemoryLayout LAYOUT_pPushConstantRanges = LAYOUT.select(PathElement.groupElement("pPushConstantRanges"));
     /// The [VarHandle] of `pPushConstantRanges` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPushConstantRanges = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPushConstantRanges"));
+    public static final Supplier<VarHandle> VH_pPushConstantRanges = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPushConstantRanges")));
 
     /// Creates `VkIndirectExecutionSetShaderInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// {@return `shaderCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderCount(MemorySegment segment, long index) { return (int) VH_shaderCount.get(segment, 0L, index); }
+    public static int shaderCount(MemorySegment segment, long index) { return (int) VH_shaderCount.get().get(segment, 0L, index); }
     /// {@return `shaderCount`}
     public int shaderCount() { return shaderCount(this.segment(), 0L); }
     /// Sets `shaderCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderCount(MemorySegment segment, long index, int value) { VH_shaderCount.set(segment, 0L, index, value); }
+    public static void shaderCount(MemorySegment segment, long index, int value) { VH_shaderCount.get().set(segment, 0L, index, value); }
     /// Sets `shaderCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// {@return `pInitialShaders` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pInitialShaders(MemorySegment segment, long index) { return (MemorySegment) VH_pInitialShaders.get(segment, 0L, index); }
+    public static MemorySegment pInitialShaders(MemorySegment segment, long index) { return (MemorySegment) VH_pInitialShaders.get().get(segment, 0L, index); }
     /// {@return `pInitialShaders`}
     public MemorySegment pInitialShaders() { return pInitialShaders(this.segment(), 0L); }
     /// Sets `pInitialShaders` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pInitialShaders(MemorySegment segment, long index, MemorySegment value) { VH_pInitialShaders.set(segment, 0L, index, value); }
+    public static void pInitialShaders(MemorySegment segment, long index, MemorySegment value) { VH_pInitialShaders.get().set(segment, 0L, index, value); }
     /// Sets `pInitialShaders` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// {@return `pSetLayoutInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pSetLayoutInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pSetLayoutInfos.get(segment, 0L, index); }
+    public static MemorySegment pSetLayoutInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pSetLayoutInfos.get().get(segment, 0L, index); }
     /// {@return `pSetLayoutInfos`}
     public MemorySegment pSetLayoutInfos() { return pSetLayoutInfos(this.segment(), 0L); }
     /// Sets `pSetLayoutInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pSetLayoutInfos(MemorySegment segment, long index, MemorySegment value) { VH_pSetLayoutInfos.set(segment, 0L, index, value); }
+    public static void pSetLayoutInfos(MemorySegment segment, long index, MemorySegment value) { VH_pSetLayoutInfos.get().set(segment, 0L, index, value); }
     /// Sets `pSetLayoutInfos` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// {@return `maxShaderCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxShaderCount(MemorySegment segment, long index) { return (int) VH_maxShaderCount.get(segment, 0L, index); }
+    public static int maxShaderCount(MemorySegment segment, long index) { return (int) VH_maxShaderCount.get().get(segment, 0L, index); }
     /// {@return `maxShaderCount`}
     public int maxShaderCount() { return maxShaderCount(this.segment(), 0L); }
     /// Sets `maxShaderCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxShaderCount(MemorySegment segment, long index, int value) { VH_maxShaderCount.set(segment, 0L, index, value); }
+    public static void maxShaderCount(MemorySegment segment, long index, int value) { VH_maxShaderCount.get().set(segment, 0L, index, value); }
     /// Sets `maxShaderCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// {@return `pushConstantRangeCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pushConstantRangeCount(MemorySegment segment, long index) { return (int) VH_pushConstantRangeCount.get(segment, 0L, index); }
+    public static int pushConstantRangeCount(MemorySegment segment, long index) { return (int) VH_pushConstantRangeCount.get().get(segment, 0L, index); }
     /// {@return `pushConstantRangeCount`}
     public int pushConstantRangeCount() { return pushConstantRangeCount(this.segment(), 0L); }
     /// Sets `pushConstantRangeCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pushConstantRangeCount(MemorySegment segment, long index, int value) { VH_pushConstantRangeCount.set(segment, 0L, index, value); }
+    public static void pushConstantRangeCount(MemorySegment segment, long index, int value) { VH_pushConstantRangeCount.get().set(segment, 0L, index, value); }
     /// Sets `pushConstantRangeCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// {@return `pPushConstantRanges` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pPushConstantRanges(MemorySegment segment, long index) { return (MemorySegment) VH_pPushConstantRanges.get(segment, 0L, index); }
+    public static MemorySegment pPushConstantRanges(MemorySegment segment, long index) { return (MemorySegment) VH_pPushConstantRanges.get().get(segment, 0L, index); }
     /// {@return `pPushConstantRanges`}
     public MemorySegment pPushConstantRanges() { return pPushConstantRanges(this.segment(), 0L); }
     /// Sets `pPushConstantRanges` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pPushConstantRanges(MemorySegment segment, long index, MemorySegment value) { VH_pPushConstantRanges.set(segment, 0L, index, value); }
+    public static void pPushConstantRanges(MemorySegment segment, long index, MemorySegment value) { VH_pPushConstantRanges.get().set(segment, 0L, index, value); }
     /// Sets `pPushConstantRanges` with the given value.
     /// @param value the value
     /// @return `this`

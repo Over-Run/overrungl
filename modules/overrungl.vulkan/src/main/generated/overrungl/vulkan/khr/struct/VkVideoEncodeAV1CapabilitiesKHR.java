@@ -77,25 +77,25 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `maxLevel`.
     public static final long OFFSET_maxLevel = LAYOUT.byteOffset(PathElement.groupElement("maxLevel"));
     /// The memory layout of `maxLevel`.
     public static final MemoryLayout LAYOUT_maxLevel = LAYOUT.select(PathElement.groupElement("maxLevel"));
     /// The [VarHandle] of `maxLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLevel"));
+    public static final Supplier<VarHandle> VH_maxLevel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLevel")));
     /// The byte offset of `codedPictureAlignment`.
     public static final long OFFSET_codedPictureAlignment = LAYOUT.byteOffset(PathElement.groupElement("codedPictureAlignment"));
     /// The memory layout of `codedPictureAlignment`.
@@ -117,109 +117,109 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// The memory layout of `superblockSizes`.
     public static final MemoryLayout LAYOUT_superblockSizes = LAYOUT.select(PathElement.groupElement("superblockSizes"));
     /// The [VarHandle] of `superblockSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_superblockSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("superblockSizes"));
+    public static final Supplier<VarHandle> VH_superblockSizes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("superblockSizes")));
     /// The byte offset of `maxSingleReferenceCount`.
     public static final long OFFSET_maxSingleReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxSingleReferenceCount"));
     /// The memory layout of `maxSingleReferenceCount`.
     public static final MemoryLayout LAYOUT_maxSingleReferenceCount = LAYOUT.select(PathElement.groupElement("maxSingleReferenceCount"));
     /// The [VarHandle] of `maxSingleReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSingleReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSingleReferenceCount"));
+    public static final Supplier<VarHandle> VH_maxSingleReferenceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSingleReferenceCount")));
     /// The byte offset of `singleReferenceNameMask`.
     public static final long OFFSET_singleReferenceNameMask = LAYOUT.byteOffset(PathElement.groupElement("singleReferenceNameMask"));
     /// The memory layout of `singleReferenceNameMask`.
     public static final MemoryLayout LAYOUT_singleReferenceNameMask = LAYOUT.select(PathElement.groupElement("singleReferenceNameMask"));
     /// The [VarHandle] of `singleReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_singleReferenceNameMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("singleReferenceNameMask"));
+    public static final Supplier<VarHandle> VH_singleReferenceNameMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("singleReferenceNameMask")));
     /// The byte offset of `maxUnidirectionalCompoundReferenceCount`.
     public static final long OFFSET_maxUnidirectionalCompoundReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxUnidirectionalCompoundReferenceCount"));
     /// The memory layout of `maxUnidirectionalCompoundReferenceCount`.
     public static final MemoryLayout LAYOUT_maxUnidirectionalCompoundReferenceCount = LAYOUT.select(PathElement.groupElement("maxUnidirectionalCompoundReferenceCount"));
     /// The [VarHandle] of `maxUnidirectionalCompoundReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxUnidirectionalCompoundReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxUnidirectionalCompoundReferenceCount"));
+    public static final Supplier<VarHandle> VH_maxUnidirectionalCompoundReferenceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxUnidirectionalCompoundReferenceCount")));
     /// The byte offset of `maxUnidirectionalCompoundGroup1ReferenceCount`.
     public static final long OFFSET_maxUnidirectionalCompoundGroup1ReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxUnidirectionalCompoundGroup1ReferenceCount"));
     /// The memory layout of `maxUnidirectionalCompoundGroup1ReferenceCount`.
     public static final MemoryLayout LAYOUT_maxUnidirectionalCompoundGroup1ReferenceCount = LAYOUT.select(PathElement.groupElement("maxUnidirectionalCompoundGroup1ReferenceCount"));
     /// The [VarHandle] of `maxUnidirectionalCompoundGroup1ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxUnidirectionalCompoundGroup1ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxUnidirectionalCompoundGroup1ReferenceCount"));
+    public static final Supplier<VarHandle> VH_maxUnidirectionalCompoundGroup1ReferenceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxUnidirectionalCompoundGroup1ReferenceCount")));
     /// The byte offset of `unidirectionalCompoundReferenceNameMask`.
     public static final long OFFSET_unidirectionalCompoundReferenceNameMask = LAYOUT.byteOffset(PathElement.groupElement("unidirectionalCompoundReferenceNameMask"));
     /// The memory layout of `unidirectionalCompoundReferenceNameMask`.
     public static final MemoryLayout LAYOUT_unidirectionalCompoundReferenceNameMask = LAYOUT.select(PathElement.groupElement("unidirectionalCompoundReferenceNameMask"));
     /// The [VarHandle] of `unidirectionalCompoundReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_unidirectionalCompoundReferenceNameMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("unidirectionalCompoundReferenceNameMask"));
+    public static final Supplier<VarHandle> VH_unidirectionalCompoundReferenceNameMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("unidirectionalCompoundReferenceNameMask")));
     /// The byte offset of `maxBidirectionalCompoundReferenceCount`.
     public static final long OFFSET_maxBidirectionalCompoundReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxBidirectionalCompoundReferenceCount"));
     /// The memory layout of `maxBidirectionalCompoundReferenceCount`.
     public static final MemoryLayout LAYOUT_maxBidirectionalCompoundReferenceCount = LAYOUT.select(PathElement.groupElement("maxBidirectionalCompoundReferenceCount"));
     /// The [VarHandle] of `maxBidirectionalCompoundReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxBidirectionalCompoundReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBidirectionalCompoundReferenceCount"));
+    public static final Supplier<VarHandle> VH_maxBidirectionalCompoundReferenceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBidirectionalCompoundReferenceCount")));
     /// The byte offset of `maxBidirectionalCompoundGroup1ReferenceCount`.
     public static final long OFFSET_maxBidirectionalCompoundGroup1ReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxBidirectionalCompoundGroup1ReferenceCount"));
     /// The memory layout of `maxBidirectionalCompoundGroup1ReferenceCount`.
     public static final MemoryLayout LAYOUT_maxBidirectionalCompoundGroup1ReferenceCount = LAYOUT.select(PathElement.groupElement("maxBidirectionalCompoundGroup1ReferenceCount"));
     /// The [VarHandle] of `maxBidirectionalCompoundGroup1ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxBidirectionalCompoundGroup1ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBidirectionalCompoundGroup1ReferenceCount"));
+    public static final Supplier<VarHandle> VH_maxBidirectionalCompoundGroup1ReferenceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBidirectionalCompoundGroup1ReferenceCount")));
     /// The byte offset of `maxBidirectionalCompoundGroup2ReferenceCount`.
     public static final long OFFSET_maxBidirectionalCompoundGroup2ReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxBidirectionalCompoundGroup2ReferenceCount"));
     /// The memory layout of `maxBidirectionalCompoundGroup2ReferenceCount`.
     public static final MemoryLayout LAYOUT_maxBidirectionalCompoundGroup2ReferenceCount = LAYOUT.select(PathElement.groupElement("maxBidirectionalCompoundGroup2ReferenceCount"));
     /// The [VarHandle] of `maxBidirectionalCompoundGroup2ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxBidirectionalCompoundGroup2ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBidirectionalCompoundGroup2ReferenceCount"));
+    public static final Supplier<VarHandle> VH_maxBidirectionalCompoundGroup2ReferenceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBidirectionalCompoundGroup2ReferenceCount")));
     /// The byte offset of `bidirectionalCompoundReferenceNameMask`.
     public static final long OFFSET_bidirectionalCompoundReferenceNameMask = LAYOUT.byteOffset(PathElement.groupElement("bidirectionalCompoundReferenceNameMask"));
     /// The memory layout of `bidirectionalCompoundReferenceNameMask`.
     public static final MemoryLayout LAYOUT_bidirectionalCompoundReferenceNameMask = LAYOUT.select(PathElement.groupElement("bidirectionalCompoundReferenceNameMask"));
     /// The [VarHandle] of `bidirectionalCompoundReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bidirectionalCompoundReferenceNameMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bidirectionalCompoundReferenceNameMask"));
+    public static final Supplier<VarHandle> VH_bidirectionalCompoundReferenceNameMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bidirectionalCompoundReferenceNameMask")));
     /// The byte offset of `maxTemporalLayerCount`.
     public static final long OFFSET_maxTemporalLayerCount = LAYOUT.byteOffset(PathElement.groupElement("maxTemporalLayerCount"));
     /// The memory layout of `maxTemporalLayerCount`.
     public static final MemoryLayout LAYOUT_maxTemporalLayerCount = LAYOUT.select(PathElement.groupElement("maxTemporalLayerCount"));
     /// The [VarHandle] of `maxTemporalLayerCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTemporalLayerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTemporalLayerCount"));
+    public static final Supplier<VarHandle> VH_maxTemporalLayerCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTemporalLayerCount")));
     /// The byte offset of `maxSpatialLayerCount`.
     public static final long OFFSET_maxSpatialLayerCount = LAYOUT.byteOffset(PathElement.groupElement("maxSpatialLayerCount"));
     /// The memory layout of `maxSpatialLayerCount`.
     public static final MemoryLayout LAYOUT_maxSpatialLayerCount = LAYOUT.select(PathElement.groupElement("maxSpatialLayerCount"));
     /// The [VarHandle] of `maxSpatialLayerCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSpatialLayerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSpatialLayerCount"));
+    public static final Supplier<VarHandle> VH_maxSpatialLayerCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSpatialLayerCount")));
     /// The byte offset of `maxOperatingPoints`.
     public static final long OFFSET_maxOperatingPoints = LAYOUT.byteOffset(PathElement.groupElement("maxOperatingPoints"));
     /// The memory layout of `maxOperatingPoints`.
     public static final MemoryLayout LAYOUT_maxOperatingPoints = LAYOUT.select(PathElement.groupElement("maxOperatingPoints"));
     /// The [VarHandle] of `maxOperatingPoints` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxOperatingPoints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxOperatingPoints"));
+    public static final Supplier<VarHandle> VH_maxOperatingPoints = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxOperatingPoints")));
     /// The byte offset of `minQIndex`.
     public static final long OFFSET_minQIndex = LAYOUT.byteOffset(PathElement.groupElement("minQIndex"));
     /// The memory layout of `minQIndex`.
     public static final MemoryLayout LAYOUT_minQIndex = LAYOUT.select(PathElement.groupElement("minQIndex"));
     /// The [VarHandle] of `minQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minQIndex"));
+    public static final Supplier<VarHandle> VH_minQIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minQIndex")));
     /// The byte offset of `maxQIndex`.
     public static final long OFFSET_maxQIndex = LAYOUT.byteOffset(PathElement.groupElement("maxQIndex"));
     /// The memory layout of `maxQIndex`.
     public static final MemoryLayout LAYOUT_maxQIndex = LAYOUT.select(PathElement.groupElement("maxQIndex"));
     /// The [VarHandle] of `maxQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQIndex"));
+    public static final Supplier<VarHandle> VH_maxQIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQIndex")));
     /// The byte offset of `prefersGopRemainingFrames`.
     public static final long OFFSET_prefersGopRemainingFrames = LAYOUT.byteOffset(PathElement.groupElement("prefersGopRemainingFrames"));
     /// The memory layout of `prefersGopRemainingFrames`.
     public static final MemoryLayout LAYOUT_prefersGopRemainingFrames = LAYOUT.select(PathElement.groupElement("prefersGopRemainingFrames"));
     /// The [VarHandle] of `prefersGopRemainingFrames` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_prefersGopRemainingFrames = LAYOUT.arrayElementVarHandle(PathElement.groupElement("prefersGopRemainingFrames"));
+    public static final Supplier<VarHandle> VH_prefersGopRemainingFrames = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("prefersGopRemainingFrames")));
     /// The byte offset of `requiresGopRemainingFrames`.
     public static final long OFFSET_requiresGopRemainingFrames = LAYOUT.byteOffset(PathElement.groupElement("requiresGopRemainingFrames"));
     /// The memory layout of `requiresGopRemainingFrames`.
     public static final MemoryLayout LAYOUT_requiresGopRemainingFrames = LAYOUT.select(PathElement.groupElement("requiresGopRemainingFrames"));
     /// The [VarHandle] of `requiresGopRemainingFrames` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_requiresGopRemainingFrames = LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiresGopRemainingFrames"));
+    public static final Supplier<VarHandle> VH_requiresGopRemainingFrames = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiresGopRemainingFrames")));
     /// The byte offset of `stdSyntaxFlags`.
     public static final long OFFSET_stdSyntaxFlags = LAYOUT.byteOffset(PathElement.groupElement("stdSyntaxFlags"));
     /// The memory layout of `stdSyntaxFlags`.
     public static final MemoryLayout LAYOUT_stdSyntaxFlags = LAYOUT.select(PathElement.groupElement("stdSyntaxFlags"));
     /// The [VarHandle] of `stdSyntaxFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stdSyntaxFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stdSyntaxFlags"));
+    public static final Supplier<VarHandle> VH_stdSyntaxFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stdSyntaxFlags")));
 
     /// Creates `VkVideoEncodeAV1CapabilitiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -270,14 +270,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,14 +286,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,14 +302,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,14 +318,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `maxLevel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxLevel(MemorySegment segment, long index) { return (int) VH_maxLevel.get(segment, 0L, index); }
+    public static int maxLevel(MemorySegment segment, long index) { return (int) VH_maxLevel.get().get(segment, 0L, index); }
     /// {@return `maxLevel`}
     public int maxLevel() { return maxLevel(this.segment(), 0L); }
     /// Sets `maxLevel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxLevel(MemorySegment segment, long index, int value) { VH_maxLevel.set(segment, 0L, index, value); }
+    public static void maxLevel(MemorySegment segment, long index, int value) { VH_maxLevel.get().set(segment, 0L, index, value); }
     /// Sets `maxLevel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -414,14 +414,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `superblockSizes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int superblockSizes(MemorySegment segment, long index) { return (int) VH_superblockSizes.get(segment, 0L, index); }
+    public static int superblockSizes(MemorySegment segment, long index) { return (int) VH_superblockSizes.get().get(segment, 0L, index); }
     /// {@return `superblockSizes`}
     public int superblockSizes() { return superblockSizes(this.segment(), 0L); }
     /// Sets `superblockSizes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void superblockSizes(MemorySegment segment, long index, int value) { VH_superblockSizes.set(segment, 0L, index, value); }
+    public static void superblockSizes(MemorySegment segment, long index, int value) { VH_superblockSizes.get().set(segment, 0L, index, value); }
     /// Sets `superblockSizes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -430,14 +430,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `maxSingleReferenceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxSingleReferenceCount(MemorySegment segment, long index) { return (int) VH_maxSingleReferenceCount.get(segment, 0L, index); }
+    public static int maxSingleReferenceCount(MemorySegment segment, long index) { return (int) VH_maxSingleReferenceCount.get().get(segment, 0L, index); }
     /// {@return `maxSingleReferenceCount`}
     public int maxSingleReferenceCount() { return maxSingleReferenceCount(this.segment(), 0L); }
     /// Sets `maxSingleReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxSingleReferenceCount(MemorySegment segment, long index, int value) { VH_maxSingleReferenceCount.set(segment, 0L, index, value); }
+    public static void maxSingleReferenceCount(MemorySegment segment, long index, int value) { VH_maxSingleReferenceCount.get().set(segment, 0L, index, value); }
     /// Sets `maxSingleReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -446,14 +446,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `singleReferenceNameMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int singleReferenceNameMask(MemorySegment segment, long index) { return (int) VH_singleReferenceNameMask.get(segment, 0L, index); }
+    public static int singleReferenceNameMask(MemorySegment segment, long index) { return (int) VH_singleReferenceNameMask.get().get(segment, 0L, index); }
     /// {@return `singleReferenceNameMask`}
     public int singleReferenceNameMask() { return singleReferenceNameMask(this.segment(), 0L); }
     /// Sets `singleReferenceNameMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void singleReferenceNameMask(MemorySegment segment, long index, int value) { VH_singleReferenceNameMask.set(segment, 0L, index, value); }
+    public static void singleReferenceNameMask(MemorySegment segment, long index, int value) { VH_singleReferenceNameMask.get().set(segment, 0L, index, value); }
     /// Sets `singleReferenceNameMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -462,14 +462,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `maxUnidirectionalCompoundReferenceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_maxUnidirectionalCompoundReferenceCount.get(segment, 0L, index); }
+    public static int maxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_maxUnidirectionalCompoundReferenceCount.get().get(segment, 0L, index); }
     /// {@return `maxUnidirectionalCompoundReferenceCount`}
     public int maxUnidirectionalCompoundReferenceCount() { return maxUnidirectionalCompoundReferenceCount(this.segment(), 0L); }
     /// Sets `maxUnidirectionalCompoundReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index, int value) { VH_maxUnidirectionalCompoundReferenceCount.set(segment, 0L, index, value); }
+    public static void maxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index, int value) { VH_maxUnidirectionalCompoundReferenceCount.get().set(segment, 0L, index, value); }
     /// Sets `maxUnidirectionalCompoundReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -478,14 +478,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `maxUnidirectionalCompoundGroup1ReferenceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxUnidirectionalCompoundGroup1ReferenceCount.get(segment, 0L, index); }
+    public static int maxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxUnidirectionalCompoundGroup1ReferenceCount.get().get(segment, 0L, index); }
     /// {@return `maxUnidirectionalCompoundGroup1ReferenceCount`}
     public int maxUnidirectionalCompoundGroup1ReferenceCount() { return maxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), 0L); }
     /// Sets `maxUnidirectionalCompoundGroup1ReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, int value) { VH_maxUnidirectionalCompoundGroup1ReferenceCount.set(segment, 0L, index, value); }
+    public static void maxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, int value) { VH_maxUnidirectionalCompoundGroup1ReferenceCount.get().set(segment, 0L, index, value); }
     /// Sets `maxUnidirectionalCompoundGroup1ReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -494,14 +494,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `unidirectionalCompoundReferenceNameMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int unidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_unidirectionalCompoundReferenceNameMask.get(segment, 0L, index); }
+    public static int unidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_unidirectionalCompoundReferenceNameMask.get().get(segment, 0L, index); }
     /// {@return `unidirectionalCompoundReferenceNameMask`}
     public int unidirectionalCompoundReferenceNameMask() { return unidirectionalCompoundReferenceNameMask(this.segment(), 0L); }
     /// Sets `unidirectionalCompoundReferenceNameMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void unidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, int value) { VH_unidirectionalCompoundReferenceNameMask.set(segment, 0L, index, value); }
+    public static void unidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, int value) { VH_unidirectionalCompoundReferenceNameMask.get().set(segment, 0L, index, value); }
     /// Sets `unidirectionalCompoundReferenceNameMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -510,14 +510,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `maxBidirectionalCompoundReferenceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxBidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundReferenceCount.get(segment, 0L, index); }
+    public static int maxBidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundReferenceCount.get().get(segment, 0L, index); }
     /// {@return `maxBidirectionalCompoundReferenceCount`}
     public int maxBidirectionalCompoundReferenceCount() { return maxBidirectionalCompoundReferenceCount(this.segment(), 0L); }
     /// Sets `maxBidirectionalCompoundReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxBidirectionalCompoundReferenceCount(MemorySegment segment, long index, int value) { VH_maxBidirectionalCompoundReferenceCount.set(segment, 0L, index, value); }
+    public static void maxBidirectionalCompoundReferenceCount(MemorySegment segment, long index, int value) { VH_maxBidirectionalCompoundReferenceCount.get().set(segment, 0L, index, value); }
     /// Sets `maxBidirectionalCompoundReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -526,14 +526,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `maxBidirectionalCompoundGroup1ReferenceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundGroup1ReferenceCount.get(segment, 0L, index); }
+    public static int maxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundGroup1ReferenceCount.get().get(segment, 0L, index); }
     /// {@return `maxBidirectionalCompoundGroup1ReferenceCount`}
     public int maxBidirectionalCompoundGroup1ReferenceCount() { return maxBidirectionalCompoundGroup1ReferenceCount(this.segment(), 0L); }
     /// Sets `maxBidirectionalCompoundGroup1ReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, int value) { VH_maxBidirectionalCompoundGroup1ReferenceCount.set(segment, 0L, index, value); }
+    public static void maxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, int value) { VH_maxBidirectionalCompoundGroup1ReferenceCount.get().set(segment, 0L, index, value); }
     /// Sets `maxBidirectionalCompoundGroup1ReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -542,14 +542,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `maxBidirectionalCompoundGroup2ReferenceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundGroup2ReferenceCount.get(segment, 0L, index); }
+    public static int maxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundGroup2ReferenceCount.get().get(segment, 0L, index); }
     /// {@return `maxBidirectionalCompoundGroup2ReferenceCount`}
     public int maxBidirectionalCompoundGroup2ReferenceCount() { return maxBidirectionalCompoundGroup2ReferenceCount(this.segment(), 0L); }
     /// Sets `maxBidirectionalCompoundGroup2ReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index, int value) { VH_maxBidirectionalCompoundGroup2ReferenceCount.set(segment, 0L, index, value); }
+    public static void maxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index, int value) { VH_maxBidirectionalCompoundGroup2ReferenceCount.get().set(segment, 0L, index, value); }
     /// Sets `maxBidirectionalCompoundGroup2ReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -558,14 +558,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `bidirectionalCompoundReferenceNameMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_bidirectionalCompoundReferenceNameMask.get(segment, 0L, index); }
+    public static int bidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_bidirectionalCompoundReferenceNameMask.get().get(segment, 0L, index); }
     /// {@return `bidirectionalCompoundReferenceNameMask`}
     public int bidirectionalCompoundReferenceNameMask() { return bidirectionalCompoundReferenceNameMask(this.segment(), 0L); }
     /// Sets `bidirectionalCompoundReferenceNameMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, int value) { VH_bidirectionalCompoundReferenceNameMask.set(segment, 0L, index, value); }
+    public static void bidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, int value) { VH_bidirectionalCompoundReferenceNameMask.get().set(segment, 0L, index, value); }
     /// Sets `bidirectionalCompoundReferenceNameMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -574,14 +574,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `maxTemporalLayerCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTemporalLayerCount(MemorySegment segment, long index) { return (int) VH_maxTemporalLayerCount.get(segment, 0L, index); }
+    public static int maxTemporalLayerCount(MemorySegment segment, long index) { return (int) VH_maxTemporalLayerCount.get().get(segment, 0L, index); }
     /// {@return `maxTemporalLayerCount`}
     public int maxTemporalLayerCount() { return maxTemporalLayerCount(this.segment(), 0L); }
     /// Sets `maxTemporalLayerCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTemporalLayerCount(MemorySegment segment, long index, int value) { VH_maxTemporalLayerCount.set(segment, 0L, index, value); }
+    public static void maxTemporalLayerCount(MemorySegment segment, long index, int value) { VH_maxTemporalLayerCount.get().set(segment, 0L, index, value); }
     /// Sets `maxTemporalLayerCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -590,14 +590,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `maxSpatialLayerCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxSpatialLayerCount(MemorySegment segment, long index) { return (int) VH_maxSpatialLayerCount.get(segment, 0L, index); }
+    public static int maxSpatialLayerCount(MemorySegment segment, long index) { return (int) VH_maxSpatialLayerCount.get().get(segment, 0L, index); }
     /// {@return `maxSpatialLayerCount`}
     public int maxSpatialLayerCount() { return maxSpatialLayerCount(this.segment(), 0L); }
     /// Sets `maxSpatialLayerCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxSpatialLayerCount(MemorySegment segment, long index, int value) { VH_maxSpatialLayerCount.set(segment, 0L, index, value); }
+    public static void maxSpatialLayerCount(MemorySegment segment, long index, int value) { VH_maxSpatialLayerCount.get().set(segment, 0L, index, value); }
     /// Sets `maxSpatialLayerCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -606,14 +606,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `maxOperatingPoints` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxOperatingPoints(MemorySegment segment, long index) { return (int) VH_maxOperatingPoints.get(segment, 0L, index); }
+    public static int maxOperatingPoints(MemorySegment segment, long index) { return (int) VH_maxOperatingPoints.get().get(segment, 0L, index); }
     /// {@return `maxOperatingPoints`}
     public int maxOperatingPoints() { return maxOperatingPoints(this.segment(), 0L); }
     /// Sets `maxOperatingPoints` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxOperatingPoints(MemorySegment segment, long index, int value) { VH_maxOperatingPoints.set(segment, 0L, index, value); }
+    public static void maxOperatingPoints(MemorySegment segment, long index, int value) { VH_maxOperatingPoints.get().set(segment, 0L, index, value); }
     /// Sets `maxOperatingPoints` with the given value.
     /// @param value the value
     /// @return `this`
@@ -622,14 +622,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `minQIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minQIndex(MemorySegment segment, long index) { return (int) VH_minQIndex.get(segment, 0L, index); }
+    public static int minQIndex(MemorySegment segment, long index) { return (int) VH_minQIndex.get().get(segment, 0L, index); }
     /// {@return `minQIndex`}
     public int minQIndex() { return minQIndex(this.segment(), 0L); }
     /// Sets `minQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minQIndex(MemorySegment segment, long index, int value) { VH_minQIndex.set(segment, 0L, index, value); }
+    public static void minQIndex(MemorySegment segment, long index, int value) { VH_minQIndex.get().set(segment, 0L, index, value); }
     /// Sets `minQIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -638,14 +638,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `maxQIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxQIndex(MemorySegment segment, long index) { return (int) VH_maxQIndex.get(segment, 0L, index); }
+    public static int maxQIndex(MemorySegment segment, long index) { return (int) VH_maxQIndex.get().get(segment, 0L, index); }
     /// {@return `maxQIndex`}
     public int maxQIndex() { return maxQIndex(this.segment(), 0L); }
     /// Sets `maxQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxQIndex(MemorySegment segment, long index, int value) { VH_maxQIndex.set(segment, 0L, index, value); }
+    public static void maxQIndex(MemorySegment segment, long index, int value) { VH_maxQIndex.get().set(segment, 0L, index, value); }
     /// Sets `maxQIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -654,14 +654,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `prefersGopRemainingFrames` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int prefersGopRemainingFrames(MemorySegment segment, long index) { return (int) VH_prefersGopRemainingFrames.get(segment, 0L, index); }
+    public static int prefersGopRemainingFrames(MemorySegment segment, long index) { return (int) VH_prefersGopRemainingFrames.get().get(segment, 0L, index); }
     /// {@return `prefersGopRemainingFrames`}
     public int prefersGopRemainingFrames() { return prefersGopRemainingFrames(this.segment(), 0L); }
     /// Sets `prefersGopRemainingFrames` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void prefersGopRemainingFrames(MemorySegment segment, long index, int value) { VH_prefersGopRemainingFrames.set(segment, 0L, index, value); }
+    public static void prefersGopRemainingFrames(MemorySegment segment, long index, int value) { VH_prefersGopRemainingFrames.get().set(segment, 0L, index, value); }
     /// Sets `prefersGopRemainingFrames` with the given value.
     /// @param value the value
     /// @return `this`
@@ -670,14 +670,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `requiresGopRemainingFrames` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int requiresGopRemainingFrames(MemorySegment segment, long index) { return (int) VH_requiresGopRemainingFrames.get(segment, 0L, index); }
+    public static int requiresGopRemainingFrames(MemorySegment segment, long index) { return (int) VH_requiresGopRemainingFrames.get().get(segment, 0L, index); }
     /// {@return `requiresGopRemainingFrames`}
     public int requiresGopRemainingFrames() { return requiresGopRemainingFrames(this.segment(), 0L); }
     /// Sets `requiresGopRemainingFrames` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void requiresGopRemainingFrames(MemorySegment segment, long index, int value) { VH_requiresGopRemainingFrames.set(segment, 0L, index, value); }
+    public static void requiresGopRemainingFrames(MemorySegment segment, long index, int value) { VH_requiresGopRemainingFrames.get().set(segment, 0L, index, value); }
     /// Sets `requiresGopRemainingFrames` with the given value.
     /// @param value the value
     /// @return `this`
@@ -686,14 +686,14 @@ public final class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// {@return `stdSyntaxFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stdSyntaxFlags(MemorySegment segment, long index) { return (int) VH_stdSyntaxFlags.get(segment, 0L, index); }
+    public static int stdSyntaxFlags(MemorySegment segment, long index) { return (int) VH_stdSyntaxFlags.get().get(segment, 0L, index); }
     /// {@return `stdSyntaxFlags`}
     public int stdSyntaxFlags() { return stdSyntaxFlags(this.segment(), 0L); }
     /// Sets `stdSyntaxFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stdSyntaxFlags(MemorySegment segment, long index, int value) { VH_stdSyntaxFlags.set(segment, 0L, index, value); }
+    public static void stdSyntaxFlags(MemorySegment segment, long index, int value) { VH_stdSyntaxFlags.get().set(segment, 0L, index, value); }
     /// Sets `stdSyntaxFlags` with the given value.
     /// @param value the value
     /// @return `this`

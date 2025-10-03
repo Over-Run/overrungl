@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.nfd;
@@ -21,9 +29,13 @@ import org.jspecify.annotations.Nullable;
 import overrungl.util.CanonicalTypes;
 import overrungl.util.MemoryUtil;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.nio.charset.Charset;
+import java.util.function.Supplier;
 
 import static overrungl.internal.RuntimeHelper.*;
 
@@ -56,49 +68,49 @@ public final class NFD {
     /// Method handles.
     public static final class Handles {
         /// The method handle of [`NFD_FreePathN`][#NFD_FreePath].
-        public static final MethodHandle MH_NFD_FreePathN = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_FreePathN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_Init`][#NFD_Init].
-        public static final MethodHandle MH_NFD_Init = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_NFD_Init = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT)));
         /// The method handle of [`NFD_Quit`][#NFD_Quit].
-        public static final MethodHandle MH_NFD_Quit = downcallHandle(FunctionDescriptor.ofVoid());
+        public static final Supplier<MethodHandle> MH_NFD_Quit = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
         /// The method handle of [`NFD_OpenDialogN`][#NFD_OpenDialog].
-        public static final MethodHandle MH_NFD_OpenDialogN = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_OpenDialogN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_OpenDialogN_With_Impl`][#NFD_OpenDialog_With_Impl].
-        public static final MethodHandle MH_NFD_OpenDialogN_With_Impl = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_OpenDialogN_With_Impl = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_OpenDialogMultipleN`][#NFD_OpenDialogMultiple].
-        public static final MethodHandle MH_NFD_OpenDialogMultipleN = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_OpenDialogMultipleN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_OpenDialogMultipleN_With_Impl`][#NFD_OpenDialogMultiple_With_Impl].
-        public static final MethodHandle MH_NFD_OpenDialogMultipleN_With_Impl = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_OpenDialogMultipleN_With_Impl = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_SaveDialogN`][#NFD_SaveDialog].
-        public static final MethodHandle MH_NFD_SaveDialogN = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_SaveDialogN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_SaveDialogN_With_Impl`][#NFD_SaveDialog_With_Impl].
-        public static final MethodHandle MH_NFD_SaveDialogN_With_Impl = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_SaveDialogN_With_Impl = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_PickFolderN`][#NFD_PickFolder].
-        public static final MethodHandle MH_NFD_PickFolderN = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_PickFolderN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_PickFolderN_With_Impl`][#NFD_PickFolder_With_Impl].
-        public static final MethodHandle MH_NFD_PickFolderN_With_Impl = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_PickFolderN_With_Impl = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_PickFolderMultipleN`][#NFD_PickFolderMultiple].
-        public static final MethodHandle MH_NFD_PickFolderMultipleN = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_PickFolderMultipleN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_PickFolderMultipleN_With_Impl`][#NFD_PickFolderMultiple_With_Impl].
-        public static final MethodHandle MH_NFD_PickFolderMultipleN_With_Impl = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_PickFolderMultipleN_With_Impl = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_GetError`][#NFD_GetError].
-        public static final MethodHandle MH_NFD_GetError = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_GetError = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_ClearError`][#NFD_ClearError].
-        public static final MethodHandle MH_NFD_ClearError = downcallHandle(FunctionDescriptor.ofVoid());
+        public static final Supplier<MethodHandle> MH_NFD_ClearError = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
         /// The method handle of [`NFD_PathSet_GetCount`][#NFD_PathSet_GetCount].
-        public static final MethodHandle MH_NFD_PathSet_GetCount = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_PathSet_GetCount = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_PathSet_GetPathN`][#NFD_PathSet_GetPath].
-        public static final MethodHandle MH_NFD_PathSet_GetPathN = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, NFDInternal.nfdpathsetsize_t, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_PathSet_GetPathN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, NFDInternal.nfdpathsetsize_t, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_PathSet_FreePathN`][#NFD_PathSet_FreePath].
-        public static final MethodHandle MH_NFD_PathSet_FreePathN = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_PathSet_FreePathN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_PathSet_GetEnum`][#NFD_PathSet_GetEnum].
-        public static final MethodHandle MH_NFD_PathSet_GetEnum = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_PathSet_GetEnum = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_PathSet_FreeEnum`][#NFD_PathSet_FreeEnum].
-        public static final MethodHandle MH_NFD_PathSet_FreeEnum = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_PathSet_FreeEnum = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_PathSet_EnumNextN`][#NFD_PathSet_EnumNext].
-        public static final MethodHandle MH_NFD_PathSet_EnumNextN = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_PathSet_EnumNextN = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`NFD_PathSet_Free`][#NFD_PathSet_Free].
-        public static final MethodHandle MH_NFD_PathSet_Free = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_NFD_PathSet_Free = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         /// The function address of [`NFD_FreePathN`][#NFD_FreePath].
         public final MemorySegment PFN_NFD_FreePathN;
         /// The function address of [`NFD_Init`][#NFD_Init].
@@ -185,7 +197,7 @@ public final class NFD {
     /// ```
     public static void NFD_FreePath(@NonNull MemorySegment filePath) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_FreePathN", filePath); }
-        Handles.MH_NFD_FreePathN.invokeExact(Handles.get().PFN_NFD_FreePathN, filePath); }
+        Handles.MH_NFD_FreePathN.get().invokeExact(Handles.get().PFN_NFD_FreePathN, filePath); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_FreePath", e); }
     }
 
@@ -195,7 +207,7 @@ public final class NFD {
     /// ```
     public static int NFD_Init() {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_Init"); }
-        return (int) Handles.MH_NFD_Init.invokeExact(Handles.get().PFN_NFD_Init); }
+        return (int) Handles.MH_NFD_Init.get().invokeExact(Handles.get().PFN_NFD_Init); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_Init", e); }
     }
 
@@ -205,7 +217,7 @@ public final class NFD {
     /// ```
     public static void NFD_Quit() {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_Quit"); }
-        Handles.MH_NFD_Quit.invokeExact(Handles.get().PFN_NFD_Quit); }
+        Handles.MH_NFD_Quit.get().invokeExact(Handles.get().PFN_NFD_Quit); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_Quit", e); }
     }
 
@@ -215,7 +227,7 @@ public final class NFD {
     /// ```
     public static int NFD_OpenDialog(@NonNull MemorySegment outPath, @NonNull MemorySegment filterList, int filterCount, @NonNull MemorySegment defaultPath) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_OpenDialogN", outPath, filterList, filterCount, defaultPath); }
-        return (int) Handles.MH_NFD_OpenDialogN.invokeExact(Handles.get().PFN_NFD_OpenDialogN, outPath, filterList, filterCount, defaultPath); }
+        return (int) Handles.MH_NFD_OpenDialogN.get().invokeExact(Handles.get().PFN_NFD_OpenDialogN, outPath, filterList, filterCount, defaultPath); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialog", e); }
     }
 
@@ -225,7 +237,7 @@ public final class NFD {
     /// ```
     public static int NFD_OpenDialog_With_Impl(long version, @NonNull MemorySegment outPath, @NonNull MemorySegment args) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_OpenDialogN_With_Impl", version, outPath, args); }
-        return (int) Handles.MH_NFD_OpenDialogN_With_Impl.invoke(Handles.get().PFN_NFD_OpenDialogN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
+        return (int) Handles.MH_NFD_OpenDialogN_With_Impl.get().invoke(Handles.get().PFN_NFD_OpenDialogN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialog_With_Impl", e); }
     }
 
@@ -243,7 +255,7 @@ public final class NFD {
     /// ```
     public static int NFD_OpenDialogMultiple(@NonNull MemorySegment outPaths, @NonNull MemorySegment filterList, int filterCount, @NonNull MemorySegment defaultPath) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_OpenDialogMultipleN", outPaths, filterList, filterCount, defaultPath); }
-        return (int) Handles.MH_NFD_OpenDialogMultipleN.invokeExact(Handles.get().PFN_NFD_OpenDialogMultipleN, outPaths, filterList, filterCount, defaultPath); }
+        return (int) Handles.MH_NFD_OpenDialogMultipleN.get().invokeExact(Handles.get().PFN_NFD_OpenDialogMultipleN, outPaths, filterList, filterCount, defaultPath); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogMultiple", e); }
     }
 
@@ -253,7 +265,7 @@ public final class NFD {
     /// ```
     public static int NFD_OpenDialogMultiple_With_Impl(long version, @NonNull MemorySegment outPaths, @NonNull MemorySegment args) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_OpenDialogMultipleN_With_Impl", version, outPaths, args); }
-        return (int) Handles.MH_NFD_OpenDialogMultipleN_With_Impl.invoke(Handles.get().PFN_NFD_OpenDialogMultipleN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPaths, args); }
+        return (int) Handles.MH_NFD_OpenDialogMultipleN_With_Impl.get().invoke(Handles.get().PFN_NFD_OpenDialogMultipleN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPaths, args); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogMultiple_With_Impl", e); }
     }
 
@@ -271,7 +283,7 @@ public final class NFD {
     /// ```
     public static int NFD_SaveDialog(@NonNull MemorySegment outPath, @NonNull MemorySegment filterList, int filterCount, @NonNull MemorySegment defaultPath, @NonNull MemorySegment defaultName) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_SaveDialogN", outPath, filterList, filterCount, defaultPath, defaultName); }
-        return (int) Handles.MH_NFD_SaveDialogN.invokeExact(Handles.get().PFN_NFD_SaveDialogN, outPath, filterList, filterCount, defaultPath, defaultName); }
+        return (int) Handles.MH_NFD_SaveDialogN.get().invokeExact(Handles.get().PFN_NFD_SaveDialogN, outPath, filterList, filterCount, defaultPath, defaultName); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_SaveDialog", e); }
     }
 
@@ -281,7 +293,7 @@ public final class NFD {
     /// ```
     public static int NFD_SaveDialog_With_Impl(long version, @NonNull MemorySegment outPath, @NonNull MemorySegment args) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_SaveDialogN_With_Impl", version, outPath, args); }
-        return (int) Handles.MH_NFD_SaveDialogN_With_Impl.invoke(Handles.get().PFN_NFD_SaveDialogN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
+        return (int) Handles.MH_NFD_SaveDialogN_With_Impl.get().invoke(Handles.get().PFN_NFD_SaveDialogN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_SaveDialog_With_Impl", e); }
     }
 
@@ -299,7 +311,7 @@ public final class NFD {
     /// ```
     public static int NFD_PickFolder(@NonNull MemorySegment outPath, @NonNull MemorySegment defaultPath) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_PickFolderN", outPath, defaultPath); }
-        return (int) Handles.MH_NFD_PickFolderN.invokeExact(Handles.get().PFN_NFD_PickFolderN, outPath, defaultPath); }
+        return (int) Handles.MH_NFD_PickFolderN.get().invokeExact(Handles.get().PFN_NFD_PickFolderN, outPath, defaultPath); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolder", e); }
     }
 
@@ -309,7 +321,7 @@ public final class NFD {
     /// ```
     public static int NFD_PickFolder_With_Impl(long version, @NonNull MemorySegment outPath, @NonNull MemorySegment args) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_PickFolderN_With_Impl", version, outPath, args); }
-        return (int) Handles.MH_NFD_PickFolderN_With_Impl.invoke(Handles.get().PFN_NFD_PickFolderN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
+        return (int) Handles.MH_NFD_PickFolderN_With_Impl.get().invoke(Handles.get().PFN_NFD_PickFolderN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolder_With_Impl", e); }
     }
 
@@ -327,7 +339,7 @@ public final class NFD {
     /// ```
     public static int NFD_PickFolderMultiple(@NonNull MemorySegment outPaths, @NonNull MemorySegment defaultPath) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_PickFolderMultipleN", outPaths, defaultPath); }
-        return (int) Handles.MH_NFD_PickFolderMultipleN.invokeExact(Handles.get().PFN_NFD_PickFolderMultipleN, outPaths, defaultPath); }
+        return (int) Handles.MH_NFD_PickFolderMultipleN.get().invokeExact(Handles.get().PFN_NFD_PickFolderMultipleN, outPaths, defaultPath); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderMultiple", e); }
     }
 
@@ -337,7 +349,7 @@ public final class NFD {
     /// ```
     public static int NFD_PickFolderMultiple_With_Impl(long version, @NonNull MemorySegment outPaths, @NonNull MemorySegment args) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_PickFolderMultipleN_With_Impl", version, outPaths, args); }
-        return (int) Handles.MH_NFD_PickFolderMultipleN_With_Impl.invoke(Handles.get().PFN_NFD_PickFolderMultipleN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPaths, args); }
+        return (int) Handles.MH_NFD_PickFolderMultipleN_With_Impl.get().invoke(Handles.get().PFN_NFD_PickFolderMultipleN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPaths, args); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderMultiple_With_Impl", e); }
     }
 
@@ -355,7 +367,7 @@ public final class NFD {
     /// ```
     public static @NonNull MemorySegment NFD_GetError() {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_GetError"); }
-        return (MemorySegment) Handles.MH_NFD_GetError.invokeExact(Handles.get().PFN_NFD_GetError); }
+        return (MemorySegment) Handles.MH_NFD_GetError.get().invokeExact(Handles.get().PFN_NFD_GetError); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_GetError", e); }
     }
 
@@ -365,7 +377,7 @@ public final class NFD {
     /// ```
     public static void NFD_ClearError() {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_ClearError"); }
-        Handles.MH_NFD_ClearError.invokeExact(Handles.get().PFN_NFD_ClearError); }
+        Handles.MH_NFD_ClearError.get().invokeExact(Handles.get().PFN_NFD_ClearError); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_ClearError", e); }
     }
 
@@ -375,7 +387,7 @@ public final class NFD {
     /// ```
     public static int NFD_PathSet_GetCount(@NonNull MemorySegment pathSet, @NonNull MemorySegment count) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_PathSet_GetCount", pathSet, count); }
-        return (int) Handles.MH_NFD_PathSet_GetCount.invokeExact(Handles.get().PFN_NFD_PathSet_GetCount, pathSet, count); }
+        return (int) Handles.MH_NFD_PathSet_GetCount.get().invokeExact(Handles.get().PFN_NFD_PathSet_GetCount, pathSet, count); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetCount", e); }
     }
 
@@ -385,7 +397,7 @@ public final class NFD {
     /// ```
     public static int NFD_PathSet_GetPath(@NonNull MemorySegment pathSet, long index, @NonNull MemorySegment outPath) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_PathSet_GetPathN", pathSet, index, outPath); }
-        return (int) Handles.MH_NFD_PathSet_GetPathN.invoke(Handles.get().PFN_NFD_PathSet_GetPathN, pathSet, MemoryUtil.narrowingLong(NFDInternal.nfdpathsetsize_t, index), outPath); }
+        return (int) Handles.MH_NFD_PathSet_GetPathN.get().invoke(Handles.get().PFN_NFD_PathSet_GetPathN, pathSet, MemoryUtil.narrowingLong(NFDInternal.nfdpathsetsize_t, index), outPath); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetPath", e); }
     }
 
@@ -395,7 +407,7 @@ public final class NFD {
     /// ```
     public static void NFD_PathSet_FreePath(@NonNull MemorySegment filePath) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_PathSet_FreePathN", filePath); }
-        Handles.MH_NFD_PathSet_FreePathN.invokeExact(Handles.get().PFN_NFD_PathSet_FreePathN, filePath); }
+        Handles.MH_NFD_PathSet_FreePathN.get().invokeExact(Handles.get().PFN_NFD_PathSet_FreePathN, filePath); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_FreePath", e); }
     }
 
@@ -405,7 +417,7 @@ public final class NFD {
     /// ```
     public static int NFD_PathSet_GetEnum(@NonNull MemorySegment pathSet, @NonNull MemorySegment outEnumerator) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_PathSet_GetEnum", pathSet, outEnumerator); }
-        return (int) Handles.MH_NFD_PathSet_GetEnum.invokeExact(Handles.get().PFN_NFD_PathSet_GetEnum, pathSet, outEnumerator); }
+        return (int) Handles.MH_NFD_PathSet_GetEnum.get().invokeExact(Handles.get().PFN_NFD_PathSet_GetEnum, pathSet, outEnumerator); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetEnum", e); }
     }
 
@@ -415,7 +427,7 @@ public final class NFD {
     /// ```
     public static void NFD_PathSet_FreeEnum(@NonNull MemorySegment enumerator) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_PathSet_FreeEnum", enumerator); }
-        Handles.MH_NFD_PathSet_FreeEnum.invokeExact(Handles.get().PFN_NFD_PathSet_FreeEnum, enumerator); }
+        Handles.MH_NFD_PathSet_FreeEnum.get().invokeExact(Handles.get().PFN_NFD_PathSet_FreeEnum, enumerator); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_FreeEnum", e); }
     }
 
@@ -425,7 +437,7 @@ public final class NFD {
     /// ```
     public static int NFD_PathSet_EnumNext(@NonNull MemorySegment enumerator, @NonNull MemorySegment outPath) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_PathSet_EnumNextN", enumerator, outPath); }
-        return (int) Handles.MH_NFD_PathSet_EnumNextN.invokeExact(Handles.get().PFN_NFD_PathSet_EnumNextN, enumerator, outPath); }
+        return (int) Handles.MH_NFD_PathSet_EnumNextN.get().invokeExact(Handles.get().PFN_NFD_PathSet_EnumNextN, enumerator, outPath); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_EnumNext", e); }
     }
 
@@ -435,7 +447,7 @@ public final class NFD {
     /// ```
     public static void NFD_PathSet_Free(@NonNull MemorySegment pathSet) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("NFD_PathSet_Free", pathSet); }
-        Handles.MH_NFD_PathSet_Free.invokeExact(Handles.get().PFN_NFD_PathSet_Free, pathSet); }
+        Handles.MH_NFD_PathSet_Free.get().invokeExact(Handles.get().PFN_NFD_PathSet_Free, pathSet); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_Free", e); }
     }
 

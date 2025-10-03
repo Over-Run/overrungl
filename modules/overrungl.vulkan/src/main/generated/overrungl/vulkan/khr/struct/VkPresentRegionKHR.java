@@ -29,13 +29,13 @@ public final class VkPresentRegionKHR extends GroupType {
     /// The memory layout of `rectangleCount`.
     public static final MemoryLayout LAYOUT_rectangleCount = LAYOUT.select(PathElement.groupElement("rectangleCount"));
     /// The [VarHandle] of `rectangleCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rectangleCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rectangleCount"));
+    public static final Supplier<VarHandle> VH_rectangleCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rectangleCount")));
     /// The byte offset of `pRectangles`.
     public static final long OFFSET_pRectangles = LAYOUT.byteOffset(PathElement.groupElement("pRectangles"));
     /// The memory layout of `pRectangles`.
     public static final MemoryLayout LAYOUT_pRectangles = LAYOUT.select(PathElement.groupElement("pRectangles"));
     /// The [VarHandle] of `pRectangles` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pRectangles = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRectangles"));
+    public static final Supplier<VarHandle> VH_pRectangles = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRectangles")));
 
     /// Creates `VkPresentRegionKHR` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkPresentRegionKHR extends GroupType {
     /// {@return `rectangleCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rectangleCount(MemorySegment segment, long index) { return (int) VH_rectangleCount.get(segment, 0L, index); }
+    public static int rectangleCount(MemorySegment segment, long index) { return (int) VH_rectangleCount.get().get(segment, 0L, index); }
     /// {@return `rectangleCount`}
     public int rectangleCount() { return rectangleCount(this.segment(), 0L); }
     /// Sets `rectangleCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rectangleCount(MemorySegment segment, long index, int value) { VH_rectangleCount.set(segment, 0L, index, value); }
+    public static void rectangleCount(MemorySegment segment, long index, int value) { VH_rectangleCount.get().set(segment, 0L, index, value); }
     /// Sets `rectangleCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkPresentRegionKHR extends GroupType {
     /// {@return `pRectangles` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pRectangles(MemorySegment segment, long index) { return (MemorySegment) VH_pRectangles.get(segment, 0L, index); }
+    public static MemorySegment pRectangles(MemorySegment segment, long index) { return (MemorySegment) VH_pRectangles.get().get(segment, 0L, index); }
     /// {@return `pRectangles`}
     public MemorySegment pRectangles() { return pRectangles(this.segment(), 0L); }
     /// Sets `pRectangles` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pRectangles(MemorySegment segment, long index, MemorySegment value) { VH_pRectangles.set(segment, 0L, index, value); }
+    public static void pRectangles(MemorySegment segment, long index, MemorySegment value) { VH_pRectangles.get().set(segment, 0L, index, value); }
     /// Sets `pRectangles` with the given value.
     /// @param value the value
     /// @return `this`

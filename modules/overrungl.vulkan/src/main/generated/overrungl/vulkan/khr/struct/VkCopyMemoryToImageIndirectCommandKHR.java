@@ -37,19 +37,19 @@ public final class VkCopyMemoryToImageIndirectCommandKHR extends GroupType {
     /// The memory layout of `srcAddress`.
     public static final MemoryLayout LAYOUT_srcAddress = LAYOUT.select(PathElement.groupElement("srcAddress"));
     /// The [VarHandle] of `srcAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAddress"));
+    public static final Supplier<VarHandle> VH_srcAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAddress")));
     /// The byte offset of `bufferRowLength`.
     public static final long OFFSET_bufferRowLength = LAYOUT.byteOffset(PathElement.groupElement("bufferRowLength"));
     /// The memory layout of `bufferRowLength`.
     public static final MemoryLayout LAYOUT_bufferRowLength = LAYOUT.select(PathElement.groupElement("bufferRowLength"));
     /// The [VarHandle] of `bufferRowLength` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferRowLength = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferRowLength"));
+    public static final Supplier<VarHandle> VH_bufferRowLength = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferRowLength")));
     /// The byte offset of `bufferImageHeight`.
     public static final long OFFSET_bufferImageHeight = LAYOUT.byteOffset(PathElement.groupElement("bufferImageHeight"));
     /// The memory layout of `bufferImageHeight`.
     public static final MemoryLayout LAYOUT_bufferImageHeight = LAYOUT.select(PathElement.groupElement("bufferImageHeight"));
     /// The [VarHandle] of `bufferImageHeight` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferImageHeight = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferImageHeight"));
+    public static final Supplier<VarHandle> VH_bufferImageHeight = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferImageHeight")));
     /// The byte offset of `imageSubresource`.
     public static final long OFFSET_imageSubresource = LAYOUT.byteOffset(PathElement.groupElement("imageSubresource"));
     /// The memory layout of `imageSubresource`.
@@ -112,14 +112,14 @@ public final class VkCopyMemoryToImageIndirectCommandKHR extends GroupType {
     /// {@return `srcAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long srcAddress(MemorySegment segment, long index) { return (long) VH_srcAddress.get(segment, 0L, index); }
+    public static long srcAddress(MemorySegment segment, long index) { return (long) VH_srcAddress.get().get(segment, 0L, index); }
     /// {@return `srcAddress`}
     public long srcAddress() { return srcAddress(this.segment(), 0L); }
     /// Sets `srcAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcAddress(MemorySegment segment, long index, long value) { VH_srcAddress.set(segment, 0L, index, value); }
+    public static void srcAddress(MemorySegment segment, long index, long value) { VH_srcAddress.get().set(segment, 0L, index, value); }
     /// Sets `srcAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -128,14 +128,14 @@ public final class VkCopyMemoryToImageIndirectCommandKHR extends GroupType {
     /// {@return `bufferRowLength` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferRowLength(MemorySegment segment, long index) { return (int) VH_bufferRowLength.get(segment, 0L, index); }
+    public static int bufferRowLength(MemorySegment segment, long index) { return (int) VH_bufferRowLength.get().get(segment, 0L, index); }
     /// {@return `bufferRowLength`}
     public int bufferRowLength() { return bufferRowLength(this.segment(), 0L); }
     /// Sets `bufferRowLength` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferRowLength(MemorySegment segment, long index, int value) { VH_bufferRowLength.set(segment, 0L, index, value); }
+    public static void bufferRowLength(MemorySegment segment, long index, int value) { VH_bufferRowLength.get().set(segment, 0L, index, value); }
     /// Sets `bufferRowLength` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,14 +144,14 @@ public final class VkCopyMemoryToImageIndirectCommandKHR extends GroupType {
     /// {@return `bufferImageHeight` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferImageHeight(MemorySegment segment, long index) { return (int) VH_bufferImageHeight.get(segment, 0L, index); }
+    public static int bufferImageHeight(MemorySegment segment, long index) { return (int) VH_bufferImageHeight.get().get(segment, 0L, index); }
     /// {@return `bufferImageHeight`}
     public int bufferImageHeight() { return bufferImageHeight(this.segment(), 0L); }
     /// Sets `bufferImageHeight` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferImageHeight(MemorySegment segment, long index, int value) { VH_bufferImageHeight.set(segment, 0L, index, value); }
+    public static void bufferImageHeight(MemorySegment segment, long index, int value) { VH_bufferImageHeight.get().set(segment, 0L, index, value); }
     /// Sets `bufferImageHeight` with the given value.
     /// @param value the value
     /// @return `this`

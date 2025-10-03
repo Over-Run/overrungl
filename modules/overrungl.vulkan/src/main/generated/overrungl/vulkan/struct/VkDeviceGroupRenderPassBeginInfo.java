@@ -35,31 +35,31 @@ public final class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `deviceMask`.
     public static final long OFFSET_deviceMask = LAYOUT.byteOffset(PathElement.groupElement("deviceMask"));
     /// The memory layout of `deviceMask`.
     public static final MemoryLayout LAYOUT_deviceMask = LAYOUT.select(PathElement.groupElement("deviceMask"));
     /// The [VarHandle] of `deviceMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceMask"));
+    public static final Supplier<VarHandle> VH_deviceMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceMask")));
     /// The byte offset of `deviceRenderAreaCount`.
     public static final long OFFSET_deviceRenderAreaCount = LAYOUT.byteOffset(PathElement.groupElement("deviceRenderAreaCount"));
     /// The memory layout of `deviceRenderAreaCount`.
     public static final MemoryLayout LAYOUT_deviceRenderAreaCount = LAYOUT.select(PathElement.groupElement("deviceRenderAreaCount"));
     /// The [VarHandle] of `deviceRenderAreaCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceRenderAreaCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceRenderAreaCount"));
+    public static final Supplier<VarHandle> VH_deviceRenderAreaCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceRenderAreaCount")));
     /// The byte offset of `pDeviceRenderAreas`.
     public static final long OFFSET_pDeviceRenderAreas = LAYOUT.byteOffset(PathElement.groupElement("pDeviceRenderAreas"));
     /// The memory layout of `pDeviceRenderAreas`.
     public static final MemoryLayout LAYOUT_pDeviceRenderAreas = LAYOUT.select(PathElement.groupElement("pDeviceRenderAreas"));
     /// The [VarHandle] of `pDeviceRenderAreas` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDeviceRenderAreas = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDeviceRenderAreas"));
+    public static final Supplier<VarHandle> VH_pDeviceRenderAreas = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDeviceRenderAreas")));
 
     /// Creates `VkDeviceGroupRenderPassBeginInfo` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     /// {@return `deviceMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceMask(MemorySegment segment, long index) { return (int) VH_deviceMask.get(segment, 0L, index); }
+    public static int deviceMask(MemorySegment segment, long index) { return (int) VH_deviceMask.get().get(segment, 0L, index); }
     /// {@return `deviceMask`}
     public int deviceMask() { return deviceMask(this.segment(), 0L); }
     /// Sets `deviceMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceMask(MemorySegment segment, long index, int value) { VH_deviceMask.set(segment, 0L, index, value); }
+    public static void deviceMask(MemorySegment segment, long index, int value) { VH_deviceMask.get().set(segment, 0L, index, value); }
     /// Sets `deviceMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     /// {@return `deviceRenderAreaCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceRenderAreaCount(MemorySegment segment, long index) { return (int) VH_deviceRenderAreaCount.get(segment, 0L, index); }
+    public static int deviceRenderAreaCount(MemorySegment segment, long index) { return (int) VH_deviceRenderAreaCount.get().get(segment, 0L, index); }
     /// {@return `deviceRenderAreaCount`}
     public int deviceRenderAreaCount() { return deviceRenderAreaCount(this.segment(), 0L); }
     /// Sets `deviceRenderAreaCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceRenderAreaCount(MemorySegment segment, long index, int value) { VH_deviceRenderAreaCount.set(segment, 0L, index, value); }
+    public static void deviceRenderAreaCount(MemorySegment segment, long index, int value) { VH_deviceRenderAreaCount.get().set(segment, 0L, index, value); }
     /// Sets `deviceRenderAreaCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     /// {@return `pDeviceRenderAreas` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDeviceRenderAreas(MemorySegment segment, long index) { return (MemorySegment) VH_pDeviceRenderAreas.get(segment, 0L, index); }
+    public static MemorySegment pDeviceRenderAreas(MemorySegment segment, long index) { return (MemorySegment) VH_pDeviceRenderAreas.get().get(segment, 0L, index); }
     /// {@return `pDeviceRenderAreas`}
     public MemorySegment pDeviceRenderAreas() { return pDeviceRenderAreas(this.segment(), 0L); }
     /// Sets `pDeviceRenderAreas` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDeviceRenderAreas(MemorySegment segment, long index, MemorySegment value) { VH_pDeviceRenderAreas.set(segment, 0L, index, value); }
+    public static void pDeviceRenderAreas(MemorySegment segment, long index, MemorySegment value) { VH_pDeviceRenderAreas.get().set(segment, 0L, index, value); }
     /// Sets `pDeviceRenderAreas` with the given value.
     /// @param value the value
     /// @return `this`

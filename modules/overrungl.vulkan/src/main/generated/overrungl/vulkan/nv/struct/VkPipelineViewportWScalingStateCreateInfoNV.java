@@ -35,31 +35,31 @@ public final class VkPipelineViewportWScalingStateCreateInfoNV extends GroupType
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `viewportWScalingEnable`.
     public static final long OFFSET_viewportWScalingEnable = LAYOUT.byteOffset(PathElement.groupElement("viewportWScalingEnable"));
     /// The memory layout of `viewportWScalingEnable`.
     public static final MemoryLayout LAYOUT_viewportWScalingEnable = LAYOUT.select(PathElement.groupElement("viewportWScalingEnable"));
     /// The [VarHandle] of `viewportWScalingEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_viewportWScalingEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportWScalingEnable"));
+    public static final Supplier<VarHandle> VH_viewportWScalingEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportWScalingEnable")));
     /// The byte offset of `viewportCount`.
     public static final long OFFSET_viewportCount = LAYOUT.byteOffset(PathElement.groupElement("viewportCount"));
     /// The memory layout of `viewportCount`.
     public static final MemoryLayout LAYOUT_viewportCount = LAYOUT.select(PathElement.groupElement("viewportCount"));
     /// The [VarHandle] of `viewportCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_viewportCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportCount"));
+    public static final Supplier<VarHandle> VH_viewportCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportCount")));
     /// The byte offset of `pViewportWScalings`.
     public static final long OFFSET_pViewportWScalings = LAYOUT.byteOffset(PathElement.groupElement("pViewportWScalings"));
     /// The memory layout of `pViewportWScalings`.
     public static final MemoryLayout LAYOUT_pViewportWScalings = LAYOUT.select(PathElement.groupElement("pViewportWScalings"));
     /// The [VarHandle] of `pViewportWScalings` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pViewportWScalings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pViewportWScalings"));
+    public static final Supplier<VarHandle> VH_pViewportWScalings = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pViewportWScalings")));
 
     /// Creates `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPipelineViewportWScalingStateCreateInfoNV extends GroupType
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPipelineViewportWScalingStateCreateInfoNV extends GroupType
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPipelineViewportWScalingStateCreateInfoNV extends GroupType
     /// {@return `viewportWScalingEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int viewportWScalingEnable(MemorySegment segment, long index) { return (int) VH_viewportWScalingEnable.get(segment, 0L, index); }
+    public static int viewportWScalingEnable(MemorySegment segment, long index) { return (int) VH_viewportWScalingEnable.get().get(segment, 0L, index); }
     /// {@return `viewportWScalingEnable`}
     public int viewportWScalingEnable() { return viewportWScalingEnable(this.segment(), 0L); }
     /// Sets `viewportWScalingEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void viewportWScalingEnable(MemorySegment segment, long index, int value) { VH_viewportWScalingEnable.set(segment, 0L, index, value); }
+    public static void viewportWScalingEnable(MemorySegment segment, long index, int value) { VH_viewportWScalingEnable.get().set(segment, 0L, index, value); }
     /// Sets `viewportWScalingEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPipelineViewportWScalingStateCreateInfoNV extends GroupType
     /// {@return `viewportCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int viewportCount(MemorySegment segment, long index) { return (int) VH_viewportCount.get(segment, 0L, index); }
+    public static int viewportCount(MemorySegment segment, long index) { return (int) VH_viewportCount.get().get(segment, 0L, index); }
     /// {@return `viewportCount`}
     public int viewportCount() { return viewportCount(this.segment(), 0L); }
     /// Sets `viewportCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void viewportCount(MemorySegment segment, long index, int value) { VH_viewportCount.set(segment, 0L, index, value); }
+    public static void viewportCount(MemorySegment segment, long index, int value) { VH_viewportCount.get().set(segment, 0L, index, value); }
     /// Sets `viewportCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPipelineViewportWScalingStateCreateInfoNV extends GroupType
     /// {@return `pViewportWScalings` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pViewportWScalings(MemorySegment segment, long index) { return (MemorySegment) VH_pViewportWScalings.get(segment, 0L, index); }
+    public static MemorySegment pViewportWScalings(MemorySegment segment, long index) { return (MemorySegment) VH_pViewportWScalings.get().get(segment, 0L, index); }
     /// {@return `pViewportWScalings`}
     public MemorySegment pViewportWScalings() { return pViewportWScalings(this.segment(), 0L); }
     /// Sets `pViewportWScalings` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pViewportWScalings(MemorySegment segment, long index, MemorySegment value) { VH_pViewportWScalings.set(segment, 0L, index, value); }
+    public static void pViewportWScalings(MemorySegment segment, long index, MemorySegment value) { VH_pViewportWScalings.get().set(segment, 0L, index, value); }
     /// Sets `pViewportWScalings` with the given value.
     /// @param value the value
     /// @return `this`

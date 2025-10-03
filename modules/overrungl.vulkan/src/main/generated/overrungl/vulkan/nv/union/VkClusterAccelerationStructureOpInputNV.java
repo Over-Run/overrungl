@@ -31,19 +31,19 @@ public final class VkClusterAccelerationStructureOpInputNV extends GroupType {
     /// The memory layout of `pClustersBottomLevel`.
     public static final MemoryLayout LAYOUT_pClustersBottomLevel = LAYOUT.select(PathElement.groupElement("pClustersBottomLevel"));
     /// The [VarHandle] of `pClustersBottomLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pClustersBottomLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pClustersBottomLevel"));
+    public static final Supplier<VarHandle> VH_pClustersBottomLevel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pClustersBottomLevel")));
     /// The byte offset of `pTriangleClusters`.
     public static final long OFFSET_pTriangleClusters = LAYOUT.byteOffset(PathElement.groupElement("pTriangleClusters"));
     /// The memory layout of `pTriangleClusters`.
     public static final MemoryLayout LAYOUT_pTriangleClusters = LAYOUT.select(PathElement.groupElement("pTriangleClusters"));
     /// The [VarHandle] of `pTriangleClusters` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pTriangleClusters = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTriangleClusters"));
+    public static final Supplier<VarHandle> VH_pTriangleClusters = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTriangleClusters")));
     /// The byte offset of `pMoveObjects`.
     public static final long OFFSET_pMoveObjects = LAYOUT.byteOffset(PathElement.groupElement("pMoveObjects"));
     /// The memory layout of `pMoveObjects`.
     public static final MemoryLayout LAYOUT_pMoveObjects = LAYOUT.select(PathElement.groupElement("pMoveObjects"));
     /// The [VarHandle] of `pMoveObjects` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pMoveObjects = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMoveObjects"));
+    public static final Supplier<VarHandle> VH_pMoveObjects = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMoveObjects")));
 
     /// Creates `VkClusterAccelerationStructureOpInputNV` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkClusterAccelerationStructureOpInputNV extends GroupType {
     /// {@return `pClustersBottomLevel` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static MemorySegment pClustersBottomLevel(MemorySegment segment, long index) { return (MemorySegment) VH_pClustersBottomLevel.get(segment, 0L, index); }
+    public static MemorySegment pClustersBottomLevel(MemorySegment segment, long index) { return (MemorySegment) VH_pClustersBottomLevel.get().get(segment, 0L, index); }
     /// {@return `pClustersBottomLevel`}
     public MemorySegment pClustersBottomLevel() { return pClustersBottomLevel(this.segment(), 0L); }
     /// Sets `pClustersBottomLevel` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void pClustersBottomLevel(MemorySegment segment, long index, MemorySegment value) { VH_pClustersBottomLevel.set(segment, 0L, index, value); }
+    public static void pClustersBottomLevel(MemorySegment segment, long index, MemorySegment value) { VH_pClustersBottomLevel.get().set(segment, 0L, index, value); }
     /// Sets `pClustersBottomLevel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkClusterAccelerationStructureOpInputNV extends GroupType {
     /// {@return `pTriangleClusters` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static MemorySegment pTriangleClusters(MemorySegment segment, long index) { return (MemorySegment) VH_pTriangleClusters.get(segment, 0L, index); }
+    public static MemorySegment pTriangleClusters(MemorySegment segment, long index) { return (MemorySegment) VH_pTriangleClusters.get().get(segment, 0L, index); }
     /// {@return `pTriangleClusters`}
     public MemorySegment pTriangleClusters() { return pTriangleClusters(this.segment(), 0L); }
     /// Sets `pTriangleClusters` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void pTriangleClusters(MemorySegment segment, long index, MemorySegment value) { VH_pTriangleClusters.set(segment, 0L, index, value); }
+    public static void pTriangleClusters(MemorySegment segment, long index, MemorySegment value) { VH_pTriangleClusters.get().set(segment, 0L, index, value); }
     /// Sets `pTriangleClusters` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkClusterAccelerationStructureOpInputNV extends GroupType {
     /// {@return `pMoveObjects` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static MemorySegment pMoveObjects(MemorySegment segment, long index) { return (MemorySegment) VH_pMoveObjects.get(segment, 0L, index); }
+    public static MemorySegment pMoveObjects(MemorySegment segment, long index) { return (MemorySegment) VH_pMoveObjects.get().get(segment, 0L, index); }
     /// {@return `pMoveObjects`}
     public MemorySegment pMoveObjects() { return pMoveObjects(this.segment(), 0L); }
     /// Sets `pMoveObjects` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void pMoveObjects(MemorySegment segment, long index, MemorySegment value) { VH_pMoveObjects.set(segment, 0L, index, value); }
+    public static void pMoveObjects(MemorySegment segment, long index, MemorySegment value) { VH_pMoveObjects.get().set(segment, 0L, index, value); }
     /// Sets `pMoveObjects` with the given value.
     /// @param value the value
     /// @return `this`

@@ -37,37 +37,37 @@ public final class VmaDefragmentationInfo extends GroupType {
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `pool`.
     public static final long OFFSET_pool = LAYOUT.byteOffset(PathElement.groupElement("pool"));
     /// The memory layout of `pool`.
     public static final MemoryLayout LAYOUT_pool = LAYOUT.select(PathElement.groupElement("pool"));
     /// The [VarHandle] of `pool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pool"));
+    public static final Supplier<VarHandle> VH_pool = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pool")));
     /// The byte offset of `maxBytesPerPass`.
     public static final long OFFSET_maxBytesPerPass = LAYOUT.byteOffset(PathElement.groupElement("maxBytesPerPass"));
     /// The memory layout of `maxBytesPerPass`.
     public static final MemoryLayout LAYOUT_maxBytesPerPass = LAYOUT.select(PathElement.groupElement("maxBytesPerPass"));
     /// The [VarHandle] of `maxBytesPerPass` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxBytesPerPass = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBytesPerPass"));
+    public static final Supplier<VarHandle> VH_maxBytesPerPass = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBytesPerPass")));
     /// The byte offset of `maxAllocationsPerPass`.
     public static final long OFFSET_maxAllocationsPerPass = LAYOUT.byteOffset(PathElement.groupElement("maxAllocationsPerPass"));
     /// The memory layout of `maxAllocationsPerPass`.
     public static final MemoryLayout LAYOUT_maxAllocationsPerPass = LAYOUT.select(PathElement.groupElement("maxAllocationsPerPass"));
     /// The [VarHandle] of `maxAllocationsPerPass` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxAllocationsPerPass = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxAllocationsPerPass"));
+    public static final Supplier<VarHandle> VH_maxAllocationsPerPass = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxAllocationsPerPass")));
     /// The byte offset of `pfnBreakCallback`.
     public static final long OFFSET_pfnBreakCallback = LAYOUT.byteOffset(PathElement.groupElement("pfnBreakCallback"));
     /// The memory layout of `pfnBreakCallback`.
     public static final MemoryLayout LAYOUT_pfnBreakCallback = LAYOUT.select(PathElement.groupElement("pfnBreakCallback"));
     /// The [VarHandle] of `pfnBreakCallback` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pfnBreakCallback = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnBreakCallback"));
+    public static final Supplier<VarHandle> VH_pfnBreakCallback = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnBreakCallback")));
     /// The byte offset of `pBreakCallbackUserData`.
     public static final long OFFSET_pBreakCallbackUserData = LAYOUT.byteOffset(PathElement.groupElement("pBreakCallbackUserData"));
     /// The memory layout of `pBreakCallbackUserData`.
     public static final MemoryLayout LAYOUT_pBreakCallbackUserData = LAYOUT.select(PathElement.groupElement("pBreakCallbackUserData"));
     /// The [VarHandle] of `pBreakCallbackUserData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pBreakCallbackUserData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBreakCallbackUserData"));
+    public static final Supplier<VarHandle> VH_pBreakCallbackUserData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBreakCallbackUserData")));
 
     /// Creates `VmaDefragmentationInfo` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VmaDefragmentationInfo extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VmaDefragmentationInfo extends GroupType {
     /// {@return `pool` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pool(MemorySegment segment, long index) { return (MemorySegment) VH_pool.get(segment, 0L, index); }
+    public static MemorySegment pool(MemorySegment segment, long index) { return (MemorySegment) VH_pool.get().get(segment, 0L, index); }
     /// {@return `pool`}
     public MemorySegment pool() { return pool(this.segment(), 0L); }
     /// Sets `pool` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pool(MemorySegment segment, long index, MemorySegment value) { VH_pool.set(segment, 0L, index, value); }
+    public static void pool(MemorySegment segment, long index, MemorySegment value) { VH_pool.get().set(segment, 0L, index, value); }
     /// Sets `pool` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VmaDefragmentationInfo extends GroupType {
     /// {@return `maxBytesPerPass` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long maxBytesPerPass(MemorySegment segment, long index) { return (long) VH_maxBytesPerPass.get(segment, 0L, index); }
+    public static long maxBytesPerPass(MemorySegment segment, long index) { return (long) VH_maxBytesPerPass.get().get(segment, 0L, index); }
     /// {@return `maxBytesPerPass`}
     public long maxBytesPerPass() { return maxBytesPerPass(this.segment(), 0L); }
     /// Sets `maxBytesPerPass` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxBytesPerPass(MemorySegment segment, long index, long value) { VH_maxBytesPerPass.set(segment, 0L, index, value); }
+    public static void maxBytesPerPass(MemorySegment segment, long index, long value) { VH_maxBytesPerPass.get().set(segment, 0L, index, value); }
     /// Sets `maxBytesPerPass` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VmaDefragmentationInfo extends GroupType {
     /// {@return `maxAllocationsPerPass` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxAllocationsPerPass(MemorySegment segment, long index) { return (int) VH_maxAllocationsPerPass.get(segment, 0L, index); }
+    public static int maxAllocationsPerPass(MemorySegment segment, long index) { return (int) VH_maxAllocationsPerPass.get().get(segment, 0L, index); }
     /// {@return `maxAllocationsPerPass`}
     public int maxAllocationsPerPass() { return maxAllocationsPerPass(this.segment(), 0L); }
     /// Sets `maxAllocationsPerPass` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxAllocationsPerPass(MemorySegment segment, long index, int value) { VH_maxAllocationsPerPass.set(segment, 0L, index, value); }
+    public static void maxAllocationsPerPass(MemorySegment segment, long index, int value) { VH_maxAllocationsPerPass.get().set(segment, 0L, index, value); }
     /// Sets `maxAllocationsPerPass` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VmaDefragmentationInfo extends GroupType {
     /// {@return `pfnBreakCallback` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pfnBreakCallback(MemorySegment segment, long index) { return (MemorySegment) VH_pfnBreakCallback.get(segment, 0L, index); }
+    public static MemorySegment pfnBreakCallback(MemorySegment segment, long index) { return (MemorySegment) VH_pfnBreakCallback.get().get(segment, 0L, index); }
     /// {@return `pfnBreakCallback`}
     public MemorySegment pfnBreakCallback() { return pfnBreakCallback(this.segment(), 0L); }
     /// Sets `pfnBreakCallback` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pfnBreakCallback(MemorySegment segment, long index, MemorySegment value) { VH_pfnBreakCallback.set(segment, 0L, index, value); }
+    public static void pfnBreakCallback(MemorySegment segment, long index, MemorySegment value) { VH_pfnBreakCallback.get().set(segment, 0L, index, value); }
     /// Sets `pfnBreakCallback` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VmaDefragmentationInfo extends GroupType {
     /// {@return `pBreakCallbackUserData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pBreakCallbackUserData(MemorySegment segment, long index) { return (MemorySegment) VH_pBreakCallbackUserData.get(segment, 0L, index); }
+    public static MemorySegment pBreakCallbackUserData(MemorySegment segment, long index) { return (MemorySegment) VH_pBreakCallbackUserData.get().get(segment, 0L, index); }
     /// {@return `pBreakCallbackUserData`}
     public MemorySegment pBreakCallbackUserData() { return pBreakCallbackUserData(this.segment(), 0L); }
     /// Sets `pBreakCallbackUserData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pBreakCallbackUserData(MemorySegment segment, long index, MemorySegment value) { VH_pBreakCallbackUserData.set(segment, 0L, index, value); }
+    public static void pBreakCallbackUserData(MemorySegment segment, long index, MemorySegment value) { VH_pBreakCallbackUserData.get().set(segment, 0L, index, value); }
     /// Sets `pBreakCallbackUserData` with the given value.
     /// @param value the value
     /// @return `this`

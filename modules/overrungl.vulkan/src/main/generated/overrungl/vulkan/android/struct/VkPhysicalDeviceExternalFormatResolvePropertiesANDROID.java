@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `nullColorAttachmentWithExternalFormatResolve`.
     public static final long OFFSET_nullColorAttachmentWithExternalFormatResolve = LAYOUT.byteOffset(PathElement.groupElement("nullColorAttachmentWithExternalFormatResolve"));
     /// The memory layout of `nullColorAttachmentWithExternalFormatResolve`.
     public static final MemoryLayout LAYOUT_nullColorAttachmentWithExternalFormatResolve = LAYOUT.select(PathElement.groupElement("nullColorAttachmentWithExternalFormatResolve"));
     /// The [VarHandle] of `nullColorAttachmentWithExternalFormatResolve` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_nullColorAttachmentWithExternalFormatResolve = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nullColorAttachmentWithExternalFormatResolve"));
+    public static final Supplier<VarHandle> VH_nullColorAttachmentWithExternalFormatResolve = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("nullColorAttachmentWithExternalFormatResolve")));
     /// The byte offset of `externalFormatResolveChromaOffsetX`.
     public static final long OFFSET_externalFormatResolveChromaOffsetX = LAYOUT.byteOffset(PathElement.groupElement("externalFormatResolveChromaOffsetX"));
     /// The memory layout of `externalFormatResolveChromaOffsetX`.
     public static final MemoryLayout LAYOUT_externalFormatResolveChromaOffsetX = LAYOUT.select(PathElement.groupElement("externalFormatResolveChromaOffsetX"));
     /// The [VarHandle] of `externalFormatResolveChromaOffsetX` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_externalFormatResolveChromaOffsetX = LAYOUT.arrayElementVarHandle(PathElement.groupElement("externalFormatResolveChromaOffsetX"));
+    public static final Supplier<VarHandle> VH_externalFormatResolveChromaOffsetX = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("externalFormatResolveChromaOffsetX")));
     /// The byte offset of `externalFormatResolveChromaOffsetY`.
     public static final long OFFSET_externalFormatResolveChromaOffsetY = LAYOUT.byteOffset(PathElement.groupElement("externalFormatResolveChromaOffsetY"));
     /// The memory layout of `externalFormatResolveChromaOffsetY`.
     public static final MemoryLayout LAYOUT_externalFormatResolveChromaOffsetY = LAYOUT.select(PathElement.groupElement("externalFormatResolveChromaOffsetY"));
     /// The [VarHandle] of `externalFormatResolveChromaOffsetY` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_externalFormatResolveChromaOffsetY = LAYOUT.arrayElementVarHandle(PathElement.groupElement("externalFormatResolveChromaOffsetY"));
+    public static final Supplier<VarHandle> VH_externalFormatResolveChromaOffsetY = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("externalFormatResolveChromaOffsetY")));
 
     /// Creates `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// {@return `nullColorAttachmentWithExternalFormatResolve` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int nullColorAttachmentWithExternalFormatResolve(MemorySegment segment, long index) { return (int) VH_nullColorAttachmentWithExternalFormatResolve.get(segment, 0L, index); }
+    public static int nullColorAttachmentWithExternalFormatResolve(MemorySegment segment, long index) { return (int) VH_nullColorAttachmentWithExternalFormatResolve.get().get(segment, 0L, index); }
     /// {@return `nullColorAttachmentWithExternalFormatResolve`}
     public int nullColorAttachmentWithExternalFormatResolve() { return nullColorAttachmentWithExternalFormatResolve(this.segment(), 0L); }
     /// Sets `nullColorAttachmentWithExternalFormatResolve` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void nullColorAttachmentWithExternalFormatResolve(MemorySegment segment, long index, int value) { VH_nullColorAttachmentWithExternalFormatResolve.set(segment, 0L, index, value); }
+    public static void nullColorAttachmentWithExternalFormatResolve(MemorySegment segment, long index, int value) { VH_nullColorAttachmentWithExternalFormatResolve.get().set(segment, 0L, index, value); }
     /// Sets `nullColorAttachmentWithExternalFormatResolve` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// {@return `externalFormatResolveChromaOffsetX` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int externalFormatResolveChromaOffsetX(MemorySegment segment, long index) { return (int) VH_externalFormatResolveChromaOffsetX.get(segment, 0L, index); }
+    public static int externalFormatResolveChromaOffsetX(MemorySegment segment, long index) { return (int) VH_externalFormatResolveChromaOffsetX.get().get(segment, 0L, index); }
     /// {@return `externalFormatResolveChromaOffsetX`}
     public int externalFormatResolveChromaOffsetX() { return externalFormatResolveChromaOffsetX(this.segment(), 0L); }
     /// Sets `externalFormatResolveChromaOffsetX` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void externalFormatResolveChromaOffsetX(MemorySegment segment, long index, int value) { VH_externalFormatResolveChromaOffsetX.set(segment, 0L, index, value); }
+    public static void externalFormatResolveChromaOffsetX(MemorySegment segment, long index, int value) { VH_externalFormatResolveChromaOffsetX.get().set(segment, 0L, index, value); }
     /// Sets `externalFormatResolveChromaOffsetX` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// {@return `externalFormatResolveChromaOffsetY` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int externalFormatResolveChromaOffsetY(MemorySegment segment, long index) { return (int) VH_externalFormatResolveChromaOffsetY.get(segment, 0L, index); }
+    public static int externalFormatResolveChromaOffsetY(MemorySegment segment, long index) { return (int) VH_externalFormatResolveChromaOffsetY.get().get(segment, 0L, index); }
     /// {@return `externalFormatResolveChromaOffsetY`}
     public int externalFormatResolveChromaOffsetY() { return externalFormatResolveChromaOffsetY(this.segment(), 0L); }
     /// Sets `externalFormatResolveChromaOffsetY` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void externalFormatResolveChromaOffsetY(MemorySegment segment, long index, int value) { VH_externalFormatResolveChromaOffsetY.set(segment, 0L, index, value); }
+    public static void externalFormatResolveChromaOffsetY(MemorySegment segment, long index, int value) { VH_externalFormatResolveChromaOffsetY.get().set(segment, 0L, index, value); }
     /// Sets `externalFormatResolveChromaOffsetY` with the given value.
     /// @param value the value
     /// @return `this`

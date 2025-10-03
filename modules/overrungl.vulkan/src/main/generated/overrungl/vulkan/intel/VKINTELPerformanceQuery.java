@@ -2,6 +2,7 @@
 package overrungl.vulkan.intel;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -31,15 +32,15 @@ public final class VKINTELPerformanceQuery {
     public static final int VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL = 1000210000;
     public static final int VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL = 1000210000;
     public static final class Handles {
-        public static final MethodHandle MH_vkInitializePerformanceApiINTEL = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkUninitializePerformanceApiINTEL = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdSetPerformanceMarkerINTEL = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdSetPerformanceStreamMarkerINTEL = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdSetPerformanceOverrideINTEL = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkAcquirePerformanceConfigurationINTEL = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkReleasePerformanceConfigurationINTEL = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_vkQueueSetPerformanceConfigurationINTEL = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_vkGetPerformanceParameterINTEL = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkInitializePerformanceApiINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkUninitializePerformanceApiINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdSetPerformanceMarkerINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdSetPerformanceStreamMarkerINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdSetPerformanceOverrideINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkAcquirePerformanceConfigurationINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkReleasePerformanceConfigurationINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_vkQueueSetPerformanceConfigurationINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_vkGetPerformanceParameterINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -52,7 +53,7 @@ public final class VKINTELPerformanceQuery {
     public static int vkInitializePerformanceApiINTEL(@NonNull VkDevice device, @NonNull MemorySegment pInitializeInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkInitializePerformanceApiINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkInitializePerformanceApiINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkInitializePerformanceApiINTEL", device, pInitializeInfo); }
-        return (int) Handles.MH_vkInitializePerformanceApiINTEL.invokeExact(device.capabilities().PFN_vkInitializePerformanceApiINTEL, device.segment(), pInitializeInfo); }
+        return (int) Handles.MH_vkInitializePerformanceApiINTEL.get().invokeExact(device.capabilities().PFN_vkInitializePerformanceApiINTEL, device.segment(), pInitializeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkInitializePerformanceApiINTEL", e); }
     }
 
@@ -63,7 +64,7 @@ public final class VKINTELPerformanceQuery {
     public static void vkUninitializePerformanceApiINTEL(@NonNull VkDevice device) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkUninitializePerformanceApiINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkUninitializePerformanceApiINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkUninitializePerformanceApiINTEL", device); }
-        Handles.MH_vkUninitializePerformanceApiINTEL.invokeExact(device.capabilities().PFN_vkUninitializePerformanceApiINTEL, device.segment()); }
+        Handles.MH_vkUninitializePerformanceApiINTEL.get().invokeExact(device.capabilities().PFN_vkUninitializePerformanceApiINTEL, device.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkUninitializePerformanceApiINTEL", e); }
     }
 
@@ -74,7 +75,7 @@ public final class VKINTELPerformanceQuery {
     public static int vkCmdSetPerformanceMarkerINTEL(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pMarkerInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPerformanceMarkerINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetPerformanceMarkerINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetPerformanceMarkerINTEL", commandBuffer, pMarkerInfo); }
-        return (int) Handles.MH_vkCmdSetPerformanceMarkerINTEL.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPerformanceMarkerINTEL, commandBuffer.segment(), pMarkerInfo); }
+        return (int) Handles.MH_vkCmdSetPerformanceMarkerINTEL.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPerformanceMarkerINTEL, commandBuffer.segment(), pMarkerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPerformanceMarkerINTEL", e); }
     }
 
@@ -85,7 +86,7 @@ public final class VKINTELPerformanceQuery {
     public static int vkCmdSetPerformanceStreamMarkerINTEL(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pMarkerInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPerformanceStreamMarkerINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetPerformanceStreamMarkerINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetPerformanceStreamMarkerINTEL", commandBuffer, pMarkerInfo); }
-        return (int) Handles.MH_vkCmdSetPerformanceStreamMarkerINTEL.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPerformanceStreamMarkerINTEL, commandBuffer.segment(), pMarkerInfo); }
+        return (int) Handles.MH_vkCmdSetPerformanceStreamMarkerINTEL.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPerformanceStreamMarkerINTEL, commandBuffer.segment(), pMarkerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPerformanceStreamMarkerINTEL", e); }
     }
 
@@ -96,7 +97,7 @@ public final class VKINTELPerformanceQuery {
     public static int vkCmdSetPerformanceOverrideINTEL(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pOverrideInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPerformanceOverrideINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetPerformanceOverrideINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetPerformanceOverrideINTEL", commandBuffer, pOverrideInfo); }
-        return (int) Handles.MH_vkCmdSetPerformanceOverrideINTEL.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPerformanceOverrideINTEL, commandBuffer.segment(), pOverrideInfo); }
+        return (int) Handles.MH_vkCmdSetPerformanceOverrideINTEL.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPerformanceOverrideINTEL, commandBuffer.segment(), pOverrideInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPerformanceOverrideINTEL", e); }
     }
 
@@ -107,7 +108,7 @@ public final class VKINTELPerformanceQuery {
     public static int vkAcquirePerformanceConfigurationINTEL(@NonNull VkDevice device, @NonNull MemorySegment pAcquireInfo, @NonNull MemorySegment pConfiguration) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquirePerformanceConfigurationINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquirePerformanceConfigurationINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkAcquirePerformanceConfigurationINTEL", device, pAcquireInfo, pConfiguration); }
-        return (int) Handles.MH_vkAcquirePerformanceConfigurationINTEL.invokeExact(device.capabilities().PFN_vkAcquirePerformanceConfigurationINTEL, device.segment(), pAcquireInfo, pConfiguration); }
+        return (int) Handles.MH_vkAcquirePerformanceConfigurationINTEL.get().invokeExact(device.capabilities().PFN_vkAcquirePerformanceConfigurationINTEL, device.segment(), pAcquireInfo, pConfiguration); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquirePerformanceConfigurationINTEL", e); }
     }
 
@@ -118,7 +119,7 @@ public final class VKINTELPerformanceQuery {
     public static int vkReleasePerformanceConfigurationINTEL(@NonNull VkDevice device, long configuration) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleasePerformanceConfigurationINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkReleasePerformanceConfigurationINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkReleasePerformanceConfigurationINTEL", device, configuration); }
-        return (int) Handles.MH_vkReleasePerformanceConfigurationINTEL.invokeExact(device.capabilities().PFN_vkReleasePerformanceConfigurationINTEL, device.segment(), configuration); }
+        return (int) Handles.MH_vkReleasePerformanceConfigurationINTEL.get().invokeExact(device.capabilities().PFN_vkReleasePerformanceConfigurationINTEL, device.segment(), configuration); }
         catch (Throwable e) { throw new RuntimeException("error in vkReleasePerformanceConfigurationINTEL", e); }
     }
 
@@ -129,7 +130,7 @@ public final class VKINTELPerformanceQuery {
     public static int vkQueueSetPerformanceConfigurationINTEL(@NonNull VkQueue queue, long configuration) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueSetPerformanceConfigurationINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueSetPerformanceConfigurationINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkQueueSetPerformanceConfigurationINTEL", queue, configuration); }
-        return (int) Handles.MH_vkQueueSetPerformanceConfigurationINTEL.invokeExact(queue.capabilities().PFN_vkQueueSetPerformanceConfigurationINTEL, queue.segment(), configuration); }
+        return (int) Handles.MH_vkQueueSetPerformanceConfigurationINTEL.get().invokeExact(queue.capabilities().PFN_vkQueueSetPerformanceConfigurationINTEL, queue.segment(), configuration); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueSetPerformanceConfigurationINTEL", e); }
     }
 
@@ -140,7 +141,7 @@ public final class VKINTELPerformanceQuery {
     public static int vkGetPerformanceParameterINTEL(@NonNull VkDevice device, int parameter, @NonNull MemorySegment pValue) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPerformanceParameterINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPerformanceParameterINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPerformanceParameterINTEL", device, parameter, pValue); }
-        return (int) Handles.MH_vkGetPerformanceParameterINTEL.invokeExact(device.capabilities().PFN_vkGetPerformanceParameterINTEL, device.segment(), parameter, pValue); }
+        return (int) Handles.MH_vkGetPerformanceParameterINTEL.get().invokeExact(device.capabilities().PFN_vkGetPerformanceParameterINTEL, device.segment(), parameter, pValue); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPerformanceParameterINTEL", e); }
     }
 

@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.vma;
@@ -27,6 +35,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.function.Supplier;
 
 import static overrungl.internal.RuntimeHelper.*;
 
@@ -104,145 +113,145 @@ public final class VkMemAlloc {
     /// Method handles.
     public static final class Handles {
         /// The method handle of [`vmaCreateAllocator`][#vmaCreateAllocator].
-        public static final MethodHandle MH_vmaCreateAllocator = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCreateAllocator = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaDestroyAllocator`][#vmaDestroyAllocator].
-        public static final MethodHandle MH_vmaDestroyAllocator = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaDestroyAllocator = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetAllocatorInfo`][#vmaGetAllocatorInfo].
-        public static final MethodHandle MH_vmaGetAllocatorInfo = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetAllocatorInfo = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetPhysicalDeviceProperties`][#vmaGetPhysicalDeviceProperties].
-        public static final MethodHandle MH_vmaGetPhysicalDeviceProperties = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetPhysicalDeviceProperties = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetMemoryProperties`][#vmaGetMemoryProperties].
-        public static final MethodHandle MH_vmaGetMemoryProperties = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetMemoryProperties = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetMemoryTypeProperties`][#vmaGetMemoryTypeProperties].
-        public static final MethodHandle MH_vmaGetMemoryTypeProperties = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetMemoryTypeProperties = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaSetCurrentFrameIndex`][#vmaSetCurrentFrameIndex].
-        public static final MethodHandle MH_vmaSetCurrentFrameIndex = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_vmaSetCurrentFrameIndex = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`vmaCalculateStatistics`][#vmaCalculateStatistics].
-        public static final MethodHandle MH_vmaCalculateStatistics = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCalculateStatistics = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetHeapBudgets`][#vmaGetHeapBudgets].
-        public static final MethodHandle MH_vmaGetHeapBudgets = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetHeapBudgets = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaFindMemoryTypeIndex`][#vmaFindMemoryTypeIndex].
-        public static final MethodHandle MH_vmaFindMemoryTypeIndex = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaFindMemoryTypeIndex = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaFindMemoryTypeIndexForBufferInfo`][#vmaFindMemoryTypeIndexForBufferInfo].
-        public static final MethodHandle MH_vmaFindMemoryTypeIndexForBufferInfo = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaFindMemoryTypeIndexForBufferInfo = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaFindMemoryTypeIndexForImageInfo`][#vmaFindMemoryTypeIndexForImageInfo].
-        public static final MethodHandle MH_vmaFindMemoryTypeIndexForImageInfo = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaFindMemoryTypeIndexForImageInfo = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCreatePool`][#vmaCreatePool].
-        public static final MethodHandle MH_vmaCreatePool = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCreatePool = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaDestroyPool`][#vmaDestroyPool].
-        public static final MethodHandle MH_vmaDestroyPool = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaDestroyPool = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetPoolStatistics`][#vmaGetPoolStatistics].
-        public static final MethodHandle MH_vmaGetPoolStatistics = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetPoolStatistics = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCalculatePoolStatistics`][#vmaCalculatePoolStatistics].
-        public static final MethodHandle MH_vmaCalculatePoolStatistics = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCalculatePoolStatistics = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCheckPoolCorruption`][#vmaCheckPoolCorruption].
-        public static final MethodHandle MH_vmaCheckPoolCorruption = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCheckPoolCorruption = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetPoolName`][#vmaGetPoolName].
-        public static final MethodHandle MH_vmaGetPoolName = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetPoolName = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaSetPoolName`][#vmaSetPoolName].
-        public static final MethodHandle MH_vmaSetPoolName = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaSetPoolName = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaAllocateMemory`][#vmaAllocateMemory].
-        public static final MethodHandle MH_vmaAllocateMemory = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaAllocateMemory = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaAllocateMemoryPages`][#vmaAllocateMemoryPages].
-        public static final MethodHandle MH_vmaAllocateMemoryPages = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaAllocateMemoryPages = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaAllocateMemoryForBuffer`][#vmaAllocateMemoryForBuffer].
-        public static final MethodHandle MH_vmaAllocateMemoryForBuffer = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaAllocateMemoryForBuffer = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaAllocateMemoryForImage`][#vmaAllocateMemoryForImage].
-        public static final MethodHandle MH_vmaAllocateMemoryForImage = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaAllocateMemoryForImage = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaFreeMemory`][#vmaFreeMemory].
-        public static final MethodHandle MH_vmaFreeMemory = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaFreeMemory = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaFreeMemoryPages`][#vmaFreeMemoryPages].
-        public static final MethodHandle MH_vmaFreeMemoryPages = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaFreeMemoryPages = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetAllocationInfo`][#vmaGetAllocationInfo].
-        public static final MethodHandle MH_vmaGetAllocationInfo = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetAllocationInfo = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetAllocationInfo2`][#vmaGetAllocationInfo2].
-        public static final MethodHandle MH_vmaGetAllocationInfo2 = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetAllocationInfo2 = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaSetAllocationUserData`][#vmaSetAllocationUserData].
-        public static final MethodHandle MH_vmaSetAllocationUserData = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaSetAllocationUserData = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaSetAllocationName`][#vmaSetAllocationName].
-        public static final MethodHandle MH_vmaSetAllocationName = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaSetAllocationName = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetAllocationMemoryProperties`][#vmaGetAllocationMemoryProperties].
-        public static final MethodHandle MH_vmaGetAllocationMemoryProperties = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetAllocationMemoryProperties = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaMapMemory`][#vmaMapMemory].
-        public static final MethodHandle MH_vmaMapMemory = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaMapMemory = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaUnmapMemory`][#vmaUnmapMemory].
-        public static final MethodHandle MH_vmaUnmapMemory = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaUnmapMemory = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaFlushAllocation`][#vmaFlushAllocation].
-        public static final MethodHandle MH_vmaFlushAllocation = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_vmaFlushAllocation = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)));
         /// The method handle of [`vmaInvalidateAllocation`][#vmaInvalidateAllocation].
-        public static final MethodHandle MH_vmaInvalidateAllocation = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_vmaInvalidateAllocation = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)));
         /// The method handle of [`vmaFlushAllocations`][#vmaFlushAllocations].
-        public static final MethodHandle MH_vmaFlushAllocations = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaFlushAllocations = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaInvalidateAllocations`][#vmaInvalidateAllocations].
-        public static final MethodHandle MH_vmaInvalidateAllocations = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaInvalidateAllocations = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCopyMemoryToAllocation`][#vmaCopyMemoryToAllocation].
-        public static final MethodHandle MH_vmaCopyMemoryToAllocation = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_vmaCopyMemoryToAllocation = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)));
         /// The method handle of [`vmaCopyAllocationToMemory`][#vmaCopyAllocationToMemory].
-        public static final MethodHandle MH_vmaCopyAllocationToMemory = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_vmaCopyAllocationToMemory = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)));
         /// The method handle of [`vmaCheckCorruption`][#vmaCheckCorruption].
-        public static final MethodHandle MH_vmaCheckCorruption = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_vmaCheckCorruption = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`vmaBeginDefragmentation`][#vmaBeginDefragmentation].
-        public static final MethodHandle MH_vmaBeginDefragmentation = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaBeginDefragmentation = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaEndDefragmentation`][#vmaEndDefragmentation].
-        public static final MethodHandle MH_vmaEndDefragmentation = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaEndDefragmentation = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaBeginDefragmentationPass`][#vmaBeginDefragmentationPass].
-        public static final MethodHandle MH_vmaBeginDefragmentationPass = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaBeginDefragmentationPass = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaEndDefragmentationPass`][#vmaEndDefragmentationPass].
-        public static final MethodHandle MH_vmaEndDefragmentationPass = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaEndDefragmentationPass = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaBindBufferMemory`][#vmaBindBufferMemory].
-        public static final MethodHandle MH_vmaBindBufferMemory = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_vmaBindBufferMemory = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)));
         /// The method handle of [`vmaBindBufferMemory2`][#vmaBindBufferMemory2].
-        public static final MethodHandle MH_vmaBindBufferMemory2 = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaBindBufferMemory2 = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaBindImageMemory`][#vmaBindImageMemory].
-        public static final MethodHandle MH_vmaBindImageMemory = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_vmaBindImageMemory = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)));
         /// The method handle of [`vmaBindImageMemory2`][#vmaBindImageMemory2].
-        public static final MethodHandle MH_vmaBindImageMemory2 = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaBindImageMemory2 = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCreateBuffer`][#vmaCreateBuffer].
-        public static final MethodHandle MH_vmaCreateBuffer = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCreateBuffer = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCreateBufferWithAlignment`][#vmaCreateBufferWithAlignment].
-        public static final MethodHandle MH_vmaCreateBufferWithAlignment = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCreateBufferWithAlignment = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCreateAliasingBuffer`][#vmaCreateAliasingBuffer].
-        public static final MethodHandle MH_vmaCreateAliasingBuffer = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCreateAliasingBuffer = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCreateAliasingBuffer2`][#vmaCreateAliasingBuffer2].
-        public static final MethodHandle MH_vmaCreateAliasingBuffer2 = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCreateAliasingBuffer2 = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaDestroyBuffer`][#vmaDestroyBuffer].
-        public static final MethodHandle MH_vmaDestroyBuffer = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaDestroyBuffer = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCreateImage`][#vmaCreateImage].
-        public static final MethodHandle MH_vmaCreateImage = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCreateImage = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCreateAliasingImage`][#vmaCreateAliasingImage].
-        public static final MethodHandle MH_vmaCreateAliasingImage = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCreateAliasingImage = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCreateAliasingImage2`][#vmaCreateAliasingImage2].
-        public static final MethodHandle MH_vmaCreateAliasingImage2 = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCreateAliasingImage2 = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaDestroyImage`][#vmaDestroyImage].
-        public static final MethodHandle MH_vmaDestroyImage = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaDestroyImage = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCreateVirtualBlock`][#vmaCreateVirtualBlock].
-        public static final MethodHandle MH_vmaCreateVirtualBlock = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCreateVirtualBlock = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaDestroyVirtualBlock`][#vmaDestroyVirtualBlock].
-        public static final MethodHandle MH_vmaDestroyVirtualBlock = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaDestroyVirtualBlock = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         /// The method handle of [`vmaIsVirtualBlockEmpty`][#vmaIsVirtualBlockEmpty].
-        public static final MethodHandle MH_vmaIsVirtualBlockEmpty = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaIsVirtualBlockEmpty = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetVirtualAllocationInfo`][#vmaGetVirtualAllocationInfo].
-        public static final MethodHandle MH_vmaGetVirtualAllocationInfo = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetVirtualAllocationInfo = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaVirtualAllocate`][#vmaVirtualAllocate].
-        public static final MethodHandle MH_vmaVirtualAllocate = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaVirtualAllocate = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaVirtualFree`][#vmaVirtualFree].
-        public static final MethodHandle MH_vmaVirtualFree = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaVirtualFree = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaClearVirtualBlock`][#vmaClearVirtualBlock].
-        public static final MethodHandle MH_vmaClearVirtualBlock = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaClearVirtualBlock = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         /// The method handle of [`vmaSetVirtualAllocationUserData`][#vmaSetVirtualAllocationUserData].
-        public static final MethodHandle MH_vmaSetVirtualAllocationUserData = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaSetVirtualAllocationUserData = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaGetVirtualBlockStatistics`][#vmaGetVirtualBlockStatistics].
-        public static final MethodHandle MH_vmaGetVirtualBlockStatistics = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaGetVirtualBlockStatistics = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaCalculateVirtualBlockStatistics`][#vmaCalculateVirtualBlockStatistics].
-        public static final MethodHandle MH_vmaCalculateVirtualBlockStatistics = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaCalculateVirtualBlockStatistics = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaBuildVirtualBlockStatsString`][#vmaBuildVirtualBlockStatsString].
-        public static final MethodHandle MH_vmaBuildVirtualBlockStatsString = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_vmaBuildVirtualBlockStatsString = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`vmaFreeVirtualBlockStatsString`][#vmaFreeVirtualBlockStatsString].
-        public static final MethodHandle MH_vmaFreeVirtualBlockStatsString = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaFreeVirtualBlockStatsString = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`vmaBuildStatsString`][#vmaBuildStatsString].
-        public static final MethodHandle MH_vmaBuildStatsString = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_vmaBuildStatsString = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`vmaFreeStatsString`][#vmaFreeStatsString].
-        public static final MethodHandle MH_vmaFreeStatsString = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vmaFreeStatsString = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The function address of [`vmaCreateAllocator`][#vmaCreateAllocator].
         public final MemorySegment PFN_vmaCreateAllocator;
         /// The function address of [`vmaDestroyAllocator`][#vmaDestroyAllocator].
@@ -473,7 +482,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCreateAllocator(@NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCreateAllocator", pCreateInfo, pAllocator); }
-        return (int) Handles.MH_vmaCreateAllocator.invokeExact(Handles.get().PFN_vmaCreateAllocator, pCreateInfo, pAllocator); }
+        return (int) Handles.MH_vmaCreateAllocator.get().invokeExact(Handles.get().PFN_vmaCreateAllocator, pCreateInfo, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCreateAllocator", e); }
     }
 
@@ -483,7 +492,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaDestroyAllocator(@NonNull MemorySegment pAllocator) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaDestroyAllocator", pAllocator); }
-        Handles.MH_vmaDestroyAllocator.invokeExact(Handles.get().PFN_vmaDestroyAllocator, pAllocator); }
+        Handles.MH_vmaDestroyAllocator.get().invokeExact(Handles.get().PFN_vmaDestroyAllocator, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vmaDestroyAllocator", e); }
     }
 
@@ -493,7 +502,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetAllocatorInfo(@NonNull MemorySegment allocator, @NonNull MemorySegment pAllocatorInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetAllocatorInfo", allocator, pAllocatorInfo); }
-        Handles.MH_vmaGetAllocatorInfo.invokeExact(Handles.get().PFN_vmaGetAllocatorInfo, allocator, pAllocatorInfo); }
+        Handles.MH_vmaGetAllocatorInfo.get().invokeExact(Handles.get().PFN_vmaGetAllocatorInfo, allocator, pAllocatorInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetAllocatorInfo", e); }
     }
 
@@ -503,7 +512,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetPhysicalDeviceProperties(@NonNull MemorySegment allocator, @NonNull MemorySegment ppPhysicalDeviceProperties) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetPhysicalDeviceProperties", allocator, ppPhysicalDeviceProperties); }
-        Handles.MH_vmaGetPhysicalDeviceProperties.invokeExact(Handles.get().PFN_vmaGetPhysicalDeviceProperties, allocator, ppPhysicalDeviceProperties); }
+        Handles.MH_vmaGetPhysicalDeviceProperties.get().invokeExact(Handles.get().PFN_vmaGetPhysicalDeviceProperties, allocator, ppPhysicalDeviceProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetPhysicalDeviceProperties", e); }
     }
 
@@ -513,7 +522,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetMemoryProperties(@NonNull MemorySegment allocator, @NonNull MemorySegment ppPhysicalDeviceMemoryProperties) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetMemoryProperties", allocator, ppPhysicalDeviceMemoryProperties); }
-        Handles.MH_vmaGetMemoryProperties.invokeExact(Handles.get().PFN_vmaGetMemoryProperties, allocator, ppPhysicalDeviceMemoryProperties); }
+        Handles.MH_vmaGetMemoryProperties.get().invokeExact(Handles.get().PFN_vmaGetMemoryProperties, allocator, ppPhysicalDeviceMemoryProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetMemoryProperties", e); }
     }
 
@@ -523,7 +532,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetMemoryTypeProperties(@NonNull MemorySegment allocator, int memoryTypeIndex, @NonNull MemorySegment pFlags) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetMemoryTypeProperties", allocator, memoryTypeIndex, pFlags); }
-        Handles.MH_vmaGetMemoryTypeProperties.invokeExact(Handles.get().PFN_vmaGetMemoryTypeProperties, allocator, memoryTypeIndex, pFlags); }
+        Handles.MH_vmaGetMemoryTypeProperties.get().invokeExact(Handles.get().PFN_vmaGetMemoryTypeProperties, allocator, memoryTypeIndex, pFlags); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetMemoryTypeProperties", e); }
     }
 
@@ -533,7 +542,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaSetCurrentFrameIndex(@NonNull MemorySegment allocator, int frameIndex) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaSetCurrentFrameIndex", allocator, frameIndex); }
-        Handles.MH_vmaSetCurrentFrameIndex.invokeExact(Handles.get().PFN_vmaSetCurrentFrameIndex, allocator, frameIndex); }
+        Handles.MH_vmaSetCurrentFrameIndex.get().invokeExact(Handles.get().PFN_vmaSetCurrentFrameIndex, allocator, frameIndex); }
         catch (Throwable e) { throw new RuntimeException("error in vmaSetCurrentFrameIndex", e); }
     }
 
@@ -543,7 +552,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaCalculateStatistics(@NonNull MemorySegment allocator, @NonNull MemorySegment pStats) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCalculateStatistics", allocator, pStats); }
-        Handles.MH_vmaCalculateStatistics.invokeExact(Handles.get().PFN_vmaCalculateStatistics, allocator, pStats); }
+        Handles.MH_vmaCalculateStatistics.get().invokeExact(Handles.get().PFN_vmaCalculateStatistics, allocator, pStats); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCalculateStatistics", e); }
     }
 
@@ -553,7 +562,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetHeapBudgets(@NonNull MemorySegment allocator, @NonNull MemorySegment pBudgets) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetHeapBudgets", allocator, pBudgets); }
-        Handles.MH_vmaGetHeapBudgets.invokeExact(Handles.get().PFN_vmaGetHeapBudgets, allocator, pBudgets); }
+        Handles.MH_vmaGetHeapBudgets.get().invokeExact(Handles.get().PFN_vmaGetHeapBudgets, allocator, pBudgets); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetHeapBudgets", e); }
     }
 
@@ -563,7 +572,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaFindMemoryTypeIndex(@NonNull MemorySegment allocator, int memoryTypeBits, @NonNull MemorySegment pAllocationCreateInfo, @NonNull MemorySegment pMemoryTypeIndex) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaFindMemoryTypeIndex", allocator, memoryTypeBits, pAllocationCreateInfo, pMemoryTypeIndex); }
-        return (int) Handles.MH_vmaFindMemoryTypeIndex.invokeExact(Handles.get().PFN_vmaFindMemoryTypeIndex, allocator, memoryTypeBits, pAllocationCreateInfo, pMemoryTypeIndex); }
+        return (int) Handles.MH_vmaFindMemoryTypeIndex.get().invokeExact(Handles.get().PFN_vmaFindMemoryTypeIndex, allocator, memoryTypeBits, pAllocationCreateInfo, pMemoryTypeIndex); }
         catch (Throwable e) { throw new RuntimeException("error in vmaFindMemoryTypeIndex", e); }
     }
 
@@ -573,7 +582,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaFindMemoryTypeIndexForBufferInfo(@NonNull MemorySegment allocator, @NonNull MemorySegment pBufferCreateInfo, @NonNull MemorySegment pAllocationCreateInfo, @NonNull MemorySegment pMemoryTypeIndex) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaFindMemoryTypeIndexForBufferInfo", allocator, pBufferCreateInfo, pAllocationCreateInfo, pMemoryTypeIndex); }
-        return (int) Handles.MH_vmaFindMemoryTypeIndexForBufferInfo.invokeExact(Handles.get().PFN_vmaFindMemoryTypeIndexForBufferInfo, allocator, pBufferCreateInfo, pAllocationCreateInfo, pMemoryTypeIndex); }
+        return (int) Handles.MH_vmaFindMemoryTypeIndexForBufferInfo.get().invokeExact(Handles.get().PFN_vmaFindMemoryTypeIndexForBufferInfo, allocator, pBufferCreateInfo, pAllocationCreateInfo, pMemoryTypeIndex); }
         catch (Throwable e) { throw new RuntimeException("error in vmaFindMemoryTypeIndexForBufferInfo", e); }
     }
 
@@ -583,7 +592,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaFindMemoryTypeIndexForImageInfo(@NonNull MemorySegment allocator, @NonNull MemorySegment pImageCreateInfo, @NonNull MemorySegment pAllocationCreateInfo, @NonNull MemorySegment pMemoryTypeIndex) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaFindMemoryTypeIndexForImageInfo", allocator, pImageCreateInfo, pAllocationCreateInfo, pMemoryTypeIndex); }
-        return (int) Handles.MH_vmaFindMemoryTypeIndexForImageInfo.invokeExact(Handles.get().PFN_vmaFindMemoryTypeIndexForImageInfo, allocator, pImageCreateInfo, pAllocationCreateInfo, pMemoryTypeIndex); }
+        return (int) Handles.MH_vmaFindMemoryTypeIndexForImageInfo.get().invokeExact(Handles.get().PFN_vmaFindMemoryTypeIndexForImageInfo, allocator, pImageCreateInfo, pAllocationCreateInfo, pMemoryTypeIndex); }
         catch (Throwable e) { throw new RuntimeException("error in vmaFindMemoryTypeIndexForImageInfo", e); }
     }
 
@@ -593,7 +602,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCreatePool(@NonNull MemorySegment allocator, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pPool) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCreatePool", allocator, pCreateInfo, pPool); }
-        return (int) Handles.MH_vmaCreatePool.invokeExact(Handles.get().PFN_vmaCreatePool, allocator, pCreateInfo, pPool); }
+        return (int) Handles.MH_vmaCreatePool.get().invokeExact(Handles.get().PFN_vmaCreatePool, allocator, pCreateInfo, pPool); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCreatePool", e); }
     }
 
@@ -603,7 +612,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaDestroyPool(@NonNull MemorySegment allocator, @NonNull MemorySegment pool) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaDestroyPool", allocator, pool); }
-        Handles.MH_vmaDestroyPool.invokeExact(Handles.get().PFN_vmaDestroyPool, allocator, pool); }
+        Handles.MH_vmaDestroyPool.get().invokeExact(Handles.get().PFN_vmaDestroyPool, allocator, pool); }
         catch (Throwable e) { throw new RuntimeException("error in vmaDestroyPool", e); }
     }
 
@@ -613,7 +622,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetPoolStatistics(@NonNull MemorySegment allocator, @NonNull MemorySegment pool, @NonNull MemorySegment pPoolStats) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetPoolStatistics", allocator, pool, pPoolStats); }
-        Handles.MH_vmaGetPoolStatistics.invokeExact(Handles.get().PFN_vmaGetPoolStatistics, allocator, pool, pPoolStats); }
+        Handles.MH_vmaGetPoolStatistics.get().invokeExact(Handles.get().PFN_vmaGetPoolStatistics, allocator, pool, pPoolStats); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetPoolStatistics", e); }
     }
 
@@ -623,7 +632,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaCalculatePoolStatistics(@NonNull MemorySegment allocator, @NonNull MemorySegment pool, @NonNull MemorySegment pPoolStats) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCalculatePoolStatistics", allocator, pool, pPoolStats); }
-        Handles.MH_vmaCalculatePoolStatistics.invokeExact(Handles.get().PFN_vmaCalculatePoolStatistics, allocator, pool, pPoolStats); }
+        Handles.MH_vmaCalculatePoolStatistics.get().invokeExact(Handles.get().PFN_vmaCalculatePoolStatistics, allocator, pool, pPoolStats); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCalculatePoolStatistics", e); }
     }
 
@@ -633,7 +642,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCheckPoolCorruption(@NonNull MemorySegment allocator, @NonNull MemorySegment pool) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCheckPoolCorruption", allocator, pool); }
-        return (int) Handles.MH_vmaCheckPoolCorruption.invokeExact(Handles.get().PFN_vmaCheckPoolCorruption, allocator, pool); }
+        return (int) Handles.MH_vmaCheckPoolCorruption.get().invokeExact(Handles.get().PFN_vmaCheckPoolCorruption, allocator, pool); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCheckPoolCorruption", e); }
     }
 
@@ -643,7 +652,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetPoolName(@NonNull MemorySegment allocator, @NonNull MemorySegment pool, @NonNull MemorySegment ppName) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetPoolName", allocator, pool, ppName); }
-        Handles.MH_vmaGetPoolName.invokeExact(Handles.get().PFN_vmaGetPoolName, allocator, pool, ppName); }
+        Handles.MH_vmaGetPoolName.get().invokeExact(Handles.get().PFN_vmaGetPoolName, allocator, pool, ppName); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetPoolName", e); }
     }
 
@@ -653,7 +662,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaSetPoolName(@NonNull MemorySegment allocator, @NonNull MemorySegment pool, @NonNull MemorySegment pName) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaSetPoolName", allocator, pool, pName); }
-        Handles.MH_vmaSetPoolName.invokeExact(Handles.get().PFN_vmaSetPoolName, allocator, pool, pName); }
+        Handles.MH_vmaSetPoolName.get().invokeExact(Handles.get().PFN_vmaSetPoolName, allocator, pool, pName); }
         catch (Throwable e) { throw new RuntimeException("error in vmaSetPoolName", e); }
     }
 
@@ -663,7 +672,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaAllocateMemory(@NonNull MemorySegment allocator, @NonNull MemorySegment pVkMemoryRequirements, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocation, @NonNull MemorySegment pAllocationInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaAllocateMemory", allocator, pVkMemoryRequirements, pCreateInfo, pAllocation, pAllocationInfo); }
-        return (int) Handles.MH_vmaAllocateMemory.invokeExact(Handles.get().PFN_vmaAllocateMemory, allocator, pVkMemoryRequirements, pCreateInfo, pAllocation, pAllocationInfo); }
+        return (int) Handles.MH_vmaAllocateMemory.get().invokeExact(Handles.get().PFN_vmaAllocateMemory, allocator, pVkMemoryRequirements, pCreateInfo, pAllocation, pAllocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaAllocateMemory", e); }
     }
 
@@ -673,7 +682,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaAllocateMemoryPages(@NonNull MemorySegment allocator, @NonNull MemorySegment pVkMemoryRequirements, @NonNull MemorySegment pCreateInfo, long allocationCount, @NonNull MemorySegment pAllocations, @NonNull MemorySegment pAllocationInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaAllocateMemoryPages", allocator, pVkMemoryRequirements, pCreateInfo, allocationCount, pAllocations, pAllocationInfo); }
-        return (int) Handles.MH_vmaAllocateMemoryPages.invoke(Handles.get().PFN_vmaAllocateMemoryPages, allocator, pVkMemoryRequirements, pCreateInfo, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, allocationCount), pAllocations, pAllocationInfo); }
+        return (int) Handles.MH_vmaAllocateMemoryPages.get().invoke(Handles.get().PFN_vmaAllocateMemoryPages, allocator, pVkMemoryRequirements, pCreateInfo, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, allocationCount), pAllocations, pAllocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaAllocateMemoryPages", e); }
     }
 
@@ -683,7 +692,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaAllocateMemoryForBuffer(@NonNull MemorySegment allocator, long buffer, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocation, @NonNull MemorySegment pAllocationInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaAllocateMemoryForBuffer", allocator, buffer, pCreateInfo, pAllocation, pAllocationInfo); }
-        return (int) Handles.MH_vmaAllocateMemoryForBuffer.invokeExact(Handles.get().PFN_vmaAllocateMemoryForBuffer, allocator, buffer, pCreateInfo, pAllocation, pAllocationInfo); }
+        return (int) Handles.MH_vmaAllocateMemoryForBuffer.get().invokeExact(Handles.get().PFN_vmaAllocateMemoryForBuffer, allocator, buffer, pCreateInfo, pAllocation, pAllocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaAllocateMemoryForBuffer", e); }
     }
 
@@ -693,7 +702,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaAllocateMemoryForImage(@NonNull MemorySegment allocator, long image, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocation, @NonNull MemorySegment pAllocationInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaAllocateMemoryForImage", allocator, image, pCreateInfo, pAllocation, pAllocationInfo); }
-        return (int) Handles.MH_vmaAllocateMemoryForImage.invokeExact(Handles.get().PFN_vmaAllocateMemoryForImage, allocator, image, pCreateInfo, pAllocation, pAllocationInfo); }
+        return (int) Handles.MH_vmaAllocateMemoryForImage.get().invokeExact(Handles.get().PFN_vmaAllocateMemoryForImage, allocator, image, pCreateInfo, pAllocation, pAllocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaAllocateMemoryForImage", e); }
     }
 
@@ -703,7 +712,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaFreeMemory(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaFreeMemory", allocator, allocation); }
-        Handles.MH_vmaFreeMemory.invokeExact(Handles.get().PFN_vmaFreeMemory, allocator, allocation); }
+        Handles.MH_vmaFreeMemory.get().invokeExact(Handles.get().PFN_vmaFreeMemory, allocator, allocation); }
         catch (Throwable e) { throw new RuntimeException("error in vmaFreeMemory", e); }
     }
 
@@ -713,7 +722,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaFreeMemoryPages(@NonNull MemorySegment allocator, long allocationCount, @NonNull MemorySegment pAllocations) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaFreeMemoryPages", allocator, allocationCount, pAllocations); }
-        Handles.MH_vmaFreeMemoryPages.invoke(Handles.get().PFN_vmaFreeMemoryPages, allocator, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, allocationCount), pAllocations); }
+        Handles.MH_vmaFreeMemoryPages.get().invoke(Handles.get().PFN_vmaFreeMemoryPages, allocator, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, allocationCount), pAllocations); }
         catch (Throwable e) { throw new RuntimeException("error in vmaFreeMemoryPages", e); }
     }
 
@@ -723,7 +732,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetAllocationInfo(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, @NonNull MemorySegment pAllocationInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetAllocationInfo", allocator, allocation, pAllocationInfo); }
-        Handles.MH_vmaGetAllocationInfo.invokeExact(Handles.get().PFN_vmaGetAllocationInfo, allocator, allocation, pAllocationInfo); }
+        Handles.MH_vmaGetAllocationInfo.get().invokeExact(Handles.get().PFN_vmaGetAllocationInfo, allocator, allocation, pAllocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetAllocationInfo", e); }
     }
 
@@ -733,7 +742,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetAllocationInfo2(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, @NonNull MemorySegment pAllocationInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetAllocationInfo2", allocator, allocation, pAllocationInfo); }
-        Handles.MH_vmaGetAllocationInfo2.invokeExact(Handles.get().PFN_vmaGetAllocationInfo2, allocator, allocation, pAllocationInfo); }
+        Handles.MH_vmaGetAllocationInfo2.get().invokeExact(Handles.get().PFN_vmaGetAllocationInfo2, allocator, allocation, pAllocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetAllocationInfo2", e); }
     }
 
@@ -743,7 +752,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaSetAllocationUserData(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, @NonNull MemorySegment pUserData) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaSetAllocationUserData", allocator, allocation, pUserData); }
-        Handles.MH_vmaSetAllocationUserData.invokeExact(Handles.get().PFN_vmaSetAllocationUserData, allocator, allocation, pUserData); }
+        Handles.MH_vmaSetAllocationUserData.get().invokeExact(Handles.get().PFN_vmaSetAllocationUserData, allocator, allocation, pUserData); }
         catch (Throwable e) { throw new RuntimeException("error in vmaSetAllocationUserData", e); }
     }
 
@@ -753,7 +762,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaSetAllocationName(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, @NonNull MemorySegment pName) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaSetAllocationName", allocator, allocation, pName); }
-        Handles.MH_vmaSetAllocationName.invokeExact(Handles.get().PFN_vmaSetAllocationName, allocator, allocation, pName); }
+        Handles.MH_vmaSetAllocationName.get().invokeExact(Handles.get().PFN_vmaSetAllocationName, allocator, allocation, pName); }
         catch (Throwable e) { throw new RuntimeException("error in vmaSetAllocationName", e); }
     }
 
@@ -763,7 +772,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetAllocationMemoryProperties(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, @NonNull MemorySegment pFlags) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetAllocationMemoryProperties", allocator, allocation, pFlags); }
-        Handles.MH_vmaGetAllocationMemoryProperties.invokeExact(Handles.get().PFN_vmaGetAllocationMemoryProperties, allocator, allocation, pFlags); }
+        Handles.MH_vmaGetAllocationMemoryProperties.get().invokeExact(Handles.get().PFN_vmaGetAllocationMemoryProperties, allocator, allocation, pFlags); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetAllocationMemoryProperties", e); }
     }
 
@@ -773,7 +782,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaMapMemory(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, @NonNull MemorySegment ppData) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaMapMemory", allocator, allocation, ppData); }
-        return (int) Handles.MH_vmaMapMemory.invokeExact(Handles.get().PFN_vmaMapMemory, allocator, allocation, ppData); }
+        return (int) Handles.MH_vmaMapMemory.get().invokeExact(Handles.get().PFN_vmaMapMemory, allocator, allocation, ppData); }
         catch (Throwable e) { throw new RuntimeException("error in vmaMapMemory", e); }
     }
 
@@ -783,7 +792,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaUnmapMemory(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaUnmapMemory", allocator, allocation); }
-        Handles.MH_vmaUnmapMemory.invokeExact(Handles.get().PFN_vmaUnmapMemory, allocator, allocation); }
+        Handles.MH_vmaUnmapMemory.get().invokeExact(Handles.get().PFN_vmaUnmapMemory, allocator, allocation); }
         catch (Throwable e) { throw new RuntimeException("error in vmaUnmapMemory", e); }
     }
 
@@ -793,7 +802,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaFlushAllocation(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, long offset, long size) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaFlushAllocation", allocator, allocation, offset, size); }
-        return (int) Handles.MH_vmaFlushAllocation.invokeExact(Handles.get().PFN_vmaFlushAllocation, allocator, allocation, offset, size); }
+        return (int) Handles.MH_vmaFlushAllocation.get().invokeExact(Handles.get().PFN_vmaFlushAllocation, allocator, allocation, offset, size); }
         catch (Throwable e) { throw new RuntimeException("error in vmaFlushAllocation", e); }
     }
 
@@ -803,7 +812,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaInvalidateAllocation(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, long offset, long size) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaInvalidateAllocation", allocator, allocation, offset, size); }
-        return (int) Handles.MH_vmaInvalidateAllocation.invokeExact(Handles.get().PFN_vmaInvalidateAllocation, allocator, allocation, offset, size); }
+        return (int) Handles.MH_vmaInvalidateAllocation.get().invokeExact(Handles.get().PFN_vmaInvalidateAllocation, allocator, allocation, offset, size); }
         catch (Throwable e) { throw new RuntimeException("error in vmaInvalidateAllocation", e); }
     }
 
@@ -813,7 +822,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaFlushAllocations(@NonNull MemorySegment allocator, int allocationCount, @NonNull MemorySegment allocations, @NonNull MemorySegment offsets, @NonNull MemorySegment sizes) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaFlushAllocations", allocator, allocationCount, allocations, offsets, sizes); }
-        return (int) Handles.MH_vmaFlushAllocations.invokeExact(Handles.get().PFN_vmaFlushAllocations, allocator, allocationCount, allocations, offsets, sizes); }
+        return (int) Handles.MH_vmaFlushAllocations.get().invokeExact(Handles.get().PFN_vmaFlushAllocations, allocator, allocationCount, allocations, offsets, sizes); }
         catch (Throwable e) { throw new RuntimeException("error in vmaFlushAllocations", e); }
     }
 
@@ -823,7 +832,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaInvalidateAllocations(@NonNull MemorySegment allocator, int allocationCount, @NonNull MemorySegment allocations, @NonNull MemorySegment offsets, @NonNull MemorySegment sizes) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaInvalidateAllocations", allocator, allocationCount, allocations, offsets, sizes); }
-        return (int) Handles.MH_vmaInvalidateAllocations.invokeExact(Handles.get().PFN_vmaInvalidateAllocations, allocator, allocationCount, allocations, offsets, sizes); }
+        return (int) Handles.MH_vmaInvalidateAllocations.get().invokeExact(Handles.get().PFN_vmaInvalidateAllocations, allocator, allocationCount, allocations, offsets, sizes); }
         catch (Throwable e) { throw new RuntimeException("error in vmaInvalidateAllocations", e); }
     }
 
@@ -833,7 +842,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCopyMemoryToAllocation(@NonNull MemorySegment allocator, @NonNull MemorySegment pSrcHostPointer, @NonNull MemorySegment dstAllocation, long dstAllocationLocalOffset, long size) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCopyMemoryToAllocation", allocator, pSrcHostPointer, dstAllocation, dstAllocationLocalOffset, size); }
-        return (int) Handles.MH_vmaCopyMemoryToAllocation.invokeExact(Handles.get().PFN_vmaCopyMemoryToAllocation, allocator, pSrcHostPointer, dstAllocation, dstAllocationLocalOffset, size); }
+        return (int) Handles.MH_vmaCopyMemoryToAllocation.get().invokeExact(Handles.get().PFN_vmaCopyMemoryToAllocation, allocator, pSrcHostPointer, dstAllocation, dstAllocationLocalOffset, size); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCopyMemoryToAllocation", e); }
     }
 
@@ -843,7 +852,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCopyAllocationToMemory(@NonNull MemorySegment allocator, @NonNull MemorySegment srcAllocation, long srcAllocationLocalOffset, @NonNull MemorySegment pDstHostPointer, long size) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCopyAllocationToMemory", allocator, srcAllocation, srcAllocationLocalOffset, pDstHostPointer, size); }
-        return (int) Handles.MH_vmaCopyAllocationToMemory.invokeExact(Handles.get().PFN_vmaCopyAllocationToMemory, allocator, srcAllocation, srcAllocationLocalOffset, pDstHostPointer, size); }
+        return (int) Handles.MH_vmaCopyAllocationToMemory.get().invokeExact(Handles.get().PFN_vmaCopyAllocationToMemory, allocator, srcAllocation, srcAllocationLocalOffset, pDstHostPointer, size); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCopyAllocationToMemory", e); }
     }
 
@@ -853,7 +862,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCheckCorruption(@NonNull MemorySegment allocator, int memoryTypeBits) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCheckCorruption", allocator, memoryTypeBits); }
-        return (int) Handles.MH_vmaCheckCorruption.invokeExact(Handles.get().PFN_vmaCheckCorruption, allocator, memoryTypeBits); }
+        return (int) Handles.MH_vmaCheckCorruption.get().invokeExact(Handles.get().PFN_vmaCheckCorruption, allocator, memoryTypeBits); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCheckCorruption", e); }
     }
 
@@ -863,7 +872,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaBeginDefragmentation(@NonNull MemorySegment allocator, @NonNull MemorySegment pInfo, @NonNull MemorySegment pContext) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaBeginDefragmentation", allocator, pInfo, pContext); }
-        return (int) Handles.MH_vmaBeginDefragmentation.invokeExact(Handles.get().PFN_vmaBeginDefragmentation, allocator, pInfo, pContext); }
+        return (int) Handles.MH_vmaBeginDefragmentation.get().invokeExact(Handles.get().PFN_vmaBeginDefragmentation, allocator, pInfo, pContext); }
         catch (Throwable e) { throw new RuntimeException("error in vmaBeginDefragmentation", e); }
     }
 
@@ -873,7 +882,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaEndDefragmentation(@NonNull MemorySegment allocator, @NonNull MemorySegment context, @NonNull MemorySegment pStats) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaEndDefragmentation", allocator, context, pStats); }
-        Handles.MH_vmaEndDefragmentation.invokeExact(Handles.get().PFN_vmaEndDefragmentation, allocator, context, pStats); }
+        Handles.MH_vmaEndDefragmentation.get().invokeExact(Handles.get().PFN_vmaEndDefragmentation, allocator, context, pStats); }
         catch (Throwable e) { throw new RuntimeException("error in vmaEndDefragmentation", e); }
     }
 
@@ -883,7 +892,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaBeginDefragmentationPass(@NonNull MemorySegment allocator, @NonNull MemorySegment context, @NonNull MemorySegment pPassInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaBeginDefragmentationPass", allocator, context, pPassInfo); }
-        return (int) Handles.MH_vmaBeginDefragmentationPass.invokeExact(Handles.get().PFN_vmaBeginDefragmentationPass, allocator, context, pPassInfo); }
+        return (int) Handles.MH_vmaBeginDefragmentationPass.get().invokeExact(Handles.get().PFN_vmaBeginDefragmentationPass, allocator, context, pPassInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaBeginDefragmentationPass", e); }
     }
 
@@ -893,7 +902,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaEndDefragmentationPass(@NonNull MemorySegment allocator, @NonNull MemorySegment context, @NonNull MemorySegment pPassInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaEndDefragmentationPass", allocator, context, pPassInfo); }
-        return (int) Handles.MH_vmaEndDefragmentationPass.invokeExact(Handles.get().PFN_vmaEndDefragmentationPass, allocator, context, pPassInfo); }
+        return (int) Handles.MH_vmaEndDefragmentationPass.get().invokeExact(Handles.get().PFN_vmaEndDefragmentationPass, allocator, context, pPassInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaEndDefragmentationPass", e); }
     }
 
@@ -903,7 +912,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaBindBufferMemory(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, long buffer) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaBindBufferMemory", allocator, allocation, buffer); }
-        return (int) Handles.MH_vmaBindBufferMemory.invokeExact(Handles.get().PFN_vmaBindBufferMemory, allocator, allocation, buffer); }
+        return (int) Handles.MH_vmaBindBufferMemory.get().invokeExact(Handles.get().PFN_vmaBindBufferMemory, allocator, allocation, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in vmaBindBufferMemory", e); }
     }
 
@@ -913,7 +922,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaBindBufferMemory2(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, long allocationLocalOffset, long buffer, @NonNull MemorySegment pNext) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaBindBufferMemory2", allocator, allocation, allocationLocalOffset, buffer, pNext); }
-        return (int) Handles.MH_vmaBindBufferMemory2.invokeExact(Handles.get().PFN_vmaBindBufferMemory2, allocator, allocation, allocationLocalOffset, buffer, pNext); }
+        return (int) Handles.MH_vmaBindBufferMemory2.get().invokeExact(Handles.get().PFN_vmaBindBufferMemory2, allocator, allocation, allocationLocalOffset, buffer, pNext); }
         catch (Throwable e) { throw new RuntimeException("error in vmaBindBufferMemory2", e); }
     }
 
@@ -923,7 +932,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaBindImageMemory(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, long image) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaBindImageMemory", allocator, allocation, image); }
-        return (int) Handles.MH_vmaBindImageMemory.invokeExact(Handles.get().PFN_vmaBindImageMemory, allocator, allocation, image); }
+        return (int) Handles.MH_vmaBindImageMemory.get().invokeExact(Handles.get().PFN_vmaBindImageMemory, allocator, allocation, image); }
         catch (Throwable e) { throw new RuntimeException("error in vmaBindImageMemory", e); }
     }
 
@@ -933,7 +942,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaBindImageMemory2(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, long allocationLocalOffset, long image, @NonNull MemorySegment pNext) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaBindImageMemory2", allocator, allocation, allocationLocalOffset, image, pNext); }
-        return (int) Handles.MH_vmaBindImageMemory2.invokeExact(Handles.get().PFN_vmaBindImageMemory2, allocator, allocation, allocationLocalOffset, image, pNext); }
+        return (int) Handles.MH_vmaBindImageMemory2.get().invokeExact(Handles.get().PFN_vmaBindImageMemory2, allocator, allocation, allocationLocalOffset, image, pNext); }
         catch (Throwable e) { throw new RuntimeException("error in vmaBindImageMemory2", e); }
     }
 
@@ -943,7 +952,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCreateBuffer(@NonNull MemorySegment allocator, @NonNull MemorySegment pBufferCreateInfo, @NonNull MemorySegment pAllocationCreateInfo, @NonNull MemorySegment pBuffer, @NonNull MemorySegment pAllocation, @NonNull MemorySegment pAllocationInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCreateBuffer", allocator, pBufferCreateInfo, pAllocationCreateInfo, pBuffer, pAllocation, pAllocationInfo); }
-        return (int) Handles.MH_vmaCreateBuffer.invokeExact(Handles.get().PFN_vmaCreateBuffer, allocator, pBufferCreateInfo, pAllocationCreateInfo, pBuffer, pAllocation, pAllocationInfo); }
+        return (int) Handles.MH_vmaCreateBuffer.get().invokeExact(Handles.get().PFN_vmaCreateBuffer, allocator, pBufferCreateInfo, pAllocationCreateInfo, pBuffer, pAllocation, pAllocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCreateBuffer", e); }
     }
 
@@ -953,7 +962,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCreateBufferWithAlignment(@NonNull MemorySegment allocator, @NonNull MemorySegment pBufferCreateInfo, @NonNull MemorySegment pAllocationCreateInfo, long minAlignment, @NonNull MemorySegment pBuffer, @NonNull MemorySegment pAllocation, @NonNull MemorySegment pAllocationInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCreateBufferWithAlignment", allocator, pBufferCreateInfo, pAllocationCreateInfo, minAlignment, pBuffer, pAllocation, pAllocationInfo); }
-        return (int) Handles.MH_vmaCreateBufferWithAlignment.invokeExact(Handles.get().PFN_vmaCreateBufferWithAlignment, allocator, pBufferCreateInfo, pAllocationCreateInfo, minAlignment, pBuffer, pAllocation, pAllocationInfo); }
+        return (int) Handles.MH_vmaCreateBufferWithAlignment.get().invokeExact(Handles.get().PFN_vmaCreateBufferWithAlignment, allocator, pBufferCreateInfo, pAllocationCreateInfo, minAlignment, pBuffer, pAllocation, pAllocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCreateBufferWithAlignment", e); }
     }
 
@@ -963,7 +972,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCreateAliasingBuffer(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, @NonNull MemorySegment pBufferCreateInfo, @NonNull MemorySegment pBuffer) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCreateAliasingBuffer", allocator, allocation, pBufferCreateInfo, pBuffer); }
-        return (int) Handles.MH_vmaCreateAliasingBuffer.invokeExact(Handles.get().PFN_vmaCreateAliasingBuffer, allocator, allocation, pBufferCreateInfo, pBuffer); }
+        return (int) Handles.MH_vmaCreateAliasingBuffer.get().invokeExact(Handles.get().PFN_vmaCreateAliasingBuffer, allocator, allocation, pBufferCreateInfo, pBuffer); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCreateAliasingBuffer", e); }
     }
 
@@ -973,7 +982,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCreateAliasingBuffer2(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, long allocationLocalOffset, @NonNull MemorySegment pBufferCreateInfo, @NonNull MemorySegment pBuffer) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCreateAliasingBuffer2", allocator, allocation, allocationLocalOffset, pBufferCreateInfo, pBuffer); }
-        return (int) Handles.MH_vmaCreateAliasingBuffer2.invokeExact(Handles.get().PFN_vmaCreateAliasingBuffer2, allocator, allocation, allocationLocalOffset, pBufferCreateInfo, pBuffer); }
+        return (int) Handles.MH_vmaCreateAliasingBuffer2.get().invokeExact(Handles.get().PFN_vmaCreateAliasingBuffer2, allocator, allocation, allocationLocalOffset, pBufferCreateInfo, pBuffer); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCreateAliasingBuffer2", e); }
     }
 
@@ -983,7 +992,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaDestroyBuffer(@NonNull MemorySegment allocator, long buffer, @NonNull MemorySegment allocation) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaDestroyBuffer", allocator, buffer, allocation); }
-        Handles.MH_vmaDestroyBuffer.invokeExact(Handles.get().PFN_vmaDestroyBuffer, allocator, buffer, allocation); }
+        Handles.MH_vmaDestroyBuffer.get().invokeExact(Handles.get().PFN_vmaDestroyBuffer, allocator, buffer, allocation); }
         catch (Throwable e) { throw new RuntimeException("error in vmaDestroyBuffer", e); }
     }
 
@@ -993,7 +1002,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCreateImage(@NonNull MemorySegment allocator, @NonNull MemorySegment pImageCreateInfo, @NonNull MemorySegment pAllocationCreateInfo, @NonNull MemorySegment pImage, @NonNull MemorySegment pAllocation, @NonNull MemorySegment pAllocationInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCreateImage", allocator, pImageCreateInfo, pAllocationCreateInfo, pImage, pAllocation, pAllocationInfo); }
-        return (int) Handles.MH_vmaCreateImage.invokeExact(Handles.get().PFN_vmaCreateImage, allocator, pImageCreateInfo, pAllocationCreateInfo, pImage, pAllocation, pAllocationInfo); }
+        return (int) Handles.MH_vmaCreateImage.get().invokeExact(Handles.get().PFN_vmaCreateImage, allocator, pImageCreateInfo, pAllocationCreateInfo, pImage, pAllocation, pAllocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCreateImage", e); }
     }
 
@@ -1003,7 +1012,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCreateAliasingImage(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, @NonNull MemorySegment pImageCreateInfo, @NonNull MemorySegment pImage) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCreateAliasingImage", allocator, allocation, pImageCreateInfo, pImage); }
-        return (int) Handles.MH_vmaCreateAliasingImage.invokeExact(Handles.get().PFN_vmaCreateAliasingImage, allocator, allocation, pImageCreateInfo, pImage); }
+        return (int) Handles.MH_vmaCreateAliasingImage.get().invokeExact(Handles.get().PFN_vmaCreateAliasingImage, allocator, allocation, pImageCreateInfo, pImage); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCreateAliasingImage", e); }
     }
 
@@ -1013,7 +1022,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCreateAliasingImage2(@NonNull MemorySegment allocator, @NonNull MemorySegment allocation, long allocationLocalOffset, @NonNull MemorySegment pImageCreateInfo, @NonNull MemorySegment pImage) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCreateAliasingImage2", allocator, allocation, allocationLocalOffset, pImageCreateInfo, pImage); }
-        return (int) Handles.MH_vmaCreateAliasingImage2.invokeExact(Handles.get().PFN_vmaCreateAliasingImage2, allocator, allocation, allocationLocalOffset, pImageCreateInfo, pImage); }
+        return (int) Handles.MH_vmaCreateAliasingImage2.get().invokeExact(Handles.get().PFN_vmaCreateAliasingImage2, allocator, allocation, allocationLocalOffset, pImageCreateInfo, pImage); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCreateAliasingImage2", e); }
     }
 
@@ -1023,7 +1032,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaDestroyImage(@NonNull MemorySegment allocator, long image, @NonNull MemorySegment allocation) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaDestroyImage", allocator, image, allocation); }
-        Handles.MH_vmaDestroyImage.invokeExact(Handles.get().PFN_vmaDestroyImage, allocator, image, allocation); }
+        Handles.MH_vmaDestroyImage.get().invokeExact(Handles.get().PFN_vmaDestroyImage, allocator, image, allocation); }
         catch (Throwable e) { throw new RuntimeException("error in vmaDestroyImage", e); }
     }
 
@@ -1033,7 +1042,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaCreateVirtualBlock(@NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pVirtualBlock) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCreateVirtualBlock", pCreateInfo, pVirtualBlock); }
-        return (int) Handles.MH_vmaCreateVirtualBlock.invokeExact(Handles.get().PFN_vmaCreateVirtualBlock, pCreateInfo, pVirtualBlock); }
+        return (int) Handles.MH_vmaCreateVirtualBlock.get().invokeExact(Handles.get().PFN_vmaCreateVirtualBlock, pCreateInfo, pVirtualBlock); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCreateVirtualBlock", e); }
     }
 
@@ -1043,7 +1052,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaDestroyVirtualBlock(@NonNull MemorySegment virtualBlock) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaDestroyVirtualBlock", virtualBlock); }
-        Handles.MH_vmaDestroyVirtualBlock.invokeExact(Handles.get().PFN_vmaDestroyVirtualBlock, virtualBlock); }
+        Handles.MH_vmaDestroyVirtualBlock.get().invokeExact(Handles.get().PFN_vmaDestroyVirtualBlock, virtualBlock); }
         catch (Throwable e) { throw new RuntimeException("error in vmaDestroyVirtualBlock", e); }
     }
 
@@ -1053,7 +1062,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaIsVirtualBlockEmpty(@NonNull MemorySegment virtualBlock) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaIsVirtualBlockEmpty", virtualBlock); }
-        return (int) Handles.MH_vmaIsVirtualBlockEmpty.invokeExact(Handles.get().PFN_vmaIsVirtualBlockEmpty, virtualBlock); }
+        return (int) Handles.MH_vmaIsVirtualBlockEmpty.get().invokeExact(Handles.get().PFN_vmaIsVirtualBlockEmpty, virtualBlock); }
         catch (Throwable e) { throw new RuntimeException("error in vmaIsVirtualBlockEmpty", e); }
     }
 
@@ -1063,7 +1072,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetVirtualAllocationInfo(@NonNull MemorySegment virtualBlock, @NonNull MemorySegment allocation, @NonNull MemorySegment pVirtualAllocInfo) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetVirtualAllocationInfo", virtualBlock, allocation, pVirtualAllocInfo); }
-        Handles.MH_vmaGetVirtualAllocationInfo.invokeExact(Handles.get().PFN_vmaGetVirtualAllocationInfo, virtualBlock, allocation, pVirtualAllocInfo); }
+        Handles.MH_vmaGetVirtualAllocationInfo.get().invokeExact(Handles.get().PFN_vmaGetVirtualAllocationInfo, virtualBlock, allocation, pVirtualAllocInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetVirtualAllocationInfo", e); }
     }
 
@@ -1073,7 +1082,7 @@ public final class VkMemAlloc {
     /// ```
     public static int vmaVirtualAllocate(@NonNull MemorySegment virtualBlock, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocation, @NonNull MemorySegment pOffset) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaVirtualAllocate", virtualBlock, pCreateInfo, pAllocation, pOffset); }
-        return (int) Handles.MH_vmaVirtualAllocate.invokeExact(Handles.get().PFN_vmaVirtualAllocate, virtualBlock, pCreateInfo, pAllocation, pOffset); }
+        return (int) Handles.MH_vmaVirtualAllocate.get().invokeExact(Handles.get().PFN_vmaVirtualAllocate, virtualBlock, pCreateInfo, pAllocation, pOffset); }
         catch (Throwable e) { throw new RuntimeException("error in vmaVirtualAllocate", e); }
     }
 
@@ -1083,7 +1092,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaVirtualFree(@NonNull MemorySegment virtualBlock, @NonNull MemorySegment allocation) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaVirtualFree", virtualBlock, allocation); }
-        Handles.MH_vmaVirtualFree.invokeExact(Handles.get().PFN_vmaVirtualFree, virtualBlock, allocation); }
+        Handles.MH_vmaVirtualFree.get().invokeExact(Handles.get().PFN_vmaVirtualFree, virtualBlock, allocation); }
         catch (Throwable e) { throw new RuntimeException("error in vmaVirtualFree", e); }
     }
 
@@ -1093,7 +1102,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaClearVirtualBlock(@NonNull MemorySegment virtualBlock) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaClearVirtualBlock", virtualBlock); }
-        Handles.MH_vmaClearVirtualBlock.invokeExact(Handles.get().PFN_vmaClearVirtualBlock, virtualBlock); }
+        Handles.MH_vmaClearVirtualBlock.get().invokeExact(Handles.get().PFN_vmaClearVirtualBlock, virtualBlock); }
         catch (Throwable e) { throw new RuntimeException("error in vmaClearVirtualBlock", e); }
     }
 
@@ -1103,7 +1112,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaSetVirtualAllocationUserData(@NonNull MemorySegment virtualBlock, @NonNull MemorySegment allocation, @NonNull MemorySegment pUserData) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaSetVirtualAllocationUserData", virtualBlock, allocation, pUserData); }
-        Handles.MH_vmaSetVirtualAllocationUserData.invokeExact(Handles.get().PFN_vmaSetVirtualAllocationUserData, virtualBlock, allocation, pUserData); }
+        Handles.MH_vmaSetVirtualAllocationUserData.get().invokeExact(Handles.get().PFN_vmaSetVirtualAllocationUserData, virtualBlock, allocation, pUserData); }
         catch (Throwable e) { throw new RuntimeException("error in vmaSetVirtualAllocationUserData", e); }
     }
 
@@ -1113,7 +1122,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaGetVirtualBlockStatistics(@NonNull MemorySegment virtualBlock, @NonNull MemorySegment pStats) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaGetVirtualBlockStatistics", virtualBlock, pStats); }
-        Handles.MH_vmaGetVirtualBlockStatistics.invokeExact(Handles.get().PFN_vmaGetVirtualBlockStatistics, virtualBlock, pStats); }
+        Handles.MH_vmaGetVirtualBlockStatistics.get().invokeExact(Handles.get().PFN_vmaGetVirtualBlockStatistics, virtualBlock, pStats); }
         catch (Throwable e) { throw new RuntimeException("error in vmaGetVirtualBlockStatistics", e); }
     }
 
@@ -1123,7 +1132,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaCalculateVirtualBlockStatistics(@NonNull MemorySegment virtualBlock, @NonNull MemorySegment pStats) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaCalculateVirtualBlockStatistics", virtualBlock, pStats); }
-        Handles.MH_vmaCalculateVirtualBlockStatistics.invokeExact(Handles.get().PFN_vmaCalculateVirtualBlockStatistics, virtualBlock, pStats); }
+        Handles.MH_vmaCalculateVirtualBlockStatistics.get().invokeExact(Handles.get().PFN_vmaCalculateVirtualBlockStatistics, virtualBlock, pStats); }
         catch (Throwable e) { throw new RuntimeException("error in vmaCalculateVirtualBlockStatistics", e); }
     }
 
@@ -1133,7 +1142,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaBuildVirtualBlockStatsString(@NonNull MemorySegment virtualBlock, @NonNull MemorySegment ppStatsString, int detailedMap) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaBuildVirtualBlockStatsString", virtualBlock, ppStatsString, detailedMap); }
-        Handles.MH_vmaBuildVirtualBlockStatsString.invokeExact(Handles.get().PFN_vmaBuildVirtualBlockStatsString, virtualBlock, ppStatsString, detailedMap); }
+        Handles.MH_vmaBuildVirtualBlockStatsString.get().invokeExact(Handles.get().PFN_vmaBuildVirtualBlockStatsString, virtualBlock, ppStatsString, detailedMap); }
         catch (Throwable e) { throw new RuntimeException("error in vmaBuildVirtualBlockStatsString", e); }
     }
 
@@ -1143,7 +1152,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaFreeVirtualBlockStatsString(@NonNull MemorySegment virtualBlock, @NonNull MemorySegment pStatsString) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaFreeVirtualBlockStatsString", virtualBlock, pStatsString); }
-        Handles.MH_vmaFreeVirtualBlockStatsString.invokeExact(Handles.get().PFN_vmaFreeVirtualBlockStatsString, virtualBlock, pStatsString); }
+        Handles.MH_vmaFreeVirtualBlockStatsString.get().invokeExact(Handles.get().PFN_vmaFreeVirtualBlockStatsString, virtualBlock, pStatsString); }
         catch (Throwable e) { throw new RuntimeException("error in vmaFreeVirtualBlockStatsString", e); }
     }
 
@@ -1153,7 +1162,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaBuildStatsString(@NonNull MemorySegment allocator, @NonNull MemorySegment ppStatsString, int detailedMap) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaBuildStatsString", allocator, ppStatsString, detailedMap); }
-        Handles.MH_vmaBuildStatsString.invokeExact(Handles.get().PFN_vmaBuildStatsString, allocator, ppStatsString, detailedMap); }
+        Handles.MH_vmaBuildStatsString.get().invokeExact(Handles.get().PFN_vmaBuildStatsString, allocator, ppStatsString, detailedMap); }
         catch (Throwable e) { throw new RuntimeException("error in vmaBuildStatsString", e); }
     }
 
@@ -1163,7 +1172,7 @@ public final class VkMemAlloc {
     /// ```
     public static void vmaFreeStatsString(@NonNull MemorySegment allocator, @NonNull MemorySegment pStatsString) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("vmaFreeStatsString", allocator, pStatsString); }
-        Handles.MH_vmaFreeStatsString.invokeExact(Handles.get().PFN_vmaFreeStatsString, allocator, pStatsString); }
+        Handles.MH_vmaFreeStatsString.get().invokeExact(Handles.get().PFN_vmaFreeStatsString, allocator, pStatsString); }
         catch (Throwable e) { throw new RuntimeException("error in vmaFreeStatsString", e); }
     }
 

@@ -2,6 +2,7 @@
 package overrungl.opengl.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -41,18 +42,18 @@ public final class GLNVTransformFeedback {
     public static final int GL_SKIP_COMPONENTS1_NV = -6;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBeginTransformFeedbackNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glEndTransformFeedbackNV = downcallHandle(FunctionDescriptor.ofVoid());
-        public static final MethodHandle MH_glTransformFeedbackAttribsNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBindBufferRangeNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glBindBufferOffsetNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glBindBufferBaseNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTransformFeedbackVaryingsNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glActiveVaryingNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetVaryingLocationNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetActiveVaryingNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTransformFeedbackVaryingNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTransformFeedbackStreamAttribsNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glBeginTransformFeedbackNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glEndTransformFeedbackNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
+        public static final Supplier<MethodHandle> MH_glTransformFeedbackAttribsNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBindBufferRangeNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glBindBufferOffsetNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glBindBufferBaseNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTransformFeedbackVaryingsNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glActiveVaryingNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetVaryingLocationNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetActiveVaryingNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTransformFeedbackVaryingNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTransformFeedbackStreamAttribsNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glBeginTransformFeedbackNV;
         public final MemorySegment PFN_glEndTransformFeedbackNV;
         public final MemorySegment PFN_glTransformFeedbackAttribsNV;
@@ -91,7 +92,7 @@ public final class GLNVTransformFeedback {
     public void BeginTransformFeedbackNV(int primitiveMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginTransformFeedbackNV)) throw new GLSymbolNotFoundError("Symbol not found: glBeginTransformFeedbackNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBeginTransformFeedbackNV", primitiveMode); }
-        Handles.MH_glBeginTransformFeedbackNV.invokeExact(handles.PFN_glBeginTransformFeedbackNV, primitiveMode); }
+        Handles.MH_glBeginTransformFeedbackNV.get().invokeExact(handles.PFN_glBeginTransformFeedbackNV, primitiveMode); }
         catch (Throwable e) { throw new RuntimeException("error in BeginTransformFeedbackNV", e); }
     }
 
@@ -102,7 +103,7 @@ public final class GLNVTransformFeedback {
     public void EndTransformFeedbackNV() {
         if (MemoryUtil.isNullPointer(handles.PFN_glEndTransformFeedbackNV)) throw new GLSymbolNotFoundError("Symbol not found: glEndTransformFeedbackNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEndTransformFeedbackNV"); }
-        Handles.MH_glEndTransformFeedbackNV.invokeExact(handles.PFN_glEndTransformFeedbackNV); }
+        Handles.MH_glEndTransformFeedbackNV.get().invokeExact(handles.PFN_glEndTransformFeedbackNV); }
         catch (Throwable e) { throw new RuntimeException("error in EndTransformFeedbackNV", e); }
     }
 
@@ -113,7 +114,7 @@ public final class GLNVTransformFeedback {
     public void TransformFeedbackAttribsNV(int count, @NonNull MemorySegment attribs, int bufferMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackAttribsNV)) throw new GLSymbolNotFoundError("Symbol not found: glTransformFeedbackAttribsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTransformFeedbackAttribsNV", count, attribs, bufferMode); }
-        Handles.MH_glTransformFeedbackAttribsNV.invokeExact(handles.PFN_glTransformFeedbackAttribsNV, count, attribs, bufferMode); }
+        Handles.MH_glTransformFeedbackAttribsNV.get().invokeExact(handles.PFN_glTransformFeedbackAttribsNV, count, attribs, bufferMode); }
         catch (Throwable e) { throw new RuntimeException("error in TransformFeedbackAttribsNV", e); }
     }
 
@@ -124,7 +125,7 @@ public final class GLNVTransformFeedback {
     public void BindBufferRangeNV(int target, int index, int buffer, long offset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferRangeNV)) throw new GLSymbolNotFoundError("Symbol not found: glBindBufferRangeNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindBufferRangeNV", target, index, buffer, offset, size); }
-        Handles.MH_glBindBufferRangeNV.invokeExact(handles.PFN_glBindBufferRangeNV, target, index, buffer, offset, size); }
+        Handles.MH_glBindBufferRangeNV.get().invokeExact(handles.PFN_glBindBufferRangeNV, target, index, buffer, offset, size); }
         catch (Throwable e) { throw new RuntimeException("error in BindBufferRangeNV", e); }
     }
 
@@ -135,7 +136,7 @@ public final class GLNVTransformFeedback {
     public void BindBufferOffsetNV(int target, int index, int buffer, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferOffsetNV)) throw new GLSymbolNotFoundError("Symbol not found: glBindBufferOffsetNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindBufferOffsetNV", target, index, buffer, offset); }
-        Handles.MH_glBindBufferOffsetNV.invokeExact(handles.PFN_glBindBufferOffsetNV, target, index, buffer, offset); }
+        Handles.MH_glBindBufferOffsetNV.get().invokeExact(handles.PFN_glBindBufferOffsetNV, target, index, buffer, offset); }
         catch (Throwable e) { throw new RuntimeException("error in BindBufferOffsetNV", e); }
     }
 
@@ -146,7 +147,7 @@ public final class GLNVTransformFeedback {
     public void BindBufferBaseNV(int target, int index, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferBaseNV)) throw new GLSymbolNotFoundError("Symbol not found: glBindBufferBaseNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindBufferBaseNV", target, index, buffer); }
-        Handles.MH_glBindBufferBaseNV.invokeExact(handles.PFN_glBindBufferBaseNV, target, index, buffer); }
+        Handles.MH_glBindBufferBaseNV.get().invokeExact(handles.PFN_glBindBufferBaseNV, target, index, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in BindBufferBaseNV", e); }
     }
 
@@ -157,7 +158,7 @@ public final class GLNVTransformFeedback {
     public void TransformFeedbackVaryingsNV(int program, int count, @NonNull MemorySegment locations, int bufferMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackVaryingsNV)) throw new GLSymbolNotFoundError("Symbol not found: glTransformFeedbackVaryingsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTransformFeedbackVaryingsNV", program, count, locations, bufferMode); }
-        Handles.MH_glTransformFeedbackVaryingsNV.invokeExact(handles.PFN_glTransformFeedbackVaryingsNV, program, count, locations, bufferMode); }
+        Handles.MH_glTransformFeedbackVaryingsNV.get().invokeExact(handles.PFN_glTransformFeedbackVaryingsNV, program, count, locations, bufferMode); }
         catch (Throwable e) { throw new RuntimeException("error in TransformFeedbackVaryingsNV", e); }
     }
 
@@ -168,7 +169,7 @@ public final class GLNVTransformFeedback {
     public void ActiveVaryingNV(int program, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glActiveVaryingNV)) throw new GLSymbolNotFoundError("Symbol not found: glActiveVaryingNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glActiveVaryingNV", program, name); }
-        Handles.MH_glActiveVaryingNV.invokeExact(handles.PFN_glActiveVaryingNV, program, name); }
+        Handles.MH_glActiveVaryingNV.get().invokeExact(handles.PFN_glActiveVaryingNV, program, name); }
         catch (Throwable e) { throw new RuntimeException("error in ActiveVaryingNV", e); }
     }
 
@@ -179,7 +180,7 @@ public final class GLNVTransformFeedback {
     public int GetVaryingLocationNV(int program, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVaryingLocationNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetVaryingLocationNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVaryingLocationNV", program, name); }
-        return (int) Handles.MH_glGetVaryingLocationNV.invokeExact(handles.PFN_glGetVaryingLocationNV, program, name); }
+        return (int) Handles.MH_glGetVaryingLocationNV.get().invokeExact(handles.PFN_glGetVaryingLocationNV, program, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetVaryingLocationNV", e); }
     }
 
@@ -190,7 +191,7 @@ public final class GLNVTransformFeedback {
     public void GetActiveVaryingNV(int program, int index, int bufSize, @NonNull MemorySegment length, @NonNull MemorySegment size, @NonNull MemorySegment type, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveVaryingNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetActiveVaryingNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetActiveVaryingNV", program, index, bufSize, length, size, type, name); }
-        Handles.MH_glGetActiveVaryingNV.invokeExact(handles.PFN_glGetActiveVaryingNV, program, index, bufSize, length, size, type, name); }
+        Handles.MH_glGetActiveVaryingNV.get().invokeExact(handles.PFN_glGetActiveVaryingNV, program, index, bufSize, length, size, type, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetActiveVaryingNV", e); }
     }
 
@@ -201,7 +202,7 @@ public final class GLNVTransformFeedback {
     public void GetTransformFeedbackVaryingNV(int program, int index, @NonNull MemorySegment location) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTransformFeedbackVaryingNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetTransformFeedbackVaryingNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTransformFeedbackVaryingNV", program, index, location); }
-        Handles.MH_glGetTransformFeedbackVaryingNV.invokeExact(handles.PFN_glGetTransformFeedbackVaryingNV, program, index, location); }
+        Handles.MH_glGetTransformFeedbackVaryingNV.get().invokeExact(handles.PFN_glGetTransformFeedbackVaryingNV, program, index, location); }
         catch (Throwable e) { throw new RuntimeException("error in GetTransformFeedbackVaryingNV", e); }
     }
 
@@ -212,7 +213,7 @@ public final class GLNVTransformFeedback {
     public void TransformFeedbackStreamAttribsNV(int count, @NonNull MemorySegment attribs, int nbuffers, @NonNull MemorySegment bufstreams, int bufferMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackStreamAttribsNV)) throw new GLSymbolNotFoundError("Symbol not found: glTransformFeedbackStreamAttribsNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTransformFeedbackStreamAttribsNV", count, attribs, nbuffers, bufstreams, bufferMode); }
-        Handles.MH_glTransformFeedbackStreamAttribsNV.invokeExact(handles.PFN_glTransformFeedbackStreamAttribsNV, count, attribs, nbuffers, bufstreams, bufferMode); }
+        Handles.MH_glTransformFeedbackStreamAttribsNV.get().invokeExact(handles.PFN_glTransformFeedbackStreamAttribsNV, count, attribs, nbuffers, bufstreams, bufferMode); }
         catch (Throwable e) { throw new RuntimeException("error in TransformFeedbackStreamAttribsNV", e); }
     }
 

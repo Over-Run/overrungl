@@ -31,19 +31,19 @@ public final class VkSpecializationMapEntry extends GroupType {
     /// The memory layout of `constantID`.
     public static final MemoryLayout LAYOUT_constantID = LAYOUT.select(PathElement.groupElement("constantID"));
     /// The [VarHandle] of `constantID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_constantID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("constantID"));
+    public static final Supplier<VarHandle> VH_constantID = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("constantID")));
     /// The byte offset of `offset`.
     public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
     /// The memory layout of `offset`.
     public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
     /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
+    public static final Supplier<VarHandle> VH_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset")));
     /// The byte offset of `size`.
     public static final long OFFSET_size = LAYOUT.byteOffset(PathElement.groupElement("size"));
     /// The memory layout of `size`.
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final Supplier<VarHandle> VH_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("size")));
 
     /// Creates `VkSpecializationMapEntry` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkSpecializationMapEntry extends GroupType {
     /// {@return `constantID` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int constantID(MemorySegment segment, long index) { return (int) VH_constantID.get(segment, 0L, index); }
+    public static int constantID(MemorySegment segment, long index) { return (int) VH_constantID.get().get(segment, 0L, index); }
     /// {@return `constantID`}
     public int constantID() { return constantID(this.segment(), 0L); }
     /// Sets `constantID` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void constantID(MemorySegment segment, long index, int value) { VH_constantID.set(segment, 0L, index, value); }
+    public static void constantID(MemorySegment segment, long index, int value) { VH_constantID.get().set(segment, 0L, index, value); }
     /// Sets `constantID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkSpecializationMapEntry extends GroupType {
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int offset(MemorySegment segment, long index) { return (int) VH_offset.get(segment, 0L, index); }
+    public static int offset(MemorySegment segment, long index) { return (int) VH_offset.get().get(segment, 0L, index); }
     /// {@return `offset`}
     public int offset() { return offset(this.segment(), 0L); }
     /// Sets `offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void offset(MemorySegment segment, long index, int value) { VH_offset.set(segment, 0L, index, value); }
+    public static void offset(MemorySegment segment, long index, int value) { VH_offset.get().set(segment, 0L, index, value); }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkSpecializationMapEntry extends GroupType {
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long size(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_size.get(segment, 0L, index)); }
+    public static long size(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_size.get().get(segment, 0L, index)); }
     /// {@return `size`}
     public long size() { return size(this.segment(), 0L); }
     /// Sets `size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void size(MemorySegment segment, long index, long value) { VH_size.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void size(MemorySegment segment, long index, long value) { VH_size.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`

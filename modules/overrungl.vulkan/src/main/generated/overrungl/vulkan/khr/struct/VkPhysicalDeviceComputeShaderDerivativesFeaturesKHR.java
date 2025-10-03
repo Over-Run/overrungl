@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR extends G
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `computeDerivativeGroupQuads`.
     public static final long OFFSET_computeDerivativeGroupQuads = LAYOUT.byteOffset(PathElement.groupElement("computeDerivativeGroupQuads"));
     /// The memory layout of `computeDerivativeGroupQuads`.
     public static final MemoryLayout LAYOUT_computeDerivativeGroupQuads = LAYOUT.select(PathElement.groupElement("computeDerivativeGroupQuads"));
     /// The [VarHandle] of `computeDerivativeGroupQuads` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_computeDerivativeGroupQuads = LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeDerivativeGroupQuads"));
+    public static final Supplier<VarHandle> VH_computeDerivativeGroupQuads = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeDerivativeGroupQuads")));
     /// The byte offset of `computeDerivativeGroupLinear`.
     public static final long OFFSET_computeDerivativeGroupLinear = LAYOUT.byteOffset(PathElement.groupElement("computeDerivativeGroupLinear"));
     /// The memory layout of `computeDerivativeGroupLinear`.
     public static final MemoryLayout LAYOUT_computeDerivativeGroupLinear = LAYOUT.select(PathElement.groupElement("computeDerivativeGroupLinear"));
     /// The [VarHandle] of `computeDerivativeGroupLinear` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_computeDerivativeGroupLinear = LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeDerivativeGroupLinear"));
+    public static final Supplier<VarHandle> VH_computeDerivativeGroupLinear = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeDerivativeGroupLinear")));
 
     /// Creates `VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR extends G
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR extends G
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR extends G
     /// {@return `computeDerivativeGroupQuads` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int computeDerivativeGroupQuads(MemorySegment segment, long index) { return (int) VH_computeDerivativeGroupQuads.get(segment, 0L, index); }
+    public static int computeDerivativeGroupQuads(MemorySegment segment, long index) { return (int) VH_computeDerivativeGroupQuads.get().get(segment, 0L, index); }
     /// {@return `computeDerivativeGroupQuads`}
     public int computeDerivativeGroupQuads() { return computeDerivativeGroupQuads(this.segment(), 0L); }
     /// Sets `computeDerivativeGroupQuads` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void computeDerivativeGroupQuads(MemorySegment segment, long index, int value) { VH_computeDerivativeGroupQuads.set(segment, 0L, index, value); }
+    public static void computeDerivativeGroupQuads(MemorySegment segment, long index, int value) { VH_computeDerivativeGroupQuads.get().set(segment, 0L, index, value); }
     /// Sets `computeDerivativeGroupQuads` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR extends G
     /// {@return `computeDerivativeGroupLinear` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int computeDerivativeGroupLinear(MemorySegment segment, long index) { return (int) VH_computeDerivativeGroupLinear.get(segment, 0L, index); }
+    public static int computeDerivativeGroupLinear(MemorySegment segment, long index) { return (int) VH_computeDerivativeGroupLinear.get().get(segment, 0L, index); }
     /// {@return `computeDerivativeGroupLinear`}
     public int computeDerivativeGroupLinear() { return computeDerivativeGroupLinear(this.segment(), 0L); }
     /// Sets `computeDerivativeGroupLinear` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void computeDerivativeGroupLinear(MemorySegment segment, long index, int value) { VH_computeDerivativeGroupLinear.set(segment, 0L, index, value); }
+    public static void computeDerivativeGroupLinear(MemorySegment segment, long index, int value) { VH_computeDerivativeGroupLinear.get().set(segment, 0L, index, value); }
     /// Sets `computeDerivativeGroupLinear` with the given value.
     /// @param value the value
     /// @return `this`

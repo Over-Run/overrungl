@@ -37,37 +37,37 @@ public final class VkAabbPositionsKHR extends GroupType {
     /// The memory layout of `minX`.
     public static final MemoryLayout LAYOUT_minX = LAYOUT.select(PathElement.groupElement("minX"));
     /// The [VarHandle] of `minX` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minX = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minX"));
+    public static final Supplier<VarHandle> VH_minX = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minX")));
     /// The byte offset of `minY`.
     public static final long OFFSET_minY = LAYOUT.byteOffset(PathElement.groupElement("minY"));
     /// The memory layout of `minY`.
     public static final MemoryLayout LAYOUT_minY = LAYOUT.select(PathElement.groupElement("minY"));
     /// The [VarHandle] of `minY` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minY = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minY"));
+    public static final Supplier<VarHandle> VH_minY = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minY")));
     /// The byte offset of `minZ`.
     public static final long OFFSET_minZ = LAYOUT.byteOffset(PathElement.groupElement("minZ"));
     /// The memory layout of `minZ`.
     public static final MemoryLayout LAYOUT_minZ = LAYOUT.select(PathElement.groupElement("minZ"));
     /// The [VarHandle] of `minZ` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minZ = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minZ"));
+    public static final Supplier<VarHandle> VH_minZ = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minZ")));
     /// The byte offset of `maxX`.
     public static final long OFFSET_maxX = LAYOUT.byteOffset(PathElement.groupElement("maxX"));
     /// The memory layout of `maxX`.
     public static final MemoryLayout LAYOUT_maxX = LAYOUT.select(PathElement.groupElement("maxX"));
     /// The [VarHandle] of `maxX` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxX = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxX"));
+    public static final Supplier<VarHandle> VH_maxX = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxX")));
     /// The byte offset of `maxY`.
     public static final long OFFSET_maxY = LAYOUT.byteOffset(PathElement.groupElement("maxY"));
     /// The memory layout of `maxY`.
     public static final MemoryLayout LAYOUT_maxY = LAYOUT.select(PathElement.groupElement("maxY"));
     /// The [VarHandle] of `maxY` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxY = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxY"));
+    public static final Supplier<VarHandle> VH_maxY = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxY")));
     /// The byte offset of `maxZ`.
     public static final long OFFSET_maxZ = LAYOUT.byteOffset(PathElement.groupElement("maxZ"));
     /// The memory layout of `maxZ`.
     public static final MemoryLayout LAYOUT_maxZ = LAYOUT.select(PathElement.groupElement("maxZ"));
     /// The [VarHandle] of `maxZ` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxZ = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxZ"));
+    public static final Supplier<VarHandle> VH_maxZ = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxZ")));
 
     /// Creates `VkAabbPositionsKHR` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkAabbPositionsKHR extends GroupType {
     /// {@return `minX` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float minX(MemorySegment segment, long index) { return (float) VH_minX.get(segment, 0L, index); }
+    public static float minX(MemorySegment segment, long index) { return (float) VH_minX.get().get(segment, 0L, index); }
     /// {@return `minX`}
     public float minX() { return minX(this.segment(), 0L); }
     /// Sets `minX` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minX(MemorySegment segment, long index, float value) { VH_minX.set(segment, 0L, index, value); }
+    public static void minX(MemorySegment segment, long index, float value) { VH_minX.get().set(segment, 0L, index, value); }
     /// Sets `minX` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkAabbPositionsKHR extends GroupType {
     /// {@return `minY` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float minY(MemorySegment segment, long index) { return (float) VH_minY.get(segment, 0L, index); }
+    public static float minY(MemorySegment segment, long index) { return (float) VH_minY.get().get(segment, 0L, index); }
     /// {@return `minY`}
     public float minY() { return minY(this.segment(), 0L); }
     /// Sets `minY` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minY(MemorySegment segment, long index, float value) { VH_minY.set(segment, 0L, index, value); }
+    public static void minY(MemorySegment segment, long index, float value) { VH_minY.get().set(segment, 0L, index, value); }
     /// Sets `minY` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkAabbPositionsKHR extends GroupType {
     /// {@return `minZ` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float minZ(MemorySegment segment, long index) { return (float) VH_minZ.get(segment, 0L, index); }
+    public static float minZ(MemorySegment segment, long index) { return (float) VH_minZ.get().get(segment, 0L, index); }
     /// {@return `minZ`}
     public float minZ() { return minZ(this.segment(), 0L); }
     /// Sets `minZ` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minZ(MemorySegment segment, long index, float value) { VH_minZ.set(segment, 0L, index, value); }
+    public static void minZ(MemorySegment segment, long index, float value) { VH_minZ.get().set(segment, 0L, index, value); }
     /// Sets `minZ` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkAabbPositionsKHR extends GroupType {
     /// {@return `maxX` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float maxX(MemorySegment segment, long index) { return (float) VH_maxX.get(segment, 0L, index); }
+    public static float maxX(MemorySegment segment, long index) { return (float) VH_maxX.get().get(segment, 0L, index); }
     /// {@return `maxX`}
     public float maxX() { return maxX(this.segment(), 0L); }
     /// Sets `maxX` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxX(MemorySegment segment, long index, float value) { VH_maxX.set(segment, 0L, index, value); }
+    public static void maxX(MemorySegment segment, long index, float value) { VH_maxX.get().set(segment, 0L, index, value); }
     /// Sets `maxX` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkAabbPositionsKHR extends GroupType {
     /// {@return `maxY` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float maxY(MemorySegment segment, long index) { return (float) VH_maxY.get(segment, 0L, index); }
+    public static float maxY(MemorySegment segment, long index) { return (float) VH_maxY.get().get(segment, 0L, index); }
     /// {@return `maxY`}
     public float maxY() { return maxY(this.segment(), 0L); }
     /// Sets `maxY` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxY(MemorySegment segment, long index, float value) { VH_maxY.set(segment, 0L, index, value); }
+    public static void maxY(MemorySegment segment, long index, float value) { VH_maxY.get().set(segment, 0L, index, value); }
     /// Sets `maxY` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkAabbPositionsKHR extends GroupType {
     /// {@return `maxZ` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float maxZ(MemorySegment segment, long index) { return (float) VH_maxZ.get(segment, 0L, index); }
+    public static float maxZ(MemorySegment segment, long index) { return (float) VH_maxZ.get().get(segment, 0L, index); }
     /// {@return `maxZ`}
     public float maxZ() { return maxZ(this.segment(), 0L); }
     /// Sets `maxZ` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxZ(MemorySegment segment, long index, float value) { VH_maxZ.set(segment, 0L, index, value); }
+    public static void maxZ(MemorySegment segment, long index, float value) { VH_maxZ.get().set(segment, 0L, index, value); }
     /// Sets `maxZ` with the given value.
     /// @param value the value
     /// @return `this`

@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceShaderTileImagePropertiesEXT extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderTileImageCoherentReadAccelerated`.
     public static final long OFFSET_shaderTileImageCoherentReadAccelerated = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageCoherentReadAccelerated"));
     /// The memory layout of `shaderTileImageCoherentReadAccelerated`.
     public static final MemoryLayout LAYOUT_shaderTileImageCoherentReadAccelerated = LAYOUT.select(PathElement.groupElement("shaderTileImageCoherentReadAccelerated"));
     /// The [VarHandle] of `shaderTileImageCoherentReadAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderTileImageCoherentReadAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageCoherentReadAccelerated"));
+    public static final Supplier<VarHandle> VH_shaderTileImageCoherentReadAccelerated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageCoherentReadAccelerated")));
     /// The byte offset of `shaderTileImageReadSampleFromPixelRateInvocation`.
     public static final long OFFSET_shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageReadSampleFromPixelRateInvocation"));
     /// The memory layout of `shaderTileImageReadSampleFromPixelRateInvocation`.
     public static final MemoryLayout LAYOUT_shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT.select(PathElement.groupElement("shaderTileImageReadSampleFromPixelRateInvocation"));
     /// The [VarHandle] of `shaderTileImageReadSampleFromPixelRateInvocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageReadSampleFromPixelRateInvocation"));
+    public static final Supplier<VarHandle> VH_shaderTileImageReadSampleFromPixelRateInvocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageReadSampleFromPixelRateInvocation")));
     /// The byte offset of `shaderTileImageReadFromHelperInvocation`.
     public static final long OFFSET_shaderTileImageReadFromHelperInvocation = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageReadFromHelperInvocation"));
     /// The memory layout of `shaderTileImageReadFromHelperInvocation`.
     public static final MemoryLayout LAYOUT_shaderTileImageReadFromHelperInvocation = LAYOUT.select(PathElement.groupElement("shaderTileImageReadFromHelperInvocation"));
     /// The [VarHandle] of `shaderTileImageReadFromHelperInvocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderTileImageReadFromHelperInvocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageReadFromHelperInvocation"));
+    public static final Supplier<VarHandle> VH_shaderTileImageReadFromHelperInvocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageReadFromHelperInvocation")));
 
     /// Creates `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceShaderTileImagePropertiesEXT extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceShaderTileImagePropertiesEXT extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceShaderTileImagePropertiesEXT extends GroupTyp
     /// {@return `shaderTileImageCoherentReadAccelerated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderTileImageCoherentReadAccelerated(MemorySegment segment, long index) { return (int) VH_shaderTileImageCoherentReadAccelerated.get(segment, 0L, index); }
+    public static int shaderTileImageCoherentReadAccelerated(MemorySegment segment, long index) { return (int) VH_shaderTileImageCoherentReadAccelerated.get().get(segment, 0L, index); }
     /// {@return `shaderTileImageCoherentReadAccelerated`}
     public int shaderTileImageCoherentReadAccelerated() { return shaderTileImageCoherentReadAccelerated(this.segment(), 0L); }
     /// Sets `shaderTileImageCoherentReadAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderTileImageCoherentReadAccelerated(MemorySegment segment, long index, int value) { VH_shaderTileImageCoherentReadAccelerated.set(segment, 0L, index, value); }
+    public static void shaderTileImageCoherentReadAccelerated(MemorySegment segment, long index, int value) { VH_shaderTileImageCoherentReadAccelerated.get().set(segment, 0L, index, value); }
     /// Sets `shaderTileImageCoherentReadAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceShaderTileImagePropertiesEXT extends GroupTyp
     /// {@return `shaderTileImageReadSampleFromPixelRateInvocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderTileImageReadSampleFromPixelRateInvocation(MemorySegment segment, long index) { return (int) VH_shaderTileImageReadSampleFromPixelRateInvocation.get(segment, 0L, index); }
+    public static int shaderTileImageReadSampleFromPixelRateInvocation(MemorySegment segment, long index) { return (int) VH_shaderTileImageReadSampleFromPixelRateInvocation.get().get(segment, 0L, index); }
     /// {@return `shaderTileImageReadSampleFromPixelRateInvocation`}
     public int shaderTileImageReadSampleFromPixelRateInvocation() { return shaderTileImageReadSampleFromPixelRateInvocation(this.segment(), 0L); }
     /// Sets `shaderTileImageReadSampleFromPixelRateInvocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderTileImageReadSampleFromPixelRateInvocation(MemorySegment segment, long index, int value) { VH_shaderTileImageReadSampleFromPixelRateInvocation.set(segment, 0L, index, value); }
+    public static void shaderTileImageReadSampleFromPixelRateInvocation(MemorySegment segment, long index, int value) { VH_shaderTileImageReadSampleFromPixelRateInvocation.get().set(segment, 0L, index, value); }
     /// Sets `shaderTileImageReadSampleFromPixelRateInvocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceShaderTileImagePropertiesEXT extends GroupTyp
     /// {@return `shaderTileImageReadFromHelperInvocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderTileImageReadFromHelperInvocation(MemorySegment segment, long index) { return (int) VH_shaderTileImageReadFromHelperInvocation.get(segment, 0L, index); }
+    public static int shaderTileImageReadFromHelperInvocation(MemorySegment segment, long index) { return (int) VH_shaderTileImageReadFromHelperInvocation.get().get(segment, 0L, index); }
     /// {@return `shaderTileImageReadFromHelperInvocation`}
     public int shaderTileImageReadFromHelperInvocation() { return shaderTileImageReadFromHelperInvocation(this.segment(), 0L); }
     /// Sets `shaderTileImageReadFromHelperInvocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderTileImageReadFromHelperInvocation(MemorySegment segment, long index, int value) { VH_shaderTileImageReadFromHelperInvocation.set(segment, 0L, index, value); }
+    public static void shaderTileImageReadFromHelperInvocation(MemorySegment segment, long index, int value) { VH_shaderTileImageReadFromHelperInvocation.get().set(segment, 0L, index, value); }
     /// Sets `shaderTileImageReadFromHelperInvocation` with the given value.
     /// @param value the value
     /// @return `this`

@@ -37,19 +37,19 @@ public final class StdVideoAV1TimingInfo extends GroupType {
     /// The memory layout of `num_units_in_display_tick`.
     public static final MemoryLayout LAYOUT_num_units_in_display_tick = LAYOUT.select(PathElement.groupElement("num_units_in_display_tick"));
     /// The [VarHandle] of `num_units_in_display_tick` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_num_units_in_display_tick = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_units_in_display_tick"));
+    public static final Supplier<VarHandle> VH_num_units_in_display_tick = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_units_in_display_tick")));
     /// The byte offset of `time_scale`.
     public static final long OFFSET_time_scale = LAYOUT.byteOffset(PathElement.groupElement("time_scale"));
     /// The memory layout of `time_scale`.
     public static final MemoryLayout LAYOUT_time_scale = LAYOUT.select(PathElement.groupElement("time_scale"));
     /// The [VarHandle] of `time_scale` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_time_scale = LAYOUT.arrayElementVarHandle(PathElement.groupElement("time_scale"));
+    public static final Supplier<VarHandle> VH_time_scale = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("time_scale")));
     /// The byte offset of `num_ticks_per_picture_minus_1`.
     public static final long OFFSET_num_ticks_per_picture_minus_1 = LAYOUT.byteOffset(PathElement.groupElement("num_ticks_per_picture_minus_1"));
     /// The memory layout of `num_ticks_per_picture_minus_1`.
     public static final MemoryLayout LAYOUT_num_ticks_per_picture_minus_1 = LAYOUT.select(PathElement.groupElement("num_ticks_per_picture_minus_1"));
     /// The [VarHandle] of `num_ticks_per_picture_minus_1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_num_ticks_per_picture_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_ticks_per_picture_minus_1"));
+    public static final Supplier<VarHandle> VH_num_ticks_per_picture_minus_1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_ticks_per_picture_minus_1")));
 
     /// Creates `StdVideoAV1TimingInfo` with the given segment.
     /// @param segment      the memory segment
@@ -120,14 +120,14 @@ public final class StdVideoAV1TimingInfo extends GroupType {
     /// {@return `num_units_in_display_tick` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int num_units_in_display_tick(MemorySegment segment, long index) { return (int) VH_num_units_in_display_tick.get(segment, 0L, index); }
+    public static int num_units_in_display_tick(MemorySegment segment, long index) { return (int) VH_num_units_in_display_tick.get().get(segment, 0L, index); }
     /// {@return `num_units_in_display_tick`}
     public int num_units_in_display_tick() { return num_units_in_display_tick(this.segment(), 0L); }
     /// Sets `num_units_in_display_tick` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void num_units_in_display_tick(MemorySegment segment, long index, int value) { VH_num_units_in_display_tick.set(segment, 0L, index, value); }
+    public static void num_units_in_display_tick(MemorySegment segment, long index, int value) { VH_num_units_in_display_tick.get().set(segment, 0L, index, value); }
     /// Sets `num_units_in_display_tick` with the given value.
     /// @param value the value
     /// @return `this`
@@ -136,14 +136,14 @@ public final class StdVideoAV1TimingInfo extends GroupType {
     /// {@return `time_scale` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int time_scale(MemorySegment segment, long index) { return (int) VH_time_scale.get(segment, 0L, index); }
+    public static int time_scale(MemorySegment segment, long index) { return (int) VH_time_scale.get().get(segment, 0L, index); }
     /// {@return `time_scale`}
     public int time_scale() { return time_scale(this.segment(), 0L); }
     /// Sets `time_scale` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void time_scale(MemorySegment segment, long index, int value) { VH_time_scale.set(segment, 0L, index, value); }
+    public static void time_scale(MemorySegment segment, long index, int value) { VH_time_scale.get().set(segment, 0L, index, value); }
     /// Sets `time_scale` with the given value.
     /// @param value the value
     /// @return `this`
@@ -152,14 +152,14 @@ public final class StdVideoAV1TimingInfo extends GroupType {
     /// {@return `num_ticks_per_picture_minus_1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int num_ticks_per_picture_minus_1(MemorySegment segment, long index) { return (int) VH_num_ticks_per_picture_minus_1.get(segment, 0L, index); }
+    public static int num_ticks_per_picture_minus_1(MemorySegment segment, long index) { return (int) VH_num_ticks_per_picture_minus_1.get().get(segment, 0L, index); }
     /// {@return `num_ticks_per_picture_minus_1`}
     public int num_ticks_per_picture_minus_1() { return num_ticks_per_picture_minus_1(this.segment(), 0L); }
     /// Sets `num_ticks_per_picture_minus_1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void num_ticks_per_picture_minus_1(MemorySegment segment, long index, int value) { VH_num_ticks_per_picture_minus_1.set(segment, 0L, index, value); }
+    public static void num_ticks_per_picture_minus_1(MemorySegment segment, long index, int value) { VH_num_ticks_per_picture_minus_1.get().set(segment, 0L, index, value); }
     /// Sets `num_ticks_per_picture_minus_1` with the given value.
     /// @param value the value
     /// @return `this`

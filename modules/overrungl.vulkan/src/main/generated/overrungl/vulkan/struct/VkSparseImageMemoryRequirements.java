@@ -39,25 +39,25 @@ public final class VkSparseImageMemoryRequirements extends GroupType {
     /// The memory layout of `imageMipTailFirstLod`.
     public static final MemoryLayout LAYOUT_imageMipTailFirstLod = LAYOUT.select(PathElement.groupElement("imageMipTailFirstLod"));
     /// The [VarHandle] of `imageMipTailFirstLod` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageMipTailFirstLod = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageMipTailFirstLod"));
+    public static final Supplier<VarHandle> VH_imageMipTailFirstLod = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageMipTailFirstLod")));
     /// The byte offset of `imageMipTailSize`.
     public static final long OFFSET_imageMipTailSize = LAYOUT.byteOffset(PathElement.groupElement("imageMipTailSize"));
     /// The memory layout of `imageMipTailSize`.
     public static final MemoryLayout LAYOUT_imageMipTailSize = LAYOUT.select(PathElement.groupElement("imageMipTailSize"));
     /// The [VarHandle] of `imageMipTailSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageMipTailSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageMipTailSize"));
+    public static final Supplier<VarHandle> VH_imageMipTailSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageMipTailSize")));
     /// The byte offset of `imageMipTailOffset`.
     public static final long OFFSET_imageMipTailOffset = LAYOUT.byteOffset(PathElement.groupElement("imageMipTailOffset"));
     /// The memory layout of `imageMipTailOffset`.
     public static final MemoryLayout LAYOUT_imageMipTailOffset = LAYOUT.select(PathElement.groupElement("imageMipTailOffset"));
     /// The [VarHandle] of `imageMipTailOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageMipTailOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageMipTailOffset"));
+    public static final Supplier<VarHandle> VH_imageMipTailOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageMipTailOffset")));
     /// The byte offset of `imageMipTailStride`.
     public static final long OFFSET_imageMipTailStride = LAYOUT.byteOffset(PathElement.groupElement("imageMipTailStride"));
     /// The memory layout of `imageMipTailStride`.
     public static final MemoryLayout LAYOUT_imageMipTailStride = LAYOUT.select(PathElement.groupElement("imageMipTailStride"));
     /// The [VarHandle] of `imageMipTailStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageMipTailStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageMipTailStride"));
+    public static final Supplier<VarHandle> VH_imageMipTailStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageMipTailStride")));
 
     /// Creates `VkSparseImageMemoryRequirements` with the given segment.
     /// @param segment      the memory segment
@@ -128,14 +128,14 @@ public final class VkSparseImageMemoryRequirements extends GroupType {
     /// {@return `imageMipTailFirstLod` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageMipTailFirstLod(MemorySegment segment, long index) { return (int) VH_imageMipTailFirstLod.get(segment, 0L, index); }
+    public static int imageMipTailFirstLod(MemorySegment segment, long index) { return (int) VH_imageMipTailFirstLod.get().get(segment, 0L, index); }
     /// {@return `imageMipTailFirstLod`}
     public int imageMipTailFirstLod() { return imageMipTailFirstLod(this.segment(), 0L); }
     /// Sets `imageMipTailFirstLod` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageMipTailFirstLod(MemorySegment segment, long index, int value) { VH_imageMipTailFirstLod.set(segment, 0L, index, value); }
+    public static void imageMipTailFirstLod(MemorySegment segment, long index, int value) { VH_imageMipTailFirstLod.get().set(segment, 0L, index, value); }
     /// Sets `imageMipTailFirstLod` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,14 +144,14 @@ public final class VkSparseImageMemoryRequirements extends GroupType {
     /// {@return `imageMipTailSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long imageMipTailSize(MemorySegment segment, long index) { return (long) VH_imageMipTailSize.get(segment, 0L, index); }
+    public static long imageMipTailSize(MemorySegment segment, long index) { return (long) VH_imageMipTailSize.get().get(segment, 0L, index); }
     /// {@return `imageMipTailSize`}
     public long imageMipTailSize() { return imageMipTailSize(this.segment(), 0L); }
     /// Sets `imageMipTailSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageMipTailSize(MemorySegment segment, long index, long value) { VH_imageMipTailSize.set(segment, 0L, index, value); }
+    public static void imageMipTailSize(MemorySegment segment, long index, long value) { VH_imageMipTailSize.get().set(segment, 0L, index, value); }
     /// Sets `imageMipTailSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -160,14 +160,14 @@ public final class VkSparseImageMemoryRequirements extends GroupType {
     /// {@return `imageMipTailOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long imageMipTailOffset(MemorySegment segment, long index) { return (long) VH_imageMipTailOffset.get(segment, 0L, index); }
+    public static long imageMipTailOffset(MemorySegment segment, long index) { return (long) VH_imageMipTailOffset.get().get(segment, 0L, index); }
     /// {@return `imageMipTailOffset`}
     public long imageMipTailOffset() { return imageMipTailOffset(this.segment(), 0L); }
     /// Sets `imageMipTailOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageMipTailOffset(MemorySegment segment, long index, long value) { VH_imageMipTailOffset.set(segment, 0L, index, value); }
+    public static void imageMipTailOffset(MemorySegment segment, long index, long value) { VH_imageMipTailOffset.get().set(segment, 0L, index, value); }
     /// Sets `imageMipTailOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,14 +176,14 @@ public final class VkSparseImageMemoryRequirements extends GroupType {
     /// {@return `imageMipTailStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long imageMipTailStride(MemorySegment segment, long index) { return (long) VH_imageMipTailStride.get(segment, 0L, index); }
+    public static long imageMipTailStride(MemorySegment segment, long index) { return (long) VH_imageMipTailStride.get().get(segment, 0L, index); }
     /// {@return `imageMipTailStride`}
     public long imageMipTailStride() { return imageMipTailStride(this.segment(), 0L); }
     /// Sets `imageMipTailStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageMipTailStride(MemorySegment segment, long index, long value) { VH_imageMipTailStride.set(segment, 0L, index, value); }
+    public static void imageMipTailStride(MemorySegment segment, long index, long value) { VH_imageMipTailStride.get().set(segment, 0L, index, value); }
     /// Sets `imageMipTailStride` with the given value.
     /// @param value the value
     /// @return `this`

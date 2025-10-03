@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -32,10 +33,10 @@ public final class GLARBDebugOutput {
     public static final int GL_DEBUG_SEVERITY_LOW_ARB = 0x9148;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDebugMessageControlARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glDebugMessageInsertARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDebugMessageCallbackARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetDebugMessageLogARB = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glDebugMessageControlARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glDebugMessageInsertARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glDebugMessageCallbackARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetDebugMessageLogARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glDebugMessageControlARB;
         public final MemorySegment PFN_glDebugMessageInsertARB;
         public final MemorySegment PFN_glDebugMessageCallbackARB;
@@ -59,7 +60,7 @@ public final class GLARBDebugOutput {
     public void DebugMessageControlARB(int source, int type, int severity, int count, @NonNull MemorySegment ids, boolean enabled) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageControlARB)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageControlARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDebugMessageControlARB", source, type, severity, count, ids, enabled); }
-        Handles.MH_glDebugMessageControlARB.invokeExact(handles.PFN_glDebugMessageControlARB, source, type, severity, count, ids, ((enabled) ? (byte)1 : (byte)0)); }
+        Handles.MH_glDebugMessageControlARB.get().invokeExact(handles.PFN_glDebugMessageControlARB, source, type, severity, count, ids, ((enabled) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageControlARB", e); }
     }
 
@@ -70,7 +71,7 @@ public final class GLARBDebugOutput {
     public void DebugMessageInsertARB(int source, int type, int id, int severity, int length, @NonNull MemorySegment buf) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageInsertARB)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageInsertARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDebugMessageInsertARB", source, type, id, severity, length, buf); }
-        Handles.MH_glDebugMessageInsertARB.invokeExact(handles.PFN_glDebugMessageInsertARB, source, type, id, severity, length, buf); }
+        Handles.MH_glDebugMessageInsertARB.get().invokeExact(handles.PFN_glDebugMessageInsertARB, source, type, id, severity, length, buf); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageInsertARB", e); }
     }
 
@@ -81,7 +82,7 @@ public final class GLARBDebugOutput {
     public void DebugMessageCallbackARB(@NonNull MemorySegment callback, @NonNull MemorySegment userParam) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageCallbackARB)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageCallbackARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDebugMessageCallbackARB", callback, userParam); }
-        Handles.MH_glDebugMessageCallbackARB.invokeExact(handles.PFN_glDebugMessageCallbackARB, callback, userParam); }
+        Handles.MH_glDebugMessageCallbackARB.get().invokeExact(handles.PFN_glDebugMessageCallbackARB, callback, userParam); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageCallbackARB", e); }
     }
 
@@ -92,7 +93,7 @@ public final class GLARBDebugOutput {
     public int GetDebugMessageLogARB(int count, int bufSize, @NonNull MemorySegment sources, @NonNull MemorySegment types, @NonNull MemorySegment ids, @NonNull MemorySegment severities, @NonNull MemorySegment lengths, @NonNull MemorySegment messageLog) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDebugMessageLogARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetDebugMessageLogARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetDebugMessageLogARB", count, bufSize, sources, types, ids, severities, lengths, messageLog); }
-        return (int) Handles.MH_glGetDebugMessageLogARB.invokeExact(handles.PFN_glGetDebugMessageLogARB, count, bufSize, sources, types, ids, severities, lengths, messageLog); }
+        return (int) Handles.MH_glGetDebugMessageLogARB.get().invokeExact(handles.PFN_glGetDebugMessageLogARB, count, bufSize, sources, types, ids, severities, lengths, messageLog); }
         catch (Throwable e) { throw new RuntimeException("error in GetDebugMessageLogARB", e); }
     }
 

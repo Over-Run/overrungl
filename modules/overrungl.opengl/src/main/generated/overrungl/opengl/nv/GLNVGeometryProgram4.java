@@ -2,6 +2,7 @@
 package overrungl.opengl.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -26,10 +27,10 @@ public final class GLNVGeometryProgram4 {
     public static final int GL_PROGRAM_POINT_SIZE_EXT = 0x8642;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glProgramVertexLimitNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferTextureEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferTextureLayerEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferTextureFaceEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glProgramVertexLimitNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFramebufferTextureEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFramebufferTextureLayerEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFramebufferTextureFaceEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glProgramVertexLimitNV;
         public final MemorySegment PFN_glFramebufferTextureEXT;
         public final MemorySegment PFN_glFramebufferTextureLayerEXT;
@@ -53,7 +54,7 @@ public final class GLNVGeometryProgram4 {
     public void ProgramVertexLimitNV(int target, int limit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramVertexLimitNV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramVertexLimitNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramVertexLimitNV", target, limit); }
-        Handles.MH_glProgramVertexLimitNV.invokeExact(handles.PFN_glProgramVertexLimitNV, target, limit); }
+        Handles.MH_glProgramVertexLimitNV.get().invokeExact(handles.PFN_glProgramVertexLimitNV, target, limit); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramVertexLimitNV", e); }
     }
 
@@ -64,7 +65,7 @@ public final class GLNVGeometryProgram4 {
     public void FramebufferTextureEXT(int target, int attachment, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferTextureEXT", target, attachment, texture, level); }
-        Handles.MH_glFramebufferTextureEXT.invokeExact(handles.PFN_glFramebufferTextureEXT, target, attachment, texture, level); }
+        Handles.MH_glFramebufferTextureEXT.get().invokeExact(handles.PFN_glFramebufferTextureEXT, target, attachment, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureEXT", e); }
     }
 
@@ -75,7 +76,7 @@ public final class GLNVGeometryProgram4 {
     public void FramebufferTextureLayerEXT(int target, int attachment, int texture, int level, int layer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureLayerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferTextureLayerEXT", target, attachment, texture, level, layer); }
-        Handles.MH_glFramebufferTextureLayerEXT.invokeExact(handles.PFN_glFramebufferTextureLayerEXT, target, attachment, texture, level, layer); }
+        Handles.MH_glFramebufferTextureLayerEXT.get().invokeExact(handles.PFN_glFramebufferTextureLayerEXT, target, attachment, texture, level, layer); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureLayerEXT", e); }
     }
 
@@ -86,7 +87,7 @@ public final class GLNVGeometryProgram4 {
     public void FramebufferTextureFaceEXT(int target, int attachment, int texture, int level, int face) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureFaceEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureFaceEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferTextureFaceEXT", target, attachment, texture, level, face); }
-        Handles.MH_glFramebufferTextureFaceEXT.invokeExact(handles.PFN_glFramebufferTextureFaceEXT, target, attachment, texture, level, face); }
+        Handles.MH_glFramebufferTextureFaceEXT.get().invokeExact(handles.PFN_glFramebufferTextureFaceEXT, target, attachment, texture, level, face); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureFaceEXT", e); }
     }
 

@@ -59,85 +59,85 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// The memory layout of `slice_type`.
     public static final MemoryLayout LAYOUT_slice_type = LAYOUT.select(PathElement.groupElement("slice_type"));
     /// The [VarHandle] of `slice_type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_type"));
+    public static final Supplier<VarHandle> VH_slice_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_type")));
     /// The byte offset of `slice_segment_address`.
     public static final long OFFSET_slice_segment_address = LAYOUT.byteOffset(PathElement.groupElement("slice_segment_address"));
     /// The memory layout of `slice_segment_address`.
     public static final MemoryLayout LAYOUT_slice_segment_address = LAYOUT.select(PathElement.groupElement("slice_segment_address"));
     /// The [VarHandle] of `slice_segment_address` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_segment_address = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_segment_address"));
+    public static final Supplier<VarHandle> VH_slice_segment_address = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_segment_address")));
     /// The byte offset of `collocated_ref_idx`.
     public static final long OFFSET_collocated_ref_idx = LAYOUT.byteOffset(PathElement.groupElement("collocated_ref_idx"));
     /// The memory layout of `collocated_ref_idx`.
     public static final MemoryLayout LAYOUT_collocated_ref_idx = LAYOUT.select(PathElement.groupElement("collocated_ref_idx"));
     /// The [VarHandle] of `collocated_ref_idx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_collocated_ref_idx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("collocated_ref_idx"));
+    public static final Supplier<VarHandle> VH_collocated_ref_idx = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("collocated_ref_idx")));
     /// The byte offset of `MaxNumMergeCand`.
     public static final long OFFSET_MaxNumMergeCand = LAYOUT.byteOffset(PathElement.groupElement("MaxNumMergeCand"));
     /// The memory layout of `MaxNumMergeCand`.
     public static final MemoryLayout LAYOUT_MaxNumMergeCand = LAYOUT.select(PathElement.groupElement("MaxNumMergeCand"));
     /// The [VarHandle] of `MaxNumMergeCand` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_MaxNumMergeCand = LAYOUT.arrayElementVarHandle(PathElement.groupElement("MaxNumMergeCand"));
+    public static final Supplier<VarHandle> VH_MaxNumMergeCand = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("MaxNumMergeCand")));
     /// The byte offset of `slice_cb_qp_offset`.
     public static final long OFFSET_slice_cb_qp_offset = LAYOUT.byteOffset(PathElement.groupElement("slice_cb_qp_offset"));
     /// The memory layout of `slice_cb_qp_offset`.
     public static final MemoryLayout LAYOUT_slice_cb_qp_offset = LAYOUT.select(PathElement.groupElement("slice_cb_qp_offset"));
     /// The [VarHandle] of `slice_cb_qp_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_cb_qp_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_cb_qp_offset"));
+    public static final Supplier<VarHandle> VH_slice_cb_qp_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_cb_qp_offset")));
     /// The byte offset of `slice_cr_qp_offset`.
     public static final long OFFSET_slice_cr_qp_offset = LAYOUT.byteOffset(PathElement.groupElement("slice_cr_qp_offset"));
     /// The memory layout of `slice_cr_qp_offset`.
     public static final MemoryLayout LAYOUT_slice_cr_qp_offset = LAYOUT.select(PathElement.groupElement("slice_cr_qp_offset"));
     /// The [VarHandle] of `slice_cr_qp_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_cr_qp_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_cr_qp_offset"));
+    public static final Supplier<VarHandle> VH_slice_cr_qp_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_cr_qp_offset")));
     /// The byte offset of `slice_beta_offset_div2`.
     public static final long OFFSET_slice_beta_offset_div2 = LAYOUT.byteOffset(PathElement.groupElement("slice_beta_offset_div2"));
     /// The memory layout of `slice_beta_offset_div2`.
     public static final MemoryLayout LAYOUT_slice_beta_offset_div2 = LAYOUT.select(PathElement.groupElement("slice_beta_offset_div2"));
     /// The [VarHandle] of `slice_beta_offset_div2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_beta_offset_div2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_beta_offset_div2"));
+    public static final Supplier<VarHandle> VH_slice_beta_offset_div2 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_beta_offset_div2")));
     /// The byte offset of `slice_tc_offset_div2`.
     public static final long OFFSET_slice_tc_offset_div2 = LAYOUT.byteOffset(PathElement.groupElement("slice_tc_offset_div2"));
     /// The memory layout of `slice_tc_offset_div2`.
     public static final MemoryLayout LAYOUT_slice_tc_offset_div2 = LAYOUT.select(PathElement.groupElement("slice_tc_offset_div2"));
     /// The [VarHandle] of `slice_tc_offset_div2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_tc_offset_div2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_tc_offset_div2"));
+    public static final Supplier<VarHandle> VH_slice_tc_offset_div2 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_tc_offset_div2")));
     /// The byte offset of `slice_act_y_qp_offset`.
     public static final long OFFSET_slice_act_y_qp_offset = LAYOUT.byteOffset(PathElement.groupElement("slice_act_y_qp_offset"));
     /// The memory layout of `slice_act_y_qp_offset`.
     public static final MemoryLayout LAYOUT_slice_act_y_qp_offset = LAYOUT.select(PathElement.groupElement("slice_act_y_qp_offset"));
     /// The [VarHandle] of `slice_act_y_qp_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_act_y_qp_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_act_y_qp_offset"));
+    public static final Supplier<VarHandle> VH_slice_act_y_qp_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_act_y_qp_offset")));
     /// The byte offset of `slice_act_cb_qp_offset`.
     public static final long OFFSET_slice_act_cb_qp_offset = LAYOUT.byteOffset(PathElement.groupElement("slice_act_cb_qp_offset"));
     /// The memory layout of `slice_act_cb_qp_offset`.
     public static final MemoryLayout LAYOUT_slice_act_cb_qp_offset = LAYOUT.select(PathElement.groupElement("slice_act_cb_qp_offset"));
     /// The [VarHandle] of `slice_act_cb_qp_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_act_cb_qp_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_act_cb_qp_offset"));
+    public static final Supplier<VarHandle> VH_slice_act_cb_qp_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_act_cb_qp_offset")));
     /// The byte offset of `slice_act_cr_qp_offset`.
     public static final long OFFSET_slice_act_cr_qp_offset = LAYOUT.byteOffset(PathElement.groupElement("slice_act_cr_qp_offset"));
     /// The memory layout of `slice_act_cr_qp_offset`.
     public static final MemoryLayout LAYOUT_slice_act_cr_qp_offset = LAYOUT.select(PathElement.groupElement("slice_act_cr_qp_offset"));
     /// The [VarHandle] of `slice_act_cr_qp_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_act_cr_qp_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_act_cr_qp_offset"));
+    public static final Supplier<VarHandle> VH_slice_act_cr_qp_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_act_cr_qp_offset")));
     /// The byte offset of `slice_qp_delta`.
     public static final long OFFSET_slice_qp_delta = LAYOUT.byteOffset(PathElement.groupElement("slice_qp_delta"));
     /// The memory layout of `slice_qp_delta`.
     public static final MemoryLayout LAYOUT_slice_qp_delta = LAYOUT.select(PathElement.groupElement("slice_qp_delta"));
     /// The [VarHandle] of `slice_qp_delta` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_qp_delta = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_qp_delta"));
+    public static final Supplier<VarHandle> VH_slice_qp_delta = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_qp_delta")));
     /// The byte offset of `reserved1`.
     public static final long OFFSET_reserved1 = LAYOUT.byteOffset(PathElement.groupElement("reserved1"));
     /// The memory layout of `reserved1`.
     public static final MemoryLayout LAYOUT_reserved1 = LAYOUT.select(PathElement.groupElement("reserved1"));
     /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"));
+    public static final Supplier<VarHandle> VH_reserved1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1")));
     /// The byte offset of `pWeightTable`.
     public static final long OFFSET_pWeightTable = LAYOUT.byteOffset(PathElement.groupElement("pWeightTable"));
     /// The memory layout of `pWeightTable`.
     public static final MemoryLayout LAYOUT_pWeightTable = LAYOUT.select(PathElement.groupElement("pWeightTable"));
     /// The [VarHandle] of `pWeightTable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pWeightTable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWeightTable"));
+    public static final Supplier<VarHandle> VH_pWeightTable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWeightTable")));
 
     /// Creates `StdVideoEncodeH265SliceSegmentHeader` with the given segment.
     /// @param segment      the memory segment
@@ -208,14 +208,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `slice_type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int slice_type(MemorySegment segment, long index) { return (int) VH_slice_type.get(segment, 0L, index); }
+    public static int slice_type(MemorySegment segment, long index) { return (int) VH_slice_type.get().get(segment, 0L, index); }
     /// {@return `slice_type`}
     public int slice_type() { return slice_type(this.segment(), 0L); }
     /// Sets `slice_type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_type(MemorySegment segment, long index, int value) { VH_slice_type.set(segment, 0L, index, value); }
+    public static void slice_type(MemorySegment segment, long index, int value) { VH_slice_type.get().set(segment, 0L, index, value); }
     /// Sets `slice_type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,14 +224,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `slice_segment_address` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int slice_segment_address(MemorySegment segment, long index) { return (int) VH_slice_segment_address.get(segment, 0L, index); }
+    public static int slice_segment_address(MemorySegment segment, long index) { return (int) VH_slice_segment_address.get().get(segment, 0L, index); }
     /// {@return `slice_segment_address`}
     public int slice_segment_address() { return slice_segment_address(this.segment(), 0L); }
     /// Sets `slice_segment_address` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_segment_address(MemorySegment segment, long index, int value) { VH_slice_segment_address.set(segment, 0L, index, value); }
+    public static void slice_segment_address(MemorySegment segment, long index, int value) { VH_slice_segment_address.get().set(segment, 0L, index, value); }
     /// Sets `slice_segment_address` with the given value.
     /// @param value the value
     /// @return `this`
@@ -240,14 +240,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `collocated_ref_idx` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte collocated_ref_idx(MemorySegment segment, long index) { return (byte) VH_collocated_ref_idx.get(segment, 0L, index); }
+    public static byte collocated_ref_idx(MemorySegment segment, long index) { return (byte) VH_collocated_ref_idx.get().get(segment, 0L, index); }
     /// {@return `collocated_ref_idx`}
     public byte collocated_ref_idx() { return collocated_ref_idx(this.segment(), 0L); }
     /// Sets `collocated_ref_idx` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void collocated_ref_idx(MemorySegment segment, long index, byte value) { VH_collocated_ref_idx.set(segment, 0L, index, value); }
+    public static void collocated_ref_idx(MemorySegment segment, long index, byte value) { VH_collocated_ref_idx.get().set(segment, 0L, index, value); }
     /// Sets `collocated_ref_idx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -256,14 +256,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `MaxNumMergeCand` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte MaxNumMergeCand(MemorySegment segment, long index) { return (byte) VH_MaxNumMergeCand.get(segment, 0L, index); }
+    public static byte MaxNumMergeCand(MemorySegment segment, long index) { return (byte) VH_MaxNumMergeCand.get().get(segment, 0L, index); }
     /// {@return `MaxNumMergeCand`}
     public byte MaxNumMergeCand() { return MaxNumMergeCand(this.segment(), 0L); }
     /// Sets `MaxNumMergeCand` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void MaxNumMergeCand(MemorySegment segment, long index, byte value) { VH_MaxNumMergeCand.set(segment, 0L, index, value); }
+    public static void MaxNumMergeCand(MemorySegment segment, long index, byte value) { VH_MaxNumMergeCand.get().set(segment, 0L, index, value); }
     /// Sets `MaxNumMergeCand` with the given value.
     /// @param value the value
     /// @return `this`
@@ -272,14 +272,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `slice_cb_qp_offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte slice_cb_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_cb_qp_offset.get(segment, 0L, index); }
+    public static byte slice_cb_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_cb_qp_offset.get().get(segment, 0L, index); }
     /// {@return `slice_cb_qp_offset`}
     public byte slice_cb_qp_offset() { return slice_cb_qp_offset(this.segment(), 0L); }
     /// Sets `slice_cb_qp_offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_cb_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_cb_qp_offset.set(segment, 0L, index, value); }
+    public static void slice_cb_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_cb_qp_offset.get().set(segment, 0L, index, value); }
     /// Sets `slice_cb_qp_offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -288,14 +288,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `slice_cr_qp_offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte slice_cr_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_cr_qp_offset.get(segment, 0L, index); }
+    public static byte slice_cr_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_cr_qp_offset.get().get(segment, 0L, index); }
     /// {@return `slice_cr_qp_offset`}
     public byte slice_cr_qp_offset() { return slice_cr_qp_offset(this.segment(), 0L); }
     /// Sets `slice_cr_qp_offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_cr_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_cr_qp_offset.set(segment, 0L, index, value); }
+    public static void slice_cr_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_cr_qp_offset.get().set(segment, 0L, index, value); }
     /// Sets `slice_cr_qp_offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -304,14 +304,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `slice_beta_offset_div2` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte slice_beta_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_beta_offset_div2.get(segment, 0L, index); }
+    public static byte slice_beta_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_beta_offset_div2.get().get(segment, 0L, index); }
     /// {@return `slice_beta_offset_div2`}
     public byte slice_beta_offset_div2() { return slice_beta_offset_div2(this.segment(), 0L); }
     /// Sets `slice_beta_offset_div2` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_beta_offset_div2(MemorySegment segment, long index, byte value) { VH_slice_beta_offset_div2.set(segment, 0L, index, value); }
+    public static void slice_beta_offset_div2(MemorySegment segment, long index, byte value) { VH_slice_beta_offset_div2.get().set(segment, 0L, index, value); }
     /// Sets `slice_beta_offset_div2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -320,14 +320,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `slice_tc_offset_div2` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte slice_tc_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_tc_offset_div2.get(segment, 0L, index); }
+    public static byte slice_tc_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_tc_offset_div2.get().get(segment, 0L, index); }
     /// {@return `slice_tc_offset_div2`}
     public byte slice_tc_offset_div2() { return slice_tc_offset_div2(this.segment(), 0L); }
     /// Sets `slice_tc_offset_div2` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_tc_offset_div2(MemorySegment segment, long index, byte value) { VH_slice_tc_offset_div2.set(segment, 0L, index, value); }
+    public static void slice_tc_offset_div2(MemorySegment segment, long index, byte value) { VH_slice_tc_offset_div2.get().set(segment, 0L, index, value); }
     /// Sets `slice_tc_offset_div2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -336,14 +336,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `slice_act_y_qp_offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte slice_act_y_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_y_qp_offset.get(segment, 0L, index); }
+    public static byte slice_act_y_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_y_qp_offset.get().get(segment, 0L, index); }
     /// {@return `slice_act_y_qp_offset`}
     public byte slice_act_y_qp_offset() { return slice_act_y_qp_offset(this.segment(), 0L); }
     /// Sets `slice_act_y_qp_offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_act_y_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_act_y_qp_offset.set(segment, 0L, index, value); }
+    public static void slice_act_y_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_act_y_qp_offset.get().set(segment, 0L, index, value); }
     /// Sets `slice_act_y_qp_offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -352,14 +352,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `slice_act_cb_qp_offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte slice_act_cb_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_cb_qp_offset.get(segment, 0L, index); }
+    public static byte slice_act_cb_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_cb_qp_offset.get().get(segment, 0L, index); }
     /// {@return `slice_act_cb_qp_offset`}
     public byte slice_act_cb_qp_offset() { return slice_act_cb_qp_offset(this.segment(), 0L); }
     /// Sets `slice_act_cb_qp_offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_act_cb_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_act_cb_qp_offset.set(segment, 0L, index, value); }
+    public static void slice_act_cb_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_act_cb_qp_offset.get().set(segment, 0L, index, value); }
     /// Sets `slice_act_cb_qp_offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -368,14 +368,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `slice_act_cr_qp_offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte slice_act_cr_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_cr_qp_offset.get(segment, 0L, index); }
+    public static byte slice_act_cr_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_cr_qp_offset.get().get(segment, 0L, index); }
     /// {@return `slice_act_cr_qp_offset`}
     public byte slice_act_cr_qp_offset() { return slice_act_cr_qp_offset(this.segment(), 0L); }
     /// Sets `slice_act_cr_qp_offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_act_cr_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_act_cr_qp_offset.set(segment, 0L, index, value); }
+    public static void slice_act_cr_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_act_cr_qp_offset.get().set(segment, 0L, index, value); }
     /// Sets `slice_act_cr_qp_offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -384,14 +384,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `slice_qp_delta` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte slice_qp_delta(MemorySegment segment, long index) { return (byte) VH_slice_qp_delta.get(segment, 0L, index); }
+    public static byte slice_qp_delta(MemorySegment segment, long index) { return (byte) VH_slice_qp_delta.get().get(segment, 0L, index); }
     /// {@return `slice_qp_delta`}
     public byte slice_qp_delta() { return slice_qp_delta(this.segment(), 0L); }
     /// Sets `slice_qp_delta` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_qp_delta(MemorySegment segment, long index, byte value) { VH_slice_qp_delta.set(segment, 0L, index, value); }
+    public static void slice_qp_delta(MemorySegment segment, long index, byte value) { VH_slice_qp_delta.get().set(segment, 0L, index, value); }
     /// Sets `slice_qp_delta` with the given value.
     /// @param value the value
     /// @return `this`
@@ -400,14 +400,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `reserved1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short reserved1(MemorySegment segment, long index) { return (short) VH_reserved1.get(segment, 0L, index); }
+    public static short reserved1(MemorySegment segment, long index) { return (short) VH_reserved1.get().get(segment, 0L, index); }
     /// {@return `reserved1`}
     public short reserved1() { return reserved1(this.segment(), 0L); }
     /// Sets `reserved1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void reserved1(MemorySegment segment, long index, short value) { VH_reserved1.set(segment, 0L, index, value); }
+    public static void reserved1(MemorySegment segment, long index, short value) { VH_reserved1.get().set(segment, 0L, index, value); }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -416,14 +416,14 @@ public final class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// {@return `pWeightTable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pWeightTable(MemorySegment segment, long index) { return (MemorySegment) VH_pWeightTable.get(segment, 0L, index); }
+    public static MemorySegment pWeightTable(MemorySegment segment, long index) { return (MemorySegment) VH_pWeightTable.get().get(segment, 0L, index); }
     /// {@return `pWeightTable`}
     public MemorySegment pWeightTable() { return pWeightTable(this.segment(), 0L); }
     /// Sets `pWeightTable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pWeightTable(MemorySegment segment, long index, MemorySegment value) { VH_pWeightTable.set(segment, 0L, index, value); }
+    public static void pWeightTable(MemorySegment segment, long index, MemorySegment value) { VH_pWeightTable.get().set(segment, 0L, index, value); }
     /// Sets `pWeightTable` with the given value.
     /// @param value the value
     /// @return `this`

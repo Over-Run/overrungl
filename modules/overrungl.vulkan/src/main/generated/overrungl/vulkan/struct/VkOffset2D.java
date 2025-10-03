@@ -29,13 +29,13 @@ public final class VkOffset2D extends GroupType {
     /// The memory layout of `x`.
     public static final MemoryLayout LAYOUT_x = LAYOUT.select(PathElement.groupElement("x"));
     /// The [VarHandle] of `x` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("x"));
+    public static final Supplier<VarHandle> VH_x = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("x")));
     /// The byte offset of `y`.
     public static final long OFFSET_y = LAYOUT.byteOffset(PathElement.groupElement("y"));
     /// The memory layout of `y`.
     public static final MemoryLayout LAYOUT_y = LAYOUT.select(PathElement.groupElement("y"));
     /// The [VarHandle] of `y` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y"));
+    public static final Supplier<VarHandle> VH_y = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("y")));
 
     /// Creates `VkOffset2D` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkOffset2D extends GroupType {
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int x(MemorySegment segment, long index) { return (int) VH_x.get(segment, 0L, index); }
+    public static int x(MemorySegment segment, long index) { return (int) VH_x.get().get(segment, 0L, index); }
     /// {@return `x`}
     public int x() { return x(this.segment(), 0L); }
     /// Sets `x` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void x(MemorySegment segment, long index, int value) { VH_x.set(segment, 0L, index, value); }
+    public static void x(MemorySegment segment, long index, int value) { VH_x.get().set(segment, 0L, index, value); }
     /// Sets `x` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkOffset2D extends GroupType {
     /// {@return `y` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int y(MemorySegment segment, long index) { return (int) VH_y.get(segment, 0L, index); }
+    public static int y(MemorySegment segment, long index) { return (int) VH_y.get().get(segment, 0L, index); }
     /// {@return `y`}
     public int y() { return y(this.segment(), 0L); }
     /// Sets `y` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void y(MemorySegment segment, long index, int value) { VH_y.set(segment, 0L, index, value); }
+    public static void y(MemorySegment segment, long index, int value) { VH_y.get().set(segment, 0L, index, value); }
     /// Sets `y` with the given value.
     /// @param value the value
     /// @return `this`

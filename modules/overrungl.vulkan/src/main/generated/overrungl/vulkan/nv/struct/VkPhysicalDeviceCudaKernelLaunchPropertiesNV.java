@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceCudaKernelLaunchPropertiesNV extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `computeCapabilityMinor`.
     public static final long OFFSET_computeCapabilityMinor = LAYOUT.byteOffset(PathElement.groupElement("computeCapabilityMinor"));
     /// The memory layout of `computeCapabilityMinor`.
     public static final MemoryLayout LAYOUT_computeCapabilityMinor = LAYOUT.select(PathElement.groupElement("computeCapabilityMinor"));
     /// The [VarHandle] of `computeCapabilityMinor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_computeCapabilityMinor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeCapabilityMinor"));
+    public static final Supplier<VarHandle> VH_computeCapabilityMinor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeCapabilityMinor")));
     /// The byte offset of `computeCapabilityMajor`.
     public static final long OFFSET_computeCapabilityMajor = LAYOUT.byteOffset(PathElement.groupElement("computeCapabilityMajor"));
     /// The memory layout of `computeCapabilityMajor`.
     public static final MemoryLayout LAYOUT_computeCapabilityMajor = LAYOUT.select(PathElement.groupElement("computeCapabilityMajor"));
     /// The [VarHandle] of `computeCapabilityMajor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_computeCapabilityMajor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeCapabilityMajor"));
+    public static final Supplier<VarHandle> VH_computeCapabilityMajor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeCapabilityMajor")));
 
     /// Creates `VkPhysicalDeviceCudaKernelLaunchPropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceCudaKernelLaunchPropertiesNV extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceCudaKernelLaunchPropertiesNV extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceCudaKernelLaunchPropertiesNV extends GroupTyp
     /// {@return `computeCapabilityMinor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int computeCapabilityMinor(MemorySegment segment, long index) { return (int) VH_computeCapabilityMinor.get(segment, 0L, index); }
+    public static int computeCapabilityMinor(MemorySegment segment, long index) { return (int) VH_computeCapabilityMinor.get().get(segment, 0L, index); }
     /// {@return `computeCapabilityMinor`}
     public int computeCapabilityMinor() { return computeCapabilityMinor(this.segment(), 0L); }
     /// Sets `computeCapabilityMinor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void computeCapabilityMinor(MemorySegment segment, long index, int value) { VH_computeCapabilityMinor.set(segment, 0L, index, value); }
+    public static void computeCapabilityMinor(MemorySegment segment, long index, int value) { VH_computeCapabilityMinor.get().set(segment, 0L, index, value); }
     /// Sets `computeCapabilityMinor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceCudaKernelLaunchPropertiesNV extends GroupTyp
     /// {@return `computeCapabilityMajor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int computeCapabilityMajor(MemorySegment segment, long index) { return (int) VH_computeCapabilityMajor.get(segment, 0L, index); }
+    public static int computeCapabilityMajor(MemorySegment segment, long index) { return (int) VH_computeCapabilityMajor.get().get(segment, 0L, index); }
     /// {@return `computeCapabilityMajor`}
     public int computeCapabilityMajor() { return computeCapabilityMajor(this.segment(), 0L); }
     /// Sets `computeCapabilityMajor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void computeCapabilityMajor(MemorySegment segment, long index, int value) { VH_computeCapabilityMajor.set(segment, 0L, index, value); }
+    public static void computeCapabilityMajor(MemorySegment segment, long index, int value) { VH_computeCapabilityMajor.get().set(segment, 0L, index, value); }
     /// Sets `computeCapabilityMajor` with the given value.
     /// @param value the value
     /// @return `this`

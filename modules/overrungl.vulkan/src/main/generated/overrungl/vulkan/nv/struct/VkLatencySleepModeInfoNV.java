@@ -35,31 +35,31 @@ public final class VkLatencySleepModeInfoNV extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `lowLatencyMode`.
     public static final long OFFSET_lowLatencyMode = LAYOUT.byteOffset(PathElement.groupElement("lowLatencyMode"));
     /// The memory layout of `lowLatencyMode`.
     public static final MemoryLayout LAYOUT_lowLatencyMode = LAYOUT.select(PathElement.groupElement("lowLatencyMode"));
     /// The [VarHandle] of `lowLatencyMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_lowLatencyMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lowLatencyMode"));
+    public static final Supplier<VarHandle> VH_lowLatencyMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("lowLatencyMode")));
     /// The byte offset of `lowLatencyBoost`.
     public static final long OFFSET_lowLatencyBoost = LAYOUT.byteOffset(PathElement.groupElement("lowLatencyBoost"));
     /// The memory layout of `lowLatencyBoost`.
     public static final MemoryLayout LAYOUT_lowLatencyBoost = LAYOUT.select(PathElement.groupElement("lowLatencyBoost"));
     /// The [VarHandle] of `lowLatencyBoost` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_lowLatencyBoost = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lowLatencyBoost"));
+    public static final Supplier<VarHandle> VH_lowLatencyBoost = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("lowLatencyBoost")));
     /// The byte offset of `minimumIntervalUs`.
     public static final long OFFSET_minimumIntervalUs = LAYOUT.byteOffset(PathElement.groupElement("minimumIntervalUs"));
     /// The memory layout of `minimumIntervalUs`.
     public static final MemoryLayout LAYOUT_minimumIntervalUs = LAYOUT.select(PathElement.groupElement("minimumIntervalUs"));
     /// The [VarHandle] of `minimumIntervalUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minimumIntervalUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minimumIntervalUs"));
+    public static final Supplier<VarHandle> VH_minimumIntervalUs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minimumIntervalUs")));
 
     /// Creates `VkLatencySleepModeInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkLatencySleepModeInfoNV extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkLatencySleepModeInfoNV extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkLatencySleepModeInfoNV extends GroupType {
     /// {@return `lowLatencyMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int lowLatencyMode(MemorySegment segment, long index) { return (int) VH_lowLatencyMode.get(segment, 0L, index); }
+    public static int lowLatencyMode(MemorySegment segment, long index) { return (int) VH_lowLatencyMode.get().get(segment, 0L, index); }
     /// {@return `lowLatencyMode`}
     public int lowLatencyMode() { return lowLatencyMode(this.segment(), 0L); }
     /// Sets `lowLatencyMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void lowLatencyMode(MemorySegment segment, long index, int value) { VH_lowLatencyMode.set(segment, 0L, index, value); }
+    public static void lowLatencyMode(MemorySegment segment, long index, int value) { VH_lowLatencyMode.get().set(segment, 0L, index, value); }
     /// Sets `lowLatencyMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkLatencySleepModeInfoNV extends GroupType {
     /// {@return `lowLatencyBoost` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int lowLatencyBoost(MemorySegment segment, long index) { return (int) VH_lowLatencyBoost.get(segment, 0L, index); }
+    public static int lowLatencyBoost(MemorySegment segment, long index) { return (int) VH_lowLatencyBoost.get().get(segment, 0L, index); }
     /// {@return `lowLatencyBoost`}
     public int lowLatencyBoost() { return lowLatencyBoost(this.segment(), 0L); }
     /// Sets `lowLatencyBoost` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void lowLatencyBoost(MemorySegment segment, long index, int value) { VH_lowLatencyBoost.set(segment, 0L, index, value); }
+    public static void lowLatencyBoost(MemorySegment segment, long index, int value) { VH_lowLatencyBoost.get().set(segment, 0L, index, value); }
     /// Sets `lowLatencyBoost` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkLatencySleepModeInfoNV extends GroupType {
     /// {@return `minimumIntervalUs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minimumIntervalUs(MemorySegment segment, long index) { return (int) VH_minimumIntervalUs.get(segment, 0L, index); }
+    public static int minimumIntervalUs(MemorySegment segment, long index) { return (int) VH_minimumIntervalUs.get().get(segment, 0L, index); }
     /// {@return `minimumIntervalUs`}
     public int minimumIntervalUs() { return minimumIntervalUs(this.segment(), 0L); }
     /// Sets `minimumIntervalUs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minimumIntervalUs(MemorySegment segment, long index, int value) { VH_minimumIntervalUs.set(segment, 0L, index, value); }
+    public static void minimumIntervalUs(MemorySegment segment, long index, int value) { VH_minimumIntervalUs.get().set(segment, 0L, index, value); }
     /// Sets `minimumIntervalUs` with the given value.
     /// @param value the value
     /// @return `this`

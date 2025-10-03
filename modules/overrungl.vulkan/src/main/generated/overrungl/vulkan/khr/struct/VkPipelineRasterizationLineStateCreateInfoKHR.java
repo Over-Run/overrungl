@@ -37,37 +37,37 @@ public final class VkPipelineRasterizationLineStateCreateInfoKHR extends GroupTy
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `lineRasterizationMode`.
     public static final long OFFSET_lineRasterizationMode = LAYOUT.byteOffset(PathElement.groupElement("lineRasterizationMode"));
     /// The memory layout of `lineRasterizationMode`.
     public static final MemoryLayout LAYOUT_lineRasterizationMode = LAYOUT.select(PathElement.groupElement("lineRasterizationMode"));
     /// The [VarHandle] of `lineRasterizationMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_lineRasterizationMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineRasterizationMode"));
+    public static final Supplier<VarHandle> VH_lineRasterizationMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineRasterizationMode")));
     /// The byte offset of `stippledLineEnable`.
     public static final long OFFSET_stippledLineEnable = LAYOUT.byteOffset(PathElement.groupElement("stippledLineEnable"));
     /// The memory layout of `stippledLineEnable`.
     public static final MemoryLayout LAYOUT_stippledLineEnable = LAYOUT.select(PathElement.groupElement("stippledLineEnable"));
     /// The [VarHandle] of `stippledLineEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stippledLineEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stippledLineEnable"));
+    public static final Supplier<VarHandle> VH_stippledLineEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stippledLineEnable")));
     /// The byte offset of `lineStippleFactor`.
     public static final long OFFSET_lineStippleFactor = LAYOUT.byteOffset(PathElement.groupElement("lineStippleFactor"));
     /// The memory layout of `lineStippleFactor`.
     public static final MemoryLayout LAYOUT_lineStippleFactor = LAYOUT.select(PathElement.groupElement("lineStippleFactor"));
     /// The [VarHandle] of `lineStippleFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_lineStippleFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineStippleFactor"));
+    public static final Supplier<VarHandle> VH_lineStippleFactor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineStippleFactor")));
     /// The byte offset of `lineStipplePattern`.
     public static final long OFFSET_lineStipplePattern = LAYOUT.byteOffset(PathElement.groupElement("lineStipplePattern"));
     /// The memory layout of `lineStipplePattern`.
     public static final MemoryLayout LAYOUT_lineStipplePattern = LAYOUT.select(PathElement.groupElement("lineStipplePattern"));
     /// The [VarHandle] of `lineStipplePattern` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_lineStipplePattern = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineStipplePattern"));
+    public static final Supplier<VarHandle> VH_lineStipplePattern = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineStipplePattern")));
 
     /// Creates `VkPipelineRasterizationLineStateCreateInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPipelineRasterizationLineStateCreateInfoKHR extends GroupTy
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPipelineRasterizationLineStateCreateInfoKHR extends GroupTy
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPipelineRasterizationLineStateCreateInfoKHR extends GroupTy
     /// {@return `lineRasterizationMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int lineRasterizationMode(MemorySegment segment, long index) { return (int) VH_lineRasterizationMode.get(segment, 0L, index); }
+    public static int lineRasterizationMode(MemorySegment segment, long index) { return (int) VH_lineRasterizationMode.get().get(segment, 0L, index); }
     /// {@return `lineRasterizationMode`}
     public int lineRasterizationMode() { return lineRasterizationMode(this.segment(), 0L); }
     /// Sets `lineRasterizationMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void lineRasterizationMode(MemorySegment segment, long index, int value) { VH_lineRasterizationMode.set(segment, 0L, index, value); }
+    public static void lineRasterizationMode(MemorySegment segment, long index, int value) { VH_lineRasterizationMode.get().set(segment, 0L, index, value); }
     /// Sets `lineRasterizationMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPipelineRasterizationLineStateCreateInfoKHR extends GroupTy
     /// {@return `stippledLineEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stippledLineEnable(MemorySegment segment, long index) { return (int) VH_stippledLineEnable.get(segment, 0L, index); }
+    public static int stippledLineEnable(MemorySegment segment, long index) { return (int) VH_stippledLineEnable.get().get(segment, 0L, index); }
     /// {@return `stippledLineEnable`}
     public int stippledLineEnable() { return stippledLineEnable(this.segment(), 0L); }
     /// Sets `stippledLineEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stippledLineEnable(MemorySegment segment, long index, int value) { VH_stippledLineEnable.set(segment, 0L, index, value); }
+    public static void stippledLineEnable(MemorySegment segment, long index, int value) { VH_stippledLineEnable.get().set(segment, 0L, index, value); }
     /// Sets `stippledLineEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPipelineRasterizationLineStateCreateInfoKHR extends GroupTy
     /// {@return `lineStippleFactor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int lineStippleFactor(MemorySegment segment, long index) { return (int) VH_lineStippleFactor.get(segment, 0L, index); }
+    public static int lineStippleFactor(MemorySegment segment, long index) { return (int) VH_lineStippleFactor.get().get(segment, 0L, index); }
     /// {@return `lineStippleFactor`}
     public int lineStippleFactor() { return lineStippleFactor(this.segment(), 0L); }
     /// Sets `lineStippleFactor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void lineStippleFactor(MemorySegment segment, long index, int value) { VH_lineStippleFactor.set(segment, 0L, index, value); }
+    public static void lineStippleFactor(MemorySegment segment, long index, int value) { VH_lineStippleFactor.get().set(segment, 0L, index, value); }
     /// Sets `lineStippleFactor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPipelineRasterizationLineStateCreateInfoKHR extends GroupTy
     /// {@return `lineStipplePattern` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short lineStipplePattern(MemorySegment segment, long index) { return (short) VH_lineStipplePattern.get(segment, 0L, index); }
+    public static short lineStipplePattern(MemorySegment segment, long index) { return (short) VH_lineStipplePattern.get().get(segment, 0L, index); }
     /// {@return `lineStipplePattern`}
     public short lineStipplePattern() { return lineStipplePattern(this.segment(), 0L); }
     /// Sets `lineStipplePattern` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void lineStipplePattern(MemorySegment segment, long index, short value) { VH_lineStipplePattern.set(segment, 0L, index, value); }
+    public static void lineStipplePattern(MemorySegment segment, long index, short value) { VH_lineStipplePattern.get().set(segment, 0L, index, value); }
     /// Sets `lineStipplePattern` with the given value.
     /// @param value the value
     /// @return `this`

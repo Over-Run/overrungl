@@ -37,31 +37,31 @@ public final class VkHostImageLayoutTransitionInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `image`.
     public static final long OFFSET_image = LAYOUT.byteOffset(PathElement.groupElement("image"));
     /// The memory layout of `image`.
     public static final MemoryLayout LAYOUT_image = LAYOUT.select(PathElement.groupElement("image"));
     /// The [VarHandle] of `image` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_image = LAYOUT.arrayElementVarHandle(PathElement.groupElement("image"));
+    public static final Supplier<VarHandle> VH_image = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("image")));
     /// The byte offset of `oldLayout`.
     public static final long OFFSET_oldLayout = LAYOUT.byteOffset(PathElement.groupElement("oldLayout"));
     /// The memory layout of `oldLayout`.
     public static final MemoryLayout LAYOUT_oldLayout = LAYOUT.select(PathElement.groupElement("oldLayout"));
     /// The [VarHandle] of `oldLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_oldLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("oldLayout"));
+    public static final Supplier<VarHandle> VH_oldLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("oldLayout")));
     /// The byte offset of `newLayout`.
     public static final long OFFSET_newLayout = LAYOUT.byteOffset(PathElement.groupElement("newLayout"));
     /// The memory layout of `newLayout`.
     public static final MemoryLayout LAYOUT_newLayout = LAYOUT.select(PathElement.groupElement("newLayout"));
     /// The [VarHandle] of `newLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_newLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("newLayout"));
+    public static final Supplier<VarHandle> VH_newLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("newLayout")));
     /// The byte offset of `subresourceRange`.
     public static final long OFFSET_subresourceRange = LAYOUT.byteOffset(PathElement.groupElement("subresourceRange"));
     /// The memory layout of `subresourceRange`.
@@ -116,14 +116,14 @@ public final class VkHostImageLayoutTransitionInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,14 +132,14 @@ public final class VkHostImageLayoutTransitionInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -148,14 +148,14 @@ public final class VkHostImageLayoutTransitionInfo extends GroupType {
     /// {@return `image` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long image(MemorySegment segment, long index) { return (long) VH_image.get(segment, 0L, index); }
+    public static long image(MemorySegment segment, long index) { return (long) VH_image.get().get(segment, 0L, index); }
     /// {@return `image`}
     public long image() { return image(this.segment(), 0L); }
     /// Sets `image` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void image(MemorySegment segment, long index, long value) { VH_image.set(segment, 0L, index, value); }
+    public static void image(MemorySegment segment, long index, long value) { VH_image.get().set(segment, 0L, index, value); }
     /// Sets `image` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,14 +164,14 @@ public final class VkHostImageLayoutTransitionInfo extends GroupType {
     /// {@return `oldLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int oldLayout(MemorySegment segment, long index) { return (int) VH_oldLayout.get(segment, 0L, index); }
+    public static int oldLayout(MemorySegment segment, long index) { return (int) VH_oldLayout.get().get(segment, 0L, index); }
     /// {@return `oldLayout`}
     public int oldLayout() { return oldLayout(this.segment(), 0L); }
     /// Sets `oldLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void oldLayout(MemorySegment segment, long index, int value) { VH_oldLayout.set(segment, 0L, index, value); }
+    public static void oldLayout(MemorySegment segment, long index, int value) { VH_oldLayout.get().set(segment, 0L, index, value); }
     /// Sets `oldLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -180,14 +180,14 @@ public final class VkHostImageLayoutTransitionInfo extends GroupType {
     /// {@return `newLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int newLayout(MemorySegment segment, long index) { return (int) VH_newLayout.get(segment, 0L, index); }
+    public static int newLayout(MemorySegment segment, long index) { return (int) VH_newLayout.get().get(segment, 0L, index); }
     /// {@return `newLayout`}
     public int newLayout() { return newLayout(this.segment(), 0L); }
     /// Sets `newLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void newLayout(MemorySegment segment, long index, int value) { VH_newLayout.set(segment, 0L, index, value); }
+    public static void newLayout(MemorySegment segment, long index, int value) { VH_newLayout.get().set(segment, 0L, index, value); }
     /// Sets `newLayout` with the given value.
     /// @param value the value
     /// @return `this`

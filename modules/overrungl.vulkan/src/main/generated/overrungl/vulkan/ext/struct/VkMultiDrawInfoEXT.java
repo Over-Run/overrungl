@@ -29,13 +29,13 @@ public final class VkMultiDrawInfoEXT extends GroupType {
     /// The memory layout of `firstVertex`.
     public static final MemoryLayout LAYOUT_firstVertex = LAYOUT.select(PathElement.groupElement("firstVertex"));
     /// The [VarHandle] of `firstVertex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_firstVertex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstVertex"));
+    public static final Supplier<VarHandle> VH_firstVertex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstVertex")));
     /// The byte offset of `vertexCount`.
     public static final long OFFSET_vertexCount = LAYOUT.byteOffset(PathElement.groupElement("vertexCount"));
     /// The memory layout of `vertexCount`.
     public static final MemoryLayout LAYOUT_vertexCount = LAYOUT.select(PathElement.groupElement("vertexCount"));
     /// The [VarHandle] of `vertexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexCount"));
+    public static final Supplier<VarHandle> VH_vertexCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexCount")));
 
     /// Creates `VkMultiDrawInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkMultiDrawInfoEXT extends GroupType {
     /// {@return `firstVertex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int firstVertex(MemorySegment segment, long index) { return (int) VH_firstVertex.get(segment, 0L, index); }
+    public static int firstVertex(MemorySegment segment, long index) { return (int) VH_firstVertex.get().get(segment, 0L, index); }
     /// {@return `firstVertex`}
     public int firstVertex() { return firstVertex(this.segment(), 0L); }
     /// Sets `firstVertex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void firstVertex(MemorySegment segment, long index, int value) { VH_firstVertex.set(segment, 0L, index, value); }
+    public static void firstVertex(MemorySegment segment, long index, int value) { VH_firstVertex.get().set(segment, 0L, index, value); }
     /// Sets `firstVertex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkMultiDrawInfoEXT extends GroupType {
     /// {@return `vertexCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertexCount(MemorySegment segment, long index) { return (int) VH_vertexCount.get(segment, 0L, index); }
+    public static int vertexCount(MemorySegment segment, long index) { return (int) VH_vertexCount.get().get(segment, 0L, index); }
     /// {@return `vertexCount`}
     public int vertexCount() { return vertexCount(this.segment(), 0L); }
     /// Sets `vertexCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexCount(MemorySegment segment, long index, int value) { VH_vertexCount.set(segment, 0L, index, value); }
+    public static void vertexCount(MemorySegment segment, long index, int value) { VH_vertexCount.get().set(segment, 0L, index, value); }
     /// Sets `vertexCount` with the given value.
     /// @param value the value
     /// @return `this`

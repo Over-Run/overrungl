@@ -29,13 +29,13 @@ public final class StdVideoAV1Segmentation extends GroupType {
     /// The memory layout of `FeatureEnabled`.
     public static final MemoryLayout LAYOUT_FeatureEnabled = LAYOUT.select(PathElement.groupElement("FeatureEnabled"));
     /// The [VarHandle] of `FeatureEnabled` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_FeatureEnabled = LAYOUT.arrayElementVarHandle(PathElement.groupElement("FeatureEnabled"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_FeatureEnabled = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("FeatureEnabled"), PathElement.sequenceElement()));
     /// The byte offset of `FeatureData`.
     public static final long OFFSET_FeatureData = LAYOUT.byteOffset(PathElement.groupElement("FeatureData"));
     /// The memory layout of `FeatureData`.
     public static final MemoryLayout LAYOUT_FeatureData = LAYOUT.select(PathElement.groupElement("FeatureData"));
     /// The [VarHandle] of `FeatureData` of type `(MemorySegment base, long baseOffset, long index, long index0, long index1)MemorySegment`.
-    public static final VarHandle VH_FeatureData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("FeatureData"), PathElement.sequenceElement(), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_FeatureData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("FeatureData"), PathElement.sequenceElement(), PathElement.sequenceElement()));
 
     /// Creates `StdVideoAV1Segmentation` with the given segment.
     /// @param segment      the memory segment
@@ -91,7 +91,7 @@ public final class StdVideoAV1Segmentation extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte FeatureEnabled(MemorySegment segment, long index, long index0) { return (byte) VH_FeatureEnabled.get(segment, 0L, index, index0); }
+    public static byte FeatureEnabled(MemorySegment segment, long index, long index0) { return (byte) VH_FeatureEnabled.get().get(segment, 0L, index, index0); }
     /// {@return `FeatureEnabled`}
     public MemorySegment FeatureEnabled() { return FeatureEnabled(this.segment(), 0L); }
     /// {@return `FeatureEnabled`}
@@ -107,7 +107,7 @@ public final class StdVideoAV1Segmentation extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void FeatureEnabled(MemorySegment segment, long index, long index0, byte value) { VH_FeatureEnabled.set(segment, 0L, index, index0, value); }
+    public static void FeatureEnabled(MemorySegment segment, long index, long index0, byte value) { VH_FeatureEnabled.get().set(segment, 0L, index, index0, value); }
     /// Sets `FeatureEnabled` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,7 +127,7 @@ public final class StdVideoAV1Segmentation extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
-    public static short FeatureData(MemorySegment segment, long index, long index0, long index1) { return (short) VH_FeatureData.get(segment, 0L, index, index0, index1); }
+    public static short FeatureData(MemorySegment segment, long index, long index0, long index1) { return (short) VH_FeatureData.get().get(segment, 0L, index, index0, index1); }
     /// {@return `FeatureData`}
     public MemorySegment FeatureData() { return FeatureData(this.segment(), 0L); }
     /// {@return `FeatureData`}
@@ -145,7 +145,7 @@ public final class StdVideoAV1Segmentation extends GroupType {
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
     /// @param value the value
-    public static void FeatureData(MemorySegment segment, long index, long index0, long index1, short value) { VH_FeatureData.set(segment, 0L, index, index0, index1, value); }
+    public static void FeatureData(MemorySegment segment, long index, long index0, long index1, short value) { VH_FeatureData.get().set(segment, 0L, index, index0, index1, value); }
     /// Sets `FeatureData` with the given value.
     /// @param value the value
     /// @return `this`

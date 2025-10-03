@@ -47,67 +47,67 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `physicalDevice`.
     public static final long OFFSET_physicalDevice = LAYOUT.byteOffset(PathElement.groupElement("physicalDevice"));
     /// The memory layout of `physicalDevice`.
     public static final MemoryLayout LAYOUT_physicalDevice = LAYOUT.select(PathElement.groupElement("physicalDevice"));
     /// The [VarHandle] of `physicalDevice` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_physicalDevice = LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalDevice"));
+    public static final Supplier<VarHandle> VH_physicalDevice = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalDevice")));
     /// The byte offset of `device`.
     public static final long OFFSET_device = LAYOUT.byteOffset(PathElement.groupElement("device"));
     /// The memory layout of `device`.
     public static final MemoryLayout LAYOUT_device = LAYOUT.select(PathElement.groupElement("device"));
     /// The [VarHandle] of `device` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_device = LAYOUT.arrayElementVarHandle(PathElement.groupElement("device"));
+    public static final Supplier<VarHandle> VH_device = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("device")));
     /// The byte offset of `preferredLargeHeapBlockSize`.
     public static final long OFFSET_preferredLargeHeapBlockSize = LAYOUT.byteOffset(PathElement.groupElement("preferredLargeHeapBlockSize"));
     /// The memory layout of `preferredLargeHeapBlockSize`.
     public static final MemoryLayout LAYOUT_preferredLargeHeapBlockSize = LAYOUT.select(PathElement.groupElement("preferredLargeHeapBlockSize"));
     /// The [VarHandle] of `preferredLargeHeapBlockSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_preferredLargeHeapBlockSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredLargeHeapBlockSize"));
+    public static final Supplier<VarHandle> VH_preferredLargeHeapBlockSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredLargeHeapBlockSize")));
     /// The byte offset of `pAllocationCallbacks`.
     public static final long OFFSET_pAllocationCallbacks = LAYOUT.byteOffset(PathElement.groupElement("pAllocationCallbacks"));
     /// The memory layout of `pAllocationCallbacks`.
     public static final MemoryLayout LAYOUT_pAllocationCallbacks = LAYOUT.select(PathElement.groupElement("pAllocationCallbacks"));
     /// The [VarHandle] of `pAllocationCallbacks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pAllocationCallbacks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAllocationCallbacks"));
+    public static final Supplier<VarHandle> VH_pAllocationCallbacks = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAllocationCallbacks")));
     /// The byte offset of `pDeviceMemoryCallbacks`.
     public static final long OFFSET_pDeviceMemoryCallbacks = LAYOUT.byteOffset(PathElement.groupElement("pDeviceMemoryCallbacks"));
     /// The memory layout of `pDeviceMemoryCallbacks`.
     public static final MemoryLayout LAYOUT_pDeviceMemoryCallbacks = LAYOUT.select(PathElement.groupElement("pDeviceMemoryCallbacks"));
     /// The [VarHandle] of `pDeviceMemoryCallbacks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDeviceMemoryCallbacks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDeviceMemoryCallbacks"));
+    public static final Supplier<VarHandle> VH_pDeviceMemoryCallbacks = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDeviceMemoryCallbacks")));
     /// The byte offset of `pHeapSizeLimit`.
     public static final long OFFSET_pHeapSizeLimit = LAYOUT.byteOffset(PathElement.groupElement("pHeapSizeLimit"));
     /// The memory layout of `pHeapSizeLimit`.
     public static final MemoryLayout LAYOUT_pHeapSizeLimit = LAYOUT.select(PathElement.groupElement("pHeapSizeLimit"));
     /// The [VarHandle] of `pHeapSizeLimit` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pHeapSizeLimit = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pHeapSizeLimit"));
+    public static final Supplier<VarHandle> VH_pHeapSizeLimit = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pHeapSizeLimit")));
     /// The byte offset of `pVulkanFunctions`.
     public static final long OFFSET_pVulkanFunctions = LAYOUT.byteOffset(PathElement.groupElement("pVulkanFunctions"));
     /// The memory layout of `pVulkanFunctions`.
     public static final MemoryLayout LAYOUT_pVulkanFunctions = LAYOUT.select(PathElement.groupElement("pVulkanFunctions"));
     /// The [VarHandle] of `pVulkanFunctions` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pVulkanFunctions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVulkanFunctions"));
+    public static final Supplier<VarHandle> VH_pVulkanFunctions = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVulkanFunctions")));
     /// The byte offset of `instance`.
     public static final long OFFSET_instance = LAYOUT.byteOffset(PathElement.groupElement("instance"));
     /// The memory layout of `instance`.
     public static final MemoryLayout LAYOUT_instance = LAYOUT.select(PathElement.groupElement("instance"));
     /// The [VarHandle] of `instance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_instance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instance"));
+    public static final Supplier<VarHandle> VH_instance = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("instance")));
     /// The byte offset of `vulkanApiVersion`.
     public static final long OFFSET_vulkanApiVersion = LAYOUT.byteOffset(PathElement.groupElement("vulkanApiVersion"));
     /// The memory layout of `vulkanApiVersion`.
     public static final MemoryLayout LAYOUT_vulkanApiVersion = LAYOUT.select(PathElement.groupElement("vulkanApiVersion"));
     /// The [VarHandle] of `vulkanApiVersion` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vulkanApiVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vulkanApiVersion"));
+    public static final Supplier<VarHandle> VH_vulkanApiVersion = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vulkanApiVersion")));
     /// The byte offset of `pTypeExternalMemoryHandleTypes`.
     public static final long OFFSET_pTypeExternalMemoryHandleTypes = LAYOUT.byteOffset(PathElement.groupElement("pTypeExternalMemoryHandleTypes"));
     /// The memory layout of `pTypeExternalMemoryHandleTypes`.
     public static final MemoryLayout LAYOUT_pTypeExternalMemoryHandleTypes = LAYOUT.select(PathElement.groupElement("pTypeExternalMemoryHandleTypes"));
     /// The [VarHandle] of `pTypeExternalMemoryHandleTypes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pTypeExternalMemoryHandleTypes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTypeExternalMemoryHandleTypes"));
+    public static final Supplier<VarHandle> VH_pTypeExternalMemoryHandleTypes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTypeExternalMemoryHandleTypes")));
 
     /// Creates `VmaAllocatorCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -158,14 +158,14 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// {@return `physicalDevice` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment physicalDevice(MemorySegment segment, long index) { return (MemorySegment) VH_physicalDevice.get(segment, 0L, index); }
+    public static MemorySegment physicalDevice(MemorySegment segment, long index) { return (MemorySegment) VH_physicalDevice.get().get(segment, 0L, index); }
     /// {@return `physicalDevice`}
     public MemorySegment physicalDevice() { return physicalDevice(this.segment(), 0L); }
     /// Sets `physicalDevice` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void physicalDevice(MemorySegment segment, long index, MemorySegment value) { VH_physicalDevice.set(segment, 0L, index, value); }
+    public static void physicalDevice(MemorySegment segment, long index, MemorySegment value) { VH_physicalDevice.get().set(segment, 0L, index, value); }
     /// Sets `physicalDevice` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// {@return `device` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment device(MemorySegment segment, long index) { return (MemorySegment) VH_device.get(segment, 0L, index); }
+    public static MemorySegment device(MemorySegment segment, long index) { return (MemorySegment) VH_device.get().get(segment, 0L, index); }
     /// {@return `device`}
     public MemorySegment device() { return device(this.segment(), 0L); }
     /// Sets `device` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void device(MemorySegment segment, long index, MemorySegment value) { VH_device.set(segment, 0L, index, value); }
+    public static void device(MemorySegment segment, long index, MemorySegment value) { VH_device.get().set(segment, 0L, index, value); }
     /// Sets `device` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// {@return `preferredLargeHeapBlockSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long preferredLargeHeapBlockSize(MemorySegment segment, long index) { return (long) VH_preferredLargeHeapBlockSize.get(segment, 0L, index); }
+    public static long preferredLargeHeapBlockSize(MemorySegment segment, long index) { return (long) VH_preferredLargeHeapBlockSize.get().get(segment, 0L, index); }
     /// {@return `preferredLargeHeapBlockSize`}
     public long preferredLargeHeapBlockSize() { return preferredLargeHeapBlockSize(this.segment(), 0L); }
     /// Sets `preferredLargeHeapBlockSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void preferredLargeHeapBlockSize(MemorySegment segment, long index, long value) { VH_preferredLargeHeapBlockSize.set(segment, 0L, index, value); }
+    public static void preferredLargeHeapBlockSize(MemorySegment segment, long index, long value) { VH_preferredLargeHeapBlockSize.get().set(segment, 0L, index, value); }
     /// Sets `preferredLargeHeapBlockSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// {@return `pAllocationCallbacks` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pAllocationCallbacks(MemorySegment segment, long index) { return (MemorySegment) VH_pAllocationCallbacks.get(segment, 0L, index); }
+    public static MemorySegment pAllocationCallbacks(MemorySegment segment, long index) { return (MemorySegment) VH_pAllocationCallbacks.get().get(segment, 0L, index); }
     /// {@return `pAllocationCallbacks`}
     public MemorySegment pAllocationCallbacks() { return pAllocationCallbacks(this.segment(), 0L); }
     /// Sets `pAllocationCallbacks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pAllocationCallbacks(MemorySegment segment, long index, MemorySegment value) { VH_pAllocationCallbacks.set(segment, 0L, index, value); }
+    public static void pAllocationCallbacks(MemorySegment segment, long index, MemorySegment value) { VH_pAllocationCallbacks.get().set(segment, 0L, index, value); }
     /// Sets `pAllocationCallbacks` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,14 +238,14 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// {@return `pDeviceMemoryCallbacks` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDeviceMemoryCallbacks(MemorySegment segment, long index) { return (MemorySegment) VH_pDeviceMemoryCallbacks.get(segment, 0L, index); }
+    public static MemorySegment pDeviceMemoryCallbacks(MemorySegment segment, long index) { return (MemorySegment) VH_pDeviceMemoryCallbacks.get().get(segment, 0L, index); }
     /// {@return `pDeviceMemoryCallbacks`}
     public MemorySegment pDeviceMemoryCallbacks() { return pDeviceMemoryCallbacks(this.segment(), 0L); }
     /// Sets `pDeviceMemoryCallbacks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDeviceMemoryCallbacks(MemorySegment segment, long index, MemorySegment value) { VH_pDeviceMemoryCallbacks.set(segment, 0L, index, value); }
+    public static void pDeviceMemoryCallbacks(MemorySegment segment, long index, MemorySegment value) { VH_pDeviceMemoryCallbacks.get().set(segment, 0L, index, value); }
     /// Sets `pDeviceMemoryCallbacks` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,14 +254,14 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// {@return `pHeapSizeLimit` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pHeapSizeLimit(MemorySegment segment, long index) { return (MemorySegment) VH_pHeapSizeLimit.get(segment, 0L, index); }
+    public static MemorySegment pHeapSizeLimit(MemorySegment segment, long index) { return (MemorySegment) VH_pHeapSizeLimit.get().get(segment, 0L, index); }
     /// {@return `pHeapSizeLimit`}
     public MemorySegment pHeapSizeLimit() { return pHeapSizeLimit(this.segment(), 0L); }
     /// Sets `pHeapSizeLimit` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pHeapSizeLimit(MemorySegment segment, long index, MemorySegment value) { VH_pHeapSizeLimit.set(segment, 0L, index, value); }
+    public static void pHeapSizeLimit(MemorySegment segment, long index, MemorySegment value) { VH_pHeapSizeLimit.get().set(segment, 0L, index, value); }
     /// Sets `pHeapSizeLimit` with the given value.
     /// @param value the value
     /// @return `this`
@@ -270,14 +270,14 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// {@return `pVulkanFunctions` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pVulkanFunctions(MemorySegment segment, long index) { return (MemorySegment) VH_pVulkanFunctions.get(segment, 0L, index); }
+    public static MemorySegment pVulkanFunctions(MemorySegment segment, long index) { return (MemorySegment) VH_pVulkanFunctions.get().get(segment, 0L, index); }
     /// {@return `pVulkanFunctions`}
     public MemorySegment pVulkanFunctions() { return pVulkanFunctions(this.segment(), 0L); }
     /// Sets `pVulkanFunctions` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pVulkanFunctions(MemorySegment segment, long index, MemorySegment value) { VH_pVulkanFunctions.set(segment, 0L, index, value); }
+    public static void pVulkanFunctions(MemorySegment segment, long index, MemorySegment value) { VH_pVulkanFunctions.get().set(segment, 0L, index, value); }
     /// Sets `pVulkanFunctions` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,14 +286,14 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// {@return `instance` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment instance(MemorySegment segment, long index) { return (MemorySegment) VH_instance.get(segment, 0L, index); }
+    public static MemorySegment instance(MemorySegment segment, long index) { return (MemorySegment) VH_instance.get().get(segment, 0L, index); }
     /// {@return `instance`}
     public MemorySegment instance() { return instance(this.segment(), 0L); }
     /// Sets `instance` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void instance(MemorySegment segment, long index, MemorySegment value) { VH_instance.set(segment, 0L, index, value); }
+    public static void instance(MemorySegment segment, long index, MemorySegment value) { VH_instance.get().set(segment, 0L, index, value); }
     /// Sets `instance` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,14 +302,14 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// {@return `vulkanApiVersion` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vulkanApiVersion(MemorySegment segment, long index) { return (int) VH_vulkanApiVersion.get(segment, 0L, index); }
+    public static int vulkanApiVersion(MemorySegment segment, long index) { return (int) VH_vulkanApiVersion.get().get(segment, 0L, index); }
     /// {@return `vulkanApiVersion`}
     public int vulkanApiVersion() { return vulkanApiVersion(this.segment(), 0L); }
     /// Sets `vulkanApiVersion` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vulkanApiVersion(MemorySegment segment, long index, int value) { VH_vulkanApiVersion.set(segment, 0L, index, value); }
+    public static void vulkanApiVersion(MemorySegment segment, long index, int value) { VH_vulkanApiVersion.get().set(segment, 0L, index, value); }
     /// Sets `vulkanApiVersion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,14 +318,14 @@ public final class VmaAllocatorCreateInfo extends GroupType {
     /// {@return `pTypeExternalMemoryHandleTypes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pTypeExternalMemoryHandleTypes(MemorySegment segment, long index) { return (MemorySegment) VH_pTypeExternalMemoryHandleTypes.get(segment, 0L, index); }
+    public static MemorySegment pTypeExternalMemoryHandleTypes(MemorySegment segment, long index) { return (MemorySegment) VH_pTypeExternalMemoryHandleTypes.get().get(segment, 0L, index); }
     /// {@return `pTypeExternalMemoryHandleTypes`}
     public MemorySegment pTypeExternalMemoryHandleTypes() { return pTypeExternalMemoryHandleTypes(this.segment(), 0L); }
     /// Sets `pTypeExternalMemoryHandleTypes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pTypeExternalMemoryHandleTypes(MemorySegment segment, long index, MemorySegment value) { VH_pTypeExternalMemoryHandleTypes.set(segment, 0L, index, value); }
+    public static void pTypeExternalMemoryHandleTypes(MemorySegment segment, long index, MemorySegment value) { VH_pTypeExternalMemoryHandleTypes.get().set(segment, 0L, index, value); }
     /// Sets `pTypeExternalMemoryHandleTypes` with the given value.
     /// @param value the value
     /// @return `this`

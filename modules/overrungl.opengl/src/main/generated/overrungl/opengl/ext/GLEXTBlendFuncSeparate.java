@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -14,7 +15,7 @@ public final class GLEXTBlendFuncSeparate {
     public static final int GL_BLEND_SRC_ALPHA_EXT = 0x80CB;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBlendFuncSeparateEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glBlendFuncSeparateEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glBlendFuncSeparateEXT;
         private Handles(GLLoadFunc func) {
             PFN_glBlendFuncSeparateEXT = func.invoke("glBlendFuncSeparateEXT", "glBlendFuncSeparate");
@@ -32,7 +33,7 @@ public final class GLEXTBlendFuncSeparate {
     public void BlendFuncSeparateEXT(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBlendFuncSeparateEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendFuncSeparateEXT", sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha); }
-        Handles.MH_glBlendFuncSeparateEXT.invokeExact(handles.PFN_glBlendFuncSeparateEXT, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha); }
+        Handles.MH_glBlendFuncSeparateEXT.get().invokeExact(handles.PFN_glBlendFuncSeparateEXT, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha); }
         catch (Throwable e) { throw new RuntimeException("error in BlendFuncSeparateEXT", e); }
     }
 

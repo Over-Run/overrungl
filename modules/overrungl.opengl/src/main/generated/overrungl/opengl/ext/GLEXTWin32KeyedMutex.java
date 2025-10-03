@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,8 +11,8 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLEXTWin32KeyedMutex {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glAcquireKeyedMutexWin32EXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glReleaseKeyedMutexWin32EXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_glAcquireKeyedMutexWin32EXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glReleaseKeyedMutexWin32EXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
         public final MemorySegment PFN_glAcquireKeyedMutexWin32EXT;
         public final MemorySegment PFN_glReleaseKeyedMutexWin32EXT;
         private Handles(GLLoadFunc func) {
@@ -31,7 +32,7 @@ public final class GLEXTWin32KeyedMutex {
     public boolean AcquireKeyedMutexWin32EXT(int memory, long key, int timeout) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAcquireKeyedMutexWin32EXT)) throw new GLSymbolNotFoundError("Symbol not found: glAcquireKeyedMutexWin32EXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glAcquireKeyedMutexWin32EXT", memory, key, timeout); }
-        return (((byte) Handles.MH_glAcquireKeyedMutexWin32EXT.invokeExact(handles.PFN_glAcquireKeyedMutexWin32EXT, memory, key, timeout)) != 0); }
+        return (((byte) Handles.MH_glAcquireKeyedMutexWin32EXT.get().invokeExact(handles.PFN_glAcquireKeyedMutexWin32EXT, memory, key, timeout)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in AcquireKeyedMutexWin32EXT", e); }
     }
 
@@ -42,7 +43,7 @@ public final class GLEXTWin32KeyedMutex {
     public boolean ReleaseKeyedMutexWin32EXT(int memory, long key) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReleaseKeyedMutexWin32EXT)) throw new GLSymbolNotFoundError("Symbol not found: glReleaseKeyedMutexWin32EXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glReleaseKeyedMutexWin32EXT", memory, key); }
-        return (((byte) Handles.MH_glReleaseKeyedMutexWin32EXT.invokeExact(handles.PFN_glReleaseKeyedMutexWin32EXT, memory, key)) != 0); }
+        return (((byte) Handles.MH_glReleaseKeyedMutexWin32EXT.get().invokeExact(handles.PFN_glReleaseKeyedMutexWin32EXT, memory, key)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in ReleaseKeyedMutexWin32EXT", e); }
     }
 

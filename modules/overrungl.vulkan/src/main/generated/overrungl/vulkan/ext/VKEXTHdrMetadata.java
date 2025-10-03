@@ -2,6 +2,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -12,7 +13,7 @@ public final class VKEXTHdrMetadata {
     public static final String VK_EXT_HDR_METADATA_EXTENSION_NAME = "VK_EXT_hdr_metadata";
     public static final int VK_STRUCTURE_TYPE_HDR_METADATA_EXT = 1000105000;
     public static final class Handles {
-        public static final MethodHandle MH_vkSetHdrMetadataEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkSetHdrMetadataEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -25,7 +26,7 @@ public final class VKEXTHdrMetadata {
     public static void vkSetHdrMetadataEXT(@NonNull VkDevice device, int swapchainCount, @NonNull MemorySegment pSwapchains, @NonNull MemorySegment pMetadata) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetHdrMetadataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetHdrMetadataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkSetHdrMetadataEXT", device, swapchainCount, pSwapchains, pMetadata); }
-        Handles.MH_vkSetHdrMetadataEXT.invokeExact(device.capabilities().PFN_vkSetHdrMetadataEXT, device.segment(), swapchainCount, pSwapchains, pMetadata); }
+        Handles.MH_vkSetHdrMetadataEXT.get().invokeExact(device.capabilities().PFN_vkSetHdrMetadataEXT, device.segment(), swapchainCount, pSwapchains, pMetadata); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetHdrMetadataEXT", e); }
     }
 

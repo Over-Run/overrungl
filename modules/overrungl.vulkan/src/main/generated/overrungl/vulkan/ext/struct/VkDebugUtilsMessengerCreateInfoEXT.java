@@ -39,43 +39,43 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `messageSeverity`.
     public static final long OFFSET_messageSeverity = LAYOUT.byteOffset(PathElement.groupElement("messageSeverity"));
     /// The memory layout of `messageSeverity`.
     public static final MemoryLayout LAYOUT_messageSeverity = LAYOUT.select(PathElement.groupElement("messageSeverity"));
     /// The [VarHandle] of `messageSeverity` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_messageSeverity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("messageSeverity"));
+    public static final Supplier<VarHandle> VH_messageSeverity = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("messageSeverity")));
     /// The byte offset of `messageType`.
     public static final long OFFSET_messageType = LAYOUT.byteOffset(PathElement.groupElement("messageType"));
     /// The memory layout of `messageType`.
     public static final MemoryLayout LAYOUT_messageType = LAYOUT.select(PathElement.groupElement("messageType"));
     /// The [VarHandle] of `messageType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_messageType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("messageType"));
+    public static final Supplier<VarHandle> VH_messageType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("messageType")));
     /// The byte offset of `pfnUserCallback`.
     public static final long OFFSET_pfnUserCallback = LAYOUT.byteOffset(PathElement.groupElement("pfnUserCallback"));
     /// The memory layout of `pfnUserCallback`.
     public static final MemoryLayout LAYOUT_pfnUserCallback = LAYOUT.select(PathElement.groupElement("pfnUserCallback"));
     /// The [VarHandle] of `pfnUserCallback` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pfnUserCallback = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnUserCallback"));
+    public static final Supplier<VarHandle> VH_pfnUserCallback = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnUserCallback")));
     /// The byte offset of `pUserData`.
     public static final long OFFSET_pUserData = LAYOUT.byteOffset(PathElement.groupElement("pUserData"));
     /// The memory layout of `pUserData`.
     public static final MemoryLayout LAYOUT_pUserData = LAYOUT.select(PathElement.groupElement("pUserData"));
     /// The [VarHandle] of `pUserData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pUserData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pUserData"));
+    public static final Supplier<VarHandle> VH_pUserData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pUserData")));
 
     /// Creates `VkDebugUtilsMessengerCreateInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends GroupType {
     /// {@return `messageSeverity` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int messageSeverity(MemorySegment segment, long index) { return (int) VH_messageSeverity.get(segment, 0L, index); }
+    public static int messageSeverity(MemorySegment segment, long index) { return (int) VH_messageSeverity.get().get(segment, 0L, index); }
     /// {@return `messageSeverity`}
     public int messageSeverity() { return messageSeverity(this.segment(), 0L); }
     /// Sets `messageSeverity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void messageSeverity(MemorySegment segment, long index, int value) { VH_messageSeverity.set(segment, 0L, index, value); }
+    public static void messageSeverity(MemorySegment segment, long index, int value) { VH_messageSeverity.get().set(segment, 0L, index, value); }
     /// Sets `messageSeverity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends GroupType {
     /// {@return `messageType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int messageType(MemorySegment segment, long index) { return (int) VH_messageType.get(segment, 0L, index); }
+    public static int messageType(MemorySegment segment, long index) { return (int) VH_messageType.get().get(segment, 0L, index); }
     /// {@return `messageType`}
     public int messageType() { return messageType(this.segment(), 0L); }
     /// Sets `messageType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void messageType(MemorySegment segment, long index, int value) { VH_messageType.set(segment, 0L, index, value); }
+    public static void messageType(MemorySegment segment, long index, int value) { VH_messageType.get().set(segment, 0L, index, value); }
     /// Sets `messageType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends GroupType {
     /// {@return `pfnUserCallback` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pfnUserCallback(MemorySegment segment, long index) { return (MemorySegment) VH_pfnUserCallback.get(segment, 0L, index); }
+    public static MemorySegment pfnUserCallback(MemorySegment segment, long index) { return (MemorySegment) VH_pfnUserCallback.get().get(segment, 0L, index); }
     /// {@return `pfnUserCallback`}
     public MemorySegment pfnUserCallback() { return pfnUserCallback(this.segment(), 0L); }
     /// Sets `pfnUserCallback` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pfnUserCallback(MemorySegment segment, long index, MemorySegment value) { VH_pfnUserCallback.set(segment, 0L, index, value); }
+    public static void pfnUserCallback(MemorySegment segment, long index, MemorySegment value) { VH_pfnUserCallback.get().set(segment, 0L, index, value); }
     /// Sets `pfnUserCallback` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends GroupType {
     /// {@return `pUserData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pUserData(MemorySegment segment, long index) { return (MemorySegment) VH_pUserData.get(segment, 0L, index); }
+    public static MemorySegment pUserData(MemorySegment segment, long index) { return (MemorySegment) VH_pUserData.get().get(segment, 0L, index); }
     /// {@return `pUserData`}
     public MemorySegment pUserData() { return pUserData(this.segment(), 0L); }
     /// Sets `pUserData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pUserData(MemorySegment segment, long index, MemorySegment value) { VH_pUserData.set(segment, 0L, index, value); }
+    public static void pUserData(MemorySegment segment, long index, MemorySegment value) { VH_pUserData.get().set(segment, 0L, index, value); }
     /// Sets `pUserData` with the given value.
     /// @param value the value
     /// @return `this`

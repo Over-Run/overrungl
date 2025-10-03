@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Group
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderCoreMask`.
     public static final long OFFSET_shaderCoreMask = LAYOUT.byteOffset(PathElement.groupElement("shaderCoreMask"));
     /// The memory layout of `shaderCoreMask`.
     public static final MemoryLayout LAYOUT_shaderCoreMask = LAYOUT.select(PathElement.groupElement("shaderCoreMask"));
     /// The [VarHandle] of `shaderCoreMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderCoreMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderCoreMask"));
+    public static final Supplier<VarHandle> VH_shaderCoreMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderCoreMask")));
     /// The byte offset of `shaderCoreCount`.
     public static final long OFFSET_shaderCoreCount = LAYOUT.byteOffset(PathElement.groupElement("shaderCoreCount"));
     /// The memory layout of `shaderCoreCount`.
     public static final MemoryLayout LAYOUT_shaderCoreCount = LAYOUT.select(PathElement.groupElement("shaderCoreCount"));
     /// The [VarHandle] of `shaderCoreCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderCoreCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderCoreCount"));
+    public static final Supplier<VarHandle> VH_shaderCoreCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderCoreCount")));
     /// The byte offset of `shaderWarpsPerCore`.
     public static final long OFFSET_shaderWarpsPerCore = LAYOUT.byteOffset(PathElement.groupElement("shaderWarpsPerCore"));
     /// The memory layout of `shaderWarpsPerCore`.
     public static final MemoryLayout LAYOUT_shaderWarpsPerCore = LAYOUT.select(PathElement.groupElement("shaderWarpsPerCore"));
     /// The [VarHandle] of `shaderWarpsPerCore` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderWarpsPerCore = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderWarpsPerCore"));
+    public static final Supplier<VarHandle> VH_shaderWarpsPerCore = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderWarpsPerCore")));
 
     /// Creates `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Group
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Group
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Group
     /// {@return `shaderCoreMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long shaderCoreMask(MemorySegment segment, long index) { return (long) VH_shaderCoreMask.get(segment, 0L, index); }
+    public static long shaderCoreMask(MemorySegment segment, long index) { return (long) VH_shaderCoreMask.get().get(segment, 0L, index); }
     /// {@return `shaderCoreMask`}
     public long shaderCoreMask() { return shaderCoreMask(this.segment(), 0L); }
     /// Sets `shaderCoreMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderCoreMask(MemorySegment segment, long index, long value) { VH_shaderCoreMask.set(segment, 0L, index, value); }
+    public static void shaderCoreMask(MemorySegment segment, long index, long value) { VH_shaderCoreMask.get().set(segment, 0L, index, value); }
     /// Sets `shaderCoreMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Group
     /// {@return `shaderCoreCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderCoreCount(MemorySegment segment, long index) { return (int) VH_shaderCoreCount.get(segment, 0L, index); }
+    public static int shaderCoreCount(MemorySegment segment, long index) { return (int) VH_shaderCoreCount.get().get(segment, 0L, index); }
     /// {@return `shaderCoreCount`}
     public int shaderCoreCount() { return shaderCoreCount(this.segment(), 0L); }
     /// Sets `shaderCoreCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderCoreCount(MemorySegment segment, long index, int value) { VH_shaderCoreCount.set(segment, 0L, index, value); }
+    public static void shaderCoreCount(MemorySegment segment, long index, int value) { VH_shaderCoreCount.get().set(segment, 0L, index, value); }
     /// Sets `shaderCoreCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Group
     /// {@return `shaderWarpsPerCore` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderWarpsPerCore(MemorySegment segment, long index) { return (int) VH_shaderWarpsPerCore.get(segment, 0L, index); }
+    public static int shaderWarpsPerCore(MemorySegment segment, long index) { return (int) VH_shaderWarpsPerCore.get().get(segment, 0L, index); }
     /// {@return `shaderWarpsPerCore`}
     public int shaderWarpsPerCore() { return shaderWarpsPerCore(this.segment(), 0L); }
     /// Sets `shaderWarpsPerCore` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderWarpsPerCore(MemorySegment segment, long index, int value) { VH_shaderWarpsPerCore.set(segment, 0L, index, value); }
+    public static void shaderWarpsPerCore(MemorySegment segment, long index, int value) { VH_shaderWarpsPerCore.get().set(segment, 0L, index, value); }
     /// Sets `shaderWarpsPerCore` with the given value.
     /// @param value the value
     /// @return `this`

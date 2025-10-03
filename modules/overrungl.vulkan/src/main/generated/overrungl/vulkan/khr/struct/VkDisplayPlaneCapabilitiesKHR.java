@@ -43,7 +43,7 @@ public final class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// The memory layout of `supportedAlpha`.
     public static final MemoryLayout LAYOUT_supportedAlpha = LAYOUT.select(PathElement.groupElement("supportedAlpha"));
     /// The [VarHandle] of `supportedAlpha` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedAlpha = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedAlpha"));
+    public static final Supplier<VarHandle> VH_supportedAlpha = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedAlpha")));
     /// The byte offset of `minSrcPosition`.
     public static final long OFFSET_minSrcPosition = LAYOUT.byteOffset(PathElement.groupElement("minSrcPosition"));
     /// The memory layout of `minSrcPosition`.
@@ -126,14 +126,14 @@ public final class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// {@return `supportedAlpha` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedAlpha(MemorySegment segment, long index) { return (int) VH_supportedAlpha.get(segment, 0L, index); }
+    public static int supportedAlpha(MemorySegment segment, long index) { return (int) VH_supportedAlpha.get().get(segment, 0L, index); }
     /// {@return `supportedAlpha`}
     public int supportedAlpha() { return supportedAlpha(this.segment(), 0L); }
     /// Sets `supportedAlpha` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedAlpha(MemorySegment segment, long index, int value) { VH_supportedAlpha.set(segment, 0L, index, value); }
+    public static void supportedAlpha(MemorySegment segment, long index, int value) { VH_supportedAlpha.get().set(segment, 0L, index, value); }
     /// Sets `supportedAlpha` with the given value.
     /// @param value the value
     /// @return `this`

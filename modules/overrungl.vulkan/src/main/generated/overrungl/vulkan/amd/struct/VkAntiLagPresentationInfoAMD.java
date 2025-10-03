@@ -33,25 +33,25 @@ public final class VkAntiLagPresentationInfoAMD extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `stage`.
     public static final long OFFSET_stage = LAYOUT.byteOffset(PathElement.groupElement("stage"));
     /// The memory layout of `stage`.
     public static final MemoryLayout LAYOUT_stage = LAYOUT.select(PathElement.groupElement("stage"));
     /// The [VarHandle] of `stage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stage"));
+    public static final Supplier<VarHandle> VH_stage = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stage")));
     /// The byte offset of `frameIndex`.
     public static final long OFFSET_frameIndex = LAYOUT.byteOffset(PathElement.groupElement("frameIndex"));
     /// The memory layout of `frameIndex`.
     public static final MemoryLayout LAYOUT_frameIndex = LAYOUT.select(PathElement.groupElement("frameIndex"));
     /// The [VarHandle] of `frameIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_frameIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameIndex"));
+    public static final Supplier<VarHandle> VH_frameIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameIndex")));
 
     /// Creates `VkAntiLagPresentationInfoAMD` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkAntiLagPresentationInfoAMD extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkAntiLagPresentationInfoAMD extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkAntiLagPresentationInfoAMD extends GroupType {
     /// {@return `stage` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stage(MemorySegment segment, long index) { return (int) VH_stage.get(segment, 0L, index); }
+    public static int stage(MemorySegment segment, long index) { return (int) VH_stage.get().get(segment, 0L, index); }
     /// {@return `stage`}
     public int stage() { return stage(this.segment(), 0L); }
     /// Sets `stage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stage(MemorySegment segment, long index, int value) { VH_stage.set(segment, 0L, index, value); }
+    public static void stage(MemorySegment segment, long index, int value) { VH_stage.get().set(segment, 0L, index, value); }
     /// Sets `stage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkAntiLagPresentationInfoAMD extends GroupType {
     /// {@return `frameIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long frameIndex(MemorySegment segment, long index) { return (long) VH_frameIndex.get(segment, 0L, index); }
+    public static long frameIndex(MemorySegment segment, long index) { return (long) VH_frameIndex.get().get(segment, 0L, index); }
     /// {@return `frameIndex`}
     public long frameIndex() { return frameIndex(this.segment(), 0L); }
     /// Sets `frameIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void frameIndex(MemorySegment segment, long index, long value) { VH_frameIndex.set(segment, 0L, index, value); }
+    public static void frameIndex(MemorySegment segment, long index, long value) { VH_frameIndex.get().set(segment, 0L, index, value); }
     /// Sets `frameIndex` with the given value.
     /// @param value the value
     /// @return `this`

@@ -39,43 +39,43 @@ public final class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// The memory layout of `pipelineIdentifier`.
     public static final MemoryLayout LAYOUT_pipelineIdentifier = LAYOUT.select(PathElement.groupElement("pipelineIdentifier"));
     /// The [VarHandle] of `pipelineIdentifier` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_pipelineIdentifier = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineIdentifier"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_pipelineIdentifier = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineIdentifier"), PathElement.sequenceElement()));
     /// The byte offset of `pipelineMemorySize`.
     public static final long OFFSET_pipelineMemorySize = LAYOUT.byteOffset(PathElement.groupElement("pipelineMemorySize"));
     /// The memory layout of `pipelineMemorySize`.
     public static final MemoryLayout LAYOUT_pipelineMemorySize = LAYOUT.select(PathElement.groupElement("pipelineMemorySize"));
     /// The [VarHandle] of `pipelineMemorySize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineMemorySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineMemorySize"));
+    public static final Supplier<VarHandle> VH_pipelineMemorySize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineMemorySize")));
     /// The byte offset of `jsonSize`.
     public static final long OFFSET_jsonSize = LAYOUT.byteOffset(PathElement.groupElement("jsonSize"));
     /// The memory layout of `jsonSize`.
     public static final MemoryLayout LAYOUT_jsonSize = LAYOUT.select(PathElement.groupElement("jsonSize"));
     /// The [VarHandle] of `jsonSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_jsonSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("jsonSize"));
+    public static final Supplier<VarHandle> VH_jsonSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("jsonSize")));
     /// The byte offset of `jsonOffset`.
     public static final long OFFSET_jsonOffset = LAYOUT.byteOffset(PathElement.groupElement("jsonOffset"));
     /// The memory layout of `jsonOffset`.
     public static final MemoryLayout LAYOUT_jsonOffset = LAYOUT.select(PathElement.groupElement("jsonOffset"));
     /// The [VarHandle] of `jsonOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_jsonOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("jsonOffset"));
+    public static final Supplier<VarHandle> VH_jsonOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("jsonOffset")));
     /// The byte offset of `stageIndexCount`.
     public static final long OFFSET_stageIndexCount = LAYOUT.byteOffset(PathElement.groupElement("stageIndexCount"));
     /// The memory layout of `stageIndexCount`.
     public static final MemoryLayout LAYOUT_stageIndexCount = LAYOUT.select(PathElement.groupElement("stageIndexCount"));
     /// The [VarHandle] of `stageIndexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stageIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageIndexCount"));
+    public static final Supplier<VarHandle> VH_stageIndexCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageIndexCount")));
     /// The byte offset of `stageIndexStride`.
     public static final long OFFSET_stageIndexStride = LAYOUT.byteOffset(PathElement.groupElement("stageIndexStride"));
     /// The memory layout of `stageIndexStride`.
     public static final MemoryLayout LAYOUT_stageIndexStride = LAYOUT.select(PathElement.groupElement("stageIndexStride"));
     /// The [VarHandle] of `stageIndexStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stageIndexStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageIndexStride"));
+    public static final Supplier<VarHandle> VH_stageIndexStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageIndexStride")));
     /// The byte offset of `stageIndexOffset`.
     public static final long OFFSET_stageIndexOffset = LAYOUT.byteOffset(PathElement.groupElement("stageIndexOffset"));
     /// The memory layout of `stageIndexOffset`.
     public static final MemoryLayout LAYOUT_stageIndexOffset = LAYOUT.select(PathElement.groupElement("stageIndexOffset"));
     /// The [VarHandle] of `stageIndexOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stageIndexOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageIndexOffset"));
+    public static final Supplier<VarHandle> VH_stageIndexOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageIndexOffset")));
 
     /// Creates `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment.
     /// @param segment      the memory segment
@@ -131,7 +131,7 @@ public final class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte pipelineIdentifier(MemorySegment segment, long index, long index0) { return (byte) VH_pipelineIdentifier.get(segment, 0L, index, index0); }
+    public static byte pipelineIdentifier(MemorySegment segment, long index, long index0) { return (byte) VH_pipelineIdentifier.get().get(segment, 0L, index, index0); }
     /// {@return `pipelineIdentifier`}
     public MemorySegment pipelineIdentifier() { return pipelineIdentifier(this.segment(), 0L); }
     /// {@return `pipelineIdentifier`}
@@ -147,7 +147,7 @@ public final class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void pipelineIdentifier(MemorySegment segment, long index, long index0, byte value) { VH_pipelineIdentifier.set(segment, 0L, index, index0, value); }
+    public static void pipelineIdentifier(MemorySegment segment, long index, long index0, byte value) { VH_pipelineIdentifier.get().set(segment, 0L, index, index0, value); }
     /// Sets `pipelineIdentifier` with the given value.
     /// @param value the value
     /// @return `this`
@@ -161,14 +161,14 @@ public final class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// {@return `pipelineMemorySize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long pipelineMemorySize(MemorySegment segment, long index) { return (long) VH_pipelineMemorySize.get(segment, 0L, index); }
+    public static long pipelineMemorySize(MemorySegment segment, long index) { return (long) VH_pipelineMemorySize.get().get(segment, 0L, index); }
     /// {@return `pipelineMemorySize`}
     public long pipelineMemorySize() { return pipelineMemorySize(this.segment(), 0L); }
     /// Sets `pipelineMemorySize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineMemorySize(MemorySegment segment, long index, long value) { VH_pipelineMemorySize.set(segment, 0L, index, value); }
+    public static void pipelineMemorySize(MemorySegment segment, long index, long value) { VH_pipelineMemorySize.get().set(segment, 0L, index, value); }
     /// Sets `pipelineMemorySize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -177,14 +177,14 @@ public final class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// {@return `jsonSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long jsonSize(MemorySegment segment, long index) { return (long) VH_jsonSize.get(segment, 0L, index); }
+    public static long jsonSize(MemorySegment segment, long index) { return (long) VH_jsonSize.get().get(segment, 0L, index); }
     /// {@return `jsonSize`}
     public long jsonSize() { return jsonSize(this.segment(), 0L); }
     /// Sets `jsonSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void jsonSize(MemorySegment segment, long index, long value) { VH_jsonSize.set(segment, 0L, index, value); }
+    public static void jsonSize(MemorySegment segment, long index, long value) { VH_jsonSize.get().set(segment, 0L, index, value); }
     /// Sets `jsonSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,14 +193,14 @@ public final class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// {@return `jsonOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long jsonOffset(MemorySegment segment, long index) { return (long) VH_jsonOffset.get(segment, 0L, index); }
+    public static long jsonOffset(MemorySegment segment, long index) { return (long) VH_jsonOffset.get().get(segment, 0L, index); }
     /// {@return `jsonOffset`}
     public long jsonOffset() { return jsonOffset(this.segment(), 0L); }
     /// Sets `jsonOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void jsonOffset(MemorySegment segment, long index, long value) { VH_jsonOffset.set(segment, 0L, index, value); }
+    public static void jsonOffset(MemorySegment segment, long index, long value) { VH_jsonOffset.get().set(segment, 0L, index, value); }
     /// Sets `jsonOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -209,14 +209,14 @@ public final class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// {@return `stageIndexCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stageIndexCount(MemorySegment segment, long index) { return (int) VH_stageIndexCount.get(segment, 0L, index); }
+    public static int stageIndexCount(MemorySegment segment, long index) { return (int) VH_stageIndexCount.get().get(segment, 0L, index); }
     /// {@return `stageIndexCount`}
     public int stageIndexCount() { return stageIndexCount(this.segment(), 0L); }
     /// Sets `stageIndexCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stageIndexCount(MemorySegment segment, long index, int value) { VH_stageIndexCount.set(segment, 0L, index, value); }
+    public static void stageIndexCount(MemorySegment segment, long index, int value) { VH_stageIndexCount.get().set(segment, 0L, index, value); }
     /// Sets `stageIndexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -225,14 +225,14 @@ public final class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// {@return `stageIndexStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stageIndexStride(MemorySegment segment, long index) { return (int) VH_stageIndexStride.get(segment, 0L, index); }
+    public static int stageIndexStride(MemorySegment segment, long index) { return (int) VH_stageIndexStride.get().get(segment, 0L, index); }
     /// {@return `stageIndexStride`}
     public int stageIndexStride() { return stageIndexStride(this.segment(), 0L); }
     /// Sets `stageIndexStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stageIndexStride(MemorySegment segment, long index, int value) { VH_stageIndexStride.set(segment, 0L, index, value); }
+    public static void stageIndexStride(MemorySegment segment, long index, int value) { VH_stageIndexStride.get().set(segment, 0L, index, value); }
     /// Sets `stageIndexStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -241,14 +241,14 @@ public final class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// {@return `stageIndexOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long stageIndexOffset(MemorySegment segment, long index) { return (long) VH_stageIndexOffset.get(segment, 0L, index); }
+    public static long stageIndexOffset(MemorySegment segment, long index) { return (long) VH_stageIndexOffset.get().get(segment, 0L, index); }
     /// {@return `stageIndexOffset`}
     public long stageIndexOffset() { return stageIndexOffset(this.segment(), 0L); }
     /// Sets `stageIndexOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stageIndexOffset(MemorySegment segment, long index, long value) { VH_stageIndexOffset.set(segment, 0L, index, value); }
+    public static void stageIndexOffset(MemorySegment segment, long index, long value) { VH_stageIndexOffset.get().set(segment, 0L, index, value); }
     /// Sets `stageIndexOffset` with the given value.
     /// @param value the value
     /// @return `this`

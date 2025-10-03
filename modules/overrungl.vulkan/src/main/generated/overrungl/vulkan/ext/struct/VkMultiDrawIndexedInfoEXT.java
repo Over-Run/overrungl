@@ -31,19 +31,19 @@ public final class VkMultiDrawIndexedInfoEXT extends GroupType {
     /// The memory layout of `firstIndex`.
     public static final MemoryLayout LAYOUT_firstIndex = LAYOUT.select(PathElement.groupElement("firstIndex"));
     /// The [VarHandle] of `firstIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_firstIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstIndex"));
+    public static final Supplier<VarHandle> VH_firstIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstIndex")));
     /// The byte offset of `indexCount`.
     public static final long OFFSET_indexCount = LAYOUT.byteOffset(PathElement.groupElement("indexCount"));
     /// The memory layout of `indexCount`.
     public static final MemoryLayout LAYOUT_indexCount = LAYOUT.select(PathElement.groupElement("indexCount"));
     /// The [VarHandle] of `indexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexCount"));
+    public static final Supplier<VarHandle> VH_indexCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexCount")));
     /// The byte offset of `vertexOffset`.
     public static final long OFFSET_vertexOffset = LAYOUT.byteOffset(PathElement.groupElement("vertexOffset"));
     /// The memory layout of `vertexOffset`.
     public static final MemoryLayout LAYOUT_vertexOffset = LAYOUT.select(PathElement.groupElement("vertexOffset"));
     /// The [VarHandle] of `vertexOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexOffset"));
+    public static final Supplier<VarHandle> VH_vertexOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexOffset")));
 
     /// Creates `VkMultiDrawIndexedInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkMultiDrawIndexedInfoEXT extends GroupType {
     /// {@return `firstIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int firstIndex(MemorySegment segment, long index) { return (int) VH_firstIndex.get(segment, 0L, index); }
+    public static int firstIndex(MemorySegment segment, long index) { return (int) VH_firstIndex.get().get(segment, 0L, index); }
     /// {@return `firstIndex`}
     public int firstIndex() { return firstIndex(this.segment(), 0L); }
     /// Sets `firstIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void firstIndex(MemorySegment segment, long index, int value) { VH_firstIndex.set(segment, 0L, index, value); }
+    public static void firstIndex(MemorySegment segment, long index, int value) { VH_firstIndex.get().set(segment, 0L, index, value); }
     /// Sets `firstIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkMultiDrawIndexedInfoEXT extends GroupType {
     /// {@return `indexCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int indexCount(MemorySegment segment, long index) { return (int) VH_indexCount.get(segment, 0L, index); }
+    public static int indexCount(MemorySegment segment, long index) { return (int) VH_indexCount.get().get(segment, 0L, index); }
     /// {@return `indexCount`}
     public int indexCount() { return indexCount(this.segment(), 0L); }
     /// Sets `indexCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void indexCount(MemorySegment segment, long index, int value) { VH_indexCount.set(segment, 0L, index, value); }
+    public static void indexCount(MemorySegment segment, long index, int value) { VH_indexCount.get().set(segment, 0L, index, value); }
     /// Sets `indexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkMultiDrawIndexedInfoEXT extends GroupType {
     /// {@return `vertexOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertexOffset(MemorySegment segment, long index) { return (int) VH_vertexOffset.get(segment, 0L, index); }
+    public static int vertexOffset(MemorySegment segment, long index) { return (int) VH_vertexOffset.get().get(segment, 0L, index); }
     /// {@return `vertexOffset`}
     public int vertexOffset() { return vertexOffset(this.segment(), 0L); }
     /// Sets `vertexOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexOffset(MemorySegment segment, long index, int value) { VH_vertexOffset.set(segment, 0L, index, value); }
+    public static void vertexOffset(MemorySegment segment, long index, int value) { VH_vertexOffset.get().set(segment, 0L, index, value); }
     /// Sets `vertexOffset` with the given value.
     /// @param value the value
     /// @return `this`

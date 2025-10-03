@@ -29,13 +29,13 @@ public final class VkClearDepthStencilValue extends GroupType {
     /// The memory layout of `depth`.
     public static final MemoryLayout LAYOUT_depth = LAYOUT.select(PathElement.groupElement("depth"));
     /// The [VarHandle] of `depth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depth"));
+    public static final Supplier<VarHandle> VH_depth = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depth")));
     /// The byte offset of `stencil`.
     public static final long OFFSET_stencil = LAYOUT.byteOffset(PathElement.groupElement("stencil"));
     /// The memory layout of `stencil`.
     public static final MemoryLayout LAYOUT_stencil = LAYOUT.select(PathElement.groupElement("stencil"));
     /// The [VarHandle] of `stencil` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stencil = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stencil"));
+    public static final Supplier<VarHandle> VH_stencil = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stencil")));
 
     /// Creates `VkClearDepthStencilValue` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkClearDepthStencilValue extends GroupType {
     /// {@return `depth` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float depth(MemorySegment segment, long index) { return (float) VH_depth.get(segment, 0L, index); }
+    public static float depth(MemorySegment segment, long index) { return (float) VH_depth.get().get(segment, 0L, index); }
     /// {@return `depth`}
     public float depth() { return depth(this.segment(), 0L); }
     /// Sets `depth` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depth(MemorySegment segment, long index, float value) { VH_depth.set(segment, 0L, index, value); }
+    public static void depth(MemorySegment segment, long index, float value) { VH_depth.get().set(segment, 0L, index, value); }
     /// Sets `depth` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkClearDepthStencilValue extends GroupType {
     /// {@return `stencil` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stencil(MemorySegment segment, long index) { return (int) VH_stencil.get(segment, 0L, index); }
+    public static int stencil(MemorySegment segment, long index) { return (int) VH_stencil.get().get(segment, 0L, index); }
     /// {@return `stencil`}
     public int stencil() { return stencil(this.segment(), 0L); }
     /// Sets `stencil` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stencil(MemorySegment segment, long index, int value) { VH_stencil.set(segment, 0L, index, value); }
+    public static void stencil(MemorySegment segment, long index, int value) { VH_stencil.get().set(segment, 0L, index, value); }
     /// Sets `stencil` with the given value.
     /// @param value the value
     /// @return `this`

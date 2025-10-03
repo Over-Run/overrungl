@@ -37,37 +37,37 @@ public final class VkPipelineDiscardRectangleStateCreateInfoEXT extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `discardRectangleMode`.
     public static final long OFFSET_discardRectangleMode = LAYOUT.byteOffset(PathElement.groupElement("discardRectangleMode"));
     /// The memory layout of `discardRectangleMode`.
     public static final MemoryLayout LAYOUT_discardRectangleMode = LAYOUT.select(PathElement.groupElement("discardRectangleMode"));
     /// The [VarHandle] of `discardRectangleMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_discardRectangleMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("discardRectangleMode"));
+    public static final Supplier<VarHandle> VH_discardRectangleMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("discardRectangleMode")));
     /// The byte offset of `discardRectangleCount`.
     public static final long OFFSET_discardRectangleCount = LAYOUT.byteOffset(PathElement.groupElement("discardRectangleCount"));
     /// The memory layout of `discardRectangleCount`.
     public static final MemoryLayout LAYOUT_discardRectangleCount = LAYOUT.select(PathElement.groupElement("discardRectangleCount"));
     /// The [VarHandle] of `discardRectangleCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_discardRectangleCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("discardRectangleCount"));
+    public static final Supplier<VarHandle> VH_discardRectangleCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("discardRectangleCount")));
     /// The byte offset of `pDiscardRectangles`.
     public static final long OFFSET_pDiscardRectangles = LAYOUT.byteOffset(PathElement.groupElement("pDiscardRectangles"));
     /// The memory layout of `pDiscardRectangles`.
     public static final MemoryLayout LAYOUT_pDiscardRectangles = LAYOUT.select(PathElement.groupElement("pDiscardRectangles"));
     /// The [VarHandle] of `pDiscardRectangles` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDiscardRectangles = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDiscardRectangles"));
+    public static final Supplier<VarHandle> VH_pDiscardRectangles = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDiscardRectangles")));
 
     /// Creates `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPipelineDiscardRectangleStateCreateInfoEXT extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPipelineDiscardRectangleStateCreateInfoEXT extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPipelineDiscardRectangleStateCreateInfoEXT extends GroupTyp
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPipelineDiscardRectangleStateCreateInfoEXT extends GroupTyp
     /// {@return `discardRectangleMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int discardRectangleMode(MemorySegment segment, long index) { return (int) VH_discardRectangleMode.get(segment, 0L, index); }
+    public static int discardRectangleMode(MemorySegment segment, long index) { return (int) VH_discardRectangleMode.get().get(segment, 0L, index); }
     /// {@return `discardRectangleMode`}
     public int discardRectangleMode() { return discardRectangleMode(this.segment(), 0L); }
     /// Sets `discardRectangleMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void discardRectangleMode(MemorySegment segment, long index, int value) { VH_discardRectangleMode.set(segment, 0L, index, value); }
+    public static void discardRectangleMode(MemorySegment segment, long index, int value) { VH_discardRectangleMode.get().set(segment, 0L, index, value); }
     /// Sets `discardRectangleMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPipelineDiscardRectangleStateCreateInfoEXT extends GroupTyp
     /// {@return `discardRectangleCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int discardRectangleCount(MemorySegment segment, long index) { return (int) VH_discardRectangleCount.get(segment, 0L, index); }
+    public static int discardRectangleCount(MemorySegment segment, long index) { return (int) VH_discardRectangleCount.get().get(segment, 0L, index); }
     /// {@return `discardRectangleCount`}
     public int discardRectangleCount() { return discardRectangleCount(this.segment(), 0L); }
     /// Sets `discardRectangleCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void discardRectangleCount(MemorySegment segment, long index, int value) { VH_discardRectangleCount.set(segment, 0L, index, value); }
+    public static void discardRectangleCount(MemorySegment segment, long index, int value) { VH_discardRectangleCount.get().set(segment, 0L, index, value); }
     /// Sets `discardRectangleCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPipelineDiscardRectangleStateCreateInfoEXT extends GroupTyp
     /// {@return `pDiscardRectangles` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDiscardRectangles(MemorySegment segment, long index) { return (MemorySegment) VH_pDiscardRectangles.get(segment, 0L, index); }
+    public static MemorySegment pDiscardRectangles(MemorySegment segment, long index) { return (MemorySegment) VH_pDiscardRectangles.get().get(segment, 0L, index); }
     /// {@return `pDiscardRectangles`}
     public MemorySegment pDiscardRectangles() { return pDiscardRectangles(this.segment(), 0L); }
     /// Sets `pDiscardRectangles` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDiscardRectangles(MemorySegment segment, long index, MemorySegment value) { VH_pDiscardRectangles.set(segment, 0L, index, value); }
+    public static void pDiscardRectangles(MemorySegment segment, long index, MemorySegment value) { VH_pDiscardRectangles.get().set(segment, 0L, index, value); }
     /// Sets `pDiscardRectangles` with the given value.
     /// @param value the value
     /// @return `this`

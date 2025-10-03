@@ -29,13 +29,13 @@ public final class GLFWGamepadState extends GroupType {
     /// The memory layout of `buttons`.
     public static final MemoryLayout LAYOUT_buttons = LAYOUT.select(PathElement.groupElement("buttons"));
     /// The [VarHandle] of `buttons` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_buttons = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buttons"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_buttons = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("buttons"), PathElement.sequenceElement()));
     /// The byte offset of `axes`.
     public static final long OFFSET_axes = LAYOUT.byteOffset(PathElement.groupElement("axes"));
     /// The memory layout of `axes`.
     public static final MemoryLayout LAYOUT_axes = LAYOUT.select(PathElement.groupElement("axes"));
     /// The [VarHandle] of `axes` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_axes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("axes"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_axes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("axes"), PathElement.sequenceElement()));
 
     /// Creates `GLFWGamepadState` with the given segment.
     /// @param segment      the memory segment
@@ -91,7 +91,7 @@ public final class GLFWGamepadState extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte buttons(MemorySegment segment, long index, long index0) { return (byte) VH_buttons.get(segment, 0L, index, index0); }
+    public static byte buttons(MemorySegment segment, long index, long index0) { return (byte) VH_buttons.get().get(segment, 0L, index, index0); }
     /// {@return `buttons`}
     public MemorySegment buttons() { return buttons(this.segment(), 0L); }
     /// {@return `buttons`}
@@ -107,7 +107,7 @@ public final class GLFWGamepadState extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void buttons(MemorySegment segment, long index, long index0, byte value) { VH_buttons.set(segment, 0L, index, index0, value); }
+    public static void buttons(MemorySegment segment, long index, long index0, byte value) { VH_buttons.get().set(segment, 0L, index, index0, value); }
     /// Sets `buttons` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,7 +126,7 @@ public final class GLFWGamepadState extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static float axes(MemorySegment segment, long index, long index0) { return (float) VH_axes.get(segment, 0L, index, index0); }
+    public static float axes(MemorySegment segment, long index, long index0) { return (float) VH_axes.get().get(segment, 0L, index, index0); }
     /// {@return `axes`}
     public MemorySegment axes() { return axes(this.segment(), 0L); }
     /// {@return `axes`}
@@ -142,7 +142,7 @@ public final class GLFWGamepadState extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void axes(MemorySegment segment, long index, long index0, float value) { VH_axes.set(segment, 0L, index, index0, value); }
+    public static void axes(MemorySegment segment, long index, long index0, float value) { VH_axes.get().set(segment, 0L, index, index0, value); }
     /// Sets `axes` with the given value.
     /// @param value the value
     /// @return `this`

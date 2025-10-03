@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends GroupType 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `memoryMapPlaced`.
     public static final long OFFSET_memoryMapPlaced = LAYOUT.byteOffset(PathElement.groupElement("memoryMapPlaced"));
     /// The memory layout of `memoryMapPlaced`.
     public static final MemoryLayout LAYOUT_memoryMapPlaced = LAYOUT.select(PathElement.groupElement("memoryMapPlaced"));
     /// The [VarHandle] of `memoryMapPlaced` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryMapPlaced = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryMapPlaced"));
+    public static final Supplier<VarHandle> VH_memoryMapPlaced = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryMapPlaced")));
     /// The byte offset of `memoryMapRangePlaced`.
     public static final long OFFSET_memoryMapRangePlaced = LAYOUT.byteOffset(PathElement.groupElement("memoryMapRangePlaced"));
     /// The memory layout of `memoryMapRangePlaced`.
     public static final MemoryLayout LAYOUT_memoryMapRangePlaced = LAYOUT.select(PathElement.groupElement("memoryMapRangePlaced"));
     /// The [VarHandle] of `memoryMapRangePlaced` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryMapRangePlaced = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryMapRangePlaced"));
+    public static final Supplier<VarHandle> VH_memoryMapRangePlaced = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryMapRangePlaced")));
     /// The byte offset of `memoryUnmapReserve`.
     public static final long OFFSET_memoryUnmapReserve = LAYOUT.byteOffset(PathElement.groupElement("memoryUnmapReserve"));
     /// The memory layout of `memoryUnmapReserve`.
     public static final MemoryLayout LAYOUT_memoryUnmapReserve = LAYOUT.select(PathElement.groupElement("memoryUnmapReserve"));
     /// The [VarHandle] of `memoryUnmapReserve` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryUnmapReserve = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryUnmapReserve"));
+    public static final Supplier<VarHandle> VH_memoryUnmapReserve = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryUnmapReserve")));
 
     /// Creates `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends GroupType 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends GroupType 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends GroupType 
     /// {@return `memoryMapPlaced` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int memoryMapPlaced(MemorySegment segment, long index) { return (int) VH_memoryMapPlaced.get(segment, 0L, index); }
+    public static int memoryMapPlaced(MemorySegment segment, long index) { return (int) VH_memoryMapPlaced.get().get(segment, 0L, index); }
     /// {@return `memoryMapPlaced`}
     public int memoryMapPlaced() { return memoryMapPlaced(this.segment(), 0L); }
     /// Sets `memoryMapPlaced` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memoryMapPlaced(MemorySegment segment, long index, int value) { VH_memoryMapPlaced.set(segment, 0L, index, value); }
+    public static void memoryMapPlaced(MemorySegment segment, long index, int value) { VH_memoryMapPlaced.get().set(segment, 0L, index, value); }
     /// Sets `memoryMapPlaced` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends GroupType 
     /// {@return `memoryMapRangePlaced` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int memoryMapRangePlaced(MemorySegment segment, long index) { return (int) VH_memoryMapRangePlaced.get(segment, 0L, index); }
+    public static int memoryMapRangePlaced(MemorySegment segment, long index) { return (int) VH_memoryMapRangePlaced.get().get(segment, 0L, index); }
     /// {@return `memoryMapRangePlaced`}
     public int memoryMapRangePlaced() { return memoryMapRangePlaced(this.segment(), 0L); }
     /// Sets `memoryMapRangePlaced` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memoryMapRangePlaced(MemorySegment segment, long index, int value) { VH_memoryMapRangePlaced.set(segment, 0L, index, value); }
+    public static void memoryMapRangePlaced(MemorySegment segment, long index, int value) { VH_memoryMapRangePlaced.get().set(segment, 0L, index, value); }
     /// Sets `memoryMapRangePlaced` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends GroupType 
     /// {@return `memoryUnmapReserve` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int memoryUnmapReserve(MemorySegment segment, long index) { return (int) VH_memoryUnmapReserve.get(segment, 0L, index); }
+    public static int memoryUnmapReserve(MemorySegment segment, long index) { return (int) VH_memoryUnmapReserve.get().get(segment, 0L, index); }
     /// {@return `memoryUnmapReserve`}
     public int memoryUnmapReserve() { return memoryUnmapReserve(this.segment(), 0L); }
     /// Sets `memoryUnmapReserve` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memoryUnmapReserve(MemorySegment segment, long index, int value) { VH_memoryUnmapReserve.set(segment, 0L, index, value); }
+    public static void memoryUnmapReserve(MemorySegment segment, long index, int value) { VH_memoryUnmapReserve.get().set(segment, 0L, index, value); }
     /// Sets `memoryUnmapReserve` with the given value.
     /// @param value the value
     /// @return `this`

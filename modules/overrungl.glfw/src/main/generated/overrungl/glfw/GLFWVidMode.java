@@ -37,37 +37,37 @@ public final class GLFWVidMode extends GroupType {
     /// The memory layout of `width`.
     public static final MemoryLayout LAYOUT_width = LAYOUT.select(PathElement.groupElement("width"));
     /// The [VarHandle] of `width` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("width"));
+    public static final Supplier<VarHandle> VH_width = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("width")));
     /// The byte offset of `height`.
     public static final long OFFSET_height = LAYOUT.byteOffset(PathElement.groupElement("height"));
     /// The memory layout of `height`.
     public static final MemoryLayout LAYOUT_height = LAYOUT.select(PathElement.groupElement("height"));
     /// The [VarHandle] of `height` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("height"));
+    public static final Supplier<VarHandle> VH_height = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("height")));
     /// The byte offset of `redBits`.
     public static final long OFFSET_redBits = LAYOUT.byteOffset(PathElement.groupElement("redBits"));
     /// The memory layout of `redBits`.
     public static final MemoryLayout LAYOUT_redBits = LAYOUT.select(PathElement.groupElement("redBits"));
     /// The [VarHandle] of `redBits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_redBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("redBits"));
+    public static final Supplier<VarHandle> VH_redBits = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("redBits")));
     /// The byte offset of `greenBits`.
     public static final long OFFSET_greenBits = LAYOUT.byteOffset(PathElement.groupElement("greenBits"));
     /// The memory layout of `greenBits`.
     public static final MemoryLayout LAYOUT_greenBits = LAYOUT.select(PathElement.groupElement("greenBits"));
     /// The [VarHandle] of `greenBits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_greenBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("greenBits"));
+    public static final Supplier<VarHandle> VH_greenBits = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("greenBits")));
     /// The byte offset of `blueBits`.
     public static final long OFFSET_blueBits = LAYOUT.byteOffset(PathElement.groupElement("blueBits"));
     /// The memory layout of `blueBits`.
     public static final MemoryLayout LAYOUT_blueBits = LAYOUT.select(PathElement.groupElement("blueBits"));
     /// The [VarHandle] of `blueBits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_blueBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blueBits"));
+    public static final Supplier<VarHandle> VH_blueBits = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("blueBits")));
     /// The byte offset of `refreshRate`.
     public static final long OFFSET_refreshRate = LAYOUT.byteOffset(PathElement.groupElement("refreshRate"));
     /// The memory layout of `refreshRate`.
     public static final MemoryLayout LAYOUT_refreshRate = LAYOUT.select(PathElement.groupElement("refreshRate"));
     /// The [VarHandle] of `refreshRate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_refreshRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("refreshRate"));
+    public static final Supplier<VarHandle> VH_refreshRate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("refreshRate")));
 
     /// Creates `GLFWVidMode` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class GLFWVidMode extends GroupType {
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int width(MemorySegment segment, long index) { return (int) VH_width.get(segment, 0L, index); }
+    public static int width(MemorySegment segment, long index) { return (int) VH_width.get().get(segment, 0L, index); }
     /// {@return `width`}
     public int width() { return width(this.segment(), 0L); }
     /// Sets `width` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void width(MemorySegment segment, long index, int value) { VH_width.set(segment, 0L, index, value); }
+    public static void width(MemorySegment segment, long index, int value) { VH_width.get().set(segment, 0L, index, value); }
     /// Sets `width` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class GLFWVidMode extends GroupType {
     /// {@return `height` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int height(MemorySegment segment, long index) { return (int) VH_height.get(segment, 0L, index); }
+    public static int height(MemorySegment segment, long index) { return (int) VH_height.get().get(segment, 0L, index); }
     /// {@return `height`}
     public int height() { return height(this.segment(), 0L); }
     /// Sets `height` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void height(MemorySegment segment, long index, int value) { VH_height.set(segment, 0L, index, value); }
+    public static void height(MemorySegment segment, long index, int value) { VH_height.get().set(segment, 0L, index, value); }
     /// Sets `height` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class GLFWVidMode extends GroupType {
     /// {@return `redBits` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int redBits(MemorySegment segment, long index) { return (int) VH_redBits.get(segment, 0L, index); }
+    public static int redBits(MemorySegment segment, long index) { return (int) VH_redBits.get().get(segment, 0L, index); }
     /// {@return `redBits`}
     public int redBits() { return redBits(this.segment(), 0L); }
     /// Sets `redBits` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void redBits(MemorySegment segment, long index, int value) { VH_redBits.set(segment, 0L, index, value); }
+    public static void redBits(MemorySegment segment, long index, int value) { VH_redBits.get().set(segment, 0L, index, value); }
     /// Sets `redBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class GLFWVidMode extends GroupType {
     /// {@return `greenBits` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int greenBits(MemorySegment segment, long index) { return (int) VH_greenBits.get(segment, 0L, index); }
+    public static int greenBits(MemorySegment segment, long index) { return (int) VH_greenBits.get().get(segment, 0L, index); }
     /// {@return `greenBits`}
     public int greenBits() { return greenBits(this.segment(), 0L); }
     /// Sets `greenBits` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void greenBits(MemorySegment segment, long index, int value) { VH_greenBits.set(segment, 0L, index, value); }
+    public static void greenBits(MemorySegment segment, long index, int value) { VH_greenBits.get().set(segment, 0L, index, value); }
     /// Sets `greenBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class GLFWVidMode extends GroupType {
     /// {@return `blueBits` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int blueBits(MemorySegment segment, long index) { return (int) VH_blueBits.get(segment, 0L, index); }
+    public static int blueBits(MemorySegment segment, long index) { return (int) VH_blueBits.get().get(segment, 0L, index); }
     /// {@return `blueBits`}
     public int blueBits() { return blueBits(this.segment(), 0L); }
     /// Sets `blueBits` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void blueBits(MemorySegment segment, long index, int value) { VH_blueBits.set(segment, 0L, index, value); }
+    public static void blueBits(MemorySegment segment, long index, int value) { VH_blueBits.get().set(segment, 0L, index, value); }
     /// Sets `blueBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class GLFWVidMode extends GroupType {
     /// {@return `refreshRate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int refreshRate(MemorySegment segment, long index) { return (int) VH_refreshRate.get(segment, 0L, index); }
+    public static int refreshRate(MemorySegment segment, long index) { return (int) VH_refreshRate.get().get(segment, 0L, index); }
     /// {@return `refreshRate`}
     public int refreshRate() { return refreshRate(this.segment(), 0L); }
     /// Sets `refreshRate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void refreshRate(MemorySegment segment, long index, int value) { VH_refreshRate.set(segment, 0L, index, value); }
+    public static void refreshRate(MemorySegment segment, long index, int value) { VH_refreshRate.get().set(segment, 0L, index, value); }
     /// Sets `refreshRate` with the given value.
     /// @param value the value
     /// @return `this`

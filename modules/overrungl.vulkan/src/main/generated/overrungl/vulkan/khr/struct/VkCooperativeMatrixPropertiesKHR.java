@@ -47,67 +47,67 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `MSize`.
     public static final long OFFSET_MSize = LAYOUT.byteOffset(PathElement.groupElement("MSize"));
     /// The memory layout of `MSize`.
     public static final MemoryLayout LAYOUT_MSize = LAYOUT.select(PathElement.groupElement("MSize"));
     /// The [VarHandle] of `MSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_MSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("MSize"));
+    public static final Supplier<VarHandle> VH_MSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("MSize")));
     /// The byte offset of `NSize`.
     public static final long OFFSET_NSize = LAYOUT.byteOffset(PathElement.groupElement("NSize"));
     /// The memory layout of `NSize`.
     public static final MemoryLayout LAYOUT_NSize = LAYOUT.select(PathElement.groupElement("NSize"));
     /// The [VarHandle] of `NSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_NSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("NSize"));
+    public static final Supplier<VarHandle> VH_NSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("NSize")));
     /// The byte offset of `KSize`.
     public static final long OFFSET_KSize = LAYOUT.byteOffset(PathElement.groupElement("KSize"));
     /// The memory layout of `KSize`.
     public static final MemoryLayout LAYOUT_KSize = LAYOUT.select(PathElement.groupElement("KSize"));
     /// The [VarHandle] of `KSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_KSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("KSize"));
+    public static final Supplier<VarHandle> VH_KSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("KSize")));
     /// The byte offset of `AType`.
     public static final long OFFSET_AType = LAYOUT.byteOffset(PathElement.groupElement("AType"));
     /// The memory layout of `AType`.
     public static final MemoryLayout LAYOUT_AType = LAYOUT.select(PathElement.groupElement("AType"));
     /// The [VarHandle] of `AType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_AType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("AType"));
+    public static final Supplier<VarHandle> VH_AType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("AType")));
     /// The byte offset of `BType`.
     public static final long OFFSET_BType = LAYOUT.byteOffset(PathElement.groupElement("BType"));
     /// The memory layout of `BType`.
     public static final MemoryLayout LAYOUT_BType = LAYOUT.select(PathElement.groupElement("BType"));
     /// The [VarHandle] of `BType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_BType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("BType"));
+    public static final Supplier<VarHandle> VH_BType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("BType")));
     /// The byte offset of `CType`.
     public static final long OFFSET_CType = LAYOUT.byteOffset(PathElement.groupElement("CType"));
     /// The memory layout of `CType`.
     public static final MemoryLayout LAYOUT_CType = LAYOUT.select(PathElement.groupElement("CType"));
     /// The [VarHandle] of `CType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_CType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("CType"));
+    public static final Supplier<VarHandle> VH_CType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("CType")));
     /// The byte offset of `ResultType`.
     public static final long OFFSET_ResultType = LAYOUT.byteOffset(PathElement.groupElement("ResultType"));
     /// The memory layout of `ResultType`.
     public static final MemoryLayout LAYOUT_ResultType = LAYOUT.select(PathElement.groupElement("ResultType"));
     /// The [VarHandle] of `ResultType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ResultType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ResultType"));
+    public static final Supplier<VarHandle> VH_ResultType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ResultType")));
     /// The byte offset of `saturatingAccumulation`.
     public static final long OFFSET_saturatingAccumulation = LAYOUT.byteOffset(PathElement.groupElement("saturatingAccumulation"));
     /// The memory layout of `saturatingAccumulation`.
     public static final MemoryLayout LAYOUT_saturatingAccumulation = LAYOUT.select(PathElement.groupElement("saturatingAccumulation"));
     /// The [VarHandle] of `saturatingAccumulation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_saturatingAccumulation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("saturatingAccumulation"));
+    public static final Supplier<VarHandle> VH_saturatingAccumulation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("saturatingAccumulation")));
     /// The byte offset of `scope`.
     public static final long OFFSET_scope = LAYOUT.byteOffset(PathElement.groupElement("scope"));
     /// The memory layout of `scope`.
     public static final MemoryLayout LAYOUT_scope = LAYOUT.select(PathElement.groupElement("scope"));
     /// The [VarHandle] of `scope` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_scope = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scope"));
+    public static final Supplier<VarHandle> VH_scope = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("scope")));
 
     /// Creates `VkCooperativeMatrixPropertiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -158,14 +158,14 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// {@return `MSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int MSize(MemorySegment segment, long index) { return (int) VH_MSize.get(segment, 0L, index); }
+    public static int MSize(MemorySegment segment, long index) { return (int) VH_MSize.get().get(segment, 0L, index); }
     /// {@return `MSize`}
     public int MSize() { return MSize(this.segment(), 0L); }
     /// Sets `MSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void MSize(MemorySegment segment, long index, int value) { VH_MSize.set(segment, 0L, index, value); }
+    public static void MSize(MemorySegment segment, long index, int value) { VH_MSize.get().set(segment, 0L, index, value); }
     /// Sets `MSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// {@return `NSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int NSize(MemorySegment segment, long index) { return (int) VH_NSize.get(segment, 0L, index); }
+    public static int NSize(MemorySegment segment, long index) { return (int) VH_NSize.get().get(segment, 0L, index); }
     /// {@return `NSize`}
     public int NSize() { return NSize(this.segment(), 0L); }
     /// Sets `NSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void NSize(MemorySegment segment, long index, int value) { VH_NSize.set(segment, 0L, index, value); }
+    public static void NSize(MemorySegment segment, long index, int value) { VH_NSize.get().set(segment, 0L, index, value); }
     /// Sets `NSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// {@return `KSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int KSize(MemorySegment segment, long index) { return (int) VH_KSize.get(segment, 0L, index); }
+    public static int KSize(MemorySegment segment, long index) { return (int) VH_KSize.get().get(segment, 0L, index); }
     /// {@return `KSize`}
     public int KSize() { return KSize(this.segment(), 0L); }
     /// Sets `KSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void KSize(MemorySegment segment, long index, int value) { VH_KSize.set(segment, 0L, index, value); }
+    public static void KSize(MemorySegment segment, long index, int value) { VH_KSize.get().set(segment, 0L, index, value); }
     /// Sets `KSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,14 +238,14 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// {@return `AType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int AType(MemorySegment segment, long index) { return (int) VH_AType.get(segment, 0L, index); }
+    public static int AType(MemorySegment segment, long index) { return (int) VH_AType.get().get(segment, 0L, index); }
     /// {@return `AType`}
     public int AType() { return AType(this.segment(), 0L); }
     /// Sets `AType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void AType(MemorySegment segment, long index, int value) { VH_AType.set(segment, 0L, index, value); }
+    public static void AType(MemorySegment segment, long index, int value) { VH_AType.get().set(segment, 0L, index, value); }
     /// Sets `AType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,14 +254,14 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// {@return `BType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int BType(MemorySegment segment, long index) { return (int) VH_BType.get(segment, 0L, index); }
+    public static int BType(MemorySegment segment, long index) { return (int) VH_BType.get().get(segment, 0L, index); }
     /// {@return `BType`}
     public int BType() { return BType(this.segment(), 0L); }
     /// Sets `BType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void BType(MemorySegment segment, long index, int value) { VH_BType.set(segment, 0L, index, value); }
+    public static void BType(MemorySegment segment, long index, int value) { VH_BType.get().set(segment, 0L, index, value); }
     /// Sets `BType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -270,14 +270,14 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// {@return `CType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int CType(MemorySegment segment, long index) { return (int) VH_CType.get(segment, 0L, index); }
+    public static int CType(MemorySegment segment, long index) { return (int) VH_CType.get().get(segment, 0L, index); }
     /// {@return `CType`}
     public int CType() { return CType(this.segment(), 0L); }
     /// Sets `CType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void CType(MemorySegment segment, long index, int value) { VH_CType.set(segment, 0L, index, value); }
+    public static void CType(MemorySegment segment, long index, int value) { VH_CType.get().set(segment, 0L, index, value); }
     /// Sets `CType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,14 +286,14 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// {@return `ResultType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int ResultType(MemorySegment segment, long index) { return (int) VH_ResultType.get(segment, 0L, index); }
+    public static int ResultType(MemorySegment segment, long index) { return (int) VH_ResultType.get().get(segment, 0L, index); }
     /// {@return `ResultType`}
     public int ResultType() { return ResultType(this.segment(), 0L); }
     /// Sets `ResultType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ResultType(MemorySegment segment, long index, int value) { VH_ResultType.set(segment, 0L, index, value); }
+    public static void ResultType(MemorySegment segment, long index, int value) { VH_ResultType.get().set(segment, 0L, index, value); }
     /// Sets `ResultType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,14 +302,14 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// {@return `saturatingAccumulation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int saturatingAccumulation(MemorySegment segment, long index) { return (int) VH_saturatingAccumulation.get(segment, 0L, index); }
+    public static int saturatingAccumulation(MemorySegment segment, long index) { return (int) VH_saturatingAccumulation.get().get(segment, 0L, index); }
     /// {@return `saturatingAccumulation`}
     public int saturatingAccumulation() { return saturatingAccumulation(this.segment(), 0L); }
     /// Sets `saturatingAccumulation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void saturatingAccumulation(MemorySegment segment, long index, int value) { VH_saturatingAccumulation.set(segment, 0L, index, value); }
+    public static void saturatingAccumulation(MemorySegment segment, long index, int value) { VH_saturatingAccumulation.get().set(segment, 0L, index, value); }
     /// Sets `saturatingAccumulation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,14 +318,14 @@ public final class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// {@return `scope` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int scope(MemorySegment segment, long index) { return (int) VH_scope.get(segment, 0L, index); }
+    public static int scope(MemorySegment segment, long index) { return (int) VH_scope.get().get(segment, 0L, index); }
     /// {@return `scope`}
     public int scope() { return scope(this.segment(), 0L); }
     /// Sets `scope` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void scope(MemorySegment segment, long index, int value) { VH_scope.set(segment, 0L, index, value); }
+    public static void scope(MemorySegment segment, long index, int value) { VH_scope.get().set(segment, 0L, index, value); }
     /// Sets `scope` with the given value.
     /// @param value the value
     /// @return `this`

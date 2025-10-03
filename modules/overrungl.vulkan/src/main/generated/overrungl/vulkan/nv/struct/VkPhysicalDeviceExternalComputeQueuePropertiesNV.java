@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends Grou
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `externalDataSize`.
     public static final long OFFSET_externalDataSize = LAYOUT.byteOffset(PathElement.groupElement("externalDataSize"));
     /// The memory layout of `externalDataSize`.
     public static final MemoryLayout LAYOUT_externalDataSize = LAYOUT.select(PathElement.groupElement("externalDataSize"));
     /// The [VarHandle] of `externalDataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_externalDataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("externalDataSize"));
+    public static final Supplier<VarHandle> VH_externalDataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("externalDataSize")));
     /// The byte offset of `maxExternalQueues`.
     public static final long OFFSET_maxExternalQueues = LAYOUT.byteOffset(PathElement.groupElement("maxExternalQueues"));
     /// The memory layout of `maxExternalQueues`.
     public static final MemoryLayout LAYOUT_maxExternalQueues = LAYOUT.select(PathElement.groupElement("maxExternalQueues"));
     /// The [VarHandle] of `maxExternalQueues` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxExternalQueues = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExternalQueues"));
+    public static final Supplier<VarHandle> VH_maxExternalQueues = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExternalQueues")));
 
     /// Creates `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends Grou
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends Grou
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends Grou
     /// {@return `externalDataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int externalDataSize(MemorySegment segment, long index) { return (int) VH_externalDataSize.get(segment, 0L, index); }
+    public static int externalDataSize(MemorySegment segment, long index) { return (int) VH_externalDataSize.get().get(segment, 0L, index); }
     /// {@return `externalDataSize`}
     public int externalDataSize() { return externalDataSize(this.segment(), 0L); }
     /// Sets `externalDataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void externalDataSize(MemorySegment segment, long index, int value) { VH_externalDataSize.set(segment, 0L, index, value); }
+    public static void externalDataSize(MemorySegment segment, long index, int value) { VH_externalDataSize.get().set(segment, 0L, index, value); }
     /// Sets `externalDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends Grou
     /// {@return `maxExternalQueues` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxExternalQueues(MemorySegment segment, long index) { return (int) VH_maxExternalQueues.get(segment, 0L, index); }
+    public static int maxExternalQueues(MemorySegment segment, long index) { return (int) VH_maxExternalQueues.get().get(segment, 0L, index); }
     /// {@return `maxExternalQueues`}
     public int maxExternalQueues() { return maxExternalQueues(this.segment(), 0L); }
     /// Sets `maxExternalQueues` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxExternalQueues(MemorySegment segment, long index, int value) { VH_maxExternalQueues.set(segment, 0L, index, value); }
+    public static void maxExternalQueues(MemorySegment segment, long index, int value) { VH_maxExternalQueues.get().set(segment, 0L, index, value); }
     /// Sets `maxExternalQueues` with the given value.
     /// @param value the value
     /// @return `this`

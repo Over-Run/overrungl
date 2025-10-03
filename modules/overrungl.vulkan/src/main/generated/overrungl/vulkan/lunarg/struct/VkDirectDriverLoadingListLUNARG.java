@@ -35,31 +35,31 @@ public final class VkDirectDriverLoadingListLUNARG extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `mode`.
     public static final long OFFSET_mode = LAYOUT.byteOffset(PathElement.groupElement("mode"));
     /// The memory layout of `mode`.
     public static final MemoryLayout LAYOUT_mode = LAYOUT.select(PathElement.groupElement("mode"));
     /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
+    public static final Supplier<VarHandle> VH_mode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode")));
     /// The byte offset of `driverCount`.
     public static final long OFFSET_driverCount = LAYOUT.byteOffset(PathElement.groupElement("driverCount"));
     /// The memory layout of `driverCount`.
     public static final MemoryLayout LAYOUT_driverCount = LAYOUT.select(PathElement.groupElement("driverCount"));
     /// The [VarHandle] of `driverCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_driverCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverCount"));
+    public static final Supplier<VarHandle> VH_driverCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverCount")));
     /// The byte offset of `pDrivers`.
     public static final long OFFSET_pDrivers = LAYOUT.byteOffset(PathElement.groupElement("pDrivers"));
     /// The memory layout of `pDrivers`.
     public static final MemoryLayout LAYOUT_pDrivers = LAYOUT.select(PathElement.groupElement("pDrivers"));
     /// The [VarHandle] of `pDrivers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDrivers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDrivers"));
+    public static final Supplier<VarHandle> VH_pDrivers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDrivers")));
 
     /// Creates `VkDirectDriverLoadingListLUNARG` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkDirectDriverLoadingListLUNARG extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDirectDriverLoadingListLUNARG extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkDirectDriverLoadingListLUNARG extends GroupType {
     /// {@return `mode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
+    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get().get(segment, 0L, index); }
     /// {@return `mode`}
     public int mode() { return mode(this.segment(), 0L); }
     /// Sets `mode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void mode(MemorySegment segment, long index, int value) { VH_mode.set(segment, 0L, index, value); }
+    public static void mode(MemorySegment segment, long index, int value) { VH_mode.get().set(segment, 0L, index, value); }
     /// Sets `mode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDirectDriverLoadingListLUNARG extends GroupType {
     /// {@return `driverCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int driverCount(MemorySegment segment, long index) { return (int) VH_driverCount.get(segment, 0L, index); }
+    public static int driverCount(MemorySegment segment, long index) { return (int) VH_driverCount.get().get(segment, 0L, index); }
     /// {@return `driverCount`}
     public int driverCount() { return driverCount(this.segment(), 0L); }
     /// Sets `driverCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void driverCount(MemorySegment segment, long index, int value) { VH_driverCount.set(segment, 0L, index, value); }
+    public static void driverCount(MemorySegment segment, long index, int value) { VH_driverCount.get().set(segment, 0L, index, value); }
     /// Sets `driverCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDirectDriverLoadingListLUNARG extends GroupType {
     /// {@return `pDrivers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDrivers(MemorySegment segment, long index) { return (MemorySegment) VH_pDrivers.get(segment, 0L, index); }
+    public static MemorySegment pDrivers(MemorySegment segment, long index) { return (MemorySegment) VH_pDrivers.get().get(segment, 0L, index); }
     /// {@return `pDrivers`}
     public MemorySegment pDrivers() { return pDrivers(this.segment(), 0L); }
     /// Sets `pDrivers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDrivers(MemorySegment segment, long index, MemorySegment value) { VH_pDrivers.set(segment, 0L, index, value); }
+    public static void pDrivers(MemorySegment segment, long index, MemorySegment value) { VH_pDrivers.get().set(segment, 0L, index, value); }
     /// Sets `pDrivers` with the given value.
     /// @param value the value
     /// @return `this`

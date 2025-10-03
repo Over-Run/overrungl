@@ -35,31 +35,31 @@ public final class VkDataGraphPipelineSessionMemoryRequirementsInfoARM extends G
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `session`.
     public static final long OFFSET_session = LAYOUT.byteOffset(PathElement.groupElement("session"));
     /// The memory layout of `session`.
     public static final MemoryLayout LAYOUT_session = LAYOUT.select(PathElement.groupElement("session"));
     /// The [VarHandle] of `session` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_session = LAYOUT.arrayElementVarHandle(PathElement.groupElement("session"));
+    public static final Supplier<VarHandle> VH_session = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("session")));
     /// The byte offset of `bindPoint`.
     public static final long OFFSET_bindPoint = LAYOUT.byteOffset(PathElement.groupElement("bindPoint"));
     /// The memory layout of `bindPoint`.
     public static final MemoryLayout LAYOUT_bindPoint = LAYOUT.select(PathElement.groupElement("bindPoint"));
     /// The [VarHandle] of `bindPoint` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bindPoint = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bindPoint"));
+    public static final Supplier<VarHandle> VH_bindPoint = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bindPoint")));
     /// The byte offset of `objectIndex`.
     public static final long OFFSET_objectIndex = LAYOUT.byteOffset(PathElement.groupElement("objectIndex"));
     /// The memory layout of `objectIndex`.
     public static final MemoryLayout LAYOUT_objectIndex = LAYOUT.select(PathElement.groupElement("objectIndex"));
     /// The [VarHandle] of `objectIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_objectIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("objectIndex"));
+    public static final Supplier<VarHandle> VH_objectIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("objectIndex")));
 
     /// Creates `VkDataGraphPipelineSessionMemoryRequirementsInfoARM` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkDataGraphPipelineSessionMemoryRequirementsInfoARM extends G
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDataGraphPipelineSessionMemoryRequirementsInfoARM extends G
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkDataGraphPipelineSessionMemoryRequirementsInfoARM extends G
     /// {@return `session` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long session(MemorySegment segment, long index) { return (long) VH_session.get(segment, 0L, index); }
+    public static long session(MemorySegment segment, long index) { return (long) VH_session.get().get(segment, 0L, index); }
     /// {@return `session`}
     public long session() { return session(this.segment(), 0L); }
     /// Sets `session` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void session(MemorySegment segment, long index, long value) { VH_session.set(segment, 0L, index, value); }
+    public static void session(MemorySegment segment, long index, long value) { VH_session.get().set(segment, 0L, index, value); }
     /// Sets `session` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDataGraphPipelineSessionMemoryRequirementsInfoARM extends G
     /// {@return `bindPoint` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bindPoint(MemorySegment segment, long index) { return (int) VH_bindPoint.get(segment, 0L, index); }
+    public static int bindPoint(MemorySegment segment, long index) { return (int) VH_bindPoint.get().get(segment, 0L, index); }
     /// {@return `bindPoint`}
     public int bindPoint() { return bindPoint(this.segment(), 0L); }
     /// Sets `bindPoint` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bindPoint(MemorySegment segment, long index, int value) { VH_bindPoint.set(segment, 0L, index, value); }
+    public static void bindPoint(MemorySegment segment, long index, int value) { VH_bindPoint.get().set(segment, 0L, index, value); }
     /// Sets `bindPoint` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDataGraphPipelineSessionMemoryRequirementsInfoARM extends G
     /// {@return `objectIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int objectIndex(MemorySegment segment, long index) { return (int) VH_objectIndex.get(segment, 0L, index); }
+    public static int objectIndex(MemorySegment segment, long index) { return (int) VH_objectIndex.get().get(segment, 0L, index); }
     /// {@return `objectIndex`}
     public int objectIndex() { return objectIndex(this.segment(), 0L); }
     /// Sets `objectIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void objectIndex(MemorySegment segment, long index, int value) { VH_objectIndex.set(segment, 0L, index, value); }
+    public static void objectIndex(MemorySegment segment, long index, int value) { VH_objectIndex.get().set(segment, 0L, index, value); }
     /// Sets `objectIndex` with the given value.
     /// @param value the value
     /// @return `this`

@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.stb;
@@ -23,6 +31,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.function.Supplier;
 
 import static overrungl.internal.RuntimeHelper.*;
 
@@ -59,59 +68,59 @@ public final class STBVorbis {
     /// Method handles.
     public static final class Handles {
         /// The method handle of [`stb_vorbis_get_info`][#stb_vorbis_get_info].
-        public static final MethodHandle MH_stb_vorbis_get_info = downcallHandle(FunctionDescriptor.of(STBVorbisInfo.LAYOUT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_info = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(STBVorbisInfo.LAYOUT, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_get_comment`][#stb_vorbis_get_comment].
-        public static final MethodHandle MH_stb_vorbis_get_comment = downcallHandle(FunctionDescriptor.of(STBVorbisComment.LAYOUT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_comment = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(STBVorbisComment.LAYOUT, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_get_error`][#stb_vorbis_get_error].
-        public static final MethodHandle MH_stb_vorbis_get_error = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_error = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_close`][#stb_vorbis_close].
-        public static final MethodHandle MH_stb_vorbis_close = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_close = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_get_sample_offset`][#stb_vorbis_get_sample_offset].
-        public static final MethodHandle MH_stb_vorbis_get_sample_offset = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_sample_offset = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_get_file_offset`][#stb_vorbis_get_file_offset].
-        public static final MethodHandle MH_stb_vorbis_get_file_offset = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_file_offset = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_open_pushdata`][#stb_vorbis_open_pushdata].
-        public static final MethodHandle MH_stb_vorbis_open_pushdata = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_open_pushdata = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_decode_frame_pushdata`][#stb_vorbis_decode_frame_pushdata].
-        public static final MethodHandle MH_stb_vorbis_decode_frame_pushdata = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_decode_frame_pushdata = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_flush_pushdata`][#stb_vorbis_flush_pushdata].
-        public static final MethodHandle MH_stb_vorbis_flush_pushdata = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_flush_pushdata = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_decode_filename`][#stb_vorbis_decode_filename].
-        public static final MethodHandle MH_stb_vorbis_decode_filename = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_decode_filename = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_decode_memory`][#stb_vorbis_decode_memory].
-        public static final MethodHandle MH_stb_vorbis_decode_memory = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_decode_memory = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_open_memory`][#stb_vorbis_open_memory].
-        public static final MethodHandle MH_stb_vorbis_open_memory = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_open_memory = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_open_filename`][#stb_vorbis_open_filename].
-        public static final MethodHandle MH_stb_vorbis_open_filename = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_open_filename = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_open_file`][#stb_vorbis_open_file].
-        public static final MethodHandle MH_stb_vorbis_open_file = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_open_file = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_open_file_section`][#stb_vorbis_open_file_section].
-        public static final MethodHandle MH_stb_vorbis_open_file_section = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_open_file_section = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`stb_vorbis_seek_frame`][#stb_vorbis_seek_frame].
-        public static final MethodHandle MH_stb_vorbis_seek_frame = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_seek_frame = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`stb_vorbis_seek`][#stb_vorbis_seek].
-        public static final MethodHandle MH_stb_vorbis_seek = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_seek = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`stb_vorbis_seek_start`][#stb_vorbis_seek_start].
-        public static final MethodHandle MH_stb_vorbis_seek_start = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_seek_start = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_stream_length_in_samples`][#stb_vorbis_stream_length_in_samples].
-        public static final MethodHandle MH_stb_vorbis_stream_length_in_samples = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_stream_length_in_samples = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_stream_length_in_seconds`][#stb_vorbis_stream_length_in_seconds].
-        public static final MethodHandle MH_stb_vorbis_stream_length_in_seconds = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_stream_length_in_seconds = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_get_frame_float`][#stb_vorbis_get_frame_float].
-        public static final MethodHandle MH_stb_vorbis_get_frame_float = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_frame_float = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`stb_vorbis_get_frame_short_interleaved`][#stb_vorbis_get_frame_short_interleaved].
-        public static final MethodHandle MH_stb_vorbis_get_frame_short_interleaved = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_frame_short_interleaved = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`stb_vorbis_get_frame_short`][#stb_vorbis_get_frame_short].
-        public static final MethodHandle MH_stb_vorbis_get_frame_short = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_frame_short = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`stb_vorbis_get_samples_float_interleaved`][#stb_vorbis_get_samples_float_interleaved].
-        public static final MethodHandle MH_stb_vorbis_get_samples_float_interleaved = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_samples_float_interleaved = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`stb_vorbis_get_samples_float`][#stb_vorbis_get_samples_float].
-        public static final MethodHandle MH_stb_vorbis_get_samples_float = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_samples_float = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`stb_vorbis_get_samples_short_interleaved`][#stb_vorbis_get_samples_short_interleaved].
-        public static final MethodHandle MH_stb_vorbis_get_samples_short_interleaved = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_samples_short_interleaved = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`stb_vorbis_get_samples_short`][#stb_vorbis_get_samples_short].
-        public static final MethodHandle MH_stb_vorbis_get_samples_short = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stb_vorbis_get_samples_short = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The function address of [`stb_vorbis_get_info`][#stb_vorbis_get_info].
         public final MemorySegment PFN_stb_vorbis_get_info;
         /// The function address of [`stb_vorbis_get_comment`][#stb_vorbis_get_comment].
@@ -213,7 +222,7 @@ public final class STBVorbis {
     /// ```
     public static @NonNull MemorySegment stb_vorbis_get_info(@NonNull SegmentAllocator __allocator, @NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_info", __allocator, f); }
-        return (MemorySegment) Handles.MH_stb_vorbis_get_info.invokeExact(Handles.get().PFN_stb_vorbis_get_info, __allocator, f); }
+        return (MemorySegment) Handles.MH_stb_vorbis_get_info.get().invokeExact(Handles.get().PFN_stb_vorbis_get_info, __allocator, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_info", e); }
     }
 
@@ -223,7 +232,7 @@ public final class STBVorbis {
     /// ```
     public static @NonNull MemorySegment stb_vorbis_get_comment(@NonNull SegmentAllocator __allocator, @NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_comment", __allocator, f); }
-        return (MemorySegment) Handles.MH_stb_vorbis_get_comment.invokeExact(Handles.get().PFN_stb_vorbis_get_comment, __allocator, f); }
+        return (MemorySegment) Handles.MH_stb_vorbis_get_comment.get().invokeExact(Handles.get().PFN_stb_vorbis_get_comment, __allocator, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_comment", e); }
     }
 
@@ -233,7 +242,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_get_error(@NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_error", f); }
-        return (int) Handles.MH_stb_vorbis_get_error.invokeExact(Handles.get().PFN_stb_vorbis_get_error, f); }
+        return (int) Handles.MH_stb_vorbis_get_error.get().invokeExact(Handles.get().PFN_stb_vorbis_get_error, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_error", e); }
     }
 
@@ -243,7 +252,7 @@ public final class STBVorbis {
     /// ```
     public static void stb_vorbis_close(@NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_close", f); }
-        Handles.MH_stb_vorbis_close.invokeExact(Handles.get().PFN_stb_vorbis_close, f); }
+        Handles.MH_stb_vorbis_close.get().invokeExact(Handles.get().PFN_stb_vorbis_close, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_close", e); }
     }
 
@@ -253,7 +262,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_get_sample_offset(@NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_sample_offset", f); }
-        return (int) Handles.MH_stb_vorbis_get_sample_offset.invokeExact(Handles.get().PFN_stb_vorbis_get_sample_offset, f); }
+        return (int) Handles.MH_stb_vorbis_get_sample_offset.get().invokeExact(Handles.get().PFN_stb_vorbis_get_sample_offset, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_sample_offset", e); }
     }
 
@@ -263,7 +272,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_get_file_offset(@NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_file_offset", f); }
-        return (int) Handles.MH_stb_vorbis_get_file_offset.invokeExact(Handles.get().PFN_stb_vorbis_get_file_offset, f); }
+        return (int) Handles.MH_stb_vorbis_get_file_offset.get().invokeExact(Handles.get().PFN_stb_vorbis_get_file_offset, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_file_offset", e); }
     }
 
@@ -273,7 +282,7 @@ public final class STBVorbis {
     /// ```
     public static @NonNull MemorySegment stb_vorbis_open_pushdata(@NonNull MemorySegment datablock, int datablock_length_in_bytes, @NonNull MemorySegment datablock_memory_consumed_in_bytes, @NonNull MemorySegment error, @NonNull MemorySegment alloc_buffer) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_open_pushdata", datablock, datablock_length_in_bytes, datablock_memory_consumed_in_bytes, error, alloc_buffer); }
-        return (MemorySegment) Handles.MH_stb_vorbis_open_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_open_pushdata, datablock, datablock_length_in_bytes, datablock_memory_consumed_in_bytes, error, alloc_buffer); }
+        return (MemorySegment) Handles.MH_stb_vorbis_open_pushdata.get().invokeExact(Handles.get().PFN_stb_vorbis_open_pushdata, datablock, datablock_length_in_bytes, datablock_memory_consumed_in_bytes, error, alloc_buffer); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_pushdata", e); }
     }
 
@@ -283,7 +292,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_decode_frame_pushdata(@NonNull MemorySegment f, @NonNull MemorySegment datablock, int datablock_length_in_bytes, @NonNull MemorySegment channels, @NonNull MemorySegment output, @NonNull MemorySegment samples) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_decode_frame_pushdata", f, datablock, datablock_length_in_bytes, channels, output, samples); }
-        return (int) Handles.MH_stb_vorbis_decode_frame_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_decode_frame_pushdata, f, datablock, datablock_length_in_bytes, channels, output, samples); }
+        return (int) Handles.MH_stb_vorbis_decode_frame_pushdata.get().invokeExact(Handles.get().PFN_stb_vorbis_decode_frame_pushdata, f, datablock, datablock_length_in_bytes, channels, output, samples); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_frame_pushdata", e); }
     }
 
@@ -293,7 +302,7 @@ public final class STBVorbis {
     /// ```
     public static void stb_vorbis_flush_pushdata(@NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_flush_pushdata", f); }
-        Handles.MH_stb_vorbis_flush_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_flush_pushdata, f); }
+        Handles.MH_stb_vorbis_flush_pushdata.get().invokeExact(Handles.get().PFN_stb_vorbis_flush_pushdata, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_flush_pushdata", e); }
     }
 
@@ -303,7 +312,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_decode_filename(@NonNull MemorySegment filename, @NonNull MemorySegment channels, @NonNull MemorySegment sample_rate, @NonNull MemorySegment output) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_decode_filename", filename, channels, sample_rate, output); }
-        return (int) Handles.MH_stb_vorbis_decode_filename.invokeExact(Handles.get().PFN_stb_vorbis_decode_filename, filename, channels, sample_rate, output); }
+        return (int) Handles.MH_stb_vorbis_decode_filename.get().invokeExact(Handles.get().PFN_stb_vorbis_decode_filename, filename, channels, sample_rate, output); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_filename", e); }
     }
 
@@ -313,7 +322,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_decode_memory(@NonNull MemorySegment mem, int len, @NonNull MemorySegment channels, @NonNull MemorySegment sample_rate, @NonNull MemorySegment output) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_decode_memory", mem, len, channels, sample_rate, output); }
-        return (int) Handles.MH_stb_vorbis_decode_memory.invokeExact(Handles.get().PFN_stb_vorbis_decode_memory, mem, len, channels, sample_rate, output); }
+        return (int) Handles.MH_stb_vorbis_decode_memory.get().invokeExact(Handles.get().PFN_stb_vorbis_decode_memory, mem, len, channels, sample_rate, output); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_memory", e); }
     }
 
@@ -323,7 +332,7 @@ public final class STBVorbis {
     /// ```
     public static @NonNull MemorySegment stb_vorbis_open_memory(@NonNull MemorySegment data, int len, @NonNull MemorySegment error, @NonNull MemorySegment alloc_buffer) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_open_memory", data, len, error, alloc_buffer); }
-        return (MemorySegment) Handles.MH_stb_vorbis_open_memory.invokeExact(Handles.get().PFN_stb_vorbis_open_memory, data, len, error, alloc_buffer); }
+        return (MemorySegment) Handles.MH_stb_vorbis_open_memory.get().invokeExact(Handles.get().PFN_stb_vorbis_open_memory, data, len, error, alloc_buffer); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_memory", e); }
     }
 
@@ -333,7 +342,7 @@ public final class STBVorbis {
     /// ```
     public static @NonNull MemorySegment stb_vorbis_open_filename(@NonNull MemorySegment filename, @NonNull MemorySegment error, @NonNull MemorySegment alloc_buffer) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_open_filename", filename, error, alloc_buffer); }
-        return (MemorySegment) Handles.MH_stb_vorbis_open_filename.invokeExact(Handles.get().PFN_stb_vorbis_open_filename, filename, error, alloc_buffer); }
+        return (MemorySegment) Handles.MH_stb_vorbis_open_filename.get().invokeExact(Handles.get().PFN_stb_vorbis_open_filename, filename, error, alloc_buffer); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_filename", e); }
     }
 
@@ -343,7 +352,7 @@ public final class STBVorbis {
     /// ```
     public static @NonNull MemorySegment stb_vorbis_open_file(@NonNull MemorySegment f, int close_handle_on_close, @NonNull MemorySegment error, @NonNull MemorySegment alloc_buffer) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_open_file", f, close_handle_on_close, error, alloc_buffer); }
-        return (MemorySegment) Handles.MH_stb_vorbis_open_file.invokeExact(Handles.get().PFN_stb_vorbis_open_file, f, close_handle_on_close, error, alloc_buffer); }
+        return (MemorySegment) Handles.MH_stb_vorbis_open_file.get().invokeExact(Handles.get().PFN_stb_vorbis_open_file, f, close_handle_on_close, error, alloc_buffer); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_file", e); }
     }
 
@@ -353,7 +362,7 @@ public final class STBVorbis {
     /// ```
     public static @NonNull MemorySegment stb_vorbis_open_file_section(@NonNull MemorySegment f, int close_handle_on_close, @NonNull MemorySegment error, @NonNull MemorySegment alloc_buffer, int len) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_open_file_section", f, close_handle_on_close, error, alloc_buffer, len); }
-        return (MemorySegment) Handles.MH_stb_vorbis_open_file_section.invokeExact(Handles.get().PFN_stb_vorbis_open_file_section, f, close_handle_on_close, error, alloc_buffer, len); }
+        return (MemorySegment) Handles.MH_stb_vorbis_open_file_section.get().invokeExact(Handles.get().PFN_stb_vorbis_open_file_section, f, close_handle_on_close, error, alloc_buffer, len); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_file_section", e); }
     }
 
@@ -363,7 +372,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_seek_frame(@NonNull MemorySegment f, int sample_number) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_seek_frame", f, sample_number); }
-        return (int) Handles.MH_stb_vorbis_seek_frame.invokeExact(Handles.get().PFN_stb_vorbis_seek_frame, f, sample_number); }
+        return (int) Handles.MH_stb_vorbis_seek_frame.get().invokeExact(Handles.get().PFN_stb_vorbis_seek_frame, f, sample_number); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_frame", e); }
     }
 
@@ -373,7 +382,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_seek(@NonNull MemorySegment f, int sample_number) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_seek", f, sample_number); }
-        return (int) Handles.MH_stb_vorbis_seek.invokeExact(Handles.get().PFN_stb_vorbis_seek, f, sample_number); }
+        return (int) Handles.MH_stb_vorbis_seek.get().invokeExact(Handles.get().PFN_stb_vorbis_seek, f, sample_number); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek", e); }
     }
 
@@ -383,7 +392,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_seek_start(@NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_seek_start", f); }
-        return (int) Handles.MH_stb_vorbis_seek_start.invokeExact(Handles.get().PFN_stb_vorbis_seek_start, f); }
+        return (int) Handles.MH_stb_vorbis_seek_start.get().invokeExact(Handles.get().PFN_stb_vorbis_seek_start, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_start", e); }
     }
 
@@ -393,7 +402,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_stream_length_in_samples(@NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_stream_length_in_samples", f); }
-        return (int) Handles.MH_stb_vorbis_stream_length_in_samples.invokeExact(Handles.get().PFN_stb_vorbis_stream_length_in_samples, f); }
+        return (int) Handles.MH_stb_vorbis_stream_length_in_samples.get().invokeExact(Handles.get().PFN_stb_vorbis_stream_length_in_samples, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_samples", e); }
     }
 
@@ -403,7 +412,7 @@ public final class STBVorbis {
     /// ```
     public static float stb_vorbis_stream_length_in_seconds(@NonNull MemorySegment f) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_stream_length_in_seconds", f); }
-        return (float) Handles.MH_stb_vorbis_stream_length_in_seconds.invokeExact(Handles.get().PFN_stb_vorbis_stream_length_in_seconds, f); }
+        return (float) Handles.MH_stb_vorbis_stream_length_in_seconds.get().invokeExact(Handles.get().PFN_stb_vorbis_stream_length_in_seconds, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_seconds", e); }
     }
 
@@ -413,7 +422,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_get_frame_float(@NonNull MemorySegment f, @NonNull MemorySegment channels, @NonNull MemorySegment output) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_frame_float", f, channels, output); }
-        return (int) Handles.MH_stb_vorbis_get_frame_float.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_float, f, channels, output); }
+        return (int) Handles.MH_stb_vorbis_get_frame_float.get().invokeExact(Handles.get().PFN_stb_vorbis_get_frame_float, f, channels, output); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_float", e); }
     }
 
@@ -423,7 +432,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_get_frame_short_interleaved(@NonNull MemorySegment f, int num_c, @NonNull MemorySegment buffer, int num_shorts) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_frame_short_interleaved", f, num_c, buffer, num_shorts); }
-        return (int) Handles.MH_stb_vorbis_get_frame_short_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_short_interleaved, f, num_c, buffer, num_shorts); }
+        return (int) Handles.MH_stb_vorbis_get_frame_short_interleaved.get().invokeExact(Handles.get().PFN_stb_vorbis_get_frame_short_interleaved, f, num_c, buffer, num_shorts); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short_interleaved", e); }
     }
 
@@ -433,7 +442,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_get_frame_short(@NonNull MemorySegment f, int num_c, @NonNull MemorySegment buffer, int num_samples) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_frame_short", f, num_c, buffer, num_samples); }
-        return (int) Handles.MH_stb_vorbis_get_frame_short.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_short, f, num_c, buffer, num_samples); }
+        return (int) Handles.MH_stb_vorbis_get_frame_short.get().invokeExact(Handles.get().PFN_stb_vorbis_get_frame_short, f, num_c, buffer, num_samples); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short", e); }
     }
 
@@ -443,7 +452,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_get_samples_float_interleaved(@NonNull MemorySegment f, int channels, @NonNull MemorySegment buffer, int num_floats) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_samples_float_interleaved", f, channels, buffer, num_floats); }
-        return (int) Handles.MH_stb_vorbis_get_samples_float_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_float_interleaved, f, channels, buffer, num_floats); }
+        return (int) Handles.MH_stb_vorbis_get_samples_float_interleaved.get().invokeExact(Handles.get().PFN_stb_vorbis_get_samples_float_interleaved, f, channels, buffer, num_floats); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float_interleaved", e); }
     }
 
@@ -453,7 +462,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_get_samples_float(@NonNull MemorySegment f, int channels, @NonNull MemorySegment buffer, int num_samples) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_samples_float", f, channels, buffer, num_samples); }
-        return (int) Handles.MH_stb_vorbis_get_samples_float.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_float, f, channels, buffer, num_samples); }
+        return (int) Handles.MH_stb_vorbis_get_samples_float.get().invokeExact(Handles.get().PFN_stb_vorbis_get_samples_float, f, channels, buffer, num_samples); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float", e); }
     }
 
@@ -463,7 +472,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_get_samples_short_interleaved(@NonNull MemorySegment f, int channels, @NonNull MemorySegment buffer, int num_shorts) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_samples_short_interleaved", f, channels, buffer, num_shorts); }
-        return (int) Handles.MH_stb_vorbis_get_samples_short_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_short_interleaved, f, channels, buffer, num_shorts); }
+        return (int) Handles.MH_stb_vorbis_get_samples_short_interleaved.get().invokeExact(Handles.get().PFN_stb_vorbis_get_samples_short_interleaved, f, channels, buffer, num_shorts); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_short_interleaved", e); }
     }
 
@@ -473,7 +482,7 @@ public final class STBVorbis {
     /// ```
     public static int stb_vorbis_get_samples_short(@NonNull MemorySegment f, int channels, @NonNull MemorySegment buffer, int num_samples) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_samples_short", f, channels, buffer, num_samples); }
-        return (int) Handles.MH_stb_vorbis_get_samples_short.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_short, f, channels, buffer, num_samples); }
+        return (int) Handles.MH_stb_vorbis_get_samples_short.get().invokeExact(Handles.get().PFN_stb_vorbis_get_samples_short, f, channels, buffer, num_samples); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_short", e); }
     }
 

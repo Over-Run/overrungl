@@ -35,31 +35,31 @@ public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends Gr
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shadingRateType`.
     public static final long OFFSET_shadingRateType = LAYOUT.byteOffset(PathElement.groupElement("shadingRateType"));
     /// The memory layout of `shadingRateType`.
     public static final MemoryLayout LAYOUT_shadingRateType = LAYOUT.select(PathElement.groupElement("shadingRateType"));
     /// The [VarHandle] of `shadingRateType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shadingRateType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRateType"));
+    public static final Supplier<VarHandle> VH_shadingRateType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRateType")));
     /// The byte offset of `shadingRate`.
     public static final long OFFSET_shadingRate = LAYOUT.byteOffset(PathElement.groupElement("shadingRate"));
     /// The memory layout of `shadingRate`.
     public static final MemoryLayout LAYOUT_shadingRate = LAYOUT.select(PathElement.groupElement("shadingRate"));
     /// The [VarHandle] of `shadingRate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shadingRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRate"));
+    public static final Supplier<VarHandle> VH_shadingRate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRate")));
     /// The byte offset of `combinerOps`.
     public static final long OFFSET_combinerOps = LAYOUT.byteOffset(PathElement.groupElement("combinerOps"));
     /// The memory layout of `combinerOps`.
     public static final MemoryLayout LAYOUT_combinerOps = LAYOUT.select(PathElement.groupElement("combinerOps"));
     /// The [VarHandle] of `combinerOps` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_combinerOps = LAYOUT.arrayElementVarHandle(PathElement.groupElement("combinerOps"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_combinerOps = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("combinerOps"), PathElement.sequenceElement()));
 
     /// Creates `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends Gr
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends Gr
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends Gr
     /// {@return `shadingRateType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shadingRateType(MemorySegment segment, long index) { return (int) VH_shadingRateType.get(segment, 0L, index); }
+    public static int shadingRateType(MemorySegment segment, long index) { return (int) VH_shadingRateType.get().get(segment, 0L, index); }
     /// {@return `shadingRateType`}
     public int shadingRateType() { return shadingRateType(this.segment(), 0L); }
     /// Sets `shadingRateType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shadingRateType(MemorySegment segment, long index, int value) { VH_shadingRateType.set(segment, 0L, index, value); }
+    public static void shadingRateType(MemorySegment segment, long index, int value) { VH_shadingRateType.get().set(segment, 0L, index, value); }
     /// Sets `shadingRateType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends Gr
     /// {@return `shadingRate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shadingRate(MemorySegment segment, long index) { return (int) VH_shadingRate.get(segment, 0L, index); }
+    public static int shadingRate(MemorySegment segment, long index) { return (int) VH_shadingRate.get().get(segment, 0L, index); }
     /// {@return `shadingRate`}
     public int shadingRate() { return shadingRate(this.segment(), 0L); }
     /// Sets `shadingRate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shadingRate(MemorySegment segment, long index, int value) { VH_shadingRate.set(segment, 0L, index, value); }
+    public static void shadingRate(MemorySegment segment, long index, int value) { VH_shadingRate.get().set(segment, 0L, index, value); }
     /// Sets `shadingRate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -179,7 +179,7 @@ public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends Gr
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int combinerOps(MemorySegment segment, long index, long index0) { return (int) VH_combinerOps.get(segment, 0L, index, index0); }
+    public static int combinerOps(MemorySegment segment, long index, long index0) { return (int) VH_combinerOps.get().get(segment, 0L, index, index0); }
     /// {@return `combinerOps`}
     public MemorySegment combinerOps() { return combinerOps(this.segment(), 0L); }
     /// {@return `combinerOps`}
@@ -195,7 +195,7 @@ public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends Gr
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void combinerOps(MemorySegment segment, long index, long index0, int value) { VH_combinerOps.set(segment, 0L, index, index0, value); }
+    public static void combinerOps(MemorySegment segment, long index, long index0, int value) { VH_combinerOps.get().set(segment, 0L, index, index0, value); }
     /// Sets `combinerOps` with the given value.
     /// @param value the value
     /// @return `this`

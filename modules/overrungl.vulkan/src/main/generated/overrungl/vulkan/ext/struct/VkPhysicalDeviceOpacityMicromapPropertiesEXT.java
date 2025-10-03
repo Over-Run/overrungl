@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceOpacityMicromapPropertiesEXT extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `maxOpacity2StateSubdivisionLevel`.
     public static final long OFFSET_maxOpacity2StateSubdivisionLevel = LAYOUT.byteOffset(PathElement.groupElement("maxOpacity2StateSubdivisionLevel"));
     /// The memory layout of `maxOpacity2StateSubdivisionLevel`.
     public static final MemoryLayout LAYOUT_maxOpacity2StateSubdivisionLevel = LAYOUT.select(PathElement.groupElement("maxOpacity2StateSubdivisionLevel"));
     /// The [VarHandle] of `maxOpacity2StateSubdivisionLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxOpacity2StateSubdivisionLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxOpacity2StateSubdivisionLevel"));
+    public static final Supplier<VarHandle> VH_maxOpacity2StateSubdivisionLevel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxOpacity2StateSubdivisionLevel")));
     /// The byte offset of `maxOpacity4StateSubdivisionLevel`.
     public static final long OFFSET_maxOpacity4StateSubdivisionLevel = LAYOUT.byteOffset(PathElement.groupElement("maxOpacity4StateSubdivisionLevel"));
     /// The memory layout of `maxOpacity4StateSubdivisionLevel`.
     public static final MemoryLayout LAYOUT_maxOpacity4StateSubdivisionLevel = LAYOUT.select(PathElement.groupElement("maxOpacity4StateSubdivisionLevel"));
     /// The [VarHandle] of `maxOpacity4StateSubdivisionLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxOpacity4StateSubdivisionLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxOpacity4StateSubdivisionLevel"));
+    public static final Supplier<VarHandle> VH_maxOpacity4StateSubdivisionLevel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxOpacity4StateSubdivisionLevel")));
 
     /// Creates `VkPhysicalDeviceOpacityMicromapPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceOpacityMicromapPropertiesEXT extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceOpacityMicromapPropertiesEXT extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceOpacityMicromapPropertiesEXT extends GroupTyp
     /// {@return `maxOpacity2StateSubdivisionLevel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxOpacity2StateSubdivisionLevel(MemorySegment segment, long index) { return (int) VH_maxOpacity2StateSubdivisionLevel.get(segment, 0L, index); }
+    public static int maxOpacity2StateSubdivisionLevel(MemorySegment segment, long index) { return (int) VH_maxOpacity2StateSubdivisionLevel.get().get(segment, 0L, index); }
     /// {@return `maxOpacity2StateSubdivisionLevel`}
     public int maxOpacity2StateSubdivisionLevel() { return maxOpacity2StateSubdivisionLevel(this.segment(), 0L); }
     /// Sets `maxOpacity2StateSubdivisionLevel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxOpacity2StateSubdivisionLevel(MemorySegment segment, long index, int value) { VH_maxOpacity2StateSubdivisionLevel.set(segment, 0L, index, value); }
+    public static void maxOpacity2StateSubdivisionLevel(MemorySegment segment, long index, int value) { VH_maxOpacity2StateSubdivisionLevel.get().set(segment, 0L, index, value); }
     /// Sets `maxOpacity2StateSubdivisionLevel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceOpacityMicromapPropertiesEXT extends GroupTyp
     /// {@return `maxOpacity4StateSubdivisionLevel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxOpacity4StateSubdivisionLevel(MemorySegment segment, long index) { return (int) VH_maxOpacity4StateSubdivisionLevel.get(segment, 0L, index); }
+    public static int maxOpacity4StateSubdivisionLevel(MemorySegment segment, long index) { return (int) VH_maxOpacity4StateSubdivisionLevel.get().get(segment, 0L, index); }
     /// {@return `maxOpacity4StateSubdivisionLevel`}
     public int maxOpacity4StateSubdivisionLevel() { return maxOpacity4StateSubdivisionLevel(this.segment(), 0L); }
     /// Sets `maxOpacity4StateSubdivisionLevel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxOpacity4StateSubdivisionLevel(MemorySegment segment, long index, int value) { VH_maxOpacity4StateSubdivisionLevel.set(segment, 0L, index, value); }
+    public static void maxOpacity4StateSubdivisionLevel(MemorySegment segment, long index, int value) { VH_maxOpacity4StateSubdivisionLevel.get().set(segment, 0L, index, value); }
     /// Sets `maxOpacity4StateSubdivisionLevel` with the given value.
     /// @param value the value
     /// @return `this`

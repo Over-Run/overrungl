@@ -41,49 +41,49 @@ public final class VkIndirectCommandsLayoutCreateInfoNV extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `pipelineBindPoint`.
     public static final long OFFSET_pipelineBindPoint = LAYOUT.byteOffset(PathElement.groupElement("pipelineBindPoint"));
     /// The memory layout of `pipelineBindPoint`.
     public static final MemoryLayout LAYOUT_pipelineBindPoint = LAYOUT.select(PathElement.groupElement("pipelineBindPoint"));
     /// The [VarHandle] of `pipelineBindPoint` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineBindPoint = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBindPoint"));
+    public static final Supplier<VarHandle> VH_pipelineBindPoint = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBindPoint")));
     /// The byte offset of `tokenCount`.
     public static final long OFFSET_tokenCount = LAYOUT.byteOffset(PathElement.groupElement("tokenCount"));
     /// The memory layout of `tokenCount`.
     public static final MemoryLayout LAYOUT_tokenCount = LAYOUT.select(PathElement.groupElement("tokenCount"));
     /// The [VarHandle] of `tokenCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tokenCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tokenCount"));
+    public static final Supplier<VarHandle> VH_tokenCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tokenCount")));
     /// The byte offset of `pTokens`.
     public static final long OFFSET_pTokens = LAYOUT.byteOffset(PathElement.groupElement("pTokens"));
     /// The memory layout of `pTokens`.
     public static final MemoryLayout LAYOUT_pTokens = LAYOUT.select(PathElement.groupElement("pTokens"));
     /// The [VarHandle] of `pTokens` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pTokens = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTokens"));
+    public static final Supplier<VarHandle> VH_pTokens = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTokens")));
     /// The byte offset of `streamCount`.
     public static final long OFFSET_streamCount = LAYOUT.byteOffset(PathElement.groupElement("streamCount"));
     /// The memory layout of `streamCount`.
     public static final MemoryLayout LAYOUT_streamCount = LAYOUT.select(PathElement.groupElement("streamCount"));
     /// The [VarHandle] of `streamCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_streamCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("streamCount"));
+    public static final Supplier<VarHandle> VH_streamCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("streamCount")));
     /// The byte offset of `pStreamStrides`.
     public static final long OFFSET_pStreamStrides = LAYOUT.byteOffset(PathElement.groupElement("pStreamStrides"));
     /// The memory layout of `pStreamStrides`.
     public static final MemoryLayout LAYOUT_pStreamStrides = LAYOUT.select(PathElement.groupElement("pStreamStrides"));
     /// The [VarHandle] of `pStreamStrides` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStreamStrides = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStreamStrides"));
+    public static final Supplier<VarHandle> VH_pStreamStrides = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStreamStrides")));
 
     /// Creates `VkIndirectCommandsLayoutCreateInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkIndirectCommandsLayoutCreateInfoNV extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkIndirectCommandsLayoutCreateInfoNV extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkIndirectCommandsLayoutCreateInfoNV extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkIndirectCommandsLayoutCreateInfoNV extends GroupType {
     /// {@return `pipelineBindPoint` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineBindPoint(MemorySegment segment, long index) { return (int) VH_pipelineBindPoint.get(segment, 0L, index); }
+    public static int pipelineBindPoint(MemorySegment segment, long index) { return (int) VH_pipelineBindPoint.get().get(segment, 0L, index); }
     /// {@return `pipelineBindPoint`}
     public int pipelineBindPoint() { return pipelineBindPoint(this.segment(), 0L); }
     /// Sets `pipelineBindPoint` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineBindPoint(MemorySegment segment, long index, int value) { VH_pipelineBindPoint.set(segment, 0L, index, value); }
+    public static void pipelineBindPoint(MemorySegment segment, long index, int value) { VH_pipelineBindPoint.get().set(segment, 0L, index, value); }
     /// Sets `pipelineBindPoint` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkIndirectCommandsLayoutCreateInfoNV extends GroupType {
     /// {@return `tokenCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tokenCount(MemorySegment segment, long index) { return (int) VH_tokenCount.get(segment, 0L, index); }
+    public static int tokenCount(MemorySegment segment, long index) { return (int) VH_tokenCount.get().get(segment, 0L, index); }
     /// {@return `tokenCount`}
     public int tokenCount() { return tokenCount(this.segment(), 0L); }
     /// Sets `tokenCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tokenCount(MemorySegment segment, long index, int value) { VH_tokenCount.set(segment, 0L, index, value); }
+    public static void tokenCount(MemorySegment segment, long index, int value) { VH_tokenCount.get().set(segment, 0L, index, value); }
     /// Sets `tokenCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkIndirectCommandsLayoutCreateInfoNV extends GroupType {
     /// {@return `pTokens` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pTokens(MemorySegment segment, long index) { return (MemorySegment) VH_pTokens.get(segment, 0L, index); }
+    public static MemorySegment pTokens(MemorySegment segment, long index) { return (MemorySegment) VH_pTokens.get().get(segment, 0L, index); }
     /// {@return `pTokens`}
     public MemorySegment pTokens() { return pTokens(this.segment(), 0L); }
     /// Sets `pTokens` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pTokens(MemorySegment segment, long index, MemorySegment value) { VH_pTokens.set(segment, 0L, index, value); }
+    public static void pTokens(MemorySegment segment, long index, MemorySegment value) { VH_pTokens.get().set(segment, 0L, index, value); }
     /// Sets `pTokens` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkIndirectCommandsLayoutCreateInfoNV extends GroupType {
     /// {@return `streamCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int streamCount(MemorySegment segment, long index) { return (int) VH_streamCount.get(segment, 0L, index); }
+    public static int streamCount(MemorySegment segment, long index) { return (int) VH_streamCount.get().get(segment, 0L, index); }
     /// {@return `streamCount`}
     public int streamCount() { return streamCount(this.segment(), 0L); }
     /// Sets `streamCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void streamCount(MemorySegment segment, long index, int value) { VH_streamCount.set(segment, 0L, index, value); }
+    public static void streamCount(MemorySegment segment, long index, int value) { VH_streamCount.get().set(segment, 0L, index, value); }
     /// Sets `streamCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkIndirectCommandsLayoutCreateInfoNV extends GroupType {
     /// {@return `pStreamStrides` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStreamStrides(MemorySegment segment, long index) { return (MemorySegment) VH_pStreamStrides.get(segment, 0L, index); }
+    public static MemorySegment pStreamStrides(MemorySegment segment, long index) { return (MemorySegment) VH_pStreamStrides.get().get(segment, 0L, index); }
     /// {@return `pStreamStrides`}
     public MemorySegment pStreamStrides() { return pStreamStrides(this.segment(), 0L); }
     /// Sets `pStreamStrides` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStreamStrides(MemorySegment segment, long index, MemorySegment value) { VH_pStreamStrides.set(segment, 0L, index, value); }
+    public static void pStreamStrides(MemorySegment segment, long index, MemorySegment value) { VH_pStreamStrides.get().set(segment, 0L, index, value); }
     /// Sets `pStreamStrides` with the given value.
     /// @param value the value
     /// @return `this`

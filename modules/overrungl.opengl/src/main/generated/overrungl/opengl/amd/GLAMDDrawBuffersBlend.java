@@ -2,6 +2,7 @@
 package overrungl.opengl.amd;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,10 +11,10 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLAMDDrawBuffersBlend {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBlendFuncIndexedAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBlendFuncSeparateIndexedAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBlendEquationIndexedAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBlendEquationSeparateIndexedAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glBlendFuncIndexedAMD = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBlendFuncSeparateIndexedAMD = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBlendEquationIndexedAMD = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBlendEquationSeparateIndexedAMD = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glBlendFuncIndexedAMD;
         public final MemorySegment PFN_glBlendFuncSeparateIndexedAMD;
         public final MemorySegment PFN_glBlendEquationIndexedAMD;
@@ -37,7 +38,7 @@ public final class GLAMDDrawBuffersBlend {
     public void BlendFuncIndexedAMD(int buf, int src, int dst) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncIndexedAMD)) throw new GLSymbolNotFoundError("Symbol not found: glBlendFuncIndexedAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendFuncIndexedAMD", buf, src, dst); }
-        Handles.MH_glBlendFuncIndexedAMD.invokeExact(handles.PFN_glBlendFuncIndexedAMD, buf, src, dst); }
+        Handles.MH_glBlendFuncIndexedAMD.get().invokeExact(handles.PFN_glBlendFuncIndexedAMD, buf, src, dst); }
         catch (Throwable e) { throw new RuntimeException("error in BlendFuncIndexedAMD", e); }
     }
 
@@ -48,7 +49,7 @@ public final class GLAMDDrawBuffersBlend {
     public void BlendFuncSeparateIndexedAMD(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateIndexedAMD)) throw new GLSymbolNotFoundError("Symbol not found: glBlendFuncSeparateIndexedAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendFuncSeparateIndexedAMD", buf, srcRGB, dstRGB, srcAlpha, dstAlpha); }
-        Handles.MH_glBlendFuncSeparateIndexedAMD.invokeExact(handles.PFN_glBlendFuncSeparateIndexedAMD, buf, srcRGB, dstRGB, srcAlpha, dstAlpha); }
+        Handles.MH_glBlendFuncSeparateIndexedAMD.get().invokeExact(handles.PFN_glBlendFuncSeparateIndexedAMD, buf, srcRGB, dstRGB, srcAlpha, dstAlpha); }
         catch (Throwable e) { throw new RuntimeException("error in BlendFuncSeparateIndexedAMD", e); }
     }
 
@@ -59,7 +60,7 @@ public final class GLAMDDrawBuffersBlend {
     public void BlendEquationIndexedAMD(int buf, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationIndexedAMD)) throw new GLSymbolNotFoundError("Symbol not found: glBlendEquationIndexedAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendEquationIndexedAMD", buf, mode); }
-        Handles.MH_glBlendEquationIndexedAMD.invokeExact(handles.PFN_glBlendEquationIndexedAMD, buf, mode); }
+        Handles.MH_glBlendEquationIndexedAMD.get().invokeExact(handles.PFN_glBlendEquationIndexedAMD, buf, mode); }
         catch (Throwable e) { throw new RuntimeException("error in BlendEquationIndexedAMD", e); }
     }
 
@@ -70,7 +71,7 @@ public final class GLAMDDrawBuffersBlend {
     public void BlendEquationSeparateIndexedAMD(int buf, int modeRGB, int modeAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateIndexedAMD)) throw new GLSymbolNotFoundError("Symbol not found: glBlendEquationSeparateIndexedAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendEquationSeparateIndexedAMD", buf, modeRGB, modeAlpha); }
-        Handles.MH_glBlendEquationSeparateIndexedAMD.invokeExact(handles.PFN_glBlendEquationSeparateIndexedAMD, buf, modeRGB, modeAlpha); }
+        Handles.MH_glBlendEquationSeparateIndexedAMD.get().invokeExact(handles.PFN_glBlendEquationSeparateIndexedAMD, buf, modeRGB, modeAlpha); }
         catch (Throwable e) { throw new RuntimeException("error in BlendEquationSeparateIndexedAMD", e); }
     }
 

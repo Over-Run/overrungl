@@ -37,37 +37,37 @@ public final class VkVideoEncodeRgbConversionCapabilitiesVALVE extends GroupType
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `rgbModels`.
     public static final long OFFSET_rgbModels = LAYOUT.byteOffset(PathElement.groupElement("rgbModels"));
     /// The memory layout of `rgbModels`.
     public static final MemoryLayout LAYOUT_rgbModels = LAYOUT.select(PathElement.groupElement("rgbModels"));
     /// The [VarHandle] of `rgbModels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rgbModels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rgbModels"));
+    public static final Supplier<VarHandle> VH_rgbModels = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rgbModels")));
     /// The byte offset of `rgbRanges`.
     public static final long OFFSET_rgbRanges = LAYOUT.byteOffset(PathElement.groupElement("rgbRanges"));
     /// The memory layout of `rgbRanges`.
     public static final MemoryLayout LAYOUT_rgbRanges = LAYOUT.select(PathElement.groupElement("rgbRanges"));
     /// The [VarHandle] of `rgbRanges` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rgbRanges = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rgbRanges"));
+    public static final Supplier<VarHandle> VH_rgbRanges = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rgbRanges")));
     /// The byte offset of `xChromaOffsets`.
     public static final long OFFSET_xChromaOffsets = LAYOUT.byteOffset(PathElement.groupElement("xChromaOffsets"));
     /// The memory layout of `xChromaOffsets`.
     public static final MemoryLayout LAYOUT_xChromaOffsets = LAYOUT.select(PathElement.groupElement("xChromaOffsets"));
     /// The [VarHandle] of `xChromaOffsets` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_xChromaOffsets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xChromaOffsets"));
+    public static final Supplier<VarHandle> VH_xChromaOffsets = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("xChromaOffsets")));
     /// The byte offset of `yChromaOffsets`.
     public static final long OFFSET_yChromaOffsets = LAYOUT.byteOffset(PathElement.groupElement("yChromaOffsets"));
     /// The memory layout of `yChromaOffsets`.
     public static final MemoryLayout LAYOUT_yChromaOffsets = LAYOUT.select(PathElement.groupElement("yChromaOffsets"));
     /// The [VarHandle] of `yChromaOffsets` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_yChromaOffsets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("yChromaOffsets"));
+    public static final Supplier<VarHandle> VH_yChromaOffsets = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("yChromaOffsets")));
 
     /// Creates `VkVideoEncodeRgbConversionCapabilitiesVALVE` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkVideoEncodeRgbConversionCapabilitiesVALVE extends GroupType
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkVideoEncodeRgbConversionCapabilitiesVALVE extends GroupType
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkVideoEncodeRgbConversionCapabilitiesVALVE extends GroupType
     /// {@return `rgbModels` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rgbModels(MemorySegment segment, long index) { return (int) VH_rgbModels.get(segment, 0L, index); }
+    public static int rgbModels(MemorySegment segment, long index) { return (int) VH_rgbModels.get().get(segment, 0L, index); }
     /// {@return `rgbModels`}
     public int rgbModels() { return rgbModels(this.segment(), 0L); }
     /// Sets `rgbModels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rgbModels(MemorySegment segment, long index, int value) { VH_rgbModels.set(segment, 0L, index, value); }
+    public static void rgbModels(MemorySegment segment, long index, int value) { VH_rgbModels.get().set(segment, 0L, index, value); }
     /// Sets `rgbModels` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkVideoEncodeRgbConversionCapabilitiesVALVE extends GroupType
     /// {@return `rgbRanges` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rgbRanges(MemorySegment segment, long index) { return (int) VH_rgbRanges.get(segment, 0L, index); }
+    public static int rgbRanges(MemorySegment segment, long index) { return (int) VH_rgbRanges.get().get(segment, 0L, index); }
     /// {@return `rgbRanges`}
     public int rgbRanges() { return rgbRanges(this.segment(), 0L); }
     /// Sets `rgbRanges` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rgbRanges(MemorySegment segment, long index, int value) { VH_rgbRanges.set(segment, 0L, index, value); }
+    public static void rgbRanges(MemorySegment segment, long index, int value) { VH_rgbRanges.get().set(segment, 0L, index, value); }
     /// Sets `rgbRanges` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkVideoEncodeRgbConversionCapabilitiesVALVE extends GroupType
     /// {@return `xChromaOffsets` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int xChromaOffsets(MemorySegment segment, long index) { return (int) VH_xChromaOffsets.get(segment, 0L, index); }
+    public static int xChromaOffsets(MemorySegment segment, long index) { return (int) VH_xChromaOffsets.get().get(segment, 0L, index); }
     /// {@return `xChromaOffsets`}
     public int xChromaOffsets() { return xChromaOffsets(this.segment(), 0L); }
     /// Sets `xChromaOffsets` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void xChromaOffsets(MemorySegment segment, long index, int value) { VH_xChromaOffsets.set(segment, 0L, index, value); }
+    public static void xChromaOffsets(MemorySegment segment, long index, int value) { VH_xChromaOffsets.get().set(segment, 0L, index, value); }
     /// Sets `xChromaOffsets` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkVideoEncodeRgbConversionCapabilitiesVALVE extends GroupType
     /// {@return `yChromaOffsets` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int yChromaOffsets(MemorySegment segment, long index) { return (int) VH_yChromaOffsets.get(segment, 0L, index); }
+    public static int yChromaOffsets(MemorySegment segment, long index) { return (int) VH_yChromaOffsets.get().get(segment, 0L, index); }
     /// {@return `yChromaOffsets`}
     public int yChromaOffsets() { return yChromaOffsets(this.segment(), 0L); }
     /// Sets `yChromaOffsets` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void yChromaOffsets(MemorySegment segment, long index, int value) { VH_yChromaOffsets.set(segment, 0L, index, value); }
+    public static void yChromaOffsets(MemorySegment segment, long index, int value) { VH_yChromaOffsets.get().set(segment, 0L, index, value); }
     /// Sets `yChromaOffsets` with the given value.
     /// @param value the value
     /// @return `this`

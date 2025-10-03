@@ -35,13 +35,13 @@ public final class VmaAllocationInfo2 extends GroupType {
     /// The memory layout of `blockSize`.
     public static final MemoryLayout LAYOUT_blockSize = LAYOUT.select(PathElement.groupElement("blockSize"));
     /// The [VarHandle] of `blockSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_blockSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockSize"));
+    public static final Supplier<VarHandle> VH_blockSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockSize")));
     /// The byte offset of `dedicatedMemory`.
     public static final long OFFSET_dedicatedMemory = LAYOUT.byteOffset(PathElement.groupElement("dedicatedMemory"));
     /// The memory layout of `dedicatedMemory`.
     public static final MemoryLayout LAYOUT_dedicatedMemory = LAYOUT.select(PathElement.groupElement("dedicatedMemory"));
     /// The [VarHandle] of `dedicatedMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dedicatedMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dedicatedMemory"));
+    public static final Supplier<VarHandle> VH_dedicatedMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dedicatedMemory")));
 
     /// Creates `VmaAllocationInfo2` with the given segment.
     /// @param segment      the memory segment
@@ -112,14 +112,14 @@ public final class VmaAllocationInfo2 extends GroupType {
     /// {@return `blockSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long blockSize(MemorySegment segment, long index) { return (long) VH_blockSize.get(segment, 0L, index); }
+    public static long blockSize(MemorySegment segment, long index) { return (long) VH_blockSize.get().get(segment, 0L, index); }
     /// {@return `blockSize`}
     public long blockSize() { return blockSize(this.segment(), 0L); }
     /// Sets `blockSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void blockSize(MemorySegment segment, long index, long value) { VH_blockSize.set(segment, 0L, index, value); }
+    public static void blockSize(MemorySegment segment, long index, long value) { VH_blockSize.get().set(segment, 0L, index, value); }
     /// Sets `blockSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -128,14 +128,14 @@ public final class VmaAllocationInfo2 extends GroupType {
     /// {@return `dedicatedMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dedicatedMemory(MemorySegment segment, long index) { return (int) VH_dedicatedMemory.get(segment, 0L, index); }
+    public static int dedicatedMemory(MemorySegment segment, long index) { return (int) VH_dedicatedMemory.get().get(segment, 0L, index); }
     /// {@return `dedicatedMemory`}
     public int dedicatedMemory() { return dedicatedMemory(this.segment(), 0L); }
     /// Sets `dedicatedMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dedicatedMemory(MemorySegment segment, long index, int value) { VH_dedicatedMemory.set(segment, 0L, index, value); }
+    public static void dedicatedMemory(MemorySegment segment, long index, int value) { VH_dedicatedMemory.get().set(segment, 0L, index, value); }
     /// Sets `dedicatedMemory` with the given value.
     /// @param value the value
     /// @return `this`

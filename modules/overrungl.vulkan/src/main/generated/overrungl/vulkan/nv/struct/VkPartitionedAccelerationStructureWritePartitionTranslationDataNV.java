@@ -29,13 +29,13 @@ public final class VkPartitionedAccelerationStructureWritePartitionTranslationDa
     /// The memory layout of `partitionIndex`.
     public static final MemoryLayout LAYOUT_partitionIndex = LAYOUT.select(PathElement.groupElement("partitionIndex"));
     /// The [VarHandle] of `partitionIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_partitionIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("partitionIndex"));
+    public static final Supplier<VarHandle> VH_partitionIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("partitionIndex")));
     /// The byte offset of `partitionTranslation`.
     public static final long OFFSET_partitionTranslation = LAYOUT.byteOffset(PathElement.groupElement("partitionTranslation"));
     /// The memory layout of `partitionTranslation`.
     public static final MemoryLayout LAYOUT_partitionTranslation = LAYOUT.select(PathElement.groupElement("partitionTranslation"));
     /// The [VarHandle] of `partitionTranslation` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_partitionTranslation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("partitionTranslation"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_partitionTranslation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("partitionTranslation"), PathElement.sequenceElement()));
 
     /// Creates `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkPartitionedAccelerationStructureWritePartitionTranslationDa
     /// {@return `partitionIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int partitionIndex(MemorySegment segment, long index) { return (int) VH_partitionIndex.get(segment, 0L, index); }
+    public static int partitionIndex(MemorySegment segment, long index) { return (int) VH_partitionIndex.get().get(segment, 0L, index); }
     /// {@return `partitionIndex`}
     public int partitionIndex() { return partitionIndex(this.segment(), 0L); }
     /// Sets `partitionIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void partitionIndex(MemorySegment segment, long index, int value) { VH_partitionIndex.set(segment, 0L, index, value); }
+    public static void partitionIndex(MemorySegment segment, long index, int value) { VH_partitionIndex.get().set(segment, 0L, index, value); }
     /// Sets `partitionIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -107,7 +107,7 @@ public final class VkPartitionedAccelerationStructureWritePartitionTranslationDa
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static float partitionTranslation(MemorySegment segment, long index, long index0) { return (float) VH_partitionTranslation.get(segment, 0L, index, index0); }
+    public static float partitionTranslation(MemorySegment segment, long index, long index0) { return (float) VH_partitionTranslation.get().get(segment, 0L, index, index0); }
     /// {@return `partitionTranslation`}
     public MemorySegment partitionTranslation() { return partitionTranslation(this.segment(), 0L); }
     /// {@return `partitionTranslation`}
@@ -123,7 +123,7 @@ public final class VkPartitionedAccelerationStructureWritePartitionTranslationDa
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void partitionTranslation(MemorySegment segment, long index, long index0, float value) { VH_partitionTranslation.set(segment, 0L, index, index0, value); }
+    public static void partitionTranslation(MemorySegment segment, long index, long index0, float value) { VH_partitionTranslation.get().set(segment, 0L, index, index0, value); }
     /// Sets `partitionTranslation` with the given value.
     /// @param value the value
     /// @return `this`

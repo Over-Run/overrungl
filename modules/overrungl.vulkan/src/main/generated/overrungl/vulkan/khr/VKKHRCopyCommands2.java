@@ -2,6 +2,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -22,12 +23,12 @@ public final class VKKHRCopyCommands2 {
     public static final int VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2_KHR = 1000337009;
     public static final int VK_STRUCTURE_TYPE_IMAGE_RESOLVE_2_KHR = 1000337010;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdCopyBuffer2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdCopyImage2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdCopyBufferToImage2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdCopyImageToBuffer2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBlitImage2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdResolveImage2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkCmdCopyBuffer2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdCopyImage2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdCopyBufferToImage2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdCopyImageToBuffer2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdBlitImage2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdResolveImage2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -40,7 +41,7 @@ public final class VKKHRCopyCommands2 {
     public static void vkCmdCopyBuffer2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pCopyBufferInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyBuffer2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyBuffer2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyBuffer2KHR", commandBuffer, pCopyBufferInfo); }
-        Handles.MH_vkCmdCopyBuffer2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyBuffer2KHR, commandBuffer.segment(), pCopyBufferInfo); }
+        Handles.MH_vkCmdCopyBuffer2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyBuffer2KHR, commandBuffer.segment(), pCopyBufferInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyBuffer2KHR", e); }
     }
 
@@ -51,7 +52,7 @@ public final class VKKHRCopyCommands2 {
     public static void vkCmdCopyImage2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pCopyImageInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyImage2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyImage2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyImage2KHR", commandBuffer, pCopyImageInfo); }
-        Handles.MH_vkCmdCopyImage2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyImage2KHR, commandBuffer.segment(), pCopyImageInfo); }
+        Handles.MH_vkCmdCopyImage2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyImage2KHR, commandBuffer.segment(), pCopyImageInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyImage2KHR", e); }
     }
 
@@ -62,7 +63,7 @@ public final class VKKHRCopyCommands2 {
     public static void vkCmdCopyBufferToImage2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pCopyBufferToImageInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyBufferToImage2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyBufferToImage2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyBufferToImage2KHR", commandBuffer, pCopyBufferToImageInfo); }
-        Handles.MH_vkCmdCopyBufferToImage2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyBufferToImage2KHR, commandBuffer.segment(), pCopyBufferToImageInfo); }
+        Handles.MH_vkCmdCopyBufferToImage2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyBufferToImage2KHR, commandBuffer.segment(), pCopyBufferToImageInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyBufferToImage2KHR", e); }
     }
 
@@ -73,7 +74,7 @@ public final class VKKHRCopyCommands2 {
     public static void vkCmdCopyImageToBuffer2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pCopyImageToBufferInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyImageToBuffer2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyImageToBuffer2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyImageToBuffer2KHR", commandBuffer, pCopyImageToBufferInfo); }
-        Handles.MH_vkCmdCopyImageToBuffer2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyImageToBuffer2KHR, commandBuffer.segment(), pCopyImageToBufferInfo); }
+        Handles.MH_vkCmdCopyImageToBuffer2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyImageToBuffer2KHR, commandBuffer.segment(), pCopyImageToBufferInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyImageToBuffer2KHR", e); }
     }
 
@@ -84,7 +85,7 @@ public final class VKKHRCopyCommands2 {
     public static void vkCmdBlitImage2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pBlitImageInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBlitImage2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBlitImage2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBlitImage2KHR", commandBuffer, pBlitImageInfo); }
-        Handles.MH_vkCmdBlitImage2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBlitImage2KHR, commandBuffer.segment(), pBlitImageInfo); }
+        Handles.MH_vkCmdBlitImage2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdBlitImage2KHR, commandBuffer.segment(), pBlitImageInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBlitImage2KHR", e); }
     }
 
@@ -95,7 +96,7 @@ public final class VKKHRCopyCommands2 {
     public static void vkCmdResolveImage2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pResolveImageInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdResolveImage2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdResolveImage2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdResolveImage2KHR", commandBuffer, pResolveImageInfo); }
-        Handles.MH_vkCmdResolveImage2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdResolveImage2KHR, commandBuffer.segment(), pResolveImageInfo); }
+        Handles.MH_vkCmdResolveImage2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdResolveImage2KHR, commandBuffer.segment(), pResolveImageInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdResolveImage2KHR", e); }
     }
 

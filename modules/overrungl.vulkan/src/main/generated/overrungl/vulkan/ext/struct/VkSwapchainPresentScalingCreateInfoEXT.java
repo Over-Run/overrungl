@@ -35,31 +35,31 @@ public final class VkSwapchainPresentScalingCreateInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `scalingBehavior`.
     public static final long OFFSET_scalingBehavior = LAYOUT.byteOffset(PathElement.groupElement("scalingBehavior"));
     /// The memory layout of `scalingBehavior`.
     public static final MemoryLayout LAYOUT_scalingBehavior = LAYOUT.select(PathElement.groupElement("scalingBehavior"));
     /// The [VarHandle] of `scalingBehavior` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_scalingBehavior = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scalingBehavior"));
+    public static final Supplier<VarHandle> VH_scalingBehavior = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("scalingBehavior")));
     /// The byte offset of `presentGravityX`.
     public static final long OFFSET_presentGravityX = LAYOUT.byteOffset(PathElement.groupElement("presentGravityX"));
     /// The memory layout of `presentGravityX`.
     public static final MemoryLayout LAYOUT_presentGravityX = LAYOUT.select(PathElement.groupElement("presentGravityX"));
     /// The [VarHandle] of `presentGravityX` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_presentGravityX = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentGravityX"));
+    public static final Supplier<VarHandle> VH_presentGravityX = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentGravityX")));
     /// The byte offset of `presentGravityY`.
     public static final long OFFSET_presentGravityY = LAYOUT.byteOffset(PathElement.groupElement("presentGravityY"));
     /// The memory layout of `presentGravityY`.
     public static final MemoryLayout LAYOUT_presentGravityY = LAYOUT.select(PathElement.groupElement("presentGravityY"));
     /// The [VarHandle] of `presentGravityY` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_presentGravityY = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentGravityY"));
+    public static final Supplier<VarHandle> VH_presentGravityY = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentGravityY")));
 
     /// Creates `VkSwapchainPresentScalingCreateInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkSwapchainPresentScalingCreateInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkSwapchainPresentScalingCreateInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkSwapchainPresentScalingCreateInfoEXT extends GroupType {
     /// {@return `scalingBehavior` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int scalingBehavior(MemorySegment segment, long index) { return (int) VH_scalingBehavior.get(segment, 0L, index); }
+    public static int scalingBehavior(MemorySegment segment, long index) { return (int) VH_scalingBehavior.get().get(segment, 0L, index); }
     /// {@return `scalingBehavior`}
     public int scalingBehavior() { return scalingBehavior(this.segment(), 0L); }
     /// Sets `scalingBehavior` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void scalingBehavior(MemorySegment segment, long index, int value) { VH_scalingBehavior.set(segment, 0L, index, value); }
+    public static void scalingBehavior(MemorySegment segment, long index, int value) { VH_scalingBehavior.get().set(segment, 0L, index, value); }
     /// Sets `scalingBehavior` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkSwapchainPresentScalingCreateInfoEXT extends GroupType {
     /// {@return `presentGravityX` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int presentGravityX(MemorySegment segment, long index) { return (int) VH_presentGravityX.get(segment, 0L, index); }
+    public static int presentGravityX(MemorySegment segment, long index) { return (int) VH_presentGravityX.get().get(segment, 0L, index); }
     /// {@return `presentGravityX`}
     public int presentGravityX() { return presentGravityX(this.segment(), 0L); }
     /// Sets `presentGravityX` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void presentGravityX(MemorySegment segment, long index, int value) { VH_presentGravityX.set(segment, 0L, index, value); }
+    public static void presentGravityX(MemorySegment segment, long index, int value) { VH_presentGravityX.get().set(segment, 0L, index, value); }
     /// Sets `presentGravityX` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkSwapchainPresentScalingCreateInfoEXT extends GroupType {
     /// {@return `presentGravityY` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int presentGravityY(MemorySegment segment, long index) { return (int) VH_presentGravityY.get(segment, 0L, index); }
+    public static int presentGravityY(MemorySegment segment, long index) { return (int) VH_presentGravityY.get().get(segment, 0L, index); }
     /// {@return `presentGravityY`}
     public int presentGravityY() { return presentGravityY(this.segment(), 0L); }
     /// Sets `presentGravityY` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void presentGravityY(MemorySegment segment, long index, int value) { VH_presentGravityY.set(segment, 0L, index, value); }
+    public static void presentGravityY(MemorySegment segment, long index, int value) { VH_presentGravityY.get().set(segment, 0L, index, value); }
     /// Sets `presentGravityY` with the given value.
     /// @param value the value
     /// @return `this`

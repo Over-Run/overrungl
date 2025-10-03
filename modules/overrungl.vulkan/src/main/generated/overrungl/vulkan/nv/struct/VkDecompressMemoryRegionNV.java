@@ -35,31 +35,31 @@ public final class VkDecompressMemoryRegionNV extends GroupType {
     /// The memory layout of `srcAddress`.
     public static final MemoryLayout LAYOUT_srcAddress = LAYOUT.select(PathElement.groupElement("srcAddress"));
     /// The [VarHandle] of `srcAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAddress"));
+    public static final Supplier<VarHandle> VH_srcAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAddress")));
     /// The byte offset of `dstAddress`.
     public static final long OFFSET_dstAddress = LAYOUT.byteOffset(PathElement.groupElement("dstAddress"));
     /// The memory layout of `dstAddress`.
     public static final MemoryLayout LAYOUT_dstAddress = LAYOUT.select(PathElement.groupElement("dstAddress"));
     /// The [VarHandle] of `dstAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAddress"));
+    public static final Supplier<VarHandle> VH_dstAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAddress")));
     /// The byte offset of `compressedSize`.
     public static final long OFFSET_compressedSize = LAYOUT.byteOffset(PathElement.groupElement("compressedSize"));
     /// The memory layout of `compressedSize`.
     public static final MemoryLayout LAYOUT_compressedSize = LAYOUT.select(PathElement.groupElement("compressedSize"));
     /// The [VarHandle] of `compressedSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_compressedSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("compressedSize"));
+    public static final Supplier<VarHandle> VH_compressedSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("compressedSize")));
     /// The byte offset of `decompressedSize`.
     public static final long OFFSET_decompressedSize = LAYOUT.byteOffset(PathElement.groupElement("decompressedSize"));
     /// The memory layout of `decompressedSize`.
     public static final MemoryLayout LAYOUT_decompressedSize = LAYOUT.select(PathElement.groupElement("decompressedSize"));
     /// The [VarHandle] of `decompressedSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_decompressedSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("decompressedSize"));
+    public static final Supplier<VarHandle> VH_decompressedSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("decompressedSize")));
     /// The byte offset of `decompressionMethod`.
     public static final long OFFSET_decompressionMethod = LAYOUT.byteOffset(PathElement.groupElement("decompressionMethod"));
     /// The memory layout of `decompressionMethod`.
     public static final MemoryLayout LAYOUT_decompressionMethod = LAYOUT.select(PathElement.groupElement("decompressionMethod"));
     /// The [VarHandle] of `decompressionMethod` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_decompressionMethod = LAYOUT.arrayElementVarHandle(PathElement.groupElement("decompressionMethod"));
+    public static final Supplier<VarHandle> VH_decompressionMethod = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("decompressionMethod")));
 
     /// Creates `VkDecompressMemoryRegionNV` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkDecompressMemoryRegionNV extends GroupType {
     /// {@return `srcAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long srcAddress(MemorySegment segment, long index) { return (long) VH_srcAddress.get(segment, 0L, index); }
+    public static long srcAddress(MemorySegment segment, long index) { return (long) VH_srcAddress.get().get(segment, 0L, index); }
     /// {@return `srcAddress`}
     public long srcAddress() { return srcAddress(this.segment(), 0L); }
     /// Sets `srcAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcAddress(MemorySegment segment, long index, long value) { VH_srcAddress.set(segment, 0L, index, value); }
+    public static void srcAddress(MemorySegment segment, long index, long value) { VH_srcAddress.get().set(segment, 0L, index, value); }
     /// Sets `srcAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDecompressMemoryRegionNV extends GroupType {
     /// {@return `dstAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dstAddress(MemorySegment segment, long index) { return (long) VH_dstAddress.get(segment, 0L, index); }
+    public static long dstAddress(MemorySegment segment, long index) { return (long) VH_dstAddress.get().get(segment, 0L, index); }
     /// {@return `dstAddress`}
     public long dstAddress() { return dstAddress(this.segment(), 0L); }
     /// Sets `dstAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstAddress(MemorySegment segment, long index, long value) { VH_dstAddress.set(segment, 0L, index, value); }
+    public static void dstAddress(MemorySegment segment, long index, long value) { VH_dstAddress.get().set(segment, 0L, index, value); }
     /// Sets `dstAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkDecompressMemoryRegionNV extends GroupType {
     /// {@return `compressedSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long compressedSize(MemorySegment segment, long index) { return (long) VH_compressedSize.get(segment, 0L, index); }
+    public static long compressedSize(MemorySegment segment, long index) { return (long) VH_compressedSize.get().get(segment, 0L, index); }
     /// {@return `compressedSize`}
     public long compressedSize() { return compressedSize(this.segment(), 0L); }
     /// Sets `compressedSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void compressedSize(MemorySegment segment, long index, long value) { VH_compressedSize.set(segment, 0L, index, value); }
+    public static void compressedSize(MemorySegment segment, long index, long value) { VH_compressedSize.get().set(segment, 0L, index, value); }
     /// Sets `compressedSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDecompressMemoryRegionNV extends GroupType {
     /// {@return `decompressedSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long decompressedSize(MemorySegment segment, long index) { return (long) VH_decompressedSize.get(segment, 0L, index); }
+    public static long decompressedSize(MemorySegment segment, long index) { return (long) VH_decompressedSize.get().get(segment, 0L, index); }
     /// {@return `decompressedSize`}
     public long decompressedSize() { return decompressedSize(this.segment(), 0L); }
     /// Sets `decompressedSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void decompressedSize(MemorySegment segment, long index, long value) { VH_decompressedSize.set(segment, 0L, index, value); }
+    public static void decompressedSize(MemorySegment segment, long index, long value) { VH_decompressedSize.get().set(segment, 0L, index, value); }
     /// Sets `decompressedSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDecompressMemoryRegionNV extends GroupType {
     /// {@return `decompressionMethod` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long decompressionMethod(MemorySegment segment, long index) { return (long) VH_decompressionMethod.get(segment, 0L, index); }
+    public static long decompressionMethod(MemorySegment segment, long index) { return (long) VH_decompressionMethod.get().get(segment, 0L, index); }
     /// {@return `decompressionMethod`}
     public long decompressionMethod() { return decompressionMethod(this.segment(), 0L); }
     /// Sets `decompressionMethod` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void decompressionMethod(MemorySegment segment, long index, long value) { VH_decompressionMethod.set(segment, 0L, index, value); }
+    public static void decompressionMethod(MemorySegment segment, long index, long value) { VH_decompressionMethod.get().set(segment, 0L, index, value); }
     /// Sets `decompressionMethod` with the given value.
     /// @param value the value
     /// @return `this`

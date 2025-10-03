@@ -2,6 +2,7 @@
 package overrungl.opengl.ati;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -114,20 +115,20 @@ public final class GLATIFragmentShader {
     public static final int GL_BIAS_BIT_ATI = 0x00000008;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGenFragmentShadersATI = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBindFragmentShaderATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDeleteFragmentShaderATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBeginFragmentShaderATI = downcallHandle(FunctionDescriptor.ofVoid());
-        public static final MethodHandle MH_glEndFragmentShaderATI = downcallHandle(FunctionDescriptor.ofVoid());
-        public static final MethodHandle MH_glPassTexCoordATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glSampleMapATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glColorFragmentOp1ATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glColorFragmentOp2ATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glColorFragmentOp3ATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glAlphaFragmentOp1ATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glAlphaFragmentOp2ATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glAlphaFragmentOp3ATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glSetFragmentShaderConstantATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glGenFragmentShadersATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBindFragmentShaderATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDeleteFragmentShaderATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBeginFragmentShaderATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
+        public static final Supplier<MethodHandle> MH_glEndFragmentShaderATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
+        public static final Supplier<MethodHandle> MH_glPassTexCoordATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glSampleMapATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glColorFragmentOp1ATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glColorFragmentOp2ATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glColorFragmentOp3ATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glAlphaFragmentOp1ATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glAlphaFragmentOp2ATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glAlphaFragmentOp3ATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glSetFragmentShaderConstantATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glGenFragmentShadersATI;
         public final MemorySegment PFN_glBindFragmentShaderATI;
         public final MemorySegment PFN_glDeleteFragmentShaderATI;
@@ -171,7 +172,7 @@ public final class GLATIFragmentShader {
     public int GenFragmentShadersATI(int range) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenFragmentShadersATI)) throw new GLSymbolNotFoundError("Symbol not found: glGenFragmentShadersATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenFragmentShadersATI", range); }
-        return (int) Handles.MH_glGenFragmentShadersATI.invokeExact(handles.PFN_glGenFragmentShadersATI, range); }
+        return (int) Handles.MH_glGenFragmentShadersATI.get().invokeExact(handles.PFN_glGenFragmentShadersATI, range); }
         catch (Throwable e) { throw new RuntimeException("error in GenFragmentShadersATI", e); }
     }
 
@@ -182,7 +183,7 @@ public final class GLATIFragmentShader {
     public void BindFragmentShaderATI(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindFragmentShaderATI)) throw new GLSymbolNotFoundError("Symbol not found: glBindFragmentShaderATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindFragmentShaderATI", id); }
-        Handles.MH_glBindFragmentShaderATI.invokeExact(handles.PFN_glBindFragmentShaderATI, id); }
+        Handles.MH_glBindFragmentShaderATI.get().invokeExact(handles.PFN_glBindFragmentShaderATI, id); }
         catch (Throwable e) { throw new RuntimeException("error in BindFragmentShaderATI", e); }
     }
 
@@ -193,7 +194,7 @@ public final class GLATIFragmentShader {
     public void DeleteFragmentShaderATI(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFragmentShaderATI)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteFragmentShaderATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteFragmentShaderATI", id); }
-        Handles.MH_glDeleteFragmentShaderATI.invokeExact(handles.PFN_glDeleteFragmentShaderATI, id); }
+        Handles.MH_glDeleteFragmentShaderATI.get().invokeExact(handles.PFN_glDeleteFragmentShaderATI, id); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteFragmentShaderATI", e); }
     }
 
@@ -204,7 +205,7 @@ public final class GLATIFragmentShader {
     public void BeginFragmentShaderATI() {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginFragmentShaderATI)) throw new GLSymbolNotFoundError("Symbol not found: glBeginFragmentShaderATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBeginFragmentShaderATI"); }
-        Handles.MH_glBeginFragmentShaderATI.invokeExact(handles.PFN_glBeginFragmentShaderATI); }
+        Handles.MH_glBeginFragmentShaderATI.get().invokeExact(handles.PFN_glBeginFragmentShaderATI); }
         catch (Throwable e) { throw new RuntimeException("error in BeginFragmentShaderATI", e); }
     }
 
@@ -215,7 +216,7 @@ public final class GLATIFragmentShader {
     public void EndFragmentShaderATI() {
         if (MemoryUtil.isNullPointer(handles.PFN_glEndFragmentShaderATI)) throw new GLSymbolNotFoundError("Symbol not found: glEndFragmentShaderATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEndFragmentShaderATI"); }
-        Handles.MH_glEndFragmentShaderATI.invokeExact(handles.PFN_glEndFragmentShaderATI); }
+        Handles.MH_glEndFragmentShaderATI.get().invokeExact(handles.PFN_glEndFragmentShaderATI); }
         catch (Throwable e) { throw new RuntimeException("error in EndFragmentShaderATI", e); }
     }
 
@@ -226,7 +227,7 @@ public final class GLATIFragmentShader {
     public void PassTexCoordATI(int dst, int coord, int swizzle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPassTexCoordATI)) throw new GLSymbolNotFoundError("Symbol not found: glPassTexCoordATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPassTexCoordATI", dst, coord, swizzle); }
-        Handles.MH_glPassTexCoordATI.invokeExact(handles.PFN_glPassTexCoordATI, dst, coord, swizzle); }
+        Handles.MH_glPassTexCoordATI.get().invokeExact(handles.PFN_glPassTexCoordATI, dst, coord, swizzle); }
         catch (Throwable e) { throw new RuntimeException("error in PassTexCoordATI", e); }
     }
 
@@ -237,7 +238,7 @@ public final class GLATIFragmentShader {
     public void SampleMapATI(int dst, int interp, int swizzle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleMapATI)) throw new GLSymbolNotFoundError("Symbol not found: glSampleMapATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSampleMapATI", dst, interp, swizzle); }
-        Handles.MH_glSampleMapATI.invokeExact(handles.PFN_glSampleMapATI, dst, interp, swizzle); }
+        Handles.MH_glSampleMapATI.get().invokeExact(handles.PFN_glSampleMapATI, dst, interp, swizzle); }
         catch (Throwable e) { throw new RuntimeException("error in SampleMapATI", e); }
     }
 
@@ -248,7 +249,7 @@ public final class GLATIFragmentShader {
     public void ColorFragmentOp1ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp1ATI)) throw new GLSymbolNotFoundError("Symbol not found: glColorFragmentOp1ATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColorFragmentOp1ATI", op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod); }
-        Handles.MH_glColorFragmentOp1ATI.invokeExact(handles.PFN_glColorFragmentOp1ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod); }
+        Handles.MH_glColorFragmentOp1ATI.get().invokeExact(handles.PFN_glColorFragmentOp1ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod); }
         catch (Throwable e) { throw new RuntimeException("error in ColorFragmentOp1ATI", e); }
     }
 
@@ -259,7 +260,7 @@ public final class GLATIFragmentShader {
     public void ColorFragmentOp2ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp2ATI)) throw new GLSymbolNotFoundError("Symbol not found: glColorFragmentOp2ATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColorFragmentOp2ATI", op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod); }
-        Handles.MH_glColorFragmentOp2ATI.invokeExact(handles.PFN_glColorFragmentOp2ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod); }
+        Handles.MH_glColorFragmentOp2ATI.get().invokeExact(handles.PFN_glColorFragmentOp2ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod); }
         catch (Throwable e) { throw new RuntimeException("error in ColorFragmentOp2ATI", e); }
     }
 
@@ -270,7 +271,7 @@ public final class GLATIFragmentShader {
     public void ColorFragmentOp3ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod, int arg3, int arg3Rep, int arg3Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp3ATI)) throw new GLSymbolNotFoundError("Symbol not found: glColorFragmentOp3ATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColorFragmentOp3ATI", op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod); }
-        Handles.MH_glColorFragmentOp3ATI.invokeExact(handles.PFN_glColorFragmentOp3ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod); }
+        Handles.MH_glColorFragmentOp3ATI.get().invokeExact(handles.PFN_glColorFragmentOp3ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod); }
         catch (Throwable e) { throw new RuntimeException("error in ColorFragmentOp3ATI", e); }
     }
 
@@ -281,7 +282,7 @@ public final class GLATIFragmentShader {
     public void AlphaFragmentOp1ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp1ATI)) throw new GLSymbolNotFoundError("Symbol not found: glAlphaFragmentOp1ATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glAlphaFragmentOp1ATI", op, dst, dstMod, arg1, arg1Rep, arg1Mod); }
-        Handles.MH_glAlphaFragmentOp1ATI.invokeExact(handles.PFN_glAlphaFragmentOp1ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod); }
+        Handles.MH_glAlphaFragmentOp1ATI.get().invokeExact(handles.PFN_glAlphaFragmentOp1ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod); }
         catch (Throwable e) { throw new RuntimeException("error in AlphaFragmentOp1ATI", e); }
     }
 
@@ -292,7 +293,7 @@ public final class GLATIFragmentShader {
     public void AlphaFragmentOp2ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp2ATI)) throw new GLSymbolNotFoundError("Symbol not found: glAlphaFragmentOp2ATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glAlphaFragmentOp2ATI", op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod); }
-        Handles.MH_glAlphaFragmentOp2ATI.invokeExact(handles.PFN_glAlphaFragmentOp2ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod); }
+        Handles.MH_glAlphaFragmentOp2ATI.get().invokeExact(handles.PFN_glAlphaFragmentOp2ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod); }
         catch (Throwable e) { throw new RuntimeException("error in AlphaFragmentOp2ATI", e); }
     }
 
@@ -303,7 +304,7 @@ public final class GLATIFragmentShader {
     public void AlphaFragmentOp3ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod, int arg3, int arg3Rep, int arg3Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp3ATI)) throw new GLSymbolNotFoundError("Symbol not found: glAlphaFragmentOp3ATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glAlphaFragmentOp3ATI", op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod); }
-        Handles.MH_glAlphaFragmentOp3ATI.invokeExact(handles.PFN_glAlphaFragmentOp3ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod); }
+        Handles.MH_glAlphaFragmentOp3ATI.get().invokeExact(handles.PFN_glAlphaFragmentOp3ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod); }
         catch (Throwable e) { throw new RuntimeException("error in AlphaFragmentOp3ATI", e); }
     }
 
@@ -314,7 +315,7 @@ public final class GLATIFragmentShader {
     public void SetFragmentShaderConstantATI(int dst, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSetFragmentShaderConstantATI)) throw new GLSymbolNotFoundError("Symbol not found: glSetFragmentShaderConstantATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSetFragmentShaderConstantATI", dst, value); }
-        Handles.MH_glSetFragmentShaderConstantATI.invokeExact(handles.PFN_glSetFragmentShaderConstantATI, dst, value); }
+        Handles.MH_glSetFragmentShaderConstantATI.get().invokeExact(handles.PFN_glSetFragmentShaderConstantATI, dst, value); }
         catch (Throwable e) { throw new RuntimeException("error in SetFragmentShaderConstantATI", e); }
     }
 

@@ -39,43 +39,43 @@ public final class VkPipelineCoverageModulationStateCreateInfoNV extends GroupTy
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `coverageModulationMode`.
     public static final long OFFSET_coverageModulationMode = LAYOUT.byteOffset(PathElement.groupElement("coverageModulationMode"));
     /// The memory layout of `coverageModulationMode`.
     public static final MemoryLayout LAYOUT_coverageModulationMode = LAYOUT.select(PathElement.groupElement("coverageModulationMode"));
     /// The [VarHandle] of `coverageModulationMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_coverageModulationMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageModulationMode"));
+    public static final Supplier<VarHandle> VH_coverageModulationMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageModulationMode")));
     /// The byte offset of `coverageModulationTableEnable`.
     public static final long OFFSET_coverageModulationTableEnable = LAYOUT.byteOffset(PathElement.groupElement("coverageModulationTableEnable"));
     /// The memory layout of `coverageModulationTableEnable`.
     public static final MemoryLayout LAYOUT_coverageModulationTableEnable = LAYOUT.select(PathElement.groupElement("coverageModulationTableEnable"));
     /// The [VarHandle] of `coverageModulationTableEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_coverageModulationTableEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageModulationTableEnable"));
+    public static final Supplier<VarHandle> VH_coverageModulationTableEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageModulationTableEnable")));
     /// The byte offset of `coverageModulationTableCount`.
     public static final long OFFSET_coverageModulationTableCount = LAYOUT.byteOffset(PathElement.groupElement("coverageModulationTableCount"));
     /// The memory layout of `coverageModulationTableCount`.
     public static final MemoryLayout LAYOUT_coverageModulationTableCount = LAYOUT.select(PathElement.groupElement("coverageModulationTableCount"));
     /// The [VarHandle] of `coverageModulationTableCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_coverageModulationTableCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageModulationTableCount"));
+    public static final Supplier<VarHandle> VH_coverageModulationTableCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageModulationTableCount")));
     /// The byte offset of `pCoverageModulationTable`.
     public static final long OFFSET_pCoverageModulationTable = LAYOUT.byteOffset(PathElement.groupElement("pCoverageModulationTable"));
     /// The memory layout of `pCoverageModulationTable`.
     public static final MemoryLayout LAYOUT_pCoverageModulationTable = LAYOUT.select(PathElement.groupElement("pCoverageModulationTable"));
     /// The [VarHandle] of `pCoverageModulationTable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pCoverageModulationTable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCoverageModulationTable"));
+    public static final Supplier<VarHandle> VH_pCoverageModulationTable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCoverageModulationTable")));
 
     /// Creates `VkPipelineCoverageModulationStateCreateInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkPipelineCoverageModulationStateCreateInfoNV extends GroupTy
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPipelineCoverageModulationStateCreateInfoNV extends GroupTy
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPipelineCoverageModulationStateCreateInfoNV extends GroupTy
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPipelineCoverageModulationStateCreateInfoNV extends GroupTy
     /// {@return `coverageModulationMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int coverageModulationMode(MemorySegment segment, long index) { return (int) VH_coverageModulationMode.get(segment, 0L, index); }
+    public static int coverageModulationMode(MemorySegment segment, long index) { return (int) VH_coverageModulationMode.get().get(segment, 0L, index); }
     /// {@return `coverageModulationMode`}
     public int coverageModulationMode() { return coverageModulationMode(this.segment(), 0L); }
     /// Sets `coverageModulationMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void coverageModulationMode(MemorySegment segment, long index, int value) { VH_coverageModulationMode.set(segment, 0L, index, value); }
+    public static void coverageModulationMode(MemorySegment segment, long index, int value) { VH_coverageModulationMode.get().set(segment, 0L, index, value); }
     /// Sets `coverageModulationMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkPipelineCoverageModulationStateCreateInfoNV extends GroupTy
     /// {@return `coverageModulationTableEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int coverageModulationTableEnable(MemorySegment segment, long index) { return (int) VH_coverageModulationTableEnable.get(segment, 0L, index); }
+    public static int coverageModulationTableEnable(MemorySegment segment, long index) { return (int) VH_coverageModulationTableEnable.get().get(segment, 0L, index); }
     /// {@return `coverageModulationTableEnable`}
     public int coverageModulationTableEnable() { return coverageModulationTableEnable(this.segment(), 0L); }
     /// Sets `coverageModulationTableEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void coverageModulationTableEnable(MemorySegment segment, long index, int value) { VH_coverageModulationTableEnable.set(segment, 0L, index, value); }
+    public static void coverageModulationTableEnable(MemorySegment segment, long index, int value) { VH_coverageModulationTableEnable.get().set(segment, 0L, index, value); }
     /// Sets `coverageModulationTableEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkPipelineCoverageModulationStateCreateInfoNV extends GroupTy
     /// {@return `coverageModulationTableCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int coverageModulationTableCount(MemorySegment segment, long index) { return (int) VH_coverageModulationTableCount.get(segment, 0L, index); }
+    public static int coverageModulationTableCount(MemorySegment segment, long index) { return (int) VH_coverageModulationTableCount.get().get(segment, 0L, index); }
     /// {@return `coverageModulationTableCount`}
     public int coverageModulationTableCount() { return coverageModulationTableCount(this.segment(), 0L); }
     /// Sets `coverageModulationTableCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void coverageModulationTableCount(MemorySegment segment, long index, int value) { VH_coverageModulationTableCount.set(segment, 0L, index, value); }
+    public static void coverageModulationTableCount(MemorySegment segment, long index, int value) { VH_coverageModulationTableCount.get().set(segment, 0L, index, value); }
     /// Sets `coverageModulationTableCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkPipelineCoverageModulationStateCreateInfoNV extends GroupTy
     /// {@return `pCoverageModulationTable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pCoverageModulationTable(MemorySegment segment, long index) { return (MemorySegment) VH_pCoverageModulationTable.get(segment, 0L, index); }
+    public static MemorySegment pCoverageModulationTable(MemorySegment segment, long index) { return (MemorySegment) VH_pCoverageModulationTable.get().get(segment, 0L, index); }
     /// {@return `pCoverageModulationTable`}
     public MemorySegment pCoverageModulationTable() { return pCoverageModulationTable(this.segment(), 0L); }
     /// Sets `pCoverageModulationTable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pCoverageModulationTable(MemorySegment segment, long index, MemorySegment value) { VH_pCoverageModulationTable.set(segment, 0L, index, value); }
+    public static void pCoverageModulationTable(MemorySegment segment, long index, MemorySegment value) { VH_pCoverageModulationTable.get().set(segment, 0L, index, value); }
     /// Sets `pCoverageModulationTable` with the given value.
     /// @param value the value
     /// @return `this`

@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceTransformFeedbackFeaturesEXT extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `transformFeedback`.
     public static final long OFFSET_transformFeedback = LAYOUT.byteOffset(PathElement.groupElement("transformFeedback"));
     /// The memory layout of `transformFeedback`.
     public static final MemoryLayout LAYOUT_transformFeedback = LAYOUT.select(PathElement.groupElement("transformFeedback"));
     /// The [VarHandle] of `transformFeedback` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_transformFeedback = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedback"));
+    public static final Supplier<VarHandle> VH_transformFeedback = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedback")));
     /// The byte offset of `geometryStreams`.
     public static final long OFFSET_geometryStreams = LAYOUT.byteOffset(PathElement.groupElement("geometryStreams"));
     /// The memory layout of `geometryStreams`.
     public static final MemoryLayout LAYOUT_geometryStreams = LAYOUT.select(PathElement.groupElement("geometryStreams"));
     /// The [VarHandle] of `geometryStreams` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_geometryStreams = LAYOUT.arrayElementVarHandle(PathElement.groupElement("geometryStreams"));
+    public static final Supplier<VarHandle> VH_geometryStreams = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("geometryStreams")));
 
     /// Creates `VkPhysicalDeviceTransformFeedbackFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceTransformFeedbackFeaturesEXT extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceTransformFeedbackFeaturesEXT extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceTransformFeedbackFeaturesEXT extends GroupTyp
     /// {@return `transformFeedback` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int transformFeedback(MemorySegment segment, long index) { return (int) VH_transformFeedback.get(segment, 0L, index); }
+    public static int transformFeedback(MemorySegment segment, long index) { return (int) VH_transformFeedback.get().get(segment, 0L, index); }
     /// {@return `transformFeedback`}
     public int transformFeedback() { return transformFeedback(this.segment(), 0L); }
     /// Sets `transformFeedback` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void transformFeedback(MemorySegment segment, long index, int value) { VH_transformFeedback.set(segment, 0L, index, value); }
+    public static void transformFeedback(MemorySegment segment, long index, int value) { VH_transformFeedback.get().set(segment, 0L, index, value); }
     /// Sets `transformFeedback` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceTransformFeedbackFeaturesEXT extends GroupTyp
     /// {@return `geometryStreams` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int geometryStreams(MemorySegment segment, long index) { return (int) VH_geometryStreams.get(segment, 0L, index); }
+    public static int geometryStreams(MemorySegment segment, long index) { return (int) VH_geometryStreams.get().get(segment, 0L, index); }
     /// {@return `geometryStreams`}
     public int geometryStreams() { return geometryStreams(this.segment(), 0L); }
     /// Sets `geometryStreams` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void geometryStreams(MemorySegment segment, long index, int value) { VH_geometryStreams.set(segment, 0L, index, value); }
+    public static void geometryStreams(MemorySegment segment, long index, int value) { VH_geometryStreams.get().set(segment, 0L, index, value); }
     /// Sets `geometryStreams` with the given value.
     /// @param value the value
     /// @return `this`

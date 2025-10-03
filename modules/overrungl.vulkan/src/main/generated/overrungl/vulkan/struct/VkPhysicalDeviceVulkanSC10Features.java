@@ -31,19 +31,19 @@ public final class VkPhysicalDeviceVulkanSC10Features extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderAtomicInstructions`.
     public static final long OFFSET_shaderAtomicInstructions = LAYOUT.byteOffset(PathElement.groupElement("shaderAtomicInstructions"));
     /// The memory layout of `shaderAtomicInstructions`.
     public static final MemoryLayout LAYOUT_shaderAtomicInstructions = LAYOUT.select(PathElement.groupElement("shaderAtomicInstructions"));
     /// The [VarHandle] of `shaderAtomicInstructions` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderAtomicInstructions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderAtomicInstructions"));
+    public static final Supplier<VarHandle> VH_shaderAtomicInstructions = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderAtomicInstructions")));
 
     /// Creates `VkPhysicalDeviceVulkanSC10Features` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkPhysicalDeviceVulkanSC10Features extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceVulkanSC10Features extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceVulkanSC10Features extends GroupType {
     /// {@return `shaderAtomicInstructions` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderAtomicInstructions(MemorySegment segment, long index) { return (int) VH_shaderAtomicInstructions.get(segment, 0L, index); }
+    public static int shaderAtomicInstructions(MemorySegment segment, long index) { return (int) VH_shaderAtomicInstructions.get().get(segment, 0L, index); }
     /// {@return `shaderAtomicInstructions`}
     public int shaderAtomicInstructions() { return shaderAtomicInstructions(this.segment(), 0L); }
     /// Sets `shaderAtomicInstructions` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderAtomicInstructions(MemorySegment segment, long index, int value) { VH_shaderAtomicInstructions.set(segment, 0L, index, value); }
+    public static void shaderAtomicInstructions(MemorySegment segment, long index, int value) { VH_shaderAtomicInstructions.get().set(segment, 0L, index, value); }
     /// Sets `shaderAtomicInstructions` with the given value.
     /// @param value the value
     /// @return `this`

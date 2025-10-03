@@ -31,19 +31,19 @@ public final class VkPhysicalDeviceTilePropertiesFeaturesQCOM extends GroupType 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `tileProperties`.
     public static final long OFFSET_tileProperties = LAYOUT.byteOffset(PathElement.groupElement("tileProperties"));
     /// The memory layout of `tileProperties`.
     public static final MemoryLayout LAYOUT_tileProperties = LAYOUT.select(PathElement.groupElement("tileProperties"));
     /// The [VarHandle] of `tileProperties` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileProperties = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileProperties"));
+    public static final Supplier<VarHandle> VH_tileProperties = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileProperties")));
 
     /// Creates `VkPhysicalDeviceTilePropertiesFeaturesQCOM` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkPhysicalDeviceTilePropertiesFeaturesQCOM extends GroupType 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceTilePropertiesFeaturesQCOM extends GroupType 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceTilePropertiesFeaturesQCOM extends GroupType 
     /// {@return `tileProperties` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileProperties(MemorySegment segment, long index) { return (int) VH_tileProperties.get(segment, 0L, index); }
+    public static int tileProperties(MemorySegment segment, long index) { return (int) VH_tileProperties.get().get(segment, 0L, index); }
     /// {@return `tileProperties`}
     public int tileProperties() { return tileProperties(this.segment(), 0L); }
     /// Sets `tileProperties` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileProperties(MemorySegment segment, long index, int value) { VH_tileProperties.set(segment, 0L, index, value); }
+    public static void tileProperties(MemorySegment segment, long index, int value) { VH_tileProperties.get().set(segment, 0L, index, value); }
     /// Sets `tileProperties` with the given value.
     /// @param value the value
     /// @return `this`

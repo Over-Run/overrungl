@@ -37,37 +37,37 @@ public final class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends GroupType
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `depthBiasControl`.
     public static final long OFFSET_depthBiasControl = LAYOUT.byteOffset(PathElement.groupElement("depthBiasControl"));
     /// The memory layout of `depthBiasControl`.
     public static final MemoryLayout LAYOUT_depthBiasControl = LAYOUT.select(PathElement.groupElement("depthBiasControl"));
     /// The [VarHandle] of `depthBiasControl` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthBiasControl = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasControl"));
+    public static final Supplier<VarHandle> VH_depthBiasControl = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasControl")));
     /// The byte offset of `leastRepresentableValueForceUnormRepresentation`.
     public static final long OFFSET_leastRepresentableValueForceUnormRepresentation = LAYOUT.byteOffset(PathElement.groupElement("leastRepresentableValueForceUnormRepresentation"));
     /// The memory layout of `leastRepresentableValueForceUnormRepresentation`.
     public static final MemoryLayout LAYOUT_leastRepresentableValueForceUnormRepresentation = LAYOUT.select(PathElement.groupElement("leastRepresentableValueForceUnormRepresentation"));
     /// The [VarHandle] of `leastRepresentableValueForceUnormRepresentation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_leastRepresentableValueForceUnormRepresentation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("leastRepresentableValueForceUnormRepresentation"));
+    public static final Supplier<VarHandle> VH_leastRepresentableValueForceUnormRepresentation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("leastRepresentableValueForceUnormRepresentation")));
     /// The byte offset of `floatRepresentation`.
     public static final long OFFSET_floatRepresentation = LAYOUT.byteOffset(PathElement.groupElement("floatRepresentation"));
     /// The memory layout of `floatRepresentation`.
     public static final MemoryLayout LAYOUT_floatRepresentation = LAYOUT.select(PathElement.groupElement("floatRepresentation"));
     /// The [VarHandle] of `floatRepresentation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_floatRepresentation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("floatRepresentation"));
+    public static final Supplier<VarHandle> VH_floatRepresentation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("floatRepresentation")));
     /// The byte offset of `depthBiasExact`.
     public static final long OFFSET_depthBiasExact = LAYOUT.byteOffset(PathElement.groupElement("depthBiasExact"));
     /// The memory layout of `depthBiasExact`.
     public static final MemoryLayout LAYOUT_depthBiasExact = LAYOUT.select(PathElement.groupElement("depthBiasExact"));
     /// The [VarHandle] of `depthBiasExact` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthBiasExact = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasExact"));
+    public static final Supplier<VarHandle> VH_depthBiasExact = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasExact")));
 
     /// Creates `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends GroupType
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends GroupType
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends GroupType
     /// {@return `depthBiasControl` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int depthBiasControl(MemorySegment segment, long index) { return (int) VH_depthBiasControl.get(segment, 0L, index); }
+    public static int depthBiasControl(MemorySegment segment, long index) { return (int) VH_depthBiasControl.get().get(segment, 0L, index); }
     /// {@return `depthBiasControl`}
     public int depthBiasControl() { return depthBiasControl(this.segment(), 0L); }
     /// Sets `depthBiasControl` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depthBiasControl(MemorySegment segment, long index, int value) { VH_depthBiasControl.set(segment, 0L, index, value); }
+    public static void depthBiasControl(MemorySegment segment, long index, int value) { VH_depthBiasControl.get().set(segment, 0L, index, value); }
     /// Sets `depthBiasControl` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends GroupType
     /// {@return `leastRepresentableValueForceUnormRepresentation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int leastRepresentableValueForceUnormRepresentation(MemorySegment segment, long index) { return (int) VH_leastRepresentableValueForceUnormRepresentation.get(segment, 0L, index); }
+    public static int leastRepresentableValueForceUnormRepresentation(MemorySegment segment, long index) { return (int) VH_leastRepresentableValueForceUnormRepresentation.get().get(segment, 0L, index); }
     /// {@return `leastRepresentableValueForceUnormRepresentation`}
     public int leastRepresentableValueForceUnormRepresentation() { return leastRepresentableValueForceUnormRepresentation(this.segment(), 0L); }
     /// Sets `leastRepresentableValueForceUnormRepresentation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void leastRepresentableValueForceUnormRepresentation(MemorySegment segment, long index, int value) { VH_leastRepresentableValueForceUnormRepresentation.set(segment, 0L, index, value); }
+    public static void leastRepresentableValueForceUnormRepresentation(MemorySegment segment, long index, int value) { VH_leastRepresentableValueForceUnormRepresentation.get().set(segment, 0L, index, value); }
     /// Sets `leastRepresentableValueForceUnormRepresentation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends GroupType
     /// {@return `floatRepresentation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int floatRepresentation(MemorySegment segment, long index) { return (int) VH_floatRepresentation.get(segment, 0L, index); }
+    public static int floatRepresentation(MemorySegment segment, long index) { return (int) VH_floatRepresentation.get().get(segment, 0L, index); }
     /// {@return `floatRepresentation`}
     public int floatRepresentation() { return floatRepresentation(this.segment(), 0L); }
     /// Sets `floatRepresentation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void floatRepresentation(MemorySegment segment, long index, int value) { VH_floatRepresentation.set(segment, 0L, index, value); }
+    public static void floatRepresentation(MemorySegment segment, long index, int value) { VH_floatRepresentation.get().set(segment, 0L, index, value); }
     /// Sets `floatRepresentation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends GroupType
     /// {@return `depthBiasExact` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int depthBiasExact(MemorySegment segment, long index) { return (int) VH_depthBiasExact.get(segment, 0L, index); }
+    public static int depthBiasExact(MemorySegment segment, long index) { return (int) VH_depthBiasExact.get().get(segment, 0L, index); }
     /// {@return `depthBiasExact`}
     public int depthBiasExact() { return depthBiasExact(this.segment(), 0L); }
     /// Sets `depthBiasExact` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depthBiasExact(MemorySegment segment, long index, int value) { VH_depthBiasExact.set(segment, 0L, index, value); }
+    public static void depthBiasExact(MemorySegment segment, long index, int value) { VH_depthBiasExact.get().set(segment, 0L, index, value); }
     /// Sets `depthBiasExact` with the given value.
     /// @param value the value
     /// @return `this`

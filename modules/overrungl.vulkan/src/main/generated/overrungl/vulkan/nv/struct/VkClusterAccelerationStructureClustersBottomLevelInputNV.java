@@ -33,25 +33,25 @@ public final class VkClusterAccelerationStructureClustersBottomLevelInputNV exte
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `maxTotalClusterCount`.
     public static final long OFFSET_maxTotalClusterCount = LAYOUT.byteOffset(PathElement.groupElement("maxTotalClusterCount"));
     /// The memory layout of `maxTotalClusterCount`.
     public static final MemoryLayout LAYOUT_maxTotalClusterCount = LAYOUT.select(PathElement.groupElement("maxTotalClusterCount"));
     /// The [VarHandle] of `maxTotalClusterCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTotalClusterCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTotalClusterCount"));
+    public static final Supplier<VarHandle> VH_maxTotalClusterCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTotalClusterCount")));
     /// The byte offset of `maxClusterCountPerAccelerationStructure`.
     public static final long OFFSET_maxClusterCountPerAccelerationStructure = LAYOUT.byteOffset(PathElement.groupElement("maxClusterCountPerAccelerationStructure"));
     /// The memory layout of `maxClusterCountPerAccelerationStructure`.
     public static final MemoryLayout LAYOUT_maxClusterCountPerAccelerationStructure = LAYOUT.select(PathElement.groupElement("maxClusterCountPerAccelerationStructure"));
     /// The [VarHandle] of `maxClusterCountPerAccelerationStructure` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxClusterCountPerAccelerationStructure = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxClusterCountPerAccelerationStructure"));
+    public static final Supplier<VarHandle> VH_maxClusterCountPerAccelerationStructure = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxClusterCountPerAccelerationStructure")));
 
     /// Creates `VkClusterAccelerationStructureClustersBottomLevelInputNV` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkClusterAccelerationStructureClustersBottomLevelInputNV exte
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkClusterAccelerationStructureClustersBottomLevelInputNV exte
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkClusterAccelerationStructureClustersBottomLevelInputNV exte
     /// {@return `maxTotalClusterCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTotalClusterCount(MemorySegment segment, long index) { return (int) VH_maxTotalClusterCount.get(segment, 0L, index); }
+    public static int maxTotalClusterCount(MemorySegment segment, long index) { return (int) VH_maxTotalClusterCount.get().get(segment, 0L, index); }
     /// {@return `maxTotalClusterCount`}
     public int maxTotalClusterCount() { return maxTotalClusterCount(this.segment(), 0L); }
     /// Sets `maxTotalClusterCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTotalClusterCount(MemorySegment segment, long index, int value) { VH_maxTotalClusterCount.set(segment, 0L, index, value); }
+    public static void maxTotalClusterCount(MemorySegment segment, long index, int value) { VH_maxTotalClusterCount.get().set(segment, 0L, index, value); }
     /// Sets `maxTotalClusterCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkClusterAccelerationStructureClustersBottomLevelInputNV exte
     /// {@return `maxClusterCountPerAccelerationStructure` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxClusterCountPerAccelerationStructure(MemorySegment segment, long index) { return (int) VH_maxClusterCountPerAccelerationStructure.get(segment, 0L, index); }
+    public static int maxClusterCountPerAccelerationStructure(MemorySegment segment, long index) { return (int) VH_maxClusterCountPerAccelerationStructure.get().get(segment, 0L, index); }
     /// {@return `maxClusterCountPerAccelerationStructure`}
     public int maxClusterCountPerAccelerationStructure() { return maxClusterCountPerAccelerationStructure(this.segment(), 0L); }
     /// Sets `maxClusterCountPerAccelerationStructure` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxClusterCountPerAccelerationStructure(MemorySegment segment, long index, int value) { VH_maxClusterCountPerAccelerationStructure.set(segment, 0L, index, value); }
+    public static void maxClusterCountPerAccelerationStructure(MemorySegment segment, long index, int value) { VH_maxClusterCountPerAccelerationStructure.get().set(segment, 0L, index, value); }
     /// Sets `maxClusterCountPerAccelerationStructure` with the given value.
     /// @param value the value
     /// @return `this`

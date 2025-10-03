@@ -33,25 +33,25 @@ public final class VkSemaphoreSciSyncCreateInfoNV extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `semaphorePool`.
     public static final long OFFSET_semaphorePool = LAYOUT.byteOffset(PathElement.groupElement("semaphorePool"));
     /// The memory layout of `semaphorePool`.
     public static final MemoryLayout LAYOUT_semaphorePool = LAYOUT.select(PathElement.groupElement("semaphorePool"));
     /// The [VarHandle] of `semaphorePool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_semaphorePool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphorePool"));
+    public static final Supplier<VarHandle> VH_semaphorePool = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphorePool")));
     /// The byte offset of `pFence`.
     public static final long OFFSET_pFence = LAYOUT.byteOffset(PathElement.groupElement("pFence"));
     /// The memory layout of `pFence`.
     public static final MemoryLayout LAYOUT_pFence = LAYOUT.select(PathElement.groupElement("pFence"));
     /// The [VarHandle] of `pFence` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pFence = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFence"));
+    public static final Supplier<VarHandle> VH_pFence = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFence")));
 
     /// Creates `VkSemaphoreSciSyncCreateInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkSemaphoreSciSyncCreateInfoNV extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkSemaphoreSciSyncCreateInfoNV extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkSemaphoreSciSyncCreateInfoNV extends GroupType {
     /// {@return `semaphorePool` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long semaphorePool(MemorySegment segment, long index) { return (long) VH_semaphorePool.get(segment, 0L, index); }
+    public static long semaphorePool(MemorySegment segment, long index) { return (long) VH_semaphorePool.get().get(segment, 0L, index); }
     /// {@return `semaphorePool`}
     public long semaphorePool() { return semaphorePool(this.segment(), 0L); }
     /// Sets `semaphorePool` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void semaphorePool(MemorySegment segment, long index, long value) { VH_semaphorePool.set(segment, 0L, index, value); }
+    public static void semaphorePool(MemorySegment segment, long index, long value) { VH_semaphorePool.get().set(segment, 0L, index, value); }
     /// Sets `semaphorePool` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkSemaphoreSciSyncCreateInfoNV extends GroupType {
     /// {@return `pFence` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pFence(MemorySegment segment, long index) { return (MemorySegment) VH_pFence.get(segment, 0L, index); }
+    public static MemorySegment pFence(MemorySegment segment, long index) { return (MemorySegment) VH_pFence.get().get(segment, 0L, index); }
     /// {@return `pFence`}
     public MemorySegment pFence() { return pFence(this.segment(), 0L); }
     /// Sets `pFence` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pFence(MemorySegment segment, long index, MemorySegment value) { VH_pFence.set(segment, 0L, index, value); }
+    public static void pFence(MemorySegment segment, long index, MemorySegment value) { VH_pFence.get().set(segment, 0L, index, value); }
     /// Sets `pFence` with the given value.
     /// @param value the value
     /// @return `this`

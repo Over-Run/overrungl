@@ -35,31 +35,31 @@ public final class VkPerformanceValueDataINTEL extends GroupType {
     /// The memory layout of `value32`.
     public static final MemoryLayout LAYOUT_value32 = LAYOUT.select(PathElement.groupElement("value32"));
     /// The [VarHandle] of `value32` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_value32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("value32"));
+    public static final Supplier<VarHandle> VH_value32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("value32")));
     /// The byte offset of `value64`.
     public static final long OFFSET_value64 = LAYOUT.byteOffset(PathElement.groupElement("value64"));
     /// The memory layout of `value64`.
     public static final MemoryLayout LAYOUT_value64 = LAYOUT.select(PathElement.groupElement("value64"));
     /// The [VarHandle] of `value64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_value64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("value64"));
+    public static final Supplier<VarHandle> VH_value64 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("value64")));
     /// The byte offset of `valueFloat`.
     public static final long OFFSET_valueFloat = LAYOUT.byteOffset(PathElement.groupElement("valueFloat"));
     /// The memory layout of `valueFloat`.
     public static final MemoryLayout LAYOUT_valueFloat = LAYOUT.select(PathElement.groupElement("valueFloat"));
     /// The [VarHandle] of `valueFloat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_valueFloat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueFloat"));
+    public static final Supplier<VarHandle> VH_valueFloat = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueFloat")));
     /// The byte offset of `valueBool`.
     public static final long OFFSET_valueBool = LAYOUT.byteOffset(PathElement.groupElement("valueBool"));
     /// The memory layout of `valueBool`.
     public static final MemoryLayout LAYOUT_valueBool = LAYOUT.select(PathElement.groupElement("valueBool"));
     /// The [VarHandle] of `valueBool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_valueBool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueBool"));
+    public static final Supplier<VarHandle> VH_valueBool = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueBool")));
     /// The byte offset of `valueString`.
     public static final long OFFSET_valueString = LAYOUT.byteOffset(PathElement.groupElement("valueString"));
     /// The memory layout of `valueString`.
     public static final MemoryLayout LAYOUT_valueString = LAYOUT.select(PathElement.groupElement("valueString"));
     /// The [VarHandle] of `valueString` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_valueString = LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueString"));
+    public static final Supplier<VarHandle> VH_valueString = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueString")));
 
     /// Creates `VkPerformanceValueDataINTEL` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPerformanceValueDataINTEL extends GroupType {
     /// {@return `value32` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static int value32(MemorySegment segment, long index) { return (int) VH_value32.get(segment, 0L, index); }
+    public static int value32(MemorySegment segment, long index) { return (int) VH_value32.get().get(segment, 0L, index); }
     /// {@return `value32`}
     public int value32() { return value32(this.segment(), 0L); }
     /// Sets `value32` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void value32(MemorySegment segment, long index, int value) { VH_value32.set(segment, 0L, index, value); }
+    public static void value32(MemorySegment segment, long index, int value) { VH_value32.get().set(segment, 0L, index, value); }
     /// Sets `value32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPerformanceValueDataINTEL extends GroupType {
     /// {@return `value64` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static long value64(MemorySegment segment, long index) { return (long) VH_value64.get(segment, 0L, index); }
+    public static long value64(MemorySegment segment, long index) { return (long) VH_value64.get().get(segment, 0L, index); }
     /// {@return `value64`}
     public long value64() { return value64(this.segment(), 0L); }
     /// Sets `value64` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void value64(MemorySegment segment, long index, long value) { VH_value64.set(segment, 0L, index, value); }
+    public static void value64(MemorySegment segment, long index, long value) { VH_value64.get().set(segment, 0L, index, value); }
     /// Sets `value64` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPerformanceValueDataINTEL extends GroupType {
     /// {@return `valueFloat` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static float valueFloat(MemorySegment segment, long index) { return (float) VH_valueFloat.get(segment, 0L, index); }
+    public static float valueFloat(MemorySegment segment, long index) { return (float) VH_valueFloat.get().get(segment, 0L, index); }
     /// {@return `valueFloat`}
     public float valueFloat() { return valueFloat(this.segment(), 0L); }
     /// Sets `valueFloat` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void valueFloat(MemorySegment segment, long index, float value) { VH_valueFloat.set(segment, 0L, index, value); }
+    public static void valueFloat(MemorySegment segment, long index, float value) { VH_valueFloat.get().set(segment, 0L, index, value); }
     /// Sets `valueFloat` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPerformanceValueDataINTEL extends GroupType {
     /// {@return `valueBool` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static int valueBool(MemorySegment segment, long index) { return (int) VH_valueBool.get(segment, 0L, index); }
+    public static int valueBool(MemorySegment segment, long index) { return (int) VH_valueBool.get().get(segment, 0L, index); }
     /// {@return `valueBool`}
     public int valueBool() { return valueBool(this.segment(), 0L); }
     /// Sets `valueBool` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void valueBool(MemorySegment segment, long index, int value) { VH_valueBool.set(segment, 0L, index, value); }
+    public static void valueBool(MemorySegment segment, long index, int value) { VH_valueBool.get().set(segment, 0L, index, value); }
     /// Sets `valueBool` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPerformanceValueDataINTEL extends GroupType {
     /// {@return `valueString` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static MemorySegment valueString(MemorySegment segment, long index) { return (MemorySegment) VH_valueString.get(segment, 0L, index); }
+    public static MemorySegment valueString(MemorySegment segment, long index) { return (MemorySegment) VH_valueString.get().get(segment, 0L, index); }
     /// {@return `valueString`}
     public MemorySegment valueString() { return valueString(this.segment(), 0L); }
     /// Sets `valueString` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void valueString(MemorySegment segment, long index, MemorySegment value) { VH_valueString.set(segment, 0L, index, value); }
+    public static void valueString(MemorySegment segment, long index, MemorySegment value) { VH_valueString.get().set(segment, 0L, index, value); }
     /// Sets `valueString` with the given value.
     /// @param value the value
     /// @return `this`

@@ -33,25 +33,25 @@ public final class VkHostImageCopyDevicePerformanceQuery extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `optimalDeviceAccess`.
     public static final long OFFSET_optimalDeviceAccess = LAYOUT.byteOffset(PathElement.groupElement("optimalDeviceAccess"));
     /// The memory layout of `optimalDeviceAccess`.
     public static final MemoryLayout LAYOUT_optimalDeviceAccess = LAYOUT.select(PathElement.groupElement("optimalDeviceAccess"));
     /// The [VarHandle] of `optimalDeviceAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_optimalDeviceAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("optimalDeviceAccess"));
+    public static final Supplier<VarHandle> VH_optimalDeviceAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("optimalDeviceAccess")));
     /// The byte offset of `identicalMemoryLayout`.
     public static final long OFFSET_identicalMemoryLayout = LAYOUT.byteOffset(PathElement.groupElement("identicalMemoryLayout"));
     /// The memory layout of `identicalMemoryLayout`.
     public static final MemoryLayout LAYOUT_identicalMemoryLayout = LAYOUT.select(PathElement.groupElement("identicalMemoryLayout"));
     /// The [VarHandle] of `identicalMemoryLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_identicalMemoryLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("identicalMemoryLayout"));
+    public static final Supplier<VarHandle> VH_identicalMemoryLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("identicalMemoryLayout")));
 
     /// Creates `VkHostImageCopyDevicePerformanceQuery` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkHostImageCopyDevicePerformanceQuery extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkHostImageCopyDevicePerformanceQuery extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkHostImageCopyDevicePerformanceQuery extends GroupType {
     /// {@return `optimalDeviceAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int optimalDeviceAccess(MemorySegment segment, long index) { return (int) VH_optimalDeviceAccess.get(segment, 0L, index); }
+    public static int optimalDeviceAccess(MemorySegment segment, long index) { return (int) VH_optimalDeviceAccess.get().get(segment, 0L, index); }
     /// {@return `optimalDeviceAccess`}
     public int optimalDeviceAccess() { return optimalDeviceAccess(this.segment(), 0L); }
     /// Sets `optimalDeviceAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void optimalDeviceAccess(MemorySegment segment, long index, int value) { VH_optimalDeviceAccess.set(segment, 0L, index, value); }
+    public static void optimalDeviceAccess(MemorySegment segment, long index, int value) { VH_optimalDeviceAccess.get().set(segment, 0L, index, value); }
     /// Sets `optimalDeviceAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkHostImageCopyDevicePerformanceQuery extends GroupType {
     /// {@return `identicalMemoryLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int identicalMemoryLayout(MemorySegment segment, long index) { return (int) VH_identicalMemoryLayout.get(segment, 0L, index); }
+    public static int identicalMemoryLayout(MemorySegment segment, long index) { return (int) VH_identicalMemoryLayout.get().get(segment, 0L, index); }
     /// {@return `identicalMemoryLayout`}
     public int identicalMemoryLayout() { return identicalMemoryLayout(this.segment(), 0L); }
     /// Sets `identicalMemoryLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void identicalMemoryLayout(MemorySegment segment, long index, int value) { VH_identicalMemoryLayout.set(segment, 0L, index, value); }
+    public static void identicalMemoryLayout(MemorySegment segment, long index, int value) { VH_identicalMemoryLayout.get().set(segment, 0L, index, value); }
     /// Sets `identicalMemoryLayout` with the given value.
     /// @param value the value
     /// @return `this`

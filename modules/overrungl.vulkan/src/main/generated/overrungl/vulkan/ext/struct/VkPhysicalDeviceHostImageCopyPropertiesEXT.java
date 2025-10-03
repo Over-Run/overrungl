@@ -41,49 +41,49 @@ public final class VkPhysicalDeviceHostImageCopyPropertiesEXT extends GroupType 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `copySrcLayoutCount`.
     public static final long OFFSET_copySrcLayoutCount = LAYOUT.byteOffset(PathElement.groupElement("copySrcLayoutCount"));
     /// The memory layout of `copySrcLayoutCount`.
     public static final MemoryLayout LAYOUT_copySrcLayoutCount = LAYOUT.select(PathElement.groupElement("copySrcLayoutCount"));
     /// The [VarHandle] of `copySrcLayoutCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_copySrcLayoutCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("copySrcLayoutCount"));
+    public static final Supplier<VarHandle> VH_copySrcLayoutCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("copySrcLayoutCount")));
     /// The byte offset of `pCopySrcLayouts`.
     public static final long OFFSET_pCopySrcLayouts = LAYOUT.byteOffset(PathElement.groupElement("pCopySrcLayouts"));
     /// The memory layout of `pCopySrcLayouts`.
     public static final MemoryLayout LAYOUT_pCopySrcLayouts = LAYOUT.select(PathElement.groupElement("pCopySrcLayouts"));
     /// The [VarHandle] of `pCopySrcLayouts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pCopySrcLayouts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCopySrcLayouts"));
+    public static final Supplier<VarHandle> VH_pCopySrcLayouts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCopySrcLayouts")));
     /// The byte offset of `copyDstLayoutCount`.
     public static final long OFFSET_copyDstLayoutCount = LAYOUT.byteOffset(PathElement.groupElement("copyDstLayoutCount"));
     /// The memory layout of `copyDstLayoutCount`.
     public static final MemoryLayout LAYOUT_copyDstLayoutCount = LAYOUT.select(PathElement.groupElement("copyDstLayoutCount"));
     /// The [VarHandle] of `copyDstLayoutCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_copyDstLayoutCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("copyDstLayoutCount"));
+    public static final Supplier<VarHandle> VH_copyDstLayoutCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("copyDstLayoutCount")));
     /// The byte offset of `pCopyDstLayouts`.
     public static final long OFFSET_pCopyDstLayouts = LAYOUT.byteOffset(PathElement.groupElement("pCopyDstLayouts"));
     /// The memory layout of `pCopyDstLayouts`.
     public static final MemoryLayout LAYOUT_pCopyDstLayouts = LAYOUT.select(PathElement.groupElement("pCopyDstLayouts"));
     /// The [VarHandle] of `pCopyDstLayouts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pCopyDstLayouts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCopyDstLayouts"));
+    public static final Supplier<VarHandle> VH_pCopyDstLayouts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCopyDstLayouts")));
     /// The byte offset of `optimalTilingLayoutUUID`.
     public static final long OFFSET_optimalTilingLayoutUUID = LAYOUT.byteOffset(PathElement.groupElement("optimalTilingLayoutUUID"));
     /// The memory layout of `optimalTilingLayoutUUID`.
     public static final MemoryLayout LAYOUT_optimalTilingLayoutUUID = LAYOUT.select(PathElement.groupElement("optimalTilingLayoutUUID"));
     /// The [VarHandle] of `optimalTilingLayoutUUID` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_optimalTilingLayoutUUID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("optimalTilingLayoutUUID"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_optimalTilingLayoutUUID = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("optimalTilingLayoutUUID"), PathElement.sequenceElement()));
     /// The byte offset of `identicalMemoryTypeRequirements`.
     public static final long OFFSET_identicalMemoryTypeRequirements = LAYOUT.byteOffset(PathElement.groupElement("identicalMemoryTypeRequirements"));
     /// The memory layout of `identicalMemoryTypeRequirements`.
     public static final MemoryLayout LAYOUT_identicalMemoryTypeRequirements = LAYOUT.select(PathElement.groupElement("identicalMemoryTypeRequirements"));
     /// The [VarHandle] of `identicalMemoryTypeRequirements` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_identicalMemoryTypeRequirements = LAYOUT.arrayElementVarHandle(PathElement.groupElement("identicalMemoryTypeRequirements"));
+    public static final Supplier<VarHandle> VH_identicalMemoryTypeRequirements = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("identicalMemoryTypeRequirements")));
 
     /// Creates `VkPhysicalDeviceHostImageCopyPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceHostImageCopyPropertiesEXT extends GroupType 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceHostImageCopyPropertiesEXT extends GroupType 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceHostImageCopyPropertiesEXT extends GroupType 
     /// {@return `copySrcLayoutCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int copySrcLayoutCount(MemorySegment segment, long index) { return (int) VH_copySrcLayoutCount.get(segment, 0L, index); }
+    public static int copySrcLayoutCount(MemorySegment segment, long index) { return (int) VH_copySrcLayoutCount.get().get(segment, 0L, index); }
     /// {@return `copySrcLayoutCount`}
     public int copySrcLayoutCount() { return copySrcLayoutCount(this.segment(), 0L); }
     /// Sets `copySrcLayoutCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void copySrcLayoutCount(MemorySegment segment, long index, int value) { VH_copySrcLayoutCount.set(segment, 0L, index, value); }
+    public static void copySrcLayoutCount(MemorySegment segment, long index, int value) { VH_copySrcLayoutCount.get().set(segment, 0L, index, value); }
     /// Sets `copySrcLayoutCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceHostImageCopyPropertiesEXT extends GroupType 
     /// {@return `pCopySrcLayouts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pCopySrcLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pCopySrcLayouts.get(segment, 0L, index); }
+    public static MemorySegment pCopySrcLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pCopySrcLayouts.get().get(segment, 0L, index); }
     /// {@return `pCopySrcLayouts`}
     public MemorySegment pCopySrcLayouts() { return pCopySrcLayouts(this.segment(), 0L); }
     /// Sets `pCopySrcLayouts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pCopySrcLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pCopySrcLayouts.set(segment, 0L, index, value); }
+    public static void pCopySrcLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pCopySrcLayouts.get().set(segment, 0L, index, value); }
     /// Sets `pCopySrcLayouts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceHostImageCopyPropertiesEXT extends GroupType 
     /// {@return `copyDstLayoutCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int copyDstLayoutCount(MemorySegment segment, long index) { return (int) VH_copyDstLayoutCount.get(segment, 0L, index); }
+    public static int copyDstLayoutCount(MemorySegment segment, long index) { return (int) VH_copyDstLayoutCount.get().get(segment, 0L, index); }
     /// {@return `copyDstLayoutCount`}
     public int copyDstLayoutCount() { return copyDstLayoutCount(this.segment(), 0L); }
     /// Sets `copyDstLayoutCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void copyDstLayoutCount(MemorySegment segment, long index, int value) { VH_copyDstLayoutCount.set(segment, 0L, index, value); }
+    public static void copyDstLayoutCount(MemorySegment segment, long index, int value) { VH_copyDstLayoutCount.get().set(segment, 0L, index, value); }
     /// Sets `copyDstLayoutCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPhysicalDeviceHostImageCopyPropertiesEXT extends GroupType 
     /// {@return `pCopyDstLayouts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pCopyDstLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pCopyDstLayouts.get(segment, 0L, index); }
+    public static MemorySegment pCopyDstLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pCopyDstLayouts.get().get(segment, 0L, index); }
     /// {@return `pCopyDstLayouts`}
     public MemorySegment pCopyDstLayouts() { return pCopyDstLayouts(this.segment(), 0L); }
     /// Sets `pCopyDstLayouts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pCopyDstLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pCopyDstLayouts.set(segment, 0L, index, value); }
+    public static void pCopyDstLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pCopyDstLayouts.get().set(segment, 0L, index, value); }
     /// Sets `pCopyDstLayouts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -235,7 +235,7 @@ public final class VkPhysicalDeviceHostImageCopyPropertiesEXT extends GroupType 
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte optimalTilingLayoutUUID(MemorySegment segment, long index, long index0) { return (byte) VH_optimalTilingLayoutUUID.get(segment, 0L, index, index0); }
+    public static byte optimalTilingLayoutUUID(MemorySegment segment, long index, long index0) { return (byte) VH_optimalTilingLayoutUUID.get().get(segment, 0L, index, index0); }
     /// {@return `optimalTilingLayoutUUID`}
     public MemorySegment optimalTilingLayoutUUID() { return optimalTilingLayoutUUID(this.segment(), 0L); }
     /// {@return `optimalTilingLayoutUUID`}
@@ -251,7 +251,7 @@ public final class VkPhysicalDeviceHostImageCopyPropertiesEXT extends GroupType 
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void optimalTilingLayoutUUID(MemorySegment segment, long index, long index0, byte value) { VH_optimalTilingLayoutUUID.set(segment, 0L, index, index0, value); }
+    public static void optimalTilingLayoutUUID(MemorySegment segment, long index, long index0, byte value) { VH_optimalTilingLayoutUUID.get().set(segment, 0L, index, index0, value); }
     /// Sets `optimalTilingLayoutUUID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -265,14 +265,14 @@ public final class VkPhysicalDeviceHostImageCopyPropertiesEXT extends GroupType 
     /// {@return `identicalMemoryTypeRequirements` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int identicalMemoryTypeRequirements(MemorySegment segment, long index) { return (int) VH_identicalMemoryTypeRequirements.get(segment, 0L, index); }
+    public static int identicalMemoryTypeRequirements(MemorySegment segment, long index) { return (int) VH_identicalMemoryTypeRequirements.get().get(segment, 0L, index); }
     /// {@return `identicalMemoryTypeRequirements`}
     public int identicalMemoryTypeRequirements() { return identicalMemoryTypeRequirements(this.segment(), 0L); }
     /// Sets `identicalMemoryTypeRequirements` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void identicalMemoryTypeRequirements(MemorySegment segment, long index, int value) { VH_identicalMemoryTypeRequirements.set(segment, 0L, index, value); }
+    public static void identicalMemoryTypeRequirements(MemorySegment segment, long index, int value) { VH_identicalMemoryTypeRequirements.get().set(segment, 0L, index, value); }
     /// Sets `identicalMemoryTypeRequirements` with the given value.
     /// @param value the value
     /// @return `this`

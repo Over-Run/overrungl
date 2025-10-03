@@ -43,37 +43,37 @@ public final class StdVideoVP9LoopFilter extends GroupType {
     /// The memory layout of `loop_filter_level`.
     public static final MemoryLayout LAYOUT_loop_filter_level = LAYOUT.select(PathElement.groupElement("loop_filter_level"));
     /// The [VarHandle] of `loop_filter_level` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_loop_filter_level = LAYOUT.arrayElementVarHandle(PathElement.groupElement("loop_filter_level"));
+    public static final Supplier<VarHandle> VH_loop_filter_level = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("loop_filter_level")));
     /// The byte offset of `loop_filter_sharpness`.
     public static final long OFFSET_loop_filter_sharpness = LAYOUT.byteOffset(PathElement.groupElement("loop_filter_sharpness"));
     /// The memory layout of `loop_filter_sharpness`.
     public static final MemoryLayout LAYOUT_loop_filter_sharpness = LAYOUT.select(PathElement.groupElement("loop_filter_sharpness"));
     /// The [VarHandle] of `loop_filter_sharpness` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_loop_filter_sharpness = LAYOUT.arrayElementVarHandle(PathElement.groupElement("loop_filter_sharpness"));
+    public static final Supplier<VarHandle> VH_loop_filter_sharpness = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("loop_filter_sharpness")));
     /// The byte offset of `update_ref_delta`.
     public static final long OFFSET_update_ref_delta = LAYOUT.byteOffset(PathElement.groupElement("update_ref_delta"));
     /// The memory layout of `update_ref_delta`.
     public static final MemoryLayout LAYOUT_update_ref_delta = LAYOUT.select(PathElement.groupElement("update_ref_delta"));
     /// The [VarHandle] of `update_ref_delta` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_update_ref_delta = LAYOUT.arrayElementVarHandle(PathElement.groupElement("update_ref_delta"));
+    public static final Supplier<VarHandle> VH_update_ref_delta = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("update_ref_delta")));
     /// The byte offset of `loop_filter_ref_deltas`.
     public static final long OFFSET_loop_filter_ref_deltas = LAYOUT.byteOffset(PathElement.groupElement("loop_filter_ref_deltas"));
     /// The memory layout of `loop_filter_ref_deltas`.
     public static final MemoryLayout LAYOUT_loop_filter_ref_deltas = LAYOUT.select(PathElement.groupElement("loop_filter_ref_deltas"));
     /// The [VarHandle] of `loop_filter_ref_deltas` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_loop_filter_ref_deltas = LAYOUT.arrayElementVarHandle(PathElement.groupElement("loop_filter_ref_deltas"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_loop_filter_ref_deltas = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("loop_filter_ref_deltas"), PathElement.sequenceElement()));
     /// The byte offset of `update_mode_delta`.
     public static final long OFFSET_update_mode_delta = LAYOUT.byteOffset(PathElement.groupElement("update_mode_delta"));
     /// The memory layout of `update_mode_delta`.
     public static final MemoryLayout LAYOUT_update_mode_delta = LAYOUT.select(PathElement.groupElement("update_mode_delta"));
     /// The [VarHandle] of `update_mode_delta` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_update_mode_delta = LAYOUT.arrayElementVarHandle(PathElement.groupElement("update_mode_delta"));
+    public static final Supplier<VarHandle> VH_update_mode_delta = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("update_mode_delta")));
     /// The byte offset of `loop_filter_mode_deltas`.
     public static final long OFFSET_loop_filter_mode_deltas = LAYOUT.byteOffset(PathElement.groupElement("loop_filter_mode_deltas"));
     /// The memory layout of `loop_filter_mode_deltas`.
     public static final MemoryLayout LAYOUT_loop_filter_mode_deltas = LAYOUT.select(PathElement.groupElement("loop_filter_mode_deltas"));
     /// The [VarHandle] of `loop_filter_mode_deltas` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_loop_filter_mode_deltas = LAYOUT.arrayElementVarHandle(PathElement.groupElement("loop_filter_mode_deltas"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_loop_filter_mode_deltas = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("loop_filter_mode_deltas"), PathElement.sequenceElement()));
 
     /// Creates `StdVideoVP9LoopFilter` with the given segment.
     /// @param segment      the memory segment
@@ -144,14 +144,14 @@ public final class StdVideoVP9LoopFilter extends GroupType {
     /// {@return `loop_filter_level` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte loop_filter_level(MemorySegment segment, long index) { return (byte) VH_loop_filter_level.get(segment, 0L, index); }
+    public static byte loop_filter_level(MemorySegment segment, long index) { return (byte) VH_loop_filter_level.get().get(segment, 0L, index); }
     /// {@return `loop_filter_level`}
     public byte loop_filter_level() { return loop_filter_level(this.segment(), 0L); }
     /// Sets `loop_filter_level` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void loop_filter_level(MemorySegment segment, long index, byte value) { VH_loop_filter_level.set(segment, 0L, index, value); }
+    public static void loop_filter_level(MemorySegment segment, long index, byte value) { VH_loop_filter_level.get().set(segment, 0L, index, value); }
     /// Sets `loop_filter_level` with the given value.
     /// @param value the value
     /// @return `this`
@@ -160,14 +160,14 @@ public final class StdVideoVP9LoopFilter extends GroupType {
     /// {@return `loop_filter_sharpness` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte loop_filter_sharpness(MemorySegment segment, long index) { return (byte) VH_loop_filter_sharpness.get(segment, 0L, index); }
+    public static byte loop_filter_sharpness(MemorySegment segment, long index) { return (byte) VH_loop_filter_sharpness.get().get(segment, 0L, index); }
     /// {@return `loop_filter_sharpness`}
     public byte loop_filter_sharpness() { return loop_filter_sharpness(this.segment(), 0L); }
     /// Sets `loop_filter_sharpness` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void loop_filter_sharpness(MemorySegment segment, long index, byte value) { VH_loop_filter_sharpness.set(segment, 0L, index, value); }
+    public static void loop_filter_sharpness(MemorySegment segment, long index, byte value) { VH_loop_filter_sharpness.get().set(segment, 0L, index, value); }
     /// Sets `loop_filter_sharpness` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,14 +176,14 @@ public final class StdVideoVP9LoopFilter extends GroupType {
     /// {@return `update_ref_delta` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte update_ref_delta(MemorySegment segment, long index) { return (byte) VH_update_ref_delta.get(segment, 0L, index); }
+    public static byte update_ref_delta(MemorySegment segment, long index) { return (byte) VH_update_ref_delta.get().get(segment, 0L, index); }
     /// {@return `update_ref_delta`}
     public byte update_ref_delta() { return update_ref_delta(this.segment(), 0L); }
     /// Sets `update_ref_delta` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void update_ref_delta(MemorySegment segment, long index, byte value) { VH_update_ref_delta.set(segment, 0L, index, value); }
+    public static void update_ref_delta(MemorySegment segment, long index, byte value) { VH_update_ref_delta.get().set(segment, 0L, index, value); }
     /// Sets `update_ref_delta` with the given value.
     /// @param value the value
     /// @return `this`
@@ -197,7 +197,7 @@ public final class StdVideoVP9LoopFilter extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte loop_filter_ref_deltas(MemorySegment segment, long index, long index0) { return (byte) VH_loop_filter_ref_deltas.get(segment, 0L, index, index0); }
+    public static byte loop_filter_ref_deltas(MemorySegment segment, long index, long index0) { return (byte) VH_loop_filter_ref_deltas.get().get(segment, 0L, index, index0); }
     /// {@return `loop_filter_ref_deltas`}
     public MemorySegment loop_filter_ref_deltas() { return loop_filter_ref_deltas(this.segment(), 0L); }
     /// {@return `loop_filter_ref_deltas`}
@@ -213,7 +213,7 @@ public final class StdVideoVP9LoopFilter extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void loop_filter_ref_deltas(MemorySegment segment, long index, long index0, byte value) { VH_loop_filter_ref_deltas.set(segment, 0L, index, index0, value); }
+    public static void loop_filter_ref_deltas(MemorySegment segment, long index, long index0, byte value) { VH_loop_filter_ref_deltas.get().set(segment, 0L, index, index0, value); }
     /// Sets `loop_filter_ref_deltas` with the given value.
     /// @param value the value
     /// @return `this`
@@ -227,14 +227,14 @@ public final class StdVideoVP9LoopFilter extends GroupType {
     /// {@return `update_mode_delta` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte update_mode_delta(MemorySegment segment, long index) { return (byte) VH_update_mode_delta.get(segment, 0L, index); }
+    public static byte update_mode_delta(MemorySegment segment, long index) { return (byte) VH_update_mode_delta.get().get(segment, 0L, index); }
     /// {@return `update_mode_delta`}
     public byte update_mode_delta() { return update_mode_delta(this.segment(), 0L); }
     /// Sets `update_mode_delta` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void update_mode_delta(MemorySegment segment, long index, byte value) { VH_update_mode_delta.set(segment, 0L, index, value); }
+    public static void update_mode_delta(MemorySegment segment, long index, byte value) { VH_update_mode_delta.get().set(segment, 0L, index, value); }
     /// Sets `update_mode_delta` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,7 +248,7 @@ public final class StdVideoVP9LoopFilter extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte loop_filter_mode_deltas(MemorySegment segment, long index, long index0) { return (byte) VH_loop_filter_mode_deltas.get(segment, 0L, index, index0); }
+    public static byte loop_filter_mode_deltas(MemorySegment segment, long index, long index0) { return (byte) VH_loop_filter_mode_deltas.get().get(segment, 0L, index, index0); }
     /// {@return `loop_filter_mode_deltas`}
     public MemorySegment loop_filter_mode_deltas() { return loop_filter_mode_deltas(this.segment(), 0L); }
     /// {@return `loop_filter_mode_deltas`}
@@ -264,7 +264,7 @@ public final class StdVideoVP9LoopFilter extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void loop_filter_mode_deltas(MemorySegment segment, long index, long index0, byte value) { VH_loop_filter_mode_deltas.set(segment, 0L, index, index0, value); }
+    public static void loop_filter_mode_deltas(MemorySegment segment, long index, long index0, byte value) { VH_loop_filter_mode_deltas.get().set(segment, 0L, index, index0, value); }
     /// Sets `loop_filter_mode_deltas` with the given value.
     /// @param value the value
     /// @return `this`

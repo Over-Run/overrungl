@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends G
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `tensorCaptureReplayDescriptorDataSize`.
     public static final long OFFSET_tensorCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PathElement.groupElement("tensorCaptureReplayDescriptorDataSize"));
     /// The memory layout of `tensorCaptureReplayDescriptorDataSize`.
     public static final MemoryLayout LAYOUT_tensorCaptureReplayDescriptorDataSize = LAYOUT.select(PathElement.groupElement("tensorCaptureReplayDescriptorDataSize"));
     /// The [VarHandle] of `tensorCaptureReplayDescriptorDataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tensorCaptureReplayDescriptorDataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorCaptureReplayDescriptorDataSize"));
+    public static final Supplier<VarHandle> VH_tensorCaptureReplayDescriptorDataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorCaptureReplayDescriptorDataSize")));
     /// The byte offset of `tensorViewCaptureReplayDescriptorDataSize`.
     public static final long OFFSET_tensorViewCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PathElement.groupElement("tensorViewCaptureReplayDescriptorDataSize"));
     /// The memory layout of `tensorViewCaptureReplayDescriptorDataSize`.
     public static final MemoryLayout LAYOUT_tensorViewCaptureReplayDescriptorDataSize = LAYOUT.select(PathElement.groupElement("tensorViewCaptureReplayDescriptorDataSize"));
     /// The [VarHandle] of `tensorViewCaptureReplayDescriptorDataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tensorViewCaptureReplayDescriptorDataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorViewCaptureReplayDescriptorDataSize"));
+    public static final Supplier<VarHandle> VH_tensorViewCaptureReplayDescriptorDataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorViewCaptureReplayDescriptorDataSize")));
     /// The byte offset of `tensorDescriptorSize`.
     public static final long OFFSET_tensorDescriptorSize = LAYOUT.byteOffset(PathElement.groupElement("tensorDescriptorSize"));
     /// The memory layout of `tensorDescriptorSize`.
     public static final MemoryLayout LAYOUT_tensorDescriptorSize = LAYOUT.select(PathElement.groupElement("tensorDescriptorSize"));
     /// The [VarHandle] of `tensorDescriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tensorDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorDescriptorSize"));
+    public static final Supplier<VarHandle> VH_tensorDescriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorDescriptorSize")));
 
     /// Creates `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends G
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends G
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends G
     /// {@return `tensorCaptureReplayDescriptorDataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long tensorCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_tensorCaptureReplayDescriptorDataSize.get(segment, 0L, index)); }
+    public static long tensorCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_tensorCaptureReplayDescriptorDataSize.get().get(segment, 0L, index)); }
     /// {@return `tensorCaptureReplayDescriptorDataSize`}
     public long tensorCaptureReplayDescriptorDataSize() { return tensorCaptureReplayDescriptorDataSize(this.segment(), 0L); }
     /// Sets `tensorCaptureReplayDescriptorDataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tensorCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_tensorCaptureReplayDescriptorDataSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void tensorCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_tensorCaptureReplayDescriptorDataSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `tensorCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends G
     /// {@return `tensorViewCaptureReplayDescriptorDataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long tensorViewCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_tensorViewCaptureReplayDescriptorDataSize.get(segment, 0L, index)); }
+    public static long tensorViewCaptureReplayDescriptorDataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_tensorViewCaptureReplayDescriptorDataSize.get().get(segment, 0L, index)); }
     /// {@return `tensorViewCaptureReplayDescriptorDataSize`}
     public long tensorViewCaptureReplayDescriptorDataSize() { return tensorViewCaptureReplayDescriptorDataSize(this.segment(), 0L); }
     /// Sets `tensorViewCaptureReplayDescriptorDataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tensorViewCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_tensorViewCaptureReplayDescriptorDataSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void tensorViewCaptureReplayDescriptorDataSize(MemorySegment segment, long index, long value) { VH_tensorViewCaptureReplayDescriptorDataSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `tensorViewCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends G
     /// {@return `tensorDescriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long tensorDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_tensorDescriptorSize.get(segment, 0L, index)); }
+    public static long tensorDescriptorSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_tensorDescriptorSize.get().get(segment, 0L, index)); }
     /// {@return `tensorDescriptorSize`}
     public long tensorDescriptorSize() { return tensorDescriptorSize(this.segment(), 0L); }
     /// Sets `tensorDescriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tensorDescriptorSize(MemorySegment segment, long index, long value) { VH_tensorDescriptorSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void tensorDescriptorSize(MemorySegment segment, long index, long value) { VH_tensorDescriptorSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `tensorDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`

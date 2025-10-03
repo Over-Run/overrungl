@@ -37,31 +37,31 @@ public final class VkPhysicalDeviceDriverPropertiesKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `driverID`.
     public static final long OFFSET_driverID = LAYOUT.byteOffset(PathElement.groupElement("driverID"));
     /// The memory layout of `driverID`.
     public static final MemoryLayout LAYOUT_driverID = LAYOUT.select(PathElement.groupElement("driverID"));
     /// The [VarHandle] of `driverID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_driverID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverID"));
+    public static final Supplier<VarHandle> VH_driverID = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverID")));
     /// The byte offset of `driverName`.
     public static final long OFFSET_driverName = LAYOUT.byteOffset(PathElement.groupElement("driverName"));
     /// The memory layout of `driverName`.
     public static final MemoryLayout LAYOUT_driverName = LAYOUT.select(PathElement.groupElement("driverName"));
     /// The [VarHandle] of `driverName` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_driverName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverName"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_driverName = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverName"), PathElement.sequenceElement()));
     /// The byte offset of `driverInfo`.
     public static final long OFFSET_driverInfo = LAYOUT.byteOffset(PathElement.groupElement("driverInfo"));
     /// The memory layout of `driverInfo`.
     public static final MemoryLayout LAYOUT_driverInfo = LAYOUT.select(PathElement.groupElement("driverInfo"));
     /// The [VarHandle] of `driverInfo` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_driverInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverInfo"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_driverInfo = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverInfo"), PathElement.sequenceElement()));
     /// The byte offset of `conformanceVersion`.
     public static final long OFFSET_conformanceVersion = LAYOUT.byteOffset(PathElement.groupElement("conformanceVersion"));
     /// The memory layout of `conformanceVersion`.
@@ -116,14 +116,14 @@ public final class VkPhysicalDeviceDriverPropertiesKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,14 +132,14 @@ public final class VkPhysicalDeviceDriverPropertiesKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -148,14 +148,14 @@ public final class VkPhysicalDeviceDriverPropertiesKHR extends GroupType {
     /// {@return `driverID` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int driverID(MemorySegment segment, long index) { return (int) VH_driverID.get(segment, 0L, index); }
+    public static int driverID(MemorySegment segment, long index) { return (int) VH_driverID.get().get(segment, 0L, index); }
     /// {@return `driverID`}
     public int driverID() { return driverID(this.segment(), 0L); }
     /// Sets `driverID` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void driverID(MemorySegment segment, long index, int value) { VH_driverID.set(segment, 0L, index, value); }
+    public static void driverID(MemorySegment segment, long index, int value) { VH_driverID.get().set(segment, 0L, index, value); }
     /// Sets `driverID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,7 +169,7 @@ public final class VkPhysicalDeviceDriverPropertiesKHR extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte driverName(MemorySegment segment, long index, long index0) { return (byte) VH_driverName.get(segment, 0L, index, index0); }
+    public static byte driverName(MemorySegment segment, long index, long index0) { return (byte) VH_driverName.get().get(segment, 0L, index, index0); }
     /// {@return `driverName`}
     public MemorySegment driverName() { return driverName(this.segment(), 0L); }
     /// {@return `driverName`}
@@ -185,7 +185,7 @@ public final class VkPhysicalDeviceDriverPropertiesKHR extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void driverName(MemorySegment segment, long index, long index0, byte value) { VH_driverName.set(segment, 0L, index, index0, value); }
+    public static void driverName(MemorySegment segment, long index, long index0, byte value) { VH_driverName.get().set(segment, 0L, index, index0, value); }
     /// Sets `driverName` with the given value.
     /// @param value the value
     /// @return `this`
@@ -204,7 +204,7 @@ public final class VkPhysicalDeviceDriverPropertiesKHR extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte driverInfo(MemorySegment segment, long index, long index0) { return (byte) VH_driverInfo.get(segment, 0L, index, index0); }
+    public static byte driverInfo(MemorySegment segment, long index, long index0) { return (byte) VH_driverInfo.get().get(segment, 0L, index, index0); }
     /// {@return `driverInfo`}
     public MemorySegment driverInfo() { return driverInfo(this.segment(), 0L); }
     /// {@return `driverInfo`}
@@ -220,7 +220,7 @@ public final class VkPhysicalDeviceDriverPropertiesKHR extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void driverInfo(MemorySegment segment, long index, long index0, byte value) { VH_driverInfo.set(segment, 0L, index, index0, value); }
+    public static void driverInfo(MemorySegment segment, long index, long index0, byte value) { VH_driverInfo.get().set(segment, 0L, index, index0, value); }
     /// Sets `driverInfo` with the given value.
     /// @param value the value
     /// @return `this`

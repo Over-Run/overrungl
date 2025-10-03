@@ -31,19 +31,19 @@ public final class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupTyp
     /// The memory layout of `operationType`.
     public static final MemoryLayout LAYOUT_operationType = LAYOUT.select(PathElement.groupElement("operationType"));
     /// The [VarHandle] of `operationType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_operationType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("operationType"));
+    public static final Supplier<VarHandle> VH_operationType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("operationType")));
     /// The byte offset of `name`.
     public static final long OFFSET_name = LAYOUT.byteOffset(PathElement.groupElement("name"));
     /// The memory layout of `name`.
     public static final MemoryLayout LAYOUT_name = LAYOUT.select(PathElement.groupElement("name"));
     /// The [VarHandle] of `name` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_name = LAYOUT.arrayElementVarHandle(PathElement.groupElement("name"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_name = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("name"), PathElement.sequenceElement()));
     /// The byte offset of `version`.
     public static final long OFFSET_version = LAYOUT.byteOffset(PathElement.groupElement("version"));
     /// The memory layout of `version`.
     public static final MemoryLayout LAYOUT_version = LAYOUT.select(PathElement.groupElement("version"));
     /// The [VarHandle] of `version` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_version = LAYOUT.arrayElementVarHandle(PathElement.groupElement("version"));
+    public static final Supplier<VarHandle> VH_version = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("version")));
 
     /// Creates `VkPhysicalDeviceDataGraphOperationSupportARM` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupTyp
     /// {@return `operationType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int operationType(MemorySegment segment, long index) { return (int) VH_operationType.get(segment, 0L, index); }
+    public static int operationType(MemorySegment segment, long index) { return (int) VH_operationType.get().get(segment, 0L, index); }
     /// {@return `operationType`}
     public int operationType() { return operationType(this.segment(), 0L); }
     /// Sets `operationType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void operationType(MemorySegment segment, long index, int value) { VH_operationType.set(segment, 0L, index, value); }
+    public static void operationType(MemorySegment segment, long index, int value) { VH_operationType.get().set(segment, 0L, index, value); }
     /// Sets `operationType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -115,7 +115,7 @@ public final class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupTyp
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte name(MemorySegment segment, long index, long index0) { return (byte) VH_name.get(segment, 0L, index, index0); }
+    public static byte name(MemorySegment segment, long index, long index0) { return (byte) VH_name.get().get(segment, 0L, index, index0); }
     /// {@return `name`}
     public MemorySegment name() { return name(this.segment(), 0L); }
     /// {@return `name`}
@@ -131,7 +131,7 @@ public final class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupTyp
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void name(MemorySegment segment, long index, long index0, byte value) { VH_name.set(segment, 0L, index, index0, value); }
+    public static void name(MemorySegment segment, long index, long index0, byte value) { VH_name.get().set(segment, 0L, index, index0, value); }
     /// Sets `name` with the given value.
     /// @param value the value
     /// @return `this`
@@ -145,14 +145,14 @@ public final class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupTyp
     /// {@return `version` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int version(MemorySegment segment, long index) { return (int) VH_version.get(segment, 0L, index); }
+    public static int version(MemorySegment segment, long index) { return (int) VH_version.get().get(segment, 0L, index); }
     /// {@return `version`}
     public int version() { return version(this.segment(), 0L); }
     /// Sets `version` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void version(MemorySegment segment, long index, int value) { VH_version.set(segment, 0L, index, value); }
+    public static void version(MemorySegment segment, long index, int value) { VH_version.get().set(segment, 0L, index, value); }
     /// Sets `version` with the given value.
     /// @param value the value
     /// @return `this`

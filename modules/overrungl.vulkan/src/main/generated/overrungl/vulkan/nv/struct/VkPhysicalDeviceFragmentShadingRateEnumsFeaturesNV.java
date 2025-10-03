@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends Gr
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `fragmentShadingRateEnums`.
     public static final long OFFSET_fragmentShadingRateEnums = LAYOUT.byteOffset(PathElement.groupElement("fragmentShadingRateEnums"));
     /// The memory layout of `fragmentShadingRateEnums`.
     public static final MemoryLayout LAYOUT_fragmentShadingRateEnums = LAYOUT.select(PathElement.groupElement("fragmentShadingRateEnums"));
     /// The [VarHandle] of `fragmentShadingRateEnums` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShadingRateEnums = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateEnums"));
+    public static final Supplier<VarHandle> VH_fragmentShadingRateEnums = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateEnums")));
     /// The byte offset of `supersampleFragmentShadingRates`.
     public static final long OFFSET_supersampleFragmentShadingRates = LAYOUT.byteOffset(PathElement.groupElement("supersampleFragmentShadingRates"));
     /// The memory layout of `supersampleFragmentShadingRates`.
     public static final MemoryLayout LAYOUT_supersampleFragmentShadingRates = LAYOUT.select(PathElement.groupElement("supersampleFragmentShadingRates"));
     /// The [VarHandle] of `supersampleFragmentShadingRates` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supersampleFragmentShadingRates = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supersampleFragmentShadingRates"));
+    public static final Supplier<VarHandle> VH_supersampleFragmentShadingRates = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supersampleFragmentShadingRates")));
     /// The byte offset of `noInvocationFragmentShadingRates`.
     public static final long OFFSET_noInvocationFragmentShadingRates = LAYOUT.byteOffset(PathElement.groupElement("noInvocationFragmentShadingRates"));
     /// The memory layout of `noInvocationFragmentShadingRates`.
     public static final MemoryLayout LAYOUT_noInvocationFragmentShadingRates = LAYOUT.select(PathElement.groupElement("noInvocationFragmentShadingRates"));
     /// The [VarHandle] of `noInvocationFragmentShadingRates` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_noInvocationFragmentShadingRates = LAYOUT.arrayElementVarHandle(PathElement.groupElement("noInvocationFragmentShadingRates"));
+    public static final Supplier<VarHandle> VH_noInvocationFragmentShadingRates = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("noInvocationFragmentShadingRates")));
 
     /// Creates `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends Gr
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends Gr
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends Gr
     /// {@return `fragmentShadingRateEnums` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fragmentShadingRateEnums(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateEnums.get(segment, 0L, index); }
+    public static int fragmentShadingRateEnums(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateEnums.get().get(segment, 0L, index); }
     /// {@return `fragmentShadingRateEnums`}
     public int fragmentShadingRateEnums() { return fragmentShadingRateEnums(this.segment(), 0L); }
     /// Sets `fragmentShadingRateEnums` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fragmentShadingRateEnums(MemorySegment segment, long index, int value) { VH_fragmentShadingRateEnums.set(segment, 0L, index, value); }
+    public static void fragmentShadingRateEnums(MemorySegment segment, long index, int value) { VH_fragmentShadingRateEnums.get().set(segment, 0L, index, value); }
     /// Sets `fragmentShadingRateEnums` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends Gr
     /// {@return `supersampleFragmentShadingRates` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supersampleFragmentShadingRates(MemorySegment segment, long index) { return (int) VH_supersampleFragmentShadingRates.get(segment, 0L, index); }
+    public static int supersampleFragmentShadingRates(MemorySegment segment, long index) { return (int) VH_supersampleFragmentShadingRates.get().get(segment, 0L, index); }
     /// {@return `supersampleFragmentShadingRates`}
     public int supersampleFragmentShadingRates() { return supersampleFragmentShadingRates(this.segment(), 0L); }
     /// Sets `supersampleFragmentShadingRates` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supersampleFragmentShadingRates(MemorySegment segment, long index, int value) { VH_supersampleFragmentShadingRates.set(segment, 0L, index, value); }
+    public static void supersampleFragmentShadingRates(MemorySegment segment, long index, int value) { VH_supersampleFragmentShadingRates.get().set(segment, 0L, index, value); }
     /// Sets `supersampleFragmentShadingRates` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends Gr
     /// {@return `noInvocationFragmentShadingRates` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int noInvocationFragmentShadingRates(MemorySegment segment, long index) { return (int) VH_noInvocationFragmentShadingRates.get(segment, 0L, index); }
+    public static int noInvocationFragmentShadingRates(MemorySegment segment, long index) { return (int) VH_noInvocationFragmentShadingRates.get().get(segment, 0L, index); }
     /// {@return `noInvocationFragmentShadingRates`}
     public int noInvocationFragmentShadingRates() { return noInvocationFragmentShadingRates(this.segment(), 0L); }
     /// Sets `noInvocationFragmentShadingRates` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void noInvocationFragmentShadingRates(MemorySegment segment, long index, int value) { VH_noInvocationFragmentShadingRates.set(segment, 0L, index, value); }
+    public static void noInvocationFragmentShadingRates(MemorySegment segment, long index, int value) { VH_noInvocationFragmentShadingRates.get().set(segment, 0L, index, value); }
     /// Sets `noInvocationFragmentShadingRates` with the given value.
     /// @param value the value
     /// @return `this`

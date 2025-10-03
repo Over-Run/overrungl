@@ -29,13 +29,13 @@ public final class VkDeviceOrHostAddressConstKHR extends GroupType {
     /// The memory layout of `deviceAddress`.
     public static final MemoryLayout LAYOUT_deviceAddress = LAYOUT.select(PathElement.groupElement("deviceAddress"));
     /// The [VarHandle] of `deviceAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceAddress"));
+    public static final Supplier<VarHandle> VH_deviceAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceAddress")));
     /// The byte offset of `hostAddress`.
     public static final long OFFSET_hostAddress = LAYOUT.byteOffset(PathElement.groupElement("hostAddress"));
     /// The memory layout of `hostAddress`.
     public static final MemoryLayout LAYOUT_hostAddress = LAYOUT.select(PathElement.groupElement("hostAddress"));
     /// The [VarHandle] of `hostAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hostAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hostAddress"));
+    public static final Supplier<VarHandle> VH_hostAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hostAddress")));
 
     /// Creates `VkDeviceOrHostAddressConstKHR` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkDeviceOrHostAddressConstKHR extends GroupType {
     /// {@return `deviceAddress` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static long deviceAddress(MemorySegment segment, long index) { return (long) VH_deviceAddress.get(segment, 0L, index); }
+    public static long deviceAddress(MemorySegment segment, long index) { return (long) VH_deviceAddress.get().get(segment, 0L, index); }
     /// {@return `deviceAddress`}
     public long deviceAddress() { return deviceAddress(this.segment(), 0L); }
     /// Sets `deviceAddress` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void deviceAddress(MemorySegment segment, long index, long value) { VH_deviceAddress.set(segment, 0L, index, value); }
+    public static void deviceAddress(MemorySegment segment, long index, long value) { VH_deviceAddress.get().set(segment, 0L, index, value); }
     /// Sets `deviceAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkDeviceOrHostAddressConstKHR extends GroupType {
     /// {@return `hostAddress` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static MemorySegment hostAddress(MemorySegment segment, long index) { return (MemorySegment) VH_hostAddress.get(segment, 0L, index); }
+    public static MemorySegment hostAddress(MemorySegment segment, long index) { return (MemorySegment) VH_hostAddress.get().get(segment, 0L, index); }
     /// {@return `hostAddress`}
     public MemorySegment hostAddress() { return hostAddress(this.segment(), 0L); }
     /// Sets `hostAddress` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void hostAddress(MemorySegment segment, long index, MemorySegment value) { VH_hostAddress.set(segment, 0L, index, value); }
+    public static void hostAddress(MemorySegment segment, long index, MemorySegment value) { VH_hostAddress.get().set(segment, 0L, index, value); }
     /// Sets `hostAddress` with the given value.
     /// @param value the value
     /// @return `this`

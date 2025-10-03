@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -41,17 +42,17 @@ public final class GLARBVertexBufferObject {
     public static final int GL_DYNAMIC_COPY_ARB = 0x88EA;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBindBufferARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDeleteBuffersARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGenBuffersARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsBufferARB = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBufferDataARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBufferSubDataARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetBufferSubDataARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMapBufferARB = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glUnmapBufferARB = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetBufferParameterivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetBufferPointervARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glBindBufferARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDeleteBuffersARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGenBuffersARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glIsBufferARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBufferDataARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBufferSubDataARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetBufferSubDataARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMapBufferARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glUnmapBufferARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetBufferParameterivARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetBufferPointervARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glBindBufferARB;
         public final MemorySegment PFN_glDeleteBuffersARB;
         public final MemorySegment PFN_glGenBuffersARB;
@@ -89,7 +90,7 @@ public final class GLARBVertexBufferObject {
     public void BindBufferARB(int target, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferARB)) throw new GLSymbolNotFoundError("Symbol not found: glBindBufferARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindBufferARB", target, buffer); }
-        Handles.MH_glBindBufferARB.invokeExact(handles.PFN_glBindBufferARB, target, buffer); }
+        Handles.MH_glBindBufferARB.get().invokeExact(handles.PFN_glBindBufferARB, target, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in BindBufferARB", e); }
     }
 
@@ -100,7 +101,7 @@ public final class GLARBVertexBufferObject {
     public void DeleteBuffersARB(int n, @NonNull MemorySegment buffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteBuffersARB)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteBuffersARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteBuffersARB", n, buffers); }
-        Handles.MH_glDeleteBuffersARB.invokeExact(handles.PFN_glDeleteBuffersARB, n, buffers); }
+        Handles.MH_glDeleteBuffersARB.get().invokeExact(handles.PFN_glDeleteBuffersARB, n, buffers); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteBuffersARB", e); }
     }
 
@@ -111,7 +112,7 @@ public final class GLARBVertexBufferObject {
     public void GenBuffersARB(int n, @NonNull MemorySegment buffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenBuffersARB)) throw new GLSymbolNotFoundError("Symbol not found: glGenBuffersARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenBuffersARB", n, buffers); }
-        Handles.MH_glGenBuffersARB.invokeExact(handles.PFN_glGenBuffersARB, n, buffers); }
+        Handles.MH_glGenBuffersARB.get().invokeExact(handles.PFN_glGenBuffersARB, n, buffers); }
         catch (Throwable e) { throw new RuntimeException("error in GenBuffersARB", e); }
     }
 
@@ -122,7 +123,7 @@ public final class GLARBVertexBufferObject {
     public boolean IsBufferARB(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsBufferARB)) throw new GLSymbolNotFoundError("Symbol not found: glIsBufferARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIsBufferARB", buffer); }
-        return (((byte) Handles.MH_glIsBufferARB.invokeExact(handles.PFN_glIsBufferARB, buffer)) != 0); }
+        return (((byte) Handles.MH_glIsBufferARB.get().invokeExact(handles.PFN_glIsBufferARB, buffer)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsBufferARB", e); }
     }
 
@@ -133,7 +134,7 @@ public final class GLARBVertexBufferObject {
     public void BufferDataARB(int target, long size, @NonNull MemorySegment data, int usage) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferDataARB)) throw new GLSymbolNotFoundError("Symbol not found: glBufferDataARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBufferDataARB", target, size, data, usage); }
-        Handles.MH_glBufferDataARB.invokeExact(handles.PFN_glBufferDataARB, target, size, data, usage); }
+        Handles.MH_glBufferDataARB.get().invokeExact(handles.PFN_glBufferDataARB, target, size, data, usage); }
         catch (Throwable e) { throw new RuntimeException("error in BufferDataARB", e); }
     }
 
@@ -144,7 +145,7 @@ public final class GLARBVertexBufferObject {
     public void BufferSubDataARB(int target, long offset, long size, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferSubDataARB)) throw new GLSymbolNotFoundError("Symbol not found: glBufferSubDataARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBufferSubDataARB", target, offset, size, data); }
-        Handles.MH_glBufferSubDataARB.invokeExact(handles.PFN_glBufferSubDataARB, target, offset, size, data); }
+        Handles.MH_glBufferSubDataARB.get().invokeExact(handles.PFN_glBufferSubDataARB, target, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in BufferSubDataARB", e); }
     }
 
@@ -155,7 +156,7 @@ public final class GLARBVertexBufferObject {
     public void GetBufferSubDataARB(int target, long offset, long size, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferSubDataARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetBufferSubDataARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetBufferSubDataARB", target, offset, size, data); }
-        Handles.MH_glGetBufferSubDataARB.invokeExact(handles.PFN_glGetBufferSubDataARB, target, offset, size, data); }
+        Handles.MH_glGetBufferSubDataARB.get().invokeExact(handles.PFN_glGetBufferSubDataARB, target, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetBufferSubDataARB", e); }
     }
 
@@ -166,7 +167,7 @@ public final class GLARBVertexBufferObject {
     public @NonNull MemorySegment MapBufferARB(int target, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapBufferARB)) throw new GLSymbolNotFoundError("Symbol not found: glMapBufferARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapBufferARB", target, access); }
-        return (MemorySegment) Handles.MH_glMapBufferARB.invokeExact(handles.PFN_glMapBufferARB, target, access); }
+        return (MemorySegment) Handles.MH_glMapBufferARB.get().invokeExact(handles.PFN_glMapBufferARB, target, access); }
         catch (Throwable e) { throw new RuntimeException("error in MapBufferARB", e); }
     }
 
@@ -177,7 +178,7 @@ public final class GLARBVertexBufferObject {
     public boolean UnmapBufferARB(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUnmapBufferARB)) throw new GLSymbolNotFoundError("Symbol not found: glUnmapBufferARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUnmapBufferARB", target); }
-        return (((byte) Handles.MH_glUnmapBufferARB.invokeExact(handles.PFN_glUnmapBufferARB, target)) != 0); }
+        return (((byte) Handles.MH_glUnmapBufferARB.get().invokeExact(handles.PFN_glUnmapBufferARB, target)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in UnmapBufferARB", e); }
     }
 
@@ -188,7 +189,7 @@ public final class GLARBVertexBufferObject {
     public void GetBufferParameterivARB(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferParameterivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetBufferParameterivARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetBufferParameterivARB", target, pname, params); }
-        Handles.MH_glGetBufferParameterivARB.invokeExact(handles.PFN_glGetBufferParameterivARB, target, pname, params); }
+        Handles.MH_glGetBufferParameterivARB.get().invokeExact(handles.PFN_glGetBufferParameterivARB, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetBufferParameterivARB", e); }
     }
 
@@ -199,7 +200,7 @@ public final class GLARBVertexBufferObject {
     public void GetBufferPointervARB(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferPointervARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetBufferPointervARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetBufferPointervARB", target, pname, params); }
-        Handles.MH_glGetBufferPointervARB.invokeExact(handles.PFN_glGetBufferPointervARB, target, pname, params); }
+        Handles.MH_glGetBufferPointervARB.get().invokeExact(handles.PFN_glGetBufferPointervARB, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetBufferPointervARB", e); }
     }
 

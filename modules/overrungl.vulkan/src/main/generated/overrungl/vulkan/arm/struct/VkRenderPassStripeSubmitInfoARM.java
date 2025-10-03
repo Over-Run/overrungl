@@ -33,25 +33,25 @@ public final class VkRenderPassStripeSubmitInfoARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `stripeSemaphoreInfoCount`.
     public static final long OFFSET_stripeSemaphoreInfoCount = LAYOUT.byteOffset(PathElement.groupElement("stripeSemaphoreInfoCount"));
     /// The memory layout of `stripeSemaphoreInfoCount`.
     public static final MemoryLayout LAYOUT_stripeSemaphoreInfoCount = LAYOUT.select(PathElement.groupElement("stripeSemaphoreInfoCount"));
     /// The [VarHandle] of `stripeSemaphoreInfoCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stripeSemaphoreInfoCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stripeSemaphoreInfoCount"));
+    public static final Supplier<VarHandle> VH_stripeSemaphoreInfoCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stripeSemaphoreInfoCount")));
     /// The byte offset of `pStripeSemaphoreInfos`.
     public static final long OFFSET_pStripeSemaphoreInfos = LAYOUT.byteOffset(PathElement.groupElement("pStripeSemaphoreInfos"));
     /// The memory layout of `pStripeSemaphoreInfos`.
     public static final MemoryLayout LAYOUT_pStripeSemaphoreInfos = LAYOUT.select(PathElement.groupElement("pStripeSemaphoreInfos"));
     /// The [VarHandle] of `pStripeSemaphoreInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStripeSemaphoreInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStripeSemaphoreInfos"));
+    public static final Supplier<VarHandle> VH_pStripeSemaphoreInfos = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStripeSemaphoreInfos")));
 
     /// Creates `VkRenderPassStripeSubmitInfoARM` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkRenderPassStripeSubmitInfoARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkRenderPassStripeSubmitInfoARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkRenderPassStripeSubmitInfoARM extends GroupType {
     /// {@return `stripeSemaphoreInfoCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stripeSemaphoreInfoCount(MemorySegment segment, long index) { return (int) VH_stripeSemaphoreInfoCount.get(segment, 0L, index); }
+    public static int stripeSemaphoreInfoCount(MemorySegment segment, long index) { return (int) VH_stripeSemaphoreInfoCount.get().get(segment, 0L, index); }
     /// {@return `stripeSemaphoreInfoCount`}
     public int stripeSemaphoreInfoCount() { return stripeSemaphoreInfoCount(this.segment(), 0L); }
     /// Sets `stripeSemaphoreInfoCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stripeSemaphoreInfoCount(MemorySegment segment, long index, int value) { VH_stripeSemaphoreInfoCount.set(segment, 0L, index, value); }
+    public static void stripeSemaphoreInfoCount(MemorySegment segment, long index, int value) { VH_stripeSemaphoreInfoCount.get().set(segment, 0L, index, value); }
     /// Sets `stripeSemaphoreInfoCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkRenderPassStripeSubmitInfoARM extends GroupType {
     /// {@return `pStripeSemaphoreInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStripeSemaphoreInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pStripeSemaphoreInfos.get(segment, 0L, index); }
+    public static MemorySegment pStripeSemaphoreInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pStripeSemaphoreInfos.get().get(segment, 0L, index); }
     /// {@return `pStripeSemaphoreInfos`}
     public MemorySegment pStripeSemaphoreInfos() { return pStripeSemaphoreInfos(this.segment(), 0L); }
     /// Sets `pStripeSemaphoreInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStripeSemaphoreInfos(MemorySegment segment, long index, MemorySegment value) { VH_pStripeSemaphoreInfos.set(segment, 0L, index, value); }
+    public static void pStripeSemaphoreInfos(MemorySegment segment, long index, MemorySegment value) { VH_pStripeSemaphoreInfos.get().set(segment, 0L, index, value); }
     /// Sets `pStripeSemaphoreInfos` with the given value.
     /// @param value the value
     /// @return `this`

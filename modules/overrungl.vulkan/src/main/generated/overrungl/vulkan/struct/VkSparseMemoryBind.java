@@ -35,31 +35,31 @@ public final class VkSparseMemoryBind extends GroupType {
     /// The memory layout of `resourceOffset`.
     public static final MemoryLayout LAYOUT_resourceOffset = LAYOUT.select(PathElement.groupElement("resourceOffset"));
     /// The [VarHandle] of `resourceOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_resourceOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resourceOffset"));
+    public static final Supplier<VarHandle> VH_resourceOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("resourceOffset")));
     /// The byte offset of `size`.
     public static final long OFFSET_size = LAYOUT.byteOffset(PathElement.groupElement("size"));
     /// The memory layout of `size`.
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final Supplier<VarHandle> VH_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("size")));
     /// The byte offset of `memory`.
     public static final long OFFSET_memory = LAYOUT.byteOffset(PathElement.groupElement("memory"));
     /// The memory layout of `memory`.
     public static final MemoryLayout LAYOUT_memory = LAYOUT.select(PathElement.groupElement("memory"));
     /// The [VarHandle] of `memory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memory"));
+    public static final Supplier<VarHandle> VH_memory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memory")));
     /// The byte offset of `memoryOffset`.
     public static final long OFFSET_memoryOffset = LAYOUT.byteOffset(PathElement.groupElement("memoryOffset"));
     /// The memory layout of `memoryOffset`.
     public static final MemoryLayout LAYOUT_memoryOffset = LAYOUT.select(PathElement.groupElement("memoryOffset"));
     /// The [VarHandle] of `memoryOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryOffset"));
+    public static final Supplier<VarHandle> VH_memoryOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryOffset")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
 
     /// Creates `VkSparseMemoryBind` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkSparseMemoryBind extends GroupType {
     /// {@return `resourceOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long resourceOffset(MemorySegment segment, long index) { return (long) VH_resourceOffset.get(segment, 0L, index); }
+    public static long resourceOffset(MemorySegment segment, long index) { return (long) VH_resourceOffset.get().get(segment, 0L, index); }
     /// {@return `resourceOffset`}
     public long resourceOffset() { return resourceOffset(this.segment(), 0L); }
     /// Sets `resourceOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void resourceOffset(MemorySegment segment, long index, long value) { VH_resourceOffset.set(segment, 0L, index, value); }
+    public static void resourceOffset(MemorySegment segment, long index, long value) { VH_resourceOffset.get().set(segment, 0L, index, value); }
     /// Sets `resourceOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkSparseMemoryBind extends GroupType {
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long size(MemorySegment segment, long index) { return (long) VH_size.get(segment, 0L, index); }
+    public static long size(MemorySegment segment, long index) { return (long) VH_size.get().get(segment, 0L, index); }
     /// {@return `size`}
     public long size() { return size(this.segment(), 0L); }
     /// Sets `size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void size(MemorySegment segment, long index, long value) { VH_size.set(segment, 0L, index, value); }
+    public static void size(MemorySegment segment, long index, long value) { VH_size.get().set(segment, 0L, index, value); }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkSparseMemoryBind extends GroupType {
     /// {@return `memory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long memory(MemorySegment segment, long index) { return (long) VH_memory.get(segment, 0L, index); }
+    public static long memory(MemorySegment segment, long index) { return (long) VH_memory.get().get(segment, 0L, index); }
     /// {@return `memory`}
     public long memory() { return memory(this.segment(), 0L); }
     /// Sets `memory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memory(MemorySegment segment, long index, long value) { VH_memory.set(segment, 0L, index, value); }
+    public static void memory(MemorySegment segment, long index, long value) { VH_memory.get().set(segment, 0L, index, value); }
     /// Sets `memory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkSparseMemoryBind extends GroupType {
     /// {@return `memoryOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long memoryOffset(MemorySegment segment, long index) { return (long) VH_memoryOffset.get(segment, 0L, index); }
+    public static long memoryOffset(MemorySegment segment, long index) { return (long) VH_memoryOffset.get().get(segment, 0L, index); }
     /// {@return `memoryOffset`}
     public long memoryOffset() { return memoryOffset(this.segment(), 0L); }
     /// Sets `memoryOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memoryOffset(MemorySegment segment, long index, long value) { VH_memoryOffset.set(segment, 0L, index, value); }
+    public static void memoryOffset(MemorySegment segment, long index, long value) { VH_memoryOffset.get().set(segment, 0L, index, value); }
     /// Sets `memoryOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkSparseMemoryBind extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`

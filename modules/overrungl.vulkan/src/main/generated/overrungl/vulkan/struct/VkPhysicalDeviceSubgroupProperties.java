@@ -37,37 +37,37 @@ public final class VkPhysicalDeviceSubgroupProperties extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `subgroupSize`.
     public static final long OFFSET_subgroupSize = LAYOUT.byteOffset(PathElement.groupElement("subgroupSize"));
     /// The memory layout of `subgroupSize`.
     public static final MemoryLayout LAYOUT_subgroupSize = LAYOUT.select(PathElement.groupElement("subgroupSize"));
     /// The [VarHandle] of `subgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subgroupSize"));
+    public static final Supplier<VarHandle> VH_subgroupSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subgroupSize")));
     /// The byte offset of `supportedStages`.
     public static final long OFFSET_supportedStages = LAYOUT.byteOffset(PathElement.groupElement("supportedStages"));
     /// The memory layout of `supportedStages`.
     public static final MemoryLayout LAYOUT_supportedStages = LAYOUT.select(PathElement.groupElement("supportedStages"));
     /// The [VarHandle] of `supportedStages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedStages"));
+    public static final Supplier<VarHandle> VH_supportedStages = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedStages")));
     /// The byte offset of `supportedOperations`.
     public static final long OFFSET_supportedOperations = LAYOUT.byteOffset(PathElement.groupElement("supportedOperations"));
     /// The memory layout of `supportedOperations`.
     public static final MemoryLayout LAYOUT_supportedOperations = LAYOUT.select(PathElement.groupElement("supportedOperations"));
     /// The [VarHandle] of `supportedOperations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedOperations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedOperations"));
+    public static final Supplier<VarHandle> VH_supportedOperations = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedOperations")));
     /// The byte offset of `quadOperationsInAllStages`.
     public static final long OFFSET_quadOperationsInAllStages = LAYOUT.byteOffset(PathElement.groupElement("quadOperationsInAllStages"));
     /// The memory layout of `quadOperationsInAllStages`.
     public static final MemoryLayout LAYOUT_quadOperationsInAllStages = LAYOUT.select(PathElement.groupElement("quadOperationsInAllStages"));
     /// The [VarHandle] of `quadOperationsInAllStages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_quadOperationsInAllStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("quadOperationsInAllStages"));
+    public static final Supplier<VarHandle> VH_quadOperationsInAllStages = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("quadOperationsInAllStages")));
 
     /// Creates `VkPhysicalDeviceSubgroupProperties` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceSubgroupProperties extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceSubgroupProperties extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceSubgroupProperties extends GroupType {
     /// {@return `subgroupSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int subgroupSize(MemorySegment segment, long index) { return (int) VH_subgroupSize.get(segment, 0L, index); }
+    public static int subgroupSize(MemorySegment segment, long index) { return (int) VH_subgroupSize.get().get(segment, 0L, index); }
     /// {@return `subgroupSize`}
     public int subgroupSize() { return subgroupSize(this.segment(), 0L); }
     /// Sets `subgroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subgroupSize(MemorySegment segment, long index, int value) { VH_subgroupSize.set(segment, 0L, index, value); }
+    public static void subgroupSize(MemorySegment segment, long index, int value) { VH_subgroupSize.get().set(segment, 0L, index, value); }
     /// Sets `subgroupSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceSubgroupProperties extends GroupType {
     /// {@return `supportedStages` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedStages(MemorySegment segment, long index) { return (int) VH_supportedStages.get(segment, 0L, index); }
+    public static int supportedStages(MemorySegment segment, long index) { return (int) VH_supportedStages.get().get(segment, 0L, index); }
     /// {@return `supportedStages`}
     public int supportedStages() { return supportedStages(this.segment(), 0L); }
     /// Sets `supportedStages` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedStages(MemorySegment segment, long index, int value) { VH_supportedStages.set(segment, 0L, index, value); }
+    public static void supportedStages(MemorySegment segment, long index, int value) { VH_supportedStages.get().set(segment, 0L, index, value); }
     /// Sets `supportedStages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceSubgroupProperties extends GroupType {
     /// {@return `supportedOperations` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedOperations(MemorySegment segment, long index) { return (int) VH_supportedOperations.get(segment, 0L, index); }
+    public static int supportedOperations(MemorySegment segment, long index) { return (int) VH_supportedOperations.get().get(segment, 0L, index); }
     /// {@return `supportedOperations`}
     public int supportedOperations() { return supportedOperations(this.segment(), 0L); }
     /// Sets `supportedOperations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedOperations(MemorySegment segment, long index, int value) { VH_supportedOperations.set(segment, 0L, index, value); }
+    public static void supportedOperations(MemorySegment segment, long index, int value) { VH_supportedOperations.get().set(segment, 0L, index, value); }
     /// Sets `supportedOperations` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceSubgroupProperties extends GroupType {
     /// {@return `quadOperationsInAllStages` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int quadOperationsInAllStages(MemorySegment segment, long index) { return (int) VH_quadOperationsInAllStages.get(segment, 0L, index); }
+    public static int quadOperationsInAllStages(MemorySegment segment, long index) { return (int) VH_quadOperationsInAllStages.get().get(segment, 0L, index); }
     /// {@return `quadOperationsInAllStages`}
     public int quadOperationsInAllStages() { return quadOperationsInAllStages(this.segment(), 0L); }
     /// Sets `quadOperationsInAllStages` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void quadOperationsInAllStages(MemorySegment segment, long index, int value) { VH_quadOperationsInAllStages.set(segment, 0L, index, value); }
+    public static void quadOperationsInAllStages(MemorySegment segment, long index, int value) { VH_quadOperationsInAllStages.get().set(segment, 0L, index, value); }
     /// Sets `quadOperationsInAllStages` with the given value.
     /// @param value the value
     /// @return `this`

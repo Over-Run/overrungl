@@ -43,55 +43,55 @@ public final class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `cooperativeMatrixWorkgroupScope`.
     public static final long OFFSET_cooperativeMatrixWorkgroupScope = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrixWorkgroupScope"));
     /// The memory layout of `cooperativeMatrixWorkgroupScope`.
     public static final MemoryLayout LAYOUT_cooperativeMatrixWorkgroupScope = LAYOUT.select(PathElement.groupElement("cooperativeMatrixWorkgroupScope"));
     /// The [VarHandle] of `cooperativeMatrixWorkgroupScope` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cooperativeMatrixWorkgroupScope = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixWorkgroupScope"));
+    public static final Supplier<VarHandle> VH_cooperativeMatrixWorkgroupScope = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixWorkgroupScope")));
     /// The byte offset of `cooperativeMatrixFlexibleDimensions`.
     public static final long OFFSET_cooperativeMatrixFlexibleDimensions = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrixFlexibleDimensions"));
     /// The memory layout of `cooperativeMatrixFlexibleDimensions`.
     public static final MemoryLayout LAYOUT_cooperativeMatrixFlexibleDimensions = LAYOUT.select(PathElement.groupElement("cooperativeMatrixFlexibleDimensions"));
     /// The [VarHandle] of `cooperativeMatrixFlexibleDimensions` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cooperativeMatrixFlexibleDimensions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixFlexibleDimensions"));
+    public static final Supplier<VarHandle> VH_cooperativeMatrixFlexibleDimensions = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixFlexibleDimensions")));
     /// The byte offset of `cooperativeMatrixReductions`.
     public static final long OFFSET_cooperativeMatrixReductions = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrixReductions"));
     /// The memory layout of `cooperativeMatrixReductions`.
     public static final MemoryLayout LAYOUT_cooperativeMatrixReductions = LAYOUT.select(PathElement.groupElement("cooperativeMatrixReductions"));
     /// The [VarHandle] of `cooperativeMatrixReductions` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cooperativeMatrixReductions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixReductions"));
+    public static final Supplier<VarHandle> VH_cooperativeMatrixReductions = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixReductions")));
     /// The byte offset of `cooperativeMatrixConversions`.
     public static final long OFFSET_cooperativeMatrixConversions = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrixConversions"));
     /// The memory layout of `cooperativeMatrixConversions`.
     public static final MemoryLayout LAYOUT_cooperativeMatrixConversions = LAYOUT.select(PathElement.groupElement("cooperativeMatrixConversions"));
     /// The [VarHandle] of `cooperativeMatrixConversions` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cooperativeMatrixConversions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixConversions"));
+    public static final Supplier<VarHandle> VH_cooperativeMatrixConversions = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixConversions")));
     /// The byte offset of `cooperativeMatrixPerElementOperations`.
     public static final long OFFSET_cooperativeMatrixPerElementOperations = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrixPerElementOperations"));
     /// The memory layout of `cooperativeMatrixPerElementOperations`.
     public static final MemoryLayout LAYOUT_cooperativeMatrixPerElementOperations = LAYOUT.select(PathElement.groupElement("cooperativeMatrixPerElementOperations"));
     /// The [VarHandle] of `cooperativeMatrixPerElementOperations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cooperativeMatrixPerElementOperations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixPerElementOperations"));
+    public static final Supplier<VarHandle> VH_cooperativeMatrixPerElementOperations = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixPerElementOperations")));
     /// The byte offset of `cooperativeMatrixTensorAddressing`.
     public static final long OFFSET_cooperativeMatrixTensorAddressing = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrixTensorAddressing"));
     /// The memory layout of `cooperativeMatrixTensorAddressing`.
     public static final MemoryLayout LAYOUT_cooperativeMatrixTensorAddressing = LAYOUT.select(PathElement.groupElement("cooperativeMatrixTensorAddressing"));
     /// The [VarHandle] of `cooperativeMatrixTensorAddressing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cooperativeMatrixTensorAddressing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixTensorAddressing"));
+    public static final Supplier<VarHandle> VH_cooperativeMatrixTensorAddressing = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixTensorAddressing")));
     /// The byte offset of `cooperativeMatrixBlockLoads`.
     public static final long OFFSET_cooperativeMatrixBlockLoads = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrixBlockLoads"));
     /// The memory layout of `cooperativeMatrixBlockLoads`.
     public static final MemoryLayout LAYOUT_cooperativeMatrixBlockLoads = LAYOUT.select(PathElement.groupElement("cooperativeMatrixBlockLoads"));
     /// The [VarHandle] of `cooperativeMatrixBlockLoads` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cooperativeMatrixBlockLoads = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixBlockLoads"));
+    public static final Supplier<VarHandle> VH_cooperativeMatrixBlockLoads = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixBlockLoads")));
 
     /// Creates `VkPhysicalDeviceCooperativeMatrix2FeaturesNV` with the given segment.
     /// @param segment      the memory segment
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends GroupTyp
     /// {@return `cooperativeMatrixWorkgroupScope` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cooperativeMatrixWorkgroupScope(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixWorkgroupScope.get(segment, 0L, index); }
+    public static int cooperativeMatrixWorkgroupScope(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixWorkgroupScope.get().get(segment, 0L, index); }
     /// {@return `cooperativeMatrixWorkgroupScope`}
     public int cooperativeMatrixWorkgroupScope() { return cooperativeMatrixWorkgroupScope(this.segment(), 0L); }
     /// Sets `cooperativeMatrixWorkgroupScope` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cooperativeMatrixWorkgroupScope(MemorySegment segment, long index, int value) { VH_cooperativeMatrixWorkgroupScope.set(segment, 0L, index, value); }
+    public static void cooperativeMatrixWorkgroupScope(MemorySegment segment, long index, int value) { VH_cooperativeMatrixWorkgroupScope.get().set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrixWorkgroupScope` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends GroupTyp
     /// {@return `cooperativeMatrixFlexibleDimensions` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cooperativeMatrixFlexibleDimensions(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixFlexibleDimensions.get(segment, 0L, index); }
+    public static int cooperativeMatrixFlexibleDimensions(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixFlexibleDimensions.get().get(segment, 0L, index); }
     /// {@return `cooperativeMatrixFlexibleDimensions`}
     public int cooperativeMatrixFlexibleDimensions() { return cooperativeMatrixFlexibleDimensions(this.segment(), 0L); }
     /// Sets `cooperativeMatrixFlexibleDimensions` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cooperativeMatrixFlexibleDimensions(MemorySegment segment, long index, int value) { VH_cooperativeMatrixFlexibleDimensions.set(segment, 0L, index, value); }
+    public static void cooperativeMatrixFlexibleDimensions(MemorySegment segment, long index, int value) { VH_cooperativeMatrixFlexibleDimensions.get().set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrixFlexibleDimensions` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends GroupTyp
     /// {@return `cooperativeMatrixReductions` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cooperativeMatrixReductions(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixReductions.get(segment, 0L, index); }
+    public static int cooperativeMatrixReductions(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixReductions.get().get(segment, 0L, index); }
     /// {@return `cooperativeMatrixReductions`}
     public int cooperativeMatrixReductions() { return cooperativeMatrixReductions(this.segment(), 0L); }
     /// Sets `cooperativeMatrixReductions` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cooperativeMatrixReductions(MemorySegment segment, long index, int value) { VH_cooperativeMatrixReductions.set(segment, 0L, index, value); }
+    public static void cooperativeMatrixReductions(MemorySegment segment, long index, int value) { VH_cooperativeMatrixReductions.get().set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrixReductions` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends GroupTyp
     /// {@return `cooperativeMatrixConversions` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cooperativeMatrixConversions(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixConversions.get(segment, 0L, index); }
+    public static int cooperativeMatrixConversions(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixConversions.get().get(segment, 0L, index); }
     /// {@return `cooperativeMatrixConversions`}
     public int cooperativeMatrixConversions() { return cooperativeMatrixConversions(this.segment(), 0L); }
     /// Sets `cooperativeMatrixConversions` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cooperativeMatrixConversions(MemorySegment segment, long index, int value) { VH_cooperativeMatrixConversions.set(segment, 0L, index, value); }
+    public static void cooperativeMatrixConversions(MemorySegment segment, long index, int value) { VH_cooperativeMatrixConversions.get().set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrixConversions` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,14 +238,14 @@ public final class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends GroupTyp
     /// {@return `cooperativeMatrixPerElementOperations` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cooperativeMatrixPerElementOperations(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixPerElementOperations.get(segment, 0L, index); }
+    public static int cooperativeMatrixPerElementOperations(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixPerElementOperations.get().get(segment, 0L, index); }
     /// {@return `cooperativeMatrixPerElementOperations`}
     public int cooperativeMatrixPerElementOperations() { return cooperativeMatrixPerElementOperations(this.segment(), 0L); }
     /// Sets `cooperativeMatrixPerElementOperations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cooperativeMatrixPerElementOperations(MemorySegment segment, long index, int value) { VH_cooperativeMatrixPerElementOperations.set(segment, 0L, index, value); }
+    public static void cooperativeMatrixPerElementOperations(MemorySegment segment, long index, int value) { VH_cooperativeMatrixPerElementOperations.get().set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrixPerElementOperations` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,14 +254,14 @@ public final class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends GroupTyp
     /// {@return `cooperativeMatrixTensorAddressing` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cooperativeMatrixTensorAddressing(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixTensorAddressing.get(segment, 0L, index); }
+    public static int cooperativeMatrixTensorAddressing(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixTensorAddressing.get().get(segment, 0L, index); }
     /// {@return `cooperativeMatrixTensorAddressing`}
     public int cooperativeMatrixTensorAddressing() { return cooperativeMatrixTensorAddressing(this.segment(), 0L); }
     /// Sets `cooperativeMatrixTensorAddressing` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cooperativeMatrixTensorAddressing(MemorySegment segment, long index, int value) { VH_cooperativeMatrixTensorAddressing.set(segment, 0L, index, value); }
+    public static void cooperativeMatrixTensorAddressing(MemorySegment segment, long index, int value) { VH_cooperativeMatrixTensorAddressing.get().set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrixTensorAddressing` with the given value.
     /// @param value the value
     /// @return `this`
@@ -270,14 +270,14 @@ public final class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends GroupTyp
     /// {@return `cooperativeMatrixBlockLoads` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cooperativeMatrixBlockLoads(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixBlockLoads.get(segment, 0L, index); }
+    public static int cooperativeMatrixBlockLoads(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixBlockLoads.get().get(segment, 0L, index); }
     /// {@return `cooperativeMatrixBlockLoads`}
     public int cooperativeMatrixBlockLoads() { return cooperativeMatrixBlockLoads(this.segment(), 0L); }
     /// Sets `cooperativeMatrixBlockLoads` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cooperativeMatrixBlockLoads(MemorySegment segment, long index, int value) { VH_cooperativeMatrixBlockLoads.set(segment, 0L, index, value); }
+    public static void cooperativeMatrixBlockLoads(MemorySegment segment, long index, int value) { VH_cooperativeMatrixBlockLoads.get().set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrixBlockLoads` with the given value.
     /// @param value the value
     /// @return `this`

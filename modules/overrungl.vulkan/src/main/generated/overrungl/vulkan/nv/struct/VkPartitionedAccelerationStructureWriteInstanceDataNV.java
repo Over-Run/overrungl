@@ -47,49 +47,49 @@ public final class VkPartitionedAccelerationStructureWriteInstanceDataNV extends
     /// The memory layout of `explicitAABB`.
     public static final MemoryLayout LAYOUT_explicitAABB = LAYOUT.select(PathElement.groupElement("explicitAABB"));
     /// The [VarHandle] of `explicitAABB` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_explicitAABB = LAYOUT.arrayElementVarHandle(PathElement.groupElement("explicitAABB"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_explicitAABB = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("explicitAABB"), PathElement.sequenceElement()));
     /// The byte offset of `instanceID`.
     public static final long OFFSET_instanceID = LAYOUT.byteOffset(PathElement.groupElement("instanceID"));
     /// The memory layout of `instanceID`.
     public static final MemoryLayout LAYOUT_instanceID = LAYOUT.select(PathElement.groupElement("instanceID"));
     /// The [VarHandle] of `instanceID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_instanceID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceID"));
+    public static final Supplier<VarHandle> VH_instanceID = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceID")));
     /// The byte offset of `instanceMask`.
     public static final long OFFSET_instanceMask = LAYOUT.byteOffset(PathElement.groupElement("instanceMask"));
     /// The memory layout of `instanceMask`.
     public static final MemoryLayout LAYOUT_instanceMask = LAYOUT.select(PathElement.groupElement("instanceMask"));
     /// The [VarHandle] of `instanceMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_instanceMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceMask"));
+    public static final Supplier<VarHandle> VH_instanceMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceMask")));
     /// The byte offset of `instanceContributionToHitGroupIndex`.
     public static final long OFFSET_instanceContributionToHitGroupIndex = LAYOUT.byteOffset(PathElement.groupElement("instanceContributionToHitGroupIndex"));
     /// The memory layout of `instanceContributionToHitGroupIndex`.
     public static final MemoryLayout LAYOUT_instanceContributionToHitGroupIndex = LAYOUT.select(PathElement.groupElement("instanceContributionToHitGroupIndex"));
     /// The [VarHandle] of `instanceContributionToHitGroupIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_instanceContributionToHitGroupIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceContributionToHitGroupIndex"));
+    public static final Supplier<VarHandle> VH_instanceContributionToHitGroupIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceContributionToHitGroupIndex")));
     /// The byte offset of `instanceFlags`.
     public static final long OFFSET_instanceFlags = LAYOUT.byteOffset(PathElement.groupElement("instanceFlags"));
     /// The memory layout of `instanceFlags`.
     public static final MemoryLayout LAYOUT_instanceFlags = LAYOUT.select(PathElement.groupElement("instanceFlags"));
     /// The [VarHandle] of `instanceFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_instanceFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceFlags"));
+    public static final Supplier<VarHandle> VH_instanceFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceFlags")));
     /// The byte offset of `instanceIndex`.
     public static final long OFFSET_instanceIndex = LAYOUT.byteOffset(PathElement.groupElement("instanceIndex"));
     /// The memory layout of `instanceIndex`.
     public static final MemoryLayout LAYOUT_instanceIndex = LAYOUT.select(PathElement.groupElement("instanceIndex"));
     /// The [VarHandle] of `instanceIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_instanceIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceIndex"));
+    public static final Supplier<VarHandle> VH_instanceIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceIndex")));
     /// The byte offset of `partitionIndex`.
     public static final long OFFSET_partitionIndex = LAYOUT.byteOffset(PathElement.groupElement("partitionIndex"));
     /// The memory layout of `partitionIndex`.
     public static final MemoryLayout LAYOUT_partitionIndex = LAYOUT.select(PathElement.groupElement("partitionIndex"));
     /// The [VarHandle] of `partitionIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_partitionIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("partitionIndex"));
+    public static final Supplier<VarHandle> VH_partitionIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("partitionIndex")));
     /// The byte offset of `accelerationStructure`.
     public static final long OFFSET_accelerationStructure = LAYOUT.byteOffset(PathElement.groupElement("accelerationStructure"));
     /// The memory layout of `accelerationStructure`.
     public static final MemoryLayout LAYOUT_accelerationStructure = LAYOUT.select(PathElement.groupElement("accelerationStructure"));
     /// The [VarHandle] of `accelerationStructure` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_accelerationStructure = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructure"));
+    public static final Supplier<VarHandle> VH_accelerationStructure = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructure")));
 
     /// Creates `VkPartitionedAccelerationStructureWriteInstanceDataNV` with the given segment.
     /// @param segment      the memory segment
@@ -165,7 +165,7 @@ public final class VkPartitionedAccelerationStructureWriteInstanceDataNV extends
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static float explicitAABB(MemorySegment segment, long index, long index0) { return (float) VH_explicitAABB.get(segment, 0L, index, index0); }
+    public static float explicitAABB(MemorySegment segment, long index, long index0) { return (float) VH_explicitAABB.get().get(segment, 0L, index, index0); }
     /// {@return `explicitAABB`}
     public MemorySegment explicitAABB() { return explicitAABB(this.segment(), 0L); }
     /// {@return `explicitAABB`}
@@ -181,7 +181,7 @@ public final class VkPartitionedAccelerationStructureWriteInstanceDataNV extends
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void explicitAABB(MemorySegment segment, long index, long index0, float value) { VH_explicitAABB.set(segment, 0L, index, index0, value); }
+    public static void explicitAABB(MemorySegment segment, long index, long index0, float value) { VH_explicitAABB.get().set(segment, 0L, index, index0, value); }
     /// Sets `explicitAABB` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,14 +195,14 @@ public final class VkPartitionedAccelerationStructureWriteInstanceDataNV extends
     /// {@return `instanceID` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int instanceID(MemorySegment segment, long index) { return (int) VH_instanceID.get(segment, 0L, index); }
+    public static int instanceID(MemorySegment segment, long index) { return (int) VH_instanceID.get().get(segment, 0L, index); }
     /// {@return `instanceID`}
     public int instanceID() { return instanceID(this.segment(), 0L); }
     /// Sets `instanceID` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void instanceID(MemorySegment segment, long index, int value) { VH_instanceID.set(segment, 0L, index, value); }
+    public static void instanceID(MemorySegment segment, long index, int value) { VH_instanceID.get().set(segment, 0L, index, value); }
     /// Sets `instanceID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -211,14 +211,14 @@ public final class VkPartitionedAccelerationStructureWriteInstanceDataNV extends
     /// {@return `instanceMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int instanceMask(MemorySegment segment, long index) { return (int) VH_instanceMask.get(segment, 0L, index); }
+    public static int instanceMask(MemorySegment segment, long index) { return (int) VH_instanceMask.get().get(segment, 0L, index); }
     /// {@return `instanceMask`}
     public int instanceMask() { return instanceMask(this.segment(), 0L); }
     /// Sets `instanceMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void instanceMask(MemorySegment segment, long index, int value) { VH_instanceMask.set(segment, 0L, index, value); }
+    public static void instanceMask(MemorySegment segment, long index, int value) { VH_instanceMask.get().set(segment, 0L, index, value); }
     /// Sets `instanceMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -227,14 +227,14 @@ public final class VkPartitionedAccelerationStructureWriteInstanceDataNV extends
     /// {@return `instanceContributionToHitGroupIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int instanceContributionToHitGroupIndex(MemorySegment segment, long index) { return (int) VH_instanceContributionToHitGroupIndex.get(segment, 0L, index); }
+    public static int instanceContributionToHitGroupIndex(MemorySegment segment, long index) { return (int) VH_instanceContributionToHitGroupIndex.get().get(segment, 0L, index); }
     /// {@return `instanceContributionToHitGroupIndex`}
     public int instanceContributionToHitGroupIndex() { return instanceContributionToHitGroupIndex(this.segment(), 0L); }
     /// Sets `instanceContributionToHitGroupIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void instanceContributionToHitGroupIndex(MemorySegment segment, long index, int value) { VH_instanceContributionToHitGroupIndex.set(segment, 0L, index, value); }
+    public static void instanceContributionToHitGroupIndex(MemorySegment segment, long index, int value) { VH_instanceContributionToHitGroupIndex.get().set(segment, 0L, index, value); }
     /// Sets `instanceContributionToHitGroupIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,14 +243,14 @@ public final class VkPartitionedAccelerationStructureWriteInstanceDataNV extends
     /// {@return `instanceFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int instanceFlags(MemorySegment segment, long index) { return (int) VH_instanceFlags.get(segment, 0L, index); }
+    public static int instanceFlags(MemorySegment segment, long index) { return (int) VH_instanceFlags.get().get(segment, 0L, index); }
     /// {@return `instanceFlags`}
     public int instanceFlags() { return instanceFlags(this.segment(), 0L); }
     /// Sets `instanceFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void instanceFlags(MemorySegment segment, long index, int value) { VH_instanceFlags.set(segment, 0L, index, value); }
+    public static void instanceFlags(MemorySegment segment, long index, int value) { VH_instanceFlags.get().set(segment, 0L, index, value); }
     /// Sets `instanceFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -259,14 +259,14 @@ public final class VkPartitionedAccelerationStructureWriteInstanceDataNV extends
     /// {@return `instanceIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int instanceIndex(MemorySegment segment, long index) { return (int) VH_instanceIndex.get(segment, 0L, index); }
+    public static int instanceIndex(MemorySegment segment, long index) { return (int) VH_instanceIndex.get().get(segment, 0L, index); }
     /// {@return `instanceIndex`}
     public int instanceIndex() { return instanceIndex(this.segment(), 0L); }
     /// Sets `instanceIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void instanceIndex(MemorySegment segment, long index, int value) { VH_instanceIndex.set(segment, 0L, index, value); }
+    public static void instanceIndex(MemorySegment segment, long index, int value) { VH_instanceIndex.get().set(segment, 0L, index, value); }
     /// Sets `instanceIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -275,14 +275,14 @@ public final class VkPartitionedAccelerationStructureWriteInstanceDataNV extends
     /// {@return `partitionIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int partitionIndex(MemorySegment segment, long index) { return (int) VH_partitionIndex.get(segment, 0L, index); }
+    public static int partitionIndex(MemorySegment segment, long index) { return (int) VH_partitionIndex.get().get(segment, 0L, index); }
     /// {@return `partitionIndex`}
     public int partitionIndex() { return partitionIndex(this.segment(), 0L); }
     /// Sets `partitionIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void partitionIndex(MemorySegment segment, long index, int value) { VH_partitionIndex.set(segment, 0L, index, value); }
+    public static void partitionIndex(MemorySegment segment, long index, int value) { VH_partitionIndex.get().set(segment, 0L, index, value); }
     /// Sets `partitionIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -291,14 +291,14 @@ public final class VkPartitionedAccelerationStructureWriteInstanceDataNV extends
     /// {@return `accelerationStructure` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long accelerationStructure(MemorySegment segment, long index) { return (long) VH_accelerationStructure.get(segment, 0L, index); }
+    public static long accelerationStructure(MemorySegment segment, long index) { return (long) VH_accelerationStructure.get().get(segment, 0L, index); }
     /// {@return `accelerationStructure`}
     public long accelerationStructure() { return accelerationStructure(this.segment(), 0L); }
     /// Sets `accelerationStructure` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void accelerationStructure(MemorySegment segment, long index, long value) { VH_accelerationStructure.set(segment, 0L, index, value); }
+    public static void accelerationStructure(MemorySegment segment, long index, long value) { VH_accelerationStructure.get().set(segment, 0L, index, value); }
     /// Sets `accelerationStructure` with the given value.
     /// @param value the value
     /// @return `this`

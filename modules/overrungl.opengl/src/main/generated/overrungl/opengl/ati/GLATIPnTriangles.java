@@ -2,6 +2,7 @@
 package overrungl.opengl.ati;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -19,8 +20,8 @@ public final class GLATIPnTriangles {
     public static final int GL_PN_TRIANGLES_NORMAL_MODE_QUADRATIC_ATI = 0x87F8;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glPNTrianglesiATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPNTrianglesfATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_glPNTrianglesiATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPNTrianglesfATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT)));
         public final MemorySegment PFN_glPNTrianglesiATI;
         public final MemorySegment PFN_glPNTrianglesfATI;
         private Handles(GLLoadFunc func) {
@@ -40,7 +41,7 @@ public final class GLATIPnTriangles {
     public void PNTrianglesiATI(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPNTrianglesiATI)) throw new GLSymbolNotFoundError("Symbol not found: glPNTrianglesiATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPNTrianglesiATI", pname, param); }
-        Handles.MH_glPNTrianglesiATI.invokeExact(handles.PFN_glPNTrianglesiATI, pname, param); }
+        Handles.MH_glPNTrianglesiATI.get().invokeExact(handles.PFN_glPNTrianglesiATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PNTrianglesiATI", e); }
     }
 
@@ -51,7 +52,7 @@ public final class GLATIPnTriangles {
     public void PNTrianglesfATI(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPNTrianglesfATI)) throw new GLSymbolNotFoundError("Symbol not found: glPNTrianglesfATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPNTrianglesfATI", pname, param); }
-        Handles.MH_glPNTrianglesfATI.invokeExact(handles.PFN_glPNTrianglesfATI, pname, param); }
+        Handles.MH_glPNTrianglesfATI.get().invokeExact(handles.PFN_glPNTrianglesfATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PNTrianglesfATI", e); }
     }
 

@@ -31,19 +31,19 @@ public final class VkInputAttachmentAspectReference extends GroupType {
     /// The memory layout of `subpass`.
     public static final MemoryLayout LAYOUT_subpass = LAYOUT.select(PathElement.groupElement("subpass"));
     /// The [VarHandle] of `subpass` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subpass = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpass"));
+    public static final Supplier<VarHandle> VH_subpass = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpass")));
     /// The byte offset of `inputAttachmentIndex`.
     public static final long OFFSET_inputAttachmentIndex = LAYOUT.byteOffset(PathElement.groupElement("inputAttachmentIndex"));
     /// The memory layout of `inputAttachmentIndex`.
     public static final MemoryLayout LAYOUT_inputAttachmentIndex = LAYOUT.select(PathElement.groupElement("inputAttachmentIndex"));
     /// The [VarHandle] of `inputAttachmentIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_inputAttachmentIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("inputAttachmentIndex"));
+    public static final Supplier<VarHandle> VH_inputAttachmentIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("inputAttachmentIndex")));
     /// The byte offset of `aspectMask`.
     public static final long OFFSET_aspectMask = LAYOUT.byteOffset(PathElement.groupElement("aspectMask"));
     /// The memory layout of `aspectMask`.
     public static final MemoryLayout LAYOUT_aspectMask = LAYOUT.select(PathElement.groupElement("aspectMask"));
     /// The [VarHandle] of `aspectMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_aspectMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("aspectMask"));
+    public static final Supplier<VarHandle> VH_aspectMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("aspectMask")));
 
     /// Creates `VkInputAttachmentAspectReference` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkInputAttachmentAspectReference extends GroupType {
     /// {@return `subpass` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int subpass(MemorySegment segment, long index) { return (int) VH_subpass.get(segment, 0L, index); }
+    public static int subpass(MemorySegment segment, long index) { return (int) VH_subpass.get().get(segment, 0L, index); }
     /// {@return `subpass`}
     public int subpass() { return subpass(this.segment(), 0L); }
     /// Sets `subpass` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subpass(MemorySegment segment, long index, int value) { VH_subpass.set(segment, 0L, index, value); }
+    public static void subpass(MemorySegment segment, long index, int value) { VH_subpass.get().set(segment, 0L, index, value); }
     /// Sets `subpass` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkInputAttachmentAspectReference extends GroupType {
     /// {@return `inputAttachmentIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int inputAttachmentIndex(MemorySegment segment, long index) { return (int) VH_inputAttachmentIndex.get(segment, 0L, index); }
+    public static int inputAttachmentIndex(MemorySegment segment, long index) { return (int) VH_inputAttachmentIndex.get().get(segment, 0L, index); }
     /// {@return `inputAttachmentIndex`}
     public int inputAttachmentIndex() { return inputAttachmentIndex(this.segment(), 0L); }
     /// Sets `inputAttachmentIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void inputAttachmentIndex(MemorySegment segment, long index, int value) { VH_inputAttachmentIndex.set(segment, 0L, index, value); }
+    public static void inputAttachmentIndex(MemorySegment segment, long index, int value) { VH_inputAttachmentIndex.get().set(segment, 0L, index, value); }
     /// Sets `inputAttachmentIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkInputAttachmentAspectReference extends GroupType {
     /// {@return `aspectMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int aspectMask(MemorySegment segment, long index) { return (int) VH_aspectMask.get(segment, 0L, index); }
+    public static int aspectMask(MemorySegment segment, long index) { return (int) VH_aspectMask.get().get(segment, 0L, index); }
     /// {@return `aspectMask`}
     public int aspectMask() { return aspectMask(this.segment(), 0L); }
     /// Sets `aspectMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void aspectMask(MemorySegment segment, long index, int value) { VH_aspectMask.set(segment, 0L, index, value); }
+    public static void aspectMask(MemorySegment segment, long index, int value) { VH_aspectMask.get().set(segment, 0L, index, value); }
     /// Sets `aspectMask` with the given value.
     /// @param value the value
     /// @return `this`

@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -15,14 +16,14 @@ public final class GLARBOcclusionQuery {
     public static final int GL_SAMPLES_PASSED_ARB = 0x8914;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGenQueriesARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDeleteQueriesARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsQueryARB = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBeginQueryARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glEndQueryARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetQueryivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetQueryObjectivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetQueryObjectuivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glGenQueriesARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glDeleteQueriesARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glIsQueryARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBeginQueryARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glEndQueryARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetQueryivARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetQueryObjectivARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetQueryObjectuivARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glGenQueriesARB;
         public final MemorySegment PFN_glDeleteQueriesARB;
         public final MemorySegment PFN_glIsQueryARB;
@@ -54,7 +55,7 @@ public final class GLARBOcclusionQuery {
     public void GenQueriesARB(int n, @NonNull MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenQueriesARB)) throw new GLSymbolNotFoundError("Symbol not found: glGenQueriesARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenQueriesARB", n, ids); }
-        Handles.MH_glGenQueriesARB.invokeExact(handles.PFN_glGenQueriesARB, n, ids); }
+        Handles.MH_glGenQueriesARB.get().invokeExact(handles.PFN_glGenQueriesARB, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in GenQueriesARB", e); }
     }
 
@@ -65,7 +66,7 @@ public final class GLARBOcclusionQuery {
     public void DeleteQueriesARB(int n, @NonNull MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteQueriesARB)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteQueriesARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteQueriesARB", n, ids); }
-        Handles.MH_glDeleteQueriesARB.invokeExact(handles.PFN_glDeleteQueriesARB, n, ids); }
+        Handles.MH_glDeleteQueriesARB.get().invokeExact(handles.PFN_glDeleteQueriesARB, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteQueriesARB", e); }
     }
 
@@ -76,7 +77,7 @@ public final class GLARBOcclusionQuery {
     public boolean IsQueryARB(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsQueryARB)) throw new GLSymbolNotFoundError("Symbol not found: glIsQueryARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIsQueryARB", id); }
-        return (((byte) Handles.MH_glIsQueryARB.invokeExact(handles.PFN_glIsQueryARB, id)) != 0); }
+        return (((byte) Handles.MH_glIsQueryARB.get().invokeExact(handles.PFN_glIsQueryARB, id)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsQueryARB", e); }
     }
 
@@ -87,7 +88,7 @@ public final class GLARBOcclusionQuery {
     public void BeginQueryARB(int target, int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginQueryARB)) throw new GLSymbolNotFoundError("Symbol not found: glBeginQueryARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBeginQueryARB", target, id); }
-        Handles.MH_glBeginQueryARB.invokeExact(handles.PFN_glBeginQueryARB, target, id); }
+        Handles.MH_glBeginQueryARB.get().invokeExact(handles.PFN_glBeginQueryARB, target, id); }
         catch (Throwable e) { throw new RuntimeException("error in BeginQueryARB", e); }
     }
 
@@ -98,7 +99,7 @@ public final class GLARBOcclusionQuery {
     public void EndQueryARB(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEndQueryARB)) throw new GLSymbolNotFoundError("Symbol not found: glEndQueryARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEndQueryARB", target); }
-        Handles.MH_glEndQueryARB.invokeExact(handles.PFN_glEndQueryARB, target); }
+        Handles.MH_glEndQueryARB.get().invokeExact(handles.PFN_glEndQueryARB, target); }
         catch (Throwable e) { throw new RuntimeException("error in EndQueryARB", e); }
     }
 
@@ -109,7 +110,7 @@ public final class GLARBOcclusionQuery {
     public void GetQueryivARB(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetQueryivARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetQueryivARB", target, pname, params); }
-        Handles.MH_glGetQueryivARB.invokeExact(handles.PFN_glGetQueryivARB, target, pname, params); }
+        Handles.MH_glGetQueryivARB.get().invokeExact(handles.PFN_glGetQueryivARB, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetQueryivARB", e); }
     }
 
@@ -120,7 +121,7 @@ public final class GLARBOcclusionQuery {
     public void GetQueryObjectivARB(int id, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetQueryObjectivARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetQueryObjectivARB", id, pname, params); }
-        Handles.MH_glGetQueryObjectivARB.invokeExact(handles.PFN_glGetQueryObjectivARB, id, pname, params); }
+        Handles.MH_glGetQueryObjectivARB.get().invokeExact(handles.PFN_glGetQueryObjectivARB, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetQueryObjectivARB", e); }
     }
 
@@ -131,7 +132,7 @@ public final class GLARBOcclusionQuery {
     public void GetQueryObjectuivARB(int id, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectuivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetQueryObjectuivARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetQueryObjectuivARB", id, pname, params); }
-        Handles.MH_glGetQueryObjectuivARB.invokeExact(handles.PFN_glGetQueryObjectuivARB, id, pname, params); }
+        Handles.MH_glGetQueryObjectuivARB.get().invokeExact(handles.PFN_glGetQueryObjectuivARB, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetQueryObjectuivARB", e); }
     }
 

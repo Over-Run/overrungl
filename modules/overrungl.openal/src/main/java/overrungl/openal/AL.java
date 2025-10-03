@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.openal;
@@ -23,6 +31,7 @@ import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.function.Supplier;
 
 import static overrungl.internal.RuntimeHelper.*;
 
@@ -105,151 +114,151 @@ public final class AL {
     /// Method handles.
     public static final class Handles {
         /// The method handle of [`alEnable`][#alEnable].
-        public static final MethodHandle MH_alEnable = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alEnable = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         /// The method handle of [`alDisable`][#alDisable].
-        public static final MethodHandle MH_alDisable = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alDisable = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         /// The method handle of [`alIsEnabled`][#alIsEnabled].
-        public static final MethodHandle MH_alIsEnabled = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alIsEnabled = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
         /// The method handle of [`alDopplerFactor`][#alDopplerFactor].
-        public static final MethodHandle MH_alDopplerFactor = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_alDopplerFactor = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT)));
         /// The method handle of [`alDopplerVelocity`][#alDopplerVelocity].
-        public static final MethodHandle MH_alDopplerVelocity = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_alDopplerVelocity = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT)));
         /// The method handle of [`alSpeedOfSound`][#alSpeedOfSound].
-        public static final MethodHandle MH_alSpeedOfSound = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_alSpeedOfSound = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT)));
         /// The method handle of [`alDistanceModel`][#alDistanceModel].
-        public static final MethodHandle MH_alDistanceModel = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alDistanceModel = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         /// The method handle of [`alGetString`][#alGetString].
-        public static final MethodHandle MH_alGetString = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alGetString = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`alGetBooleanv`][#alGetBooleanv].
-        public static final MethodHandle MH_alGetBooleanv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetBooleanv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetIntegerv`][#alGetIntegerv].
-        public static final MethodHandle MH_alGetIntegerv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetIntegerv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetFloatv`][#alGetFloatv].
-        public static final MethodHandle MH_alGetFloatv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetFloatv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetDoublev`][#alGetDoublev].
-        public static final MethodHandle MH_alGetDoublev = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetDoublev = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetBoolean`][#alGetBoolean].
-        public static final MethodHandle MH_alGetBoolean = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alGetBoolean = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
         /// The method handle of [`alGetInteger`][#alGetInteger].
-        public static final MethodHandle MH_alGetInteger = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alGetInteger = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`alGetFloat`][#alGetFloat].
-        public static final MethodHandle MH_alGetFloat = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alGetFloat = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT)));
         /// The method handle of [`alGetDouble`][#alGetDouble].
-        public static final MethodHandle MH_alGetDouble = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alGetDouble = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT)));
         /// The method handle of [`alGetError`][#alGetError].
-        public static final MethodHandle MH_alGetError = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alGetError = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT)));
         /// The method handle of [`alIsExtensionPresent`][#alIsExtensionPresent].
-        public static final MethodHandle MH_alIsExtensionPresent = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alIsExtensionPresent = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetProcAddress`][#alGetProcAddress].
-        public static final MethodHandle MH_alGetProcAddress = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetProcAddress = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetEnumValue`][#alGetEnumValue].
-        public static final MethodHandle MH_alGetEnumValue = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetEnumValue = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alListenerf`][#alListenerf].
-        public static final MethodHandle MH_alListenerf = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_alListenerf = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT)));
         /// The method handle of [`alListener3f`][#alListener3f].
-        public static final MethodHandle MH_alListener3f = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_alListener3f = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
         /// The method handle of [`alListenerfv`][#alListenerfv].
-        public static final MethodHandle MH_alListenerfv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alListenerfv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alListeneri`][#alListeneri].
-        public static final MethodHandle MH_alListeneri = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alListeneri = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`alListener3i`][#alListener3i].
-        public static final MethodHandle MH_alListener3i = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alListener3i = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`alListeneriv`][#alListeneriv].
-        public static final MethodHandle MH_alListeneriv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alListeneriv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetListenerf`][#alGetListenerf].
-        public static final MethodHandle MH_alGetListenerf = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetListenerf = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetListener3f`][#alGetListener3f].
-        public static final MethodHandle MH_alGetListener3f = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetListener3f = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetListenerfv`][#alGetListenerfv].
-        public static final MethodHandle MH_alGetListenerfv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetListenerfv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetListeneri`][#alGetListeneri].
-        public static final MethodHandle MH_alGetListeneri = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetListeneri = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetListener3i`][#alGetListener3i].
-        public static final MethodHandle MH_alGetListener3i = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetListener3i = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetListeneriv`][#alGetListeneriv].
-        public static final MethodHandle MH_alGetListeneriv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetListeneriv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGenSources`][#alGenSources].
-        public static final MethodHandle MH_alGenSources = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGenSources = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alDeleteSources`][#alDeleteSources].
-        public static final MethodHandle MH_alDeleteSources = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alDeleteSources = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alIsSource`][#alIsSource].
-        public static final MethodHandle MH_alIsSource = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alIsSource = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
         /// The method handle of [`alSourcef`][#alSourcef].
-        public static final MethodHandle MH_alSourcef = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_alSourcef = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT)));
         /// The method handle of [`alSource3f`][#alSource3f].
-        public static final MethodHandle MH_alSource3f = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_alSource3f = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
         /// The method handle of [`alSourcefv`][#alSourcefv].
-        public static final MethodHandle MH_alSourcefv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alSourcefv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alSourcei`][#alSourcei].
-        public static final MethodHandle MH_alSourcei = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alSourcei = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`alSource3i`][#alSource3i].
-        public static final MethodHandle MH_alSource3i = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alSource3i = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`alSourceiv`][#alSourceiv].
-        public static final MethodHandle MH_alSourceiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alSourceiv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetSourcef`][#alGetSourcef].
-        public static final MethodHandle MH_alGetSourcef = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetSourcef = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetSource3f`][#alGetSource3f].
-        public static final MethodHandle MH_alGetSource3f = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetSource3f = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetSourcefv`][#alGetSourcefv].
-        public static final MethodHandle MH_alGetSourcefv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetSourcefv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetSourcei`][#alGetSourcei].
-        public static final MethodHandle MH_alGetSourcei = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetSourcei = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetSource3i`][#alGetSource3i].
-        public static final MethodHandle MH_alGetSource3i = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetSource3i = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetSourceiv`][#alGetSourceiv].
-        public static final MethodHandle MH_alGetSourceiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetSourceiv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alSourcePlay`][#alSourcePlay].
-        public static final MethodHandle MH_alSourcePlay = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alSourcePlay = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         /// The method handle of [`alSourceStop`][#alSourceStop].
-        public static final MethodHandle MH_alSourceStop = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alSourceStop = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         /// The method handle of [`alSourceRewind`][#alSourceRewind].
-        public static final MethodHandle MH_alSourceRewind = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alSourceRewind = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         /// The method handle of [`alSourcePause`][#alSourcePause].
-        public static final MethodHandle MH_alSourcePause = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alSourcePause = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         /// The method handle of [`alSourcePlayv`][#alSourcePlayv].
-        public static final MethodHandle MH_alSourcePlayv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alSourcePlayv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alSourceStopv`][#alSourceStopv].
-        public static final MethodHandle MH_alSourceStopv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alSourceStopv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alSourceRewindv`][#alSourceRewindv].
-        public static final MethodHandle MH_alSourceRewindv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alSourceRewindv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alSourcePausev`][#alSourcePausev].
-        public static final MethodHandle MH_alSourcePausev = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alSourcePausev = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alSourceQueueBuffers`][#alSourceQueueBuffers].
-        public static final MethodHandle MH_alSourceQueueBuffers = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alSourceQueueBuffers = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alSourceUnqueueBuffers`][#alSourceUnqueueBuffers].
-        public static final MethodHandle MH_alSourceUnqueueBuffers = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alSourceUnqueueBuffers = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGenBuffers`][#alGenBuffers].
-        public static final MethodHandle MH_alGenBuffers = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGenBuffers = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alDeleteBuffers`][#alDeleteBuffers].
-        public static final MethodHandle MH_alDeleteBuffers = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alDeleteBuffers = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alIsBuffer`][#alIsBuffer].
-        public static final MethodHandle MH_alIsBuffer = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alIsBuffer = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
         /// The method handle of [`alBufferData`][#alBufferData].
-        public static final MethodHandle MH_alBufferData = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alBufferData = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`alBufferf`][#alBufferf].
-        public static final MethodHandle MH_alBufferf = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_alBufferf = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT)));
         /// The method handle of [`alBuffer3f`][#alBuffer3f].
-        public static final MethodHandle MH_alBuffer3f = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_alBuffer3f = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
         /// The method handle of [`alBufferfv`][#alBufferfv].
-        public static final MethodHandle MH_alBufferfv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alBufferfv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alBufferi`][#alBufferi].
-        public static final MethodHandle MH_alBufferi = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alBufferi = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`alBuffer3i`][#alBuffer3i].
-        public static final MethodHandle MH_alBuffer3i = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_alBuffer3i = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`alBufferiv`][#alBufferiv].
-        public static final MethodHandle MH_alBufferiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alBufferiv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetBufferf`][#alGetBufferf].
-        public static final MethodHandle MH_alGetBufferf = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetBufferf = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetBuffer3f`][#alGetBuffer3f].
-        public static final MethodHandle MH_alGetBuffer3f = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetBuffer3f = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetBufferfv`][#alGetBufferfv].
-        public static final MethodHandle MH_alGetBufferfv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetBufferfv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetBufferi`][#alGetBufferi].
-        public static final MethodHandle MH_alGetBufferi = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetBufferi = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetBuffer3i`][#alGetBuffer3i].
-        public static final MethodHandle MH_alGetBuffer3i = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetBuffer3i = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`alGetBufferiv`][#alGetBufferiv].
-        public static final MethodHandle MH_alGetBufferiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_alGetBufferiv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The function address of [`alEnable`][#alEnable].
         public final MemorySegment PFN_alEnable;
         /// The function address of [`alDisable`][#alDisable].
@@ -489,7 +498,7 @@ public final class AL {
     /// ```
     public static void alEnable(int capability) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alEnable", capability); }
-        Handles.MH_alEnable.invokeExact(Handles.get().PFN_alEnable, capability); }
+        Handles.MH_alEnable.get().invokeExact(Handles.get().PFN_alEnable, capability); }
         catch (Throwable e) { throw new RuntimeException("error in alEnable", e); }
     }
 
@@ -499,7 +508,7 @@ public final class AL {
     /// ```
     public static void alDisable(int capability) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alDisable", capability); }
-        Handles.MH_alDisable.invokeExact(Handles.get().PFN_alDisable, capability); }
+        Handles.MH_alDisable.get().invokeExact(Handles.get().PFN_alDisable, capability); }
         catch (Throwable e) { throw new RuntimeException("error in alDisable", e); }
     }
 
@@ -509,7 +518,7 @@ public final class AL {
     /// ```
     public static boolean alIsEnabled(int capability) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alIsEnabled", capability); }
-        return (((byte) Handles.MH_alIsEnabled.invokeExact(Handles.get().PFN_alIsEnabled, capability)) != 0); }
+        return (((byte) Handles.MH_alIsEnabled.get().invokeExact(Handles.get().PFN_alIsEnabled, capability)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in alIsEnabled", e); }
     }
 
@@ -519,7 +528,7 @@ public final class AL {
     /// ```
     public static void alDopplerFactor(float value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alDopplerFactor", value); }
-        Handles.MH_alDopplerFactor.invokeExact(Handles.get().PFN_alDopplerFactor, value); }
+        Handles.MH_alDopplerFactor.get().invokeExact(Handles.get().PFN_alDopplerFactor, value); }
         catch (Throwable e) { throw new RuntimeException("error in alDopplerFactor", e); }
     }
 
@@ -529,7 +538,7 @@ public final class AL {
     /// ```
     public static void alDopplerVelocity(float value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alDopplerVelocity", value); }
-        Handles.MH_alDopplerVelocity.invokeExact(Handles.get().PFN_alDopplerVelocity, value); }
+        Handles.MH_alDopplerVelocity.get().invokeExact(Handles.get().PFN_alDopplerVelocity, value); }
         catch (Throwable e) { throw new RuntimeException("error in alDopplerVelocity", e); }
     }
 
@@ -539,7 +548,7 @@ public final class AL {
     /// ```
     public static void alSpeedOfSound(float value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSpeedOfSound", value); }
-        Handles.MH_alSpeedOfSound.invokeExact(Handles.get().PFN_alSpeedOfSound, value); }
+        Handles.MH_alSpeedOfSound.get().invokeExact(Handles.get().PFN_alSpeedOfSound, value); }
         catch (Throwable e) { throw new RuntimeException("error in alSpeedOfSound", e); }
     }
 
@@ -549,7 +558,7 @@ public final class AL {
     /// ```
     public static void alDistanceModel(int distanceModel) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alDistanceModel", distanceModel); }
-        Handles.MH_alDistanceModel.invokeExact(Handles.get().PFN_alDistanceModel, distanceModel); }
+        Handles.MH_alDistanceModel.get().invokeExact(Handles.get().PFN_alDistanceModel, distanceModel); }
         catch (Throwable e) { throw new RuntimeException("error in alDistanceModel", e); }
     }
 
@@ -559,7 +568,7 @@ public final class AL {
     /// ```
     public static @NonNull MemorySegment alGetString(int param) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetString", param); }
-        return (MemorySegment) Handles.MH_alGetString.invokeExact(Handles.get().PFN_alGetString, param); }
+        return (MemorySegment) Handles.MH_alGetString.get().invokeExact(Handles.get().PFN_alGetString, param); }
         catch (Throwable e) { throw new RuntimeException("error in alGetString", e); }
     }
 
@@ -569,7 +578,7 @@ public final class AL {
     /// ```
     public static void alGetBooleanv(int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetBooleanv", param, values); }
-        Handles.MH_alGetBooleanv.invokeExact(Handles.get().PFN_alGetBooleanv, param, values); }
+        Handles.MH_alGetBooleanv.get().invokeExact(Handles.get().PFN_alGetBooleanv, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alGetBooleanv", e); }
     }
 
@@ -579,7 +588,7 @@ public final class AL {
     /// ```
     public static void alGetIntegerv(int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetIntegerv", param, values); }
-        Handles.MH_alGetIntegerv.invokeExact(Handles.get().PFN_alGetIntegerv, param, values); }
+        Handles.MH_alGetIntegerv.get().invokeExact(Handles.get().PFN_alGetIntegerv, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alGetIntegerv", e); }
     }
 
@@ -589,7 +598,7 @@ public final class AL {
     /// ```
     public static void alGetFloatv(int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetFloatv", param, values); }
-        Handles.MH_alGetFloatv.invokeExact(Handles.get().PFN_alGetFloatv, param, values); }
+        Handles.MH_alGetFloatv.get().invokeExact(Handles.get().PFN_alGetFloatv, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alGetFloatv", e); }
     }
 
@@ -599,7 +608,7 @@ public final class AL {
     /// ```
     public static void alGetDoublev(int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetDoublev", param, values); }
-        Handles.MH_alGetDoublev.invokeExact(Handles.get().PFN_alGetDoublev, param, values); }
+        Handles.MH_alGetDoublev.get().invokeExact(Handles.get().PFN_alGetDoublev, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alGetDoublev", e); }
     }
 
@@ -609,7 +618,7 @@ public final class AL {
     /// ```
     public static boolean alGetBoolean(int param) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetBoolean", param); }
-        return (((byte) Handles.MH_alGetBoolean.invokeExact(Handles.get().PFN_alGetBoolean, param)) != 0); }
+        return (((byte) Handles.MH_alGetBoolean.get().invokeExact(Handles.get().PFN_alGetBoolean, param)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in alGetBoolean", e); }
     }
 
@@ -619,7 +628,7 @@ public final class AL {
     /// ```
     public static int alGetInteger(int param) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetInteger", param); }
-        return (int) Handles.MH_alGetInteger.invokeExact(Handles.get().PFN_alGetInteger, param); }
+        return (int) Handles.MH_alGetInteger.get().invokeExact(Handles.get().PFN_alGetInteger, param); }
         catch (Throwable e) { throw new RuntimeException("error in alGetInteger", e); }
     }
 
@@ -629,7 +638,7 @@ public final class AL {
     /// ```
     public static float alGetFloat(int param) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetFloat", param); }
-        return (float) Handles.MH_alGetFloat.invokeExact(Handles.get().PFN_alGetFloat, param); }
+        return (float) Handles.MH_alGetFloat.get().invokeExact(Handles.get().PFN_alGetFloat, param); }
         catch (Throwable e) { throw new RuntimeException("error in alGetFloat", e); }
     }
 
@@ -639,7 +648,7 @@ public final class AL {
     /// ```
     public static double alGetDouble(int param) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetDouble", param); }
-        return (double) Handles.MH_alGetDouble.invokeExact(Handles.get().PFN_alGetDouble, param); }
+        return (double) Handles.MH_alGetDouble.get().invokeExact(Handles.get().PFN_alGetDouble, param); }
         catch (Throwable e) { throw new RuntimeException("error in alGetDouble", e); }
     }
 
@@ -649,7 +658,7 @@ public final class AL {
     /// ```
     public static int alGetError() {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetError"); }
-        return (int) Handles.MH_alGetError.invokeExact(Handles.get().PFN_alGetError); }
+        return (int) Handles.MH_alGetError.get().invokeExact(Handles.get().PFN_alGetError); }
         catch (Throwable e) { throw new RuntimeException("error in alGetError", e); }
     }
 
@@ -659,7 +668,7 @@ public final class AL {
     /// ```
     public static boolean alIsExtensionPresent(@NonNull MemorySegment extname) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alIsExtensionPresent", extname); }
-        return (((byte) Handles.MH_alIsExtensionPresent.invokeExact(Handles.get().PFN_alIsExtensionPresent, extname)) != 0); }
+        return (((byte) Handles.MH_alIsExtensionPresent.get().invokeExact(Handles.get().PFN_alIsExtensionPresent, extname)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in alIsExtensionPresent", e); }
     }
 
@@ -669,7 +678,7 @@ public final class AL {
     /// ```
     public static @NonNull MemorySegment alGetProcAddress(@NonNull MemorySegment fname) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetProcAddress", fname); }
-        return (MemorySegment) Handles.MH_alGetProcAddress.invokeExact(Handles.get().PFN_alGetProcAddress, fname); }
+        return (MemorySegment) Handles.MH_alGetProcAddress.get().invokeExact(Handles.get().PFN_alGetProcAddress, fname); }
         catch (Throwable e) { throw new RuntimeException("error in alGetProcAddress", e); }
     }
 
@@ -679,7 +688,7 @@ public final class AL {
     /// ```
     public static int alGetEnumValue(@NonNull MemorySegment ename) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetEnumValue", ename); }
-        return (int) Handles.MH_alGetEnumValue.invokeExact(Handles.get().PFN_alGetEnumValue, ename); }
+        return (int) Handles.MH_alGetEnumValue.get().invokeExact(Handles.get().PFN_alGetEnumValue, ename); }
         catch (Throwable e) { throw new RuntimeException("error in alGetEnumValue", e); }
     }
 
@@ -689,7 +698,7 @@ public final class AL {
     /// ```
     public static void alListenerf(int param, float value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alListenerf", param, value); }
-        Handles.MH_alListenerf.invokeExact(Handles.get().PFN_alListenerf, param, value); }
+        Handles.MH_alListenerf.get().invokeExact(Handles.get().PFN_alListenerf, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alListenerf", e); }
     }
 
@@ -699,7 +708,7 @@ public final class AL {
     /// ```
     public static void alListener3f(int param, float value1, float value2, float value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alListener3f", param, value1, value2, value3); }
-        Handles.MH_alListener3f.invokeExact(Handles.get().PFN_alListener3f, param, value1, value2, value3); }
+        Handles.MH_alListener3f.get().invokeExact(Handles.get().PFN_alListener3f, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alListener3f", e); }
     }
 
@@ -709,7 +718,7 @@ public final class AL {
     /// ```
     public static void alListenerfv(int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alListenerfv", param, values); }
-        Handles.MH_alListenerfv.invokeExact(Handles.get().PFN_alListenerfv, param, values); }
+        Handles.MH_alListenerfv.get().invokeExact(Handles.get().PFN_alListenerfv, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alListenerfv", e); }
     }
 
@@ -719,7 +728,7 @@ public final class AL {
     /// ```
     public static void alListeneri(int param, int value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alListeneri", param, value); }
-        Handles.MH_alListeneri.invokeExact(Handles.get().PFN_alListeneri, param, value); }
+        Handles.MH_alListeneri.get().invokeExact(Handles.get().PFN_alListeneri, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alListeneri", e); }
     }
 
@@ -729,7 +738,7 @@ public final class AL {
     /// ```
     public static void alListener3i(int param, int value1, int value2, int value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alListener3i", param, value1, value2, value3); }
-        Handles.MH_alListener3i.invokeExact(Handles.get().PFN_alListener3i, param, value1, value2, value3); }
+        Handles.MH_alListener3i.get().invokeExact(Handles.get().PFN_alListener3i, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alListener3i", e); }
     }
 
@@ -739,7 +748,7 @@ public final class AL {
     /// ```
     public static void alListeneriv(int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alListeneriv", param, values); }
-        Handles.MH_alListeneriv.invokeExact(Handles.get().PFN_alListeneriv, param, values); }
+        Handles.MH_alListeneriv.get().invokeExact(Handles.get().PFN_alListeneriv, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alListeneriv", e); }
     }
 
@@ -749,7 +758,7 @@ public final class AL {
     /// ```
     public static void alGetListenerf(int param, @NonNull MemorySegment value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetListenerf", param, value); }
-        Handles.MH_alGetListenerf.invokeExact(Handles.get().PFN_alGetListenerf, param, value); }
+        Handles.MH_alGetListenerf.get().invokeExact(Handles.get().PFN_alGetListenerf, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alGetListenerf", e); }
     }
 
@@ -759,7 +768,7 @@ public final class AL {
     /// ```
     public static void alGetListener3f(int param, @NonNull MemorySegment value1, @NonNull MemorySegment value2, @NonNull MemorySegment value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetListener3f", param, value1, value2, value3); }
-        Handles.MH_alGetListener3f.invokeExact(Handles.get().PFN_alGetListener3f, param, value1, value2, value3); }
+        Handles.MH_alGetListener3f.get().invokeExact(Handles.get().PFN_alGetListener3f, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alGetListener3f", e); }
     }
 
@@ -769,7 +778,7 @@ public final class AL {
     /// ```
     public static void alGetListenerfv(int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetListenerfv", param, values); }
-        Handles.MH_alGetListenerfv.invokeExact(Handles.get().PFN_alGetListenerfv, param, values); }
+        Handles.MH_alGetListenerfv.get().invokeExact(Handles.get().PFN_alGetListenerfv, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alGetListenerfv", e); }
     }
 
@@ -779,7 +788,7 @@ public final class AL {
     /// ```
     public static void alGetListeneri(int param, @NonNull MemorySegment value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetListeneri", param, value); }
-        Handles.MH_alGetListeneri.invokeExact(Handles.get().PFN_alGetListeneri, param, value); }
+        Handles.MH_alGetListeneri.get().invokeExact(Handles.get().PFN_alGetListeneri, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alGetListeneri", e); }
     }
 
@@ -789,7 +798,7 @@ public final class AL {
     /// ```
     public static void alGetListener3i(int param, @NonNull MemorySegment value1, @NonNull MemorySegment value2, @NonNull MemorySegment value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetListener3i", param, value1, value2, value3); }
-        Handles.MH_alGetListener3i.invokeExact(Handles.get().PFN_alGetListener3i, param, value1, value2, value3); }
+        Handles.MH_alGetListener3i.get().invokeExact(Handles.get().PFN_alGetListener3i, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alGetListener3i", e); }
     }
 
@@ -799,7 +808,7 @@ public final class AL {
     /// ```
     public static void alGetListeneriv(int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetListeneriv", param, values); }
-        Handles.MH_alGetListeneriv.invokeExact(Handles.get().PFN_alGetListeneriv, param, values); }
+        Handles.MH_alGetListeneriv.get().invokeExact(Handles.get().PFN_alGetListeneriv, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alGetListeneriv", e); }
     }
 
@@ -809,7 +818,7 @@ public final class AL {
     /// ```
     public static void alGenSources(int n, @NonNull MemorySegment sources) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGenSources", n, sources); }
-        Handles.MH_alGenSources.invokeExact(Handles.get().PFN_alGenSources, n, sources); }
+        Handles.MH_alGenSources.get().invokeExact(Handles.get().PFN_alGenSources, n, sources); }
         catch (Throwable e) { throw new RuntimeException("error in alGenSources", e); }
     }
 
@@ -819,7 +828,7 @@ public final class AL {
     /// ```
     public static void alDeleteSources(int n, @NonNull MemorySegment sources) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alDeleteSources", n, sources); }
-        Handles.MH_alDeleteSources.invokeExact(Handles.get().PFN_alDeleteSources, n, sources); }
+        Handles.MH_alDeleteSources.get().invokeExact(Handles.get().PFN_alDeleteSources, n, sources); }
         catch (Throwable e) { throw new RuntimeException("error in alDeleteSources", e); }
     }
 
@@ -829,7 +838,7 @@ public final class AL {
     /// ```
     public static boolean alIsSource(int source) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alIsSource", source); }
-        return (((byte) Handles.MH_alIsSource.invokeExact(Handles.get().PFN_alIsSource, source)) != 0); }
+        return (((byte) Handles.MH_alIsSource.get().invokeExact(Handles.get().PFN_alIsSource, source)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in alIsSource", e); }
     }
 
@@ -839,7 +848,7 @@ public final class AL {
     /// ```
     public static void alSourcef(int source, int param, float value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourcef", source, param, value); }
-        Handles.MH_alSourcef.invokeExact(Handles.get().PFN_alSourcef, source, param, value); }
+        Handles.MH_alSourcef.get().invokeExact(Handles.get().PFN_alSourcef, source, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alSourcef", e); }
     }
 
@@ -849,7 +858,7 @@ public final class AL {
     /// ```
     public static void alSource3f(int source, int param, float value1, float value2, float value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSource3f", source, param, value1, value2, value3); }
-        Handles.MH_alSource3f.invokeExact(Handles.get().PFN_alSource3f, source, param, value1, value2, value3); }
+        Handles.MH_alSource3f.get().invokeExact(Handles.get().PFN_alSource3f, source, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alSource3f", e); }
     }
 
@@ -859,7 +868,7 @@ public final class AL {
     /// ```
     public static void alSourcefv(int source, int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourcefv", source, param, values); }
-        Handles.MH_alSourcefv.invokeExact(Handles.get().PFN_alSourcefv, source, param, values); }
+        Handles.MH_alSourcefv.get().invokeExact(Handles.get().PFN_alSourcefv, source, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alSourcefv", e); }
     }
 
@@ -869,7 +878,7 @@ public final class AL {
     /// ```
     public static void alSourcei(int source, int param, int value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourcei", source, param, value); }
-        Handles.MH_alSourcei.invokeExact(Handles.get().PFN_alSourcei, source, param, value); }
+        Handles.MH_alSourcei.get().invokeExact(Handles.get().PFN_alSourcei, source, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alSourcei", e); }
     }
 
@@ -879,7 +888,7 @@ public final class AL {
     /// ```
     public static void alSource3i(int source, int param, int value1, int value2, int value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSource3i", source, param, value1, value2, value3); }
-        Handles.MH_alSource3i.invokeExact(Handles.get().PFN_alSource3i, source, param, value1, value2, value3); }
+        Handles.MH_alSource3i.get().invokeExact(Handles.get().PFN_alSource3i, source, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alSource3i", e); }
     }
 
@@ -889,7 +898,7 @@ public final class AL {
     /// ```
     public static void alSourceiv(int source, int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourceiv", source, param, values); }
-        Handles.MH_alSourceiv.invokeExact(Handles.get().PFN_alSourceiv, source, param, values); }
+        Handles.MH_alSourceiv.get().invokeExact(Handles.get().PFN_alSourceiv, source, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alSourceiv", e); }
     }
 
@@ -899,7 +908,7 @@ public final class AL {
     /// ```
     public static void alGetSourcef(int source, int param, @NonNull MemorySegment value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetSourcef", source, param, value); }
-        Handles.MH_alGetSourcef.invokeExact(Handles.get().PFN_alGetSourcef, source, param, value); }
+        Handles.MH_alGetSourcef.get().invokeExact(Handles.get().PFN_alGetSourcef, source, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alGetSourcef", e); }
     }
 
@@ -909,7 +918,7 @@ public final class AL {
     /// ```
     public static void alGetSource3f(int source, int param, @NonNull MemorySegment value1, @NonNull MemorySegment value2, @NonNull MemorySegment value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetSource3f", source, param, value1, value2, value3); }
-        Handles.MH_alGetSource3f.invokeExact(Handles.get().PFN_alGetSource3f, source, param, value1, value2, value3); }
+        Handles.MH_alGetSource3f.get().invokeExact(Handles.get().PFN_alGetSource3f, source, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alGetSource3f", e); }
     }
 
@@ -919,7 +928,7 @@ public final class AL {
     /// ```
     public static void alGetSourcefv(int source, int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetSourcefv", source, param, values); }
-        Handles.MH_alGetSourcefv.invokeExact(Handles.get().PFN_alGetSourcefv, source, param, values); }
+        Handles.MH_alGetSourcefv.get().invokeExact(Handles.get().PFN_alGetSourcefv, source, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alGetSourcefv", e); }
     }
 
@@ -929,7 +938,7 @@ public final class AL {
     /// ```
     public static void alGetSourcei(int source, int param, @NonNull MemorySegment value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetSourcei", source, param, value); }
-        Handles.MH_alGetSourcei.invokeExact(Handles.get().PFN_alGetSourcei, source, param, value); }
+        Handles.MH_alGetSourcei.get().invokeExact(Handles.get().PFN_alGetSourcei, source, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alGetSourcei", e); }
     }
 
@@ -939,7 +948,7 @@ public final class AL {
     /// ```
     public static void alGetSource3i(int source, int param, @NonNull MemorySegment value1, @NonNull MemorySegment value2, @NonNull MemorySegment value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetSource3i", source, param, value1, value2, value3); }
-        Handles.MH_alGetSource3i.invokeExact(Handles.get().PFN_alGetSource3i, source, param, value1, value2, value3); }
+        Handles.MH_alGetSource3i.get().invokeExact(Handles.get().PFN_alGetSource3i, source, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alGetSource3i", e); }
     }
 
@@ -949,7 +958,7 @@ public final class AL {
     /// ```
     public static void alGetSourceiv(int source, int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetSourceiv", source, param, values); }
-        Handles.MH_alGetSourceiv.invokeExact(Handles.get().PFN_alGetSourceiv, source, param, values); }
+        Handles.MH_alGetSourceiv.get().invokeExact(Handles.get().PFN_alGetSourceiv, source, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alGetSourceiv", e); }
     }
 
@@ -959,7 +968,7 @@ public final class AL {
     /// ```
     public static void alSourcePlay(int source) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourcePlay", source); }
-        Handles.MH_alSourcePlay.invokeExact(Handles.get().PFN_alSourcePlay, source); }
+        Handles.MH_alSourcePlay.get().invokeExact(Handles.get().PFN_alSourcePlay, source); }
         catch (Throwable e) { throw new RuntimeException("error in alSourcePlay", e); }
     }
 
@@ -969,7 +978,7 @@ public final class AL {
     /// ```
     public static void alSourceStop(int source) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourceStop", source); }
-        Handles.MH_alSourceStop.invokeExact(Handles.get().PFN_alSourceStop, source); }
+        Handles.MH_alSourceStop.get().invokeExact(Handles.get().PFN_alSourceStop, source); }
         catch (Throwable e) { throw new RuntimeException("error in alSourceStop", e); }
     }
 
@@ -979,7 +988,7 @@ public final class AL {
     /// ```
     public static void alSourceRewind(int source) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourceRewind", source); }
-        Handles.MH_alSourceRewind.invokeExact(Handles.get().PFN_alSourceRewind, source); }
+        Handles.MH_alSourceRewind.get().invokeExact(Handles.get().PFN_alSourceRewind, source); }
         catch (Throwable e) { throw new RuntimeException("error in alSourceRewind", e); }
     }
 
@@ -989,7 +998,7 @@ public final class AL {
     /// ```
     public static void alSourcePause(int source) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourcePause", source); }
-        Handles.MH_alSourcePause.invokeExact(Handles.get().PFN_alSourcePause, source); }
+        Handles.MH_alSourcePause.get().invokeExact(Handles.get().PFN_alSourcePause, source); }
         catch (Throwable e) { throw new RuntimeException("error in alSourcePause", e); }
     }
 
@@ -999,7 +1008,7 @@ public final class AL {
     /// ```
     public static void alSourcePlayv(int n, @NonNull MemorySegment sources) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourcePlayv", n, sources); }
-        Handles.MH_alSourcePlayv.invokeExact(Handles.get().PFN_alSourcePlayv, n, sources); }
+        Handles.MH_alSourcePlayv.get().invokeExact(Handles.get().PFN_alSourcePlayv, n, sources); }
         catch (Throwable e) { throw new RuntimeException("error in alSourcePlayv", e); }
     }
 
@@ -1009,7 +1018,7 @@ public final class AL {
     /// ```
     public static void alSourceStopv(int n, @NonNull MemorySegment sources) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourceStopv", n, sources); }
-        Handles.MH_alSourceStopv.invokeExact(Handles.get().PFN_alSourceStopv, n, sources); }
+        Handles.MH_alSourceStopv.get().invokeExact(Handles.get().PFN_alSourceStopv, n, sources); }
         catch (Throwable e) { throw new RuntimeException("error in alSourceStopv", e); }
     }
 
@@ -1019,7 +1028,7 @@ public final class AL {
     /// ```
     public static void alSourceRewindv(int n, @NonNull MemorySegment sources) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourceRewindv", n, sources); }
-        Handles.MH_alSourceRewindv.invokeExact(Handles.get().PFN_alSourceRewindv, n, sources); }
+        Handles.MH_alSourceRewindv.get().invokeExact(Handles.get().PFN_alSourceRewindv, n, sources); }
         catch (Throwable e) { throw new RuntimeException("error in alSourceRewindv", e); }
     }
 
@@ -1029,7 +1038,7 @@ public final class AL {
     /// ```
     public static void alSourcePausev(int n, @NonNull MemorySegment sources) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourcePausev", n, sources); }
-        Handles.MH_alSourcePausev.invokeExact(Handles.get().PFN_alSourcePausev, n, sources); }
+        Handles.MH_alSourcePausev.get().invokeExact(Handles.get().PFN_alSourcePausev, n, sources); }
         catch (Throwable e) { throw new RuntimeException("error in alSourcePausev", e); }
     }
 
@@ -1039,7 +1048,7 @@ public final class AL {
     /// ```
     public static void alSourceQueueBuffers(int source, int nb, @NonNull MemorySegment buffers) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourceQueueBuffers", source, nb, buffers); }
-        Handles.MH_alSourceQueueBuffers.invokeExact(Handles.get().PFN_alSourceQueueBuffers, source, nb, buffers); }
+        Handles.MH_alSourceQueueBuffers.get().invokeExact(Handles.get().PFN_alSourceQueueBuffers, source, nb, buffers); }
         catch (Throwable e) { throw new RuntimeException("error in alSourceQueueBuffers", e); }
     }
 
@@ -1049,7 +1058,7 @@ public final class AL {
     /// ```
     public static void alSourceUnqueueBuffers(int source, int nb, @NonNull MemorySegment buffers) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alSourceUnqueueBuffers", source, nb, buffers); }
-        Handles.MH_alSourceUnqueueBuffers.invokeExact(Handles.get().PFN_alSourceUnqueueBuffers, source, nb, buffers); }
+        Handles.MH_alSourceUnqueueBuffers.get().invokeExact(Handles.get().PFN_alSourceUnqueueBuffers, source, nb, buffers); }
         catch (Throwable e) { throw new RuntimeException("error in alSourceUnqueueBuffers", e); }
     }
 
@@ -1059,7 +1068,7 @@ public final class AL {
     /// ```
     public static void alGenBuffers(int n, @NonNull MemorySegment buffers) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGenBuffers", n, buffers); }
-        Handles.MH_alGenBuffers.invokeExact(Handles.get().PFN_alGenBuffers, n, buffers); }
+        Handles.MH_alGenBuffers.get().invokeExact(Handles.get().PFN_alGenBuffers, n, buffers); }
         catch (Throwable e) { throw new RuntimeException("error in alGenBuffers", e); }
     }
 
@@ -1069,7 +1078,7 @@ public final class AL {
     /// ```
     public static void alDeleteBuffers(int n, @NonNull MemorySegment buffers) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alDeleteBuffers", n, buffers); }
-        Handles.MH_alDeleteBuffers.invokeExact(Handles.get().PFN_alDeleteBuffers, n, buffers); }
+        Handles.MH_alDeleteBuffers.get().invokeExact(Handles.get().PFN_alDeleteBuffers, n, buffers); }
         catch (Throwable e) { throw new RuntimeException("error in alDeleteBuffers", e); }
     }
 
@@ -1079,7 +1088,7 @@ public final class AL {
     /// ```
     public static boolean alIsBuffer(int buffer) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alIsBuffer", buffer); }
-        return (((byte) Handles.MH_alIsBuffer.invokeExact(Handles.get().PFN_alIsBuffer, buffer)) != 0); }
+        return (((byte) Handles.MH_alIsBuffer.get().invokeExact(Handles.get().PFN_alIsBuffer, buffer)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in alIsBuffer", e); }
     }
 
@@ -1089,7 +1098,7 @@ public final class AL {
     /// ```
     public static void alBufferData(int buffer, int format, @NonNull MemorySegment data, int size, int samplerate) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alBufferData", buffer, format, data, size, samplerate); }
-        Handles.MH_alBufferData.invokeExact(Handles.get().PFN_alBufferData, buffer, format, data, size, samplerate); }
+        Handles.MH_alBufferData.get().invokeExact(Handles.get().PFN_alBufferData, buffer, format, data, size, samplerate); }
         catch (Throwable e) { throw new RuntimeException("error in alBufferData", e); }
     }
 
@@ -1099,7 +1108,7 @@ public final class AL {
     /// ```
     public static void alBufferf(int buffer, int param, float value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alBufferf", buffer, param, value); }
-        Handles.MH_alBufferf.invokeExact(Handles.get().PFN_alBufferf, buffer, param, value); }
+        Handles.MH_alBufferf.get().invokeExact(Handles.get().PFN_alBufferf, buffer, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alBufferf", e); }
     }
 
@@ -1109,7 +1118,7 @@ public final class AL {
     /// ```
     public static void alBuffer3f(int buffer, int param, float value1, float value2, float value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alBuffer3f", buffer, param, value1, value2, value3); }
-        Handles.MH_alBuffer3f.invokeExact(Handles.get().PFN_alBuffer3f, buffer, param, value1, value2, value3); }
+        Handles.MH_alBuffer3f.get().invokeExact(Handles.get().PFN_alBuffer3f, buffer, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alBuffer3f", e); }
     }
 
@@ -1119,7 +1128,7 @@ public final class AL {
     /// ```
     public static void alBufferfv(int buffer, int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alBufferfv", buffer, param, values); }
-        Handles.MH_alBufferfv.invokeExact(Handles.get().PFN_alBufferfv, buffer, param, values); }
+        Handles.MH_alBufferfv.get().invokeExact(Handles.get().PFN_alBufferfv, buffer, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alBufferfv", e); }
     }
 
@@ -1129,7 +1138,7 @@ public final class AL {
     /// ```
     public static void alBufferi(int buffer, int param, int value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alBufferi", buffer, param, value); }
-        Handles.MH_alBufferi.invokeExact(Handles.get().PFN_alBufferi, buffer, param, value); }
+        Handles.MH_alBufferi.get().invokeExact(Handles.get().PFN_alBufferi, buffer, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alBufferi", e); }
     }
 
@@ -1139,7 +1148,7 @@ public final class AL {
     /// ```
     public static void alBuffer3i(int buffer, int param, int value1, int value2, int value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alBuffer3i", buffer, param, value1, value2, value3); }
-        Handles.MH_alBuffer3i.invokeExact(Handles.get().PFN_alBuffer3i, buffer, param, value1, value2, value3); }
+        Handles.MH_alBuffer3i.get().invokeExact(Handles.get().PFN_alBuffer3i, buffer, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alBuffer3i", e); }
     }
 
@@ -1149,7 +1158,7 @@ public final class AL {
     /// ```
     public static void alBufferiv(int buffer, int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alBufferiv", buffer, param, values); }
-        Handles.MH_alBufferiv.invokeExact(Handles.get().PFN_alBufferiv, buffer, param, values); }
+        Handles.MH_alBufferiv.get().invokeExact(Handles.get().PFN_alBufferiv, buffer, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alBufferiv", e); }
     }
 
@@ -1159,7 +1168,7 @@ public final class AL {
     /// ```
     public static void alGetBufferf(int buffer, int param, @NonNull MemorySegment value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetBufferf", buffer, param, value); }
-        Handles.MH_alGetBufferf.invokeExact(Handles.get().PFN_alGetBufferf, buffer, param, value); }
+        Handles.MH_alGetBufferf.get().invokeExact(Handles.get().PFN_alGetBufferf, buffer, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alGetBufferf", e); }
     }
 
@@ -1169,7 +1178,7 @@ public final class AL {
     /// ```
     public static void alGetBuffer3f(int buffer, int param, @NonNull MemorySegment value1, @NonNull MemorySegment value2, @NonNull MemorySegment value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetBuffer3f", buffer, param, value1, value2, value3); }
-        Handles.MH_alGetBuffer3f.invokeExact(Handles.get().PFN_alGetBuffer3f, buffer, param, value1, value2, value3); }
+        Handles.MH_alGetBuffer3f.get().invokeExact(Handles.get().PFN_alGetBuffer3f, buffer, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3f", e); }
     }
 
@@ -1179,7 +1188,7 @@ public final class AL {
     /// ```
     public static void alGetBufferfv(int buffer, int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetBufferfv", buffer, param, values); }
-        Handles.MH_alGetBufferfv.invokeExact(Handles.get().PFN_alGetBufferfv, buffer, param, values); }
+        Handles.MH_alGetBufferfv.get().invokeExact(Handles.get().PFN_alGetBufferfv, buffer, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alGetBufferfv", e); }
     }
 
@@ -1189,7 +1198,7 @@ public final class AL {
     /// ```
     public static void alGetBufferi(int buffer, int param, @NonNull MemorySegment value) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetBufferi", buffer, param, value); }
-        Handles.MH_alGetBufferi.invokeExact(Handles.get().PFN_alGetBufferi, buffer, param, value); }
+        Handles.MH_alGetBufferi.get().invokeExact(Handles.get().PFN_alGetBufferi, buffer, param, value); }
         catch (Throwable e) { throw new RuntimeException("error in alGetBufferi", e); }
     }
 
@@ -1199,7 +1208,7 @@ public final class AL {
     /// ```
     public static void alGetBuffer3i(int buffer, int param, @NonNull MemorySegment value1, @NonNull MemorySegment value2, @NonNull MemorySegment value3) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetBuffer3i", buffer, param, value1, value2, value3); }
-        Handles.MH_alGetBuffer3i.invokeExact(Handles.get().PFN_alGetBuffer3i, buffer, param, value1, value2, value3); }
+        Handles.MH_alGetBuffer3i.get().invokeExact(Handles.get().PFN_alGetBuffer3i, buffer, param, value1, value2, value3); }
         catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3i", e); }
     }
 
@@ -1209,7 +1218,7 @@ public final class AL {
     /// ```
     public static void alGetBufferiv(int buffer, int param, @NonNull MemorySegment values) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alGetBufferiv", buffer, param, values); }
-        Handles.MH_alGetBufferiv.invokeExact(Handles.get().PFN_alGetBufferiv, buffer, param, values); }
+        Handles.MH_alGetBufferiv.get().invokeExact(Handles.get().PFN_alGetBufferiv, buffer, param, values); }
         catch (Throwable e) { throw new RuntimeException("error in alGetBufferiv", e); }
     }
 

@@ -31,19 +31,19 @@ public final class VkVideoEncodeH265FrameSizeKHR extends GroupType {
     /// The memory layout of `frameISize`.
     public static final MemoryLayout LAYOUT_frameISize = LAYOUT.select(PathElement.groupElement("frameISize"));
     /// The [VarHandle] of `frameISize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_frameISize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameISize"));
+    public static final Supplier<VarHandle> VH_frameISize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameISize")));
     /// The byte offset of `framePSize`.
     public static final long OFFSET_framePSize = LAYOUT.byteOffset(PathElement.groupElement("framePSize"));
     /// The memory layout of `framePSize`.
     public static final MemoryLayout LAYOUT_framePSize = LAYOUT.select(PathElement.groupElement("framePSize"));
     /// The [VarHandle] of `framePSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_framePSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("framePSize"));
+    public static final Supplier<VarHandle> VH_framePSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("framePSize")));
     /// The byte offset of `frameBSize`.
     public static final long OFFSET_frameBSize = LAYOUT.byteOffset(PathElement.groupElement("frameBSize"));
     /// The memory layout of `frameBSize`.
     public static final MemoryLayout LAYOUT_frameBSize = LAYOUT.select(PathElement.groupElement("frameBSize"));
     /// The [VarHandle] of `frameBSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_frameBSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameBSize"));
+    public static final Supplier<VarHandle> VH_frameBSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameBSize")));
 
     /// Creates `VkVideoEncodeH265FrameSizeKHR` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkVideoEncodeH265FrameSizeKHR extends GroupType {
     /// {@return `frameISize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int frameISize(MemorySegment segment, long index) { return (int) VH_frameISize.get(segment, 0L, index); }
+    public static int frameISize(MemorySegment segment, long index) { return (int) VH_frameISize.get().get(segment, 0L, index); }
     /// {@return `frameISize`}
     public int frameISize() { return frameISize(this.segment(), 0L); }
     /// Sets `frameISize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void frameISize(MemorySegment segment, long index, int value) { VH_frameISize.set(segment, 0L, index, value); }
+    public static void frameISize(MemorySegment segment, long index, int value) { VH_frameISize.get().set(segment, 0L, index, value); }
     /// Sets `frameISize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkVideoEncodeH265FrameSizeKHR extends GroupType {
     /// {@return `framePSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int framePSize(MemorySegment segment, long index) { return (int) VH_framePSize.get(segment, 0L, index); }
+    public static int framePSize(MemorySegment segment, long index) { return (int) VH_framePSize.get().get(segment, 0L, index); }
     /// {@return `framePSize`}
     public int framePSize() { return framePSize(this.segment(), 0L); }
     /// Sets `framePSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void framePSize(MemorySegment segment, long index, int value) { VH_framePSize.set(segment, 0L, index, value); }
+    public static void framePSize(MemorySegment segment, long index, int value) { VH_framePSize.get().set(segment, 0L, index, value); }
     /// Sets `framePSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkVideoEncodeH265FrameSizeKHR extends GroupType {
     /// {@return `frameBSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int frameBSize(MemorySegment segment, long index) { return (int) VH_frameBSize.get(segment, 0L, index); }
+    public static int frameBSize(MemorySegment segment, long index) { return (int) VH_frameBSize.get().get(segment, 0L, index); }
     /// {@return `frameBSize`}
     public int frameBSize() { return frameBSize(this.segment(), 0L); }
     /// Sets `frameBSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void frameBSize(MemorySegment segment, long index, int value) { VH_frameBSize.set(segment, 0L, index, value); }
+    public static void frameBSize(MemorySegment segment, long index, int value) { VH_frameBSize.get().set(segment, 0L, index, value); }
     /// Sets `frameBSize` with the given value.
     /// @param value the value
     /// @return `this`

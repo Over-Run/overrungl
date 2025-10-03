@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.gen.file
@@ -334,11 +342,11 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     sb.append(", long index$index")
                 }
                 sb.appendLine(")MemorySegment`.")
-                sb.append("""    public static final VarHandle VH_${member.pair.name} = LAYOUT.arrayElementVarHandle(PathElement.groupElement("${member.pair.name}")""")
+                sb.append("""    public static final Supplier<VarHandle> VH_${member.pair.name} = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("${member.pair.name}")""")
                 member.pair.dimensions.forEach { _ ->
                     sb.append(", PathElement.sequenceElement()")
                 }
-                sb.appendLine(");")
+                sb.appendLine("));")
             }
         }
         sb.appendLine()
@@ -438,7 +446,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", long index$index")
                     }
-                    sb.append(") { return (${member.pair.type.memoryLayout.carrier(null)}) VH_${member.pair.name}.get(segment, 0L, index")
+                    sb.append(") { return (${member.pair.type.memoryLayout.carrier(null)}) VH_${member.pair.name}.get().get(segment, 0L, index")
                     member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", index$index")
                     }
@@ -450,7 +458,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     if (member.pair.type !is DynamicValueType) {
                         append("(${member.pair.type.memoryLayout.carrier(null)}) ")
                     }
-                    append("VH_${member.pair.name}.get(segment, 0L, index)")
+                    append("VH_${member.pair.name}.get().get(segment, 0L, index)")
                 }))
                 sb.appendLine("; }")
             }
@@ -506,7 +514,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", long index$index")
                     }
-                    sb.append(", ${member.pair.type.memoryLayout.carrier(null)} value) { VH_${member.pair.name}.set(segment, 0L, index")
+                    sb.append(", ${member.pair.type.memoryLayout.carrier(null)} value) { VH_${member.pair.name}.get().set(segment, 0L, index")
                     member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", index$index")
                     }
@@ -515,7 +523,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
             } else {
                 sb.append("    public static void ${member.pair.name}(MemorySegment segment, long index, ${member.pair.type.javaType} value) {")
                 sb.appendLine(
-                    " VH_${member.pair.name}.set(segment, 0L, index, ${
+                    " VH_${member.pair.name}.get().set(segment, 0L, index, ${
                         member.pair.type.processor.processDowncall(
                             "value"
                         )
@@ -748,7 +756,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                 writeFunctionAsJavadocRef(sb, func)
                 sb.appendLine("].")
                 val functionDescriptor = functionDescriptor(func)
-                sb.appendLine("        public static final MethodHandle MH_$entrypoint = downcallHandle($functionDescriptor);")
+                sb.appendLine("        public static final Supplier<MethodHandle> MH_$entrypoint = StableValue.supplier(() -> downcallHandle($functionDescriptor));")
                 nativeImageDowncallDescriptors.add(functionDescriptor)
             }
         }
@@ -926,7 +934,7 @@ fun writeFunction(
                     append("(${func.returnType.memoryLayout.carrier(null)}) ")
                 }
             }
-            append("Handles.MH_${func.entrypoint}.${if (hasDynamicType) "invoke" else "invokeExact"}($handlesInstance.PFN_${func.entrypoint}")
+            append("Handles.MH_${func.entrypoint}.get().${if (hasDynamicType) "invoke" else "invokeExact"}($handlesInstance.PFN_${func.entrypoint}")
             if (func.requireAllocator) {
                 append(", __allocator")
             }

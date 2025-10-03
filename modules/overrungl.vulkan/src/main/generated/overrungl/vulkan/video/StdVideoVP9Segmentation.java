@@ -39,25 +39,25 @@ public final class StdVideoVP9Segmentation extends GroupType {
     /// The memory layout of `segmentation_tree_probs`.
     public static final MemoryLayout LAYOUT_segmentation_tree_probs = LAYOUT.select(PathElement.groupElement("segmentation_tree_probs"));
     /// The [VarHandle] of `segmentation_tree_probs` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_segmentation_tree_probs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("segmentation_tree_probs"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_segmentation_tree_probs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("segmentation_tree_probs"), PathElement.sequenceElement()));
     /// The byte offset of `segmentation_pred_prob`.
     public static final long OFFSET_segmentation_pred_prob = LAYOUT.byteOffset(PathElement.groupElement("segmentation_pred_prob"));
     /// The memory layout of `segmentation_pred_prob`.
     public static final MemoryLayout LAYOUT_segmentation_pred_prob = LAYOUT.select(PathElement.groupElement("segmentation_pred_prob"));
     /// The [VarHandle] of `segmentation_pred_prob` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_segmentation_pred_prob = LAYOUT.arrayElementVarHandle(PathElement.groupElement("segmentation_pred_prob"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_segmentation_pred_prob = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("segmentation_pred_prob"), PathElement.sequenceElement()));
     /// The byte offset of `FeatureEnabled`.
     public static final long OFFSET_FeatureEnabled = LAYOUT.byteOffset(PathElement.groupElement("FeatureEnabled"));
     /// The memory layout of `FeatureEnabled`.
     public static final MemoryLayout LAYOUT_FeatureEnabled = LAYOUT.select(PathElement.groupElement("FeatureEnabled"));
     /// The [VarHandle] of `FeatureEnabled` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_FeatureEnabled = LAYOUT.arrayElementVarHandle(PathElement.groupElement("FeatureEnabled"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_FeatureEnabled = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("FeatureEnabled"), PathElement.sequenceElement()));
     /// The byte offset of `FeatureData`.
     public static final long OFFSET_FeatureData = LAYOUT.byteOffset(PathElement.groupElement("FeatureData"));
     /// The memory layout of `FeatureData`.
     public static final MemoryLayout LAYOUT_FeatureData = LAYOUT.select(PathElement.groupElement("FeatureData"));
     /// The [VarHandle] of `FeatureData` of type `(MemorySegment base, long baseOffset, long index, long index0, long index1)MemorySegment`.
-    public static final VarHandle VH_FeatureData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("FeatureData"), PathElement.sequenceElement(), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_FeatureData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("FeatureData"), PathElement.sequenceElement(), PathElement.sequenceElement()));
 
     /// Creates `StdVideoVP9Segmentation` with the given segment.
     /// @param segment      the memory segment
@@ -133,7 +133,7 @@ public final class StdVideoVP9Segmentation extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte segmentation_tree_probs(MemorySegment segment, long index, long index0) { return (byte) VH_segmentation_tree_probs.get(segment, 0L, index, index0); }
+    public static byte segmentation_tree_probs(MemorySegment segment, long index, long index0) { return (byte) VH_segmentation_tree_probs.get().get(segment, 0L, index, index0); }
     /// {@return `segmentation_tree_probs`}
     public MemorySegment segmentation_tree_probs() { return segmentation_tree_probs(this.segment(), 0L); }
     /// {@return `segmentation_tree_probs`}
@@ -149,7 +149,7 @@ public final class StdVideoVP9Segmentation extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void segmentation_tree_probs(MemorySegment segment, long index, long index0, byte value) { VH_segmentation_tree_probs.set(segment, 0L, index, index0, value); }
+    public static void segmentation_tree_probs(MemorySegment segment, long index, long index0, byte value) { VH_segmentation_tree_probs.get().set(segment, 0L, index, index0, value); }
     /// Sets `segmentation_tree_probs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -168,7 +168,7 @@ public final class StdVideoVP9Segmentation extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte segmentation_pred_prob(MemorySegment segment, long index, long index0) { return (byte) VH_segmentation_pred_prob.get(segment, 0L, index, index0); }
+    public static byte segmentation_pred_prob(MemorySegment segment, long index, long index0) { return (byte) VH_segmentation_pred_prob.get().get(segment, 0L, index, index0); }
     /// {@return `segmentation_pred_prob`}
     public MemorySegment segmentation_pred_prob() { return segmentation_pred_prob(this.segment(), 0L); }
     /// {@return `segmentation_pred_prob`}
@@ -184,7 +184,7 @@ public final class StdVideoVP9Segmentation extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void segmentation_pred_prob(MemorySegment segment, long index, long index0, byte value) { VH_segmentation_pred_prob.set(segment, 0L, index, index0, value); }
+    public static void segmentation_pred_prob(MemorySegment segment, long index, long index0, byte value) { VH_segmentation_pred_prob.get().set(segment, 0L, index, index0, value); }
     /// Sets `segmentation_pred_prob` with the given value.
     /// @param value the value
     /// @return `this`
@@ -203,7 +203,7 @@ public final class StdVideoVP9Segmentation extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte FeatureEnabled(MemorySegment segment, long index, long index0) { return (byte) VH_FeatureEnabled.get(segment, 0L, index, index0); }
+    public static byte FeatureEnabled(MemorySegment segment, long index, long index0) { return (byte) VH_FeatureEnabled.get().get(segment, 0L, index, index0); }
     /// {@return `FeatureEnabled`}
     public MemorySegment FeatureEnabled() { return FeatureEnabled(this.segment(), 0L); }
     /// {@return `FeatureEnabled`}
@@ -219,7 +219,7 @@ public final class StdVideoVP9Segmentation extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void FeatureEnabled(MemorySegment segment, long index, long index0, byte value) { VH_FeatureEnabled.set(segment, 0L, index, index0, value); }
+    public static void FeatureEnabled(MemorySegment segment, long index, long index0, byte value) { VH_FeatureEnabled.get().set(segment, 0L, index, index0, value); }
     /// Sets `FeatureEnabled` with the given value.
     /// @param value the value
     /// @return `this`
@@ -239,7 +239,7 @@ public final class StdVideoVP9Segmentation extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
-    public static short FeatureData(MemorySegment segment, long index, long index0, long index1) { return (short) VH_FeatureData.get(segment, 0L, index, index0, index1); }
+    public static short FeatureData(MemorySegment segment, long index, long index0, long index1) { return (short) VH_FeatureData.get().get(segment, 0L, index, index0, index1); }
     /// {@return `FeatureData`}
     public MemorySegment FeatureData() { return FeatureData(this.segment(), 0L); }
     /// {@return `FeatureData`}
@@ -257,7 +257,7 @@ public final class StdVideoVP9Segmentation extends GroupType {
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
     /// @param value the value
-    public static void FeatureData(MemorySegment segment, long index, long index0, long index1, short value) { VH_FeatureData.set(segment, 0L, index, index0, index1, value); }
+    public static void FeatureData(MemorySegment segment, long index, long index0, long index1, short value) { VH_FeatureData.get().set(segment, 0L, index, index0, index1, value); }
     /// Sets `FeatureData` with the given value.
     /// @param value the value
     /// @return `this`

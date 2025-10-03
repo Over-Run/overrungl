@@ -43,55 +43,55 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `predictionMode`.
     public static final long OFFSET_predictionMode = LAYOUT.byteOffset(PathElement.groupElement("predictionMode"));
     /// The memory layout of `predictionMode`.
     public static final MemoryLayout LAYOUT_predictionMode = LAYOUT.select(PathElement.groupElement("predictionMode"));
     /// The [VarHandle] of `predictionMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_predictionMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("predictionMode"));
+    public static final Supplier<VarHandle> VH_predictionMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("predictionMode")));
     /// The byte offset of `rateControlGroup`.
     public static final long OFFSET_rateControlGroup = LAYOUT.byteOffset(PathElement.groupElement("rateControlGroup"));
     /// The memory layout of `rateControlGroup`.
     public static final MemoryLayout LAYOUT_rateControlGroup = LAYOUT.select(PathElement.groupElement("rateControlGroup"));
     /// The [VarHandle] of `rateControlGroup` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rateControlGroup = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rateControlGroup"));
+    public static final Supplier<VarHandle> VH_rateControlGroup = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rateControlGroup")));
     /// The byte offset of `constantQIndex`.
     public static final long OFFSET_constantQIndex = LAYOUT.byteOffset(PathElement.groupElement("constantQIndex"));
     /// The memory layout of `constantQIndex`.
     public static final MemoryLayout LAYOUT_constantQIndex = LAYOUT.select(PathElement.groupElement("constantQIndex"));
     /// The [VarHandle] of `constantQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_constantQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("constantQIndex"));
+    public static final Supplier<VarHandle> VH_constantQIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("constantQIndex")));
     /// The byte offset of `pStdPictureInfo`.
     public static final long OFFSET_pStdPictureInfo = LAYOUT.byteOffset(PathElement.groupElement("pStdPictureInfo"));
     /// The memory layout of `pStdPictureInfo`.
     public static final MemoryLayout LAYOUT_pStdPictureInfo = LAYOUT.select(PathElement.groupElement("pStdPictureInfo"));
     /// The [VarHandle] of `pStdPictureInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStdPictureInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdPictureInfo"));
+    public static final Supplier<VarHandle> VH_pStdPictureInfo = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdPictureInfo")));
     /// The byte offset of `referenceNameSlotIndices`.
     public static final long OFFSET_referenceNameSlotIndices = LAYOUT.byteOffset(PathElement.groupElement("referenceNameSlotIndices"));
     /// The memory layout of `referenceNameSlotIndices`.
     public static final MemoryLayout LAYOUT_referenceNameSlotIndices = LAYOUT.select(PathElement.groupElement("referenceNameSlotIndices"));
     /// The [VarHandle] of `referenceNameSlotIndices` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_referenceNameSlotIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("referenceNameSlotIndices"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_referenceNameSlotIndices = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("referenceNameSlotIndices"), PathElement.sequenceElement()));
     /// The byte offset of `primaryReferenceCdfOnly`.
     public static final long OFFSET_primaryReferenceCdfOnly = LAYOUT.byteOffset(PathElement.groupElement("primaryReferenceCdfOnly"));
     /// The memory layout of `primaryReferenceCdfOnly`.
     public static final MemoryLayout LAYOUT_primaryReferenceCdfOnly = LAYOUT.select(PathElement.groupElement("primaryReferenceCdfOnly"));
     /// The [VarHandle] of `primaryReferenceCdfOnly` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_primaryReferenceCdfOnly = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primaryReferenceCdfOnly"));
+    public static final Supplier<VarHandle> VH_primaryReferenceCdfOnly = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("primaryReferenceCdfOnly")));
     /// The byte offset of `generateObuExtensionHeader`.
     public static final long OFFSET_generateObuExtensionHeader = LAYOUT.byteOffset(PathElement.groupElement("generateObuExtensionHeader"));
     /// The memory layout of `generateObuExtensionHeader`.
     public static final MemoryLayout LAYOUT_generateObuExtensionHeader = LAYOUT.select(PathElement.groupElement("generateObuExtensionHeader"));
     /// The [VarHandle] of `generateObuExtensionHeader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_generateObuExtensionHeader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("generateObuExtensionHeader"));
+    public static final Supplier<VarHandle> VH_generateObuExtensionHeader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("generateObuExtensionHeader")));
 
     /// Creates `VkVideoEncodeAV1PictureInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -142,14 +142,14 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
     /// {@return `predictionMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int predictionMode(MemorySegment segment, long index) { return (int) VH_predictionMode.get(segment, 0L, index); }
+    public static int predictionMode(MemorySegment segment, long index) { return (int) VH_predictionMode.get().get(segment, 0L, index); }
     /// {@return `predictionMode`}
     public int predictionMode() { return predictionMode(this.segment(), 0L); }
     /// Sets `predictionMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void predictionMode(MemorySegment segment, long index, int value) { VH_predictionMode.set(segment, 0L, index, value); }
+    public static void predictionMode(MemorySegment segment, long index, int value) { VH_predictionMode.get().set(segment, 0L, index, value); }
     /// Sets `predictionMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
     /// {@return `rateControlGroup` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rateControlGroup(MemorySegment segment, long index) { return (int) VH_rateControlGroup.get(segment, 0L, index); }
+    public static int rateControlGroup(MemorySegment segment, long index) { return (int) VH_rateControlGroup.get().get(segment, 0L, index); }
     /// {@return `rateControlGroup`}
     public int rateControlGroup() { return rateControlGroup(this.segment(), 0L); }
     /// Sets `rateControlGroup` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rateControlGroup(MemorySegment segment, long index, int value) { VH_rateControlGroup.set(segment, 0L, index, value); }
+    public static void rateControlGroup(MemorySegment segment, long index, int value) { VH_rateControlGroup.get().set(segment, 0L, index, value); }
     /// Sets `rateControlGroup` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
     /// {@return `constantQIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int constantQIndex(MemorySegment segment, long index) { return (int) VH_constantQIndex.get(segment, 0L, index); }
+    public static int constantQIndex(MemorySegment segment, long index) { return (int) VH_constantQIndex.get().get(segment, 0L, index); }
     /// {@return `constantQIndex`}
     public int constantQIndex() { return constantQIndex(this.segment(), 0L); }
     /// Sets `constantQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void constantQIndex(MemorySegment segment, long index, int value) { VH_constantQIndex.set(segment, 0L, index, value); }
+    public static void constantQIndex(MemorySegment segment, long index, int value) { VH_constantQIndex.get().set(segment, 0L, index, value); }
     /// Sets `constantQIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
     /// {@return `pStdPictureInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStdPictureInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pStdPictureInfo.get(segment, 0L, index); }
+    public static MemorySegment pStdPictureInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pStdPictureInfo.get().get(segment, 0L, index); }
     /// {@return `pStdPictureInfo`}
     public MemorySegment pStdPictureInfo() { return pStdPictureInfo(this.segment(), 0L); }
     /// Sets `pStdPictureInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStdPictureInfo(MemorySegment segment, long index, MemorySegment value) { VH_pStdPictureInfo.set(segment, 0L, index, value); }
+    public static void pStdPictureInfo(MemorySegment segment, long index, MemorySegment value) { VH_pStdPictureInfo.get().set(segment, 0L, index, value); }
     /// Sets `pStdPictureInfo` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,7 +243,7 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int referenceNameSlotIndices(MemorySegment segment, long index, long index0) { return (int) VH_referenceNameSlotIndices.get(segment, 0L, index, index0); }
+    public static int referenceNameSlotIndices(MemorySegment segment, long index, long index0) { return (int) VH_referenceNameSlotIndices.get().get(segment, 0L, index, index0); }
     /// {@return `referenceNameSlotIndices`}
     public MemorySegment referenceNameSlotIndices() { return referenceNameSlotIndices(this.segment(), 0L); }
     /// {@return `referenceNameSlotIndices`}
@@ -259,7 +259,7 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void referenceNameSlotIndices(MemorySegment segment, long index, long index0, int value) { VH_referenceNameSlotIndices.set(segment, 0L, index, index0, value); }
+    public static void referenceNameSlotIndices(MemorySegment segment, long index, long index0, int value) { VH_referenceNameSlotIndices.get().set(segment, 0L, index, index0, value); }
     /// Sets `referenceNameSlotIndices` with the given value.
     /// @param value the value
     /// @return `this`
@@ -273,14 +273,14 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
     /// {@return `primaryReferenceCdfOnly` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int primaryReferenceCdfOnly(MemorySegment segment, long index) { return (int) VH_primaryReferenceCdfOnly.get(segment, 0L, index); }
+    public static int primaryReferenceCdfOnly(MemorySegment segment, long index) { return (int) VH_primaryReferenceCdfOnly.get().get(segment, 0L, index); }
     /// {@return `primaryReferenceCdfOnly`}
     public int primaryReferenceCdfOnly() { return primaryReferenceCdfOnly(this.segment(), 0L); }
     /// Sets `primaryReferenceCdfOnly` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void primaryReferenceCdfOnly(MemorySegment segment, long index, int value) { VH_primaryReferenceCdfOnly.set(segment, 0L, index, value); }
+    public static void primaryReferenceCdfOnly(MemorySegment segment, long index, int value) { VH_primaryReferenceCdfOnly.get().set(segment, 0L, index, value); }
     /// Sets `primaryReferenceCdfOnly` with the given value.
     /// @param value the value
     /// @return `this`
@@ -289,14 +289,14 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
     /// {@return `generateObuExtensionHeader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int generateObuExtensionHeader(MemorySegment segment, long index) { return (int) VH_generateObuExtensionHeader.get(segment, 0L, index); }
+    public static int generateObuExtensionHeader(MemorySegment segment, long index) { return (int) VH_generateObuExtensionHeader.get().get(segment, 0L, index); }
     /// {@return `generateObuExtensionHeader`}
     public int generateObuExtensionHeader() { return generateObuExtensionHeader(this.segment(), 0L); }
     /// Sets `generateObuExtensionHeader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void generateObuExtensionHeader(MemorySegment segment, long index, int value) { VH_generateObuExtensionHeader.set(segment, 0L, index, value); }
+    public static void generateObuExtensionHeader(MemorySegment segment, long index, int value) { VH_generateObuExtensionHeader.get().set(segment, 0L, index, value); }
     /// Sets `generateObuExtensionHeader` with the given value.
     /// @param value the value
     /// @return `this`

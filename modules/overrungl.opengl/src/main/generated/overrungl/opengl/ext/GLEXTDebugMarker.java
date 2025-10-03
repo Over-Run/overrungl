@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,9 +11,9 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLEXTDebugMarker {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glInsertEventMarkerEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glPushGroupMarkerEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glPopGroupMarkerEXT = downcallHandle(FunctionDescriptor.ofVoid());
+        public static final Supplier<MethodHandle> MH_glInsertEventMarkerEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glPushGroupMarkerEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glPopGroupMarkerEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
         public final MemorySegment PFN_glInsertEventMarkerEXT;
         public final MemorySegment PFN_glPushGroupMarkerEXT;
         public final MemorySegment PFN_glPopGroupMarkerEXT;
@@ -34,7 +35,7 @@ public final class GLEXTDebugMarker {
     public void InsertEventMarkerEXT(int length, @NonNull MemorySegment marker) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInsertEventMarkerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glInsertEventMarkerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInsertEventMarkerEXT", length, marker); }
-        Handles.MH_glInsertEventMarkerEXT.invokeExact(handles.PFN_glInsertEventMarkerEXT, length, marker); }
+        Handles.MH_glInsertEventMarkerEXT.get().invokeExact(handles.PFN_glInsertEventMarkerEXT, length, marker); }
         catch (Throwable e) { throw new RuntimeException("error in InsertEventMarkerEXT", e); }
     }
 
@@ -45,7 +46,7 @@ public final class GLEXTDebugMarker {
     public void PushGroupMarkerEXT(int length, @NonNull MemorySegment marker) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPushGroupMarkerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPushGroupMarkerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPushGroupMarkerEXT", length, marker); }
-        Handles.MH_glPushGroupMarkerEXT.invokeExact(handles.PFN_glPushGroupMarkerEXT, length, marker); }
+        Handles.MH_glPushGroupMarkerEXT.get().invokeExact(handles.PFN_glPushGroupMarkerEXT, length, marker); }
         catch (Throwable e) { throw new RuntimeException("error in PushGroupMarkerEXT", e); }
     }
 
@@ -56,7 +57,7 @@ public final class GLEXTDebugMarker {
     public void PopGroupMarkerEXT() {
         if (MemoryUtil.isNullPointer(handles.PFN_glPopGroupMarkerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPopGroupMarkerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPopGroupMarkerEXT"); }
-        Handles.MH_glPopGroupMarkerEXT.invokeExact(handles.PFN_glPopGroupMarkerEXT); }
+        Handles.MH_glPopGroupMarkerEXT.get().invokeExact(handles.PFN_glPopGroupMarkerEXT); }
         catch (Throwable e) { throw new RuntimeException("error in PopGroupMarkerEXT", e); }
     }
 

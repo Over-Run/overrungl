@@ -2,6 +2,7 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -18,7 +19,7 @@ public final class VKNVExternalMemoryCapabilities {
     public static final int VK_NV_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION = 1;
     public static final String VK_NV_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_NV_external_memory_capabilities";
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceExternalImageFormatPropertiesNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkGetPhysicalDeviceExternalImageFormatPropertiesNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -31,7 +32,7 @@ public final class VKNVExternalMemoryCapabilities {
     public static int vkGetPhysicalDeviceExternalImageFormatPropertiesNV(@NonNull VkPhysicalDevice physicalDevice, int format, int type, int tiling, int usage, int flags, int externalHandleType, @NonNull MemorySegment pExternalImageFormatProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalImageFormatPropertiesNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceExternalImageFormatPropertiesNV", physicalDevice, format, type, tiling, usage, flags, externalHandleType, pExternalImageFormatProperties); }
-        return (int) Handles.MH_vkGetPhysicalDeviceExternalImageFormatPropertiesNV.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV, physicalDevice.segment(), format, type, tiling, usage, flags, externalHandleType, pExternalImageFormatProperties); }
+        return (int) Handles.MH_vkGetPhysicalDeviceExternalImageFormatPropertiesNV.get().invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV, physicalDevice.segment(), format, type, tiling, usage, flags, externalHandleType, pExternalImageFormatProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceExternalImageFormatPropertiesNV", e); }
     }
 

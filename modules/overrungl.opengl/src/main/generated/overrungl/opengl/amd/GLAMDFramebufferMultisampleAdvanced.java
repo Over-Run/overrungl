@@ -2,6 +2,7 @@
 package overrungl.opengl.amd;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -16,8 +17,8 @@ public final class GLAMDFramebufferMultisampleAdvanced {
     public static final int GL_SUPPORTED_MULTISAMPLE_MODES_AMD = 0x91B7;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glRenderbufferStorageMultisampleAdvancedAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedRenderbufferStorageMultisampleAdvancedAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glRenderbufferStorageMultisampleAdvancedAMD = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedRenderbufferStorageMultisampleAdvancedAMD = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glRenderbufferStorageMultisampleAdvancedAMD;
         public final MemorySegment PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD;
         private Handles(GLLoadFunc func) {
@@ -37,7 +38,7 @@ public final class GLAMDFramebufferMultisampleAdvanced {
     public void RenderbufferStorageMultisampleAdvancedAMD(int target, int samples, int storageSamples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleAdvancedAMD)) throw new GLSymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleAdvancedAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRenderbufferStorageMultisampleAdvancedAMD", target, samples, storageSamples, internalformat, width, height); }
-        Handles.MH_glRenderbufferStorageMultisampleAdvancedAMD.invokeExact(handles.PFN_glRenderbufferStorageMultisampleAdvancedAMD, target, samples, storageSamples, internalformat, width, height); }
+        Handles.MH_glRenderbufferStorageMultisampleAdvancedAMD.get().invokeExact(handles.PFN_glRenderbufferStorageMultisampleAdvancedAMD, target, samples, storageSamples, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in RenderbufferStorageMultisampleAdvancedAMD", e); }
     }
 
@@ -48,7 +49,7 @@ public final class GLAMDFramebufferMultisampleAdvanced {
     public void NamedRenderbufferStorageMultisampleAdvancedAMD(int renderbuffer, int samples, int storageSamples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD)) throw new GLSymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageMultisampleAdvancedAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedRenderbufferStorageMultisampleAdvancedAMD", renderbuffer, samples, storageSamples, internalformat, width, height); }
-        Handles.MH_glNamedRenderbufferStorageMultisampleAdvancedAMD.invokeExact(handles.PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD, renderbuffer, samples, storageSamples, internalformat, width, height); }
+        Handles.MH_glNamedRenderbufferStorageMultisampleAdvancedAMD.get().invokeExact(handles.PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD, renderbuffer, samples, storageSamples, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorageMultisampleAdvancedAMD", e); }
     }
 

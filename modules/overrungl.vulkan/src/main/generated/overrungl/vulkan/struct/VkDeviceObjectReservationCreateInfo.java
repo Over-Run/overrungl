@@ -111,259 +111,259 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pipelineCacheCreateInfoCount`.
     public static final long OFFSET_pipelineCacheCreateInfoCount = LAYOUT.byteOffset(PathElement.groupElement("pipelineCacheCreateInfoCount"));
     /// The memory layout of `pipelineCacheCreateInfoCount`.
     public static final MemoryLayout LAYOUT_pipelineCacheCreateInfoCount = LAYOUT.select(PathElement.groupElement("pipelineCacheCreateInfoCount"));
     /// The [VarHandle] of `pipelineCacheCreateInfoCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineCacheCreateInfoCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheCreateInfoCount"));
+    public static final Supplier<VarHandle> VH_pipelineCacheCreateInfoCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheCreateInfoCount")));
     /// The byte offset of `pPipelineCacheCreateInfos`.
     public static final long OFFSET_pPipelineCacheCreateInfos = LAYOUT.byteOffset(PathElement.groupElement("pPipelineCacheCreateInfos"));
     /// The memory layout of `pPipelineCacheCreateInfos`.
     public static final MemoryLayout LAYOUT_pPipelineCacheCreateInfos = LAYOUT.select(PathElement.groupElement("pPipelineCacheCreateInfos"));
     /// The [VarHandle] of `pPipelineCacheCreateInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPipelineCacheCreateInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineCacheCreateInfos"));
+    public static final Supplier<VarHandle> VH_pPipelineCacheCreateInfos = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineCacheCreateInfos")));
     /// The byte offset of `pipelinePoolSizeCount`.
     public static final long OFFSET_pipelinePoolSizeCount = LAYOUT.byteOffset(PathElement.groupElement("pipelinePoolSizeCount"));
     /// The memory layout of `pipelinePoolSizeCount`.
     public static final MemoryLayout LAYOUT_pipelinePoolSizeCount = LAYOUT.select(PathElement.groupElement("pipelinePoolSizeCount"));
     /// The [VarHandle] of `pipelinePoolSizeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelinePoolSizeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelinePoolSizeCount"));
+    public static final Supplier<VarHandle> VH_pipelinePoolSizeCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelinePoolSizeCount")));
     /// The byte offset of `pPipelinePoolSizes`.
     public static final long OFFSET_pPipelinePoolSizes = LAYOUT.byteOffset(PathElement.groupElement("pPipelinePoolSizes"));
     /// The memory layout of `pPipelinePoolSizes`.
     public static final MemoryLayout LAYOUT_pPipelinePoolSizes = LAYOUT.select(PathElement.groupElement("pPipelinePoolSizes"));
     /// The [VarHandle] of `pPipelinePoolSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPipelinePoolSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelinePoolSizes"));
+    public static final Supplier<VarHandle> VH_pPipelinePoolSizes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelinePoolSizes")));
     /// The byte offset of `semaphoreRequestCount`.
     public static final long OFFSET_semaphoreRequestCount = LAYOUT.byteOffset(PathElement.groupElement("semaphoreRequestCount"));
     /// The memory layout of `semaphoreRequestCount`.
     public static final MemoryLayout LAYOUT_semaphoreRequestCount = LAYOUT.select(PathElement.groupElement("semaphoreRequestCount"));
     /// The [VarHandle] of `semaphoreRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_semaphoreRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphoreRequestCount"));
+    public static final Supplier<VarHandle> VH_semaphoreRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphoreRequestCount")));
     /// The byte offset of `commandBufferRequestCount`.
     public static final long OFFSET_commandBufferRequestCount = LAYOUT.byteOffset(PathElement.groupElement("commandBufferRequestCount"));
     /// The memory layout of `commandBufferRequestCount`.
     public static final MemoryLayout LAYOUT_commandBufferRequestCount = LAYOUT.select(PathElement.groupElement("commandBufferRequestCount"));
     /// The [VarHandle] of `commandBufferRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandBufferRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferRequestCount"));
+    public static final Supplier<VarHandle> VH_commandBufferRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferRequestCount")));
     /// The byte offset of `fenceRequestCount`.
     public static final long OFFSET_fenceRequestCount = LAYOUT.byteOffset(PathElement.groupElement("fenceRequestCount"));
     /// The memory layout of `fenceRequestCount`.
     public static final MemoryLayout LAYOUT_fenceRequestCount = LAYOUT.select(PathElement.groupElement("fenceRequestCount"));
     /// The [VarHandle] of `fenceRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fenceRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fenceRequestCount"));
+    public static final Supplier<VarHandle> VH_fenceRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fenceRequestCount")));
     /// The byte offset of `deviceMemoryRequestCount`.
     public static final long OFFSET_deviceMemoryRequestCount = LAYOUT.byteOffset(PathElement.groupElement("deviceMemoryRequestCount"));
     /// The memory layout of `deviceMemoryRequestCount`.
     public static final MemoryLayout LAYOUT_deviceMemoryRequestCount = LAYOUT.select(PathElement.groupElement("deviceMemoryRequestCount"));
     /// The [VarHandle] of `deviceMemoryRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceMemoryRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceMemoryRequestCount"));
+    public static final Supplier<VarHandle> VH_deviceMemoryRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceMemoryRequestCount")));
     /// The byte offset of `bufferRequestCount`.
     public static final long OFFSET_bufferRequestCount = LAYOUT.byteOffset(PathElement.groupElement("bufferRequestCount"));
     /// The memory layout of `bufferRequestCount`.
     public static final MemoryLayout LAYOUT_bufferRequestCount = LAYOUT.select(PathElement.groupElement("bufferRequestCount"));
     /// The [VarHandle] of `bufferRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferRequestCount"));
+    public static final Supplier<VarHandle> VH_bufferRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferRequestCount")));
     /// The byte offset of `imageRequestCount`.
     public static final long OFFSET_imageRequestCount = LAYOUT.byteOffset(PathElement.groupElement("imageRequestCount"));
     /// The memory layout of `imageRequestCount`.
     public static final MemoryLayout LAYOUT_imageRequestCount = LAYOUT.select(PathElement.groupElement("imageRequestCount"));
     /// The [VarHandle] of `imageRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageRequestCount"));
+    public static final Supplier<VarHandle> VH_imageRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageRequestCount")));
     /// The byte offset of `eventRequestCount`.
     public static final long OFFSET_eventRequestCount = LAYOUT.byteOffset(PathElement.groupElement("eventRequestCount"));
     /// The memory layout of `eventRequestCount`.
     public static final MemoryLayout LAYOUT_eventRequestCount = LAYOUT.select(PathElement.groupElement("eventRequestCount"));
     /// The [VarHandle] of `eventRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_eventRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("eventRequestCount"));
+    public static final Supplier<VarHandle> VH_eventRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("eventRequestCount")));
     /// The byte offset of `queryPoolRequestCount`.
     public static final long OFFSET_queryPoolRequestCount = LAYOUT.byteOffset(PathElement.groupElement("queryPoolRequestCount"));
     /// The memory layout of `queryPoolRequestCount`.
     public static final MemoryLayout LAYOUT_queryPoolRequestCount = LAYOUT.select(PathElement.groupElement("queryPoolRequestCount"));
     /// The [VarHandle] of `queryPoolRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_queryPoolRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queryPoolRequestCount"));
+    public static final Supplier<VarHandle> VH_queryPoolRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("queryPoolRequestCount")));
     /// The byte offset of `bufferViewRequestCount`.
     public static final long OFFSET_bufferViewRequestCount = LAYOUT.byteOffset(PathElement.groupElement("bufferViewRequestCount"));
     /// The memory layout of `bufferViewRequestCount`.
     public static final MemoryLayout LAYOUT_bufferViewRequestCount = LAYOUT.select(PathElement.groupElement("bufferViewRequestCount"));
     /// The [VarHandle] of `bufferViewRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferViewRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferViewRequestCount"));
+    public static final Supplier<VarHandle> VH_bufferViewRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferViewRequestCount")));
     /// The byte offset of `imageViewRequestCount`.
     public static final long OFFSET_imageViewRequestCount = LAYOUT.byteOffset(PathElement.groupElement("imageViewRequestCount"));
     /// The memory layout of `imageViewRequestCount`.
     public static final MemoryLayout LAYOUT_imageViewRequestCount = LAYOUT.select(PathElement.groupElement("imageViewRequestCount"));
     /// The [VarHandle] of `imageViewRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageViewRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageViewRequestCount"));
+    public static final Supplier<VarHandle> VH_imageViewRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageViewRequestCount")));
     /// The byte offset of `layeredImageViewRequestCount`.
     public static final long OFFSET_layeredImageViewRequestCount = LAYOUT.byteOffset(PathElement.groupElement("layeredImageViewRequestCount"));
     /// The memory layout of `layeredImageViewRequestCount`.
     public static final MemoryLayout LAYOUT_layeredImageViewRequestCount = LAYOUT.select(PathElement.groupElement("layeredImageViewRequestCount"));
     /// The [VarHandle] of `layeredImageViewRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_layeredImageViewRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layeredImageViewRequestCount"));
+    public static final Supplier<VarHandle> VH_layeredImageViewRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("layeredImageViewRequestCount")));
     /// The byte offset of `pipelineCacheRequestCount`.
     public static final long OFFSET_pipelineCacheRequestCount = LAYOUT.byteOffset(PathElement.groupElement("pipelineCacheRequestCount"));
     /// The memory layout of `pipelineCacheRequestCount`.
     public static final MemoryLayout LAYOUT_pipelineCacheRequestCount = LAYOUT.select(PathElement.groupElement("pipelineCacheRequestCount"));
     /// The [VarHandle] of `pipelineCacheRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineCacheRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheRequestCount"));
+    public static final Supplier<VarHandle> VH_pipelineCacheRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheRequestCount")));
     /// The byte offset of `pipelineLayoutRequestCount`.
     public static final long OFFSET_pipelineLayoutRequestCount = LAYOUT.byteOffset(PathElement.groupElement("pipelineLayoutRequestCount"));
     /// The memory layout of `pipelineLayoutRequestCount`.
     public static final MemoryLayout LAYOUT_pipelineLayoutRequestCount = LAYOUT.select(PathElement.groupElement("pipelineLayoutRequestCount"));
     /// The [VarHandle] of `pipelineLayoutRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineLayoutRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineLayoutRequestCount"));
+    public static final Supplier<VarHandle> VH_pipelineLayoutRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineLayoutRequestCount")));
     /// The byte offset of `renderPassRequestCount`.
     public static final long OFFSET_renderPassRequestCount = LAYOUT.byteOffset(PathElement.groupElement("renderPassRequestCount"));
     /// The memory layout of `renderPassRequestCount`.
     public static final MemoryLayout LAYOUT_renderPassRequestCount = LAYOUT.select(PathElement.groupElement("renderPassRequestCount"));
     /// The [VarHandle] of `renderPassRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_renderPassRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderPassRequestCount"));
+    public static final Supplier<VarHandle> VH_renderPassRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderPassRequestCount")));
     /// The byte offset of `graphicsPipelineRequestCount`.
     public static final long OFFSET_graphicsPipelineRequestCount = LAYOUT.byteOffset(PathElement.groupElement("graphicsPipelineRequestCount"));
     /// The memory layout of `graphicsPipelineRequestCount`.
     public static final MemoryLayout LAYOUT_graphicsPipelineRequestCount = LAYOUT.select(PathElement.groupElement("graphicsPipelineRequestCount"));
     /// The [VarHandle] of `graphicsPipelineRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_graphicsPipelineRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("graphicsPipelineRequestCount"));
+    public static final Supplier<VarHandle> VH_graphicsPipelineRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("graphicsPipelineRequestCount")));
     /// The byte offset of `computePipelineRequestCount`.
     public static final long OFFSET_computePipelineRequestCount = LAYOUT.byteOffset(PathElement.groupElement("computePipelineRequestCount"));
     /// The memory layout of `computePipelineRequestCount`.
     public static final MemoryLayout LAYOUT_computePipelineRequestCount = LAYOUT.select(PathElement.groupElement("computePipelineRequestCount"));
     /// The [VarHandle] of `computePipelineRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_computePipelineRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("computePipelineRequestCount"));
+    public static final Supplier<VarHandle> VH_computePipelineRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("computePipelineRequestCount")));
     /// The byte offset of `descriptorSetLayoutRequestCount`.
     public static final long OFFSET_descriptorSetLayoutRequestCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorSetLayoutRequestCount"));
     /// The memory layout of `descriptorSetLayoutRequestCount`.
     public static final MemoryLayout LAYOUT_descriptorSetLayoutRequestCount = LAYOUT.select(PathElement.groupElement("descriptorSetLayoutRequestCount"));
     /// The [VarHandle] of `descriptorSetLayoutRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorSetLayoutRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayoutRequestCount"));
+    public static final Supplier<VarHandle> VH_descriptorSetLayoutRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayoutRequestCount")));
     /// The byte offset of `samplerRequestCount`.
     public static final long OFFSET_samplerRequestCount = LAYOUT.byteOffset(PathElement.groupElement("samplerRequestCount"));
     /// The memory layout of `samplerRequestCount`.
     public static final MemoryLayout LAYOUT_samplerRequestCount = LAYOUT.select(PathElement.groupElement("samplerRequestCount"));
     /// The [VarHandle] of `samplerRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_samplerRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerRequestCount"));
+    public static final Supplier<VarHandle> VH_samplerRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerRequestCount")));
     /// The byte offset of `descriptorPoolRequestCount`.
     public static final long OFFSET_descriptorPoolRequestCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorPoolRequestCount"));
     /// The memory layout of `descriptorPoolRequestCount`.
     public static final MemoryLayout LAYOUT_descriptorPoolRequestCount = LAYOUT.select(PathElement.groupElement("descriptorPoolRequestCount"));
     /// The [VarHandle] of `descriptorPoolRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorPoolRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorPoolRequestCount"));
+    public static final Supplier<VarHandle> VH_descriptorPoolRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorPoolRequestCount")));
     /// The byte offset of `descriptorSetRequestCount`.
     public static final long OFFSET_descriptorSetRequestCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorSetRequestCount"));
     /// The memory layout of `descriptorSetRequestCount`.
     public static final MemoryLayout LAYOUT_descriptorSetRequestCount = LAYOUT.select(PathElement.groupElement("descriptorSetRequestCount"));
     /// The [VarHandle] of `descriptorSetRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorSetRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetRequestCount"));
+    public static final Supplier<VarHandle> VH_descriptorSetRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetRequestCount")));
     /// The byte offset of `framebufferRequestCount`.
     public static final long OFFSET_framebufferRequestCount = LAYOUT.byteOffset(PathElement.groupElement("framebufferRequestCount"));
     /// The memory layout of `framebufferRequestCount`.
     public static final MemoryLayout LAYOUT_framebufferRequestCount = LAYOUT.select(PathElement.groupElement("framebufferRequestCount"));
     /// The [VarHandle] of `framebufferRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_framebufferRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("framebufferRequestCount"));
+    public static final Supplier<VarHandle> VH_framebufferRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("framebufferRequestCount")));
     /// The byte offset of `commandPoolRequestCount`.
     public static final long OFFSET_commandPoolRequestCount = LAYOUT.byteOffset(PathElement.groupElement("commandPoolRequestCount"));
     /// The memory layout of `commandPoolRequestCount`.
     public static final MemoryLayout LAYOUT_commandPoolRequestCount = LAYOUT.select(PathElement.groupElement("commandPoolRequestCount"));
     /// The [VarHandle] of `commandPoolRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandPoolRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolRequestCount"));
+    public static final Supplier<VarHandle> VH_commandPoolRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolRequestCount")));
     /// The byte offset of `samplerYcbcrConversionRequestCount`.
     public static final long OFFSET_samplerYcbcrConversionRequestCount = LAYOUT.byteOffset(PathElement.groupElement("samplerYcbcrConversionRequestCount"));
     /// The memory layout of `samplerYcbcrConversionRequestCount`.
     public static final MemoryLayout LAYOUT_samplerYcbcrConversionRequestCount = LAYOUT.select(PathElement.groupElement("samplerYcbcrConversionRequestCount"));
     /// The [VarHandle] of `samplerYcbcrConversionRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_samplerYcbcrConversionRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerYcbcrConversionRequestCount"));
+    public static final Supplier<VarHandle> VH_samplerYcbcrConversionRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerYcbcrConversionRequestCount")));
     /// The byte offset of `surfaceRequestCount`.
     public static final long OFFSET_surfaceRequestCount = LAYOUT.byteOffset(PathElement.groupElement("surfaceRequestCount"));
     /// The memory layout of `surfaceRequestCount`.
     public static final MemoryLayout LAYOUT_surfaceRequestCount = LAYOUT.select(PathElement.groupElement("surfaceRequestCount"));
     /// The [VarHandle] of `surfaceRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_surfaceRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("surfaceRequestCount"));
+    public static final Supplier<VarHandle> VH_surfaceRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("surfaceRequestCount")));
     /// The byte offset of `swapchainRequestCount`.
     public static final long OFFSET_swapchainRequestCount = LAYOUT.byteOffset(PathElement.groupElement("swapchainRequestCount"));
     /// The memory layout of `swapchainRequestCount`.
     public static final MemoryLayout LAYOUT_swapchainRequestCount = LAYOUT.select(PathElement.groupElement("swapchainRequestCount"));
     /// The [VarHandle] of `swapchainRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_swapchainRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchainRequestCount"));
+    public static final Supplier<VarHandle> VH_swapchainRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchainRequestCount")));
     /// The byte offset of `displayModeRequestCount`.
     public static final long OFFSET_displayModeRequestCount = LAYOUT.byteOffset(PathElement.groupElement("displayModeRequestCount"));
     /// The memory layout of `displayModeRequestCount`.
     public static final MemoryLayout LAYOUT_displayModeRequestCount = LAYOUT.select(PathElement.groupElement("displayModeRequestCount"));
     /// The [VarHandle] of `displayModeRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_displayModeRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayModeRequestCount"));
+    public static final Supplier<VarHandle> VH_displayModeRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayModeRequestCount")));
     /// The byte offset of `subpassDescriptionRequestCount`.
     public static final long OFFSET_subpassDescriptionRequestCount = LAYOUT.byteOffset(PathElement.groupElement("subpassDescriptionRequestCount"));
     /// The memory layout of `subpassDescriptionRequestCount`.
     public static final MemoryLayout LAYOUT_subpassDescriptionRequestCount = LAYOUT.select(PathElement.groupElement("subpassDescriptionRequestCount"));
     /// The [VarHandle] of `subpassDescriptionRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subpassDescriptionRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpassDescriptionRequestCount"));
+    public static final Supplier<VarHandle> VH_subpassDescriptionRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpassDescriptionRequestCount")));
     /// The byte offset of `attachmentDescriptionRequestCount`.
     public static final long OFFSET_attachmentDescriptionRequestCount = LAYOUT.byteOffset(PathElement.groupElement("attachmentDescriptionRequestCount"));
     /// The memory layout of `attachmentDescriptionRequestCount`.
     public static final MemoryLayout LAYOUT_attachmentDescriptionRequestCount = LAYOUT.select(PathElement.groupElement("attachmentDescriptionRequestCount"));
     /// The [VarHandle] of `attachmentDescriptionRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_attachmentDescriptionRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentDescriptionRequestCount"));
+    public static final Supplier<VarHandle> VH_attachmentDescriptionRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentDescriptionRequestCount")));
     /// The byte offset of `descriptorSetLayoutBindingRequestCount`.
     public static final long OFFSET_descriptorSetLayoutBindingRequestCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorSetLayoutBindingRequestCount"));
     /// The memory layout of `descriptorSetLayoutBindingRequestCount`.
     public static final MemoryLayout LAYOUT_descriptorSetLayoutBindingRequestCount = LAYOUT.select(PathElement.groupElement("descriptorSetLayoutBindingRequestCount"));
     /// The [VarHandle] of `descriptorSetLayoutBindingRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorSetLayoutBindingRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayoutBindingRequestCount"));
+    public static final Supplier<VarHandle> VH_descriptorSetLayoutBindingRequestCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayoutBindingRequestCount")));
     /// The byte offset of `descriptorSetLayoutBindingLimit`.
     public static final long OFFSET_descriptorSetLayoutBindingLimit = LAYOUT.byteOffset(PathElement.groupElement("descriptorSetLayoutBindingLimit"));
     /// The memory layout of `descriptorSetLayoutBindingLimit`.
     public static final MemoryLayout LAYOUT_descriptorSetLayoutBindingLimit = LAYOUT.select(PathElement.groupElement("descriptorSetLayoutBindingLimit"));
     /// The [VarHandle] of `descriptorSetLayoutBindingLimit` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorSetLayoutBindingLimit = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayoutBindingLimit"));
+    public static final Supplier<VarHandle> VH_descriptorSetLayoutBindingLimit = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayoutBindingLimit")));
     /// The byte offset of `maxImageViewMipLevels`.
     public static final long OFFSET_maxImageViewMipLevels = LAYOUT.byteOffset(PathElement.groupElement("maxImageViewMipLevels"));
     /// The memory layout of `maxImageViewMipLevels`.
     public static final MemoryLayout LAYOUT_maxImageViewMipLevels = LAYOUT.select(PathElement.groupElement("maxImageViewMipLevels"));
     /// The [VarHandle] of `maxImageViewMipLevels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxImageViewMipLevels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImageViewMipLevels"));
+    public static final Supplier<VarHandle> VH_maxImageViewMipLevels = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImageViewMipLevels")));
     /// The byte offset of `maxImageViewArrayLayers`.
     public static final long OFFSET_maxImageViewArrayLayers = LAYOUT.byteOffset(PathElement.groupElement("maxImageViewArrayLayers"));
     /// The memory layout of `maxImageViewArrayLayers`.
     public static final MemoryLayout LAYOUT_maxImageViewArrayLayers = LAYOUT.select(PathElement.groupElement("maxImageViewArrayLayers"));
     /// The [VarHandle] of `maxImageViewArrayLayers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxImageViewArrayLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImageViewArrayLayers"));
+    public static final Supplier<VarHandle> VH_maxImageViewArrayLayers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImageViewArrayLayers")));
     /// The byte offset of `maxLayeredImageViewMipLevels`.
     public static final long OFFSET_maxLayeredImageViewMipLevels = LAYOUT.byteOffset(PathElement.groupElement("maxLayeredImageViewMipLevels"));
     /// The memory layout of `maxLayeredImageViewMipLevels`.
     public static final MemoryLayout LAYOUT_maxLayeredImageViewMipLevels = LAYOUT.select(PathElement.groupElement("maxLayeredImageViewMipLevels"));
     /// The [VarHandle] of `maxLayeredImageViewMipLevels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxLayeredImageViewMipLevels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLayeredImageViewMipLevels"));
+    public static final Supplier<VarHandle> VH_maxLayeredImageViewMipLevels = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLayeredImageViewMipLevels")));
     /// The byte offset of `maxOcclusionQueriesPerPool`.
     public static final long OFFSET_maxOcclusionQueriesPerPool = LAYOUT.byteOffset(PathElement.groupElement("maxOcclusionQueriesPerPool"));
     /// The memory layout of `maxOcclusionQueriesPerPool`.
     public static final MemoryLayout LAYOUT_maxOcclusionQueriesPerPool = LAYOUT.select(PathElement.groupElement("maxOcclusionQueriesPerPool"));
     /// The [VarHandle] of `maxOcclusionQueriesPerPool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxOcclusionQueriesPerPool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxOcclusionQueriesPerPool"));
+    public static final Supplier<VarHandle> VH_maxOcclusionQueriesPerPool = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxOcclusionQueriesPerPool")));
     /// The byte offset of `maxPipelineStatisticsQueriesPerPool`.
     public static final long OFFSET_maxPipelineStatisticsQueriesPerPool = LAYOUT.byteOffset(PathElement.groupElement("maxPipelineStatisticsQueriesPerPool"));
     /// The memory layout of `maxPipelineStatisticsQueriesPerPool`.
     public static final MemoryLayout LAYOUT_maxPipelineStatisticsQueriesPerPool = LAYOUT.select(PathElement.groupElement("maxPipelineStatisticsQueriesPerPool"));
     /// The [VarHandle] of `maxPipelineStatisticsQueriesPerPool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPipelineStatisticsQueriesPerPool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPipelineStatisticsQueriesPerPool"));
+    public static final Supplier<VarHandle> VH_maxPipelineStatisticsQueriesPerPool = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPipelineStatisticsQueriesPerPool")));
     /// The byte offset of `maxTimestampQueriesPerPool`.
     public static final long OFFSET_maxTimestampQueriesPerPool = LAYOUT.byteOffset(PathElement.groupElement("maxTimestampQueriesPerPool"));
     /// The memory layout of `maxTimestampQueriesPerPool`.
     public static final MemoryLayout LAYOUT_maxTimestampQueriesPerPool = LAYOUT.select(PathElement.groupElement("maxTimestampQueriesPerPool"));
     /// The [VarHandle] of `maxTimestampQueriesPerPool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTimestampQueriesPerPool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTimestampQueriesPerPool"));
+    public static final Supplier<VarHandle> VH_maxTimestampQueriesPerPool = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTimestampQueriesPerPool")));
     /// The byte offset of `maxImmutableSamplersPerDescriptorSetLayout`.
     public static final long OFFSET_maxImmutableSamplersPerDescriptorSetLayout = LAYOUT.byteOffset(PathElement.groupElement("maxImmutableSamplersPerDescriptorSetLayout"));
     /// The memory layout of `maxImmutableSamplersPerDescriptorSetLayout`.
     public static final MemoryLayout LAYOUT_maxImmutableSamplersPerDescriptorSetLayout = LAYOUT.select(PathElement.groupElement("maxImmutableSamplersPerDescriptorSetLayout"));
     /// The [VarHandle] of `maxImmutableSamplersPerDescriptorSetLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxImmutableSamplersPerDescriptorSetLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImmutableSamplersPerDescriptorSetLayout"));
+    public static final Supplier<VarHandle> VH_maxImmutableSamplersPerDescriptorSetLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImmutableSamplersPerDescriptorSetLayout")));
 
     /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -414,14 +414,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -430,14 +430,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -446,14 +446,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `pipelineCacheCreateInfoCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineCacheCreateInfoCount(MemorySegment segment, long index) { return (int) VH_pipelineCacheCreateInfoCount.get(segment, 0L, index); }
+    public static int pipelineCacheCreateInfoCount(MemorySegment segment, long index) { return (int) VH_pipelineCacheCreateInfoCount.get().get(segment, 0L, index); }
     /// {@return `pipelineCacheCreateInfoCount`}
     public int pipelineCacheCreateInfoCount() { return pipelineCacheCreateInfoCount(this.segment(), 0L); }
     /// Sets `pipelineCacheCreateInfoCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineCacheCreateInfoCount(MemorySegment segment, long index, int value) { VH_pipelineCacheCreateInfoCount.set(segment, 0L, index, value); }
+    public static void pipelineCacheCreateInfoCount(MemorySegment segment, long index, int value) { VH_pipelineCacheCreateInfoCount.get().set(segment, 0L, index, value); }
     /// Sets `pipelineCacheCreateInfoCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -462,14 +462,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `pPipelineCacheCreateInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pPipelineCacheCreateInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineCacheCreateInfos.get(segment, 0L, index); }
+    public static MemorySegment pPipelineCacheCreateInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineCacheCreateInfos.get().get(segment, 0L, index); }
     /// {@return `pPipelineCacheCreateInfos`}
     public MemorySegment pPipelineCacheCreateInfos() { return pPipelineCacheCreateInfos(this.segment(), 0L); }
     /// Sets `pPipelineCacheCreateInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pPipelineCacheCreateInfos(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineCacheCreateInfos.set(segment, 0L, index, value); }
+    public static void pPipelineCacheCreateInfos(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineCacheCreateInfos.get().set(segment, 0L, index, value); }
     /// Sets `pPipelineCacheCreateInfos` with the given value.
     /// @param value the value
     /// @return `this`
@@ -478,14 +478,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `pipelinePoolSizeCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelinePoolSizeCount(MemorySegment segment, long index) { return (int) VH_pipelinePoolSizeCount.get(segment, 0L, index); }
+    public static int pipelinePoolSizeCount(MemorySegment segment, long index) { return (int) VH_pipelinePoolSizeCount.get().get(segment, 0L, index); }
     /// {@return `pipelinePoolSizeCount`}
     public int pipelinePoolSizeCount() { return pipelinePoolSizeCount(this.segment(), 0L); }
     /// Sets `pipelinePoolSizeCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelinePoolSizeCount(MemorySegment segment, long index, int value) { VH_pipelinePoolSizeCount.set(segment, 0L, index, value); }
+    public static void pipelinePoolSizeCount(MemorySegment segment, long index, int value) { VH_pipelinePoolSizeCount.get().set(segment, 0L, index, value); }
     /// Sets `pipelinePoolSizeCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -494,14 +494,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `pPipelinePoolSizes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pPipelinePoolSizes(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelinePoolSizes.get(segment, 0L, index); }
+    public static MemorySegment pPipelinePoolSizes(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelinePoolSizes.get().get(segment, 0L, index); }
     /// {@return `pPipelinePoolSizes`}
     public MemorySegment pPipelinePoolSizes() { return pPipelinePoolSizes(this.segment(), 0L); }
     /// Sets `pPipelinePoolSizes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pPipelinePoolSizes(MemorySegment segment, long index, MemorySegment value) { VH_pPipelinePoolSizes.set(segment, 0L, index, value); }
+    public static void pPipelinePoolSizes(MemorySegment segment, long index, MemorySegment value) { VH_pPipelinePoolSizes.get().set(segment, 0L, index, value); }
     /// Sets `pPipelinePoolSizes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -510,14 +510,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `semaphoreRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int semaphoreRequestCount(MemorySegment segment, long index) { return (int) VH_semaphoreRequestCount.get(segment, 0L, index); }
+    public static int semaphoreRequestCount(MemorySegment segment, long index) { return (int) VH_semaphoreRequestCount.get().get(segment, 0L, index); }
     /// {@return `semaphoreRequestCount`}
     public int semaphoreRequestCount() { return semaphoreRequestCount(this.segment(), 0L); }
     /// Sets `semaphoreRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void semaphoreRequestCount(MemorySegment segment, long index, int value) { VH_semaphoreRequestCount.set(segment, 0L, index, value); }
+    public static void semaphoreRequestCount(MemorySegment segment, long index, int value) { VH_semaphoreRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `semaphoreRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -526,14 +526,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `commandBufferRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int commandBufferRequestCount(MemorySegment segment, long index) { return (int) VH_commandBufferRequestCount.get(segment, 0L, index); }
+    public static int commandBufferRequestCount(MemorySegment segment, long index) { return (int) VH_commandBufferRequestCount.get().get(segment, 0L, index); }
     /// {@return `commandBufferRequestCount`}
     public int commandBufferRequestCount() { return commandBufferRequestCount(this.segment(), 0L); }
     /// Sets `commandBufferRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandBufferRequestCount(MemorySegment segment, long index, int value) { VH_commandBufferRequestCount.set(segment, 0L, index, value); }
+    public static void commandBufferRequestCount(MemorySegment segment, long index, int value) { VH_commandBufferRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `commandBufferRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -542,14 +542,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `fenceRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fenceRequestCount(MemorySegment segment, long index) { return (int) VH_fenceRequestCount.get(segment, 0L, index); }
+    public static int fenceRequestCount(MemorySegment segment, long index) { return (int) VH_fenceRequestCount.get().get(segment, 0L, index); }
     /// {@return `fenceRequestCount`}
     public int fenceRequestCount() { return fenceRequestCount(this.segment(), 0L); }
     /// Sets `fenceRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fenceRequestCount(MemorySegment segment, long index, int value) { VH_fenceRequestCount.set(segment, 0L, index, value); }
+    public static void fenceRequestCount(MemorySegment segment, long index, int value) { VH_fenceRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `fenceRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -558,14 +558,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `deviceMemoryRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceMemoryRequestCount(MemorySegment segment, long index) { return (int) VH_deviceMemoryRequestCount.get(segment, 0L, index); }
+    public static int deviceMemoryRequestCount(MemorySegment segment, long index) { return (int) VH_deviceMemoryRequestCount.get().get(segment, 0L, index); }
     /// {@return `deviceMemoryRequestCount`}
     public int deviceMemoryRequestCount() { return deviceMemoryRequestCount(this.segment(), 0L); }
     /// Sets `deviceMemoryRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceMemoryRequestCount(MemorySegment segment, long index, int value) { VH_deviceMemoryRequestCount.set(segment, 0L, index, value); }
+    public static void deviceMemoryRequestCount(MemorySegment segment, long index, int value) { VH_deviceMemoryRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `deviceMemoryRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -574,14 +574,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `bufferRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferRequestCount(MemorySegment segment, long index) { return (int) VH_bufferRequestCount.get(segment, 0L, index); }
+    public static int bufferRequestCount(MemorySegment segment, long index) { return (int) VH_bufferRequestCount.get().get(segment, 0L, index); }
     /// {@return `bufferRequestCount`}
     public int bufferRequestCount() { return bufferRequestCount(this.segment(), 0L); }
     /// Sets `bufferRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferRequestCount(MemorySegment segment, long index, int value) { VH_bufferRequestCount.set(segment, 0L, index, value); }
+    public static void bufferRequestCount(MemorySegment segment, long index, int value) { VH_bufferRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `bufferRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -590,14 +590,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `imageRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageRequestCount(MemorySegment segment, long index) { return (int) VH_imageRequestCount.get(segment, 0L, index); }
+    public static int imageRequestCount(MemorySegment segment, long index) { return (int) VH_imageRequestCount.get().get(segment, 0L, index); }
     /// {@return `imageRequestCount`}
     public int imageRequestCount() { return imageRequestCount(this.segment(), 0L); }
     /// Sets `imageRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageRequestCount(MemorySegment segment, long index, int value) { VH_imageRequestCount.set(segment, 0L, index, value); }
+    public static void imageRequestCount(MemorySegment segment, long index, int value) { VH_imageRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `imageRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -606,14 +606,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `eventRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int eventRequestCount(MemorySegment segment, long index) { return (int) VH_eventRequestCount.get(segment, 0L, index); }
+    public static int eventRequestCount(MemorySegment segment, long index) { return (int) VH_eventRequestCount.get().get(segment, 0L, index); }
     /// {@return `eventRequestCount`}
     public int eventRequestCount() { return eventRequestCount(this.segment(), 0L); }
     /// Sets `eventRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void eventRequestCount(MemorySegment segment, long index, int value) { VH_eventRequestCount.set(segment, 0L, index, value); }
+    public static void eventRequestCount(MemorySegment segment, long index, int value) { VH_eventRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `eventRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -622,14 +622,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `queryPoolRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int queryPoolRequestCount(MemorySegment segment, long index) { return (int) VH_queryPoolRequestCount.get(segment, 0L, index); }
+    public static int queryPoolRequestCount(MemorySegment segment, long index) { return (int) VH_queryPoolRequestCount.get().get(segment, 0L, index); }
     /// {@return `queryPoolRequestCount`}
     public int queryPoolRequestCount() { return queryPoolRequestCount(this.segment(), 0L); }
     /// Sets `queryPoolRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void queryPoolRequestCount(MemorySegment segment, long index, int value) { VH_queryPoolRequestCount.set(segment, 0L, index, value); }
+    public static void queryPoolRequestCount(MemorySegment segment, long index, int value) { VH_queryPoolRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `queryPoolRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -638,14 +638,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `bufferViewRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferViewRequestCount(MemorySegment segment, long index) { return (int) VH_bufferViewRequestCount.get(segment, 0L, index); }
+    public static int bufferViewRequestCount(MemorySegment segment, long index) { return (int) VH_bufferViewRequestCount.get().get(segment, 0L, index); }
     /// {@return `bufferViewRequestCount`}
     public int bufferViewRequestCount() { return bufferViewRequestCount(this.segment(), 0L); }
     /// Sets `bufferViewRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferViewRequestCount(MemorySegment segment, long index, int value) { VH_bufferViewRequestCount.set(segment, 0L, index, value); }
+    public static void bufferViewRequestCount(MemorySegment segment, long index, int value) { VH_bufferViewRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `bufferViewRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -654,14 +654,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `imageViewRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageViewRequestCount(MemorySegment segment, long index) { return (int) VH_imageViewRequestCount.get(segment, 0L, index); }
+    public static int imageViewRequestCount(MemorySegment segment, long index) { return (int) VH_imageViewRequestCount.get().get(segment, 0L, index); }
     /// {@return `imageViewRequestCount`}
     public int imageViewRequestCount() { return imageViewRequestCount(this.segment(), 0L); }
     /// Sets `imageViewRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageViewRequestCount(MemorySegment segment, long index, int value) { VH_imageViewRequestCount.set(segment, 0L, index, value); }
+    public static void imageViewRequestCount(MemorySegment segment, long index, int value) { VH_imageViewRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `imageViewRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -670,14 +670,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `layeredImageViewRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int layeredImageViewRequestCount(MemorySegment segment, long index) { return (int) VH_layeredImageViewRequestCount.get(segment, 0L, index); }
+    public static int layeredImageViewRequestCount(MemorySegment segment, long index) { return (int) VH_layeredImageViewRequestCount.get().get(segment, 0L, index); }
     /// {@return `layeredImageViewRequestCount`}
     public int layeredImageViewRequestCount() { return layeredImageViewRequestCount(this.segment(), 0L); }
     /// Sets `layeredImageViewRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void layeredImageViewRequestCount(MemorySegment segment, long index, int value) { VH_layeredImageViewRequestCount.set(segment, 0L, index, value); }
+    public static void layeredImageViewRequestCount(MemorySegment segment, long index, int value) { VH_layeredImageViewRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `layeredImageViewRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -686,14 +686,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `pipelineCacheRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineCacheRequestCount(MemorySegment segment, long index) { return (int) VH_pipelineCacheRequestCount.get(segment, 0L, index); }
+    public static int pipelineCacheRequestCount(MemorySegment segment, long index) { return (int) VH_pipelineCacheRequestCount.get().get(segment, 0L, index); }
     /// {@return `pipelineCacheRequestCount`}
     public int pipelineCacheRequestCount() { return pipelineCacheRequestCount(this.segment(), 0L); }
     /// Sets `pipelineCacheRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineCacheRequestCount(MemorySegment segment, long index, int value) { VH_pipelineCacheRequestCount.set(segment, 0L, index, value); }
+    public static void pipelineCacheRequestCount(MemorySegment segment, long index, int value) { VH_pipelineCacheRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `pipelineCacheRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -702,14 +702,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `pipelineLayoutRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineLayoutRequestCount(MemorySegment segment, long index) { return (int) VH_pipelineLayoutRequestCount.get(segment, 0L, index); }
+    public static int pipelineLayoutRequestCount(MemorySegment segment, long index) { return (int) VH_pipelineLayoutRequestCount.get().get(segment, 0L, index); }
     /// {@return `pipelineLayoutRequestCount`}
     public int pipelineLayoutRequestCount() { return pipelineLayoutRequestCount(this.segment(), 0L); }
     /// Sets `pipelineLayoutRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineLayoutRequestCount(MemorySegment segment, long index, int value) { VH_pipelineLayoutRequestCount.set(segment, 0L, index, value); }
+    public static void pipelineLayoutRequestCount(MemorySegment segment, long index, int value) { VH_pipelineLayoutRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `pipelineLayoutRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -718,14 +718,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `renderPassRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int renderPassRequestCount(MemorySegment segment, long index) { return (int) VH_renderPassRequestCount.get(segment, 0L, index); }
+    public static int renderPassRequestCount(MemorySegment segment, long index) { return (int) VH_renderPassRequestCount.get().get(segment, 0L, index); }
     /// {@return `renderPassRequestCount`}
     public int renderPassRequestCount() { return renderPassRequestCount(this.segment(), 0L); }
     /// Sets `renderPassRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void renderPassRequestCount(MemorySegment segment, long index, int value) { VH_renderPassRequestCount.set(segment, 0L, index, value); }
+    public static void renderPassRequestCount(MemorySegment segment, long index, int value) { VH_renderPassRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `renderPassRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -734,14 +734,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `graphicsPipelineRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int graphicsPipelineRequestCount(MemorySegment segment, long index) { return (int) VH_graphicsPipelineRequestCount.get(segment, 0L, index); }
+    public static int graphicsPipelineRequestCount(MemorySegment segment, long index) { return (int) VH_graphicsPipelineRequestCount.get().get(segment, 0L, index); }
     /// {@return `graphicsPipelineRequestCount`}
     public int graphicsPipelineRequestCount() { return graphicsPipelineRequestCount(this.segment(), 0L); }
     /// Sets `graphicsPipelineRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void graphicsPipelineRequestCount(MemorySegment segment, long index, int value) { VH_graphicsPipelineRequestCount.set(segment, 0L, index, value); }
+    public static void graphicsPipelineRequestCount(MemorySegment segment, long index, int value) { VH_graphicsPipelineRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `graphicsPipelineRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -750,14 +750,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `computePipelineRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int computePipelineRequestCount(MemorySegment segment, long index) { return (int) VH_computePipelineRequestCount.get(segment, 0L, index); }
+    public static int computePipelineRequestCount(MemorySegment segment, long index) { return (int) VH_computePipelineRequestCount.get().get(segment, 0L, index); }
     /// {@return `computePipelineRequestCount`}
     public int computePipelineRequestCount() { return computePipelineRequestCount(this.segment(), 0L); }
     /// Sets `computePipelineRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void computePipelineRequestCount(MemorySegment segment, long index, int value) { VH_computePipelineRequestCount.set(segment, 0L, index, value); }
+    public static void computePipelineRequestCount(MemorySegment segment, long index, int value) { VH_computePipelineRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `computePipelineRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -766,14 +766,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `descriptorSetLayoutRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorSetLayoutRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutRequestCount.get(segment, 0L, index); }
+    public static int descriptorSetLayoutRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutRequestCount.get().get(segment, 0L, index); }
     /// {@return `descriptorSetLayoutRequestCount`}
     public int descriptorSetLayoutRequestCount() { return descriptorSetLayoutRequestCount(this.segment(), 0L); }
     /// Sets `descriptorSetLayoutRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorSetLayoutRequestCount(MemorySegment segment, long index, int value) { VH_descriptorSetLayoutRequestCount.set(segment, 0L, index, value); }
+    public static void descriptorSetLayoutRequestCount(MemorySegment segment, long index, int value) { VH_descriptorSetLayoutRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `descriptorSetLayoutRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -782,14 +782,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `samplerRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int samplerRequestCount(MemorySegment segment, long index) { return (int) VH_samplerRequestCount.get(segment, 0L, index); }
+    public static int samplerRequestCount(MemorySegment segment, long index) { return (int) VH_samplerRequestCount.get().get(segment, 0L, index); }
     /// {@return `samplerRequestCount`}
     public int samplerRequestCount() { return samplerRequestCount(this.segment(), 0L); }
     /// Sets `samplerRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void samplerRequestCount(MemorySegment segment, long index, int value) { VH_samplerRequestCount.set(segment, 0L, index, value); }
+    public static void samplerRequestCount(MemorySegment segment, long index, int value) { VH_samplerRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `samplerRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -798,14 +798,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `descriptorPoolRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorPoolRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorPoolRequestCount.get(segment, 0L, index); }
+    public static int descriptorPoolRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorPoolRequestCount.get().get(segment, 0L, index); }
     /// {@return `descriptorPoolRequestCount`}
     public int descriptorPoolRequestCount() { return descriptorPoolRequestCount(this.segment(), 0L); }
     /// Sets `descriptorPoolRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorPoolRequestCount(MemorySegment segment, long index, int value) { VH_descriptorPoolRequestCount.set(segment, 0L, index, value); }
+    public static void descriptorPoolRequestCount(MemorySegment segment, long index, int value) { VH_descriptorPoolRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `descriptorPoolRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -814,14 +814,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `descriptorSetRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorSetRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetRequestCount.get(segment, 0L, index); }
+    public static int descriptorSetRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetRequestCount.get().get(segment, 0L, index); }
     /// {@return `descriptorSetRequestCount`}
     public int descriptorSetRequestCount() { return descriptorSetRequestCount(this.segment(), 0L); }
     /// Sets `descriptorSetRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorSetRequestCount(MemorySegment segment, long index, int value) { VH_descriptorSetRequestCount.set(segment, 0L, index, value); }
+    public static void descriptorSetRequestCount(MemorySegment segment, long index, int value) { VH_descriptorSetRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `descriptorSetRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -830,14 +830,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `framebufferRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int framebufferRequestCount(MemorySegment segment, long index) { return (int) VH_framebufferRequestCount.get(segment, 0L, index); }
+    public static int framebufferRequestCount(MemorySegment segment, long index) { return (int) VH_framebufferRequestCount.get().get(segment, 0L, index); }
     /// {@return `framebufferRequestCount`}
     public int framebufferRequestCount() { return framebufferRequestCount(this.segment(), 0L); }
     /// Sets `framebufferRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void framebufferRequestCount(MemorySegment segment, long index, int value) { VH_framebufferRequestCount.set(segment, 0L, index, value); }
+    public static void framebufferRequestCount(MemorySegment segment, long index, int value) { VH_framebufferRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `framebufferRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -846,14 +846,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `commandPoolRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int commandPoolRequestCount(MemorySegment segment, long index) { return (int) VH_commandPoolRequestCount.get(segment, 0L, index); }
+    public static int commandPoolRequestCount(MemorySegment segment, long index) { return (int) VH_commandPoolRequestCount.get().get(segment, 0L, index); }
     /// {@return `commandPoolRequestCount`}
     public int commandPoolRequestCount() { return commandPoolRequestCount(this.segment(), 0L); }
     /// Sets `commandPoolRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandPoolRequestCount(MemorySegment segment, long index, int value) { VH_commandPoolRequestCount.set(segment, 0L, index, value); }
+    public static void commandPoolRequestCount(MemorySegment segment, long index, int value) { VH_commandPoolRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `commandPoolRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -862,14 +862,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `samplerYcbcrConversionRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int samplerYcbcrConversionRequestCount(MemorySegment segment, long index) { return (int) VH_samplerYcbcrConversionRequestCount.get(segment, 0L, index); }
+    public static int samplerYcbcrConversionRequestCount(MemorySegment segment, long index) { return (int) VH_samplerYcbcrConversionRequestCount.get().get(segment, 0L, index); }
     /// {@return `samplerYcbcrConversionRequestCount`}
     public int samplerYcbcrConversionRequestCount() { return samplerYcbcrConversionRequestCount(this.segment(), 0L); }
     /// Sets `samplerYcbcrConversionRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void samplerYcbcrConversionRequestCount(MemorySegment segment, long index, int value) { VH_samplerYcbcrConversionRequestCount.set(segment, 0L, index, value); }
+    public static void samplerYcbcrConversionRequestCount(MemorySegment segment, long index, int value) { VH_samplerYcbcrConversionRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `samplerYcbcrConversionRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -878,14 +878,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `surfaceRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int surfaceRequestCount(MemorySegment segment, long index) { return (int) VH_surfaceRequestCount.get(segment, 0L, index); }
+    public static int surfaceRequestCount(MemorySegment segment, long index) { return (int) VH_surfaceRequestCount.get().get(segment, 0L, index); }
     /// {@return `surfaceRequestCount`}
     public int surfaceRequestCount() { return surfaceRequestCount(this.segment(), 0L); }
     /// Sets `surfaceRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void surfaceRequestCount(MemorySegment segment, long index, int value) { VH_surfaceRequestCount.set(segment, 0L, index, value); }
+    public static void surfaceRequestCount(MemorySegment segment, long index, int value) { VH_surfaceRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `surfaceRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -894,14 +894,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `swapchainRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int swapchainRequestCount(MemorySegment segment, long index) { return (int) VH_swapchainRequestCount.get(segment, 0L, index); }
+    public static int swapchainRequestCount(MemorySegment segment, long index) { return (int) VH_swapchainRequestCount.get().get(segment, 0L, index); }
     /// {@return `swapchainRequestCount`}
     public int swapchainRequestCount() { return swapchainRequestCount(this.segment(), 0L); }
     /// Sets `swapchainRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void swapchainRequestCount(MemorySegment segment, long index, int value) { VH_swapchainRequestCount.set(segment, 0L, index, value); }
+    public static void swapchainRequestCount(MemorySegment segment, long index, int value) { VH_swapchainRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `swapchainRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -910,14 +910,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `displayModeRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int displayModeRequestCount(MemorySegment segment, long index) { return (int) VH_displayModeRequestCount.get(segment, 0L, index); }
+    public static int displayModeRequestCount(MemorySegment segment, long index) { return (int) VH_displayModeRequestCount.get().get(segment, 0L, index); }
     /// {@return `displayModeRequestCount`}
     public int displayModeRequestCount() { return displayModeRequestCount(this.segment(), 0L); }
     /// Sets `displayModeRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void displayModeRequestCount(MemorySegment segment, long index, int value) { VH_displayModeRequestCount.set(segment, 0L, index, value); }
+    public static void displayModeRequestCount(MemorySegment segment, long index, int value) { VH_displayModeRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `displayModeRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -926,14 +926,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `subpassDescriptionRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int subpassDescriptionRequestCount(MemorySegment segment, long index) { return (int) VH_subpassDescriptionRequestCount.get(segment, 0L, index); }
+    public static int subpassDescriptionRequestCount(MemorySegment segment, long index) { return (int) VH_subpassDescriptionRequestCount.get().get(segment, 0L, index); }
     /// {@return `subpassDescriptionRequestCount`}
     public int subpassDescriptionRequestCount() { return subpassDescriptionRequestCount(this.segment(), 0L); }
     /// Sets `subpassDescriptionRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subpassDescriptionRequestCount(MemorySegment segment, long index, int value) { VH_subpassDescriptionRequestCount.set(segment, 0L, index, value); }
+    public static void subpassDescriptionRequestCount(MemorySegment segment, long index, int value) { VH_subpassDescriptionRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `subpassDescriptionRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -942,14 +942,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `attachmentDescriptionRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int attachmentDescriptionRequestCount(MemorySegment segment, long index) { return (int) VH_attachmentDescriptionRequestCount.get(segment, 0L, index); }
+    public static int attachmentDescriptionRequestCount(MemorySegment segment, long index) { return (int) VH_attachmentDescriptionRequestCount.get().get(segment, 0L, index); }
     /// {@return `attachmentDescriptionRequestCount`}
     public int attachmentDescriptionRequestCount() { return attachmentDescriptionRequestCount(this.segment(), 0L); }
     /// Sets `attachmentDescriptionRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void attachmentDescriptionRequestCount(MemorySegment segment, long index, int value) { VH_attachmentDescriptionRequestCount.set(segment, 0L, index, value); }
+    public static void attachmentDescriptionRequestCount(MemorySegment segment, long index, int value) { VH_attachmentDescriptionRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `attachmentDescriptionRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -958,14 +958,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `descriptorSetLayoutBindingRequestCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorSetLayoutBindingRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutBindingRequestCount.get(segment, 0L, index); }
+    public static int descriptorSetLayoutBindingRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutBindingRequestCount.get().get(segment, 0L, index); }
     /// {@return `descriptorSetLayoutBindingRequestCount`}
     public int descriptorSetLayoutBindingRequestCount() { return descriptorSetLayoutBindingRequestCount(this.segment(), 0L); }
     /// Sets `descriptorSetLayoutBindingRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorSetLayoutBindingRequestCount(MemorySegment segment, long index, int value) { VH_descriptorSetLayoutBindingRequestCount.set(segment, 0L, index, value); }
+    public static void descriptorSetLayoutBindingRequestCount(MemorySegment segment, long index, int value) { VH_descriptorSetLayoutBindingRequestCount.get().set(segment, 0L, index, value); }
     /// Sets `descriptorSetLayoutBindingRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -974,14 +974,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `descriptorSetLayoutBindingLimit` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorSetLayoutBindingLimit(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutBindingLimit.get(segment, 0L, index); }
+    public static int descriptorSetLayoutBindingLimit(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutBindingLimit.get().get(segment, 0L, index); }
     /// {@return `descriptorSetLayoutBindingLimit`}
     public int descriptorSetLayoutBindingLimit() { return descriptorSetLayoutBindingLimit(this.segment(), 0L); }
     /// Sets `descriptorSetLayoutBindingLimit` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorSetLayoutBindingLimit(MemorySegment segment, long index, int value) { VH_descriptorSetLayoutBindingLimit.set(segment, 0L, index, value); }
+    public static void descriptorSetLayoutBindingLimit(MemorySegment segment, long index, int value) { VH_descriptorSetLayoutBindingLimit.get().set(segment, 0L, index, value); }
     /// Sets `descriptorSetLayoutBindingLimit` with the given value.
     /// @param value the value
     /// @return `this`
@@ -990,14 +990,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `maxImageViewMipLevels` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxImageViewMipLevels(MemorySegment segment, long index) { return (int) VH_maxImageViewMipLevels.get(segment, 0L, index); }
+    public static int maxImageViewMipLevels(MemorySegment segment, long index) { return (int) VH_maxImageViewMipLevels.get().get(segment, 0L, index); }
     /// {@return `maxImageViewMipLevels`}
     public int maxImageViewMipLevels() { return maxImageViewMipLevels(this.segment(), 0L); }
     /// Sets `maxImageViewMipLevels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxImageViewMipLevels(MemorySegment segment, long index, int value) { VH_maxImageViewMipLevels.set(segment, 0L, index, value); }
+    public static void maxImageViewMipLevels(MemorySegment segment, long index, int value) { VH_maxImageViewMipLevels.get().set(segment, 0L, index, value); }
     /// Sets `maxImageViewMipLevels` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1006,14 +1006,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `maxImageViewArrayLayers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxImageViewArrayLayers(MemorySegment segment, long index) { return (int) VH_maxImageViewArrayLayers.get(segment, 0L, index); }
+    public static int maxImageViewArrayLayers(MemorySegment segment, long index) { return (int) VH_maxImageViewArrayLayers.get().get(segment, 0L, index); }
     /// {@return `maxImageViewArrayLayers`}
     public int maxImageViewArrayLayers() { return maxImageViewArrayLayers(this.segment(), 0L); }
     /// Sets `maxImageViewArrayLayers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxImageViewArrayLayers(MemorySegment segment, long index, int value) { VH_maxImageViewArrayLayers.set(segment, 0L, index, value); }
+    public static void maxImageViewArrayLayers(MemorySegment segment, long index, int value) { VH_maxImageViewArrayLayers.get().set(segment, 0L, index, value); }
     /// Sets `maxImageViewArrayLayers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1022,14 +1022,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `maxLayeredImageViewMipLevels` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxLayeredImageViewMipLevels(MemorySegment segment, long index) { return (int) VH_maxLayeredImageViewMipLevels.get(segment, 0L, index); }
+    public static int maxLayeredImageViewMipLevels(MemorySegment segment, long index) { return (int) VH_maxLayeredImageViewMipLevels.get().get(segment, 0L, index); }
     /// {@return `maxLayeredImageViewMipLevels`}
     public int maxLayeredImageViewMipLevels() { return maxLayeredImageViewMipLevels(this.segment(), 0L); }
     /// Sets `maxLayeredImageViewMipLevels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxLayeredImageViewMipLevels(MemorySegment segment, long index, int value) { VH_maxLayeredImageViewMipLevels.set(segment, 0L, index, value); }
+    public static void maxLayeredImageViewMipLevels(MemorySegment segment, long index, int value) { VH_maxLayeredImageViewMipLevels.get().set(segment, 0L, index, value); }
     /// Sets `maxLayeredImageViewMipLevels` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1038,14 +1038,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `maxOcclusionQueriesPerPool` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxOcclusionQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxOcclusionQueriesPerPool.get(segment, 0L, index); }
+    public static int maxOcclusionQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxOcclusionQueriesPerPool.get().get(segment, 0L, index); }
     /// {@return `maxOcclusionQueriesPerPool`}
     public int maxOcclusionQueriesPerPool() { return maxOcclusionQueriesPerPool(this.segment(), 0L); }
     /// Sets `maxOcclusionQueriesPerPool` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxOcclusionQueriesPerPool(MemorySegment segment, long index, int value) { VH_maxOcclusionQueriesPerPool.set(segment, 0L, index, value); }
+    public static void maxOcclusionQueriesPerPool(MemorySegment segment, long index, int value) { VH_maxOcclusionQueriesPerPool.get().set(segment, 0L, index, value); }
     /// Sets `maxOcclusionQueriesPerPool` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1054,14 +1054,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `maxPipelineStatisticsQueriesPerPool` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxPipelineStatisticsQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxPipelineStatisticsQueriesPerPool.get(segment, 0L, index); }
+    public static int maxPipelineStatisticsQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxPipelineStatisticsQueriesPerPool.get().get(segment, 0L, index); }
     /// {@return `maxPipelineStatisticsQueriesPerPool`}
     public int maxPipelineStatisticsQueriesPerPool() { return maxPipelineStatisticsQueriesPerPool(this.segment(), 0L); }
     /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxPipelineStatisticsQueriesPerPool(MemorySegment segment, long index, int value) { VH_maxPipelineStatisticsQueriesPerPool.set(segment, 0L, index, value); }
+    public static void maxPipelineStatisticsQueriesPerPool(MemorySegment segment, long index, int value) { VH_maxPipelineStatisticsQueriesPerPool.get().set(segment, 0L, index, value); }
     /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1070,14 +1070,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `maxTimestampQueriesPerPool` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTimestampQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxTimestampQueriesPerPool.get(segment, 0L, index); }
+    public static int maxTimestampQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxTimestampQueriesPerPool.get().get(segment, 0L, index); }
     /// {@return `maxTimestampQueriesPerPool`}
     public int maxTimestampQueriesPerPool() { return maxTimestampQueriesPerPool(this.segment(), 0L); }
     /// Sets `maxTimestampQueriesPerPool` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTimestampQueriesPerPool(MemorySegment segment, long index, int value) { VH_maxTimestampQueriesPerPool.set(segment, 0L, index, value); }
+    public static void maxTimestampQueriesPerPool(MemorySegment segment, long index, int value) { VH_maxTimestampQueriesPerPool.get().set(segment, 0L, index, value); }
     /// Sets `maxTimestampQueriesPerPool` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1086,14 +1086,14 @@ public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// {@return `maxImmutableSamplersPerDescriptorSetLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment, long index) { return (int) VH_maxImmutableSamplersPerDescriptorSetLayout.get(segment, 0L, index); }
+    public static int maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment, long index) { return (int) VH_maxImmutableSamplersPerDescriptorSetLayout.get().get(segment, 0L, index); }
     /// {@return `maxImmutableSamplersPerDescriptorSetLayout`}
     public int maxImmutableSamplersPerDescriptorSetLayout() { return maxImmutableSamplersPerDescriptorSetLayout(this.segment(), 0L); }
     /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment, long index, int value) { VH_maxImmutableSamplersPerDescriptorSetLayout.set(segment, 0L, index, value); }
+    public static void maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment, long index, int value) { VH_maxImmutableSamplersPerDescriptorSetLayout.get().set(segment, 0L, index, value); }
     /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value.
     /// @param value the value
     /// @return `this`

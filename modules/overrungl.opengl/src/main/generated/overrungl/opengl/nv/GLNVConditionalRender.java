@@ -2,6 +2,7 @@
 package overrungl.opengl.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -14,8 +15,8 @@ public final class GLNVConditionalRender {
     public static final int GL_QUERY_BY_REGION_NO_WAIT_NV = 0x8E16;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBeginConditionalRenderNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glEndConditionalRenderNV = downcallHandle(FunctionDescriptor.ofVoid());
+        public static final Supplier<MethodHandle> MH_glBeginConditionalRenderNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glEndConditionalRenderNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
         public final MemorySegment PFN_glBeginConditionalRenderNV;
         public final MemorySegment PFN_glEndConditionalRenderNV;
         private Handles(GLLoadFunc func) {
@@ -35,7 +36,7 @@ public final class GLNVConditionalRender {
     public void BeginConditionalRenderNV(int id, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginConditionalRenderNV)) throw new GLSymbolNotFoundError("Symbol not found: glBeginConditionalRenderNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBeginConditionalRenderNV", id, mode); }
-        Handles.MH_glBeginConditionalRenderNV.invokeExact(handles.PFN_glBeginConditionalRenderNV, id, mode); }
+        Handles.MH_glBeginConditionalRenderNV.get().invokeExact(handles.PFN_glBeginConditionalRenderNV, id, mode); }
         catch (Throwable e) { throw new RuntimeException("error in BeginConditionalRenderNV", e); }
     }
 
@@ -46,7 +47,7 @@ public final class GLNVConditionalRender {
     public void EndConditionalRenderNV() {
         if (MemoryUtil.isNullPointer(handles.PFN_glEndConditionalRenderNV)) throw new GLSymbolNotFoundError("Symbol not found: glEndConditionalRenderNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEndConditionalRenderNV"); }
-        Handles.MH_glEndConditionalRenderNV.invokeExact(handles.PFN_glEndConditionalRenderNV); }
+        Handles.MH_glEndConditionalRenderNV.get().invokeExact(handles.PFN_glEndConditionalRenderNV); }
         catch (Throwable e) { throw new RuntimeException("error in EndConditionalRenderNV", e); }
     }
 

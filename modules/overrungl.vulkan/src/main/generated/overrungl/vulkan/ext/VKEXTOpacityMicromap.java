@@ -2,6 +2,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -56,20 +57,20 @@ public final class VKEXTOpacityMicromap {
     public static final int VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_BIT_EXT = 0x00000100;
     public static final int VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_EXT = 0x00000100;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateMicromapEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyMicromapEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBuildMicromapsEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkBuildMicromapsEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCopyMicromapEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCopyMicromapToMemoryEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCopyMemoryToMicromapEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkWriteMicromapsPropertiesEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, CanonicalTypes.SIZE_T));
-        public static final MethodHandle MH_vkCmdCopyMicromapEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdCopyMicromapToMemoryEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdCopyMemoryToMicromapEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdWriteMicromapsPropertiesEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkGetDeviceMicromapCompatibilityEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetMicromapBuildSizesEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkCreateMicromapEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkDestroyMicromapEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdBuildMicromapsEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkBuildMicromapsEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCopyMicromapEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCopyMicromapToMemoryEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCopyMemoryToMicromapEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkWriteMicromapsPropertiesEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, CanonicalTypes.SIZE_T)));
+        public static final Supplier<MethodHandle> MH_vkCmdCopyMicromapEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdCopyMicromapToMemoryEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdCopyMemoryToMicromapEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdWriteMicromapsPropertiesEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_vkGetDeviceMicromapCompatibilityEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetMicromapBuildSizesEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -82,7 +83,7 @@ public final class VKEXTOpacityMicromap {
     public static int vkCreateMicromapEXT(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pMicromap) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateMicromapEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateMicromapEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateMicromapEXT", device, pCreateInfo, pAllocator, pMicromap); }
-        return (int) Handles.MH_vkCreateMicromapEXT.invokeExact(device.capabilities().PFN_vkCreateMicromapEXT, device.segment(), pCreateInfo, pAllocator, pMicromap); }
+        return (int) Handles.MH_vkCreateMicromapEXT.get().invokeExact(device.capabilities().PFN_vkCreateMicromapEXT, device.segment(), pCreateInfo, pAllocator, pMicromap); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateMicromapEXT", e); }
     }
 
@@ -93,7 +94,7 @@ public final class VKEXTOpacityMicromap {
     public static void vkDestroyMicromapEXT(@NonNull VkDevice device, long micromap, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyMicromapEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyMicromapEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyMicromapEXT", device, micromap, pAllocator); }
-        Handles.MH_vkDestroyMicromapEXT.invokeExact(device.capabilities().PFN_vkDestroyMicromapEXT, device.segment(), micromap, pAllocator); }
+        Handles.MH_vkDestroyMicromapEXT.get().invokeExact(device.capabilities().PFN_vkDestroyMicromapEXT, device.segment(), micromap, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyMicromapEXT", e); }
     }
 
@@ -104,7 +105,7 @@ public final class VKEXTOpacityMicromap {
     public static void vkCmdBuildMicromapsEXT(@NonNull VkCommandBuffer commandBuffer, int infoCount, @NonNull MemorySegment pInfos) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildMicromapsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBuildMicromapsEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBuildMicromapsEXT", commandBuffer, infoCount, pInfos); }
-        Handles.MH_vkCmdBuildMicromapsEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildMicromapsEXT, commandBuffer.segment(), infoCount, pInfos); }
+        Handles.MH_vkCmdBuildMicromapsEXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildMicromapsEXT, commandBuffer.segment(), infoCount, pInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBuildMicromapsEXT", e); }
     }
 
@@ -115,7 +116,7 @@ public final class VKEXTOpacityMicromap {
     public static int vkBuildMicromapsEXT(@NonNull VkDevice device, long deferredOperation, int infoCount, @NonNull MemorySegment pInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBuildMicromapsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkBuildMicromapsEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkBuildMicromapsEXT", device, deferredOperation, infoCount, pInfos); }
-        return (int) Handles.MH_vkBuildMicromapsEXT.invokeExact(device.capabilities().PFN_vkBuildMicromapsEXT, device.segment(), deferredOperation, infoCount, pInfos); }
+        return (int) Handles.MH_vkBuildMicromapsEXT.get().invokeExact(device.capabilities().PFN_vkBuildMicromapsEXT, device.segment(), deferredOperation, infoCount, pInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkBuildMicromapsEXT", e); }
     }
 
@@ -126,7 +127,7 @@ public final class VKEXTOpacityMicromap {
     public static int vkCopyMicromapEXT(@NonNull VkDevice device, long deferredOperation, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyMicromapEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCopyMicromapEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCopyMicromapEXT", device, deferredOperation, pInfo); }
-        return (int) Handles.MH_vkCopyMicromapEXT.invokeExact(device.capabilities().PFN_vkCopyMicromapEXT, device.segment(), deferredOperation, pInfo); }
+        return (int) Handles.MH_vkCopyMicromapEXT.get().invokeExact(device.capabilities().PFN_vkCopyMicromapEXT, device.segment(), deferredOperation, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCopyMicromapEXT", e); }
     }
 
@@ -137,7 +138,7 @@ public final class VKEXTOpacityMicromap {
     public static int vkCopyMicromapToMemoryEXT(@NonNull VkDevice device, long deferredOperation, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyMicromapToMemoryEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCopyMicromapToMemoryEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCopyMicromapToMemoryEXT", device, deferredOperation, pInfo); }
-        return (int) Handles.MH_vkCopyMicromapToMemoryEXT.invokeExact(device.capabilities().PFN_vkCopyMicromapToMemoryEXT, device.segment(), deferredOperation, pInfo); }
+        return (int) Handles.MH_vkCopyMicromapToMemoryEXT.get().invokeExact(device.capabilities().PFN_vkCopyMicromapToMemoryEXT, device.segment(), deferredOperation, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCopyMicromapToMemoryEXT", e); }
     }
 
@@ -148,7 +149,7 @@ public final class VKEXTOpacityMicromap {
     public static int vkCopyMemoryToMicromapEXT(@NonNull VkDevice device, long deferredOperation, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyMemoryToMicromapEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCopyMemoryToMicromapEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCopyMemoryToMicromapEXT", device, deferredOperation, pInfo); }
-        return (int) Handles.MH_vkCopyMemoryToMicromapEXT.invokeExact(device.capabilities().PFN_vkCopyMemoryToMicromapEXT, device.segment(), deferredOperation, pInfo); }
+        return (int) Handles.MH_vkCopyMemoryToMicromapEXT.get().invokeExact(device.capabilities().PFN_vkCopyMemoryToMicromapEXT, device.segment(), deferredOperation, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCopyMemoryToMicromapEXT", e); }
     }
 
@@ -159,7 +160,7 @@ public final class VKEXTOpacityMicromap {
     public static int vkWriteMicromapsPropertiesEXT(@NonNull VkDevice device, int micromapCount, @NonNull MemorySegment pMicromaps, int queryType, long dataSize, @NonNull MemorySegment pData, long stride) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkWriteMicromapsPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkWriteMicromapsPropertiesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkWriteMicromapsPropertiesEXT", device, micromapCount, pMicromaps, queryType, dataSize, pData, stride); }
-        return (int) Handles.MH_vkWriteMicromapsPropertiesEXT.invoke(device.capabilities().PFN_vkWriteMicromapsPropertiesEXT, device.segment(), micromapCount, pMicromaps, queryType, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, dataSize), pData, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, stride)); }
+        return (int) Handles.MH_vkWriteMicromapsPropertiesEXT.get().invoke(device.capabilities().PFN_vkWriteMicromapsPropertiesEXT, device.segment(), micromapCount, pMicromaps, queryType, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, dataSize), pData, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, stride)); }
         catch (Throwable e) { throw new RuntimeException("error in vkWriteMicromapsPropertiesEXT", e); }
     }
 
@@ -170,7 +171,7 @@ public final class VKEXTOpacityMicromap {
     public static void vkCmdCopyMicromapEXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMicromapEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyMicromapEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyMicromapEXT", commandBuffer, pInfo); }
-        Handles.MH_vkCmdCopyMicromapEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMicromapEXT, commandBuffer.segment(), pInfo); }
+        Handles.MH_vkCmdCopyMicromapEXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMicromapEXT, commandBuffer.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyMicromapEXT", e); }
     }
 
@@ -181,7 +182,7 @@ public final class VKEXTOpacityMicromap {
     public static void vkCmdCopyMicromapToMemoryEXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMicromapToMemoryEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyMicromapToMemoryEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyMicromapToMemoryEXT", commandBuffer, pInfo); }
-        Handles.MH_vkCmdCopyMicromapToMemoryEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMicromapToMemoryEXT, commandBuffer.segment(), pInfo); }
+        Handles.MH_vkCmdCopyMicromapToMemoryEXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMicromapToMemoryEXT, commandBuffer.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyMicromapToMemoryEXT", e); }
     }
 
@@ -192,7 +193,7 @@ public final class VKEXTOpacityMicromap {
     public static void vkCmdCopyMemoryToMicromapEXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToMicromapEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyMemoryToMicromapEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyMemoryToMicromapEXT", commandBuffer, pInfo); }
-        Handles.MH_vkCmdCopyMemoryToMicromapEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToMicromapEXT, commandBuffer.segment(), pInfo); }
+        Handles.MH_vkCmdCopyMemoryToMicromapEXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToMicromapEXT, commandBuffer.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyMemoryToMicromapEXT", e); }
     }
 
@@ -203,7 +204,7 @@ public final class VKEXTOpacityMicromap {
     public static void vkCmdWriteMicromapsPropertiesEXT(@NonNull VkCommandBuffer commandBuffer, int micromapCount, @NonNull MemorySegment pMicromaps, int queryType, long queryPool, int firstQuery) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteMicromapsPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdWriteMicromapsPropertiesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdWriteMicromapsPropertiesEXT", commandBuffer, micromapCount, pMicromaps, queryType, queryPool, firstQuery); }
-        Handles.MH_vkCmdWriteMicromapsPropertiesEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdWriteMicromapsPropertiesEXT, commandBuffer.segment(), micromapCount, pMicromaps, queryType, queryPool, firstQuery); }
+        Handles.MH_vkCmdWriteMicromapsPropertiesEXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdWriteMicromapsPropertiesEXT, commandBuffer.segment(), micromapCount, pMicromaps, queryType, queryPool, firstQuery); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdWriteMicromapsPropertiesEXT", e); }
     }
 
@@ -214,7 +215,7 @@ public final class VKEXTOpacityMicromap {
     public static void vkGetDeviceMicromapCompatibilityEXT(@NonNull VkDevice device, @NonNull MemorySegment pVersionInfo, @NonNull MemorySegment pCompatibility) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceMicromapCompatibilityEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceMicromapCompatibilityEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceMicromapCompatibilityEXT", device, pVersionInfo, pCompatibility); }
-        Handles.MH_vkGetDeviceMicromapCompatibilityEXT.invokeExact(device.capabilities().PFN_vkGetDeviceMicromapCompatibilityEXT, device.segment(), pVersionInfo, pCompatibility); }
+        Handles.MH_vkGetDeviceMicromapCompatibilityEXT.get().invokeExact(device.capabilities().PFN_vkGetDeviceMicromapCompatibilityEXT, device.segment(), pVersionInfo, pCompatibility); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceMicromapCompatibilityEXT", e); }
     }
 
@@ -225,7 +226,7 @@ public final class VKEXTOpacityMicromap {
     public static void vkGetMicromapBuildSizesEXT(@NonNull VkDevice device, int buildType, @NonNull MemorySegment pBuildInfo, @NonNull MemorySegment pSizeInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMicromapBuildSizesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMicromapBuildSizesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMicromapBuildSizesEXT", device, buildType, pBuildInfo, pSizeInfo); }
-        Handles.MH_vkGetMicromapBuildSizesEXT.invokeExact(device.capabilities().PFN_vkGetMicromapBuildSizesEXT, device.segment(), buildType, pBuildInfo, pSizeInfo); }
+        Handles.MH_vkGetMicromapBuildSizesEXT.get().invokeExact(device.capabilities().PFN_vkGetMicromapBuildSizesEXT, device.segment(), buildType, pBuildInfo, pSizeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMicromapBuildSizesEXT", e); }
     }
 

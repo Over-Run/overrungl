@@ -29,13 +29,13 @@ public final class StdVideoAV1GlobalMotion extends GroupType {
     /// The memory layout of `GmType`.
     public static final MemoryLayout LAYOUT_GmType = LAYOUT.select(PathElement.groupElement("GmType"));
     /// The [VarHandle] of `GmType` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_GmType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("GmType"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_GmType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("GmType"), PathElement.sequenceElement()));
     /// The byte offset of `gm_params`.
     public static final long OFFSET_gm_params = LAYOUT.byteOffset(PathElement.groupElement("gm_params"));
     /// The memory layout of `gm_params`.
     public static final MemoryLayout LAYOUT_gm_params = LAYOUT.select(PathElement.groupElement("gm_params"));
     /// The [VarHandle] of `gm_params` of type `(MemorySegment base, long baseOffset, long index, long index0, long index1)MemorySegment`.
-    public static final VarHandle VH_gm_params = LAYOUT.arrayElementVarHandle(PathElement.groupElement("gm_params"), PathElement.sequenceElement(), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_gm_params = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("gm_params"), PathElement.sequenceElement(), PathElement.sequenceElement()));
 
     /// Creates `StdVideoAV1GlobalMotion` with the given segment.
     /// @param segment      the memory segment
@@ -91,7 +91,7 @@ public final class StdVideoAV1GlobalMotion extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte GmType(MemorySegment segment, long index, long index0) { return (byte) VH_GmType.get(segment, 0L, index, index0); }
+    public static byte GmType(MemorySegment segment, long index, long index0) { return (byte) VH_GmType.get().get(segment, 0L, index, index0); }
     /// {@return `GmType`}
     public MemorySegment GmType() { return GmType(this.segment(), 0L); }
     /// {@return `GmType`}
@@ -107,7 +107,7 @@ public final class StdVideoAV1GlobalMotion extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void GmType(MemorySegment segment, long index, long index0, byte value) { VH_GmType.set(segment, 0L, index, index0, value); }
+    public static void GmType(MemorySegment segment, long index, long index0, byte value) { VH_GmType.get().set(segment, 0L, index, index0, value); }
     /// Sets `GmType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,7 +127,7 @@ public final class StdVideoAV1GlobalMotion extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
-    public static int gm_params(MemorySegment segment, long index, long index0, long index1) { return (int) VH_gm_params.get(segment, 0L, index, index0, index1); }
+    public static int gm_params(MemorySegment segment, long index, long index0, long index1) { return (int) VH_gm_params.get().get(segment, 0L, index, index0, index1); }
     /// {@return `gm_params`}
     public MemorySegment gm_params() { return gm_params(this.segment(), 0L); }
     /// {@return `gm_params`}
@@ -145,7 +145,7 @@ public final class StdVideoAV1GlobalMotion extends GroupType {
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
     /// @param value the value
-    public static void gm_params(MemorySegment segment, long index, long index0, long index1, int value) { VH_gm_params.set(segment, 0L, index, index0, index1, value); }
+    public static void gm_params(MemorySegment segment, long index, long index0, long index1, int value) { VH_gm_params.get().set(segment, 0L, index, index0, index1, value); }
     /// Sets `gm_params` with the given value.
     /// @param value the value
     /// @return `this`
