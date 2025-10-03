@@ -627,6 +627,8 @@ public final class VKCapabilitiesDevice {
     public final MemorySegment PFN_vkCmdSetDescriptorBufferOffsets2EXT;
     public final MemorySegment PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT;
     public final MemorySegment PFN_vkCmdBindTileMemoryQCOM;
+    public final MemorySegment PFN_vkCmdCopyMemoryIndirectKHR;
+    public final MemorySegment PFN_vkCmdCopyMemoryToImageIndirectKHR;
     public final MemorySegment PFN_vkCreateExternalComputeQueueNV;
     public final MemorySegment PFN_vkDestroyExternalComputeQueueNV;
     public final MemorySegment PFN_vkGetExternalComputeQueueDataNV;
@@ -1272,6 +1274,8 @@ public final class VKCapabilitiesDevice {
         PFN_vkCmdSetDescriptorBufferOffsets2EXT = func.invoke(device, "vkCmdSetDescriptorBufferOffsets2EXT");
         PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT = func.invoke(device, "vkCmdBindDescriptorBufferEmbeddedSamplers2EXT");
         PFN_vkCmdBindTileMemoryQCOM = func.invoke(device, "vkCmdBindTileMemoryQCOM");
+        PFN_vkCmdCopyMemoryIndirectKHR = func.invoke(device, "vkCmdCopyMemoryIndirectKHR");
+        PFN_vkCmdCopyMemoryToImageIndirectKHR = func.invoke(device, "vkCmdCopyMemoryToImageIndirectKHR");
         PFN_vkCreateExternalComputeQueueNV = func.invoke(device, "vkCreateExternalComputeQueueNV");
         PFN_vkDestroyExternalComputeQueueNV = func.invoke(device, "vkDestroyExternalComputeQueueNV");
         PFN_vkGetExternalComputeQueueDataNV = func.invoke(device, "vkGetExternalComputeQueueDataNV");

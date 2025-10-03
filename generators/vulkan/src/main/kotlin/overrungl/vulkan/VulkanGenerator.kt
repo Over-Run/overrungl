@@ -28,8 +28,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
 import kotlin.io.path.createParentDirectories
 
-// vk.xml: 2025-09-20
-// video.xml: 2025-09-20
+// vk.xml: 2025-10-03
+// video.xml: 2025-10-03
 
 const val vulkanPackage = "overrungl.vulkan"
 
