@@ -29,13 +29,13 @@ public final class NFDWindowHandle extends GroupType {
     /// The memory layout of `type`.
     public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
     /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
+    public static final Supplier<VarHandle> VH_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("type")));
     /// The byte offset of `handle`.
     public static final long OFFSET_handle = LAYOUT.byteOffset(PathElement.groupElement("handle"));
     /// The memory layout of `handle`.
     public static final MemoryLayout LAYOUT_handle = LAYOUT.select(PathElement.groupElement("handle"));
     /// The [VarHandle] of `handle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_handle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("handle"));
+    public static final Supplier<VarHandle> VH_handle = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("handle")));
 
     /// Creates `NFDWindowHandle` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class NFDWindowHandle extends GroupType {
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long type(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_type.get(segment, 0L, index)); }
+    public static long type(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_type.get().get(segment, 0L, index)); }
     /// {@return `type`}
     public long type() { return type(this.segment(), 0L); }
     /// Sets `type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void type(MemorySegment segment, long index, long value) { VH_type.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void type(MemorySegment segment, long index, long value) { VH_type.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class NFDWindowHandle extends GroupType {
     /// {@return `handle` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment handle(MemorySegment segment, long index) { return (MemorySegment) VH_handle.get(segment, 0L, index); }
+    public static MemorySegment handle(MemorySegment segment, long index) { return (MemorySegment) VH_handle.get().get(segment, 0L, index); }
     /// {@return `handle`}
     public MemorySegment handle() { return handle(this.segment(), 0L); }
     /// Sets `handle` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void handle(MemorySegment segment, long index, MemorySegment value) { VH_handle.set(segment, 0L, index, value); }
+    public static void handle(MemorySegment segment, long index, MemorySegment value) { VH_handle.get().set(segment, 0L, index, value); }
     /// Sets `handle` with the given value.
     /// @param value the value
     /// @return `this`

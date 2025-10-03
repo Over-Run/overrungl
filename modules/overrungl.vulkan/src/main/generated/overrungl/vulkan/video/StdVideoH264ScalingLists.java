@@ -33,25 +33,25 @@ public final class StdVideoH264ScalingLists extends GroupType {
     /// The memory layout of `scaling_list_present_mask`.
     public static final MemoryLayout LAYOUT_scaling_list_present_mask = LAYOUT.select(PathElement.groupElement("scaling_list_present_mask"));
     /// The [VarHandle] of `scaling_list_present_mask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_scaling_list_present_mask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scaling_list_present_mask"));
+    public static final Supplier<VarHandle> VH_scaling_list_present_mask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("scaling_list_present_mask")));
     /// The byte offset of `use_default_scaling_matrix_mask`.
     public static final long OFFSET_use_default_scaling_matrix_mask = LAYOUT.byteOffset(PathElement.groupElement("use_default_scaling_matrix_mask"));
     /// The memory layout of `use_default_scaling_matrix_mask`.
     public static final MemoryLayout LAYOUT_use_default_scaling_matrix_mask = LAYOUT.select(PathElement.groupElement("use_default_scaling_matrix_mask"));
     /// The [VarHandle] of `use_default_scaling_matrix_mask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_use_default_scaling_matrix_mask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("use_default_scaling_matrix_mask"));
+    public static final Supplier<VarHandle> VH_use_default_scaling_matrix_mask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("use_default_scaling_matrix_mask")));
     /// The byte offset of `ScalingList4x4`.
     public static final long OFFSET_ScalingList4x4 = LAYOUT.byteOffset(PathElement.groupElement("ScalingList4x4"));
     /// The memory layout of `ScalingList4x4`.
     public static final MemoryLayout LAYOUT_ScalingList4x4 = LAYOUT.select(PathElement.groupElement("ScalingList4x4"));
     /// The [VarHandle] of `ScalingList4x4` of type `(MemorySegment base, long baseOffset, long index, long index0, long index1)MemorySegment`.
-    public static final VarHandle VH_ScalingList4x4 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList4x4"), PathElement.sequenceElement(), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_ScalingList4x4 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList4x4"), PathElement.sequenceElement(), PathElement.sequenceElement()));
     /// The byte offset of `ScalingList8x8`.
     public static final long OFFSET_ScalingList8x8 = LAYOUT.byteOffset(PathElement.groupElement("ScalingList8x8"));
     /// The memory layout of `ScalingList8x8`.
     public static final MemoryLayout LAYOUT_ScalingList8x8 = LAYOUT.select(PathElement.groupElement("ScalingList8x8"));
     /// The [VarHandle] of `ScalingList8x8` of type `(MemorySegment base, long baseOffset, long index, long index0, long index1)MemorySegment`.
-    public static final VarHandle VH_ScalingList8x8 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList8x8"), PathElement.sequenceElement(), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_ScalingList8x8 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList8x8"), PathElement.sequenceElement(), PathElement.sequenceElement()));
 
     /// Creates `StdVideoH264ScalingLists` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class StdVideoH264ScalingLists extends GroupType {
     /// {@return `scaling_list_present_mask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short scaling_list_present_mask(MemorySegment segment, long index) { return (short) VH_scaling_list_present_mask.get(segment, 0L, index); }
+    public static short scaling_list_present_mask(MemorySegment segment, long index) { return (short) VH_scaling_list_present_mask.get().get(segment, 0L, index); }
     /// {@return `scaling_list_present_mask`}
     public short scaling_list_present_mask() { return scaling_list_present_mask(this.segment(), 0L); }
     /// Sets `scaling_list_present_mask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void scaling_list_present_mask(MemorySegment segment, long index, short value) { VH_scaling_list_present_mask.set(segment, 0L, index, value); }
+    public static void scaling_list_present_mask(MemorySegment segment, long index, short value) { VH_scaling_list_present_mask.get().set(segment, 0L, index, value); }
     /// Sets `scaling_list_present_mask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class StdVideoH264ScalingLists extends GroupType {
     /// {@return `use_default_scaling_matrix_mask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short use_default_scaling_matrix_mask(MemorySegment segment, long index) { return (short) VH_use_default_scaling_matrix_mask.get(segment, 0L, index); }
+    public static short use_default_scaling_matrix_mask(MemorySegment segment, long index) { return (short) VH_use_default_scaling_matrix_mask.get().get(segment, 0L, index); }
     /// {@return `use_default_scaling_matrix_mask`}
     public short use_default_scaling_matrix_mask() { return use_default_scaling_matrix_mask(this.segment(), 0L); }
     /// Sets `use_default_scaling_matrix_mask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void use_default_scaling_matrix_mask(MemorySegment segment, long index, short value) { VH_use_default_scaling_matrix_mask.set(segment, 0L, index, value); }
+    public static void use_default_scaling_matrix_mask(MemorySegment segment, long index, short value) { VH_use_default_scaling_matrix_mask.get().set(segment, 0L, index, value); }
     /// Sets `use_default_scaling_matrix_mask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -140,7 +140,7 @@ public final class StdVideoH264ScalingLists extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
-    public static byte ScalingList4x4(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList4x4.get(segment, 0L, index, index0, index1); }
+    public static byte ScalingList4x4(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList4x4.get().get(segment, 0L, index, index0, index1); }
     /// {@return `ScalingList4x4`}
     public MemorySegment ScalingList4x4() { return ScalingList4x4(this.segment(), 0L); }
     /// {@return `ScalingList4x4`}
@@ -158,7 +158,7 @@ public final class StdVideoH264ScalingLists extends GroupType {
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
     /// @param value the value
-    public static void ScalingList4x4(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList4x4.set(segment, 0L, index, index0, index1, value); }
+    public static void ScalingList4x4(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList4x4.get().set(segment, 0L, index, index0, index1, value); }
     /// Sets `ScalingList4x4` with the given value.
     /// @param value the value
     /// @return `this`
@@ -179,7 +179,7 @@ public final class StdVideoH264ScalingLists extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
-    public static byte ScalingList8x8(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList8x8.get(segment, 0L, index, index0, index1); }
+    public static byte ScalingList8x8(MemorySegment segment, long index, long index0, long index1) { return (byte) VH_ScalingList8x8.get().get(segment, 0L, index, index0, index1); }
     /// {@return `ScalingList8x8`}
     public MemorySegment ScalingList8x8() { return ScalingList8x8(this.segment(), 0L); }
     /// {@return `ScalingList8x8`}
@@ -197,7 +197,7 @@ public final class StdVideoH264ScalingLists extends GroupType {
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
     /// @param value the value
-    public static void ScalingList8x8(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList8x8.set(segment, 0L, index, index0, index1, value); }
+    public static void ScalingList8x8(MemorySegment segment, long index, long index0, long index1, byte value) { VH_ScalingList8x8.get().set(segment, 0L, index, index0, index1, value); }
     /// Sets `ScalingList8x8` with the given value.
     /// @param value the value
     /// @return `this`

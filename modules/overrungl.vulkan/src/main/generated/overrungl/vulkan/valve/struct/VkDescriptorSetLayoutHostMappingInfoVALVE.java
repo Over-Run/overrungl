@@ -33,25 +33,25 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `descriptorOffset`.
     public static final long OFFSET_descriptorOffset = LAYOUT.byteOffset(PathElement.groupElement("descriptorOffset"));
     /// The memory layout of `descriptorOffset`.
     public static final MemoryLayout LAYOUT_descriptorOffset = LAYOUT.select(PathElement.groupElement("descriptorOffset"));
     /// The [VarHandle] of `descriptorOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorOffset"));
+    public static final Supplier<VarHandle> VH_descriptorOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorOffset")));
     /// The byte offset of `descriptorSize`.
     public static final long OFFSET_descriptorSize = LAYOUT.byteOffset(PathElement.groupElement("descriptorSize"));
     /// The memory layout of `descriptorSize`.
     public static final MemoryLayout LAYOUT_descriptorSize = LAYOUT.select(PathElement.groupElement("descriptorSize"));
     /// The [VarHandle] of `descriptorSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSize"));
+    public static final Supplier<VarHandle> VH_descriptorSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSize")));
 
     /// Creates `VkDescriptorSetLayoutHostMappingInfoVALVE` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends GroupType {
     /// {@return `descriptorOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long descriptorOffset(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_descriptorOffset.get(segment, 0L, index)); }
+    public static long descriptorOffset(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_descriptorOffset.get().get(segment, 0L, index)); }
     /// {@return `descriptorOffset`}
     public long descriptorOffset() { return descriptorOffset(this.segment(), 0L); }
     /// Sets `descriptorOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorOffset(MemorySegment segment, long index, long value) { VH_descriptorOffset.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void descriptorOffset(MemorySegment segment, long index, long value) { VH_descriptorOffset.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `descriptorOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends GroupType {
     /// {@return `descriptorSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorSize(MemorySegment segment, long index) { return (int) VH_descriptorSize.get(segment, 0L, index); }
+    public static int descriptorSize(MemorySegment segment, long index) { return (int) VH_descriptorSize.get().get(segment, 0L, index); }
     /// {@return `descriptorSize`}
     public int descriptorSize() { return descriptorSize(this.segment(), 0L); }
     /// Sets `descriptorSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorSize(MemorySegment segment, long index, int value) { VH_descriptorSize.set(segment, 0L, index, value); }
+    public static void descriptorSize(MemorySegment segment, long index, int value) { VH_descriptorSize.get().set(segment, 0L, index, value); }
     /// Sets `descriptorSize` with the given value.
     /// @param value the value
     /// @return `this`

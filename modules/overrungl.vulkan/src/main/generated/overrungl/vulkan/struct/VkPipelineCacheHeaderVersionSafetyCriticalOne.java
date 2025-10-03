@@ -41,31 +41,31 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends GroupTy
     /// The memory layout of `validationVersion`.
     public static final MemoryLayout LAYOUT_validationVersion = LAYOUT.select(PathElement.groupElement("validationVersion"));
     /// The [VarHandle] of `validationVersion` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_validationVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("validationVersion"));
+    public static final Supplier<VarHandle> VH_validationVersion = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("validationVersion")));
     /// The byte offset of `implementationData`.
     public static final long OFFSET_implementationData = LAYOUT.byteOffset(PathElement.groupElement("implementationData"));
     /// The memory layout of `implementationData`.
     public static final MemoryLayout LAYOUT_implementationData = LAYOUT.select(PathElement.groupElement("implementationData"));
     /// The [VarHandle] of `implementationData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_implementationData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("implementationData"));
+    public static final Supplier<VarHandle> VH_implementationData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("implementationData")));
     /// The byte offset of `pipelineIndexCount`.
     public static final long OFFSET_pipelineIndexCount = LAYOUT.byteOffset(PathElement.groupElement("pipelineIndexCount"));
     /// The memory layout of `pipelineIndexCount`.
     public static final MemoryLayout LAYOUT_pipelineIndexCount = LAYOUT.select(PathElement.groupElement("pipelineIndexCount"));
     /// The [VarHandle] of `pipelineIndexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineIndexCount"));
+    public static final Supplier<VarHandle> VH_pipelineIndexCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineIndexCount")));
     /// The byte offset of `pipelineIndexStride`.
     public static final long OFFSET_pipelineIndexStride = LAYOUT.byteOffset(PathElement.groupElement("pipelineIndexStride"));
     /// The memory layout of `pipelineIndexStride`.
     public static final MemoryLayout LAYOUT_pipelineIndexStride = LAYOUT.select(PathElement.groupElement("pipelineIndexStride"));
     /// The [VarHandle] of `pipelineIndexStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineIndexStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineIndexStride"));
+    public static final Supplier<VarHandle> VH_pipelineIndexStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineIndexStride")));
     /// The byte offset of `pipelineIndexOffset`.
     public static final long OFFSET_pipelineIndexOffset = LAYOUT.byteOffset(PathElement.groupElement("pipelineIndexOffset"));
     /// The memory layout of `pipelineIndexOffset`.
     public static final MemoryLayout LAYOUT_pipelineIndexOffset = LAYOUT.select(PathElement.groupElement("pipelineIndexOffset"));
     /// The [VarHandle] of `pipelineIndexOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineIndexOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineIndexOffset"));
+    public static final Supplier<VarHandle> VH_pipelineIndexOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineIndexOffset")));
 
     /// Creates `VkPipelineCacheHeaderVersionSafetyCriticalOne` with the given segment.
     /// @param segment      the memory segment
@@ -136,14 +136,14 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends GroupTy
     /// {@return `validationVersion` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int validationVersion(MemorySegment segment, long index) { return (int) VH_validationVersion.get(segment, 0L, index); }
+    public static int validationVersion(MemorySegment segment, long index) { return (int) VH_validationVersion.get().get(segment, 0L, index); }
     /// {@return `validationVersion`}
     public int validationVersion() { return validationVersion(this.segment(), 0L); }
     /// Sets `validationVersion` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void validationVersion(MemorySegment segment, long index, int value) { VH_validationVersion.set(segment, 0L, index, value); }
+    public static void validationVersion(MemorySegment segment, long index, int value) { VH_validationVersion.get().set(segment, 0L, index, value); }
     /// Sets `validationVersion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -152,14 +152,14 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends GroupTy
     /// {@return `implementationData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int implementationData(MemorySegment segment, long index) { return (int) VH_implementationData.get(segment, 0L, index); }
+    public static int implementationData(MemorySegment segment, long index) { return (int) VH_implementationData.get().get(segment, 0L, index); }
     /// {@return `implementationData`}
     public int implementationData() { return implementationData(this.segment(), 0L); }
     /// Sets `implementationData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void implementationData(MemorySegment segment, long index, int value) { VH_implementationData.set(segment, 0L, index, value); }
+    public static void implementationData(MemorySegment segment, long index, int value) { VH_implementationData.get().set(segment, 0L, index, value); }
     /// Sets `implementationData` with the given value.
     /// @param value the value
     /// @return `this`
@@ -168,14 +168,14 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends GroupTy
     /// {@return `pipelineIndexCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineIndexCount(MemorySegment segment, long index) { return (int) VH_pipelineIndexCount.get(segment, 0L, index); }
+    public static int pipelineIndexCount(MemorySegment segment, long index) { return (int) VH_pipelineIndexCount.get().get(segment, 0L, index); }
     /// {@return `pipelineIndexCount`}
     public int pipelineIndexCount() { return pipelineIndexCount(this.segment(), 0L); }
     /// Sets `pipelineIndexCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineIndexCount(MemorySegment segment, long index, int value) { VH_pipelineIndexCount.set(segment, 0L, index, value); }
+    public static void pipelineIndexCount(MemorySegment segment, long index, int value) { VH_pipelineIndexCount.get().set(segment, 0L, index, value); }
     /// Sets `pipelineIndexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -184,14 +184,14 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends GroupTy
     /// {@return `pipelineIndexStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineIndexStride(MemorySegment segment, long index) { return (int) VH_pipelineIndexStride.get(segment, 0L, index); }
+    public static int pipelineIndexStride(MemorySegment segment, long index) { return (int) VH_pipelineIndexStride.get().get(segment, 0L, index); }
     /// {@return `pipelineIndexStride`}
     public int pipelineIndexStride() { return pipelineIndexStride(this.segment(), 0L); }
     /// Sets `pipelineIndexStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineIndexStride(MemorySegment segment, long index, int value) { VH_pipelineIndexStride.set(segment, 0L, index, value); }
+    public static void pipelineIndexStride(MemorySegment segment, long index, int value) { VH_pipelineIndexStride.get().set(segment, 0L, index, value); }
     /// Sets `pipelineIndexStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -200,14 +200,14 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends GroupTy
     /// {@return `pipelineIndexOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long pipelineIndexOffset(MemorySegment segment, long index) { return (long) VH_pipelineIndexOffset.get(segment, 0L, index); }
+    public static long pipelineIndexOffset(MemorySegment segment, long index) { return (long) VH_pipelineIndexOffset.get().get(segment, 0L, index); }
     /// {@return `pipelineIndexOffset`}
     public long pipelineIndexOffset() { return pipelineIndexOffset(this.segment(), 0L); }
     /// Sets `pipelineIndexOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineIndexOffset(MemorySegment segment, long index, long value) { VH_pipelineIndexOffset.set(segment, 0L, index, value); }
+    public static void pipelineIndexOffset(MemorySegment segment, long index, long value) { VH_pipelineIndexOffset.get().set(segment, 0L, index, value); }
     /// Sets `pipelineIndexOffset` with the given value.
     /// @param value the value
     /// @return `this`

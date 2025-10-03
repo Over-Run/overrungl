@@ -57,97 +57,97 @@ public final class VkSRTDataNV extends GroupType {
     /// The memory layout of `sx`.
     public static final MemoryLayout LAYOUT_sx = LAYOUT.select(PathElement.groupElement("sx"));
     /// The [VarHandle] of `sx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sx"));
+    public static final Supplier<VarHandle> VH_sx = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sx")));
     /// The byte offset of `a`.
     public static final long OFFSET_a = LAYOUT.byteOffset(PathElement.groupElement("a"));
     /// The memory layout of `a`.
     public static final MemoryLayout LAYOUT_a = LAYOUT.select(PathElement.groupElement("a"));
     /// The [VarHandle] of `a` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_a = LAYOUT.arrayElementVarHandle(PathElement.groupElement("a"));
+    public static final Supplier<VarHandle> VH_a = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("a")));
     /// The byte offset of `b`.
     public static final long OFFSET_b = LAYOUT.byteOffset(PathElement.groupElement("b"));
     /// The memory layout of `b`.
     public static final MemoryLayout LAYOUT_b = LAYOUT.select(PathElement.groupElement("b"));
     /// The [VarHandle] of `b` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_b = LAYOUT.arrayElementVarHandle(PathElement.groupElement("b"));
+    public static final Supplier<VarHandle> VH_b = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("b")));
     /// The byte offset of `pvx`.
     public static final long OFFSET_pvx = LAYOUT.byteOffset(PathElement.groupElement("pvx"));
     /// The memory layout of `pvx`.
     public static final MemoryLayout LAYOUT_pvx = LAYOUT.select(PathElement.groupElement("pvx"));
     /// The [VarHandle] of `pvx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pvx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pvx"));
+    public static final Supplier<VarHandle> VH_pvx = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pvx")));
     /// The byte offset of `sy`.
     public static final long OFFSET_sy = LAYOUT.byteOffset(PathElement.groupElement("sy"));
     /// The memory layout of `sy`.
     public static final MemoryLayout LAYOUT_sy = LAYOUT.select(PathElement.groupElement("sy"));
     /// The [VarHandle] of `sy` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sy = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sy"));
+    public static final Supplier<VarHandle> VH_sy = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sy")));
     /// The byte offset of `c`.
     public static final long OFFSET_c = LAYOUT.byteOffset(PathElement.groupElement("c"));
     /// The memory layout of `c`.
     public static final MemoryLayout LAYOUT_c = LAYOUT.select(PathElement.groupElement("c"));
     /// The [VarHandle] of `c` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_c = LAYOUT.arrayElementVarHandle(PathElement.groupElement("c"));
+    public static final Supplier<VarHandle> VH_c = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("c")));
     /// The byte offset of `pvy`.
     public static final long OFFSET_pvy = LAYOUT.byteOffset(PathElement.groupElement("pvy"));
     /// The memory layout of `pvy`.
     public static final MemoryLayout LAYOUT_pvy = LAYOUT.select(PathElement.groupElement("pvy"));
     /// The [VarHandle] of `pvy` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pvy = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pvy"));
+    public static final Supplier<VarHandle> VH_pvy = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pvy")));
     /// The byte offset of `sz`.
     public static final long OFFSET_sz = LAYOUT.byteOffset(PathElement.groupElement("sz"));
     /// The memory layout of `sz`.
     public static final MemoryLayout LAYOUT_sz = LAYOUT.select(PathElement.groupElement("sz"));
     /// The [VarHandle] of `sz` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sz = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sz"));
+    public static final Supplier<VarHandle> VH_sz = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sz")));
     /// The byte offset of `pvz`.
     public static final long OFFSET_pvz = LAYOUT.byteOffset(PathElement.groupElement("pvz"));
     /// The memory layout of `pvz`.
     public static final MemoryLayout LAYOUT_pvz = LAYOUT.select(PathElement.groupElement("pvz"));
     /// The [VarHandle] of `pvz` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pvz = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pvz"));
+    public static final Supplier<VarHandle> VH_pvz = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pvz")));
     /// The byte offset of `qx`.
     public static final long OFFSET_qx = LAYOUT.byteOffset(PathElement.groupElement("qx"));
     /// The memory layout of `qx`.
     public static final MemoryLayout LAYOUT_qx = LAYOUT.select(PathElement.groupElement("qx"));
     /// The [VarHandle] of `qx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_qx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("qx"));
+    public static final Supplier<VarHandle> VH_qx = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("qx")));
     /// The byte offset of `qy`.
     public static final long OFFSET_qy = LAYOUT.byteOffset(PathElement.groupElement("qy"));
     /// The memory layout of `qy`.
     public static final MemoryLayout LAYOUT_qy = LAYOUT.select(PathElement.groupElement("qy"));
     /// The [VarHandle] of `qy` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_qy = LAYOUT.arrayElementVarHandle(PathElement.groupElement("qy"));
+    public static final Supplier<VarHandle> VH_qy = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("qy")));
     /// The byte offset of `qz`.
     public static final long OFFSET_qz = LAYOUT.byteOffset(PathElement.groupElement("qz"));
     /// The memory layout of `qz`.
     public static final MemoryLayout LAYOUT_qz = LAYOUT.select(PathElement.groupElement("qz"));
     /// The [VarHandle] of `qz` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_qz = LAYOUT.arrayElementVarHandle(PathElement.groupElement("qz"));
+    public static final Supplier<VarHandle> VH_qz = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("qz")));
     /// The byte offset of `qw`.
     public static final long OFFSET_qw = LAYOUT.byteOffset(PathElement.groupElement("qw"));
     /// The memory layout of `qw`.
     public static final MemoryLayout LAYOUT_qw = LAYOUT.select(PathElement.groupElement("qw"));
     /// The [VarHandle] of `qw` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_qw = LAYOUT.arrayElementVarHandle(PathElement.groupElement("qw"));
+    public static final Supplier<VarHandle> VH_qw = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("qw")));
     /// The byte offset of `tx`.
     public static final long OFFSET_tx = LAYOUT.byteOffset(PathElement.groupElement("tx"));
     /// The memory layout of `tx`.
     public static final MemoryLayout LAYOUT_tx = LAYOUT.select(PathElement.groupElement("tx"));
     /// The [VarHandle] of `tx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tx"));
+    public static final Supplier<VarHandle> VH_tx = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tx")));
     /// The byte offset of `ty`.
     public static final long OFFSET_ty = LAYOUT.byteOffset(PathElement.groupElement("ty"));
     /// The memory layout of `ty`.
     public static final MemoryLayout LAYOUT_ty = LAYOUT.select(PathElement.groupElement("ty"));
     /// The [VarHandle] of `ty` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ty = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ty"));
+    public static final Supplier<VarHandle> VH_ty = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ty")));
     /// The byte offset of `tz`.
     public static final long OFFSET_tz = LAYOUT.byteOffset(PathElement.groupElement("tz"));
     /// The memory layout of `tz`.
     public static final MemoryLayout LAYOUT_tz = LAYOUT.select(PathElement.groupElement("tz"));
     /// The [VarHandle] of `tz` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tz = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tz"));
+    public static final Supplier<VarHandle> VH_tz = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tz")));
 
     /// Creates `VkSRTDataNV` with the given segment.
     /// @param segment      the memory segment
@@ -198,14 +198,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `sx` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float sx(MemorySegment segment, long index) { return (float) VH_sx.get(segment, 0L, index); }
+    public static float sx(MemorySegment segment, long index) { return (float) VH_sx.get().get(segment, 0L, index); }
     /// {@return `sx`}
     public float sx() { return sx(this.segment(), 0L); }
     /// Sets `sx` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sx(MemorySegment segment, long index, float value) { VH_sx.set(segment, 0L, index, value); }
+    public static void sx(MemorySegment segment, long index, float value) { VH_sx.get().set(segment, 0L, index, value); }
     /// Sets `sx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `a` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float a(MemorySegment segment, long index) { return (float) VH_a.get(segment, 0L, index); }
+    public static float a(MemorySegment segment, long index) { return (float) VH_a.get().get(segment, 0L, index); }
     /// {@return `a`}
     public float a() { return a(this.segment(), 0L); }
     /// Sets `a` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void a(MemorySegment segment, long index, float value) { VH_a.set(segment, 0L, index, value); }
+    public static void a(MemorySegment segment, long index, float value) { VH_a.get().set(segment, 0L, index, value); }
     /// Sets `a` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `b` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float b(MemorySegment segment, long index) { return (float) VH_b.get(segment, 0L, index); }
+    public static float b(MemorySegment segment, long index) { return (float) VH_b.get().get(segment, 0L, index); }
     /// {@return `b`}
     public float b() { return b(this.segment(), 0L); }
     /// Sets `b` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void b(MemorySegment segment, long index, float value) { VH_b.set(segment, 0L, index, value); }
+    public static void b(MemorySegment segment, long index, float value) { VH_b.get().set(segment, 0L, index, value); }
     /// Sets `b` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `pvx` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float pvx(MemorySegment segment, long index) { return (float) VH_pvx.get(segment, 0L, index); }
+    public static float pvx(MemorySegment segment, long index) { return (float) VH_pvx.get().get(segment, 0L, index); }
     /// {@return `pvx`}
     public float pvx() { return pvx(this.segment(), 0L); }
     /// Sets `pvx` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pvx(MemorySegment segment, long index, float value) { VH_pvx.set(segment, 0L, index, value); }
+    public static void pvx(MemorySegment segment, long index, float value) { VH_pvx.get().set(segment, 0L, index, value); }
     /// Sets `pvx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `sy` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float sy(MemorySegment segment, long index) { return (float) VH_sy.get(segment, 0L, index); }
+    public static float sy(MemorySegment segment, long index) { return (float) VH_sy.get().get(segment, 0L, index); }
     /// {@return `sy`}
     public float sy() { return sy(this.segment(), 0L); }
     /// Sets `sy` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sy(MemorySegment segment, long index, float value) { VH_sy.set(segment, 0L, index, value); }
+    public static void sy(MemorySegment segment, long index, float value) { VH_sy.get().set(segment, 0L, index, value); }
     /// Sets `sy` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `c` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float c(MemorySegment segment, long index) { return (float) VH_c.get(segment, 0L, index); }
+    public static float c(MemorySegment segment, long index) { return (float) VH_c.get().get(segment, 0L, index); }
     /// {@return `c`}
     public float c() { return c(this.segment(), 0L); }
     /// Sets `c` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void c(MemorySegment segment, long index, float value) { VH_c.set(segment, 0L, index, value); }
+    public static void c(MemorySegment segment, long index, float value) { VH_c.get().set(segment, 0L, index, value); }
     /// Sets `c` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `pvy` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float pvy(MemorySegment segment, long index) { return (float) VH_pvy.get(segment, 0L, index); }
+    public static float pvy(MemorySegment segment, long index) { return (float) VH_pvy.get().get(segment, 0L, index); }
     /// {@return `pvy`}
     public float pvy() { return pvy(this.segment(), 0L); }
     /// Sets `pvy` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pvy(MemorySegment segment, long index, float value) { VH_pvy.set(segment, 0L, index, value); }
+    public static void pvy(MemorySegment segment, long index, float value) { VH_pvy.get().set(segment, 0L, index, value); }
     /// Sets `pvy` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,14 +310,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `sz` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float sz(MemorySegment segment, long index) { return (float) VH_sz.get(segment, 0L, index); }
+    public static float sz(MemorySegment segment, long index) { return (float) VH_sz.get().get(segment, 0L, index); }
     /// {@return `sz`}
     public float sz() { return sz(this.segment(), 0L); }
     /// Sets `sz` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sz(MemorySegment segment, long index, float value) { VH_sz.set(segment, 0L, index, value); }
+    public static void sz(MemorySegment segment, long index, float value) { VH_sz.get().set(segment, 0L, index, value); }
     /// Sets `sz` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,14 +326,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `pvz` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float pvz(MemorySegment segment, long index) { return (float) VH_pvz.get(segment, 0L, index); }
+    public static float pvz(MemorySegment segment, long index) { return (float) VH_pvz.get().get(segment, 0L, index); }
     /// {@return `pvz`}
     public float pvz() { return pvz(this.segment(), 0L); }
     /// Sets `pvz` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pvz(MemorySegment segment, long index, float value) { VH_pvz.set(segment, 0L, index, value); }
+    public static void pvz(MemorySegment segment, long index, float value) { VH_pvz.get().set(segment, 0L, index, value); }
     /// Sets `pvz` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,14 +342,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `qx` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float qx(MemorySegment segment, long index) { return (float) VH_qx.get(segment, 0L, index); }
+    public static float qx(MemorySegment segment, long index) { return (float) VH_qx.get().get(segment, 0L, index); }
     /// {@return `qx`}
     public float qx() { return qx(this.segment(), 0L); }
     /// Sets `qx` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void qx(MemorySegment segment, long index, float value) { VH_qx.set(segment, 0L, index, value); }
+    public static void qx(MemorySegment segment, long index, float value) { VH_qx.get().set(segment, 0L, index, value); }
     /// Sets `qx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -358,14 +358,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `qy` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float qy(MemorySegment segment, long index) { return (float) VH_qy.get(segment, 0L, index); }
+    public static float qy(MemorySegment segment, long index) { return (float) VH_qy.get().get(segment, 0L, index); }
     /// {@return `qy`}
     public float qy() { return qy(this.segment(), 0L); }
     /// Sets `qy` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void qy(MemorySegment segment, long index, float value) { VH_qy.set(segment, 0L, index, value); }
+    public static void qy(MemorySegment segment, long index, float value) { VH_qy.get().set(segment, 0L, index, value); }
     /// Sets `qy` with the given value.
     /// @param value the value
     /// @return `this`
@@ -374,14 +374,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `qz` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float qz(MemorySegment segment, long index) { return (float) VH_qz.get(segment, 0L, index); }
+    public static float qz(MemorySegment segment, long index) { return (float) VH_qz.get().get(segment, 0L, index); }
     /// {@return `qz`}
     public float qz() { return qz(this.segment(), 0L); }
     /// Sets `qz` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void qz(MemorySegment segment, long index, float value) { VH_qz.set(segment, 0L, index, value); }
+    public static void qz(MemorySegment segment, long index, float value) { VH_qz.get().set(segment, 0L, index, value); }
     /// Sets `qz` with the given value.
     /// @param value the value
     /// @return `this`
@@ -390,14 +390,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `qw` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float qw(MemorySegment segment, long index) { return (float) VH_qw.get(segment, 0L, index); }
+    public static float qw(MemorySegment segment, long index) { return (float) VH_qw.get().get(segment, 0L, index); }
     /// {@return `qw`}
     public float qw() { return qw(this.segment(), 0L); }
     /// Sets `qw` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void qw(MemorySegment segment, long index, float value) { VH_qw.set(segment, 0L, index, value); }
+    public static void qw(MemorySegment segment, long index, float value) { VH_qw.get().set(segment, 0L, index, value); }
     /// Sets `qw` with the given value.
     /// @param value the value
     /// @return `this`
@@ -406,14 +406,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `tx` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float tx(MemorySegment segment, long index) { return (float) VH_tx.get(segment, 0L, index); }
+    public static float tx(MemorySegment segment, long index) { return (float) VH_tx.get().get(segment, 0L, index); }
     /// {@return `tx`}
     public float tx() { return tx(this.segment(), 0L); }
     /// Sets `tx` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tx(MemorySegment segment, long index, float value) { VH_tx.set(segment, 0L, index, value); }
+    public static void tx(MemorySegment segment, long index, float value) { VH_tx.get().set(segment, 0L, index, value); }
     /// Sets `tx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -422,14 +422,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `ty` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float ty(MemorySegment segment, long index) { return (float) VH_ty.get(segment, 0L, index); }
+    public static float ty(MemorySegment segment, long index) { return (float) VH_ty.get().get(segment, 0L, index); }
     /// {@return `ty`}
     public float ty() { return ty(this.segment(), 0L); }
     /// Sets `ty` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ty(MemorySegment segment, long index, float value) { VH_ty.set(segment, 0L, index, value); }
+    public static void ty(MemorySegment segment, long index, float value) { VH_ty.get().set(segment, 0L, index, value); }
     /// Sets `ty` with the given value.
     /// @param value the value
     /// @return `this`
@@ -438,14 +438,14 @@ public final class VkSRTDataNV extends GroupType {
     /// {@return `tz` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float tz(MemorySegment segment, long index) { return (float) VH_tz.get(segment, 0L, index); }
+    public static float tz(MemorySegment segment, long index) { return (float) VH_tz.get().get(segment, 0L, index); }
     /// {@return `tz`}
     public float tz() { return tz(this.segment(), 0L); }
     /// Sets `tz` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tz(MemorySegment segment, long index, float value) { VH_tz.set(segment, 0L, index, value); }
+    public static void tz(MemorySegment segment, long index, float value) { VH_tz.get().set(segment, 0L, index, value); }
     /// Sets `tz` with the given value.
     /// @param value the value
     /// @return `this`

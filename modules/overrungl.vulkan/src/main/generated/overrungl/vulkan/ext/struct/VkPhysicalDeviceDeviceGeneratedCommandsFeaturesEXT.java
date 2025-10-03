@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT extends Gr
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `deviceGeneratedCommands`.
     public static final long OFFSET_deviceGeneratedCommands = LAYOUT.byteOffset(PathElement.groupElement("deviceGeneratedCommands"));
     /// The memory layout of `deviceGeneratedCommands`.
     public static final MemoryLayout LAYOUT_deviceGeneratedCommands = LAYOUT.select(PathElement.groupElement("deviceGeneratedCommands"));
     /// The [VarHandle] of `deviceGeneratedCommands` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceGeneratedCommands = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceGeneratedCommands"));
+    public static final Supplier<VarHandle> VH_deviceGeneratedCommands = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceGeneratedCommands")));
     /// The byte offset of `dynamicGeneratedPipelineLayout`.
     public static final long OFFSET_dynamicGeneratedPipelineLayout = LAYOUT.byteOffset(PathElement.groupElement("dynamicGeneratedPipelineLayout"));
     /// The memory layout of `dynamicGeneratedPipelineLayout`.
     public static final MemoryLayout LAYOUT_dynamicGeneratedPipelineLayout = LAYOUT.select(PathElement.groupElement("dynamicGeneratedPipelineLayout"));
     /// The [VarHandle] of `dynamicGeneratedPipelineLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dynamicGeneratedPipelineLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicGeneratedPipelineLayout"));
+    public static final Supplier<VarHandle> VH_dynamicGeneratedPipelineLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicGeneratedPipelineLayout")));
 
     /// Creates `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT extends Gr
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT extends Gr
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT extends Gr
     /// {@return `deviceGeneratedCommands` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceGeneratedCommands(MemorySegment segment, long index) { return (int) VH_deviceGeneratedCommands.get(segment, 0L, index); }
+    public static int deviceGeneratedCommands(MemorySegment segment, long index) { return (int) VH_deviceGeneratedCommands.get().get(segment, 0L, index); }
     /// {@return `deviceGeneratedCommands`}
     public int deviceGeneratedCommands() { return deviceGeneratedCommands(this.segment(), 0L); }
     /// Sets `deviceGeneratedCommands` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceGeneratedCommands(MemorySegment segment, long index, int value) { VH_deviceGeneratedCommands.set(segment, 0L, index, value); }
+    public static void deviceGeneratedCommands(MemorySegment segment, long index, int value) { VH_deviceGeneratedCommands.get().set(segment, 0L, index, value); }
     /// Sets `deviceGeneratedCommands` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT extends Gr
     /// {@return `dynamicGeneratedPipelineLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dynamicGeneratedPipelineLayout(MemorySegment segment, long index) { return (int) VH_dynamicGeneratedPipelineLayout.get(segment, 0L, index); }
+    public static int dynamicGeneratedPipelineLayout(MemorySegment segment, long index) { return (int) VH_dynamicGeneratedPipelineLayout.get().get(segment, 0L, index); }
     /// {@return `dynamicGeneratedPipelineLayout`}
     public int dynamicGeneratedPipelineLayout() { return dynamicGeneratedPipelineLayout(this.segment(), 0L); }
     /// Sets `dynamicGeneratedPipelineLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dynamicGeneratedPipelineLayout(MemorySegment segment, long index, int value) { VH_dynamicGeneratedPipelineLayout.set(segment, 0L, index, value); }
+    public static void dynamicGeneratedPipelineLayout(MemorySegment segment, long index, int value) { VH_dynamicGeneratedPipelineLayout.get().set(segment, 0L, index, value); }
     /// Sets `dynamicGeneratedPipelineLayout` with the given value.
     /// @param value the value
     /// @return `this`

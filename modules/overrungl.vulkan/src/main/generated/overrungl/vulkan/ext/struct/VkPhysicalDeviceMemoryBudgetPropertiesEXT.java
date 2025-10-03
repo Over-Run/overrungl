@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `heapBudget`.
     public static final long OFFSET_heapBudget = LAYOUT.byteOffset(PathElement.groupElement("heapBudget"));
     /// The memory layout of `heapBudget`.
     public static final MemoryLayout LAYOUT_heapBudget = LAYOUT.select(PathElement.groupElement("heapBudget"));
     /// The [VarHandle] of `heapBudget` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_heapBudget = LAYOUT.arrayElementVarHandle(PathElement.groupElement("heapBudget"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_heapBudget = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("heapBudget"), PathElement.sequenceElement()));
     /// The byte offset of `heapUsage`.
     public static final long OFFSET_heapUsage = LAYOUT.byteOffset(PathElement.groupElement("heapUsage"));
     /// The memory layout of `heapUsage`.
     public static final MemoryLayout LAYOUT_heapUsage = LAYOUT.select(PathElement.groupElement("heapUsage"));
     /// The [VarHandle] of `heapUsage` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_heapUsage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("heapUsage"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_heapUsage = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("heapUsage"), PathElement.sequenceElement()));
 
     /// Creates `VkPhysicalDeviceMemoryBudgetPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -139,7 +139,7 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static long heapBudget(MemorySegment segment, long index, long index0) { return (long) VH_heapBudget.get(segment, 0L, index, index0); }
+    public static long heapBudget(MemorySegment segment, long index, long index0) { return (long) VH_heapBudget.get().get(segment, 0L, index, index0); }
     /// {@return `heapBudget`}
     public MemorySegment heapBudget() { return heapBudget(this.segment(), 0L); }
     /// {@return `heapBudget`}
@@ -155,7 +155,7 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void heapBudget(MemorySegment segment, long index, long index0, long value) { VH_heapBudget.set(segment, 0L, index, index0, value); }
+    public static void heapBudget(MemorySegment segment, long index, long index0, long value) { VH_heapBudget.get().set(segment, 0L, index, index0, value); }
     /// Sets `heapBudget` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,7 +174,7 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static long heapUsage(MemorySegment segment, long index, long index0) { return (long) VH_heapUsage.get(segment, 0L, index, index0); }
+    public static long heapUsage(MemorySegment segment, long index, long index0) { return (long) VH_heapUsage.get().get(segment, 0L, index, index0); }
     /// {@return `heapUsage`}
     public MemorySegment heapUsage() { return heapUsage(this.segment(), 0L); }
     /// {@return `heapUsage`}
@@ -190,7 +190,7 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void heapUsage(MemorySegment segment, long index, long index0, long value) { VH_heapUsage.set(segment, 0L, index, index0, value); }
+    public static void heapUsage(MemorySegment segment, long index, long index0, long value) { VH_heapUsage.get().set(segment, 0L, index, index0, value); }
     /// Sets `heapUsage` with the given value.
     /// @param value the value
     /// @return `this`

@@ -33,19 +33,19 @@ public final class VkFragmentShadingRateAttachmentInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pFragmentShadingRateAttachment`.
     public static final long OFFSET_pFragmentShadingRateAttachment = LAYOUT.byteOffset(PathElement.groupElement("pFragmentShadingRateAttachment"));
     /// The memory layout of `pFragmentShadingRateAttachment`.
     public static final MemoryLayout LAYOUT_pFragmentShadingRateAttachment = LAYOUT.select(PathElement.groupElement("pFragmentShadingRateAttachment"));
     /// The [VarHandle] of `pFragmentShadingRateAttachment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pFragmentShadingRateAttachment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFragmentShadingRateAttachment"));
+    public static final Supplier<VarHandle> VH_pFragmentShadingRateAttachment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFragmentShadingRateAttachment")));
     /// The byte offset of `shadingRateAttachmentTexelSize`.
     public static final long OFFSET_shadingRateAttachmentTexelSize = LAYOUT.byteOffset(PathElement.groupElement("shadingRateAttachmentTexelSize"));
     /// The memory layout of `shadingRateAttachmentTexelSize`.
@@ -100,14 +100,14 @@ public final class VkFragmentShadingRateAttachmentInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -116,14 +116,14 @@ public final class VkFragmentShadingRateAttachmentInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,14 +132,14 @@ public final class VkFragmentShadingRateAttachmentInfoKHR extends GroupType {
     /// {@return `pFragmentShadingRateAttachment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pFragmentShadingRateAttachment(MemorySegment segment, long index) { return (MemorySegment) VH_pFragmentShadingRateAttachment.get(segment, 0L, index); }
+    public static MemorySegment pFragmentShadingRateAttachment(MemorySegment segment, long index) { return (MemorySegment) VH_pFragmentShadingRateAttachment.get().get(segment, 0L, index); }
     /// {@return `pFragmentShadingRateAttachment`}
     public MemorySegment pFragmentShadingRateAttachment() { return pFragmentShadingRateAttachment(this.segment(), 0L); }
     /// Sets `pFragmentShadingRateAttachment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pFragmentShadingRateAttachment(MemorySegment segment, long index, MemorySegment value) { VH_pFragmentShadingRateAttachment.set(segment, 0L, index, value); }
+    public static void pFragmentShadingRateAttachment(MemorySegment segment, long index, MemorySegment value) { VH_pFragmentShadingRateAttachment.get().set(segment, 0L, index, value); }
     /// Sets `pFragmentShadingRateAttachment` with the given value.
     /// @param value the value
     /// @return `this`

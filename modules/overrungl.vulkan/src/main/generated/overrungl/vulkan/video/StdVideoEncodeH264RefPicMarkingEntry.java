@@ -35,31 +35,31 @@ public final class StdVideoEncodeH264RefPicMarkingEntry extends GroupType {
     /// The memory layout of `memory_management_control_operation`.
     public static final MemoryLayout LAYOUT_memory_management_control_operation = LAYOUT.select(PathElement.groupElement("memory_management_control_operation"));
     /// The [VarHandle] of `memory_management_control_operation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memory_management_control_operation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memory_management_control_operation"));
+    public static final Supplier<VarHandle> VH_memory_management_control_operation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memory_management_control_operation")));
     /// The byte offset of `difference_of_pic_nums_minus1`.
     public static final long OFFSET_difference_of_pic_nums_minus1 = LAYOUT.byteOffset(PathElement.groupElement("difference_of_pic_nums_minus1"));
     /// The memory layout of `difference_of_pic_nums_minus1`.
     public static final MemoryLayout LAYOUT_difference_of_pic_nums_minus1 = LAYOUT.select(PathElement.groupElement("difference_of_pic_nums_minus1"));
     /// The [VarHandle] of `difference_of_pic_nums_minus1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_difference_of_pic_nums_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("difference_of_pic_nums_minus1"));
+    public static final Supplier<VarHandle> VH_difference_of_pic_nums_minus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("difference_of_pic_nums_minus1")));
     /// The byte offset of `long_term_pic_num`.
     public static final long OFFSET_long_term_pic_num = LAYOUT.byteOffset(PathElement.groupElement("long_term_pic_num"));
     /// The memory layout of `long_term_pic_num`.
     public static final MemoryLayout LAYOUT_long_term_pic_num = LAYOUT.select(PathElement.groupElement("long_term_pic_num"));
     /// The [VarHandle] of `long_term_pic_num` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_long_term_pic_num = LAYOUT.arrayElementVarHandle(PathElement.groupElement("long_term_pic_num"));
+    public static final Supplier<VarHandle> VH_long_term_pic_num = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("long_term_pic_num")));
     /// The byte offset of `long_term_frame_idx`.
     public static final long OFFSET_long_term_frame_idx = LAYOUT.byteOffset(PathElement.groupElement("long_term_frame_idx"));
     /// The memory layout of `long_term_frame_idx`.
     public static final MemoryLayout LAYOUT_long_term_frame_idx = LAYOUT.select(PathElement.groupElement("long_term_frame_idx"));
     /// The [VarHandle] of `long_term_frame_idx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_long_term_frame_idx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("long_term_frame_idx"));
+    public static final Supplier<VarHandle> VH_long_term_frame_idx = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("long_term_frame_idx")));
     /// The byte offset of `max_long_term_frame_idx_plus1`.
     public static final long OFFSET_max_long_term_frame_idx_plus1 = LAYOUT.byteOffset(PathElement.groupElement("max_long_term_frame_idx_plus1"));
     /// The memory layout of `max_long_term_frame_idx_plus1`.
     public static final MemoryLayout LAYOUT_max_long_term_frame_idx_plus1 = LAYOUT.select(PathElement.groupElement("max_long_term_frame_idx_plus1"));
     /// The [VarHandle] of `max_long_term_frame_idx_plus1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_max_long_term_frame_idx_plus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_long_term_frame_idx_plus1"));
+    public static final Supplier<VarHandle> VH_max_long_term_frame_idx_plus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_long_term_frame_idx_plus1")));
 
     /// Creates `StdVideoEncodeH264RefPicMarkingEntry` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class StdVideoEncodeH264RefPicMarkingEntry extends GroupType {
     /// {@return `memory_management_control_operation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int memory_management_control_operation(MemorySegment segment, long index) { return (int) VH_memory_management_control_operation.get(segment, 0L, index); }
+    public static int memory_management_control_operation(MemorySegment segment, long index) { return (int) VH_memory_management_control_operation.get().get(segment, 0L, index); }
     /// {@return `memory_management_control_operation`}
     public int memory_management_control_operation() { return memory_management_control_operation(this.segment(), 0L); }
     /// Sets `memory_management_control_operation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memory_management_control_operation(MemorySegment segment, long index, int value) { VH_memory_management_control_operation.set(segment, 0L, index, value); }
+    public static void memory_management_control_operation(MemorySegment segment, long index, int value) { VH_memory_management_control_operation.get().set(segment, 0L, index, value); }
     /// Sets `memory_management_control_operation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class StdVideoEncodeH264RefPicMarkingEntry extends GroupType {
     /// {@return `difference_of_pic_nums_minus1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short difference_of_pic_nums_minus1(MemorySegment segment, long index) { return (short) VH_difference_of_pic_nums_minus1.get(segment, 0L, index); }
+    public static short difference_of_pic_nums_minus1(MemorySegment segment, long index) { return (short) VH_difference_of_pic_nums_minus1.get().get(segment, 0L, index); }
     /// {@return `difference_of_pic_nums_minus1`}
     public short difference_of_pic_nums_minus1() { return difference_of_pic_nums_minus1(this.segment(), 0L); }
     /// Sets `difference_of_pic_nums_minus1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void difference_of_pic_nums_minus1(MemorySegment segment, long index, short value) { VH_difference_of_pic_nums_minus1.set(segment, 0L, index, value); }
+    public static void difference_of_pic_nums_minus1(MemorySegment segment, long index, short value) { VH_difference_of_pic_nums_minus1.get().set(segment, 0L, index, value); }
     /// Sets `difference_of_pic_nums_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class StdVideoEncodeH264RefPicMarkingEntry extends GroupType {
     /// {@return `long_term_pic_num` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short long_term_pic_num(MemorySegment segment, long index) { return (short) VH_long_term_pic_num.get(segment, 0L, index); }
+    public static short long_term_pic_num(MemorySegment segment, long index) { return (short) VH_long_term_pic_num.get().get(segment, 0L, index); }
     /// {@return `long_term_pic_num`}
     public short long_term_pic_num() { return long_term_pic_num(this.segment(), 0L); }
     /// Sets `long_term_pic_num` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void long_term_pic_num(MemorySegment segment, long index, short value) { VH_long_term_pic_num.set(segment, 0L, index, value); }
+    public static void long_term_pic_num(MemorySegment segment, long index, short value) { VH_long_term_pic_num.get().set(segment, 0L, index, value); }
     /// Sets `long_term_pic_num` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class StdVideoEncodeH264RefPicMarkingEntry extends GroupType {
     /// {@return `long_term_frame_idx` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short long_term_frame_idx(MemorySegment segment, long index) { return (short) VH_long_term_frame_idx.get(segment, 0L, index); }
+    public static short long_term_frame_idx(MemorySegment segment, long index) { return (short) VH_long_term_frame_idx.get().get(segment, 0L, index); }
     /// {@return `long_term_frame_idx`}
     public short long_term_frame_idx() { return long_term_frame_idx(this.segment(), 0L); }
     /// Sets `long_term_frame_idx` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void long_term_frame_idx(MemorySegment segment, long index, short value) { VH_long_term_frame_idx.set(segment, 0L, index, value); }
+    public static void long_term_frame_idx(MemorySegment segment, long index, short value) { VH_long_term_frame_idx.get().set(segment, 0L, index, value); }
     /// Sets `long_term_frame_idx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class StdVideoEncodeH264RefPicMarkingEntry extends GroupType {
     /// {@return `max_long_term_frame_idx_plus1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short max_long_term_frame_idx_plus1(MemorySegment segment, long index) { return (short) VH_max_long_term_frame_idx_plus1.get(segment, 0L, index); }
+    public static short max_long_term_frame_idx_plus1(MemorySegment segment, long index) { return (short) VH_max_long_term_frame_idx_plus1.get().get(segment, 0L, index); }
     /// {@return `max_long_term_frame_idx_plus1`}
     public short max_long_term_frame_idx_plus1() { return max_long_term_frame_idx_plus1(this.segment(), 0L); }
     /// Sets `max_long_term_frame_idx_plus1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void max_long_term_frame_idx_plus1(MemorySegment segment, long index, short value) { VH_max_long_term_frame_idx_plus1.set(segment, 0L, index, value); }
+    public static void max_long_term_frame_idx_plus1(MemorySegment segment, long index, short value) { VH_max_long_term_frame_idx_plus1.get().set(segment, 0L, index, value); }
     /// Sets `max_long_term_frame_idx_plus1` with the given value.
     /// @param value the value
     /// @return `this`

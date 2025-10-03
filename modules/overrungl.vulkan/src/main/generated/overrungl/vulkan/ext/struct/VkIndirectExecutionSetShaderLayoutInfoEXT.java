@@ -33,25 +33,25 @@ public final class VkIndirectExecutionSetShaderLayoutInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `setLayoutCount`.
     public static final long OFFSET_setLayoutCount = LAYOUT.byteOffset(PathElement.groupElement("setLayoutCount"));
     /// The memory layout of `setLayoutCount`.
     public static final MemoryLayout LAYOUT_setLayoutCount = LAYOUT.select(PathElement.groupElement("setLayoutCount"));
     /// The [VarHandle] of `setLayoutCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_setLayoutCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("setLayoutCount"));
+    public static final Supplier<VarHandle> VH_setLayoutCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("setLayoutCount")));
     /// The byte offset of `pSetLayouts`.
     public static final long OFFSET_pSetLayouts = LAYOUT.byteOffset(PathElement.groupElement("pSetLayouts"));
     /// The memory layout of `pSetLayouts`.
     public static final MemoryLayout LAYOUT_pSetLayouts = LAYOUT.select(PathElement.groupElement("pSetLayouts"));
     /// The [VarHandle] of `pSetLayouts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pSetLayouts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSetLayouts"));
+    public static final Supplier<VarHandle> VH_pSetLayouts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSetLayouts")));
 
     /// Creates `VkIndirectExecutionSetShaderLayoutInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkIndirectExecutionSetShaderLayoutInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkIndirectExecutionSetShaderLayoutInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkIndirectExecutionSetShaderLayoutInfoEXT extends GroupType {
     /// {@return `setLayoutCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int setLayoutCount(MemorySegment segment, long index) { return (int) VH_setLayoutCount.get(segment, 0L, index); }
+    public static int setLayoutCount(MemorySegment segment, long index) { return (int) VH_setLayoutCount.get().get(segment, 0L, index); }
     /// {@return `setLayoutCount`}
     public int setLayoutCount() { return setLayoutCount(this.segment(), 0L); }
     /// Sets `setLayoutCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void setLayoutCount(MemorySegment segment, long index, int value) { VH_setLayoutCount.set(segment, 0L, index, value); }
+    public static void setLayoutCount(MemorySegment segment, long index, int value) { VH_setLayoutCount.get().set(segment, 0L, index, value); }
     /// Sets `setLayoutCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkIndirectExecutionSetShaderLayoutInfoEXT extends GroupType {
     /// {@return `pSetLayouts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pSetLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pSetLayouts.get(segment, 0L, index); }
+    public static MemorySegment pSetLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pSetLayouts.get().get(segment, 0L, index); }
     /// {@return `pSetLayouts`}
     public MemorySegment pSetLayouts() { return pSetLayouts(this.segment(), 0L); }
     /// Sets `pSetLayouts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pSetLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pSetLayouts.set(segment, 0L, index, value); }
+    public static void pSetLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pSetLayouts.get().set(segment, 0L, index, value); }
     /// Sets `pSetLayouts` with the given value.
     /// @param value the value
     /// @return `this`

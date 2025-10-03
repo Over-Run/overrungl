@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -21,14 +22,14 @@ public final class GLARBShaderSubroutine {
     public static final int GL_UNIFORM_NAME_LENGTH = 0x8A39;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetSubroutineUniformLocation = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetSubroutineIndex = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetActiveSubroutineUniformiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetActiveSubroutineUniformName = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetActiveSubroutineName = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniformSubroutinesuiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetUniformSubroutineuiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetProgramStageiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glGetSubroutineUniformLocation = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetSubroutineIndex = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetActiveSubroutineUniformiv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetActiveSubroutineUniformName = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetActiveSubroutineName = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glUniformSubroutinesuiv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetUniformSubroutineuiv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetProgramStageiv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glGetSubroutineUniformLocation;
         public final MemorySegment PFN_glGetSubroutineIndex;
         public final MemorySegment PFN_glGetActiveSubroutineUniformiv;
@@ -60,7 +61,7 @@ public final class GLARBShaderSubroutine {
     public int GetSubroutineUniformLocation(int program, int shadertype, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSubroutineUniformLocation)) throw new GLSymbolNotFoundError("Symbol not found: glGetSubroutineUniformLocation");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetSubroutineUniformLocation", program, shadertype, name); }
-        return (int) Handles.MH_glGetSubroutineUniformLocation.invokeExact(handles.PFN_glGetSubroutineUniformLocation, program, shadertype, name); }
+        return (int) Handles.MH_glGetSubroutineUniformLocation.get().invokeExact(handles.PFN_glGetSubroutineUniformLocation, program, shadertype, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetSubroutineUniformLocation", e); }
     }
 
@@ -71,7 +72,7 @@ public final class GLARBShaderSubroutine {
     public int GetSubroutineIndex(int program, int shadertype, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSubroutineIndex)) throw new GLSymbolNotFoundError("Symbol not found: glGetSubroutineIndex");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetSubroutineIndex", program, shadertype, name); }
-        return (int) Handles.MH_glGetSubroutineIndex.invokeExact(handles.PFN_glGetSubroutineIndex, program, shadertype, name); }
+        return (int) Handles.MH_glGetSubroutineIndex.get().invokeExact(handles.PFN_glGetSubroutineIndex, program, shadertype, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetSubroutineIndex", e); }
     }
 
@@ -82,7 +83,7 @@ public final class GLARBShaderSubroutine {
     public void GetActiveSubroutineUniformiv(int program, int shadertype, int index, int pname, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveSubroutineUniformiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetActiveSubroutineUniformiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetActiveSubroutineUniformiv", program, shadertype, index, pname, values); }
-        Handles.MH_glGetActiveSubroutineUniformiv.invokeExact(handles.PFN_glGetActiveSubroutineUniformiv, program, shadertype, index, pname, values); }
+        Handles.MH_glGetActiveSubroutineUniformiv.get().invokeExact(handles.PFN_glGetActiveSubroutineUniformiv, program, shadertype, index, pname, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetActiveSubroutineUniformiv", e); }
     }
 
@@ -93,7 +94,7 @@ public final class GLARBShaderSubroutine {
     public void GetActiveSubroutineUniformName(int program, int shadertype, int index, int bufSize, @NonNull MemorySegment length, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveSubroutineUniformName)) throw new GLSymbolNotFoundError("Symbol not found: glGetActiveSubroutineUniformName");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetActiveSubroutineUniformName", program, shadertype, index, bufSize, length, name); }
-        Handles.MH_glGetActiveSubroutineUniformName.invokeExact(handles.PFN_glGetActiveSubroutineUniformName, program, shadertype, index, bufSize, length, name); }
+        Handles.MH_glGetActiveSubroutineUniformName.get().invokeExact(handles.PFN_glGetActiveSubroutineUniformName, program, shadertype, index, bufSize, length, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetActiveSubroutineUniformName", e); }
     }
 
@@ -104,7 +105,7 @@ public final class GLARBShaderSubroutine {
     public void GetActiveSubroutineName(int program, int shadertype, int index, int bufSize, @NonNull MemorySegment length, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveSubroutineName)) throw new GLSymbolNotFoundError("Symbol not found: glGetActiveSubroutineName");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetActiveSubroutineName", program, shadertype, index, bufSize, length, name); }
-        Handles.MH_glGetActiveSubroutineName.invokeExact(handles.PFN_glGetActiveSubroutineName, program, shadertype, index, bufSize, length, name); }
+        Handles.MH_glGetActiveSubroutineName.get().invokeExact(handles.PFN_glGetActiveSubroutineName, program, shadertype, index, bufSize, length, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetActiveSubroutineName", e); }
     }
 
@@ -115,7 +116,7 @@ public final class GLARBShaderSubroutine {
     public void UniformSubroutinesuiv(int shadertype, int count, @NonNull MemorySegment indices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformSubroutinesuiv)) throw new GLSymbolNotFoundError("Symbol not found: glUniformSubroutinesuiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformSubroutinesuiv", shadertype, count, indices); }
-        Handles.MH_glUniformSubroutinesuiv.invokeExact(handles.PFN_glUniformSubroutinesuiv, shadertype, count, indices); }
+        Handles.MH_glUniformSubroutinesuiv.get().invokeExact(handles.PFN_glUniformSubroutinesuiv, shadertype, count, indices); }
         catch (Throwable e) { throw new RuntimeException("error in UniformSubroutinesuiv", e); }
     }
 
@@ -126,7 +127,7 @@ public final class GLARBShaderSubroutine {
     public void GetUniformSubroutineuiv(int shadertype, int location, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformSubroutineuiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetUniformSubroutineuiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetUniformSubroutineuiv", shadertype, location, params); }
-        Handles.MH_glGetUniformSubroutineuiv.invokeExact(handles.PFN_glGetUniformSubroutineuiv, shadertype, location, params); }
+        Handles.MH_glGetUniformSubroutineuiv.get().invokeExact(handles.PFN_glGetUniformSubroutineuiv, shadertype, location, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetUniformSubroutineuiv", e); }
     }
 
@@ -137,7 +138,7 @@ public final class GLARBShaderSubroutine {
     public void GetProgramStageiv(int program, int shadertype, int pname, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramStageiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramStageiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramStageiv", program, shadertype, pname, values); }
-        Handles.MH_glGetProgramStageiv.invokeExact(handles.PFN_glGetProgramStageiv, program, shadertype, pname, values); }
+        Handles.MH_glGetProgramStageiv.get().invokeExact(handles.PFN_glGetProgramStageiv, program, shadertype, pname, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramStageiv", e); }
     }
 

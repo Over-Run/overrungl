@@ -33,19 +33,19 @@ public final class VkQueueFamilyProperties extends GroupType {
     /// The memory layout of `queueFlags`.
     public static final MemoryLayout LAYOUT_queueFlags = LAYOUT.select(PathElement.groupElement("queueFlags"));
     /// The [VarHandle] of `queueFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_queueFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFlags"));
+    public static final Supplier<VarHandle> VH_queueFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFlags")));
     /// The byte offset of `queueCount`.
     public static final long OFFSET_queueCount = LAYOUT.byteOffset(PathElement.groupElement("queueCount"));
     /// The memory layout of `queueCount`.
     public static final MemoryLayout LAYOUT_queueCount = LAYOUT.select(PathElement.groupElement("queueCount"));
     /// The [VarHandle] of `queueCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_queueCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueCount"));
+    public static final Supplier<VarHandle> VH_queueCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueCount")));
     /// The byte offset of `timestampValidBits`.
     public static final long OFFSET_timestampValidBits = LAYOUT.byteOffset(PathElement.groupElement("timestampValidBits"));
     /// The memory layout of `timestampValidBits`.
     public static final MemoryLayout LAYOUT_timestampValidBits = LAYOUT.select(PathElement.groupElement("timestampValidBits"));
     /// The [VarHandle] of `timestampValidBits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_timestampValidBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("timestampValidBits"));
+    public static final Supplier<VarHandle> VH_timestampValidBits = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("timestampValidBits")));
     /// The byte offset of `minImageTransferGranularity`.
     public static final long OFFSET_minImageTransferGranularity = LAYOUT.byteOffset(PathElement.groupElement("minImageTransferGranularity"));
     /// The memory layout of `minImageTransferGranularity`.
@@ -100,14 +100,14 @@ public final class VkQueueFamilyProperties extends GroupType {
     /// {@return `queueFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int queueFlags(MemorySegment segment, long index) { return (int) VH_queueFlags.get(segment, 0L, index); }
+    public static int queueFlags(MemorySegment segment, long index) { return (int) VH_queueFlags.get().get(segment, 0L, index); }
     /// {@return `queueFlags`}
     public int queueFlags() { return queueFlags(this.segment(), 0L); }
     /// Sets `queueFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void queueFlags(MemorySegment segment, long index, int value) { VH_queueFlags.set(segment, 0L, index, value); }
+    public static void queueFlags(MemorySegment segment, long index, int value) { VH_queueFlags.get().set(segment, 0L, index, value); }
     /// Sets `queueFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -116,14 +116,14 @@ public final class VkQueueFamilyProperties extends GroupType {
     /// {@return `queueCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int queueCount(MemorySegment segment, long index) { return (int) VH_queueCount.get(segment, 0L, index); }
+    public static int queueCount(MemorySegment segment, long index) { return (int) VH_queueCount.get().get(segment, 0L, index); }
     /// {@return `queueCount`}
     public int queueCount() { return queueCount(this.segment(), 0L); }
     /// Sets `queueCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void queueCount(MemorySegment segment, long index, int value) { VH_queueCount.set(segment, 0L, index, value); }
+    public static void queueCount(MemorySegment segment, long index, int value) { VH_queueCount.get().set(segment, 0L, index, value); }
     /// Sets `queueCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,14 +132,14 @@ public final class VkQueueFamilyProperties extends GroupType {
     /// {@return `timestampValidBits` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int timestampValidBits(MemorySegment segment, long index) { return (int) VH_timestampValidBits.get(segment, 0L, index); }
+    public static int timestampValidBits(MemorySegment segment, long index) { return (int) VH_timestampValidBits.get().get(segment, 0L, index); }
     /// {@return `timestampValidBits`}
     public int timestampValidBits() { return timestampValidBits(this.segment(), 0L); }
     /// Sets `timestampValidBits` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void timestampValidBits(MemorySegment segment, long index, int value) { VH_timestampValidBits.set(segment, 0L, index, value); }
+    public static void timestampValidBits(MemorySegment segment, long index, int value) { VH_timestampValidBits.get().set(segment, 0L, index, value); }
     /// Sets `timestampValidBits` with the given value.
     /// @param value the value
     /// @return `this`

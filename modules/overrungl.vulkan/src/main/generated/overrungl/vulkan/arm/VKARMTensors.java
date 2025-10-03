@@ -2,6 +2,7 @@
 package overrungl.vulkan.arm;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -53,17 +54,17 @@ public final class VKARMTensors {
     public static final long VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM = 0x00000001L;
     public static final int VK_STRUCTURE_TYPE_FRAME_BOUNDARY_TENSORS_ARM = 1000460023;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateTensorARM = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyTensorARM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCreateTensorViewARM = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyTensorViewARM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetTensorMemoryRequirementsARM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkBindTensorMemoryARM = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDeviceTensorMemoryRequirementsARM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdCopyTensorARM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetPhysicalDeviceExternalTensorPropertiesARM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetTensorOpaqueCaptureDescriptorDataARM = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetTensorViewOpaqueCaptureDescriptorDataARM = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkCreateTensorARM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkDestroyTensorARM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCreateTensorViewARM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkDestroyTensorViewARM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetTensorMemoryRequirementsARM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkBindTensorMemoryARM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetDeviceTensorMemoryRequirementsARM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdCopyTensorARM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetPhysicalDeviceExternalTensorPropertiesARM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetTensorOpaqueCaptureDescriptorDataARM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetTensorViewOpaqueCaptureDescriptorDataARM = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -76,7 +77,7 @@ public final class VKARMTensors {
     public static int vkCreateTensorARM(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pTensor) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateTensorARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateTensorARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateTensorARM", device, pCreateInfo, pAllocator, pTensor); }
-        return (int) Handles.MH_vkCreateTensorARM.invokeExact(device.capabilities().PFN_vkCreateTensorARM, device.segment(), pCreateInfo, pAllocator, pTensor); }
+        return (int) Handles.MH_vkCreateTensorARM.get().invokeExact(device.capabilities().PFN_vkCreateTensorARM, device.segment(), pCreateInfo, pAllocator, pTensor); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateTensorARM", e); }
     }
 
@@ -87,7 +88,7 @@ public final class VKARMTensors {
     public static void vkDestroyTensorARM(@NonNull VkDevice device, long tensor, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyTensorARM)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyTensorARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyTensorARM", device, tensor, pAllocator); }
-        Handles.MH_vkDestroyTensorARM.invokeExact(device.capabilities().PFN_vkDestroyTensorARM, device.segment(), tensor, pAllocator); }
+        Handles.MH_vkDestroyTensorARM.get().invokeExact(device.capabilities().PFN_vkDestroyTensorARM, device.segment(), tensor, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyTensorARM", e); }
     }
 
@@ -98,7 +99,7 @@ public final class VKARMTensors {
     public static int vkCreateTensorViewARM(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pView) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateTensorViewARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateTensorViewARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateTensorViewARM", device, pCreateInfo, pAllocator, pView); }
-        return (int) Handles.MH_vkCreateTensorViewARM.invokeExact(device.capabilities().PFN_vkCreateTensorViewARM, device.segment(), pCreateInfo, pAllocator, pView); }
+        return (int) Handles.MH_vkCreateTensorViewARM.get().invokeExact(device.capabilities().PFN_vkCreateTensorViewARM, device.segment(), pCreateInfo, pAllocator, pView); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateTensorViewARM", e); }
     }
 
@@ -109,7 +110,7 @@ public final class VKARMTensors {
     public static void vkDestroyTensorViewARM(@NonNull VkDevice device, long tensorView, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyTensorViewARM)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyTensorViewARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyTensorViewARM", device, tensorView, pAllocator); }
-        Handles.MH_vkDestroyTensorViewARM.invokeExact(device.capabilities().PFN_vkDestroyTensorViewARM, device.segment(), tensorView, pAllocator); }
+        Handles.MH_vkDestroyTensorViewARM.get().invokeExact(device.capabilities().PFN_vkDestroyTensorViewARM, device.segment(), tensorView, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyTensorViewARM", e); }
     }
 
@@ -120,7 +121,7 @@ public final class VKARMTensors {
     public static void vkGetTensorMemoryRequirementsARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetTensorMemoryRequirementsARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetTensorMemoryRequirementsARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetTensorMemoryRequirementsARM", device, pInfo, pMemoryRequirements); }
-        Handles.MH_vkGetTensorMemoryRequirementsARM.invokeExact(device.capabilities().PFN_vkGetTensorMemoryRequirementsARM, device.segment(), pInfo, pMemoryRequirements); }
+        Handles.MH_vkGetTensorMemoryRequirementsARM.get().invokeExact(device.capabilities().PFN_vkGetTensorMemoryRequirementsARM, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetTensorMemoryRequirementsARM", e); }
     }
 
@@ -131,7 +132,7 @@ public final class VKARMTensors {
     public static int vkBindTensorMemoryARM(@NonNull VkDevice device, int bindInfoCount, @NonNull MemorySegment pBindInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindTensorMemoryARM)) throw new VKSymbolNotFoundError("Symbol not found: vkBindTensorMemoryARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkBindTensorMemoryARM", device, bindInfoCount, pBindInfos); }
-        return (int) Handles.MH_vkBindTensorMemoryARM.invokeExact(device.capabilities().PFN_vkBindTensorMemoryARM, device.segment(), bindInfoCount, pBindInfos); }
+        return (int) Handles.MH_vkBindTensorMemoryARM.get().invokeExact(device.capabilities().PFN_vkBindTensorMemoryARM, device.segment(), bindInfoCount, pBindInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkBindTensorMemoryARM", e); }
     }
 
@@ -142,7 +143,7 @@ public final class VKARMTensors {
     public static void vkGetDeviceTensorMemoryRequirementsARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceTensorMemoryRequirementsARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceTensorMemoryRequirementsARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceTensorMemoryRequirementsARM", device, pInfo, pMemoryRequirements); }
-        Handles.MH_vkGetDeviceTensorMemoryRequirementsARM.invokeExact(device.capabilities().PFN_vkGetDeviceTensorMemoryRequirementsARM, device.segment(), pInfo, pMemoryRequirements); }
+        Handles.MH_vkGetDeviceTensorMemoryRequirementsARM.get().invokeExact(device.capabilities().PFN_vkGetDeviceTensorMemoryRequirementsARM, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceTensorMemoryRequirementsARM", e); }
     }
 
@@ -153,7 +154,7 @@ public final class VKARMTensors {
     public static void vkCmdCopyTensorARM(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pCopyTensorInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyTensorARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyTensorARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyTensorARM", commandBuffer, pCopyTensorInfo); }
-        Handles.MH_vkCmdCopyTensorARM.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyTensorARM, commandBuffer.segment(), pCopyTensorInfo); }
+        Handles.MH_vkCmdCopyTensorARM.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyTensorARM, commandBuffer.segment(), pCopyTensorInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyTensorARM", e); }
     }
 
@@ -164,7 +165,7 @@ public final class VKARMTensors {
     public static void vkGetPhysicalDeviceExternalTensorPropertiesARM(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pExternalTensorInfo, @NonNull MemorySegment pExternalTensorProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalTensorPropertiesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalTensorPropertiesARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceExternalTensorPropertiesARM", physicalDevice, pExternalTensorInfo, pExternalTensorProperties); }
-        Handles.MH_vkGetPhysicalDeviceExternalTensorPropertiesARM.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalTensorPropertiesARM, physicalDevice.segment(), pExternalTensorInfo, pExternalTensorProperties); }
+        Handles.MH_vkGetPhysicalDeviceExternalTensorPropertiesARM.get().invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalTensorPropertiesARM, physicalDevice.segment(), pExternalTensorInfo, pExternalTensorProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceExternalTensorPropertiesARM", e); }
     }
 
@@ -175,7 +176,7 @@ public final class VKARMTensors {
     public static int vkGetTensorOpaqueCaptureDescriptorDataARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetTensorOpaqueCaptureDescriptorDataARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetTensorOpaqueCaptureDescriptorDataARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetTensorOpaqueCaptureDescriptorDataARM", device, pInfo, pData); }
-        return (int) Handles.MH_vkGetTensorOpaqueCaptureDescriptorDataARM.invokeExact(device.capabilities().PFN_vkGetTensorOpaqueCaptureDescriptorDataARM, device.segment(), pInfo, pData); }
+        return (int) Handles.MH_vkGetTensorOpaqueCaptureDescriptorDataARM.get().invokeExact(device.capabilities().PFN_vkGetTensorOpaqueCaptureDescriptorDataARM, device.segment(), pInfo, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetTensorOpaqueCaptureDescriptorDataARM", e); }
     }
 
@@ -186,7 +187,7 @@ public final class VKARMTensors {
     public static int vkGetTensorViewOpaqueCaptureDescriptorDataARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetTensorViewOpaqueCaptureDescriptorDataARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetTensorViewOpaqueCaptureDescriptorDataARM");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetTensorViewOpaqueCaptureDescriptorDataARM", device, pInfo, pData); }
-        return (int) Handles.MH_vkGetTensorViewOpaqueCaptureDescriptorDataARM.invokeExact(device.capabilities().PFN_vkGetTensorViewOpaqueCaptureDescriptorDataARM, device.segment(), pInfo, pData); }
+        return (int) Handles.MH_vkGetTensorViewOpaqueCaptureDescriptorDataARM.get().invokeExact(device.capabilities().PFN_vkGetTensorViewOpaqueCaptureDescriptorDataARM, device.segment(), pInfo, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetTensorViewOpaqueCaptureDescriptorDataARM", e); }
     }
 

@@ -31,19 +31,19 @@ public final class VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT extends 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pageableDeviceLocalMemory`.
     public static final long OFFSET_pageableDeviceLocalMemory = LAYOUT.byteOffset(PathElement.groupElement("pageableDeviceLocalMemory"));
     /// The memory layout of `pageableDeviceLocalMemory`.
     public static final MemoryLayout LAYOUT_pageableDeviceLocalMemory = LAYOUT.select(PathElement.groupElement("pageableDeviceLocalMemory"));
     /// The [VarHandle] of `pageableDeviceLocalMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pageableDeviceLocalMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pageableDeviceLocalMemory"));
+    public static final Supplier<VarHandle> VH_pageableDeviceLocalMemory = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pageableDeviceLocalMemory")));
 
     /// Creates `VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT extends 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT extends 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT extends 
     /// {@return `pageableDeviceLocalMemory` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pageableDeviceLocalMemory(MemorySegment segment, long index) { return (int) VH_pageableDeviceLocalMemory.get(segment, 0L, index); }
+    public static int pageableDeviceLocalMemory(MemorySegment segment, long index) { return (int) VH_pageableDeviceLocalMemory.get().get(segment, 0L, index); }
     /// {@return `pageableDeviceLocalMemory`}
     public int pageableDeviceLocalMemory() { return pageableDeviceLocalMemory(this.segment(), 0L); }
     /// Sets `pageableDeviceLocalMemory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pageableDeviceLocalMemory(MemorySegment segment, long index, int value) { VH_pageableDeviceLocalMemory.set(segment, 0L, index, value); }
+    public static void pageableDeviceLocalMemory(MemorySegment segment, long index, int value) { VH_pageableDeviceLocalMemory.get().set(segment, 0L, index, value); }
     /// Sets `pageableDeviceLocalMemory` with the given value.
     /// @param value the value
     /// @return `this`

@@ -2,6 +2,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -20,12 +21,12 @@ public final class VKKHRMaintenance6 {
     public static final int VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT = 1000545007;
     public static final int VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT = 1000545008;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBindDescriptorSets2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdPushConstants2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdPushDescriptorSet2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdPushDescriptorSetWithTemplate2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdSetDescriptorBufferOffsets2EXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkCmdBindDescriptorSets2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdPushConstants2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdPushDescriptorSet2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdPushDescriptorSetWithTemplate2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdSetDescriptorBufferOffsets2EXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -38,7 +39,7 @@ public final class VKKHRMaintenance6 {
     public static void vkCmdBindDescriptorSets2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pBindDescriptorSetsInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorSets2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindDescriptorSets2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBindDescriptorSets2KHR", commandBuffer, pBindDescriptorSetsInfo); }
-        Handles.MH_vkCmdBindDescriptorSets2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindDescriptorSets2KHR, commandBuffer.segment(), pBindDescriptorSetsInfo); }
+        Handles.MH_vkCmdBindDescriptorSets2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdBindDescriptorSets2KHR, commandBuffer.segment(), pBindDescriptorSetsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindDescriptorSets2KHR", e); }
     }
 
@@ -49,7 +50,7 @@ public final class VKKHRMaintenance6 {
     public static void vkCmdPushConstants2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pPushConstantsInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushConstants2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPushConstants2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdPushConstants2KHR", commandBuffer, pPushConstantsInfo); }
-        Handles.MH_vkCmdPushConstants2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushConstants2KHR, commandBuffer.segment(), pPushConstantsInfo); }
+        Handles.MH_vkCmdPushConstants2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdPushConstants2KHR, commandBuffer.segment(), pPushConstantsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushConstants2KHR", e); }
     }
 
@@ -60,7 +61,7 @@ public final class VKKHRMaintenance6 {
     public static void vkCmdPushDescriptorSet2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pPushDescriptorSetInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSet2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSet2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdPushDescriptorSet2KHR", commandBuffer, pPushDescriptorSetInfo); }
-        Handles.MH_vkCmdPushDescriptorSet2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSet2KHR, commandBuffer.segment(), pPushDescriptorSetInfo); }
+        Handles.MH_vkCmdPushDescriptorSet2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSet2KHR, commandBuffer.segment(), pPushDescriptorSetInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushDescriptorSet2KHR", e); }
     }
 
@@ -71,7 +72,7 @@ public final class VKKHRMaintenance6 {
     public static void vkCmdPushDescriptorSetWithTemplate2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pPushDescriptorSetWithTemplateInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplate2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSetWithTemplate2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdPushDescriptorSetWithTemplate2KHR", commandBuffer, pPushDescriptorSetWithTemplateInfo); }
-        Handles.MH_vkCmdPushDescriptorSetWithTemplate2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplate2KHR, commandBuffer.segment(), pPushDescriptorSetWithTemplateInfo); }
+        Handles.MH_vkCmdPushDescriptorSetWithTemplate2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplate2KHR, commandBuffer.segment(), pPushDescriptorSetWithTemplateInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushDescriptorSetWithTemplate2KHR", e); }
     }
 
@@ -82,7 +83,7 @@ public final class VKKHRMaintenance6 {
     public static void vkCmdSetDescriptorBufferOffsets2EXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pSetDescriptorBufferOffsetsInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDescriptorBufferOffsets2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDescriptorBufferOffsets2EXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetDescriptorBufferOffsets2EXT", commandBuffer, pSetDescriptorBufferOffsetsInfo); }
-        Handles.MH_vkCmdSetDescriptorBufferOffsets2EXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDescriptorBufferOffsets2EXT, commandBuffer.segment(), pSetDescriptorBufferOffsetsInfo); }
+        Handles.MH_vkCmdSetDescriptorBufferOffsets2EXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDescriptorBufferOffsets2EXT, commandBuffer.segment(), pSetDescriptorBufferOffsetsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDescriptorBufferOffsets2EXT", e); }
     }
 
@@ -93,7 +94,7 @@ public final class VKKHRMaintenance6 {
     public static void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pBindDescriptorBufferEmbeddedSamplersInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindDescriptorBufferEmbeddedSamplers2EXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBindDescriptorBufferEmbeddedSamplers2EXT", commandBuffer, pBindDescriptorBufferEmbeddedSamplersInfo); }
-        Handles.MH_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT, commandBuffer.segment(), pBindDescriptorBufferEmbeddedSamplersInfo); }
+        Handles.MH_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT, commandBuffer.segment(), pBindDescriptorBufferEmbeddedSamplersInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindDescriptorBufferEmbeddedSamplers2EXT", e); }
     }
 

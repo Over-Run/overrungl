@@ -39,19 +39,19 @@ public final class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `sampleLocationSampleCounts`.
     public static final long OFFSET_sampleLocationSampleCounts = LAYOUT.byteOffset(PathElement.groupElement("sampleLocationSampleCounts"));
     /// The memory layout of `sampleLocationSampleCounts`.
     public static final MemoryLayout LAYOUT_sampleLocationSampleCounts = LAYOUT.select(PathElement.groupElement("sampleLocationSampleCounts"));
     /// The [VarHandle] of `sampleLocationSampleCounts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sampleLocationSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationSampleCounts"));
+    public static final Supplier<VarHandle> VH_sampleLocationSampleCounts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationSampleCounts")));
     /// The byte offset of `maxSampleLocationGridSize`.
     public static final long OFFSET_maxSampleLocationGridSize = LAYOUT.byteOffset(PathElement.groupElement("maxSampleLocationGridSize"));
     /// The memory layout of `maxSampleLocationGridSize`.
@@ -61,19 +61,19 @@ public final class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTyp
     /// The memory layout of `sampleLocationCoordinateRange`.
     public static final MemoryLayout LAYOUT_sampleLocationCoordinateRange = LAYOUT.select(PathElement.groupElement("sampleLocationCoordinateRange"));
     /// The [VarHandle] of `sampleLocationCoordinateRange` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_sampleLocationCoordinateRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationCoordinateRange"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_sampleLocationCoordinateRange = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationCoordinateRange"), PathElement.sequenceElement()));
     /// The byte offset of `sampleLocationSubPixelBits`.
     public static final long OFFSET_sampleLocationSubPixelBits = LAYOUT.byteOffset(PathElement.groupElement("sampleLocationSubPixelBits"));
     /// The memory layout of `sampleLocationSubPixelBits`.
     public static final MemoryLayout LAYOUT_sampleLocationSubPixelBits = LAYOUT.select(PathElement.groupElement("sampleLocationSubPixelBits"));
     /// The [VarHandle] of `sampleLocationSubPixelBits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sampleLocationSubPixelBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationSubPixelBits"));
+    public static final Supplier<VarHandle> VH_sampleLocationSubPixelBits = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationSubPixelBits")));
     /// The byte offset of `variableSampleLocations`.
     public static final long OFFSET_variableSampleLocations = LAYOUT.byteOffset(PathElement.groupElement("variableSampleLocations"));
     /// The memory layout of `variableSampleLocations`.
     public static final MemoryLayout LAYOUT_variableSampleLocations = LAYOUT.select(PathElement.groupElement("variableSampleLocations"));
     /// The [VarHandle] of `variableSampleLocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_variableSampleLocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("variableSampleLocations"));
+    public static final Supplier<VarHandle> VH_variableSampleLocations = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("variableSampleLocations")));
 
     /// Creates `VkPhysicalDeviceSampleLocationsPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -124,14 +124,14 @@ public final class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -140,14 +140,14 @@ public final class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -156,14 +156,14 @@ public final class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTyp
     /// {@return `sampleLocationSampleCounts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sampleLocationSampleCounts(MemorySegment segment, long index) { return (int) VH_sampleLocationSampleCounts.get(segment, 0L, index); }
+    public static int sampleLocationSampleCounts(MemorySegment segment, long index) { return (int) VH_sampleLocationSampleCounts.get().get(segment, 0L, index); }
     /// {@return `sampleLocationSampleCounts`}
     public int sampleLocationSampleCounts() { return sampleLocationSampleCounts(this.segment(), 0L); }
     /// Sets `sampleLocationSampleCounts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sampleLocationSampleCounts(MemorySegment segment, long index, int value) { VH_sampleLocationSampleCounts.set(segment, 0L, index, value); }
+    public static void sampleLocationSampleCounts(MemorySegment segment, long index, int value) { VH_sampleLocationSampleCounts.get().set(segment, 0L, index, value); }
     /// Sets `sampleLocationSampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -197,7 +197,7 @@ public final class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTyp
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static float sampleLocationCoordinateRange(MemorySegment segment, long index, long index0) { return (float) VH_sampleLocationCoordinateRange.get(segment, 0L, index, index0); }
+    public static float sampleLocationCoordinateRange(MemorySegment segment, long index, long index0) { return (float) VH_sampleLocationCoordinateRange.get().get(segment, 0L, index, index0); }
     /// {@return `sampleLocationCoordinateRange`}
     public MemorySegment sampleLocationCoordinateRange() { return sampleLocationCoordinateRange(this.segment(), 0L); }
     /// {@return `sampleLocationCoordinateRange`}
@@ -213,7 +213,7 @@ public final class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTyp
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void sampleLocationCoordinateRange(MemorySegment segment, long index, long index0, float value) { VH_sampleLocationCoordinateRange.set(segment, 0L, index, index0, value); }
+    public static void sampleLocationCoordinateRange(MemorySegment segment, long index, long index0, float value) { VH_sampleLocationCoordinateRange.get().set(segment, 0L, index, index0, value); }
     /// Sets `sampleLocationCoordinateRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -227,14 +227,14 @@ public final class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTyp
     /// {@return `sampleLocationSubPixelBits` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sampleLocationSubPixelBits(MemorySegment segment, long index) { return (int) VH_sampleLocationSubPixelBits.get(segment, 0L, index); }
+    public static int sampleLocationSubPixelBits(MemorySegment segment, long index) { return (int) VH_sampleLocationSubPixelBits.get().get(segment, 0L, index); }
     /// {@return `sampleLocationSubPixelBits`}
     public int sampleLocationSubPixelBits() { return sampleLocationSubPixelBits(this.segment(), 0L); }
     /// Sets `sampleLocationSubPixelBits` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sampleLocationSubPixelBits(MemorySegment segment, long index, int value) { VH_sampleLocationSubPixelBits.set(segment, 0L, index, value); }
+    public static void sampleLocationSubPixelBits(MemorySegment segment, long index, int value) { VH_sampleLocationSubPixelBits.get().set(segment, 0L, index, value); }
     /// Sets `sampleLocationSubPixelBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,14 +243,14 @@ public final class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTyp
     /// {@return `variableSampleLocations` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int variableSampleLocations(MemorySegment segment, long index) { return (int) VH_variableSampleLocations.get(segment, 0L, index); }
+    public static int variableSampleLocations(MemorySegment segment, long index) { return (int) VH_variableSampleLocations.get().get(segment, 0L, index); }
     /// {@return `variableSampleLocations`}
     public int variableSampleLocations() { return variableSampleLocations(this.segment(), 0L); }
     /// Sets `variableSampleLocations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void variableSampleLocations(MemorySegment segment, long index, int value) { VH_variableSampleLocations.set(segment, 0L, index, value); }
+    public static void variableSampleLocations(MemorySegment segment, long index, int value) { VH_variableSampleLocations.get().set(segment, 0L, index, value); }
     /// Sets `variableSampleLocations` with the given value.
     /// @param value the value
     /// @return `this`

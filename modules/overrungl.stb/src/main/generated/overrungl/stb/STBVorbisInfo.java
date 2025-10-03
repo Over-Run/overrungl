@@ -37,37 +37,37 @@ public final class STBVorbisInfo extends GroupType {
     /// The memory layout of `sample_rate`.
     public static final MemoryLayout LAYOUT_sample_rate = LAYOUT.select(PathElement.groupElement("sample_rate"));
     /// The [VarHandle] of `sample_rate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sample_rate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sample_rate"));
+    public static final Supplier<VarHandle> VH_sample_rate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sample_rate")));
     /// The byte offset of `channels`.
     public static final long OFFSET_channels = LAYOUT.byteOffset(PathElement.groupElement("channels"));
     /// The memory layout of `channels`.
     public static final MemoryLayout LAYOUT_channels = LAYOUT.select(PathElement.groupElement("channels"));
     /// The [VarHandle] of `channels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_channels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("channels"));
+    public static final Supplier<VarHandle> VH_channels = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("channels")));
     /// The byte offset of `setup_memory_required`.
     public static final long OFFSET_setup_memory_required = LAYOUT.byteOffset(PathElement.groupElement("setup_memory_required"));
     /// The memory layout of `setup_memory_required`.
     public static final MemoryLayout LAYOUT_setup_memory_required = LAYOUT.select(PathElement.groupElement("setup_memory_required"));
     /// The [VarHandle] of `setup_memory_required` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_setup_memory_required = LAYOUT.arrayElementVarHandle(PathElement.groupElement("setup_memory_required"));
+    public static final Supplier<VarHandle> VH_setup_memory_required = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("setup_memory_required")));
     /// The byte offset of `setup_temp_memory_required`.
     public static final long OFFSET_setup_temp_memory_required = LAYOUT.byteOffset(PathElement.groupElement("setup_temp_memory_required"));
     /// The memory layout of `setup_temp_memory_required`.
     public static final MemoryLayout LAYOUT_setup_temp_memory_required = LAYOUT.select(PathElement.groupElement("setup_temp_memory_required"));
     /// The [VarHandle] of `setup_temp_memory_required` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_setup_temp_memory_required = LAYOUT.arrayElementVarHandle(PathElement.groupElement("setup_temp_memory_required"));
+    public static final Supplier<VarHandle> VH_setup_temp_memory_required = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("setup_temp_memory_required")));
     /// The byte offset of `temp_memory_required`.
     public static final long OFFSET_temp_memory_required = LAYOUT.byteOffset(PathElement.groupElement("temp_memory_required"));
     /// The memory layout of `temp_memory_required`.
     public static final MemoryLayout LAYOUT_temp_memory_required = LAYOUT.select(PathElement.groupElement("temp_memory_required"));
     /// The [VarHandle] of `temp_memory_required` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_temp_memory_required = LAYOUT.arrayElementVarHandle(PathElement.groupElement("temp_memory_required"));
+    public static final Supplier<VarHandle> VH_temp_memory_required = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("temp_memory_required")));
     /// The byte offset of `max_frame_size`.
     public static final long OFFSET_max_frame_size = LAYOUT.byteOffset(PathElement.groupElement("max_frame_size"));
     /// The memory layout of `max_frame_size`.
     public static final MemoryLayout LAYOUT_max_frame_size = LAYOUT.select(PathElement.groupElement("max_frame_size"));
     /// The [VarHandle] of `max_frame_size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_max_frame_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_frame_size"));
+    public static final Supplier<VarHandle> VH_max_frame_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_frame_size")));
 
     /// Creates `STBVorbisInfo` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class STBVorbisInfo extends GroupType {
     /// {@return `sample_rate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sample_rate(MemorySegment segment, long index) { return (int) VH_sample_rate.get(segment, 0L, index); }
+    public static int sample_rate(MemorySegment segment, long index) { return (int) VH_sample_rate.get().get(segment, 0L, index); }
     /// {@return `sample_rate`}
     public int sample_rate() { return sample_rate(this.segment(), 0L); }
     /// Sets `sample_rate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sample_rate(MemorySegment segment, long index, int value) { VH_sample_rate.set(segment, 0L, index, value); }
+    public static void sample_rate(MemorySegment segment, long index, int value) { VH_sample_rate.get().set(segment, 0L, index, value); }
     /// Sets `sample_rate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class STBVorbisInfo extends GroupType {
     /// {@return `channels` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int channels(MemorySegment segment, long index) { return (int) VH_channels.get(segment, 0L, index); }
+    public static int channels(MemorySegment segment, long index) { return (int) VH_channels.get().get(segment, 0L, index); }
     /// {@return `channels`}
     public int channels() { return channels(this.segment(), 0L); }
     /// Sets `channels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void channels(MemorySegment segment, long index, int value) { VH_channels.set(segment, 0L, index, value); }
+    public static void channels(MemorySegment segment, long index, int value) { VH_channels.get().set(segment, 0L, index, value); }
     /// Sets `channels` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class STBVorbisInfo extends GroupType {
     /// {@return `setup_memory_required` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int setup_memory_required(MemorySegment segment, long index) { return (int) VH_setup_memory_required.get(segment, 0L, index); }
+    public static int setup_memory_required(MemorySegment segment, long index) { return (int) VH_setup_memory_required.get().get(segment, 0L, index); }
     /// {@return `setup_memory_required`}
     public int setup_memory_required() { return setup_memory_required(this.segment(), 0L); }
     /// Sets `setup_memory_required` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void setup_memory_required(MemorySegment segment, long index, int value) { VH_setup_memory_required.set(segment, 0L, index, value); }
+    public static void setup_memory_required(MemorySegment segment, long index, int value) { VH_setup_memory_required.get().set(segment, 0L, index, value); }
     /// Sets `setup_memory_required` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class STBVorbisInfo extends GroupType {
     /// {@return `setup_temp_memory_required` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int setup_temp_memory_required(MemorySegment segment, long index) { return (int) VH_setup_temp_memory_required.get(segment, 0L, index); }
+    public static int setup_temp_memory_required(MemorySegment segment, long index) { return (int) VH_setup_temp_memory_required.get().get(segment, 0L, index); }
     /// {@return `setup_temp_memory_required`}
     public int setup_temp_memory_required() { return setup_temp_memory_required(this.segment(), 0L); }
     /// Sets `setup_temp_memory_required` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void setup_temp_memory_required(MemorySegment segment, long index, int value) { VH_setup_temp_memory_required.set(segment, 0L, index, value); }
+    public static void setup_temp_memory_required(MemorySegment segment, long index, int value) { VH_setup_temp_memory_required.get().set(segment, 0L, index, value); }
     /// Sets `setup_temp_memory_required` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class STBVorbisInfo extends GroupType {
     /// {@return `temp_memory_required` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int temp_memory_required(MemorySegment segment, long index) { return (int) VH_temp_memory_required.get(segment, 0L, index); }
+    public static int temp_memory_required(MemorySegment segment, long index) { return (int) VH_temp_memory_required.get().get(segment, 0L, index); }
     /// {@return `temp_memory_required`}
     public int temp_memory_required() { return temp_memory_required(this.segment(), 0L); }
     /// Sets `temp_memory_required` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void temp_memory_required(MemorySegment segment, long index, int value) { VH_temp_memory_required.set(segment, 0L, index, value); }
+    public static void temp_memory_required(MemorySegment segment, long index, int value) { VH_temp_memory_required.get().set(segment, 0L, index, value); }
     /// Sets `temp_memory_required` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class STBVorbisInfo extends GroupType {
     /// {@return `max_frame_size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int max_frame_size(MemorySegment segment, long index) { return (int) VH_max_frame_size.get(segment, 0L, index); }
+    public static int max_frame_size(MemorySegment segment, long index) { return (int) VH_max_frame_size.get().get(segment, 0L, index); }
     /// {@return `max_frame_size`}
     public int max_frame_size() { return max_frame_size(this.segment(), 0L); }
     /// Sets `max_frame_size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void max_frame_size(MemorySegment segment, long index, int value) { VH_max_frame_size.set(segment, 0L, index, value); }
+    public static void max_frame_size(MemorySegment segment, long index, int value) { VH_max_frame_size.get().set(segment, 0L, index, value); }
     /// Sets `max_frame_size` with the given value.
     /// @param value the value
     /// @return `this`

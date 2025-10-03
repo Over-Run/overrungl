@@ -39,43 +39,43 @@ public final class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `module`.
     public static final long OFFSET_module = LAYOUT.byteOffset(PathElement.groupElement("module"));
     /// The memory layout of `module`.
     public static final MemoryLayout LAYOUT_module = LAYOUT.select(PathElement.groupElement("module"));
     /// The [VarHandle] of `module` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_module = LAYOUT.arrayElementVarHandle(PathElement.groupElement("module"));
+    public static final Supplier<VarHandle> VH_module = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("module")));
     /// The byte offset of `pName`.
     public static final long OFFSET_pName = LAYOUT.byteOffset(PathElement.groupElement("pName"));
     /// The memory layout of `pName`.
     public static final MemoryLayout LAYOUT_pName = LAYOUT.select(PathElement.groupElement("pName"));
     /// The [VarHandle] of `pName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pName"));
+    public static final Supplier<VarHandle> VH_pName = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pName")));
     /// The byte offset of `pSpecializationInfo`.
     public static final long OFFSET_pSpecializationInfo = LAYOUT.byteOffset(PathElement.groupElement("pSpecializationInfo"));
     /// The memory layout of `pSpecializationInfo`.
     public static final MemoryLayout LAYOUT_pSpecializationInfo = LAYOUT.select(PathElement.groupElement("pSpecializationInfo"));
     /// The [VarHandle] of `pSpecializationInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pSpecializationInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSpecializationInfo"));
+    public static final Supplier<VarHandle> VH_pSpecializationInfo = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSpecializationInfo")));
     /// The byte offset of `constantCount`.
     public static final long OFFSET_constantCount = LAYOUT.byteOffset(PathElement.groupElement("constantCount"));
     /// The memory layout of `constantCount`.
     public static final MemoryLayout LAYOUT_constantCount = LAYOUT.select(PathElement.groupElement("constantCount"));
     /// The [VarHandle] of `constantCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_constantCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("constantCount"));
+    public static final Supplier<VarHandle> VH_constantCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("constantCount")));
     /// The byte offset of `pConstants`.
     public static final long OFFSET_pConstants = LAYOUT.byteOffset(PathElement.groupElement("pConstants"));
     /// The memory layout of `pConstants`.
     public static final MemoryLayout LAYOUT_pConstants = LAYOUT.select(PathElement.groupElement("pConstants"));
     /// The [VarHandle] of `pConstants` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pConstants = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pConstants"));
+    public static final Supplier<VarHandle> VH_pConstants = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pConstants")));
 
     /// Creates `VkDataGraphPipelineShaderModuleCreateInfoARM` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTyp
     /// {@return `module` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long module(MemorySegment segment, long index) { return (long) VH_module.get(segment, 0L, index); }
+    public static long module(MemorySegment segment, long index) { return (long) VH_module.get().get(segment, 0L, index); }
     /// {@return `module`}
     public long module() { return module(this.segment(), 0L); }
     /// Sets `module` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void module(MemorySegment segment, long index, long value) { VH_module.set(segment, 0L, index, value); }
+    public static void module(MemorySegment segment, long index, long value) { VH_module.get().set(segment, 0L, index, value); }
     /// Sets `module` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTyp
     /// {@return `pName` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pName(MemorySegment segment, long index) { return (MemorySegment) VH_pName.get(segment, 0L, index); }
+    public static MemorySegment pName(MemorySegment segment, long index) { return (MemorySegment) VH_pName.get().get(segment, 0L, index); }
     /// {@return `pName`}
     public MemorySegment pName() { return pName(this.segment(), 0L); }
     /// Sets `pName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pName(MemorySegment segment, long index, MemorySegment value) { VH_pName.set(segment, 0L, index, value); }
+    public static void pName(MemorySegment segment, long index, MemorySegment value) { VH_pName.get().set(segment, 0L, index, value); }
     /// Sets `pName` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTyp
     /// {@return `pSpecializationInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pSpecializationInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pSpecializationInfo.get(segment, 0L, index); }
+    public static MemorySegment pSpecializationInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pSpecializationInfo.get().get(segment, 0L, index); }
     /// {@return `pSpecializationInfo`}
     public MemorySegment pSpecializationInfo() { return pSpecializationInfo(this.segment(), 0L); }
     /// Sets `pSpecializationInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pSpecializationInfo(MemorySegment segment, long index, MemorySegment value) { VH_pSpecializationInfo.set(segment, 0L, index, value); }
+    public static void pSpecializationInfo(MemorySegment segment, long index, MemorySegment value) { VH_pSpecializationInfo.get().set(segment, 0L, index, value); }
     /// Sets `pSpecializationInfo` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTyp
     /// {@return `constantCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int constantCount(MemorySegment segment, long index) { return (int) VH_constantCount.get(segment, 0L, index); }
+    public static int constantCount(MemorySegment segment, long index) { return (int) VH_constantCount.get().get(segment, 0L, index); }
     /// {@return `constantCount`}
     public int constantCount() { return constantCount(this.segment(), 0L); }
     /// Sets `constantCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void constantCount(MemorySegment segment, long index, int value) { VH_constantCount.set(segment, 0L, index, value); }
+    public static void constantCount(MemorySegment segment, long index, int value) { VH_constantCount.get().set(segment, 0L, index, value); }
     /// Sets `constantCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTyp
     /// {@return `pConstants` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pConstants(MemorySegment segment, long index) { return (MemorySegment) VH_pConstants.get(segment, 0L, index); }
+    public static MemorySegment pConstants(MemorySegment segment, long index) { return (MemorySegment) VH_pConstants.get().get(segment, 0L, index); }
     /// {@return `pConstants`}
     public MemorySegment pConstants() { return pConstants(this.segment(), 0L); }
     /// Sets `pConstants` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pConstants(MemorySegment segment, long index, MemorySegment value) { VH_pConstants.set(segment, 0L, index, value); }
+    public static void pConstants(MemorySegment segment, long index, MemorySegment value) { VH_pConstants.get().set(segment, 0L, index, value); }
     /// Sets `pConstants` with the given value.
     /// @param value the value
     /// @return `this`

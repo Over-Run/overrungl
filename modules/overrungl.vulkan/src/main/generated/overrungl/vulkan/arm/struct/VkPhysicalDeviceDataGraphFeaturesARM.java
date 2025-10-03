@@ -39,43 +39,43 @@ public final class VkPhysicalDeviceDataGraphFeaturesARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `dataGraph`.
     public static final long OFFSET_dataGraph = LAYOUT.byteOffset(PathElement.groupElement("dataGraph"));
     /// The memory layout of `dataGraph`.
     public static final MemoryLayout LAYOUT_dataGraph = LAYOUT.select(PathElement.groupElement("dataGraph"));
     /// The [VarHandle] of `dataGraph` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dataGraph = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataGraph"));
+    public static final Supplier<VarHandle> VH_dataGraph = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataGraph")));
     /// The byte offset of `dataGraphUpdateAfterBind`.
     public static final long OFFSET_dataGraphUpdateAfterBind = LAYOUT.byteOffset(PathElement.groupElement("dataGraphUpdateAfterBind"));
     /// The memory layout of `dataGraphUpdateAfterBind`.
     public static final MemoryLayout LAYOUT_dataGraphUpdateAfterBind = LAYOUT.select(PathElement.groupElement("dataGraphUpdateAfterBind"));
     /// The [VarHandle] of `dataGraphUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dataGraphUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataGraphUpdateAfterBind"));
+    public static final Supplier<VarHandle> VH_dataGraphUpdateAfterBind = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataGraphUpdateAfterBind")));
     /// The byte offset of `dataGraphSpecializationConstants`.
     public static final long OFFSET_dataGraphSpecializationConstants = LAYOUT.byteOffset(PathElement.groupElement("dataGraphSpecializationConstants"));
     /// The memory layout of `dataGraphSpecializationConstants`.
     public static final MemoryLayout LAYOUT_dataGraphSpecializationConstants = LAYOUT.select(PathElement.groupElement("dataGraphSpecializationConstants"));
     /// The [VarHandle] of `dataGraphSpecializationConstants` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dataGraphSpecializationConstants = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataGraphSpecializationConstants"));
+    public static final Supplier<VarHandle> VH_dataGraphSpecializationConstants = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataGraphSpecializationConstants")));
     /// The byte offset of `dataGraphDescriptorBuffer`.
     public static final long OFFSET_dataGraphDescriptorBuffer = LAYOUT.byteOffset(PathElement.groupElement("dataGraphDescriptorBuffer"));
     /// The memory layout of `dataGraphDescriptorBuffer`.
     public static final MemoryLayout LAYOUT_dataGraphDescriptorBuffer = LAYOUT.select(PathElement.groupElement("dataGraphDescriptorBuffer"));
     /// The [VarHandle] of `dataGraphDescriptorBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dataGraphDescriptorBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataGraphDescriptorBuffer"));
+    public static final Supplier<VarHandle> VH_dataGraphDescriptorBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataGraphDescriptorBuffer")));
     /// The byte offset of `dataGraphShaderModule`.
     public static final long OFFSET_dataGraphShaderModule = LAYOUT.byteOffset(PathElement.groupElement("dataGraphShaderModule"));
     /// The memory layout of `dataGraphShaderModule`.
     public static final MemoryLayout LAYOUT_dataGraphShaderModule = LAYOUT.select(PathElement.groupElement("dataGraphShaderModule"));
     /// The [VarHandle] of `dataGraphShaderModule` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dataGraphShaderModule = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataGraphShaderModule"));
+    public static final Supplier<VarHandle> VH_dataGraphShaderModule = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataGraphShaderModule")));
 
     /// Creates `VkPhysicalDeviceDataGraphFeaturesARM` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceDataGraphFeaturesARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceDataGraphFeaturesARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceDataGraphFeaturesARM extends GroupType {
     /// {@return `dataGraph` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dataGraph(MemorySegment segment, long index) { return (int) VH_dataGraph.get(segment, 0L, index); }
+    public static int dataGraph(MemorySegment segment, long index) { return (int) VH_dataGraph.get().get(segment, 0L, index); }
     /// {@return `dataGraph`}
     public int dataGraph() { return dataGraph(this.segment(), 0L); }
     /// Sets `dataGraph` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dataGraph(MemorySegment segment, long index, int value) { VH_dataGraph.set(segment, 0L, index, value); }
+    public static void dataGraph(MemorySegment segment, long index, int value) { VH_dataGraph.get().set(segment, 0L, index, value); }
     /// Sets `dataGraph` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceDataGraphFeaturesARM extends GroupType {
     /// {@return `dataGraphUpdateAfterBind` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dataGraphUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_dataGraphUpdateAfterBind.get(segment, 0L, index); }
+    public static int dataGraphUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_dataGraphUpdateAfterBind.get().get(segment, 0L, index); }
     /// {@return `dataGraphUpdateAfterBind`}
     public int dataGraphUpdateAfterBind() { return dataGraphUpdateAfterBind(this.segment(), 0L); }
     /// Sets `dataGraphUpdateAfterBind` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dataGraphUpdateAfterBind(MemorySegment segment, long index, int value) { VH_dataGraphUpdateAfterBind.set(segment, 0L, index, value); }
+    public static void dataGraphUpdateAfterBind(MemorySegment segment, long index, int value) { VH_dataGraphUpdateAfterBind.get().set(segment, 0L, index, value); }
     /// Sets `dataGraphUpdateAfterBind` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkPhysicalDeviceDataGraphFeaturesARM extends GroupType {
     /// {@return `dataGraphSpecializationConstants` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dataGraphSpecializationConstants(MemorySegment segment, long index) { return (int) VH_dataGraphSpecializationConstants.get(segment, 0L, index); }
+    public static int dataGraphSpecializationConstants(MemorySegment segment, long index) { return (int) VH_dataGraphSpecializationConstants.get().get(segment, 0L, index); }
     /// {@return `dataGraphSpecializationConstants`}
     public int dataGraphSpecializationConstants() { return dataGraphSpecializationConstants(this.segment(), 0L); }
     /// Sets `dataGraphSpecializationConstants` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dataGraphSpecializationConstants(MemorySegment segment, long index, int value) { VH_dataGraphSpecializationConstants.set(segment, 0L, index, value); }
+    public static void dataGraphSpecializationConstants(MemorySegment segment, long index, int value) { VH_dataGraphSpecializationConstants.get().set(segment, 0L, index, value); }
     /// Sets `dataGraphSpecializationConstants` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkPhysicalDeviceDataGraphFeaturesARM extends GroupType {
     /// {@return `dataGraphDescriptorBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dataGraphDescriptorBuffer(MemorySegment segment, long index) { return (int) VH_dataGraphDescriptorBuffer.get(segment, 0L, index); }
+    public static int dataGraphDescriptorBuffer(MemorySegment segment, long index) { return (int) VH_dataGraphDescriptorBuffer.get().get(segment, 0L, index); }
     /// {@return `dataGraphDescriptorBuffer`}
     public int dataGraphDescriptorBuffer() { return dataGraphDescriptorBuffer(this.segment(), 0L); }
     /// Sets `dataGraphDescriptorBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dataGraphDescriptorBuffer(MemorySegment segment, long index, int value) { VH_dataGraphDescriptorBuffer.set(segment, 0L, index, value); }
+    public static void dataGraphDescriptorBuffer(MemorySegment segment, long index, int value) { VH_dataGraphDescriptorBuffer.get().set(segment, 0L, index, value); }
     /// Sets `dataGraphDescriptorBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkPhysicalDeviceDataGraphFeaturesARM extends GroupType {
     /// {@return `dataGraphShaderModule` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dataGraphShaderModule(MemorySegment segment, long index) { return (int) VH_dataGraphShaderModule.get(segment, 0L, index); }
+    public static int dataGraphShaderModule(MemorySegment segment, long index) { return (int) VH_dataGraphShaderModule.get().get(segment, 0L, index); }
     /// {@return `dataGraphShaderModule`}
     public int dataGraphShaderModule() { return dataGraphShaderModule(this.segment(), 0L); }
     /// Sets `dataGraphShaderModule` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dataGraphShaderModule(MemorySegment segment, long index, int value) { VH_dataGraphShaderModule.set(segment, 0L, index, value); }
+    public static void dataGraphShaderModule(MemorySegment segment, long index, int value) { VH_dataGraphShaderModule.get().set(segment, 0L, index, value); }
     /// Sets `dataGraphShaderModule` with the given value.
     /// @param value the value
     /// @return `this`

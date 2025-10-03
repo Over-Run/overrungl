@@ -35,13 +35,13 @@ public final class VkClusterAccelerationStructureInstantiateClusterInfoNV extend
     /// The memory layout of `clusterIdOffset`.
     public static final MemoryLayout LAYOUT_clusterIdOffset = LAYOUT.select(PathElement.groupElement("clusterIdOffset"));
     /// The [VarHandle] of `clusterIdOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterIdOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterIdOffset"));
+    public static final Supplier<VarHandle> VH_clusterIdOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterIdOffset")));
     /// The byte offset of `clusterTemplateAddress`.
     public static final long OFFSET_clusterTemplateAddress = LAYOUT.byteOffset(PathElement.groupElement("clusterTemplateAddress"));
     /// The memory layout of `clusterTemplateAddress`.
     public static final MemoryLayout LAYOUT_clusterTemplateAddress = LAYOUT.select(PathElement.groupElement("clusterTemplateAddress"));
     /// The [VarHandle] of `clusterTemplateAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterTemplateAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterTemplateAddress"));
+    public static final Supplier<VarHandle> VH_clusterTemplateAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterTemplateAddress")));
     /// The byte offset of `vertexBuffer`.
     public static final long OFFSET_vertexBuffer = LAYOUT.byteOffset(PathElement.groupElement("vertexBuffer"));
     /// The memory layout of `vertexBuffer`.
@@ -96,14 +96,14 @@ public final class VkClusterAccelerationStructureInstantiateClusterInfoNV extend
     /// {@return `clusterIdOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clusterIdOffset(MemorySegment segment, long index) { return (int) VH_clusterIdOffset.get(segment, 0L, index); }
+    public static int clusterIdOffset(MemorySegment segment, long index) { return (int) VH_clusterIdOffset.get().get(segment, 0L, index); }
     /// {@return `clusterIdOffset`}
     public int clusterIdOffset() { return clusterIdOffset(this.segment(), 0L); }
     /// Sets `clusterIdOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterIdOffset(MemorySegment segment, long index, int value) { VH_clusterIdOffset.set(segment, 0L, index, value); }
+    public static void clusterIdOffset(MemorySegment segment, long index, int value) { VH_clusterIdOffset.get().set(segment, 0L, index, value); }
     /// Sets `clusterIdOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -112,14 +112,14 @@ public final class VkClusterAccelerationStructureInstantiateClusterInfoNV extend
     /// {@return `clusterTemplateAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long clusterTemplateAddress(MemorySegment segment, long index) { return (long) VH_clusterTemplateAddress.get(segment, 0L, index); }
+    public static long clusterTemplateAddress(MemorySegment segment, long index) { return (long) VH_clusterTemplateAddress.get().get(segment, 0L, index); }
     /// {@return `clusterTemplateAddress`}
     public long clusterTemplateAddress() { return clusterTemplateAddress(this.segment(), 0L); }
     /// Sets `clusterTemplateAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterTemplateAddress(MemorySegment segment, long index, long value) { VH_clusterTemplateAddress.set(segment, 0L, index, value); }
+    public static void clusterTemplateAddress(MemorySegment segment, long index, long value) { VH_clusterTemplateAddress.get().set(segment, 0L, index, value); }
     /// Sets `clusterTemplateAddress` with the given value.
     /// @param value the value
     /// @return `this`

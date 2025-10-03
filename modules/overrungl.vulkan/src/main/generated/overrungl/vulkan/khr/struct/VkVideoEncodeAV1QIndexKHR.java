@@ -31,19 +31,19 @@ public final class VkVideoEncodeAV1QIndexKHR extends GroupType {
     /// The memory layout of `intraQIndex`.
     public static final MemoryLayout LAYOUT_intraQIndex = LAYOUT.select(PathElement.groupElement("intraQIndex"));
     /// The [VarHandle] of `intraQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_intraQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("intraQIndex"));
+    public static final Supplier<VarHandle> VH_intraQIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("intraQIndex")));
     /// The byte offset of `predictiveQIndex`.
     public static final long OFFSET_predictiveQIndex = LAYOUT.byteOffset(PathElement.groupElement("predictiveQIndex"));
     /// The memory layout of `predictiveQIndex`.
     public static final MemoryLayout LAYOUT_predictiveQIndex = LAYOUT.select(PathElement.groupElement("predictiveQIndex"));
     /// The [VarHandle] of `predictiveQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_predictiveQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("predictiveQIndex"));
+    public static final Supplier<VarHandle> VH_predictiveQIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("predictiveQIndex")));
     /// The byte offset of `bipredictiveQIndex`.
     public static final long OFFSET_bipredictiveQIndex = LAYOUT.byteOffset(PathElement.groupElement("bipredictiveQIndex"));
     /// The memory layout of `bipredictiveQIndex`.
     public static final MemoryLayout LAYOUT_bipredictiveQIndex = LAYOUT.select(PathElement.groupElement("bipredictiveQIndex"));
     /// The [VarHandle] of `bipredictiveQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bipredictiveQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bipredictiveQIndex"));
+    public static final Supplier<VarHandle> VH_bipredictiveQIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bipredictiveQIndex")));
 
     /// Creates `VkVideoEncodeAV1QIndexKHR` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkVideoEncodeAV1QIndexKHR extends GroupType {
     /// {@return `intraQIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int intraQIndex(MemorySegment segment, long index) { return (int) VH_intraQIndex.get(segment, 0L, index); }
+    public static int intraQIndex(MemorySegment segment, long index) { return (int) VH_intraQIndex.get().get(segment, 0L, index); }
     /// {@return `intraQIndex`}
     public int intraQIndex() { return intraQIndex(this.segment(), 0L); }
     /// Sets `intraQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void intraQIndex(MemorySegment segment, long index, int value) { VH_intraQIndex.set(segment, 0L, index, value); }
+    public static void intraQIndex(MemorySegment segment, long index, int value) { VH_intraQIndex.get().set(segment, 0L, index, value); }
     /// Sets `intraQIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkVideoEncodeAV1QIndexKHR extends GroupType {
     /// {@return `predictiveQIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int predictiveQIndex(MemorySegment segment, long index) { return (int) VH_predictiveQIndex.get(segment, 0L, index); }
+    public static int predictiveQIndex(MemorySegment segment, long index) { return (int) VH_predictiveQIndex.get().get(segment, 0L, index); }
     /// {@return `predictiveQIndex`}
     public int predictiveQIndex() { return predictiveQIndex(this.segment(), 0L); }
     /// Sets `predictiveQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void predictiveQIndex(MemorySegment segment, long index, int value) { VH_predictiveQIndex.set(segment, 0L, index, value); }
+    public static void predictiveQIndex(MemorySegment segment, long index, int value) { VH_predictiveQIndex.get().set(segment, 0L, index, value); }
     /// Sets `predictiveQIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkVideoEncodeAV1QIndexKHR extends GroupType {
     /// {@return `bipredictiveQIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bipredictiveQIndex(MemorySegment segment, long index) { return (int) VH_bipredictiveQIndex.get(segment, 0L, index); }
+    public static int bipredictiveQIndex(MemorySegment segment, long index) { return (int) VH_bipredictiveQIndex.get().get(segment, 0L, index); }
     /// {@return `bipredictiveQIndex`}
     public int bipredictiveQIndex() { return bipredictiveQIndex(this.segment(), 0L); }
     /// Sets `bipredictiveQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bipredictiveQIndex(MemorySegment segment, long index, int value) { VH_bipredictiveQIndex.set(segment, 0L, index, value); }
+    public static void bipredictiveQIndex(MemorySegment segment, long index, int value) { VH_bipredictiveQIndex.get().set(segment, 0L, index, value); }
     /// Sets `bipredictiveQIndex` with the given value.
     /// @param value the value
     /// @return `this`

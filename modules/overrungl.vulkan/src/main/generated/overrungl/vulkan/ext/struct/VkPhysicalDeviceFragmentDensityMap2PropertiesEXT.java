@@ -37,37 +37,37 @@ public final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Grou
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `subsampledLoads`.
     public static final long OFFSET_subsampledLoads = LAYOUT.byteOffset(PathElement.groupElement("subsampledLoads"));
     /// The memory layout of `subsampledLoads`.
     public static final MemoryLayout LAYOUT_subsampledLoads = LAYOUT.select(PathElement.groupElement("subsampledLoads"));
     /// The [VarHandle] of `subsampledLoads` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subsampledLoads = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subsampledLoads"));
+    public static final Supplier<VarHandle> VH_subsampledLoads = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subsampledLoads")));
     /// The byte offset of `subsampledCoarseReconstructionEarlyAccess`.
     public static final long OFFSET_subsampledCoarseReconstructionEarlyAccess = LAYOUT.byteOffset(PathElement.groupElement("subsampledCoarseReconstructionEarlyAccess"));
     /// The memory layout of `subsampledCoarseReconstructionEarlyAccess`.
     public static final MemoryLayout LAYOUT_subsampledCoarseReconstructionEarlyAccess = LAYOUT.select(PathElement.groupElement("subsampledCoarseReconstructionEarlyAccess"));
     /// The [VarHandle] of `subsampledCoarseReconstructionEarlyAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subsampledCoarseReconstructionEarlyAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subsampledCoarseReconstructionEarlyAccess"));
+    public static final Supplier<VarHandle> VH_subsampledCoarseReconstructionEarlyAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subsampledCoarseReconstructionEarlyAccess")));
     /// The byte offset of `maxSubsampledArrayLayers`.
     public static final long OFFSET_maxSubsampledArrayLayers = LAYOUT.byteOffset(PathElement.groupElement("maxSubsampledArrayLayers"));
     /// The memory layout of `maxSubsampledArrayLayers`.
     public static final MemoryLayout LAYOUT_maxSubsampledArrayLayers = LAYOUT.select(PathElement.groupElement("maxSubsampledArrayLayers"));
     /// The [VarHandle] of `maxSubsampledArrayLayers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSubsampledArrayLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubsampledArrayLayers"));
+    public static final Supplier<VarHandle> VH_maxSubsampledArrayLayers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubsampledArrayLayers")));
     /// The byte offset of `maxDescriptorSetSubsampledSamplers`.
     public static final long OFFSET_maxDescriptorSetSubsampledSamplers = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetSubsampledSamplers"));
     /// The memory layout of `maxDescriptorSetSubsampledSamplers`.
     public static final MemoryLayout LAYOUT_maxDescriptorSetSubsampledSamplers = LAYOUT.select(PathElement.groupElement("maxDescriptorSetSubsampledSamplers"));
     /// The [VarHandle] of `maxDescriptorSetSubsampledSamplers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetSubsampledSamplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetSubsampledSamplers"));
+    public static final Supplier<VarHandle> VH_maxDescriptorSetSubsampledSamplers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetSubsampledSamplers")));
 
     /// Creates `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Grou
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Grou
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Grou
     /// {@return `subsampledLoads` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int subsampledLoads(MemorySegment segment, long index) { return (int) VH_subsampledLoads.get(segment, 0L, index); }
+    public static int subsampledLoads(MemorySegment segment, long index) { return (int) VH_subsampledLoads.get().get(segment, 0L, index); }
     /// {@return `subsampledLoads`}
     public int subsampledLoads() { return subsampledLoads(this.segment(), 0L); }
     /// Sets `subsampledLoads` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subsampledLoads(MemorySegment segment, long index, int value) { VH_subsampledLoads.set(segment, 0L, index, value); }
+    public static void subsampledLoads(MemorySegment segment, long index, int value) { VH_subsampledLoads.get().set(segment, 0L, index, value); }
     /// Sets `subsampledLoads` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Grou
     /// {@return `subsampledCoarseReconstructionEarlyAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int subsampledCoarseReconstructionEarlyAccess(MemorySegment segment, long index) { return (int) VH_subsampledCoarseReconstructionEarlyAccess.get(segment, 0L, index); }
+    public static int subsampledCoarseReconstructionEarlyAccess(MemorySegment segment, long index) { return (int) VH_subsampledCoarseReconstructionEarlyAccess.get().get(segment, 0L, index); }
     /// {@return `subsampledCoarseReconstructionEarlyAccess`}
     public int subsampledCoarseReconstructionEarlyAccess() { return subsampledCoarseReconstructionEarlyAccess(this.segment(), 0L); }
     /// Sets `subsampledCoarseReconstructionEarlyAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subsampledCoarseReconstructionEarlyAccess(MemorySegment segment, long index, int value) { VH_subsampledCoarseReconstructionEarlyAccess.set(segment, 0L, index, value); }
+    public static void subsampledCoarseReconstructionEarlyAccess(MemorySegment segment, long index, int value) { VH_subsampledCoarseReconstructionEarlyAccess.get().set(segment, 0L, index, value); }
     /// Sets `subsampledCoarseReconstructionEarlyAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Grou
     /// {@return `maxSubsampledArrayLayers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxSubsampledArrayLayers(MemorySegment segment, long index) { return (int) VH_maxSubsampledArrayLayers.get(segment, 0L, index); }
+    public static int maxSubsampledArrayLayers(MemorySegment segment, long index) { return (int) VH_maxSubsampledArrayLayers.get().get(segment, 0L, index); }
     /// {@return `maxSubsampledArrayLayers`}
     public int maxSubsampledArrayLayers() { return maxSubsampledArrayLayers(this.segment(), 0L); }
     /// Sets `maxSubsampledArrayLayers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxSubsampledArrayLayers(MemorySegment segment, long index, int value) { VH_maxSubsampledArrayLayers.set(segment, 0L, index, value); }
+    public static void maxSubsampledArrayLayers(MemorySegment segment, long index, int value) { VH_maxSubsampledArrayLayers.get().set(segment, 0L, index, value); }
     /// Sets `maxSubsampledArrayLayers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Grou
     /// {@return `maxDescriptorSetSubsampledSamplers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxDescriptorSetSubsampledSamplers(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetSubsampledSamplers.get(segment, 0L, index); }
+    public static int maxDescriptorSetSubsampledSamplers(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetSubsampledSamplers.get().get(segment, 0L, index); }
     /// {@return `maxDescriptorSetSubsampledSamplers`}
     public int maxDescriptorSetSubsampledSamplers() { return maxDescriptorSetSubsampledSamplers(this.segment(), 0L); }
     /// Sets `maxDescriptorSetSubsampledSamplers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxDescriptorSetSubsampledSamplers(MemorySegment segment, long index, int value) { VH_maxDescriptorSetSubsampledSamplers.set(segment, 0L, index, value); }
+    public static void maxDescriptorSetSubsampledSamplers(MemorySegment segment, long index, int value) { VH_maxDescriptorSetSubsampledSamplers.get().set(segment, 0L, index, value); }
     /// Sets `maxDescriptorSetSubsampledSamplers` with the given value.
     /// @param value the value
     /// @return `this`

@@ -2,6 +2,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -56,9 +57,9 @@ public final class VKEXTDebugReport {
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT = 1000156000;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT = 1000011000;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateDebugReportCallbackEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyDebugReportCallbackEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDebugReportMessageEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, CanonicalTypes.SIZE_T, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkCreateDebugReportCallbackEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkDestroyDebugReportCallbackEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkDebugReportMessageEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, CanonicalTypes.SIZE_T, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -71,7 +72,7 @@ public final class VKEXTDebugReport {
     public static int vkCreateDebugReportCallbackEXT(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pCallback) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateDebugReportCallbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDebugReportCallbackEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateDebugReportCallbackEXT", instance, pCreateInfo, pAllocator, pCallback); }
-        return (int) Handles.MH_vkCreateDebugReportCallbackEXT.invokeExact(instance.capabilities().PFN_vkCreateDebugReportCallbackEXT, instance.segment(), pCreateInfo, pAllocator, pCallback); }
+        return (int) Handles.MH_vkCreateDebugReportCallbackEXT.get().invokeExact(instance.capabilities().PFN_vkCreateDebugReportCallbackEXT, instance.segment(), pCreateInfo, pAllocator, pCallback); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDebugReportCallbackEXT", e); }
     }
 
@@ -82,7 +83,7 @@ public final class VKEXTDebugReport {
     public static void vkDestroyDebugReportCallbackEXT(@NonNull VkInstance instance, long callback, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDestroyDebugReportCallbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyDebugReportCallbackEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyDebugReportCallbackEXT", instance, callback, pAllocator); }
-        Handles.MH_vkDestroyDebugReportCallbackEXT.invokeExact(instance.capabilities().PFN_vkDestroyDebugReportCallbackEXT, instance.segment(), callback, pAllocator); }
+        Handles.MH_vkDestroyDebugReportCallbackEXT.get().invokeExact(instance.capabilities().PFN_vkDestroyDebugReportCallbackEXT, instance.segment(), callback, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyDebugReportCallbackEXT", e); }
     }
 
@@ -93,7 +94,7 @@ public final class VKEXTDebugReport {
     public static void vkDebugReportMessageEXT(@NonNull VkInstance instance, int flags, int objectType, long object, long location, int messageCode, @NonNull MemorySegment pLayerPrefix, @NonNull MemorySegment pMessage) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDebugReportMessageEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDebugReportMessageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkDebugReportMessageEXT", instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage); }
-        Handles.MH_vkDebugReportMessageEXT.invoke(instance.capabilities().PFN_vkDebugReportMessageEXT, instance.segment(), flags, objectType, object, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, location), messageCode, pLayerPrefix, pMessage); }
+        Handles.MH_vkDebugReportMessageEXT.get().invoke(instance.capabilities().PFN_vkDebugReportMessageEXT, instance.segment(), flags, objectType, object, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, location), messageCode, pLayerPrefix, pMessage); }
         catch (Throwable e) { throw new RuntimeException("error in vkDebugReportMessageEXT", e); }
     }
 

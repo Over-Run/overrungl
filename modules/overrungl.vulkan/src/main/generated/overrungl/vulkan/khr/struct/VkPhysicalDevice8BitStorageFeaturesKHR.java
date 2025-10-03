@@ -35,31 +35,31 @@ public final class VkPhysicalDevice8BitStorageFeaturesKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `storageBuffer8BitAccess`.
     public static final long OFFSET_storageBuffer8BitAccess = LAYOUT.byteOffset(PathElement.groupElement("storageBuffer8BitAccess"));
     /// The memory layout of `storageBuffer8BitAccess`.
     public static final MemoryLayout LAYOUT_storageBuffer8BitAccess = LAYOUT.select(PathElement.groupElement("storageBuffer8BitAccess"));
     /// The [VarHandle] of `storageBuffer8BitAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storageBuffer8BitAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageBuffer8BitAccess"));
+    public static final Supplier<VarHandle> VH_storageBuffer8BitAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageBuffer8BitAccess")));
     /// The byte offset of `uniformAndStorageBuffer8BitAccess`.
     public static final long OFFSET_uniformAndStorageBuffer8BitAccess = LAYOUT.byteOffset(PathElement.groupElement("uniformAndStorageBuffer8BitAccess"));
     /// The memory layout of `uniformAndStorageBuffer8BitAccess`.
     public static final MemoryLayout LAYOUT_uniformAndStorageBuffer8BitAccess = LAYOUT.select(PathElement.groupElement("uniformAndStorageBuffer8BitAccess"));
     /// The [VarHandle] of `uniformAndStorageBuffer8BitAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_uniformAndStorageBuffer8BitAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformAndStorageBuffer8BitAccess"));
+    public static final Supplier<VarHandle> VH_uniformAndStorageBuffer8BitAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformAndStorageBuffer8BitAccess")));
     /// The byte offset of `storagePushConstant8`.
     public static final long OFFSET_storagePushConstant8 = LAYOUT.byteOffset(PathElement.groupElement("storagePushConstant8"));
     /// The memory layout of `storagePushConstant8`.
     public static final MemoryLayout LAYOUT_storagePushConstant8 = LAYOUT.select(PathElement.groupElement("storagePushConstant8"));
     /// The [VarHandle] of `storagePushConstant8` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storagePushConstant8 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storagePushConstant8"));
+    public static final Supplier<VarHandle> VH_storagePushConstant8 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storagePushConstant8")));
 
     /// Creates `VkPhysicalDevice8BitStorageFeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDevice8BitStorageFeaturesKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDevice8BitStorageFeaturesKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDevice8BitStorageFeaturesKHR extends GroupType {
     /// {@return `storageBuffer8BitAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int storageBuffer8BitAccess(MemorySegment segment, long index) { return (int) VH_storageBuffer8BitAccess.get(segment, 0L, index); }
+    public static int storageBuffer8BitAccess(MemorySegment segment, long index) { return (int) VH_storageBuffer8BitAccess.get().get(segment, 0L, index); }
     /// {@return `storageBuffer8BitAccess`}
     public int storageBuffer8BitAccess() { return storageBuffer8BitAccess(this.segment(), 0L); }
     /// Sets `storageBuffer8BitAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storageBuffer8BitAccess(MemorySegment segment, long index, int value) { VH_storageBuffer8BitAccess.set(segment, 0L, index, value); }
+    public static void storageBuffer8BitAccess(MemorySegment segment, long index, int value) { VH_storageBuffer8BitAccess.get().set(segment, 0L, index, value); }
     /// Sets `storageBuffer8BitAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDevice8BitStorageFeaturesKHR extends GroupType {
     /// {@return `uniformAndStorageBuffer8BitAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int uniformAndStorageBuffer8BitAccess(MemorySegment segment, long index) { return (int) VH_uniformAndStorageBuffer8BitAccess.get(segment, 0L, index); }
+    public static int uniformAndStorageBuffer8BitAccess(MemorySegment segment, long index) { return (int) VH_uniformAndStorageBuffer8BitAccess.get().get(segment, 0L, index); }
     /// {@return `uniformAndStorageBuffer8BitAccess`}
     public int uniformAndStorageBuffer8BitAccess() { return uniformAndStorageBuffer8BitAccess(this.segment(), 0L); }
     /// Sets `uniformAndStorageBuffer8BitAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void uniformAndStorageBuffer8BitAccess(MemorySegment segment, long index, int value) { VH_uniformAndStorageBuffer8BitAccess.set(segment, 0L, index, value); }
+    public static void uniformAndStorageBuffer8BitAccess(MemorySegment segment, long index, int value) { VH_uniformAndStorageBuffer8BitAccess.get().set(segment, 0L, index, value); }
     /// Sets `uniformAndStorageBuffer8BitAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDevice8BitStorageFeaturesKHR extends GroupType {
     /// {@return `storagePushConstant8` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int storagePushConstant8(MemorySegment segment, long index) { return (int) VH_storagePushConstant8.get(segment, 0L, index); }
+    public static int storagePushConstant8(MemorySegment segment, long index) { return (int) VH_storagePushConstant8.get().get(segment, 0L, index); }
     /// {@return `storagePushConstant8`}
     public int storagePushConstant8() { return storagePushConstant8(this.segment(), 0L); }
     /// Sets `storagePushConstant8` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storagePushConstant8(MemorySegment segment, long index, int value) { VH_storagePushConstant8.set(segment, 0L, index, value); }
+    public static void storagePushConstant8(MemorySegment segment, long index, int value) { VH_storagePushConstant8.get().set(segment, 0L, index, value); }
     /// Sets `storagePushConstant8` with the given value.
     /// @param value the value
     /// @return `this`

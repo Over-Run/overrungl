@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderBufferInt64Atomics`.
     public static final long OFFSET_shaderBufferInt64Atomics = LAYOUT.byteOffset(PathElement.groupElement("shaderBufferInt64Atomics"));
     /// The memory layout of `shaderBufferInt64Atomics`.
     public static final MemoryLayout LAYOUT_shaderBufferInt64Atomics = LAYOUT.select(PathElement.groupElement("shaderBufferInt64Atomics"));
     /// The [VarHandle] of `shaderBufferInt64Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBufferInt64Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferInt64Atomics"));
+    public static final Supplier<VarHandle> VH_shaderBufferInt64Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferInt64Atomics")));
     /// The byte offset of `shaderSharedInt64Atomics`.
     public static final long OFFSET_shaderSharedInt64Atomics = LAYOUT.byteOffset(PathElement.groupElement("shaderSharedInt64Atomics"));
     /// The memory layout of `shaderSharedInt64Atomics`.
     public static final MemoryLayout LAYOUT_shaderSharedInt64Atomics = LAYOUT.select(PathElement.groupElement("shaderSharedInt64Atomics"));
     /// The [VarHandle] of `shaderSharedInt64Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSharedInt64Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedInt64Atomics"));
+    public static final Supplier<VarHandle> VH_shaderSharedInt64Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedInt64Atomics")));
 
     /// Creates `VkPhysicalDeviceShaderAtomicInt64FeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR extends GroupTyp
     /// {@return `shaderBufferInt64Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBufferInt64Atomics(MemorySegment segment, long index) { return (int) VH_shaderBufferInt64Atomics.get(segment, 0L, index); }
+    public static int shaderBufferInt64Atomics(MemorySegment segment, long index) { return (int) VH_shaderBufferInt64Atomics.get().get(segment, 0L, index); }
     /// {@return `shaderBufferInt64Atomics`}
     public int shaderBufferInt64Atomics() { return shaderBufferInt64Atomics(this.segment(), 0L); }
     /// Sets `shaderBufferInt64Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBufferInt64Atomics(MemorySegment segment, long index, int value) { VH_shaderBufferInt64Atomics.set(segment, 0L, index, value); }
+    public static void shaderBufferInt64Atomics(MemorySegment segment, long index, int value) { VH_shaderBufferInt64Atomics.get().set(segment, 0L, index, value); }
     /// Sets `shaderBufferInt64Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR extends GroupTyp
     /// {@return `shaderSharedInt64Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSharedInt64Atomics(MemorySegment segment, long index) { return (int) VH_shaderSharedInt64Atomics.get(segment, 0L, index); }
+    public static int shaderSharedInt64Atomics(MemorySegment segment, long index) { return (int) VH_shaderSharedInt64Atomics.get().get(segment, 0L, index); }
     /// {@return `shaderSharedInt64Atomics`}
     public int shaderSharedInt64Atomics() { return shaderSharedInt64Atomics(this.segment(), 0L); }
     /// Sets `shaderSharedInt64Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSharedInt64Atomics(MemorySegment segment, long index, int value) { VH_shaderSharedInt64Atomics.set(segment, 0L, index, value); }
+    public static void shaderSharedInt64Atomics(MemorySegment segment, long index, int value) { VH_shaderSharedInt64Atomics.get().set(segment, 0L, index, value); }
     /// Sets `shaderSharedInt64Atomics` with the given value.
     /// @param value the value
     /// @return `this`

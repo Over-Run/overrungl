@@ -27,7 +27,7 @@ public final class FloatPtr extends GroupType {
     /// The memory layout of `value`.
     public static final MemoryLayout LAYOUT_value = LAYOUT.select(PathElement.groupElement("value"));
     /// The [VarHandle] of `value` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_value = LAYOUT.arrayElementVarHandle(PathElement.groupElement("value"));
+    public static final Supplier<VarHandle> VH_value = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("value")));
 
     /// Creates `FloatPtr` with the given segment.
     /// @param segment      the memory segment
@@ -78,14 +78,14 @@ public final class FloatPtr extends GroupType {
     /// {@return `value` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float value(MemorySegment segment, long index) { return (float) VH_value.get(segment, 0L, index); }
+    public static float value(MemorySegment segment, long index) { return (float) VH_value.get().get(segment, 0L, index); }
     /// {@return `value`}
     public float value() { return value(this.segment(), 0L); }
     /// Sets `value` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void value(MemorySegment segment, long index, float value) { VH_value.set(segment, 0L, index, value); }
+    public static void value(MemorySegment segment, long index, float value) { VH_value.get().set(segment, 0L, index, value); }
     /// Sets `value` with the given value.
     /// @param value the value
     /// @return `this`

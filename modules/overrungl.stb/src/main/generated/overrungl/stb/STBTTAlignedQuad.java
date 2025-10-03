@@ -41,49 +41,49 @@ public final class STBTTAlignedQuad extends GroupType {
     /// The memory layout of `x0`.
     public static final MemoryLayout LAYOUT_x0 = LAYOUT.select(PathElement.groupElement("x0"));
     /// The [VarHandle] of `x0` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_x0 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("x0"));
+    public static final Supplier<VarHandle> VH_x0 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("x0")));
     /// The byte offset of `y0`.
     public static final long OFFSET_y0 = LAYOUT.byteOffset(PathElement.groupElement("y0"));
     /// The memory layout of `y0`.
     public static final MemoryLayout LAYOUT_y0 = LAYOUT.select(PathElement.groupElement("y0"));
     /// The [VarHandle] of `y0` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_y0 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y0"));
+    public static final Supplier<VarHandle> VH_y0 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("y0")));
     /// The byte offset of `s0`.
     public static final long OFFSET_s0 = LAYOUT.byteOffset(PathElement.groupElement("s0"));
     /// The memory layout of `s0`.
     public static final MemoryLayout LAYOUT_s0 = LAYOUT.select(PathElement.groupElement("s0"));
     /// The [VarHandle] of `s0` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_s0 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("s0"));
+    public static final Supplier<VarHandle> VH_s0 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("s0")));
     /// The byte offset of `t0`.
     public static final long OFFSET_t0 = LAYOUT.byteOffset(PathElement.groupElement("t0"));
     /// The memory layout of `t0`.
     public static final MemoryLayout LAYOUT_t0 = LAYOUT.select(PathElement.groupElement("t0"));
     /// The [VarHandle] of `t0` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_t0 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("t0"));
+    public static final Supplier<VarHandle> VH_t0 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("t0")));
     /// The byte offset of `x1`.
     public static final long OFFSET_x1 = LAYOUT.byteOffset(PathElement.groupElement("x1"));
     /// The memory layout of `x1`.
     public static final MemoryLayout LAYOUT_x1 = LAYOUT.select(PathElement.groupElement("x1"));
     /// The [VarHandle] of `x1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_x1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("x1"));
+    public static final Supplier<VarHandle> VH_x1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("x1")));
     /// The byte offset of `y1`.
     public static final long OFFSET_y1 = LAYOUT.byteOffset(PathElement.groupElement("y1"));
     /// The memory layout of `y1`.
     public static final MemoryLayout LAYOUT_y1 = LAYOUT.select(PathElement.groupElement("y1"));
     /// The [VarHandle] of `y1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_y1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y1"));
+    public static final Supplier<VarHandle> VH_y1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("y1")));
     /// The byte offset of `s1`.
     public static final long OFFSET_s1 = LAYOUT.byteOffset(PathElement.groupElement("s1"));
     /// The memory layout of `s1`.
     public static final MemoryLayout LAYOUT_s1 = LAYOUT.select(PathElement.groupElement("s1"));
     /// The [VarHandle] of `s1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_s1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("s1"));
+    public static final Supplier<VarHandle> VH_s1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("s1")));
     /// The byte offset of `t1`.
     public static final long OFFSET_t1 = LAYOUT.byteOffset(PathElement.groupElement("t1"));
     /// The memory layout of `t1`.
     public static final MemoryLayout LAYOUT_t1 = LAYOUT.select(PathElement.groupElement("t1"));
     /// The [VarHandle] of `t1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_t1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("t1"));
+    public static final Supplier<VarHandle> VH_t1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("t1")));
 
     /// Creates `STBTTAlignedQuad` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class STBTTAlignedQuad extends GroupType {
     /// {@return `x0` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float x0(MemorySegment segment, long index) { return (float) VH_x0.get(segment, 0L, index); }
+    public static float x0(MemorySegment segment, long index) { return (float) VH_x0.get().get(segment, 0L, index); }
     /// {@return `x0`}
     public float x0() { return x0(this.segment(), 0L); }
     /// Sets `x0` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void x0(MemorySegment segment, long index, float value) { VH_x0.set(segment, 0L, index, value); }
+    public static void x0(MemorySegment segment, long index, float value) { VH_x0.get().set(segment, 0L, index, value); }
     /// Sets `x0` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class STBTTAlignedQuad extends GroupType {
     /// {@return `y0` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float y0(MemorySegment segment, long index) { return (float) VH_y0.get(segment, 0L, index); }
+    public static float y0(MemorySegment segment, long index) { return (float) VH_y0.get().get(segment, 0L, index); }
     /// {@return `y0`}
     public float y0() { return y0(this.segment(), 0L); }
     /// Sets `y0` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void y0(MemorySegment segment, long index, float value) { VH_y0.set(segment, 0L, index, value); }
+    public static void y0(MemorySegment segment, long index, float value) { VH_y0.get().set(segment, 0L, index, value); }
     /// Sets `y0` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class STBTTAlignedQuad extends GroupType {
     /// {@return `s0` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float s0(MemorySegment segment, long index) { return (float) VH_s0.get(segment, 0L, index); }
+    public static float s0(MemorySegment segment, long index) { return (float) VH_s0.get().get(segment, 0L, index); }
     /// {@return `s0`}
     public float s0() { return s0(this.segment(), 0L); }
     /// Sets `s0` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void s0(MemorySegment segment, long index, float value) { VH_s0.set(segment, 0L, index, value); }
+    public static void s0(MemorySegment segment, long index, float value) { VH_s0.get().set(segment, 0L, index, value); }
     /// Sets `s0` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class STBTTAlignedQuad extends GroupType {
     /// {@return `t0` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float t0(MemorySegment segment, long index) { return (float) VH_t0.get(segment, 0L, index); }
+    public static float t0(MemorySegment segment, long index) { return (float) VH_t0.get().get(segment, 0L, index); }
     /// {@return `t0`}
     public float t0() { return t0(this.segment(), 0L); }
     /// Sets `t0` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void t0(MemorySegment segment, long index, float value) { VH_t0.set(segment, 0L, index, value); }
+    public static void t0(MemorySegment segment, long index, float value) { VH_t0.get().set(segment, 0L, index, value); }
     /// Sets `t0` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class STBTTAlignedQuad extends GroupType {
     /// {@return `x1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float x1(MemorySegment segment, long index) { return (float) VH_x1.get(segment, 0L, index); }
+    public static float x1(MemorySegment segment, long index) { return (float) VH_x1.get().get(segment, 0L, index); }
     /// {@return `x1`}
     public float x1() { return x1(this.segment(), 0L); }
     /// Sets `x1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void x1(MemorySegment segment, long index, float value) { VH_x1.set(segment, 0L, index, value); }
+    public static void x1(MemorySegment segment, long index, float value) { VH_x1.get().set(segment, 0L, index, value); }
     /// Sets `x1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class STBTTAlignedQuad extends GroupType {
     /// {@return `y1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float y1(MemorySegment segment, long index) { return (float) VH_y1.get(segment, 0L, index); }
+    public static float y1(MemorySegment segment, long index) { return (float) VH_y1.get().get(segment, 0L, index); }
     /// {@return `y1`}
     public float y1() { return y1(this.segment(), 0L); }
     /// Sets `y1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void y1(MemorySegment segment, long index, float value) { VH_y1.set(segment, 0L, index, value); }
+    public static void y1(MemorySegment segment, long index, float value) { VH_y1.get().set(segment, 0L, index, value); }
     /// Sets `y1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class STBTTAlignedQuad extends GroupType {
     /// {@return `s1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float s1(MemorySegment segment, long index) { return (float) VH_s1.get(segment, 0L, index); }
+    public static float s1(MemorySegment segment, long index) { return (float) VH_s1.get().get(segment, 0L, index); }
     /// {@return `s1`}
     public float s1() { return s1(this.segment(), 0L); }
     /// Sets `s1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void s1(MemorySegment segment, long index, float value) { VH_s1.set(segment, 0L, index, value); }
+    public static void s1(MemorySegment segment, long index, float value) { VH_s1.get().set(segment, 0L, index, value); }
     /// Sets `s1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class STBTTAlignedQuad extends GroupType {
     /// {@return `t1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float t1(MemorySegment segment, long index) { return (float) VH_t1.get(segment, 0L, index); }
+    public static float t1(MemorySegment segment, long index) { return (float) VH_t1.get().get(segment, 0L, index); }
     /// {@return `t1`}
     public float t1() { return t1(this.segment(), 0L); }
     /// Sets `t1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void t1(MemorySegment segment, long index, float value) { VH_t1.set(segment, 0L, index, value); }
+    public static void t1(MemorySegment segment, long index, float value) { VH_t1.get().set(segment, 0L, index, value); }
     /// Sets `t1` with the given value.
     /// @param value the value
     /// @return `this`

@@ -51,79 +51,79 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `supportedOutputGridSizes`.
     public static final long OFFSET_supportedOutputGridSizes = LAYOUT.byteOffset(PathElement.groupElement("supportedOutputGridSizes"));
     /// The memory layout of `supportedOutputGridSizes`.
     public static final MemoryLayout LAYOUT_supportedOutputGridSizes = LAYOUT.select(PathElement.groupElement("supportedOutputGridSizes"));
     /// The [VarHandle] of `supportedOutputGridSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedOutputGridSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedOutputGridSizes"));
+    public static final Supplier<VarHandle> VH_supportedOutputGridSizes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedOutputGridSizes")));
     /// The byte offset of `supportedHintGridSizes`.
     public static final long OFFSET_supportedHintGridSizes = LAYOUT.byteOffset(PathElement.groupElement("supportedHintGridSizes"));
     /// The memory layout of `supportedHintGridSizes`.
     public static final MemoryLayout LAYOUT_supportedHintGridSizes = LAYOUT.select(PathElement.groupElement("supportedHintGridSizes"));
     /// The [VarHandle] of `supportedHintGridSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedHintGridSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedHintGridSizes"));
+    public static final Supplier<VarHandle> VH_supportedHintGridSizes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedHintGridSizes")));
     /// The byte offset of `hintSupported`.
     public static final long OFFSET_hintSupported = LAYOUT.byteOffset(PathElement.groupElement("hintSupported"));
     /// The memory layout of `hintSupported`.
     public static final MemoryLayout LAYOUT_hintSupported = LAYOUT.select(PathElement.groupElement("hintSupported"));
     /// The [VarHandle] of `hintSupported` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hintSupported = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hintSupported"));
+    public static final Supplier<VarHandle> VH_hintSupported = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hintSupported")));
     /// The byte offset of `costSupported`.
     public static final long OFFSET_costSupported = LAYOUT.byteOffset(PathElement.groupElement("costSupported"));
     /// The memory layout of `costSupported`.
     public static final MemoryLayout LAYOUT_costSupported = LAYOUT.select(PathElement.groupElement("costSupported"));
     /// The [VarHandle] of `costSupported` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_costSupported = LAYOUT.arrayElementVarHandle(PathElement.groupElement("costSupported"));
+    public static final Supplier<VarHandle> VH_costSupported = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("costSupported")));
     /// The byte offset of `bidirectionalFlowSupported`.
     public static final long OFFSET_bidirectionalFlowSupported = LAYOUT.byteOffset(PathElement.groupElement("bidirectionalFlowSupported"));
     /// The memory layout of `bidirectionalFlowSupported`.
     public static final MemoryLayout LAYOUT_bidirectionalFlowSupported = LAYOUT.select(PathElement.groupElement("bidirectionalFlowSupported"));
     /// The [VarHandle] of `bidirectionalFlowSupported` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bidirectionalFlowSupported = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bidirectionalFlowSupported"));
+    public static final Supplier<VarHandle> VH_bidirectionalFlowSupported = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bidirectionalFlowSupported")));
     /// The byte offset of `globalFlowSupported`.
     public static final long OFFSET_globalFlowSupported = LAYOUT.byteOffset(PathElement.groupElement("globalFlowSupported"));
     /// The memory layout of `globalFlowSupported`.
     public static final MemoryLayout LAYOUT_globalFlowSupported = LAYOUT.select(PathElement.groupElement("globalFlowSupported"));
     /// The [VarHandle] of `globalFlowSupported` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_globalFlowSupported = LAYOUT.arrayElementVarHandle(PathElement.groupElement("globalFlowSupported"));
+    public static final Supplier<VarHandle> VH_globalFlowSupported = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("globalFlowSupported")));
     /// The byte offset of `minWidth`.
     public static final long OFFSET_minWidth = LAYOUT.byteOffset(PathElement.groupElement("minWidth"));
     /// The memory layout of `minWidth`.
     public static final MemoryLayout LAYOUT_minWidth = LAYOUT.select(PathElement.groupElement("minWidth"));
     /// The [VarHandle] of `minWidth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minWidth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minWidth"));
+    public static final Supplier<VarHandle> VH_minWidth = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minWidth")));
     /// The byte offset of `minHeight`.
     public static final long OFFSET_minHeight = LAYOUT.byteOffset(PathElement.groupElement("minHeight"));
     /// The memory layout of `minHeight`.
     public static final MemoryLayout LAYOUT_minHeight = LAYOUT.select(PathElement.groupElement("minHeight"));
     /// The [VarHandle] of `minHeight` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minHeight = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minHeight"));
+    public static final Supplier<VarHandle> VH_minHeight = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minHeight")));
     /// The byte offset of `maxWidth`.
     public static final long OFFSET_maxWidth = LAYOUT.byteOffset(PathElement.groupElement("maxWidth"));
     /// The memory layout of `maxWidth`.
     public static final MemoryLayout LAYOUT_maxWidth = LAYOUT.select(PathElement.groupElement("maxWidth"));
     /// The [VarHandle] of `maxWidth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxWidth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxWidth"));
+    public static final Supplier<VarHandle> VH_maxWidth = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxWidth")));
     /// The byte offset of `maxHeight`.
     public static final long OFFSET_maxHeight = LAYOUT.byteOffset(PathElement.groupElement("maxHeight"));
     /// The memory layout of `maxHeight`.
     public static final MemoryLayout LAYOUT_maxHeight = LAYOUT.select(PathElement.groupElement("maxHeight"));
     /// The [VarHandle] of `maxHeight` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxHeight = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxHeight"));
+    public static final Supplier<VarHandle> VH_maxHeight = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxHeight")));
     /// The byte offset of `maxNumRegionsOfInterest`.
     public static final long OFFSET_maxNumRegionsOfInterest = LAYOUT.byteOffset(PathElement.groupElement("maxNumRegionsOfInterest"));
     /// The memory layout of `maxNumRegionsOfInterest`.
     public static final MemoryLayout LAYOUT_maxNumRegionsOfInterest = LAYOUT.select(PathElement.groupElement("maxNumRegionsOfInterest"));
     /// The [VarHandle] of `maxNumRegionsOfInterest` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxNumRegionsOfInterest = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxNumRegionsOfInterest"));
+    public static final Supplier<VarHandle> VH_maxNumRegionsOfInterest = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxNumRegionsOfInterest")));
 
     /// Creates `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `supportedOutputGridSizes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedOutputGridSizes(MemorySegment segment, long index) { return (int) VH_supportedOutputGridSizes.get(segment, 0L, index); }
+    public static int supportedOutputGridSizes(MemorySegment segment, long index) { return (int) VH_supportedOutputGridSizes.get().get(segment, 0L, index); }
     /// {@return `supportedOutputGridSizes`}
     public int supportedOutputGridSizes() { return supportedOutputGridSizes(this.segment(), 0L); }
     /// Sets `supportedOutputGridSizes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedOutputGridSizes(MemorySegment segment, long index, int value) { VH_supportedOutputGridSizes.set(segment, 0L, index, value); }
+    public static void supportedOutputGridSizes(MemorySegment segment, long index, int value) { VH_supportedOutputGridSizes.get().set(segment, 0L, index, value); }
     /// Sets `supportedOutputGridSizes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `supportedHintGridSizes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedHintGridSizes(MemorySegment segment, long index) { return (int) VH_supportedHintGridSizes.get(segment, 0L, index); }
+    public static int supportedHintGridSizes(MemorySegment segment, long index) { return (int) VH_supportedHintGridSizes.get().get(segment, 0L, index); }
     /// {@return `supportedHintGridSizes`}
     public int supportedHintGridSizes() { return supportedHintGridSizes(this.segment(), 0L); }
     /// Sets `supportedHintGridSizes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedHintGridSizes(MemorySegment segment, long index, int value) { VH_supportedHintGridSizes.set(segment, 0L, index, value); }
+    public static void supportedHintGridSizes(MemorySegment segment, long index, int value) { VH_supportedHintGridSizes.get().set(segment, 0L, index, value); }
     /// Sets `supportedHintGridSizes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,14 +238,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `hintSupported` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int hintSupported(MemorySegment segment, long index) { return (int) VH_hintSupported.get(segment, 0L, index); }
+    public static int hintSupported(MemorySegment segment, long index) { return (int) VH_hintSupported.get().get(segment, 0L, index); }
     /// {@return `hintSupported`}
     public int hintSupported() { return hintSupported(this.segment(), 0L); }
     /// Sets `hintSupported` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void hintSupported(MemorySegment segment, long index, int value) { VH_hintSupported.set(segment, 0L, index, value); }
+    public static void hintSupported(MemorySegment segment, long index, int value) { VH_hintSupported.get().set(segment, 0L, index, value); }
     /// Sets `hintSupported` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,14 +254,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `costSupported` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int costSupported(MemorySegment segment, long index) { return (int) VH_costSupported.get(segment, 0L, index); }
+    public static int costSupported(MemorySegment segment, long index) { return (int) VH_costSupported.get().get(segment, 0L, index); }
     /// {@return `costSupported`}
     public int costSupported() { return costSupported(this.segment(), 0L); }
     /// Sets `costSupported` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void costSupported(MemorySegment segment, long index, int value) { VH_costSupported.set(segment, 0L, index, value); }
+    public static void costSupported(MemorySegment segment, long index, int value) { VH_costSupported.get().set(segment, 0L, index, value); }
     /// Sets `costSupported` with the given value.
     /// @param value the value
     /// @return `this`
@@ -270,14 +270,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `bidirectionalFlowSupported` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bidirectionalFlowSupported(MemorySegment segment, long index) { return (int) VH_bidirectionalFlowSupported.get(segment, 0L, index); }
+    public static int bidirectionalFlowSupported(MemorySegment segment, long index) { return (int) VH_bidirectionalFlowSupported.get().get(segment, 0L, index); }
     /// {@return `bidirectionalFlowSupported`}
     public int bidirectionalFlowSupported() { return bidirectionalFlowSupported(this.segment(), 0L); }
     /// Sets `bidirectionalFlowSupported` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bidirectionalFlowSupported(MemorySegment segment, long index, int value) { VH_bidirectionalFlowSupported.set(segment, 0L, index, value); }
+    public static void bidirectionalFlowSupported(MemorySegment segment, long index, int value) { VH_bidirectionalFlowSupported.get().set(segment, 0L, index, value); }
     /// Sets `bidirectionalFlowSupported` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,14 +286,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `globalFlowSupported` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int globalFlowSupported(MemorySegment segment, long index) { return (int) VH_globalFlowSupported.get(segment, 0L, index); }
+    public static int globalFlowSupported(MemorySegment segment, long index) { return (int) VH_globalFlowSupported.get().get(segment, 0L, index); }
     /// {@return `globalFlowSupported`}
     public int globalFlowSupported() { return globalFlowSupported(this.segment(), 0L); }
     /// Sets `globalFlowSupported` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void globalFlowSupported(MemorySegment segment, long index, int value) { VH_globalFlowSupported.set(segment, 0L, index, value); }
+    public static void globalFlowSupported(MemorySegment segment, long index, int value) { VH_globalFlowSupported.get().set(segment, 0L, index, value); }
     /// Sets `globalFlowSupported` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,14 +302,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `minWidth` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minWidth(MemorySegment segment, long index) { return (int) VH_minWidth.get(segment, 0L, index); }
+    public static int minWidth(MemorySegment segment, long index) { return (int) VH_minWidth.get().get(segment, 0L, index); }
     /// {@return `minWidth`}
     public int minWidth() { return minWidth(this.segment(), 0L); }
     /// Sets `minWidth` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minWidth(MemorySegment segment, long index, int value) { VH_minWidth.set(segment, 0L, index, value); }
+    public static void minWidth(MemorySegment segment, long index, int value) { VH_minWidth.get().set(segment, 0L, index, value); }
     /// Sets `minWidth` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,14 +318,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `minHeight` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minHeight(MemorySegment segment, long index) { return (int) VH_minHeight.get(segment, 0L, index); }
+    public static int minHeight(MemorySegment segment, long index) { return (int) VH_minHeight.get().get(segment, 0L, index); }
     /// {@return `minHeight`}
     public int minHeight() { return minHeight(this.segment(), 0L); }
     /// Sets `minHeight` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minHeight(MemorySegment segment, long index, int value) { VH_minHeight.set(segment, 0L, index, value); }
+    public static void minHeight(MemorySegment segment, long index, int value) { VH_minHeight.get().set(segment, 0L, index, value); }
     /// Sets `minHeight` with the given value.
     /// @param value the value
     /// @return `this`
@@ -334,14 +334,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `maxWidth` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxWidth(MemorySegment segment, long index) { return (int) VH_maxWidth.get(segment, 0L, index); }
+    public static int maxWidth(MemorySegment segment, long index) { return (int) VH_maxWidth.get().get(segment, 0L, index); }
     /// {@return `maxWidth`}
     public int maxWidth() { return maxWidth(this.segment(), 0L); }
     /// Sets `maxWidth` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxWidth(MemorySegment segment, long index, int value) { VH_maxWidth.set(segment, 0L, index, value); }
+    public static void maxWidth(MemorySegment segment, long index, int value) { VH_maxWidth.get().set(segment, 0L, index, value); }
     /// Sets `maxWidth` with the given value.
     /// @param value the value
     /// @return `this`
@@ -350,14 +350,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `maxHeight` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxHeight(MemorySegment segment, long index) { return (int) VH_maxHeight.get(segment, 0L, index); }
+    public static int maxHeight(MemorySegment segment, long index) { return (int) VH_maxHeight.get().get(segment, 0L, index); }
     /// {@return `maxHeight`}
     public int maxHeight() { return maxHeight(this.segment(), 0L); }
     /// Sets `maxHeight` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxHeight(MemorySegment segment, long index, int value) { VH_maxHeight.set(segment, 0L, index, value); }
+    public static void maxHeight(MemorySegment segment, long index, int value) { VH_maxHeight.get().set(segment, 0L, index, value); }
     /// Sets `maxHeight` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,14 +366,14 @@ public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// {@return `maxNumRegionsOfInterest` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxNumRegionsOfInterest(MemorySegment segment, long index) { return (int) VH_maxNumRegionsOfInterest.get(segment, 0L, index); }
+    public static int maxNumRegionsOfInterest(MemorySegment segment, long index) { return (int) VH_maxNumRegionsOfInterest.get().get(segment, 0L, index); }
     /// {@return `maxNumRegionsOfInterest`}
     public int maxNumRegionsOfInterest() { return maxNumRegionsOfInterest(this.segment(), 0L); }
     /// Sets `maxNumRegionsOfInterest` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxNumRegionsOfInterest(MemorySegment segment, long index, int value) { VH_maxNumRegionsOfInterest.set(segment, 0L, index, value); }
+    public static void maxNumRegionsOfInterest(MemorySegment segment, long index, int value) { VH_maxNumRegionsOfInterest.get().set(segment, 0L, index, value); }
     /// Sets `maxNumRegionsOfInterest` with the given value.
     /// @param value the value
     /// @return `this`

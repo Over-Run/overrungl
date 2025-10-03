@@ -2,6 +2,7 @@
 package overrungl.vulkan.huawei;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -15,7 +16,7 @@ public final class VKHUAWEIInvocationMask {
     public static final int VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI = 0x00040000;
     public static final long VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI = 0x10000000000L;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBindInvocationMaskHUAWEI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_vkCmdBindInvocationMaskHUAWEI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)));
         private Handles() {}
     }
 
@@ -28,7 +29,7 @@ public final class VKHUAWEIInvocationMask {
     public static void vkCmdBindInvocationMaskHUAWEI(@NonNull VkCommandBuffer commandBuffer, long imageView, int imageLayout) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindInvocationMaskHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindInvocationMaskHUAWEI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBindInvocationMaskHUAWEI", commandBuffer, imageView, imageLayout); }
-        Handles.MH_vkCmdBindInvocationMaskHUAWEI.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindInvocationMaskHUAWEI, commandBuffer.segment(), imageView, imageLayout); }
+        Handles.MH_vkCmdBindInvocationMaskHUAWEI.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdBindInvocationMaskHUAWEI, commandBuffer.segment(), imageView, imageLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindInvocationMaskHUAWEI", e); }
     }
 

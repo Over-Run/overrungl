@@ -33,25 +33,25 @@ public final class VkVertexInputAttributeDescription extends GroupType {
     /// The memory layout of `location`.
     public static final MemoryLayout LAYOUT_location = LAYOUT.select(PathElement.groupElement("location"));
     /// The [VarHandle] of `location` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_location = LAYOUT.arrayElementVarHandle(PathElement.groupElement("location"));
+    public static final Supplier<VarHandle> VH_location = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("location")));
     /// The byte offset of `binding`.
     public static final long OFFSET_binding = LAYOUT.byteOffset(PathElement.groupElement("binding"));
     /// The memory layout of `binding`.
     public static final MemoryLayout LAYOUT_binding = LAYOUT.select(PathElement.groupElement("binding"));
     /// The [VarHandle] of `binding` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_binding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("binding"));
+    public static final Supplier<VarHandle> VH_binding = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("binding")));
     /// The byte offset of `format`.
     public static final long OFFSET_format = LAYOUT.byteOffset(PathElement.groupElement("format"));
     /// The memory layout of `format`.
     public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
     /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
+    public static final Supplier<VarHandle> VH_format = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("format")));
     /// The byte offset of `offset`.
     public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
     /// The memory layout of `offset`.
     public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
     /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
+    public static final Supplier<VarHandle> VH_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset")));
 
     /// Creates `VkVertexInputAttributeDescription` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkVertexInputAttributeDescription extends GroupType {
     /// {@return `location` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int location(MemorySegment segment, long index) { return (int) VH_location.get(segment, 0L, index); }
+    public static int location(MemorySegment segment, long index) { return (int) VH_location.get().get(segment, 0L, index); }
     /// {@return `location`}
     public int location() { return location(this.segment(), 0L); }
     /// Sets `location` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void location(MemorySegment segment, long index, int value) { VH_location.set(segment, 0L, index, value); }
+    public static void location(MemorySegment segment, long index, int value) { VH_location.get().set(segment, 0L, index, value); }
     /// Sets `location` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkVertexInputAttributeDescription extends GroupType {
     /// {@return `binding` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int binding(MemorySegment segment, long index) { return (int) VH_binding.get(segment, 0L, index); }
+    public static int binding(MemorySegment segment, long index) { return (int) VH_binding.get().get(segment, 0L, index); }
     /// {@return `binding`}
     public int binding() { return binding(this.segment(), 0L); }
     /// Sets `binding` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void binding(MemorySegment segment, long index, int value) { VH_binding.set(segment, 0L, index, value); }
+    public static void binding(MemorySegment segment, long index, int value) { VH_binding.get().set(segment, 0L, index, value); }
     /// Sets `binding` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkVertexInputAttributeDescription extends GroupType {
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
+    public static int format(MemorySegment segment, long index) { return (int) VH_format.get().get(segment, 0L, index); }
     /// {@return `format`}
     public int format() { return format(this.segment(), 0L); }
     /// Sets `format` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void format(MemorySegment segment, long index, int value) { VH_format.set(segment, 0L, index, value); }
+    public static void format(MemorySegment segment, long index, int value) { VH_format.get().set(segment, 0L, index, value); }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkVertexInputAttributeDescription extends GroupType {
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int offset(MemorySegment segment, long index) { return (int) VH_offset.get(segment, 0L, index); }
+    public static int offset(MemorySegment segment, long index) { return (int) VH_offset.get().get(segment, 0L, index); }
     /// {@return `offset`}
     public int offset() { return offset(this.segment(), 0L); }
     /// Sets `offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void offset(MemorySegment segment, long index, int value) { VH_offset.set(segment, 0L, index, value); }
+    public static void offset(MemorySegment segment, long index, int value) { VH_offset.get().set(segment, 0L, index, value); }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`

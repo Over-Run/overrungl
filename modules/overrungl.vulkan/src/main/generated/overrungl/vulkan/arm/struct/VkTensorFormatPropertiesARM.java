@@ -33,25 +33,25 @@ public final class VkTensorFormatPropertiesARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `optimalTilingTensorFeatures`.
     public static final long OFFSET_optimalTilingTensorFeatures = LAYOUT.byteOffset(PathElement.groupElement("optimalTilingTensorFeatures"));
     /// The memory layout of `optimalTilingTensorFeatures`.
     public static final MemoryLayout LAYOUT_optimalTilingTensorFeatures = LAYOUT.select(PathElement.groupElement("optimalTilingTensorFeatures"));
     /// The [VarHandle] of `optimalTilingTensorFeatures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_optimalTilingTensorFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("optimalTilingTensorFeatures"));
+    public static final Supplier<VarHandle> VH_optimalTilingTensorFeatures = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("optimalTilingTensorFeatures")));
     /// The byte offset of `linearTilingTensorFeatures`.
     public static final long OFFSET_linearTilingTensorFeatures = LAYOUT.byteOffset(PathElement.groupElement("linearTilingTensorFeatures"));
     /// The memory layout of `linearTilingTensorFeatures`.
     public static final MemoryLayout LAYOUT_linearTilingTensorFeatures = LAYOUT.select(PathElement.groupElement("linearTilingTensorFeatures"));
     /// The [VarHandle] of `linearTilingTensorFeatures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_linearTilingTensorFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("linearTilingTensorFeatures"));
+    public static final Supplier<VarHandle> VH_linearTilingTensorFeatures = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("linearTilingTensorFeatures")));
 
     /// Creates `VkTensorFormatPropertiesARM` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkTensorFormatPropertiesARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkTensorFormatPropertiesARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkTensorFormatPropertiesARM extends GroupType {
     /// {@return `optimalTilingTensorFeatures` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long optimalTilingTensorFeatures(MemorySegment segment, long index) { return (long) VH_optimalTilingTensorFeatures.get(segment, 0L, index); }
+    public static long optimalTilingTensorFeatures(MemorySegment segment, long index) { return (long) VH_optimalTilingTensorFeatures.get().get(segment, 0L, index); }
     /// {@return `optimalTilingTensorFeatures`}
     public long optimalTilingTensorFeatures() { return optimalTilingTensorFeatures(this.segment(), 0L); }
     /// Sets `optimalTilingTensorFeatures` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void optimalTilingTensorFeatures(MemorySegment segment, long index, long value) { VH_optimalTilingTensorFeatures.set(segment, 0L, index, value); }
+    public static void optimalTilingTensorFeatures(MemorySegment segment, long index, long value) { VH_optimalTilingTensorFeatures.get().set(segment, 0L, index, value); }
     /// Sets `optimalTilingTensorFeatures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkTensorFormatPropertiesARM extends GroupType {
     /// {@return `linearTilingTensorFeatures` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long linearTilingTensorFeatures(MemorySegment segment, long index) { return (long) VH_linearTilingTensorFeatures.get(segment, 0L, index); }
+    public static long linearTilingTensorFeatures(MemorySegment segment, long index) { return (long) VH_linearTilingTensorFeatures.get().get(segment, 0L, index); }
     /// {@return `linearTilingTensorFeatures`}
     public long linearTilingTensorFeatures() { return linearTilingTensorFeatures(this.segment(), 0L); }
     /// Sets `linearTilingTensorFeatures` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void linearTilingTensorFeatures(MemorySegment segment, long index, long value) { VH_linearTilingTensorFeatures.set(segment, 0L, index, value); }
+    public static void linearTilingTensorFeatures(MemorySegment segment, long index, long value) { VH_linearTilingTensorFeatures.get().set(segment, 0L, index, value); }
     /// Sets `linearTilingTensorFeatures` with the given value.
     /// @param value the value
     /// @return `this`

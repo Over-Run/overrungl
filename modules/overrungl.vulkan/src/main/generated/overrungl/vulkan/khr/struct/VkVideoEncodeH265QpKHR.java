@@ -31,19 +31,19 @@ public final class VkVideoEncodeH265QpKHR extends GroupType {
     /// The memory layout of `qpI`.
     public static final MemoryLayout LAYOUT_qpI = LAYOUT.select(PathElement.groupElement("qpI"));
     /// The [VarHandle] of `qpI` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_qpI = LAYOUT.arrayElementVarHandle(PathElement.groupElement("qpI"));
+    public static final Supplier<VarHandle> VH_qpI = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("qpI")));
     /// The byte offset of `qpP`.
     public static final long OFFSET_qpP = LAYOUT.byteOffset(PathElement.groupElement("qpP"));
     /// The memory layout of `qpP`.
     public static final MemoryLayout LAYOUT_qpP = LAYOUT.select(PathElement.groupElement("qpP"));
     /// The [VarHandle] of `qpP` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_qpP = LAYOUT.arrayElementVarHandle(PathElement.groupElement("qpP"));
+    public static final Supplier<VarHandle> VH_qpP = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("qpP")));
     /// The byte offset of `qpB`.
     public static final long OFFSET_qpB = LAYOUT.byteOffset(PathElement.groupElement("qpB"));
     /// The memory layout of `qpB`.
     public static final MemoryLayout LAYOUT_qpB = LAYOUT.select(PathElement.groupElement("qpB"));
     /// The [VarHandle] of `qpB` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_qpB = LAYOUT.arrayElementVarHandle(PathElement.groupElement("qpB"));
+    public static final Supplier<VarHandle> VH_qpB = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("qpB")));
 
     /// Creates `VkVideoEncodeH265QpKHR` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkVideoEncodeH265QpKHR extends GroupType {
     /// {@return `qpI` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int qpI(MemorySegment segment, long index) { return (int) VH_qpI.get(segment, 0L, index); }
+    public static int qpI(MemorySegment segment, long index) { return (int) VH_qpI.get().get(segment, 0L, index); }
     /// {@return `qpI`}
     public int qpI() { return qpI(this.segment(), 0L); }
     /// Sets `qpI` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void qpI(MemorySegment segment, long index, int value) { VH_qpI.set(segment, 0L, index, value); }
+    public static void qpI(MemorySegment segment, long index, int value) { VH_qpI.get().set(segment, 0L, index, value); }
     /// Sets `qpI` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkVideoEncodeH265QpKHR extends GroupType {
     /// {@return `qpP` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int qpP(MemorySegment segment, long index) { return (int) VH_qpP.get(segment, 0L, index); }
+    public static int qpP(MemorySegment segment, long index) { return (int) VH_qpP.get().get(segment, 0L, index); }
     /// {@return `qpP`}
     public int qpP() { return qpP(this.segment(), 0L); }
     /// Sets `qpP` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void qpP(MemorySegment segment, long index, int value) { VH_qpP.set(segment, 0L, index, value); }
+    public static void qpP(MemorySegment segment, long index, int value) { VH_qpP.get().set(segment, 0L, index, value); }
     /// Sets `qpP` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkVideoEncodeH265QpKHR extends GroupType {
     /// {@return `qpB` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int qpB(MemorySegment segment, long index) { return (int) VH_qpB.get(segment, 0L, index); }
+    public static int qpB(MemorySegment segment, long index) { return (int) VH_qpB.get().get(segment, 0L, index); }
     /// {@return `qpB`}
     public int qpB() { return qpB(this.segment(), 0L); }
     /// Sets `qpB` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void qpB(MemorySegment segment, long index, int value) { VH_qpB.set(segment, 0L, index, value); }
+    public static void qpB(MemorySegment segment, long index, int value) { VH_qpB.get().set(segment, 0L, index, value); }
     /// Sets `qpB` with the given value.
     /// @param value the value
     /// @return `this`

@@ -33,25 +33,25 @@ public final class VkImageSubresourceLayers extends GroupType {
     /// The memory layout of `aspectMask`.
     public static final MemoryLayout LAYOUT_aspectMask = LAYOUT.select(PathElement.groupElement("aspectMask"));
     /// The [VarHandle] of `aspectMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_aspectMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("aspectMask"));
+    public static final Supplier<VarHandle> VH_aspectMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("aspectMask")));
     /// The byte offset of `mipLevel`.
     public static final long OFFSET_mipLevel = LAYOUT.byteOffset(PathElement.groupElement("mipLevel"));
     /// The memory layout of `mipLevel`.
     public static final MemoryLayout LAYOUT_mipLevel = LAYOUT.select(PathElement.groupElement("mipLevel"));
     /// The [VarHandle] of `mipLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_mipLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mipLevel"));
+    public static final Supplier<VarHandle> VH_mipLevel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("mipLevel")));
     /// The byte offset of `baseArrayLayer`.
     public static final long OFFSET_baseArrayLayer = LAYOUT.byteOffset(PathElement.groupElement("baseArrayLayer"));
     /// The memory layout of `baseArrayLayer`.
     public static final MemoryLayout LAYOUT_baseArrayLayer = LAYOUT.select(PathElement.groupElement("baseArrayLayer"));
     /// The [VarHandle] of `baseArrayLayer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_baseArrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseArrayLayer"));
+    public static final Supplier<VarHandle> VH_baseArrayLayer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseArrayLayer")));
     /// The byte offset of `layerCount`.
     public static final long OFFSET_layerCount = LAYOUT.byteOffset(PathElement.groupElement("layerCount"));
     /// The memory layout of `layerCount`.
     public static final MemoryLayout LAYOUT_layerCount = LAYOUT.select(PathElement.groupElement("layerCount"));
     /// The [VarHandle] of `layerCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_layerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layerCount"));
+    public static final Supplier<VarHandle> VH_layerCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("layerCount")));
 
     /// Creates `VkImageSubresourceLayers` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkImageSubresourceLayers extends GroupType {
     /// {@return `aspectMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int aspectMask(MemorySegment segment, long index) { return (int) VH_aspectMask.get(segment, 0L, index); }
+    public static int aspectMask(MemorySegment segment, long index) { return (int) VH_aspectMask.get().get(segment, 0L, index); }
     /// {@return `aspectMask`}
     public int aspectMask() { return aspectMask(this.segment(), 0L); }
     /// Sets `aspectMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void aspectMask(MemorySegment segment, long index, int value) { VH_aspectMask.set(segment, 0L, index, value); }
+    public static void aspectMask(MemorySegment segment, long index, int value) { VH_aspectMask.get().set(segment, 0L, index, value); }
     /// Sets `aspectMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkImageSubresourceLayers extends GroupType {
     /// {@return `mipLevel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int mipLevel(MemorySegment segment, long index) { return (int) VH_mipLevel.get(segment, 0L, index); }
+    public static int mipLevel(MemorySegment segment, long index) { return (int) VH_mipLevel.get().get(segment, 0L, index); }
     /// {@return `mipLevel`}
     public int mipLevel() { return mipLevel(this.segment(), 0L); }
     /// Sets `mipLevel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void mipLevel(MemorySegment segment, long index, int value) { VH_mipLevel.set(segment, 0L, index, value); }
+    public static void mipLevel(MemorySegment segment, long index, int value) { VH_mipLevel.get().set(segment, 0L, index, value); }
     /// Sets `mipLevel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkImageSubresourceLayers extends GroupType {
     /// {@return `baseArrayLayer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int baseArrayLayer(MemorySegment segment, long index) { return (int) VH_baseArrayLayer.get(segment, 0L, index); }
+    public static int baseArrayLayer(MemorySegment segment, long index) { return (int) VH_baseArrayLayer.get().get(segment, 0L, index); }
     /// {@return `baseArrayLayer`}
     public int baseArrayLayer() { return baseArrayLayer(this.segment(), 0L); }
     /// Sets `baseArrayLayer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void baseArrayLayer(MemorySegment segment, long index, int value) { VH_baseArrayLayer.set(segment, 0L, index, value); }
+    public static void baseArrayLayer(MemorySegment segment, long index, int value) { VH_baseArrayLayer.get().set(segment, 0L, index, value); }
     /// Sets `baseArrayLayer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkImageSubresourceLayers extends GroupType {
     /// {@return `layerCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int layerCount(MemorySegment segment, long index) { return (int) VH_layerCount.get(segment, 0L, index); }
+    public static int layerCount(MemorySegment segment, long index) { return (int) VH_layerCount.get().get(segment, 0L, index); }
     /// {@return `layerCount`}
     public int layerCount() { return layerCount(this.segment(), 0L); }
     /// Sets `layerCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void layerCount(MemorySegment segment, long index, int value) { VH_layerCount.set(segment, 0L, index, value); }
+    public static void layerCount(MemorySegment segment, long index, int value) { VH_layerCount.get().set(segment, 0L, index, value); }
     /// Sets `layerCount` with the given value.
     /// @param value the value
     /// @return `this`

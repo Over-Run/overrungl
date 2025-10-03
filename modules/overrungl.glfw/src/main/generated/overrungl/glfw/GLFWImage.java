@@ -31,19 +31,19 @@ public final class GLFWImage extends GroupType {
     /// The memory layout of `width`.
     public static final MemoryLayout LAYOUT_width = LAYOUT.select(PathElement.groupElement("width"));
     /// The [VarHandle] of `width` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("width"));
+    public static final Supplier<VarHandle> VH_width = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("width")));
     /// The byte offset of `height`.
     public static final long OFFSET_height = LAYOUT.byteOffset(PathElement.groupElement("height"));
     /// The memory layout of `height`.
     public static final MemoryLayout LAYOUT_height = LAYOUT.select(PathElement.groupElement("height"));
     /// The [VarHandle] of `height` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("height"));
+    public static final Supplier<VarHandle> VH_height = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("height")));
     /// The byte offset of `pixels`.
     public static final long OFFSET_pixels = LAYOUT.byteOffset(PathElement.groupElement("pixels"));
     /// The memory layout of `pixels`.
     public static final MemoryLayout LAYOUT_pixels = LAYOUT.select(PathElement.groupElement("pixels"));
     /// The [VarHandle] of `pixels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pixels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixels"));
+    public static final Supplier<VarHandle> VH_pixels = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixels")));
 
     /// Creates `GLFWImage` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class GLFWImage extends GroupType {
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int width(MemorySegment segment, long index) { return (int) VH_width.get(segment, 0L, index); }
+    public static int width(MemorySegment segment, long index) { return (int) VH_width.get().get(segment, 0L, index); }
     /// {@return `width`}
     public int width() { return width(this.segment(), 0L); }
     /// Sets `width` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void width(MemorySegment segment, long index, int value) { VH_width.set(segment, 0L, index, value); }
+    public static void width(MemorySegment segment, long index, int value) { VH_width.get().set(segment, 0L, index, value); }
     /// Sets `width` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class GLFWImage extends GroupType {
     /// {@return `height` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int height(MemorySegment segment, long index) { return (int) VH_height.get(segment, 0L, index); }
+    public static int height(MemorySegment segment, long index) { return (int) VH_height.get().get(segment, 0L, index); }
     /// {@return `height`}
     public int height() { return height(this.segment(), 0L); }
     /// Sets `height` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void height(MemorySegment segment, long index, int value) { VH_height.set(segment, 0L, index, value); }
+    public static void height(MemorySegment segment, long index, int value) { VH_height.get().set(segment, 0L, index, value); }
     /// Sets `height` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class GLFWImage extends GroupType {
     /// {@return `pixels` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pixels(MemorySegment segment, long index) { return (MemorySegment) VH_pixels.get(segment, 0L, index); }
+    public static MemorySegment pixels(MemorySegment segment, long index) { return (MemorySegment) VH_pixels.get().get(segment, 0L, index); }
     /// {@return `pixels`}
     public MemorySegment pixels() { return pixels(this.segment(), 0L); }
     /// Sets `pixels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pixels(MemorySegment segment, long index, MemorySegment value) { VH_pixels.set(segment, 0L, index, value); }
+    public static void pixels(MemorySegment segment, long index, MemorySegment value) { VH_pixels.get().set(segment, 0L, index, value); }
     /// Sets `pixels` with the given value.
     /// @param value the value
     /// @return `this`

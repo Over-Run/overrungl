@@ -35,31 +35,31 @@ public final class GLDrawElementsIndirectCommand extends GroupType {
     /// The memory layout of `count`.
     public static final MemoryLayout LAYOUT_count = LAYOUT.select(PathElement.groupElement("count"));
     /// The [VarHandle] of `count` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_count = LAYOUT.arrayElementVarHandle(PathElement.groupElement("count"));
+    public static final Supplier<VarHandle> VH_count = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("count")));
     /// The byte offset of `instanceCount`.
     public static final long OFFSET_instanceCount = LAYOUT.byteOffset(PathElement.groupElement("instanceCount"));
     /// The memory layout of `instanceCount`.
     public static final MemoryLayout LAYOUT_instanceCount = LAYOUT.select(PathElement.groupElement("instanceCount"));
     /// The [VarHandle] of `instanceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_instanceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceCount"));
+    public static final Supplier<VarHandle> VH_instanceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceCount")));
     /// The byte offset of `firstIndex`.
     public static final long OFFSET_firstIndex = LAYOUT.byteOffset(PathElement.groupElement("firstIndex"));
     /// The memory layout of `firstIndex`.
     public static final MemoryLayout LAYOUT_firstIndex = LAYOUT.select(PathElement.groupElement("firstIndex"));
     /// The [VarHandle] of `firstIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_firstIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstIndex"));
+    public static final Supplier<VarHandle> VH_firstIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstIndex")));
     /// The byte offset of `baseVertex`.
     public static final long OFFSET_baseVertex = LAYOUT.byteOffset(PathElement.groupElement("baseVertex"));
     /// The memory layout of `baseVertex`.
     public static final MemoryLayout LAYOUT_baseVertex = LAYOUT.select(PathElement.groupElement("baseVertex"));
     /// The [VarHandle] of `baseVertex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_baseVertex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseVertex"));
+    public static final Supplier<VarHandle> VH_baseVertex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseVertex")));
     /// The byte offset of `baseInstance`.
     public static final long OFFSET_baseInstance = LAYOUT.byteOffset(PathElement.groupElement("baseInstance"));
     /// The memory layout of `baseInstance`.
     public static final MemoryLayout LAYOUT_baseInstance = LAYOUT.select(PathElement.groupElement("baseInstance"));
     /// The [VarHandle] of `baseInstance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_baseInstance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseInstance"));
+    public static final Supplier<VarHandle> VH_baseInstance = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseInstance")));
 
     /// Creates `GLDrawElementsIndirectCommand` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class GLDrawElementsIndirectCommand extends GroupType {
     /// {@return `count` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int count(MemorySegment segment, long index) { return (int) VH_count.get(segment, 0L, index); }
+    public static int count(MemorySegment segment, long index) { return (int) VH_count.get().get(segment, 0L, index); }
     /// {@return `count`}
     public int count() { return count(this.segment(), 0L); }
     /// Sets `count` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void count(MemorySegment segment, long index, int value) { VH_count.set(segment, 0L, index, value); }
+    public static void count(MemorySegment segment, long index, int value) { VH_count.get().set(segment, 0L, index, value); }
     /// Sets `count` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class GLDrawElementsIndirectCommand extends GroupType {
     /// {@return `instanceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int instanceCount(MemorySegment segment, long index) { return (int) VH_instanceCount.get(segment, 0L, index); }
+    public static int instanceCount(MemorySegment segment, long index) { return (int) VH_instanceCount.get().get(segment, 0L, index); }
     /// {@return `instanceCount`}
     public int instanceCount() { return instanceCount(this.segment(), 0L); }
     /// Sets `instanceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void instanceCount(MemorySegment segment, long index, int value) { VH_instanceCount.set(segment, 0L, index, value); }
+    public static void instanceCount(MemorySegment segment, long index, int value) { VH_instanceCount.get().set(segment, 0L, index, value); }
     /// Sets `instanceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class GLDrawElementsIndirectCommand extends GroupType {
     /// {@return `firstIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int firstIndex(MemorySegment segment, long index) { return (int) VH_firstIndex.get(segment, 0L, index); }
+    public static int firstIndex(MemorySegment segment, long index) { return (int) VH_firstIndex.get().get(segment, 0L, index); }
     /// {@return `firstIndex`}
     public int firstIndex() { return firstIndex(this.segment(), 0L); }
     /// Sets `firstIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void firstIndex(MemorySegment segment, long index, int value) { VH_firstIndex.set(segment, 0L, index, value); }
+    public static void firstIndex(MemorySegment segment, long index, int value) { VH_firstIndex.get().set(segment, 0L, index, value); }
     /// Sets `firstIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class GLDrawElementsIndirectCommand extends GroupType {
     /// {@return `baseVertex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int baseVertex(MemorySegment segment, long index) { return (int) VH_baseVertex.get(segment, 0L, index); }
+    public static int baseVertex(MemorySegment segment, long index) { return (int) VH_baseVertex.get().get(segment, 0L, index); }
     /// {@return `baseVertex`}
     public int baseVertex() { return baseVertex(this.segment(), 0L); }
     /// Sets `baseVertex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void baseVertex(MemorySegment segment, long index, int value) { VH_baseVertex.set(segment, 0L, index, value); }
+    public static void baseVertex(MemorySegment segment, long index, int value) { VH_baseVertex.get().set(segment, 0L, index, value); }
     /// Sets `baseVertex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class GLDrawElementsIndirectCommand extends GroupType {
     /// {@return `baseInstance` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int baseInstance(MemorySegment segment, long index) { return (int) VH_baseInstance.get(segment, 0L, index); }
+    public static int baseInstance(MemorySegment segment, long index) { return (int) VH_baseInstance.get().get(segment, 0L, index); }
     /// {@return `baseInstance`}
     public int baseInstance() { return baseInstance(this.segment(), 0L); }
     /// Sets `baseInstance` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void baseInstance(MemorySegment segment, long index, int value) { VH_baseInstance.set(segment, 0L, index, value); }
+    public static void baseInstance(MemorySegment segment, long index, int value) { VH_baseInstance.get().set(segment, 0L, index, value); }
     /// Sets `baseInstance` with the given value.
     /// @param value the value
     /// @return `this`

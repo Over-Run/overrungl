@@ -29,13 +29,13 @@ public final class VkViewportWScalingNV extends GroupType {
     /// The memory layout of `xcoeff`.
     public static final MemoryLayout LAYOUT_xcoeff = LAYOUT.select(PathElement.groupElement("xcoeff"));
     /// The [VarHandle] of `xcoeff` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_xcoeff = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xcoeff"));
+    public static final Supplier<VarHandle> VH_xcoeff = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("xcoeff")));
     /// The byte offset of `ycoeff`.
     public static final long OFFSET_ycoeff = LAYOUT.byteOffset(PathElement.groupElement("ycoeff"));
     /// The memory layout of `ycoeff`.
     public static final MemoryLayout LAYOUT_ycoeff = LAYOUT.select(PathElement.groupElement("ycoeff"));
     /// The [VarHandle] of `ycoeff` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ycoeff = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ycoeff"));
+    public static final Supplier<VarHandle> VH_ycoeff = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ycoeff")));
 
     /// Creates `VkViewportWScalingNV` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkViewportWScalingNV extends GroupType {
     /// {@return `xcoeff` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float xcoeff(MemorySegment segment, long index) { return (float) VH_xcoeff.get(segment, 0L, index); }
+    public static float xcoeff(MemorySegment segment, long index) { return (float) VH_xcoeff.get().get(segment, 0L, index); }
     /// {@return `xcoeff`}
     public float xcoeff() { return xcoeff(this.segment(), 0L); }
     /// Sets `xcoeff` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void xcoeff(MemorySegment segment, long index, float value) { VH_xcoeff.set(segment, 0L, index, value); }
+    public static void xcoeff(MemorySegment segment, long index, float value) { VH_xcoeff.get().set(segment, 0L, index, value); }
     /// Sets `xcoeff` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkViewportWScalingNV extends GroupType {
     /// {@return `ycoeff` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float ycoeff(MemorySegment segment, long index) { return (float) VH_ycoeff.get(segment, 0L, index); }
+    public static float ycoeff(MemorySegment segment, long index) { return (float) VH_ycoeff.get().get(segment, 0L, index); }
     /// {@return `ycoeff`}
     public float ycoeff() { return ycoeff(this.segment(), 0L); }
     /// Sets `ycoeff` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ycoeff(MemorySegment segment, long index, float value) { VH_ycoeff.set(segment, 0L, index, value); }
+    public static void ycoeff(MemorySegment segment, long index, float value) { VH_ycoeff.get().set(segment, 0L, index, value); }
     /// Sets `ycoeff` with the given value.
     /// @param value the value
     /// @return `this`

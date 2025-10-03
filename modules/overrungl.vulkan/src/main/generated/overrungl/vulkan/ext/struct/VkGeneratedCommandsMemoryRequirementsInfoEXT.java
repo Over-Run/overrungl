@@ -37,37 +37,37 @@ public final class VkGeneratedCommandsMemoryRequirementsInfoEXT extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `indirectExecutionSet`.
     public static final long OFFSET_indirectExecutionSet = LAYOUT.byteOffset(PathElement.groupElement("indirectExecutionSet"));
     /// The memory layout of `indirectExecutionSet`.
     public static final MemoryLayout LAYOUT_indirectExecutionSet = LAYOUT.select(PathElement.groupElement("indirectExecutionSet"));
     /// The [VarHandle] of `indirectExecutionSet` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indirectExecutionSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectExecutionSet"));
+    public static final Supplier<VarHandle> VH_indirectExecutionSet = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectExecutionSet")));
     /// The byte offset of `indirectCommandsLayout`.
     public static final long OFFSET_indirectCommandsLayout = LAYOUT.byteOffset(PathElement.groupElement("indirectCommandsLayout"));
     /// The memory layout of `indirectCommandsLayout`.
     public static final MemoryLayout LAYOUT_indirectCommandsLayout = LAYOUT.select(PathElement.groupElement("indirectCommandsLayout"));
     /// The [VarHandle] of `indirectCommandsLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indirectCommandsLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectCommandsLayout"));
+    public static final Supplier<VarHandle> VH_indirectCommandsLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectCommandsLayout")));
     /// The byte offset of `maxSequenceCount`.
     public static final long OFFSET_maxSequenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxSequenceCount"));
     /// The memory layout of `maxSequenceCount`.
     public static final MemoryLayout LAYOUT_maxSequenceCount = LAYOUT.select(PathElement.groupElement("maxSequenceCount"));
     /// The [VarHandle] of `maxSequenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSequenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSequenceCount"));
+    public static final Supplier<VarHandle> VH_maxSequenceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSequenceCount")));
     /// The byte offset of `maxDrawCount`.
     public static final long OFFSET_maxDrawCount = LAYOUT.byteOffset(PathElement.groupElement("maxDrawCount"));
     /// The memory layout of `maxDrawCount`.
     public static final MemoryLayout LAYOUT_maxDrawCount = LAYOUT.select(PathElement.groupElement("maxDrawCount"));
     /// The [VarHandle] of `maxDrawCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDrawCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDrawCount"));
+    public static final Supplier<VarHandle> VH_maxDrawCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDrawCount")));
 
     /// Creates `VkGeneratedCommandsMemoryRequirementsInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkGeneratedCommandsMemoryRequirementsInfoEXT extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkGeneratedCommandsMemoryRequirementsInfoEXT extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkGeneratedCommandsMemoryRequirementsInfoEXT extends GroupTyp
     /// {@return `indirectExecutionSet` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long indirectExecutionSet(MemorySegment segment, long index) { return (long) VH_indirectExecutionSet.get(segment, 0L, index); }
+    public static long indirectExecutionSet(MemorySegment segment, long index) { return (long) VH_indirectExecutionSet.get().get(segment, 0L, index); }
     /// {@return `indirectExecutionSet`}
     public long indirectExecutionSet() { return indirectExecutionSet(this.segment(), 0L); }
     /// Sets `indirectExecutionSet` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void indirectExecutionSet(MemorySegment segment, long index, long value) { VH_indirectExecutionSet.set(segment, 0L, index, value); }
+    public static void indirectExecutionSet(MemorySegment segment, long index, long value) { VH_indirectExecutionSet.get().set(segment, 0L, index, value); }
     /// Sets `indirectExecutionSet` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkGeneratedCommandsMemoryRequirementsInfoEXT extends GroupTyp
     /// {@return `indirectCommandsLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long indirectCommandsLayout(MemorySegment segment, long index) { return (long) VH_indirectCommandsLayout.get(segment, 0L, index); }
+    public static long indirectCommandsLayout(MemorySegment segment, long index) { return (long) VH_indirectCommandsLayout.get().get(segment, 0L, index); }
     /// {@return `indirectCommandsLayout`}
     public long indirectCommandsLayout() { return indirectCommandsLayout(this.segment(), 0L); }
     /// Sets `indirectCommandsLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void indirectCommandsLayout(MemorySegment segment, long index, long value) { VH_indirectCommandsLayout.set(segment, 0L, index, value); }
+    public static void indirectCommandsLayout(MemorySegment segment, long index, long value) { VH_indirectCommandsLayout.get().set(segment, 0L, index, value); }
     /// Sets `indirectCommandsLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkGeneratedCommandsMemoryRequirementsInfoEXT extends GroupTyp
     /// {@return `maxSequenceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxSequenceCount(MemorySegment segment, long index) { return (int) VH_maxSequenceCount.get(segment, 0L, index); }
+    public static int maxSequenceCount(MemorySegment segment, long index) { return (int) VH_maxSequenceCount.get().get(segment, 0L, index); }
     /// {@return `maxSequenceCount`}
     public int maxSequenceCount() { return maxSequenceCount(this.segment(), 0L); }
     /// Sets `maxSequenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxSequenceCount(MemorySegment segment, long index, int value) { VH_maxSequenceCount.set(segment, 0L, index, value); }
+    public static void maxSequenceCount(MemorySegment segment, long index, int value) { VH_maxSequenceCount.get().set(segment, 0L, index, value); }
     /// Sets `maxSequenceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkGeneratedCommandsMemoryRequirementsInfoEXT extends GroupTyp
     /// {@return `maxDrawCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxDrawCount(MemorySegment segment, long index) { return (int) VH_maxDrawCount.get(segment, 0L, index); }
+    public static int maxDrawCount(MemorySegment segment, long index) { return (int) VH_maxDrawCount.get().get(segment, 0L, index); }
     /// {@return `maxDrawCount`}
     public int maxDrawCount() { return maxDrawCount(this.segment(), 0L); }
     /// Sets `maxDrawCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxDrawCount(MemorySegment segment, long index, int value) { VH_maxDrawCount.set(segment, 0L, index, value); }
+    public static void maxDrawCount(MemorySegment segment, long index, int value) { VH_maxDrawCount.get().set(segment, 0L, index, value); }
     /// Sets `maxDrawCount` with the given value.
     /// @param value the value
     /// @return `this`

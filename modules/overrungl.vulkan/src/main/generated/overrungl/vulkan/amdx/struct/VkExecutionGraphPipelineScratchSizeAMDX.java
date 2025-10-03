@@ -35,31 +35,31 @@ public final class VkExecutionGraphPipelineScratchSizeAMDX extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `minSize`.
     public static final long OFFSET_minSize = LAYOUT.byteOffset(PathElement.groupElement("minSize"));
     /// The memory layout of `minSize`.
     public static final MemoryLayout LAYOUT_minSize = LAYOUT.select(PathElement.groupElement("minSize"));
     /// The [VarHandle] of `minSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSize"));
+    public static final Supplier<VarHandle> VH_minSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSize")));
     /// The byte offset of `maxSize`.
     public static final long OFFSET_maxSize = LAYOUT.byteOffset(PathElement.groupElement("maxSize"));
     /// The memory layout of `maxSize`.
     public static final MemoryLayout LAYOUT_maxSize = LAYOUT.select(PathElement.groupElement("maxSize"));
     /// The [VarHandle] of `maxSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSize"));
+    public static final Supplier<VarHandle> VH_maxSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSize")));
     /// The byte offset of `sizeGranularity`.
     public static final long OFFSET_sizeGranularity = LAYOUT.byteOffset(PathElement.groupElement("sizeGranularity"));
     /// The memory layout of `sizeGranularity`.
     public static final MemoryLayout LAYOUT_sizeGranularity = LAYOUT.select(PathElement.groupElement("sizeGranularity"));
     /// The [VarHandle] of `sizeGranularity` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sizeGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sizeGranularity"));
+    public static final Supplier<VarHandle> VH_sizeGranularity = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sizeGranularity")));
 
     /// Creates `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkExecutionGraphPipelineScratchSizeAMDX extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkExecutionGraphPipelineScratchSizeAMDX extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkExecutionGraphPipelineScratchSizeAMDX extends GroupType {
     /// {@return `minSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long minSize(MemorySegment segment, long index) { return (long) VH_minSize.get(segment, 0L, index); }
+    public static long minSize(MemorySegment segment, long index) { return (long) VH_minSize.get().get(segment, 0L, index); }
     /// {@return `minSize`}
     public long minSize() { return minSize(this.segment(), 0L); }
     /// Sets `minSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minSize(MemorySegment segment, long index, long value) { VH_minSize.set(segment, 0L, index, value); }
+    public static void minSize(MemorySegment segment, long index, long value) { VH_minSize.get().set(segment, 0L, index, value); }
     /// Sets `minSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkExecutionGraphPipelineScratchSizeAMDX extends GroupType {
     /// {@return `maxSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long maxSize(MemorySegment segment, long index) { return (long) VH_maxSize.get(segment, 0L, index); }
+    public static long maxSize(MemorySegment segment, long index) { return (long) VH_maxSize.get().get(segment, 0L, index); }
     /// {@return `maxSize`}
     public long maxSize() { return maxSize(this.segment(), 0L); }
     /// Sets `maxSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxSize(MemorySegment segment, long index, long value) { VH_maxSize.set(segment, 0L, index, value); }
+    public static void maxSize(MemorySegment segment, long index, long value) { VH_maxSize.get().set(segment, 0L, index, value); }
     /// Sets `maxSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkExecutionGraphPipelineScratchSizeAMDX extends GroupType {
     /// {@return `sizeGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long sizeGranularity(MemorySegment segment, long index) { return (long) VH_sizeGranularity.get(segment, 0L, index); }
+    public static long sizeGranularity(MemorySegment segment, long index) { return (long) VH_sizeGranularity.get().get(segment, 0L, index); }
     /// {@return `sizeGranularity`}
     public long sizeGranularity() { return sizeGranularity(this.segment(), 0L); }
     /// Sets `sizeGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sizeGranularity(MemorySegment segment, long index, long value) { VH_sizeGranularity.set(segment, 0L, index, value); }
+    public static void sizeGranularity(MemorySegment segment, long index, long value) { VH_sizeGranularity.get().set(segment, 0L, index, value); }
     /// Sets `sizeGranularity` with the given value.
     /// @param value the value
     /// @return `this`

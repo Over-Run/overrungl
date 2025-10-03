@@ -27,7 +27,7 @@ public final class VkClusterAccelerationStructureMoveObjectsInfoNV extends Group
     /// The memory layout of `srcAccelerationStructure`.
     public static final MemoryLayout LAYOUT_srcAccelerationStructure = LAYOUT.select(PathElement.groupElement("srcAccelerationStructure"));
     /// The [VarHandle] of `srcAccelerationStructure` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcAccelerationStructure = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccelerationStructure"));
+    public static final Supplier<VarHandle> VH_srcAccelerationStructure = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccelerationStructure")));
 
     /// Creates `VkClusterAccelerationStructureMoveObjectsInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -78,14 +78,14 @@ public final class VkClusterAccelerationStructureMoveObjectsInfoNV extends Group
     /// {@return `srcAccelerationStructure` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long srcAccelerationStructure(MemorySegment segment, long index) { return (long) VH_srcAccelerationStructure.get(segment, 0L, index); }
+    public static long srcAccelerationStructure(MemorySegment segment, long index) { return (long) VH_srcAccelerationStructure.get().get(segment, 0L, index); }
     /// {@return `srcAccelerationStructure`}
     public long srcAccelerationStructure() { return srcAccelerationStructure(this.segment(), 0L); }
     /// Sets `srcAccelerationStructure` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcAccelerationStructure(MemorySegment segment, long index, long value) { VH_srcAccelerationStructure.set(segment, 0L, index, value); }
+    public static void srcAccelerationStructure(MemorySegment segment, long index, long value) { VH_srcAccelerationStructure.get().set(segment, 0L, index, value); }
     /// Sets `srcAccelerationStructure` with the given value.
     /// @param value the value
     /// @return `this`

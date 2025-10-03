@@ -33,25 +33,25 @@ public final class VkRayTracingPipelineInterfaceCreateInfoKHR extends GroupType 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `maxPipelineRayPayloadSize`.
     public static final long OFFSET_maxPipelineRayPayloadSize = LAYOUT.byteOffset(PathElement.groupElement("maxPipelineRayPayloadSize"));
     /// The memory layout of `maxPipelineRayPayloadSize`.
     public static final MemoryLayout LAYOUT_maxPipelineRayPayloadSize = LAYOUT.select(PathElement.groupElement("maxPipelineRayPayloadSize"));
     /// The [VarHandle] of `maxPipelineRayPayloadSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPipelineRayPayloadSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPipelineRayPayloadSize"));
+    public static final Supplier<VarHandle> VH_maxPipelineRayPayloadSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPipelineRayPayloadSize")));
     /// The byte offset of `maxPipelineRayHitAttributeSize`.
     public static final long OFFSET_maxPipelineRayHitAttributeSize = LAYOUT.byteOffset(PathElement.groupElement("maxPipelineRayHitAttributeSize"));
     /// The memory layout of `maxPipelineRayHitAttributeSize`.
     public static final MemoryLayout LAYOUT_maxPipelineRayHitAttributeSize = LAYOUT.select(PathElement.groupElement("maxPipelineRayHitAttributeSize"));
     /// The [VarHandle] of `maxPipelineRayHitAttributeSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPipelineRayHitAttributeSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPipelineRayHitAttributeSize"));
+    public static final Supplier<VarHandle> VH_maxPipelineRayHitAttributeSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPipelineRayHitAttributeSize")));
 
     /// Creates `VkRayTracingPipelineInterfaceCreateInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkRayTracingPipelineInterfaceCreateInfoKHR extends GroupType 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkRayTracingPipelineInterfaceCreateInfoKHR extends GroupType 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkRayTracingPipelineInterfaceCreateInfoKHR extends GroupType 
     /// {@return `maxPipelineRayPayloadSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxPipelineRayPayloadSize(MemorySegment segment, long index) { return (int) VH_maxPipelineRayPayloadSize.get(segment, 0L, index); }
+    public static int maxPipelineRayPayloadSize(MemorySegment segment, long index) { return (int) VH_maxPipelineRayPayloadSize.get().get(segment, 0L, index); }
     /// {@return `maxPipelineRayPayloadSize`}
     public int maxPipelineRayPayloadSize() { return maxPipelineRayPayloadSize(this.segment(), 0L); }
     /// Sets `maxPipelineRayPayloadSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxPipelineRayPayloadSize(MemorySegment segment, long index, int value) { VH_maxPipelineRayPayloadSize.set(segment, 0L, index, value); }
+    public static void maxPipelineRayPayloadSize(MemorySegment segment, long index, int value) { VH_maxPipelineRayPayloadSize.get().set(segment, 0L, index, value); }
     /// Sets `maxPipelineRayPayloadSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkRayTracingPipelineInterfaceCreateInfoKHR extends GroupType 
     /// {@return `maxPipelineRayHitAttributeSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxPipelineRayHitAttributeSize(MemorySegment segment, long index) { return (int) VH_maxPipelineRayHitAttributeSize.get(segment, 0L, index); }
+    public static int maxPipelineRayHitAttributeSize(MemorySegment segment, long index) { return (int) VH_maxPipelineRayHitAttributeSize.get().get(segment, 0L, index); }
     /// {@return `maxPipelineRayHitAttributeSize`}
     public int maxPipelineRayHitAttributeSize() { return maxPipelineRayHitAttributeSize(this.segment(), 0L); }
     /// Sets `maxPipelineRayHitAttributeSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxPipelineRayHitAttributeSize(MemorySegment segment, long index, int value) { VH_maxPipelineRayHitAttributeSize.set(segment, 0L, index, value); }
+    public static void maxPipelineRayHitAttributeSize(MemorySegment segment, long index, int value) { VH_maxPipelineRayHitAttributeSize.get().set(segment, 0L, index, value); }
     /// Sets `maxPipelineRayHitAttributeSize` with the given value.
     /// @param value the value
     /// @return `this`

@@ -31,19 +31,19 @@ public final class VkExtent3D extends GroupType {
     /// The memory layout of `width`.
     public static final MemoryLayout LAYOUT_width = LAYOUT.select(PathElement.groupElement("width"));
     /// The [VarHandle] of `width` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("width"));
+    public static final Supplier<VarHandle> VH_width = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("width")));
     /// The byte offset of `height`.
     public static final long OFFSET_height = LAYOUT.byteOffset(PathElement.groupElement("height"));
     /// The memory layout of `height`.
     public static final MemoryLayout LAYOUT_height = LAYOUT.select(PathElement.groupElement("height"));
     /// The [VarHandle] of `height` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("height"));
+    public static final Supplier<VarHandle> VH_height = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("height")));
     /// The byte offset of `depth`.
     public static final long OFFSET_depth = LAYOUT.byteOffset(PathElement.groupElement("depth"));
     /// The memory layout of `depth`.
     public static final MemoryLayout LAYOUT_depth = LAYOUT.select(PathElement.groupElement("depth"));
     /// The [VarHandle] of `depth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depth"));
+    public static final Supplier<VarHandle> VH_depth = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depth")));
 
     /// Creates `VkExtent3D` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkExtent3D extends GroupType {
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int width(MemorySegment segment, long index) { return (int) VH_width.get(segment, 0L, index); }
+    public static int width(MemorySegment segment, long index) { return (int) VH_width.get().get(segment, 0L, index); }
     /// {@return `width`}
     public int width() { return width(this.segment(), 0L); }
     /// Sets `width` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void width(MemorySegment segment, long index, int value) { VH_width.set(segment, 0L, index, value); }
+    public static void width(MemorySegment segment, long index, int value) { VH_width.get().set(segment, 0L, index, value); }
     /// Sets `width` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkExtent3D extends GroupType {
     /// {@return `height` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int height(MemorySegment segment, long index) { return (int) VH_height.get(segment, 0L, index); }
+    public static int height(MemorySegment segment, long index) { return (int) VH_height.get().get(segment, 0L, index); }
     /// {@return `height`}
     public int height() { return height(this.segment(), 0L); }
     /// Sets `height` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void height(MemorySegment segment, long index, int value) { VH_height.set(segment, 0L, index, value); }
+    public static void height(MemorySegment segment, long index, int value) { VH_height.get().set(segment, 0L, index, value); }
     /// Sets `height` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkExtent3D extends GroupType {
     /// {@return `depth` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int depth(MemorySegment segment, long index) { return (int) VH_depth.get(segment, 0L, index); }
+    public static int depth(MemorySegment segment, long index) { return (int) VH_depth.get().get(segment, 0L, index); }
     /// {@return `depth`}
     public int depth() { return depth(this.segment(), 0L); }
     /// Sets `depth` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depth(MemorySegment segment, long index, int value) { VH_depth.set(segment, 0L, index, value); }
+    public static void depth(MemorySegment segment, long index, int value) { VH_depth.get().set(segment, 0L, index, value); }
     /// Sets `depth` with the given value.
     /// @param value the value
     /// @return `this`

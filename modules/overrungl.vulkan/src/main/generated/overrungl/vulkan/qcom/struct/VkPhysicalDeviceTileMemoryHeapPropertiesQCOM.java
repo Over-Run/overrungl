@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceTileMemoryHeapPropertiesQCOM extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `queueSubmitBoundary`.
     public static final long OFFSET_queueSubmitBoundary = LAYOUT.byteOffset(PathElement.groupElement("queueSubmitBoundary"));
     /// The memory layout of `queueSubmitBoundary`.
     public static final MemoryLayout LAYOUT_queueSubmitBoundary = LAYOUT.select(PathElement.groupElement("queueSubmitBoundary"));
     /// The [VarHandle] of `queueSubmitBoundary` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_queueSubmitBoundary = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueSubmitBoundary"));
+    public static final Supplier<VarHandle> VH_queueSubmitBoundary = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueSubmitBoundary")));
     /// The byte offset of `tileBufferTransfers`.
     public static final long OFFSET_tileBufferTransfers = LAYOUT.byteOffset(PathElement.groupElement("tileBufferTransfers"));
     /// The memory layout of `tileBufferTransfers`.
     public static final MemoryLayout LAYOUT_tileBufferTransfers = LAYOUT.select(PathElement.groupElement("tileBufferTransfers"));
     /// The [VarHandle] of `tileBufferTransfers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileBufferTransfers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileBufferTransfers"));
+    public static final Supplier<VarHandle> VH_tileBufferTransfers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileBufferTransfers")));
 
     /// Creates `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceTileMemoryHeapPropertiesQCOM extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceTileMemoryHeapPropertiesQCOM extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceTileMemoryHeapPropertiesQCOM extends GroupTyp
     /// {@return `queueSubmitBoundary` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int queueSubmitBoundary(MemorySegment segment, long index) { return (int) VH_queueSubmitBoundary.get(segment, 0L, index); }
+    public static int queueSubmitBoundary(MemorySegment segment, long index) { return (int) VH_queueSubmitBoundary.get().get(segment, 0L, index); }
     /// {@return `queueSubmitBoundary`}
     public int queueSubmitBoundary() { return queueSubmitBoundary(this.segment(), 0L); }
     /// Sets `queueSubmitBoundary` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void queueSubmitBoundary(MemorySegment segment, long index, int value) { VH_queueSubmitBoundary.set(segment, 0L, index, value); }
+    public static void queueSubmitBoundary(MemorySegment segment, long index, int value) { VH_queueSubmitBoundary.get().set(segment, 0L, index, value); }
     /// Sets `queueSubmitBoundary` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceTileMemoryHeapPropertiesQCOM extends GroupTyp
     /// {@return `tileBufferTransfers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tileBufferTransfers(MemorySegment segment, long index) { return (int) VH_tileBufferTransfers.get(segment, 0L, index); }
+    public static int tileBufferTransfers(MemorySegment segment, long index) { return (int) VH_tileBufferTransfers.get().get(segment, 0L, index); }
     /// {@return `tileBufferTransfers`}
     public int tileBufferTransfers() { return tileBufferTransfers(this.segment(), 0L); }
     /// Sets `tileBufferTransfers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tileBufferTransfers(MemorySegment segment, long index, int value) { VH_tileBufferTransfers.set(segment, 0L, index, value); }
+    public static void tileBufferTransfers(MemorySegment segment, long index, int value) { VH_tileBufferTransfers.get().set(segment, 0L, index, value); }
     /// Sets `tileBufferTransfers` with the given value.
     /// @param value the value
     /// @return `this`

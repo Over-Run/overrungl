@@ -29,13 +29,13 @@ public final class VkPipelineCacheStageValidationIndexEntry extends GroupType {
     /// The memory layout of `codeSize`.
     public static final MemoryLayout LAYOUT_codeSize = LAYOUT.select(PathElement.groupElement("codeSize"));
     /// The [VarHandle] of `codeSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_codeSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("codeSize"));
+    public static final Supplier<VarHandle> VH_codeSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("codeSize")));
     /// The byte offset of `codeOffset`.
     public static final long OFFSET_codeOffset = LAYOUT.byteOffset(PathElement.groupElement("codeOffset"));
     /// The memory layout of `codeOffset`.
     public static final MemoryLayout LAYOUT_codeOffset = LAYOUT.select(PathElement.groupElement("codeOffset"));
     /// The [VarHandle] of `codeOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_codeOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("codeOffset"));
+    public static final Supplier<VarHandle> VH_codeOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("codeOffset")));
 
     /// Creates `VkPipelineCacheStageValidationIndexEntry` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkPipelineCacheStageValidationIndexEntry extends GroupType {
     /// {@return `codeSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long codeSize(MemorySegment segment, long index) { return (long) VH_codeSize.get(segment, 0L, index); }
+    public static long codeSize(MemorySegment segment, long index) { return (long) VH_codeSize.get().get(segment, 0L, index); }
     /// {@return `codeSize`}
     public long codeSize() { return codeSize(this.segment(), 0L); }
     /// Sets `codeSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void codeSize(MemorySegment segment, long index, long value) { VH_codeSize.set(segment, 0L, index, value); }
+    public static void codeSize(MemorySegment segment, long index, long value) { VH_codeSize.get().set(segment, 0L, index, value); }
     /// Sets `codeSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkPipelineCacheStageValidationIndexEntry extends GroupType {
     /// {@return `codeOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long codeOffset(MemorySegment segment, long index) { return (long) VH_codeOffset.get(segment, 0L, index); }
+    public static long codeOffset(MemorySegment segment, long index) { return (long) VH_codeOffset.get().get(segment, 0L, index); }
     /// {@return `codeOffset`}
     public long codeOffset() { return codeOffset(this.segment(), 0L); }
     /// Sets `codeOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void codeOffset(MemorySegment segment, long index, long value) { VH_codeOffset.set(segment, 0L, index, value); }
+    public static void codeOffset(MemorySegment segment, long index, long value) { VH_codeOffset.get().set(segment, 0L, index, value); }
     /// Sets `codeOffset` with the given value.
     /// @param value the value
     /// @return `this`

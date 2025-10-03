@@ -41,49 +41,49 @@ public final class VkDeviceGroupSubmitInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `waitSemaphoreCount`.
     public static final long OFFSET_waitSemaphoreCount = LAYOUT.byteOffset(PathElement.groupElement("waitSemaphoreCount"));
     /// The memory layout of `waitSemaphoreCount`.
     public static final MemoryLayout LAYOUT_waitSemaphoreCount = LAYOUT.select(PathElement.groupElement("waitSemaphoreCount"));
     /// The [VarHandle] of `waitSemaphoreCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_waitSemaphoreCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("waitSemaphoreCount"));
+    public static final Supplier<VarHandle> VH_waitSemaphoreCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("waitSemaphoreCount")));
     /// The byte offset of `pWaitSemaphoreDeviceIndices`.
     public static final long OFFSET_pWaitSemaphoreDeviceIndices = LAYOUT.byteOffset(PathElement.groupElement("pWaitSemaphoreDeviceIndices"));
     /// The memory layout of `pWaitSemaphoreDeviceIndices`.
     public static final MemoryLayout LAYOUT_pWaitSemaphoreDeviceIndices = LAYOUT.select(PathElement.groupElement("pWaitSemaphoreDeviceIndices"));
     /// The [VarHandle] of `pWaitSemaphoreDeviceIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pWaitSemaphoreDeviceIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWaitSemaphoreDeviceIndices"));
+    public static final Supplier<VarHandle> VH_pWaitSemaphoreDeviceIndices = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWaitSemaphoreDeviceIndices")));
     /// The byte offset of `commandBufferCount`.
     public static final long OFFSET_commandBufferCount = LAYOUT.byteOffset(PathElement.groupElement("commandBufferCount"));
     /// The memory layout of `commandBufferCount`.
     public static final MemoryLayout LAYOUT_commandBufferCount = LAYOUT.select(PathElement.groupElement("commandBufferCount"));
     /// The [VarHandle] of `commandBufferCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandBufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferCount"));
+    public static final Supplier<VarHandle> VH_commandBufferCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferCount")));
     /// The byte offset of `pCommandBufferDeviceMasks`.
     public static final long OFFSET_pCommandBufferDeviceMasks = LAYOUT.byteOffset(PathElement.groupElement("pCommandBufferDeviceMasks"));
     /// The memory layout of `pCommandBufferDeviceMasks`.
     public static final MemoryLayout LAYOUT_pCommandBufferDeviceMasks = LAYOUT.select(PathElement.groupElement("pCommandBufferDeviceMasks"));
     /// The [VarHandle] of `pCommandBufferDeviceMasks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pCommandBufferDeviceMasks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCommandBufferDeviceMasks"));
+    public static final Supplier<VarHandle> VH_pCommandBufferDeviceMasks = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCommandBufferDeviceMasks")));
     /// The byte offset of `signalSemaphoreCount`.
     public static final long OFFSET_signalSemaphoreCount = LAYOUT.byteOffset(PathElement.groupElement("signalSemaphoreCount"));
     /// The memory layout of `signalSemaphoreCount`.
     public static final MemoryLayout LAYOUT_signalSemaphoreCount = LAYOUT.select(PathElement.groupElement("signalSemaphoreCount"));
     /// The [VarHandle] of `signalSemaphoreCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_signalSemaphoreCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("signalSemaphoreCount"));
+    public static final Supplier<VarHandle> VH_signalSemaphoreCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("signalSemaphoreCount")));
     /// The byte offset of `pSignalSemaphoreDeviceIndices`.
     public static final long OFFSET_pSignalSemaphoreDeviceIndices = LAYOUT.byteOffset(PathElement.groupElement("pSignalSemaphoreDeviceIndices"));
     /// The memory layout of `pSignalSemaphoreDeviceIndices`.
     public static final MemoryLayout LAYOUT_pSignalSemaphoreDeviceIndices = LAYOUT.select(PathElement.groupElement("pSignalSemaphoreDeviceIndices"));
     /// The [VarHandle] of `pSignalSemaphoreDeviceIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pSignalSemaphoreDeviceIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSignalSemaphoreDeviceIndices"));
+    public static final Supplier<VarHandle> VH_pSignalSemaphoreDeviceIndices = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSignalSemaphoreDeviceIndices")));
 
     /// Creates `VkDeviceGroupSubmitInfo` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkDeviceGroupSubmitInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkDeviceGroupSubmitInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkDeviceGroupSubmitInfo extends GroupType {
     /// {@return `waitSemaphoreCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int waitSemaphoreCount(MemorySegment segment, long index) { return (int) VH_waitSemaphoreCount.get(segment, 0L, index); }
+    public static int waitSemaphoreCount(MemorySegment segment, long index) { return (int) VH_waitSemaphoreCount.get().get(segment, 0L, index); }
     /// {@return `waitSemaphoreCount`}
     public int waitSemaphoreCount() { return waitSemaphoreCount(this.segment(), 0L); }
     /// Sets `waitSemaphoreCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void waitSemaphoreCount(MemorySegment segment, long index, int value) { VH_waitSemaphoreCount.set(segment, 0L, index, value); }
+    public static void waitSemaphoreCount(MemorySegment segment, long index, int value) { VH_waitSemaphoreCount.get().set(segment, 0L, index, value); }
     /// Sets `waitSemaphoreCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkDeviceGroupSubmitInfo extends GroupType {
     /// {@return `pWaitSemaphoreDeviceIndices` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pWaitSemaphoreDeviceIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pWaitSemaphoreDeviceIndices.get(segment, 0L, index); }
+    public static MemorySegment pWaitSemaphoreDeviceIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pWaitSemaphoreDeviceIndices.get().get(segment, 0L, index); }
     /// {@return `pWaitSemaphoreDeviceIndices`}
     public MemorySegment pWaitSemaphoreDeviceIndices() { return pWaitSemaphoreDeviceIndices(this.segment(), 0L); }
     /// Sets `pWaitSemaphoreDeviceIndices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pWaitSemaphoreDeviceIndices(MemorySegment segment, long index, MemorySegment value) { VH_pWaitSemaphoreDeviceIndices.set(segment, 0L, index, value); }
+    public static void pWaitSemaphoreDeviceIndices(MemorySegment segment, long index, MemorySegment value) { VH_pWaitSemaphoreDeviceIndices.get().set(segment, 0L, index, value); }
     /// Sets `pWaitSemaphoreDeviceIndices` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkDeviceGroupSubmitInfo extends GroupType {
     /// {@return `commandBufferCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int commandBufferCount(MemorySegment segment, long index) { return (int) VH_commandBufferCount.get(segment, 0L, index); }
+    public static int commandBufferCount(MemorySegment segment, long index) { return (int) VH_commandBufferCount.get().get(segment, 0L, index); }
     /// {@return `commandBufferCount`}
     public int commandBufferCount() { return commandBufferCount(this.segment(), 0L); }
     /// Sets `commandBufferCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandBufferCount(MemorySegment segment, long index, int value) { VH_commandBufferCount.set(segment, 0L, index, value); }
+    public static void commandBufferCount(MemorySegment segment, long index, int value) { VH_commandBufferCount.get().set(segment, 0L, index, value); }
     /// Sets `commandBufferCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkDeviceGroupSubmitInfo extends GroupType {
     /// {@return `pCommandBufferDeviceMasks` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pCommandBufferDeviceMasks(MemorySegment segment, long index) { return (MemorySegment) VH_pCommandBufferDeviceMasks.get(segment, 0L, index); }
+    public static MemorySegment pCommandBufferDeviceMasks(MemorySegment segment, long index) { return (MemorySegment) VH_pCommandBufferDeviceMasks.get().get(segment, 0L, index); }
     /// {@return `pCommandBufferDeviceMasks`}
     public MemorySegment pCommandBufferDeviceMasks() { return pCommandBufferDeviceMasks(this.segment(), 0L); }
     /// Sets `pCommandBufferDeviceMasks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pCommandBufferDeviceMasks(MemorySegment segment, long index, MemorySegment value) { VH_pCommandBufferDeviceMasks.set(segment, 0L, index, value); }
+    public static void pCommandBufferDeviceMasks(MemorySegment segment, long index, MemorySegment value) { VH_pCommandBufferDeviceMasks.get().set(segment, 0L, index, value); }
     /// Sets `pCommandBufferDeviceMasks` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkDeviceGroupSubmitInfo extends GroupType {
     /// {@return `signalSemaphoreCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int signalSemaphoreCount(MemorySegment segment, long index) { return (int) VH_signalSemaphoreCount.get(segment, 0L, index); }
+    public static int signalSemaphoreCount(MemorySegment segment, long index) { return (int) VH_signalSemaphoreCount.get().get(segment, 0L, index); }
     /// {@return `signalSemaphoreCount`}
     public int signalSemaphoreCount() { return signalSemaphoreCount(this.segment(), 0L); }
     /// Sets `signalSemaphoreCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void signalSemaphoreCount(MemorySegment segment, long index, int value) { VH_signalSemaphoreCount.set(segment, 0L, index, value); }
+    public static void signalSemaphoreCount(MemorySegment segment, long index, int value) { VH_signalSemaphoreCount.get().set(segment, 0L, index, value); }
     /// Sets `signalSemaphoreCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkDeviceGroupSubmitInfo extends GroupType {
     /// {@return `pSignalSemaphoreDeviceIndices` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pSignalSemaphoreDeviceIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pSignalSemaphoreDeviceIndices.get(segment, 0L, index); }
+    public static MemorySegment pSignalSemaphoreDeviceIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pSignalSemaphoreDeviceIndices.get().get(segment, 0L, index); }
     /// {@return `pSignalSemaphoreDeviceIndices`}
     public MemorySegment pSignalSemaphoreDeviceIndices() { return pSignalSemaphoreDeviceIndices(this.segment(), 0L); }
     /// Sets `pSignalSemaphoreDeviceIndices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pSignalSemaphoreDeviceIndices(MemorySegment segment, long index, MemorySegment value) { VH_pSignalSemaphoreDeviceIndices.set(segment, 0L, index, value); }
+    public static void pSignalSemaphoreDeviceIndices(MemorySegment segment, long index, MemorySegment value) { VH_pSignalSemaphoreDeviceIndices.get().set(segment, 0L, index, value); }
     /// Sets `pSignalSemaphoreDeviceIndices` with the given value.
     /// @param value the value
     /// @return `this`

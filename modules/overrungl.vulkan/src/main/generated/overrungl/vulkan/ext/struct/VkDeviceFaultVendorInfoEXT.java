@@ -31,19 +31,19 @@ public final class VkDeviceFaultVendorInfoEXT extends GroupType {
     /// The memory layout of `description`.
     public static final MemoryLayout LAYOUT_description = LAYOUT.select(PathElement.groupElement("description"));
     /// The [VarHandle] of `description` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_description = LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_description = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement()));
     /// The byte offset of `vendorFaultCode`.
     public static final long OFFSET_vendorFaultCode = LAYOUT.byteOffset(PathElement.groupElement("vendorFaultCode"));
     /// The memory layout of `vendorFaultCode`.
     public static final MemoryLayout LAYOUT_vendorFaultCode = LAYOUT.select(PathElement.groupElement("vendorFaultCode"));
     /// The [VarHandle] of `vendorFaultCode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vendorFaultCode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorFaultCode"));
+    public static final Supplier<VarHandle> VH_vendorFaultCode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorFaultCode")));
     /// The byte offset of `vendorFaultData`.
     public static final long OFFSET_vendorFaultData = LAYOUT.byteOffset(PathElement.groupElement("vendorFaultData"));
     /// The memory layout of `vendorFaultData`.
     public static final MemoryLayout LAYOUT_vendorFaultData = LAYOUT.select(PathElement.groupElement("vendorFaultData"));
     /// The [VarHandle] of `vendorFaultData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vendorFaultData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorFaultData"));
+    public static final Supplier<VarHandle> VH_vendorFaultData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorFaultData")));
 
     /// Creates `VkDeviceFaultVendorInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -99,7 +99,7 @@ public final class VkDeviceFaultVendorInfoEXT extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get(segment, 0L, index, index0); }
+    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get().get(segment, 0L, index, index0); }
     /// {@return `description`}
     public MemorySegment description() { return description(this.segment(), 0L); }
     /// {@return `description`}
@@ -115,7 +115,7 @@ public final class VkDeviceFaultVendorInfoEXT extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.set(segment, 0L, index, index0, value); }
+    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.get().set(segment, 0L, index, index0, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
@@ -129,14 +129,14 @@ public final class VkDeviceFaultVendorInfoEXT extends GroupType {
     /// {@return `vendorFaultCode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long vendorFaultCode(MemorySegment segment, long index) { return (long) VH_vendorFaultCode.get(segment, 0L, index); }
+    public static long vendorFaultCode(MemorySegment segment, long index) { return (long) VH_vendorFaultCode.get().get(segment, 0L, index); }
     /// {@return `vendorFaultCode`}
     public long vendorFaultCode() { return vendorFaultCode(this.segment(), 0L); }
     /// Sets `vendorFaultCode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vendorFaultCode(MemorySegment segment, long index, long value) { VH_vendorFaultCode.set(segment, 0L, index, value); }
+    public static void vendorFaultCode(MemorySegment segment, long index, long value) { VH_vendorFaultCode.get().set(segment, 0L, index, value); }
     /// Sets `vendorFaultCode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -145,14 +145,14 @@ public final class VkDeviceFaultVendorInfoEXT extends GroupType {
     /// {@return `vendorFaultData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long vendorFaultData(MemorySegment segment, long index) { return (long) VH_vendorFaultData.get(segment, 0L, index); }
+    public static long vendorFaultData(MemorySegment segment, long index) { return (long) VH_vendorFaultData.get().get(segment, 0L, index); }
     /// {@return `vendorFaultData`}
     public long vendorFaultData() { return vendorFaultData(this.segment(), 0L); }
     /// Sets `vendorFaultData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vendorFaultData(MemorySegment segment, long index, long value) { VH_vendorFaultData.set(segment, 0L, index, value); }
+    public static void vendorFaultData(MemorySegment segment, long index, long value) { VH_vendorFaultData.get().set(segment, 0L, index, value); }
     /// Sets `vendorFaultData` with the given value.
     /// @param value the value
     /// @return `this`

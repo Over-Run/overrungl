@@ -2,6 +2,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -21,12 +22,12 @@ public final class VKEXTTransformFeedback {
     public static final int VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT = 0x08000000;
     public static final int VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT = 0x01000000;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBindTransformFeedbackBuffersEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBeginTransformFeedbackEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdEndTransformFeedbackEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBeginQueryIndexedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkCmdEndQueryIndexedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkCmdDrawIndirectByteCountEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_vkCmdBindTransformFeedbackBuffersEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdBeginTransformFeedbackEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdEndTransformFeedbackEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdBeginQueryIndexedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_vkCmdEndQueryIndexedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_vkCmdDrawIndirectByteCountEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         private Handles() {}
     }
 
@@ -39,7 +40,7 @@ public final class VKEXTTransformFeedback {
     public static void vkCmdBindTransformFeedbackBuffersEXT(@NonNull VkCommandBuffer commandBuffer, int firstBinding, int bindingCount, @NonNull MemorySegment pBuffers, @NonNull MemorySegment pOffsets, @NonNull MemorySegment pSizes) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindTransformFeedbackBuffersEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindTransformFeedbackBuffersEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBindTransformFeedbackBuffersEXT", commandBuffer, firstBinding, bindingCount, pBuffers, pOffsets, pSizes); }
-        Handles.MH_vkCmdBindTransformFeedbackBuffersEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindTransformFeedbackBuffersEXT, commandBuffer.segment(), firstBinding, bindingCount, pBuffers, pOffsets, pSizes); }
+        Handles.MH_vkCmdBindTransformFeedbackBuffersEXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdBindTransformFeedbackBuffersEXT, commandBuffer.segment(), firstBinding, bindingCount, pBuffers, pOffsets, pSizes); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindTransformFeedbackBuffersEXT", e); }
     }
 
@@ -50,7 +51,7 @@ public final class VKEXTTransformFeedback {
     public static void vkCmdBeginTransformFeedbackEXT(@NonNull VkCommandBuffer commandBuffer, int firstCounterBuffer, int counterBufferCount, @NonNull MemorySegment pCounterBuffers, @NonNull MemorySegment pCounterBufferOffsets) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginTransformFeedbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginTransformFeedbackEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBeginTransformFeedbackEXT", commandBuffer, firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets); }
-        Handles.MH_vkCmdBeginTransformFeedbackEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginTransformFeedbackEXT, commandBuffer.segment(), firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets); }
+        Handles.MH_vkCmdBeginTransformFeedbackEXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginTransformFeedbackEXT, commandBuffer.segment(), firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginTransformFeedbackEXT", e); }
     }
 
@@ -61,7 +62,7 @@ public final class VKEXTTransformFeedback {
     public static void vkCmdEndTransformFeedbackEXT(@NonNull VkCommandBuffer commandBuffer, int firstCounterBuffer, int counterBufferCount, @NonNull MemorySegment pCounterBuffers, @NonNull MemorySegment pCounterBufferOffsets) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndTransformFeedbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndTransformFeedbackEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndTransformFeedbackEXT", commandBuffer, firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets); }
-        Handles.MH_vkCmdEndTransformFeedbackEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndTransformFeedbackEXT, commandBuffer.segment(), firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets); }
+        Handles.MH_vkCmdEndTransformFeedbackEXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdEndTransformFeedbackEXT, commandBuffer.segment(), firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndTransformFeedbackEXT", e); }
     }
 
@@ -72,7 +73,7 @@ public final class VKEXTTransformFeedback {
     public static void vkCmdBeginQueryIndexedEXT(@NonNull VkCommandBuffer commandBuffer, long queryPool, int query, int flags, int index) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginQueryIndexedEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginQueryIndexedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBeginQueryIndexedEXT", commandBuffer, queryPool, query, flags, index); }
-        Handles.MH_vkCmdBeginQueryIndexedEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginQueryIndexedEXT, commandBuffer.segment(), queryPool, query, flags, index); }
+        Handles.MH_vkCmdBeginQueryIndexedEXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginQueryIndexedEXT, commandBuffer.segment(), queryPool, query, flags, index); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginQueryIndexedEXT", e); }
     }
 
@@ -83,7 +84,7 @@ public final class VKEXTTransformFeedback {
     public static void vkCmdEndQueryIndexedEXT(@NonNull VkCommandBuffer commandBuffer, long queryPool, int query, int index) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndQueryIndexedEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndQueryIndexedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndQueryIndexedEXT", commandBuffer, queryPool, query, index); }
-        Handles.MH_vkCmdEndQueryIndexedEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndQueryIndexedEXT, commandBuffer.segment(), queryPool, query, index); }
+        Handles.MH_vkCmdEndQueryIndexedEXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdEndQueryIndexedEXT, commandBuffer.segment(), queryPool, query, index); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndQueryIndexedEXT", e); }
     }
 
@@ -94,7 +95,7 @@ public final class VKEXTTransformFeedback {
     public static void vkCmdDrawIndirectByteCountEXT(@NonNull VkCommandBuffer commandBuffer, int instanceCount, int firstInstance, long counterBuffer, long counterBufferOffset, int counterOffset, int vertexStride) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndirectByteCountEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawIndirectByteCountEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDrawIndirectByteCountEXT", commandBuffer, instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride); }
-        Handles.MH_vkCmdDrawIndirectByteCountEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndirectByteCountEXT, commandBuffer.segment(), instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride); }
+        Handles.MH_vkCmdDrawIndirectByteCountEXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndirectByteCountEXT, commandBuffer.segment(), instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndirectByteCountEXT", e); }
     }
 

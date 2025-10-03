@@ -45,31 +45,31 @@ public final class VkSamplerYcbcrConversionCreateInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `format`.
     public static final long OFFSET_format = LAYOUT.byteOffset(PathElement.groupElement("format"));
     /// The memory layout of `format`.
     public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
     /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
+    public static final Supplier<VarHandle> VH_format = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("format")));
     /// The byte offset of `ycbcrModel`.
     public static final long OFFSET_ycbcrModel = LAYOUT.byteOffset(PathElement.groupElement("ycbcrModel"));
     /// The memory layout of `ycbcrModel`.
     public static final MemoryLayout LAYOUT_ycbcrModel = LAYOUT.select(PathElement.groupElement("ycbcrModel"));
     /// The [VarHandle] of `ycbcrModel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ycbcrModel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ycbcrModel"));
+    public static final Supplier<VarHandle> VH_ycbcrModel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ycbcrModel")));
     /// The byte offset of `ycbcrRange`.
     public static final long OFFSET_ycbcrRange = LAYOUT.byteOffset(PathElement.groupElement("ycbcrRange"));
     /// The memory layout of `ycbcrRange`.
     public static final MemoryLayout LAYOUT_ycbcrRange = LAYOUT.select(PathElement.groupElement("ycbcrRange"));
     /// The [VarHandle] of `ycbcrRange` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ycbcrRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ycbcrRange"));
+    public static final Supplier<VarHandle> VH_ycbcrRange = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ycbcrRange")));
     /// The byte offset of `components`.
     public static final long OFFSET_components = LAYOUT.byteOffset(PathElement.groupElement("components"));
     /// The memory layout of `components`.
@@ -79,25 +79,25 @@ public final class VkSamplerYcbcrConversionCreateInfoKHR extends GroupType {
     /// The memory layout of `xChromaOffset`.
     public static final MemoryLayout LAYOUT_xChromaOffset = LAYOUT.select(PathElement.groupElement("xChromaOffset"));
     /// The [VarHandle] of `xChromaOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_xChromaOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xChromaOffset"));
+    public static final Supplier<VarHandle> VH_xChromaOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("xChromaOffset")));
     /// The byte offset of `yChromaOffset`.
     public static final long OFFSET_yChromaOffset = LAYOUT.byteOffset(PathElement.groupElement("yChromaOffset"));
     /// The memory layout of `yChromaOffset`.
     public static final MemoryLayout LAYOUT_yChromaOffset = LAYOUT.select(PathElement.groupElement("yChromaOffset"));
     /// The [VarHandle] of `yChromaOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_yChromaOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("yChromaOffset"));
+    public static final Supplier<VarHandle> VH_yChromaOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("yChromaOffset")));
     /// The byte offset of `chromaFilter`.
     public static final long OFFSET_chromaFilter = LAYOUT.byteOffset(PathElement.groupElement("chromaFilter"));
     /// The memory layout of `chromaFilter`.
     public static final MemoryLayout LAYOUT_chromaFilter = LAYOUT.select(PathElement.groupElement("chromaFilter"));
     /// The [VarHandle] of `chromaFilter` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_chromaFilter = LAYOUT.arrayElementVarHandle(PathElement.groupElement("chromaFilter"));
+    public static final Supplier<VarHandle> VH_chromaFilter = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("chromaFilter")));
     /// The byte offset of `forceExplicitReconstruction`.
     public static final long OFFSET_forceExplicitReconstruction = LAYOUT.byteOffset(PathElement.groupElement("forceExplicitReconstruction"));
     /// The memory layout of `forceExplicitReconstruction`.
     public static final MemoryLayout LAYOUT_forceExplicitReconstruction = LAYOUT.select(PathElement.groupElement("forceExplicitReconstruction"));
     /// The [VarHandle] of `forceExplicitReconstruction` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_forceExplicitReconstruction = LAYOUT.arrayElementVarHandle(PathElement.groupElement("forceExplicitReconstruction"));
+    public static final Supplier<VarHandle> VH_forceExplicitReconstruction = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("forceExplicitReconstruction")));
 
     /// Creates `VkSamplerYcbcrConversionCreateInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -148,14 +148,14 @@ public final class VkSamplerYcbcrConversionCreateInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,14 +164,14 @@ public final class VkSamplerYcbcrConversionCreateInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -180,14 +180,14 @@ public final class VkSamplerYcbcrConversionCreateInfoKHR extends GroupType {
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
+    public static int format(MemorySegment segment, long index) { return (int) VH_format.get().get(segment, 0L, index); }
     /// {@return `format`}
     public int format() { return format(this.segment(), 0L); }
     /// Sets `format` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void format(MemorySegment segment, long index, int value) { VH_format.set(segment, 0L, index, value); }
+    public static void format(MemorySegment segment, long index, int value) { VH_format.get().set(segment, 0L, index, value); }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -196,14 +196,14 @@ public final class VkSamplerYcbcrConversionCreateInfoKHR extends GroupType {
     /// {@return `ycbcrModel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int ycbcrModel(MemorySegment segment, long index) { return (int) VH_ycbcrModel.get(segment, 0L, index); }
+    public static int ycbcrModel(MemorySegment segment, long index) { return (int) VH_ycbcrModel.get().get(segment, 0L, index); }
     /// {@return `ycbcrModel`}
     public int ycbcrModel() { return ycbcrModel(this.segment(), 0L); }
     /// Sets `ycbcrModel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ycbcrModel(MemorySegment segment, long index, int value) { VH_ycbcrModel.set(segment, 0L, index, value); }
+    public static void ycbcrModel(MemorySegment segment, long index, int value) { VH_ycbcrModel.get().set(segment, 0L, index, value); }
     /// Sets `ycbcrModel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,14 +212,14 @@ public final class VkSamplerYcbcrConversionCreateInfoKHR extends GroupType {
     /// {@return `ycbcrRange` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int ycbcrRange(MemorySegment segment, long index) { return (int) VH_ycbcrRange.get(segment, 0L, index); }
+    public static int ycbcrRange(MemorySegment segment, long index) { return (int) VH_ycbcrRange.get().get(segment, 0L, index); }
     /// {@return `ycbcrRange`}
     public int ycbcrRange() { return ycbcrRange(this.segment(), 0L); }
     /// Sets `ycbcrRange` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ycbcrRange(MemorySegment segment, long index, int value) { VH_ycbcrRange.set(segment, 0L, index, value); }
+    public static void ycbcrRange(MemorySegment segment, long index, int value) { VH_ycbcrRange.get().set(segment, 0L, index, value); }
     /// Sets `ycbcrRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,14 +248,14 @@ public final class VkSamplerYcbcrConversionCreateInfoKHR extends GroupType {
     /// {@return `xChromaOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int xChromaOffset(MemorySegment segment, long index) { return (int) VH_xChromaOffset.get(segment, 0L, index); }
+    public static int xChromaOffset(MemorySegment segment, long index) { return (int) VH_xChromaOffset.get().get(segment, 0L, index); }
     /// {@return `xChromaOffset`}
     public int xChromaOffset() { return xChromaOffset(this.segment(), 0L); }
     /// Sets `xChromaOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void xChromaOffset(MemorySegment segment, long index, int value) { VH_xChromaOffset.set(segment, 0L, index, value); }
+    public static void xChromaOffset(MemorySegment segment, long index, int value) { VH_xChromaOffset.get().set(segment, 0L, index, value); }
     /// Sets `xChromaOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -264,14 +264,14 @@ public final class VkSamplerYcbcrConversionCreateInfoKHR extends GroupType {
     /// {@return `yChromaOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int yChromaOffset(MemorySegment segment, long index) { return (int) VH_yChromaOffset.get(segment, 0L, index); }
+    public static int yChromaOffset(MemorySegment segment, long index) { return (int) VH_yChromaOffset.get().get(segment, 0L, index); }
     /// {@return `yChromaOffset`}
     public int yChromaOffset() { return yChromaOffset(this.segment(), 0L); }
     /// Sets `yChromaOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void yChromaOffset(MemorySegment segment, long index, int value) { VH_yChromaOffset.set(segment, 0L, index, value); }
+    public static void yChromaOffset(MemorySegment segment, long index, int value) { VH_yChromaOffset.get().set(segment, 0L, index, value); }
     /// Sets `yChromaOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -280,14 +280,14 @@ public final class VkSamplerYcbcrConversionCreateInfoKHR extends GroupType {
     /// {@return `chromaFilter` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int chromaFilter(MemorySegment segment, long index) { return (int) VH_chromaFilter.get(segment, 0L, index); }
+    public static int chromaFilter(MemorySegment segment, long index) { return (int) VH_chromaFilter.get().get(segment, 0L, index); }
     /// {@return `chromaFilter`}
     public int chromaFilter() { return chromaFilter(this.segment(), 0L); }
     /// Sets `chromaFilter` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void chromaFilter(MemorySegment segment, long index, int value) { VH_chromaFilter.set(segment, 0L, index, value); }
+    public static void chromaFilter(MemorySegment segment, long index, int value) { VH_chromaFilter.get().set(segment, 0L, index, value); }
     /// Sets `chromaFilter` with the given value.
     /// @param value the value
     /// @return `this`
@@ -296,14 +296,14 @@ public final class VkSamplerYcbcrConversionCreateInfoKHR extends GroupType {
     /// {@return `forceExplicitReconstruction` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int forceExplicitReconstruction(MemorySegment segment, long index) { return (int) VH_forceExplicitReconstruction.get(segment, 0L, index); }
+    public static int forceExplicitReconstruction(MemorySegment segment, long index) { return (int) VH_forceExplicitReconstruction.get().get(segment, 0L, index); }
     /// {@return `forceExplicitReconstruction`}
     public int forceExplicitReconstruction() { return forceExplicitReconstruction(this.segment(), 0L); }
     /// Sets `forceExplicitReconstruction` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void forceExplicitReconstruction(MemorySegment segment, long index, int value) { VH_forceExplicitReconstruction.set(segment, 0L, index, value); }
+    public static void forceExplicitReconstruction(MemorySegment segment, long index, int value) { VH_forceExplicitReconstruction.get().set(segment, 0L, index, value); }
     /// Sets `forceExplicitReconstruction` with the given value.
     /// @param value the value
     /// @return `this`

@@ -35,31 +35,31 @@ public final class VkSubresourceLayout extends GroupType {
     /// The memory layout of `offset`.
     public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
     /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
+    public static final Supplier<VarHandle> VH_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset")));
     /// The byte offset of `size`.
     public static final long OFFSET_size = LAYOUT.byteOffset(PathElement.groupElement("size"));
     /// The memory layout of `size`.
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final Supplier<VarHandle> VH_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("size")));
     /// The byte offset of `rowPitch`.
     public static final long OFFSET_rowPitch = LAYOUT.byteOffset(PathElement.groupElement("rowPitch"));
     /// The memory layout of `rowPitch`.
     public static final MemoryLayout LAYOUT_rowPitch = LAYOUT.select(PathElement.groupElement("rowPitch"));
     /// The [VarHandle] of `rowPitch` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rowPitch = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rowPitch"));
+    public static final Supplier<VarHandle> VH_rowPitch = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rowPitch")));
     /// The byte offset of `arrayPitch`.
     public static final long OFFSET_arrayPitch = LAYOUT.byteOffset(PathElement.groupElement("arrayPitch"));
     /// The memory layout of `arrayPitch`.
     public static final MemoryLayout LAYOUT_arrayPitch = LAYOUT.select(PathElement.groupElement("arrayPitch"));
     /// The [VarHandle] of `arrayPitch` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_arrayPitch = LAYOUT.arrayElementVarHandle(PathElement.groupElement("arrayPitch"));
+    public static final Supplier<VarHandle> VH_arrayPitch = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("arrayPitch")));
     /// The byte offset of `depthPitch`.
     public static final long OFFSET_depthPitch = LAYOUT.byteOffset(PathElement.groupElement("depthPitch"));
     /// The memory layout of `depthPitch`.
     public static final MemoryLayout LAYOUT_depthPitch = LAYOUT.select(PathElement.groupElement("depthPitch"));
     /// The [VarHandle] of `depthPitch` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthPitch = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthPitch"));
+    public static final Supplier<VarHandle> VH_depthPitch = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthPitch")));
 
     /// Creates `VkSubresourceLayout` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkSubresourceLayout extends GroupType {
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long offset(MemorySegment segment, long index) { return (long) VH_offset.get(segment, 0L, index); }
+    public static long offset(MemorySegment segment, long index) { return (long) VH_offset.get().get(segment, 0L, index); }
     /// {@return `offset`}
     public long offset() { return offset(this.segment(), 0L); }
     /// Sets `offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void offset(MemorySegment segment, long index, long value) { VH_offset.set(segment, 0L, index, value); }
+    public static void offset(MemorySegment segment, long index, long value) { VH_offset.get().set(segment, 0L, index, value); }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkSubresourceLayout extends GroupType {
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long size(MemorySegment segment, long index) { return (long) VH_size.get(segment, 0L, index); }
+    public static long size(MemorySegment segment, long index) { return (long) VH_size.get().get(segment, 0L, index); }
     /// {@return `size`}
     public long size() { return size(this.segment(), 0L); }
     /// Sets `size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void size(MemorySegment segment, long index, long value) { VH_size.set(segment, 0L, index, value); }
+    public static void size(MemorySegment segment, long index, long value) { VH_size.get().set(segment, 0L, index, value); }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkSubresourceLayout extends GroupType {
     /// {@return `rowPitch` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long rowPitch(MemorySegment segment, long index) { return (long) VH_rowPitch.get(segment, 0L, index); }
+    public static long rowPitch(MemorySegment segment, long index) { return (long) VH_rowPitch.get().get(segment, 0L, index); }
     /// {@return `rowPitch`}
     public long rowPitch() { return rowPitch(this.segment(), 0L); }
     /// Sets `rowPitch` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rowPitch(MemorySegment segment, long index, long value) { VH_rowPitch.set(segment, 0L, index, value); }
+    public static void rowPitch(MemorySegment segment, long index, long value) { VH_rowPitch.get().set(segment, 0L, index, value); }
     /// Sets `rowPitch` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkSubresourceLayout extends GroupType {
     /// {@return `arrayPitch` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long arrayPitch(MemorySegment segment, long index) { return (long) VH_arrayPitch.get(segment, 0L, index); }
+    public static long arrayPitch(MemorySegment segment, long index) { return (long) VH_arrayPitch.get().get(segment, 0L, index); }
     /// {@return `arrayPitch`}
     public long arrayPitch() { return arrayPitch(this.segment(), 0L); }
     /// Sets `arrayPitch` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void arrayPitch(MemorySegment segment, long index, long value) { VH_arrayPitch.set(segment, 0L, index, value); }
+    public static void arrayPitch(MemorySegment segment, long index, long value) { VH_arrayPitch.get().set(segment, 0L, index, value); }
     /// Sets `arrayPitch` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkSubresourceLayout extends GroupType {
     /// {@return `depthPitch` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long depthPitch(MemorySegment segment, long index) { return (long) VH_depthPitch.get(segment, 0L, index); }
+    public static long depthPitch(MemorySegment segment, long index) { return (long) VH_depthPitch.get().get(segment, 0L, index); }
     /// {@return `depthPitch`}
     public long depthPitch() { return depthPitch(this.segment(), 0L); }
     /// Sets `depthPitch` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depthPitch(MemorySegment segment, long index, long value) { VH_depthPitch.set(segment, 0L, index, value); }
+    public static void depthPitch(MemorySegment segment, long index, long value) { VH_depthPitch.get().set(segment, 0L, index, value); }
     /// Sets `depthPitch` with the given value.
     /// @param value the value
     /// @return `this`

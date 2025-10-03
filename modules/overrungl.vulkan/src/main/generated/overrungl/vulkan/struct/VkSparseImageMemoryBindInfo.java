@@ -31,19 +31,19 @@ public final class VkSparseImageMemoryBindInfo extends GroupType {
     /// The memory layout of `image`.
     public static final MemoryLayout LAYOUT_image = LAYOUT.select(PathElement.groupElement("image"));
     /// The [VarHandle] of `image` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_image = LAYOUT.arrayElementVarHandle(PathElement.groupElement("image"));
+    public static final Supplier<VarHandle> VH_image = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("image")));
     /// The byte offset of `bindCount`.
     public static final long OFFSET_bindCount = LAYOUT.byteOffset(PathElement.groupElement("bindCount"));
     /// The memory layout of `bindCount`.
     public static final MemoryLayout LAYOUT_bindCount = LAYOUT.select(PathElement.groupElement("bindCount"));
     /// The [VarHandle] of `bindCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bindCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bindCount"));
+    public static final Supplier<VarHandle> VH_bindCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bindCount")));
     /// The byte offset of `pBinds`.
     public static final long OFFSET_pBinds = LAYOUT.byteOffset(PathElement.groupElement("pBinds"));
     /// The memory layout of `pBinds`.
     public static final MemoryLayout LAYOUT_pBinds = LAYOUT.select(PathElement.groupElement("pBinds"));
     /// The [VarHandle] of `pBinds` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pBinds = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBinds"));
+    public static final Supplier<VarHandle> VH_pBinds = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBinds")));
 
     /// Creates `VkSparseImageMemoryBindInfo` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkSparseImageMemoryBindInfo extends GroupType {
     /// {@return `image` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long image(MemorySegment segment, long index) { return (long) VH_image.get(segment, 0L, index); }
+    public static long image(MemorySegment segment, long index) { return (long) VH_image.get().get(segment, 0L, index); }
     /// {@return `image`}
     public long image() { return image(this.segment(), 0L); }
     /// Sets `image` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void image(MemorySegment segment, long index, long value) { VH_image.set(segment, 0L, index, value); }
+    public static void image(MemorySegment segment, long index, long value) { VH_image.get().set(segment, 0L, index, value); }
     /// Sets `image` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkSparseImageMemoryBindInfo extends GroupType {
     /// {@return `bindCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bindCount(MemorySegment segment, long index) { return (int) VH_bindCount.get(segment, 0L, index); }
+    public static int bindCount(MemorySegment segment, long index) { return (int) VH_bindCount.get().get(segment, 0L, index); }
     /// {@return `bindCount`}
     public int bindCount() { return bindCount(this.segment(), 0L); }
     /// Sets `bindCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bindCount(MemorySegment segment, long index, int value) { VH_bindCount.set(segment, 0L, index, value); }
+    public static void bindCount(MemorySegment segment, long index, int value) { VH_bindCount.get().set(segment, 0L, index, value); }
     /// Sets `bindCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkSparseImageMemoryBindInfo extends GroupType {
     /// {@return `pBinds` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pBinds(MemorySegment segment, long index) { return (MemorySegment) VH_pBinds.get(segment, 0L, index); }
+    public static MemorySegment pBinds(MemorySegment segment, long index) { return (MemorySegment) VH_pBinds.get().get(segment, 0L, index); }
     /// {@return `pBinds`}
     public MemorySegment pBinds() { return pBinds(this.segment(), 0L); }
     /// Sets `pBinds` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pBinds(MemorySegment segment, long index, MemorySegment value) { VH_pBinds.set(segment, 0L, index, value); }
+    public static void pBinds(MemorySegment segment, long index, MemorySegment value) { VH_pBinds.get().set(segment, 0L, index, value); }
     /// Sets `pBinds` with the given value.
     /// @param value the value
     /// @return `this`

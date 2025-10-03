@@ -33,25 +33,25 @@ public final class VkAttachmentDescriptionStencilLayout extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `stencilInitialLayout`.
     public static final long OFFSET_stencilInitialLayout = LAYOUT.byteOffset(PathElement.groupElement("stencilInitialLayout"));
     /// The memory layout of `stencilInitialLayout`.
     public static final MemoryLayout LAYOUT_stencilInitialLayout = LAYOUT.select(PathElement.groupElement("stencilInitialLayout"));
     /// The [VarHandle] of `stencilInitialLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stencilInitialLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stencilInitialLayout"));
+    public static final Supplier<VarHandle> VH_stencilInitialLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stencilInitialLayout")));
     /// The byte offset of `stencilFinalLayout`.
     public static final long OFFSET_stencilFinalLayout = LAYOUT.byteOffset(PathElement.groupElement("stencilFinalLayout"));
     /// The memory layout of `stencilFinalLayout`.
     public static final MemoryLayout LAYOUT_stencilFinalLayout = LAYOUT.select(PathElement.groupElement("stencilFinalLayout"));
     /// The [VarHandle] of `stencilFinalLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stencilFinalLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stencilFinalLayout"));
+    public static final Supplier<VarHandle> VH_stencilFinalLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stencilFinalLayout")));
 
     /// Creates `VkAttachmentDescriptionStencilLayout` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkAttachmentDescriptionStencilLayout extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkAttachmentDescriptionStencilLayout extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkAttachmentDescriptionStencilLayout extends GroupType {
     /// {@return `stencilInitialLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stencilInitialLayout(MemorySegment segment, long index) { return (int) VH_stencilInitialLayout.get(segment, 0L, index); }
+    public static int stencilInitialLayout(MemorySegment segment, long index) { return (int) VH_stencilInitialLayout.get().get(segment, 0L, index); }
     /// {@return `stencilInitialLayout`}
     public int stencilInitialLayout() { return stencilInitialLayout(this.segment(), 0L); }
     /// Sets `stencilInitialLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stencilInitialLayout(MemorySegment segment, long index, int value) { VH_stencilInitialLayout.set(segment, 0L, index, value); }
+    public static void stencilInitialLayout(MemorySegment segment, long index, int value) { VH_stencilInitialLayout.get().set(segment, 0L, index, value); }
     /// Sets `stencilInitialLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkAttachmentDescriptionStencilLayout extends GroupType {
     /// {@return `stencilFinalLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stencilFinalLayout(MemorySegment segment, long index) { return (int) VH_stencilFinalLayout.get(segment, 0L, index); }
+    public static int stencilFinalLayout(MemorySegment segment, long index) { return (int) VH_stencilFinalLayout.get().get(segment, 0L, index); }
     /// {@return `stencilFinalLayout`}
     public int stencilFinalLayout() { return stencilFinalLayout(this.segment(), 0L); }
     /// Sets `stencilFinalLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stencilFinalLayout(MemorySegment segment, long index, int value) { VH_stencilFinalLayout.set(segment, 0L, index, value); }
+    public static void stencilFinalLayout(MemorySegment segment, long index, int value) { VH_stencilFinalLayout.get().set(segment, 0L, index, value); }
     /// Sets `stencilFinalLayout` with the given value.
     /// @param value the value
     /// @return `this`

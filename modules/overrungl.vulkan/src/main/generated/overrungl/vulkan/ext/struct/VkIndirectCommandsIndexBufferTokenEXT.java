@@ -27,7 +27,7 @@ public final class VkIndirectCommandsIndexBufferTokenEXT extends GroupType {
     /// The memory layout of `mode`.
     public static final MemoryLayout LAYOUT_mode = LAYOUT.select(PathElement.groupElement("mode"));
     /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
+    public static final Supplier<VarHandle> VH_mode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode")));
 
     /// Creates `VkIndirectCommandsIndexBufferTokenEXT` with the given segment.
     /// @param segment      the memory segment
@@ -78,14 +78,14 @@ public final class VkIndirectCommandsIndexBufferTokenEXT extends GroupType {
     /// {@return `mode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
+    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get().get(segment, 0L, index); }
     /// {@return `mode`}
     public int mode() { return mode(this.segment(), 0L); }
     /// Sets `mode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void mode(MemorySegment segment, long index, int value) { VH_mode.set(segment, 0L, index, value); }
+    public static void mode(MemorySegment segment, long index, int value) { VH_mode.get().set(segment, 0L, index, value); }
     /// Sets `mode` with the given value.
     /// @param value the value
     /// @return `this`

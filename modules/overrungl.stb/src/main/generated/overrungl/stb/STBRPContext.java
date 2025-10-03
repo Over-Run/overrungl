@@ -43,49 +43,49 @@ public final class STBRPContext extends GroupType {
     /// The memory layout of `width`.
     public static final MemoryLayout LAYOUT_width = LAYOUT.select(PathElement.groupElement("width"));
     /// The [VarHandle] of `width` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("width"));
+    public static final Supplier<VarHandle> VH_width = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("width")));
     /// The byte offset of `height`.
     public static final long OFFSET_height = LAYOUT.byteOffset(PathElement.groupElement("height"));
     /// The memory layout of `height`.
     public static final MemoryLayout LAYOUT_height = LAYOUT.select(PathElement.groupElement("height"));
     /// The [VarHandle] of `height` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("height"));
+    public static final Supplier<VarHandle> VH_height = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("height")));
     /// The byte offset of `align`.
     public static final long OFFSET_align = LAYOUT.byteOffset(PathElement.groupElement("align"));
     /// The memory layout of `align`.
     public static final MemoryLayout LAYOUT_align = LAYOUT.select(PathElement.groupElement("align"));
     /// The [VarHandle] of `align` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_align = LAYOUT.arrayElementVarHandle(PathElement.groupElement("align"));
+    public static final Supplier<VarHandle> VH_align = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("align")));
     /// The byte offset of `init_mode`.
     public static final long OFFSET_init_mode = LAYOUT.byteOffset(PathElement.groupElement("init_mode"));
     /// The memory layout of `init_mode`.
     public static final MemoryLayout LAYOUT_init_mode = LAYOUT.select(PathElement.groupElement("init_mode"));
     /// The [VarHandle] of `init_mode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_init_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("init_mode"));
+    public static final Supplier<VarHandle> VH_init_mode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("init_mode")));
     /// The byte offset of `heuristic`.
     public static final long OFFSET_heuristic = LAYOUT.byteOffset(PathElement.groupElement("heuristic"));
     /// The memory layout of `heuristic`.
     public static final MemoryLayout LAYOUT_heuristic = LAYOUT.select(PathElement.groupElement("heuristic"));
     /// The [VarHandle] of `heuristic` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_heuristic = LAYOUT.arrayElementVarHandle(PathElement.groupElement("heuristic"));
+    public static final Supplier<VarHandle> VH_heuristic = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("heuristic")));
     /// The byte offset of `num_nodes`.
     public static final long OFFSET_num_nodes = LAYOUT.byteOffset(PathElement.groupElement("num_nodes"));
     /// The memory layout of `num_nodes`.
     public static final MemoryLayout LAYOUT_num_nodes = LAYOUT.select(PathElement.groupElement("num_nodes"));
     /// The [VarHandle] of `num_nodes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_num_nodes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_nodes"));
+    public static final Supplier<VarHandle> VH_num_nodes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_nodes")));
     /// The byte offset of `active_head`.
     public static final long OFFSET_active_head = LAYOUT.byteOffset(PathElement.groupElement("active_head"));
     /// The memory layout of `active_head`.
     public static final MemoryLayout LAYOUT_active_head = LAYOUT.select(PathElement.groupElement("active_head"));
     /// The [VarHandle] of `active_head` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_active_head = LAYOUT.arrayElementVarHandle(PathElement.groupElement("active_head"));
+    public static final Supplier<VarHandle> VH_active_head = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("active_head")));
     /// The byte offset of `free_head`.
     public static final long OFFSET_free_head = LAYOUT.byteOffset(PathElement.groupElement("free_head"));
     /// The memory layout of `free_head`.
     public static final MemoryLayout LAYOUT_free_head = LAYOUT.select(PathElement.groupElement("free_head"));
     /// The [VarHandle] of `free_head` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_free_head = LAYOUT.arrayElementVarHandle(PathElement.groupElement("free_head"));
+    public static final Supplier<VarHandle> VH_free_head = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("free_head")));
     /// The byte offset of `extra`.
     public static final long OFFSET_extra = LAYOUT.byteOffset(PathElement.groupElement("extra"));
     /// The memory layout of `extra`.
@@ -140,14 +140,14 @@ public final class STBRPContext extends GroupType {
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int width(MemorySegment segment, long index) { return (int) VH_width.get(segment, 0L, index); }
+    public static int width(MemorySegment segment, long index) { return (int) VH_width.get().get(segment, 0L, index); }
     /// {@return `width`}
     public int width() { return width(this.segment(), 0L); }
     /// Sets `width` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void width(MemorySegment segment, long index, int value) { VH_width.set(segment, 0L, index, value); }
+    public static void width(MemorySegment segment, long index, int value) { VH_width.get().set(segment, 0L, index, value); }
     /// Sets `width` with the given value.
     /// @param value the value
     /// @return `this`
@@ -156,14 +156,14 @@ public final class STBRPContext extends GroupType {
     /// {@return `height` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int height(MemorySegment segment, long index) { return (int) VH_height.get(segment, 0L, index); }
+    public static int height(MemorySegment segment, long index) { return (int) VH_height.get().get(segment, 0L, index); }
     /// {@return `height`}
     public int height() { return height(this.segment(), 0L); }
     /// Sets `height` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void height(MemorySegment segment, long index, int value) { VH_height.set(segment, 0L, index, value); }
+    public static void height(MemorySegment segment, long index, int value) { VH_height.get().set(segment, 0L, index, value); }
     /// Sets `height` with the given value.
     /// @param value the value
     /// @return `this`
@@ -172,14 +172,14 @@ public final class STBRPContext extends GroupType {
     /// {@return `align` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int align(MemorySegment segment, long index) { return (int) VH_align.get(segment, 0L, index); }
+    public static int align(MemorySegment segment, long index) { return (int) VH_align.get().get(segment, 0L, index); }
     /// {@return `align`}
     public int align() { return align(this.segment(), 0L); }
     /// Sets `align` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void align(MemorySegment segment, long index, int value) { VH_align.set(segment, 0L, index, value); }
+    public static void align(MemorySegment segment, long index, int value) { VH_align.get().set(segment, 0L, index, value); }
     /// Sets `align` with the given value.
     /// @param value the value
     /// @return `this`
@@ -188,14 +188,14 @@ public final class STBRPContext extends GroupType {
     /// {@return `init_mode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int init_mode(MemorySegment segment, long index) { return (int) VH_init_mode.get(segment, 0L, index); }
+    public static int init_mode(MemorySegment segment, long index) { return (int) VH_init_mode.get().get(segment, 0L, index); }
     /// {@return `init_mode`}
     public int init_mode() { return init_mode(this.segment(), 0L); }
     /// Sets `init_mode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void init_mode(MemorySegment segment, long index, int value) { VH_init_mode.set(segment, 0L, index, value); }
+    public static void init_mode(MemorySegment segment, long index, int value) { VH_init_mode.get().set(segment, 0L, index, value); }
     /// Sets `init_mode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -204,14 +204,14 @@ public final class STBRPContext extends GroupType {
     /// {@return `heuristic` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int heuristic(MemorySegment segment, long index) { return (int) VH_heuristic.get(segment, 0L, index); }
+    public static int heuristic(MemorySegment segment, long index) { return (int) VH_heuristic.get().get(segment, 0L, index); }
     /// {@return `heuristic`}
     public int heuristic() { return heuristic(this.segment(), 0L); }
     /// Sets `heuristic` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void heuristic(MemorySegment segment, long index, int value) { VH_heuristic.set(segment, 0L, index, value); }
+    public static void heuristic(MemorySegment segment, long index, int value) { VH_heuristic.get().set(segment, 0L, index, value); }
     /// Sets `heuristic` with the given value.
     /// @param value the value
     /// @return `this`
@@ -220,14 +220,14 @@ public final class STBRPContext extends GroupType {
     /// {@return `num_nodes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int num_nodes(MemorySegment segment, long index) { return (int) VH_num_nodes.get(segment, 0L, index); }
+    public static int num_nodes(MemorySegment segment, long index) { return (int) VH_num_nodes.get().get(segment, 0L, index); }
     /// {@return `num_nodes`}
     public int num_nodes() { return num_nodes(this.segment(), 0L); }
     /// Sets `num_nodes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void num_nodes(MemorySegment segment, long index, int value) { VH_num_nodes.set(segment, 0L, index, value); }
+    public static void num_nodes(MemorySegment segment, long index, int value) { VH_num_nodes.get().set(segment, 0L, index, value); }
     /// Sets `num_nodes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -236,14 +236,14 @@ public final class STBRPContext extends GroupType {
     /// {@return `active_head` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment active_head(MemorySegment segment, long index) { return (MemorySegment) VH_active_head.get(segment, 0L, index); }
+    public static MemorySegment active_head(MemorySegment segment, long index) { return (MemorySegment) VH_active_head.get().get(segment, 0L, index); }
     /// {@return `active_head`}
     public MemorySegment active_head() { return active_head(this.segment(), 0L); }
     /// Sets `active_head` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void active_head(MemorySegment segment, long index, MemorySegment value) { VH_active_head.set(segment, 0L, index, value); }
+    public static void active_head(MemorySegment segment, long index, MemorySegment value) { VH_active_head.get().set(segment, 0L, index, value); }
     /// Sets `active_head` with the given value.
     /// @param value the value
     /// @return `this`
@@ -252,14 +252,14 @@ public final class STBRPContext extends GroupType {
     /// {@return `free_head` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment free_head(MemorySegment segment, long index) { return (MemorySegment) VH_free_head.get(segment, 0L, index); }
+    public static MemorySegment free_head(MemorySegment segment, long index) { return (MemorySegment) VH_free_head.get().get(segment, 0L, index); }
     /// {@return `free_head`}
     public MemorySegment free_head() { return free_head(this.segment(), 0L); }
     /// Sets `free_head` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void free_head(MemorySegment segment, long index, MemorySegment value) { VH_free_head.set(segment, 0L, index, value); }
+    public static void free_head(MemorySegment segment, long index, MemorySegment value) { VH_free_head.get().set(segment, 0L, index, value); }
     /// Sets `free_head` with the given value.
     /// @param value the value
     /// @return `this`

@@ -35,31 +35,31 @@ public final class VkFaultCallbackInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `faultCount`.
     public static final long OFFSET_faultCount = LAYOUT.byteOffset(PathElement.groupElement("faultCount"));
     /// The memory layout of `faultCount`.
     public static final MemoryLayout LAYOUT_faultCount = LAYOUT.select(PathElement.groupElement("faultCount"));
     /// The [VarHandle] of `faultCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_faultCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("faultCount"));
+    public static final Supplier<VarHandle> VH_faultCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("faultCount")));
     /// The byte offset of `pFaults`.
     public static final long OFFSET_pFaults = LAYOUT.byteOffset(PathElement.groupElement("pFaults"));
     /// The memory layout of `pFaults`.
     public static final MemoryLayout LAYOUT_pFaults = LAYOUT.select(PathElement.groupElement("pFaults"));
     /// The [VarHandle] of `pFaults` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pFaults = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFaults"));
+    public static final Supplier<VarHandle> VH_pFaults = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFaults")));
     /// The byte offset of `pfnFaultCallback`.
     public static final long OFFSET_pfnFaultCallback = LAYOUT.byteOffset(PathElement.groupElement("pfnFaultCallback"));
     /// The memory layout of `pfnFaultCallback`.
     public static final MemoryLayout LAYOUT_pfnFaultCallback = LAYOUT.select(PathElement.groupElement("pfnFaultCallback"));
     /// The [VarHandle] of `pfnFaultCallback` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pfnFaultCallback = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnFaultCallback"));
+    public static final Supplier<VarHandle> VH_pfnFaultCallback = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnFaultCallback")));
 
     /// Creates `VkFaultCallbackInfo` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkFaultCallbackInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkFaultCallbackInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkFaultCallbackInfo extends GroupType {
     /// {@return `faultCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int faultCount(MemorySegment segment, long index) { return (int) VH_faultCount.get(segment, 0L, index); }
+    public static int faultCount(MemorySegment segment, long index) { return (int) VH_faultCount.get().get(segment, 0L, index); }
     /// {@return `faultCount`}
     public int faultCount() { return faultCount(this.segment(), 0L); }
     /// Sets `faultCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void faultCount(MemorySegment segment, long index, int value) { VH_faultCount.set(segment, 0L, index, value); }
+    public static void faultCount(MemorySegment segment, long index, int value) { VH_faultCount.get().set(segment, 0L, index, value); }
     /// Sets `faultCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkFaultCallbackInfo extends GroupType {
     /// {@return `pFaults` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pFaults(MemorySegment segment, long index) { return (MemorySegment) VH_pFaults.get(segment, 0L, index); }
+    public static MemorySegment pFaults(MemorySegment segment, long index) { return (MemorySegment) VH_pFaults.get().get(segment, 0L, index); }
     /// {@return `pFaults`}
     public MemorySegment pFaults() { return pFaults(this.segment(), 0L); }
     /// Sets `pFaults` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pFaults(MemorySegment segment, long index, MemorySegment value) { VH_pFaults.set(segment, 0L, index, value); }
+    public static void pFaults(MemorySegment segment, long index, MemorySegment value) { VH_pFaults.get().set(segment, 0L, index, value); }
     /// Sets `pFaults` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkFaultCallbackInfo extends GroupType {
     /// {@return `pfnFaultCallback` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pfnFaultCallback(MemorySegment segment, long index) { return (MemorySegment) VH_pfnFaultCallback.get(segment, 0L, index); }
+    public static MemorySegment pfnFaultCallback(MemorySegment segment, long index) { return (MemorySegment) VH_pfnFaultCallback.get().get(segment, 0L, index); }
     /// {@return `pfnFaultCallback`}
     public MemorySegment pfnFaultCallback() { return pfnFaultCallback(this.segment(), 0L); }
     /// Sets `pfnFaultCallback` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pfnFaultCallback(MemorySegment segment, long index, MemorySegment value) { VH_pfnFaultCallback.set(segment, 0L, index, value); }
+    public static void pfnFaultCallback(MemorySegment segment, long index, MemorySegment value) { VH_pfnFaultCallback.get().set(segment, 0L, index, value); }
     /// Sets `pfnFaultCallback` with the given value.
     /// @param value the value
     /// @return `this`

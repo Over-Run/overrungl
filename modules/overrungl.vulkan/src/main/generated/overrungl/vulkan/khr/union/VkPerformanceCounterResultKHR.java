@@ -37,37 +37,37 @@ public final class VkPerformanceCounterResultKHR extends GroupType {
     /// The memory layout of `int32`.
     public static final MemoryLayout LAYOUT_int32 = LAYOUT.select(PathElement.groupElement("int32"));
     /// The [VarHandle] of `int32` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_int32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("int32"));
+    public static final Supplier<VarHandle> VH_int32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("int32")));
     /// The byte offset of `int64`.
     public static final long OFFSET_int64 = LAYOUT.byteOffset(PathElement.groupElement("int64"));
     /// The memory layout of `int64`.
     public static final MemoryLayout LAYOUT_int64 = LAYOUT.select(PathElement.groupElement("int64"));
     /// The [VarHandle] of `int64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_int64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("int64"));
+    public static final Supplier<VarHandle> VH_int64 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("int64")));
     /// The byte offset of `uint32`.
     public static final long OFFSET_uint32 = LAYOUT.byteOffset(PathElement.groupElement("uint32"));
     /// The memory layout of `uint32`.
     public static final MemoryLayout LAYOUT_uint32 = LAYOUT.select(PathElement.groupElement("uint32"));
     /// The [VarHandle] of `uint32` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_uint32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uint32"));
+    public static final Supplier<VarHandle> VH_uint32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("uint32")));
     /// The byte offset of `uint64`.
     public static final long OFFSET_uint64 = LAYOUT.byteOffset(PathElement.groupElement("uint64"));
     /// The memory layout of `uint64`.
     public static final MemoryLayout LAYOUT_uint64 = LAYOUT.select(PathElement.groupElement("uint64"));
     /// The [VarHandle] of `uint64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_uint64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uint64"));
+    public static final Supplier<VarHandle> VH_uint64 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("uint64")));
     /// The byte offset of `float32`.
     public static final long OFFSET_float32 = LAYOUT.byteOffset(PathElement.groupElement("float32"));
     /// The memory layout of `float32`.
     public static final MemoryLayout LAYOUT_float32 = LAYOUT.select(PathElement.groupElement("float32"));
     /// The [VarHandle] of `float32` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_float32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("float32"));
+    public static final Supplier<VarHandle> VH_float32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("float32")));
     /// The byte offset of `float64`.
     public static final long OFFSET_float64 = LAYOUT.byteOffset(PathElement.groupElement("float64"));
     /// The memory layout of `float64`.
     public static final MemoryLayout LAYOUT_float64 = LAYOUT.select(PathElement.groupElement("float64"));
     /// The [VarHandle] of `float64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_float64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("float64"));
+    public static final Supplier<VarHandle> VH_float64 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("float64")));
 
     /// Creates `VkPerformanceCounterResultKHR` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPerformanceCounterResultKHR extends GroupType {
     /// {@return `int32` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static int int32(MemorySegment segment, long index) { return (int) VH_int32.get(segment, 0L, index); }
+    public static int int32(MemorySegment segment, long index) { return (int) VH_int32.get().get(segment, 0L, index); }
     /// {@return `int32`}
     public int int32() { return int32(this.segment(), 0L); }
     /// Sets `int32` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void int32(MemorySegment segment, long index, int value) { VH_int32.set(segment, 0L, index, value); }
+    public static void int32(MemorySegment segment, long index, int value) { VH_int32.get().set(segment, 0L, index, value); }
     /// Sets `int32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPerformanceCounterResultKHR extends GroupType {
     /// {@return `int64` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static long int64(MemorySegment segment, long index) { return (long) VH_int64.get(segment, 0L, index); }
+    public static long int64(MemorySegment segment, long index) { return (long) VH_int64.get().get(segment, 0L, index); }
     /// {@return `int64`}
     public long int64() { return int64(this.segment(), 0L); }
     /// Sets `int64` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void int64(MemorySegment segment, long index, long value) { VH_int64.set(segment, 0L, index, value); }
+    public static void int64(MemorySegment segment, long index, long value) { VH_int64.get().set(segment, 0L, index, value); }
     /// Sets `int64` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPerformanceCounterResultKHR extends GroupType {
     /// {@return `uint32` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static int uint32(MemorySegment segment, long index) { return (int) VH_uint32.get(segment, 0L, index); }
+    public static int uint32(MemorySegment segment, long index) { return (int) VH_uint32.get().get(segment, 0L, index); }
     /// {@return `uint32`}
     public int uint32() { return uint32(this.segment(), 0L); }
     /// Sets `uint32` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void uint32(MemorySegment segment, long index, int value) { VH_uint32.set(segment, 0L, index, value); }
+    public static void uint32(MemorySegment segment, long index, int value) { VH_uint32.get().set(segment, 0L, index, value); }
     /// Sets `uint32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPerformanceCounterResultKHR extends GroupType {
     /// {@return `uint64` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static long uint64(MemorySegment segment, long index) { return (long) VH_uint64.get(segment, 0L, index); }
+    public static long uint64(MemorySegment segment, long index) { return (long) VH_uint64.get().get(segment, 0L, index); }
     /// {@return `uint64`}
     public long uint64() { return uint64(this.segment(), 0L); }
     /// Sets `uint64` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void uint64(MemorySegment segment, long index, long value) { VH_uint64.set(segment, 0L, index, value); }
+    public static void uint64(MemorySegment segment, long index, long value) { VH_uint64.get().set(segment, 0L, index, value); }
     /// Sets `uint64` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPerformanceCounterResultKHR extends GroupType {
     /// {@return `float32` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static float float32(MemorySegment segment, long index) { return (float) VH_float32.get(segment, 0L, index); }
+    public static float float32(MemorySegment segment, long index) { return (float) VH_float32.get().get(segment, 0L, index); }
     /// {@return `float32`}
     public float float32() { return float32(this.segment(), 0L); }
     /// Sets `float32` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void float32(MemorySegment segment, long index, float value) { VH_float32.set(segment, 0L, index, value); }
+    public static void float32(MemorySegment segment, long index, float value) { VH_float32.get().set(segment, 0L, index, value); }
     /// Sets `float32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPerformanceCounterResultKHR extends GroupType {
     /// {@return `float64` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static double float64(MemorySegment segment, long index) { return (double) VH_float64.get(segment, 0L, index); }
+    public static double float64(MemorySegment segment, long index) { return (double) VH_float64.get().get(segment, 0L, index); }
     /// {@return `float64`}
     public double float64() { return float64(this.segment(), 0L); }
     /// Sets `float64` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void float64(MemorySegment segment, long index, double value) { VH_float64.set(segment, 0L, index, value); }
+    public static void float64(MemorySegment segment, long index, double value) { VH_float64.get().set(segment, 0L, index, value); }
     /// Sets `float64` with the given value.
     /// @param value the value
     /// @return `this`

@@ -35,13 +35,13 @@ public final class VmaBudget extends GroupType {
     /// The memory layout of `usage`.
     public static final MemoryLayout LAYOUT_usage = LAYOUT.select(PathElement.groupElement("usage"));
     /// The [VarHandle] of `usage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_usage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("usage"));
+    public static final Supplier<VarHandle> VH_usage = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("usage")));
     /// The byte offset of `budget`.
     public static final long OFFSET_budget = LAYOUT.byteOffset(PathElement.groupElement("budget"));
     /// The memory layout of `budget`.
     public static final MemoryLayout LAYOUT_budget = LAYOUT.select(PathElement.groupElement("budget"));
     /// The [VarHandle] of `budget` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_budget = LAYOUT.arrayElementVarHandle(PathElement.groupElement("budget"));
+    public static final Supplier<VarHandle> VH_budget = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("budget")));
 
     /// Creates `VmaBudget` with the given segment.
     /// @param segment      the memory segment
@@ -112,14 +112,14 @@ public final class VmaBudget extends GroupType {
     /// {@return `usage` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long usage(MemorySegment segment, long index) { return (long) VH_usage.get(segment, 0L, index); }
+    public static long usage(MemorySegment segment, long index) { return (long) VH_usage.get().get(segment, 0L, index); }
     /// {@return `usage`}
     public long usage() { return usage(this.segment(), 0L); }
     /// Sets `usage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void usage(MemorySegment segment, long index, long value) { VH_usage.set(segment, 0L, index, value); }
+    public static void usage(MemorySegment segment, long index, long value) { VH_usage.get().set(segment, 0L, index, value); }
     /// Sets `usage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -128,14 +128,14 @@ public final class VmaBudget extends GroupType {
     /// {@return `budget` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long budget(MemorySegment segment, long index) { return (long) VH_budget.get(segment, 0L, index); }
+    public static long budget(MemorySegment segment, long index) { return (long) VH_budget.get().get(segment, 0L, index); }
     /// {@return `budget`}
     public long budget() { return budget(this.segment(), 0L); }
     /// Sets `budget` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void budget(MemorySegment segment, long index, long value) { VH_budget.set(segment, 0L, index, value); }
+    public static void budget(MemorySegment segment, long index, long value) { VH_budget.get().set(segment, 0L, index, value); }
     /// Sets `budget` with the given value.
     /// @param value the value
     /// @return `this`

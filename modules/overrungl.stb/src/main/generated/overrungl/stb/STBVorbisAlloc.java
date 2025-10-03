@@ -29,13 +29,13 @@ public final class STBVorbisAlloc extends GroupType {
     /// The memory layout of `alloc_buffer`.
     public static final MemoryLayout LAYOUT_alloc_buffer = LAYOUT.select(PathElement.groupElement("alloc_buffer"));
     /// The [VarHandle] of `alloc_buffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_alloc_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("alloc_buffer"));
+    public static final Supplier<VarHandle> VH_alloc_buffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("alloc_buffer")));
     /// The byte offset of `alloc_buffer_length_in_bytes`.
     public static final long OFFSET_alloc_buffer_length_in_bytes = LAYOUT.byteOffset(PathElement.groupElement("alloc_buffer_length_in_bytes"));
     /// The memory layout of `alloc_buffer_length_in_bytes`.
     public static final MemoryLayout LAYOUT_alloc_buffer_length_in_bytes = LAYOUT.select(PathElement.groupElement("alloc_buffer_length_in_bytes"));
     /// The [VarHandle] of `alloc_buffer_length_in_bytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_alloc_buffer_length_in_bytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("alloc_buffer_length_in_bytes"));
+    public static final Supplier<VarHandle> VH_alloc_buffer_length_in_bytes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("alloc_buffer_length_in_bytes")));
 
     /// Creates `STBVorbisAlloc` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class STBVorbisAlloc extends GroupType {
     /// {@return `alloc_buffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment alloc_buffer(MemorySegment segment, long index) { return (MemorySegment) VH_alloc_buffer.get(segment, 0L, index); }
+    public static MemorySegment alloc_buffer(MemorySegment segment, long index) { return (MemorySegment) VH_alloc_buffer.get().get(segment, 0L, index); }
     /// {@return `alloc_buffer`}
     public MemorySegment alloc_buffer() { return alloc_buffer(this.segment(), 0L); }
     /// Sets `alloc_buffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void alloc_buffer(MemorySegment segment, long index, MemorySegment value) { VH_alloc_buffer.set(segment, 0L, index, value); }
+    public static void alloc_buffer(MemorySegment segment, long index, MemorySegment value) { VH_alloc_buffer.get().set(segment, 0L, index, value); }
     /// Sets `alloc_buffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class STBVorbisAlloc extends GroupType {
     /// {@return `alloc_buffer_length_in_bytes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int alloc_buffer_length_in_bytes(MemorySegment segment, long index) { return (int) VH_alloc_buffer_length_in_bytes.get(segment, 0L, index); }
+    public static int alloc_buffer_length_in_bytes(MemorySegment segment, long index) { return (int) VH_alloc_buffer_length_in_bytes.get().get(segment, 0L, index); }
     /// {@return `alloc_buffer_length_in_bytes`}
     public int alloc_buffer_length_in_bytes() { return alloc_buffer_length_in_bytes(this.segment(), 0L); }
     /// Sets `alloc_buffer_length_in_bytes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void alloc_buffer_length_in_bytes(MemorySegment segment, long index, int value) { VH_alloc_buffer_length_in_bytes.set(segment, 0L, index, value); }
+    public static void alloc_buffer_length_in_bytes(MemorySegment segment, long index, int value) { VH_alloc_buffer_length_in_bytes.get().set(segment, 0L, index, value); }
     /// Sets `alloc_buffer_length_in_bytes` with the given value.
     /// @param value the value
     /// @return `this`

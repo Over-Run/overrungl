@@ -2,6 +2,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -19,7 +20,7 @@ public final class VKEXTToolingInfo {
     public static final int VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT = 0x00000020;
     public static final int VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT = 0x00000040;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceToolPropertiesEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkGetPhysicalDeviceToolPropertiesEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -32,7 +33,7 @@ public final class VKEXTToolingInfo {
     public static int vkGetPhysicalDeviceToolPropertiesEXT(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pToolCount, @NonNull MemorySegment pToolProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceToolPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceToolPropertiesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceToolPropertiesEXT", physicalDevice, pToolCount, pToolProperties); }
-        return (int) Handles.MH_vkGetPhysicalDeviceToolPropertiesEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceToolPropertiesEXT, physicalDevice.segment(), pToolCount, pToolProperties); }
+        return (int) Handles.MH_vkGetPhysicalDeviceToolPropertiesEXT.get().invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceToolPropertiesEXT, physicalDevice.segment(), pToolCount, pToolProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceToolPropertiesEXT", e); }
     }
 

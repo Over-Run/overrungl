@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceShaderTileImageFeaturesEXT extends GroupType 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderTileImageColorReadAccess`.
     public static final long OFFSET_shaderTileImageColorReadAccess = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageColorReadAccess"));
     /// The memory layout of `shaderTileImageColorReadAccess`.
     public static final MemoryLayout LAYOUT_shaderTileImageColorReadAccess = LAYOUT.select(PathElement.groupElement("shaderTileImageColorReadAccess"));
     /// The [VarHandle] of `shaderTileImageColorReadAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderTileImageColorReadAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageColorReadAccess"));
+    public static final Supplier<VarHandle> VH_shaderTileImageColorReadAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageColorReadAccess")));
     /// The byte offset of `shaderTileImageDepthReadAccess`.
     public static final long OFFSET_shaderTileImageDepthReadAccess = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageDepthReadAccess"));
     /// The memory layout of `shaderTileImageDepthReadAccess`.
     public static final MemoryLayout LAYOUT_shaderTileImageDepthReadAccess = LAYOUT.select(PathElement.groupElement("shaderTileImageDepthReadAccess"));
     /// The [VarHandle] of `shaderTileImageDepthReadAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderTileImageDepthReadAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageDepthReadAccess"));
+    public static final Supplier<VarHandle> VH_shaderTileImageDepthReadAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageDepthReadAccess")));
     /// The byte offset of `shaderTileImageStencilReadAccess`.
     public static final long OFFSET_shaderTileImageStencilReadAccess = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageStencilReadAccess"));
     /// The memory layout of `shaderTileImageStencilReadAccess`.
     public static final MemoryLayout LAYOUT_shaderTileImageStencilReadAccess = LAYOUT.select(PathElement.groupElement("shaderTileImageStencilReadAccess"));
     /// The [VarHandle] of `shaderTileImageStencilReadAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderTileImageStencilReadAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageStencilReadAccess"));
+    public static final Supplier<VarHandle> VH_shaderTileImageStencilReadAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageStencilReadAccess")));
 
     /// Creates `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceShaderTileImageFeaturesEXT extends GroupType 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceShaderTileImageFeaturesEXT extends GroupType 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceShaderTileImageFeaturesEXT extends GroupType 
     /// {@return `shaderTileImageColorReadAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderTileImageColorReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageColorReadAccess.get(segment, 0L, index); }
+    public static int shaderTileImageColorReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageColorReadAccess.get().get(segment, 0L, index); }
     /// {@return `shaderTileImageColorReadAccess`}
     public int shaderTileImageColorReadAccess() { return shaderTileImageColorReadAccess(this.segment(), 0L); }
     /// Sets `shaderTileImageColorReadAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderTileImageColorReadAccess(MemorySegment segment, long index, int value) { VH_shaderTileImageColorReadAccess.set(segment, 0L, index, value); }
+    public static void shaderTileImageColorReadAccess(MemorySegment segment, long index, int value) { VH_shaderTileImageColorReadAccess.get().set(segment, 0L, index, value); }
     /// Sets `shaderTileImageColorReadAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceShaderTileImageFeaturesEXT extends GroupType 
     /// {@return `shaderTileImageDepthReadAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderTileImageDepthReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageDepthReadAccess.get(segment, 0L, index); }
+    public static int shaderTileImageDepthReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageDepthReadAccess.get().get(segment, 0L, index); }
     /// {@return `shaderTileImageDepthReadAccess`}
     public int shaderTileImageDepthReadAccess() { return shaderTileImageDepthReadAccess(this.segment(), 0L); }
     /// Sets `shaderTileImageDepthReadAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderTileImageDepthReadAccess(MemorySegment segment, long index, int value) { VH_shaderTileImageDepthReadAccess.set(segment, 0L, index, value); }
+    public static void shaderTileImageDepthReadAccess(MemorySegment segment, long index, int value) { VH_shaderTileImageDepthReadAccess.get().set(segment, 0L, index, value); }
     /// Sets `shaderTileImageDepthReadAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceShaderTileImageFeaturesEXT extends GroupType 
     /// {@return `shaderTileImageStencilReadAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderTileImageStencilReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageStencilReadAccess.get(segment, 0L, index); }
+    public static int shaderTileImageStencilReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageStencilReadAccess.get().get(segment, 0L, index); }
     /// {@return `shaderTileImageStencilReadAccess`}
     public int shaderTileImageStencilReadAccess() { return shaderTileImageStencilReadAccess(this.segment(), 0L); }
     /// Sets `shaderTileImageStencilReadAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderTileImageStencilReadAccess(MemorySegment segment, long index, int value) { VH_shaderTileImageStencilReadAccess.set(segment, 0L, index, value); }
+    public static void shaderTileImageStencilReadAccess(MemorySegment segment, long index, int value) { VH_shaderTileImageStencilReadAccess.get().set(segment, 0L, index, value); }
     /// Sets `shaderTileImageStencilReadAccess` with the given value.
     /// @param value the value
     /// @return `this`

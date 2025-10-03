@@ -37,37 +37,37 @@ public final class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `sciSyncFence`.
     public static final long OFFSET_sciSyncFence = LAYOUT.byteOffset(PathElement.groupElement("sciSyncFence"));
     /// The memory layout of `sciSyncFence`.
     public static final MemoryLayout LAYOUT_sciSyncFence = LAYOUT.select(PathElement.groupElement("sciSyncFence"));
     /// The [VarHandle] of `sciSyncFence` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sciSyncFence = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sciSyncFence"));
+    public static final Supplier<VarHandle> VH_sciSyncFence = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sciSyncFence")));
     /// The byte offset of `sciSyncSemaphore`.
     public static final long OFFSET_sciSyncSemaphore = LAYOUT.byteOffset(PathElement.groupElement("sciSyncSemaphore"));
     /// The memory layout of `sciSyncSemaphore`.
     public static final MemoryLayout LAYOUT_sciSyncSemaphore = LAYOUT.select(PathElement.groupElement("sciSyncSemaphore"));
     /// The [VarHandle] of `sciSyncSemaphore` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sciSyncSemaphore = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sciSyncSemaphore"));
+    public static final Supplier<VarHandle> VH_sciSyncSemaphore = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sciSyncSemaphore")));
     /// The byte offset of `sciSyncImport`.
     public static final long OFFSET_sciSyncImport = LAYOUT.byteOffset(PathElement.groupElement("sciSyncImport"));
     /// The memory layout of `sciSyncImport`.
     public static final MemoryLayout LAYOUT_sciSyncImport = LAYOUT.select(PathElement.groupElement("sciSyncImport"));
     /// The [VarHandle] of `sciSyncImport` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sciSyncImport = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sciSyncImport"));
+    public static final Supplier<VarHandle> VH_sciSyncImport = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sciSyncImport")));
     /// The byte offset of `sciSyncExport`.
     public static final long OFFSET_sciSyncExport = LAYOUT.byteOffset(PathElement.groupElement("sciSyncExport"));
     /// The memory layout of `sciSyncExport`.
     public static final MemoryLayout LAYOUT_sciSyncExport = LAYOUT.select(PathElement.groupElement("sciSyncExport"));
     /// The [VarHandle] of `sciSyncExport` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sciSyncExport = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sciSyncExport"));
+    public static final Supplier<VarHandle> VH_sciSyncExport = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sciSyncExport")));
 
     /// Creates `VkPhysicalDeviceExternalSciSyncFeaturesNV` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType {
     /// {@return `sciSyncFence` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sciSyncFence(MemorySegment segment, long index) { return (int) VH_sciSyncFence.get(segment, 0L, index); }
+    public static int sciSyncFence(MemorySegment segment, long index) { return (int) VH_sciSyncFence.get().get(segment, 0L, index); }
     /// {@return `sciSyncFence`}
     public int sciSyncFence() { return sciSyncFence(this.segment(), 0L); }
     /// Sets `sciSyncFence` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sciSyncFence(MemorySegment segment, long index, int value) { VH_sciSyncFence.set(segment, 0L, index, value); }
+    public static void sciSyncFence(MemorySegment segment, long index, int value) { VH_sciSyncFence.get().set(segment, 0L, index, value); }
     /// Sets `sciSyncFence` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType {
     /// {@return `sciSyncSemaphore` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sciSyncSemaphore(MemorySegment segment, long index) { return (int) VH_sciSyncSemaphore.get(segment, 0L, index); }
+    public static int sciSyncSemaphore(MemorySegment segment, long index) { return (int) VH_sciSyncSemaphore.get().get(segment, 0L, index); }
     /// {@return `sciSyncSemaphore`}
     public int sciSyncSemaphore() { return sciSyncSemaphore(this.segment(), 0L); }
     /// Sets `sciSyncSemaphore` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sciSyncSemaphore(MemorySegment segment, long index, int value) { VH_sciSyncSemaphore.set(segment, 0L, index, value); }
+    public static void sciSyncSemaphore(MemorySegment segment, long index, int value) { VH_sciSyncSemaphore.get().set(segment, 0L, index, value); }
     /// Sets `sciSyncSemaphore` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType {
     /// {@return `sciSyncImport` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sciSyncImport(MemorySegment segment, long index) { return (int) VH_sciSyncImport.get(segment, 0L, index); }
+    public static int sciSyncImport(MemorySegment segment, long index) { return (int) VH_sciSyncImport.get().get(segment, 0L, index); }
     /// {@return `sciSyncImport`}
     public int sciSyncImport() { return sciSyncImport(this.segment(), 0L); }
     /// Sets `sciSyncImport` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sciSyncImport(MemorySegment segment, long index, int value) { VH_sciSyncImport.set(segment, 0L, index, value); }
+    public static void sciSyncImport(MemorySegment segment, long index, int value) { VH_sciSyncImport.get().set(segment, 0L, index, value); }
     /// Sets `sciSyncImport` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType {
     /// {@return `sciSyncExport` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sciSyncExport(MemorySegment segment, long index) { return (int) VH_sciSyncExport.get(segment, 0L, index); }
+    public static int sciSyncExport(MemorySegment segment, long index) { return (int) VH_sciSyncExport.get().get(segment, 0L, index); }
     /// {@return `sciSyncExport`}
     public int sciSyncExport() { return sciSyncExport(this.segment(), 0L); }
     /// Sets `sciSyncExport` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sciSyncExport(MemorySegment segment, long index, int value) { VH_sciSyncExport.set(segment, 0L, index, value); }
+    public static void sciSyncExport(MemorySegment segment, long index, int value) { VH_sciSyncExport.get().set(segment, 0L, index, value); }
     /// Sets `sciSyncExport` with the given value.
     /// @param value the value
     /// @return `this`

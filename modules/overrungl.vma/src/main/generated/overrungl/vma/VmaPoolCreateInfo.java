@@ -41,49 +41,49 @@ public final class VmaPoolCreateInfo extends GroupType {
     /// The memory layout of `memoryTypeIndex`.
     public static final MemoryLayout LAYOUT_memoryTypeIndex = LAYOUT.select(PathElement.groupElement("memoryTypeIndex"));
     /// The [VarHandle] of `memoryTypeIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryTypeIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryTypeIndex"));
+    public static final Supplier<VarHandle> VH_memoryTypeIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryTypeIndex")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `blockSize`.
     public static final long OFFSET_blockSize = LAYOUT.byteOffset(PathElement.groupElement("blockSize"));
     /// The memory layout of `blockSize`.
     public static final MemoryLayout LAYOUT_blockSize = LAYOUT.select(PathElement.groupElement("blockSize"));
     /// The [VarHandle] of `blockSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_blockSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockSize"));
+    public static final Supplier<VarHandle> VH_blockSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockSize")));
     /// The byte offset of `minBlockCount`.
     public static final long OFFSET_minBlockCount = LAYOUT.byteOffset(PathElement.groupElement("minBlockCount"));
     /// The memory layout of `minBlockCount`.
     public static final MemoryLayout LAYOUT_minBlockCount = LAYOUT.select(PathElement.groupElement("minBlockCount"));
     /// The [VarHandle] of `minBlockCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minBlockCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBlockCount"));
+    public static final Supplier<VarHandle> VH_minBlockCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBlockCount")));
     /// The byte offset of `maxBlockCount`.
     public static final long OFFSET_maxBlockCount = LAYOUT.byteOffset(PathElement.groupElement("maxBlockCount"));
     /// The memory layout of `maxBlockCount`.
     public static final MemoryLayout LAYOUT_maxBlockCount = LAYOUT.select(PathElement.groupElement("maxBlockCount"));
     /// The [VarHandle] of `maxBlockCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxBlockCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBlockCount"));
+    public static final Supplier<VarHandle> VH_maxBlockCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBlockCount")));
     /// The byte offset of `priority`.
     public static final long OFFSET_priority = LAYOUT.byteOffset(PathElement.groupElement("priority"));
     /// The memory layout of `priority`.
     public static final MemoryLayout LAYOUT_priority = LAYOUT.select(PathElement.groupElement("priority"));
     /// The [VarHandle] of `priority` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_priority = LAYOUT.arrayElementVarHandle(PathElement.groupElement("priority"));
+    public static final Supplier<VarHandle> VH_priority = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("priority")));
     /// The byte offset of `minAllocationAlignment`.
     public static final long OFFSET_minAllocationAlignment = LAYOUT.byteOffset(PathElement.groupElement("minAllocationAlignment"));
     /// The memory layout of `minAllocationAlignment`.
     public static final MemoryLayout LAYOUT_minAllocationAlignment = LAYOUT.select(PathElement.groupElement("minAllocationAlignment"));
     /// The [VarHandle] of `minAllocationAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minAllocationAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minAllocationAlignment"));
+    public static final Supplier<VarHandle> VH_minAllocationAlignment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minAllocationAlignment")));
     /// The byte offset of `pMemoryAllocateNext`.
     public static final long OFFSET_pMemoryAllocateNext = LAYOUT.byteOffset(PathElement.groupElement("pMemoryAllocateNext"));
     /// The memory layout of `pMemoryAllocateNext`.
     public static final MemoryLayout LAYOUT_pMemoryAllocateNext = LAYOUT.select(PathElement.groupElement("pMemoryAllocateNext"));
     /// The [VarHandle] of `pMemoryAllocateNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pMemoryAllocateNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMemoryAllocateNext"));
+    public static final Supplier<VarHandle> VH_pMemoryAllocateNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMemoryAllocateNext")));
 
     /// Creates `VmaPoolCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VmaPoolCreateInfo extends GroupType {
     /// {@return `memoryTypeIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int memoryTypeIndex(MemorySegment segment, long index) { return (int) VH_memoryTypeIndex.get(segment, 0L, index); }
+    public static int memoryTypeIndex(MemorySegment segment, long index) { return (int) VH_memoryTypeIndex.get().get(segment, 0L, index); }
     /// {@return `memoryTypeIndex`}
     public int memoryTypeIndex() { return memoryTypeIndex(this.segment(), 0L); }
     /// Sets `memoryTypeIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memoryTypeIndex(MemorySegment segment, long index, int value) { VH_memoryTypeIndex.set(segment, 0L, index, value); }
+    public static void memoryTypeIndex(MemorySegment segment, long index, int value) { VH_memoryTypeIndex.get().set(segment, 0L, index, value); }
     /// Sets `memoryTypeIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VmaPoolCreateInfo extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VmaPoolCreateInfo extends GroupType {
     /// {@return `blockSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long blockSize(MemorySegment segment, long index) { return (long) VH_blockSize.get(segment, 0L, index); }
+    public static long blockSize(MemorySegment segment, long index) { return (long) VH_blockSize.get().get(segment, 0L, index); }
     /// {@return `blockSize`}
     public long blockSize() { return blockSize(this.segment(), 0L); }
     /// Sets `blockSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void blockSize(MemorySegment segment, long index, long value) { VH_blockSize.set(segment, 0L, index, value); }
+    public static void blockSize(MemorySegment segment, long index, long value) { VH_blockSize.get().set(segment, 0L, index, value); }
     /// Sets `blockSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VmaPoolCreateInfo extends GroupType {
     /// {@return `minBlockCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long minBlockCount(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_minBlockCount.get(segment, 0L, index)); }
+    public static long minBlockCount(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_minBlockCount.get().get(segment, 0L, index)); }
     /// {@return `minBlockCount`}
     public long minBlockCount() { return minBlockCount(this.segment(), 0L); }
     /// Sets `minBlockCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minBlockCount(MemorySegment segment, long index, long value) { VH_minBlockCount.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void minBlockCount(MemorySegment segment, long index, long value) { VH_minBlockCount.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `minBlockCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VmaPoolCreateInfo extends GroupType {
     /// {@return `maxBlockCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long maxBlockCount(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_maxBlockCount.get(segment, 0L, index)); }
+    public static long maxBlockCount(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_maxBlockCount.get().get(segment, 0L, index)); }
     /// {@return `maxBlockCount`}
     public long maxBlockCount() { return maxBlockCount(this.segment(), 0L); }
     /// Sets `maxBlockCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxBlockCount(MemorySegment segment, long index, long value) { VH_maxBlockCount.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void maxBlockCount(MemorySegment segment, long index, long value) { VH_maxBlockCount.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `maxBlockCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VmaPoolCreateInfo extends GroupType {
     /// {@return `priority` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float priority(MemorySegment segment, long index) { return (float) VH_priority.get(segment, 0L, index); }
+    public static float priority(MemorySegment segment, long index) { return (float) VH_priority.get().get(segment, 0L, index); }
     /// {@return `priority`}
     public float priority() { return priority(this.segment(), 0L); }
     /// Sets `priority` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void priority(MemorySegment segment, long index, float value) { VH_priority.set(segment, 0L, index, value); }
+    public static void priority(MemorySegment segment, long index, float value) { VH_priority.get().set(segment, 0L, index, value); }
     /// Sets `priority` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VmaPoolCreateInfo extends GroupType {
     /// {@return `minAllocationAlignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long minAllocationAlignment(MemorySegment segment, long index) { return (long) VH_minAllocationAlignment.get(segment, 0L, index); }
+    public static long minAllocationAlignment(MemorySegment segment, long index) { return (long) VH_minAllocationAlignment.get().get(segment, 0L, index); }
     /// {@return `minAllocationAlignment`}
     public long minAllocationAlignment() { return minAllocationAlignment(this.segment(), 0L); }
     /// Sets `minAllocationAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minAllocationAlignment(MemorySegment segment, long index, long value) { VH_minAllocationAlignment.set(segment, 0L, index, value); }
+    public static void minAllocationAlignment(MemorySegment segment, long index, long value) { VH_minAllocationAlignment.get().set(segment, 0L, index, value); }
     /// Sets `minAllocationAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VmaPoolCreateInfo extends GroupType {
     /// {@return `pMemoryAllocateNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pMemoryAllocateNext(MemorySegment segment, long index) { return (MemorySegment) VH_pMemoryAllocateNext.get(segment, 0L, index); }
+    public static MemorySegment pMemoryAllocateNext(MemorySegment segment, long index) { return (MemorySegment) VH_pMemoryAllocateNext.get().get(segment, 0L, index); }
     /// {@return `pMemoryAllocateNext`}
     public MemorySegment pMemoryAllocateNext() { return pMemoryAllocateNext(this.segment(), 0L); }
     /// Sets `pMemoryAllocateNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pMemoryAllocateNext(MemorySegment segment, long index, MemorySegment value) { VH_pMemoryAllocateNext.set(segment, 0L, index, value); }
+    public static void pMemoryAllocateNext(MemorySegment segment, long index, MemorySegment value) { VH_pMemoryAllocateNext.get().set(segment, 0L, index, value); }
     /// Sets `pMemoryAllocateNext` with the given value.
     /// @param value the value
     /// @return `this`

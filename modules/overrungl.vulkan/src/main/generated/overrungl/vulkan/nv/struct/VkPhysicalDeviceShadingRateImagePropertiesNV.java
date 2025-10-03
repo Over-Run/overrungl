@@ -35,13 +35,13 @@ public final class VkPhysicalDeviceShadingRateImagePropertiesNV extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shadingRateTexelSize`.
     public static final long OFFSET_shadingRateTexelSize = LAYOUT.byteOffset(PathElement.groupElement("shadingRateTexelSize"));
     /// The memory layout of `shadingRateTexelSize`.
@@ -51,13 +51,13 @@ public final class VkPhysicalDeviceShadingRateImagePropertiesNV extends GroupTyp
     /// The memory layout of `shadingRatePaletteSize`.
     public static final MemoryLayout LAYOUT_shadingRatePaletteSize = LAYOUT.select(PathElement.groupElement("shadingRatePaletteSize"));
     /// The [VarHandle] of `shadingRatePaletteSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shadingRatePaletteSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRatePaletteSize"));
+    public static final Supplier<VarHandle> VH_shadingRatePaletteSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRatePaletteSize")));
     /// The byte offset of `shadingRateMaxCoarseSamples`.
     public static final long OFFSET_shadingRateMaxCoarseSamples = LAYOUT.byteOffset(PathElement.groupElement("shadingRateMaxCoarseSamples"));
     /// The memory layout of `shadingRateMaxCoarseSamples`.
     public static final MemoryLayout LAYOUT_shadingRateMaxCoarseSamples = LAYOUT.select(PathElement.groupElement("shadingRateMaxCoarseSamples"));
     /// The [VarHandle] of `shadingRateMaxCoarseSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shadingRateMaxCoarseSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRateMaxCoarseSamples"));
+    public static final Supplier<VarHandle> VH_shadingRateMaxCoarseSamples = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRateMaxCoarseSamples")));
 
     /// Creates `VkPhysicalDeviceShadingRateImagePropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -108,14 +108,14 @@ public final class VkPhysicalDeviceShadingRateImagePropertiesNV extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -124,14 +124,14 @@ public final class VkPhysicalDeviceShadingRateImagePropertiesNV extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -160,14 +160,14 @@ public final class VkPhysicalDeviceShadingRateImagePropertiesNV extends GroupTyp
     /// {@return `shadingRatePaletteSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shadingRatePaletteSize(MemorySegment segment, long index) { return (int) VH_shadingRatePaletteSize.get(segment, 0L, index); }
+    public static int shadingRatePaletteSize(MemorySegment segment, long index) { return (int) VH_shadingRatePaletteSize.get().get(segment, 0L, index); }
     /// {@return `shadingRatePaletteSize`}
     public int shadingRatePaletteSize() { return shadingRatePaletteSize(this.segment(), 0L); }
     /// Sets `shadingRatePaletteSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shadingRatePaletteSize(MemorySegment segment, long index, int value) { VH_shadingRatePaletteSize.set(segment, 0L, index, value); }
+    public static void shadingRatePaletteSize(MemorySegment segment, long index, int value) { VH_shadingRatePaletteSize.get().set(segment, 0L, index, value); }
     /// Sets `shadingRatePaletteSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,14 +176,14 @@ public final class VkPhysicalDeviceShadingRateImagePropertiesNV extends GroupTyp
     /// {@return `shadingRateMaxCoarseSamples` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shadingRateMaxCoarseSamples(MemorySegment segment, long index) { return (int) VH_shadingRateMaxCoarseSamples.get(segment, 0L, index); }
+    public static int shadingRateMaxCoarseSamples(MemorySegment segment, long index) { return (int) VH_shadingRateMaxCoarseSamples.get().get(segment, 0L, index); }
     /// {@return `shadingRateMaxCoarseSamples`}
     public int shadingRateMaxCoarseSamples() { return shadingRateMaxCoarseSamples(this.segment(), 0L); }
     /// Sets `shadingRateMaxCoarseSamples` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shadingRateMaxCoarseSamples(MemorySegment segment, long index, int value) { VH_shadingRateMaxCoarseSamples.set(segment, 0L, index, value); }
+    public static void shadingRateMaxCoarseSamples(MemorySegment segment, long index, int value) { VH_shadingRateMaxCoarseSamples.get().set(segment, 0L, index, value); }
     /// Sets `shadingRateMaxCoarseSamples` with the given value.
     /// @param value the value
     /// @return `this`

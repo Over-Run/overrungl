@@ -33,25 +33,25 @@ public final class VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM extends Gr
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `enableYDegamma`.
     public static final long OFFSET_enableYDegamma = LAYOUT.byteOffset(PathElement.groupElement("enableYDegamma"));
     /// The memory layout of `enableYDegamma`.
     public static final MemoryLayout LAYOUT_enableYDegamma = LAYOUT.select(PathElement.groupElement("enableYDegamma"));
     /// The [VarHandle] of `enableYDegamma` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_enableYDegamma = LAYOUT.arrayElementVarHandle(PathElement.groupElement("enableYDegamma"));
+    public static final Supplier<VarHandle> VH_enableYDegamma = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("enableYDegamma")));
     /// The byte offset of `enableCbCrDegamma`.
     public static final long OFFSET_enableCbCrDegamma = LAYOUT.byteOffset(PathElement.groupElement("enableCbCrDegamma"));
     /// The memory layout of `enableCbCrDegamma`.
     public static final MemoryLayout LAYOUT_enableCbCrDegamma = LAYOUT.select(PathElement.groupElement("enableCbCrDegamma"));
     /// The [VarHandle] of `enableCbCrDegamma` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_enableCbCrDegamma = LAYOUT.arrayElementVarHandle(PathElement.groupElement("enableCbCrDegamma"));
+    public static final Supplier<VarHandle> VH_enableCbCrDegamma = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("enableCbCrDegamma")));
 
     /// Creates `VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM extends Gr
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM extends Gr
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM extends Gr
     /// {@return `enableYDegamma` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int enableYDegamma(MemorySegment segment, long index) { return (int) VH_enableYDegamma.get(segment, 0L, index); }
+    public static int enableYDegamma(MemorySegment segment, long index) { return (int) VH_enableYDegamma.get().get(segment, 0L, index); }
     /// {@return `enableYDegamma`}
     public int enableYDegamma() { return enableYDegamma(this.segment(), 0L); }
     /// Sets `enableYDegamma` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void enableYDegamma(MemorySegment segment, long index, int value) { VH_enableYDegamma.set(segment, 0L, index, value); }
+    public static void enableYDegamma(MemorySegment segment, long index, int value) { VH_enableYDegamma.get().set(segment, 0L, index, value); }
     /// Sets `enableYDegamma` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM extends Gr
     /// {@return `enableCbCrDegamma` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int enableCbCrDegamma(MemorySegment segment, long index) { return (int) VH_enableCbCrDegamma.get(segment, 0L, index); }
+    public static int enableCbCrDegamma(MemorySegment segment, long index) { return (int) VH_enableCbCrDegamma.get().get(segment, 0L, index); }
     /// {@return `enableCbCrDegamma`}
     public int enableCbCrDegamma() { return enableCbCrDegamma(this.segment(), 0L); }
     /// Sets `enableCbCrDegamma` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void enableCbCrDegamma(MemorySegment segment, long index, int value) { VH_enableCbCrDegamma.set(segment, 0L, index, value); }
+    public static void enableCbCrDegamma(MemorySegment segment, long index, int value) { VH_enableCbCrDegamma.get().set(segment, 0L, index, value); }
     /// Sets `enableCbCrDegamma` with the given value.
     /// @param value the value
     /// @return `this`

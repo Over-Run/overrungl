@@ -35,31 +35,31 @@ public final class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// The memory layout of `bit_rate_value_minus1`.
     public static final MemoryLayout LAYOUT_bit_rate_value_minus1 = LAYOUT.select(PathElement.groupElement("bit_rate_value_minus1"));
     /// The [VarHandle] of `bit_rate_value_minus1` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_bit_rate_value_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bit_rate_value_minus1"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_bit_rate_value_minus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bit_rate_value_minus1"), PathElement.sequenceElement()));
     /// The byte offset of `cpb_size_value_minus1`.
     public static final long OFFSET_cpb_size_value_minus1 = LAYOUT.byteOffset(PathElement.groupElement("cpb_size_value_minus1"));
     /// The memory layout of `cpb_size_value_minus1`.
     public static final MemoryLayout LAYOUT_cpb_size_value_minus1 = LAYOUT.select(PathElement.groupElement("cpb_size_value_minus1"));
     /// The [VarHandle] of `cpb_size_value_minus1` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_cpb_size_value_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cpb_size_value_minus1"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_cpb_size_value_minus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cpb_size_value_minus1"), PathElement.sequenceElement()));
     /// The byte offset of `cpb_size_du_value_minus1`.
     public static final long OFFSET_cpb_size_du_value_minus1 = LAYOUT.byteOffset(PathElement.groupElement("cpb_size_du_value_minus1"));
     /// The memory layout of `cpb_size_du_value_minus1`.
     public static final MemoryLayout LAYOUT_cpb_size_du_value_minus1 = LAYOUT.select(PathElement.groupElement("cpb_size_du_value_minus1"));
     /// The [VarHandle] of `cpb_size_du_value_minus1` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_cpb_size_du_value_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cpb_size_du_value_minus1"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_cpb_size_du_value_minus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cpb_size_du_value_minus1"), PathElement.sequenceElement()));
     /// The byte offset of `bit_rate_du_value_minus1`.
     public static final long OFFSET_bit_rate_du_value_minus1 = LAYOUT.byteOffset(PathElement.groupElement("bit_rate_du_value_minus1"));
     /// The memory layout of `bit_rate_du_value_minus1`.
     public static final MemoryLayout LAYOUT_bit_rate_du_value_minus1 = LAYOUT.select(PathElement.groupElement("bit_rate_du_value_minus1"));
     /// The [VarHandle] of `bit_rate_du_value_minus1` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_bit_rate_du_value_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bit_rate_du_value_minus1"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_bit_rate_du_value_minus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bit_rate_du_value_minus1"), PathElement.sequenceElement()));
     /// The byte offset of `cbr_flag`.
     public static final long OFFSET_cbr_flag = LAYOUT.byteOffset(PathElement.groupElement("cbr_flag"));
     /// The memory layout of `cbr_flag`.
     public static final MemoryLayout LAYOUT_cbr_flag = LAYOUT.select(PathElement.groupElement("cbr_flag"));
     /// The [VarHandle] of `cbr_flag` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cbr_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cbr_flag"));
+    public static final Supplier<VarHandle> VH_cbr_flag = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cbr_flag")));
 
     /// Creates `StdVideoH265SubLayerHrdParameters` with the given segment.
     /// @param segment      the memory segment
@@ -115,7 +115,7 @@ public final class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int bit_rate_value_minus1(MemorySegment segment, long index, long index0) { return (int) VH_bit_rate_value_minus1.get(segment, 0L, index, index0); }
+    public static int bit_rate_value_minus1(MemorySegment segment, long index, long index0) { return (int) VH_bit_rate_value_minus1.get().get(segment, 0L, index, index0); }
     /// {@return `bit_rate_value_minus1`}
     public MemorySegment bit_rate_value_minus1() { return bit_rate_value_minus1(this.segment(), 0L); }
     /// {@return `bit_rate_value_minus1`}
@@ -131,7 +131,7 @@ public final class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void bit_rate_value_minus1(MemorySegment segment, long index, long index0, int value) { VH_bit_rate_value_minus1.set(segment, 0L, index, index0, value); }
+    public static void bit_rate_value_minus1(MemorySegment segment, long index, long index0, int value) { VH_bit_rate_value_minus1.get().set(segment, 0L, index, index0, value); }
     /// Sets `bit_rate_value_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,7 +150,7 @@ public final class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int cpb_size_value_minus1(MemorySegment segment, long index, long index0) { return (int) VH_cpb_size_value_minus1.get(segment, 0L, index, index0); }
+    public static int cpb_size_value_minus1(MemorySegment segment, long index, long index0) { return (int) VH_cpb_size_value_minus1.get().get(segment, 0L, index, index0); }
     /// {@return `cpb_size_value_minus1`}
     public MemorySegment cpb_size_value_minus1() { return cpb_size_value_minus1(this.segment(), 0L); }
     /// {@return `cpb_size_value_minus1`}
@@ -166,7 +166,7 @@ public final class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void cpb_size_value_minus1(MemorySegment segment, long index, long index0, int value) { VH_cpb_size_value_minus1.set(segment, 0L, index, index0, value); }
+    public static void cpb_size_value_minus1(MemorySegment segment, long index, long index0, int value) { VH_cpb_size_value_minus1.get().set(segment, 0L, index, index0, value); }
     /// Sets `cpb_size_value_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -185,7 +185,7 @@ public final class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int cpb_size_du_value_minus1(MemorySegment segment, long index, long index0) { return (int) VH_cpb_size_du_value_minus1.get(segment, 0L, index, index0); }
+    public static int cpb_size_du_value_minus1(MemorySegment segment, long index, long index0) { return (int) VH_cpb_size_du_value_minus1.get().get(segment, 0L, index, index0); }
     /// {@return `cpb_size_du_value_minus1`}
     public MemorySegment cpb_size_du_value_minus1() { return cpb_size_du_value_minus1(this.segment(), 0L); }
     /// {@return `cpb_size_du_value_minus1`}
@@ -201,7 +201,7 @@ public final class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void cpb_size_du_value_minus1(MemorySegment segment, long index, long index0, int value) { VH_cpb_size_du_value_minus1.set(segment, 0L, index, index0, value); }
+    public static void cpb_size_du_value_minus1(MemorySegment segment, long index, long index0, int value) { VH_cpb_size_du_value_minus1.get().set(segment, 0L, index, index0, value); }
     /// Sets `cpb_size_du_value_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -220,7 +220,7 @@ public final class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int bit_rate_du_value_minus1(MemorySegment segment, long index, long index0) { return (int) VH_bit_rate_du_value_minus1.get(segment, 0L, index, index0); }
+    public static int bit_rate_du_value_minus1(MemorySegment segment, long index, long index0) { return (int) VH_bit_rate_du_value_minus1.get().get(segment, 0L, index, index0); }
     /// {@return `bit_rate_du_value_minus1`}
     public MemorySegment bit_rate_du_value_minus1() { return bit_rate_du_value_minus1(this.segment(), 0L); }
     /// {@return `bit_rate_du_value_minus1`}
@@ -236,7 +236,7 @@ public final class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void bit_rate_du_value_minus1(MemorySegment segment, long index, long index0, int value) { VH_bit_rate_du_value_minus1.set(segment, 0L, index, index0, value); }
+    public static void bit_rate_du_value_minus1(MemorySegment segment, long index, long index0, int value) { VH_bit_rate_du_value_minus1.get().set(segment, 0L, index, index0, value); }
     /// Sets `bit_rate_du_value_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -250,14 +250,14 @@ public final class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// {@return `cbr_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cbr_flag(MemorySegment segment, long index) { return (int) VH_cbr_flag.get(segment, 0L, index); }
+    public static int cbr_flag(MemorySegment segment, long index) { return (int) VH_cbr_flag.get().get(segment, 0L, index); }
     /// {@return `cbr_flag`}
     public int cbr_flag() { return cbr_flag(this.segment(), 0L); }
     /// Sets `cbr_flag` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cbr_flag(MemorySegment segment, long index, int value) { VH_cbr_flag.set(segment, 0L, index, value); }
+    public static void cbr_flag(MemorySegment segment, long index, int value) { VH_cbr_flag.get().set(segment, 0L, index, value); }
     /// Sets `cbr_flag` with the given value.
     /// @param value the value
     /// @return `this`

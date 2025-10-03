@@ -41,25 +41,25 @@ public final class VkCopyMemoryToImageIndirectInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `srcCopyFlags`.
     public static final long OFFSET_srcCopyFlags = LAYOUT.byteOffset(PathElement.groupElement("srcCopyFlags"));
     /// The memory layout of `srcCopyFlags`.
     public static final MemoryLayout LAYOUT_srcCopyFlags = LAYOUT.select(PathElement.groupElement("srcCopyFlags"));
     /// The [VarHandle] of `srcCopyFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcCopyFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcCopyFlags"));
+    public static final Supplier<VarHandle> VH_srcCopyFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcCopyFlags")));
     /// The byte offset of `copyCount`.
     public static final long OFFSET_copyCount = LAYOUT.byteOffset(PathElement.groupElement("copyCount"));
     /// The memory layout of `copyCount`.
     public static final MemoryLayout LAYOUT_copyCount = LAYOUT.select(PathElement.groupElement("copyCount"));
     /// The [VarHandle] of `copyCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_copyCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("copyCount"));
+    public static final Supplier<VarHandle> VH_copyCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("copyCount")));
     /// The byte offset of `copyAddressRange`.
     public static final long OFFSET_copyAddressRange = LAYOUT.byteOffset(PathElement.groupElement("copyAddressRange"));
     /// The memory layout of `copyAddressRange`.
@@ -69,19 +69,19 @@ public final class VkCopyMemoryToImageIndirectInfoKHR extends GroupType {
     /// The memory layout of `dstImage`.
     public static final MemoryLayout LAYOUT_dstImage = LAYOUT.select(PathElement.groupElement("dstImage"));
     /// The [VarHandle] of `dstImage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstImage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstImage"));
+    public static final Supplier<VarHandle> VH_dstImage = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstImage")));
     /// The byte offset of `dstImageLayout`.
     public static final long OFFSET_dstImageLayout = LAYOUT.byteOffset(PathElement.groupElement("dstImageLayout"));
     /// The memory layout of `dstImageLayout`.
     public static final MemoryLayout LAYOUT_dstImageLayout = LAYOUT.select(PathElement.groupElement("dstImageLayout"));
     /// The [VarHandle] of `dstImageLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstImageLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstImageLayout"));
+    public static final Supplier<VarHandle> VH_dstImageLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstImageLayout")));
     /// The byte offset of `pImageSubresources`.
     public static final long OFFSET_pImageSubresources = LAYOUT.byteOffset(PathElement.groupElement("pImageSubresources"));
     /// The memory layout of `pImageSubresources`.
     public static final MemoryLayout LAYOUT_pImageSubresources = LAYOUT.select(PathElement.groupElement("pImageSubresources"));
     /// The [VarHandle] of `pImageSubresources` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pImageSubresources = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImageSubresources"));
+    public static final Supplier<VarHandle> VH_pImageSubresources = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImageSubresources")));
 
     /// Creates `VkCopyMemoryToImageIndirectInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -132,14 +132,14 @@ public final class VkCopyMemoryToImageIndirectInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -148,14 +148,14 @@ public final class VkCopyMemoryToImageIndirectInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,14 +164,14 @@ public final class VkCopyMemoryToImageIndirectInfoKHR extends GroupType {
     /// {@return `srcCopyFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int srcCopyFlags(MemorySegment segment, long index) { return (int) VH_srcCopyFlags.get(segment, 0L, index); }
+    public static int srcCopyFlags(MemorySegment segment, long index) { return (int) VH_srcCopyFlags.get().get(segment, 0L, index); }
     /// {@return `srcCopyFlags`}
     public int srcCopyFlags() { return srcCopyFlags(this.segment(), 0L); }
     /// Sets `srcCopyFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcCopyFlags(MemorySegment segment, long index, int value) { VH_srcCopyFlags.set(segment, 0L, index, value); }
+    public static void srcCopyFlags(MemorySegment segment, long index, int value) { VH_srcCopyFlags.get().set(segment, 0L, index, value); }
     /// Sets `srcCopyFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -180,14 +180,14 @@ public final class VkCopyMemoryToImageIndirectInfoKHR extends GroupType {
     /// {@return `copyCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int copyCount(MemorySegment segment, long index) { return (int) VH_copyCount.get(segment, 0L, index); }
+    public static int copyCount(MemorySegment segment, long index) { return (int) VH_copyCount.get().get(segment, 0L, index); }
     /// {@return `copyCount`}
     public int copyCount() { return copyCount(this.segment(), 0L); }
     /// Sets `copyCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void copyCount(MemorySegment segment, long index, int value) { VH_copyCount.set(segment, 0L, index, value); }
+    public static void copyCount(MemorySegment segment, long index, int value) { VH_copyCount.get().set(segment, 0L, index, value); }
     /// Sets `copyCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -216,14 +216,14 @@ public final class VkCopyMemoryToImageIndirectInfoKHR extends GroupType {
     /// {@return `dstImage` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dstImage(MemorySegment segment, long index) { return (long) VH_dstImage.get(segment, 0L, index); }
+    public static long dstImage(MemorySegment segment, long index) { return (long) VH_dstImage.get().get(segment, 0L, index); }
     /// {@return `dstImage`}
     public long dstImage() { return dstImage(this.segment(), 0L); }
     /// Sets `dstImage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstImage(MemorySegment segment, long index, long value) { VH_dstImage.set(segment, 0L, index, value); }
+    public static void dstImage(MemorySegment segment, long index, long value) { VH_dstImage.get().set(segment, 0L, index, value); }
     /// Sets `dstImage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,14 +232,14 @@ public final class VkCopyMemoryToImageIndirectInfoKHR extends GroupType {
     /// {@return `dstImageLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dstImageLayout(MemorySegment segment, long index) { return (int) VH_dstImageLayout.get(segment, 0L, index); }
+    public static int dstImageLayout(MemorySegment segment, long index) { return (int) VH_dstImageLayout.get().get(segment, 0L, index); }
     /// {@return `dstImageLayout`}
     public int dstImageLayout() { return dstImageLayout(this.segment(), 0L); }
     /// Sets `dstImageLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstImageLayout(MemorySegment segment, long index, int value) { VH_dstImageLayout.set(segment, 0L, index, value); }
+    public static void dstImageLayout(MemorySegment segment, long index, int value) { VH_dstImageLayout.get().set(segment, 0L, index, value); }
     /// Sets `dstImageLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,14 +248,14 @@ public final class VkCopyMemoryToImageIndirectInfoKHR extends GroupType {
     /// {@return `pImageSubresources` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pImageSubresources(MemorySegment segment, long index) { return (MemorySegment) VH_pImageSubresources.get(segment, 0L, index); }
+    public static MemorySegment pImageSubresources(MemorySegment segment, long index) { return (MemorySegment) VH_pImageSubresources.get().get(segment, 0L, index); }
     /// {@return `pImageSubresources`}
     public MemorySegment pImageSubresources() { return pImageSubresources(this.segment(), 0L); }
     /// Sets `pImageSubresources` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pImageSubresources(MemorySegment segment, long index, MemorySegment value) { VH_pImageSubresources.set(segment, 0L, index, value); }
+    public static void pImageSubresources(MemorySegment segment, long index, MemorySegment value) { VH_pImageSubresources.get().set(segment, 0L, index, value); }
     /// Sets `pImageSubresources` with the given value.
     /// @param value the value
     /// @return `this`

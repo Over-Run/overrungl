@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,10 +11,10 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLARBDrawBuffersBlend {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBlendEquationiARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBlendEquationSeparateiARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBlendFunciARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBlendFuncSeparateiARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glBlendEquationiARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBlendEquationSeparateiARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBlendFunciARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBlendFuncSeparateiARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glBlendEquationiARB;
         public final MemorySegment PFN_glBlendEquationSeparateiARB;
         public final MemorySegment PFN_glBlendFunciARB;
@@ -37,7 +38,7 @@ public final class GLARBDrawBuffersBlend {
     public void BlendEquationiARB(int buf, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationiARB)) throw new GLSymbolNotFoundError("Symbol not found: glBlendEquationiARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendEquationiARB", buf, mode); }
-        Handles.MH_glBlendEquationiARB.invokeExact(handles.PFN_glBlendEquationiARB, buf, mode); }
+        Handles.MH_glBlendEquationiARB.get().invokeExact(handles.PFN_glBlendEquationiARB, buf, mode); }
         catch (Throwable e) { throw new RuntimeException("error in BlendEquationiARB", e); }
     }
 
@@ -48,7 +49,7 @@ public final class GLARBDrawBuffersBlend {
     public void BlendEquationSeparateiARB(int buf, int modeRGB, int modeAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateiARB)) throw new GLSymbolNotFoundError("Symbol not found: glBlendEquationSeparateiARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendEquationSeparateiARB", buf, modeRGB, modeAlpha); }
-        Handles.MH_glBlendEquationSeparateiARB.invokeExact(handles.PFN_glBlendEquationSeparateiARB, buf, modeRGB, modeAlpha); }
+        Handles.MH_glBlendEquationSeparateiARB.get().invokeExact(handles.PFN_glBlendEquationSeparateiARB, buf, modeRGB, modeAlpha); }
         catch (Throwable e) { throw new RuntimeException("error in BlendEquationSeparateiARB", e); }
     }
 
@@ -59,7 +60,7 @@ public final class GLARBDrawBuffersBlend {
     public void BlendFunciARB(int buf, int src, int dst) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFunciARB)) throw new GLSymbolNotFoundError("Symbol not found: glBlendFunciARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendFunciARB", buf, src, dst); }
-        Handles.MH_glBlendFunciARB.invokeExact(handles.PFN_glBlendFunciARB, buf, src, dst); }
+        Handles.MH_glBlendFunciARB.get().invokeExact(handles.PFN_glBlendFunciARB, buf, src, dst); }
         catch (Throwable e) { throw new RuntimeException("error in BlendFunciARB", e); }
     }
 
@@ -70,7 +71,7 @@ public final class GLARBDrawBuffersBlend {
     public void BlendFuncSeparateiARB(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateiARB)) throw new GLSymbolNotFoundError("Symbol not found: glBlendFuncSeparateiARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendFuncSeparateiARB", buf, srcRGB, dstRGB, srcAlpha, dstAlpha); }
-        Handles.MH_glBlendFuncSeparateiARB.invokeExact(handles.PFN_glBlendFuncSeparateiARB, buf, srcRGB, dstRGB, srcAlpha, dstAlpha); }
+        Handles.MH_glBlendFuncSeparateiARB.get().invokeExact(handles.PFN_glBlendFuncSeparateiARB, buf, srcRGB, dstRGB, srcAlpha, dstAlpha); }
         catch (Throwable e) { throw new RuntimeException("error in BlendFuncSeparateiARB", e); }
     }
 

@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends GroupT
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `nestedCommandBuffer`.
     public static final long OFFSET_nestedCommandBuffer = LAYOUT.byteOffset(PathElement.groupElement("nestedCommandBuffer"));
     /// The memory layout of `nestedCommandBuffer`.
     public static final MemoryLayout LAYOUT_nestedCommandBuffer = LAYOUT.select(PathElement.groupElement("nestedCommandBuffer"));
     /// The [VarHandle] of `nestedCommandBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_nestedCommandBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nestedCommandBuffer"));
+    public static final Supplier<VarHandle> VH_nestedCommandBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("nestedCommandBuffer")));
     /// The byte offset of `nestedCommandBufferRendering`.
     public static final long OFFSET_nestedCommandBufferRendering = LAYOUT.byteOffset(PathElement.groupElement("nestedCommandBufferRendering"));
     /// The memory layout of `nestedCommandBufferRendering`.
     public static final MemoryLayout LAYOUT_nestedCommandBufferRendering = LAYOUT.select(PathElement.groupElement("nestedCommandBufferRendering"));
     /// The [VarHandle] of `nestedCommandBufferRendering` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_nestedCommandBufferRendering = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nestedCommandBufferRendering"));
+    public static final Supplier<VarHandle> VH_nestedCommandBufferRendering = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("nestedCommandBufferRendering")));
     /// The byte offset of `nestedCommandBufferSimultaneousUse`.
     public static final long OFFSET_nestedCommandBufferSimultaneousUse = LAYOUT.byteOffset(PathElement.groupElement("nestedCommandBufferSimultaneousUse"));
     /// The memory layout of `nestedCommandBufferSimultaneousUse`.
     public static final MemoryLayout LAYOUT_nestedCommandBufferSimultaneousUse = LAYOUT.select(PathElement.groupElement("nestedCommandBufferSimultaneousUse"));
     /// The [VarHandle] of `nestedCommandBufferSimultaneousUse` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_nestedCommandBufferSimultaneousUse = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nestedCommandBufferSimultaneousUse"));
+    public static final Supplier<VarHandle> VH_nestedCommandBufferSimultaneousUse = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("nestedCommandBufferSimultaneousUse")));
 
     /// Creates `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends GroupT
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends GroupT
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends GroupT
     /// {@return `nestedCommandBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int nestedCommandBuffer(MemorySegment segment, long index) { return (int) VH_nestedCommandBuffer.get(segment, 0L, index); }
+    public static int nestedCommandBuffer(MemorySegment segment, long index) { return (int) VH_nestedCommandBuffer.get().get(segment, 0L, index); }
     /// {@return `nestedCommandBuffer`}
     public int nestedCommandBuffer() { return nestedCommandBuffer(this.segment(), 0L); }
     /// Sets `nestedCommandBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void nestedCommandBuffer(MemorySegment segment, long index, int value) { VH_nestedCommandBuffer.set(segment, 0L, index, value); }
+    public static void nestedCommandBuffer(MemorySegment segment, long index, int value) { VH_nestedCommandBuffer.get().set(segment, 0L, index, value); }
     /// Sets `nestedCommandBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends GroupT
     /// {@return `nestedCommandBufferRendering` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int nestedCommandBufferRendering(MemorySegment segment, long index) { return (int) VH_nestedCommandBufferRendering.get(segment, 0L, index); }
+    public static int nestedCommandBufferRendering(MemorySegment segment, long index) { return (int) VH_nestedCommandBufferRendering.get().get(segment, 0L, index); }
     /// {@return `nestedCommandBufferRendering`}
     public int nestedCommandBufferRendering() { return nestedCommandBufferRendering(this.segment(), 0L); }
     /// Sets `nestedCommandBufferRendering` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void nestedCommandBufferRendering(MemorySegment segment, long index, int value) { VH_nestedCommandBufferRendering.set(segment, 0L, index, value); }
+    public static void nestedCommandBufferRendering(MemorySegment segment, long index, int value) { VH_nestedCommandBufferRendering.get().set(segment, 0L, index, value); }
     /// Sets `nestedCommandBufferRendering` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends GroupT
     /// {@return `nestedCommandBufferSimultaneousUse` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int nestedCommandBufferSimultaneousUse(MemorySegment segment, long index) { return (int) VH_nestedCommandBufferSimultaneousUse.get(segment, 0L, index); }
+    public static int nestedCommandBufferSimultaneousUse(MemorySegment segment, long index) { return (int) VH_nestedCommandBufferSimultaneousUse.get().get(segment, 0L, index); }
     /// {@return `nestedCommandBufferSimultaneousUse`}
     public int nestedCommandBufferSimultaneousUse() { return nestedCommandBufferSimultaneousUse(this.segment(), 0L); }
     /// Sets `nestedCommandBufferSimultaneousUse` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void nestedCommandBufferSimultaneousUse(MemorySegment segment, long index, int value) { VH_nestedCommandBufferSimultaneousUse.set(segment, 0L, index, value); }
+    public static void nestedCommandBufferSimultaneousUse(MemorySegment segment, long index, int value) { VH_nestedCommandBufferSimultaneousUse.get().set(segment, 0L, index, value); }
     /// Sets `nestedCommandBufferSimultaneousUse` with the given value.
     /// @param value the value
     /// @return `this`

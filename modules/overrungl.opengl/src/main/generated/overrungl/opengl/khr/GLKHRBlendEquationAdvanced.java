@@ -2,6 +2,7 @@
 package overrungl.opengl.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -25,7 +26,7 @@ public final class GLKHRBlendEquationAdvanced {
     public static final int GL_HSL_LUMINOSITY_KHR = 0x92B0;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBlendBarrierKHR = downcallHandle(FunctionDescriptor.ofVoid());
+        public static final Supplier<MethodHandle> MH_glBlendBarrierKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
         public final MemorySegment PFN_glBlendBarrierKHR;
         private Handles(GLLoadFunc func) {
             PFN_glBlendBarrierKHR = func.invoke("glBlendBarrierKHR", "glBlendBarrier");
@@ -43,7 +44,7 @@ public final class GLKHRBlendEquationAdvanced {
     public void BlendBarrierKHR() {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendBarrierKHR)) throw new GLSymbolNotFoundError("Symbol not found: glBlendBarrierKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendBarrierKHR"); }
-        Handles.MH_glBlendBarrierKHR.invokeExact(handles.PFN_glBlendBarrierKHR); }
+        Handles.MH_glBlendBarrierKHR.get().invokeExact(handles.PFN_glBlendBarrierKHR); }
         catch (Throwable e) { throw new RuntimeException("error in BlendBarrierKHR", e); }
     }
 

@@ -33,25 +33,25 @@ public final class VkDeviceImageSubresourceInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pCreateInfo`.
     public static final long OFFSET_pCreateInfo = LAYOUT.byteOffset(PathElement.groupElement("pCreateInfo"));
     /// The memory layout of `pCreateInfo`.
     public static final MemoryLayout LAYOUT_pCreateInfo = LAYOUT.select(PathElement.groupElement("pCreateInfo"));
     /// The [VarHandle] of `pCreateInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pCreateInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCreateInfo"));
+    public static final Supplier<VarHandle> VH_pCreateInfo = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCreateInfo")));
     /// The byte offset of `pSubresource`.
     public static final long OFFSET_pSubresource = LAYOUT.byteOffset(PathElement.groupElement("pSubresource"));
     /// The memory layout of `pSubresource`.
     public static final MemoryLayout LAYOUT_pSubresource = LAYOUT.select(PathElement.groupElement("pSubresource"));
     /// The [VarHandle] of `pSubresource` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pSubresource = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSubresource"));
+    public static final Supplier<VarHandle> VH_pSubresource = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSubresource")));
 
     /// Creates `VkDeviceImageSubresourceInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkDeviceImageSubresourceInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkDeviceImageSubresourceInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkDeviceImageSubresourceInfoKHR extends GroupType {
     /// {@return `pCreateInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pCreateInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pCreateInfo.get(segment, 0L, index); }
+    public static MemorySegment pCreateInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pCreateInfo.get().get(segment, 0L, index); }
     /// {@return `pCreateInfo`}
     public MemorySegment pCreateInfo() { return pCreateInfo(this.segment(), 0L); }
     /// Sets `pCreateInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pCreateInfo(MemorySegment segment, long index, MemorySegment value) { VH_pCreateInfo.set(segment, 0L, index, value); }
+    public static void pCreateInfo(MemorySegment segment, long index, MemorySegment value) { VH_pCreateInfo.get().set(segment, 0L, index, value); }
     /// Sets `pCreateInfo` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkDeviceImageSubresourceInfoKHR extends GroupType {
     /// {@return `pSubresource` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pSubresource(MemorySegment segment, long index) { return (MemorySegment) VH_pSubresource.get(segment, 0L, index); }
+    public static MemorySegment pSubresource(MemorySegment segment, long index) { return (MemorySegment) VH_pSubresource.get().get(segment, 0L, index); }
     /// {@return `pSubresource`}
     public MemorySegment pSubresource() { return pSubresource(this.segment(), 0L); }
     /// Sets `pSubresource` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pSubresource(MemorySegment segment, long index, MemorySegment value) { VH_pSubresource.set(segment, 0L, index, value); }
+    public static void pSubresource(MemorySegment segment, long index, MemorySegment value) { VH_pSubresource.get().set(segment, 0L, index, value); }
     /// Sets `pSubresource` with the given value.
     /// @param value the value
     /// @return `this`

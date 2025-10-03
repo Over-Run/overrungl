@@ -33,25 +33,25 @@ public final class STBTT__bitmap extends GroupType {
     /// The memory layout of `w`.
     public static final MemoryLayout LAYOUT_w = LAYOUT.select(PathElement.groupElement("w"));
     /// The [VarHandle] of `w` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_w = LAYOUT.arrayElementVarHandle(PathElement.groupElement("w"));
+    public static final Supplier<VarHandle> VH_w = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("w")));
     /// The byte offset of `h`.
     public static final long OFFSET_h = LAYOUT.byteOffset(PathElement.groupElement("h"));
     /// The memory layout of `h`.
     public static final MemoryLayout LAYOUT_h = LAYOUT.select(PathElement.groupElement("h"));
     /// The [VarHandle] of `h` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_h = LAYOUT.arrayElementVarHandle(PathElement.groupElement("h"));
+    public static final Supplier<VarHandle> VH_h = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("h")));
     /// The byte offset of `stride`.
     public static final long OFFSET_stride = LAYOUT.byteOffset(PathElement.groupElement("stride"));
     /// The memory layout of `stride`.
     public static final MemoryLayout LAYOUT_stride = LAYOUT.select(PathElement.groupElement("stride"));
     /// The [VarHandle] of `stride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride"));
+    public static final Supplier<VarHandle> VH_stride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride")));
     /// The byte offset of `pixels`.
     public static final long OFFSET_pixels = LAYOUT.byteOffset(PathElement.groupElement("pixels"));
     /// The memory layout of `pixels`.
     public static final MemoryLayout LAYOUT_pixels = LAYOUT.select(PathElement.groupElement("pixels"));
     /// The [VarHandle] of `pixels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pixels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixels"));
+    public static final Supplier<VarHandle> VH_pixels = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixels")));
 
     /// Creates `STBTT__bitmap` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class STBTT__bitmap extends GroupType {
     /// {@return `w` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int w(MemorySegment segment, long index) { return (int) VH_w.get(segment, 0L, index); }
+    public static int w(MemorySegment segment, long index) { return (int) VH_w.get().get(segment, 0L, index); }
     /// {@return `w`}
     public int w() { return w(this.segment(), 0L); }
     /// Sets `w` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void w(MemorySegment segment, long index, int value) { VH_w.set(segment, 0L, index, value); }
+    public static void w(MemorySegment segment, long index, int value) { VH_w.get().set(segment, 0L, index, value); }
     /// Sets `w` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class STBTT__bitmap extends GroupType {
     /// {@return `h` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int h(MemorySegment segment, long index) { return (int) VH_h.get(segment, 0L, index); }
+    public static int h(MemorySegment segment, long index) { return (int) VH_h.get().get(segment, 0L, index); }
     /// {@return `h`}
     public int h() { return h(this.segment(), 0L); }
     /// Sets `h` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void h(MemorySegment segment, long index, int value) { VH_h.set(segment, 0L, index, value); }
+    public static void h(MemorySegment segment, long index, int value) { VH_h.get().set(segment, 0L, index, value); }
     /// Sets `h` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class STBTT__bitmap extends GroupType {
     /// {@return `stride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stride(MemorySegment segment, long index) { return (int) VH_stride.get(segment, 0L, index); }
+    public static int stride(MemorySegment segment, long index) { return (int) VH_stride.get().get(segment, 0L, index); }
     /// {@return `stride`}
     public int stride() { return stride(this.segment(), 0L); }
     /// Sets `stride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stride(MemorySegment segment, long index, int value) { VH_stride.set(segment, 0L, index, value); }
+    public static void stride(MemorySegment segment, long index, int value) { VH_stride.get().set(segment, 0L, index, value); }
     /// Sets `stride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class STBTT__bitmap extends GroupType {
     /// {@return `pixels` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pixels(MemorySegment segment, long index) { return (MemorySegment) VH_pixels.get(segment, 0L, index); }
+    public static MemorySegment pixels(MemorySegment segment, long index) { return (MemorySegment) VH_pixels.get().get(segment, 0L, index); }
     /// {@return `pixels`}
     public MemorySegment pixels() { return pixels(this.segment(), 0L); }
     /// Sets `pixels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pixels(MemorySegment segment, long index, MemorySegment value) { VH_pixels.set(segment, 0L, index, value); }
+    public static void pixels(MemorySegment segment, long index, MemorySegment value) { VH_pixels.get().set(segment, 0L, index, value); }
     /// Sets `pixels` with the given value.
     /// @param value the value
     /// @return `this`

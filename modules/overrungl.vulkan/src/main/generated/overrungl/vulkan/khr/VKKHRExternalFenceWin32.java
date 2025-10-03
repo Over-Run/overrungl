@@ -2,6 +2,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -14,8 +15,8 @@ public final class VKKHRExternalFenceWin32 {
     public static final int VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR = 1000114001;
     public static final int VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR = 1000114002;
     public static final class Handles {
-        public static final MethodHandle MH_vkImportFenceWin32HandleKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetFenceWin32HandleKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkImportFenceWin32HandleKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetFenceWin32HandleKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -28,7 +29,7 @@ public final class VKKHRExternalFenceWin32 {
     public static int vkImportFenceWin32HandleKHR(@NonNull VkDevice device, @NonNull MemorySegment pImportFenceWin32HandleInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportFenceWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkImportFenceWin32HandleKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkImportFenceWin32HandleKHR", device, pImportFenceWin32HandleInfo); }
-        return (int) Handles.MH_vkImportFenceWin32HandleKHR.invokeExact(device.capabilities().PFN_vkImportFenceWin32HandleKHR, device.segment(), pImportFenceWin32HandleInfo); }
+        return (int) Handles.MH_vkImportFenceWin32HandleKHR.get().invokeExact(device.capabilities().PFN_vkImportFenceWin32HandleKHR, device.segment(), pImportFenceWin32HandleInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkImportFenceWin32HandleKHR", e); }
     }
 
@@ -39,7 +40,7 @@ public final class VKKHRExternalFenceWin32 {
     public static int vkGetFenceWin32HandleKHR(@NonNull VkDevice device, @NonNull MemorySegment pGetWin32HandleInfo, @NonNull MemorySegment pHandle) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetFenceWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetFenceWin32HandleKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetFenceWin32HandleKHR", device, pGetWin32HandleInfo, pHandle); }
-        return (int) Handles.MH_vkGetFenceWin32HandleKHR.invokeExact(device.capabilities().PFN_vkGetFenceWin32HandleKHR, device.segment(), pGetWin32HandleInfo, pHandle); }
+        return (int) Handles.MH_vkGetFenceWin32HandleKHR.get().invokeExact(device.capabilities().PFN_vkGetFenceWin32HandleKHR, device.segment(), pGetWin32HandleInfo, pHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetFenceWin32HandleKHR", e); }
     }
 

@@ -2,6 +2,7 @@
 package overrungl.vulkan.huawei;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -17,8 +18,8 @@ public final class VKHUAWEIClusterCullingShader {
     public static final int VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI = 0x00080000;
     public static final int VK_QUERY_PIPELINE_STATISTIC_CLUSTER_CULLING_SHADER_INVOCATIONS_BIT_HUAWEI = 0x00002000;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdDrawClusterHUAWEI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkCmdDrawClusterIndirectHUAWEI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_vkCmdDrawClusterHUAWEI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_vkCmdDrawClusterIndirectHUAWEI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)));
         private Handles() {}
     }
 
@@ -31,7 +32,7 @@ public final class VKHUAWEIClusterCullingShader {
     public static void vkCmdDrawClusterHUAWEI(@NonNull VkCommandBuffer commandBuffer, int groupCountX, int groupCountY, int groupCountZ) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawClusterHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawClusterHUAWEI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDrawClusterHUAWEI", commandBuffer, groupCountX, groupCountY, groupCountZ); }
-        Handles.MH_vkCmdDrawClusterHUAWEI.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawClusterHUAWEI, commandBuffer.segment(), groupCountX, groupCountY, groupCountZ); }
+        Handles.MH_vkCmdDrawClusterHUAWEI.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawClusterHUAWEI, commandBuffer.segment(), groupCountX, groupCountY, groupCountZ); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawClusterHUAWEI", e); }
     }
 
@@ -42,7 +43,7 @@ public final class VKHUAWEIClusterCullingShader {
     public static void vkCmdDrawClusterIndirectHUAWEI(@NonNull VkCommandBuffer commandBuffer, long buffer, long offset) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawClusterIndirectHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawClusterIndirectHUAWEI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDrawClusterIndirectHUAWEI", commandBuffer, buffer, offset); }
-        Handles.MH_vkCmdDrawClusterIndirectHUAWEI.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawClusterIndirectHUAWEI, commandBuffer.segment(), buffer, offset); }
+        Handles.MH_vkCmdDrawClusterIndirectHUAWEI.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawClusterIndirectHUAWEI, commandBuffer.segment(), buffer, offset); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawClusterIndirectHUAWEI", e); }
     }
 

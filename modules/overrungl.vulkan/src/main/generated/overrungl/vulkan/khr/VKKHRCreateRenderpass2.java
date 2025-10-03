@@ -2,6 +2,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -18,10 +19,10 @@ public final class VKKHRCreateRenderpass2 {
     public static final int VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO_KHR = 1000109005;
     public static final int VK_STRUCTURE_TYPE_SUBPASS_END_INFO_KHR = 1000109006;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateRenderPass2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBeginRenderPass2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdNextSubpass2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdEndRenderPass2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkCreateRenderPass2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdBeginRenderPass2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdNextSubpass2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkCmdEndRenderPass2KHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -34,7 +35,7 @@ public final class VKKHRCreateRenderpass2 {
     public static int vkCreateRenderPass2KHR(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pRenderPass) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateRenderPass2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateRenderPass2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateRenderPass2KHR", device, pCreateInfo, pAllocator, pRenderPass); }
-        return (int) Handles.MH_vkCreateRenderPass2KHR.invokeExact(device.capabilities().PFN_vkCreateRenderPass2KHR, device.segment(), pCreateInfo, pAllocator, pRenderPass); }
+        return (int) Handles.MH_vkCreateRenderPass2KHR.get().invokeExact(device.capabilities().PFN_vkCreateRenderPass2KHR, device.segment(), pCreateInfo, pAllocator, pRenderPass); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateRenderPass2KHR", e); }
     }
 
@@ -45,7 +46,7 @@ public final class VKKHRCreateRenderpass2 {
     public static void vkCmdBeginRenderPass2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pRenderPassBegin, @NonNull MemorySegment pSubpassBeginInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRenderPass2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginRenderPass2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBeginRenderPass2KHR", commandBuffer, pRenderPassBegin, pSubpassBeginInfo); }
-        Handles.MH_vkCmdBeginRenderPass2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginRenderPass2KHR, commandBuffer.segment(), pRenderPassBegin, pSubpassBeginInfo); }
+        Handles.MH_vkCmdBeginRenderPass2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginRenderPass2KHR, commandBuffer.segment(), pRenderPassBegin, pSubpassBeginInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginRenderPass2KHR", e); }
     }
 
@@ -56,7 +57,7 @@ public final class VKKHRCreateRenderpass2 {
     public static void vkCmdNextSubpass2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pSubpassBeginInfo, @NonNull MemorySegment pSubpassEndInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdNextSubpass2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdNextSubpass2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdNextSubpass2KHR", commandBuffer, pSubpassBeginInfo, pSubpassEndInfo); }
-        Handles.MH_vkCmdNextSubpass2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdNextSubpass2KHR, commandBuffer.segment(), pSubpassBeginInfo, pSubpassEndInfo); }
+        Handles.MH_vkCmdNextSubpass2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdNextSubpass2KHR, commandBuffer.segment(), pSubpassBeginInfo, pSubpassEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdNextSubpass2KHR", e); }
     }
 
@@ -67,7 +68,7 @@ public final class VKKHRCreateRenderpass2 {
     public static void vkCmdEndRenderPass2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pSubpassEndInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRenderPass2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndRenderPass2KHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndRenderPass2KHR", commandBuffer, pSubpassEndInfo); }
-        Handles.MH_vkCmdEndRenderPass2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRenderPass2KHR, commandBuffer.segment(), pSubpassEndInfo); }
+        Handles.MH_vkCmdEndRenderPass2KHR.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRenderPass2KHR, commandBuffer.segment(), pSubpassEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndRenderPass2KHR", e); }
     }
 

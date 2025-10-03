@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -21,13 +22,13 @@ public final class GLARBTextureCompression {
     public static final int GL_COMPRESSED_TEXTURE_FORMATS_ARB = 0x86A3;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glCompressedTexImage3DARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedTexImage2DARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedTexImage1DARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedTexSubImage3DARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedTexSubImage2DARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedTexSubImage1DARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetCompressedTexImageARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glCompressedTexImage3DARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedTexImage2DARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedTexImage1DARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedTexSubImage3DARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedTexSubImage2DARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedTexSubImage1DARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetCompressedTexImageARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glCompressedTexImage3DARB;
         public final MemorySegment PFN_glCompressedTexImage2DARB;
         public final MemorySegment PFN_glCompressedTexImage1DARB;
@@ -57,7 +58,7 @@ public final class GLARBTextureCompression {
     public void CompressedTexImage3DARB(int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage3DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexImage3DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexImage3DARB", target, level, internalformat, width, height, depth, border, imageSize, data); }
-        Handles.MH_glCompressedTexImage3DARB.invokeExact(handles.PFN_glCompressedTexImage3DARB, target, level, internalformat, width, height, depth, border, imageSize, data); }
+        Handles.MH_glCompressedTexImage3DARB.get().invokeExact(handles.PFN_glCompressedTexImage3DARB, target, level, internalformat, width, height, depth, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexImage3DARB", e); }
     }
 
@@ -68,7 +69,7 @@ public final class GLARBTextureCompression {
     public void CompressedTexImage2DARB(int target, int level, int internalformat, int width, int height, int border, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage2DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexImage2DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexImage2DARB", target, level, internalformat, width, height, border, imageSize, data); }
-        Handles.MH_glCompressedTexImage2DARB.invokeExact(handles.PFN_glCompressedTexImage2DARB, target, level, internalformat, width, height, border, imageSize, data); }
+        Handles.MH_glCompressedTexImage2DARB.get().invokeExact(handles.PFN_glCompressedTexImage2DARB, target, level, internalformat, width, height, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexImage2DARB", e); }
     }
 
@@ -79,7 +80,7 @@ public final class GLARBTextureCompression {
     public void CompressedTexImage1DARB(int target, int level, int internalformat, int width, int border, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage1DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexImage1DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexImage1DARB", target, level, internalformat, width, border, imageSize, data); }
-        Handles.MH_glCompressedTexImage1DARB.invokeExact(handles.PFN_glCompressedTexImage1DARB, target, level, internalformat, width, border, imageSize, data); }
+        Handles.MH_glCompressedTexImage1DARB.get().invokeExact(handles.PFN_glCompressedTexImage1DARB, target, level, internalformat, width, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexImage1DARB", e); }
     }
 
@@ -90,7 +91,7 @@ public final class GLARBTextureCompression {
     public void CompressedTexSubImage3DARB(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage3DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexSubImage3DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexSubImage3DARB", target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
-        Handles.MH_glCompressedTexSubImage3DARB.invokeExact(handles.PFN_glCompressedTexSubImage3DARB, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
+        Handles.MH_glCompressedTexSubImage3DARB.get().invokeExact(handles.PFN_glCompressedTexSubImage3DARB, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexSubImage3DARB", e); }
     }
 
@@ -101,7 +102,7 @@ public final class GLARBTextureCompression {
     public void CompressedTexSubImage2DARB(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage2DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexSubImage2DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexSubImage2DARB", target, level, xoffset, yoffset, width, height, format, imageSize, data); }
-        Handles.MH_glCompressedTexSubImage2DARB.invokeExact(handles.PFN_glCompressedTexSubImage2DARB, target, level, xoffset, yoffset, width, height, format, imageSize, data); }
+        Handles.MH_glCompressedTexSubImage2DARB.get().invokeExact(handles.PFN_glCompressedTexSubImage2DARB, target, level, xoffset, yoffset, width, height, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexSubImage2DARB", e); }
     }
 
@@ -112,7 +113,7 @@ public final class GLARBTextureCompression {
     public void CompressedTexSubImage1DARB(int target, int level, int xoffset, int width, int format, int imageSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage1DARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTexSubImage1DARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTexSubImage1DARB", target, level, xoffset, width, format, imageSize, data); }
-        Handles.MH_glCompressedTexSubImage1DARB.invokeExact(handles.PFN_glCompressedTexSubImage1DARB, target, level, xoffset, width, format, imageSize, data); }
+        Handles.MH_glCompressedTexSubImage1DARB.get().invokeExact(handles.PFN_glCompressedTexSubImage1DARB, target, level, xoffset, width, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTexSubImage1DARB", e); }
     }
 
@@ -123,7 +124,7 @@ public final class GLARBTextureCompression {
     public void GetCompressedTexImageARB(int target, int level, @NonNull MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedTexImageARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetCompressedTexImageARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetCompressedTexImageARB", target, level, img); }
-        Handles.MH_glGetCompressedTexImageARB.invokeExact(handles.PFN_glGetCompressedTexImageARB, target, level, img); }
+        Handles.MH_glGetCompressedTexImageARB.get().invokeExact(handles.PFN_glGetCompressedTexImageARB, target, level, img); }
         catch (Throwable e) { throw new RuntimeException("error in GetCompressedTexImageARB", e); }
     }
 

@@ -43,37 +43,37 @@ public final class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// The memory layout of `operating_point_idc`.
     public static final MemoryLayout LAYOUT_operating_point_idc = LAYOUT.select(PathElement.groupElement("operating_point_idc"));
     /// The [VarHandle] of `operating_point_idc` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_operating_point_idc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("operating_point_idc"));
+    public static final Supplier<VarHandle> VH_operating_point_idc = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("operating_point_idc")));
     /// The byte offset of `seq_level_idx`.
     public static final long OFFSET_seq_level_idx = LAYOUT.byteOffset(PathElement.groupElement("seq_level_idx"));
     /// The memory layout of `seq_level_idx`.
     public static final MemoryLayout LAYOUT_seq_level_idx = LAYOUT.select(PathElement.groupElement("seq_level_idx"));
     /// The [VarHandle] of `seq_level_idx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_seq_level_idx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("seq_level_idx"));
+    public static final Supplier<VarHandle> VH_seq_level_idx = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("seq_level_idx")));
     /// The byte offset of `seq_tier`.
     public static final long OFFSET_seq_tier = LAYOUT.byteOffset(PathElement.groupElement("seq_tier"));
     /// The memory layout of `seq_tier`.
     public static final MemoryLayout LAYOUT_seq_tier = LAYOUT.select(PathElement.groupElement("seq_tier"));
     /// The [VarHandle] of `seq_tier` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_seq_tier = LAYOUT.arrayElementVarHandle(PathElement.groupElement("seq_tier"));
+    public static final Supplier<VarHandle> VH_seq_tier = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("seq_tier")));
     /// The byte offset of `decoder_buffer_delay`.
     public static final long OFFSET_decoder_buffer_delay = LAYOUT.byteOffset(PathElement.groupElement("decoder_buffer_delay"));
     /// The memory layout of `decoder_buffer_delay`.
     public static final MemoryLayout LAYOUT_decoder_buffer_delay = LAYOUT.select(PathElement.groupElement("decoder_buffer_delay"));
     /// The [VarHandle] of `decoder_buffer_delay` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_decoder_buffer_delay = LAYOUT.arrayElementVarHandle(PathElement.groupElement("decoder_buffer_delay"));
+    public static final Supplier<VarHandle> VH_decoder_buffer_delay = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("decoder_buffer_delay")));
     /// The byte offset of `encoder_buffer_delay`.
     public static final long OFFSET_encoder_buffer_delay = LAYOUT.byteOffset(PathElement.groupElement("encoder_buffer_delay"));
     /// The memory layout of `encoder_buffer_delay`.
     public static final MemoryLayout LAYOUT_encoder_buffer_delay = LAYOUT.select(PathElement.groupElement("encoder_buffer_delay"));
     /// The [VarHandle] of `encoder_buffer_delay` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_encoder_buffer_delay = LAYOUT.arrayElementVarHandle(PathElement.groupElement("encoder_buffer_delay"));
+    public static final Supplier<VarHandle> VH_encoder_buffer_delay = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("encoder_buffer_delay")));
     /// The byte offset of `initial_display_delay_minus_1`.
     public static final long OFFSET_initial_display_delay_minus_1 = LAYOUT.byteOffset(PathElement.groupElement("initial_display_delay_minus_1"));
     /// The memory layout of `initial_display_delay_minus_1`.
     public static final MemoryLayout LAYOUT_initial_display_delay_minus_1 = LAYOUT.select(PathElement.groupElement("initial_display_delay_minus_1"));
     /// The [VarHandle] of `initial_display_delay_minus_1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_initial_display_delay_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("initial_display_delay_minus_1"));
+    public static final Supplier<VarHandle> VH_initial_display_delay_minus_1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("initial_display_delay_minus_1")));
 
     /// Creates `StdVideoEncodeAV1OperatingPointInfo` with the given segment.
     /// @param segment      the memory segment
@@ -144,14 +144,14 @@ public final class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// {@return `operating_point_idc` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static short operating_point_idc(MemorySegment segment, long index) { return (short) VH_operating_point_idc.get(segment, 0L, index); }
+    public static short operating_point_idc(MemorySegment segment, long index) { return (short) VH_operating_point_idc.get().get(segment, 0L, index); }
     /// {@return `operating_point_idc`}
     public short operating_point_idc() { return operating_point_idc(this.segment(), 0L); }
     /// Sets `operating_point_idc` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void operating_point_idc(MemorySegment segment, long index, short value) { VH_operating_point_idc.set(segment, 0L, index, value); }
+    public static void operating_point_idc(MemorySegment segment, long index, short value) { VH_operating_point_idc.get().set(segment, 0L, index, value); }
     /// Sets `operating_point_idc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -160,14 +160,14 @@ public final class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// {@return `seq_level_idx` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte seq_level_idx(MemorySegment segment, long index) { return (byte) VH_seq_level_idx.get(segment, 0L, index); }
+    public static byte seq_level_idx(MemorySegment segment, long index) { return (byte) VH_seq_level_idx.get().get(segment, 0L, index); }
     /// {@return `seq_level_idx`}
     public byte seq_level_idx() { return seq_level_idx(this.segment(), 0L); }
     /// Sets `seq_level_idx` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void seq_level_idx(MemorySegment segment, long index, byte value) { VH_seq_level_idx.set(segment, 0L, index, value); }
+    public static void seq_level_idx(MemorySegment segment, long index, byte value) { VH_seq_level_idx.get().set(segment, 0L, index, value); }
     /// Sets `seq_level_idx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,14 +176,14 @@ public final class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// {@return `seq_tier` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte seq_tier(MemorySegment segment, long index) { return (byte) VH_seq_tier.get(segment, 0L, index); }
+    public static byte seq_tier(MemorySegment segment, long index) { return (byte) VH_seq_tier.get().get(segment, 0L, index); }
     /// {@return `seq_tier`}
     public byte seq_tier() { return seq_tier(this.segment(), 0L); }
     /// Sets `seq_tier` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void seq_tier(MemorySegment segment, long index, byte value) { VH_seq_tier.set(segment, 0L, index, value); }
+    public static void seq_tier(MemorySegment segment, long index, byte value) { VH_seq_tier.get().set(segment, 0L, index, value); }
     /// Sets `seq_tier` with the given value.
     /// @param value the value
     /// @return `this`
@@ -192,14 +192,14 @@ public final class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// {@return `decoder_buffer_delay` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int decoder_buffer_delay(MemorySegment segment, long index) { return (int) VH_decoder_buffer_delay.get(segment, 0L, index); }
+    public static int decoder_buffer_delay(MemorySegment segment, long index) { return (int) VH_decoder_buffer_delay.get().get(segment, 0L, index); }
     /// {@return `decoder_buffer_delay`}
     public int decoder_buffer_delay() { return decoder_buffer_delay(this.segment(), 0L); }
     /// Sets `decoder_buffer_delay` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void decoder_buffer_delay(MemorySegment segment, long index, int value) { VH_decoder_buffer_delay.set(segment, 0L, index, value); }
+    public static void decoder_buffer_delay(MemorySegment segment, long index, int value) { VH_decoder_buffer_delay.get().set(segment, 0L, index, value); }
     /// Sets `decoder_buffer_delay` with the given value.
     /// @param value the value
     /// @return `this`
@@ -208,14 +208,14 @@ public final class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// {@return `encoder_buffer_delay` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int encoder_buffer_delay(MemorySegment segment, long index) { return (int) VH_encoder_buffer_delay.get(segment, 0L, index); }
+    public static int encoder_buffer_delay(MemorySegment segment, long index) { return (int) VH_encoder_buffer_delay.get().get(segment, 0L, index); }
     /// {@return `encoder_buffer_delay`}
     public int encoder_buffer_delay() { return encoder_buffer_delay(this.segment(), 0L); }
     /// Sets `encoder_buffer_delay` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void encoder_buffer_delay(MemorySegment segment, long index, int value) { VH_encoder_buffer_delay.set(segment, 0L, index, value); }
+    public static void encoder_buffer_delay(MemorySegment segment, long index, int value) { VH_encoder_buffer_delay.get().set(segment, 0L, index, value); }
     /// Sets `encoder_buffer_delay` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,14 +224,14 @@ public final class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// {@return `initial_display_delay_minus_1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte initial_display_delay_minus_1(MemorySegment segment, long index) { return (byte) VH_initial_display_delay_minus_1.get(segment, 0L, index); }
+    public static byte initial_display_delay_minus_1(MemorySegment segment, long index) { return (byte) VH_initial_display_delay_minus_1.get().get(segment, 0L, index); }
     /// {@return `initial_display_delay_minus_1`}
     public byte initial_display_delay_minus_1() { return initial_display_delay_minus_1(this.segment(), 0L); }
     /// Sets `initial_display_delay_minus_1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void initial_display_delay_minus_1(MemorySegment segment, long index, byte value) { VH_initial_display_delay_minus_1.set(segment, 0L, index, value); }
+    public static void initial_display_delay_minus_1(MemorySegment segment, long index, byte value) { VH_initial_display_delay_minus_1.get().set(segment, 0L, index, value); }
     /// Sets `initial_display_delay_minus_1` with the given value.
     /// @param value the value
     /// @return `this`

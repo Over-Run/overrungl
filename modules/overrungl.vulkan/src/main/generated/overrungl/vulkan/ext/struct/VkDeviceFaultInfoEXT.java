@@ -37,37 +37,37 @@ public final class VkDeviceFaultInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `description`.
     public static final long OFFSET_description = LAYOUT.byteOffset(PathElement.groupElement("description"));
     /// The memory layout of `description`.
     public static final MemoryLayout LAYOUT_description = LAYOUT.select(PathElement.groupElement("description"));
     /// The [VarHandle] of `description` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_description = LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_description = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement()));
     /// The byte offset of `pAddressInfos`.
     public static final long OFFSET_pAddressInfos = LAYOUT.byteOffset(PathElement.groupElement("pAddressInfos"));
     /// The memory layout of `pAddressInfos`.
     public static final MemoryLayout LAYOUT_pAddressInfos = LAYOUT.select(PathElement.groupElement("pAddressInfos"));
     /// The [VarHandle] of `pAddressInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pAddressInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAddressInfos"));
+    public static final Supplier<VarHandle> VH_pAddressInfos = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAddressInfos")));
     /// The byte offset of `pVendorInfos`.
     public static final long OFFSET_pVendorInfos = LAYOUT.byteOffset(PathElement.groupElement("pVendorInfos"));
     /// The memory layout of `pVendorInfos`.
     public static final MemoryLayout LAYOUT_pVendorInfos = LAYOUT.select(PathElement.groupElement("pVendorInfos"));
     /// The [VarHandle] of `pVendorInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pVendorInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVendorInfos"));
+    public static final Supplier<VarHandle> VH_pVendorInfos = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVendorInfos")));
     /// The byte offset of `pVendorBinaryData`.
     public static final long OFFSET_pVendorBinaryData = LAYOUT.byteOffset(PathElement.groupElement("pVendorBinaryData"));
     /// The memory layout of `pVendorBinaryData`.
     public static final MemoryLayout LAYOUT_pVendorBinaryData = LAYOUT.select(PathElement.groupElement("pVendorBinaryData"));
     /// The [VarHandle] of `pVendorBinaryData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pVendorBinaryData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVendorBinaryData"));
+    public static final Supplier<VarHandle> VH_pVendorBinaryData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVendorBinaryData")));
 
     /// Creates `VkDeviceFaultInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkDeviceFaultInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkDeviceFaultInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -155,7 +155,7 @@ public final class VkDeviceFaultInfoEXT extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get(segment, 0L, index, index0); }
+    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get().get(segment, 0L, index, index0); }
     /// {@return `description`}
     public MemorySegment description() { return description(this.segment(), 0L); }
     /// {@return `description`}
@@ -171,7 +171,7 @@ public final class VkDeviceFaultInfoEXT extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.set(segment, 0L, index, index0, value); }
+    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.get().set(segment, 0L, index, index0, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
@@ -185,14 +185,14 @@ public final class VkDeviceFaultInfoEXT extends GroupType {
     /// {@return `pAddressInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pAddressInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pAddressInfos.get(segment, 0L, index); }
+    public static MemorySegment pAddressInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pAddressInfos.get().get(segment, 0L, index); }
     /// {@return `pAddressInfos`}
     public MemorySegment pAddressInfos() { return pAddressInfos(this.segment(), 0L); }
     /// Sets `pAddressInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pAddressInfos(MemorySegment segment, long index, MemorySegment value) { VH_pAddressInfos.set(segment, 0L, index, value); }
+    public static void pAddressInfos(MemorySegment segment, long index, MemorySegment value) { VH_pAddressInfos.get().set(segment, 0L, index, value); }
     /// Sets `pAddressInfos` with the given value.
     /// @param value the value
     /// @return `this`
@@ -201,14 +201,14 @@ public final class VkDeviceFaultInfoEXT extends GroupType {
     /// {@return `pVendorInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pVendorInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pVendorInfos.get(segment, 0L, index); }
+    public static MemorySegment pVendorInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pVendorInfos.get().get(segment, 0L, index); }
     /// {@return `pVendorInfos`}
     public MemorySegment pVendorInfos() { return pVendorInfos(this.segment(), 0L); }
     /// Sets `pVendorInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pVendorInfos(MemorySegment segment, long index, MemorySegment value) { VH_pVendorInfos.set(segment, 0L, index, value); }
+    public static void pVendorInfos(MemorySegment segment, long index, MemorySegment value) { VH_pVendorInfos.get().set(segment, 0L, index, value); }
     /// Sets `pVendorInfos` with the given value.
     /// @param value the value
     /// @return `this`
@@ -217,14 +217,14 @@ public final class VkDeviceFaultInfoEXT extends GroupType {
     /// {@return `pVendorBinaryData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pVendorBinaryData(MemorySegment segment, long index) { return (MemorySegment) VH_pVendorBinaryData.get(segment, 0L, index); }
+    public static MemorySegment pVendorBinaryData(MemorySegment segment, long index) { return (MemorySegment) VH_pVendorBinaryData.get().get(segment, 0L, index); }
     /// {@return `pVendorBinaryData`}
     public MemorySegment pVendorBinaryData() { return pVendorBinaryData(this.segment(), 0L); }
     /// Sets `pVendorBinaryData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pVendorBinaryData(MemorySegment segment, long index, MemorySegment value) { VH_pVendorBinaryData.set(segment, 0L, index, value); }
+    public static void pVendorBinaryData(MemorySegment segment, long index, MemorySegment value) { VH_pVendorBinaryData.get().set(segment, 0L, index, value); }
     /// Sets `pVendorBinaryData` with the given value.
     /// @param value the value
     /// @return `this`

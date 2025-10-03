@@ -33,25 +33,25 @@ public final class VkImageCompressionPropertiesEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `imageCompressionFlags`.
     public static final long OFFSET_imageCompressionFlags = LAYOUT.byteOffset(PathElement.groupElement("imageCompressionFlags"));
     /// The memory layout of `imageCompressionFlags`.
     public static final MemoryLayout LAYOUT_imageCompressionFlags = LAYOUT.select(PathElement.groupElement("imageCompressionFlags"));
     /// The [VarHandle] of `imageCompressionFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageCompressionFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCompressionFlags"));
+    public static final Supplier<VarHandle> VH_imageCompressionFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCompressionFlags")));
     /// The byte offset of `imageCompressionFixedRateFlags`.
     public static final long OFFSET_imageCompressionFixedRateFlags = LAYOUT.byteOffset(PathElement.groupElement("imageCompressionFixedRateFlags"));
     /// The memory layout of `imageCompressionFixedRateFlags`.
     public static final MemoryLayout LAYOUT_imageCompressionFixedRateFlags = LAYOUT.select(PathElement.groupElement("imageCompressionFixedRateFlags"));
     /// The [VarHandle] of `imageCompressionFixedRateFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageCompressionFixedRateFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCompressionFixedRateFlags"));
+    public static final Supplier<VarHandle> VH_imageCompressionFixedRateFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCompressionFixedRateFlags")));
 
     /// Creates `VkImageCompressionPropertiesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkImageCompressionPropertiesEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkImageCompressionPropertiesEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkImageCompressionPropertiesEXT extends GroupType {
     /// {@return `imageCompressionFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageCompressionFlags(MemorySegment segment, long index) { return (int) VH_imageCompressionFlags.get(segment, 0L, index); }
+    public static int imageCompressionFlags(MemorySegment segment, long index) { return (int) VH_imageCompressionFlags.get().get(segment, 0L, index); }
     /// {@return `imageCompressionFlags`}
     public int imageCompressionFlags() { return imageCompressionFlags(this.segment(), 0L); }
     /// Sets `imageCompressionFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageCompressionFlags(MemorySegment segment, long index, int value) { VH_imageCompressionFlags.set(segment, 0L, index, value); }
+    public static void imageCompressionFlags(MemorySegment segment, long index, int value) { VH_imageCompressionFlags.get().set(segment, 0L, index, value); }
     /// Sets `imageCompressionFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkImageCompressionPropertiesEXT extends GroupType {
     /// {@return `imageCompressionFixedRateFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageCompressionFixedRateFlags(MemorySegment segment, long index) { return (int) VH_imageCompressionFixedRateFlags.get(segment, 0L, index); }
+    public static int imageCompressionFixedRateFlags(MemorySegment segment, long index) { return (int) VH_imageCompressionFixedRateFlags.get().get(segment, 0L, index); }
     /// {@return `imageCompressionFixedRateFlags`}
     public int imageCompressionFixedRateFlags() { return imageCompressionFixedRateFlags(this.segment(), 0L); }
     /// Sets `imageCompressionFixedRateFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageCompressionFixedRateFlags(MemorySegment segment, long index, int value) { VH_imageCompressionFixedRateFlags.set(segment, 0L, index, value); }
+    public static void imageCompressionFixedRateFlags(MemorySegment segment, long index, int value) { VH_imageCompressionFixedRateFlags.get().set(segment, 0L, index, value); }
     /// Sets `imageCompressionFixedRateFlags` with the given value.
     /// @param value the value
     /// @return `this`

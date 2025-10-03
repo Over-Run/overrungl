@@ -31,19 +31,19 @@ public final class VmaAllocatorInfo extends GroupType {
     /// The memory layout of `instance`.
     public static final MemoryLayout LAYOUT_instance = LAYOUT.select(PathElement.groupElement("instance"));
     /// The [VarHandle] of `instance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_instance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instance"));
+    public static final Supplier<VarHandle> VH_instance = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("instance")));
     /// The byte offset of `physicalDevice`.
     public static final long OFFSET_physicalDevice = LAYOUT.byteOffset(PathElement.groupElement("physicalDevice"));
     /// The memory layout of `physicalDevice`.
     public static final MemoryLayout LAYOUT_physicalDevice = LAYOUT.select(PathElement.groupElement("physicalDevice"));
     /// The [VarHandle] of `physicalDevice` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_physicalDevice = LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalDevice"));
+    public static final Supplier<VarHandle> VH_physicalDevice = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalDevice")));
     /// The byte offset of `device`.
     public static final long OFFSET_device = LAYOUT.byteOffset(PathElement.groupElement("device"));
     /// The memory layout of `device`.
     public static final MemoryLayout LAYOUT_device = LAYOUT.select(PathElement.groupElement("device"));
     /// The [VarHandle] of `device` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_device = LAYOUT.arrayElementVarHandle(PathElement.groupElement("device"));
+    public static final Supplier<VarHandle> VH_device = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("device")));
 
     /// Creates `VmaAllocatorInfo` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VmaAllocatorInfo extends GroupType {
     /// {@return `instance` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment instance(MemorySegment segment, long index) { return (MemorySegment) VH_instance.get(segment, 0L, index); }
+    public static MemorySegment instance(MemorySegment segment, long index) { return (MemorySegment) VH_instance.get().get(segment, 0L, index); }
     /// {@return `instance`}
     public MemorySegment instance() { return instance(this.segment(), 0L); }
     /// Sets `instance` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void instance(MemorySegment segment, long index, MemorySegment value) { VH_instance.set(segment, 0L, index, value); }
+    public static void instance(MemorySegment segment, long index, MemorySegment value) { VH_instance.get().set(segment, 0L, index, value); }
     /// Sets `instance` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VmaAllocatorInfo extends GroupType {
     /// {@return `physicalDevice` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment physicalDevice(MemorySegment segment, long index) { return (MemorySegment) VH_physicalDevice.get(segment, 0L, index); }
+    public static MemorySegment physicalDevice(MemorySegment segment, long index) { return (MemorySegment) VH_physicalDevice.get().get(segment, 0L, index); }
     /// {@return `physicalDevice`}
     public MemorySegment physicalDevice() { return physicalDevice(this.segment(), 0L); }
     /// Sets `physicalDevice` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void physicalDevice(MemorySegment segment, long index, MemorySegment value) { VH_physicalDevice.set(segment, 0L, index, value); }
+    public static void physicalDevice(MemorySegment segment, long index, MemorySegment value) { VH_physicalDevice.get().set(segment, 0L, index, value); }
     /// Sets `physicalDevice` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VmaAllocatorInfo extends GroupType {
     /// {@return `device` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment device(MemorySegment segment, long index) { return (MemorySegment) VH_device.get(segment, 0L, index); }
+    public static MemorySegment device(MemorySegment segment, long index) { return (MemorySegment) VH_device.get().get(segment, 0L, index); }
     /// {@return `device`}
     public MemorySegment device() { return device(this.segment(), 0L); }
     /// Sets `device` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void device(MemorySegment segment, long index, MemorySegment value) { VH_device.set(segment, 0L, index, value); }
+    public static void device(MemorySegment segment, long index, MemorySegment value) { VH_device.get().set(segment, 0L, index, value); }
     /// Sets `device` with the given value.
     /// @param value the value
     /// @return `this`

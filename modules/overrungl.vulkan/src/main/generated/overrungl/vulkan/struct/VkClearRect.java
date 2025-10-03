@@ -35,13 +35,13 @@ public final class VkClearRect extends GroupType {
     /// The memory layout of `baseArrayLayer`.
     public static final MemoryLayout LAYOUT_baseArrayLayer = LAYOUT.select(PathElement.groupElement("baseArrayLayer"));
     /// The [VarHandle] of `baseArrayLayer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_baseArrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseArrayLayer"));
+    public static final Supplier<VarHandle> VH_baseArrayLayer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseArrayLayer")));
     /// The byte offset of `layerCount`.
     public static final long OFFSET_layerCount = LAYOUT.byteOffset(PathElement.groupElement("layerCount"));
     /// The memory layout of `layerCount`.
     public static final MemoryLayout LAYOUT_layerCount = LAYOUT.select(PathElement.groupElement("layerCount"));
     /// The [VarHandle] of `layerCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_layerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layerCount"));
+    public static final Supplier<VarHandle> VH_layerCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("layerCount")));
 
     /// Creates `VkClearRect` with the given segment.
     /// @param segment      the memory segment
@@ -112,14 +112,14 @@ public final class VkClearRect extends GroupType {
     /// {@return `baseArrayLayer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int baseArrayLayer(MemorySegment segment, long index) { return (int) VH_baseArrayLayer.get(segment, 0L, index); }
+    public static int baseArrayLayer(MemorySegment segment, long index) { return (int) VH_baseArrayLayer.get().get(segment, 0L, index); }
     /// {@return `baseArrayLayer`}
     public int baseArrayLayer() { return baseArrayLayer(this.segment(), 0L); }
     /// Sets `baseArrayLayer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void baseArrayLayer(MemorySegment segment, long index, int value) { VH_baseArrayLayer.set(segment, 0L, index, value); }
+    public static void baseArrayLayer(MemorySegment segment, long index, int value) { VH_baseArrayLayer.get().set(segment, 0L, index, value); }
     /// Sets `baseArrayLayer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -128,14 +128,14 @@ public final class VkClearRect extends GroupType {
     /// {@return `layerCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int layerCount(MemorySegment segment, long index) { return (int) VH_layerCount.get(segment, 0L, index); }
+    public static int layerCount(MemorySegment segment, long index) { return (int) VH_layerCount.get().get(segment, 0L, index); }
     /// {@return `layerCount`}
     public int layerCount() { return layerCount(this.segment(), 0L); }
     /// Sets `layerCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void layerCount(MemorySegment segment, long index, int value) { VH_layerCount.set(segment, 0L, index, value); }
+    public static void layerCount(MemorySegment segment, long index, int value) { VH_layerCount.get().set(segment, 0L, index, value); }
     /// Sets `layerCount` with the given value.
     /// @param value the value
     /// @return `this`

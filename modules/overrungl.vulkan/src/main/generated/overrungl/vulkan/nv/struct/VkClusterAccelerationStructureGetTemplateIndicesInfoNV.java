@@ -27,7 +27,7 @@ public final class VkClusterAccelerationStructureGetTemplateIndicesInfoNV extend
     /// The memory layout of `clusterTemplateAddress`.
     public static final MemoryLayout LAYOUT_clusterTemplateAddress = LAYOUT.select(PathElement.groupElement("clusterTemplateAddress"));
     /// The [VarHandle] of `clusterTemplateAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterTemplateAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterTemplateAddress"));
+    public static final Supplier<VarHandle> VH_clusterTemplateAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterTemplateAddress")));
 
     /// Creates `VkClusterAccelerationStructureGetTemplateIndicesInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -78,14 +78,14 @@ public final class VkClusterAccelerationStructureGetTemplateIndicesInfoNV extend
     /// {@return `clusterTemplateAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long clusterTemplateAddress(MemorySegment segment, long index) { return (long) VH_clusterTemplateAddress.get(segment, 0L, index); }
+    public static long clusterTemplateAddress(MemorySegment segment, long index) { return (long) VH_clusterTemplateAddress.get().get(segment, 0L, index); }
     /// {@return `clusterTemplateAddress`}
     public long clusterTemplateAddress() { return clusterTemplateAddress(this.segment(), 0L); }
     /// Sets `clusterTemplateAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterTemplateAddress(MemorySegment segment, long index, long value) { VH_clusterTemplateAddress.set(segment, 0L, index, value); }
+    public static void clusterTemplateAddress(MemorySegment segment, long index, long value) { VH_clusterTemplateAddress.get().set(segment, 0L, index, value); }
     /// Sets `clusterTemplateAddress` with the given value.
     /// @param value the value
     /// @return `this`

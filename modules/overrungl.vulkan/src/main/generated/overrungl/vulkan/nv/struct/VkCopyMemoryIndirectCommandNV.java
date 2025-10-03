@@ -31,19 +31,19 @@ public final class VkCopyMemoryIndirectCommandNV extends GroupType {
     /// The memory layout of `srcAddress`.
     public static final MemoryLayout LAYOUT_srcAddress = LAYOUT.select(PathElement.groupElement("srcAddress"));
     /// The [VarHandle] of `srcAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAddress"));
+    public static final Supplier<VarHandle> VH_srcAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAddress")));
     /// The byte offset of `dstAddress`.
     public static final long OFFSET_dstAddress = LAYOUT.byteOffset(PathElement.groupElement("dstAddress"));
     /// The memory layout of `dstAddress`.
     public static final MemoryLayout LAYOUT_dstAddress = LAYOUT.select(PathElement.groupElement("dstAddress"));
     /// The [VarHandle] of `dstAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAddress"));
+    public static final Supplier<VarHandle> VH_dstAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAddress")));
     /// The byte offset of `size`.
     public static final long OFFSET_size = LAYOUT.byteOffset(PathElement.groupElement("size"));
     /// The memory layout of `size`.
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final Supplier<VarHandle> VH_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("size")));
 
     /// Creates `VkCopyMemoryIndirectCommandNV` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkCopyMemoryIndirectCommandNV extends GroupType {
     /// {@return `srcAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long srcAddress(MemorySegment segment, long index) { return (long) VH_srcAddress.get(segment, 0L, index); }
+    public static long srcAddress(MemorySegment segment, long index) { return (long) VH_srcAddress.get().get(segment, 0L, index); }
     /// {@return `srcAddress`}
     public long srcAddress() { return srcAddress(this.segment(), 0L); }
     /// Sets `srcAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcAddress(MemorySegment segment, long index, long value) { VH_srcAddress.set(segment, 0L, index, value); }
+    public static void srcAddress(MemorySegment segment, long index, long value) { VH_srcAddress.get().set(segment, 0L, index, value); }
     /// Sets `srcAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkCopyMemoryIndirectCommandNV extends GroupType {
     /// {@return `dstAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dstAddress(MemorySegment segment, long index) { return (long) VH_dstAddress.get(segment, 0L, index); }
+    public static long dstAddress(MemorySegment segment, long index) { return (long) VH_dstAddress.get().get(segment, 0L, index); }
     /// {@return `dstAddress`}
     public long dstAddress() { return dstAddress(this.segment(), 0L); }
     /// Sets `dstAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstAddress(MemorySegment segment, long index, long value) { VH_dstAddress.set(segment, 0L, index, value); }
+    public static void dstAddress(MemorySegment segment, long index, long value) { VH_dstAddress.get().set(segment, 0L, index, value); }
     /// Sets `dstAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkCopyMemoryIndirectCommandNV extends GroupType {
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long size(MemorySegment segment, long index) { return (long) VH_size.get(segment, 0L, index); }
+    public static long size(MemorySegment segment, long index) { return (long) VH_size.get().get(segment, 0L, index); }
     /// {@return `size`}
     public long size() { return size(this.segment(), 0L); }
     /// Sets `size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void size(MemorySegment segment, long index, long value) { VH_size.set(segment, 0L, index, value); }
+    public static void size(MemorySegment segment, long index, long value) { VH_size.get().set(segment, 0L, index, value); }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`

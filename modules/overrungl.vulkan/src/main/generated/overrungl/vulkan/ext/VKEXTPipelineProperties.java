@@ -2,6 +2,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -14,7 +15,7 @@ public final class VKEXTPipelineProperties {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT = 1000372001;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_INFO_EXT = 1000269001;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPipelinePropertiesEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkGetPipelinePropertiesEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -27,7 +28,7 @@ public final class VKEXTPipelineProperties {
     public static int vkGetPipelinePropertiesEXT(@NonNull VkDevice device, @NonNull MemorySegment pPipelineInfo, @NonNull MemorySegment pPipelineProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelinePropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelinePropertiesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPipelinePropertiesEXT", device, pPipelineInfo, pPipelineProperties); }
-        return (int) Handles.MH_vkGetPipelinePropertiesEXT.invokeExact(device.capabilities().PFN_vkGetPipelinePropertiesEXT, device.segment(), pPipelineInfo, pPipelineProperties); }
+        return (int) Handles.MH_vkGetPipelinePropertiesEXT.get().invokeExact(device.capabilities().PFN_vkGetPipelinePropertiesEXT, device.segment(), pPipelineInfo, pPipelineProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPipelinePropertiesEXT", e); }
     }
 

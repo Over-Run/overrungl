@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -18,26 +19,26 @@ public final class GLARBRobustness {
     public static final int GL_NO_RESET_NOTIFICATION_ARB = 0x8261;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetGraphicsResetStatusARB = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetnTexImageARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glReadnPixelsARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnCompressedTexImageARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnUniformfvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnUniformivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnUniformuivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnUniformdvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnMapdvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnMapfvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnMapivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnPixelMapfvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnPixelMapuivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnPixelMapusvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnPolygonStippleARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnColorTableARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnConvolutionFilterARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnSeparableFilterARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnHistogramARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetnMinmaxARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glGetGraphicsResetStatusARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetnTexImageARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glReadnPixelsARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnCompressedTexImageARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnUniformfvARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnUniformivARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnUniformuivARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnUniformdvARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnMapdvARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnMapfvARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnMapivARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnPixelMapfvARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnPixelMapuivARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnPixelMapusvARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnPolygonStippleARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnColorTableARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnConvolutionFilterARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnSeparableFilterARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnHistogramARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetnMinmaxARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glGetGraphicsResetStatusARB;
         public final MemorySegment PFN_glGetnTexImageARB;
         public final MemorySegment PFN_glReadnPixelsARB;
@@ -92,7 +93,7 @@ public final class GLARBRobustness {
     public int GetGraphicsResetStatusARB() {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetGraphicsResetStatusARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetGraphicsResetStatusARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetGraphicsResetStatusARB"); }
-        return (int) Handles.MH_glGetGraphicsResetStatusARB.invokeExact(handles.PFN_glGetGraphicsResetStatusARB); }
+        return (int) Handles.MH_glGetGraphicsResetStatusARB.get().invokeExact(handles.PFN_glGetGraphicsResetStatusARB); }
         catch (Throwable e) { throw new RuntimeException("error in GetGraphicsResetStatusARB", e); }
     }
 
@@ -103,7 +104,7 @@ public final class GLARBRobustness {
     public void GetnTexImageARB(int target, int level, int format, int type, int bufSize, @NonNull MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnTexImageARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnTexImageARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnTexImageARB", target, level, format, type, bufSize, img); }
-        Handles.MH_glGetnTexImageARB.invokeExact(handles.PFN_glGetnTexImageARB, target, level, format, type, bufSize, img); }
+        Handles.MH_glGetnTexImageARB.get().invokeExact(handles.PFN_glGetnTexImageARB, target, level, format, type, bufSize, img); }
         catch (Throwable e) { throw new RuntimeException("error in GetnTexImageARB", e); }
     }
 
@@ -114,7 +115,7 @@ public final class GLARBRobustness {
     public void ReadnPixelsARB(int x, int y, int width, int height, int format, int type, int bufSize, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReadnPixelsARB)) throw new GLSymbolNotFoundError("Symbol not found: glReadnPixelsARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glReadnPixelsARB", x, y, width, height, format, type, bufSize, data); }
-        Handles.MH_glReadnPixelsARB.invokeExact(handles.PFN_glReadnPixelsARB, x, y, width, height, format, type, bufSize, data); }
+        Handles.MH_glReadnPixelsARB.get().invokeExact(handles.PFN_glReadnPixelsARB, x, y, width, height, format, type, bufSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in ReadnPixelsARB", e); }
     }
 
@@ -125,7 +126,7 @@ public final class GLARBRobustness {
     public void GetnCompressedTexImageARB(int target, int lod, int bufSize, @NonNull MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnCompressedTexImageARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnCompressedTexImageARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnCompressedTexImageARB", target, lod, bufSize, img); }
-        Handles.MH_glGetnCompressedTexImageARB.invokeExact(handles.PFN_glGetnCompressedTexImageARB, target, lod, bufSize, img); }
+        Handles.MH_glGetnCompressedTexImageARB.get().invokeExact(handles.PFN_glGetnCompressedTexImageARB, target, lod, bufSize, img); }
         catch (Throwable e) { throw new RuntimeException("error in GetnCompressedTexImageARB", e); }
     }
 
@@ -136,7 +137,7 @@ public final class GLARBRobustness {
     public void GetnUniformfvARB(int program, int location, int bufSize, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformfvARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnUniformfvARB", program, location, bufSize, params); }
-        Handles.MH_glGetnUniformfvARB.invokeExact(handles.PFN_glGetnUniformfvARB, program, location, bufSize, params); }
+        Handles.MH_glGetnUniformfvARB.get().invokeExact(handles.PFN_glGetnUniformfvARB, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformfvARB", e); }
     }
 
@@ -147,7 +148,7 @@ public final class GLARBRobustness {
     public void GetnUniformivARB(int program, int location, int bufSize, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformivARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnUniformivARB", program, location, bufSize, params); }
-        Handles.MH_glGetnUniformivARB.invokeExact(handles.PFN_glGetnUniformivARB, program, location, bufSize, params); }
+        Handles.MH_glGetnUniformivARB.get().invokeExact(handles.PFN_glGetnUniformivARB, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformivARB", e); }
     }
 
@@ -158,7 +159,7 @@ public final class GLARBRobustness {
     public void GetnUniformuivARB(int program, int location, int bufSize, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformuivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformuivARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnUniformuivARB", program, location, bufSize, params); }
-        Handles.MH_glGetnUniformuivARB.invokeExact(handles.PFN_glGetnUniformuivARB, program, location, bufSize, params); }
+        Handles.MH_glGetnUniformuivARB.get().invokeExact(handles.PFN_glGetnUniformuivARB, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformuivARB", e); }
     }
 
@@ -169,7 +170,7 @@ public final class GLARBRobustness {
     public void GetnUniformdvARB(int program, int location, int bufSize, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformdvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformdvARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnUniformdvARB", program, location, bufSize, params); }
-        Handles.MH_glGetnUniformdvARB.invokeExact(handles.PFN_glGetnUniformdvARB, program, location, bufSize, params); }
+        Handles.MH_glGetnUniformdvARB.get().invokeExact(handles.PFN_glGetnUniformdvARB, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformdvARB", e); }
     }
 
@@ -180,7 +181,7 @@ public final class GLARBRobustness {
     public void GetnMapdvARB(int target, int query, int bufSize, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnMapdvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnMapdvARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnMapdvARB", target, query, bufSize, v); }
-        Handles.MH_glGetnMapdvARB.invokeExact(handles.PFN_glGetnMapdvARB, target, query, bufSize, v); }
+        Handles.MH_glGetnMapdvARB.get().invokeExact(handles.PFN_glGetnMapdvARB, target, query, bufSize, v); }
         catch (Throwable e) { throw new RuntimeException("error in GetnMapdvARB", e); }
     }
 
@@ -191,7 +192,7 @@ public final class GLARBRobustness {
     public void GetnMapfvARB(int target, int query, int bufSize, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnMapfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnMapfvARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnMapfvARB", target, query, bufSize, v); }
-        Handles.MH_glGetnMapfvARB.invokeExact(handles.PFN_glGetnMapfvARB, target, query, bufSize, v); }
+        Handles.MH_glGetnMapfvARB.get().invokeExact(handles.PFN_glGetnMapfvARB, target, query, bufSize, v); }
         catch (Throwable e) { throw new RuntimeException("error in GetnMapfvARB", e); }
     }
 
@@ -202,7 +203,7 @@ public final class GLARBRobustness {
     public void GetnMapivARB(int target, int query, int bufSize, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnMapivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnMapivARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnMapivARB", target, query, bufSize, v); }
-        Handles.MH_glGetnMapivARB.invokeExact(handles.PFN_glGetnMapivARB, target, query, bufSize, v); }
+        Handles.MH_glGetnMapivARB.get().invokeExact(handles.PFN_glGetnMapivARB, target, query, bufSize, v); }
         catch (Throwable e) { throw new RuntimeException("error in GetnMapivARB", e); }
     }
 
@@ -213,7 +214,7 @@ public final class GLARBRobustness {
     public void GetnPixelMapfvARB(int map, int bufSize, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnPixelMapfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnPixelMapfvARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnPixelMapfvARB", map, bufSize, values); }
-        Handles.MH_glGetnPixelMapfvARB.invokeExact(handles.PFN_glGetnPixelMapfvARB, map, bufSize, values); }
+        Handles.MH_glGetnPixelMapfvARB.get().invokeExact(handles.PFN_glGetnPixelMapfvARB, map, bufSize, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetnPixelMapfvARB", e); }
     }
 
@@ -224,7 +225,7 @@ public final class GLARBRobustness {
     public void GetnPixelMapuivARB(int map, int bufSize, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnPixelMapuivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnPixelMapuivARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnPixelMapuivARB", map, bufSize, values); }
-        Handles.MH_glGetnPixelMapuivARB.invokeExact(handles.PFN_glGetnPixelMapuivARB, map, bufSize, values); }
+        Handles.MH_glGetnPixelMapuivARB.get().invokeExact(handles.PFN_glGetnPixelMapuivARB, map, bufSize, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetnPixelMapuivARB", e); }
     }
 
@@ -235,7 +236,7 @@ public final class GLARBRobustness {
     public void GetnPixelMapusvARB(int map, int bufSize, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnPixelMapusvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnPixelMapusvARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnPixelMapusvARB", map, bufSize, values); }
-        Handles.MH_glGetnPixelMapusvARB.invokeExact(handles.PFN_glGetnPixelMapusvARB, map, bufSize, values); }
+        Handles.MH_glGetnPixelMapusvARB.get().invokeExact(handles.PFN_glGetnPixelMapusvARB, map, bufSize, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetnPixelMapusvARB", e); }
     }
 
@@ -246,7 +247,7 @@ public final class GLARBRobustness {
     public void GetnPolygonStippleARB(int bufSize, @NonNull MemorySegment pattern) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnPolygonStippleARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnPolygonStippleARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnPolygonStippleARB", bufSize, pattern); }
-        Handles.MH_glGetnPolygonStippleARB.invokeExact(handles.PFN_glGetnPolygonStippleARB, bufSize, pattern); }
+        Handles.MH_glGetnPolygonStippleARB.get().invokeExact(handles.PFN_glGetnPolygonStippleARB, bufSize, pattern); }
         catch (Throwable e) { throw new RuntimeException("error in GetnPolygonStippleARB", e); }
     }
 
@@ -257,7 +258,7 @@ public final class GLARBRobustness {
     public void GetnColorTableARB(int target, int format, int type, int bufSize, @NonNull MemorySegment table) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnColorTableARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnColorTableARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnColorTableARB", target, format, type, bufSize, table); }
-        Handles.MH_glGetnColorTableARB.invokeExact(handles.PFN_glGetnColorTableARB, target, format, type, bufSize, table); }
+        Handles.MH_glGetnColorTableARB.get().invokeExact(handles.PFN_glGetnColorTableARB, target, format, type, bufSize, table); }
         catch (Throwable e) { throw new RuntimeException("error in GetnColorTableARB", e); }
     }
 
@@ -268,7 +269,7 @@ public final class GLARBRobustness {
     public void GetnConvolutionFilterARB(int target, int format, int type, int bufSize, @NonNull MemorySegment image) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnConvolutionFilterARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnConvolutionFilterARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnConvolutionFilterARB", target, format, type, bufSize, image); }
-        Handles.MH_glGetnConvolutionFilterARB.invokeExact(handles.PFN_glGetnConvolutionFilterARB, target, format, type, bufSize, image); }
+        Handles.MH_glGetnConvolutionFilterARB.get().invokeExact(handles.PFN_glGetnConvolutionFilterARB, target, format, type, bufSize, image); }
         catch (Throwable e) { throw new RuntimeException("error in GetnConvolutionFilterARB", e); }
     }
 
@@ -279,7 +280,7 @@ public final class GLARBRobustness {
     public void GetnSeparableFilterARB(int target, int format, int type, int rowBufSize, @NonNull MemorySegment row, int columnBufSize, @NonNull MemorySegment column, @NonNull MemorySegment span) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnSeparableFilterARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnSeparableFilterARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnSeparableFilterARB", target, format, type, rowBufSize, row, columnBufSize, column, span); }
-        Handles.MH_glGetnSeparableFilterARB.invokeExact(handles.PFN_glGetnSeparableFilterARB, target, format, type, rowBufSize, row, columnBufSize, column, span); }
+        Handles.MH_glGetnSeparableFilterARB.get().invokeExact(handles.PFN_glGetnSeparableFilterARB, target, format, type, rowBufSize, row, columnBufSize, column, span); }
         catch (Throwable e) { throw new RuntimeException("error in GetnSeparableFilterARB", e); }
     }
 
@@ -290,7 +291,7 @@ public final class GLARBRobustness {
     public void GetnHistogramARB(int target, boolean reset, int format, int type, int bufSize, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnHistogramARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnHistogramARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnHistogramARB", target, reset, format, type, bufSize, values); }
-        Handles.MH_glGetnHistogramARB.invokeExact(handles.PFN_glGetnHistogramARB, target, ((reset) ? (byte)1 : (byte)0), format, type, bufSize, values); }
+        Handles.MH_glGetnHistogramARB.get().invokeExact(handles.PFN_glGetnHistogramARB, target, ((reset) ? (byte)1 : (byte)0), format, type, bufSize, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetnHistogramARB", e); }
     }
 
@@ -301,7 +302,7 @@ public final class GLARBRobustness {
     public void GetnMinmaxARB(int target, boolean reset, int format, int type, int bufSize, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnMinmaxARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnMinmaxARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetnMinmaxARB", target, reset, format, type, bufSize, values); }
-        Handles.MH_glGetnMinmaxARB.invokeExact(handles.PFN_glGetnMinmaxARB, target, ((reset) ? (byte)1 : (byte)0), format, type, bufSize, values); }
+        Handles.MH_glGetnMinmaxARB.get().invokeExact(handles.PFN_glGetnMinmaxARB, target, ((reset) ? (byte)1 : (byte)0), format, type, bufSize, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetnMinmaxARB", e); }
     }
 

@@ -65,85 +65,85 @@ public final class STBTTFontInfo extends GroupType {
     /// The memory layout of `userdata`.
     public static final MemoryLayout LAYOUT_userdata = LAYOUT.select(PathElement.groupElement("userdata"));
     /// The [VarHandle] of `userdata` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_userdata = LAYOUT.arrayElementVarHandle(PathElement.groupElement("userdata"));
+    public static final Supplier<VarHandle> VH_userdata = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("userdata")));
     /// The byte offset of `data`.
     public static final long OFFSET_data = LAYOUT.byteOffset(PathElement.groupElement("data"));
     /// The memory layout of `data`.
     public static final MemoryLayout LAYOUT_data = LAYOUT.select(PathElement.groupElement("data"));
     /// The [VarHandle] of `data` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_data = LAYOUT.arrayElementVarHandle(PathElement.groupElement("data"));
+    public static final Supplier<VarHandle> VH_data = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("data")));
     /// The byte offset of `fontstart`.
     public static final long OFFSET_fontstart = LAYOUT.byteOffset(PathElement.groupElement("fontstart"));
     /// The memory layout of `fontstart`.
     public static final MemoryLayout LAYOUT_fontstart = LAYOUT.select(PathElement.groupElement("fontstart"));
     /// The [VarHandle] of `fontstart` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fontstart = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fontstart"));
+    public static final Supplier<VarHandle> VH_fontstart = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fontstart")));
     /// The byte offset of `numGlyphs`.
     public static final long OFFSET_numGlyphs = LAYOUT.byteOffset(PathElement.groupElement("numGlyphs"));
     /// The memory layout of `numGlyphs`.
     public static final MemoryLayout LAYOUT_numGlyphs = LAYOUT.select(PathElement.groupElement("numGlyphs"));
     /// The [VarHandle] of `numGlyphs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_numGlyphs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numGlyphs"));
+    public static final Supplier<VarHandle> VH_numGlyphs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("numGlyphs")));
     /// The byte offset of `loca`.
     public static final long OFFSET_loca = LAYOUT.byteOffset(PathElement.groupElement("loca"));
     /// The memory layout of `loca`.
     public static final MemoryLayout LAYOUT_loca = LAYOUT.select(PathElement.groupElement("loca"));
     /// The [VarHandle] of `loca` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_loca = LAYOUT.arrayElementVarHandle(PathElement.groupElement("loca"));
+    public static final Supplier<VarHandle> VH_loca = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("loca")));
     /// The byte offset of `head`.
     public static final long OFFSET_head = LAYOUT.byteOffset(PathElement.groupElement("head"));
     /// The memory layout of `head`.
     public static final MemoryLayout LAYOUT_head = LAYOUT.select(PathElement.groupElement("head"));
     /// The [VarHandle] of `head` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_head = LAYOUT.arrayElementVarHandle(PathElement.groupElement("head"));
+    public static final Supplier<VarHandle> VH_head = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("head")));
     /// The byte offset of `glyf`.
     public static final long OFFSET_glyf = LAYOUT.byteOffset(PathElement.groupElement("glyf"));
     /// The memory layout of `glyf`.
     public static final MemoryLayout LAYOUT_glyf = LAYOUT.select(PathElement.groupElement("glyf"));
     /// The [VarHandle] of `glyf` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_glyf = LAYOUT.arrayElementVarHandle(PathElement.groupElement("glyf"));
+    public static final Supplier<VarHandle> VH_glyf = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("glyf")));
     /// The byte offset of `hhea`.
     public static final long OFFSET_hhea = LAYOUT.byteOffset(PathElement.groupElement("hhea"));
     /// The memory layout of `hhea`.
     public static final MemoryLayout LAYOUT_hhea = LAYOUT.select(PathElement.groupElement("hhea"));
     /// The [VarHandle] of `hhea` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hhea = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hhea"));
+    public static final Supplier<VarHandle> VH_hhea = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hhea")));
     /// The byte offset of `hmtx`.
     public static final long OFFSET_hmtx = LAYOUT.byteOffset(PathElement.groupElement("hmtx"));
     /// The memory layout of `hmtx`.
     public static final MemoryLayout LAYOUT_hmtx = LAYOUT.select(PathElement.groupElement("hmtx"));
     /// The [VarHandle] of `hmtx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hmtx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hmtx"));
+    public static final Supplier<VarHandle> VH_hmtx = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hmtx")));
     /// The byte offset of `kern`.
     public static final long OFFSET_kern = LAYOUT.byteOffset(PathElement.groupElement("kern"));
     /// The memory layout of `kern`.
     public static final MemoryLayout LAYOUT_kern = LAYOUT.select(PathElement.groupElement("kern"));
     /// The [VarHandle] of `kern` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_kern = LAYOUT.arrayElementVarHandle(PathElement.groupElement("kern"));
+    public static final Supplier<VarHandle> VH_kern = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("kern")));
     /// The byte offset of `gpos`.
     public static final long OFFSET_gpos = LAYOUT.byteOffset(PathElement.groupElement("gpos"));
     /// The memory layout of `gpos`.
     public static final MemoryLayout LAYOUT_gpos = LAYOUT.select(PathElement.groupElement("gpos"));
     /// The [VarHandle] of `gpos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_gpos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("gpos"));
+    public static final Supplier<VarHandle> VH_gpos = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("gpos")));
     /// The byte offset of `svg`.
     public static final long OFFSET_svg = LAYOUT.byteOffset(PathElement.groupElement("svg"));
     /// The memory layout of `svg`.
     public static final MemoryLayout LAYOUT_svg = LAYOUT.select(PathElement.groupElement("svg"));
     /// The [VarHandle] of `svg` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_svg = LAYOUT.arrayElementVarHandle(PathElement.groupElement("svg"));
+    public static final Supplier<VarHandle> VH_svg = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("svg")));
     /// The byte offset of `index_map`.
     public static final long OFFSET_index_map = LAYOUT.byteOffset(PathElement.groupElement("index_map"));
     /// The memory layout of `index_map`.
     public static final MemoryLayout LAYOUT_index_map = LAYOUT.select(PathElement.groupElement("index_map"));
     /// The [VarHandle] of `index_map` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_index_map = LAYOUT.arrayElementVarHandle(PathElement.groupElement("index_map"));
+    public static final Supplier<VarHandle> VH_index_map = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("index_map")));
     /// The byte offset of `indexToLocFormat`.
     public static final long OFFSET_indexToLocFormat = LAYOUT.byteOffset(PathElement.groupElement("indexToLocFormat"));
     /// The memory layout of `indexToLocFormat`.
     public static final MemoryLayout LAYOUT_indexToLocFormat = LAYOUT.select(PathElement.groupElement("indexToLocFormat"));
     /// The [VarHandle] of `indexToLocFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexToLocFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexToLocFormat"));
+    public static final Supplier<VarHandle> VH_indexToLocFormat = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexToLocFormat")));
     /// The byte offset of `cff`.
     public static final long OFFSET_cff = LAYOUT.byteOffset(PathElement.groupElement("cff"));
     /// The memory layout of `cff`.
@@ -218,14 +218,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `userdata` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment userdata(MemorySegment segment, long index) { return (MemorySegment) VH_userdata.get(segment, 0L, index); }
+    public static MemorySegment userdata(MemorySegment segment, long index) { return (MemorySegment) VH_userdata.get().get(segment, 0L, index); }
     /// {@return `userdata`}
     public MemorySegment userdata() { return userdata(this.segment(), 0L); }
     /// Sets `userdata` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void userdata(MemorySegment segment, long index, MemorySegment value) { VH_userdata.set(segment, 0L, index, value); }
+    public static void userdata(MemorySegment segment, long index, MemorySegment value) { VH_userdata.get().set(segment, 0L, index, value); }
     /// Sets `userdata` with the given value.
     /// @param value the value
     /// @return `this`
@@ -234,14 +234,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `data` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment data(MemorySegment segment, long index) { return (MemorySegment) VH_data.get(segment, 0L, index); }
+    public static MemorySegment data(MemorySegment segment, long index) { return (MemorySegment) VH_data.get().get(segment, 0L, index); }
     /// {@return `data`}
     public MemorySegment data() { return data(this.segment(), 0L); }
     /// Sets `data` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void data(MemorySegment segment, long index, MemorySegment value) { VH_data.set(segment, 0L, index, value); }
+    public static void data(MemorySegment segment, long index, MemorySegment value) { VH_data.get().set(segment, 0L, index, value); }
     /// Sets `data` with the given value.
     /// @param value the value
     /// @return `this`
@@ -250,14 +250,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `fontstart` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fontstart(MemorySegment segment, long index) { return (int) VH_fontstart.get(segment, 0L, index); }
+    public static int fontstart(MemorySegment segment, long index) { return (int) VH_fontstart.get().get(segment, 0L, index); }
     /// {@return `fontstart`}
     public int fontstart() { return fontstart(this.segment(), 0L); }
     /// Sets `fontstart` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fontstart(MemorySegment segment, long index, int value) { VH_fontstart.set(segment, 0L, index, value); }
+    public static void fontstart(MemorySegment segment, long index, int value) { VH_fontstart.get().set(segment, 0L, index, value); }
     /// Sets `fontstart` with the given value.
     /// @param value the value
     /// @return `this`
@@ -266,14 +266,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `numGlyphs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int numGlyphs(MemorySegment segment, long index) { return (int) VH_numGlyphs.get(segment, 0L, index); }
+    public static int numGlyphs(MemorySegment segment, long index) { return (int) VH_numGlyphs.get().get(segment, 0L, index); }
     /// {@return `numGlyphs`}
     public int numGlyphs() { return numGlyphs(this.segment(), 0L); }
     /// Sets `numGlyphs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void numGlyphs(MemorySegment segment, long index, int value) { VH_numGlyphs.set(segment, 0L, index, value); }
+    public static void numGlyphs(MemorySegment segment, long index, int value) { VH_numGlyphs.get().set(segment, 0L, index, value); }
     /// Sets `numGlyphs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -282,14 +282,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `loca` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int loca(MemorySegment segment, long index) { return (int) VH_loca.get(segment, 0L, index); }
+    public static int loca(MemorySegment segment, long index) { return (int) VH_loca.get().get(segment, 0L, index); }
     /// {@return `loca`}
     public int loca() { return loca(this.segment(), 0L); }
     /// Sets `loca` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void loca(MemorySegment segment, long index, int value) { VH_loca.set(segment, 0L, index, value); }
+    public static void loca(MemorySegment segment, long index, int value) { VH_loca.get().set(segment, 0L, index, value); }
     /// Sets `loca` with the given value.
     /// @param value the value
     /// @return `this`
@@ -298,14 +298,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `head` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int head(MemorySegment segment, long index) { return (int) VH_head.get(segment, 0L, index); }
+    public static int head(MemorySegment segment, long index) { return (int) VH_head.get().get(segment, 0L, index); }
     /// {@return `head`}
     public int head() { return head(this.segment(), 0L); }
     /// Sets `head` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void head(MemorySegment segment, long index, int value) { VH_head.set(segment, 0L, index, value); }
+    public static void head(MemorySegment segment, long index, int value) { VH_head.get().set(segment, 0L, index, value); }
     /// Sets `head` with the given value.
     /// @param value the value
     /// @return `this`
@@ -314,14 +314,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `glyf` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int glyf(MemorySegment segment, long index) { return (int) VH_glyf.get(segment, 0L, index); }
+    public static int glyf(MemorySegment segment, long index) { return (int) VH_glyf.get().get(segment, 0L, index); }
     /// {@return `glyf`}
     public int glyf() { return glyf(this.segment(), 0L); }
     /// Sets `glyf` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void glyf(MemorySegment segment, long index, int value) { VH_glyf.set(segment, 0L, index, value); }
+    public static void glyf(MemorySegment segment, long index, int value) { VH_glyf.get().set(segment, 0L, index, value); }
     /// Sets `glyf` with the given value.
     /// @param value the value
     /// @return `this`
@@ -330,14 +330,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `hhea` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int hhea(MemorySegment segment, long index) { return (int) VH_hhea.get(segment, 0L, index); }
+    public static int hhea(MemorySegment segment, long index) { return (int) VH_hhea.get().get(segment, 0L, index); }
     /// {@return `hhea`}
     public int hhea() { return hhea(this.segment(), 0L); }
     /// Sets `hhea` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void hhea(MemorySegment segment, long index, int value) { VH_hhea.set(segment, 0L, index, value); }
+    public static void hhea(MemorySegment segment, long index, int value) { VH_hhea.get().set(segment, 0L, index, value); }
     /// Sets `hhea` with the given value.
     /// @param value the value
     /// @return `this`
@@ -346,14 +346,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `hmtx` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int hmtx(MemorySegment segment, long index) { return (int) VH_hmtx.get(segment, 0L, index); }
+    public static int hmtx(MemorySegment segment, long index) { return (int) VH_hmtx.get().get(segment, 0L, index); }
     /// {@return `hmtx`}
     public int hmtx() { return hmtx(this.segment(), 0L); }
     /// Sets `hmtx` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void hmtx(MemorySegment segment, long index, int value) { VH_hmtx.set(segment, 0L, index, value); }
+    public static void hmtx(MemorySegment segment, long index, int value) { VH_hmtx.get().set(segment, 0L, index, value); }
     /// Sets `hmtx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -362,14 +362,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `kern` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int kern(MemorySegment segment, long index) { return (int) VH_kern.get(segment, 0L, index); }
+    public static int kern(MemorySegment segment, long index) { return (int) VH_kern.get().get(segment, 0L, index); }
     /// {@return `kern`}
     public int kern() { return kern(this.segment(), 0L); }
     /// Sets `kern` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void kern(MemorySegment segment, long index, int value) { VH_kern.set(segment, 0L, index, value); }
+    public static void kern(MemorySegment segment, long index, int value) { VH_kern.get().set(segment, 0L, index, value); }
     /// Sets `kern` with the given value.
     /// @param value the value
     /// @return `this`
@@ -378,14 +378,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `gpos` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int gpos(MemorySegment segment, long index) { return (int) VH_gpos.get(segment, 0L, index); }
+    public static int gpos(MemorySegment segment, long index) { return (int) VH_gpos.get().get(segment, 0L, index); }
     /// {@return `gpos`}
     public int gpos() { return gpos(this.segment(), 0L); }
     /// Sets `gpos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void gpos(MemorySegment segment, long index, int value) { VH_gpos.set(segment, 0L, index, value); }
+    public static void gpos(MemorySegment segment, long index, int value) { VH_gpos.get().set(segment, 0L, index, value); }
     /// Sets `gpos` with the given value.
     /// @param value the value
     /// @return `this`
@@ -394,14 +394,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `svg` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int svg(MemorySegment segment, long index) { return (int) VH_svg.get(segment, 0L, index); }
+    public static int svg(MemorySegment segment, long index) { return (int) VH_svg.get().get(segment, 0L, index); }
     /// {@return `svg`}
     public int svg() { return svg(this.segment(), 0L); }
     /// Sets `svg` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void svg(MemorySegment segment, long index, int value) { VH_svg.set(segment, 0L, index, value); }
+    public static void svg(MemorySegment segment, long index, int value) { VH_svg.get().set(segment, 0L, index, value); }
     /// Sets `svg` with the given value.
     /// @param value the value
     /// @return `this`
@@ -410,14 +410,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `index_map` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int index_map(MemorySegment segment, long index) { return (int) VH_index_map.get(segment, 0L, index); }
+    public static int index_map(MemorySegment segment, long index) { return (int) VH_index_map.get().get(segment, 0L, index); }
     /// {@return `index_map`}
     public int index_map() { return index_map(this.segment(), 0L); }
     /// Sets `index_map` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void index_map(MemorySegment segment, long index, int value) { VH_index_map.set(segment, 0L, index, value); }
+    public static void index_map(MemorySegment segment, long index, int value) { VH_index_map.get().set(segment, 0L, index, value); }
     /// Sets `index_map` with the given value.
     /// @param value the value
     /// @return `this`
@@ -426,14 +426,14 @@ public final class STBTTFontInfo extends GroupType {
     /// {@return `indexToLocFormat` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int indexToLocFormat(MemorySegment segment, long index) { return (int) VH_indexToLocFormat.get(segment, 0L, index); }
+    public static int indexToLocFormat(MemorySegment segment, long index) { return (int) VH_indexToLocFormat.get().get(segment, 0L, index); }
     /// {@return `indexToLocFormat`}
     public int indexToLocFormat() { return indexToLocFormat(this.segment(), 0L); }
     /// Sets `indexToLocFormat` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void indexToLocFormat(MemorySegment segment, long index, int value) { VH_indexToLocFormat.set(segment, 0L, index, value); }
+    public static void indexToLocFormat(MemorySegment segment, long index, int value) { VH_indexToLocFormat.get().set(segment, 0L, index, value); }
     /// Sets `indexToLocFormat` with the given value.
     /// @param value the value
     /// @return `this`

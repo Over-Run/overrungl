@@ -35,31 +35,31 @@ public final class VkPerformanceOverrideInfoINTEL extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `type`.
     public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
     /// The memory layout of `type`.
     public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
     /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
+    public static final Supplier<VarHandle> VH_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("type")));
     /// The byte offset of `enable`.
     public static final long OFFSET_enable = LAYOUT.byteOffset(PathElement.groupElement("enable"));
     /// The memory layout of `enable`.
     public static final MemoryLayout LAYOUT_enable = LAYOUT.select(PathElement.groupElement("enable"));
     /// The [VarHandle] of `enable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_enable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("enable"));
+    public static final Supplier<VarHandle> VH_enable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("enable")));
     /// The byte offset of `parameter`.
     public static final long OFFSET_parameter = LAYOUT.byteOffset(PathElement.groupElement("parameter"));
     /// The memory layout of `parameter`.
     public static final MemoryLayout LAYOUT_parameter = LAYOUT.select(PathElement.groupElement("parameter"));
     /// The [VarHandle] of `parameter` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_parameter = LAYOUT.arrayElementVarHandle(PathElement.groupElement("parameter"));
+    public static final Supplier<VarHandle> VH_parameter = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("parameter")));
 
     /// Creates `VkPerformanceOverrideInfoINTEL` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPerformanceOverrideInfoINTEL extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPerformanceOverrideInfoINTEL extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPerformanceOverrideInfoINTEL extends GroupType {
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
+    public static int type(MemorySegment segment, long index) { return (int) VH_type.get().get(segment, 0L, index); }
     /// {@return `type`}
     public int type() { return type(this.segment(), 0L); }
     /// Sets `type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void type(MemorySegment segment, long index, int value) { VH_type.set(segment, 0L, index, value); }
+    public static void type(MemorySegment segment, long index, int value) { VH_type.get().set(segment, 0L, index, value); }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPerformanceOverrideInfoINTEL extends GroupType {
     /// {@return `enable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int enable(MemorySegment segment, long index) { return (int) VH_enable.get(segment, 0L, index); }
+    public static int enable(MemorySegment segment, long index) { return (int) VH_enable.get().get(segment, 0L, index); }
     /// {@return `enable`}
     public int enable() { return enable(this.segment(), 0L); }
     /// Sets `enable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void enable(MemorySegment segment, long index, int value) { VH_enable.set(segment, 0L, index, value); }
+    public static void enable(MemorySegment segment, long index, int value) { VH_enable.get().set(segment, 0L, index, value); }
     /// Sets `enable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPerformanceOverrideInfoINTEL extends GroupType {
     /// {@return `parameter` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long parameter(MemorySegment segment, long index) { return (long) VH_parameter.get(segment, 0L, index); }
+    public static long parameter(MemorySegment segment, long index) { return (long) VH_parameter.get().get(segment, 0L, index); }
     /// {@return `parameter`}
     public long parameter() { return parameter(this.segment(), 0L); }
     /// Sets `parameter` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void parameter(MemorySegment segment, long index, long value) { VH_parameter.set(segment, 0L, index, value); }
+    public static void parameter(MemorySegment segment, long index, long value) { VH_parameter.get().set(segment, 0L, index, value); }
     /// Sets `parameter` with the given value.
     /// @param value the value
     /// @return `this`

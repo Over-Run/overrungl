@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -13,7 +14,7 @@ public final class GLARBES32Compatibility {
     public static final int GL_MULTISAMPLE_LINE_WIDTH_GRANULARITY_ARB = 0x9382;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glPrimitiveBoundingBoxARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_glPrimitiveBoundingBoxARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
         public final MemorySegment PFN_glPrimitiveBoundingBoxARB;
         private Handles(GLLoadFunc func) {
             PFN_glPrimitiveBoundingBoxARB = func.invoke("glPrimitiveBoundingBoxARB", "glPrimitiveBoundingBox");
@@ -31,7 +32,7 @@ public final class GLARBES32Compatibility {
     public void PrimitiveBoundingBoxARB(float minX, float minY, float minZ, float minW, float maxX, float maxY, float maxZ, float maxW) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPrimitiveBoundingBoxARB)) throw new GLSymbolNotFoundError("Symbol not found: glPrimitiveBoundingBoxARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPrimitiveBoundingBoxARB", minX, minY, minZ, minW, maxX, maxY, maxZ, maxW); }
-        Handles.MH_glPrimitiveBoundingBoxARB.invokeExact(handles.PFN_glPrimitiveBoundingBoxARB, minX, minY, minZ, minW, maxX, maxY, maxZ, maxW); }
+        Handles.MH_glPrimitiveBoundingBoxARB.get().invokeExact(handles.PFN_glPrimitiveBoundingBoxARB, minX, minY, minZ, minW, maxX, maxY, maxZ, maxW); }
         catch (Throwable e) { throw new RuntimeException("error in PrimitiveBoundingBoxARB", e); }
     }
 

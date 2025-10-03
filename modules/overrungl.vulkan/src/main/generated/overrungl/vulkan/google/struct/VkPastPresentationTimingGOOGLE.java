@@ -35,31 +35,31 @@ public final class VkPastPresentationTimingGOOGLE extends GroupType {
     /// The memory layout of `presentID`.
     public static final MemoryLayout LAYOUT_presentID = LAYOUT.select(PathElement.groupElement("presentID"));
     /// The [VarHandle] of `presentID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_presentID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentID"));
+    public static final Supplier<VarHandle> VH_presentID = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentID")));
     /// The byte offset of `desiredPresentTime`.
     public static final long OFFSET_desiredPresentTime = LAYOUT.byteOffset(PathElement.groupElement("desiredPresentTime"));
     /// The memory layout of `desiredPresentTime`.
     public static final MemoryLayout LAYOUT_desiredPresentTime = LAYOUT.select(PathElement.groupElement("desiredPresentTime"));
     /// The [VarHandle] of `desiredPresentTime` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_desiredPresentTime = LAYOUT.arrayElementVarHandle(PathElement.groupElement("desiredPresentTime"));
+    public static final Supplier<VarHandle> VH_desiredPresentTime = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("desiredPresentTime")));
     /// The byte offset of `actualPresentTime`.
     public static final long OFFSET_actualPresentTime = LAYOUT.byteOffset(PathElement.groupElement("actualPresentTime"));
     /// The memory layout of `actualPresentTime`.
     public static final MemoryLayout LAYOUT_actualPresentTime = LAYOUT.select(PathElement.groupElement("actualPresentTime"));
     /// The [VarHandle] of `actualPresentTime` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_actualPresentTime = LAYOUT.arrayElementVarHandle(PathElement.groupElement("actualPresentTime"));
+    public static final Supplier<VarHandle> VH_actualPresentTime = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("actualPresentTime")));
     /// The byte offset of `earliestPresentTime`.
     public static final long OFFSET_earliestPresentTime = LAYOUT.byteOffset(PathElement.groupElement("earliestPresentTime"));
     /// The memory layout of `earliestPresentTime`.
     public static final MemoryLayout LAYOUT_earliestPresentTime = LAYOUT.select(PathElement.groupElement("earliestPresentTime"));
     /// The [VarHandle] of `earliestPresentTime` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_earliestPresentTime = LAYOUT.arrayElementVarHandle(PathElement.groupElement("earliestPresentTime"));
+    public static final Supplier<VarHandle> VH_earliestPresentTime = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("earliestPresentTime")));
     /// The byte offset of `presentMargin`.
     public static final long OFFSET_presentMargin = LAYOUT.byteOffset(PathElement.groupElement("presentMargin"));
     /// The memory layout of `presentMargin`.
     public static final MemoryLayout LAYOUT_presentMargin = LAYOUT.select(PathElement.groupElement("presentMargin"));
     /// The [VarHandle] of `presentMargin` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_presentMargin = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentMargin"));
+    public static final Supplier<VarHandle> VH_presentMargin = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentMargin")));
 
     /// Creates `VkPastPresentationTimingGOOGLE` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPastPresentationTimingGOOGLE extends GroupType {
     /// {@return `presentID` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int presentID(MemorySegment segment, long index) { return (int) VH_presentID.get(segment, 0L, index); }
+    public static int presentID(MemorySegment segment, long index) { return (int) VH_presentID.get().get(segment, 0L, index); }
     /// {@return `presentID`}
     public int presentID() { return presentID(this.segment(), 0L); }
     /// Sets `presentID` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void presentID(MemorySegment segment, long index, int value) { VH_presentID.set(segment, 0L, index, value); }
+    public static void presentID(MemorySegment segment, long index, int value) { VH_presentID.get().set(segment, 0L, index, value); }
     /// Sets `presentID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPastPresentationTimingGOOGLE extends GroupType {
     /// {@return `desiredPresentTime` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long desiredPresentTime(MemorySegment segment, long index) { return (long) VH_desiredPresentTime.get(segment, 0L, index); }
+    public static long desiredPresentTime(MemorySegment segment, long index) { return (long) VH_desiredPresentTime.get().get(segment, 0L, index); }
     /// {@return `desiredPresentTime`}
     public long desiredPresentTime() { return desiredPresentTime(this.segment(), 0L); }
     /// Sets `desiredPresentTime` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void desiredPresentTime(MemorySegment segment, long index, long value) { VH_desiredPresentTime.set(segment, 0L, index, value); }
+    public static void desiredPresentTime(MemorySegment segment, long index, long value) { VH_desiredPresentTime.get().set(segment, 0L, index, value); }
     /// Sets `desiredPresentTime` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPastPresentationTimingGOOGLE extends GroupType {
     /// {@return `actualPresentTime` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long actualPresentTime(MemorySegment segment, long index) { return (long) VH_actualPresentTime.get(segment, 0L, index); }
+    public static long actualPresentTime(MemorySegment segment, long index) { return (long) VH_actualPresentTime.get().get(segment, 0L, index); }
     /// {@return `actualPresentTime`}
     public long actualPresentTime() { return actualPresentTime(this.segment(), 0L); }
     /// Sets `actualPresentTime` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void actualPresentTime(MemorySegment segment, long index, long value) { VH_actualPresentTime.set(segment, 0L, index, value); }
+    public static void actualPresentTime(MemorySegment segment, long index, long value) { VH_actualPresentTime.get().set(segment, 0L, index, value); }
     /// Sets `actualPresentTime` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPastPresentationTimingGOOGLE extends GroupType {
     /// {@return `earliestPresentTime` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long earliestPresentTime(MemorySegment segment, long index) { return (long) VH_earliestPresentTime.get(segment, 0L, index); }
+    public static long earliestPresentTime(MemorySegment segment, long index) { return (long) VH_earliestPresentTime.get().get(segment, 0L, index); }
     /// {@return `earliestPresentTime`}
     public long earliestPresentTime() { return earliestPresentTime(this.segment(), 0L); }
     /// Sets `earliestPresentTime` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void earliestPresentTime(MemorySegment segment, long index, long value) { VH_earliestPresentTime.set(segment, 0L, index, value); }
+    public static void earliestPresentTime(MemorySegment segment, long index, long value) { VH_earliestPresentTime.get().set(segment, 0L, index, value); }
     /// Sets `earliestPresentTime` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPastPresentationTimingGOOGLE extends GroupType {
     /// {@return `presentMargin` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long presentMargin(MemorySegment segment, long index) { return (long) VH_presentMargin.get(segment, 0L, index); }
+    public static long presentMargin(MemorySegment segment, long index) { return (long) VH_presentMargin.get().get(segment, 0L, index); }
     /// {@return `presentMargin`}
     public long presentMargin() { return presentMargin(this.segment(), 0L); }
     /// Sets `presentMargin` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void presentMargin(MemorySegment segment, long index, long value) { VH_presentMargin.set(segment, 0L, index, value); }
+    public static void presentMargin(MemorySegment segment, long index, long value) { VH_presentMargin.get().set(segment, 0L, index, value); }
     /// Sets `presentMargin` with the given value.
     /// @param value the value
     /// @return `this`

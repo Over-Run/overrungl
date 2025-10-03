@@ -35,31 +35,31 @@ public final class VkVideoEncodeUsageInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `videoUsageHints`.
     public static final long OFFSET_videoUsageHints = LAYOUT.byteOffset(PathElement.groupElement("videoUsageHints"));
     /// The memory layout of `videoUsageHints`.
     public static final MemoryLayout LAYOUT_videoUsageHints = LAYOUT.select(PathElement.groupElement("videoUsageHints"));
     /// The [VarHandle] of `videoUsageHints` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_videoUsageHints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("videoUsageHints"));
+    public static final Supplier<VarHandle> VH_videoUsageHints = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("videoUsageHints")));
     /// The byte offset of `videoContentHints`.
     public static final long OFFSET_videoContentHints = LAYOUT.byteOffset(PathElement.groupElement("videoContentHints"));
     /// The memory layout of `videoContentHints`.
     public static final MemoryLayout LAYOUT_videoContentHints = LAYOUT.select(PathElement.groupElement("videoContentHints"));
     /// The [VarHandle] of `videoContentHints` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_videoContentHints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("videoContentHints"));
+    public static final Supplier<VarHandle> VH_videoContentHints = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("videoContentHints")));
     /// The byte offset of `tuningMode`.
     public static final long OFFSET_tuningMode = LAYOUT.byteOffset(PathElement.groupElement("tuningMode"));
     /// The memory layout of `tuningMode`.
     public static final MemoryLayout LAYOUT_tuningMode = LAYOUT.select(PathElement.groupElement("tuningMode"));
     /// The [VarHandle] of `tuningMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tuningMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tuningMode"));
+    public static final Supplier<VarHandle> VH_tuningMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tuningMode")));
 
     /// Creates `VkVideoEncodeUsageInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkVideoEncodeUsageInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkVideoEncodeUsageInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkVideoEncodeUsageInfoKHR extends GroupType {
     /// {@return `videoUsageHints` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int videoUsageHints(MemorySegment segment, long index) { return (int) VH_videoUsageHints.get(segment, 0L, index); }
+    public static int videoUsageHints(MemorySegment segment, long index) { return (int) VH_videoUsageHints.get().get(segment, 0L, index); }
     /// {@return `videoUsageHints`}
     public int videoUsageHints() { return videoUsageHints(this.segment(), 0L); }
     /// Sets `videoUsageHints` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void videoUsageHints(MemorySegment segment, long index, int value) { VH_videoUsageHints.set(segment, 0L, index, value); }
+    public static void videoUsageHints(MemorySegment segment, long index, int value) { VH_videoUsageHints.get().set(segment, 0L, index, value); }
     /// Sets `videoUsageHints` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkVideoEncodeUsageInfoKHR extends GroupType {
     /// {@return `videoContentHints` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int videoContentHints(MemorySegment segment, long index) { return (int) VH_videoContentHints.get(segment, 0L, index); }
+    public static int videoContentHints(MemorySegment segment, long index) { return (int) VH_videoContentHints.get().get(segment, 0L, index); }
     /// {@return `videoContentHints`}
     public int videoContentHints() { return videoContentHints(this.segment(), 0L); }
     /// Sets `videoContentHints` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void videoContentHints(MemorySegment segment, long index, int value) { VH_videoContentHints.set(segment, 0L, index, value); }
+    public static void videoContentHints(MemorySegment segment, long index, int value) { VH_videoContentHints.get().set(segment, 0L, index, value); }
     /// Sets `videoContentHints` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkVideoEncodeUsageInfoKHR extends GroupType {
     /// {@return `tuningMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tuningMode(MemorySegment segment, long index) { return (int) VH_tuningMode.get(segment, 0L, index); }
+    public static int tuningMode(MemorySegment segment, long index) { return (int) VH_tuningMode.get().get(segment, 0L, index); }
     /// {@return `tuningMode`}
     public int tuningMode() { return tuningMode(this.segment(), 0L); }
     /// Sets `tuningMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tuningMode(MemorySegment segment, long index, int value) { VH_tuningMode.set(segment, 0L, index, value); }
+    public static void tuningMode(MemorySegment segment, long index, int value) { VH_tuningMode.get().set(segment, 0L, index, value); }
     /// Sets `tuningMode` with the given value.
     /// @param value the value
     /// @return `this`

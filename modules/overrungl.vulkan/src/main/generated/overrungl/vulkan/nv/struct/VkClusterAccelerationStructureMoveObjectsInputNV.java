@@ -35,31 +35,31 @@ public final class VkClusterAccelerationStructureMoveObjectsInputNV extends Grou
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `type`.
     public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
     /// The memory layout of `type`.
     public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
     /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
+    public static final Supplier<VarHandle> VH_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("type")));
     /// The byte offset of `noMoveOverlap`.
     public static final long OFFSET_noMoveOverlap = LAYOUT.byteOffset(PathElement.groupElement("noMoveOverlap"));
     /// The memory layout of `noMoveOverlap`.
     public static final MemoryLayout LAYOUT_noMoveOverlap = LAYOUT.select(PathElement.groupElement("noMoveOverlap"));
     /// The [VarHandle] of `noMoveOverlap` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_noMoveOverlap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("noMoveOverlap"));
+    public static final Supplier<VarHandle> VH_noMoveOverlap = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("noMoveOverlap")));
     /// The byte offset of `maxMovedBytes`.
     public static final long OFFSET_maxMovedBytes = LAYOUT.byteOffset(PathElement.groupElement("maxMovedBytes"));
     /// The memory layout of `maxMovedBytes`.
     public static final MemoryLayout LAYOUT_maxMovedBytes = LAYOUT.select(PathElement.groupElement("maxMovedBytes"));
     /// The [VarHandle] of `maxMovedBytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxMovedBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMovedBytes"));
+    public static final Supplier<VarHandle> VH_maxMovedBytes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMovedBytes")));
 
     /// Creates `VkClusterAccelerationStructureMoveObjectsInputNV` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkClusterAccelerationStructureMoveObjectsInputNV extends Grou
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkClusterAccelerationStructureMoveObjectsInputNV extends Grou
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkClusterAccelerationStructureMoveObjectsInputNV extends Grou
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
+    public static int type(MemorySegment segment, long index) { return (int) VH_type.get().get(segment, 0L, index); }
     /// {@return `type`}
     public int type() { return type(this.segment(), 0L); }
     /// Sets `type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void type(MemorySegment segment, long index, int value) { VH_type.set(segment, 0L, index, value); }
+    public static void type(MemorySegment segment, long index, int value) { VH_type.get().set(segment, 0L, index, value); }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkClusterAccelerationStructureMoveObjectsInputNV extends Grou
     /// {@return `noMoveOverlap` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int noMoveOverlap(MemorySegment segment, long index) { return (int) VH_noMoveOverlap.get(segment, 0L, index); }
+    public static int noMoveOverlap(MemorySegment segment, long index) { return (int) VH_noMoveOverlap.get().get(segment, 0L, index); }
     /// {@return `noMoveOverlap`}
     public int noMoveOverlap() { return noMoveOverlap(this.segment(), 0L); }
     /// Sets `noMoveOverlap` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void noMoveOverlap(MemorySegment segment, long index, int value) { VH_noMoveOverlap.set(segment, 0L, index, value); }
+    public static void noMoveOverlap(MemorySegment segment, long index, int value) { VH_noMoveOverlap.get().set(segment, 0L, index, value); }
     /// Sets `noMoveOverlap` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkClusterAccelerationStructureMoveObjectsInputNV extends Grou
     /// {@return `maxMovedBytes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long maxMovedBytes(MemorySegment segment, long index) { return (long) VH_maxMovedBytes.get(segment, 0L, index); }
+    public static long maxMovedBytes(MemorySegment segment, long index) { return (long) VH_maxMovedBytes.get().get(segment, 0L, index); }
     /// {@return `maxMovedBytes`}
     public long maxMovedBytes() { return maxMovedBytes(this.segment(), 0L); }
     /// Sets `maxMovedBytes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxMovedBytes(MemorySegment segment, long index, long value) { VH_maxMovedBytes.set(segment, 0L, index, value); }
+    public static void maxMovedBytes(MemorySegment segment, long index, long value) { VH_maxMovedBytes.get().set(segment, 0L, index, value); }
     /// Sets `maxMovedBytes` with the given value.
     /// @param value the value
     /// @return `this`

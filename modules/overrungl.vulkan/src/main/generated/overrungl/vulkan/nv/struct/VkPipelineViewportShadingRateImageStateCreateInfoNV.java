@@ -35,31 +35,31 @@ public final class VkPipelineViewportShadingRateImageStateCreateInfoNV extends G
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shadingRateImageEnable`.
     public static final long OFFSET_shadingRateImageEnable = LAYOUT.byteOffset(PathElement.groupElement("shadingRateImageEnable"));
     /// The memory layout of `shadingRateImageEnable`.
     public static final MemoryLayout LAYOUT_shadingRateImageEnable = LAYOUT.select(PathElement.groupElement("shadingRateImageEnable"));
     /// The [VarHandle] of `shadingRateImageEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shadingRateImageEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRateImageEnable"));
+    public static final Supplier<VarHandle> VH_shadingRateImageEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRateImageEnable")));
     /// The byte offset of `viewportCount`.
     public static final long OFFSET_viewportCount = LAYOUT.byteOffset(PathElement.groupElement("viewportCount"));
     /// The memory layout of `viewportCount`.
     public static final MemoryLayout LAYOUT_viewportCount = LAYOUT.select(PathElement.groupElement("viewportCount"));
     /// The [VarHandle] of `viewportCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_viewportCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportCount"));
+    public static final Supplier<VarHandle> VH_viewportCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportCount")));
     /// The byte offset of `pShadingRatePalettes`.
     public static final long OFFSET_pShadingRatePalettes = LAYOUT.byteOffset(PathElement.groupElement("pShadingRatePalettes"));
     /// The memory layout of `pShadingRatePalettes`.
     public static final MemoryLayout LAYOUT_pShadingRatePalettes = LAYOUT.select(PathElement.groupElement("pShadingRatePalettes"));
     /// The [VarHandle] of `pShadingRatePalettes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pShadingRatePalettes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pShadingRatePalettes"));
+    public static final Supplier<VarHandle> VH_pShadingRatePalettes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pShadingRatePalettes")));
 
     /// Creates `VkPipelineViewportShadingRateImageStateCreateInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPipelineViewportShadingRateImageStateCreateInfoNV extends G
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPipelineViewportShadingRateImageStateCreateInfoNV extends G
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPipelineViewportShadingRateImageStateCreateInfoNV extends G
     /// {@return `shadingRateImageEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shadingRateImageEnable(MemorySegment segment, long index) { return (int) VH_shadingRateImageEnable.get(segment, 0L, index); }
+    public static int shadingRateImageEnable(MemorySegment segment, long index) { return (int) VH_shadingRateImageEnable.get().get(segment, 0L, index); }
     /// {@return `shadingRateImageEnable`}
     public int shadingRateImageEnable() { return shadingRateImageEnable(this.segment(), 0L); }
     /// Sets `shadingRateImageEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shadingRateImageEnable(MemorySegment segment, long index, int value) { VH_shadingRateImageEnable.set(segment, 0L, index, value); }
+    public static void shadingRateImageEnable(MemorySegment segment, long index, int value) { VH_shadingRateImageEnable.get().set(segment, 0L, index, value); }
     /// Sets `shadingRateImageEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPipelineViewportShadingRateImageStateCreateInfoNV extends G
     /// {@return `viewportCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int viewportCount(MemorySegment segment, long index) { return (int) VH_viewportCount.get(segment, 0L, index); }
+    public static int viewportCount(MemorySegment segment, long index) { return (int) VH_viewportCount.get().get(segment, 0L, index); }
     /// {@return `viewportCount`}
     public int viewportCount() { return viewportCount(this.segment(), 0L); }
     /// Sets `viewportCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void viewportCount(MemorySegment segment, long index, int value) { VH_viewportCount.set(segment, 0L, index, value); }
+    public static void viewportCount(MemorySegment segment, long index, int value) { VH_viewportCount.get().set(segment, 0L, index, value); }
     /// Sets `viewportCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPipelineViewportShadingRateImageStateCreateInfoNV extends G
     /// {@return `pShadingRatePalettes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pShadingRatePalettes(MemorySegment segment, long index) { return (MemorySegment) VH_pShadingRatePalettes.get(segment, 0L, index); }
+    public static MemorySegment pShadingRatePalettes(MemorySegment segment, long index) { return (MemorySegment) VH_pShadingRatePalettes.get().get(segment, 0L, index); }
     /// {@return `pShadingRatePalettes`}
     public MemorySegment pShadingRatePalettes() { return pShadingRatePalettes(this.segment(), 0L); }
     /// Sets `pShadingRatePalettes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pShadingRatePalettes(MemorySegment segment, long index, MemorySegment value) { VH_pShadingRatePalettes.set(segment, 0L, index, value); }
+    public static void pShadingRatePalettes(MemorySegment segment, long index, MemorySegment value) { VH_pShadingRatePalettes.get().set(segment, 0L, index, value); }
     /// Sets `pShadingRatePalettes` with the given value.
     /// @param value the value
     /// @return `this`

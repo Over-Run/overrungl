@@ -33,25 +33,25 @@ public final class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends Gro
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `hasStdSPSOverrides`.
     public static final long OFFSET_hasStdSPSOverrides = LAYOUT.byteOffset(PathElement.groupElement("hasStdSPSOverrides"));
     /// The memory layout of `hasStdSPSOverrides`.
     public static final MemoryLayout LAYOUT_hasStdSPSOverrides = LAYOUT.select(PathElement.groupElement("hasStdSPSOverrides"));
     /// The [VarHandle] of `hasStdSPSOverrides` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hasStdSPSOverrides = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hasStdSPSOverrides"));
+    public static final Supplier<VarHandle> VH_hasStdSPSOverrides = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hasStdSPSOverrides")));
     /// The byte offset of `hasStdPPSOverrides`.
     public static final long OFFSET_hasStdPPSOverrides = LAYOUT.byteOffset(PathElement.groupElement("hasStdPPSOverrides"));
     /// The memory layout of `hasStdPPSOverrides`.
     public static final MemoryLayout LAYOUT_hasStdPPSOverrides = LAYOUT.select(PathElement.groupElement("hasStdPPSOverrides"));
     /// The [VarHandle] of `hasStdPPSOverrides` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hasStdPPSOverrides = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hasStdPPSOverrides"));
+    public static final Supplier<VarHandle> VH_hasStdPPSOverrides = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hasStdPPSOverrides")));
 
     /// Creates `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends Gro
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends Gro
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends Gro
     /// {@return `hasStdSPSOverrides` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int hasStdSPSOverrides(MemorySegment segment, long index) { return (int) VH_hasStdSPSOverrides.get(segment, 0L, index); }
+    public static int hasStdSPSOverrides(MemorySegment segment, long index) { return (int) VH_hasStdSPSOverrides.get().get(segment, 0L, index); }
     /// {@return `hasStdSPSOverrides`}
     public int hasStdSPSOverrides() { return hasStdSPSOverrides(this.segment(), 0L); }
     /// Sets `hasStdSPSOverrides` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void hasStdSPSOverrides(MemorySegment segment, long index, int value) { VH_hasStdSPSOverrides.set(segment, 0L, index, value); }
+    public static void hasStdSPSOverrides(MemorySegment segment, long index, int value) { VH_hasStdSPSOverrides.get().set(segment, 0L, index, value); }
     /// Sets `hasStdSPSOverrides` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends Gro
     /// {@return `hasStdPPSOverrides` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int hasStdPPSOverrides(MemorySegment segment, long index) { return (int) VH_hasStdPPSOverrides.get(segment, 0L, index); }
+    public static int hasStdPPSOverrides(MemorySegment segment, long index) { return (int) VH_hasStdPPSOverrides.get().get(segment, 0L, index); }
     /// {@return `hasStdPPSOverrides`}
     public int hasStdPPSOverrides() { return hasStdPPSOverrides(this.segment(), 0L); }
     /// Sets `hasStdPPSOverrides` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void hasStdPPSOverrides(MemorySegment segment, long index, int value) { VH_hasStdPPSOverrides.set(segment, 0L, index, value); }
+    public static void hasStdPPSOverrides(MemorySegment segment, long index, int value) { VH_hasStdPPSOverrides.get().set(segment, 0L, index, value); }
     /// Sets `hasStdPPSOverrides` with the given value.
     /// @param value the value
     /// @return `this`

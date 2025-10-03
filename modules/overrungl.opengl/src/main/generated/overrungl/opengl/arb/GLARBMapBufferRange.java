@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -16,8 +17,8 @@ public final class GLARBMapBufferRange {
     public static final int GL_MAP_UNSYNCHRONIZED_BIT = 0x0020;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glMapBufferRange = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFlushMappedBufferRange = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_glMapBufferRange = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFlushMappedBufferRange = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)));
         public final MemorySegment PFN_glMapBufferRange;
         public final MemorySegment PFN_glFlushMappedBufferRange;
         private Handles(GLLoadFunc func) {
@@ -37,7 +38,7 @@ public final class GLARBMapBufferRange {
     public @NonNull MemorySegment MapBufferRange(int target, long offset, long length, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapBufferRange)) throw new GLSymbolNotFoundError("Symbol not found: glMapBufferRange");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapBufferRange", target, offset, length, access); }
-        return (MemorySegment) Handles.MH_glMapBufferRange.invokeExact(handles.PFN_glMapBufferRange, target, offset, length, access); }
+        return (MemorySegment) Handles.MH_glMapBufferRange.get().invokeExact(handles.PFN_glMapBufferRange, target, offset, length, access); }
         catch (Throwable e) { throw new RuntimeException("error in MapBufferRange", e); }
     }
 
@@ -48,7 +49,7 @@ public final class GLARBMapBufferRange {
     public void FlushMappedBufferRange(int target, long offset, long length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushMappedBufferRange)) throw new GLSymbolNotFoundError("Symbol not found: glFlushMappedBufferRange");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFlushMappedBufferRange", target, offset, length); }
-        Handles.MH_glFlushMappedBufferRange.invokeExact(handles.PFN_glFlushMappedBufferRange, target, offset, length); }
+        Handles.MH_glFlushMappedBufferRange.get().invokeExact(handles.PFN_glFlushMappedBufferRange, target, offset, length); }
         catch (Throwable e) { throw new RuntimeException("error in FlushMappedBufferRange", e); }
     }
 

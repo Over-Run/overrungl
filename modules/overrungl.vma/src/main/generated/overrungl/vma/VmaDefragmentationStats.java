@@ -33,25 +33,25 @@ public final class VmaDefragmentationStats extends GroupType {
     /// The memory layout of `bytesMoved`.
     public static final MemoryLayout LAYOUT_bytesMoved = LAYOUT.select(PathElement.groupElement("bytesMoved"));
     /// The [VarHandle] of `bytesMoved` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bytesMoved = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bytesMoved"));
+    public static final Supplier<VarHandle> VH_bytesMoved = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bytesMoved")));
     /// The byte offset of `bytesFreed`.
     public static final long OFFSET_bytesFreed = LAYOUT.byteOffset(PathElement.groupElement("bytesFreed"));
     /// The memory layout of `bytesFreed`.
     public static final MemoryLayout LAYOUT_bytesFreed = LAYOUT.select(PathElement.groupElement("bytesFreed"));
     /// The [VarHandle] of `bytesFreed` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bytesFreed = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bytesFreed"));
+    public static final Supplier<VarHandle> VH_bytesFreed = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bytesFreed")));
     /// The byte offset of `allocationsMoved`.
     public static final long OFFSET_allocationsMoved = LAYOUT.byteOffset(PathElement.groupElement("allocationsMoved"));
     /// The memory layout of `allocationsMoved`.
     public static final MemoryLayout LAYOUT_allocationsMoved = LAYOUT.select(PathElement.groupElement("allocationsMoved"));
     /// The [VarHandle] of `allocationsMoved` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_allocationsMoved = LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocationsMoved"));
+    public static final Supplier<VarHandle> VH_allocationsMoved = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocationsMoved")));
     /// The byte offset of `deviceMemoryBlocksFreed`.
     public static final long OFFSET_deviceMemoryBlocksFreed = LAYOUT.byteOffset(PathElement.groupElement("deviceMemoryBlocksFreed"));
     /// The memory layout of `deviceMemoryBlocksFreed`.
     public static final MemoryLayout LAYOUT_deviceMemoryBlocksFreed = LAYOUT.select(PathElement.groupElement("deviceMemoryBlocksFreed"));
     /// The [VarHandle] of `deviceMemoryBlocksFreed` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceMemoryBlocksFreed = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceMemoryBlocksFreed"));
+    public static final Supplier<VarHandle> VH_deviceMemoryBlocksFreed = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceMemoryBlocksFreed")));
 
     /// Creates `VmaDefragmentationStats` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VmaDefragmentationStats extends GroupType {
     /// {@return `bytesMoved` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long bytesMoved(MemorySegment segment, long index) { return (long) VH_bytesMoved.get(segment, 0L, index); }
+    public static long bytesMoved(MemorySegment segment, long index) { return (long) VH_bytesMoved.get().get(segment, 0L, index); }
     /// {@return `bytesMoved`}
     public long bytesMoved() { return bytesMoved(this.segment(), 0L); }
     /// Sets `bytesMoved` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bytesMoved(MemorySegment segment, long index, long value) { VH_bytesMoved.set(segment, 0L, index, value); }
+    public static void bytesMoved(MemorySegment segment, long index, long value) { VH_bytesMoved.get().set(segment, 0L, index, value); }
     /// Sets `bytesMoved` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VmaDefragmentationStats extends GroupType {
     /// {@return `bytesFreed` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long bytesFreed(MemorySegment segment, long index) { return (long) VH_bytesFreed.get(segment, 0L, index); }
+    public static long bytesFreed(MemorySegment segment, long index) { return (long) VH_bytesFreed.get().get(segment, 0L, index); }
     /// {@return `bytesFreed`}
     public long bytesFreed() { return bytesFreed(this.segment(), 0L); }
     /// Sets `bytesFreed` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bytesFreed(MemorySegment segment, long index, long value) { VH_bytesFreed.set(segment, 0L, index, value); }
+    public static void bytesFreed(MemorySegment segment, long index, long value) { VH_bytesFreed.get().set(segment, 0L, index, value); }
     /// Sets `bytesFreed` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VmaDefragmentationStats extends GroupType {
     /// {@return `allocationsMoved` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int allocationsMoved(MemorySegment segment, long index) { return (int) VH_allocationsMoved.get(segment, 0L, index); }
+    public static int allocationsMoved(MemorySegment segment, long index) { return (int) VH_allocationsMoved.get().get(segment, 0L, index); }
     /// {@return `allocationsMoved`}
     public int allocationsMoved() { return allocationsMoved(this.segment(), 0L); }
     /// Sets `allocationsMoved` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void allocationsMoved(MemorySegment segment, long index, int value) { VH_allocationsMoved.set(segment, 0L, index, value); }
+    public static void allocationsMoved(MemorySegment segment, long index, int value) { VH_allocationsMoved.get().set(segment, 0L, index, value); }
     /// Sets `allocationsMoved` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VmaDefragmentationStats extends GroupType {
     /// {@return `deviceMemoryBlocksFreed` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceMemoryBlocksFreed(MemorySegment segment, long index) { return (int) VH_deviceMemoryBlocksFreed.get(segment, 0L, index); }
+    public static int deviceMemoryBlocksFreed(MemorySegment segment, long index) { return (int) VH_deviceMemoryBlocksFreed.get().get(segment, 0L, index); }
     /// {@return `deviceMemoryBlocksFreed`}
     public int deviceMemoryBlocksFreed() { return deviceMemoryBlocksFreed(this.segment(), 0L); }
     /// Sets `deviceMemoryBlocksFreed` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceMemoryBlocksFreed(MemorySegment segment, long index, int value) { VH_deviceMemoryBlocksFreed.set(segment, 0L, index, value); }
+    public static void deviceMemoryBlocksFreed(MemorySegment segment, long index, int value) { VH_deviceMemoryBlocksFreed.get().set(segment, 0L, index, value); }
     /// Sets `deviceMemoryBlocksFreed` with the given value.
     /// @param value the value
     /// @return `this`

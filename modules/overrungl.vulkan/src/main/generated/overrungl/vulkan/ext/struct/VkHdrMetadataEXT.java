@@ -45,13 +45,13 @@ public final class VkHdrMetadataEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `displayPrimaryRed`.
     public static final long OFFSET_displayPrimaryRed = LAYOUT.byteOffset(PathElement.groupElement("displayPrimaryRed"));
     /// The memory layout of `displayPrimaryRed`.
@@ -73,25 +73,25 @@ public final class VkHdrMetadataEXT extends GroupType {
     /// The memory layout of `maxLuminance`.
     public static final MemoryLayout LAYOUT_maxLuminance = LAYOUT.select(PathElement.groupElement("maxLuminance"));
     /// The [VarHandle] of `maxLuminance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxLuminance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLuminance"));
+    public static final Supplier<VarHandle> VH_maxLuminance = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLuminance")));
     /// The byte offset of `minLuminance`.
     public static final long OFFSET_minLuminance = LAYOUT.byteOffset(PathElement.groupElement("minLuminance"));
     /// The memory layout of `minLuminance`.
     public static final MemoryLayout LAYOUT_minLuminance = LAYOUT.select(PathElement.groupElement("minLuminance"));
     /// The [VarHandle] of `minLuminance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minLuminance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minLuminance"));
+    public static final Supplier<VarHandle> VH_minLuminance = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minLuminance")));
     /// The byte offset of `maxContentLightLevel`.
     public static final long OFFSET_maxContentLightLevel = LAYOUT.byteOffset(PathElement.groupElement("maxContentLightLevel"));
     /// The memory layout of `maxContentLightLevel`.
     public static final MemoryLayout LAYOUT_maxContentLightLevel = LAYOUT.select(PathElement.groupElement("maxContentLightLevel"));
     /// The [VarHandle] of `maxContentLightLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxContentLightLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxContentLightLevel"));
+    public static final Supplier<VarHandle> VH_maxContentLightLevel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxContentLightLevel")));
     /// The byte offset of `maxFrameAverageLightLevel`.
     public static final long OFFSET_maxFrameAverageLightLevel = LAYOUT.byteOffset(PathElement.groupElement("maxFrameAverageLightLevel"));
     /// The memory layout of `maxFrameAverageLightLevel`.
     public static final MemoryLayout LAYOUT_maxFrameAverageLightLevel = LAYOUT.select(PathElement.groupElement("maxFrameAverageLightLevel"));
     /// The [VarHandle] of `maxFrameAverageLightLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxFrameAverageLightLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFrameAverageLightLevel"));
+    public static final Supplier<VarHandle> VH_maxFrameAverageLightLevel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFrameAverageLightLevel")));
 
     /// Creates `VkHdrMetadataEXT` with the given segment.
     /// @param segment      the memory segment
@@ -142,14 +142,14 @@ public final class VkHdrMetadataEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkHdrMetadataEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,14 +254,14 @@ public final class VkHdrMetadataEXT extends GroupType {
     /// {@return `maxLuminance` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float maxLuminance(MemorySegment segment, long index) { return (float) VH_maxLuminance.get(segment, 0L, index); }
+    public static float maxLuminance(MemorySegment segment, long index) { return (float) VH_maxLuminance.get().get(segment, 0L, index); }
     /// {@return `maxLuminance`}
     public float maxLuminance() { return maxLuminance(this.segment(), 0L); }
     /// Sets `maxLuminance` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxLuminance(MemorySegment segment, long index, float value) { VH_maxLuminance.set(segment, 0L, index, value); }
+    public static void maxLuminance(MemorySegment segment, long index, float value) { VH_maxLuminance.get().set(segment, 0L, index, value); }
     /// Sets `maxLuminance` with the given value.
     /// @param value the value
     /// @return `this`
@@ -270,14 +270,14 @@ public final class VkHdrMetadataEXT extends GroupType {
     /// {@return `minLuminance` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float minLuminance(MemorySegment segment, long index) { return (float) VH_minLuminance.get(segment, 0L, index); }
+    public static float minLuminance(MemorySegment segment, long index) { return (float) VH_minLuminance.get().get(segment, 0L, index); }
     /// {@return `minLuminance`}
     public float minLuminance() { return minLuminance(this.segment(), 0L); }
     /// Sets `minLuminance` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minLuminance(MemorySegment segment, long index, float value) { VH_minLuminance.set(segment, 0L, index, value); }
+    public static void minLuminance(MemorySegment segment, long index, float value) { VH_minLuminance.get().set(segment, 0L, index, value); }
     /// Sets `minLuminance` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,14 +286,14 @@ public final class VkHdrMetadataEXT extends GroupType {
     /// {@return `maxContentLightLevel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float maxContentLightLevel(MemorySegment segment, long index) { return (float) VH_maxContentLightLevel.get(segment, 0L, index); }
+    public static float maxContentLightLevel(MemorySegment segment, long index) { return (float) VH_maxContentLightLevel.get().get(segment, 0L, index); }
     /// {@return `maxContentLightLevel`}
     public float maxContentLightLevel() { return maxContentLightLevel(this.segment(), 0L); }
     /// Sets `maxContentLightLevel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxContentLightLevel(MemorySegment segment, long index, float value) { VH_maxContentLightLevel.set(segment, 0L, index, value); }
+    public static void maxContentLightLevel(MemorySegment segment, long index, float value) { VH_maxContentLightLevel.get().set(segment, 0L, index, value); }
     /// Sets `maxContentLightLevel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,14 +302,14 @@ public final class VkHdrMetadataEXT extends GroupType {
     /// {@return `maxFrameAverageLightLevel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float maxFrameAverageLightLevel(MemorySegment segment, long index) { return (float) VH_maxFrameAverageLightLevel.get(segment, 0L, index); }
+    public static float maxFrameAverageLightLevel(MemorySegment segment, long index) { return (float) VH_maxFrameAverageLightLevel.get().get(segment, 0L, index); }
     /// {@return `maxFrameAverageLightLevel`}
     public float maxFrameAverageLightLevel() { return maxFrameAverageLightLevel(this.segment(), 0L); }
     /// Sets `maxFrameAverageLightLevel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxFrameAverageLightLevel(MemorySegment segment, long index, float value) { VH_maxFrameAverageLightLevel.set(segment, 0L, index, value); }
+    public static void maxFrameAverageLightLevel(MemorySegment segment, long index, float value) { VH_maxFrameAverageLightLevel.get().set(segment, 0L, index, value); }
     /// Sets `maxFrameAverageLightLevel` with the given value.
     /// @param value the value
     /// @return `this`

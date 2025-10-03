@@ -43,13 +43,13 @@ public final class VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX e
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `compressedData`.
     public static final long OFFSET_compressedData = LAYOUT.byteOffset(PathElement.groupElement("compressedData"));
     /// The memory layout of `compressedData`.
@@ -59,37 +59,37 @@ public final class VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX e
     /// The memory layout of `dataSize`.
     public static final MemoryLayout LAYOUT_dataSize = LAYOUT.select(PathElement.groupElement("dataSize"));
     /// The [VarHandle] of `dataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataSize"));
+    public static final Supplier<VarHandle> VH_dataSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataSize")));
     /// The byte offset of `numTriangles`.
     public static final long OFFSET_numTriangles = LAYOUT.byteOffset(PathElement.groupElement("numTriangles"));
     /// The memory layout of `numTriangles`.
     public static final MemoryLayout LAYOUT_numTriangles = LAYOUT.select(PathElement.groupElement("numTriangles"));
     /// The [VarHandle] of `numTriangles` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_numTriangles = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numTriangles"));
+    public static final Supplier<VarHandle> VH_numTriangles = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("numTriangles")));
     /// The byte offset of `numVertices`.
     public static final long OFFSET_numVertices = LAYOUT.byteOffset(PathElement.groupElement("numVertices"));
     /// The memory layout of `numVertices`.
     public static final MemoryLayout LAYOUT_numVertices = LAYOUT.select(PathElement.groupElement("numVertices"));
     /// The [VarHandle] of `numVertices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_numVertices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numVertices"));
+    public static final Supplier<VarHandle> VH_numVertices = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("numVertices")));
     /// The byte offset of `maxPrimitiveIndex`.
     public static final long OFFSET_maxPrimitiveIndex = LAYOUT.byteOffset(PathElement.groupElement("maxPrimitiveIndex"));
     /// The memory layout of `maxPrimitiveIndex`.
     public static final MemoryLayout LAYOUT_maxPrimitiveIndex = LAYOUT.select(PathElement.groupElement("maxPrimitiveIndex"));
     /// The [VarHandle] of `maxPrimitiveIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPrimitiveIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPrimitiveIndex"));
+    public static final Supplier<VarHandle> VH_maxPrimitiveIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPrimitiveIndex")));
     /// The byte offset of `maxGeometryIndex`.
     public static final long OFFSET_maxGeometryIndex = LAYOUT.byteOffset(PathElement.groupElement("maxGeometryIndex"));
     /// The memory layout of `maxGeometryIndex`.
     public static final MemoryLayout LAYOUT_maxGeometryIndex = LAYOUT.select(PathElement.groupElement("maxGeometryIndex"));
     /// The [VarHandle] of `maxGeometryIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxGeometryIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxGeometryIndex"));
+    public static final Supplier<VarHandle> VH_maxGeometryIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxGeometryIndex")));
     /// The byte offset of `format`.
     public static final long OFFSET_format = LAYOUT.byteOffset(PathElement.groupElement("format"));
     /// The memory layout of `format`.
     public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
     /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
+    public static final Supplier<VarHandle> VH_format = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("format")));
 
     /// Creates `VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX` with the given segment.
     /// @param segment      the memory segment
@@ -140,14 +140,14 @@ public final class VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX e
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -156,14 +156,14 @@ public final class VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX e
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -192,14 +192,14 @@ public final class VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX e
     /// {@return `dataSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dataSize(MemorySegment segment, long index) { return (long) VH_dataSize.get(segment, 0L, index); }
+    public static long dataSize(MemorySegment segment, long index) { return (long) VH_dataSize.get().get(segment, 0L, index); }
     /// {@return `dataSize`}
     public long dataSize() { return dataSize(this.segment(), 0L); }
     /// Sets `dataSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dataSize(MemorySegment segment, long index, long value) { VH_dataSize.set(segment, 0L, index, value); }
+    public static void dataSize(MemorySegment segment, long index, long value) { VH_dataSize.get().set(segment, 0L, index, value); }
     /// Sets `dataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -208,14 +208,14 @@ public final class VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX e
     /// {@return `numTriangles` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int numTriangles(MemorySegment segment, long index) { return (int) VH_numTriangles.get(segment, 0L, index); }
+    public static int numTriangles(MemorySegment segment, long index) { return (int) VH_numTriangles.get().get(segment, 0L, index); }
     /// {@return `numTriangles`}
     public int numTriangles() { return numTriangles(this.segment(), 0L); }
     /// Sets `numTriangles` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void numTriangles(MemorySegment segment, long index, int value) { VH_numTriangles.set(segment, 0L, index, value); }
+    public static void numTriangles(MemorySegment segment, long index, int value) { VH_numTriangles.get().set(segment, 0L, index, value); }
     /// Sets `numTriangles` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,14 +224,14 @@ public final class VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX e
     /// {@return `numVertices` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int numVertices(MemorySegment segment, long index) { return (int) VH_numVertices.get(segment, 0L, index); }
+    public static int numVertices(MemorySegment segment, long index) { return (int) VH_numVertices.get().get(segment, 0L, index); }
     /// {@return `numVertices`}
     public int numVertices() { return numVertices(this.segment(), 0L); }
     /// Sets `numVertices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void numVertices(MemorySegment segment, long index, int value) { VH_numVertices.set(segment, 0L, index, value); }
+    public static void numVertices(MemorySegment segment, long index, int value) { VH_numVertices.get().set(segment, 0L, index, value); }
     /// Sets `numVertices` with the given value.
     /// @param value the value
     /// @return `this`
@@ -240,14 +240,14 @@ public final class VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX e
     /// {@return `maxPrimitiveIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxPrimitiveIndex(MemorySegment segment, long index) { return (int) VH_maxPrimitiveIndex.get(segment, 0L, index); }
+    public static int maxPrimitiveIndex(MemorySegment segment, long index) { return (int) VH_maxPrimitiveIndex.get().get(segment, 0L, index); }
     /// {@return `maxPrimitiveIndex`}
     public int maxPrimitiveIndex() { return maxPrimitiveIndex(this.segment(), 0L); }
     /// Sets `maxPrimitiveIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxPrimitiveIndex(MemorySegment segment, long index, int value) { VH_maxPrimitiveIndex.set(segment, 0L, index, value); }
+    public static void maxPrimitiveIndex(MemorySegment segment, long index, int value) { VH_maxPrimitiveIndex.get().set(segment, 0L, index, value); }
     /// Sets `maxPrimitiveIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -256,14 +256,14 @@ public final class VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX e
     /// {@return `maxGeometryIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxGeometryIndex(MemorySegment segment, long index) { return (int) VH_maxGeometryIndex.get(segment, 0L, index); }
+    public static int maxGeometryIndex(MemorySegment segment, long index) { return (int) VH_maxGeometryIndex.get().get(segment, 0L, index); }
     /// {@return `maxGeometryIndex`}
     public int maxGeometryIndex() { return maxGeometryIndex(this.segment(), 0L); }
     /// Sets `maxGeometryIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxGeometryIndex(MemorySegment segment, long index, int value) { VH_maxGeometryIndex.set(segment, 0L, index, value); }
+    public static void maxGeometryIndex(MemorySegment segment, long index, int value) { VH_maxGeometryIndex.get().set(segment, 0L, index, value); }
     /// Sets `maxGeometryIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -272,14 +272,14 @@ public final class VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX e
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
+    public static int format(MemorySegment segment, long index) { return (int) VH_format.get().get(segment, 0L, index); }
     /// {@return `format`}
     public int format() { return format(this.segment(), 0L); }
     /// Sets `format` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void format(MemorySegment segment, long index, int value) { VH_format.set(segment, 0L, index, value); }
+    public static void format(MemorySegment segment, long index, int value) { VH_format.get().set(segment, 0L, index, value); }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`

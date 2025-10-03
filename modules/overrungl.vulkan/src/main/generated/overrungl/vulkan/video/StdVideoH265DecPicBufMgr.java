@@ -31,19 +31,19 @@ public final class StdVideoH265DecPicBufMgr extends GroupType {
     /// The memory layout of `max_latency_increase_plus1`.
     public static final MemoryLayout LAYOUT_max_latency_increase_plus1 = LAYOUT.select(PathElement.groupElement("max_latency_increase_plus1"));
     /// The [VarHandle] of `max_latency_increase_plus1` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_max_latency_increase_plus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_latency_increase_plus1"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_max_latency_increase_plus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_latency_increase_plus1"), PathElement.sequenceElement()));
     /// The byte offset of `max_dec_pic_buffering_minus1`.
     public static final long OFFSET_max_dec_pic_buffering_minus1 = LAYOUT.byteOffset(PathElement.groupElement("max_dec_pic_buffering_minus1"));
     /// The memory layout of `max_dec_pic_buffering_minus1`.
     public static final MemoryLayout LAYOUT_max_dec_pic_buffering_minus1 = LAYOUT.select(PathElement.groupElement("max_dec_pic_buffering_minus1"));
     /// The [VarHandle] of `max_dec_pic_buffering_minus1` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_max_dec_pic_buffering_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_dec_pic_buffering_minus1"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_max_dec_pic_buffering_minus1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_dec_pic_buffering_minus1"), PathElement.sequenceElement()));
     /// The byte offset of `max_num_reorder_pics`.
     public static final long OFFSET_max_num_reorder_pics = LAYOUT.byteOffset(PathElement.groupElement("max_num_reorder_pics"));
     /// The memory layout of `max_num_reorder_pics`.
     public static final MemoryLayout LAYOUT_max_num_reorder_pics = LAYOUT.select(PathElement.groupElement("max_num_reorder_pics"));
     /// The [VarHandle] of `max_num_reorder_pics` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_max_num_reorder_pics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_num_reorder_pics"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_max_num_reorder_pics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_num_reorder_pics"), PathElement.sequenceElement()));
 
     /// Creates `StdVideoH265DecPicBufMgr` with the given segment.
     /// @param segment      the memory segment
@@ -99,7 +99,7 @@ public final class StdVideoH265DecPicBufMgr extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int max_latency_increase_plus1(MemorySegment segment, long index, long index0) { return (int) VH_max_latency_increase_plus1.get(segment, 0L, index, index0); }
+    public static int max_latency_increase_plus1(MemorySegment segment, long index, long index0) { return (int) VH_max_latency_increase_plus1.get().get(segment, 0L, index, index0); }
     /// {@return `max_latency_increase_plus1`}
     public MemorySegment max_latency_increase_plus1() { return max_latency_increase_plus1(this.segment(), 0L); }
     /// {@return `max_latency_increase_plus1`}
@@ -115,7 +115,7 @@ public final class StdVideoH265DecPicBufMgr extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void max_latency_increase_plus1(MemorySegment segment, long index, long index0, int value) { VH_max_latency_increase_plus1.set(segment, 0L, index, index0, value); }
+    public static void max_latency_increase_plus1(MemorySegment segment, long index, long index0, int value) { VH_max_latency_increase_plus1.get().set(segment, 0L, index, index0, value); }
     /// Sets `max_latency_increase_plus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,7 +134,7 @@ public final class StdVideoH265DecPicBufMgr extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte max_dec_pic_buffering_minus1(MemorySegment segment, long index, long index0) { return (byte) VH_max_dec_pic_buffering_minus1.get(segment, 0L, index, index0); }
+    public static byte max_dec_pic_buffering_minus1(MemorySegment segment, long index, long index0) { return (byte) VH_max_dec_pic_buffering_minus1.get().get(segment, 0L, index, index0); }
     /// {@return `max_dec_pic_buffering_minus1`}
     public MemorySegment max_dec_pic_buffering_minus1() { return max_dec_pic_buffering_minus1(this.segment(), 0L); }
     /// {@return `max_dec_pic_buffering_minus1`}
@@ -150,7 +150,7 @@ public final class StdVideoH265DecPicBufMgr extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void max_dec_pic_buffering_minus1(MemorySegment segment, long index, long index0, byte value) { VH_max_dec_pic_buffering_minus1.set(segment, 0L, index, index0, value); }
+    public static void max_dec_pic_buffering_minus1(MemorySegment segment, long index, long index0, byte value) { VH_max_dec_pic_buffering_minus1.get().set(segment, 0L, index, index0, value); }
     /// Sets `max_dec_pic_buffering_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,7 +169,7 @@ public final class StdVideoH265DecPicBufMgr extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte max_num_reorder_pics(MemorySegment segment, long index, long index0) { return (byte) VH_max_num_reorder_pics.get(segment, 0L, index, index0); }
+    public static byte max_num_reorder_pics(MemorySegment segment, long index, long index0) { return (byte) VH_max_num_reorder_pics.get().get(segment, 0L, index, index0); }
     /// {@return `max_num_reorder_pics`}
     public MemorySegment max_num_reorder_pics() { return max_num_reorder_pics(this.segment(), 0L); }
     /// {@return `max_num_reorder_pics`}
@@ -185,7 +185,7 @@ public final class StdVideoH265DecPicBufMgr extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void max_num_reorder_pics(MemorySegment segment, long index, long index0, byte value) { VH_max_num_reorder_pics.set(segment, 0L, index, index0, value); }
+    public static void max_num_reorder_pics(MemorySegment segment, long index, long index0, byte value) { VH_max_num_reorder_pics.get().set(segment, 0L, index, index0, value); }
     /// Sets `max_num_reorder_pics` with the given value.
     /// @param value the value
     /// @return `this`

@@ -31,19 +31,19 @@ public final class VkDescriptorImageInfo extends GroupType {
     /// The memory layout of `sampler`.
     public static final MemoryLayout LAYOUT_sampler = LAYOUT.select(PathElement.groupElement("sampler"));
     /// The [VarHandle] of `sampler` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sampler = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampler"));
+    public static final Supplier<VarHandle> VH_sampler = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampler")));
     /// The byte offset of `imageView`.
     public static final long OFFSET_imageView = LAYOUT.byteOffset(PathElement.groupElement("imageView"));
     /// The memory layout of `imageView`.
     public static final MemoryLayout LAYOUT_imageView = LAYOUT.select(PathElement.groupElement("imageView"));
     /// The [VarHandle] of `imageView` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageView = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageView"));
+    public static final Supplier<VarHandle> VH_imageView = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageView")));
     /// The byte offset of `imageLayout`.
     public static final long OFFSET_imageLayout = LAYOUT.byteOffset(PathElement.groupElement("imageLayout"));
     /// The memory layout of `imageLayout`.
     public static final MemoryLayout LAYOUT_imageLayout = LAYOUT.select(PathElement.groupElement("imageLayout"));
     /// The [VarHandle] of `imageLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageLayout"));
+    public static final Supplier<VarHandle> VH_imageLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageLayout")));
 
     /// Creates `VkDescriptorImageInfo` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkDescriptorImageInfo extends GroupType {
     /// {@return `sampler` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long sampler(MemorySegment segment, long index) { return (long) VH_sampler.get(segment, 0L, index); }
+    public static long sampler(MemorySegment segment, long index) { return (long) VH_sampler.get().get(segment, 0L, index); }
     /// {@return `sampler`}
     public long sampler() { return sampler(this.segment(), 0L); }
     /// Sets `sampler` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sampler(MemorySegment segment, long index, long value) { VH_sampler.set(segment, 0L, index, value); }
+    public static void sampler(MemorySegment segment, long index, long value) { VH_sampler.get().set(segment, 0L, index, value); }
     /// Sets `sampler` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkDescriptorImageInfo extends GroupType {
     /// {@return `imageView` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long imageView(MemorySegment segment, long index) { return (long) VH_imageView.get(segment, 0L, index); }
+    public static long imageView(MemorySegment segment, long index) { return (long) VH_imageView.get().get(segment, 0L, index); }
     /// {@return `imageView`}
     public long imageView() { return imageView(this.segment(), 0L); }
     /// Sets `imageView` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageView(MemorySegment segment, long index, long value) { VH_imageView.set(segment, 0L, index, value); }
+    public static void imageView(MemorySegment segment, long index, long value) { VH_imageView.get().set(segment, 0L, index, value); }
     /// Sets `imageView` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDescriptorImageInfo extends GroupType {
     /// {@return `imageLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageLayout(MemorySegment segment, long index) { return (int) VH_imageLayout.get(segment, 0L, index); }
+    public static int imageLayout(MemorySegment segment, long index) { return (int) VH_imageLayout.get().get(segment, 0L, index); }
     /// {@return `imageLayout`}
     public int imageLayout() { return imageLayout(this.segment(), 0L); }
     /// Sets `imageLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageLayout(MemorySegment segment, long index, int value) { VH_imageLayout.set(segment, 0L, index, value); }
+    public static void imageLayout(MemorySegment segment, long index, int value) { VH_imageLayout.get().set(segment, 0L, index, value); }
     /// Sets `imageLayout` with the given value.
     /// @param value the value
     /// @return `this`

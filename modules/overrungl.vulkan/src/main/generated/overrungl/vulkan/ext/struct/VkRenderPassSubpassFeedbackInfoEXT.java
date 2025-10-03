@@ -31,19 +31,19 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// The memory layout of `subpassMergeStatus`.
     public static final MemoryLayout LAYOUT_subpassMergeStatus = LAYOUT.select(PathElement.groupElement("subpassMergeStatus"));
     /// The [VarHandle] of `subpassMergeStatus` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subpassMergeStatus = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpassMergeStatus"));
+    public static final Supplier<VarHandle> VH_subpassMergeStatus = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpassMergeStatus")));
     /// The byte offset of `description`.
     public static final long OFFSET_description = LAYOUT.byteOffset(PathElement.groupElement("description"));
     /// The memory layout of `description`.
     public static final MemoryLayout LAYOUT_description = LAYOUT.select(PathElement.groupElement("description"));
     /// The [VarHandle] of `description` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_description = LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_description = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement()));
     /// The byte offset of `postMergeIndex`.
     public static final long OFFSET_postMergeIndex = LAYOUT.byteOffset(PathElement.groupElement("postMergeIndex"));
     /// The memory layout of `postMergeIndex`.
     public static final MemoryLayout LAYOUT_postMergeIndex = LAYOUT.select(PathElement.groupElement("postMergeIndex"));
     /// The [VarHandle] of `postMergeIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_postMergeIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("postMergeIndex"));
+    public static final Supplier<VarHandle> VH_postMergeIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("postMergeIndex")));
 
     /// Creates `VkRenderPassSubpassFeedbackInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// {@return `subpassMergeStatus` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int subpassMergeStatus(MemorySegment segment, long index) { return (int) VH_subpassMergeStatus.get(segment, 0L, index); }
+    public static int subpassMergeStatus(MemorySegment segment, long index) { return (int) VH_subpassMergeStatus.get().get(segment, 0L, index); }
     /// {@return `subpassMergeStatus`}
     public int subpassMergeStatus() { return subpassMergeStatus(this.segment(), 0L); }
     /// Sets `subpassMergeStatus` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subpassMergeStatus(MemorySegment segment, long index, int value) { VH_subpassMergeStatus.set(segment, 0L, index, value); }
+    public static void subpassMergeStatus(MemorySegment segment, long index, int value) { VH_subpassMergeStatus.get().set(segment, 0L, index, value); }
     /// Sets `subpassMergeStatus` with the given value.
     /// @param value the value
     /// @return `this`
@@ -115,7 +115,7 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get(segment, 0L, index, index0); }
+    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get().get(segment, 0L, index, index0); }
     /// {@return `description`}
     public MemorySegment description() { return description(this.segment(), 0L); }
     /// {@return `description`}
@@ -131,7 +131,7 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.set(segment, 0L, index, index0, value); }
+    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.get().set(segment, 0L, index, index0, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
@@ -145,14 +145,14 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// {@return `postMergeIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int postMergeIndex(MemorySegment segment, long index) { return (int) VH_postMergeIndex.get(segment, 0L, index); }
+    public static int postMergeIndex(MemorySegment segment, long index) { return (int) VH_postMergeIndex.get().get(segment, 0L, index); }
     /// {@return `postMergeIndex`}
     public int postMergeIndex() { return postMergeIndex(this.segment(), 0L); }
     /// Sets `postMergeIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void postMergeIndex(MemorySegment segment, long index, int value) { VH_postMergeIndex.set(segment, 0L, index, value); }
+    public static void postMergeIndex(MemorySegment segment, long index, int value) { VH_postMergeIndex.get().set(segment, 0L, index, value); }
     /// Sets `postMergeIndex` with the given value.
     /// @param value the value
     /// @return `this`

@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceMeshShaderFeaturesNV extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `taskShader`.
     public static final long OFFSET_taskShader = LAYOUT.byteOffset(PathElement.groupElement("taskShader"));
     /// The memory layout of `taskShader`.
     public static final MemoryLayout LAYOUT_taskShader = LAYOUT.select(PathElement.groupElement("taskShader"));
     /// The [VarHandle] of `taskShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_taskShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("taskShader"));
+    public static final Supplier<VarHandle> VH_taskShader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("taskShader")));
     /// The byte offset of `meshShader`.
     public static final long OFFSET_meshShader = LAYOUT.byteOffset(PathElement.groupElement("meshShader"));
     /// The memory layout of `meshShader`.
     public static final MemoryLayout LAYOUT_meshShader = LAYOUT.select(PathElement.groupElement("meshShader"));
     /// The [VarHandle] of `meshShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_meshShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("meshShader"));
+    public static final Supplier<VarHandle> VH_meshShader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("meshShader")));
 
     /// Creates `VkPhysicalDeviceMeshShaderFeaturesNV` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceMeshShaderFeaturesNV extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceMeshShaderFeaturesNV extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceMeshShaderFeaturesNV extends GroupType {
     /// {@return `taskShader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int taskShader(MemorySegment segment, long index) { return (int) VH_taskShader.get(segment, 0L, index); }
+    public static int taskShader(MemorySegment segment, long index) { return (int) VH_taskShader.get().get(segment, 0L, index); }
     /// {@return `taskShader`}
     public int taskShader() { return taskShader(this.segment(), 0L); }
     /// Sets `taskShader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void taskShader(MemorySegment segment, long index, int value) { VH_taskShader.set(segment, 0L, index, value); }
+    public static void taskShader(MemorySegment segment, long index, int value) { VH_taskShader.get().set(segment, 0L, index, value); }
     /// Sets `taskShader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceMeshShaderFeaturesNV extends GroupType {
     /// {@return `meshShader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int meshShader(MemorySegment segment, long index) { return (int) VH_meshShader.get(segment, 0L, index); }
+    public static int meshShader(MemorySegment segment, long index) { return (int) VH_meshShader.get().get(segment, 0L, index); }
     /// {@return `meshShader`}
     public int meshShader() { return meshShader(this.segment(), 0L); }
     /// Sets `meshShader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void meshShader(MemorySegment segment, long index, int value) { VH_meshShader.set(segment, 0L, index, value); }
+    public static void meshShader(MemorySegment segment, long index, int value) { VH_meshShader.get().set(segment, 0L, index, value); }
     /// Sets `meshShader` with the given value.
     /// @param value the value
     /// @return `this`

@@ -43,55 +43,55 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `maxExecutionGraphDepth`.
     public static final long OFFSET_maxExecutionGraphDepth = LAYOUT.byteOffset(PathElement.groupElement("maxExecutionGraphDepth"));
     /// The memory layout of `maxExecutionGraphDepth`.
     public static final MemoryLayout LAYOUT_maxExecutionGraphDepth = LAYOUT.select(PathElement.groupElement("maxExecutionGraphDepth"));
     /// The [VarHandle] of `maxExecutionGraphDepth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxExecutionGraphDepth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphDepth"));
+    public static final Supplier<VarHandle> VH_maxExecutionGraphDepth = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphDepth")));
     /// The byte offset of `maxExecutionGraphShaderOutputNodes`.
     public static final long OFFSET_maxExecutionGraphShaderOutputNodes = LAYOUT.byteOffset(PathElement.groupElement("maxExecutionGraphShaderOutputNodes"));
     /// The memory layout of `maxExecutionGraphShaderOutputNodes`.
     public static final MemoryLayout LAYOUT_maxExecutionGraphShaderOutputNodes = LAYOUT.select(PathElement.groupElement("maxExecutionGraphShaderOutputNodes"));
     /// The [VarHandle] of `maxExecutionGraphShaderOutputNodes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxExecutionGraphShaderOutputNodes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphShaderOutputNodes"));
+    public static final Supplier<VarHandle> VH_maxExecutionGraphShaderOutputNodes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphShaderOutputNodes")));
     /// The byte offset of `maxExecutionGraphShaderPayloadSize`.
     public static final long OFFSET_maxExecutionGraphShaderPayloadSize = LAYOUT.byteOffset(PathElement.groupElement("maxExecutionGraphShaderPayloadSize"));
     /// The memory layout of `maxExecutionGraphShaderPayloadSize`.
     public static final MemoryLayout LAYOUT_maxExecutionGraphShaderPayloadSize = LAYOUT.select(PathElement.groupElement("maxExecutionGraphShaderPayloadSize"));
     /// The [VarHandle] of `maxExecutionGraphShaderPayloadSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxExecutionGraphShaderPayloadSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphShaderPayloadSize"));
+    public static final Supplier<VarHandle> VH_maxExecutionGraphShaderPayloadSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphShaderPayloadSize")));
     /// The byte offset of `maxExecutionGraphShaderPayloadCount`.
     public static final long OFFSET_maxExecutionGraphShaderPayloadCount = LAYOUT.byteOffset(PathElement.groupElement("maxExecutionGraphShaderPayloadCount"));
     /// The memory layout of `maxExecutionGraphShaderPayloadCount`.
     public static final MemoryLayout LAYOUT_maxExecutionGraphShaderPayloadCount = LAYOUT.select(PathElement.groupElement("maxExecutionGraphShaderPayloadCount"));
     /// The [VarHandle] of `maxExecutionGraphShaderPayloadCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxExecutionGraphShaderPayloadCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphShaderPayloadCount"));
+    public static final Supplier<VarHandle> VH_maxExecutionGraphShaderPayloadCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphShaderPayloadCount")));
     /// The byte offset of `executionGraphDispatchAddressAlignment`.
     public static final long OFFSET_executionGraphDispatchAddressAlignment = LAYOUT.byteOffset(PathElement.groupElement("executionGraphDispatchAddressAlignment"));
     /// The memory layout of `executionGraphDispatchAddressAlignment`.
     public static final MemoryLayout LAYOUT_executionGraphDispatchAddressAlignment = LAYOUT.select(PathElement.groupElement("executionGraphDispatchAddressAlignment"));
     /// The [VarHandle] of `executionGraphDispatchAddressAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_executionGraphDispatchAddressAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("executionGraphDispatchAddressAlignment"));
+    public static final Supplier<VarHandle> VH_executionGraphDispatchAddressAlignment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("executionGraphDispatchAddressAlignment")));
     /// The byte offset of `maxExecutionGraphWorkgroupCount`.
     public static final long OFFSET_maxExecutionGraphWorkgroupCount = LAYOUT.byteOffset(PathElement.groupElement("maxExecutionGraphWorkgroupCount"));
     /// The memory layout of `maxExecutionGraphWorkgroupCount`.
     public static final MemoryLayout LAYOUT_maxExecutionGraphWorkgroupCount = LAYOUT.select(PathElement.groupElement("maxExecutionGraphWorkgroupCount"));
     /// The [VarHandle] of `maxExecutionGraphWorkgroupCount` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_maxExecutionGraphWorkgroupCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphWorkgroupCount"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_maxExecutionGraphWorkgroupCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphWorkgroupCount"), PathElement.sequenceElement()));
     /// The byte offset of `maxExecutionGraphWorkgroups`.
     public static final long OFFSET_maxExecutionGraphWorkgroups = LAYOUT.byteOffset(PathElement.groupElement("maxExecutionGraphWorkgroups"));
     /// The memory layout of `maxExecutionGraphWorkgroups`.
     public static final MemoryLayout LAYOUT_maxExecutionGraphWorkgroups = LAYOUT.select(PathElement.groupElement("maxExecutionGraphWorkgroups"));
     /// The [VarHandle] of `maxExecutionGraphWorkgroups` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxExecutionGraphWorkgroups = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphWorkgroups"));
+    public static final Supplier<VarHandle> VH_maxExecutionGraphWorkgroups = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphWorkgroups")));
 
     /// Creates `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment.
     /// @param segment      the memory segment
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType
     /// {@return `maxExecutionGraphDepth` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxExecutionGraphDepth(MemorySegment segment, long index) { return (int) VH_maxExecutionGraphDepth.get(segment, 0L, index); }
+    public static int maxExecutionGraphDepth(MemorySegment segment, long index) { return (int) VH_maxExecutionGraphDepth.get().get(segment, 0L, index); }
     /// {@return `maxExecutionGraphDepth`}
     public int maxExecutionGraphDepth() { return maxExecutionGraphDepth(this.segment(), 0L); }
     /// Sets `maxExecutionGraphDepth` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxExecutionGraphDepth(MemorySegment segment, long index, int value) { VH_maxExecutionGraphDepth.set(segment, 0L, index, value); }
+    public static void maxExecutionGraphDepth(MemorySegment segment, long index, int value) { VH_maxExecutionGraphDepth.get().set(segment, 0L, index, value); }
     /// Sets `maxExecutionGraphDepth` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType
     /// {@return `maxExecutionGraphShaderOutputNodes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxExecutionGraphShaderOutputNodes(MemorySegment segment, long index) { return (int) VH_maxExecutionGraphShaderOutputNodes.get(segment, 0L, index); }
+    public static int maxExecutionGraphShaderOutputNodes(MemorySegment segment, long index) { return (int) VH_maxExecutionGraphShaderOutputNodes.get().get(segment, 0L, index); }
     /// {@return `maxExecutionGraphShaderOutputNodes`}
     public int maxExecutionGraphShaderOutputNodes() { return maxExecutionGraphShaderOutputNodes(this.segment(), 0L); }
     /// Sets `maxExecutionGraphShaderOutputNodes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxExecutionGraphShaderOutputNodes(MemorySegment segment, long index, int value) { VH_maxExecutionGraphShaderOutputNodes.set(segment, 0L, index, value); }
+    public static void maxExecutionGraphShaderOutputNodes(MemorySegment segment, long index, int value) { VH_maxExecutionGraphShaderOutputNodes.get().set(segment, 0L, index, value); }
     /// Sets `maxExecutionGraphShaderOutputNodes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType
     /// {@return `maxExecutionGraphShaderPayloadSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxExecutionGraphShaderPayloadSize(MemorySegment segment, long index) { return (int) VH_maxExecutionGraphShaderPayloadSize.get(segment, 0L, index); }
+    public static int maxExecutionGraphShaderPayloadSize(MemorySegment segment, long index) { return (int) VH_maxExecutionGraphShaderPayloadSize.get().get(segment, 0L, index); }
     /// {@return `maxExecutionGraphShaderPayloadSize`}
     public int maxExecutionGraphShaderPayloadSize() { return maxExecutionGraphShaderPayloadSize(this.segment(), 0L); }
     /// Sets `maxExecutionGraphShaderPayloadSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxExecutionGraphShaderPayloadSize(MemorySegment segment, long index, int value) { VH_maxExecutionGraphShaderPayloadSize.set(segment, 0L, index, value); }
+    public static void maxExecutionGraphShaderPayloadSize(MemorySegment segment, long index, int value) { VH_maxExecutionGraphShaderPayloadSize.get().set(segment, 0L, index, value); }
     /// Sets `maxExecutionGraphShaderPayloadSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType
     /// {@return `maxExecutionGraphShaderPayloadCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxExecutionGraphShaderPayloadCount(MemorySegment segment, long index) { return (int) VH_maxExecutionGraphShaderPayloadCount.get(segment, 0L, index); }
+    public static int maxExecutionGraphShaderPayloadCount(MemorySegment segment, long index) { return (int) VH_maxExecutionGraphShaderPayloadCount.get().get(segment, 0L, index); }
     /// {@return `maxExecutionGraphShaderPayloadCount`}
     public int maxExecutionGraphShaderPayloadCount() { return maxExecutionGraphShaderPayloadCount(this.segment(), 0L); }
     /// Sets `maxExecutionGraphShaderPayloadCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxExecutionGraphShaderPayloadCount(MemorySegment segment, long index, int value) { VH_maxExecutionGraphShaderPayloadCount.set(segment, 0L, index, value); }
+    public static void maxExecutionGraphShaderPayloadCount(MemorySegment segment, long index, int value) { VH_maxExecutionGraphShaderPayloadCount.get().set(segment, 0L, index, value); }
     /// Sets `maxExecutionGraphShaderPayloadCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,14 +238,14 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType
     /// {@return `executionGraphDispatchAddressAlignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int executionGraphDispatchAddressAlignment(MemorySegment segment, long index) { return (int) VH_executionGraphDispatchAddressAlignment.get(segment, 0L, index); }
+    public static int executionGraphDispatchAddressAlignment(MemorySegment segment, long index) { return (int) VH_executionGraphDispatchAddressAlignment.get().get(segment, 0L, index); }
     /// {@return `executionGraphDispatchAddressAlignment`}
     public int executionGraphDispatchAddressAlignment() { return executionGraphDispatchAddressAlignment(this.segment(), 0L); }
     /// Sets `executionGraphDispatchAddressAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void executionGraphDispatchAddressAlignment(MemorySegment segment, long index, int value) { VH_executionGraphDispatchAddressAlignment.set(segment, 0L, index, value); }
+    public static void executionGraphDispatchAddressAlignment(MemorySegment segment, long index, int value) { VH_executionGraphDispatchAddressAlignment.get().set(segment, 0L, index, value); }
     /// Sets `executionGraphDispatchAddressAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -259,7 +259,7 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int maxExecutionGraphWorkgroupCount(MemorySegment segment, long index, long index0) { return (int) VH_maxExecutionGraphWorkgroupCount.get(segment, 0L, index, index0); }
+    public static int maxExecutionGraphWorkgroupCount(MemorySegment segment, long index, long index0) { return (int) VH_maxExecutionGraphWorkgroupCount.get().get(segment, 0L, index, index0); }
     /// {@return `maxExecutionGraphWorkgroupCount`}
     public MemorySegment maxExecutionGraphWorkgroupCount() { return maxExecutionGraphWorkgroupCount(this.segment(), 0L); }
     /// {@return `maxExecutionGraphWorkgroupCount`}
@@ -275,7 +275,7 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void maxExecutionGraphWorkgroupCount(MemorySegment segment, long index, long index0, int value) { VH_maxExecutionGraphWorkgroupCount.set(segment, 0L, index, index0, value); }
+    public static void maxExecutionGraphWorkgroupCount(MemorySegment segment, long index, long index0, int value) { VH_maxExecutionGraphWorkgroupCount.get().set(segment, 0L, index, index0, value); }
     /// Sets `maxExecutionGraphWorkgroupCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -289,14 +289,14 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType
     /// {@return `maxExecutionGraphWorkgroups` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxExecutionGraphWorkgroups(MemorySegment segment, long index) { return (int) VH_maxExecutionGraphWorkgroups.get(segment, 0L, index); }
+    public static int maxExecutionGraphWorkgroups(MemorySegment segment, long index) { return (int) VH_maxExecutionGraphWorkgroups.get().get(segment, 0L, index); }
     /// {@return `maxExecutionGraphWorkgroups`}
     public int maxExecutionGraphWorkgroups() { return maxExecutionGraphWorkgroups(this.segment(), 0L); }
     /// Sets `maxExecutionGraphWorkgroups` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxExecutionGraphWorkgroups(MemorySegment segment, long index, int value) { VH_maxExecutionGraphWorkgroups.set(segment, 0L, index, value); }
+    public static void maxExecutionGraphWorkgroups(MemorySegment segment, long index, int value) { VH_maxExecutionGraphWorkgroups.get().set(segment, 0L, index, value); }
     /// Sets `maxExecutionGraphWorkgroups` with the given value.
     /// @param value the value
     /// @return `this`

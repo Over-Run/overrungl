@@ -35,31 +35,31 @@ public final class VkCommandBufferAllocateInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `commandPool`.
     public static final long OFFSET_commandPool = LAYOUT.byteOffset(PathElement.groupElement("commandPool"));
     /// The memory layout of `commandPool`.
     public static final MemoryLayout LAYOUT_commandPool = LAYOUT.select(PathElement.groupElement("commandPool"));
     /// The [VarHandle] of `commandPool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandPool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPool"));
+    public static final Supplier<VarHandle> VH_commandPool = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPool")));
     /// The byte offset of `level`.
     public static final long OFFSET_level = LAYOUT.byteOffset(PathElement.groupElement("level"));
     /// The memory layout of `level`.
     public static final MemoryLayout LAYOUT_level = LAYOUT.select(PathElement.groupElement("level"));
     /// The [VarHandle] of `level` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_level = LAYOUT.arrayElementVarHandle(PathElement.groupElement("level"));
+    public static final Supplier<VarHandle> VH_level = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("level")));
     /// The byte offset of `commandBufferCount`.
     public static final long OFFSET_commandBufferCount = LAYOUT.byteOffset(PathElement.groupElement("commandBufferCount"));
     /// The memory layout of `commandBufferCount`.
     public static final MemoryLayout LAYOUT_commandBufferCount = LAYOUT.select(PathElement.groupElement("commandBufferCount"));
     /// The [VarHandle] of `commandBufferCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandBufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferCount"));
+    public static final Supplier<VarHandle> VH_commandBufferCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferCount")));
 
     /// Creates `VkCommandBufferAllocateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkCommandBufferAllocateInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkCommandBufferAllocateInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkCommandBufferAllocateInfo extends GroupType {
     /// {@return `commandPool` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long commandPool(MemorySegment segment, long index) { return (long) VH_commandPool.get(segment, 0L, index); }
+    public static long commandPool(MemorySegment segment, long index) { return (long) VH_commandPool.get().get(segment, 0L, index); }
     /// {@return `commandPool`}
     public long commandPool() { return commandPool(this.segment(), 0L); }
     /// Sets `commandPool` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandPool(MemorySegment segment, long index, long value) { VH_commandPool.set(segment, 0L, index, value); }
+    public static void commandPool(MemorySegment segment, long index, long value) { VH_commandPool.get().set(segment, 0L, index, value); }
     /// Sets `commandPool` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkCommandBufferAllocateInfo extends GroupType {
     /// {@return `level` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int level(MemorySegment segment, long index) { return (int) VH_level.get(segment, 0L, index); }
+    public static int level(MemorySegment segment, long index) { return (int) VH_level.get().get(segment, 0L, index); }
     /// {@return `level`}
     public int level() { return level(this.segment(), 0L); }
     /// Sets `level` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void level(MemorySegment segment, long index, int value) { VH_level.set(segment, 0L, index, value); }
+    public static void level(MemorySegment segment, long index, int value) { VH_level.get().set(segment, 0L, index, value); }
     /// Sets `level` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkCommandBufferAllocateInfo extends GroupType {
     /// {@return `commandBufferCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int commandBufferCount(MemorySegment segment, long index) { return (int) VH_commandBufferCount.get(segment, 0L, index); }
+    public static int commandBufferCount(MemorySegment segment, long index) { return (int) VH_commandBufferCount.get().get(segment, 0L, index); }
     /// {@return `commandBufferCount`}
     public int commandBufferCount() { return commandBufferCount(this.segment(), 0L); }
     /// Sets `commandBufferCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandBufferCount(MemorySegment segment, long index, int value) { VH_commandBufferCount.set(segment, 0L, index, value); }
+    public static void commandBufferCount(MemorySegment segment, long index, int value) { VH_commandBufferCount.get().set(segment, 0L, index, value); }
     /// Sets `commandBufferCount` with the given value.
     /// @param value the value
     /// @return `this`

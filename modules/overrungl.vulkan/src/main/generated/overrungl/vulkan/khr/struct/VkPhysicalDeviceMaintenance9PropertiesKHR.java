@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceMaintenance9PropertiesKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `image2DViewOf3DSparse`.
     public static final long OFFSET_image2DViewOf3DSparse = LAYOUT.byteOffset(PathElement.groupElement("image2DViewOf3DSparse"));
     /// The memory layout of `image2DViewOf3DSparse`.
     public static final MemoryLayout LAYOUT_image2DViewOf3DSparse = LAYOUT.select(PathElement.groupElement("image2DViewOf3DSparse"));
     /// The [VarHandle] of `image2DViewOf3DSparse` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_image2DViewOf3DSparse = LAYOUT.arrayElementVarHandle(PathElement.groupElement("image2DViewOf3DSparse"));
+    public static final Supplier<VarHandle> VH_image2DViewOf3DSparse = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("image2DViewOf3DSparse")));
     /// The byte offset of `defaultVertexAttributeValue`.
     public static final long OFFSET_defaultVertexAttributeValue = LAYOUT.byteOffset(PathElement.groupElement("defaultVertexAttributeValue"));
     /// The memory layout of `defaultVertexAttributeValue`.
     public static final MemoryLayout LAYOUT_defaultVertexAttributeValue = LAYOUT.select(PathElement.groupElement("defaultVertexAttributeValue"));
     /// The [VarHandle] of `defaultVertexAttributeValue` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_defaultVertexAttributeValue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultVertexAttributeValue"));
+    public static final Supplier<VarHandle> VH_defaultVertexAttributeValue = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultVertexAttributeValue")));
 
     /// Creates `VkPhysicalDeviceMaintenance9PropertiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceMaintenance9PropertiesKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceMaintenance9PropertiesKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceMaintenance9PropertiesKHR extends GroupType {
     /// {@return `image2DViewOf3DSparse` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int image2DViewOf3DSparse(MemorySegment segment, long index) { return (int) VH_image2DViewOf3DSparse.get(segment, 0L, index); }
+    public static int image2DViewOf3DSparse(MemorySegment segment, long index) { return (int) VH_image2DViewOf3DSparse.get().get(segment, 0L, index); }
     /// {@return `image2DViewOf3DSparse`}
     public int image2DViewOf3DSparse() { return image2DViewOf3DSparse(this.segment(), 0L); }
     /// Sets `image2DViewOf3DSparse` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void image2DViewOf3DSparse(MemorySegment segment, long index, int value) { VH_image2DViewOf3DSparse.set(segment, 0L, index, value); }
+    public static void image2DViewOf3DSparse(MemorySegment segment, long index, int value) { VH_image2DViewOf3DSparse.get().set(segment, 0L, index, value); }
     /// Sets `image2DViewOf3DSparse` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceMaintenance9PropertiesKHR extends GroupType {
     /// {@return `defaultVertexAttributeValue` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int defaultVertexAttributeValue(MemorySegment segment, long index) { return (int) VH_defaultVertexAttributeValue.get(segment, 0L, index); }
+    public static int defaultVertexAttributeValue(MemorySegment segment, long index) { return (int) VH_defaultVertexAttributeValue.get().get(segment, 0L, index); }
     /// {@return `defaultVertexAttributeValue`}
     public int defaultVertexAttributeValue() { return defaultVertexAttributeValue(this.segment(), 0L); }
     /// Sets `defaultVertexAttributeValue` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void defaultVertexAttributeValue(MemorySegment segment, long index, int value) { VH_defaultVertexAttributeValue.set(segment, 0L, index, value); }
+    public static void defaultVertexAttributeValue(MemorySegment segment, long index, int value) { VH_defaultVertexAttributeValue.get().set(segment, 0L, index, value); }
     /// Sets `defaultVertexAttributeValue` with the given value.
     /// @param value the value
     /// @return `this`

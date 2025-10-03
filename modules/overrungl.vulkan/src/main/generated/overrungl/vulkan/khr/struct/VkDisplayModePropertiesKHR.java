@@ -29,7 +29,7 @@ public final class VkDisplayModePropertiesKHR extends GroupType {
     /// The memory layout of `displayMode`.
     public static final MemoryLayout LAYOUT_displayMode = LAYOUT.select(PathElement.groupElement("displayMode"));
     /// The [VarHandle] of `displayMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_displayMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayMode"));
+    public static final Supplier<VarHandle> VH_displayMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayMode")));
     /// The byte offset of `parameters`.
     public static final long OFFSET_parameters = LAYOUT.byteOffset(PathElement.groupElement("parameters"));
     /// The memory layout of `parameters`.
@@ -84,14 +84,14 @@ public final class VkDisplayModePropertiesKHR extends GroupType {
     /// {@return `displayMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long displayMode(MemorySegment segment, long index) { return (long) VH_displayMode.get(segment, 0L, index); }
+    public static long displayMode(MemorySegment segment, long index) { return (long) VH_displayMode.get().get(segment, 0L, index); }
     /// {@return `displayMode`}
     public long displayMode() { return displayMode(this.segment(), 0L); }
     /// Sets `displayMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void displayMode(MemorySegment segment, long index, long value) { VH_displayMode.set(segment, 0L, index, value); }
+    public static void displayMode(MemorySegment segment, long index, long value) { VH_displayMode.get().set(segment, 0L, index, value); }
     /// Sets `displayMode` with the given value.
     /// @param value the value
     /// @return `this`

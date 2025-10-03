@@ -33,19 +33,19 @@ public final class NFDOpenDialogArgs extends GroupType {
     /// The memory layout of `filterList`.
     public static final MemoryLayout LAYOUT_filterList = LAYOUT.select(PathElement.groupElement("filterList"));
     /// The [VarHandle] of `filterList` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_filterList = LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterList"));
+    public static final Supplier<VarHandle> VH_filterList = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterList")));
     /// The byte offset of `filterCount`.
     public static final long OFFSET_filterCount = LAYOUT.byteOffset(PathElement.groupElement("filterCount"));
     /// The memory layout of `filterCount`.
     public static final MemoryLayout LAYOUT_filterCount = LAYOUT.select(PathElement.groupElement("filterCount"));
     /// The [VarHandle] of `filterCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_filterCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterCount"));
+    public static final Supplier<VarHandle> VH_filterCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterCount")));
     /// The byte offset of `defaultPath`.
     public static final long OFFSET_defaultPath = LAYOUT.byteOffset(PathElement.groupElement("defaultPath"));
     /// The memory layout of `defaultPath`.
     public static final MemoryLayout LAYOUT_defaultPath = LAYOUT.select(PathElement.groupElement("defaultPath"));
     /// The [VarHandle] of `defaultPath` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_defaultPath = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultPath"));
+    public static final Supplier<VarHandle> VH_defaultPath = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultPath")));
     /// The byte offset of `parentWindow`.
     public static final long OFFSET_parentWindow = LAYOUT.byteOffset(PathElement.groupElement("parentWindow"));
     /// The memory layout of `parentWindow`.
@@ -100,14 +100,14 @@ public final class NFDOpenDialogArgs extends GroupType {
     /// {@return `filterList` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment filterList(MemorySegment segment, long index) { return (MemorySegment) VH_filterList.get(segment, 0L, index); }
+    public static MemorySegment filterList(MemorySegment segment, long index) { return (MemorySegment) VH_filterList.get().get(segment, 0L, index); }
     /// {@return `filterList`}
     public MemorySegment filterList() { return filterList(this.segment(), 0L); }
     /// Sets `filterList` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void filterList(MemorySegment segment, long index, MemorySegment value) { VH_filterList.set(segment, 0L, index, value); }
+    public static void filterList(MemorySegment segment, long index, MemorySegment value) { VH_filterList.get().set(segment, 0L, index, value); }
     /// Sets `filterList` with the given value.
     /// @param value the value
     /// @return `this`
@@ -116,14 +116,14 @@ public final class NFDOpenDialogArgs extends GroupType {
     /// {@return `filterCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int filterCount(MemorySegment segment, long index) { return (int) VH_filterCount.get(segment, 0L, index); }
+    public static int filterCount(MemorySegment segment, long index) { return (int) VH_filterCount.get().get(segment, 0L, index); }
     /// {@return `filterCount`}
     public int filterCount() { return filterCount(this.segment(), 0L); }
     /// Sets `filterCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void filterCount(MemorySegment segment, long index, int value) { VH_filterCount.set(segment, 0L, index, value); }
+    public static void filterCount(MemorySegment segment, long index, int value) { VH_filterCount.get().set(segment, 0L, index, value); }
     /// Sets `filterCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,14 +132,14 @@ public final class NFDOpenDialogArgs extends GroupType {
     /// {@return `defaultPath` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment defaultPath(MemorySegment segment, long index) { return (MemorySegment) VH_defaultPath.get(segment, 0L, index); }
+    public static MemorySegment defaultPath(MemorySegment segment, long index) { return (MemorySegment) VH_defaultPath.get().get(segment, 0L, index); }
     /// {@return `defaultPath`}
     public MemorySegment defaultPath() { return defaultPath(this.segment(), 0L); }
     /// Sets `defaultPath` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void defaultPath(MemorySegment segment, long index, MemorySegment value) { VH_defaultPath.set(segment, 0L, index, value); }
+    public static void defaultPath(MemorySegment segment, long index, MemorySegment value) { VH_defaultPath.get().set(segment, 0L, index, value); }
     /// Sets `defaultPath` with the given value.
     /// @param value the value
     /// @return `this`

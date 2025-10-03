@@ -2,6 +2,7 @@
 package overrungl.opengl.oes;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -11,113 +12,113 @@ public final class GLOESFixedPoint {
     public static final int GL_FIXED_OES = 0x140C;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glAlphaFuncxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glClearColorxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glClearDepthxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glClipPlanexOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glColor4xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDepthRangexOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFogxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFogxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glFrustumxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetClipPlanexOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetFixedvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTexEnvxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTexParameterxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glLightModelxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glLightModelxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glLightxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glLightxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glLineWidthxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glLoadMatrixxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMaterialxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMaterialxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultMatrixxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoord4xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNormal3xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glOrthoxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPointParameterxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glPointSizexOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPolygonOffsetxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glRotatexOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glScalexOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexEnvxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexEnvxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexParameterxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexParameterxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTranslatexOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetLightxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMaterialxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glPointParameterxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glSampleCoveragexOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glAccumxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBitmapxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glBlendColorxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glClearAccumxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glColor3xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glColor3xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glColor4xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glConvolutionParameterxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glConvolutionParameterxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glEvalCoord1xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glEvalCoord1xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glEvalCoord2xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glEvalCoord2xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glFeedbackBufferxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetConvolutionParameterxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetHistogramParameterxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetLightxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMapxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMaterialxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetPixelMapxv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTexGenxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTexLevelParameterxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIndexxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glIndexxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glLoadTransposeMatrixxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMap1xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMap2xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMapGrid1xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMapGrid2xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultTransposeMatrixxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoord1xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexCoord1xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoord2xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexCoord2xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoord3xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexCoord3xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoord4xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNormal3xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glPassThroughxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPixelMapx = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glPixelStorex = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPixelTransferxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPixelZoomxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPrioritizeTexturesxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glRasterPos2xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glRasterPos2xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glRasterPos3xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glRasterPos3xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glRasterPos4xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glRasterPos4xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glRectxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glRectxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoord1xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexCoord1xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoord2xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexCoord2xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoord3xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexCoord3xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoord4xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexCoord4xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexGenxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexGenxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertex2xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertex2xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertex3xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertex3xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertex4xOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertex4xvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glAlphaFuncxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glClearColorxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glClearDepthxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glClipPlanexOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glColor4xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDepthRangexOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFogxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFogxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glFrustumxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetClipPlanexOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetFixedvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTexEnvxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTexParameterxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glLightModelxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glLightModelxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glLightxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glLightxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glLineWidthxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glLoadMatrixxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMaterialxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMaterialxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultMatrixxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord4xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNormal3xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glOrthoxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPointParameterxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glPointSizexOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPolygonOffsetxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glRotatexOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glScalexOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexEnvxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexEnvxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexParameterxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexParameterxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTranslatexOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetLightxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMaterialxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glPointParameterxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glSampleCoveragexOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glAccumxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBitmapxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glBlendColorxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glClearAccumxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glColor3xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glColor3xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glColor4xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glConvolutionParameterxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glConvolutionParameterxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glEvalCoord1xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glEvalCoord1xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glEvalCoord2xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glEvalCoord2xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glFeedbackBufferxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetConvolutionParameterxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetHistogramParameterxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetLightxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMapxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMaterialxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetPixelMapxv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTexGenxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTexLevelParameterxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glIndexxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glIndexxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glLoadTransposeMatrixxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMap1xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMap2xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMapGrid1xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMapGrid2xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultTransposeMatrixxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord1xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord1xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord2xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord2xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord3xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord3xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord4xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNormal3xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glPassThroughxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPixelMapx = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glPixelStorex = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPixelTransferxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPixelZoomxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPrioritizeTexturesxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glRasterPos2xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glRasterPos2xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glRasterPos3xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glRasterPos3xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glRasterPos4xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glRasterPos4xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glRectxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glRectxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexCoord1xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexCoord1xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexCoord2xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexCoord2xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexCoord3xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexCoord3xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexCoord4xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexCoord4xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexGenxOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexGenxvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glVertex2xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glVertex2xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glVertex3xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glVertex3xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glVertex4xOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glVertex4xvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glAlphaFuncxOES;
         public final MemorySegment PFN_glClearColorxOES;
         public final MemorySegment PFN_glClearDepthxOES;
@@ -345,7 +346,7 @@ public final class GLOESFixedPoint {
     public void AlphaFuncxOES(int func, int ref) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFuncxOES)) throw new GLSymbolNotFoundError("Symbol not found: glAlphaFuncxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glAlphaFuncxOES", func, ref); }
-        Handles.MH_glAlphaFuncxOES.invokeExact(handles.PFN_glAlphaFuncxOES, func, ref); }
+        Handles.MH_glAlphaFuncxOES.get().invokeExact(handles.PFN_glAlphaFuncxOES, func, ref); }
         catch (Throwable e) { throw new RuntimeException("error in AlphaFuncxOES", e); }
     }
 
@@ -356,7 +357,7 @@ public final class GLOESFixedPoint {
     public void ClearColorxOES(int red, int green, int blue, int alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearColorxOES)) throw new GLSymbolNotFoundError("Symbol not found: glClearColorxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearColorxOES", red, green, blue, alpha); }
-        Handles.MH_glClearColorxOES.invokeExact(handles.PFN_glClearColorxOES, red, green, blue, alpha); }
+        Handles.MH_glClearColorxOES.get().invokeExact(handles.PFN_glClearColorxOES, red, green, blue, alpha); }
         catch (Throwable e) { throw new RuntimeException("error in ClearColorxOES", e); }
     }
 
@@ -367,7 +368,7 @@ public final class GLOESFixedPoint {
     public void ClearDepthxOES(int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthxOES)) throw new GLSymbolNotFoundError("Symbol not found: glClearDepthxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearDepthxOES", depth); }
-        Handles.MH_glClearDepthxOES.invokeExact(handles.PFN_glClearDepthxOES, depth); }
+        Handles.MH_glClearDepthxOES.get().invokeExact(handles.PFN_glClearDepthxOES, depth); }
         catch (Throwable e) { throw new RuntimeException("error in ClearDepthxOES", e); }
     }
 
@@ -378,7 +379,7 @@ public final class GLOESFixedPoint {
     public void ClipPlanexOES(int plane, @NonNull MemorySegment equation) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClipPlanexOES)) throw new GLSymbolNotFoundError("Symbol not found: glClipPlanexOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClipPlanexOES", plane, equation); }
-        Handles.MH_glClipPlanexOES.invokeExact(handles.PFN_glClipPlanexOES, plane, equation); }
+        Handles.MH_glClipPlanexOES.get().invokeExact(handles.PFN_glClipPlanexOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in ClipPlanexOES", e); }
     }
 
@@ -389,7 +390,7 @@ public final class GLOESFixedPoint {
     public void Color4xOES(int red, int green, int blue, int alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor4xOES)) throw new GLSymbolNotFoundError("Symbol not found: glColor4xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColor4xOES", red, green, blue, alpha); }
-        Handles.MH_glColor4xOES.invokeExact(handles.PFN_glColor4xOES, red, green, blue, alpha); }
+        Handles.MH_glColor4xOES.get().invokeExact(handles.PFN_glColor4xOES, red, green, blue, alpha); }
         catch (Throwable e) { throw new RuntimeException("error in Color4xOES", e); }
     }
 
@@ -400,7 +401,7 @@ public final class GLOESFixedPoint {
     public void DepthRangexOES(int n, int f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangexOES)) throw new GLSymbolNotFoundError("Symbol not found: glDepthRangexOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDepthRangexOES", n, f); }
-        Handles.MH_glDepthRangexOES.invokeExact(handles.PFN_glDepthRangexOES, n, f); }
+        Handles.MH_glDepthRangexOES.get().invokeExact(handles.PFN_glDepthRangexOES, n, f); }
         catch (Throwable e) { throw new RuntimeException("error in DepthRangexOES", e); }
     }
 
@@ -411,7 +412,7 @@ public final class GLOESFixedPoint {
     public void FogxOES(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogxOES)) throw new GLSymbolNotFoundError("Symbol not found: glFogxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFogxOES", pname, param); }
-        Handles.MH_glFogxOES.invokeExact(handles.PFN_glFogxOES, pname, param); }
+        Handles.MH_glFogxOES.get().invokeExact(handles.PFN_glFogxOES, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in FogxOES", e); }
     }
 
@@ -422,7 +423,7 @@ public final class GLOESFixedPoint {
     public void FogxvOES(int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glFogxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFogxvOES", pname, param); }
-        Handles.MH_glFogxvOES.invokeExact(handles.PFN_glFogxvOES, pname, param); }
+        Handles.MH_glFogxvOES.get().invokeExact(handles.PFN_glFogxvOES, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in FogxvOES", e); }
     }
 
@@ -433,7 +434,7 @@ public final class GLOESFixedPoint {
     public void FrustumxOES(int l, int r, int b, int t, int n, int f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFrustumxOES)) throw new GLSymbolNotFoundError("Symbol not found: glFrustumxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFrustumxOES", l, r, b, t, n, f); }
-        Handles.MH_glFrustumxOES.invokeExact(handles.PFN_glFrustumxOES, l, r, b, t, n, f); }
+        Handles.MH_glFrustumxOES.get().invokeExact(handles.PFN_glFrustumxOES, l, r, b, t, n, f); }
         catch (Throwable e) { throw new RuntimeException("error in FrustumxOES", e); }
     }
 
@@ -444,7 +445,7 @@ public final class GLOESFixedPoint {
     public void GetClipPlanexOES(int plane, @NonNull MemorySegment equation) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetClipPlanexOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetClipPlanexOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetClipPlanexOES", plane, equation); }
-        Handles.MH_glGetClipPlanexOES.invokeExact(handles.PFN_glGetClipPlanexOES, plane, equation); }
+        Handles.MH_glGetClipPlanexOES.get().invokeExact(handles.PFN_glGetClipPlanexOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in GetClipPlanexOES", e); }
     }
 
@@ -455,7 +456,7 @@ public final class GLOESFixedPoint {
     public void GetFixedvOES(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFixedvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetFixedvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFixedvOES", pname, params); }
-        Handles.MH_glGetFixedvOES.invokeExact(handles.PFN_glGetFixedvOES, pname, params); }
+        Handles.MH_glGetFixedvOES.get().invokeExact(handles.PFN_glGetFixedvOES, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFixedvOES", e); }
     }
 
@@ -466,7 +467,7 @@ public final class GLOESFixedPoint {
     public void GetTexEnvxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexEnvxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexEnvxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexEnvxvOES", target, pname, params); }
-        Handles.MH_glGetTexEnvxvOES.invokeExact(handles.PFN_glGetTexEnvxvOES, target, pname, params); }
+        Handles.MH_glGetTexEnvxvOES.get().invokeExact(handles.PFN_glGetTexEnvxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexEnvxvOES", e); }
     }
 
@@ -477,7 +478,7 @@ public final class GLOESFixedPoint {
     public void GetTexParameterxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexParameterxvOES", target, pname, params); }
-        Handles.MH_glGetTexParameterxvOES.invokeExact(handles.PFN_glGetTexParameterxvOES, target, pname, params); }
+        Handles.MH_glGetTexParameterxvOES.get().invokeExact(handles.PFN_glGetTexParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexParameterxvOES", e); }
     }
 
@@ -488,7 +489,7 @@ public final class GLOESFixedPoint {
     public void LightModelxOES(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLightModelxOES)) throw new GLSymbolNotFoundError("Symbol not found: glLightModelxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLightModelxOES", pname, param); }
-        Handles.MH_glLightModelxOES.invokeExact(handles.PFN_glLightModelxOES, pname, param); }
+        Handles.MH_glLightModelxOES.get().invokeExact(handles.PFN_glLightModelxOES, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in LightModelxOES", e); }
     }
 
@@ -499,7 +500,7 @@ public final class GLOESFixedPoint {
     public void LightModelxvOES(int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLightModelxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glLightModelxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLightModelxvOES", pname, param); }
-        Handles.MH_glLightModelxvOES.invokeExact(handles.PFN_glLightModelxvOES, pname, param); }
+        Handles.MH_glLightModelxvOES.get().invokeExact(handles.PFN_glLightModelxvOES, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in LightModelxvOES", e); }
     }
 
@@ -510,7 +511,7 @@ public final class GLOESFixedPoint {
     public void LightxOES(int light, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLightxOES)) throw new GLSymbolNotFoundError("Symbol not found: glLightxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLightxOES", light, pname, param); }
-        Handles.MH_glLightxOES.invokeExact(handles.PFN_glLightxOES, light, pname, param); }
+        Handles.MH_glLightxOES.get().invokeExact(handles.PFN_glLightxOES, light, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in LightxOES", e); }
     }
 
@@ -521,7 +522,7 @@ public final class GLOESFixedPoint {
     public void LightxvOES(int light, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLightxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glLightxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLightxvOES", light, pname, params); }
-        Handles.MH_glLightxvOES.invokeExact(handles.PFN_glLightxvOES, light, pname, params); }
+        Handles.MH_glLightxvOES.get().invokeExact(handles.PFN_glLightxvOES, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in LightxvOES", e); }
     }
 
@@ -532,7 +533,7 @@ public final class GLOESFixedPoint {
     public void LineWidthxOES(int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLineWidthxOES)) throw new GLSymbolNotFoundError("Symbol not found: glLineWidthxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLineWidthxOES", width); }
-        Handles.MH_glLineWidthxOES.invokeExact(handles.PFN_glLineWidthxOES, width); }
+        Handles.MH_glLineWidthxOES.get().invokeExact(handles.PFN_glLineWidthxOES, width); }
         catch (Throwable e) { throw new RuntimeException("error in LineWidthxOES", e); }
     }
 
@@ -543,7 +544,7 @@ public final class GLOESFixedPoint {
     public void LoadMatrixxOES(@NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLoadMatrixxOES)) throw new GLSymbolNotFoundError("Symbol not found: glLoadMatrixxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLoadMatrixxOES", m); }
-        Handles.MH_glLoadMatrixxOES.invokeExact(handles.PFN_glLoadMatrixxOES, m); }
+        Handles.MH_glLoadMatrixxOES.get().invokeExact(handles.PFN_glLoadMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in LoadMatrixxOES", e); }
     }
 
@@ -554,7 +555,7 @@ public final class GLOESFixedPoint {
     public void MaterialxOES(int face, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMaterialxOES)) throw new GLSymbolNotFoundError("Symbol not found: glMaterialxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMaterialxOES", face, pname, param); }
-        Handles.MH_glMaterialxOES.invokeExact(handles.PFN_glMaterialxOES, face, pname, param); }
+        Handles.MH_glMaterialxOES.get().invokeExact(handles.PFN_glMaterialxOES, face, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in MaterialxOES", e); }
     }
 
@@ -565,7 +566,7 @@ public final class GLOESFixedPoint {
     public void MaterialxvOES(int face, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMaterialxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMaterialxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMaterialxvOES", face, pname, param); }
-        Handles.MH_glMaterialxvOES.invokeExact(handles.PFN_glMaterialxvOES, face, pname, param); }
+        Handles.MH_glMaterialxvOES.get().invokeExact(handles.PFN_glMaterialxvOES, face, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in MaterialxvOES", e); }
     }
 
@@ -576,7 +577,7 @@ public final class GLOESFixedPoint {
     public void MultMatrixxOES(@NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultMatrixxOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultMatrixxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultMatrixxOES", m); }
-        Handles.MH_glMultMatrixxOES.invokeExact(handles.PFN_glMultMatrixxOES, m); }
+        Handles.MH_glMultMatrixxOES.get().invokeExact(handles.PFN_glMultMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in MultMatrixxOES", e); }
     }
 
@@ -587,7 +588,7 @@ public final class GLOESFixedPoint {
     public void MultiTexCoord4xOES(int texture, int s, int t, int r, int q) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4xOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord4xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord4xOES", texture, s, t, r, q); }
-        Handles.MH_glMultiTexCoord4xOES.invokeExact(handles.PFN_glMultiTexCoord4xOES, texture, s, t, r, q); }
+        Handles.MH_glMultiTexCoord4xOES.get().invokeExact(handles.PFN_glMultiTexCoord4xOES, texture, s, t, r, q); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4xOES", e); }
     }
 
@@ -598,7 +599,7 @@ public final class GLOESFixedPoint {
     public void Normal3xOES(int nx, int ny, int nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormal3xOES)) throw new GLSymbolNotFoundError("Symbol not found: glNormal3xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNormal3xOES", nx, ny, nz); }
-        Handles.MH_glNormal3xOES.invokeExact(handles.PFN_glNormal3xOES, nx, ny, nz); }
+        Handles.MH_glNormal3xOES.get().invokeExact(handles.PFN_glNormal3xOES, nx, ny, nz); }
         catch (Throwable e) { throw new RuntimeException("error in Normal3xOES", e); }
     }
 
@@ -609,7 +610,7 @@ public final class GLOESFixedPoint {
     public void OrthoxOES(int l, int r, int b, int t, int n, int f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glOrthoxOES)) throw new GLSymbolNotFoundError("Symbol not found: glOrthoxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glOrthoxOES", l, r, b, t, n, f); }
-        Handles.MH_glOrthoxOES.invokeExact(handles.PFN_glOrthoxOES, l, r, b, t, n, f); }
+        Handles.MH_glOrthoxOES.get().invokeExact(handles.PFN_glOrthoxOES, l, r, b, t, n, f); }
         catch (Throwable e) { throw new RuntimeException("error in OrthoxOES", e); }
     }
 
@@ -620,7 +621,7 @@ public final class GLOESFixedPoint {
     public void PointParameterxvOES(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameterxvOES", pname, params); }
-        Handles.MH_glPointParameterxvOES.invokeExact(handles.PFN_glPointParameterxvOES, pname, params); }
+        Handles.MH_glPointParameterxvOES.get().invokeExact(handles.PFN_glPointParameterxvOES, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterxvOES", e); }
     }
 
@@ -631,7 +632,7 @@ public final class GLOESFixedPoint {
     public void PointSizexOES(int size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointSizexOES)) throw new GLSymbolNotFoundError("Symbol not found: glPointSizexOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPointSizexOES", size); }
-        Handles.MH_glPointSizexOES.invokeExact(handles.PFN_glPointSizexOES, size); }
+        Handles.MH_glPointSizexOES.get().invokeExact(handles.PFN_glPointSizexOES, size); }
         catch (Throwable e) { throw new RuntimeException("error in PointSizexOES", e); }
     }
 
@@ -642,7 +643,7 @@ public final class GLOESFixedPoint {
     public void PolygonOffsetxOES(int factor, int units) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetxOES)) throw new GLSymbolNotFoundError("Symbol not found: glPolygonOffsetxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPolygonOffsetxOES", factor, units); }
-        Handles.MH_glPolygonOffsetxOES.invokeExact(handles.PFN_glPolygonOffsetxOES, factor, units); }
+        Handles.MH_glPolygonOffsetxOES.get().invokeExact(handles.PFN_glPolygonOffsetxOES, factor, units); }
         catch (Throwable e) { throw new RuntimeException("error in PolygonOffsetxOES", e); }
     }
 
@@ -653,7 +654,7 @@ public final class GLOESFixedPoint {
     public void RotatexOES(int angle, int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRotatexOES)) throw new GLSymbolNotFoundError("Symbol not found: glRotatexOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRotatexOES", angle, x, y, z); }
-        Handles.MH_glRotatexOES.invokeExact(handles.PFN_glRotatexOES, angle, x, y, z); }
+        Handles.MH_glRotatexOES.get().invokeExact(handles.PFN_glRotatexOES, angle, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in RotatexOES", e); }
     }
 
@@ -664,7 +665,7 @@ public final class GLOESFixedPoint {
     public void ScalexOES(int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScalexOES)) throw new GLSymbolNotFoundError("Symbol not found: glScalexOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glScalexOES", x, y, z); }
-        Handles.MH_glScalexOES.invokeExact(handles.PFN_glScalexOES, x, y, z); }
+        Handles.MH_glScalexOES.get().invokeExact(handles.PFN_glScalexOES, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in ScalexOES", e); }
     }
 
@@ -675,7 +676,7 @@ public final class GLOESFixedPoint {
     public void TexEnvxOES(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexEnvxOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexEnvxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexEnvxOES", target, pname, param); }
-        Handles.MH_glTexEnvxOES.invokeExact(handles.PFN_glTexEnvxOES, target, pname, param); }
+        Handles.MH_glTexEnvxOES.get().invokeExact(handles.PFN_glTexEnvxOES, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in TexEnvxOES", e); }
     }
 
@@ -686,7 +687,7 @@ public final class GLOESFixedPoint {
     public void TexEnvxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexEnvxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexEnvxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexEnvxvOES", target, pname, params); }
-        Handles.MH_glTexEnvxvOES.invokeExact(handles.PFN_glTexEnvxvOES, target, pname, params); }
+        Handles.MH_glTexEnvxvOES.get().invokeExact(handles.PFN_glTexEnvxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TexEnvxvOES", e); }
     }
 
@@ -697,7 +698,7 @@ public final class GLOESFixedPoint {
     public void TexParameterxOES(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterxOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexParameterxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexParameterxOES", target, pname, param); }
-        Handles.MH_glTexParameterxOES.invokeExact(handles.PFN_glTexParameterxOES, target, pname, param); }
+        Handles.MH_glTexParameterxOES.get().invokeExact(handles.PFN_glTexParameterxOES, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in TexParameterxOES", e); }
     }
 
@@ -708,7 +709,7 @@ public final class GLOESFixedPoint {
     public void TexParameterxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexParameterxvOES", target, pname, params); }
-        Handles.MH_glTexParameterxvOES.invokeExact(handles.PFN_glTexParameterxvOES, target, pname, params); }
+        Handles.MH_glTexParameterxvOES.get().invokeExact(handles.PFN_glTexParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TexParameterxvOES", e); }
     }
 
@@ -719,7 +720,7 @@ public final class GLOESFixedPoint {
     public void TranslatexOES(int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTranslatexOES)) throw new GLSymbolNotFoundError("Symbol not found: glTranslatexOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTranslatexOES", x, y, z); }
-        Handles.MH_glTranslatexOES.invokeExact(handles.PFN_glTranslatexOES, x, y, z); }
+        Handles.MH_glTranslatexOES.get().invokeExact(handles.PFN_glTranslatexOES, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in TranslatexOES", e); }
     }
 
@@ -730,7 +731,7 @@ public final class GLOESFixedPoint {
     public void GetLightxvOES(int light, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLightxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetLightxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetLightxvOES", light, pname, params); }
-        Handles.MH_glGetLightxvOES.invokeExact(handles.PFN_glGetLightxvOES, light, pname, params); }
+        Handles.MH_glGetLightxvOES.get().invokeExact(handles.PFN_glGetLightxvOES, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetLightxvOES", e); }
     }
 
@@ -741,7 +742,7 @@ public final class GLOESFixedPoint {
     public void GetMaterialxvOES(int face, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMaterialxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetMaterialxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMaterialxvOES", face, pname, params); }
-        Handles.MH_glGetMaterialxvOES.invokeExact(handles.PFN_glGetMaterialxvOES, face, pname, params); }
+        Handles.MH_glGetMaterialxvOES.get().invokeExact(handles.PFN_glGetMaterialxvOES, face, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMaterialxvOES", e); }
     }
 
@@ -752,7 +753,7 @@ public final class GLOESFixedPoint {
     public void PointParameterxOES(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterxOES)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameterxOES", pname, param); }
-        Handles.MH_glPointParameterxOES.invokeExact(handles.PFN_glPointParameterxOES, pname, param); }
+        Handles.MH_glPointParameterxOES.get().invokeExact(handles.PFN_glPointParameterxOES, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterxOES", e); }
     }
 
@@ -763,7 +764,7 @@ public final class GLOESFixedPoint {
     public void SampleCoveragexOES(int value, boolean invert) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleCoveragexOES)) throw new GLSymbolNotFoundError("Symbol not found: glSampleCoveragexOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glSampleCoveragexOES", value, invert); }
-        Handles.MH_glSampleCoveragexOES.invokeExact(handles.PFN_glSampleCoveragexOES, value, ((invert) ? (byte)1 : (byte)0)); }
+        Handles.MH_glSampleCoveragexOES.get().invokeExact(handles.PFN_glSampleCoveragexOES, value, ((invert) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in SampleCoveragexOES", e); }
     }
 
@@ -774,7 +775,7 @@ public final class GLOESFixedPoint {
     public void AccumxOES(int op, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAccumxOES)) throw new GLSymbolNotFoundError("Symbol not found: glAccumxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glAccumxOES", op, value); }
-        Handles.MH_glAccumxOES.invokeExact(handles.PFN_glAccumxOES, op, value); }
+        Handles.MH_glAccumxOES.get().invokeExact(handles.PFN_glAccumxOES, op, value); }
         catch (Throwable e) { throw new RuntimeException("error in AccumxOES", e); }
     }
 
@@ -785,7 +786,7 @@ public final class GLOESFixedPoint {
     public void BitmapxOES(int width, int height, int xorig, int yorig, int xmove, int ymove, @NonNull MemorySegment bitmap) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBitmapxOES)) throw new GLSymbolNotFoundError("Symbol not found: glBitmapxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBitmapxOES", width, height, xorig, yorig, xmove, ymove, bitmap); }
-        Handles.MH_glBitmapxOES.invokeExact(handles.PFN_glBitmapxOES, width, height, xorig, yorig, xmove, ymove, bitmap); }
+        Handles.MH_glBitmapxOES.get().invokeExact(handles.PFN_glBitmapxOES, width, height, xorig, yorig, xmove, ymove, bitmap); }
         catch (Throwable e) { throw new RuntimeException("error in BitmapxOES", e); }
     }
 
@@ -796,7 +797,7 @@ public final class GLOESFixedPoint {
     public void BlendColorxOES(int red, int green, int blue, int alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendColorxOES)) throw new GLSymbolNotFoundError("Symbol not found: glBlendColorxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendColorxOES", red, green, blue, alpha); }
-        Handles.MH_glBlendColorxOES.invokeExact(handles.PFN_glBlendColorxOES, red, green, blue, alpha); }
+        Handles.MH_glBlendColorxOES.get().invokeExact(handles.PFN_glBlendColorxOES, red, green, blue, alpha); }
         catch (Throwable e) { throw new RuntimeException("error in BlendColorxOES", e); }
     }
 
@@ -807,7 +808,7 @@ public final class GLOESFixedPoint {
     public void ClearAccumxOES(int red, int green, int blue, int alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearAccumxOES)) throw new GLSymbolNotFoundError("Symbol not found: glClearAccumxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearAccumxOES", red, green, blue, alpha); }
-        Handles.MH_glClearAccumxOES.invokeExact(handles.PFN_glClearAccumxOES, red, green, blue, alpha); }
+        Handles.MH_glClearAccumxOES.get().invokeExact(handles.PFN_glClearAccumxOES, red, green, blue, alpha); }
         catch (Throwable e) { throw new RuntimeException("error in ClearAccumxOES", e); }
     }
 
@@ -818,7 +819,7 @@ public final class GLOESFixedPoint {
     public void Color3xOES(int red, int green, int blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor3xOES)) throw new GLSymbolNotFoundError("Symbol not found: glColor3xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColor3xOES", red, green, blue); }
-        Handles.MH_glColor3xOES.invokeExact(handles.PFN_glColor3xOES, red, green, blue); }
+        Handles.MH_glColor3xOES.get().invokeExact(handles.PFN_glColor3xOES, red, green, blue); }
         catch (Throwable e) { throw new RuntimeException("error in Color3xOES", e); }
     }
 
@@ -829,7 +830,7 @@ public final class GLOESFixedPoint {
     public void Color3xvOES(@NonNull MemorySegment components) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glColor3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColor3xvOES", components); }
-        Handles.MH_glColor3xvOES.invokeExact(handles.PFN_glColor3xvOES, components); }
+        Handles.MH_glColor3xvOES.get().invokeExact(handles.PFN_glColor3xvOES, components); }
         catch (Throwable e) { throw new RuntimeException("error in Color3xvOES", e); }
     }
 
@@ -840,7 +841,7 @@ public final class GLOESFixedPoint {
     public void Color4xvOES(@NonNull MemorySegment components) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor4xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glColor4xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glColor4xvOES", components); }
-        Handles.MH_glColor4xvOES.invokeExact(handles.PFN_glColor4xvOES, components); }
+        Handles.MH_glColor4xvOES.get().invokeExact(handles.PFN_glColor4xvOES, components); }
         catch (Throwable e) { throw new RuntimeException("error in Color4xvOES", e); }
     }
 
@@ -851,7 +852,7 @@ public final class GLOESFixedPoint {
     public void ConvolutionParameterxOES(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConvolutionParameterxOES)) throw new GLSymbolNotFoundError("Symbol not found: glConvolutionParameterxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glConvolutionParameterxOES", target, pname, param); }
-        Handles.MH_glConvolutionParameterxOES.invokeExact(handles.PFN_glConvolutionParameterxOES, target, pname, param); }
+        Handles.MH_glConvolutionParameterxOES.get().invokeExact(handles.PFN_glConvolutionParameterxOES, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in ConvolutionParameterxOES", e); }
     }
 
@@ -862,7 +863,7 @@ public final class GLOESFixedPoint {
     public void ConvolutionParameterxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConvolutionParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glConvolutionParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glConvolutionParameterxvOES", target, pname, params); }
-        Handles.MH_glConvolutionParameterxvOES.invokeExact(handles.PFN_glConvolutionParameterxvOES, target, pname, params); }
+        Handles.MH_glConvolutionParameterxvOES.get().invokeExact(handles.PFN_glConvolutionParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in ConvolutionParameterxvOES", e); }
     }
 
@@ -873,7 +874,7 @@ public final class GLOESFixedPoint {
     public void EvalCoord1xOES(int u) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord1xOES)) throw new GLSymbolNotFoundError("Symbol not found: glEvalCoord1xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEvalCoord1xOES", u); }
-        Handles.MH_glEvalCoord1xOES.invokeExact(handles.PFN_glEvalCoord1xOES, u); }
+        Handles.MH_glEvalCoord1xOES.get().invokeExact(handles.PFN_glEvalCoord1xOES, u); }
         catch (Throwable e) { throw new RuntimeException("error in EvalCoord1xOES", e); }
     }
 
@@ -884,7 +885,7 @@ public final class GLOESFixedPoint {
     public void EvalCoord1xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord1xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glEvalCoord1xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEvalCoord1xvOES", coords); }
-        Handles.MH_glEvalCoord1xvOES.invokeExact(handles.PFN_glEvalCoord1xvOES, coords); }
+        Handles.MH_glEvalCoord1xvOES.get().invokeExact(handles.PFN_glEvalCoord1xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in EvalCoord1xvOES", e); }
     }
 
@@ -895,7 +896,7 @@ public final class GLOESFixedPoint {
     public void EvalCoord2xOES(int u, int v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord2xOES)) throw new GLSymbolNotFoundError("Symbol not found: glEvalCoord2xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEvalCoord2xOES", u, v); }
-        Handles.MH_glEvalCoord2xOES.invokeExact(handles.PFN_glEvalCoord2xOES, u, v); }
+        Handles.MH_glEvalCoord2xOES.get().invokeExact(handles.PFN_glEvalCoord2xOES, u, v); }
         catch (Throwable e) { throw new RuntimeException("error in EvalCoord2xOES", e); }
     }
 
@@ -906,7 +907,7 @@ public final class GLOESFixedPoint {
     public void EvalCoord2xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord2xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glEvalCoord2xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEvalCoord2xvOES", coords); }
-        Handles.MH_glEvalCoord2xvOES.invokeExact(handles.PFN_glEvalCoord2xvOES, coords); }
+        Handles.MH_glEvalCoord2xvOES.get().invokeExact(handles.PFN_glEvalCoord2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in EvalCoord2xvOES", e); }
     }
 
@@ -917,7 +918,7 @@ public final class GLOESFixedPoint {
     public void FeedbackBufferxOES(int n, int type, @NonNull MemorySegment buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFeedbackBufferxOES)) throw new GLSymbolNotFoundError("Symbol not found: glFeedbackBufferxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFeedbackBufferxOES", n, type, buffer); }
-        Handles.MH_glFeedbackBufferxOES.invokeExact(handles.PFN_glFeedbackBufferxOES, n, type, buffer); }
+        Handles.MH_glFeedbackBufferxOES.get().invokeExact(handles.PFN_glFeedbackBufferxOES, n, type, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in FeedbackBufferxOES", e); }
     }
 
@@ -928,7 +929,7 @@ public final class GLOESFixedPoint {
     public void GetConvolutionParameterxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetConvolutionParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetConvolutionParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetConvolutionParameterxvOES", target, pname, params); }
-        Handles.MH_glGetConvolutionParameterxvOES.invokeExact(handles.PFN_glGetConvolutionParameterxvOES, target, pname, params); }
+        Handles.MH_glGetConvolutionParameterxvOES.get().invokeExact(handles.PFN_glGetConvolutionParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetConvolutionParameterxvOES", e); }
     }
 
@@ -939,7 +940,7 @@ public final class GLOESFixedPoint {
     public void GetHistogramParameterxvOES(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetHistogramParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetHistogramParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetHistogramParameterxvOES", target, pname, params); }
-        Handles.MH_glGetHistogramParameterxvOES.invokeExact(handles.PFN_glGetHistogramParameterxvOES, target, pname, params); }
+        Handles.MH_glGetHistogramParameterxvOES.get().invokeExact(handles.PFN_glGetHistogramParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetHistogramParameterxvOES", e); }
     }
 
@@ -950,7 +951,7 @@ public final class GLOESFixedPoint {
     public void GetLightxOES(int light, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLightxOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetLightxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetLightxOES", light, pname, params); }
-        Handles.MH_glGetLightxOES.invokeExact(handles.PFN_glGetLightxOES, light, pname, params); }
+        Handles.MH_glGetLightxOES.get().invokeExact(handles.PFN_glGetLightxOES, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetLightxOES", e); }
     }
 
@@ -961,7 +962,7 @@ public final class GLOESFixedPoint {
     public void GetMapxvOES(int target, int query, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMapxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetMapxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMapxvOES", target, query, v); }
-        Handles.MH_glGetMapxvOES.invokeExact(handles.PFN_glGetMapxvOES, target, query, v); }
+        Handles.MH_glGetMapxvOES.get().invokeExact(handles.PFN_glGetMapxvOES, target, query, v); }
         catch (Throwable e) { throw new RuntimeException("error in GetMapxvOES", e); }
     }
 
@@ -972,7 +973,7 @@ public final class GLOESFixedPoint {
     public void GetMaterialxOES(int face, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMaterialxOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetMaterialxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMaterialxOES", face, pname, param); }
-        Handles.MH_glGetMaterialxOES.invokeExact(handles.PFN_glGetMaterialxOES, face, pname, param); }
+        Handles.MH_glGetMaterialxOES.get().invokeExact(handles.PFN_glGetMaterialxOES, face, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetMaterialxOES", e); }
     }
 
@@ -983,7 +984,7 @@ public final class GLOESFixedPoint {
     public void GetPixelMapxv(int map, int size, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelMapxv)) throw new GLSymbolNotFoundError("Symbol not found: glGetPixelMapxv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPixelMapxv", map, size, values); }
-        Handles.MH_glGetPixelMapxv.invokeExact(handles.PFN_glGetPixelMapxv, map, size, values); }
+        Handles.MH_glGetPixelMapxv.get().invokeExact(handles.PFN_glGetPixelMapxv, map, size, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetPixelMapxv", e); }
     }
 
@@ -994,7 +995,7 @@ public final class GLOESFixedPoint {
     public void GetTexGenxvOES(int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexGenxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexGenxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexGenxvOES", coord, pname, params); }
-        Handles.MH_glGetTexGenxvOES.invokeExact(handles.PFN_glGetTexGenxvOES, coord, pname, params); }
+        Handles.MH_glGetTexGenxvOES.get().invokeExact(handles.PFN_glGetTexGenxvOES, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexGenxvOES", e); }
     }
 
@@ -1005,7 +1006,7 @@ public final class GLOESFixedPoint {
     public void GetTexLevelParameterxvOES(int target, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexLevelParameterxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexLevelParameterxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexLevelParameterxvOES", target, level, pname, params); }
-        Handles.MH_glGetTexLevelParameterxvOES.invokeExact(handles.PFN_glGetTexLevelParameterxvOES, target, level, pname, params); }
+        Handles.MH_glGetTexLevelParameterxvOES.get().invokeExact(handles.PFN_glGetTexLevelParameterxvOES, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexLevelParameterxvOES", e); }
     }
 
@@ -1016,7 +1017,7 @@ public final class GLOESFixedPoint {
     public void IndexxOES(int component) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexxOES)) throw new GLSymbolNotFoundError("Symbol not found: glIndexxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIndexxOES", component); }
-        Handles.MH_glIndexxOES.invokeExact(handles.PFN_glIndexxOES, component); }
+        Handles.MH_glIndexxOES.get().invokeExact(handles.PFN_glIndexxOES, component); }
         catch (Throwable e) { throw new RuntimeException("error in IndexxOES", e); }
     }
 
@@ -1027,7 +1028,7 @@ public final class GLOESFixedPoint {
     public void IndexxvOES(@NonNull MemorySegment component) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glIndexxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIndexxvOES", component); }
-        Handles.MH_glIndexxvOES.invokeExact(handles.PFN_glIndexxvOES, component); }
+        Handles.MH_glIndexxvOES.get().invokeExact(handles.PFN_glIndexxvOES, component); }
         catch (Throwable e) { throw new RuntimeException("error in IndexxvOES", e); }
     }
 
@@ -1038,7 +1039,7 @@ public final class GLOESFixedPoint {
     public void LoadTransposeMatrixxOES(@NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLoadTransposeMatrixxOES)) throw new GLSymbolNotFoundError("Symbol not found: glLoadTransposeMatrixxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLoadTransposeMatrixxOES", m); }
-        Handles.MH_glLoadTransposeMatrixxOES.invokeExact(handles.PFN_glLoadTransposeMatrixxOES, m); }
+        Handles.MH_glLoadTransposeMatrixxOES.get().invokeExact(handles.PFN_glLoadTransposeMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in LoadTransposeMatrixxOES", e); }
     }
 
@@ -1049,7 +1050,7 @@ public final class GLOESFixedPoint {
     public void Map1xOES(int target, int u1, int u2, int stride, int order, int points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMap1xOES)) throw new GLSymbolNotFoundError("Symbol not found: glMap1xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMap1xOES", target, u1, u2, stride, order, points); }
-        Handles.MH_glMap1xOES.invokeExact(handles.PFN_glMap1xOES, target, u1, u2, stride, order, points); }
+        Handles.MH_glMap1xOES.get().invokeExact(handles.PFN_glMap1xOES, target, u1, u2, stride, order, points); }
         catch (Throwable e) { throw new RuntimeException("error in Map1xOES", e); }
     }
 
@@ -1060,7 +1061,7 @@ public final class GLOESFixedPoint {
     public void Map2xOES(int target, int u1, int u2, int ustride, int uorder, int v1, int v2, int vstride, int vorder, int points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMap2xOES)) throw new GLSymbolNotFoundError("Symbol not found: glMap2xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMap2xOES", target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points); }
-        Handles.MH_glMap2xOES.invokeExact(handles.PFN_glMap2xOES, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points); }
+        Handles.MH_glMap2xOES.get().invokeExact(handles.PFN_glMap2xOES, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points); }
         catch (Throwable e) { throw new RuntimeException("error in Map2xOES", e); }
     }
 
@@ -1071,7 +1072,7 @@ public final class GLOESFixedPoint {
     public void MapGrid1xOES(int n, int u1, int u2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapGrid1xOES)) throw new GLSymbolNotFoundError("Symbol not found: glMapGrid1xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapGrid1xOES", n, u1, u2); }
-        Handles.MH_glMapGrid1xOES.invokeExact(handles.PFN_glMapGrid1xOES, n, u1, u2); }
+        Handles.MH_glMapGrid1xOES.get().invokeExact(handles.PFN_glMapGrid1xOES, n, u1, u2); }
         catch (Throwable e) { throw new RuntimeException("error in MapGrid1xOES", e); }
     }
 
@@ -1082,7 +1083,7 @@ public final class GLOESFixedPoint {
     public void MapGrid2xOES(int n, int u1, int u2, int v1, int v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapGrid2xOES)) throw new GLSymbolNotFoundError("Symbol not found: glMapGrid2xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapGrid2xOES", n, u1, u2, v1, v2); }
-        Handles.MH_glMapGrid2xOES.invokeExact(handles.PFN_glMapGrid2xOES, n, u1, u2, v1, v2); }
+        Handles.MH_glMapGrid2xOES.get().invokeExact(handles.PFN_glMapGrid2xOES, n, u1, u2, v1, v2); }
         catch (Throwable e) { throw new RuntimeException("error in MapGrid2xOES", e); }
     }
 
@@ -1093,7 +1094,7 @@ public final class GLOESFixedPoint {
     public void MultTransposeMatrixxOES(@NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultTransposeMatrixxOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultTransposeMatrixxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultTransposeMatrixxOES", m); }
-        Handles.MH_glMultTransposeMatrixxOES.invokeExact(handles.PFN_glMultTransposeMatrixxOES, m); }
+        Handles.MH_glMultTransposeMatrixxOES.get().invokeExact(handles.PFN_glMultTransposeMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in MultTransposeMatrixxOES", e); }
     }
 
@@ -1104,7 +1105,7 @@ public final class GLOESFixedPoint {
     public void MultiTexCoord1xOES(int texture, int s) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1xOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord1xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord1xOES", texture, s); }
-        Handles.MH_glMultiTexCoord1xOES.invokeExact(handles.PFN_glMultiTexCoord1xOES, texture, s); }
+        Handles.MH_glMultiTexCoord1xOES.get().invokeExact(handles.PFN_glMultiTexCoord1xOES, texture, s); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1xOES", e); }
     }
 
@@ -1115,7 +1116,7 @@ public final class GLOESFixedPoint {
     public void MultiTexCoord1xvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord1xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord1xvOES", texture, coords); }
-        Handles.MH_glMultiTexCoord1xvOES.invokeExact(handles.PFN_glMultiTexCoord1xvOES, texture, coords); }
+        Handles.MH_glMultiTexCoord1xvOES.get().invokeExact(handles.PFN_glMultiTexCoord1xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1xvOES", e); }
     }
 
@@ -1126,7 +1127,7 @@ public final class GLOESFixedPoint {
     public void MultiTexCoord2xOES(int texture, int s, int t) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2xOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord2xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord2xOES", texture, s, t); }
-        Handles.MH_glMultiTexCoord2xOES.invokeExact(handles.PFN_glMultiTexCoord2xOES, texture, s, t); }
+        Handles.MH_glMultiTexCoord2xOES.get().invokeExact(handles.PFN_glMultiTexCoord2xOES, texture, s, t); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2xOES", e); }
     }
 
@@ -1137,7 +1138,7 @@ public final class GLOESFixedPoint {
     public void MultiTexCoord2xvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord2xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord2xvOES", texture, coords); }
-        Handles.MH_glMultiTexCoord2xvOES.invokeExact(handles.PFN_glMultiTexCoord2xvOES, texture, coords); }
+        Handles.MH_glMultiTexCoord2xvOES.get().invokeExact(handles.PFN_glMultiTexCoord2xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2xvOES", e); }
     }
 
@@ -1148,7 +1149,7 @@ public final class GLOESFixedPoint {
     public void MultiTexCoord3xOES(int texture, int s, int t, int r) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3xOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord3xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord3xOES", texture, s, t, r); }
-        Handles.MH_glMultiTexCoord3xOES.invokeExact(handles.PFN_glMultiTexCoord3xOES, texture, s, t, r); }
+        Handles.MH_glMultiTexCoord3xOES.get().invokeExact(handles.PFN_glMultiTexCoord3xOES, texture, s, t, r); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3xOES", e); }
     }
 
@@ -1159,7 +1160,7 @@ public final class GLOESFixedPoint {
     public void MultiTexCoord3xvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord3xvOES", texture, coords); }
-        Handles.MH_glMultiTexCoord3xvOES.invokeExact(handles.PFN_glMultiTexCoord3xvOES, texture, coords); }
+        Handles.MH_glMultiTexCoord3xvOES.get().invokeExact(handles.PFN_glMultiTexCoord3xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3xvOES", e); }
     }
 
@@ -1170,7 +1171,7 @@ public final class GLOESFixedPoint {
     public void MultiTexCoord4xvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord4xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord4xvOES", texture, coords); }
-        Handles.MH_glMultiTexCoord4xvOES.invokeExact(handles.PFN_glMultiTexCoord4xvOES, texture, coords); }
+        Handles.MH_glMultiTexCoord4xvOES.get().invokeExact(handles.PFN_glMultiTexCoord4xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4xvOES", e); }
     }
 
@@ -1181,7 +1182,7 @@ public final class GLOESFixedPoint {
     public void Normal3xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormal3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glNormal3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNormal3xvOES", coords); }
-        Handles.MH_glNormal3xvOES.invokeExact(handles.PFN_glNormal3xvOES, coords); }
+        Handles.MH_glNormal3xvOES.get().invokeExact(handles.PFN_glNormal3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Normal3xvOES", e); }
     }
 
@@ -1192,7 +1193,7 @@ public final class GLOESFixedPoint {
     public void PassThroughxOES(int token) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPassThroughxOES)) throw new GLSymbolNotFoundError("Symbol not found: glPassThroughxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPassThroughxOES", token); }
-        Handles.MH_glPassThroughxOES.invokeExact(handles.PFN_glPassThroughxOES, token); }
+        Handles.MH_glPassThroughxOES.get().invokeExact(handles.PFN_glPassThroughxOES, token); }
         catch (Throwable e) { throw new RuntimeException("error in PassThroughxOES", e); }
     }
 
@@ -1203,7 +1204,7 @@ public final class GLOESFixedPoint {
     public void PixelMapx(int map, int size, @NonNull MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelMapx)) throw new GLSymbolNotFoundError("Symbol not found: glPixelMapx");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelMapx", map, size, values); }
-        Handles.MH_glPixelMapx.invokeExact(handles.PFN_glPixelMapx, map, size, values); }
+        Handles.MH_glPixelMapx.get().invokeExact(handles.PFN_glPixelMapx, map, size, values); }
         catch (Throwable e) { throw new RuntimeException("error in PixelMapx", e); }
     }
 
@@ -1214,7 +1215,7 @@ public final class GLOESFixedPoint {
     public void PixelStorex(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelStorex)) throw new GLSymbolNotFoundError("Symbol not found: glPixelStorex");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelStorex", pname, param); }
-        Handles.MH_glPixelStorex.invokeExact(handles.PFN_glPixelStorex, pname, param); }
+        Handles.MH_glPixelStorex.get().invokeExact(handles.PFN_glPixelStorex, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PixelStorex", e); }
     }
 
@@ -1225,7 +1226,7 @@ public final class GLOESFixedPoint {
     public void PixelTransferxOES(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTransferxOES)) throw new GLSymbolNotFoundError("Symbol not found: glPixelTransferxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelTransferxOES", pname, param); }
-        Handles.MH_glPixelTransferxOES.invokeExact(handles.PFN_glPixelTransferxOES, pname, param); }
+        Handles.MH_glPixelTransferxOES.get().invokeExact(handles.PFN_glPixelTransferxOES, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PixelTransferxOES", e); }
     }
 
@@ -1236,7 +1237,7 @@ public final class GLOESFixedPoint {
     public void PixelZoomxOES(int xfactor, int yfactor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelZoomxOES)) throw new GLSymbolNotFoundError("Symbol not found: glPixelZoomxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelZoomxOES", xfactor, yfactor); }
-        Handles.MH_glPixelZoomxOES.invokeExact(handles.PFN_glPixelZoomxOES, xfactor, yfactor); }
+        Handles.MH_glPixelZoomxOES.get().invokeExact(handles.PFN_glPixelZoomxOES, xfactor, yfactor); }
         catch (Throwable e) { throw new RuntimeException("error in PixelZoomxOES", e); }
     }
 
@@ -1247,7 +1248,7 @@ public final class GLOESFixedPoint {
     public void PrioritizeTexturesxOES(int n, @NonNull MemorySegment textures, @NonNull MemorySegment priorities) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPrioritizeTexturesxOES)) throw new GLSymbolNotFoundError("Symbol not found: glPrioritizeTexturesxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPrioritizeTexturesxOES", n, textures, priorities); }
-        Handles.MH_glPrioritizeTexturesxOES.invokeExact(handles.PFN_glPrioritizeTexturesxOES, n, textures, priorities); }
+        Handles.MH_glPrioritizeTexturesxOES.get().invokeExact(handles.PFN_glPrioritizeTexturesxOES, n, textures, priorities); }
         catch (Throwable e) { throw new RuntimeException("error in PrioritizeTexturesxOES", e); }
     }
 
@@ -1258,7 +1259,7 @@ public final class GLOESFixedPoint {
     public void RasterPos2xOES(int x, int y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos2xOES)) throw new GLSymbolNotFoundError("Symbol not found: glRasterPos2xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRasterPos2xOES", x, y); }
-        Handles.MH_glRasterPos2xOES.invokeExact(handles.PFN_glRasterPos2xOES, x, y); }
+        Handles.MH_glRasterPos2xOES.get().invokeExact(handles.PFN_glRasterPos2xOES, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in RasterPos2xOES", e); }
     }
 
@@ -1269,7 +1270,7 @@ public final class GLOESFixedPoint {
     public void RasterPos2xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos2xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glRasterPos2xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRasterPos2xvOES", coords); }
-        Handles.MH_glRasterPos2xvOES.invokeExact(handles.PFN_glRasterPos2xvOES, coords); }
+        Handles.MH_glRasterPos2xvOES.get().invokeExact(handles.PFN_glRasterPos2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in RasterPos2xvOES", e); }
     }
 
@@ -1280,7 +1281,7 @@ public final class GLOESFixedPoint {
     public void RasterPos3xOES(int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos3xOES)) throw new GLSymbolNotFoundError("Symbol not found: glRasterPos3xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRasterPos3xOES", x, y, z); }
-        Handles.MH_glRasterPos3xOES.invokeExact(handles.PFN_glRasterPos3xOES, x, y, z); }
+        Handles.MH_glRasterPos3xOES.get().invokeExact(handles.PFN_glRasterPos3xOES, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in RasterPos3xOES", e); }
     }
 
@@ -1291,7 +1292,7 @@ public final class GLOESFixedPoint {
     public void RasterPos3xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glRasterPos3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRasterPos3xvOES", coords); }
-        Handles.MH_glRasterPos3xvOES.invokeExact(handles.PFN_glRasterPos3xvOES, coords); }
+        Handles.MH_glRasterPos3xvOES.get().invokeExact(handles.PFN_glRasterPos3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in RasterPos3xvOES", e); }
     }
 
@@ -1302,7 +1303,7 @@ public final class GLOESFixedPoint {
     public void RasterPos4xOES(int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos4xOES)) throw new GLSymbolNotFoundError("Symbol not found: glRasterPos4xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRasterPos4xOES", x, y, z, w); }
-        Handles.MH_glRasterPos4xOES.invokeExact(handles.PFN_glRasterPos4xOES, x, y, z, w); }
+        Handles.MH_glRasterPos4xOES.get().invokeExact(handles.PFN_glRasterPos4xOES, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in RasterPos4xOES", e); }
     }
 
@@ -1313,7 +1314,7 @@ public final class GLOESFixedPoint {
     public void RasterPos4xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos4xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glRasterPos4xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRasterPos4xvOES", coords); }
-        Handles.MH_glRasterPos4xvOES.invokeExact(handles.PFN_glRasterPos4xvOES, coords); }
+        Handles.MH_glRasterPos4xvOES.get().invokeExact(handles.PFN_glRasterPos4xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in RasterPos4xvOES", e); }
     }
 
@@ -1324,7 +1325,7 @@ public final class GLOESFixedPoint {
     public void RectxOES(int x1, int y1, int x2, int y2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRectxOES)) throw new GLSymbolNotFoundError("Symbol not found: glRectxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRectxOES", x1, y1, x2, y2); }
-        Handles.MH_glRectxOES.invokeExact(handles.PFN_glRectxOES, x1, y1, x2, y2); }
+        Handles.MH_glRectxOES.get().invokeExact(handles.PFN_glRectxOES, x1, y1, x2, y2); }
         catch (Throwable e) { throw new RuntimeException("error in RectxOES", e); }
     }
 
@@ -1335,7 +1336,7 @@ public final class GLOESFixedPoint {
     public void RectxvOES(@NonNull MemorySegment v1, @NonNull MemorySegment v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRectxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glRectxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glRectxvOES", v1, v2); }
-        Handles.MH_glRectxvOES.invokeExact(handles.PFN_glRectxvOES, v1, v2); }
+        Handles.MH_glRectxvOES.get().invokeExact(handles.PFN_glRectxvOES, v1, v2); }
         catch (Throwable e) { throw new RuntimeException("error in RectxvOES", e); }
     }
 
@@ -1346,7 +1347,7 @@ public final class GLOESFixedPoint {
     public void TexCoord1xOES(int s) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1xOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord1xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord1xOES", s); }
-        Handles.MH_glTexCoord1xOES.invokeExact(handles.PFN_glTexCoord1xOES, s); }
+        Handles.MH_glTexCoord1xOES.get().invokeExact(handles.PFN_glTexCoord1xOES, s); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord1xOES", e); }
     }
 
@@ -1357,7 +1358,7 @@ public final class GLOESFixedPoint {
     public void TexCoord1xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord1xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord1xvOES", coords); }
-        Handles.MH_glTexCoord1xvOES.invokeExact(handles.PFN_glTexCoord1xvOES, coords); }
+        Handles.MH_glTexCoord1xvOES.get().invokeExact(handles.PFN_glTexCoord1xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord1xvOES", e); }
     }
 
@@ -1368,7 +1369,7 @@ public final class GLOESFixedPoint {
     public void TexCoord2xOES(int s, int t) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2xOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord2xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord2xOES", s, t); }
-        Handles.MH_glTexCoord2xOES.invokeExact(handles.PFN_glTexCoord2xOES, s, t); }
+        Handles.MH_glTexCoord2xOES.get().invokeExact(handles.PFN_glTexCoord2xOES, s, t); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord2xOES", e); }
     }
 
@@ -1379,7 +1380,7 @@ public final class GLOESFixedPoint {
     public void TexCoord2xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord2xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord2xvOES", coords); }
-        Handles.MH_glTexCoord2xvOES.invokeExact(handles.PFN_glTexCoord2xvOES, coords); }
+        Handles.MH_glTexCoord2xvOES.get().invokeExact(handles.PFN_glTexCoord2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord2xvOES", e); }
     }
 
@@ -1390,7 +1391,7 @@ public final class GLOESFixedPoint {
     public void TexCoord3xOES(int s, int t, int r) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3xOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord3xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord3xOES", s, t, r); }
-        Handles.MH_glTexCoord3xOES.invokeExact(handles.PFN_glTexCoord3xOES, s, t, r); }
+        Handles.MH_glTexCoord3xOES.get().invokeExact(handles.PFN_glTexCoord3xOES, s, t, r); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord3xOES", e); }
     }
 
@@ -1401,7 +1402,7 @@ public final class GLOESFixedPoint {
     public void TexCoord3xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord3xvOES", coords); }
-        Handles.MH_glTexCoord3xvOES.invokeExact(handles.PFN_glTexCoord3xvOES, coords); }
+        Handles.MH_glTexCoord3xvOES.get().invokeExact(handles.PFN_glTexCoord3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord3xvOES", e); }
     }
 
@@ -1412,7 +1413,7 @@ public final class GLOESFixedPoint {
     public void TexCoord4xOES(int s, int t, int r, int q) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4xOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord4xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord4xOES", s, t, r, q); }
-        Handles.MH_glTexCoord4xOES.invokeExact(handles.PFN_glTexCoord4xOES, s, t, r, q); }
+        Handles.MH_glTexCoord4xOES.get().invokeExact(handles.PFN_glTexCoord4xOES, s, t, r, q); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord4xOES", e); }
     }
 
@@ -1423,7 +1424,7 @@ public final class GLOESFixedPoint {
     public void TexCoord4xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord4xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord4xvOES", coords); }
-        Handles.MH_glTexCoord4xvOES.invokeExact(handles.PFN_glTexCoord4xvOES, coords); }
+        Handles.MH_glTexCoord4xvOES.get().invokeExact(handles.PFN_glTexCoord4xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord4xvOES", e); }
     }
 
@@ -1434,7 +1435,7 @@ public final class GLOESFixedPoint {
     public void TexGenxOES(int coord, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexGenxOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexGenxOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexGenxOES", coord, pname, param); }
-        Handles.MH_glTexGenxOES.invokeExact(handles.PFN_glTexGenxOES, coord, pname, param); }
+        Handles.MH_glTexGenxOES.get().invokeExact(handles.PFN_glTexGenxOES, coord, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in TexGenxOES", e); }
     }
 
@@ -1445,7 +1446,7 @@ public final class GLOESFixedPoint {
     public void TexGenxvOES(int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexGenxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexGenxvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexGenxvOES", coord, pname, params); }
-        Handles.MH_glTexGenxvOES.invokeExact(handles.PFN_glTexGenxvOES, coord, pname, params); }
+        Handles.MH_glTexGenxvOES.get().invokeExact(handles.PFN_glTexGenxvOES, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TexGenxvOES", e); }
     }
 
@@ -1456,7 +1457,7 @@ public final class GLOESFixedPoint {
     public void Vertex2xOES(int x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex2xOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex2xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex2xOES", x); }
-        Handles.MH_glVertex2xOES.invokeExact(handles.PFN_glVertex2xOES, x); }
+        Handles.MH_glVertex2xOES.get().invokeExact(handles.PFN_glVertex2xOES, x); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex2xOES", e); }
     }
 
@@ -1467,7 +1468,7 @@ public final class GLOESFixedPoint {
     public void Vertex2xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex2xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex2xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex2xvOES", coords); }
-        Handles.MH_glVertex2xvOES.invokeExact(handles.PFN_glVertex2xvOES, coords); }
+        Handles.MH_glVertex2xvOES.get().invokeExact(handles.PFN_glVertex2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex2xvOES", e); }
     }
 
@@ -1478,7 +1479,7 @@ public final class GLOESFixedPoint {
     public void Vertex3xOES(int x, int y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex3xOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex3xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex3xOES", x, y); }
-        Handles.MH_glVertex3xOES.invokeExact(handles.PFN_glVertex3xOES, x, y); }
+        Handles.MH_glVertex3xOES.get().invokeExact(handles.PFN_glVertex3xOES, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex3xOES", e); }
     }
 
@@ -1489,7 +1490,7 @@ public final class GLOESFixedPoint {
     public void Vertex3xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex3xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex3xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex3xvOES", coords); }
-        Handles.MH_glVertex3xvOES.invokeExact(handles.PFN_glVertex3xvOES, coords); }
+        Handles.MH_glVertex3xvOES.get().invokeExact(handles.PFN_glVertex3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex3xvOES", e); }
     }
 
@@ -1500,7 +1501,7 @@ public final class GLOESFixedPoint {
     public void Vertex4xOES(int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex4xOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex4xOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex4xOES", x, y, z); }
-        Handles.MH_glVertex4xOES.invokeExact(handles.PFN_glVertex4xOES, x, y, z); }
+        Handles.MH_glVertex4xOES.get().invokeExact(handles.PFN_glVertex4xOES, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex4xOES", e); }
     }
 
@@ -1511,7 +1512,7 @@ public final class GLOESFixedPoint {
     public void Vertex4xvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex4xvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex4xvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex4xvOES", coords); }
-        Handles.MH_glVertex4xvOES.invokeExact(handles.PFN_glVertex4xvOES, coords); }
+        Handles.MH_glVertex4xvOES.get().invokeExact(handles.PFN_glVertex4xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex4xvOES", e); }
     }
 

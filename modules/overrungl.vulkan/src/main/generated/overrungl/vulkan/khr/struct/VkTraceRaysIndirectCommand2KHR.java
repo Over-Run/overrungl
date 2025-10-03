@@ -53,85 +53,85 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// The memory layout of `raygenShaderRecordAddress`.
     public static final MemoryLayout LAYOUT_raygenShaderRecordAddress = LAYOUT.select(PathElement.groupElement("raygenShaderRecordAddress"));
     /// The [VarHandle] of `raygenShaderRecordAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_raygenShaderRecordAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("raygenShaderRecordAddress"));
+    public static final Supplier<VarHandle> VH_raygenShaderRecordAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("raygenShaderRecordAddress")));
     /// The byte offset of `raygenShaderRecordSize`.
     public static final long OFFSET_raygenShaderRecordSize = LAYOUT.byteOffset(PathElement.groupElement("raygenShaderRecordSize"));
     /// The memory layout of `raygenShaderRecordSize`.
     public static final MemoryLayout LAYOUT_raygenShaderRecordSize = LAYOUT.select(PathElement.groupElement("raygenShaderRecordSize"));
     /// The [VarHandle] of `raygenShaderRecordSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_raygenShaderRecordSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("raygenShaderRecordSize"));
+    public static final Supplier<VarHandle> VH_raygenShaderRecordSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("raygenShaderRecordSize")));
     /// The byte offset of `missShaderBindingTableAddress`.
     public static final long OFFSET_missShaderBindingTableAddress = LAYOUT.byteOffset(PathElement.groupElement("missShaderBindingTableAddress"));
     /// The memory layout of `missShaderBindingTableAddress`.
     public static final MemoryLayout LAYOUT_missShaderBindingTableAddress = LAYOUT.select(PathElement.groupElement("missShaderBindingTableAddress"));
     /// The [VarHandle] of `missShaderBindingTableAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_missShaderBindingTableAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("missShaderBindingTableAddress"));
+    public static final Supplier<VarHandle> VH_missShaderBindingTableAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("missShaderBindingTableAddress")));
     /// The byte offset of `missShaderBindingTableSize`.
     public static final long OFFSET_missShaderBindingTableSize = LAYOUT.byteOffset(PathElement.groupElement("missShaderBindingTableSize"));
     /// The memory layout of `missShaderBindingTableSize`.
     public static final MemoryLayout LAYOUT_missShaderBindingTableSize = LAYOUT.select(PathElement.groupElement("missShaderBindingTableSize"));
     /// The [VarHandle] of `missShaderBindingTableSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_missShaderBindingTableSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("missShaderBindingTableSize"));
+    public static final Supplier<VarHandle> VH_missShaderBindingTableSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("missShaderBindingTableSize")));
     /// The byte offset of `missShaderBindingTableStride`.
     public static final long OFFSET_missShaderBindingTableStride = LAYOUT.byteOffset(PathElement.groupElement("missShaderBindingTableStride"));
     /// The memory layout of `missShaderBindingTableStride`.
     public static final MemoryLayout LAYOUT_missShaderBindingTableStride = LAYOUT.select(PathElement.groupElement("missShaderBindingTableStride"));
     /// The [VarHandle] of `missShaderBindingTableStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_missShaderBindingTableStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("missShaderBindingTableStride"));
+    public static final Supplier<VarHandle> VH_missShaderBindingTableStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("missShaderBindingTableStride")));
     /// The byte offset of `hitShaderBindingTableAddress`.
     public static final long OFFSET_hitShaderBindingTableAddress = LAYOUT.byteOffset(PathElement.groupElement("hitShaderBindingTableAddress"));
     /// The memory layout of `hitShaderBindingTableAddress`.
     public static final MemoryLayout LAYOUT_hitShaderBindingTableAddress = LAYOUT.select(PathElement.groupElement("hitShaderBindingTableAddress"));
     /// The [VarHandle] of `hitShaderBindingTableAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hitShaderBindingTableAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hitShaderBindingTableAddress"));
+    public static final Supplier<VarHandle> VH_hitShaderBindingTableAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hitShaderBindingTableAddress")));
     /// The byte offset of `hitShaderBindingTableSize`.
     public static final long OFFSET_hitShaderBindingTableSize = LAYOUT.byteOffset(PathElement.groupElement("hitShaderBindingTableSize"));
     /// The memory layout of `hitShaderBindingTableSize`.
     public static final MemoryLayout LAYOUT_hitShaderBindingTableSize = LAYOUT.select(PathElement.groupElement("hitShaderBindingTableSize"));
     /// The [VarHandle] of `hitShaderBindingTableSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hitShaderBindingTableSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hitShaderBindingTableSize"));
+    public static final Supplier<VarHandle> VH_hitShaderBindingTableSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hitShaderBindingTableSize")));
     /// The byte offset of `hitShaderBindingTableStride`.
     public static final long OFFSET_hitShaderBindingTableStride = LAYOUT.byteOffset(PathElement.groupElement("hitShaderBindingTableStride"));
     /// The memory layout of `hitShaderBindingTableStride`.
     public static final MemoryLayout LAYOUT_hitShaderBindingTableStride = LAYOUT.select(PathElement.groupElement("hitShaderBindingTableStride"));
     /// The [VarHandle] of `hitShaderBindingTableStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hitShaderBindingTableStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hitShaderBindingTableStride"));
+    public static final Supplier<VarHandle> VH_hitShaderBindingTableStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("hitShaderBindingTableStride")));
     /// The byte offset of `callableShaderBindingTableAddress`.
     public static final long OFFSET_callableShaderBindingTableAddress = LAYOUT.byteOffset(PathElement.groupElement("callableShaderBindingTableAddress"));
     /// The memory layout of `callableShaderBindingTableAddress`.
     public static final MemoryLayout LAYOUT_callableShaderBindingTableAddress = LAYOUT.select(PathElement.groupElement("callableShaderBindingTableAddress"));
     /// The [VarHandle] of `callableShaderBindingTableAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_callableShaderBindingTableAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("callableShaderBindingTableAddress"));
+    public static final Supplier<VarHandle> VH_callableShaderBindingTableAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("callableShaderBindingTableAddress")));
     /// The byte offset of `callableShaderBindingTableSize`.
     public static final long OFFSET_callableShaderBindingTableSize = LAYOUT.byteOffset(PathElement.groupElement("callableShaderBindingTableSize"));
     /// The memory layout of `callableShaderBindingTableSize`.
     public static final MemoryLayout LAYOUT_callableShaderBindingTableSize = LAYOUT.select(PathElement.groupElement("callableShaderBindingTableSize"));
     /// The [VarHandle] of `callableShaderBindingTableSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_callableShaderBindingTableSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("callableShaderBindingTableSize"));
+    public static final Supplier<VarHandle> VH_callableShaderBindingTableSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("callableShaderBindingTableSize")));
     /// The byte offset of `callableShaderBindingTableStride`.
     public static final long OFFSET_callableShaderBindingTableStride = LAYOUT.byteOffset(PathElement.groupElement("callableShaderBindingTableStride"));
     /// The memory layout of `callableShaderBindingTableStride`.
     public static final MemoryLayout LAYOUT_callableShaderBindingTableStride = LAYOUT.select(PathElement.groupElement("callableShaderBindingTableStride"));
     /// The [VarHandle] of `callableShaderBindingTableStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_callableShaderBindingTableStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("callableShaderBindingTableStride"));
+    public static final Supplier<VarHandle> VH_callableShaderBindingTableStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("callableShaderBindingTableStride")));
     /// The byte offset of `width`.
     public static final long OFFSET_width = LAYOUT.byteOffset(PathElement.groupElement("width"));
     /// The memory layout of `width`.
     public static final MemoryLayout LAYOUT_width = LAYOUT.select(PathElement.groupElement("width"));
     /// The [VarHandle] of `width` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("width"));
+    public static final Supplier<VarHandle> VH_width = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("width")));
     /// The byte offset of `height`.
     public static final long OFFSET_height = LAYOUT.byteOffset(PathElement.groupElement("height"));
     /// The memory layout of `height`.
     public static final MemoryLayout LAYOUT_height = LAYOUT.select(PathElement.groupElement("height"));
     /// The [VarHandle] of `height` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("height"));
+    public static final Supplier<VarHandle> VH_height = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("height")));
     /// The byte offset of `depth`.
     public static final long OFFSET_depth = LAYOUT.byteOffset(PathElement.groupElement("depth"));
     /// The memory layout of `depth`.
     public static final MemoryLayout LAYOUT_depth = LAYOUT.select(PathElement.groupElement("depth"));
     /// The [VarHandle] of `depth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depth"));
+    public static final Supplier<VarHandle> VH_depth = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depth")));
 
     /// Creates `VkTraceRaysIndirectCommand2KHR` with the given segment.
     /// @param segment      the memory segment
@@ -182,14 +182,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `raygenShaderRecordAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long raygenShaderRecordAddress(MemorySegment segment, long index) { return (long) VH_raygenShaderRecordAddress.get(segment, 0L, index); }
+    public static long raygenShaderRecordAddress(MemorySegment segment, long index) { return (long) VH_raygenShaderRecordAddress.get().get(segment, 0L, index); }
     /// {@return `raygenShaderRecordAddress`}
     public long raygenShaderRecordAddress() { return raygenShaderRecordAddress(this.segment(), 0L); }
     /// Sets `raygenShaderRecordAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void raygenShaderRecordAddress(MemorySegment segment, long index, long value) { VH_raygenShaderRecordAddress.set(segment, 0L, index, value); }
+    public static void raygenShaderRecordAddress(MemorySegment segment, long index, long value) { VH_raygenShaderRecordAddress.get().set(segment, 0L, index, value); }
     /// Sets `raygenShaderRecordAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `raygenShaderRecordSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long raygenShaderRecordSize(MemorySegment segment, long index) { return (long) VH_raygenShaderRecordSize.get(segment, 0L, index); }
+    public static long raygenShaderRecordSize(MemorySegment segment, long index) { return (long) VH_raygenShaderRecordSize.get().get(segment, 0L, index); }
     /// {@return `raygenShaderRecordSize`}
     public long raygenShaderRecordSize() { return raygenShaderRecordSize(this.segment(), 0L); }
     /// Sets `raygenShaderRecordSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void raygenShaderRecordSize(MemorySegment segment, long index, long value) { VH_raygenShaderRecordSize.set(segment, 0L, index, value); }
+    public static void raygenShaderRecordSize(MemorySegment segment, long index, long value) { VH_raygenShaderRecordSize.get().set(segment, 0L, index, value); }
     /// Sets `raygenShaderRecordSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `missShaderBindingTableAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long missShaderBindingTableAddress(MemorySegment segment, long index) { return (long) VH_missShaderBindingTableAddress.get(segment, 0L, index); }
+    public static long missShaderBindingTableAddress(MemorySegment segment, long index) { return (long) VH_missShaderBindingTableAddress.get().get(segment, 0L, index); }
     /// {@return `missShaderBindingTableAddress`}
     public long missShaderBindingTableAddress() { return missShaderBindingTableAddress(this.segment(), 0L); }
     /// Sets `missShaderBindingTableAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void missShaderBindingTableAddress(MemorySegment segment, long index, long value) { VH_missShaderBindingTableAddress.set(segment, 0L, index, value); }
+    public static void missShaderBindingTableAddress(MemorySegment segment, long index, long value) { VH_missShaderBindingTableAddress.get().set(segment, 0L, index, value); }
     /// Sets `missShaderBindingTableAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `missShaderBindingTableSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long missShaderBindingTableSize(MemorySegment segment, long index) { return (long) VH_missShaderBindingTableSize.get(segment, 0L, index); }
+    public static long missShaderBindingTableSize(MemorySegment segment, long index) { return (long) VH_missShaderBindingTableSize.get().get(segment, 0L, index); }
     /// {@return `missShaderBindingTableSize`}
     public long missShaderBindingTableSize() { return missShaderBindingTableSize(this.segment(), 0L); }
     /// Sets `missShaderBindingTableSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void missShaderBindingTableSize(MemorySegment segment, long index, long value) { VH_missShaderBindingTableSize.set(segment, 0L, index, value); }
+    public static void missShaderBindingTableSize(MemorySegment segment, long index, long value) { VH_missShaderBindingTableSize.get().set(segment, 0L, index, value); }
     /// Sets `missShaderBindingTableSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `missShaderBindingTableStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long missShaderBindingTableStride(MemorySegment segment, long index) { return (long) VH_missShaderBindingTableStride.get(segment, 0L, index); }
+    public static long missShaderBindingTableStride(MemorySegment segment, long index) { return (long) VH_missShaderBindingTableStride.get().get(segment, 0L, index); }
     /// {@return `missShaderBindingTableStride`}
     public long missShaderBindingTableStride() { return missShaderBindingTableStride(this.segment(), 0L); }
     /// Sets `missShaderBindingTableStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void missShaderBindingTableStride(MemorySegment segment, long index, long value) { VH_missShaderBindingTableStride.set(segment, 0L, index, value); }
+    public static void missShaderBindingTableStride(MemorySegment segment, long index, long value) { VH_missShaderBindingTableStride.get().set(segment, 0L, index, value); }
     /// Sets `missShaderBindingTableStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `hitShaderBindingTableAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long hitShaderBindingTableAddress(MemorySegment segment, long index) { return (long) VH_hitShaderBindingTableAddress.get(segment, 0L, index); }
+    public static long hitShaderBindingTableAddress(MemorySegment segment, long index) { return (long) VH_hitShaderBindingTableAddress.get().get(segment, 0L, index); }
     /// {@return `hitShaderBindingTableAddress`}
     public long hitShaderBindingTableAddress() { return hitShaderBindingTableAddress(this.segment(), 0L); }
     /// Sets `hitShaderBindingTableAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void hitShaderBindingTableAddress(MemorySegment segment, long index, long value) { VH_hitShaderBindingTableAddress.set(segment, 0L, index, value); }
+    public static void hitShaderBindingTableAddress(MemorySegment segment, long index, long value) { VH_hitShaderBindingTableAddress.get().set(segment, 0L, index, value); }
     /// Sets `hitShaderBindingTableAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `hitShaderBindingTableSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long hitShaderBindingTableSize(MemorySegment segment, long index) { return (long) VH_hitShaderBindingTableSize.get(segment, 0L, index); }
+    public static long hitShaderBindingTableSize(MemorySegment segment, long index) { return (long) VH_hitShaderBindingTableSize.get().get(segment, 0L, index); }
     /// {@return `hitShaderBindingTableSize`}
     public long hitShaderBindingTableSize() { return hitShaderBindingTableSize(this.segment(), 0L); }
     /// Sets `hitShaderBindingTableSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void hitShaderBindingTableSize(MemorySegment segment, long index, long value) { VH_hitShaderBindingTableSize.set(segment, 0L, index, value); }
+    public static void hitShaderBindingTableSize(MemorySegment segment, long index, long value) { VH_hitShaderBindingTableSize.get().set(segment, 0L, index, value); }
     /// Sets `hitShaderBindingTableSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `hitShaderBindingTableStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long hitShaderBindingTableStride(MemorySegment segment, long index) { return (long) VH_hitShaderBindingTableStride.get(segment, 0L, index); }
+    public static long hitShaderBindingTableStride(MemorySegment segment, long index) { return (long) VH_hitShaderBindingTableStride.get().get(segment, 0L, index); }
     /// {@return `hitShaderBindingTableStride`}
     public long hitShaderBindingTableStride() { return hitShaderBindingTableStride(this.segment(), 0L); }
     /// Sets `hitShaderBindingTableStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void hitShaderBindingTableStride(MemorySegment segment, long index, long value) { VH_hitShaderBindingTableStride.set(segment, 0L, index, value); }
+    public static void hitShaderBindingTableStride(MemorySegment segment, long index, long value) { VH_hitShaderBindingTableStride.get().set(segment, 0L, index, value); }
     /// Sets `hitShaderBindingTableStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,14 +310,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `callableShaderBindingTableAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long callableShaderBindingTableAddress(MemorySegment segment, long index) { return (long) VH_callableShaderBindingTableAddress.get(segment, 0L, index); }
+    public static long callableShaderBindingTableAddress(MemorySegment segment, long index) { return (long) VH_callableShaderBindingTableAddress.get().get(segment, 0L, index); }
     /// {@return `callableShaderBindingTableAddress`}
     public long callableShaderBindingTableAddress() { return callableShaderBindingTableAddress(this.segment(), 0L); }
     /// Sets `callableShaderBindingTableAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void callableShaderBindingTableAddress(MemorySegment segment, long index, long value) { VH_callableShaderBindingTableAddress.set(segment, 0L, index, value); }
+    public static void callableShaderBindingTableAddress(MemorySegment segment, long index, long value) { VH_callableShaderBindingTableAddress.get().set(segment, 0L, index, value); }
     /// Sets `callableShaderBindingTableAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,14 +326,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `callableShaderBindingTableSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long callableShaderBindingTableSize(MemorySegment segment, long index) { return (long) VH_callableShaderBindingTableSize.get(segment, 0L, index); }
+    public static long callableShaderBindingTableSize(MemorySegment segment, long index) { return (long) VH_callableShaderBindingTableSize.get().get(segment, 0L, index); }
     /// {@return `callableShaderBindingTableSize`}
     public long callableShaderBindingTableSize() { return callableShaderBindingTableSize(this.segment(), 0L); }
     /// Sets `callableShaderBindingTableSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void callableShaderBindingTableSize(MemorySegment segment, long index, long value) { VH_callableShaderBindingTableSize.set(segment, 0L, index, value); }
+    public static void callableShaderBindingTableSize(MemorySegment segment, long index, long value) { VH_callableShaderBindingTableSize.get().set(segment, 0L, index, value); }
     /// Sets `callableShaderBindingTableSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,14 +342,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `callableShaderBindingTableStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long callableShaderBindingTableStride(MemorySegment segment, long index) { return (long) VH_callableShaderBindingTableStride.get(segment, 0L, index); }
+    public static long callableShaderBindingTableStride(MemorySegment segment, long index) { return (long) VH_callableShaderBindingTableStride.get().get(segment, 0L, index); }
     /// {@return `callableShaderBindingTableStride`}
     public long callableShaderBindingTableStride() { return callableShaderBindingTableStride(this.segment(), 0L); }
     /// Sets `callableShaderBindingTableStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void callableShaderBindingTableStride(MemorySegment segment, long index, long value) { VH_callableShaderBindingTableStride.set(segment, 0L, index, value); }
+    public static void callableShaderBindingTableStride(MemorySegment segment, long index, long value) { VH_callableShaderBindingTableStride.get().set(segment, 0L, index, value); }
     /// Sets `callableShaderBindingTableStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -358,14 +358,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int width(MemorySegment segment, long index) { return (int) VH_width.get(segment, 0L, index); }
+    public static int width(MemorySegment segment, long index) { return (int) VH_width.get().get(segment, 0L, index); }
     /// {@return `width`}
     public int width() { return width(this.segment(), 0L); }
     /// Sets `width` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void width(MemorySegment segment, long index, int value) { VH_width.set(segment, 0L, index, value); }
+    public static void width(MemorySegment segment, long index, int value) { VH_width.get().set(segment, 0L, index, value); }
     /// Sets `width` with the given value.
     /// @param value the value
     /// @return `this`
@@ -374,14 +374,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `height` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int height(MemorySegment segment, long index) { return (int) VH_height.get(segment, 0L, index); }
+    public static int height(MemorySegment segment, long index) { return (int) VH_height.get().get(segment, 0L, index); }
     /// {@return `height`}
     public int height() { return height(this.segment(), 0L); }
     /// Sets `height` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void height(MemorySegment segment, long index, int value) { VH_height.set(segment, 0L, index, value); }
+    public static void height(MemorySegment segment, long index, int value) { VH_height.get().set(segment, 0L, index, value); }
     /// Sets `height` with the given value.
     /// @param value the value
     /// @return `this`
@@ -390,14 +390,14 @@ public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// {@return `depth` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int depth(MemorySegment segment, long index) { return (int) VH_depth.get(segment, 0L, index); }
+    public static int depth(MemorySegment segment, long index) { return (int) VH_depth.get().get(segment, 0L, index); }
     /// {@return `depth`}
     public int depth() { return depth(this.segment(), 0L); }
     /// Sets `depth` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depth(MemorySegment segment, long index, int value) { VH_depth.set(segment, 0L, index, value); }
+    public static void depth(MemorySegment segment, long index, int value) { VH_depth.get().set(segment, 0L, index, value); }
     /// Sets `depth` with the given value.
     /// @param value the value
     /// @return `this`

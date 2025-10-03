@@ -35,31 +35,31 @@ public final class VkCommandPoolMemoryConsumption extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `commandPoolAllocated`.
     public static final long OFFSET_commandPoolAllocated = LAYOUT.byteOffset(PathElement.groupElement("commandPoolAllocated"));
     /// The memory layout of `commandPoolAllocated`.
     public static final MemoryLayout LAYOUT_commandPoolAllocated = LAYOUT.select(PathElement.groupElement("commandPoolAllocated"));
     /// The [VarHandle] of `commandPoolAllocated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandPoolAllocated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolAllocated"));
+    public static final Supplier<VarHandle> VH_commandPoolAllocated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolAllocated")));
     /// The byte offset of `commandPoolReservedSize`.
     public static final long OFFSET_commandPoolReservedSize = LAYOUT.byteOffset(PathElement.groupElement("commandPoolReservedSize"));
     /// The memory layout of `commandPoolReservedSize`.
     public static final MemoryLayout LAYOUT_commandPoolReservedSize = LAYOUT.select(PathElement.groupElement("commandPoolReservedSize"));
     /// The [VarHandle] of `commandPoolReservedSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandPoolReservedSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolReservedSize"));
+    public static final Supplier<VarHandle> VH_commandPoolReservedSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolReservedSize")));
     /// The byte offset of `commandBufferAllocated`.
     public static final long OFFSET_commandBufferAllocated = LAYOUT.byteOffset(PathElement.groupElement("commandBufferAllocated"));
     /// The memory layout of `commandBufferAllocated`.
     public static final MemoryLayout LAYOUT_commandBufferAllocated = LAYOUT.select(PathElement.groupElement("commandBufferAllocated"));
     /// The [VarHandle] of `commandBufferAllocated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandBufferAllocated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferAllocated"));
+    public static final Supplier<VarHandle> VH_commandBufferAllocated = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferAllocated")));
 
     /// Creates `VkCommandPoolMemoryConsumption` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkCommandPoolMemoryConsumption extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkCommandPoolMemoryConsumption extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkCommandPoolMemoryConsumption extends GroupType {
     /// {@return `commandPoolAllocated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long commandPoolAllocated(MemorySegment segment, long index) { return (long) VH_commandPoolAllocated.get(segment, 0L, index); }
+    public static long commandPoolAllocated(MemorySegment segment, long index) { return (long) VH_commandPoolAllocated.get().get(segment, 0L, index); }
     /// {@return `commandPoolAllocated`}
     public long commandPoolAllocated() { return commandPoolAllocated(this.segment(), 0L); }
     /// Sets `commandPoolAllocated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandPoolAllocated(MemorySegment segment, long index, long value) { VH_commandPoolAllocated.set(segment, 0L, index, value); }
+    public static void commandPoolAllocated(MemorySegment segment, long index, long value) { VH_commandPoolAllocated.get().set(segment, 0L, index, value); }
     /// Sets `commandPoolAllocated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkCommandPoolMemoryConsumption extends GroupType {
     /// {@return `commandPoolReservedSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long commandPoolReservedSize(MemorySegment segment, long index) { return (long) VH_commandPoolReservedSize.get(segment, 0L, index); }
+    public static long commandPoolReservedSize(MemorySegment segment, long index) { return (long) VH_commandPoolReservedSize.get().get(segment, 0L, index); }
     /// {@return `commandPoolReservedSize`}
     public long commandPoolReservedSize() { return commandPoolReservedSize(this.segment(), 0L); }
     /// Sets `commandPoolReservedSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandPoolReservedSize(MemorySegment segment, long index, long value) { VH_commandPoolReservedSize.set(segment, 0L, index, value); }
+    public static void commandPoolReservedSize(MemorySegment segment, long index, long value) { VH_commandPoolReservedSize.get().set(segment, 0L, index, value); }
     /// Sets `commandPoolReservedSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkCommandPoolMemoryConsumption extends GroupType {
     /// {@return `commandBufferAllocated` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long commandBufferAllocated(MemorySegment segment, long index) { return (long) VH_commandBufferAllocated.get(segment, 0L, index); }
+    public static long commandBufferAllocated(MemorySegment segment, long index) { return (long) VH_commandBufferAllocated.get().get(segment, 0L, index); }
     /// {@return `commandBufferAllocated`}
     public long commandBufferAllocated() { return commandBufferAllocated(this.segment(), 0L); }
     /// Sets `commandBufferAllocated` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandBufferAllocated(MemorySegment segment, long index, long value) { VH_commandBufferAllocated.set(segment, 0L, index, value); }
+    public static void commandBufferAllocated(MemorySegment segment, long index, long value) { VH_commandBufferAllocated.get().set(segment, 0L, index, value); }
     /// Sets `commandBufferAllocated` with the given value.
     /// @param value the value
     /// @return `this`

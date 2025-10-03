@@ -31,19 +31,19 @@ public final class VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR extends
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderMaximalReconvergence`.
     public static final long OFFSET_shaderMaximalReconvergence = LAYOUT.byteOffset(PathElement.groupElement("shaderMaximalReconvergence"));
     /// The memory layout of `shaderMaximalReconvergence`.
     public static final MemoryLayout LAYOUT_shaderMaximalReconvergence = LAYOUT.select(PathElement.groupElement("shaderMaximalReconvergence"));
     /// The [VarHandle] of `shaderMaximalReconvergence` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderMaximalReconvergence = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderMaximalReconvergence"));
+    public static final Supplier<VarHandle> VH_shaderMaximalReconvergence = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderMaximalReconvergence")));
 
     /// Creates `VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR extends
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR extends
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR extends
     /// {@return `shaderMaximalReconvergence` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderMaximalReconvergence(MemorySegment segment, long index) { return (int) VH_shaderMaximalReconvergence.get(segment, 0L, index); }
+    public static int shaderMaximalReconvergence(MemorySegment segment, long index) { return (int) VH_shaderMaximalReconvergence.get().get(segment, 0L, index); }
     /// {@return `shaderMaximalReconvergence`}
     public int shaderMaximalReconvergence() { return shaderMaximalReconvergence(this.segment(), 0L); }
     /// Sets `shaderMaximalReconvergence` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderMaximalReconvergence(MemorySegment segment, long index, int value) { VH_shaderMaximalReconvergence.set(segment, 0L, index, value); }
+    public static void shaderMaximalReconvergence(MemorySegment segment, long index, int value) { VH_shaderMaximalReconvergence.get().set(segment, 0L, index, value); }
     /// Sets `shaderMaximalReconvergence` with the given value.
     /// @param value the value
     /// @return `this`

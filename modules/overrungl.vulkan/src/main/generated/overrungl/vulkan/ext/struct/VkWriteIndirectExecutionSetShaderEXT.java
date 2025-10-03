@@ -33,25 +33,25 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `index`.
     public static final long OFFSET_index = LAYOUT.byteOffset(PathElement.groupElement("index"));
     /// The memory layout of `index`.
     public static final MemoryLayout LAYOUT_index = LAYOUT.select(PathElement.groupElement("index"));
     /// The [VarHandle] of `index` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_index = LAYOUT.arrayElementVarHandle(PathElement.groupElement("index"));
+    public static final Supplier<VarHandle> VH_index = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("index")));
     /// The byte offset of `shader`.
     public static final long OFFSET_shader = LAYOUT.byteOffset(PathElement.groupElement("shader"));
     /// The memory layout of `shader`.
     public static final MemoryLayout LAYOUT_shader = LAYOUT.select(PathElement.groupElement("shader"));
     /// The [VarHandle] of `shader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shader"));
+    public static final Supplier<VarHandle> VH_shader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shader")));
 
     /// Creates `VkWriteIndirectExecutionSetShaderEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends GroupType {
     /// {@return `index` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int index(MemorySegment segment, long index) { return (int) VH_index.get(segment, 0L, index); }
+    public static int index(MemorySegment segment, long index) { return (int) VH_index.get().get(segment, 0L, index); }
     /// {@return `index`}
     public int index() { return index(this.segment(), 0L); }
     /// Sets `index` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void index(MemorySegment segment, long index, int value) { VH_index.set(segment, 0L, index, value); }
+    public static void index(MemorySegment segment, long index, int value) { VH_index.get().set(segment, 0L, index, value); }
     /// Sets `index` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends GroupType {
     /// {@return `shader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long shader(MemorySegment segment, long index) { return (long) VH_shader.get(segment, 0L, index); }
+    public static long shader(MemorySegment segment, long index) { return (long) VH_shader.get().get(segment, 0L, index); }
     /// {@return `shader`}
     public long shader() { return shader(this.segment(), 0L); }
     /// Sets `shader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shader(MemorySegment segment, long index, long value) { VH_shader.set(segment, 0L, index, value); }
+    public static void shader(MemorySegment segment, long index, long value) { VH_shader.get().set(segment, 0L, index, value); }
     /// Sets `shader` with the given value.
     /// @param value the value
     /// @return `this`

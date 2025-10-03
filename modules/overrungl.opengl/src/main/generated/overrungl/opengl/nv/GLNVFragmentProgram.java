@@ -2,6 +2,7 @@
 package overrungl.opengl.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -16,12 +17,12 @@ public final class GLNVFragmentProgram {
     public static final int GL_PROGRAM_ERROR_STRING_NV = 0x8874;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glProgramNamedParameter4fNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glProgramNamedParameter4fvNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramNamedParameter4dNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glProgramNamedParameter4dvNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetProgramNamedParameterfvNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetProgramNamedParameterdvNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glProgramNamedParameter4fNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glProgramNamedParameter4fvNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramNamedParameter4dNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glProgramNamedParameter4dvNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetProgramNamedParameterfvNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetProgramNamedParameterdvNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glProgramNamedParameter4fNV;
         public final MemorySegment PFN_glProgramNamedParameter4fvNV;
         public final MemorySegment PFN_glProgramNamedParameter4dNV;
@@ -49,7 +50,7 @@ public final class GLNVFragmentProgram {
     public void ProgramNamedParameter4fNV(int id, int len, @NonNull MemorySegment name, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramNamedParameter4fNV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramNamedParameter4fNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramNamedParameter4fNV", id, len, name, x, y, z, w); }
-        Handles.MH_glProgramNamedParameter4fNV.invokeExact(handles.PFN_glProgramNamedParameter4fNV, id, len, name, x, y, z, w); }
+        Handles.MH_glProgramNamedParameter4fNV.get().invokeExact(handles.PFN_glProgramNamedParameter4fNV, id, len, name, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramNamedParameter4fNV", e); }
     }
 
@@ -60,7 +61,7 @@ public final class GLNVFragmentProgram {
     public void ProgramNamedParameter4fvNV(int id, int len, @NonNull MemorySegment name, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramNamedParameter4fvNV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramNamedParameter4fvNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramNamedParameter4fvNV", id, len, name, v); }
-        Handles.MH_glProgramNamedParameter4fvNV.invokeExact(handles.PFN_glProgramNamedParameter4fvNV, id, len, name, v); }
+        Handles.MH_glProgramNamedParameter4fvNV.get().invokeExact(handles.PFN_glProgramNamedParameter4fvNV, id, len, name, v); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramNamedParameter4fvNV", e); }
     }
 
@@ -71,7 +72,7 @@ public final class GLNVFragmentProgram {
     public void ProgramNamedParameter4dNV(int id, int len, @NonNull MemorySegment name, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramNamedParameter4dNV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramNamedParameter4dNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramNamedParameter4dNV", id, len, name, x, y, z, w); }
-        Handles.MH_glProgramNamedParameter4dNV.invokeExact(handles.PFN_glProgramNamedParameter4dNV, id, len, name, x, y, z, w); }
+        Handles.MH_glProgramNamedParameter4dNV.get().invokeExact(handles.PFN_glProgramNamedParameter4dNV, id, len, name, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramNamedParameter4dNV", e); }
     }
 
@@ -82,7 +83,7 @@ public final class GLNVFragmentProgram {
     public void ProgramNamedParameter4dvNV(int id, int len, @NonNull MemorySegment name, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramNamedParameter4dvNV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramNamedParameter4dvNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramNamedParameter4dvNV", id, len, name, v); }
-        Handles.MH_glProgramNamedParameter4dvNV.invokeExact(handles.PFN_glProgramNamedParameter4dvNV, id, len, name, v); }
+        Handles.MH_glProgramNamedParameter4dvNV.get().invokeExact(handles.PFN_glProgramNamedParameter4dvNV, id, len, name, v); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramNamedParameter4dvNV", e); }
     }
 
@@ -93,7 +94,7 @@ public final class GLNVFragmentProgram {
     public void GetProgramNamedParameterfvNV(int id, int len, @NonNull MemorySegment name, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramNamedParameterfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramNamedParameterfvNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramNamedParameterfvNV", id, len, name, params); }
-        Handles.MH_glGetProgramNamedParameterfvNV.invokeExact(handles.PFN_glGetProgramNamedParameterfvNV, id, len, name, params); }
+        Handles.MH_glGetProgramNamedParameterfvNV.get().invokeExact(handles.PFN_glGetProgramNamedParameterfvNV, id, len, name, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramNamedParameterfvNV", e); }
     }
 
@@ -104,7 +105,7 @@ public final class GLNVFragmentProgram {
     public void GetProgramNamedParameterdvNV(int id, int len, @NonNull MemorySegment name, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramNamedParameterdvNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramNamedParameterdvNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramNamedParameterdvNV", id, len, name, params); }
-        Handles.MH_glGetProgramNamedParameterdvNV.invokeExact(handles.PFN_glGetProgramNamedParameterdvNV, id, len, name, params); }
+        Handles.MH_glGetProgramNamedParameterdvNV.get().invokeExact(handles.PFN_glGetProgramNamedParameterdvNV, id, len, name, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramNamedParameterdvNV", e); }
     }
 

@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -74,8 +75,8 @@ public final class GLARBShaderImageLoadStore {
     public static final int GL_MAX_COMBINED_IMAGE_UNIFORMS = 0x90CF;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBindImageTexture = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMemoryBarrier = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glBindImageTexture = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMemoryBarrier = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glBindImageTexture;
         public final MemorySegment PFN_glMemoryBarrier;
         private Handles(GLLoadFunc func) {
@@ -95,7 +96,7 @@ public final class GLARBShaderImageLoadStore {
     public void BindImageTexture(int unit, int texture, int level, boolean layered, int layer, int access, int format) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindImageTexture)) throw new GLSymbolNotFoundError("Symbol not found: glBindImageTexture");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindImageTexture", unit, texture, level, layered, layer, access, format); }
-        Handles.MH_glBindImageTexture.invokeExact(handles.PFN_glBindImageTexture, unit, texture, level, ((layered) ? (byte)1 : (byte)0), layer, access, format); }
+        Handles.MH_glBindImageTexture.get().invokeExact(handles.PFN_glBindImageTexture, unit, texture, level, ((layered) ? (byte)1 : (byte)0), layer, access, format); }
         catch (Throwable e) { throw new RuntimeException("error in BindImageTexture", e); }
     }
 
@@ -106,7 +107,7 @@ public final class GLARBShaderImageLoadStore {
     public void MemoryBarrier(int barriers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrier)) throw new GLSymbolNotFoundError("Symbol not found: glMemoryBarrier");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMemoryBarrier", barriers); }
-        Handles.MH_glMemoryBarrier.invokeExact(handles.PFN_glMemoryBarrier, barriers); }
+        Handles.MH_glMemoryBarrier.get().invokeExact(handles.PFN_glMemoryBarrier, barriers); }
         catch (Throwable e) { throw new RuntimeException("error in MemoryBarrier", e); }
     }
 

@@ -43,55 +43,55 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `acquireCount`.
     public static final long OFFSET_acquireCount = LAYOUT.byteOffset(PathElement.groupElement("acquireCount"));
     /// The memory layout of `acquireCount`.
     public static final MemoryLayout LAYOUT_acquireCount = LAYOUT.select(PathElement.groupElement("acquireCount"));
     /// The [VarHandle] of `acquireCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_acquireCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("acquireCount"));
+    public static final Supplier<VarHandle> VH_acquireCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("acquireCount")));
     /// The byte offset of `pAcquireSyncs`.
     public static final long OFFSET_pAcquireSyncs = LAYOUT.byteOffset(PathElement.groupElement("pAcquireSyncs"));
     /// The memory layout of `pAcquireSyncs`.
     public static final MemoryLayout LAYOUT_pAcquireSyncs = LAYOUT.select(PathElement.groupElement("pAcquireSyncs"));
     /// The [VarHandle] of `pAcquireSyncs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pAcquireSyncs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAcquireSyncs"));
+    public static final Supplier<VarHandle> VH_pAcquireSyncs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAcquireSyncs")));
     /// The byte offset of `pAcquireKeys`.
     public static final long OFFSET_pAcquireKeys = LAYOUT.byteOffset(PathElement.groupElement("pAcquireKeys"));
     /// The memory layout of `pAcquireKeys`.
     public static final MemoryLayout LAYOUT_pAcquireKeys = LAYOUT.select(PathElement.groupElement("pAcquireKeys"));
     /// The [VarHandle] of `pAcquireKeys` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pAcquireKeys = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAcquireKeys"));
+    public static final Supplier<VarHandle> VH_pAcquireKeys = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAcquireKeys")));
     /// The byte offset of `pAcquireTimeouts`.
     public static final long OFFSET_pAcquireTimeouts = LAYOUT.byteOffset(PathElement.groupElement("pAcquireTimeouts"));
     /// The memory layout of `pAcquireTimeouts`.
     public static final MemoryLayout LAYOUT_pAcquireTimeouts = LAYOUT.select(PathElement.groupElement("pAcquireTimeouts"));
     /// The [VarHandle] of `pAcquireTimeouts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pAcquireTimeouts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAcquireTimeouts"));
+    public static final Supplier<VarHandle> VH_pAcquireTimeouts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAcquireTimeouts")));
     /// The byte offset of `releaseCount`.
     public static final long OFFSET_releaseCount = LAYOUT.byteOffset(PathElement.groupElement("releaseCount"));
     /// The memory layout of `releaseCount`.
     public static final MemoryLayout LAYOUT_releaseCount = LAYOUT.select(PathElement.groupElement("releaseCount"));
     /// The [VarHandle] of `releaseCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_releaseCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("releaseCount"));
+    public static final Supplier<VarHandle> VH_releaseCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("releaseCount")));
     /// The byte offset of `pReleaseSyncs`.
     public static final long OFFSET_pReleaseSyncs = LAYOUT.byteOffset(PathElement.groupElement("pReleaseSyncs"));
     /// The memory layout of `pReleaseSyncs`.
     public static final MemoryLayout LAYOUT_pReleaseSyncs = LAYOUT.select(PathElement.groupElement("pReleaseSyncs"));
     /// The [VarHandle] of `pReleaseSyncs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pReleaseSyncs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pReleaseSyncs"));
+    public static final Supplier<VarHandle> VH_pReleaseSyncs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pReleaseSyncs")));
     /// The byte offset of `pReleaseKeys`.
     public static final long OFFSET_pReleaseKeys = LAYOUT.byteOffset(PathElement.groupElement("pReleaseKeys"));
     /// The memory layout of `pReleaseKeys`.
     public static final MemoryLayout LAYOUT_pReleaseKeys = LAYOUT.select(PathElement.groupElement("pReleaseKeys"));
     /// The [VarHandle] of `pReleaseKeys` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pReleaseKeys = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pReleaseKeys"));
+    public static final Supplier<VarHandle> VH_pReleaseKeys = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pReleaseKeys")));
 
     /// Creates `VkWin32KeyedMutexAcquireReleaseInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -142,14 +142,14 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoKHR extends GroupType {
     /// {@return `acquireCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int acquireCount(MemorySegment segment, long index) { return (int) VH_acquireCount.get(segment, 0L, index); }
+    public static int acquireCount(MemorySegment segment, long index) { return (int) VH_acquireCount.get().get(segment, 0L, index); }
     /// {@return `acquireCount`}
     public int acquireCount() { return acquireCount(this.segment(), 0L); }
     /// Sets `acquireCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void acquireCount(MemorySegment segment, long index, int value) { VH_acquireCount.set(segment, 0L, index, value); }
+    public static void acquireCount(MemorySegment segment, long index, int value) { VH_acquireCount.get().set(segment, 0L, index, value); }
     /// Sets `acquireCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoKHR extends GroupType {
     /// {@return `pAcquireSyncs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pAcquireSyncs(MemorySegment segment, long index) { return (MemorySegment) VH_pAcquireSyncs.get(segment, 0L, index); }
+    public static MemorySegment pAcquireSyncs(MemorySegment segment, long index) { return (MemorySegment) VH_pAcquireSyncs.get().get(segment, 0L, index); }
     /// {@return `pAcquireSyncs`}
     public MemorySegment pAcquireSyncs() { return pAcquireSyncs(this.segment(), 0L); }
     /// Sets `pAcquireSyncs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pAcquireSyncs(MemorySegment segment, long index, MemorySegment value) { VH_pAcquireSyncs.set(segment, 0L, index, value); }
+    public static void pAcquireSyncs(MemorySegment segment, long index, MemorySegment value) { VH_pAcquireSyncs.get().set(segment, 0L, index, value); }
     /// Sets `pAcquireSyncs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoKHR extends GroupType {
     /// {@return `pAcquireKeys` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pAcquireKeys(MemorySegment segment, long index) { return (MemorySegment) VH_pAcquireKeys.get(segment, 0L, index); }
+    public static MemorySegment pAcquireKeys(MemorySegment segment, long index) { return (MemorySegment) VH_pAcquireKeys.get().get(segment, 0L, index); }
     /// {@return `pAcquireKeys`}
     public MemorySegment pAcquireKeys() { return pAcquireKeys(this.segment(), 0L); }
     /// Sets `pAcquireKeys` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pAcquireKeys(MemorySegment segment, long index, MemorySegment value) { VH_pAcquireKeys.set(segment, 0L, index, value); }
+    public static void pAcquireKeys(MemorySegment segment, long index, MemorySegment value) { VH_pAcquireKeys.get().set(segment, 0L, index, value); }
     /// Sets `pAcquireKeys` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoKHR extends GroupType {
     /// {@return `pAcquireTimeouts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pAcquireTimeouts(MemorySegment segment, long index) { return (MemorySegment) VH_pAcquireTimeouts.get(segment, 0L, index); }
+    public static MemorySegment pAcquireTimeouts(MemorySegment segment, long index) { return (MemorySegment) VH_pAcquireTimeouts.get().get(segment, 0L, index); }
     /// {@return `pAcquireTimeouts`}
     public MemorySegment pAcquireTimeouts() { return pAcquireTimeouts(this.segment(), 0L); }
     /// Sets `pAcquireTimeouts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pAcquireTimeouts(MemorySegment segment, long index, MemorySegment value) { VH_pAcquireTimeouts.set(segment, 0L, index, value); }
+    public static void pAcquireTimeouts(MemorySegment segment, long index, MemorySegment value) { VH_pAcquireTimeouts.get().set(segment, 0L, index, value); }
     /// Sets `pAcquireTimeouts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,14 +238,14 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoKHR extends GroupType {
     /// {@return `releaseCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int releaseCount(MemorySegment segment, long index) { return (int) VH_releaseCount.get(segment, 0L, index); }
+    public static int releaseCount(MemorySegment segment, long index) { return (int) VH_releaseCount.get().get(segment, 0L, index); }
     /// {@return `releaseCount`}
     public int releaseCount() { return releaseCount(this.segment(), 0L); }
     /// Sets `releaseCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void releaseCount(MemorySegment segment, long index, int value) { VH_releaseCount.set(segment, 0L, index, value); }
+    public static void releaseCount(MemorySegment segment, long index, int value) { VH_releaseCount.get().set(segment, 0L, index, value); }
     /// Sets `releaseCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,14 +254,14 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoKHR extends GroupType {
     /// {@return `pReleaseSyncs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pReleaseSyncs(MemorySegment segment, long index) { return (MemorySegment) VH_pReleaseSyncs.get(segment, 0L, index); }
+    public static MemorySegment pReleaseSyncs(MemorySegment segment, long index) { return (MemorySegment) VH_pReleaseSyncs.get().get(segment, 0L, index); }
     /// {@return `pReleaseSyncs`}
     public MemorySegment pReleaseSyncs() { return pReleaseSyncs(this.segment(), 0L); }
     /// Sets `pReleaseSyncs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pReleaseSyncs(MemorySegment segment, long index, MemorySegment value) { VH_pReleaseSyncs.set(segment, 0L, index, value); }
+    public static void pReleaseSyncs(MemorySegment segment, long index, MemorySegment value) { VH_pReleaseSyncs.get().set(segment, 0L, index, value); }
     /// Sets `pReleaseSyncs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -270,14 +270,14 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoKHR extends GroupType {
     /// {@return `pReleaseKeys` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pReleaseKeys(MemorySegment segment, long index) { return (MemorySegment) VH_pReleaseKeys.get(segment, 0L, index); }
+    public static MemorySegment pReleaseKeys(MemorySegment segment, long index) { return (MemorySegment) VH_pReleaseKeys.get().get(segment, 0L, index); }
     /// {@return `pReleaseKeys`}
     public MemorySegment pReleaseKeys() { return pReleaseKeys(this.segment(), 0L); }
     /// Sets `pReleaseKeys` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pReleaseKeys(MemorySegment segment, long index, MemorySegment value) { VH_pReleaseKeys.set(segment, 0L, index, value); }
+    public static void pReleaseKeys(MemorySegment segment, long index, MemorySegment value) { VH_pReleaseKeys.get().set(segment, 0L, index, value); }
     /// Sets `pReleaseKeys` with the given value.
     /// @param value the value
     /// @return `this`

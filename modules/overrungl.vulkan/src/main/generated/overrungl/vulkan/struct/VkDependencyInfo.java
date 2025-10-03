@@ -43,55 +43,55 @@ public final class VkDependencyInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `dependencyFlags`.
     public static final long OFFSET_dependencyFlags = LAYOUT.byteOffset(PathElement.groupElement("dependencyFlags"));
     /// The memory layout of `dependencyFlags`.
     public static final MemoryLayout LAYOUT_dependencyFlags = LAYOUT.select(PathElement.groupElement("dependencyFlags"));
     /// The [VarHandle] of `dependencyFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dependencyFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dependencyFlags"));
+    public static final Supplier<VarHandle> VH_dependencyFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dependencyFlags")));
     /// The byte offset of `memoryBarrierCount`.
     public static final long OFFSET_memoryBarrierCount = LAYOUT.byteOffset(PathElement.groupElement("memoryBarrierCount"));
     /// The memory layout of `memoryBarrierCount`.
     public static final MemoryLayout LAYOUT_memoryBarrierCount = LAYOUT.select(PathElement.groupElement("memoryBarrierCount"));
     /// The [VarHandle] of `memoryBarrierCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryBarrierCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryBarrierCount"));
+    public static final Supplier<VarHandle> VH_memoryBarrierCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryBarrierCount")));
     /// The byte offset of `pMemoryBarriers`.
     public static final long OFFSET_pMemoryBarriers = LAYOUT.byteOffset(PathElement.groupElement("pMemoryBarriers"));
     /// The memory layout of `pMemoryBarriers`.
     public static final MemoryLayout LAYOUT_pMemoryBarriers = LAYOUT.select(PathElement.groupElement("pMemoryBarriers"));
     /// The [VarHandle] of `pMemoryBarriers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pMemoryBarriers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMemoryBarriers"));
+    public static final Supplier<VarHandle> VH_pMemoryBarriers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMemoryBarriers")));
     /// The byte offset of `bufferMemoryBarrierCount`.
     public static final long OFFSET_bufferMemoryBarrierCount = LAYOUT.byteOffset(PathElement.groupElement("bufferMemoryBarrierCount"));
     /// The memory layout of `bufferMemoryBarrierCount`.
     public static final MemoryLayout LAYOUT_bufferMemoryBarrierCount = LAYOUT.select(PathElement.groupElement("bufferMemoryBarrierCount"));
     /// The [VarHandle] of `bufferMemoryBarrierCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferMemoryBarrierCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferMemoryBarrierCount"));
+    public static final Supplier<VarHandle> VH_bufferMemoryBarrierCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferMemoryBarrierCount")));
     /// The byte offset of `pBufferMemoryBarriers`.
     public static final long OFFSET_pBufferMemoryBarriers = LAYOUT.byteOffset(PathElement.groupElement("pBufferMemoryBarriers"));
     /// The memory layout of `pBufferMemoryBarriers`.
     public static final MemoryLayout LAYOUT_pBufferMemoryBarriers = LAYOUT.select(PathElement.groupElement("pBufferMemoryBarriers"));
     /// The [VarHandle] of `pBufferMemoryBarriers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pBufferMemoryBarriers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBufferMemoryBarriers"));
+    public static final Supplier<VarHandle> VH_pBufferMemoryBarriers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBufferMemoryBarriers")));
     /// The byte offset of `imageMemoryBarrierCount`.
     public static final long OFFSET_imageMemoryBarrierCount = LAYOUT.byteOffset(PathElement.groupElement("imageMemoryBarrierCount"));
     /// The memory layout of `imageMemoryBarrierCount`.
     public static final MemoryLayout LAYOUT_imageMemoryBarrierCount = LAYOUT.select(PathElement.groupElement("imageMemoryBarrierCount"));
     /// The [VarHandle] of `imageMemoryBarrierCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageMemoryBarrierCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageMemoryBarrierCount"));
+    public static final Supplier<VarHandle> VH_imageMemoryBarrierCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageMemoryBarrierCount")));
     /// The byte offset of `pImageMemoryBarriers`.
     public static final long OFFSET_pImageMemoryBarriers = LAYOUT.byteOffset(PathElement.groupElement("pImageMemoryBarriers"));
     /// The memory layout of `pImageMemoryBarriers`.
     public static final MemoryLayout LAYOUT_pImageMemoryBarriers = LAYOUT.select(PathElement.groupElement("pImageMemoryBarriers"));
     /// The [VarHandle] of `pImageMemoryBarriers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pImageMemoryBarriers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImageMemoryBarriers"));
+    public static final Supplier<VarHandle> VH_pImageMemoryBarriers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImageMemoryBarriers")));
 
     /// Creates `VkDependencyInfo` with the given segment.
     /// @param segment      the memory segment
@@ -142,14 +142,14 @@ public final class VkDependencyInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDependencyInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDependencyInfo extends GroupType {
     /// {@return `dependencyFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dependencyFlags(MemorySegment segment, long index) { return (int) VH_dependencyFlags.get(segment, 0L, index); }
+    public static int dependencyFlags(MemorySegment segment, long index) { return (int) VH_dependencyFlags.get().get(segment, 0L, index); }
     /// {@return `dependencyFlags`}
     public int dependencyFlags() { return dependencyFlags(this.segment(), 0L); }
     /// Sets `dependencyFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dependencyFlags(MemorySegment segment, long index, int value) { VH_dependencyFlags.set(segment, 0L, index, value); }
+    public static void dependencyFlags(MemorySegment segment, long index, int value) { VH_dependencyFlags.get().set(segment, 0L, index, value); }
     /// Sets `dependencyFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkDependencyInfo extends GroupType {
     /// {@return `memoryBarrierCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int memoryBarrierCount(MemorySegment segment, long index) { return (int) VH_memoryBarrierCount.get(segment, 0L, index); }
+    public static int memoryBarrierCount(MemorySegment segment, long index) { return (int) VH_memoryBarrierCount.get().get(segment, 0L, index); }
     /// {@return `memoryBarrierCount`}
     public int memoryBarrierCount() { return memoryBarrierCount(this.segment(), 0L); }
     /// Sets `memoryBarrierCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memoryBarrierCount(MemorySegment segment, long index, int value) { VH_memoryBarrierCount.set(segment, 0L, index, value); }
+    public static void memoryBarrierCount(MemorySegment segment, long index, int value) { VH_memoryBarrierCount.get().set(segment, 0L, index, value); }
     /// Sets `memoryBarrierCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkDependencyInfo extends GroupType {
     /// {@return `pMemoryBarriers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pMemoryBarriers(MemorySegment segment, long index) { return (MemorySegment) VH_pMemoryBarriers.get(segment, 0L, index); }
+    public static MemorySegment pMemoryBarriers(MemorySegment segment, long index) { return (MemorySegment) VH_pMemoryBarriers.get().get(segment, 0L, index); }
     /// {@return `pMemoryBarriers`}
     public MemorySegment pMemoryBarriers() { return pMemoryBarriers(this.segment(), 0L); }
     /// Sets `pMemoryBarriers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pMemoryBarriers(MemorySegment segment, long index, MemorySegment value) { VH_pMemoryBarriers.set(segment, 0L, index, value); }
+    public static void pMemoryBarriers(MemorySegment segment, long index, MemorySegment value) { VH_pMemoryBarriers.get().set(segment, 0L, index, value); }
     /// Sets `pMemoryBarriers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkDependencyInfo extends GroupType {
     /// {@return `bufferMemoryBarrierCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferMemoryBarrierCount(MemorySegment segment, long index) { return (int) VH_bufferMemoryBarrierCount.get(segment, 0L, index); }
+    public static int bufferMemoryBarrierCount(MemorySegment segment, long index) { return (int) VH_bufferMemoryBarrierCount.get().get(segment, 0L, index); }
     /// {@return `bufferMemoryBarrierCount`}
     public int bufferMemoryBarrierCount() { return bufferMemoryBarrierCount(this.segment(), 0L); }
     /// Sets `bufferMemoryBarrierCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferMemoryBarrierCount(MemorySegment segment, long index, int value) { VH_bufferMemoryBarrierCount.set(segment, 0L, index, value); }
+    public static void bufferMemoryBarrierCount(MemorySegment segment, long index, int value) { VH_bufferMemoryBarrierCount.get().set(segment, 0L, index, value); }
     /// Sets `bufferMemoryBarrierCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,14 +238,14 @@ public final class VkDependencyInfo extends GroupType {
     /// {@return `pBufferMemoryBarriers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pBufferMemoryBarriers(MemorySegment segment, long index) { return (MemorySegment) VH_pBufferMemoryBarriers.get(segment, 0L, index); }
+    public static MemorySegment pBufferMemoryBarriers(MemorySegment segment, long index) { return (MemorySegment) VH_pBufferMemoryBarriers.get().get(segment, 0L, index); }
     /// {@return `pBufferMemoryBarriers`}
     public MemorySegment pBufferMemoryBarriers() { return pBufferMemoryBarriers(this.segment(), 0L); }
     /// Sets `pBufferMemoryBarriers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pBufferMemoryBarriers(MemorySegment segment, long index, MemorySegment value) { VH_pBufferMemoryBarriers.set(segment, 0L, index, value); }
+    public static void pBufferMemoryBarriers(MemorySegment segment, long index, MemorySegment value) { VH_pBufferMemoryBarriers.get().set(segment, 0L, index, value); }
     /// Sets `pBufferMemoryBarriers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,14 +254,14 @@ public final class VkDependencyInfo extends GroupType {
     /// {@return `imageMemoryBarrierCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageMemoryBarrierCount(MemorySegment segment, long index) { return (int) VH_imageMemoryBarrierCount.get(segment, 0L, index); }
+    public static int imageMemoryBarrierCount(MemorySegment segment, long index) { return (int) VH_imageMemoryBarrierCount.get().get(segment, 0L, index); }
     /// {@return `imageMemoryBarrierCount`}
     public int imageMemoryBarrierCount() { return imageMemoryBarrierCount(this.segment(), 0L); }
     /// Sets `imageMemoryBarrierCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageMemoryBarrierCount(MemorySegment segment, long index, int value) { VH_imageMemoryBarrierCount.set(segment, 0L, index, value); }
+    public static void imageMemoryBarrierCount(MemorySegment segment, long index, int value) { VH_imageMemoryBarrierCount.get().set(segment, 0L, index, value); }
     /// Sets `imageMemoryBarrierCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -270,14 +270,14 @@ public final class VkDependencyInfo extends GroupType {
     /// {@return `pImageMemoryBarriers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pImageMemoryBarriers(MemorySegment segment, long index) { return (MemorySegment) VH_pImageMemoryBarriers.get(segment, 0L, index); }
+    public static MemorySegment pImageMemoryBarriers(MemorySegment segment, long index) { return (MemorySegment) VH_pImageMemoryBarriers.get().get(segment, 0L, index); }
     /// {@return `pImageMemoryBarriers`}
     public MemorySegment pImageMemoryBarriers() { return pImageMemoryBarriers(this.segment(), 0L); }
     /// Sets `pImageMemoryBarriers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pImageMemoryBarriers(MemorySegment segment, long index, MemorySegment value) { VH_pImageMemoryBarriers.set(segment, 0L, index, value); }
+    public static void pImageMemoryBarriers(MemorySegment segment, long index, MemorySegment value) { VH_pImageMemoryBarriers.get().set(segment, 0L, index, value); }
     /// Sets `pImageMemoryBarriers` with the given value.
     /// @param value the value
     /// @return `this`

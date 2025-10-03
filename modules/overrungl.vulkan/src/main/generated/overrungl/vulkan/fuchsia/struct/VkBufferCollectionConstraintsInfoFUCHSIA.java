@@ -39,43 +39,43 @@ public final class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `minBufferCount`.
     public static final long OFFSET_minBufferCount = LAYOUT.byteOffset(PathElement.groupElement("minBufferCount"));
     /// The memory layout of `minBufferCount`.
     public static final MemoryLayout LAYOUT_minBufferCount = LAYOUT.select(PathElement.groupElement("minBufferCount"));
     /// The [VarHandle] of `minBufferCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minBufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBufferCount"));
+    public static final Supplier<VarHandle> VH_minBufferCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBufferCount")));
     /// The byte offset of `maxBufferCount`.
     public static final long OFFSET_maxBufferCount = LAYOUT.byteOffset(PathElement.groupElement("maxBufferCount"));
     /// The memory layout of `maxBufferCount`.
     public static final MemoryLayout LAYOUT_maxBufferCount = LAYOUT.select(PathElement.groupElement("maxBufferCount"));
     /// The [VarHandle] of `maxBufferCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxBufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBufferCount"));
+    public static final Supplier<VarHandle> VH_maxBufferCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBufferCount")));
     /// The byte offset of `minBufferCountForCamping`.
     public static final long OFFSET_minBufferCountForCamping = LAYOUT.byteOffset(PathElement.groupElement("minBufferCountForCamping"));
     /// The memory layout of `minBufferCountForCamping`.
     public static final MemoryLayout LAYOUT_minBufferCountForCamping = LAYOUT.select(PathElement.groupElement("minBufferCountForCamping"));
     /// The [VarHandle] of `minBufferCountForCamping` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minBufferCountForCamping = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBufferCountForCamping"));
+    public static final Supplier<VarHandle> VH_minBufferCountForCamping = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBufferCountForCamping")));
     /// The byte offset of `minBufferCountForDedicatedSlack`.
     public static final long OFFSET_minBufferCountForDedicatedSlack = LAYOUT.byteOffset(PathElement.groupElement("minBufferCountForDedicatedSlack"));
     /// The memory layout of `minBufferCountForDedicatedSlack`.
     public static final MemoryLayout LAYOUT_minBufferCountForDedicatedSlack = LAYOUT.select(PathElement.groupElement("minBufferCountForDedicatedSlack"));
     /// The [VarHandle] of `minBufferCountForDedicatedSlack` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minBufferCountForDedicatedSlack = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBufferCountForDedicatedSlack"));
+    public static final Supplier<VarHandle> VH_minBufferCountForDedicatedSlack = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBufferCountForDedicatedSlack")));
     /// The byte offset of `minBufferCountForSharedSlack`.
     public static final long OFFSET_minBufferCountForSharedSlack = LAYOUT.byteOffset(PathElement.groupElement("minBufferCountForSharedSlack"));
     /// The memory layout of `minBufferCountForSharedSlack`.
     public static final MemoryLayout LAYOUT_minBufferCountForSharedSlack = LAYOUT.select(PathElement.groupElement("minBufferCountForSharedSlack"));
     /// The [VarHandle] of `minBufferCountForSharedSlack` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minBufferCountForSharedSlack = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBufferCountForSharedSlack"));
+    public static final Supplier<VarHandle> VH_minBufferCountForSharedSlack = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBufferCountForSharedSlack")));
 
     /// Creates `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `minBufferCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minBufferCount(MemorySegment segment, long index) { return (int) VH_minBufferCount.get(segment, 0L, index); }
+    public static int minBufferCount(MemorySegment segment, long index) { return (int) VH_minBufferCount.get().get(segment, 0L, index); }
     /// {@return `minBufferCount`}
     public int minBufferCount() { return minBufferCount(this.segment(), 0L); }
     /// Sets `minBufferCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minBufferCount(MemorySegment segment, long index, int value) { VH_minBufferCount.set(segment, 0L, index, value); }
+    public static void minBufferCount(MemorySegment segment, long index, int value) { VH_minBufferCount.get().set(segment, 0L, index, value); }
     /// Sets `minBufferCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `maxBufferCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxBufferCount(MemorySegment segment, long index) { return (int) VH_maxBufferCount.get(segment, 0L, index); }
+    public static int maxBufferCount(MemorySegment segment, long index) { return (int) VH_maxBufferCount.get().get(segment, 0L, index); }
     /// {@return `maxBufferCount`}
     public int maxBufferCount() { return maxBufferCount(this.segment(), 0L); }
     /// Sets `maxBufferCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxBufferCount(MemorySegment segment, long index, int value) { VH_maxBufferCount.set(segment, 0L, index, value); }
+    public static void maxBufferCount(MemorySegment segment, long index, int value) { VH_maxBufferCount.get().set(segment, 0L, index, value); }
     /// Sets `maxBufferCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `minBufferCountForCamping` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minBufferCountForCamping(MemorySegment segment, long index) { return (int) VH_minBufferCountForCamping.get(segment, 0L, index); }
+    public static int minBufferCountForCamping(MemorySegment segment, long index) { return (int) VH_minBufferCountForCamping.get().get(segment, 0L, index); }
     /// {@return `minBufferCountForCamping`}
     public int minBufferCountForCamping() { return minBufferCountForCamping(this.segment(), 0L); }
     /// Sets `minBufferCountForCamping` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minBufferCountForCamping(MemorySegment segment, long index, int value) { VH_minBufferCountForCamping.set(segment, 0L, index, value); }
+    public static void minBufferCountForCamping(MemorySegment segment, long index, int value) { VH_minBufferCountForCamping.get().set(segment, 0L, index, value); }
     /// Sets `minBufferCountForCamping` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `minBufferCountForDedicatedSlack` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minBufferCountForDedicatedSlack(MemorySegment segment, long index) { return (int) VH_minBufferCountForDedicatedSlack.get(segment, 0L, index); }
+    public static int minBufferCountForDedicatedSlack(MemorySegment segment, long index) { return (int) VH_minBufferCountForDedicatedSlack.get().get(segment, 0L, index); }
     /// {@return `minBufferCountForDedicatedSlack`}
     public int minBufferCountForDedicatedSlack() { return minBufferCountForDedicatedSlack(this.segment(), 0L); }
     /// Sets `minBufferCountForDedicatedSlack` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minBufferCountForDedicatedSlack(MemorySegment segment, long index, int value) { VH_minBufferCountForDedicatedSlack.set(segment, 0L, index, value); }
+    public static void minBufferCountForDedicatedSlack(MemorySegment segment, long index, int value) { VH_minBufferCountForDedicatedSlack.get().set(segment, 0L, index, value); }
     /// Sets `minBufferCountForDedicatedSlack` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `minBufferCountForSharedSlack` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minBufferCountForSharedSlack(MemorySegment segment, long index) { return (int) VH_minBufferCountForSharedSlack.get(segment, 0L, index); }
+    public static int minBufferCountForSharedSlack(MemorySegment segment, long index) { return (int) VH_minBufferCountForSharedSlack.get().get(segment, 0L, index); }
     /// {@return `minBufferCountForSharedSlack`}
     public int minBufferCountForSharedSlack() { return minBufferCountForSharedSlack(this.segment(), 0L); }
     /// Sets `minBufferCountForSharedSlack` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minBufferCountForSharedSlack(MemorySegment segment, long index, int value) { VH_minBufferCountForSharedSlack.set(segment, 0L, index, value); }
+    public static void minBufferCountForSharedSlack(MemorySegment segment, long index, int value) { VH_minBufferCountForSharedSlack.get().set(segment, 0L, index, value); }
     /// Sets `minBufferCountForSharedSlack` with the given value.
     /// @param value the value
     /// @return `this`

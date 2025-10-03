@@ -53,85 +53,85 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderBufferFloat16Atomics`.
     public static final long OFFSET_shaderBufferFloat16Atomics = LAYOUT.byteOffset(PathElement.groupElement("shaderBufferFloat16Atomics"));
     /// The memory layout of `shaderBufferFloat16Atomics`.
     public static final MemoryLayout LAYOUT_shaderBufferFloat16Atomics = LAYOUT.select(PathElement.groupElement("shaderBufferFloat16Atomics"));
     /// The [VarHandle] of `shaderBufferFloat16Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBufferFloat16Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat16Atomics"));
+    public static final Supplier<VarHandle> VH_shaderBufferFloat16Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat16Atomics")));
     /// The byte offset of `shaderBufferFloat16AtomicAdd`.
     public static final long OFFSET_shaderBufferFloat16AtomicAdd = LAYOUT.byteOffset(PathElement.groupElement("shaderBufferFloat16AtomicAdd"));
     /// The memory layout of `shaderBufferFloat16AtomicAdd`.
     public static final MemoryLayout LAYOUT_shaderBufferFloat16AtomicAdd = LAYOUT.select(PathElement.groupElement("shaderBufferFloat16AtomicAdd"));
     /// The [VarHandle] of `shaderBufferFloat16AtomicAdd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBufferFloat16AtomicAdd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat16AtomicAdd"));
+    public static final Supplier<VarHandle> VH_shaderBufferFloat16AtomicAdd = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat16AtomicAdd")));
     /// The byte offset of `shaderBufferFloat16AtomicMinMax`.
     public static final long OFFSET_shaderBufferFloat16AtomicMinMax = LAYOUT.byteOffset(PathElement.groupElement("shaderBufferFloat16AtomicMinMax"));
     /// The memory layout of `shaderBufferFloat16AtomicMinMax`.
     public static final MemoryLayout LAYOUT_shaderBufferFloat16AtomicMinMax = LAYOUT.select(PathElement.groupElement("shaderBufferFloat16AtomicMinMax"));
     /// The [VarHandle] of `shaderBufferFloat16AtomicMinMax` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBufferFloat16AtomicMinMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat16AtomicMinMax"));
+    public static final Supplier<VarHandle> VH_shaderBufferFloat16AtomicMinMax = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat16AtomicMinMax")));
     /// The byte offset of `shaderBufferFloat32AtomicMinMax`.
     public static final long OFFSET_shaderBufferFloat32AtomicMinMax = LAYOUT.byteOffset(PathElement.groupElement("shaderBufferFloat32AtomicMinMax"));
     /// The memory layout of `shaderBufferFloat32AtomicMinMax`.
     public static final MemoryLayout LAYOUT_shaderBufferFloat32AtomicMinMax = LAYOUT.select(PathElement.groupElement("shaderBufferFloat32AtomicMinMax"));
     /// The [VarHandle] of `shaderBufferFloat32AtomicMinMax` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBufferFloat32AtomicMinMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat32AtomicMinMax"));
+    public static final Supplier<VarHandle> VH_shaderBufferFloat32AtomicMinMax = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat32AtomicMinMax")));
     /// The byte offset of `shaderBufferFloat64AtomicMinMax`.
     public static final long OFFSET_shaderBufferFloat64AtomicMinMax = LAYOUT.byteOffset(PathElement.groupElement("shaderBufferFloat64AtomicMinMax"));
     /// The memory layout of `shaderBufferFloat64AtomicMinMax`.
     public static final MemoryLayout LAYOUT_shaderBufferFloat64AtomicMinMax = LAYOUT.select(PathElement.groupElement("shaderBufferFloat64AtomicMinMax"));
     /// The [VarHandle] of `shaderBufferFloat64AtomicMinMax` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBufferFloat64AtomicMinMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat64AtomicMinMax"));
+    public static final Supplier<VarHandle> VH_shaderBufferFloat64AtomicMinMax = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat64AtomicMinMax")));
     /// The byte offset of `shaderSharedFloat16Atomics`.
     public static final long OFFSET_shaderSharedFloat16Atomics = LAYOUT.byteOffset(PathElement.groupElement("shaderSharedFloat16Atomics"));
     /// The memory layout of `shaderSharedFloat16Atomics`.
     public static final MemoryLayout LAYOUT_shaderSharedFloat16Atomics = LAYOUT.select(PathElement.groupElement("shaderSharedFloat16Atomics"));
     /// The [VarHandle] of `shaderSharedFloat16Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSharedFloat16Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat16Atomics"));
+    public static final Supplier<VarHandle> VH_shaderSharedFloat16Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat16Atomics")));
     /// The byte offset of `shaderSharedFloat16AtomicAdd`.
     public static final long OFFSET_shaderSharedFloat16AtomicAdd = LAYOUT.byteOffset(PathElement.groupElement("shaderSharedFloat16AtomicAdd"));
     /// The memory layout of `shaderSharedFloat16AtomicAdd`.
     public static final MemoryLayout LAYOUT_shaderSharedFloat16AtomicAdd = LAYOUT.select(PathElement.groupElement("shaderSharedFloat16AtomicAdd"));
     /// The [VarHandle] of `shaderSharedFloat16AtomicAdd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSharedFloat16AtomicAdd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat16AtomicAdd"));
+    public static final Supplier<VarHandle> VH_shaderSharedFloat16AtomicAdd = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat16AtomicAdd")));
     /// The byte offset of `shaderSharedFloat16AtomicMinMax`.
     public static final long OFFSET_shaderSharedFloat16AtomicMinMax = LAYOUT.byteOffset(PathElement.groupElement("shaderSharedFloat16AtomicMinMax"));
     /// The memory layout of `shaderSharedFloat16AtomicMinMax`.
     public static final MemoryLayout LAYOUT_shaderSharedFloat16AtomicMinMax = LAYOUT.select(PathElement.groupElement("shaderSharedFloat16AtomicMinMax"));
     /// The [VarHandle] of `shaderSharedFloat16AtomicMinMax` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSharedFloat16AtomicMinMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat16AtomicMinMax"));
+    public static final Supplier<VarHandle> VH_shaderSharedFloat16AtomicMinMax = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat16AtomicMinMax")));
     /// The byte offset of `shaderSharedFloat32AtomicMinMax`.
     public static final long OFFSET_shaderSharedFloat32AtomicMinMax = LAYOUT.byteOffset(PathElement.groupElement("shaderSharedFloat32AtomicMinMax"));
     /// The memory layout of `shaderSharedFloat32AtomicMinMax`.
     public static final MemoryLayout LAYOUT_shaderSharedFloat32AtomicMinMax = LAYOUT.select(PathElement.groupElement("shaderSharedFloat32AtomicMinMax"));
     /// The [VarHandle] of `shaderSharedFloat32AtomicMinMax` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSharedFloat32AtomicMinMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat32AtomicMinMax"));
+    public static final Supplier<VarHandle> VH_shaderSharedFloat32AtomicMinMax = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat32AtomicMinMax")));
     /// The byte offset of `shaderSharedFloat64AtomicMinMax`.
     public static final long OFFSET_shaderSharedFloat64AtomicMinMax = LAYOUT.byteOffset(PathElement.groupElement("shaderSharedFloat64AtomicMinMax"));
     /// The memory layout of `shaderSharedFloat64AtomicMinMax`.
     public static final MemoryLayout LAYOUT_shaderSharedFloat64AtomicMinMax = LAYOUT.select(PathElement.groupElement("shaderSharedFloat64AtomicMinMax"));
     /// The [VarHandle] of `shaderSharedFloat64AtomicMinMax` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSharedFloat64AtomicMinMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat64AtomicMinMax"));
+    public static final Supplier<VarHandle> VH_shaderSharedFloat64AtomicMinMax = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat64AtomicMinMax")));
     /// The byte offset of `shaderImageFloat32AtomicMinMax`.
     public static final long OFFSET_shaderImageFloat32AtomicMinMax = LAYOUT.byteOffset(PathElement.groupElement("shaderImageFloat32AtomicMinMax"));
     /// The memory layout of `shaderImageFloat32AtomicMinMax`.
     public static final MemoryLayout LAYOUT_shaderImageFloat32AtomicMinMax = LAYOUT.select(PathElement.groupElement("shaderImageFloat32AtomicMinMax"));
     /// The [VarHandle] of `shaderImageFloat32AtomicMinMax` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderImageFloat32AtomicMinMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderImageFloat32AtomicMinMax"));
+    public static final Supplier<VarHandle> VH_shaderImageFloat32AtomicMinMax = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderImageFloat32AtomicMinMax")));
     /// The byte offset of `sparseImageFloat32AtomicMinMax`.
     public static final long OFFSET_sparseImageFloat32AtomicMinMax = LAYOUT.byteOffset(PathElement.groupElement("sparseImageFloat32AtomicMinMax"));
     /// The memory layout of `sparseImageFloat32AtomicMinMax`.
     public static final MemoryLayout LAYOUT_sparseImageFloat32AtomicMinMax = LAYOUT.select(PathElement.groupElement("sparseImageFloat32AtomicMinMax"));
     /// The [VarHandle] of `sparseImageFloat32AtomicMinMax` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sparseImageFloat32AtomicMinMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sparseImageFloat32AtomicMinMax"));
+    public static final Supplier<VarHandle> VH_sparseImageFloat32AtomicMinMax = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sparseImageFloat32AtomicMinMax")));
 
     /// Creates `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `shaderBufferFloat16Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBufferFloat16Atomics(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat16Atomics.get(segment, 0L, index); }
+    public static int shaderBufferFloat16Atomics(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat16Atomics.get().get(segment, 0L, index); }
     /// {@return `shaderBufferFloat16Atomics`}
     public int shaderBufferFloat16Atomics() { return shaderBufferFloat16Atomics(this.segment(), 0L); }
     /// Sets `shaderBufferFloat16Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBufferFloat16Atomics(MemorySegment segment, long index, int value) { VH_shaderBufferFloat16Atomics.set(segment, 0L, index, value); }
+    public static void shaderBufferFloat16Atomics(MemorySegment segment, long index, int value) { VH_shaderBufferFloat16Atomics.get().set(segment, 0L, index, value); }
     /// Sets `shaderBufferFloat16Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `shaderBufferFloat16AtomicAdd` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBufferFloat16AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat16AtomicAdd.get(segment, 0L, index); }
+    public static int shaderBufferFloat16AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat16AtomicAdd.get().get(segment, 0L, index); }
     /// {@return `shaderBufferFloat16AtomicAdd`}
     public int shaderBufferFloat16AtomicAdd() { return shaderBufferFloat16AtomicAdd(this.segment(), 0L); }
     /// Sets `shaderBufferFloat16AtomicAdd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBufferFloat16AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderBufferFloat16AtomicAdd.set(segment, 0L, index, value); }
+    public static void shaderBufferFloat16AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderBufferFloat16AtomicAdd.get().set(segment, 0L, index, value); }
     /// Sets `shaderBufferFloat16AtomicAdd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `shaderBufferFloat16AtomicMinMax` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBufferFloat16AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat16AtomicMinMax.get(segment, 0L, index); }
+    public static int shaderBufferFloat16AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat16AtomicMinMax.get().get(segment, 0L, index); }
     /// {@return `shaderBufferFloat16AtomicMinMax`}
     public int shaderBufferFloat16AtomicMinMax() { return shaderBufferFloat16AtomicMinMax(this.segment(), 0L); }
     /// Sets `shaderBufferFloat16AtomicMinMax` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBufferFloat16AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderBufferFloat16AtomicMinMax.set(segment, 0L, index, value); }
+    public static void shaderBufferFloat16AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderBufferFloat16AtomicMinMax.get().set(segment, 0L, index, value); }
     /// Sets `shaderBufferFloat16AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `shaderBufferFloat32AtomicMinMax` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBufferFloat32AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat32AtomicMinMax.get(segment, 0L, index); }
+    public static int shaderBufferFloat32AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat32AtomicMinMax.get().get(segment, 0L, index); }
     /// {@return `shaderBufferFloat32AtomicMinMax`}
     public int shaderBufferFloat32AtomicMinMax() { return shaderBufferFloat32AtomicMinMax(this.segment(), 0L); }
     /// Sets `shaderBufferFloat32AtomicMinMax` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBufferFloat32AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderBufferFloat32AtomicMinMax.set(segment, 0L, index, value); }
+    public static void shaderBufferFloat32AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderBufferFloat32AtomicMinMax.get().set(segment, 0L, index, value); }
     /// Sets `shaderBufferFloat32AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `shaderBufferFloat64AtomicMinMax` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBufferFloat64AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat64AtomicMinMax.get(segment, 0L, index); }
+    public static int shaderBufferFloat64AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat64AtomicMinMax.get().get(segment, 0L, index); }
     /// {@return `shaderBufferFloat64AtomicMinMax`}
     public int shaderBufferFloat64AtomicMinMax() { return shaderBufferFloat64AtomicMinMax(this.segment(), 0L); }
     /// Sets `shaderBufferFloat64AtomicMinMax` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBufferFloat64AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderBufferFloat64AtomicMinMax.set(segment, 0L, index, value); }
+    public static void shaderBufferFloat64AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderBufferFloat64AtomicMinMax.get().set(segment, 0L, index, value); }
     /// Sets `shaderBufferFloat64AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `shaderSharedFloat16Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSharedFloat16Atomics(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat16Atomics.get(segment, 0L, index); }
+    public static int shaderSharedFloat16Atomics(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat16Atomics.get().get(segment, 0L, index); }
     /// {@return `shaderSharedFloat16Atomics`}
     public int shaderSharedFloat16Atomics() { return shaderSharedFloat16Atomics(this.segment(), 0L); }
     /// Sets `shaderSharedFloat16Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSharedFloat16Atomics(MemorySegment segment, long index, int value) { VH_shaderSharedFloat16Atomics.set(segment, 0L, index, value); }
+    public static void shaderSharedFloat16Atomics(MemorySegment segment, long index, int value) { VH_shaderSharedFloat16Atomics.get().set(segment, 0L, index, value); }
     /// Sets `shaderSharedFloat16Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,14 +310,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `shaderSharedFloat16AtomicAdd` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSharedFloat16AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat16AtomicAdd.get(segment, 0L, index); }
+    public static int shaderSharedFloat16AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat16AtomicAdd.get().get(segment, 0L, index); }
     /// {@return `shaderSharedFloat16AtomicAdd`}
     public int shaderSharedFloat16AtomicAdd() { return shaderSharedFloat16AtomicAdd(this.segment(), 0L); }
     /// Sets `shaderSharedFloat16AtomicAdd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSharedFloat16AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderSharedFloat16AtomicAdd.set(segment, 0L, index, value); }
+    public static void shaderSharedFloat16AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderSharedFloat16AtomicAdd.get().set(segment, 0L, index, value); }
     /// Sets `shaderSharedFloat16AtomicAdd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,14 +326,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `shaderSharedFloat16AtomicMinMax` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSharedFloat16AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat16AtomicMinMax.get(segment, 0L, index); }
+    public static int shaderSharedFloat16AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat16AtomicMinMax.get().get(segment, 0L, index); }
     /// {@return `shaderSharedFloat16AtomicMinMax`}
     public int shaderSharedFloat16AtomicMinMax() { return shaderSharedFloat16AtomicMinMax(this.segment(), 0L); }
     /// Sets `shaderSharedFloat16AtomicMinMax` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSharedFloat16AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderSharedFloat16AtomicMinMax.set(segment, 0L, index, value); }
+    public static void shaderSharedFloat16AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderSharedFloat16AtomicMinMax.get().set(segment, 0L, index, value); }
     /// Sets `shaderSharedFloat16AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,14 +342,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `shaderSharedFloat32AtomicMinMax` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSharedFloat32AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat32AtomicMinMax.get(segment, 0L, index); }
+    public static int shaderSharedFloat32AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat32AtomicMinMax.get().get(segment, 0L, index); }
     /// {@return `shaderSharedFloat32AtomicMinMax`}
     public int shaderSharedFloat32AtomicMinMax() { return shaderSharedFloat32AtomicMinMax(this.segment(), 0L); }
     /// Sets `shaderSharedFloat32AtomicMinMax` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSharedFloat32AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderSharedFloat32AtomicMinMax.set(segment, 0L, index, value); }
+    public static void shaderSharedFloat32AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderSharedFloat32AtomicMinMax.get().set(segment, 0L, index, value); }
     /// Sets `shaderSharedFloat32AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -358,14 +358,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `shaderSharedFloat64AtomicMinMax` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSharedFloat64AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat64AtomicMinMax.get(segment, 0L, index); }
+    public static int shaderSharedFloat64AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat64AtomicMinMax.get().get(segment, 0L, index); }
     /// {@return `shaderSharedFloat64AtomicMinMax`}
     public int shaderSharedFloat64AtomicMinMax() { return shaderSharedFloat64AtomicMinMax(this.segment(), 0L); }
     /// Sets `shaderSharedFloat64AtomicMinMax` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSharedFloat64AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderSharedFloat64AtomicMinMax.set(segment, 0L, index, value); }
+    public static void shaderSharedFloat64AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderSharedFloat64AtomicMinMax.get().set(segment, 0L, index, value); }
     /// Sets `shaderSharedFloat64AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -374,14 +374,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `shaderImageFloat32AtomicMinMax` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderImageFloat32AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderImageFloat32AtomicMinMax.get(segment, 0L, index); }
+    public static int shaderImageFloat32AtomicMinMax(MemorySegment segment, long index) { return (int) VH_shaderImageFloat32AtomicMinMax.get().get(segment, 0L, index); }
     /// {@return `shaderImageFloat32AtomicMinMax`}
     public int shaderImageFloat32AtomicMinMax() { return shaderImageFloat32AtomicMinMax(this.segment(), 0L); }
     /// Sets `shaderImageFloat32AtomicMinMax` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderImageFloat32AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderImageFloat32AtomicMinMax.set(segment, 0L, index, value); }
+    public static void shaderImageFloat32AtomicMinMax(MemorySegment segment, long index, int value) { VH_shaderImageFloat32AtomicMinMax.get().set(segment, 0L, index, value); }
     /// Sets `shaderImageFloat32AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -390,14 +390,14 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupTy
     /// {@return `sparseImageFloat32AtomicMinMax` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sparseImageFloat32AtomicMinMax(MemorySegment segment, long index) { return (int) VH_sparseImageFloat32AtomicMinMax.get(segment, 0L, index); }
+    public static int sparseImageFloat32AtomicMinMax(MemorySegment segment, long index) { return (int) VH_sparseImageFloat32AtomicMinMax.get().get(segment, 0L, index); }
     /// {@return `sparseImageFloat32AtomicMinMax`}
     public int sparseImageFloat32AtomicMinMax() { return sparseImageFloat32AtomicMinMax(this.segment(), 0L); }
     /// Sets `sparseImageFloat32AtomicMinMax` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sparseImageFloat32AtomicMinMax(MemorySegment segment, long index, int value) { VH_sparseImageFloat32AtomicMinMax.set(segment, 0L, index, value); }
+    public static void sparseImageFloat32AtomicMinMax(MemorySegment segment, long index, int value) { VH_sparseImageFloat32AtomicMinMax.get().set(segment, 0L, index, value); }
     /// Sets `sparseImageFloat32AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`

@@ -51,43 +51,43 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `memoryTypeBits`.
     public static final long OFFSET_memoryTypeBits = LAYOUT.byteOffset(PathElement.groupElement("memoryTypeBits"));
     /// The memory layout of `memoryTypeBits`.
     public static final MemoryLayout LAYOUT_memoryTypeBits = LAYOUT.select(PathElement.groupElement("memoryTypeBits"));
     /// The [VarHandle] of `memoryTypeBits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryTypeBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryTypeBits"));
+    public static final Supplier<VarHandle> VH_memoryTypeBits = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryTypeBits")));
     /// The byte offset of `bufferCount`.
     public static final long OFFSET_bufferCount = LAYOUT.byteOffset(PathElement.groupElement("bufferCount"));
     /// The memory layout of `bufferCount`.
     public static final MemoryLayout LAYOUT_bufferCount = LAYOUT.select(PathElement.groupElement("bufferCount"));
     /// The [VarHandle] of `bufferCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCount"));
+    public static final Supplier<VarHandle> VH_bufferCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCount")));
     /// The byte offset of `createInfoIndex`.
     public static final long OFFSET_createInfoIndex = LAYOUT.byteOffset(PathElement.groupElement("createInfoIndex"));
     /// The memory layout of `createInfoIndex`.
     public static final MemoryLayout LAYOUT_createInfoIndex = LAYOUT.select(PathElement.groupElement("createInfoIndex"));
     /// The [VarHandle] of `createInfoIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_createInfoIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("createInfoIndex"));
+    public static final Supplier<VarHandle> VH_createInfoIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("createInfoIndex")));
     /// The byte offset of `sysmemPixelFormat`.
     public static final long OFFSET_sysmemPixelFormat = LAYOUT.byteOffset(PathElement.groupElement("sysmemPixelFormat"));
     /// The memory layout of `sysmemPixelFormat`.
     public static final MemoryLayout LAYOUT_sysmemPixelFormat = LAYOUT.select(PathElement.groupElement("sysmemPixelFormat"));
     /// The [VarHandle] of `sysmemPixelFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sysmemPixelFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemPixelFormat"));
+    public static final Supplier<VarHandle> VH_sysmemPixelFormat = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemPixelFormat")));
     /// The byte offset of `formatFeatures`.
     public static final long OFFSET_formatFeatures = LAYOUT.byteOffset(PathElement.groupElement("formatFeatures"));
     /// The memory layout of `formatFeatures`.
     public static final MemoryLayout LAYOUT_formatFeatures = LAYOUT.select(PathElement.groupElement("formatFeatures"));
     /// The [VarHandle] of `formatFeatures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_formatFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatFeatures"));
+    public static final Supplier<VarHandle> VH_formatFeatures = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatFeatures")));
     /// The byte offset of `sysmemColorSpaceIndex`.
     public static final long OFFSET_sysmemColorSpaceIndex = LAYOUT.byteOffset(PathElement.groupElement("sysmemColorSpaceIndex"));
     /// The memory layout of `sysmemColorSpaceIndex`.
@@ -101,25 +101,25 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// The memory layout of `suggestedYcbcrModel`.
     public static final MemoryLayout LAYOUT_suggestedYcbcrModel = LAYOUT.select(PathElement.groupElement("suggestedYcbcrModel"));
     /// The [VarHandle] of `suggestedYcbcrModel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_suggestedYcbcrModel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYcbcrModel"));
+    public static final Supplier<VarHandle> VH_suggestedYcbcrModel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYcbcrModel")));
     /// The byte offset of `suggestedYcbcrRange`.
     public static final long OFFSET_suggestedYcbcrRange = LAYOUT.byteOffset(PathElement.groupElement("suggestedYcbcrRange"));
     /// The memory layout of `suggestedYcbcrRange`.
     public static final MemoryLayout LAYOUT_suggestedYcbcrRange = LAYOUT.select(PathElement.groupElement("suggestedYcbcrRange"));
     /// The [VarHandle] of `suggestedYcbcrRange` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_suggestedYcbcrRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYcbcrRange"));
+    public static final Supplier<VarHandle> VH_suggestedYcbcrRange = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYcbcrRange")));
     /// The byte offset of `suggestedXChromaOffset`.
     public static final long OFFSET_suggestedXChromaOffset = LAYOUT.byteOffset(PathElement.groupElement("suggestedXChromaOffset"));
     /// The memory layout of `suggestedXChromaOffset`.
     public static final MemoryLayout LAYOUT_suggestedXChromaOffset = LAYOUT.select(PathElement.groupElement("suggestedXChromaOffset"));
     /// The [VarHandle] of `suggestedXChromaOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_suggestedXChromaOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedXChromaOffset"));
+    public static final Supplier<VarHandle> VH_suggestedXChromaOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedXChromaOffset")));
     /// The byte offset of `suggestedYChromaOffset`.
     public static final long OFFSET_suggestedYChromaOffset = LAYOUT.byteOffset(PathElement.groupElement("suggestedYChromaOffset"));
     /// The memory layout of `suggestedYChromaOffset`.
     public static final MemoryLayout LAYOUT_suggestedYChromaOffset = LAYOUT.select(PathElement.groupElement("suggestedYChromaOffset"));
     /// The [VarHandle] of `suggestedYChromaOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_suggestedYChromaOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYChromaOffset"));
+    public static final Supplier<VarHandle> VH_suggestedYChromaOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYChromaOffset")));
 
     /// Creates `VkBufferCollectionPropertiesFUCHSIA` with the given segment.
     /// @param segment      the memory segment
@@ -170,14 +170,14 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -186,14 +186,14 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -202,14 +202,14 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// {@return `memoryTypeBits` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int memoryTypeBits(MemorySegment segment, long index) { return (int) VH_memoryTypeBits.get(segment, 0L, index); }
+    public static int memoryTypeBits(MemorySegment segment, long index) { return (int) VH_memoryTypeBits.get().get(segment, 0L, index); }
     /// {@return `memoryTypeBits`}
     public int memoryTypeBits() { return memoryTypeBits(this.segment(), 0L); }
     /// Sets `memoryTypeBits` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memoryTypeBits(MemorySegment segment, long index, int value) { VH_memoryTypeBits.set(segment, 0L, index, value); }
+    public static void memoryTypeBits(MemorySegment segment, long index, int value) { VH_memoryTypeBits.get().set(segment, 0L, index, value); }
     /// Sets `memoryTypeBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -218,14 +218,14 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// {@return `bufferCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferCount(MemorySegment segment, long index) { return (int) VH_bufferCount.get(segment, 0L, index); }
+    public static int bufferCount(MemorySegment segment, long index) { return (int) VH_bufferCount.get().get(segment, 0L, index); }
     /// {@return `bufferCount`}
     public int bufferCount() { return bufferCount(this.segment(), 0L); }
     /// Sets `bufferCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferCount(MemorySegment segment, long index, int value) { VH_bufferCount.set(segment, 0L, index, value); }
+    public static void bufferCount(MemorySegment segment, long index, int value) { VH_bufferCount.get().set(segment, 0L, index, value); }
     /// Sets `bufferCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -234,14 +234,14 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// {@return `createInfoIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int createInfoIndex(MemorySegment segment, long index) { return (int) VH_createInfoIndex.get(segment, 0L, index); }
+    public static int createInfoIndex(MemorySegment segment, long index) { return (int) VH_createInfoIndex.get().get(segment, 0L, index); }
     /// {@return `createInfoIndex`}
     public int createInfoIndex() { return createInfoIndex(this.segment(), 0L); }
     /// Sets `createInfoIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void createInfoIndex(MemorySegment segment, long index, int value) { VH_createInfoIndex.set(segment, 0L, index, value); }
+    public static void createInfoIndex(MemorySegment segment, long index, int value) { VH_createInfoIndex.get().set(segment, 0L, index, value); }
     /// Sets `createInfoIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -250,14 +250,14 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// {@return `sysmemPixelFormat` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long sysmemPixelFormat(MemorySegment segment, long index) { return (long) VH_sysmemPixelFormat.get(segment, 0L, index); }
+    public static long sysmemPixelFormat(MemorySegment segment, long index) { return (long) VH_sysmemPixelFormat.get().get(segment, 0L, index); }
     /// {@return `sysmemPixelFormat`}
     public long sysmemPixelFormat() { return sysmemPixelFormat(this.segment(), 0L); }
     /// Sets `sysmemPixelFormat` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sysmemPixelFormat(MemorySegment segment, long index, long value) { VH_sysmemPixelFormat.set(segment, 0L, index, value); }
+    public static void sysmemPixelFormat(MemorySegment segment, long index, long value) { VH_sysmemPixelFormat.get().set(segment, 0L, index, value); }
     /// Sets `sysmemPixelFormat` with the given value.
     /// @param value the value
     /// @return `this`
@@ -266,14 +266,14 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// {@return `formatFeatures` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int formatFeatures(MemorySegment segment, long index) { return (int) VH_formatFeatures.get(segment, 0L, index); }
+    public static int formatFeatures(MemorySegment segment, long index) { return (int) VH_formatFeatures.get().get(segment, 0L, index); }
     /// {@return `formatFeatures`}
     public int formatFeatures() { return formatFeatures(this.segment(), 0L); }
     /// Sets `formatFeatures` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void formatFeatures(MemorySegment segment, long index, int value) { VH_formatFeatures.set(segment, 0L, index, value); }
+    public static void formatFeatures(MemorySegment segment, long index, int value) { VH_formatFeatures.get().set(segment, 0L, index, value); }
     /// Sets `formatFeatures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -322,14 +322,14 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// {@return `suggestedYcbcrModel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int suggestedYcbcrModel(MemorySegment segment, long index) { return (int) VH_suggestedYcbcrModel.get(segment, 0L, index); }
+    public static int suggestedYcbcrModel(MemorySegment segment, long index) { return (int) VH_suggestedYcbcrModel.get().get(segment, 0L, index); }
     /// {@return `suggestedYcbcrModel`}
     public int suggestedYcbcrModel() { return suggestedYcbcrModel(this.segment(), 0L); }
     /// Sets `suggestedYcbcrModel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void suggestedYcbcrModel(MemorySegment segment, long index, int value) { VH_suggestedYcbcrModel.set(segment, 0L, index, value); }
+    public static void suggestedYcbcrModel(MemorySegment segment, long index, int value) { VH_suggestedYcbcrModel.get().set(segment, 0L, index, value); }
     /// Sets `suggestedYcbcrModel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -338,14 +338,14 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// {@return `suggestedYcbcrRange` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int suggestedYcbcrRange(MemorySegment segment, long index) { return (int) VH_suggestedYcbcrRange.get(segment, 0L, index); }
+    public static int suggestedYcbcrRange(MemorySegment segment, long index) { return (int) VH_suggestedYcbcrRange.get().get(segment, 0L, index); }
     /// {@return `suggestedYcbcrRange`}
     public int suggestedYcbcrRange() { return suggestedYcbcrRange(this.segment(), 0L); }
     /// Sets `suggestedYcbcrRange` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void suggestedYcbcrRange(MemorySegment segment, long index, int value) { VH_suggestedYcbcrRange.set(segment, 0L, index, value); }
+    public static void suggestedYcbcrRange(MemorySegment segment, long index, int value) { VH_suggestedYcbcrRange.get().set(segment, 0L, index, value); }
     /// Sets `suggestedYcbcrRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -354,14 +354,14 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// {@return `suggestedXChromaOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int suggestedXChromaOffset(MemorySegment segment, long index) { return (int) VH_suggestedXChromaOffset.get(segment, 0L, index); }
+    public static int suggestedXChromaOffset(MemorySegment segment, long index) { return (int) VH_suggestedXChromaOffset.get().get(segment, 0L, index); }
     /// {@return `suggestedXChromaOffset`}
     public int suggestedXChromaOffset() { return suggestedXChromaOffset(this.segment(), 0L); }
     /// Sets `suggestedXChromaOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void suggestedXChromaOffset(MemorySegment segment, long index, int value) { VH_suggestedXChromaOffset.set(segment, 0L, index, value); }
+    public static void suggestedXChromaOffset(MemorySegment segment, long index, int value) { VH_suggestedXChromaOffset.get().set(segment, 0L, index, value); }
     /// Sets `suggestedXChromaOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -370,14 +370,14 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// {@return `suggestedYChromaOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int suggestedYChromaOffset(MemorySegment segment, long index) { return (int) VH_suggestedYChromaOffset.get(segment, 0L, index); }
+    public static int suggestedYChromaOffset(MemorySegment segment, long index) { return (int) VH_suggestedYChromaOffset.get().get(segment, 0L, index); }
     /// {@return `suggestedYChromaOffset`}
     public int suggestedYChromaOffset() { return suggestedYChromaOffset(this.segment(), 0L); }
     /// Sets `suggestedYChromaOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void suggestedYChromaOffset(MemorySegment segment, long index, int value) { VH_suggestedYChromaOffset.set(segment, 0L, index, value); }
+    public static void suggestedYChromaOffset(MemorySegment segment, long index, int value) { VH_suggestedYChromaOffset.get().set(segment, 0L, index, value); }
     /// Sets `suggestedYChromaOffset` with the given value.
     /// @param value the value
     /// @return `this`

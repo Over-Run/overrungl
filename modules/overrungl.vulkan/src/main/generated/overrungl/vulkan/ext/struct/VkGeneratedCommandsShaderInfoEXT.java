@@ -33,25 +33,25 @@ public final class VkGeneratedCommandsShaderInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderCount`.
     public static final long OFFSET_shaderCount = LAYOUT.byteOffset(PathElement.groupElement("shaderCount"));
     /// The memory layout of `shaderCount`.
     public static final MemoryLayout LAYOUT_shaderCount = LAYOUT.select(PathElement.groupElement("shaderCount"));
     /// The [VarHandle] of `shaderCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderCount"));
+    public static final Supplier<VarHandle> VH_shaderCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderCount")));
     /// The byte offset of `pShaders`.
     public static final long OFFSET_pShaders = LAYOUT.byteOffset(PathElement.groupElement("pShaders"));
     /// The memory layout of `pShaders`.
     public static final MemoryLayout LAYOUT_pShaders = LAYOUT.select(PathElement.groupElement("pShaders"));
     /// The [VarHandle] of `pShaders` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pShaders = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pShaders"));
+    public static final Supplier<VarHandle> VH_pShaders = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pShaders")));
 
     /// Creates `VkGeneratedCommandsShaderInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkGeneratedCommandsShaderInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkGeneratedCommandsShaderInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkGeneratedCommandsShaderInfoEXT extends GroupType {
     /// {@return `shaderCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderCount(MemorySegment segment, long index) { return (int) VH_shaderCount.get(segment, 0L, index); }
+    public static int shaderCount(MemorySegment segment, long index) { return (int) VH_shaderCount.get().get(segment, 0L, index); }
     /// {@return `shaderCount`}
     public int shaderCount() { return shaderCount(this.segment(), 0L); }
     /// Sets `shaderCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderCount(MemorySegment segment, long index, int value) { VH_shaderCount.set(segment, 0L, index, value); }
+    public static void shaderCount(MemorySegment segment, long index, int value) { VH_shaderCount.get().set(segment, 0L, index, value); }
     /// Sets `shaderCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkGeneratedCommandsShaderInfoEXT extends GroupType {
     /// {@return `pShaders` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pShaders(MemorySegment segment, long index) { return (MemorySegment) VH_pShaders.get(segment, 0L, index); }
+    public static MemorySegment pShaders(MemorySegment segment, long index) { return (MemorySegment) VH_pShaders.get().get(segment, 0L, index); }
     /// {@return `pShaders`}
     public MemorySegment pShaders() { return pShaders(this.segment(), 0L); }
     /// Sets `pShaders` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pShaders(MemorySegment segment, long index, MemorySegment value) { VH_pShaders.set(segment, 0L, index, value); }
+    public static void pShaders(MemorySegment segment, long index, MemorySegment value) { VH_pShaders.get().set(segment, 0L, index, value); }
     /// Sets `pShaders` with the given value.
     /// @param value the value
     /// @return `this`

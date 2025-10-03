@@ -31,19 +31,19 @@ public final class VkBindIndexBufferIndirectCommandEXT extends GroupType {
     /// The memory layout of `bufferAddress`.
     public static final MemoryLayout LAYOUT_bufferAddress = LAYOUT.select(PathElement.groupElement("bufferAddress"));
     /// The [VarHandle] of `bufferAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferAddress"));
+    public static final Supplier<VarHandle> VH_bufferAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferAddress")));
     /// The byte offset of `size`.
     public static final long OFFSET_size = LAYOUT.byteOffset(PathElement.groupElement("size"));
     /// The memory layout of `size`.
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final Supplier<VarHandle> VH_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("size")));
     /// The byte offset of `indexType`.
     public static final long OFFSET_indexType = LAYOUT.byteOffset(PathElement.groupElement("indexType"));
     /// The memory layout of `indexType`.
     public static final MemoryLayout LAYOUT_indexType = LAYOUT.select(PathElement.groupElement("indexType"));
     /// The [VarHandle] of `indexType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexType"));
+    public static final Supplier<VarHandle> VH_indexType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexType")));
 
     /// Creates `VkBindIndexBufferIndirectCommandEXT` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkBindIndexBufferIndirectCommandEXT extends GroupType {
     /// {@return `bufferAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long bufferAddress(MemorySegment segment, long index) { return (long) VH_bufferAddress.get(segment, 0L, index); }
+    public static long bufferAddress(MemorySegment segment, long index) { return (long) VH_bufferAddress.get().get(segment, 0L, index); }
     /// {@return `bufferAddress`}
     public long bufferAddress() { return bufferAddress(this.segment(), 0L); }
     /// Sets `bufferAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferAddress(MemorySegment segment, long index, long value) { VH_bufferAddress.set(segment, 0L, index, value); }
+    public static void bufferAddress(MemorySegment segment, long index, long value) { VH_bufferAddress.get().set(segment, 0L, index, value); }
     /// Sets `bufferAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkBindIndexBufferIndirectCommandEXT extends GroupType {
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int size(MemorySegment segment, long index) { return (int) VH_size.get(segment, 0L, index); }
+    public static int size(MemorySegment segment, long index) { return (int) VH_size.get().get(segment, 0L, index); }
     /// {@return `size`}
     public int size() { return size(this.segment(), 0L); }
     /// Sets `size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void size(MemorySegment segment, long index, int value) { VH_size.set(segment, 0L, index, value); }
+    public static void size(MemorySegment segment, long index, int value) { VH_size.get().set(segment, 0L, index, value); }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkBindIndexBufferIndirectCommandEXT extends GroupType {
     /// {@return `indexType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int indexType(MemorySegment segment, long index) { return (int) VH_indexType.get(segment, 0L, index); }
+    public static int indexType(MemorySegment segment, long index) { return (int) VH_indexType.get().get(segment, 0L, index); }
     /// {@return `indexType`}
     public int indexType() { return indexType(this.segment(), 0L); }
     /// Sets `indexType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void indexType(MemorySegment segment, long index, int value) { VH_indexType.set(segment, 0L, index, value); }
+    public static void indexType(MemorySegment segment, long index, int value) { VH_indexType.get().set(segment, 0L, index, value); }
     /// Sets `indexType` with the given value.
     /// @param value the value
     /// @return `this`

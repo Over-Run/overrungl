@@ -43,43 +43,43 @@ public final class VkPhysicalDeviceProperties extends GroupType {
     /// The memory layout of `apiVersion`.
     public static final MemoryLayout LAYOUT_apiVersion = LAYOUT.select(PathElement.groupElement("apiVersion"));
     /// The [VarHandle] of `apiVersion` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_apiVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("apiVersion"));
+    public static final Supplier<VarHandle> VH_apiVersion = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("apiVersion")));
     /// The byte offset of `driverVersion`.
     public static final long OFFSET_driverVersion = LAYOUT.byteOffset(PathElement.groupElement("driverVersion"));
     /// The memory layout of `driverVersion`.
     public static final MemoryLayout LAYOUT_driverVersion = LAYOUT.select(PathElement.groupElement("driverVersion"));
     /// The [VarHandle] of `driverVersion` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_driverVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverVersion"));
+    public static final Supplier<VarHandle> VH_driverVersion = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverVersion")));
     /// The byte offset of `vendorID`.
     public static final long OFFSET_vendorID = LAYOUT.byteOffset(PathElement.groupElement("vendorID"));
     /// The memory layout of `vendorID`.
     public static final MemoryLayout LAYOUT_vendorID = LAYOUT.select(PathElement.groupElement("vendorID"));
     /// The [VarHandle] of `vendorID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vendorID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorID"));
+    public static final Supplier<VarHandle> VH_vendorID = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorID")));
     /// The byte offset of `deviceID`.
     public static final long OFFSET_deviceID = LAYOUT.byteOffset(PathElement.groupElement("deviceID"));
     /// The memory layout of `deviceID`.
     public static final MemoryLayout LAYOUT_deviceID = LAYOUT.select(PathElement.groupElement("deviceID"));
     /// The [VarHandle] of `deviceID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceID"));
+    public static final Supplier<VarHandle> VH_deviceID = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceID")));
     /// The byte offset of `deviceType`.
     public static final long OFFSET_deviceType = LAYOUT.byteOffset(PathElement.groupElement("deviceType"));
     /// The memory layout of `deviceType`.
     public static final MemoryLayout LAYOUT_deviceType = LAYOUT.select(PathElement.groupElement("deviceType"));
     /// The [VarHandle] of `deviceType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_deviceType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceType"));
+    public static final Supplier<VarHandle> VH_deviceType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceType")));
     /// The byte offset of `deviceName`.
     public static final long OFFSET_deviceName = LAYOUT.byteOffset(PathElement.groupElement("deviceName"));
     /// The memory layout of `deviceName`.
     public static final MemoryLayout LAYOUT_deviceName = LAYOUT.select(PathElement.groupElement("deviceName"));
     /// The [VarHandle] of `deviceName` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_deviceName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceName"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_deviceName = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceName"), PathElement.sequenceElement()));
     /// The byte offset of `pipelineCacheUUID`.
     public static final long OFFSET_pipelineCacheUUID = LAYOUT.byteOffset(PathElement.groupElement("pipelineCacheUUID"));
     /// The memory layout of `pipelineCacheUUID`.
     public static final MemoryLayout LAYOUT_pipelineCacheUUID = LAYOUT.select(PathElement.groupElement("pipelineCacheUUID"));
     /// The [VarHandle] of `pipelineCacheUUID` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_pipelineCacheUUID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheUUID"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_pipelineCacheUUID = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheUUID"), PathElement.sequenceElement()));
     /// The byte offset of `limits`.
     public static final long OFFSET_limits = LAYOUT.byteOffset(PathElement.groupElement("limits"));
     /// The memory layout of `limits`.
@@ -138,14 +138,14 @@ public final class VkPhysicalDeviceProperties extends GroupType {
     /// {@return `apiVersion` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int apiVersion(MemorySegment segment, long index) { return (int) VH_apiVersion.get(segment, 0L, index); }
+    public static int apiVersion(MemorySegment segment, long index) { return (int) VH_apiVersion.get().get(segment, 0L, index); }
     /// {@return `apiVersion`}
     public int apiVersion() { return apiVersion(this.segment(), 0L); }
     /// Sets `apiVersion` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void apiVersion(MemorySegment segment, long index, int value) { VH_apiVersion.set(segment, 0L, index, value); }
+    public static void apiVersion(MemorySegment segment, long index, int value) { VH_apiVersion.get().set(segment, 0L, index, value); }
     /// Sets `apiVersion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -154,14 +154,14 @@ public final class VkPhysicalDeviceProperties extends GroupType {
     /// {@return `driverVersion` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int driverVersion(MemorySegment segment, long index) { return (int) VH_driverVersion.get(segment, 0L, index); }
+    public static int driverVersion(MemorySegment segment, long index) { return (int) VH_driverVersion.get().get(segment, 0L, index); }
     /// {@return `driverVersion`}
     public int driverVersion() { return driverVersion(this.segment(), 0L); }
     /// Sets `driverVersion` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void driverVersion(MemorySegment segment, long index, int value) { VH_driverVersion.set(segment, 0L, index, value); }
+    public static void driverVersion(MemorySegment segment, long index, int value) { VH_driverVersion.get().set(segment, 0L, index, value); }
     /// Sets `driverVersion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -170,14 +170,14 @@ public final class VkPhysicalDeviceProperties extends GroupType {
     /// {@return `vendorID` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vendorID(MemorySegment segment, long index) { return (int) VH_vendorID.get(segment, 0L, index); }
+    public static int vendorID(MemorySegment segment, long index) { return (int) VH_vendorID.get().get(segment, 0L, index); }
     /// {@return `vendorID`}
     public int vendorID() { return vendorID(this.segment(), 0L); }
     /// Sets `vendorID` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vendorID(MemorySegment segment, long index, int value) { VH_vendorID.set(segment, 0L, index, value); }
+    public static void vendorID(MemorySegment segment, long index, int value) { VH_vendorID.get().set(segment, 0L, index, value); }
     /// Sets `vendorID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -186,14 +186,14 @@ public final class VkPhysicalDeviceProperties extends GroupType {
     /// {@return `deviceID` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceID(MemorySegment segment, long index) { return (int) VH_deviceID.get(segment, 0L, index); }
+    public static int deviceID(MemorySegment segment, long index) { return (int) VH_deviceID.get().get(segment, 0L, index); }
     /// {@return `deviceID`}
     public int deviceID() { return deviceID(this.segment(), 0L); }
     /// Sets `deviceID` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceID(MemorySegment segment, long index, int value) { VH_deviceID.set(segment, 0L, index, value); }
+    public static void deviceID(MemorySegment segment, long index, int value) { VH_deviceID.get().set(segment, 0L, index, value); }
     /// Sets `deviceID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -202,14 +202,14 @@ public final class VkPhysicalDeviceProperties extends GroupType {
     /// {@return `deviceType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int deviceType(MemorySegment segment, long index) { return (int) VH_deviceType.get(segment, 0L, index); }
+    public static int deviceType(MemorySegment segment, long index) { return (int) VH_deviceType.get().get(segment, 0L, index); }
     /// {@return `deviceType`}
     public int deviceType() { return deviceType(this.segment(), 0L); }
     /// Sets `deviceType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void deviceType(MemorySegment segment, long index, int value) { VH_deviceType.set(segment, 0L, index, value); }
+    public static void deviceType(MemorySegment segment, long index, int value) { VH_deviceType.get().set(segment, 0L, index, value); }
     /// Sets `deviceType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -223,7 +223,7 @@ public final class VkPhysicalDeviceProperties extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte deviceName(MemorySegment segment, long index, long index0) { return (byte) VH_deviceName.get(segment, 0L, index, index0); }
+    public static byte deviceName(MemorySegment segment, long index, long index0) { return (byte) VH_deviceName.get().get(segment, 0L, index, index0); }
     /// {@return `deviceName`}
     public MemorySegment deviceName() { return deviceName(this.segment(), 0L); }
     /// {@return `deviceName`}
@@ -239,7 +239,7 @@ public final class VkPhysicalDeviceProperties extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void deviceName(MemorySegment segment, long index, long index0, byte value) { VH_deviceName.set(segment, 0L, index, index0, value); }
+    public static void deviceName(MemorySegment segment, long index, long index0, byte value) { VH_deviceName.get().set(segment, 0L, index, index0, value); }
     /// Sets `deviceName` with the given value.
     /// @param value the value
     /// @return `this`
@@ -258,7 +258,7 @@ public final class VkPhysicalDeviceProperties extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte pipelineCacheUUID(MemorySegment segment, long index, long index0) { return (byte) VH_pipelineCacheUUID.get(segment, 0L, index, index0); }
+    public static byte pipelineCacheUUID(MemorySegment segment, long index, long index0) { return (byte) VH_pipelineCacheUUID.get().get(segment, 0L, index, index0); }
     /// {@return `pipelineCacheUUID`}
     public MemorySegment pipelineCacheUUID() { return pipelineCacheUUID(this.segment(), 0L); }
     /// {@return `pipelineCacheUUID`}
@@ -274,7 +274,7 @@ public final class VkPhysicalDeviceProperties extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void pipelineCacheUUID(MemorySegment segment, long index, long index0, byte value) { VH_pipelineCacheUUID.set(segment, 0L, index, index0, value); }
+    public static void pipelineCacheUUID(MemorySegment segment, long index, long index0, byte value) { VH_pipelineCacheUUID.get().set(segment, 0L, index, index0, value); }
     /// Sets `pipelineCacheUUID` with the given value.
     /// @param value the value
     /// @return `this`

@@ -63,13 +63,13 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `minFragmentShadingRateAttachmentTexelSize`.
     public static final long OFFSET_minFragmentShadingRateAttachmentTexelSize = LAYOUT.byteOffset(PathElement.groupElement("minFragmentShadingRateAttachmentTexelSize"));
     /// The memory layout of `minFragmentShadingRateAttachmentTexelSize`.
@@ -83,25 +83,25 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// The memory layout of `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`.
     public static final MemoryLayout LAYOUT_maxFragmentShadingRateAttachmentTexelSizeAspectRatio = LAYOUT.select(PathElement.groupElement("maxFragmentShadingRateAttachmentTexelSizeAspectRatio"));
     /// The [VarHandle] of `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxFragmentShadingRateAttachmentTexelSizeAspectRatio = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentShadingRateAttachmentTexelSizeAspectRatio"));
+    public static final Supplier<VarHandle> VH_maxFragmentShadingRateAttachmentTexelSizeAspectRatio = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentShadingRateAttachmentTexelSizeAspectRatio")));
     /// The byte offset of `primitiveFragmentShadingRateWithMultipleViewports`.
     public static final long OFFSET_primitiveFragmentShadingRateWithMultipleViewports = LAYOUT.byteOffset(PathElement.groupElement("primitiveFragmentShadingRateWithMultipleViewports"));
     /// The memory layout of `primitiveFragmentShadingRateWithMultipleViewports`.
     public static final MemoryLayout LAYOUT_primitiveFragmentShadingRateWithMultipleViewports = LAYOUT.select(PathElement.groupElement("primitiveFragmentShadingRateWithMultipleViewports"));
     /// The [VarHandle] of `primitiveFragmentShadingRateWithMultipleViewports` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_primitiveFragmentShadingRateWithMultipleViewports = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primitiveFragmentShadingRateWithMultipleViewports"));
+    public static final Supplier<VarHandle> VH_primitiveFragmentShadingRateWithMultipleViewports = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("primitiveFragmentShadingRateWithMultipleViewports")));
     /// The byte offset of `layeredShadingRateAttachments`.
     public static final long OFFSET_layeredShadingRateAttachments = LAYOUT.byteOffset(PathElement.groupElement("layeredShadingRateAttachments"));
     /// The memory layout of `layeredShadingRateAttachments`.
     public static final MemoryLayout LAYOUT_layeredShadingRateAttachments = LAYOUT.select(PathElement.groupElement("layeredShadingRateAttachments"));
     /// The [VarHandle] of `layeredShadingRateAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_layeredShadingRateAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layeredShadingRateAttachments"));
+    public static final Supplier<VarHandle> VH_layeredShadingRateAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("layeredShadingRateAttachments")));
     /// The byte offset of `fragmentShadingRateNonTrivialCombinerOps`.
     public static final long OFFSET_fragmentShadingRateNonTrivialCombinerOps = LAYOUT.byteOffset(PathElement.groupElement("fragmentShadingRateNonTrivialCombinerOps"));
     /// The memory layout of `fragmentShadingRateNonTrivialCombinerOps`.
     public static final MemoryLayout LAYOUT_fragmentShadingRateNonTrivialCombinerOps = LAYOUT.select(PathElement.groupElement("fragmentShadingRateNonTrivialCombinerOps"));
     /// The [VarHandle] of `fragmentShadingRateNonTrivialCombinerOps` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShadingRateNonTrivialCombinerOps = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateNonTrivialCombinerOps"));
+    public static final Supplier<VarHandle> VH_fragmentShadingRateNonTrivialCombinerOps = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateNonTrivialCombinerOps")));
     /// The byte offset of `maxFragmentSize`.
     public static final long OFFSET_maxFragmentSize = LAYOUT.byteOffset(PathElement.groupElement("maxFragmentSize"));
     /// The memory layout of `maxFragmentSize`.
@@ -111,61 +111,61 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// The memory layout of `maxFragmentSizeAspectRatio`.
     public static final MemoryLayout LAYOUT_maxFragmentSizeAspectRatio = LAYOUT.select(PathElement.groupElement("maxFragmentSizeAspectRatio"));
     /// The [VarHandle] of `maxFragmentSizeAspectRatio` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxFragmentSizeAspectRatio = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentSizeAspectRatio"));
+    public static final Supplier<VarHandle> VH_maxFragmentSizeAspectRatio = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentSizeAspectRatio")));
     /// The byte offset of `maxFragmentShadingRateCoverageSamples`.
     public static final long OFFSET_maxFragmentShadingRateCoverageSamples = LAYOUT.byteOffset(PathElement.groupElement("maxFragmentShadingRateCoverageSamples"));
     /// The memory layout of `maxFragmentShadingRateCoverageSamples`.
     public static final MemoryLayout LAYOUT_maxFragmentShadingRateCoverageSamples = LAYOUT.select(PathElement.groupElement("maxFragmentShadingRateCoverageSamples"));
     /// The [VarHandle] of `maxFragmentShadingRateCoverageSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxFragmentShadingRateCoverageSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentShadingRateCoverageSamples"));
+    public static final Supplier<VarHandle> VH_maxFragmentShadingRateCoverageSamples = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentShadingRateCoverageSamples")));
     /// The byte offset of `maxFragmentShadingRateRasterizationSamples`.
     public static final long OFFSET_maxFragmentShadingRateRasterizationSamples = LAYOUT.byteOffset(PathElement.groupElement("maxFragmentShadingRateRasterizationSamples"));
     /// The memory layout of `maxFragmentShadingRateRasterizationSamples`.
     public static final MemoryLayout LAYOUT_maxFragmentShadingRateRasterizationSamples = LAYOUT.select(PathElement.groupElement("maxFragmentShadingRateRasterizationSamples"));
     /// The [VarHandle] of `maxFragmentShadingRateRasterizationSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxFragmentShadingRateRasterizationSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentShadingRateRasterizationSamples"));
+    public static final Supplier<VarHandle> VH_maxFragmentShadingRateRasterizationSamples = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentShadingRateRasterizationSamples")));
     /// The byte offset of `fragmentShadingRateWithShaderDepthStencilWrites`.
     public static final long OFFSET_fragmentShadingRateWithShaderDepthStencilWrites = LAYOUT.byteOffset(PathElement.groupElement("fragmentShadingRateWithShaderDepthStencilWrites"));
     /// The memory layout of `fragmentShadingRateWithShaderDepthStencilWrites`.
     public static final MemoryLayout LAYOUT_fragmentShadingRateWithShaderDepthStencilWrites = LAYOUT.select(PathElement.groupElement("fragmentShadingRateWithShaderDepthStencilWrites"));
     /// The [VarHandle] of `fragmentShadingRateWithShaderDepthStencilWrites` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShadingRateWithShaderDepthStencilWrites = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithShaderDepthStencilWrites"));
+    public static final Supplier<VarHandle> VH_fragmentShadingRateWithShaderDepthStencilWrites = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithShaderDepthStencilWrites")));
     /// The byte offset of `fragmentShadingRateWithSampleMask`.
     public static final long OFFSET_fragmentShadingRateWithSampleMask = LAYOUT.byteOffset(PathElement.groupElement("fragmentShadingRateWithSampleMask"));
     /// The memory layout of `fragmentShadingRateWithSampleMask`.
     public static final MemoryLayout LAYOUT_fragmentShadingRateWithSampleMask = LAYOUT.select(PathElement.groupElement("fragmentShadingRateWithSampleMask"));
     /// The [VarHandle] of `fragmentShadingRateWithSampleMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShadingRateWithSampleMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithSampleMask"));
+    public static final Supplier<VarHandle> VH_fragmentShadingRateWithSampleMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithSampleMask")));
     /// The byte offset of `fragmentShadingRateWithShaderSampleMask`.
     public static final long OFFSET_fragmentShadingRateWithShaderSampleMask = LAYOUT.byteOffset(PathElement.groupElement("fragmentShadingRateWithShaderSampleMask"));
     /// The memory layout of `fragmentShadingRateWithShaderSampleMask`.
     public static final MemoryLayout LAYOUT_fragmentShadingRateWithShaderSampleMask = LAYOUT.select(PathElement.groupElement("fragmentShadingRateWithShaderSampleMask"));
     /// The [VarHandle] of `fragmentShadingRateWithShaderSampleMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShadingRateWithShaderSampleMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithShaderSampleMask"));
+    public static final Supplier<VarHandle> VH_fragmentShadingRateWithShaderSampleMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithShaderSampleMask")));
     /// The byte offset of `fragmentShadingRateWithConservativeRasterization`.
     public static final long OFFSET_fragmentShadingRateWithConservativeRasterization = LAYOUT.byteOffset(PathElement.groupElement("fragmentShadingRateWithConservativeRasterization"));
     /// The memory layout of `fragmentShadingRateWithConservativeRasterization`.
     public static final MemoryLayout LAYOUT_fragmentShadingRateWithConservativeRasterization = LAYOUT.select(PathElement.groupElement("fragmentShadingRateWithConservativeRasterization"));
     /// The [VarHandle] of `fragmentShadingRateWithConservativeRasterization` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShadingRateWithConservativeRasterization = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithConservativeRasterization"));
+    public static final Supplier<VarHandle> VH_fragmentShadingRateWithConservativeRasterization = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithConservativeRasterization")));
     /// The byte offset of `fragmentShadingRateWithFragmentShaderInterlock`.
     public static final long OFFSET_fragmentShadingRateWithFragmentShaderInterlock = LAYOUT.byteOffset(PathElement.groupElement("fragmentShadingRateWithFragmentShaderInterlock"));
     /// The memory layout of `fragmentShadingRateWithFragmentShaderInterlock`.
     public static final MemoryLayout LAYOUT_fragmentShadingRateWithFragmentShaderInterlock = LAYOUT.select(PathElement.groupElement("fragmentShadingRateWithFragmentShaderInterlock"));
     /// The [VarHandle] of `fragmentShadingRateWithFragmentShaderInterlock` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShadingRateWithFragmentShaderInterlock = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithFragmentShaderInterlock"));
+    public static final Supplier<VarHandle> VH_fragmentShadingRateWithFragmentShaderInterlock = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithFragmentShaderInterlock")));
     /// The byte offset of `fragmentShadingRateWithCustomSampleLocations`.
     public static final long OFFSET_fragmentShadingRateWithCustomSampleLocations = LAYOUT.byteOffset(PathElement.groupElement("fragmentShadingRateWithCustomSampleLocations"));
     /// The memory layout of `fragmentShadingRateWithCustomSampleLocations`.
     public static final MemoryLayout LAYOUT_fragmentShadingRateWithCustomSampleLocations = LAYOUT.select(PathElement.groupElement("fragmentShadingRateWithCustomSampleLocations"));
     /// The [VarHandle] of `fragmentShadingRateWithCustomSampleLocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShadingRateWithCustomSampleLocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithCustomSampleLocations"));
+    public static final Supplier<VarHandle> VH_fragmentShadingRateWithCustomSampleLocations = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateWithCustomSampleLocations")));
     /// The byte offset of `fragmentShadingRateStrictMultiplyCombiner`.
     public static final long OFFSET_fragmentShadingRateStrictMultiplyCombiner = LAYOUT.byteOffset(PathElement.groupElement("fragmentShadingRateStrictMultiplyCombiner"));
     /// The memory layout of `fragmentShadingRateStrictMultiplyCombiner`.
     public static final MemoryLayout LAYOUT_fragmentShadingRateStrictMultiplyCombiner = LAYOUT.select(PathElement.groupElement("fragmentShadingRateStrictMultiplyCombiner"));
     /// The [VarHandle] of `fragmentShadingRateStrictMultiplyCombiner` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShadingRateStrictMultiplyCombiner = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateStrictMultiplyCombiner"));
+    public static final Supplier<VarHandle> VH_fragmentShadingRateStrictMultiplyCombiner = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateStrictMultiplyCombiner")));
 
     /// Creates `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -216,14 +216,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,14 +232,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -288,14 +288,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxFragmentShadingRateAttachmentTexelSizeAspectRatio(MemorySegment segment, long index) { return (int) VH_maxFragmentShadingRateAttachmentTexelSizeAspectRatio.get(segment, 0L, index); }
+    public static int maxFragmentShadingRateAttachmentTexelSizeAspectRatio(MemorySegment segment, long index) { return (int) VH_maxFragmentShadingRateAttachmentTexelSizeAspectRatio.get().get(segment, 0L, index); }
     /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`}
     public int maxFragmentShadingRateAttachmentTexelSizeAspectRatio() { return maxFragmentShadingRateAttachmentTexelSizeAspectRatio(this.segment(), 0L); }
     /// Sets `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxFragmentShadingRateAttachmentTexelSizeAspectRatio(MemorySegment segment, long index, int value) { VH_maxFragmentShadingRateAttachmentTexelSizeAspectRatio.set(segment, 0L, index, value); }
+    public static void maxFragmentShadingRateAttachmentTexelSizeAspectRatio(MemorySegment segment, long index, int value) { VH_maxFragmentShadingRateAttachmentTexelSizeAspectRatio.get().set(segment, 0L, index, value); }
     /// Sets `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` with the given value.
     /// @param value the value
     /// @return `this`
@@ -304,14 +304,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `primitiveFragmentShadingRateWithMultipleViewports` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int primitiveFragmentShadingRateWithMultipleViewports(MemorySegment segment, long index) { return (int) VH_primitiveFragmentShadingRateWithMultipleViewports.get(segment, 0L, index); }
+    public static int primitiveFragmentShadingRateWithMultipleViewports(MemorySegment segment, long index) { return (int) VH_primitiveFragmentShadingRateWithMultipleViewports.get().get(segment, 0L, index); }
     /// {@return `primitiveFragmentShadingRateWithMultipleViewports`}
     public int primitiveFragmentShadingRateWithMultipleViewports() { return primitiveFragmentShadingRateWithMultipleViewports(this.segment(), 0L); }
     /// Sets `primitiveFragmentShadingRateWithMultipleViewports` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void primitiveFragmentShadingRateWithMultipleViewports(MemorySegment segment, long index, int value) { VH_primitiveFragmentShadingRateWithMultipleViewports.set(segment, 0L, index, value); }
+    public static void primitiveFragmentShadingRateWithMultipleViewports(MemorySegment segment, long index, int value) { VH_primitiveFragmentShadingRateWithMultipleViewports.get().set(segment, 0L, index, value); }
     /// Sets `primitiveFragmentShadingRateWithMultipleViewports` with the given value.
     /// @param value the value
     /// @return `this`
@@ -320,14 +320,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `layeredShadingRateAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int layeredShadingRateAttachments(MemorySegment segment, long index) { return (int) VH_layeredShadingRateAttachments.get(segment, 0L, index); }
+    public static int layeredShadingRateAttachments(MemorySegment segment, long index) { return (int) VH_layeredShadingRateAttachments.get().get(segment, 0L, index); }
     /// {@return `layeredShadingRateAttachments`}
     public int layeredShadingRateAttachments() { return layeredShadingRateAttachments(this.segment(), 0L); }
     /// Sets `layeredShadingRateAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void layeredShadingRateAttachments(MemorySegment segment, long index, int value) { VH_layeredShadingRateAttachments.set(segment, 0L, index, value); }
+    public static void layeredShadingRateAttachments(MemorySegment segment, long index, int value) { VH_layeredShadingRateAttachments.get().set(segment, 0L, index, value); }
     /// Sets `layeredShadingRateAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -336,14 +336,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `fragmentShadingRateNonTrivialCombinerOps` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fragmentShadingRateNonTrivialCombinerOps(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateNonTrivialCombinerOps.get(segment, 0L, index); }
+    public static int fragmentShadingRateNonTrivialCombinerOps(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateNonTrivialCombinerOps.get().get(segment, 0L, index); }
     /// {@return `fragmentShadingRateNonTrivialCombinerOps`}
     public int fragmentShadingRateNonTrivialCombinerOps() { return fragmentShadingRateNonTrivialCombinerOps(this.segment(), 0L); }
     /// Sets `fragmentShadingRateNonTrivialCombinerOps` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fragmentShadingRateNonTrivialCombinerOps(MemorySegment segment, long index, int value) { VH_fragmentShadingRateNonTrivialCombinerOps.set(segment, 0L, index, value); }
+    public static void fragmentShadingRateNonTrivialCombinerOps(MemorySegment segment, long index, int value) { VH_fragmentShadingRateNonTrivialCombinerOps.get().set(segment, 0L, index, value); }
     /// Sets `fragmentShadingRateNonTrivialCombinerOps` with the given value.
     /// @param value the value
     /// @return `this`
@@ -372,14 +372,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `maxFragmentSizeAspectRatio` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxFragmentSizeAspectRatio(MemorySegment segment, long index) { return (int) VH_maxFragmentSizeAspectRatio.get(segment, 0L, index); }
+    public static int maxFragmentSizeAspectRatio(MemorySegment segment, long index) { return (int) VH_maxFragmentSizeAspectRatio.get().get(segment, 0L, index); }
     /// {@return `maxFragmentSizeAspectRatio`}
     public int maxFragmentSizeAspectRatio() { return maxFragmentSizeAspectRatio(this.segment(), 0L); }
     /// Sets `maxFragmentSizeAspectRatio` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxFragmentSizeAspectRatio(MemorySegment segment, long index, int value) { VH_maxFragmentSizeAspectRatio.set(segment, 0L, index, value); }
+    public static void maxFragmentSizeAspectRatio(MemorySegment segment, long index, int value) { VH_maxFragmentSizeAspectRatio.get().set(segment, 0L, index, value); }
     /// Sets `maxFragmentSizeAspectRatio` with the given value.
     /// @param value the value
     /// @return `this`
@@ -388,14 +388,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `maxFragmentShadingRateCoverageSamples` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxFragmentShadingRateCoverageSamples(MemorySegment segment, long index) { return (int) VH_maxFragmentShadingRateCoverageSamples.get(segment, 0L, index); }
+    public static int maxFragmentShadingRateCoverageSamples(MemorySegment segment, long index) { return (int) VH_maxFragmentShadingRateCoverageSamples.get().get(segment, 0L, index); }
     /// {@return `maxFragmentShadingRateCoverageSamples`}
     public int maxFragmentShadingRateCoverageSamples() { return maxFragmentShadingRateCoverageSamples(this.segment(), 0L); }
     /// Sets `maxFragmentShadingRateCoverageSamples` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxFragmentShadingRateCoverageSamples(MemorySegment segment, long index, int value) { VH_maxFragmentShadingRateCoverageSamples.set(segment, 0L, index, value); }
+    public static void maxFragmentShadingRateCoverageSamples(MemorySegment segment, long index, int value) { VH_maxFragmentShadingRateCoverageSamples.get().set(segment, 0L, index, value); }
     /// Sets `maxFragmentShadingRateCoverageSamples` with the given value.
     /// @param value the value
     /// @return `this`
@@ -404,14 +404,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `maxFragmentShadingRateRasterizationSamples` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxFragmentShadingRateRasterizationSamples(MemorySegment segment, long index) { return (int) VH_maxFragmentShadingRateRasterizationSamples.get(segment, 0L, index); }
+    public static int maxFragmentShadingRateRasterizationSamples(MemorySegment segment, long index) { return (int) VH_maxFragmentShadingRateRasterizationSamples.get().get(segment, 0L, index); }
     /// {@return `maxFragmentShadingRateRasterizationSamples`}
     public int maxFragmentShadingRateRasterizationSamples() { return maxFragmentShadingRateRasterizationSamples(this.segment(), 0L); }
     /// Sets `maxFragmentShadingRateRasterizationSamples` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxFragmentShadingRateRasterizationSamples(MemorySegment segment, long index, int value) { VH_maxFragmentShadingRateRasterizationSamples.set(segment, 0L, index, value); }
+    public static void maxFragmentShadingRateRasterizationSamples(MemorySegment segment, long index, int value) { VH_maxFragmentShadingRateRasterizationSamples.get().set(segment, 0L, index, value); }
     /// Sets `maxFragmentShadingRateRasterizationSamples` with the given value.
     /// @param value the value
     /// @return `this`
@@ -420,14 +420,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `fragmentShadingRateWithShaderDepthStencilWrites` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fragmentShadingRateWithShaderDepthStencilWrites(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithShaderDepthStencilWrites.get(segment, 0L, index); }
+    public static int fragmentShadingRateWithShaderDepthStencilWrites(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithShaderDepthStencilWrites.get().get(segment, 0L, index); }
     /// {@return `fragmentShadingRateWithShaderDepthStencilWrites`}
     public int fragmentShadingRateWithShaderDepthStencilWrites() { return fragmentShadingRateWithShaderDepthStencilWrites(this.segment(), 0L); }
     /// Sets `fragmentShadingRateWithShaderDepthStencilWrites` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fragmentShadingRateWithShaderDepthStencilWrites(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithShaderDepthStencilWrites.set(segment, 0L, index, value); }
+    public static void fragmentShadingRateWithShaderDepthStencilWrites(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithShaderDepthStencilWrites.get().set(segment, 0L, index, value); }
     /// Sets `fragmentShadingRateWithShaderDepthStencilWrites` with the given value.
     /// @param value the value
     /// @return `this`
@@ -436,14 +436,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `fragmentShadingRateWithSampleMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fragmentShadingRateWithSampleMask(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithSampleMask.get(segment, 0L, index); }
+    public static int fragmentShadingRateWithSampleMask(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithSampleMask.get().get(segment, 0L, index); }
     /// {@return `fragmentShadingRateWithSampleMask`}
     public int fragmentShadingRateWithSampleMask() { return fragmentShadingRateWithSampleMask(this.segment(), 0L); }
     /// Sets `fragmentShadingRateWithSampleMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fragmentShadingRateWithSampleMask(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithSampleMask.set(segment, 0L, index, value); }
+    public static void fragmentShadingRateWithSampleMask(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithSampleMask.get().set(segment, 0L, index, value); }
     /// Sets `fragmentShadingRateWithSampleMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -452,14 +452,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `fragmentShadingRateWithShaderSampleMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fragmentShadingRateWithShaderSampleMask(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithShaderSampleMask.get(segment, 0L, index); }
+    public static int fragmentShadingRateWithShaderSampleMask(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithShaderSampleMask.get().get(segment, 0L, index); }
     /// {@return `fragmentShadingRateWithShaderSampleMask`}
     public int fragmentShadingRateWithShaderSampleMask() { return fragmentShadingRateWithShaderSampleMask(this.segment(), 0L); }
     /// Sets `fragmentShadingRateWithShaderSampleMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fragmentShadingRateWithShaderSampleMask(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithShaderSampleMask.set(segment, 0L, index, value); }
+    public static void fragmentShadingRateWithShaderSampleMask(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithShaderSampleMask.get().set(segment, 0L, index, value); }
     /// Sets `fragmentShadingRateWithShaderSampleMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -468,14 +468,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `fragmentShadingRateWithConservativeRasterization` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fragmentShadingRateWithConservativeRasterization(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithConservativeRasterization.get(segment, 0L, index); }
+    public static int fragmentShadingRateWithConservativeRasterization(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithConservativeRasterization.get().get(segment, 0L, index); }
     /// {@return `fragmentShadingRateWithConservativeRasterization`}
     public int fragmentShadingRateWithConservativeRasterization() { return fragmentShadingRateWithConservativeRasterization(this.segment(), 0L); }
     /// Sets `fragmentShadingRateWithConservativeRasterization` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fragmentShadingRateWithConservativeRasterization(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithConservativeRasterization.set(segment, 0L, index, value); }
+    public static void fragmentShadingRateWithConservativeRasterization(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithConservativeRasterization.get().set(segment, 0L, index, value); }
     /// Sets `fragmentShadingRateWithConservativeRasterization` with the given value.
     /// @param value the value
     /// @return `this`
@@ -484,14 +484,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `fragmentShadingRateWithFragmentShaderInterlock` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fragmentShadingRateWithFragmentShaderInterlock(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithFragmentShaderInterlock.get(segment, 0L, index); }
+    public static int fragmentShadingRateWithFragmentShaderInterlock(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithFragmentShaderInterlock.get().get(segment, 0L, index); }
     /// {@return `fragmentShadingRateWithFragmentShaderInterlock`}
     public int fragmentShadingRateWithFragmentShaderInterlock() { return fragmentShadingRateWithFragmentShaderInterlock(this.segment(), 0L); }
     /// Sets `fragmentShadingRateWithFragmentShaderInterlock` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fragmentShadingRateWithFragmentShaderInterlock(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithFragmentShaderInterlock.set(segment, 0L, index, value); }
+    public static void fragmentShadingRateWithFragmentShaderInterlock(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithFragmentShaderInterlock.get().set(segment, 0L, index, value); }
     /// Sets `fragmentShadingRateWithFragmentShaderInterlock` with the given value.
     /// @param value the value
     /// @return `this`
@@ -500,14 +500,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `fragmentShadingRateWithCustomSampleLocations` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fragmentShadingRateWithCustomSampleLocations(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithCustomSampleLocations.get(segment, 0L, index); }
+    public static int fragmentShadingRateWithCustomSampleLocations(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateWithCustomSampleLocations.get().get(segment, 0L, index); }
     /// {@return `fragmentShadingRateWithCustomSampleLocations`}
     public int fragmentShadingRateWithCustomSampleLocations() { return fragmentShadingRateWithCustomSampleLocations(this.segment(), 0L); }
     /// Sets `fragmentShadingRateWithCustomSampleLocations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fragmentShadingRateWithCustomSampleLocations(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithCustomSampleLocations.set(segment, 0L, index, value); }
+    public static void fragmentShadingRateWithCustomSampleLocations(MemorySegment segment, long index, int value) { VH_fragmentShadingRateWithCustomSampleLocations.get().set(segment, 0L, index, value); }
     /// Sets `fragmentShadingRateWithCustomSampleLocations` with the given value.
     /// @param value the value
     /// @return `this`
@@ -516,14 +516,14 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Grou
     /// {@return `fragmentShadingRateStrictMultiplyCombiner` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fragmentShadingRateStrictMultiplyCombiner(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateStrictMultiplyCombiner.get(segment, 0L, index); }
+    public static int fragmentShadingRateStrictMultiplyCombiner(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateStrictMultiplyCombiner.get().get(segment, 0L, index); }
     /// {@return `fragmentShadingRateStrictMultiplyCombiner`}
     public int fragmentShadingRateStrictMultiplyCombiner() { return fragmentShadingRateStrictMultiplyCombiner(this.segment(), 0L); }
     /// Sets `fragmentShadingRateStrictMultiplyCombiner` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fragmentShadingRateStrictMultiplyCombiner(MemorySegment segment, long index, int value) { VH_fragmentShadingRateStrictMultiplyCombiner.set(segment, 0L, index, value); }
+    public static void fragmentShadingRateStrictMultiplyCombiner(MemorySegment segment, long index, int value) { VH_fragmentShadingRateStrictMultiplyCombiner.get().set(segment, 0L, index, value); }
     /// Sets `fragmentShadingRateStrictMultiplyCombiner` with the given value.
     /// @param value the value
     /// @return `this`

@@ -47,19 +47,19 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `vertexFormat`.
     public static final long OFFSET_vertexFormat = LAYOUT.byteOffset(PathElement.groupElement("vertexFormat"));
     /// The memory layout of `vertexFormat`.
     public static final MemoryLayout LAYOUT_vertexFormat = LAYOUT.select(PathElement.groupElement("vertexFormat"));
     /// The [VarHandle] of `vertexFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexFormat"));
+    public static final Supplier<VarHandle> VH_vertexFormat = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexFormat")));
     /// The byte offset of `vertexData`.
     public static final long OFFSET_vertexData = LAYOUT.byteOffset(PathElement.groupElement("vertexData"));
     /// The memory layout of `vertexData`.
@@ -69,13 +69,13 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// The memory layout of `vertexStride`.
     public static final MemoryLayout LAYOUT_vertexStride = LAYOUT.select(PathElement.groupElement("vertexStride"));
     /// The [VarHandle] of `vertexStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexStride"));
+    public static final Supplier<VarHandle> VH_vertexStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexStride")));
     /// The byte offset of `radiusFormat`.
     public static final long OFFSET_radiusFormat = LAYOUT.byteOffset(PathElement.groupElement("radiusFormat"));
     /// The memory layout of `radiusFormat`.
     public static final MemoryLayout LAYOUT_radiusFormat = LAYOUT.select(PathElement.groupElement("radiusFormat"));
     /// The [VarHandle] of `radiusFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_radiusFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("radiusFormat"));
+    public static final Supplier<VarHandle> VH_radiusFormat = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("radiusFormat")));
     /// The byte offset of `radiusData`.
     public static final long OFFSET_radiusData = LAYOUT.byteOffset(PathElement.groupElement("radiusData"));
     /// The memory layout of `radiusData`.
@@ -85,13 +85,13 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// The memory layout of `radiusStride`.
     public static final MemoryLayout LAYOUT_radiusStride = LAYOUT.select(PathElement.groupElement("radiusStride"));
     /// The [VarHandle] of `radiusStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_radiusStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("radiusStride"));
+    public static final Supplier<VarHandle> VH_radiusStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("radiusStride")));
     /// The byte offset of `indexType`.
     public static final long OFFSET_indexType = LAYOUT.byteOffset(PathElement.groupElement("indexType"));
     /// The memory layout of `indexType`.
     public static final MemoryLayout LAYOUT_indexType = LAYOUT.select(PathElement.groupElement("indexType"));
     /// The [VarHandle] of `indexType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexType"));
+    public static final Supplier<VarHandle> VH_indexType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexType")));
     /// The byte offset of `indexData`.
     public static final long OFFSET_indexData = LAYOUT.byteOffset(PathElement.groupElement("indexData"));
     /// The memory layout of `indexData`.
@@ -101,7 +101,7 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// The memory layout of `indexStride`.
     public static final MemoryLayout LAYOUT_indexStride = LAYOUT.select(PathElement.groupElement("indexStride"));
     /// The [VarHandle] of `indexStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexStride"));
+    public static final Supplier<VarHandle> VH_indexStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexStride")));
 
     /// Creates `VkAccelerationStructureGeometrySpheresDataNV` with the given segment.
     /// @param segment      the memory segment
@@ -152,14 +152,14 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -168,14 +168,14 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -184,14 +184,14 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// {@return `vertexFormat` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertexFormat(MemorySegment segment, long index) { return (int) VH_vertexFormat.get(segment, 0L, index); }
+    public static int vertexFormat(MemorySegment segment, long index) { return (int) VH_vertexFormat.get().get(segment, 0L, index); }
     /// {@return `vertexFormat`}
     public int vertexFormat() { return vertexFormat(this.segment(), 0L); }
     /// Sets `vertexFormat` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexFormat(MemorySegment segment, long index, int value) { VH_vertexFormat.set(segment, 0L, index, value); }
+    public static void vertexFormat(MemorySegment segment, long index, int value) { VH_vertexFormat.get().set(segment, 0L, index, value); }
     /// Sets `vertexFormat` with the given value.
     /// @param value the value
     /// @return `this`
@@ -220,14 +220,14 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// {@return `vertexStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long vertexStride(MemorySegment segment, long index) { return (long) VH_vertexStride.get(segment, 0L, index); }
+    public static long vertexStride(MemorySegment segment, long index) { return (long) VH_vertexStride.get().get(segment, 0L, index); }
     /// {@return `vertexStride`}
     public long vertexStride() { return vertexStride(this.segment(), 0L); }
     /// Sets `vertexStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexStride(MemorySegment segment, long index, long value) { VH_vertexStride.set(segment, 0L, index, value); }
+    public static void vertexStride(MemorySegment segment, long index, long value) { VH_vertexStride.get().set(segment, 0L, index, value); }
     /// Sets `vertexStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -236,14 +236,14 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// {@return `radiusFormat` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int radiusFormat(MemorySegment segment, long index) { return (int) VH_radiusFormat.get(segment, 0L, index); }
+    public static int radiusFormat(MemorySegment segment, long index) { return (int) VH_radiusFormat.get().get(segment, 0L, index); }
     /// {@return `radiusFormat`}
     public int radiusFormat() { return radiusFormat(this.segment(), 0L); }
     /// Sets `radiusFormat` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void radiusFormat(MemorySegment segment, long index, int value) { VH_radiusFormat.set(segment, 0L, index, value); }
+    public static void radiusFormat(MemorySegment segment, long index, int value) { VH_radiusFormat.get().set(segment, 0L, index, value); }
     /// Sets `radiusFormat` with the given value.
     /// @param value the value
     /// @return `this`
@@ -272,14 +272,14 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// {@return `radiusStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long radiusStride(MemorySegment segment, long index) { return (long) VH_radiusStride.get(segment, 0L, index); }
+    public static long radiusStride(MemorySegment segment, long index) { return (long) VH_radiusStride.get().get(segment, 0L, index); }
     /// {@return `radiusStride`}
     public long radiusStride() { return radiusStride(this.segment(), 0L); }
     /// Sets `radiusStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void radiusStride(MemorySegment segment, long index, long value) { VH_radiusStride.set(segment, 0L, index, value); }
+    public static void radiusStride(MemorySegment segment, long index, long value) { VH_radiusStride.get().set(segment, 0L, index, value); }
     /// Sets `radiusStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -288,14 +288,14 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// {@return `indexType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int indexType(MemorySegment segment, long index) { return (int) VH_indexType.get(segment, 0L, index); }
+    public static int indexType(MemorySegment segment, long index) { return (int) VH_indexType.get().get(segment, 0L, index); }
     /// {@return `indexType`}
     public int indexType() { return indexType(this.segment(), 0L); }
     /// Sets `indexType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void indexType(MemorySegment segment, long index, int value) { VH_indexType.set(segment, 0L, index, value); }
+    public static void indexType(MemorySegment segment, long index, int value) { VH_indexType.get().set(segment, 0L, index, value); }
     /// Sets `indexType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -324,14 +324,14 @@ public final class VkAccelerationStructureGeometrySpheresDataNV extends GroupTyp
     /// {@return `indexStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long indexStride(MemorySegment segment, long index) { return (long) VH_indexStride.get(segment, 0L, index); }
+    public static long indexStride(MemorySegment segment, long index) { return (long) VH_indexStride.get().get(segment, 0L, index); }
     /// {@return `indexStride`}
     public long indexStride() { return indexStride(this.segment(), 0L); }
     /// Sets `indexStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void indexStride(MemorySegment segment, long index, long value) { VH_indexStride.set(segment, 0L, index, value); }
+    public static void indexStride(MemorySegment segment, long index, long value) { VH_indexStride.get().set(segment, 0L, index, value); }
     /// Sets `indexStride` with the given value.
     /// @param value the value
     /// @return `this`

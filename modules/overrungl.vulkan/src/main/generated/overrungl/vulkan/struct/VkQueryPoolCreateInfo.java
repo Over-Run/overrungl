@@ -37,37 +37,37 @@ public final class VkQueryPoolCreateInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `queryType`.
     public static final long OFFSET_queryType = LAYOUT.byteOffset(PathElement.groupElement("queryType"));
     /// The memory layout of `queryType`.
     public static final MemoryLayout LAYOUT_queryType = LAYOUT.select(PathElement.groupElement("queryType"));
     /// The [VarHandle] of `queryType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_queryType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queryType"));
+    public static final Supplier<VarHandle> VH_queryType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("queryType")));
     /// The byte offset of `queryCount`.
     public static final long OFFSET_queryCount = LAYOUT.byteOffset(PathElement.groupElement("queryCount"));
     /// The memory layout of `queryCount`.
     public static final MemoryLayout LAYOUT_queryCount = LAYOUT.select(PathElement.groupElement("queryCount"));
     /// The [VarHandle] of `queryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_queryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queryCount"));
+    public static final Supplier<VarHandle> VH_queryCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("queryCount")));
     /// The byte offset of `pipelineStatistics`.
     public static final long OFFSET_pipelineStatistics = LAYOUT.byteOffset(PathElement.groupElement("pipelineStatistics"));
     /// The memory layout of `pipelineStatistics`.
     public static final MemoryLayout LAYOUT_pipelineStatistics = LAYOUT.select(PathElement.groupElement("pipelineStatistics"));
     /// The [VarHandle] of `pipelineStatistics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineStatistics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineStatistics"));
+    public static final Supplier<VarHandle> VH_pipelineStatistics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineStatistics")));
 
     /// Creates `VkQueryPoolCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkQueryPoolCreateInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkQueryPoolCreateInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkQueryPoolCreateInfo extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkQueryPoolCreateInfo extends GroupType {
     /// {@return `queryType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int queryType(MemorySegment segment, long index) { return (int) VH_queryType.get(segment, 0L, index); }
+    public static int queryType(MemorySegment segment, long index) { return (int) VH_queryType.get().get(segment, 0L, index); }
     /// {@return `queryType`}
     public int queryType() { return queryType(this.segment(), 0L); }
     /// Sets `queryType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void queryType(MemorySegment segment, long index, int value) { VH_queryType.set(segment, 0L, index, value); }
+    public static void queryType(MemorySegment segment, long index, int value) { VH_queryType.get().set(segment, 0L, index, value); }
     /// Sets `queryType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkQueryPoolCreateInfo extends GroupType {
     /// {@return `queryCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int queryCount(MemorySegment segment, long index) { return (int) VH_queryCount.get(segment, 0L, index); }
+    public static int queryCount(MemorySegment segment, long index) { return (int) VH_queryCount.get().get(segment, 0L, index); }
     /// {@return `queryCount`}
     public int queryCount() { return queryCount(this.segment(), 0L); }
     /// Sets `queryCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void queryCount(MemorySegment segment, long index, int value) { VH_queryCount.set(segment, 0L, index, value); }
+    public static void queryCount(MemorySegment segment, long index, int value) { VH_queryCount.get().set(segment, 0L, index, value); }
     /// Sets `queryCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkQueryPoolCreateInfo extends GroupType {
     /// {@return `pipelineStatistics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineStatistics(MemorySegment segment, long index) { return (int) VH_pipelineStatistics.get(segment, 0L, index); }
+    public static int pipelineStatistics(MemorySegment segment, long index) { return (int) VH_pipelineStatistics.get().get(segment, 0L, index); }
     /// {@return `pipelineStatistics`}
     public int pipelineStatistics() { return pipelineStatistics(this.segment(), 0L); }
     /// Sets `pipelineStatistics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineStatistics(MemorySegment segment, long index, int value) { VH_pipelineStatistics.set(segment, 0L, index, value); }
+    public static void pipelineStatistics(MemorySegment segment, long index, int value) { VH_pipelineStatistics.get().set(segment, 0L, index, value); }
     /// Sets `pipelineStatistics` with the given value.
     /// @param value the value
     /// @return `this`

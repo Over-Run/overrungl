@@ -27,7 +27,7 @@ public final class StdVideoH265PredictorPaletteEntries extends GroupType {
     /// The memory layout of `PredictorPaletteEntries`.
     public static final MemoryLayout LAYOUT_PredictorPaletteEntries = LAYOUT.select(PathElement.groupElement("PredictorPaletteEntries"));
     /// The [VarHandle] of `PredictorPaletteEntries` of type `(MemorySegment base, long baseOffset, long index, long index0, long index1)MemorySegment`.
-    public static final VarHandle VH_PredictorPaletteEntries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("PredictorPaletteEntries"), PathElement.sequenceElement(), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_PredictorPaletteEntries = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("PredictorPaletteEntries"), PathElement.sequenceElement(), PathElement.sequenceElement()));
 
     /// Creates `StdVideoH265PredictorPaletteEntries` with the given segment.
     /// @param segment      the memory segment
@@ -84,7 +84,7 @@ public final class StdVideoH265PredictorPaletteEntries extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
-    public static short PredictorPaletteEntries(MemorySegment segment, long index, long index0, long index1) { return (short) VH_PredictorPaletteEntries.get(segment, 0L, index, index0, index1); }
+    public static short PredictorPaletteEntries(MemorySegment segment, long index, long index0, long index1) { return (short) VH_PredictorPaletteEntries.get().get(segment, 0L, index, index0, index1); }
     /// {@return `PredictorPaletteEntries`}
     public MemorySegment PredictorPaletteEntries() { return PredictorPaletteEntries(this.segment(), 0L); }
     /// {@return `PredictorPaletteEntries`}
@@ -102,7 +102,7 @@ public final class StdVideoH265PredictorPaletteEntries extends GroupType {
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
     /// @param value the value
-    public static void PredictorPaletteEntries(MemorySegment segment, long index, long index0, long index1, short value) { VH_PredictorPaletteEntries.set(segment, 0L, index, index0, index1, value); }
+    public static void PredictorPaletteEntries(MemorySegment segment, long index, long index0, long index1, short value) { VH_PredictorPaletteEntries.get().set(segment, 0L, index, index0, index1, value); }
     /// Sets `PredictorPaletteEntries` with the given value.
     /// @param value the value
     /// @return `this`

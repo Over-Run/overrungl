@@ -2,6 +2,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -15,8 +16,8 @@ public final class VKKHRExternalSemaphoreWin32 {
     public static final int VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR = 1000078002;
     public static final int VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR = 1000078003;
     public static final class Handles {
-        public static final MethodHandle MH_vkImportSemaphoreWin32HandleKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetSemaphoreWin32HandleKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkImportSemaphoreWin32HandleKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_vkGetSemaphoreWin32HandleKHR = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -29,7 +30,7 @@ public final class VKKHRExternalSemaphoreWin32 {
     public static int vkImportSemaphoreWin32HandleKHR(@NonNull VkDevice device, @NonNull MemorySegment pImportSemaphoreWin32HandleInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkImportSemaphoreWin32HandleKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkImportSemaphoreWin32HandleKHR", device, pImportSemaphoreWin32HandleInfo); }
-        return (int) Handles.MH_vkImportSemaphoreWin32HandleKHR.invokeExact(device.capabilities().PFN_vkImportSemaphoreWin32HandleKHR, device.segment(), pImportSemaphoreWin32HandleInfo); }
+        return (int) Handles.MH_vkImportSemaphoreWin32HandleKHR.get().invokeExact(device.capabilities().PFN_vkImportSemaphoreWin32HandleKHR, device.segment(), pImportSemaphoreWin32HandleInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkImportSemaphoreWin32HandleKHR", e); }
     }
 
@@ -40,7 +41,7 @@ public final class VKKHRExternalSemaphoreWin32 {
     public static int vkGetSemaphoreWin32HandleKHR(@NonNull VkDevice device, @NonNull MemorySegment pGetWin32HandleInfo, @NonNull MemorySegment pHandle) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSemaphoreWin32HandleKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetSemaphoreWin32HandleKHR", device, pGetWin32HandleInfo, pHandle); }
-        return (int) Handles.MH_vkGetSemaphoreWin32HandleKHR.invokeExact(device.capabilities().PFN_vkGetSemaphoreWin32HandleKHR, device.segment(), pGetWin32HandleInfo, pHandle); }
+        return (int) Handles.MH_vkGetSemaphoreWin32HandleKHR.get().invokeExact(device.capabilities().PFN_vkGetSemaphoreWin32HandleKHR, device.segment(), pGetWin32HandleInfo, pHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSemaphoreWin32HandleKHR", e); }
     }
 

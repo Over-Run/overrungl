@@ -37,37 +37,37 @@ public final class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends GroupT
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pStdSequenceHeader`.
     public static final long OFFSET_pStdSequenceHeader = LAYOUT.byteOffset(PathElement.groupElement("pStdSequenceHeader"));
     /// The memory layout of `pStdSequenceHeader`.
     public static final MemoryLayout LAYOUT_pStdSequenceHeader = LAYOUT.select(PathElement.groupElement("pStdSequenceHeader"));
     /// The [VarHandle] of `pStdSequenceHeader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStdSequenceHeader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdSequenceHeader"));
+    public static final Supplier<VarHandle> VH_pStdSequenceHeader = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdSequenceHeader")));
     /// The byte offset of `pStdDecoderModelInfo`.
     public static final long OFFSET_pStdDecoderModelInfo = LAYOUT.byteOffset(PathElement.groupElement("pStdDecoderModelInfo"));
     /// The memory layout of `pStdDecoderModelInfo`.
     public static final MemoryLayout LAYOUT_pStdDecoderModelInfo = LAYOUT.select(PathElement.groupElement("pStdDecoderModelInfo"));
     /// The [VarHandle] of `pStdDecoderModelInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStdDecoderModelInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdDecoderModelInfo"));
+    public static final Supplier<VarHandle> VH_pStdDecoderModelInfo = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdDecoderModelInfo")));
     /// The byte offset of `stdOperatingPointCount`.
     public static final long OFFSET_stdOperatingPointCount = LAYOUT.byteOffset(PathElement.groupElement("stdOperatingPointCount"));
     /// The memory layout of `stdOperatingPointCount`.
     public static final MemoryLayout LAYOUT_stdOperatingPointCount = LAYOUT.select(PathElement.groupElement("stdOperatingPointCount"));
     /// The [VarHandle] of `stdOperatingPointCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stdOperatingPointCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stdOperatingPointCount"));
+    public static final Supplier<VarHandle> VH_stdOperatingPointCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stdOperatingPointCount")));
     /// The byte offset of `pStdOperatingPoints`.
     public static final long OFFSET_pStdOperatingPoints = LAYOUT.byteOffset(PathElement.groupElement("pStdOperatingPoints"));
     /// The memory layout of `pStdOperatingPoints`.
     public static final MemoryLayout LAYOUT_pStdOperatingPoints = LAYOUT.select(PathElement.groupElement("pStdOperatingPoints"));
     /// The [VarHandle] of `pStdOperatingPoints` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStdOperatingPoints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdOperatingPoints"));
+    public static final Supplier<VarHandle> VH_pStdOperatingPoints = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdOperatingPoints")));
 
     /// Creates `VkVideoEncodeAV1SessionParametersCreateInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends GroupT
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends GroupT
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends GroupT
     /// {@return `pStdSequenceHeader` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStdSequenceHeader(MemorySegment segment, long index) { return (MemorySegment) VH_pStdSequenceHeader.get(segment, 0L, index); }
+    public static MemorySegment pStdSequenceHeader(MemorySegment segment, long index) { return (MemorySegment) VH_pStdSequenceHeader.get().get(segment, 0L, index); }
     /// {@return `pStdSequenceHeader`}
     public MemorySegment pStdSequenceHeader() { return pStdSequenceHeader(this.segment(), 0L); }
     /// Sets `pStdSequenceHeader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStdSequenceHeader(MemorySegment segment, long index, MemorySegment value) { VH_pStdSequenceHeader.set(segment, 0L, index, value); }
+    public static void pStdSequenceHeader(MemorySegment segment, long index, MemorySegment value) { VH_pStdSequenceHeader.get().set(segment, 0L, index, value); }
     /// Sets `pStdSequenceHeader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends GroupT
     /// {@return `pStdDecoderModelInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStdDecoderModelInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pStdDecoderModelInfo.get(segment, 0L, index); }
+    public static MemorySegment pStdDecoderModelInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pStdDecoderModelInfo.get().get(segment, 0L, index); }
     /// {@return `pStdDecoderModelInfo`}
     public MemorySegment pStdDecoderModelInfo() { return pStdDecoderModelInfo(this.segment(), 0L); }
     /// Sets `pStdDecoderModelInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStdDecoderModelInfo(MemorySegment segment, long index, MemorySegment value) { VH_pStdDecoderModelInfo.set(segment, 0L, index, value); }
+    public static void pStdDecoderModelInfo(MemorySegment segment, long index, MemorySegment value) { VH_pStdDecoderModelInfo.get().set(segment, 0L, index, value); }
     /// Sets `pStdDecoderModelInfo` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends GroupT
     /// {@return `stdOperatingPointCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stdOperatingPointCount(MemorySegment segment, long index) { return (int) VH_stdOperatingPointCount.get(segment, 0L, index); }
+    public static int stdOperatingPointCount(MemorySegment segment, long index) { return (int) VH_stdOperatingPointCount.get().get(segment, 0L, index); }
     /// {@return `stdOperatingPointCount`}
     public int stdOperatingPointCount() { return stdOperatingPointCount(this.segment(), 0L); }
     /// Sets `stdOperatingPointCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stdOperatingPointCount(MemorySegment segment, long index, int value) { VH_stdOperatingPointCount.set(segment, 0L, index, value); }
+    public static void stdOperatingPointCount(MemorySegment segment, long index, int value) { VH_stdOperatingPointCount.get().set(segment, 0L, index, value); }
     /// Sets `stdOperatingPointCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends GroupT
     /// {@return `pStdOperatingPoints` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStdOperatingPoints(MemorySegment segment, long index) { return (MemorySegment) VH_pStdOperatingPoints.get(segment, 0L, index); }
+    public static MemorySegment pStdOperatingPoints(MemorySegment segment, long index) { return (MemorySegment) VH_pStdOperatingPoints.get().get(segment, 0L, index); }
     /// {@return `pStdOperatingPoints`}
     public MemorySegment pStdOperatingPoints() { return pStdOperatingPoints(this.segment(), 0L); }
     /// Sets `pStdOperatingPoints` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStdOperatingPoints(MemorySegment segment, long index, MemorySegment value) { VH_pStdOperatingPoints.set(segment, 0L, index, value); }
+    public static void pStdOperatingPoints(MemorySegment segment, long index, MemorySegment value) { VH_pStdOperatingPoints.get().set(segment, 0L, index, value); }
     /// Sets `pStdOperatingPoints` with the given value.
     /// @param value the value
     /// @return `this`

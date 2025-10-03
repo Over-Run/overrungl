@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.stb;
@@ -22,6 +30,7 @@ import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.function.Supplier;
 
 import static overrungl.internal.RuntimeHelper.*;
 
@@ -78,49 +87,49 @@ public final class STBImageResize2 {
     /// Method handles.
     public static final class Handles {
         /// The method handle of [`stbir_resize_uint8_srgb`][#stbir_resize_uint8_srgb].
-        public static final MethodHandle MH_stbir_resize_uint8_srgb = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_resize_uint8_srgb = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_resize_uint8_linear`][#stbir_resize_uint8_linear].
-        public static final MethodHandle MH_stbir_resize_uint8_linear = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_resize_uint8_linear = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_resize_float_linear`][#stbir_resize_float_linear].
-        public static final MethodHandle MH_stbir_resize_float_linear = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_resize_float_linear = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_resize`][#stbir_resize].
-        public static final MethodHandle MH_stbir_resize = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_resize = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_resize_init`][#stbir_resize_init].
-        public static final MethodHandle MH_stbir_resize_init = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_resize_init = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_set_datatypes`][#stbir_set_datatypes].
-        public static final MethodHandle MH_stbir_set_datatypes = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_set_datatypes = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_set_pixel_callbacks`][#stbir_set_pixel_callbacks].
-        public static final MethodHandle MH_stbir_set_pixel_callbacks = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stbir_set_pixel_callbacks = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`stbir_set_user_data`][#stbir_set_user_data].
-        public static final MethodHandle MH_stbir_set_user_data = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stbir_set_user_data = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`stbir_set_buffer_ptrs`][#stbir_set_buffer_ptrs].
-        public static final MethodHandle MH_stbir_set_buffer_ptrs = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_set_buffer_ptrs = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_set_pixel_layouts`][#stbir_set_pixel_layouts].
-        public static final MethodHandle MH_stbir_set_pixel_layouts = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_set_pixel_layouts = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_set_edgemodes`][#stbir_set_edgemodes].
-        public static final MethodHandle MH_stbir_set_edgemodes = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_set_edgemodes = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_set_filters`][#stbir_set_filters].
-        public static final MethodHandle MH_stbir_set_filters = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_set_filters = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_set_filter_callbacks`][#stbir_set_filter_callbacks].
-        public static final MethodHandle MH_stbir_set_filter_callbacks = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stbir_set_filter_callbacks = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         /// The method handle of [`stbir_set_pixel_subrect`][#stbir_set_pixel_subrect].
-        public static final MethodHandle MH_stbir_set_pixel_subrect = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_set_pixel_subrect = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_set_input_subrect`][#stbir_set_input_subrect].
-        public static final MethodHandle MH_stbir_set_input_subrect = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final Supplier<MethodHandle> MH_stbir_set_input_subrect = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)));
         /// The method handle of [`stbir_set_output_pixel_subrect`][#stbir_set_output_pixel_subrect].
-        public static final MethodHandle MH_stbir_set_output_pixel_subrect = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_set_output_pixel_subrect = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_set_non_pm_alpha_speed_over_quality`][#stbir_set_non_pm_alpha_speed_over_quality].
-        public static final MethodHandle MH_stbir_set_non_pm_alpha_speed_over_quality = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_set_non_pm_alpha_speed_over_quality = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_build_samplers`][#stbir_build_samplers].
-        public static final MethodHandle MH_stbir_build_samplers = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stbir_build_samplers = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`stbir_free_samplers`][#stbir_free_samplers].
-        public static final MethodHandle MH_stbir_free_samplers = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stbir_free_samplers = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         /// The method handle of [`stbir_resize_extended`][#stbir_resize_extended].
-        public static final MethodHandle MH_stbir_resize_extended = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_stbir_resize_extended = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         /// The method handle of [`stbir_build_samplers_with_splits`][#stbir_build_samplers_with_splits].
-        public static final MethodHandle MH_stbir_build_samplers_with_splits = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_build_samplers_with_splits = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         /// The method handle of [`stbir_resize_extended_split`][#stbir_resize_extended_split].
-        public static final MethodHandle MH_stbir_resize_extended_split = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_stbir_resize_extended_split = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         /// The function address of [`stbir_resize_uint8_srgb`][#stbir_resize_uint8_srgb].
         public final MemorySegment PFN_stbir_resize_uint8_srgb;
         /// The function address of [`stbir_resize_uint8_linear`][#stbir_resize_uint8_linear].
@@ -207,7 +216,7 @@ public final class STBImageResize2 {
     /// ```
     public static @NonNull MemorySegment stbir_resize_uint8_srgb(@NonNull MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes, @NonNull MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_resize_uint8_srgb", input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type); }
-        return (MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(Handles.get().PFN_stbir_resize_uint8_srgb, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type); }
+        return (MemorySegment) Handles.MH_stbir_resize_uint8_srgb.get().invokeExact(Handles.get().PFN_stbir_resize_uint8_srgb, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_srgb", e); }
     }
 
@@ -217,7 +226,7 @@ public final class STBImageResize2 {
     /// ```
     public static @NonNull MemorySegment stbir_resize_uint8_linear(@NonNull MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes, @NonNull MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_resize_uint8_linear", input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type); }
-        return (MemorySegment) Handles.MH_stbir_resize_uint8_linear.invokeExact(Handles.get().PFN_stbir_resize_uint8_linear, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type); }
+        return (MemorySegment) Handles.MH_stbir_resize_uint8_linear.get().invokeExact(Handles.get().PFN_stbir_resize_uint8_linear, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_linear", e); }
     }
 
@@ -227,7 +236,7 @@ public final class STBImageResize2 {
     /// ```
     public static @NonNull MemorySegment stbir_resize_float_linear(@NonNull MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes, @NonNull MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_resize_float_linear", input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type); }
-        return (MemorySegment) Handles.MH_stbir_resize_float_linear.invokeExact(Handles.get().PFN_stbir_resize_float_linear, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type); }
+        return (MemorySegment) Handles.MH_stbir_resize_float_linear.get().invokeExact(Handles.get().PFN_stbir_resize_float_linear, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_resize_float_linear", e); }
     }
 
@@ -237,7 +246,7 @@ public final class STBImageResize2 {
     /// ```
     public static @NonNull MemorySegment stbir_resize(@NonNull MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes, @NonNull MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_layout, int data_type, int edge, int filter) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_resize", input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type, edge, filter); }
-        return (MemorySegment) Handles.MH_stbir_resize.invokeExact(Handles.get().PFN_stbir_resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type, edge, filter); }
+        return (MemorySegment) Handles.MH_stbir_resize.get().invokeExact(Handles.get().PFN_stbir_resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type, edge, filter); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_resize", e); }
     }
 
@@ -247,7 +256,7 @@ public final class STBImageResize2 {
     /// ```
     public static void stbir_resize_init(@NonNull MemorySegment resize, @NonNull MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes, @NonNull MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_layout, int data_type) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_resize_init", resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type); }
-        Handles.MH_stbir_resize_init.invokeExact(Handles.get().PFN_stbir_resize_init, resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type); }
+        Handles.MH_stbir_resize_init.get().invokeExact(Handles.get().PFN_stbir_resize_init, resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_resize_init", e); }
     }
 
@@ -257,7 +266,7 @@ public final class STBImageResize2 {
     /// ```
     public static void stbir_set_datatypes(@NonNull MemorySegment resize, int input_type, int output_type) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_datatypes", resize, input_type, output_type); }
-        Handles.MH_stbir_set_datatypes.invokeExact(Handles.get().PFN_stbir_set_datatypes, resize, input_type, output_type); }
+        Handles.MH_stbir_set_datatypes.get().invokeExact(Handles.get().PFN_stbir_set_datatypes, resize, input_type, output_type); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_datatypes", e); }
     }
 
@@ -267,7 +276,7 @@ public final class STBImageResize2 {
     /// ```
     public static void stbir_set_pixel_callbacks(@NonNull MemorySegment resize, @NonNull MemorySegment input_cb, @NonNull MemorySegment output_cb) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_pixel_callbacks", resize, input_cb, output_cb); }
-        Handles.MH_stbir_set_pixel_callbacks.invokeExact(Handles.get().PFN_stbir_set_pixel_callbacks, resize, input_cb, output_cb); }
+        Handles.MH_stbir_set_pixel_callbacks.get().invokeExact(Handles.get().PFN_stbir_set_pixel_callbacks, resize, input_cb, output_cb); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_callbacks", e); }
     }
 
@@ -277,7 +286,7 @@ public final class STBImageResize2 {
     /// ```
     public static void stbir_set_user_data(@NonNull MemorySegment resize, @NonNull MemorySegment user_data) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_user_data", resize, user_data); }
-        Handles.MH_stbir_set_user_data.invokeExact(Handles.get().PFN_stbir_set_user_data, resize, user_data); }
+        Handles.MH_stbir_set_user_data.get().invokeExact(Handles.get().PFN_stbir_set_user_data, resize, user_data); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_user_data", e); }
     }
 
@@ -287,7 +296,7 @@ public final class STBImageResize2 {
     /// ```
     public static void stbir_set_buffer_ptrs(@NonNull MemorySegment resize, @NonNull MemorySegment input_pixels, int input_stride_in_bytes, @NonNull MemorySegment output_pixels, int output_stride_in_bytes) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_buffer_ptrs", resize, input_pixels, input_stride_in_bytes, output_pixels, output_stride_in_bytes); }
-        Handles.MH_stbir_set_buffer_ptrs.invokeExact(Handles.get().PFN_stbir_set_buffer_ptrs, resize, input_pixels, input_stride_in_bytes, output_pixels, output_stride_in_bytes); }
+        Handles.MH_stbir_set_buffer_ptrs.get().invokeExact(Handles.get().PFN_stbir_set_buffer_ptrs, resize, input_pixels, input_stride_in_bytes, output_pixels, output_stride_in_bytes); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_buffer_ptrs", e); }
     }
 
@@ -297,7 +306,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_set_pixel_layouts(@NonNull MemorySegment resize, int input_pixel_layout, int output_pixel_layout) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_pixel_layouts", resize, input_pixel_layout, output_pixel_layout); }
-        return (((int) Handles.MH_stbir_set_pixel_layouts.invokeExact(Handles.get().PFN_stbir_set_pixel_layouts, resize, input_pixel_layout, output_pixel_layout)) != 0); }
+        return (((int) Handles.MH_stbir_set_pixel_layouts.get().invokeExact(Handles.get().PFN_stbir_set_pixel_layouts, resize, input_pixel_layout, output_pixel_layout)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_layouts", e); }
     }
 
@@ -307,7 +316,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_set_edgemodes(@NonNull MemorySegment resize, int horizontal_edge, int vertical_edge) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_edgemodes", resize, horizontal_edge, vertical_edge); }
-        return (((int) Handles.MH_stbir_set_edgemodes.invokeExact(Handles.get().PFN_stbir_set_edgemodes, resize, horizontal_edge, vertical_edge)) != 0); }
+        return (((int) Handles.MH_stbir_set_edgemodes.get().invokeExact(Handles.get().PFN_stbir_set_edgemodes, resize, horizontal_edge, vertical_edge)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_edgemodes", e); }
     }
 
@@ -317,7 +326,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_set_filters(@NonNull MemorySegment resize, int horizontal_filter, int vertical_filter) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_filters", resize, horizontal_filter, vertical_filter); }
-        return (((int) Handles.MH_stbir_set_filters.invokeExact(Handles.get().PFN_stbir_set_filters, resize, horizontal_filter, vertical_filter)) != 0); }
+        return (((int) Handles.MH_stbir_set_filters.get().invokeExact(Handles.get().PFN_stbir_set_filters, resize, horizontal_filter, vertical_filter)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_filters", e); }
     }
 
@@ -327,7 +336,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_set_filter_callbacks(@NonNull MemorySegment resize, @NonNull MemorySegment horizontal_filter, @NonNull MemorySegment horizontal_support, @NonNull MemorySegment vertical_filter, @NonNull MemorySegment vertical_support) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_filter_callbacks", resize, horizontal_filter, horizontal_support, vertical_filter, vertical_support); }
-        return (((int) Handles.MH_stbir_set_filter_callbacks.invokeExact(Handles.get().PFN_stbir_set_filter_callbacks, resize, horizontal_filter, horizontal_support, vertical_filter, vertical_support)) != 0); }
+        return (((int) Handles.MH_stbir_set_filter_callbacks.get().invokeExact(Handles.get().PFN_stbir_set_filter_callbacks, resize, horizontal_filter, horizontal_support, vertical_filter, vertical_support)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_filter_callbacks", e); }
     }
 
@@ -337,7 +346,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_set_pixel_subrect(@NonNull MemorySegment resize, int subx, int suby, int subw, int subh) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_pixel_subrect", resize, subx, suby, subw, subh); }
-        return (((int) Handles.MH_stbir_set_pixel_subrect.invokeExact(Handles.get().PFN_stbir_set_pixel_subrect, resize, subx, suby, subw, subh)) != 0); }
+        return (((int) Handles.MH_stbir_set_pixel_subrect.get().invokeExact(Handles.get().PFN_stbir_set_pixel_subrect, resize, subx, suby, subw, subh)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_subrect", e); }
     }
 
@@ -347,7 +356,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_set_input_subrect(@NonNull MemorySegment resize, double s0, double t0, double s1, double t1) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_input_subrect", resize, s0, t0, s1, t1); }
-        return (((int) Handles.MH_stbir_set_input_subrect.invokeExact(Handles.get().PFN_stbir_set_input_subrect, resize, s0, t0, s1, t1)) != 0); }
+        return (((int) Handles.MH_stbir_set_input_subrect.get().invokeExact(Handles.get().PFN_stbir_set_input_subrect, resize, s0, t0, s1, t1)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_input_subrect", e); }
     }
 
@@ -357,7 +366,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_set_output_pixel_subrect(@NonNull MemorySegment resize, int subx, int suby, int subw, int subh) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_output_pixel_subrect", resize, subx, suby, subw, subh); }
-        return (((int) Handles.MH_stbir_set_output_pixel_subrect.invokeExact(Handles.get().PFN_stbir_set_output_pixel_subrect, resize, subx, suby, subw, subh)) != 0); }
+        return (((int) Handles.MH_stbir_set_output_pixel_subrect.get().invokeExact(Handles.get().PFN_stbir_set_output_pixel_subrect, resize, subx, suby, subw, subh)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_output_pixel_subrect", e); }
     }
 
@@ -367,7 +376,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_set_non_pm_alpha_speed_over_quality(@NonNull MemorySegment resize, int non_pma_alpha_speed_over_quality) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_set_non_pm_alpha_speed_over_quality", resize, non_pma_alpha_speed_over_quality); }
-        return (((int) Handles.MH_stbir_set_non_pm_alpha_speed_over_quality.invokeExact(Handles.get().PFN_stbir_set_non_pm_alpha_speed_over_quality, resize, non_pma_alpha_speed_over_quality)) != 0); }
+        return (((int) Handles.MH_stbir_set_non_pm_alpha_speed_over_quality.get().invokeExact(Handles.get().PFN_stbir_set_non_pm_alpha_speed_over_quality, resize, non_pma_alpha_speed_over_quality)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_set_non_pm_alpha_speed_over_quality", e); }
     }
 
@@ -377,7 +386,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_build_samplers(@NonNull MemorySegment resize) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_build_samplers", resize); }
-        return (((int) Handles.MH_stbir_build_samplers.invokeExact(Handles.get().PFN_stbir_build_samplers, resize)) != 0); }
+        return (((int) Handles.MH_stbir_build_samplers.get().invokeExact(Handles.get().PFN_stbir_build_samplers, resize)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers", e); }
     }
 
@@ -387,7 +396,7 @@ public final class STBImageResize2 {
     /// ```
     public static void stbir_free_samplers(@NonNull MemorySegment resize) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_free_samplers", resize); }
-        Handles.MH_stbir_free_samplers.invokeExact(Handles.get().PFN_stbir_free_samplers, resize); }
+        Handles.MH_stbir_free_samplers.get().invokeExact(Handles.get().PFN_stbir_free_samplers, resize); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_free_samplers", e); }
     }
 
@@ -397,7 +406,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_resize_extended(@NonNull MemorySegment resize) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_resize_extended", resize); }
-        return (((int) Handles.MH_stbir_resize_extended.invokeExact(Handles.get().PFN_stbir_resize_extended, resize)) != 0); }
+        return (((int) Handles.MH_stbir_resize_extended.get().invokeExact(Handles.get().PFN_stbir_resize_extended, resize)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_resize_extended", e); }
     }
 
@@ -407,7 +416,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_build_samplers_with_splits(@NonNull MemorySegment resize, int try_splits) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_build_samplers_with_splits", resize, try_splits); }
-        return (((int) Handles.MH_stbir_build_samplers_with_splits.invokeExact(Handles.get().PFN_stbir_build_samplers_with_splits, resize, try_splits)) != 0); }
+        return (((int) Handles.MH_stbir_build_samplers_with_splits.get().invokeExact(Handles.get().PFN_stbir_build_samplers_with_splits, resize, try_splits)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers_with_splits", e); }
     }
 
@@ -417,7 +426,7 @@ public final class STBImageResize2 {
     /// ```
     public static boolean stbir_resize_extended_split(@NonNull MemorySegment resize, int split_start, int split_count) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("stbir_resize_extended_split", resize, split_start, split_count); }
-        return (((int) Handles.MH_stbir_resize_extended_split.invokeExact(Handles.get().PFN_stbir_resize_extended_split, resize, split_start, split_count)) != 0); }
+        return (((int) Handles.MH_stbir_resize_extended_split.get().invokeExact(Handles.get().PFN_stbir_resize_extended_split, resize, split_start, split_count)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in stbir_resize_extended_split", e); }
     }
 

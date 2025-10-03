@@ -33,25 +33,25 @@ public final class VkVideoEncodeAV1QuantizationMapCapabilitiesKHR extends GroupT
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `minQIndexDelta`.
     public static final long OFFSET_minQIndexDelta = LAYOUT.byteOffset(PathElement.groupElement("minQIndexDelta"));
     /// The memory layout of `minQIndexDelta`.
     public static final MemoryLayout LAYOUT_minQIndexDelta = LAYOUT.select(PathElement.groupElement("minQIndexDelta"));
     /// The [VarHandle] of `minQIndexDelta` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minQIndexDelta = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minQIndexDelta"));
+    public static final Supplier<VarHandle> VH_minQIndexDelta = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minQIndexDelta")));
     /// The byte offset of `maxQIndexDelta`.
     public static final long OFFSET_maxQIndexDelta = LAYOUT.byteOffset(PathElement.groupElement("maxQIndexDelta"));
     /// The memory layout of `maxQIndexDelta`.
     public static final MemoryLayout LAYOUT_maxQIndexDelta = LAYOUT.select(PathElement.groupElement("maxQIndexDelta"));
     /// The [VarHandle] of `maxQIndexDelta` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxQIndexDelta = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQIndexDelta"));
+    public static final Supplier<VarHandle> VH_maxQIndexDelta = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQIndexDelta")));
 
     /// Creates `VkVideoEncodeAV1QuantizationMapCapabilitiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkVideoEncodeAV1QuantizationMapCapabilitiesKHR extends GroupT
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkVideoEncodeAV1QuantizationMapCapabilitiesKHR extends GroupT
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkVideoEncodeAV1QuantizationMapCapabilitiesKHR extends GroupT
     /// {@return `minQIndexDelta` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minQIndexDelta(MemorySegment segment, long index) { return (int) VH_minQIndexDelta.get(segment, 0L, index); }
+    public static int minQIndexDelta(MemorySegment segment, long index) { return (int) VH_minQIndexDelta.get().get(segment, 0L, index); }
     /// {@return `minQIndexDelta`}
     public int minQIndexDelta() { return minQIndexDelta(this.segment(), 0L); }
     /// Sets `minQIndexDelta` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minQIndexDelta(MemorySegment segment, long index, int value) { VH_minQIndexDelta.set(segment, 0L, index, value); }
+    public static void minQIndexDelta(MemorySegment segment, long index, int value) { VH_minQIndexDelta.get().set(segment, 0L, index, value); }
     /// Sets `minQIndexDelta` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkVideoEncodeAV1QuantizationMapCapabilitiesKHR extends GroupT
     /// {@return `maxQIndexDelta` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxQIndexDelta(MemorySegment segment, long index) { return (int) VH_maxQIndexDelta.get(segment, 0L, index); }
+    public static int maxQIndexDelta(MemorySegment segment, long index) { return (int) VH_maxQIndexDelta.get().get(segment, 0L, index); }
     /// {@return `maxQIndexDelta`}
     public int maxQIndexDelta() { return maxQIndexDelta(this.segment(), 0L); }
     /// Sets `maxQIndexDelta` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxQIndexDelta(MemorySegment segment, long index, int value) { VH_maxQIndexDelta.set(segment, 0L, index, value); }
+    public static void maxQIndexDelta(MemorySegment segment, long index, int value) { VH_maxQIndexDelta.get().set(segment, 0L, index, value); }
     /// Sets `maxQIndexDelta` with the given value.
     /// @param value the value
     /// @return `this`

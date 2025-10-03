@@ -51,55 +51,55 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `type`.
     public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
     /// The memory layout of `type`.
     public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
     /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
+    public static final Supplier<VarHandle> VH_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("type")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `mode`.
     public static final long OFFSET_mode = LAYOUT.byteOffset(PathElement.groupElement("mode"));
     /// The memory layout of `mode`.
     public static final MemoryLayout LAYOUT_mode = LAYOUT.select(PathElement.groupElement("mode"));
     /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
+    public static final Supplier<VarHandle> VH_mode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode")));
     /// The byte offset of `dstMicromap`.
     public static final long OFFSET_dstMicromap = LAYOUT.byteOffset(PathElement.groupElement("dstMicromap"));
     /// The memory layout of `dstMicromap`.
     public static final MemoryLayout LAYOUT_dstMicromap = LAYOUT.select(PathElement.groupElement("dstMicromap"));
     /// The [VarHandle] of `dstMicromap` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstMicromap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstMicromap"));
+    public static final Supplier<VarHandle> VH_dstMicromap = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstMicromap")));
     /// The byte offset of `usageCountsCount`.
     public static final long OFFSET_usageCountsCount = LAYOUT.byteOffset(PathElement.groupElement("usageCountsCount"));
     /// The memory layout of `usageCountsCount`.
     public static final MemoryLayout LAYOUT_usageCountsCount = LAYOUT.select(PathElement.groupElement("usageCountsCount"));
     /// The [VarHandle] of `usageCountsCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_usageCountsCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("usageCountsCount"));
+    public static final Supplier<VarHandle> VH_usageCountsCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("usageCountsCount")));
     /// The byte offset of `pUsageCounts`.
     public static final long OFFSET_pUsageCounts = LAYOUT.byteOffset(PathElement.groupElement("pUsageCounts"));
     /// The memory layout of `pUsageCounts`.
     public static final MemoryLayout LAYOUT_pUsageCounts = LAYOUT.select(PathElement.groupElement("pUsageCounts"));
     /// The [VarHandle] of `pUsageCounts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pUsageCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pUsageCounts"));
+    public static final Supplier<VarHandle> VH_pUsageCounts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pUsageCounts")));
     /// The byte offset of `ppUsageCounts`.
     public static final long OFFSET_ppUsageCounts = LAYOUT.byteOffset(PathElement.groupElement("ppUsageCounts"));
     /// The memory layout of `ppUsageCounts`.
     public static final MemoryLayout LAYOUT_ppUsageCounts = LAYOUT.select(PathElement.groupElement("ppUsageCounts"));
     /// The [VarHandle] of `ppUsageCounts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ppUsageCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppUsageCounts"));
+    public static final Supplier<VarHandle> VH_ppUsageCounts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppUsageCounts")));
     /// The byte offset of `data`.
     public static final long OFFSET_data = LAYOUT.byteOffset(PathElement.groupElement("data"));
     /// The memory layout of `data`.
@@ -117,7 +117,7 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// The memory layout of `triangleArrayStride`.
     public static final MemoryLayout LAYOUT_triangleArrayStride = LAYOUT.select(PathElement.groupElement("triangleArrayStride"));
     /// The [VarHandle] of `triangleArrayStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_triangleArrayStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("triangleArrayStride"));
+    public static final Supplier<VarHandle> VH_triangleArrayStride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("triangleArrayStride")));
 
     /// Creates `VkMicromapBuildInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -168,14 +168,14 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -184,14 +184,14 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -200,14 +200,14 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
+    public static int type(MemorySegment segment, long index) { return (int) VH_type.get().get(segment, 0L, index); }
     /// {@return `type`}
     public int type() { return type(this.segment(), 0L); }
     /// Sets `type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void type(MemorySegment segment, long index, int value) { VH_type.set(segment, 0L, index, value); }
+    public static void type(MemorySegment segment, long index, int value) { VH_type.get().set(segment, 0L, index, value); }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -216,14 +216,14 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,14 +232,14 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// {@return `mode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
+    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get().get(segment, 0L, index); }
     /// {@return `mode`}
     public int mode() { return mode(this.segment(), 0L); }
     /// Sets `mode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void mode(MemorySegment segment, long index, int value) { VH_mode.set(segment, 0L, index, value); }
+    public static void mode(MemorySegment segment, long index, int value) { VH_mode.get().set(segment, 0L, index, value); }
     /// Sets `mode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,14 +248,14 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// {@return `dstMicromap` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dstMicromap(MemorySegment segment, long index) { return (long) VH_dstMicromap.get(segment, 0L, index); }
+    public static long dstMicromap(MemorySegment segment, long index) { return (long) VH_dstMicromap.get().get(segment, 0L, index); }
     /// {@return `dstMicromap`}
     public long dstMicromap() { return dstMicromap(this.segment(), 0L); }
     /// Sets `dstMicromap` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstMicromap(MemorySegment segment, long index, long value) { VH_dstMicromap.set(segment, 0L, index, value); }
+    public static void dstMicromap(MemorySegment segment, long index, long value) { VH_dstMicromap.get().set(segment, 0L, index, value); }
     /// Sets `dstMicromap` with the given value.
     /// @param value the value
     /// @return `this`
@@ -264,14 +264,14 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// {@return `usageCountsCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int usageCountsCount(MemorySegment segment, long index) { return (int) VH_usageCountsCount.get(segment, 0L, index); }
+    public static int usageCountsCount(MemorySegment segment, long index) { return (int) VH_usageCountsCount.get().get(segment, 0L, index); }
     /// {@return `usageCountsCount`}
     public int usageCountsCount() { return usageCountsCount(this.segment(), 0L); }
     /// Sets `usageCountsCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void usageCountsCount(MemorySegment segment, long index, int value) { VH_usageCountsCount.set(segment, 0L, index, value); }
+    public static void usageCountsCount(MemorySegment segment, long index, int value) { VH_usageCountsCount.get().set(segment, 0L, index, value); }
     /// Sets `usageCountsCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -280,14 +280,14 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// {@return `pUsageCounts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pUsageCounts(MemorySegment segment, long index) { return (MemorySegment) VH_pUsageCounts.get(segment, 0L, index); }
+    public static MemorySegment pUsageCounts(MemorySegment segment, long index) { return (MemorySegment) VH_pUsageCounts.get().get(segment, 0L, index); }
     /// {@return `pUsageCounts`}
     public MemorySegment pUsageCounts() { return pUsageCounts(this.segment(), 0L); }
     /// Sets `pUsageCounts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pUsageCounts(MemorySegment segment, long index, MemorySegment value) { VH_pUsageCounts.set(segment, 0L, index, value); }
+    public static void pUsageCounts(MemorySegment segment, long index, MemorySegment value) { VH_pUsageCounts.get().set(segment, 0L, index, value); }
     /// Sets `pUsageCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -296,14 +296,14 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// {@return `ppUsageCounts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment ppUsageCounts(MemorySegment segment, long index) { return (MemorySegment) VH_ppUsageCounts.get(segment, 0L, index); }
+    public static MemorySegment ppUsageCounts(MemorySegment segment, long index) { return (MemorySegment) VH_ppUsageCounts.get().get(segment, 0L, index); }
     /// {@return `ppUsageCounts`}
     public MemorySegment ppUsageCounts() { return ppUsageCounts(this.segment(), 0L); }
     /// Sets `ppUsageCounts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ppUsageCounts(MemorySegment segment, long index, MemorySegment value) { VH_ppUsageCounts.set(segment, 0L, index, value); }
+    public static void ppUsageCounts(MemorySegment segment, long index, MemorySegment value) { VH_ppUsageCounts.get().set(segment, 0L, index, value); }
     /// Sets `ppUsageCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -372,14 +372,14 @@ public final class VkMicromapBuildInfoEXT extends GroupType {
     /// {@return `triangleArrayStride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long triangleArrayStride(MemorySegment segment, long index) { return (long) VH_triangleArrayStride.get(segment, 0L, index); }
+    public static long triangleArrayStride(MemorySegment segment, long index) { return (long) VH_triangleArrayStride.get().get(segment, 0L, index); }
     /// {@return `triangleArrayStride`}
     public long triangleArrayStride() { return triangleArrayStride(this.segment(), 0L); }
     /// Sets `triangleArrayStride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void triangleArrayStride(MemorySegment segment, long index, long value) { VH_triangleArrayStride.set(segment, 0L, index, value); }
+    public static void triangleArrayStride(MemorySegment segment, long index, long value) { VH_triangleArrayStride.get().set(segment, 0L, index, value); }
     /// Sets `triangleArrayStride` with the given value.
     /// @param value the value
     /// @return `this`

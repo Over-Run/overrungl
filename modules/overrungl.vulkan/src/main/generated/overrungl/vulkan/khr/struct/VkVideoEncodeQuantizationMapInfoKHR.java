@@ -33,19 +33,19 @@ public final class VkVideoEncodeQuantizationMapInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `quantizationMap`.
     public static final long OFFSET_quantizationMap = LAYOUT.byteOffset(PathElement.groupElement("quantizationMap"));
     /// The memory layout of `quantizationMap`.
     public static final MemoryLayout LAYOUT_quantizationMap = LAYOUT.select(PathElement.groupElement("quantizationMap"));
     /// The [VarHandle] of `quantizationMap` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_quantizationMap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("quantizationMap"));
+    public static final Supplier<VarHandle> VH_quantizationMap = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("quantizationMap")));
     /// The byte offset of `quantizationMapExtent`.
     public static final long OFFSET_quantizationMapExtent = LAYOUT.byteOffset(PathElement.groupElement("quantizationMapExtent"));
     /// The memory layout of `quantizationMapExtent`.
@@ -100,14 +100,14 @@ public final class VkVideoEncodeQuantizationMapInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -116,14 +116,14 @@ public final class VkVideoEncodeQuantizationMapInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,14 +132,14 @@ public final class VkVideoEncodeQuantizationMapInfoKHR extends GroupType {
     /// {@return `quantizationMap` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long quantizationMap(MemorySegment segment, long index) { return (long) VH_quantizationMap.get(segment, 0L, index); }
+    public static long quantizationMap(MemorySegment segment, long index) { return (long) VH_quantizationMap.get().get(segment, 0L, index); }
     /// {@return `quantizationMap`}
     public long quantizationMap() { return quantizationMap(this.segment(), 0L); }
     /// Sets `quantizationMap` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void quantizationMap(MemorySegment segment, long index, long value) { VH_quantizationMap.set(segment, 0L, index, value); }
+    public static void quantizationMap(MemorySegment segment, long index, long value) { VH_quantizationMap.get().set(segment, 0L, index, value); }
     /// Sets `quantizationMap` with the given value.
     /// @param value the value
     /// @return `this`

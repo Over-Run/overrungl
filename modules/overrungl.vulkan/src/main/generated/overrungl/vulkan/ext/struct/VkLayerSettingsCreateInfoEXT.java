@@ -33,25 +33,25 @@ public final class VkLayerSettingsCreateInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `settingCount`.
     public static final long OFFSET_settingCount = LAYOUT.byteOffset(PathElement.groupElement("settingCount"));
     /// The memory layout of `settingCount`.
     public static final MemoryLayout LAYOUT_settingCount = LAYOUT.select(PathElement.groupElement("settingCount"));
     /// The [VarHandle] of `settingCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_settingCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("settingCount"));
+    public static final Supplier<VarHandle> VH_settingCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("settingCount")));
     /// The byte offset of `pSettings`.
     public static final long OFFSET_pSettings = LAYOUT.byteOffset(PathElement.groupElement("pSettings"));
     /// The memory layout of `pSettings`.
     public static final MemoryLayout LAYOUT_pSettings = LAYOUT.select(PathElement.groupElement("pSettings"));
     /// The [VarHandle] of `pSettings` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pSettings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSettings"));
+    public static final Supplier<VarHandle> VH_pSettings = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSettings")));
 
     /// Creates `VkLayerSettingsCreateInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkLayerSettingsCreateInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkLayerSettingsCreateInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkLayerSettingsCreateInfoEXT extends GroupType {
     /// {@return `settingCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int settingCount(MemorySegment segment, long index) { return (int) VH_settingCount.get(segment, 0L, index); }
+    public static int settingCount(MemorySegment segment, long index) { return (int) VH_settingCount.get().get(segment, 0L, index); }
     /// {@return `settingCount`}
     public int settingCount() { return settingCount(this.segment(), 0L); }
     /// Sets `settingCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void settingCount(MemorySegment segment, long index, int value) { VH_settingCount.set(segment, 0L, index, value); }
+    public static void settingCount(MemorySegment segment, long index, int value) { VH_settingCount.get().set(segment, 0L, index, value); }
     /// Sets `settingCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkLayerSettingsCreateInfoEXT extends GroupType {
     /// {@return `pSettings` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pSettings(MemorySegment segment, long index) { return (MemorySegment) VH_pSettings.get(segment, 0L, index); }
+    public static MemorySegment pSettings(MemorySegment segment, long index) { return (MemorySegment) VH_pSettings.get().get(segment, 0L, index); }
     /// {@return `pSettings`}
     public MemorySegment pSettings() { return pSettings(this.segment(), 0L); }
     /// Sets `pSettings` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pSettings(MemorySegment segment, long index, MemorySegment value) { VH_pSettings.set(segment, 0L, index, value); }
+    public static void pSettings(MemorySegment segment, long index, MemorySegment value) { VH_pSettings.get().set(segment, 0L, index, value); }
     /// Sets `pSettings` with the given value.
     /// @param value the value
     /// @return `this`

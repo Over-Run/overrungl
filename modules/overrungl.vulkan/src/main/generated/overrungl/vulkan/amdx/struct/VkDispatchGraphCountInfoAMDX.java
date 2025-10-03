@@ -31,7 +31,7 @@ public final class VkDispatchGraphCountInfoAMDX extends GroupType {
     /// The memory layout of `count`.
     public static final MemoryLayout LAYOUT_count = LAYOUT.select(PathElement.groupElement("count"));
     /// The [VarHandle] of `count` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_count = LAYOUT.arrayElementVarHandle(PathElement.groupElement("count"));
+    public static final Supplier<VarHandle> VH_count = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("count")));
     /// The byte offset of `infos`.
     public static final long OFFSET_infos = LAYOUT.byteOffset(PathElement.groupElement("infos"));
     /// The memory layout of `infos`.
@@ -41,7 +41,7 @@ public final class VkDispatchGraphCountInfoAMDX extends GroupType {
     /// The memory layout of `stride`.
     public static final MemoryLayout LAYOUT_stride = LAYOUT.select(PathElement.groupElement("stride"));
     /// The [VarHandle] of `stride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride"));
+    public static final Supplier<VarHandle> VH_stride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride")));
 
     /// Creates `VkDispatchGraphCountInfoAMDX` with the given segment.
     /// @param segment      the memory segment
@@ -92,14 +92,14 @@ public final class VkDispatchGraphCountInfoAMDX extends GroupType {
     /// {@return `count` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int count(MemorySegment segment, long index) { return (int) VH_count.get(segment, 0L, index); }
+    public static int count(MemorySegment segment, long index) { return (int) VH_count.get().get(segment, 0L, index); }
     /// {@return `count`}
     public int count() { return count(this.segment(), 0L); }
     /// Sets `count` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void count(MemorySegment segment, long index, int value) { VH_count.set(segment, 0L, index, value); }
+    public static void count(MemorySegment segment, long index, int value) { VH_count.get().set(segment, 0L, index, value); }
     /// Sets `count` with the given value.
     /// @param value the value
     /// @return `this`
@@ -128,14 +128,14 @@ public final class VkDispatchGraphCountInfoAMDX extends GroupType {
     /// {@return `stride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long stride(MemorySegment segment, long index) { return (long) VH_stride.get(segment, 0L, index); }
+    public static long stride(MemorySegment segment, long index) { return (long) VH_stride.get().get(segment, 0L, index); }
     /// {@return `stride`}
     public long stride() { return stride(this.segment(), 0L); }
     /// Sets `stride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stride(MemorySegment segment, long index, long value) { VH_stride.set(segment, 0L, index, value); }
+    public static void stride(MemorySegment segment, long index, long value) { VH_stride.get().set(segment, 0L, index, value); }
     /// Sets `stride` with the given value.
     /// @param value the value
     /// @return `this`

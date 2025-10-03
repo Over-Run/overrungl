@@ -31,19 +31,19 @@ public final class VkDeviceFaultAddressInfoEXT extends GroupType {
     /// The memory layout of `addressType`.
     public static final MemoryLayout LAYOUT_addressType = LAYOUT.select(PathElement.groupElement("addressType"));
     /// The [VarHandle] of `addressType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_addressType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("addressType"));
+    public static final Supplier<VarHandle> VH_addressType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("addressType")));
     /// The byte offset of `reportedAddress`.
     public static final long OFFSET_reportedAddress = LAYOUT.byteOffset(PathElement.groupElement("reportedAddress"));
     /// The memory layout of `reportedAddress`.
     public static final MemoryLayout LAYOUT_reportedAddress = LAYOUT.select(PathElement.groupElement("reportedAddress"));
     /// The [VarHandle] of `reportedAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_reportedAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reportedAddress"));
+    public static final Supplier<VarHandle> VH_reportedAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("reportedAddress")));
     /// The byte offset of `addressPrecision`.
     public static final long OFFSET_addressPrecision = LAYOUT.byteOffset(PathElement.groupElement("addressPrecision"));
     /// The memory layout of `addressPrecision`.
     public static final MemoryLayout LAYOUT_addressPrecision = LAYOUT.select(PathElement.groupElement("addressPrecision"));
     /// The [VarHandle] of `addressPrecision` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_addressPrecision = LAYOUT.arrayElementVarHandle(PathElement.groupElement("addressPrecision"));
+    public static final Supplier<VarHandle> VH_addressPrecision = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("addressPrecision")));
 
     /// Creates `VkDeviceFaultAddressInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkDeviceFaultAddressInfoEXT extends GroupType {
     /// {@return `addressType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int addressType(MemorySegment segment, long index) { return (int) VH_addressType.get(segment, 0L, index); }
+    public static int addressType(MemorySegment segment, long index) { return (int) VH_addressType.get().get(segment, 0L, index); }
     /// {@return `addressType`}
     public int addressType() { return addressType(this.segment(), 0L); }
     /// Sets `addressType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void addressType(MemorySegment segment, long index, int value) { VH_addressType.set(segment, 0L, index, value); }
+    public static void addressType(MemorySegment segment, long index, int value) { VH_addressType.get().set(segment, 0L, index, value); }
     /// Sets `addressType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkDeviceFaultAddressInfoEXT extends GroupType {
     /// {@return `reportedAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long reportedAddress(MemorySegment segment, long index) { return (long) VH_reportedAddress.get(segment, 0L, index); }
+    public static long reportedAddress(MemorySegment segment, long index) { return (long) VH_reportedAddress.get().get(segment, 0L, index); }
     /// {@return `reportedAddress`}
     public long reportedAddress() { return reportedAddress(this.segment(), 0L); }
     /// Sets `reportedAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void reportedAddress(MemorySegment segment, long index, long value) { VH_reportedAddress.set(segment, 0L, index, value); }
+    public static void reportedAddress(MemorySegment segment, long index, long value) { VH_reportedAddress.get().set(segment, 0L, index, value); }
     /// Sets `reportedAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDeviceFaultAddressInfoEXT extends GroupType {
     /// {@return `addressPrecision` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long addressPrecision(MemorySegment segment, long index) { return (long) VH_addressPrecision.get(segment, 0L, index); }
+    public static long addressPrecision(MemorySegment segment, long index) { return (long) VH_addressPrecision.get().get(segment, 0L, index); }
     /// {@return `addressPrecision`}
     public long addressPrecision() { return addressPrecision(this.segment(), 0L); }
     /// Sets `addressPrecision` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void addressPrecision(MemorySegment segment, long index, long value) { VH_addressPrecision.set(segment, 0L, index, value); }
+    public static void addressPrecision(MemorySegment segment, long index, long value) { VH_addressPrecision.get().set(segment, 0L, index, value); }
     /// Sets `addressPrecision` with the given value.
     /// @param value the value
     /// @return `this`

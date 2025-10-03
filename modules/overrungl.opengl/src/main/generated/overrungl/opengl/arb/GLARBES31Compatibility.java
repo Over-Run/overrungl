@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -11,7 +12,7 @@ public final class GLARBES31Compatibility {
     public static final int GL_BACK = 0x0405;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glMemoryBarrierByRegion = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glMemoryBarrierByRegion = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glMemoryBarrierByRegion;
         private Handles(GLLoadFunc func) {
             PFN_glMemoryBarrierByRegion = func.invoke("glMemoryBarrierByRegion");
@@ -29,7 +30,7 @@ public final class GLARBES31Compatibility {
     public void MemoryBarrierByRegion(int barriers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrierByRegion)) throw new GLSymbolNotFoundError("Symbol not found: glMemoryBarrierByRegion");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMemoryBarrierByRegion", barriers); }
-        Handles.MH_glMemoryBarrierByRegion.invokeExact(handles.PFN_glMemoryBarrierByRegion, barriers); }
+        Handles.MH_glMemoryBarrierByRegion.get().invokeExact(handles.PFN_glMemoryBarrierByRegion, barriers); }
         catch (Throwable e) { throw new RuntimeException("error in MemoryBarrierByRegion", e); }
     }
 

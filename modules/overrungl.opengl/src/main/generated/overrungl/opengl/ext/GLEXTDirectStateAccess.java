@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -13,261 +14,261 @@ public final class GLEXTDirectStateAccess {
     public static final int GL_PROGRAM_MATRIX_STACK_DEPTH_EXT = 0x8E2F;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glMatrixLoadfEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMatrixLoaddEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMatrixMultfEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMatrixMultdEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMatrixLoadIdentityEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMatrixRotatefEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glMatrixRotatedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glMatrixScalefEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glMatrixScaledEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glMatrixTranslatefEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glMatrixTranslatedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glMatrixFrustumEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glMatrixOrthoEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glMatrixPopEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMatrixPushEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glClientAttribDefaultEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPushClientAttribDefaultEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTextureParameterfEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glTextureParameterfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTextureParameteriEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTextureParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTextureImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTextureImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTextureSubImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTextureSubImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCopyTextureImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCopyTextureImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCopyTextureSubImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCopyTextureSubImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetTextureImageEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTextureParameterfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTextureParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTextureLevelParameterfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTextureLevelParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTextureImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTextureSubImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCopyTextureSubImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBindMultiTextureEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexCoordPointerEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexEnvfEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glMultiTexEnvfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexEnviEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexEnvivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexGendEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glMultiTexGendvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexGenfEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glMultiTexGenfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexGeniEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexGenivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMultiTexEnvfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMultiTexEnvivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMultiTexGendvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMultiTexGenfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMultiTexGenivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexParameteriEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexParameterfEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glMultiTexParameterfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexSubImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexSubImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCopyMultiTexImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCopyMultiTexImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCopyMultiTexSubImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCopyMultiTexSubImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetMultiTexImageEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMultiTexParameterfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMultiTexParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMultiTexLevelParameterfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMultiTexLevelParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexSubImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCopyMultiTexSubImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glEnableClientStateIndexedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDisableClientStateIndexedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetFloatIndexedvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetDoubleIndexedvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPointerIndexedvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glEnableIndexedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDisableIndexedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glIsEnabledIndexedEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetIntegerIndexedvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetBooleanIndexedvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedTextureImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedTextureImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedTextureImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedTextureSubImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedTextureSubImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedTextureSubImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetCompressedTextureImageEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedMultiTexImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedMultiTexImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedMultiTexImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedMultiTexSubImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedMultiTexSubImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompressedMultiTexSubImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetCompressedMultiTexImageEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMatrixLoadTransposefEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMatrixLoadTransposedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMatrixMultTransposefEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMatrixMultTransposedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedBufferDataEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedBufferSubDataEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMapNamedBufferEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glUnmapNamedBufferEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetNamedBufferParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNamedBufferPointervEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNamedBufferSubDataEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform1fEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glProgramUniform2fEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glProgramUniform3fEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glProgramUniform4fEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glProgramUniform1iEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glProgramUniform2iEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glProgramUniform3iEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glProgramUniform4iEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glProgramUniform1fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform2fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform3fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform4fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform1ivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform2ivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform3ivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform4ivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix2fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix3fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix4fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix2x3fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix3x2fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix2x4fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix4x2fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix3x4fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix4x3fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTextureBufferEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexBufferEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTextureParameterIivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTextureParameterIuivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTextureParameterIivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTextureParameterIuivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexParameterIivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexParameterIuivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMultiTexParameterIivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMultiTexParameterIuivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform1uiEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glProgramUniform2uiEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glProgramUniform3uiEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glProgramUniform4uiEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glProgramUniform1uivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform2uivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform3uivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform4uivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedProgramLocalParameters4fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedProgramLocalParameterI4iEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedProgramLocalParameterI4ivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedProgramLocalParametersI4ivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedProgramLocalParameterI4uiEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedProgramLocalParameterI4uivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedProgramLocalParametersI4uivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNamedProgramLocalParameterIivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNamedProgramLocalParameterIuivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glEnableClientStateiEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDisableClientStateiEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetFloati_vEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetDoublei_vEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPointeri_vEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedProgramStringEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedProgramLocalParameter4dEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glNamedProgramLocalParameter4dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedProgramLocalParameter4fEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glNamedProgramLocalParameter4fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNamedProgramLocalParameterdvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNamedProgramLocalParameterfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNamedProgramivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNamedProgramStringEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedRenderbufferStorageEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetNamedRenderbufferParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedRenderbufferStorageMultisampleEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedRenderbufferStorageMultisampleCoverageEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCheckNamedFramebufferStatusEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedFramebufferTexture1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedFramebufferTexture2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedFramebufferTexture3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedFramebufferRenderbufferEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetNamedFramebufferAttachmentParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGenerateTextureMipmapEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGenerateMultiTexMipmapEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferDrawBufferEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferDrawBuffersEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glFramebufferReadBufferEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetFramebufferParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedCopyBufferSubDataEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glNamedFramebufferTextureEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedFramebufferTextureLayerEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNamedFramebufferTextureFaceEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTextureRenderbufferEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexRenderbufferEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexArrayVertexOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexArrayColorOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexArrayEdgeFlagOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexArrayIndexOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexArrayNormalOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexArrayTexCoordOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexArrayMultiTexCoordOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexArrayFogCoordOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexArraySecondaryColorOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexArrayVertexAttribOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexArrayVertexAttribIOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glEnableVertexArrayEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDisableVertexArrayEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glEnableVertexArrayAttribEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDisableVertexArrayAttribEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetVertexArrayIntegervEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetVertexArrayPointervEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetVertexArrayIntegeri_vEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetVertexArrayPointeri_vEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMapNamedBufferRangeEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFlushMappedNamedBufferRangeEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glNamedBufferStorageEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glClearNamedBufferDataEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glClearNamedBufferSubDataEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedFramebufferParameteriEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetNamedFramebufferParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform1dEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glProgramUniform2dEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glProgramUniform3dEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glProgramUniform4dEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glProgramUniform1dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform2dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform3dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniform4dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix2dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix3dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix4dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix2x3dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix2x4dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix3x2dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix3x4dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix4x2dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformMatrix4x3dvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTextureBufferRangeEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glTextureStorage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTextureStorage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTextureStorage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTextureStorage2DMultisampleEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glTextureStorage3DMultisampleEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glVertexArrayBindVertexBufferEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexArrayVertexAttribFormatEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexArrayVertexAttribIFormatEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexArrayVertexAttribLFormatEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexArrayVertexAttribBindingEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexArrayVertexBindingDivisorEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexArrayVertexAttribLOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glTexturePageCommitmentEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glVertexArrayVertexAttribDivisorEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glMatrixLoadfEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMatrixLoaddEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMatrixMultfEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMatrixMultdEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMatrixLoadIdentityEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMatrixRotatefEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glMatrixRotatedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glMatrixScalefEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glMatrixScaledEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glMatrixTranslatefEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glMatrixTranslatedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glMatrixFrustumEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glMatrixOrthoEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glMatrixPopEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMatrixPushEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glClientAttribDefaultEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPushClientAttribDefaultEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTextureParameterfEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glTextureParameterfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTextureParameteriEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTextureParameterivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTextureImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTextureImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTextureSubImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTextureSubImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCopyTextureImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCopyTextureImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCopyTextureSubImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCopyTextureSubImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetTextureImageEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTextureParameterfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTextureParameterivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTextureLevelParameterfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTextureLevelParameterivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTextureImage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTextureSubImage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCopyTextureSubImage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glBindMultiTextureEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoordPointerEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexEnvfEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexEnvfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexEnviEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexEnvivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexGendEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glMultiTexGendvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexGenfEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexGenfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexGeniEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexGenivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexEnvfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexEnvivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexGendvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexGenfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexGenivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexParameteriEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexParameterivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexParameterfEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexParameterfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexSubImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexSubImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCopyMultiTexImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCopyMultiTexImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCopyMultiTexSubImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCopyMultiTexSubImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexImageEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexParameterfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexParameterivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexLevelParameterfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexLevelParameterivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexImage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexSubImage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCopyMultiTexSubImage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glEnableClientStateIndexedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDisableClientStateIndexedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetFloatIndexedvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetDoubleIndexedvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetPointerIndexedvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glEnableIndexedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDisableIndexedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glIsEnabledIndexedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetIntegerIndexedvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetBooleanIndexedvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedTextureImage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedTextureImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedTextureImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedTextureSubImage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedTextureSubImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedTextureSubImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetCompressedTextureImageEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedMultiTexImage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedMultiTexImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedMultiTexImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedMultiTexSubImage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedMultiTexSubImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCompressedMultiTexSubImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetCompressedMultiTexImageEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMatrixLoadTransposefEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMatrixLoadTransposedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMatrixMultTransposefEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMatrixMultTransposedEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedBufferDataEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedBufferSubDataEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMapNamedBufferEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glUnmapNamedBufferEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetNamedBufferParameterivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetNamedBufferPointervEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetNamedBufferSubDataEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform1fEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform2fEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform3fEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform4fEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform1iEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform2iEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform3iEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform4iEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform1fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform2fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform3fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform4fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform1ivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform2ivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform3ivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform4ivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix2fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix3fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix4fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix2x3fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix3x2fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix2x4fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix4x2fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix3x4fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix4x3fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTextureBufferEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexBufferEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTextureParameterIivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTextureParameterIuivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTextureParameterIivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetTextureParameterIuivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexParameterIivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexParameterIuivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexParameterIivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetMultiTexParameterIuivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform1uiEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform2uiEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform3uiEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform4uiEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform1uivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform2uivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform3uivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform4uivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramLocalParameters4fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramLocalParameterI4iEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramLocalParameterI4ivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramLocalParametersI4ivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramLocalParameterI4uiEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramLocalParameterI4uivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramLocalParametersI4uivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetNamedProgramLocalParameterIivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetNamedProgramLocalParameterIuivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glEnableClientStateiEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDisableClientStateiEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetFloati_vEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetDoublei_vEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetPointeri_vEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramStringEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramLocalParameter4dEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramLocalParameter4dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramLocalParameter4fEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)));
+        public static final Supplier<MethodHandle> MH_glNamedProgramLocalParameter4fvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetNamedProgramLocalParameterdvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetNamedProgramLocalParameterfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetNamedProgramivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetNamedProgramStringEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedRenderbufferStorageEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetNamedRenderbufferParameterivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedRenderbufferStorageMultisampleEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedRenderbufferStorageMultisampleCoverageEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCheckNamedFramebufferStatusEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedFramebufferTexture1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedFramebufferTexture2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedFramebufferTexture3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedFramebufferRenderbufferEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetNamedFramebufferAttachmentParameterivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGenerateTextureMipmapEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGenerateMultiTexMipmapEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFramebufferDrawBufferEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFramebufferDrawBuffersEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glFramebufferReadBufferEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetFramebufferParameterivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedCopyBufferSubDataEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glNamedFramebufferTextureEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedFramebufferTextureLayerEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glNamedFramebufferTextureFaceEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTextureRenderbufferEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMultiTexRenderbufferEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayVertexOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayColorOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayEdgeFlagOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayIndexOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayNormalOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayTexCoordOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayMultiTexCoordOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayFogCoordOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glVertexArraySecondaryColorOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayVertexAttribOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayVertexAttribIOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glEnableVertexArrayEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDisableVertexArrayEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glEnableVertexArrayAttribEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDisableVertexArrayAttribEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetVertexArrayIntegervEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetVertexArrayPointervEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetVertexArrayIntegeri_vEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetVertexArrayPointeri_vEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMapNamedBufferRangeEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glFlushMappedNamedBufferRangeEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glNamedBufferStorageEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glClearNamedBufferDataEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glClearNamedBufferSubDataEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedFramebufferParameteriEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetNamedFramebufferParameterivEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform1dEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform2dEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform3dEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform4dEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform1dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform2dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform3dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniform4dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix2dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix3dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix4dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix2x3dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix2x4dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix3x2dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix3x4dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix4x2dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glProgramUniformMatrix4x3dvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTextureBufferRangeEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glTextureStorage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTextureStorage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTextureStorage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTextureStorage2DMultisampleEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glTextureStorage3DMultisampleEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayBindVertexBufferEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayVertexAttribFormatEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayVertexAttribIFormatEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayVertexAttribLFormatEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayVertexAttribBindingEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayVertexBindingDivisorEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayVertexAttribLOffsetEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)));
+        public static final Supplier<MethodHandle> MH_glTexturePageCommitmentEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glVertexArrayVertexAttribDivisorEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glMatrixLoadfEXT;
         public final MemorySegment PFN_glMatrixLoaddEXT;
         public final MemorySegment PFN_glMatrixMultfEXT;
@@ -748,7 +749,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixLoadfEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixLoadfEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixLoadfEXT", mode, m); }
-        Handles.MH_glMatrixLoadfEXT.invokeExact(handles.PFN_glMatrixLoadfEXT, mode, m); }
+        Handles.MH_glMatrixLoadfEXT.get().invokeExact(handles.PFN_glMatrixLoadfEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixLoadfEXT", e); }
     }
 
@@ -759,7 +760,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixLoaddEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoaddEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixLoaddEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixLoaddEXT", mode, m); }
-        Handles.MH_glMatrixLoaddEXT.invokeExact(handles.PFN_glMatrixLoaddEXT, mode, m); }
+        Handles.MH_glMatrixLoaddEXT.get().invokeExact(handles.PFN_glMatrixLoaddEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixLoaddEXT", e); }
     }
 
@@ -770,7 +771,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixMultfEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixMultfEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixMultfEXT", mode, m); }
-        Handles.MH_glMatrixMultfEXT.invokeExact(handles.PFN_glMatrixMultfEXT, mode, m); }
+        Handles.MH_glMatrixMultfEXT.get().invokeExact(handles.PFN_glMatrixMultfEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixMultfEXT", e); }
     }
 
@@ -781,7 +782,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixMultdEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultdEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixMultdEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixMultdEXT", mode, m); }
-        Handles.MH_glMatrixMultdEXT.invokeExact(handles.PFN_glMatrixMultdEXT, mode, m); }
+        Handles.MH_glMatrixMultdEXT.get().invokeExact(handles.PFN_glMatrixMultdEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixMultdEXT", e); }
     }
 
@@ -792,7 +793,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixLoadIdentityEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadIdentityEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixLoadIdentityEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixLoadIdentityEXT", mode); }
-        Handles.MH_glMatrixLoadIdentityEXT.invokeExact(handles.PFN_glMatrixLoadIdentityEXT, mode); }
+        Handles.MH_glMatrixLoadIdentityEXT.get().invokeExact(handles.PFN_glMatrixLoadIdentityEXT, mode); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixLoadIdentityEXT", e); }
     }
 
@@ -803,7 +804,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixRotatefEXT(int mode, float angle, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixRotatefEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixRotatefEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixRotatefEXT", mode, angle, x, y, z); }
-        Handles.MH_glMatrixRotatefEXT.invokeExact(handles.PFN_glMatrixRotatefEXT, mode, angle, x, y, z); }
+        Handles.MH_glMatrixRotatefEXT.get().invokeExact(handles.PFN_glMatrixRotatefEXT, mode, angle, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixRotatefEXT", e); }
     }
 
@@ -814,7 +815,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixRotatedEXT(int mode, double angle, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixRotatedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixRotatedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixRotatedEXT", mode, angle, x, y, z); }
-        Handles.MH_glMatrixRotatedEXT.invokeExact(handles.PFN_glMatrixRotatedEXT, mode, angle, x, y, z); }
+        Handles.MH_glMatrixRotatedEXT.get().invokeExact(handles.PFN_glMatrixRotatedEXT, mode, angle, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixRotatedEXT", e); }
     }
 
@@ -825,7 +826,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixScalefEXT(int mode, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixScalefEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixScalefEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixScalefEXT", mode, x, y, z); }
-        Handles.MH_glMatrixScalefEXT.invokeExact(handles.PFN_glMatrixScalefEXT, mode, x, y, z); }
+        Handles.MH_glMatrixScalefEXT.get().invokeExact(handles.PFN_glMatrixScalefEXT, mode, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixScalefEXT", e); }
     }
 
@@ -836,7 +837,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixScaledEXT(int mode, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixScaledEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixScaledEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixScaledEXT", mode, x, y, z); }
-        Handles.MH_glMatrixScaledEXT.invokeExact(handles.PFN_glMatrixScaledEXT, mode, x, y, z); }
+        Handles.MH_glMatrixScaledEXT.get().invokeExact(handles.PFN_glMatrixScaledEXT, mode, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixScaledEXT", e); }
     }
 
@@ -847,7 +848,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixTranslatefEXT(int mode, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixTranslatefEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixTranslatefEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixTranslatefEXT", mode, x, y, z); }
-        Handles.MH_glMatrixTranslatefEXT.invokeExact(handles.PFN_glMatrixTranslatefEXT, mode, x, y, z); }
+        Handles.MH_glMatrixTranslatefEXT.get().invokeExact(handles.PFN_glMatrixTranslatefEXT, mode, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixTranslatefEXT", e); }
     }
 
@@ -858,7 +859,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixTranslatedEXT(int mode, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixTranslatedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixTranslatedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixTranslatedEXT", mode, x, y, z); }
-        Handles.MH_glMatrixTranslatedEXT.invokeExact(handles.PFN_glMatrixTranslatedEXT, mode, x, y, z); }
+        Handles.MH_glMatrixTranslatedEXT.get().invokeExact(handles.PFN_glMatrixTranslatedEXT, mode, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixTranslatedEXT", e); }
     }
 
@@ -869,7 +870,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixFrustumEXT(int mode, double left, double right, double bottom, double top, double zNear, double zFar) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixFrustumEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixFrustumEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixFrustumEXT", mode, left, right, bottom, top, zNear, zFar); }
-        Handles.MH_glMatrixFrustumEXT.invokeExact(handles.PFN_glMatrixFrustumEXT, mode, left, right, bottom, top, zNear, zFar); }
+        Handles.MH_glMatrixFrustumEXT.get().invokeExact(handles.PFN_glMatrixFrustumEXT, mode, left, right, bottom, top, zNear, zFar); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixFrustumEXT", e); }
     }
 
@@ -880,7 +881,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixOrthoEXT(int mode, double left, double right, double bottom, double top, double zNear, double zFar) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixOrthoEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixOrthoEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixOrthoEXT", mode, left, right, bottom, top, zNear, zFar); }
-        Handles.MH_glMatrixOrthoEXT.invokeExact(handles.PFN_glMatrixOrthoEXT, mode, left, right, bottom, top, zNear, zFar); }
+        Handles.MH_glMatrixOrthoEXT.get().invokeExact(handles.PFN_glMatrixOrthoEXT, mode, left, right, bottom, top, zNear, zFar); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixOrthoEXT", e); }
     }
 
@@ -891,7 +892,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixPopEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixPopEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixPopEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixPopEXT", mode); }
-        Handles.MH_glMatrixPopEXT.invokeExact(handles.PFN_glMatrixPopEXT, mode); }
+        Handles.MH_glMatrixPopEXT.get().invokeExact(handles.PFN_glMatrixPopEXT, mode); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixPopEXT", e); }
     }
 
@@ -902,7 +903,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixPushEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixPushEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixPushEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixPushEXT", mode); }
-        Handles.MH_glMatrixPushEXT.invokeExact(handles.PFN_glMatrixPushEXT, mode); }
+        Handles.MH_glMatrixPushEXT.get().invokeExact(handles.PFN_glMatrixPushEXT, mode); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixPushEXT", e); }
     }
 
@@ -913,7 +914,7 @@ public final class GLEXTDirectStateAccess {
     public void ClientAttribDefaultEXT(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClientAttribDefaultEXT)) throw new GLSymbolNotFoundError("Symbol not found: glClientAttribDefaultEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClientAttribDefaultEXT", mask); }
-        Handles.MH_glClientAttribDefaultEXT.invokeExact(handles.PFN_glClientAttribDefaultEXT, mask); }
+        Handles.MH_glClientAttribDefaultEXT.get().invokeExact(handles.PFN_glClientAttribDefaultEXT, mask); }
         catch (Throwable e) { throw new RuntimeException("error in ClientAttribDefaultEXT", e); }
     }
 
@@ -924,7 +925,7 @@ public final class GLEXTDirectStateAccess {
     public void PushClientAttribDefaultEXT(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPushClientAttribDefaultEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPushClientAttribDefaultEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPushClientAttribDefaultEXT", mask); }
-        Handles.MH_glPushClientAttribDefaultEXT.invokeExact(handles.PFN_glPushClientAttribDefaultEXT, mask); }
+        Handles.MH_glPushClientAttribDefaultEXT.get().invokeExact(handles.PFN_glPushClientAttribDefaultEXT, mask); }
         catch (Throwable e) { throw new RuntimeException("error in PushClientAttribDefaultEXT", e); }
     }
 
@@ -935,7 +936,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureParameterfEXT(int texture, int target, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterfEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterfEXT", texture, target, pname, param); }
-        Handles.MH_glTextureParameterfEXT.invokeExact(handles.PFN_glTextureParameterfEXT, texture, target, pname, param); }
+        Handles.MH_glTextureParameterfEXT.get().invokeExact(handles.PFN_glTextureParameterfEXT, texture, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterfEXT", e); }
     }
 
@@ -946,7 +947,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureParameterfvEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterfvEXT", texture, target, pname, params); }
-        Handles.MH_glTextureParameterfvEXT.invokeExact(handles.PFN_glTextureParameterfvEXT, texture, target, pname, params); }
+        Handles.MH_glTextureParameterfvEXT.get().invokeExact(handles.PFN_glTextureParameterfvEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterfvEXT", e); }
     }
 
@@ -957,7 +958,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureParameteriEXT(int texture, int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameteriEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameteriEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameteriEXT", texture, target, pname, param); }
-        Handles.MH_glTextureParameteriEXT.invokeExact(handles.PFN_glTextureParameteriEXT, texture, target, pname, param); }
+        Handles.MH_glTextureParameteriEXT.get().invokeExact(handles.PFN_glTextureParameteriEXT, texture, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameteriEXT", e); }
     }
 
@@ -968,7 +969,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureParameterivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterivEXT", texture, target, pname, params); }
-        Handles.MH_glTextureParameterivEXT.invokeExact(handles.PFN_glTextureParameterivEXT, texture, target, pname, params); }
+        Handles.MH_glTextureParameterivEXT.get().invokeExact(handles.PFN_glTextureParameterivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterivEXT", e); }
     }
 
@@ -979,7 +980,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureImage1DEXT(int texture, int target, int level, int internalformat, int width, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureImage1DEXT", texture, target, level, internalformat, width, border, format, type, pixels); }
-        Handles.MH_glTextureImage1DEXT.invokeExact(handles.PFN_glTextureImage1DEXT, texture, target, level, internalformat, width, border, format, type, pixels); }
+        Handles.MH_glTextureImage1DEXT.get().invokeExact(handles.PFN_glTextureImage1DEXT, texture, target, level, internalformat, width, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureImage1DEXT", e); }
     }
 
@@ -990,7 +991,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureImage2DEXT(int texture, int target, int level, int internalformat, int width, int height, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureImage2DEXT", texture, target, level, internalformat, width, height, border, format, type, pixels); }
-        Handles.MH_glTextureImage2DEXT.invokeExact(handles.PFN_glTextureImage2DEXT, texture, target, level, internalformat, width, height, border, format, type, pixels); }
+        Handles.MH_glTextureImage2DEXT.get().invokeExact(handles.PFN_glTextureImage2DEXT, texture, target, level, internalformat, width, height, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureImage2DEXT", e); }
     }
 
@@ -1001,7 +1002,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureSubImage1DEXT(int texture, int target, int level, int xoffset, int width, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureSubImage1DEXT", texture, target, level, xoffset, width, format, type, pixels); }
-        Handles.MH_glTextureSubImage1DEXT.invokeExact(handles.PFN_glTextureSubImage1DEXT, texture, target, level, xoffset, width, format, type, pixels); }
+        Handles.MH_glTextureSubImage1DEXT.get().invokeExact(handles.PFN_glTextureSubImage1DEXT, texture, target, level, xoffset, width, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureSubImage1DEXT", e); }
     }
 
@@ -1012,7 +1013,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureSubImage2DEXT(int texture, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureSubImage2DEXT", texture, target, level, xoffset, yoffset, width, height, format, type, pixels); }
-        Handles.MH_glTextureSubImage2DEXT.invokeExact(handles.PFN_glTextureSubImage2DEXT, texture, target, level, xoffset, yoffset, width, height, format, type, pixels); }
+        Handles.MH_glTextureSubImage2DEXT.get().invokeExact(handles.PFN_glTextureSubImage2DEXT, texture, target, level, xoffset, yoffset, width, height, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureSubImage2DEXT", e); }
     }
 
@@ -1023,7 +1024,7 @@ public final class GLEXTDirectStateAccess {
     public void CopyTextureImage1DEXT(int texture, int target, int level, int internalformat, int x, int y, int width, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyTextureImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyTextureImage1DEXT", texture, target, level, internalformat, x, y, width, border); }
-        Handles.MH_glCopyTextureImage1DEXT.invokeExact(handles.PFN_glCopyTextureImage1DEXT, texture, target, level, internalformat, x, y, width, border); }
+        Handles.MH_glCopyTextureImage1DEXT.get().invokeExact(handles.PFN_glCopyTextureImage1DEXT, texture, target, level, internalformat, x, y, width, border); }
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureImage1DEXT", e); }
     }
 
@@ -1034,7 +1035,7 @@ public final class GLEXTDirectStateAccess {
     public void CopyTextureImage2DEXT(int texture, int target, int level, int internalformat, int x, int y, int width, int height, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyTextureImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyTextureImage2DEXT", texture, target, level, internalformat, x, y, width, height, border); }
-        Handles.MH_glCopyTextureImage2DEXT.invokeExact(handles.PFN_glCopyTextureImage2DEXT, texture, target, level, internalformat, x, y, width, height, border); }
+        Handles.MH_glCopyTextureImage2DEXT.get().invokeExact(handles.PFN_glCopyTextureImage2DEXT, texture, target, level, internalformat, x, y, width, height, border); }
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureImage2DEXT", e); }
     }
 
@@ -1045,7 +1046,7 @@ public final class GLEXTDirectStateAccess {
     public void CopyTextureSubImage1DEXT(int texture, int target, int level, int xoffset, int x, int y, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyTextureSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyTextureSubImage1DEXT", texture, target, level, xoffset, x, y, width); }
-        Handles.MH_glCopyTextureSubImage1DEXT.invokeExact(handles.PFN_glCopyTextureSubImage1DEXT, texture, target, level, xoffset, x, y, width); }
+        Handles.MH_glCopyTextureSubImage1DEXT.get().invokeExact(handles.PFN_glCopyTextureSubImage1DEXT, texture, target, level, xoffset, x, y, width); }
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage1DEXT", e); }
     }
 
@@ -1056,7 +1057,7 @@ public final class GLEXTDirectStateAccess {
     public void CopyTextureSubImage2DEXT(int texture, int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyTextureSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyTextureSubImage2DEXT", texture, target, level, xoffset, yoffset, x, y, width, height); }
-        Handles.MH_glCopyTextureSubImage2DEXT.invokeExact(handles.PFN_glCopyTextureSubImage2DEXT, texture, target, level, xoffset, yoffset, x, y, width, height); }
+        Handles.MH_glCopyTextureSubImage2DEXT.get().invokeExact(handles.PFN_glCopyTextureSubImage2DEXT, texture, target, level, xoffset, yoffset, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage2DEXT", e); }
     }
 
@@ -1067,7 +1068,7 @@ public final class GLEXTDirectStateAccess {
     public void GetTextureImageEXT(int texture, int target, int level, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureImageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureImageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureImageEXT", texture, target, level, format, type, pixels); }
-        Handles.MH_glGetTextureImageEXT.invokeExact(handles.PFN_glGetTextureImageEXT, texture, target, level, format, type, pixels); }
+        Handles.MH_glGetTextureImageEXT.get().invokeExact(handles.PFN_glGetTextureImageEXT, texture, target, level, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureImageEXT", e); }
     }
 
@@ -1078,7 +1079,7 @@ public final class GLEXTDirectStateAccess {
     public void GetTextureParameterfvEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameterfvEXT", texture, target, pname, params); }
-        Handles.MH_glGetTextureParameterfvEXT.invokeExact(handles.PFN_glGetTextureParameterfvEXT, texture, target, pname, params); }
+        Handles.MH_glGetTextureParameterfvEXT.get().invokeExact(handles.PFN_glGetTextureParameterfvEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterfvEXT", e); }
     }
 
@@ -1089,7 +1090,7 @@ public final class GLEXTDirectStateAccess {
     public void GetTextureParameterivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameterivEXT", texture, target, pname, params); }
-        Handles.MH_glGetTextureParameterivEXT.invokeExact(handles.PFN_glGetTextureParameterivEXT, texture, target, pname, params); }
+        Handles.MH_glGetTextureParameterivEXT.get().invokeExact(handles.PFN_glGetTextureParameterivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterivEXT", e); }
     }
 
@@ -1100,7 +1101,7 @@ public final class GLEXTDirectStateAccess {
     public void GetTextureLevelParameterfvEXT(int texture, int target, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureLevelParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureLevelParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureLevelParameterfvEXT", texture, target, level, pname, params); }
-        Handles.MH_glGetTextureLevelParameterfvEXT.invokeExact(handles.PFN_glGetTextureLevelParameterfvEXT, texture, target, level, pname, params); }
+        Handles.MH_glGetTextureLevelParameterfvEXT.get().invokeExact(handles.PFN_glGetTextureLevelParameterfvEXT, texture, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureLevelParameterfvEXT", e); }
     }
 
@@ -1111,7 +1112,7 @@ public final class GLEXTDirectStateAccess {
     public void GetTextureLevelParameterivEXT(int texture, int target, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureLevelParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureLevelParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureLevelParameterivEXT", texture, target, level, pname, params); }
-        Handles.MH_glGetTextureLevelParameterivEXT.invokeExact(handles.PFN_glGetTextureLevelParameterivEXT, texture, target, level, pname, params); }
+        Handles.MH_glGetTextureLevelParameterivEXT.get().invokeExact(handles.PFN_glGetTextureLevelParameterivEXT, texture, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureLevelParameterivEXT", e); }
     }
 
@@ -1122,7 +1123,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureImage3DEXT(int texture, int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureImage3DEXT", texture, target, level, internalformat, width, height, depth, border, format, type, pixels); }
-        Handles.MH_glTextureImage3DEXT.invokeExact(handles.PFN_glTextureImage3DEXT, texture, target, level, internalformat, width, height, depth, border, format, type, pixels); }
+        Handles.MH_glTextureImage3DEXT.get().invokeExact(handles.PFN_glTextureImage3DEXT, texture, target, level, internalformat, width, height, depth, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureImage3DEXT", e); }
     }
 
@@ -1133,7 +1134,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureSubImage3DEXT(int texture, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureSubImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureSubImage3DEXT", texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
-        Handles.MH_glTextureSubImage3DEXT.invokeExact(handles.PFN_glTextureSubImage3DEXT, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
+        Handles.MH_glTextureSubImage3DEXT.get().invokeExact(handles.PFN_glTextureSubImage3DEXT, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TextureSubImage3DEXT", e); }
     }
 
@@ -1144,7 +1145,7 @@ public final class GLEXTDirectStateAccess {
     public void CopyTextureSubImage3DEXT(int texture, int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyTextureSubImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyTextureSubImage3DEXT", texture, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
-        Handles.MH_glCopyTextureSubImage3DEXT.invokeExact(handles.PFN_glCopyTextureSubImage3DEXT, texture, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
+        Handles.MH_glCopyTextureSubImage3DEXT.get().invokeExact(handles.PFN_glCopyTextureSubImage3DEXT, texture, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage3DEXT", e); }
     }
 
@@ -1155,7 +1156,7 @@ public final class GLEXTDirectStateAccess {
     public void BindMultiTextureEXT(int texunit, int target, int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindMultiTextureEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBindMultiTextureEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindMultiTextureEXT", texunit, target, texture); }
-        Handles.MH_glBindMultiTextureEXT.invokeExact(handles.PFN_glBindMultiTextureEXT, texunit, target, texture); }
+        Handles.MH_glBindMultiTextureEXT.get().invokeExact(handles.PFN_glBindMultiTextureEXT, texunit, target, texture); }
         catch (Throwable e) { throw new RuntimeException("error in BindMultiTextureEXT", e); }
     }
 
@@ -1166,7 +1167,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexCoordPointerEXT(int texunit, int size, int type, int stride, @NonNull MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoordPointerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoordPointerEXT", texunit, size, type, stride, pointer); }
-        Handles.MH_glMultiTexCoordPointerEXT.invokeExact(handles.PFN_glMultiTexCoordPointerEXT, texunit, size, type, stride, pointer); }
+        Handles.MH_glMultiTexCoordPointerEXT.get().invokeExact(handles.PFN_glMultiTexCoordPointerEXT, texunit, size, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoordPointerEXT", e); }
     }
 
@@ -1177,7 +1178,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexEnvfEXT(int texunit, int target, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexEnvfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexEnvfEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexEnvfEXT", texunit, target, pname, param); }
-        Handles.MH_glMultiTexEnvfEXT.invokeExact(handles.PFN_glMultiTexEnvfEXT, texunit, target, pname, param); }
+        Handles.MH_glMultiTexEnvfEXT.get().invokeExact(handles.PFN_glMultiTexEnvfEXT, texunit, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexEnvfEXT", e); }
     }
 
@@ -1188,7 +1189,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexEnvfvEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexEnvfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexEnvfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexEnvfvEXT", texunit, target, pname, params); }
-        Handles.MH_glMultiTexEnvfvEXT.invokeExact(handles.PFN_glMultiTexEnvfvEXT, texunit, target, pname, params); }
+        Handles.MH_glMultiTexEnvfvEXT.get().invokeExact(handles.PFN_glMultiTexEnvfvEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexEnvfvEXT", e); }
     }
 
@@ -1199,7 +1200,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexEnviEXT(int texunit, int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexEnviEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexEnviEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexEnviEXT", texunit, target, pname, param); }
-        Handles.MH_glMultiTexEnviEXT.invokeExact(handles.PFN_glMultiTexEnviEXT, texunit, target, pname, param); }
+        Handles.MH_glMultiTexEnviEXT.get().invokeExact(handles.PFN_glMultiTexEnviEXT, texunit, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexEnviEXT", e); }
     }
 
@@ -1210,7 +1211,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexEnvivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexEnvivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexEnvivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexEnvivEXT", texunit, target, pname, params); }
-        Handles.MH_glMultiTexEnvivEXT.invokeExact(handles.PFN_glMultiTexEnvivEXT, texunit, target, pname, params); }
+        Handles.MH_glMultiTexEnvivEXT.get().invokeExact(handles.PFN_glMultiTexEnvivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexEnvivEXT", e); }
     }
 
@@ -1221,7 +1222,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexGendEXT(int texunit, int coord, int pname, double param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGendEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexGendEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexGendEXT", texunit, coord, pname, param); }
-        Handles.MH_glMultiTexGendEXT.invokeExact(handles.PFN_glMultiTexGendEXT, texunit, coord, pname, param); }
+        Handles.MH_glMultiTexGendEXT.get().invokeExact(handles.PFN_glMultiTexGendEXT, texunit, coord, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGendEXT", e); }
     }
 
@@ -1232,7 +1233,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexGendvEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGendvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexGendvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexGendvEXT", texunit, coord, pname, params); }
-        Handles.MH_glMultiTexGendvEXT.invokeExact(handles.PFN_glMultiTexGendvEXT, texunit, coord, pname, params); }
+        Handles.MH_glMultiTexGendvEXT.get().invokeExact(handles.PFN_glMultiTexGendvEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGendvEXT", e); }
     }
 
@@ -1243,7 +1244,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexGenfEXT(int texunit, int coord, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGenfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexGenfEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexGenfEXT", texunit, coord, pname, param); }
-        Handles.MH_glMultiTexGenfEXT.invokeExact(handles.PFN_glMultiTexGenfEXT, texunit, coord, pname, param); }
+        Handles.MH_glMultiTexGenfEXT.get().invokeExact(handles.PFN_glMultiTexGenfEXT, texunit, coord, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGenfEXT", e); }
     }
 
@@ -1254,7 +1255,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexGenfvEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGenfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexGenfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexGenfvEXT", texunit, coord, pname, params); }
-        Handles.MH_glMultiTexGenfvEXT.invokeExact(handles.PFN_glMultiTexGenfvEXT, texunit, coord, pname, params); }
+        Handles.MH_glMultiTexGenfvEXT.get().invokeExact(handles.PFN_glMultiTexGenfvEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGenfvEXT", e); }
     }
 
@@ -1265,7 +1266,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexGeniEXT(int texunit, int coord, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGeniEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexGeniEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexGeniEXT", texunit, coord, pname, param); }
-        Handles.MH_glMultiTexGeniEXT.invokeExact(handles.PFN_glMultiTexGeniEXT, texunit, coord, pname, param); }
+        Handles.MH_glMultiTexGeniEXT.get().invokeExact(handles.PFN_glMultiTexGeniEXT, texunit, coord, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGeniEXT", e); }
     }
 
@@ -1276,7 +1277,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexGenivEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGenivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexGenivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexGenivEXT", texunit, coord, pname, params); }
-        Handles.MH_glMultiTexGenivEXT.invokeExact(handles.PFN_glMultiTexGenivEXT, texunit, coord, pname, params); }
+        Handles.MH_glMultiTexGenivEXT.get().invokeExact(handles.PFN_glMultiTexGenivEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexGenivEXT", e); }
     }
 
@@ -1287,7 +1288,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexEnvfvEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexEnvfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexEnvfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexEnvfvEXT", texunit, target, pname, params); }
-        Handles.MH_glGetMultiTexEnvfvEXT.invokeExact(handles.PFN_glGetMultiTexEnvfvEXT, texunit, target, pname, params); }
+        Handles.MH_glGetMultiTexEnvfvEXT.get().invokeExact(handles.PFN_glGetMultiTexEnvfvEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexEnvfvEXT", e); }
     }
 
@@ -1298,7 +1299,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexEnvivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexEnvivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexEnvivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexEnvivEXT", texunit, target, pname, params); }
-        Handles.MH_glGetMultiTexEnvivEXT.invokeExact(handles.PFN_glGetMultiTexEnvivEXT, texunit, target, pname, params); }
+        Handles.MH_glGetMultiTexEnvivEXT.get().invokeExact(handles.PFN_glGetMultiTexEnvivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexEnvivEXT", e); }
     }
 
@@ -1309,7 +1310,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexGendvEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexGendvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexGendvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexGendvEXT", texunit, coord, pname, params); }
-        Handles.MH_glGetMultiTexGendvEXT.invokeExact(handles.PFN_glGetMultiTexGendvEXT, texunit, coord, pname, params); }
+        Handles.MH_glGetMultiTexGendvEXT.get().invokeExact(handles.PFN_glGetMultiTexGendvEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexGendvEXT", e); }
     }
 
@@ -1320,7 +1321,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexGenfvEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexGenfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexGenfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexGenfvEXT", texunit, coord, pname, params); }
-        Handles.MH_glGetMultiTexGenfvEXT.invokeExact(handles.PFN_glGetMultiTexGenfvEXT, texunit, coord, pname, params); }
+        Handles.MH_glGetMultiTexGenfvEXT.get().invokeExact(handles.PFN_glGetMultiTexGenfvEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexGenfvEXT", e); }
     }
 
@@ -1331,7 +1332,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexGenivEXT(int texunit, int coord, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexGenivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexGenivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexGenivEXT", texunit, coord, pname, params); }
-        Handles.MH_glGetMultiTexGenivEXT.invokeExact(handles.PFN_glGetMultiTexGenivEXT, texunit, coord, pname, params); }
+        Handles.MH_glGetMultiTexGenivEXT.get().invokeExact(handles.PFN_glGetMultiTexGenivEXT, texunit, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexGenivEXT", e); }
     }
 
@@ -1342,7 +1343,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexParameteriEXT(int texunit, int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameteriEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexParameteriEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexParameteriEXT", texunit, target, pname, param); }
-        Handles.MH_glMultiTexParameteriEXT.invokeExact(handles.PFN_glMultiTexParameteriEXT, texunit, target, pname, param); }
+        Handles.MH_glMultiTexParameteriEXT.get().invokeExact(handles.PFN_glMultiTexParameteriEXT, texunit, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameteriEXT", e); }
     }
 
@@ -1353,7 +1354,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexParameterivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexParameterivEXT", texunit, target, pname, params); }
-        Handles.MH_glMultiTexParameterivEXT.invokeExact(handles.PFN_glMultiTexParameterivEXT, texunit, target, pname, params); }
+        Handles.MH_glMultiTexParameterivEXT.get().invokeExact(handles.PFN_glMultiTexParameterivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameterivEXT", e); }
     }
 
@@ -1364,7 +1365,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexParameterfEXT(int texunit, int target, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexParameterfEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexParameterfEXT", texunit, target, pname, param); }
-        Handles.MH_glMultiTexParameterfEXT.invokeExact(handles.PFN_glMultiTexParameterfEXT, texunit, target, pname, param); }
+        Handles.MH_glMultiTexParameterfEXT.get().invokeExact(handles.PFN_glMultiTexParameterfEXT, texunit, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameterfEXT", e); }
     }
 
@@ -1375,7 +1376,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexParameterfvEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexParameterfvEXT", texunit, target, pname, params); }
-        Handles.MH_glMultiTexParameterfvEXT.invokeExact(handles.PFN_glMultiTexParameterfvEXT, texunit, target, pname, params); }
+        Handles.MH_glMultiTexParameterfvEXT.get().invokeExact(handles.PFN_glMultiTexParameterfvEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameterfvEXT", e); }
     }
 
@@ -1386,7 +1387,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexImage1DEXT(int texunit, int target, int level, int internalformat, int width, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexImage1DEXT", texunit, target, level, internalformat, width, border, format, type, pixels); }
-        Handles.MH_glMultiTexImage1DEXT.invokeExact(handles.PFN_glMultiTexImage1DEXT, texunit, target, level, internalformat, width, border, format, type, pixels); }
+        Handles.MH_glMultiTexImage1DEXT.get().invokeExact(handles.PFN_glMultiTexImage1DEXT, texunit, target, level, internalformat, width, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexImage1DEXT", e); }
     }
 
@@ -1397,7 +1398,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexImage2DEXT(int texunit, int target, int level, int internalformat, int width, int height, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexImage2DEXT", texunit, target, level, internalformat, width, height, border, format, type, pixels); }
-        Handles.MH_glMultiTexImage2DEXT.invokeExact(handles.PFN_glMultiTexImage2DEXT, texunit, target, level, internalformat, width, height, border, format, type, pixels); }
+        Handles.MH_glMultiTexImage2DEXT.get().invokeExact(handles.PFN_glMultiTexImage2DEXT, texunit, target, level, internalformat, width, height, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexImage2DEXT", e); }
     }
 
@@ -1408,7 +1409,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexSubImage1DEXT(int texunit, int target, int level, int xoffset, int width, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexSubImage1DEXT", texunit, target, level, xoffset, width, format, type, pixels); }
-        Handles.MH_glMultiTexSubImage1DEXT.invokeExact(handles.PFN_glMultiTexSubImage1DEXT, texunit, target, level, xoffset, width, format, type, pixels); }
+        Handles.MH_glMultiTexSubImage1DEXT.get().invokeExact(handles.PFN_glMultiTexSubImage1DEXT, texunit, target, level, xoffset, width, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexSubImage1DEXT", e); }
     }
 
@@ -1419,7 +1420,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexSubImage2DEXT(int texunit, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexSubImage2DEXT", texunit, target, level, xoffset, yoffset, width, height, format, type, pixels); }
-        Handles.MH_glMultiTexSubImage2DEXT.invokeExact(handles.PFN_glMultiTexSubImage2DEXT, texunit, target, level, xoffset, yoffset, width, height, format, type, pixels); }
+        Handles.MH_glMultiTexSubImage2DEXT.get().invokeExact(handles.PFN_glMultiTexSubImage2DEXT, texunit, target, level, xoffset, yoffset, width, height, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexSubImage2DEXT", e); }
     }
 
@@ -1430,7 +1431,7 @@ public final class GLEXTDirectStateAccess {
     public void CopyMultiTexImage1DEXT(int texunit, int target, int level, int internalformat, int x, int y, int width, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyMultiTexImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyMultiTexImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyMultiTexImage1DEXT", texunit, target, level, internalformat, x, y, width, border); }
-        Handles.MH_glCopyMultiTexImage1DEXT.invokeExact(handles.PFN_glCopyMultiTexImage1DEXT, texunit, target, level, internalformat, x, y, width, border); }
+        Handles.MH_glCopyMultiTexImage1DEXT.get().invokeExact(handles.PFN_glCopyMultiTexImage1DEXT, texunit, target, level, internalformat, x, y, width, border); }
         catch (Throwable e) { throw new RuntimeException("error in CopyMultiTexImage1DEXT", e); }
     }
 
@@ -1441,7 +1442,7 @@ public final class GLEXTDirectStateAccess {
     public void CopyMultiTexImage2DEXT(int texunit, int target, int level, int internalformat, int x, int y, int width, int height, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyMultiTexImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyMultiTexImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyMultiTexImage2DEXT", texunit, target, level, internalformat, x, y, width, height, border); }
-        Handles.MH_glCopyMultiTexImage2DEXT.invokeExact(handles.PFN_glCopyMultiTexImage2DEXT, texunit, target, level, internalformat, x, y, width, height, border); }
+        Handles.MH_glCopyMultiTexImage2DEXT.get().invokeExact(handles.PFN_glCopyMultiTexImage2DEXT, texunit, target, level, internalformat, x, y, width, height, border); }
         catch (Throwable e) { throw new RuntimeException("error in CopyMultiTexImage2DEXT", e); }
     }
 
@@ -1452,7 +1453,7 @@ public final class GLEXTDirectStateAccess {
     public void CopyMultiTexSubImage1DEXT(int texunit, int target, int level, int xoffset, int x, int y, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyMultiTexSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyMultiTexSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyMultiTexSubImage1DEXT", texunit, target, level, xoffset, x, y, width); }
-        Handles.MH_glCopyMultiTexSubImage1DEXT.invokeExact(handles.PFN_glCopyMultiTexSubImage1DEXT, texunit, target, level, xoffset, x, y, width); }
+        Handles.MH_glCopyMultiTexSubImage1DEXT.get().invokeExact(handles.PFN_glCopyMultiTexSubImage1DEXT, texunit, target, level, xoffset, x, y, width); }
         catch (Throwable e) { throw new RuntimeException("error in CopyMultiTexSubImage1DEXT", e); }
     }
 
@@ -1463,7 +1464,7 @@ public final class GLEXTDirectStateAccess {
     public void CopyMultiTexSubImage2DEXT(int texunit, int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyMultiTexSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyMultiTexSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyMultiTexSubImage2DEXT", texunit, target, level, xoffset, yoffset, x, y, width, height); }
-        Handles.MH_glCopyMultiTexSubImage2DEXT.invokeExact(handles.PFN_glCopyMultiTexSubImage2DEXT, texunit, target, level, xoffset, yoffset, x, y, width, height); }
+        Handles.MH_glCopyMultiTexSubImage2DEXT.get().invokeExact(handles.PFN_glCopyMultiTexSubImage2DEXT, texunit, target, level, xoffset, yoffset, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in CopyMultiTexSubImage2DEXT", e); }
     }
 
@@ -1474,7 +1475,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexImageEXT(int texunit, int target, int level, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexImageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexImageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexImageEXT", texunit, target, level, format, type, pixels); }
-        Handles.MH_glGetMultiTexImageEXT.invokeExact(handles.PFN_glGetMultiTexImageEXT, texunit, target, level, format, type, pixels); }
+        Handles.MH_glGetMultiTexImageEXT.get().invokeExact(handles.PFN_glGetMultiTexImageEXT, texunit, target, level, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexImageEXT", e); }
     }
 
@@ -1485,7 +1486,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexParameterfvEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexParameterfvEXT", texunit, target, pname, params); }
-        Handles.MH_glGetMultiTexParameterfvEXT.invokeExact(handles.PFN_glGetMultiTexParameterfvEXT, texunit, target, pname, params); }
+        Handles.MH_glGetMultiTexParameterfvEXT.get().invokeExact(handles.PFN_glGetMultiTexParameterfvEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexParameterfvEXT", e); }
     }
 
@@ -1496,7 +1497,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexParameterivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexParameterivEXT", texunit, target, pname, params); }
-        Handles.MH_glGetMultiTexParameterivEXT.invokeExact(handles.PFN_glGetMultiTexParameterivEXT, texunit, target, pname, params); }
+        Handles.MH_glGetMultiTexParameterivEXT.get().invokeExact(handles.PFN_glGetMultiTexParameterivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexParameterivEXT", e); }
     }
 
@@ -1507,7 +1508,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexLevelParameterfvEXT(int texunit, int target, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexLevelParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexLevelParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexLevelParameterfvEXT", texunit, target, level, pname, params); }
-        Handles.MH_glGetMultiTexLevelParameterfvEXT.invokeExact(handles.PFN_glGetMultiTexLevelParameterfvEXT, texunit, target, level, pname, params); }
+        Handles.MH_glGetMultiTexLevelParameterfvEXT.get().invokeExact(handles.PFN_glGetMultiTexLevelParameterfvEXT, texunit, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexLevelParameterfvEXT", e); }
     }
 
@@ -1518,7 +1519,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexLevelParameterivEXT(int texunit, int target, int level, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexLevelParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexLevelParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexLevelParameterivEXT", texunit, target, level, pname, params); }
-        Handles.MH_glGetMultiTexLevelParameterivEXT.invokeExact(handles.PFN_glGetMultiTexLevelParameterivEXT, texunit, target, level, pname, params); }
+        Handles.MH_glGetMultiTexLevelParameterivEXT.get().invokeExact(handles.PFN_glGetMultiTexLevelParameterivEXT, texunit, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexLevelParameterivEXT", e); }
     }
 
@@ -1529,7 +1530,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexImage3DEXT(int texunit, int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexImage3DEXT", texunit, target, level, internalformat, width, height, depth, border, format, type, pixels); }
-        Handles.MH_glMultiTexImage3DEXT.invokeExact(handles.PFN_glMultiTexImage3DEXT, texunit, target, level, internalformat, width, height, depth, border, format, type, pixels); }
+        Handles.MH_glMultiTexImage3DEXT.get().invokeExact(handles.PFN_glMultiTexImage3DEXT, texunit, target, level, internalformat, width, height, depth, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexImage3DEXT", e); }
     }
 
@@ -1540,7 +1541,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexSubImage3DEXT(int texunit, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexSubImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexSubImage3DEXT", texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
-        Handles.MH_glMultiTexSubImage3DEXT.invokeExact(handles.PFN_glMultiTexSubImage3DEXT, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
+        Handles.MH_glMultiTexSubImage3DEXT.get().invokeExact(handles.PFN_glMultiTexSubImage3DEXT, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexSubImage3DEXT", e); }
     }
 
@@ -1551,7 +1552,7 @@ public final class GLEXTDirectStateAccess {
     public void CopyMultiTexSubImage3DEXT(int texunit, int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyMultiTexSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyMultiTexSubImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyMultiTexSubImage3DEXT", texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
-        Handles.MH_glCopyMultiTexSubImage3DEXT.invokeExact(handles.PFN_glCopyMultiTexSubImage3DEXT, texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
+        Handles.MH_glCopyMultiTexSubImage3DEXT.get().invokeExact(handles.PFN_glCopyMultiTexSubImage3DEXT, texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in CopyMultiTexSubImage3DEXT", e); }
     }
 
@@ -1562,7 +1563,7 @@ public final class GLEXTDirectStateAccess {
     public void EnableClientStateIndexedEXT(int array, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableClientStateIndexedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glEnableClientStateIndexedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEnableClientStateIndexedEXT", array, index); }
-        Handles.MH_glEnableClientStateIndexedEXT.invokeExact(handles.PFN_glEnableClientStateIndexedEXT, array, index); }
+        Handles.MH_glEnableClientStateIndexedEXT.get().invokeExact(handles.PFN_glEnableClientStateIndexedEXT, array, index); }
         catch (Throwable e) { throw new RuntimeException("error in EnableClientStateIndexedEXT", e); }
     }
 
@@ -1573,7 +1574,7 @@ public final class GLEXTDirectStateAccess {
     public void DisableClientStateIndexedEXT(int array, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableClientStateIndexedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDisableClientStateIndexedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDisableClientStateIndexedEXT", array, index); }
-        Handles.MH_glDisableClientStateIndexedEXT.invokeExact(handles.PFN_glDisableClientStateIndexedEXT, array, index); }
+        Handles.MH_glDisableClientStateIndexedEXT.get().invokeExact(handles.PFN_glDisableClientStateIndexedEXT, array, index); }
         catch (Throwable e) { throw new RuntimeException("error in DisableClientStateIndexedEXT", e); }
     }
 
@@ -1584,7 +1585,7 @@ public final class GLEXTDirectStateAccess {
     public void GetFloatIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFloatIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetFloatIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFloatIndexedvEXT", target, index, data); }
-        Handles.MH_glGetFloatIndexedvEXT.invokeExact(handles.PFN_glGetFloatIndexedvEXT, target, index, data); }
+        Handles.MH_glGetFloatIndexedvEXT.get().invokeExact(handles.PFN_glGetFloatIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetFloatIndexedvEXT", e); }
     }
 
@@ -1595,7 +1596,7 @@ public final class GLEXTDirectStateAccess {
     public void GetDoubleIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDoubleIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetDoubleIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetDoubleIndexedvEXT", target, index, data); }
-        Handles.MH_glGetDoubleIndexedvEXT.invokeExact(handles.PFN_glGetDoubleIndexedvEXT, target, index, data); }
+        Handles.MH_glGetDoubleIndexedvEXT.get().invokeExact(handles.PFN_glGetDoubleIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetDoubleIndexedvEXT", e); }
     }
 
@@ -1606,7 +1607,7 @@ public final class GLEXTDirectStateAccess {
     public void GetPointerIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPointerIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetPointerIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPointerIndexedvEXT", target, index, data); }
-        Handles.MH_glGetPointerIndexedvEXT.invokeExact(handles.PFN_glGetPointerIndexedvEXT, target, index, data); }
+        Handles.MH_glGetPointerIndexedvEXT.get().invokeExact(handles.PFN_glGetPointerIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetPointerIndexedvEXT", e); }
     }
 
@@ -1617,7 +1618,7 @@ public final class GLEXTDirectStateAccess {
     public void EnableIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableIndexedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glEnableIndexedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEnableIndexedEXT", target, index); }
-        Handles.MH_glEnableIndexedEXT.invokeExact(handles.PFN_glEnableIndexedEXT, target, index); }
+        Handles.MH_glEnableIndexedEXT.get().invokeExact(handles.PFN_glEnableIndexedEXT, target, index); }
         catch (Throwable e) { throw new RuntimeException("error in EnableIndexedEXT", e); }
     }
 
@@ -1628,7 +1629,7 @@ public final class GLEXTDirectStateAccess {
     public void DisableIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableIndexedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDisableIndexedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDisableIndexedEXT", target, index); }
-        Handles.MH_glDisableIndexedEXT.invokeExact(handles.PFN_glDisableIndexedEXT, target, index); }
+        Handles.MH_glDisableIndexedEXT.get().invokeExact(handles.PFN_glDisableIndexedEXT, target, index); }
         catch (Throwable e) { throw new RuntimeException("error in DisableIndexedEXT", e); }
     }
 
@@ -1639,7 +1640,7 @@ public final class GLEXTDirectStateAccess {
     public boolean IsEnabledIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsEnabledIndexedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glIsEnabledIndexedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIsEnabledIndexedEXT", target, index); }
-        return (((byte) Handles.MH_glIsEnabledIndexedEXT.invokeExact(handles.PFN_glIsEnabledIndexedEXT, target, index)) != 0); }
+        return (((byte) Handles.MH_glIsEnabledIndexedEXT.get().invokeExact(handles.PFN_glIsEnabledIndexedEXT, target, index)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsEnabledIndexedEXT", e); }
     }
 
@@ -1650,7 +1651,7 @@ public final class GLEXTDirectStateAccess {
     public void GetIntegerIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetIntegerIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetIntegerIndexedvEXT", target, index, data); }
-        Handles.MH_glGetIntegerIndexedvEXT.invokeExact(handles.PFN_glGetIntegerIndexedvEXT, target, index, data); }
+        Handles.MH_glGetIntegerIndexedvEXT.get().invokeExact(handles.PFN_glGetIntegerIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetIntegerIndexedvEXT", e); }
     }
 
@@ -1661,7 +1662,7 @@ public final class GLEXTDirectStateAccess {
     public void GetBooleanIndexedvEXT(int target, int index, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBooleanIndexedvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetBooleanIndexedvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetBooleanIndexedvEXT", target, index, data); }
-        Handles.MH_glGetBooleanIndexedvEXT.invokeExact(handles.PFN_glGetBooleanIndexedvEXT, target, index, data); }
+        Handles.MH_glGetBooleanIndexedvEXT.get().invokeExact(handles.PFN_glGetBooleanIndexedvEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetBooleanIndexedvEXT", e); }
     }
 
@@ -1672,7 +1673,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedTextureImage3DEXT(int texture, int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureImage3DEXT", texture, target, level, internalformat, width, height, depth, border, imageSize, bits); }
-        Handles.MH_glCompressedTextureImage3DEXT.invokeExact(handles.PFN_glCompressedTextureImage3DEXT, texture, target, level, internalformat, width, height, depth, border, imageSize, bits); }
+        Handles.MH_glCompressedTextureImage3DEXT.get().invokeExact(handles.PFN_glCompressedTextureImage3DEXT, texture, target, level, internalformat, width, height, depth, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureImage3DEXT", e); }
     }
 
@@ -1683,7 +1684,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedTextureImage2DEXT(int texture, int target, int level, int internalformat, int width, int height, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureImage2DEXT", texture, target, level, internalformat, width, height, border, imageSize, bits); }
-        Handles.MH_glCompressedTextureImage2DEXT.invokeExact(handles.PFN_glCompressedTextureImage2DEXT, texture, target, level, internalformat, width, height, border, imageSize, bits); }
+        Handles.MH_glCompressedTextureImage2DEXT.get().invokeExact(handles.PFN_glCompressedTextureImage2DEXT, texture, target, level, internalformat, width, height, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureImage2DEXT", e); }
     }
 
@@ -1694,7 +1695,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedTextureImage1DEXT(int texture, int target, int level, int internalformat, int width, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureImage1DEXT", texture, target, level, internalformat, width, border, imageSize, bits); }
-        Handles.MH_glCompressedTextureImage1DEXT.invokeExact(handles.PFN_glCompressedTextureImage1DEXT, texture, target, level, internalformat, width, border, imageSize, bits); }
+        Handles.MH_glCompressedTextureImage1DEXT.get().invokeExact(handles.PFN_glCompressedTextureImage1DEXT, texture, target, level, internalformat, width, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureImage1DEXT", e); }
     }
 
@@ -1705,7 +1706,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedTextureSubImage3DEXT(int texture, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureSubImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureSubImage3DEXT", texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits); }
-        Handles.MH_glCompressedTextureSubImage3DEXT.invokeExact(handles.PFN_glCompressedTextureSubImage3DEXT, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits); }
+        Handles.MH_glCompressedTextureSubImage3DEXT.get().invokeExact(handles.PFN_glCompressedTextureSubImage3DEXT, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage3DEXT", e); }
     }
 
@@ -1716,7 +1717,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedTextureSubImage2DEXT(int texture, int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureSubImage2DEXT", texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits); }
-        Handles.MH_glCompressedTextureSubImage2DEXT.invokeExact(handles.PFN_glCompressedTextureSubImage2DEXT, texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits); }
+        Handles.MH_glCompressedTextureSubImage2DEXT.get().invokeExact(handles.PFN_glCompressedTextureSubImage2DEXT, texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage2DEXT", e); }
     }
 
@@ -1727,7 +1728,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedTextureSubImage1DEXT(int texture, int target, int level, int xoffset, int width, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedTextureSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedTextureSubImage1DEXT", texture, target, level, xoffset, width, format, imageSize, bits); }
-        Handles.MH_glCompressedTextureSubImage1DEXT.invokeExact(handles.PFN_glCompressedTextureSubImage1DEXT, texture, target, level, xoffset, width, format, imageSize, bits); }
+        Handles.MH_glCompressedTextureSubImage1DEXT.get().invokeExact(handles.PFN_glCompressedTextureSubImage1DEXT, texture, target, level, xoffset, width, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage1DEXT", e); }
     }
 
@@ -1738,7 +1739,7 @@ public final class GLEXTDirectStateAccess {
     public void GetCompressedTextureImageEXT(int texture, int target, int lod, @NonNull MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedTextureImageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetCompressedTextureImageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetCompressedTextureImageEXT", texture, target, lod, img); }
-        Handles.MH_glGetCompressedTextureImageEXT.invokeExact(handles.PFN_glGetCompressedTextureImageEXT, texture, target, lod, img); }
+        Handles.MH_glGetCompressedTextureImageEXT.get().invokeExact(handles.PFN_glGetCompressedTextureImageEXT, texture, target, lod, img); }
         catch (Throwable e) { throw new RuntimeException("error in GetCompressedTextureImageEXT", e); }
     }
 
@@ -1749,7 +1750,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedMultiTexImage3DEXT(int texunit, int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexImage3DEXT", texunit, target, level, internalformat, width, height, depth, border, imageSize, bits); }
-        Handles.MH_glCompressedMultiTexImage3DEXT.invokeExact(handles.PFN_glCompressedMultiTexImage3DEXT, texunit, target, level, internalformat, width, height, depth, border, imageSize, bits); }
+        Handles.MH_glCompressedMultiTexImage3DEXT.get().invokeExact(handles.PFN_glCompressedMultiTexImage3DEXT, texunit, target, level, internalformat, width, height, depth, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexImage3DEXT", e); }
     }
 
@@ -1760,7 +1761,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedMultiTexImage2DEXT(int texunit, int target, int level, int internalformat, int width, int height, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexImage2DEXT", texunit, target, level, internalformat, width, height, border, imageSize, bits); }
-        Handles.MH_glCompressedMultiTexImage2DEXT.invokeExact(handles.PFN_glCompressedMultiTexImage2DEXT, texunit, target, level, internalformat, width, height, border, imageSize, bits); }
+        Handles.MH_glCompressedMultiTexImage2DEXT.get().invokeExact(handles.PFN_glCompressedMultiTexImage2DEXT, texunit, target, level, internalformat, width, height, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexImage2DEXT", e); }
     }
 
@@ -1771,7 +1772,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedMultiTexImage1DEXT(int texunit, int target, int level, int internalformat, int width, int border, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexImage1DEXT", texunit, target, level, internalformat, width, border, imageSize, bits); }
-        Handles.MH_glCompressedMultiTexImage1DEXT.invokeExact(handles.PFN_glCompressedMultiTexImage1DEXT, texunit, target, level, internalformat, width, border, imageSize, bits); }
+        Handles.MH_glCompressedMultiTexImage1DEXT.get().invokeExact(handles.PFN_glCompressedMultiTexImage1DEXT, texunit, target, level, internalformat, width, border, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexImage1DEXT", e); }
     }
 
@@ -1782,7 +1783,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedMultiTexSubImage3DEXT(int texunit, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexSubImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexSubImage3DEXT", texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits); }
-        Handles.MH_glCompressedMultiTexSubImage3DEXT.invokeExact(handles.PFN_glCompressedMultiTexSubImage3DEXT, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits); }
+        Handles.MH_glCompressedMultiTexSubImage3DEXT.get().invokeExact(handles.PFN_glCompressedMultiTexSubImage3DEXT, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexSubImage3DEXT", e); }
     }
 
@@ -1793,7 +1794,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedMultiTexSubImage2DEXT(int texunit, int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexSubImage2DEXT", texunit, target, level, xoffset, yoffset, width, height, format, imageSize, bits); }
-        Handles.MH_glCompressedMultiTexSubImage2DEXT.invokeExact(handles.PFN_glCompressedMultiTexSubImage2DEXT, texunit, target, level, xoffset, yoffset, width, height, format, imageSize, bits); }
+        Handles.MH_glCompressedMultiTexSubImage2DEXT.get().invokeExact(handles.PFN_glCompressedMultiTexSubImage2DEXT, texunit, target, level, xoffset, yoffset, width, height, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexSubImage2DEXT", e); }
     }
 
@@ -1804,7 +1805,7 @@ public final class GLEXTDirectStateAccess {
     public void CompressedMultiTexSubImage1DEXT(int texunit, int target, int level, int xoffset, int width, int format, int imageSize, @NonNull MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCompressedMultiTexSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCompressedMultiTexSubImage1DEXT", texunit, target, level, xoffset, width, format, imageSize, bits); }
-        Handles.MH_glCompressedMultiTexSubImage1DEXT.invokeExact(handles.PFN_glCompressedMultiTexSubImage1DEXT, texunit, target, level, xoffset, width, format, imageSize, bits); }
+        Handles.MH_glCompressedMultiTexSubImage1DEXT.get().invokeExact(handles.PFN_glCompressedMultiTexSubImage1DEXT, texunit, target, level, xoffset, width, format, imageSize, bits); }
         catch (Throwable e) { throw new RuntimeException("error in CompressedMultiTexSubImage1DEXT", e); }
     }
 
@@ -1815,7 +1816,7 @@ public final class GLEXTDirectStateAccess {
     public void GetCompressedMultiTexImageEXT(int texunit, int target, int lod, @NonNull MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedMultiTexImageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetCompressedMultiTexImageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetCompressedMultiTexImageEXT", texunit, target, lod, img); }
-        Handles.MH_glGetCompressedMultiTexImageEXT.invokeExact(handles.PFN_glGetCompressedMultiTexImageEXT, texunit, target, lod, img); }
+        Handles.MH_glGetCompressedMultiTexImageEXT.get().invokeExact(handles.PFN_glGetCompressedMultiTexImageEXT, texunit, target, lod, img); }
         catch (Throwable e) { throw new RuntimeException("error in GetCompressedMultiTexImageEXT", e); }
     }
 
@@ -1826,7 +1827,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixLoadTransposefEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadTransposefEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixLoadTransposefEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixLoadTransposefEXT", mode, m); }
-        Handles.MH_glMatrixLoadTransposefEXT.invokeExact(handles.PFN_glMatrixLoadTransposefEXT, mode, m); }
+        Handles.MH_glMatrixLoadTransposefEXT.get().invokeExact(handles.PFN_glMatrixLoadTransposefEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixLoadTransposefEXT", e); }
     }
 
@@ -1837,7 +1838,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixLoadTransposedEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadTransposedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixLoadTransposedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixLoadTransposedEXT", mode, m); }
-        Handles.MH_glMatrixLoadTransposedEXT.invokeExact(handles.PFN_glMatrixLoadTransposedEXT, mode, m); }
+        Handles.MH_glMatrixLoadTransposedEXT.get().invokeExact(handles.PFN_glMatrixLoadTransposedEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixLoadTransposedEXT", e); }
     }
 
@@ -1848,7 +1849,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixMultTransposefEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultTransposefEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixMultTransposefEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixMultTransposefEXT", mode, m); }
-        Handles.MH_glMatrixMultTransposefEXT.invokeExact(handles.PFN_glMatrixMultTransposefEXT, mode, m); }
+        Handles.MH_glMatrixMultTransposefEXT.get().invokeExact(handles.PFN_glMatrixMultTransposefEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixMultTransposefEXT", e); }
     }
 
@@ -1859,7 +1860,7 @@ public final class GLEXTDirectStateAccess {
     public void MatrixMultTransposedEXT(int mode, @NonNull MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultTransposedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMatrixMultTransposedEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMatrixMultTransposedEXT", mode, m); }
-        Handles.MH_glMatrixMultTransposedEXT.invokeExact(handles.PFN_glMatrixMultTransposedEXT, mode, m); }
+        Handles.MH_glMatrixMultTransposedEXT.get().invokeExact(handles.PFN_glMatrixMultTransposedEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in MatrixMultTransposedEXT", e); }
     }
 
@@ -1870,7 +1871,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedBufferDataEXT(int buffer, long size, @NonNull MemorySegment data, int usage) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferDataEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedBufferDataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedBufferDataEXT", buffer, size, data, usage); }
-        Handles.MH_glNamedBufferDataEXT.invokeExact(handles.PFN_glNamedBufferDataEXT, buffer, size, data, usage); }
+        Handles.MH_glNamedBufferDataEXT.get().invokeExact(handles.PFN_glNamedBufferDataEXT, buffer, size, data, usage); }
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferDataEXT", e); }
     }
 
@@ -1881,7 +1882,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedBufferSubDataEXT(int buffer, long offset, long size, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferSubDataEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedBufferSubDataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedBufferSubDataEXT", buffer, offset, size, data); }
-        Handles.MH_glNamedBufferSubDataEXT.invokeExact(handles.PFN_glNamedBufferSubDataEXT, buffer, offset, size, data); }
+        Handles.MH_glNamedBufferSubDataEXT.get().invokeExact(handles.PFN_glNamedBufferSubDataEXT, buffer, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferSubDataEXT", e); }
     }
 
@@ -1892,7 +1893,7 @@ public final class GLEXTDirectStateAccess {
     public @NonNull MemorySegment MapNamedBufferEXT(int buffer, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapNamedBufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMapNamedBufferEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapNamedBufferEXT", buffer, access); }
-        return (MemorySegment) Handles.MH_glMapNamedBufferEXT.invokeExact(handles.PFN_glMapNamedBufferEXT, buffer, access); }
+        return (MemorySegment) Handles.MH_glMapNamedBufferEXT.get().invokeExact(handles.PFN_glMapNamedBufferEXT, buffer, access); }
         catch (Throwable e) { throw new RuntimeException("error in MapNamedBufferEXT", e); }
     }
 
@@ -1903,7 +1904,7 @@ public final class GLEXTDirectStateAccess {
     public boolean UnmapNamedBufferEXT(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUnmapNamedBufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glUnmapNamedBufferEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUnmapNamedBufferEXT", buffer); }
-        return (((byte) Handles.MH_glUnmapNamedBufferEXT.invokeExact(handles.PFN_glUnmapNamedBufferEXT, buffer)) != 0); }
+        return (((byte) Handles.MH_glUnmapNamedBufferEXT.get().invokeExact(handles.PFN_glUnmapNamedBufferEXT, buffer)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in UnmapNamedBufferEXT", e); }
     }
 
@@ -1914,7 +1915,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedBufferParameterivEXT(int buffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedBufferParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedBufferParameterivEXT", buffer, pname, params); }
-        Handles.MH_glGetNamedBufferParameterivEXT.invokeExact(handles.PFN_glGetNamedBufferParameterivEXT, buffer, pname, params); }
+        Handles.MH_glGetNamedBufferParameterivEXT.get().invokeExact(handles.PFN_glGetNamedBufferParameterivEXT, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferParameterivEXT", e); }
     }
 
@@ -1925,7 +1926,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedBufferPointervEXT(int buffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferPointervEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedBufferPointervEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedBufferPointervEXT", buffer, pname, params); }
-        Handles.MH_glGetNamedBufferPointervEXT.invokeExact(handles.PFN_glGetNamedBufferPointervEXT, buffer, pname, params); }
+        Handles.MH_glGetNamedBufferPointervEXT.get().invokeExact(handles.PFN_glGetNamedBufferPointervEXT, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferPointervEXT", e); }
     }
 
@@ -1936,7 +1937,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedBufferSubDataEXT(int buffer, long offset, long size, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferSubDataEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedBufferSubDataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedBufferSubDataEXT", buffer, offset, size, data); }
-        Handles.MH_glGetNamedBufferSubDataEXT.invokeExact(handles.PFN_glGetNamedBufferSubDataEXT, buffer, offset, size, data); }
+        Handles.MH_glGetNamedBufferSubDataEXT.get().invokeExact(handles.PFN_glGetNamedBufferSubDataEXT, buffer, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferSubDataEXT", e); }
     }
 
@@ -1947,7 +1948,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform1fEXT(int program, int location, float v0) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1fEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1fEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1fEXT", program, location, v0); }
-        Handles.MH_glProgramUniform1fEXT.invokeExact(handles.PFN_glProgramUniform1fEXT, program, location, v0); }
+        Handles.MH_glProgramUniform1fEXT.get().invokeExact(handles.PFN_glProgramUniform1fEXT, program, location, v0); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1fEXT", e); }
     }
 
@@ -1958,7 +1959,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform2fEXT(int program, int location, float v0, float v1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2fEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2fEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2fEXT", program, location, v0, v1); }
-        Handles.MH_glProgramUniform2fEXT.invokeExact(handles.PFN_glProgramUniform2fEXT, program, location, v0, v1); }
+        Handles.MH_glProgramUniform2fEXT.get().invokeExact(handles.PFN_glProgramUniform2fEXT, program, location, v0, v1); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2fEXT", e); }
     }
 
@@ -1969,7 +1970,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform3fEXT(int program, int location, float v0, float v1, float v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3fEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3fEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3fEXT", program, location, v0, v1, v2); }
-        Handles.MH_glProgramUniform3fEXT.invokeExact(handles.PFN_glProgramUniform3fEXT, program, location, v0, v1, v2); }
+        Handles.MH_glProgramUniform3fEXT.get().invokeExact(handles.PFN_glProgramUniform3fEXT, program, location, v0, v1, v2); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3fEXT", e); }
     }
 
@@ -1980,7 +1981,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform4fEXT(int program, int location, float v0, float v1, float v2, float v3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4fEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4fEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4fEXT", program, location, v0, v1, v2, v3); }
-        Handles.MH_glProgramUniform4fEXT.invokeExact(handles.PFN_glProgramUniform4fEXT, program, location, v0, v1, v2, v3); }
+        Handles.MH_glProgramUniform4fEXT.get().invokeExact(handles.PFN_glProgramUniform4fEXT, program, location, v0, v1, v2, v3); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4fEXT", e); }
     }
 
@@ -1991,7 +1992,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform1iEXT(int program, int location, int v0) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1iEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1iEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1iEXT", program, location, v0); }
-        Handles.MH_glProgramUniform1iEXT.invokeExact(handles.PFN_glProgramUniform1iEXT, program, location, v0); }
+        Handles.MH_glProgramUniform1iEXT.get().invokeExact(handles.PFN_glProgramUniform1iEXT, program, location, v0); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1iEXT", e); }
     }
 
@@ -2002,7 +2003,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform2iEXT(int program, int location, int v0, int v1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2iEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2iEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2iEXT", program, location, v0, v1); }
-        Handles.MH_glProgramUniform2iEXT.invokeExact(handles.PFN_glProgramUniform2iEXT, program, location, v0, v1); }
+        Handles.MH_glProgramUniform2iEXT.get().invokeExact(handles.PFN_glProgramUniform2iEXT, program, location, v0, v1); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2iEXT", e); }
     }
 
@@ -2013,7 +2014,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform3iEXT(int program, int location, int v0, int v1, int v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3iEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3iEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3iEXT", program, location, v0, v1, v2); }
-        Handles.MH_glProgramUniform3iEXT.invokeExact(handles.PFN_glProgramUniform3iEXT, program, location, v0, v1, v2); }
+        Handles.MH_glProgramUniform3iEXT.get().invokeExact(handles.PFN_glProgramUniform3iEXT, program, location, v0, v1, v2); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3iEXT", e); }
     }
 
@@ -2024,7 +2025,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform4iEXT(int program, int location, int v0, int v1, int v2, int v3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4iEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4iEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4iEXT", program, location, v0, v1, v2, v3); }
-        Handles.MH_glProgramUniform4iEXT.invokeExact(handles.PFN_glProgramUniform4iEXT, program, location, v0, v1, v2, v3); }
+        Handles.MH_glProgramUniform4iEXT.get().invokeExact(handles.PFN_glProgramUniform4iEXT, program, location, v0, v1, v2, v3); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4iEXT", e); }
     }
 
@@ -2035,7 +2036,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform1fvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1fvEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform1fvEXT.invokeExact(handles.PFN_glProgramUniform1fvEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform1fvEXT.get().invokeExact(handles.PFN_glProgramUniform1fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1fvEXT", e); }
     }
 
@@ -2046,7 +2047,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform2fvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2fvEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform2fvEXT.invokeExact(handles.PFN_glProgramUniform2fvEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform2fvEXT.get().invokeExact(handles.PFN_glProgramUniform2fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2fvEXT", e); }
     }
 
@@ -2057,7 +2058,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform3fvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3fvEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform3fvEXT.invokeExact(handles.PFN_glProgramUniform3fvEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform3fvEXT.get().invokeExact(handles.PFN_glProgramUniform3fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3fvEXT", e); }
     }
 
@@ -2068,7 +2069,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform4fvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4fvEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform4fvEXT.invokeExact(handles.PFN_glProgramUniform4fvEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform4fvEXT.get().invokeExact(handles.PFN_glProgramUniform4fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4fvEXT", e); }
     }
 
@@ -2079,7 +2080,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform1ivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1ivEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform1ivEXT.invokeExact(handles.PFN_glProgramUniform1ivEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform1ivEXT.get().invokeExact(handles.PFN_glProgramUniform1ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1ivEXT", e); }
     }
 
@@ -2090,7 +2091,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform2ivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2ivEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform2ivEXT.invokeExact(handles.PFN_glProgramUniform2ivEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform2ivEXT.get().invokeExact(handles.PFN_glProgramUniform2ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2ivEXT", e); }
     }
 
@@ -2101,7 +2102,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform3ivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3ivEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform3ivEXT.invokeExact(handles.PFN_glProgramUniform3ivEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform3ivEXT.get().invokeExact(handles.PFN_glProgramUniform3ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3ivEXT", e); }
     }
 
@@ -2112,7 +2113,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform4ivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4ivEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform4ivEXT.invokeExact(handles.PFN_glProgramUniform4ivEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform4ivEXT.get().invokeExact(handles.PFN_glProgramUniform4ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4ivEXT", e); }
     }
 
@@ -2123,7 +2124,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix2fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2fvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix2fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix2fvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix2fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2fvEXT", e); }
     }
 
@@ -2134,7 +2135,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix3fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3fvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix3fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix3fvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix3fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3fvEXT", e); }
     }
 
@@ -2145,7 +2146,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix4fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4fvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix4fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix4fvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix4fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4fvEXT", e); }
     }
 
@@ -2156,7 +2157,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix2x3fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x3fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x3fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x3fvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix2x3fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2x3fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix2x3fvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix2x3fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x3fvEXT", e); }
     }
 
@@ -2167,7 +2168,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix3x2fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x2fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x2fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x2fvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix3x2fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3x2fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix3x2fvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix3x2fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x2fvEXT", e); }
     }
 
@@ -2178,7 +2179,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix2x4fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x4fvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix2x4fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2x4fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix2x4fvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix2x4fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x4fvEXT", e); }
     }
 
@@ -2189,7 +2190,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix4x2fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x2fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x2fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x2fvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix4x2fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4x2fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix4x2fvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix4x2fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x2fvEXT", e); }
     }
 
@@ -2200,7 +2201,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix3x4fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x4fvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix3x4fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3x4fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix3x4fvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix3x4fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x4fvEXT", e); }
     }
 
@@ -2211,7 +2212,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix4x3fvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x3fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x3fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x3fvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix4x3fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4x3fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix4x3fvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix4x3fvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x3fvEXT", e); }
     }
 
@@ -2222,7 +2223,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureBufferEXT(int texture, int target, int internalformat, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureBufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureBufferEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureBufferEXT", texture, target, internalformat, buffer); }
-        Handles.MH_glTextureBufferEXT.invokeExact(handles.PFN_glTextureBufferEXT, texture, target, internalformat, buffer); }
+        Handles.MH_glTextureBufferEXT.get().invokeExact(handles.PFN_glTextureBufferEXT, texture, target, internalformat, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in TextureBufferEXT", e); }
     }
 
@@ -2233,7 +2234,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexBufferEXT(int texunit, int target, int internalformat, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexBufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexBufferEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexBufferEXT", texunit, target, internalformat, buffer); }
-        Handles.MH_glMultiTexBufferEXT.invokeExact(handles.PFN_glMultiTexBufferEXT, texunit, target, internalformat, buffer); }
+        Handles.MH_glMultiTexBufferEXT.get().invokeExact(handles.PFN_glMultiTexBufferEXT, texunit, target, internalformat, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexBufferEXT", e); }
     }
 
@@ -2244,7 +2245,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureParameterIivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterIivEXT", texture, target, pname, params); }
-        Handles.MH_glTextureParameterIivEXT.invokeExact(handles.PFN_glTextureParameterIivEXT, texture, target, pname, params); }
+        Handles.MH_glTextureParameterIivEXT.get().invokeExact(handles.PFN_glTextureParameterIivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterIivEXT", e); }
     }
 
@@ -2255,7 +2256,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureParameterIuivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureParameterIuivEXT", texture, target, pname, params); }
-        Handles.MH_glTextureParameterIuivEXT.invokeExact(handles.PFN_glTextureParameterIuivEXT, texture, target, pname, params); }
+        Handles.MH_glTextureParameterIuivEXT.get().invokeExact(handles.PFN_glTextureParameterIuivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TextureParameterIuivEXT", e); }
     }
 
@@ -2266,7 +2267,7 @@ public final class GLEXTDirectStateAccess {
     public void GetTextureParameterIivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameterIivEXT", texture, target, pname, params); }
-        Handles.MH_glGetTextureParameterIivEXT.invokeExact(handles.PFN_glGetTextureParameterIivEXT, texture, target, pname, params); }
+        Handles.MH_glGetTextureParameterIivEXT.get().invokeExact(handles.PFN_glGetTextureParameterIivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterIivEXT", e); }
     }
 
@@ -2277,7 +2278,7 @@ public final class GLEXTDirectStateAccess {
     public void GetTextureParameterIuivEXT(int texture, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetTextureParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTextureParameterIuivEXT", texture, target, pname, params); }
-        Handles.MH_glGetTextureParameterIuivEXT.invokeExact(handles.PFN_glGetTextureParameterIuivEXT, texture, target, pname, params); }
+        Handles.MH_glGetTextureParameterIuivEXT.get().invokeExact(handles.PFN_glGetTextureParameterIuivEXT, texture, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterIuivEXT", e); }
     }
 
@@ -2288,7 +2289,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexParameterIivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexParameterIivEXT", texunit, target, pname, params); }
-        Handles.MH_glMultiTexParameterIivEXT.invokeExact(handles.PFN_glMultiTexParameterIivEXT, texunit, target, pname, params); }
+        Handles.MH_glMultiTexParameterIivEXT.get().invokeExact(handles.PFN_glMultiTexParameterIivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameterIivEXT", e); }
     }
 
@@ -2299,7 +2300,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexParameterIuivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexParameterIuivEXT", texunit, target, pname, params); }
-        Handles.MH_glMultiTexParameterIuivEXT.invokeExact(handles.PFN_glMultiTexParameterIuivEXT, texunit, target, pname, params); }
+        Handles.MH_glMultiTexParameterIuivEXT.get().invokeExact(handles.PFN_glMultiTexParameterIuivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexParameterIuivEXT", e); }
     }
 
@@ -2310,7 +2311,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexParameterIivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexParameterIivEXT", texunit, target, pname, params); }
-        Handles.MH_glGetMultiTexParameterIivEXT.invokeExact(handles.PFN_glGetMultiTexParameterIivEXT, texunit, target, pname, params); }
+        Handles.MH_glGetMultiTexParameterIivEXT.get().invokeExact(handles.PFN_glGetMultiTexParameterIivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexParameterIivEXT", e); }
     }
 
@@ -2321,7 +2322,7 @@ public final class GLEXTDirectStateAccess {
     public void GetMultiTexParameterIuivEXT(int texunit, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultiTexParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMultiTexParameterIuivEXT", texunit, target, pname, params); }
-        Handles.MH_glGetMultiTexParameterIuivEXT.invokeExact(handles.PFN_glGetMultiTexParameterIuivEXT, texunit, target, pname, params); }
+        Handles.MH_glGetMultiTexParameterIuivEXT.get().invokeExact(handles.PFN_glGetMultiTexParameterIuivEXT, texunit, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultiTexParameterIuivEXT", e); }
     }
 
@@ -2332,7 +2333,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform1uiEXT(int program, int location, int v0) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1uiEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1uiEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1uiEXT", program, location, v0); }
-        Handles.MH_glProgramUniform1uiEXT.invokeExact(handles.PFN_glProgramUniform1uiEXT, program, location, v0); }
+        Handles.MH_glProgramUniform1uiEXT.get().invokeExact(handles.PFN_glProgramUniform1uiEXT, program, location, v0); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1uiEXT", e); }
     }
 
@@ -2343,7 +2344,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform2uiEXT(int program, int location, int v0, int v1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2uiEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2uiEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2uiEXT", program, location, v0, v1); }
-        Handles.MH_glProgramUniform2uiEXT.invokeExact(handles.PFN_glProgramUniform2uiEXT, program, location, v0, v1); }
+        Handles.MH_glProgramUniform2uiEXT.get().invokeExact(handles.PFN_glProgramUniform2uiEXT, program, location, v0, v1); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2uiEXT", e); }
     }
 
@@ -2354,7 +2355,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform3uiEXT(int program, int location, int v0, int v1, int v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3uiEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3uiEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3uiEXT", program, location, v0, v1, v2); }
-        Handles.MH_glProgramUniform3uiEXT.invokeExact(handles.PFN_glProgramUniform3uiEXT, program, location, v0, v1, v2); }
+        Handles.MH_glProgramUniform3uiEXT.get().invokeExact(handles.PFN_glProgramUniform3uiEXT, program, location, v0, v1, v2); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3uiEXT", e); }
     }
 
@@ -2365,7 +2366,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform4uiEXT(int program, int location, int v0, int v1, int v2, int v3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4uiEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4uiEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4uiEXT", program, location, v0, v1, v2, v3); }
-        Handles.MH_glProgramUniform4uiEXT.invokeExact(handles.PFN_glProgramUniform4uiEXT, program, location, v0, v1, v2, v3); }
+        Handles.MH_glProgramUniform4uiEXT.get().invokeExact(handles.PFN_glProgramUniform4uiEXT, program, location, v0, v1, v2, v3); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4uiEXT", e); }
     }
 
@@ -2376,7 +2377,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform1uivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1uivEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform1uivEXT.invokeExact(handles.PFN_glProgramUniform1uivEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform1uivEXT.get().invokeExact(handles.PFN_glProgramUniform1uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1uivEXT", e); }
     }
 
@@ -2387,7 +2388,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform2uivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2uivEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform2uivEXT.invokeExact(handles.PFN_glProgramUniform2uivEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform2uivEXT.get().invokeExact(handles.PFN_glProgramUniform2uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2uivEXT", e); }
     }
 
@@ -2398,7 +2399,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform3uivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3uivEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform3uivEXT.invokeExact(handles.PFN_glProgramUniform3uivEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform3uivEXT.get().invokeExact(handles.PFN_glProgramUniform3uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3uivEXT", e); }
     }
 
@@ -2409,7 +2410,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform4uivEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4uivEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform4uivEXT.invokeExact(handles.PFN_glProgramUniform4uivEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform4uivEXT.get().invokeExact(handles.PFN_glProgramUniform4uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4uivEXT", e); }
     }
 
@@ -2420,7 +2421,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramLocalParameters4fvEXT(int program, int target, int index, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameters4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameters4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameters4fvEXT", program, target, index, count, params); }
-        Handles.MH_glNamedProgramLocalParameters4fvEXT.invokeExact(handles.PFN_glNamedProgramLocalParameters4fvEXT, program, target, index, count, params); }
+        Handles.MH_glNamedProgramLocalParameters4fvEXT.get().invokeExact(handles.PFN_glNamedProgramLocalParameters4fvEXT, program, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameters4fvEXT", e); }
     }
 
@@ -2431,7 +2432,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramLocalParameterI4iEXT(int program, int target, int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameterI4iEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameterI4iEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameterI4iEXT", program, target, index, x, y, z, w); }
-        Handles.MH_glNamedProgramLocalParameterI4iEXT.invokeExact(handles.PFN_glNamedProgramLocalParameterI4iEXT, program, target, index, x, y, z, w); }
+        Handles.MH_glNamedProgramLocalParameterI4iEXT.get().invokeExact(handles.PFN_glNamedProgramLocalParameterI4iEXT, program, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameterI4iEXT", e); }
     }
 
@@ -2442,7 +2443,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramLocalParameterI4ivEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameterI4ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameterI4ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameterI4ivEXT", program, target, index, params); }
-        Handles.MH_glNamedProgramLocalParameterI4ivEXT.invokeExact(handles.PFN_glNamedProgramLocalParameterI4ivEXT, program, target, index, params); }
+        Handles.MH_glNamedProgramLocalParameterI4ivEXT.get().invokeExact(handles.PFN_glNamedProgramLocalParameterI4ivEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameterI4ivEXT", e); }
     }
 
@@ -2453,7 +2454,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramLocalParametersI4ivEXT(int program, int target, int index, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParametersI4ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParametersI4ivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParametersI4ivEXT", program, target, index, count, params); }
-        Handles.MH_glNamedProgramLocalParametersI4ivEXT.invokeExact(handles.PFN_glNamedProgramLocalParametersI4ivEXT, program, target, index, count, params); }
+        Handles.MH_glNamedProgramLocalParametersI4ivEXT.get().invokeExact(handles.PFN_glNamedProgramLocalParametersI4ivEXT, program, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParametersI4ivEXT", e); }
     }
 
@@ -2464,7 +2465,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramLocalParameterI4uiEXT(int program, int target, int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameterI4uiEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameterI4uiEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameterI4uiEXT", program, target, index, x, y, z, w); }
-        Handles.MH_glNamedProgramLocalParameterI4uiEXT.invokeExact(handles.PFN_glNamedProgramLocalParameterI4uiEXT, program, target, index, x, y, z, w); }
+        Handles.MH_glNamedProgramLocalParameterI4uiEXT.get().invokeExact(handles.PFN_glNamedProgramLocalParameterI4uiEXT, program, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameterI4uiEXT", e); }
     }
 
@@ -2475,7 +2476,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramLocalParameterI4uivEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameterI4uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameterI4uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameterI4uivEXT", program, target, index, params); }
-        Handles.MH_glNamedProgramLocalParameterI4uivEXT.invokeExact(handles.PFN_glNamedProgramLocalParameterI4uivEXT, program, target, index, params); }
+        Handles.MH_glNamedProgramLocalParameterI4uivEXT.get().invokeExact(handles.PFN_glNamedProgramLocalParameterI4uivEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameterI4uivEXT", e); }
     }
 
@@ -2486,7 +2487,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramLocalParametersI4uivEXT(int program, int target, int index, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParametersI4uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParametersI4uivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParametersI4uivEXT", program, target, index, count, params); }
-        Handles.MH_glNamedProgramLocalParametersI4uivEXT.invokeExact(handles.PFN_glNamedProgramLocalParametersI4uivEXT, program, target, index, count, params); }
+        Handles.MH_glNamedProgramLocalParametersI4uivEXT.get().invokeExact(handles.PFN_glNamedProgramLocalParametersI4uivEXT, program, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParametersI4uivEXT", e); }
     }
 
@@ -2497,7 +2498,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedProgramLocalParameterIivEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterIivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterIivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramLocalParameterIivEXT", program, target, index, params); }
-        Handles.MH_glGetNamedProgramLocalParameterIivEXT.invokeExact(handles.PFN_glGetNamedProgramLocalParameterIivEXT, program, target, index, params); }
+        Handles.MH_glGetNamedProgramLocalParameterIivEXT.get().invokeExact(handles.PFN_glGetNamedProgramLocalParameterIivEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramLocalParameterIivEXT", e); }
     }
 
@@ -2508,7 +2509,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedProgramLocalParameterIuivEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterIuivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterIuivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramLocalParameterIuivEXT", program, target, index, params); }
-        Handles.MH_glGetNamedProgramLocalParameterIuivEXT.invokeExact(handles.PFN_glGetNamedProgramLocalParameterIuivEXT, program, target, index, params); }
+        Handles.MH_glGetNamedProgramLocalParameterIuivEXT.get().invokeExact(handles.PFN_glGetNamedProgramLocalParameterIuivEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramLocalParameterIuivEXT", e); }
     }
 
@@ -2519,7 +2520,7 @@ public final class GLEXTDirectStateAccess {
     public void EnableClientStateiEXT(int array, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableClientStateiEXT)) throw new GLSymbolNotFoundError("Symbol not found: glEnableClientStateiEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEnableClientStateiEXT", array, index); }
-        Handles.MH_glEnableClientStateiEXT.invokeExact(handles.PFN_glEnableClientStateiEXT, array, index); }
+        Handles.MH_glEnableClientStateiEXT.get().invokeExact(handles.PFN_glEnableClientStateiEXT, array, index); }
         catch (Throwable e) { throw new RuntimeException("error in EnableClientStateiEXT", e); }
     }
 
@@ -2530,7 +2531,7 @@ public final class GLEXTDirectStateAccess {
     public void DisableClientStateiEXT(int array, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableClientStateiEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDisableClientStateiEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDisableClientStateiEXT", array, index); }
-        Handles.MH_glDisableClientStateiEXT.invokeExact(handles.PFN_glDisableClientStateiEXT, array, index); }
+        Handles.MH_glDisableClientStateiEXT.get().invokeExact(handles.PFN_glDisableClientStateiEXT, array, index); }
         catch (Throwable e) { throw new RuntimeException("error in DisableClientStateiEXT", e); }
     }
 
@@ -2541,7 +2542,7 @@ public final class GLEXTDirectStateAccess {
     public void GetFloati_vEXT(int pname, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFloati_vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetFloati_vEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFloati_vEXT", pname, index, params); }
-        Handles.MH_glGetFloati_vEXT.invokeExact(handles.PFN_glGetFloati_vEXT, pname, index, params); }
+        Handles.MH_glGetFloati_vEXT.get().invokeExact(handles.PFN_glGetFloati_vEXT, pname, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFloati_vEXT", e); }
     }
 
@@ -2552,7 +2553,7 @@ public final class GLEXTDirectStateAccess {
     public void GetDoublei_vEXT(int pname, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDoublei_vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetDoublei_vEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetDoublei_vEXT", pname, index, params); }
-        Handles.MH_glGetDoublei_vEXT.invokeExact(handles.PFN_glGetDoublei_vEXT, pname, index, params); }
+        Handles.MH_glGetDoublei_vEXT.get().invokeExact(handles.PFN_glGetDoublei_vEXT, pname, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetDoublei_vEXT", e); }
     }
 
@@ -2563,7 +2564,7 @@ public final class GLEXTDirectStateAccess {
     public void GetPointeri_vEXT(int pname, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPointeri_vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetPointeri_vEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPointeri_vEXT", pname, index, params); }
-        Handles.MH_glGetPointeri_vEXT.invokeExact(handles.PFN_glGetPointeri_vEXT, pname, index, params); }
+        Handles.MH_glGetPointeri_vEXT.get().invokeExact(handles.PFN_glGetPointeri_vEXT, pname, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetPointeri_vEXT", e); }
     }
 
@@ -2574,7 +2575,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramStringEXT(int program, int target, int format, int len, @NonNull MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramStringEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramStringEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramStringEXT", program, target, format, len, string); }
-        Handles.MH_glNamedProgramStringEXT.invokeExact(handles.PFN_glNamedProgramStringEXT, program, target, format, len, string); }
+        Handles.MH_glNamedProgramStringEXT.get().invokeExact(handles.PFN_glNamedProgramStringEXT, program, target, format, len, string); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramStringEXT", e); }
     }
 
@@ -2585,7 +2586,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramLocalParameter4dEXT(int program, int target, int index, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameter4dEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameter4dEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameter4dEXT", program, target, index, x, y, z, w); }
-        Handles.MH_glNamedProgramLocalParameter4dEXT.invokeExact(handles.PFN_glNamedProgramLocalParameter4dEXT, program, target, index, x, y, z, w); }
+        Handles.MH_glNamedProgramLocalParameter4dEXT.get().invokeExact(handles.PFN_glNamedProgramLocalParameter4dEXT, program, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameter4dEXT", e); }
     }
 
@@ -2596,7 +2597,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramLocalParameter4dvEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameter4dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameter4dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameter4dvEXT", program, target, index, params); }
-        Handles.MH_glNamedProgramLocalParameter4dvEXT.invokeExact(handles.PFN_glNamedProgramLocalParameter4dvEXT, program, target, index, params); }
+        Handles.MH_glNamedProgramLocalParameter4dvEXT.get().invokeExact(handles.PFN_glNamedProgramLocalParameter4dvEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameter4dvEXT", e); }
     }
 
@@ -2607,7 +2608,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramLocalParameter4fEXT(int program, int target, int index, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameter4fEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameter4fEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameter4fEXT", program, target, index, x, y, z, w); }
-        Handles.MH_glNamedProgramLocalParameter4fEXT.invokeExact(handles.PFN_glNamedProgramLocalParameter4fEXT, program, target, index, x, y, z, w); }
+        Handles.MH_glNamedProgramLocalParameter4fEXT.get().invokeExact(handles.PFN_glNamedProgramLocalParameter4fEXT, program, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameter4fEXT", e); }
     }
 
@@ -2618,7 +2619,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedProgramLocalParameter4fvEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameter4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedProgramLocalParameter4fvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedProgramLocalParameter4fvEXT", program, target, index, params); }
-        Handles.MH_glNamedProgramLocalParameter4fvEXT.invokeExact(handles.PFN_glNamedProgramLocalParameter4fvEXT, program, target, index, params); }
+        Handles.MH_glNamedProgramLocalParameter4fvEXT.get().invokeExact(handles.PFN_glNamedProgramLocalParameter4fvEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in NamedProgramLocalParameter4fvEXT", e); }
     }
 
@@ -2629,7 +2630,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedProgramLocalParameterdvEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterdvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterdvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramLocalParameterdvEXT", program, target, index, params); }
-        Handles.MH_glGetNamedProgramLocalParameterdvEXT.invokeExact(handles.PFN_glGetNamedProgramLocalParameterdvEXT, program, target, index, params); }
+        Handles.MH_glGetNamedProgramLocalParameterdvEXT.get().invokeExact(handles.PFN_glGetNamedProgramLocalParameterdvEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramLocalParameterdvEXT", e); }
     }
 
@@ -2640,7 +2641,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedProgramLocalParameterfvEXT(int program, int target, int index, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramLocalParameterfvEXT", program, target, index, params); }
-        Handles.MH_glGetNamedProgramLocalParameterfvEXT.invokeExact(handles.PFN_glGetNamedProgramLocalParameterfvEXT, program, target, index, params); }
+        Handles.MH_glGetNamedProgramLocalParameterfvEXT.get().invokeExact(handles.PFN_glGetNamedProgramLocalParameterfvEXT, program, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramLocalParameterfvEXT", e); }
     }
 
@@ -2651,7 +2652,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedProgramivEXT(int program, int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramivEXT", program, target, pname, params); }
-        Handles.MH_glGetNamedProgramivEXT.invokeExact(handles.PFN_glGetNamedProgramivEXT, program, target, pname, params); }
+        Handles.MH_glGetNamedProgramivEXT.get().invokeExact(handles.PFN_glGetNamedProgramivEXT, program, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramivEXT", e); }
     }
 
@@ -2662,7 +2663,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedProgramStringEXT(int program, int target, int pname, @NonNull MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramStringEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedProgramStringEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedProgramStringEXT", program, target, pname, string); }
-        Handles.MH_glGetNamedProgramStringEXT.invokeExact(handles.PFN_glGetNamedProgramStringEXT, program, target, pname, string); }
+        Handles.MH_glGetNamedProgramStringEXT.get().invokeExact(handles.PFN_glGetNamedProgramStringEXT, program, target, pname, string); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedProgramStringEXT", e); }
     }
 
@@ -2673,7 +2674,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedRenderbufferStorageEXT(int renderbuffer, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedRenderbufferStorageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedRenderbufferStorageEXT", renderbuffer, internalformat, width, height); }
-        Handles.MH_glNamedRenderbufferStorageEXT.invokeExact(handles.PFN_glNamedRenderbufferStorageEXT, renderbuffer, internalformat, width, height); }
+        Handles.MH_glNamedRenderbufferStorageEXT.get().invokeExact(handles.PFN_glNamedRenderbufferStorageEXT, renderbuffer, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorageEXT", e); }
     }
 
@@ -2684,7 +2685,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedRenderbufferParameterivEXT(int renderbuffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedRenderbufferParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedRenderbufferParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedRenderbufferParameterivEXT", renderbuffer, pname, params); }
-        Handles.MH_glGetNamedRenderbufferParameterivEXT.invokeExact(handles.PFN_glGetNamedRenderbufferParameterivEXT, renderbuffer, pname, params); }
+        Handles.MH_glGetNamedRenderbufferParameterivEXT.get().invokeExact(handles.PFN_glGetNamedRenderbufferParameterivEXT, renderbuffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedRenderbufferParameterivEXT", e); }
     }
 
@@ -2695,7 +2696,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedRenderbufferStorageMultisampleEXT(int renderbuffer, int samples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedRenderbufferStorageMultisampleEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageMultisampleEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedRenderbufferStorageMultisampleEXT", renderbuffer, samples, internalformat, width, height); }
-        Handles.MH_glNamedRenderbufferStorageMultisampleEXT.invokeExact(handles.PFN_glNamedRenderbufferStorageMultisampleEXT, renderbuffer, samples, internalformat, width, height); }
+        Handles.MH_glNamedRenderbufferStorageMultisampleEXT.get().invokeExact(handles.PFN_glNamedRenderbufferStorageMultisampleEXT, renderbuffer, samples, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorageMultisampleEXT", e); }
     }
 
@@ -2706,7 +2707,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedRenderbufferStorageMultisampleCoverageEXT(int renderbuffer, int coverageSamples, int colorSamples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedRenderbufferStorageMultisampleCoverageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageMultisampleCoverageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedRenderbufferStorageMultisampleCoverageEXT", renderbuffer, coverageSamples, colorSamples, internalformat, width, height); }
-        Handles.MH_glNamedRenderbufferStorageMultisampleCoverageEXT.invokeExact(handles.PFN_glNamedRenderbufferStorageMultisampleCoverageEXT, renderbuffer, coverageSamples, colorSamples, internalformat, width, height); }
+        Handles.MH_glNamedRenderbufferStorageMultisampleCoverageEXT.get().invokeExact(handles.PFN_glNamedRenderbufferStorageMultisampleCoverageEXT, renderbuffer, coverageSamples, colorSamples, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorageMultisampleCoverageEXT", e); }
     }
 
@@ -2717,7 +2718,7 @@ public final class GLEXTDirectStateAccess {
     public int CheckNamedFramebufferStatusEXT(int framebuffer, int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCheckNamedFramebufferStatusEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCheckNamedFramebufferStatusEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCheckNamedFramebufferStatusEXT", framebuffer, target); }
-        return (int) Handles.MH_glCheckNamedFramebufferStatusEXT.invokeExact(handles.PFN_glCheckNamedFramebufferStatusEXT, framebuffer, target); }
+        return (int) Handles.MH_glCheckNamedFramebufferStatusEXT.get().invokeExact(handles.PFN_glCheckNamedFramebufferStatusEXT, framebuffer, target); }
         catch (Throwable e) { throw new RuntimeException("error in CheckNamedFramebufferStatusEXT", e); }
     }
 
@@ -2728,7 +2729,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedFramebufferTexture1DEXT(int framebuffer, int attachment, int textarget, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTexture1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferTexture1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedFramebufferTexture1DEXT", framebuffer, attachment, textarget, texture, level); }
-        Handles.MH_glNamedFramebufferTexture1DEXT.invokeExact(handles.PFN_glNamedFramebufferTexture1DEXT, framebuffer, attachment, textarget, texture, level); }
+        Handles.MH_glNamedFramebufferTexture1DEXT.get().invokeExact(handles.PFN_glNamedFramebufferTexture1DEXT, framebuffer, attachment, textarget, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTexture1DEXT", e); }
     }
 
@@ -2739,7 +2740,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedFramebufferTexture2DEXT(int framebuffer, int attachment, int textarget, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTexture2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferTexture2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedFramebufferTexture2DEXT", framebuffer, attachment, textarget, texture, level); }
-        Handles.MH_glNamedFramebufferTexture2DEXT.invokeExact(handles.PFN_glNamedFramebufferTexture2DEXT, framebuffer, attachment, textarget, texture, level); }
+        Handles.MH_glNamedFramebufferTexture2DEXT.get().invokeExact(handles.PFN_glNamedFramebufferTexture2DEXT, framebuffer, attachment, textarget, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTexture2DEXT", e); }
     }
 
@@ -2750,7 +2751,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedFramebufferTexture3DEXT(int framebuffer, int attachment, int textarget, int texture, int level, int zoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTexture3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferTexture3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedFramebufferTexture3DEXT", framebuffer, attachment, textarget, texture, level, zoffset); }
-        Handles.MH_glNamedFramebufferTexture3DEXT.invokeExact(handles.PFN_glNamedFramebufferTexture3DEXT, framebuffer, attachment, textarget, texture, level, zoffset); }
+        Handles.MH_glNamedFramebufferTexture3DEXT.get().invokeExact(handles.PFN_glNamedFramebufferTexture3DEXT, framebuffer, attachment, textarget, texture, level, zoffset); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTexture3DEXT", e); }
     }
 
@@ -2761,7 +2762,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedFramebufferRenderbufferEXT(int framebuffer, int attachment, int renderbuffertarget, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferRenderbufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferRenderbufferEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedFramebufferRenderbufferEXT", framebuffer, attachment, renderbuffertarget, renderbuffer); }
-        Handles.MH_glNamedFramebufferRenderbufferEXT.invokeExact(handles.PFN_glNamedFramebufferRenderbufferEXT, framebuffer, attachment, renderbuffertarget, renderbuffer); }
+        Handles.MH_glNamedFramebufferRenderbufferEXT.get().invokeExact(handles.PFN_glNamedFramebufferRenderbufferEXT, framebuffer, attachment, renderbuffertarget, renderbuffer); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferRenderbufferEXT", e); }
     }
 
@@ -2772,7 +2773,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedFramebufferAttachmentParameterivEXT(int framebuffer, int attachment, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferAttachmentParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedFramebufferAttachmentParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedFramebufferAttachmentParameterivEXT", framebuffer, attachment, pname, params); }
-        Handles.MH_glGetNamedFramebufferAttachmentParameterivEXT.invokeExact(handles.PFN_glGetNamedFramebufferAttachmentParameterivEXT, framebuffer, attachment, pname, params); }
+        Handles.MH_glGetNamedFramebufferAttachmentParameterivEXT.get().invokeExact(handles.PFN_glGetNamedFramebufferAttachmentParameterivEXT, framebuffer, attachment, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedFramebufferAttachmentParameterivEXT", e); }
     }
 
@@ -2783,7 +2784,7 @@ public final class GLEXTDirectStateAccess {
     public void GenerateTextureMipmapEXT(int texture, int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenerateTextureMipmapEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGenerateTextureMipmapEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenerateTextureMipmapEXT", texture, target); }
-        Handles.MH_glGenerateTextureMipmapEXT.invokeExact(handles.PFN_glGenerateTextureMipmapEXT, texture, target); }
+        Handles.MH_glGenerateTextureMipmapEXT.get().invokeExact(handles.PFN_glGenerateTextureMipmapEXT, texture, target); }
         catch (Throwable e) { throw new RuntimeException("error in GenerateTextureMipmapEXT", e); }
     }
 
@@ -2794,7 +2795,7 @@ public final class GLEXTDirectStateAccess {
     public void GenerateMultiTexMipmapEXT(int texunit, int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenerateMultiTexMipmapEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGenerateMultiTexMipmapEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenerateMultiTexMipmapEXT", texunit, target); }
-        Handles.MH_glGenerateMultiTexMipmapEXT.invokeExact(handles.PFN_glGenerateMultiTexMipmapEXT, texunit, target); }
+        Handles.MH_glGenerateMultiTexMipmapEXT.get().invokeExact(handles.PFN_glGenerateMultiTexMipmapEXT, texunit, target); }
         catch (Throwable e) { throw new RuntimeException("error in GenerateMultiTexMipmapEXT", e); }
     }
 
@@ -2805,7 +2806,7 @@ public final class GLEXTDirectStateAccess {
     public void FramebufferDrawBufferEXT(int framebuffer, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferDrawBufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferDrawBufferEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferDrawBufferEXT", framebuffer, mode); }
-        Handles.MH_glFramebufferDrawBufferEXT.invokeExact(handles.PFN_glFramebufferDrawBufferEXT, framebuffer, mode); }
+        Handles.MH_glFramebufferDrawBufferEXT.get().invokeExact(handles.PFN_glFramebufferDrawBufferEXT, framebuffer, mode); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferDrawBufferEXT", e); }
     }
 
@@ -2816,7 +2817,7 @@ public final class GLEXTDirectStateAccess {
     public void FramebufferDrawBuffersEXT(int framebuffer, int n, @NonNull MemorySegment bufs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferDrawBuffersEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferDrawBuffersEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferDrawBuffersEXT", framebuffer, n, bufs); }
-        Handles.MH_glFramebufferDrawBuffersEXT.invokeExact(handles.PFN_glFramebufferDrawBuffersEXT, framebuffer, n, bufs); }
+        Handles.MH_glFramebufferDrawBuffersEXT.get().invokeExact(handles.PFN_glFramebufferDrawBuffersEXT, framebuffer, n, bufs); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferDrawBuffersEXT", e); }
     }
 
@@ -2827,7 +2828,7 @@ public final class GLEXTDirectStateAccess {
     public void FramebufferReadBufferEXT(int framebuffer, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferReadBufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferReadBufferEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferReadBufferEXT", framebuffer, mode); }
-        Handles.MH_glFramebufferReadBufferEXT.invokeExact(handles.PFN_glFramebufferReadBufferEXT, framebuffer, mode); }
+        Handles.MH_glFramebufferReadBufferEXT.get().invokeExact(handles.PFN_glFramebufferReadBufferEXT, framebuffer, mode); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferReadBufferEXT", e); }
     }
 
@@ -2838,7 +2839,7 @@ public final class GLEXTDirectStateAccess {
     public void GetFramebufferParameterivEXT(int framebuffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetFramebufferParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFramebufferParameterivEXT", framebuffer, pname, params); }
-        Handles.MH_glGetFramebufferParameterivEXT.invokeExact(handles.PFN_glGetFramebufferParameterivEXT, framebuffer, pname, params); }
+        Handles.MH_glGetFramebufferParameterivEXT.get().invokeExact(handles.PFN_glGetFramebufferParameterivEXT, framebuffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFramebufferParameterivEXT", e); }
     }
 
@@ -2849,7 +2850,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedCopyBufferSubDataEXT(int readBuffer, int writeBuffer, long readOffset, long writeOffset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedCopyBufferSubDataEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedCopyBufferSubDataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedCopyBufferSubDataEXT", readBuffer, writeBuffer, readOffset, writeOffset, size); }
-        Handles.MH_glNamedCopyBufferSubDataEXT.invokeExact(handles.PFN_glNamedCopyBufferSubDataEXT, readBuffer, writeBuffer, readOffset, writeOffset, size); }
+        Handles.MH_glNamedCopyBufferSubDataEXT.get().invokeExact(handles.PFN_glNamedCopyBufferSubDataEXT, readBuffer, writeBuffer, readOffset, writeOffset, size); }
         catch (Throwable e) { throw new RuntimeException("error in NamedCopyBufferSubDataEXT", e); }
     }
 
@@ -2860,7 +2861,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedFramebufferTextureEXT(int framebuffer, int attachment, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTextureEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferTextureEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedFramebufferTextureEXT", framebuffer, attachment, texture, level); }
-        Handles.MH_glNamedFramebufferTextureEXT.invokeExact(handles.PFN_glNamedFramebufferTextureEXT, framebuffer, attachment, texture, level); }
+        Handles.MH_glNamedFramebufferTextureEXT.get().invokeExact(handles.PFN_glNamedFramebufferTextureEXT, framebuffer, attachment, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTextureEXT", e); }
     }
 
@@ -2871,7 +2872,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedFramebufferTextureLayerEXT(int framebuffer, int attachment, int texture, int level, int layer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTextureLayerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferTextureLayerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedFramebufferTextureLayerEXT", framebuffer, attachment, texture, level, layer); }
-        Handles.MH_glNamedFramebufferTextureLayerEXT.invokeExact(handles.PFN_glNamedFramebufferTextureLayerEXT, framebuffer, attachment, texture, level, layer); }
+        Handles.MH_glNamedFramebufferTextureLayerEXT.get().invokeExact(handles.PFN_glNamedFramebufferTextureLayerEXT, framebuffer, attachment, texture, level, layer); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTextureLayerEXT", e); }
     }
 
@@ -2882,7 +2883,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedFramebufferTextureFaceEXT(int framebuffer, int attachment, int texture, int level, int face) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTextureFaceEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferTextureFaceEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedFramebufferTextureFaceEXT", framebuffer, attachment, texture, level, face); }
-        Handles.MH_glNamedFramebufferTextureFaceEXT.invokeExact(handles.PFN_glNamedFramebufferTextureFaceEXT, framebuffer, attachment, texture, level, face); }
+        Handles.MH_glNamedFramebufferTextureFaceEXT.get().invokeExact(handles.PFN_glNamedFramebufferTextureFaceEXT, framebuffer, attachment, texture, level, face); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTextureFaceEXT", e); }
     }
 
@@ -2893,7 +2894,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureRenderbufferEXT(int texture, int target, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureRenderbufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureRenderbufferEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureRenderbufferEXT", texture, target, renderbuffer); }
-        Handles.MH_glTextureRenderbufferEXT.invokeExact(handles.PFN_glTextureRenderbufferEXT, texture, target, renderbuffer); }
+        Handles.MH_glTextureRenderbufferEXT.get().invokeExact(handles.PFN_glTextureRenderbufferEXT, texture, target, renderbuffer); }
         catch (Throwable e) { throw new RuntimeException("error in TextureRenderbufferEXT", e); }
     }
 
@@ -2904,7 +2905,7 @@ public final class GLEXTDirectStateAccess {
     public void MultiTexRenderbufferEXT(int texunit, int target, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexRenderbufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexRenderbufferEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexRenderbufferEXT", texunit, target, renderbuffer); }
-        Handles.MH_glMultiTexRenderbufferEXT.invokeExact(handles.PFN_glMultiTexRenderbufferEXT, texunit, target, renderbuffer); }
+        Handles.MH_glMultiTexRenderbufferEXT.get().invokeExact(handles.PFN_glMultiTexRenderbufferEXT, texunit, target, renderbuffer); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexRenderbufferEXT", e); }
     }
 
@@ -2915,7 +2916,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayVertexOffsetEXT(int vaobj, int buffer, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayVertexOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayVertexOffsetEXT", vaobj, buffer, size, type, stride, offset); }
-        Handles.MH_glVertexArrayVertexOffsetEXT.invokeExact(handles.PFN_glVertexArrayVertexOffsetEXT, vaobj, buffer, size, type, stride, offset); }
+        Handles.MH_glVertexArrayVertexOffsetEXT.get().invokeExact(handles.PFN_glVertexArrayVertexOffsetEXT, vaobj, buffer, size, type, stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexOffsetEXT", e); }
     }
 
@@ -2926,7 +2927,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayColorOffsetEXT(int vaobj, int buffer, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayColorOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayColorOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayColorOffsetEXT", vaobj, buffer, size, type, stride, offset); }
-        Handles.MH_glVertexArrayColorOffsetEXT.invokeExact(handles.PFN_glVertexArrayColorOffsetEXT, vaobj, buffer, size, type, stride, offset); }
+        Handles.MH_glVertexArrayColorOffsetEXT.get().invokeExact(handles.PFN_glVertexArrayColorOffsetEXT, vaobj, buffer, size, type, stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayColorOffsetEXT", e); }
     }
 
@@ -2937,7 +2938,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayEdgeFlagOffsetEXT(int vaobj, int buffer, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayEdgeFlagOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayEdgeFlagOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayEdgeFlagOffsetEXT", vaobj, buffer, stride, offset); }
-        Handles.MH_glVertexArrayEdgeFlagOffsetEXT.invokeExact(handles.PFN_glVertexArrayEdgeFlagOffsetEXT, vaobj, buffer, stride, offset); }
+        Handles.MH_glVertexArrayEdgeFlagOffsetEXT.get().invokeExact(handles.PFN_glVertexArrayEdgeFlagOffsetEXT, vaobj, buffer, stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayEdgeFlagOffsetEXT", e); }
     }
 
@@ -2948,7 +2949,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayIndexOffsetEXT(int vaobj, int buffer, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayIndexOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayIndexOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayIndexOffsetEXT", vaobj, buffer, type, stride, offset); }
-        Handles.MH_glVertexArrayIndexOffsetEXT.invokeExact(handles.PFN_glVertexArrayIndexOffsetEXT, vaobj, buffer, type, stride, offset); }
+        Handles.MH_glVertexArrayIndexOffsetEXT.get().invokeExact(handles.PFN_glVertexArrayIndexOffsetEXT, vaobj, buffer, type, stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayIndexOffsetEXT", e); }
     }
 
@@ -2959,7 +2960,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayNormalOffsetEXT(int vaobj, int buffer, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayNormalOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayNormalOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayNormalOffsetEXT", vaobj, buffer, type, stride, offset); }
-        Handles.MH_glVertexArrayNormalOffsetEXT.invokeExact(handles.PFN_glVertexArrayNormalOffsetEXT, vaobj, buffer, type, stride, offset); }
+        Handles.MH_glVertexArrayNormalOffsetEXT.get().invokeExact(handles.PFN_glVertexArrayNormalOffsetEXT, vaobj, buffer, type, stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayNormalOffsetEXT", e); }
     }
 
@@ -2970,7 +2971,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayTexCoordOffsetEXT(int vaobj, int buffer, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayTexCoordOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayTexCoordOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayTexCoordOffsetEXT", vaobj, buffer, size, type, stride, offset); }
-        Handles.MH_glVertexArrayTexCoordOffsetEXT.invokeExact(handles.PFN_glVertexArrayTexCoordOffsetEXT, vaobj, buffer, size, type, stride, offset); }
+        Handles.MH_glVertexArrayTexCoordOffsetEXT.get().invokeExact(handles.PFN_glVertexArrayTexCoordOffsetEXT, vaobj, buffer, size, type, stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayTexCoordOffsetEXT", e); }
     }
 
@@ -2981,7 +2982,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayMultiTexCoordOffsetEXT(int vaobj, int buffer, int texunit, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayMultiTexCoordOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayMultiTexCoordOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayMultiTexCoordOffsetEXT", vaobj, buffer, texunit, size, type, stride, offset); }
-        Handles.MH_glVertexArrayMultiTexCoordOffsetEXT.invokeExact(handles.PFN_glVertexArrayMultiTexCoordOffsetEXT, vaobj, buffer, texunit, size, type, stride, offset); }
+        Handles.MH_glVertexArrayMultiTexCoordOffsetEXT.get().invokeExact(handles.PFN_glVertexArrayMultiTexCoordOffsetEXT, vaobj, buffer, texunit, size, type, stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayMultiTexCoordOffsetEXT", e); }
     }
 
@@ -2992,7 +2993,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayFogCoordOffsetEXT(int vaobj, int buffer, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayFogCoordOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayFogCoordOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayFogCoordOffsetEXT", vaobj, buffer, type, stride, offset); }
-        Handles.MH_glVertexArrayFogCoordOffsetEXT.invokeExact(handles.PFN_glVertexArrayFogCoordOffsetEXT, vaobj, buffer, type, stride, offset); }
+        Handles.MH_glVertexArrayFogCoordOffsetEXT.get().invokeExact(handles.PFN_glVertexArrayFogCoordOffsetEXT, vaobj, buffer, type, stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayFogCoordOffsetEXT", e); }
     }
 
@@ -3003,7 +3004,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArraySecondaryColorOffsetEXT(int vaobj, int buffer, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArraySecondaryColorOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArraySecondaryColorOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArraySecondaryColorOffsetEXT", vaobj, buffer, size, type, stride, offset); }
-        Handles.MH_glVertexArraySecondaryColorOffsetEXT.invokeExact(handles.PFN_glVertexArraySecondaryColorOffsetEXT, vaobj, buffer, size, type, stride, offset); }
+        Handles.MH_glVertexArraySecondaryColorOffsetEXT.get().invokeExact(handles.PFN_glVertexArraySecondaryColorOffsetEXT, vaobj, buffer, size, type, stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArraySecondaryColorOffsetEXT", e); }
     }
 
@@ -3014,7 +3015,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayVertexAttribOffsetEXT(int vaobj, int buffer, int index, int size, int type, boolean normalized, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayVertexAttribOffsetEXT", vaobj, buffer, index, size, type, normalized, stride, offset); }
-        Handles.MH_glVertexArrayVertexAttribOffsetEXT.invokeExact(handles.PFN_glVertexArrayVertexAttribOffsetEXT, vaobj, buffer, index, size, type, ((normalized) ? (byte)1 : (byte)0), stride, offset); }
+        Handles.MH_glVertexArrayVertexAttribOffsetEXT.get().invokeExact(handles.PFN_glVertexArrayVertexAttribOffsetEXT, vaobj, buffer, index, size, type, ((normalized) ? (byte)1 : (byte)0), stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribOffsetEXT", e); }
     }
 
@@ -3025,7 +3026,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayVertexAttribIOffsetEXT(int vaobj, int buffer, int index, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribIOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribIOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayVertexAttribIOffsetEXT", vaobj, buffer, index, size, type, stride, offset); }
-        Handles.MH_glVertexArrayVertexAttribIOffsetEXT.invokeExact(handles.PFN_glVertexArrayVertexAttribIOffsetEXT, vaobj, buffer, index, size, type, stride, offset); }
+        Handles.MH_glVertexArrayVertexAttribIOffsetEXT.get().invokeExact(handles.PFN_glVertexArrayVertexAttribIOffsetEXT, vaobj, buffer, index, size, type, stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribIOffsetEXT", e); }
     }
 
@@ -3036,7 +3037,7 @@ public final class GLEXTDirectStateAccess {
     public void EnableVertexArrayEXT(int vaobj, int array) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableVertexArrayEXT)) throw new GLSymbolNotFoundError("Symbol not found: glEnableVertexArrayEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEnableVertexArrayEXT", vaobj, array); }
-        Handles.MH_glEnableVertexArrayEXT.invokeExact(handles.PFN_glEnableVertexArrayEXT, vaobj, array); }
+        Handles.MH_glEnableVertexArrayEXT.get().invokeExact(handles.PFN_glEnableVertexArrayEXT, vaobj, array); }
         catch (Throwable e) { throw new RuntimeException("error in EnableVertexArrayEXT", e); }
     }
 
@@ -3047,7 +3048,7 @@ public final class GLEXTDirectStateAccess {
     public void DisableVertexArrayEXT(int vaobj, int array) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableVertexArrayEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDisableVertexArrayEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDisableVertexArrayEXT", vaobj, array); }
-        Handles.MH_glDisableVertexArrayEXT.invokeExact(handles.PFN_glDisableVertexArrayEXT, vaobj, array); }
+        Handles.MH_glDisableVertexArrayEXT.get().invokeExact(handles.PFN_glDisableVertexArrayEXT, vaobj, array); }
         catch (Throwable e) { throw new RuntimeException("error in DisableVertexArrayEXT", e); }
     }
 
@@ -3058,7 +3059,7 @@ public final class GLEXTDirectStateAccess {
     public void EnableVertexArrayAttribEXT(int vaobj, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableVertexArrayAttribEXT)) throw new GLSymbolNotFoundError("Symbol not found: glEnableVertexArrayAttribEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEnableVertexArrayAttribEXT", vaobj, index); }
-        Handles.MH_glEnableVertexArrayAttribEXT.invokeExact(handles.PFN_glEnableVertexArrayAttribEXT, vaobj, index); }
+        Handles.MH_glEnableVertexArrayAttribEXT.get().invokeExact(handles.PFN_glEnableVertexArrayAttribEXT, vaobj, index); }
         catch (Throwable e) { throw new RuntimeException("error in EnableVertexArrayAttribEXT", e); }
     }
 
@@ -3069,7 +3070,7 @@ public final class GLEXTDirectStateAccess {
     public void DisableVertexArrayAttribEXT(int vaobj, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableVertexArrayAttribEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDisableVertexArrayAttribEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDisableVertexArrayAttribEXT", vaobj, index); }
-        Handles.MH_glDisableVertexArrayAttribEXT.invokeExact(handles.PFN_glDisableVertexArrayAttribEXT, vaobj, index); }
+        Handles.MH_glDisableVertexArrayAttribEXT.get().invokeExact(handles.PFN_glDisableVertexArrayAttribEXT, vaobj, index); }
         catch (Throwable e) { throw new RuntimeException("error in DisableVertexArrayAttribEXT", e); }
     }
 
@@ -3080,7 +3081,7 @@ public final class GLEXTDirectStateAccess {
     public void GetVertexArrayIntegervEXT(int vaobj, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayIntegervEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexArrayIntegervEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexArrayIntegervEXT", vaobj, pname, param); }
-        Handles.MH_glGetVertexArrayIntegervEXT.invokeExact(handles.PFN_glGetVertexArrayIntegervEXT, vaobj, pname, param); }
+        Handles.MH_glGetVertexArrayIntegervEXT.get().invokeExact(handles.PFN_glGetVertexArrayIntegervEXT, vaobj, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayIntegervEXT", e); }
     }
 
@@ -3091,7 +3092,7 @@ public final class GLEXTDirectStateAccess {
     public void GetVertexArrayPointervEXT(int vaobj, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayPointervEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexArrayPointervEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexArrayPointervEXT", vaobj, pname, param); }
-        Handles.MH_glGetVertexArrayPointervEXT.invokeExact(handles.PFN_glGetVertexArrayPointervEXT, vaobj, pname, param); }
+        Handles.MH_glGetVertexArrayPointervEXT.get().invokeExact(handles.PFN_glGetVertexArrayPointervEXT, vaobj, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayPointervEXT", e); }
     }
 
@@ -3102,7 +3103,7 @@ public final class GLEXTDirectStateAccess {
     public void GetVertexArrayIntegeri_vEXT(int vaobj, int index, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayIntegeri_vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexArrayIntegeri_vEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexArrayIntegeri_vEXT", vaobj, index, pname, param); }
-        Handles.MH_glGetVertexArrayIntegeri_vEXT.invokeExact(handles.PFN_glGetVertexArrayIntegeri_vEXT, vaobj, index, pname, param); }
+        Handles.MH_glGetVertexArrayIntegeri_vEXT.get().invokeExact(handles.PFN_glGetVertexArrayIntegeri_vEXT, vaobj, index, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayIntegeri_vEXT", e); }
     }
 
@@ -3113,7 +3114,7 @@ public final class GLEXTDirectStateAccess {
     public void GetVertexArrayPointeri_vEXT(int vaobj, int index, int pname, @NonNull MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayPointeri_vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexArrayPointeri_vEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexArrayPointeri_vEXT", vaobj, index, pname, param); }
-        Handles.MH_glGetVertexArrayPointeri_vEXT.invokeExact(handles.PFN_glGetVertexArrayPointeri_vEXT, vaobj, index, pname, param); }
+        Handles.MH_glGetVertexArrayPointeri_vEXT.get().invokeExact(handles.PFN_glGetVertexArrayPointeri_vEXT, vaobj, index, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayPointeri_vEXT", e); }
     }
 
@@ -3124,7 +3125,7 @@ public final class GLEXTDirectStateAccess {
     public @NonNull MemorySegment MapNamedBufferRangeEXT(int buffer, long offset, long length, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapNamedBufferRangeEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMapNamedBufferRangeEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapNamedBufferRangeEXT", buffer, offset, length, access); }
-        return (MemorySegment) Handles.MH_glMapNamedBufferRangeEXT.invokeExact(handles.PFN_glMapNamedBufferRangeEXT, buffer, offset, length, access); }
+        return (MemorySegment) Handles.MH_glMapNamedBufferRangeEXT.get().invokeExact(handles.PFN_glMapNamedBufferRangeEXT, buffer, offset, length, access); }
         catch (Throwable e) { throw new RuntimeException("error in MapNamedBufferRangeEXT", e); }
     }
 
@@ -3135,7 +3136,7 @@ public final class GLEXTDirectStateAccess {
     public void FlushMappedNamedBufferRangeEXT(int buffer, long offset, long length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushMappedNamedBufferRangeEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFlushMappedNamedBufferRangeEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFlushMappedNamedBufferRangeEXT", buffer, offset, length); }
-        Handles.MH_glFlushMappedNamedBufferRangeEXT.invokeExact(handles.PFN_glFlushMappedNamedBufferRangeEXT, buffer, offset, length); }
+        Handles.MH_glFlushMappedNamedBufferRangeEXT.get().invokeExact(handles.PFN_glFlushMappedNamedBufferRangeEXT, buffer, offset, length); }
         catch (Throwable e) { throw new RuntimeException("error in FlushMappedNamedBufferRangeEXT", e); }
     }
 
@@ -3146,7 +3147,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedBufferStorageEXT(int buffer, long size, @NonNull MemorySegment data, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferStorageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedBufferStorageEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedBufferStorageEXT", buffer, size, data, flags); }
-        Handles.MH_glNamedBufferStorageEXT.invokeExact(handles.PFN_glNamedBufferStorageEXT, buffer, size, data, flags); }
+        Handles.MH_glNamedBufferStorageEXT.get().invokeExact(handles.PFN_glNamedBufferStorageEXT, buffer, size, data, flags); }
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferStorageEXT", e); }
     }
 
@@ -3157,7 +3158,7 @@ public final class GLEXTDirectStateAccess {
     public void ClearNamedBufferDataEXT(int buffer, int internalformat, int format, int type, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedBufferDataEXT)) throw new GLSymbolNotFoundError("Symbol not found: glClearNamedBufferDataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearNamedBufferDataEXT", buffer, internalformat, format, type, data); }
-        Handles.MH_glClearNamedBufferDataEXT.invokeExact(handles.PFN_glClearNamedBufferDataEXT, buffer, internalformat, format, type, data); }
+        Handles.MH_glClearNamedBufferDataEXT.get().invokeExact(handles.PFN_glClearNamedBufferDataEXT, buffer, internalformat, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ClearNamedBufferDataEXT", e); }
     }
 
@@ -3168,7 +3169,7 @@ public final class GLEXTDirectStateAccess {
     public void ClearNamedBufferSubDataEXT(int buffer, int internalformat, long offset, long size, int format, int type, @NonNull MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedBufferSubDataEXT)) throw new GLSymbolNotFoundError("Symbol not found: glClearNamedBufferSubDataEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glClearNamedBufferSubDataEXT", buffer, internalformat, offset, size, format, type, data); }
-        Handles.MH_glClearNamedBufferSubDataEXT.invokeExact(handles.PFN_glClearNamedBufferSubDataEXT, buffer, internalformat, offset, size, format, type, data); }
+        Handles.MH_glClearNamedBufferSubDataEXT.get().invokeExact(handles.PFN_glClearNamedBufferSubDataEXT, buffer, internalformat, offset, size, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ClearNamedBufferSubDataEXT", e); }
     }
 
@@ -3179,7 +3180,7 @@ public final class GLEXTDirectStateAccess {
     public void NamedFramebufferParameteriEXT(int framebuffer, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferParameteriEXT)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferParameteriEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedFramebufferParameteriEXT", framebuffer, pname, param); }
-        Handles.MH_glNamedFramebufferParameteriEXT.invokeExact(handles.PFN_glNamedFramebufferParameteriEXT, framebuffer, pname, param); }
+        Handles.MH_glNamedFramebufferParameteriEXT.get().invokeExact(handles.PFN_glNamedFramebufferParameteriEXT, framebuffer, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferParameteriEXT", e); }
     }
 
@@ -3190,7 +3191,7 @@ public final class GLEXTDirectStateAccess {
     public void GetNamedFramebufferParameterivEXT(int framebuffer, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedFramebufferParameterivEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedFramebufferParameterivEXT", framebuffer, pname, params); }
-        Handles.MH_glGetNamedFramebufferParameterivEXT.invokeExact(handles.PFN_glGetNamedFramebufferParameterivEXT, framebuffer, pname, params); }
+        Handles.MH_glGetNamedFramebufferParameterivEXT.get().invokeExact(handles.PFN_glGetNamedFramebufferParameterivEXT, framebuffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedFramebufferParameterivEXT", e); }
     }
 
@@ -3201,7 +3202,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform1dEXT(int program, int location, double x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1dEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1dEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1dEXT", program, location, x); }
-        Handles.MH_glProgramUniform1dEXT.invokeExact(handles.PFN_glProgramUniform1dEXT, program, location, x); }
+        Handles.MH_glProgramUniform1dEXT.get().invokeExact(handles.PFN_glProgramUniform1dEXT, program, location, x); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1dEXT", e); }
     }
 
@@ -3212,7 +3213,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform2dEXT(int program, int location, double x, double y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2dEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2dEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2dEXT", program, location, x, y); }
-        Handles.MH_glProgramUniform2dEXT.invokeExact(handles.PFN_glProgramUniform2dEXT, program, location, x, y); }
+        Handles.MH_glProgramUniform2dEXT.get().invokeExact(handles.PFN_glProgramUniform2dEXT, program, location, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2dEXT", e); }
     }
 
@@ -3223,7 +3224,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform3dEXT(int program, int location, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3dEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3dEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3dEXT", program, location, x, y, z); }
-        Handles.MH_glProgramUniform3dEXT.invokeExact(handles.PFN_glProgramUniform3dEXT, program, location, x, y, z); }
+        Handles.MH_glProgramUniform3dEXT.get().invokeExact(handles.PFN_glProgramUniform3dEXT, program, location, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3dEXT", e); }
     }
 
@@ -3234,7 +3235,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform4dEXT(int program, int location, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4dEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4dEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4dEXT", program, location, x, y, z, w); }
-        Handles.MH_glProgramUniform4dEXT.invokeExact(handles.PFN_glProgramUniform4dEXT, program, location, x, y, z, w); }
+        Handles.MH_glProgramUniform4dEXT.get().invokeExact(handles.PFN_glProgramUniform4dEXT, program, location, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4dEXT", e); }
     }
 
@@ -3245,7 +3246,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform1dvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform1dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform1dvEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform1dvEXT.invokeExact(handles.PFN_glProgramUniform1dvEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform1dvEXT.get().invokeExact(handles.PFN_glProgramUniform1dvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1dvEXT", e); }
     }
 
@@ -3256,7 +3257,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform2dvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform2dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform2dvEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform2dvEXT.invokeExact(handles.PFN_glProgramUniform2dvEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform2dvEXT.get().invokeExact(handles.PFN_glProgramUniform2dvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2dvEXT", e); }
     }
 
@@ -3267,7 +3268,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform3dvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform3dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform3dvEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform3dvEXT.invokeExact(handles.PFN_glProgramUniform3dvEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform3dvEXT.get().invokeExact(handles.PFN_glProgramUniform3dvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3dvEXT", e); }
     }
 
@@ -3278,7 +3279,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniform4dvEXT(int program, int location, int count, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniform4dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniform4dvEXT", program, location, count, value); }
-        Handles.MH_glProgramUniform4dvEXT.invokeExact(handles.PFN_glProgramUniform4dvEXT, program, location, count, value); }
+        Handles.MH_glProgramUniform4dvEXT.get().invokeExact(handles.PFN_glProgramUniform4dvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4dvEXT", e); }
     }
 
@@ -3289,7 +3290,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix2dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2dvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix2dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix2dvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix2dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2dvEXT", e); }
     }
 
@@ -3300,7 +3301,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix3dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3dvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix3dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix3dvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix3dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3dvEXT", e); }
     }
 
@@ -3311,7 +3312,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix4dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4dvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix4dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix4dvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix4dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4dvEXT", e); }
     }
 
@@ -3322,7 +3323,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix2x3dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x3dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x3dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x3dvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix2x3dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2x3dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix2x3dvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix2x3dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x3dvEXT", e); }
     }
 
@@ -3333,7 +3334,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix2x4dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x4dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x4dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix2x4dvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix2x4dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2x4dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix2x4dvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix2x4dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix2x4dvEXT", e); }
     }
 
@@ -3344,7 +3345,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix3x2dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x2dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x2dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x2dvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix3x2dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3x2dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix3x2dvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix3x2dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x2dvEXT", e); }
     }
 
@@ -3355,7 +3356,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix3x4dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x4dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x4dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix3x4dvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix3x4dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3x4dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix3x4dvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix3x4dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix3x4dvEXT", e); }
     }
 
@@ -3366,7 +3367,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix4x2dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x2dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x2dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x2dvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix4x2dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4x2dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix4x2dvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix4x2dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x2dvEXT", e); }
     }
 
@@ -3377,7 +3378,7 @@ public final class GLEXTDirectStateAccess {
     public void ProgramUniformMatrix4x3dvEXT(int program, int location, int count, boolean transpose, @NonNull MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x3dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x3dvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformMatrix4x3dvEXT", program, location, count, transpose, value); }
-        Handles.MH_glProgramUniformMatrix4x3dvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4x3dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        Handles.MH_glProgramUniformMatrix4x3dvEXT.get().invokeExact(handles.PFN_glProgramUniformMatrix4x3dvEXT, program, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformMatrix4x3dvEXT", e); }
     }
 
@@ -3388,7 +3389,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureBufferRangeEXT(int texture, int target, int internalformat, int buffer, long offset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureBufferRangeEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureBufferRangeEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureBufferRangeEXT", texture, target, internalformat, buffer, offset, size); }
-        Handles.MH_glTextureBufferRangeEXT.invokeExact(handles.PFN_glTextureBufferRangeEXT, texture, target, internalformat, buffer, offset, size); }
+        Handles.MH_glTextureBufferRangeEXT.get().invokeExact(handles.PFN_glTextureBufferRangeEXT, texture, target, internalformat, buffer, offset, size); }
         catch (Throwable e) { throw new RuntimeException("error in TextureBufferRangeEXT", e); }
     }
 
@@ -3399,7 +3400,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureStorage1DEXT(int texture, int target, int levels, int internalformat, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureStorage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureStorage1DEXT", texture, target, levels, internalformat, width); }
-        Handles.MH_glTextureStorage1DEXT.invokeExact(handles.PFN_glTextureStorage1DEXT, texture, target, levels, internalformat, width); }
+        Handles.MH_glTextureStorage1DEXT.get().invokeExact(handles.PFN_glTextureStorage1DEXT, texture, target, levels, internalformat, width); }
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage1DEXT", e); }
     }
 
@@ -3410,7 +3411,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureStorage2DEXT(int texture, int target, int levels, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureStorage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureStorage2DEXT", texture, target, levels, internalformat, width, height); }
-        Handles.MH_glTextureStorage2DEXT.invokeExact(handles.PFN_glTextureStorage2DEXT, texture, target, levels, internalformat, width, height); }
+        Handles.MH_glTextureStorage2DEXT.get().invokeExact(handles.PFN_glTextureStorage2DEXT, texture, target, levels, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage2DEXT", e); }
     }
 
@@ -3421,7 +3422,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureStorage3DEXT(int texture, int target, int levels, int internalformat, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureStorage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureStorage3DEXT", texture, target, levels, internalformat, width, height, depth); }
-        Handles.MH_glTextureStorage3DEXT.invokeExact(handles.PFN_glTextureStorage3DEXT, texture, target, levels, internalformat, width, height, depth); }
+        Handles.MH_glTextureStorage3DEXT.get().invokeExact(handles.PFN_glTextureStorage3DEXT, texture, target, levels, internalformat, width, height, depth); }
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage3DEXT", e); }
     }
 
@@ -3432,7 +3433,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureStorage2DMultisampleEXT(int texture, int target, int samples, int internalformat, int width, int height, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage2DMultisampleEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureStorage2DMultisampleEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureStorage2DMultisampleEXT", texture, target, samples, internalformat, width, height, fixedsamplelocations); }
-        Handles.MH_glTextureStorage2DMultisampleEXT.invokeExact(handles.PFN_glTextureStorage2DMultisampleEXT, texture, target, samples, internalformat, width, height, ((fixedsamplelocations) ? (byte)1 : (byte)0)); }
+        Handles.MH_glTextureStorage2DMultisampleEXT.get().invokeExact(handles.PFN_glTextureStorage2DMultisampleEXT, texture, target, samples, internalformat, width, height, ((fixedsamplelocations) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage2DMultisampleEXT", e); }
     }
 
@@ -3443,7 +3444,7 @@ public final class GLEXTDirectStateAccess {
     public void TextureStorage3DMultisampleEXT(int texture, int target, int samples, int internalformat, int width, int height, int depth, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage3DMultisampleEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureStorage3DMultisampleEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureStorage3DMultisampleEXT", texture, target, samples, internalformat, width, height, depth, fixedsamplelocations); }
-        Handles.MH_glTextureStorage3DMultisampleEXT.invokeExact(handles.PFN_glTextureStorage3DMultisampleEXT, texture, target, samples, internalformat, width, height, depth, ((fixedsamplelocations) ? (byte)1 : (byte)0)); }
+        Handles.MH_glTextureStorage3DMultisampleEXT.get().invokeExact(handles.PFN_glTextureStorage3DMultisampleEXT, texture, target, samples, internalformat, width, height, depth, ((fixedsamplelocations) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TextureStorage3DMultisampleEXT", e); }
     }
 
@@ -3454,7 +3455,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayBindVertexBufferEXT(int vaobj, int bindingindex, int buffer, long offset, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayBindVertexBufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayBindVertexBufferEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayBindVertexBufferEXT", vaobj, bindingindex, buffer, offset, stride); }
-        Handles.MH_glVertexArrayBindVertexBufferEXT.invokeExact(handles.PFN_glVertexArrayBindVertexBufferEXT, vaobj, bindingindex, buffer, offset, stride); }
+        Handles.MH_glVertexArrayBindVertexBufferEXT.get().invokeExact(handles.PFN_glVertexArrayBindVertexBufferEXT, vaobj, bindingindex, buffer, offset, stride); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayBindVertexBufferEXT", e); }
     }
 
@@ -3465,7 +3466,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayVertexAttribFormatEXT(int vaobj, int attribindex, int size, int type, boolean normalized, int relativeoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribFormatEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribFormatEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayVertexAttribFormatEXT", vaobj, attribindex, size, type, normalized, relativeoffset); }
-        Handles.MH_glVertexArrayVertexAttribFormatEXT.invokeExact(handles.PFN_glVertexArrayVertexAttribFormatEXT, vaobj, attribindex, size, type, ((normalized) ? (byte)1 : (byte)0), relativeoffset); }
+        Handles.MH_glVertexArrayVertexAttribFormatEXT.get().invokeExact(handles.PFN_glVertexArrayVertexAttribFormatEXT, vaobj, attribindex, size, type, ((normalized) ? (byte)1 : (byte)0), relativeoffset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribFormatEXT", e); }
     }
 
@@ -3476,7 +3477,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayVertexAttribIFormatEXT(int vaobj, int attribindex, int size, int type, int relativeoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribIFormatEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribIFormatEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayVertexAttribIFormatEXT", vaobj, attribindex, size, type, relativeoffset); }
-        Handles.MH_glVertexArrayVertexAttribIFormatEXT.invokeExact(handles.PFN_glVertexArrayVertexAttribIFormatEXT, vaobj, attribindex, size, type, relativeoffset); }
+        Handles.MH_glVertexArrayVertexAttribIFormatEXT.get().invokeExact(handles.PFN_glVertexArrayVertexAttribIFormatEXT, vaobj, attribindex, size, type, relativeoffset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribIFormatEXT", e); }
     }
 
@@ -3487,7 +3488,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayVertexAttribLFormatEXT(int vaobj, int attribindex, int size, int type, int relativeoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribLFormatEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribLFormatEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayVertexAttribLFormatEXT", vaobj, attribindex, size, type, relativeoffset); }
-        Handles.MH_glVertexArrayVertexAttribLFormatEXT.invokeExact(handles.PFN_glVertexArrayVertexAttribLFormatEXT, vaobj, attribindex, size, type, relativeoffset); }
+        Handles.MH_glVertexArrayVertexAttribLFormatEXT.get().invokeExact(handles.PFN_glVertexArrayVertexAttribLFormatEXT, vaobj, attribindex, size, type, relativeoffset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribLFormatEXT", e); }
     }
 
@@ -3498,7 +3499,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayVertexAttribBindingEXT(int vaobj, int attribindex, int bindingindex) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribBindingEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribBindingEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayVertexAttribBindingEXT", vaobj, attribindex, bindingindex); }
-        Handles.MH_glVertexArrayVertexAttribBindingEXT.invokeExact(handles.PFN_glVertexArrayVertexAttribBindingEXT, vaobj, attribindex, bindingindex); }
+        Handles.MH_glVertexArrayVertexAttribBindingEXT.get().invokeExact(handles.PFN_glVertexArrayVertexAttribBindingEXT, vaobj, attribindex, bindingindex); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribBindingEXT", e); }
     }
 
@@ -3509,7 +3510,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayVertexBindingDivisorEXT(int vaobj, int bindingindex, int divisor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexBindingDivisorEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayVertexBindingDivisorEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayVertexBindingDivisorEXT", vaobj, bindingindex, divisor); }
-        Handles.MH_glVertexArrayVertexBindingDivisorEXT.invokeExact(handles.PFN_glVertexArrayVertexBindingDivisorEXT, vaobj, bindingindex, divisor); }
+        Handles.MH_glVertexArrayVertexBindingDivisorEXT.get().invokeExact(handles.PFN_glVertexArrayVertexBindingDivisorEXT, vaobj, bindingindex, divisor); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexBindingDivisorEXT", e); }
     }
 
@@ -3520,7 +3521,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayVertexAttribLOffsetEXT(int vaobj, int buffer, int index, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribLOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribLOffsetEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayVertexAttribLOffsetEXT", vaobj, buffer, index, size, type, stride, offset); }
-        Handles.MH_glVertexArrayVertexAttribLOffsetEXT.invokeExact(handles.PFN_glVertexArrayVertexAttribLOffsetEXT, vaobj, buffer, index, size, type, stride, offset); }
+        Handles.MH_glVertexArrayVertexAttribLOffsetEXT.get().invokeExact(handles.PFN_glVertexArrayVertexAttribLOffsetEXT, vaobj, buffer, index, size, type, stride, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribLOffsetEXT", e); }
     }
 
@@ -3531,7 +3532,7 @@ public final class GLEXTDirectStateAccess {
     public void TexturePageCommitmentEXT(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, boolean commit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexturePageCommitmentEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexturePageCommitmentEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexturePageCommitmentEXT", texture, level, xoffset, yoffset, zoffset, width, height, depth, commit); }
-        Handles.MH_glTexturePageCommitmentEXT.invokeExact(handles.PFN_glTexturePageCommitmentEXT, texture, level, xoffset, yoffset, zoffset, width, height, depth, ((commit) ? (byte)1 : (byte)0)); }
+        Handles.MH_glTexturePageCommitmentEXT.get().invokeExact(handles.PFN_glTexturePageCommitmentEXT, texture, level, xoffset, yoffset, zoffset, width, height, depth, ((commit) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TexturePageCommitmentEXT", e); }
     }
 
@@ -3542,7 +3543,7 @@ public final class GLEXTDirectStateAccess {
     public void VertexArrayVertexAttribDivisorEXT(int vaobj, int index, int divisor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribDivisorEXT)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribDivisorEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexArrayVertexAttribDivisorEXT", vaobj, index, divisor); }
-        Handles.MH_glVertexArrayVertexAttribDivisorEXT.invokeExact(handles.PFN_glVertexArrayVertexAttribDivisorEXT, vaobj, index, divisor); }
+        Handles.MH_glVertexArrayVertexAttribDivisorEXT.get().invokeExact(handles.PFN_glVertexArrayVertexAttribDivisorEXT, vaobj, index, divisor); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexAttribDivisorEXT", e); }
     }
 

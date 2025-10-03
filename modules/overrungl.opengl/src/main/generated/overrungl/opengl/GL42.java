@@ -2,6 +2,7 @@
 package overrungl.opengl;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import static overrungl.internal.RuntimeHelper.*;
@@ -121,18 +122,18 @@ public class GL42 extends GL41 {
     public static final int GL_TEXTURE_IMMUTABLE_FORMAT = 0x912F;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDrawArraysInstancedBaseInstance = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDrawElementsInstancedBaseInstance = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDrawElementsInstancedBaseVertexBaseInstance = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetInternalformativ = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetActiveAtomicCounterBufferiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glBindImageTexture = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMemoryBarrier = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexStorage1D = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexStorage2D = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexStorage3D = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDrawTransformFeedbackInstanced = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDrawTransformFeedbackStreamInstanced = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glDrawArraysInstancedBaseInstance = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDrawElementsInstancedBaseInstance = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDrawElementsInstancedBaseVertexBaseInstance = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetInternalformativ = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetActiveAtomicCounterBufferiv = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glBindImageTexture = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glMemoryBarrier = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexStorage1D = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexStorage2D = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTexStorage3D = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDrawTransformFeedbackInstanced = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDrawTransformFeedbackStreamInstanced = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glDrawArraysInstancedBaseInstance;
         public final MemorySegment PFN_glDrawElementsInstancedBaseInstance;
         public final MemorySegment PFN_glDrawElementsInstancedBaseVertexBaseInstance;
@@ -173,7 +174,7 @@ public class GL42 extends GL41 {
     public void DrawArraysInstancedBaseInstance(int mode, int first, int count, int instancecount, int baseinstance) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysInstancedBaseInstance)) throw new GLSymbolNotFoundError("Symbol not found: glDrawArraysInstancedBaseInstance");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawArraysInstancedBaseInstance", mode, first, count, instancecount, baseinstance); }
-        Handles.MH_glDrawArraysInstancedBaseInstance.invokeExact(handles.PFN_glDrawArraysInstancedBaseInstance, mode, first, count, instancecount, baseinstance); }
+        Handles.MH_glDrawArraysInstancedBaseInstance.get().invokeExact(handles.PFN_glDrawArraysInstancedBaseInstance, mode, first, count, instancecount, baseinstance); }
         catch (Throwable e) { throw new RuntimeException("error in DrawArraysInstancedBaseInstance", e); }
     }
 
@@ -184,7 +185,7 @@ public class GL42 extends GL41 {
     public void DrawElementsInstancedBaseInstance(int mode, int count, int type, @NonNull MemorySegment indices, int instancecount, int baseinstance) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseInstance)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseInstance");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElementsInstancedBaseInstance", mode, count, type, indices, instancecount, baseinstance); }
-        Handles.MH_glDrawElementsInstancedBaseInstance.invokeExact(handles.PFN_glDrawElementsInstancedBaseInstance, mode, count, type, indices, instancecount, baseinstance); }
+        Handles.MH_glDrawElementsInstancedBaseInstance.get().invokeExact(handles.PFN_glDrawElementsInstancedBaseInstance, mode, count, type, indices, instancecount, baseinstance); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedBaseInstance", e); }
     }
 
@@ -195,7 +196,7 @@ public class GL42 extends GL41 {
     public void DrawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, @NonNull MemorySegment indices, int instancecount, int basevertex, int baseinstance) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseVertexBaseInstance)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertexBaseInstance");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElementsInstancedBaseVertexBaseInstance", mode, count, type, indices, instancecount, basevertex, baseinstance); }
-        Handles.MH_glDrawElementsInstancedBaseVertexBaseInstance.invokeExact(handles.PFN_glDrawElementsInstancedBaseVertexBaseInstance, mode, count, type, indices, instancecount, basevertex, baseinstance); }
+        Handles.MH_glDrawElementsInstancedBaseVertexBaseInstance.get().invokeExact(handles.PFN_glDrawElementsInstancedBaseVertexBaseInstance, mode, count, type, indices, instancecount, basevertex, baseinstance); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedBaseVertexBaseInstance", e); }
     }
 
@@ -206,7 +207,7 @@ public class GL42 extends GL41 {
     public void GetInternalformativ(int target, int internalformat, int pname, int count, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformativ)) throw new GLSymbolNotFoundError("Symbol not found: glGetInternalformativ");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInternalformativ", target, internalformat, pname, count, params); }
-        Handles.MH_glGetInternalformativ.invokeExact(handles.PFN_glGetInternalformativ, target, internalformat, pname, count, params); }
+        Handles.MH_glGetInternalformativ.get().invokeExact(handles.PFN_glGetInternalformativ, target, internalformat, pname, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetInternalformativ", e); }
     }
 
@@ -217,7 +218,7 @@ public class GL42 extends GL41 {
     public void GetActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveAtomicCounterBufferiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetActiveAtomicCounterBufferiv");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetActiveAtomicCounterBufferiv", program, bufferIndex, pname, params); }
-        Handles.MH_glGetActiveAtomicCounterBufferiv.invokeExact(handles.PFN_glGetActiveAtomicCounterBufferiv, program, bufferIndex, pname, params); }
+        Handles.MH_glGetActiveAtomicCounterBufferiv.get().invokeExact(handles.PFN_glGetActiveAtomicCounterBufferiv, program, bufferIndex, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetActiveAtomicCounterBufferiv", e); }
     }
 
@@ -228,7 +229,7 @@ public class GL42 extends GL41 {
     public void BindImageTexture(int unit, int texture, int level, boolean layered, int layer, int access, int format) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindImageTexture)) throw new GLSymbolNotFoundError("Symbol not found: glBindImageTexture");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindImageTexture", unit, texture, level, layered, layer, access, format); }
-        Handles.MH_glBindImageTexture.invokeExact(handles.PFN_glBindImageTexture, unit, texture, level, ((layered) ? (byte)1 : (byte)0), layer, access, format); }
+        Handles.MH_glBindImageTexture.get().invokeExact(handles.PFN_glBindImageTexture, unit, texture, level, ((layered) ? (byte)1 : (byte)0), layer, access, format); }
         catch (Throwable e) { throw new RuntimeException("error in BindImageTexture", e); }
     }
 
@@ -239,7 +240,7 @@ public class GL42 extends GL41 {
     public void MemoryBarrier(int barriers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrier)) throw new GLSymbolNotFoundError("Symbol not found: glMemoryBarrier");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMemoryBarrier", barriers); }
-        Handles.MH_glMemoryBarrier.invokeExact(handles.PFN_glMemoryBarrier, barriers); }
+        Handles.MH_glMemoryBarrier.get().invokeExact(handles.PFN_glMemoryBarrier, barriers); }
         catch (Throwable e) { throw new RuntimeException("error in MemoryBarrier", e); }
     }
 
@@ -250,7 +251,7 @@ public class GL42 extends GL41 {
     public void TexStorage1D(int target, int levels, int internalformat, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage1D)) throw new GLSymbolNotFoundError("Symbol not found: glTexStorage1D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexStorage1D", target, levels, internalformat, width); }
-        Handles.MH_glTexStorage1D.invokeExact(handles.PFN_glTexStorage1D, target, levels, internalformat, width); }
+        Handles.MH_glTexStorage1D.get().invokeExact(handles.PFN_glTexStorage1D, target, levels, internalformat, width); }
         catch (Throwable e) { throw new RuntimeException("error in TexStorage1D", e); }
     }
 
@@ -261,7 +262,7 @@ public class GL42 extends GL41 {
     public void TexStorage2D(int target, int levels, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage2D)) throw new GLSymbolNotFoundError("Symbol not found: glTexStorage2D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexStorage2D", target, levels, internalformat, width, height); }
-        Handles.MH_glTexStorage2D.invokeExact(handles.PFN_glTexStorage2D, target, levels, internalformat, width, height); }
+        Handles.MH_glTexStorage2D.get().invokeExact(handles.PFN_glTexStorage2D, target, levels, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in TexStorage2D", e); }
     }
 
@@ -272,7 +273,7 @@ public class GL42 extends GL41 {
     public void TexStorage3D(int target, int levels, int internalformat, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage3D)) throw new GLSymbolNotFoundError("Symbol not found: glTexStorage3D");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexStorage3D", target, levels, internalformat, width, height, depth); }
-        Handles.MH_glTexStorage3D.invokeExact(handles.PFN_glTexStorage3D, target, levels, internalformat, width, height, depth); }
+        Handles.MH_glTexStorage3D.get().invokeExact(handles.PFN_glTexStorage3D, target, levels, internalformat, width, height, depth); }
         catch (Throwable e) { throw new RuntimeException("error in TexStorage3D", e); }
     }
 
@@ -283,7 +284,7 @@ public class GL42 extends GL41 {
     public void DrawTransformFeedbackInstanced(int mode, int id, int instancecount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawTransformFeedbackInstanced)) throw new GLSymbolNotFoundError("Symbol not found: glDrawTransformFeedbackInstanced");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawTransformFeedbackInstanced", mode, id, instancecount); }
-        Handles.MH_glDrawTransformFeedbackInstanced.invokeExact(handles.PFN_glDrawTransformFeedbackInstanced, mode, id, instancecount); }
+        Handles.MH_glDrawTransformFeedbackInstanced.get().invokeExact(handles.PFN_glDrawTransformFeedbackInstanced, mode, id, instancecount); }
         catch (Throwable e) { throw new RuntimeException("error in DrawTransformFeedbackInstanced", e); }
     }
 
@@ -294,7 +295,7 @@ public class GL42 extends GL41 {
     public void DrawTransformFeedbackStreamInstanced(int mode, int id, int stream, int instancecount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawTransformFeedbackStreamInstanced)) throw new GLSymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStreamInstanced");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawTransformFeedbackStreamInstanced", mode, id, stream, instancecount); }
-        Handles.MH_glDrawTransformFeedbackStreamInstanced.invokeExact(handles.PFN_glDrawTransformFeedbackStreamInstanced, mode, id, stream, instancecount); }
+        Handles.MH_glDrawTransformFeedbackStreamInstanced.get().invokeExact(handles.PFN_glDrawTransformFeedbackStreamInstanced, mode, id, stream, instancecount); }
         catch (Throwable e) { throw new RuntimeException("error in DrawTransformFeedbackStreamInstanced", e); }
     }
 

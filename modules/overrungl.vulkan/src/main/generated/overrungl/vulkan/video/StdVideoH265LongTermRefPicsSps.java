@@ -29,13 +29,13 @@ public final class StdVideoH265LongTermRefPicsSps extends GroupType {
     /// The memory layout of `used_by_curr_pic_lt_sps_flag`.
     public static final MemoryLayout LAYOUT_used_by_curr_pic_lt_sps_flag = LAYOUT.select(PathElement.groupElement("used_by_curr_pic_lt_sps_flag"));
     /// The [VarHandle] of `used_by_curr_pic_lt_sps_flag` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_used_by_curr_pic_lt_sps_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("used_by_curr_pic_lt_sps_flag"));
+    public static final Supplier<VarHandle> VH_used_by_curr_pic_lt_sps_flag = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("used_by_curr_pic_lt_sps_flag")));
     /// The byte offset of `lt_ref_pic_poc_lsb_sps`.
     public static final long OFFSET_lt_ref_pic_poc_lsb_sps = LAYOUT.byteOffset(PathElement.groupElement("lt_ref_pic_poc_lsb_sps"));
     /// The memory layout of `lt_ref_pic_poc_lsb_sps`.
     public static final MemoryLayout LAYOUT_lt_ref_pic_poc_lsb_sps = LAYOUT.select(PathElement.groupElement("lt_ref_pic_poc_lsb_sps"));
     /// The [VarHandle] of `lt_ref_pic_poc_lsb_sps` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_lt_ref_pic_poc_lsb_sps = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lt_ref_pic_poc_lsb_sps"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_lt_ref_pic_poc_lsb_sps = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("lt_ref_pic_poc_lsb_sps"), PathElement.sequenceElement()));
 
     /// Creates `StdVideoH265LongTermRefPicsSps` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class StdVideoH265LongTermRefPicsSps extends GroupType {
     /// {@return `used_by_curr_pic_lt_sps_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int used_by_curr_pic_lt_sps_flag(MemorySegment segment, long index) { return (int) VH_used_by_curr_pic_lt_sps_flag.get(segment, 0L, index); }
+    public static int used_by_curr_pic_lt_sps_flag(MemorySegment segment, long index) { return (int) VH_used_by_curr_pic_lt_sps_flag.get().get(segment, 0L, index); }
     /// {@return `used_by_curr_pic_lt_sps_flag`}
     public int used_by_curr_pic_lt_sps_flag() { return used_by_curr_pic_lt_sps_flag(this.segment(), 0L); }
     /// Sets `used_by_curr_pic_lt_sps_flag` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void used_by_curr_pic_lt_sps_flag(MemorySegment segment, long index, int value) { VH_used_by_curr_pic_lt_sps_flag.set(segment, 0L, index, value); }
+    public static void used_by_curr_pic_lt_sps_flag(MemorySegment segment, long index, int value) { VH_used_by_curr_pic_lt_sps_flag.get().set(segment, 0L, index, value); }
     /// Sets `used_by_curr_pic_lt_sps_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -107,7 +107,7 @@ public final class StdVideoH265LongTermRefPicsSps extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int lt_ref_pic_poc_lsb_sps(MemorySegment segment, long index, long index0) { return (int) VH_lt_ref_pic_poc_lsb_sps.get(segment, 0L, index, index0); }
+    public static int lt_ref_pic_poc_lsb_sps(MemorySegment segment, long index, long index0) { return (int) VH_lt_ref_pic_poc_lsb_sps.get().get(segment, 0L, index, index0); }
     /// {@return `lt_ref_pic_poc_lsb_sps`}
     public MemorySegment lt_ref_pic_poc_lsb_sps() { return lt_ref_pic_poc_lsb_sps(this.segment(), 0L); }
     /// {@return `lt_ref_pic_poc_lsb_sps`}
@@ -123,7 +123,7 @@ public final class StdVideoH265LongTermRefPicsSps extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void lt_ref_pic_poc_lsb_sps(MemorySegment segment, long index, long index0, int value) { VH_lt_ref_pic_poc_lsb_sps.set(segment, 0L, index, index0, value); }
+    public static void lt_ref_pic_poc_lsb_sps(MemorySegment segment, long index, long index0, int value) { VH_lt_ref_pic_poc_lsb_sps.get().set(segment, 0L, index, index0, value); }
     /// Sets `lt_ref_pic_poc_lsb_sps` with the given value.
     /// @param value the value
     /// @return `this`

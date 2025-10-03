@@ -33,25 +33,25 @@ public final class VkDeviceGroupBindSparseInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `resourceDeviceIndex`.
     public static final long OFFSET_resourceDeviceIndex = LAYOUT.byteOffset(PathElement.groupElement("resourceDeviceIndex"));
     /// The memory layout of `resourceDeviceIndex`.
     public static final MemoryLayout LAYOUT_resourceDeviceIndex = LAYOUT.select(PathElement.groupElement("resourceDeviceIndex"));
     /// The [VarHandle] of `resourceDeviceIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_resourceDeviceIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resourceDeviceIndex"));
+    public static final Supplier<VarHandle> VH_resourceDeviceIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("resourceDeviceIndex")));
     /// The byte offset of `memoryDeviceIndex`.
     public static final long OFFSET_memoryDeviceIndex = LAYOUT.byteOffset(PathElement.groupElement("memoryDeviceIndex"));
     /// The memory layout of `memoryDeviceIndex`.
     public static final MemoryLayout LAYOUT_memoryDeviceIndex = LAYOUT.select(PathElement.groupElement("memoryDeviceIndex"));
     /// The [VarHandle] of `memoryDeviceIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryDeviceIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryDeviceIndex"));
+    public static final Supplier<VarHandle> VH_memoryDeviceIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryDeviceIndex")));
 
     /// Creates `VkDeviceGroupBindSparseInfo` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkDeviceGroupBindSparseInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkDeviceGroupBindSparseInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkDeviceGroupBindSparseInfo extends GroupType {
     /// {@return `resourceDeviceIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int resourceDeviceIndex(MemorySegment segment, long index) { return (int) VH_resourceDeviceIndex.get(segment, 0L, index); }
+    public static int resourceDeviceIndex(MemorySegment segment, long index) { return (int) VH_resourceDeviceIndex.get().get(segment, 0L, index); }
     /// {@return `resourceDeviceIndex`}
     public int resourceDeviceIndex() { return resourceDeviceIndex(this.segment(), 0L); }
     /// Sets `resourceDeviceIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void resourceDeviceIndex(MemorySegment segment, long index, int value) { VH_resourceDeviceIndex.set(segment, 0L, index, value); }
+    public static void resourceDeviceIndex(MemorySegment segment, long index, int value) { VH_resourceDeviceIndex.get().set(segment, 0L, index, value); }
     /// Sets `resourceDeviceIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkDeviceGroupBindSparseInfo extends GroupType {
     /// {@return `memoryDeviceIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int memoryDeviceIndex(MemorySegment segment, long index) { return (int) VH_memoryDeviceIndex.get(segment, 0L, index); }
+    public static int memoryDeviceIndex(MemorySegment segment, long index) { return (int) VH_memoryDeviceIndex.get().get(segment, 0L, index); }
     /// {@return `memoryDeviceIndex`}
     public int memoryDeviceIndex() { return memoryDeviceIndex(this.segment(), 0L); }
     /// Sets `memoryDeviceIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void memoryDeviceIndex(MemorySegment segment, long index, int value) { VH_memoryDeviceIndex.set(segment, 0L, index, value); }
+    public static void memoryDeviceIndex(MemorySegment segment, long index, int value) { VH_memoryDeviceIndex.get().set(segment, 0L, index, value); }
     /// Sets `memoryDeviceIndex` with the given value.
     /// @param value the value
     /// @return `this`

@@ -33,25 +33,25 @@ public final class VkPhysicalDevice4444FormatsFeaturesEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `formatA4R4G4B4`.
     public static final long OFFSET_formatA4R4G4B4 = LAYOUT.byteOffset(PathElement.groupElement("formatA4R4G4B4"));
     /// The memory layout of `formatA4R4G4B4`.
     public static final MemoryLayout LAYOUT_formatA4R4G4B4 = LAYOUT.select(PathElement.groupElement("formatA4R4G4B4"));
     /// The [VarHandle] of `formatA4R4G4B4` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_formatA4R4G4B4 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatA4R4G4B4"));
+    public static final Supplier<VarHandle> VH_formatA4R4G4B4 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatA4R4G4B4")));
     /// The byte offset of `formatA4B4G4R4`.
     public static final long OFFSET_formatA4B4G4R4 = LAYOUT.byteOffset(PathElement.groupElement("formatA4B4G4R4"));
     /// The memory layout of `formatA4B4G4R4`.
     public static final MemoryLayout LAYOUT_formatA4B4G4R4 = LAYOUT.select(PathElement.groupElement("formatA4B4G4R4"));
     /// The [VarHandle] of `formatA4B4G4R4` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_formatA4B4G4R4 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatA4B4G4R4"));
+    public static final Supplier<VarHandle> VH_formatA4B4G4R4 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatA4B4G4R4")));
 
     /// Creates `VkPhysicalDevice4444FormatsFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDevice4444FormatsFeaturesEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDevice4444FormatsFeaturesEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDevice4444FormatsFeaturesEXT extends GroupType {
     /// {@return `formatA4R4G4B4` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int formatA4R4G4B4(MemorySegment segment, long index) { return (int) VH_formatA4R4G4B4.get(segment, 0L, index); }
+    public static int formatA4R4G4B4(MemorySegment segment, long index) { return (int) VH_formatA4R4G4B4.get().get(segment, 0L, index); }
     /// {@return `formatA4R4G4B4`}
     public int formatA4R4G4B4() { return formatA4R4G4B4(this.segment(), 0L); }
     /// Sets `formatA4R4G4B4` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void formatA4R4G4B4(MemorySegment segment, long index, int value) { VH_formatA4R4G4B4.set(segment, 0L, index, value); }
+    public static void formatA4R4G4B4(MemorySegment segment, long index, int value) { VH_formatA4R4G4B4.get().set(segment, 0L, index, value); }
     /// Sets `formatA4R4G4B4` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDevice4444FormatsFeaturesEXT extends GroupType {
     /// {@return `formatA4B4G4R4` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int formatA4B4G4R4(MemorySegment segment, long index) { return (int) VH_formatA4B4G4R4.get(segment, 0L, index); }
+    public static int formatA4B4G4R4(MemorySegment segment, long index) { return (int) VH_formatA4B4G4R4.get().get(segment, 0L, index); }
     /// {@return `formatA4B4G4R4`}
     public int formatA4B4G4R4() { return formatA4B4G4R4(this.segment(), 0L); }
     /// Sets `formatA4B4G4R4` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void formatA4B4G4R4(MemorySegment segment, long index, int value) { VH_formatA4B4G4R4.set(segment, 0L, index, value); }
+    public static void formatA4B4G4R4(MemorySegment segment, long index, int value) { VH_formatA4B4G4R4.get().set(segment, 0L, index, value); }
     /// Sets `formatA4B4G4R4` with the given value.
     /// @param value the value
     /// @return `this`

@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends GroupT
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pVideoProfile`.
     public static final long OFFSET_pVideoProfile = LAYOUT.byteOffset(PathElement.groupElement("pVideoProfile"));
     /// The memory layout of `pVideoProfile`.
     public static final MemoryLayout LAYOUT_pVideoProfile = LAYOUT.select(PathElement.groupElement("pVideoProfile"));
     /// The [VarHandle] of `pVideoProfile` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pVideoProfile = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVideoProfile"));
+    public static final Supplier<VarHandle> VH_pVideoProfile = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVideoProfile")));
     /// The byte offset of `qualityLevel`.
     public static final long OFFSET_qualityLevel = LAYOUT.byteOffset(PathElement.groupElement("qualityLevel"));
     /// The memory layout of `qualityLevel`.
     public static final MemoryLayout LAYOUT_qualityLevel = LAYOUT.select(PathElement.groupElement("qualityLevel"));
     /// The [VarHandle] of `qualityLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_qualityLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("qualityLevel"));
+    public static final Supplier<VarHandle> VH_qualityLevel = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("qualityLevel")));
 
     /// Creates `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends GroupT
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends GroupT
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends GroupT
     /// {@return `pVideoProfile` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pVideoProfile(MemorySegment segment, long index) { return (MemorySegment) VH_pVideoProfile.get(segment, 0L, index); }
+    public static MemorySegment pVideoProfile(MemorySegment segment, long index) { return (MemorySegment) VH_pVideoProfile.get().get(segment, 0L, index); }
     /// {@return `pVideoProfile`}
     public MemorySegment pVideoProfile() { return pVideoProfile(this.segment(), 0L); }
     /// Sets `pVideoProfile` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pVideoProfile(MemorySegment segment, long index, MemorySegment value) { VH_pVideoProfile.set(segment, 0L, index, value); }
+    public static void pVideoProfile(MemorySegment segment, long index, MemorySegment value) { VH_pVideoProfile.get().set(segment, 0L, index, value); }
     /// Sets `pVideoProfile` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends GroupT
     /// {@return `qualityLevel` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int qualityLevel(MemorySegment segment, long index) { return (int) VH_qualityLevel.get(segment, 0L, index); }
+    public static int qualityLevel(MemorySegment segment, long index) { return (int) VH_qualityLevel.get().get(segment, 0L, index); }
     /// {@return `qualityLevel`}
     public int qualityLevel() { return qualityLevel(this.segment(), 0L); }
     /// Sets `qualityLevel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void qualityLevel(MemorySegment segment, long index, int value) { VH_qualityLevel.set(segment, 0L, index, value); }
+    public static void qualityLevel(MemorySegment segment, long index, int value) { VH_qualityLevel.get().set(segment, 0L, index, value); }
     /// Sets `qualityLevel` with the given value.
     /// @param value the value
     /// @return `this`

@@ -27,7 +27,7 @@ public final class VkTransformMatrixKHR extends GroupType {
     /// The memory layout of `matrix`.
     public static final MemoryLayout LAYOUT_matrix = LAYOUT.select(PathElement.groupElement("matrix"));
     /// The [VarHandle] of `matrix` of type `(MemorySegment base, long baseOffset, long index, long index0, long index1)MemorySegment`.
-    public static final VarHandle VH_matrix = LAYOUT.arrayElementVarHandle(PathElement.groupElement("matrix"), PathElement.sequenceElement(), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_matrix = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("matrix"), PathElement.sequenceElement(), PathElement.sequenceElement()));
 
     /// Creates `VkTransformMatrixKHR` with the given segment.
     /// @param segment      the memory segment
@@ -84,7 +84,7 @@ public final class VkTransformMatrixKHR extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
-    public static float matrix(MemorySegment segment, long index, long index0, long index1) { return (float) VH_matrix.get(segment, 0L, index, index0, index1); }
+    public static float matrix(MemorySegment segment, long index, long index0, long index1) { return (float) VH_matrix.get().get(segment, 0L, index, index0, index1); }
     /// {@return `matrix`}
     public MemorySegment matrix() { return matrix(this.segment(), 0L); }
     /// {@return `matrix`}
@@ -102,7 +102,7 @@ public final class VkTransformMatrixKHR extends GroupType {
     /// @param index0 the Index 0 of the array
     /// @param index1 the Index 1 of the array
     /// @param value the value
-    public static void matrix(MemorySegment segment, long index, long index0, long index1, float value) { VH_matrix.set(segment, 0L, index, index0, index1, value); }
+    public static void matrix(MemorySegment segment, long index, long index0, long index1, float value) { VH_matrix.get().set(segment, 0L, index, index0, index1, value); }
     /// Sets `matrix` with the given value.
     /// @param value the value
     /// @return `this`

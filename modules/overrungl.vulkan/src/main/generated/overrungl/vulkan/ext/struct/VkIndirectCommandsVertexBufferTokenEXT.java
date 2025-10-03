@@ -27,7 +27,7 @@ public final class VkIndirectCommandsVertexBufferTokenEXT extends GroupType {
     /// The memory layout of `vertexBindingUnit`.
     public static final MemoryLayout LAYOUT_vertexBindingUnit = LAYOUT.select(PathElement.groupElement("vertexBindingUnit"));
     /// The [VarHandle] of `vertexBindingUnit` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexBindingUnit = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexBindingUnit"));
+    public static final Supplier<VarHandle> VH_vertexBindingUnit = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexBindingUnit")));
 
     /// Creates `VkIndirectCommandsVertexBufferTokenEXT` with the given segment.
     /// @param segment      the memory segment
@@ -78,14 +78,14 @@ public final class VkIndirectCommandsVertexBufferTokenEXT extends GroupType {
     /// {@return `vertexBindingUnit` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertexBindingUnit(MemorySegment segment, long index) { return (int) VH_vertexBindingUnit.get(segment, 0L, index); }
+    public static int vertexBindingUnit(MemorySegment segment, long index) { return (int) VH_vertexBindingUnit.get().get(segment, 0L, index); }
     /// {@return `vertexBindingUnit`}
     public int vertexBindingUnit() { return vertexBindingUnit(this.segment(), 0L); }
     /// Sets `vertexBindingUnit` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexBindingUnit(MemorySegment segment, long index, int value) { VH_vertexBindingUnit.set(segment, 0L, index, value); }
+    public static void vertexBindingUnit(MemorySegment segment, long index, int value) { VH_vertexBindingUnit.get().set(segment, 0L, index, value); }
     /// Sets `vertexBindingUnit` with the given value.
     /// @param value the value
     /// @return `this`

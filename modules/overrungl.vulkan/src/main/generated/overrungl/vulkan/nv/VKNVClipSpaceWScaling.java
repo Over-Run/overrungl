@@ -2,6 +2,7 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -13,7 +14,7 @@ public final class VKNVClipSpaceWScaling {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV = 1000087000;
     public static final int VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV = 1000087000;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetViewportWScalingNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkCmdSetViewportWScalingNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -26,7 +27,7 @@ public final class VKNVClipSpaceWScaling {
     public static void vkCmdSetViewportWScalingNV(@NonNull VkCommandBuffer commandBuffer, int firstViewport, int viewportCount, @NonNull MemorySegment pViewportWScalings) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetViewportWScalingNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetViewportWScalingNV", commandBuffer, firstViewport, viewportCount, pViewportWScalings); }
-        Handles.MH_vkCmdSetViewportWScalingNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingNV, commandBuffer.segment(), firstViewport, viewportCount, pViewportWScalings); }
+        Handles.MH_vkCmdSetViewportWScalingNV.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingNV, commandBuffer.segment(), firstViewport, viewportCount, pViewportWScalings); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetViewportWScalingNV", e); }
     }
 

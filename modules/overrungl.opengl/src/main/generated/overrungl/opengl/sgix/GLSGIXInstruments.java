@@ -2,6 +2,7 @@
 package overrungl.opengl.sgix;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -12,12 +13,12 @@ public final class GLSGIXInstruments {
     public static final int GL_INSTRUMENT_MEASUREMENTS_SGIX = 0x8181;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetInstrumentsSGIX = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glInstrumentsBufferSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glPollInstrumentsSGIX = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glReadInstrumentsSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glStartInstrumentsSGIX = downcallHandle(FunctionDescriptor.ofVoid());
-        public static final MethodHandle MH_glStopInstrumentsSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glGetInstrumentsSGIX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glInstrumentsBufferSGIX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glPollInstrumentsSGIX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glReadInstrumentsSGIX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glStartInstrumentsSGIX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
+        public static final Supplier<MethodHandle> MH_glStopInstrumentsSGIX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glGetInstrumentsSGIX;
         public final MemorySegment PFN_glInstrumentsBufferSGIX;
         public final MemorySegment PFN_glPollInstrumentsSGIX;
@@ -45,7 +46,7 @@ public final class GLSGIXInstruments {
     public int GetInstrumentsSGIX() {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInstrumentsSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glGetInstrumentsSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInstrumentsSGIX"); }
-        return (int) Handles.MH_glGetInstrumentsSGIX.invokeExact(handles.PFN_glGetInstrumentsSGIX); }
+        return (int) Handles.MH_glGetInstrumentsSGIX.get().invokeExact(handles.PFN_glGetInstrumentsSGIX); }
         catch (Throwable e) { throw new RuntimeException("error in GetInstrumentsSGIX", e); }
     }
 
@@ -56,7 +57,7 @@ public final class GLSGIXInstruments {
     public void InstrumentsBufferSGIX(int size, @NonNull MemorySegment buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInstrumentsBufferSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glInstrumentsBufferSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glInstrumentsBufferSGIX", size, buffer); }
-        Handles.MH_glInstrumentsBufferSGIX.invokeExact(handles.PFN_glInstrumentsBufferSGIX, size, buffer); }
+        Handles.MH_glInstrumentsBufferSGIX.get().invokeExact(handles.PFN_glInstrumentsBufferSGIX, size, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in InstrumentsBufferSGIX", e); }
     }
 
@@ -67,7 +68,7 @@ public final class GLSGIXInstruments {
     public int PollInstrumentsSGIX(@NonNull MemorySegment marker_p) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPollInstrumentsSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glPollInstrumentsSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPollInstrumentsSGIX", marker_p); }
-        return (int) Handles.MH_glPollInstrumentsSGIX.invokeExact(handles.PFN_glPollInstrumentsSGIX, marker_p); }
+        return (int) Handles.MH_glPollInstrumentsSGIX.get().invokeExact(handles.PFN_glPollInstrumentsSGIX, marker_p); }
         catch (Throwable e) { throw new RuntimeException("error in PollInstrumentsSGIX", e); }
     }
 
@@ -78,7 +79,7 @@ public final class GLSGIXInstruments {
     public void ReadInstrumentsSGIX(int marker) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReadInstrumentsSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glReadInstrumentsSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glReadInstrumentsSGIX", marker); }
-        Handles.MH_glReadInstrumentsSGIX.invokeExact(handles.PFN_glReadInstrumentsSGIX, marker); }
+        Handles.MH_glReadInstrumentsSGIX.get().invokeExact(handles.PFN_glReadInstrumentsSGIX, marker); }
         catch (Throwable e) { throw new RuntimeException("error in ReadInstrumentsSGIX", e); }
     }
 
@@ -89,7 +90,7 @@ public final class GLSGIXInstruments {
     public void StartInstrumentsSGIX() {
         if (MemoryUtil.isNullPointer(handles.PFN_glStartInstrumentsSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glStartInstrumentsSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glStartInstrumentsSGIX"); }
-        Handles.MH_glStartInstrumentsSGIX.invokeExact(handles.PFN_glStartInstrumentsSGIX); }
+        Handles.MH_glStartInstrumentsSGIX.get().invokeExact(handles.PFN_glStartInstrumentsSGIX); }
         catch (Throwable e) { throw new RuntimeException("error in StartInstrumentsSGIX", e); }
     }
 
@@ -100,7 +101,7 @@ public final class GLSGIXInstruments {
     public void StopInstrumentsSGIX(int marker) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStopInstrumentsSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glStopInstrumentsSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glStopInstrumentsSGIX", marker); }
-        Handles.MH_glStopInstrumentsSGIX.invokeExact(handles.PFN_glStopInstrumentsSGIX, marker); }
+        Handles.MH_glStopInstrumentsSGIX.get().invokeExact(handles.PFN_glStopInstrumentsSGIX, marker); }
         catch (Throwable e) { throw new RuntimeException("error in StopInstrumentsSGIX", e); }
     }
 

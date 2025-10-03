@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -19,7 +20,7 @@ public final class GLEXTTextureArray {
     public static final int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT = 0x8CD4;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferTextureLayerEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glFramebufferTextureLayerEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glFramebufferTextureLayerEXT;
         private Handles(GLLoadFunc func) {
             PFN_glFramebufferTextureLayerEXT = func.invoke("glFramebufferTextureLayerEXT", "glFramebufferTextureLayer");
@@ -37,7 +38,7 @@ public final class GLEXTTextureArray {
     public void FramebufferTextureLayerEXT(int target, int attachment, int texture, int level, int layer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureLayerEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferTextureLayerEXT", target, attachment, texture, level, layer); }
-        Handles.MH_glFramebufferTextureLayerEXT.invokeExact(handles.PFN_glFramebufferTextureLayerEXT, target, attachment, texture, level, layer); }
+        Handles.MH_glFramebufferTextureLayerEXT.get().invokeExact(handles.PFN_glFramebufferTextureLayerEXT, target, attachment, texture, level, layer); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureLayerEXT", e); }
     }
 

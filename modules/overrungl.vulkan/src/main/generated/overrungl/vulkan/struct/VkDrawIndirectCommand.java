@@ -33,25 +33,25 @@ public final class VkDrawIndirectCommand extends GroupType {
     /// The memory layout of `vertexCount`.
     public static final MemoryLayout LAYOUT_vertexCount = LAYOUT.select(PathElement.groupElement("vertexCount"));
     /// The [VarHandle] of `vertexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexCount"));
+    public static final Supplier<VarHandle> VH_vertexCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexCount")));
     /// The byte offset of `instanceCount`.
     public static final long OFFSET_instanceCount = LAYOUT.byteOffset(PathElement.groupElement("instanceCount"));
     /// The memory layout of `instanceCount`.
     public static final MemoryLayout LAYOUT_instanceCount = LAYOUT.select(PathElement.groupElement("instanceCount"));
     /// The [VarHandle] of `instanceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_instanceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceCount"));
+    public static final Supplier<VarHandle> VH_instanceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceCount")));
     /// The byte offset of `firstVertex`.
     public static final long OFFSET_firstVertex = LAYOUT.byteOffset(PathElement.groupElement("firstVertex"));
     /// The memory layout of `firstVertex`.
     public static final MemoryLayout LAYOUT_firstVertex = LAYOUT.select(PathElement.groupElement("firstVertex"));
     /// The [VarHandle] of `firstVertex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_firstVertex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstVertex"));
+    public static final Supplier<VarHandle> VH_firstVertex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstVertex")));
     /// The byte offset of `firstInstance`.
     public static final long OFFSET_firstInstance = LAYOUT.byteOffset(PathElement.groupElement("firstInstance"));
     /// The memory layout of `firstInstance`.
     public static final MemoryLayout LAYOUT_firstInstance = LAYOUT.select(PathElement.groupElement("firstInstance"));
     /// The [VarHandle] of `firstInstance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_firstInstance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstInstance"));
+    public static final Supplier<VarHandle> VH_firstInstance = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstInstance")));
 
     /// Creates `VkDrawIndirectCommand` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkDrawIndirectCommand extends GroupType {
     /// {@return `vertexCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertexCount(MemorySegment segment, long index) { return (int) VH_vertexCount.get(segment, 0L, index); }
+    public static int vertexCount(MemorySegment segment, long index) { return (int) VH_vertexCount.get().get(segment, 0L, index); }
     /// {@return `vertexCount`}
     public int vertexCount() { return vertexCount(this.segment(), 0L); }
     /// Sets `vertexCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexCount(MemorySegment segment, long index, int value) { VH_vertexCount.set(segment, 0L, index, value); }
+    public static void vertexCount(MemorySegment segment, long index, int value) { VH_vertexCount.get().set(segment, 0L, index, value); }
     /// Sets `vertexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkDrawIndirectCommand extends GroupType {
     /// {@return `instanceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int instanceCount(MemorySegment segment, long index) { return (int) VH_instanceCount.get(segment, 0L, index); }
+    public static int instanceCount(MemorySegment segment, long index) { return (int) VH_instanceCount.get().get(segment, 0L, index); }
     /// {@return `instanceCount`}
     public int instanceCount() { return instanceCount(this.segment(), 0L); }
     /// Sets `instanceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void instanceCount(MemorySegment segment, long index, int value) { VH_instanceCount.set(segment, 0L, index, value); }
+    public static void instanceCount(MemorySegment segment, long index, int value) { VH_instanceCount.get().set(segment, 0L, index, value); }
     /// Sets `instanceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkDrawIndirectCommand extends GroupType {
     /// {@return `firstVertex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int firstVertex(MemorySegment segment, long index) { return (int) VH_firstVertex.get(segment, 0L, index); }
+    public static int firstVertex(MemorySegment segment, long index) { return (int) VH_firstVertex.get().get(segment, 0L, index); }
     /// {@return `firstVertex`}
     public int firstVertex() { return firstVertex(this.segment(), 0L); }
     /// Sets `firstVertex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void firstVertex(MemorySegment segment, long index, int value) { VH_firstVertex.set(segment, 0L, index, value); }
+    public static void firstVertex(MemorySegment segment, long index, int value) { VH_firstVertex.get().set(segment, 0L, index, value); }
     /// Sets `firstVertex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkDrawIndirectCommand extends GroupType {
     /// {@return `firstInstance` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int firstInstance(MemorySegment segment, long index) { return (int) VH_firstInstance.get(segment, 0L, index); }
+    public static int firstInstance(MemorySegment segment, long index) { return (int) VH_firstInstance.get().get(segment, 0L, index); }
     /// {@return `firstInstance`}
     public int firstInstance() { return firstInstance(this.segment(), 0L); }
     /// Sets `firstInstance` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void firstInstance(MemorySegment segment, long index, int value) { VH_firstInstance.set(segment, 0L, index, value); }
+    public static void firstInstance(MemorySegment segment, long index, int value) { VH_firstInstance.get().set(segment, 0L, index, value); }
     /// Sets `firstInstance` with the given value.
     /// @param value the value
     /// @return `this`

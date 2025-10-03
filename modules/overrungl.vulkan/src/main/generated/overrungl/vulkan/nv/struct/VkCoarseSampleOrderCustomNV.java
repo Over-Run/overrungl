@@ -33,25 +33,25 @@ public final class VkCoarseSampleOrderCustomNV extends GroupType {
     /// The memory layout of `shadingRate`.
     public static final MemoryLayout LAYOUT_shadingRate = LAYOUT.select(PathElement.groupElement("shadingRate"));
     /// The [VarHandle] of `shadingRate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shadingRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRate"));
+    public static final Supplier<VarHandle> VH_shadingRate = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRate")));
     /// The byte offset of `sampleCount`.
     public static final long OFFSET_sampleCount = LAYOUT.byteOffset(PathElement.groupElement("sampleCount"));
     /// The memory layout of `sampleCount`.
     public static final MemoryLayout LAYOUT_sampleCount = LAYOUT.select(PathElement.groupElement("sampleCount"));
     /// The [VarHandle] of `sampleCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sampleCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleCount"));
+    public static final Supplier<VarHandle> VH_sampleCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleCount")));
     /// The byte offset of `sampleLocationCount`.
     public static final long OFFSET_sampleLocationCount = LAYOUT.byteOffset(PathElement.groupElement("sampleLocationCount"));
     /// The memory layout of `sampleLocationCount`.
     public static final MemoryLayout LAYOUT_sampleLocationCount = LAYOUT.select(PathElement.groupElement("sampleLocationCount"));
     /// The [VarHandle] of `sampleLocationCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sampleLocationCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationCount"));
+    public static final Supplier<VarHandle> VH_sampleLocationCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationCount")));
     /// The byte offset of `pSampleLocations`.
     public static final long OFFSET_pSampleLocations = LAYOUT.byteOffset(PathElement.groupElement("pSampleLocations"));
     /// The memory layout of `pSampleLocations`.
     public static final MemoryLayout LAYOUT_pSampleLocations = LAYOUT.select(PathElement.groupElement("pSampleLocations"));
     /// The [VarHandle] of `pSampleLocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pSampleLocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSampleLocations"));
+    public static final Supplier<VarHandle> VH_pSampleLocations = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSampleLocations")));
 
     /// Creates `VkCoarseSampleOrderCustomNV` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkCoarseSampleOrderCustomNV extends GroupType {
     /// {@return `shadingRate` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shadingRate(MemorySegment segment, long index) { return (int) VH_shadingRate.get(segment, 0L, index); }
+    public static int shadingRate(MemorySegment segment, long index) { return (int) VH_shadingRate.get().get(segment, 0L, index); }
     /// {@return `shadingRate`}
     public int shadingRate() { return shadingRate(this.segment(), 0L); }
     /// Sets `shadingRate` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shadingRate(MemorySegment segment, long index, int value) { VH_shadingRate.set(segment, 0L, index, value); }
+    public static void shadingRate(MemorySegment segment, long index, int value) { VH_shadingRate.get().set(segment, 0L, index, value); }
     /// Sets `shadingRate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkCoarseSampleOrderCustomNV extends GroupType {
     /// {@return `sampleCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sampleCount(MemorySegment segment, long index) { return (int) VH_sampleCount.get(segment, 0L, index); }
+    public static int sampleCount(MemorySegment segment, long index) { return (int) VH_sampleCount.get().get(segment, 0L, index); }
     /// {@return `sampleCount`}
     public int sampleCount() { return sampleCount(this.segment(), 0L); }
     /// Sets `sampleCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sampleCount(MemorySegment segment, long index, int value) { VH_sampleCount.set(segment, 0L, index, value); }
+    public static void sampleCount(MemorySegment segment, long index, int value) { VH_sampleCount.get().set(segment, 0L, index, value); }
     /// Sets `sampleCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkCoarseSampleOrderCustomNV extends GroupType {
     /// {@return `sampleLocationCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sampleLocationCount(MemorySegment segment, long index) { return (int) VH_sampleLocationCount.get(segment, 0L, index); }
+    public static int sampleLocationCount(MemorySegment segment, long index) { return (int) VH_sampleLocationCount.get().get(segment, 0L, index); }
     /// {@return `sampleLocationCount`}
     public int sampleLocationCount() { return sampleLocationCount(this.segment(), 0L); }
     /// Sets `sampleLocationCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sampleLocationCount(MemorySegment segment, long index, int value) { VH_sampleLocationCount.set(segment, 0L, index, value); }
+    public static void sampleLocationCount(MemorySegment segment, long index, int value) { VH_sampleLocationCount.get().set(segment, 0L, index, value); }
     /// Sets `sampleLocationCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkCoarseSampleOrderCustomNV extends GroupType {
     /// {@return `pSampleLocations` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pSampleLocations(MemorySegment segment, long index) { return (MemorySegment) VH_pSampleLocations.get(segment, 0L, index); }
+    public static MemorySegment pSampleLocations(MemorySegment segment, long index) { return (MemorySegment) VH_pSampleLocations.get().get(segment, 0L, index); }
     /// {@return `pSampleLocations`}
     public MemorySegment pSampleLocations() { return pSampleLocations(this.segment(), 0L); }
     /// Sets `pSampleLocations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pSampleLocations(MemorySegment segment, long index, MemorySegment value) { VH_pSampleLocations.set(segment, 0L, index, value); }
+    public static void pSampleLocations(MemorySegment segment, long index, MemorySegment value) { VH_pSampleLocations.get().set(segment, 0L, index, value); }
     /// Sets `pSampleLocations` with the given value.
     /// @param value the value
     /// @return `this`

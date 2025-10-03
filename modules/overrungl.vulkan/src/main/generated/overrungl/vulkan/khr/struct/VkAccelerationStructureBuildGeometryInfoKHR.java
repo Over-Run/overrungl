@@ -47,61 +47,61 @@ public final class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `type`.
     public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
     /// The memory layout of `type`.
     public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
     /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
+    public static final Supplier<VarHandle> VH_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("type")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `mode`.
     public static final long OFFSET_mode = LAYOUT.byteOffset(PathElement.groupElement("mode"));
     /// The memory layout of `mode`.
     public static final MemoryLayout LAYOUT_mode = LAYOUT.select(PathElement.groupElement("mode"));
     /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
+    public static final Supplier<VarHandle> VH_mode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode")));
     /// The byte offset of `srcAccelerationStructure`.
     public static final long OFFSET_srcAccelerationStructure = LAYOUT.byteOffset(PathElement.groupElement("srcAccelerationStructure"));
     /// The memory layout of `srcAccelerationStructure`.
     public static final MemoryLayout LAYOUT_srcAccelerationStructure = LAYOUT.select(PathElement.groupElement("srcAccelerationStructure"));
     /// The [VarHandle] of `srcAccelerationStructure` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcAccelerationStructure = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccelerationStructure"));
+    public static final Supplier<VarHandle> VH_srcAccelerationStructure = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccelerationStructure")));
     /// The byte offset of `dstAccelerationStructure`.
     public static final long OFFSET_dstAccelerationStructure = LAYOUT.byteOffset(PathElement.groupElement("dstAccelerationStructure"));
     /// The memory layout of `dstAccelerationStructure`.
     public static final MemoryLayout LAYOUT_dstAccelerationStructure = LAYOUT.select(PathElement.groupElement("dstAccelerationStructure"));
     /// The [VarHandle] of `dstAccelerationStructure` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstAccelerationStructure = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAccelerationStructure"));
+    public static final Supplier<VarHandle> VH_dstAccelerationStructure = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAccelerationStructure")));
     /// The byte offset of `geometryCount`.
     public static final long OFFSET_geometryCount = LAYOUT.byteOffset(PathElement.groupElement("geometryCount"));
     /// The memory layout of `geometryCount`.
     public static final MemoryLayout LAYOUT_geometryCount = LAYOUT.select(PathElement.groupElement("geometryCount"));
     /// The [VarHandle] of `geometryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_geometryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("geometryCount"));
+    public static final Supplier<VarHandle> VH_geometryCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("geometryCount")));
     /// The byte offset of `pGeometries`.
     public static final long OFFSET_pGeometries = LAYOUT.byteOffset(PathElement.groupElement("pGeometries"));
     /// The memory layout of `pGeometries`.
     public static final MemoryLayout LAYOUT_pGeometries = LAYOUT.select(PathElement.groupElement("pGeometries"));
     /// The [VarHandle] of `pGeometries` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pGeometries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pGeometries"));
+    public static final Supplier<VarHandle> VH_pGeometries = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pGeometries")));
     /// The byte offset of `ppGeometries`.
     public static final long OFFSET_ppGeometries = LAYOUT.byteOffset(PathElement.groupElement("ppGeometries"));
     /// The memory layout of `ppGeometries`.
     public static final MemoryLayout LAYOUT_ppGeometries = LAYOUT.select(PathElement.groupElement("ppGeometries"));
     /// The [VarHandle] of `ppGeometries` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ppGeometries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppGeometries"));
+    public static final Supplier<VarHandle> VH_ppGeometries = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppGeometries")));
     /// The byte offset of `scratchData`.
     public static final long OFFSET_scratchData = LAYOUT.byteOffset(PathElement.groupElement("scratchData"));
     /// The memory layout of `scratchData`.
@@ -156,14 +156,14 @@ public final class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -172,14 +172,14 @@ public final class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -188,14 +188,14 @@ public final class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
+    public static int type(MemorySegment segment, long index) { return (int) VH_type.get().get(segment, 0L, index); }
     /// {@return `type`}
     public int type() { return type(this.segment(), 0L); }
     /// Sets `type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void type(MemorySegment segment, long index, int value) { VH_type.set(segment, 0L, index, value); }
+    public static void type(MemorySegment segment, long index, int value) { VH_type.get().set(segment, 0L, index, value); }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -204,14 +204,14 @@ public final class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -220,14 +220,14 @@ public final class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType
     /// {@return `mode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
+    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get().get(segment, 0L, index); }
     /// {@return `mode`}
     public int mode() { return mode(this.segment(), 0L); }
     /// Sets `mode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void mode(MemorySegment segment, long index, int value) { VH_mode.set(segment, 0L, index, value); }
+    public static void mode(MemorySegment segment, long index, int value) { VH_mode.get().set(segment, 0L, index, value); }
     /// Sets `mode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -236,14 +236,14 @@ public final class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType
     /// {@return `srcAccelerationStructure` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long srcAccelerationStructure(MemorySegment segment, long index) { return (long) VH_srcAccelerationStructure.get(segment, 0L, index); }
+    public static long srcAccelerationStructure(MemorySegment segment, long index) { return (long) VH_srcAccelerationStructure.get().get(segment, 0L, index); }
     /// {@return `srcAccelerationStructure`}
     public long srcAccelerationStructure() { return srcAccelerationStructure(this.segment(), 0L); }
     /// Sets `srcAccelerationStructure` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcAccelerationStructure(MemorySegment segment, long index, long value) { VH_srcAccelerationStructure.set(segment, 0L, index, value); }
+    public static void srcAccelerationStructure(MemorySegment segment, long index, long value) { VH_srcAccelerationStructure.get().set(segment, 0L, index, value); }
     /// Sets `srcAccelerationStructure` with the given value.
     /// @param value the value
     /// @return `this`
@@ -252,14 +252,14 @@ public final class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType
     /// {@return `dstAccelerationStructure` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dstAccelerationStructure(MemorySegment segment, long index) { return (long) VH_dstAccelerationStructure.get(segment, 0L, index); }
+    public static long dstAccelerationStructure(MemorySegment segment, long index) { return (long) VH_dstAccelerationStructure.get().get(segment, 0L, index); }
     /// {@return `dstAccelerationStructure`}
     public long dstAccelerationStructure() { return dstAccelerationStructure(this.segment(), 0L); }
     /// Sets `dstAccelerationStructure` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstAccelerationStructure(MemorySegment segment, long index, long value) { VH_dstAccelerationStructure.set(segment, 0L, index, value); }
+    public static void dstAccelerationStructure(MemorySegment segment, long index, long value) { VH_dstAccelerationStructure.get().set(segment, 0L, index, value); }
     /// Sets `dstAccelerationStructure` with the given value.
     /// @param value the value
     /// @return `this`
@@ -268,14 +268,14 @@ public final class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType
     /// {@return `geometryCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int geometryCount(MemorySegment segment, long index) { return (int) VH_geometryCount.get(segment, 0L, index); }
+    public static int geometryCount(MemorySegment segment, long index) { return (int) VH_geometryCount.get().get(segment, 0L, index); }
     /// {@return `geometryCount`}
     public int geometryCount() { return geometryCount(this.segment(), 0L); }
     /// Sets `geometryCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void geometryCount(MemorySegment segment, long index, int value) { VH_geometryCount.set(segment, 0L, index, value); }
+    public static void geometryCount(MemorySegment segment, long index, int value) { VH_geometryCount.get().set(segment, 0L, index, value); }
     /// Sets `geometryCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -284,14 +284,14 @@ public final class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType
     /// {@return `pGeometries` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pGeometries(MemorySegment segment, long index) { return (MemorySegment) VH_pGeometries.get(segment, 0L, index); }
+    public static MemorySegment pGeometries(MemorySegment segment, long index) { return (MemorySegment) VH_pGeometries.get().get(segment, 0L, index); }
     /// {@return `pGeometries`}
     public MemorySegment pGeometries() { return pGeometries(this.segment(), 0L); }
     /// Sets `pGeometries` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pGeometries(MemorySegment segment, long index, MemorySegment value) { VH_pGeometries.set(segment, 0L, index, value); }
+    public static void pGeometries(MemorySegment segment, long index, MemorySegment value) { VH_pGeometries.get().set(segment, 0L, index, value); }
     /// Sets `pGeometries` with the given value.
     /// @param value the value
     /// @return `this`
@@ -300,14 +300,14 @@ public final class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType
     /// {@return `ppGeometries` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment ppGeometries(MemorySegment segment, long index) { return (MemorySegment) VH_ppGeometries.get(segment, 0L, index); }
+    public static MemorySegment ppGeometries(MemorySegment segment, long index) { return (MemorySegment) VH_ppGeometries.get().get(segment, 0L, index); }
     /// {@return `ppGeometries`}
     public MemorySegment ppGeometries() { return ppGeometries(this.segment(), 0L); }
     /// Sets `ppGeometries` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ppGeometries(MemorySegment segment, long index, MemorySegment value) { VH_ppGeometries.set(segment, 0L, index, value); }
+    public static void ppGeometries(MemorySegment segment, long index, MemorySegment value) { VH_ppGeometries.get().set(segment, 0L, index, value); }
     /// Sets `ppGeometries` with the given value.
     /// @param value the value
     /// @return `this`

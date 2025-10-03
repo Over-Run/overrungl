@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -18,9 +19,9 @@ public final class GLARBSampleLocations {
     public static final int GL_FRAMEBUFFER_SAMPLE_LOCATION_PIXEL_GRID_ARB = 0x9343;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferSampleLocationsfvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedFramebufferSampleLocationsfvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glEvaluateDepthValuesARB = downcallHandle(FunctionDescriptor.ofVoid());
+        public static final Supplier<MethodHandle> MH_glFramebufferSampleLocationsfvARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glNamedFramebufferSampleLocationsfvARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glEvaluateDepthValuesARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
         public final MemorySegment PFN_glFramebufferSampleLocationsfvARB;
         public final MemorySegment PFN_glNamedFramebufferSampleLocationsfvARB;
         public final MemorySegment PFN_glEvaluateDepthValuesARB;
@@ -42,7 +43,7 @@ public final class GLARBSampleLocations {
     public void FramebufferSampleLocationsfvARB(int target, int start, int count, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferSampleLocationsfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferSampleLocationsfvARB", target, start, count, v); }
-        Handles.MH_glFramebufferSampleLocationsfvARB.invokeExact(handles.PFN_glFramebufferSampleLocationsfvARB, target, start, count, v); }
+        Handles.MH_glFramebufferSampleLocationsfvARB.get().invokeExact(handles.PFN_glFramebufferSampleLocationsfvARB, target, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferSampleLocationsfvARB", e); }
     }
 
@@ -53,7 +54,7 @@ public final class GLARBSampleLocations {
     public void NamedFramebufferSampleLocationsfvARB(int framebuffer, int start, int count, @NonNull MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferSampleLocationsfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedFramebufferSampleLocationsfvARB", framebuffer, start, count, v); }
-        Handles.MH_glNamedFramebufferSampleLocationsfvARB.invokeExact(handles.PFN_glNamedFramebufferSampleLocationsfvARB, framebuffer, start, count, v); }
+        Handles.MH_glNamedFramebufferSampleLocationsfvARB.get().invokeExact(handles.PFN_glNamedFramebufferSampleLocationsfvARB, framebuffer, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferSampleLocationsfvARB", e); }
     }
 
@@ -64,7 +65,7 @@ public final class GLARBSampleLocations {
     public void EvaluateDepthValuesARB() {
         if (MemoryUtil.isNullPointer(handles.PFN_glEvaluateDepthValuesARB)) throw new GLSymbolNotFoundError("Symbol not found: glEvaluateDepthValuesARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEvaluateDepthValuesARB"); }
-        Handles.MH_glEvaluateDepthValuesARB.invokeExact(handles.PFN_glEvaluateDepthValuesARB); }
+        Handles.MH_glEvaluateDepthValuesARB.get().invokeExact(handles.PFN_glEvaluateDepthValuesARB); }
         catch (Throwable e) { throw new RuntimeException("error in EvaluateDepthValuesARB", e); }
     }
 

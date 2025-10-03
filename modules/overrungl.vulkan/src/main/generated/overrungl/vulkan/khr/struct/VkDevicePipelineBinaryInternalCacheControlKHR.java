@@ -31,19 +31,19 @@ public final class VkDevicePipelineBinaryInternalCacheControlKHR extends GroupTy
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `disableInternalCache`.
     public static final long OFFSET_disableInternalCache = LAYOUT.byteOffset(PathElement.groupElement("disableInternalCache"));
     /// The memory layout of `disableInternalCache`.
     public static final MemoryLayout LAYOUT_disableInternalCache = LAYOUT.select(PathElement.groupElement("disableInternalCache"));
     /// The [VarHandle] of `disableInternalCache` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_disableInternalCache = LAYOUT.arrayElementVarHandle(PathElement.groupElement("disableInternalCache"));
+    public static final Supplier<VarHandle> VH_disableInternalCache = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("disableInternalCache")));
 
     /// Creates `VkDevicePipelineBinaryInternalCacheControlKHR` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkDevicePipelineBinaryInternalCacheControlKHR extends GroupTy
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkDevicePipelineBinaryInternalCacheControlKHR extends GroupTy
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDevicePipelineBinaryInternalCacheControlKHR extends GroupTy
     /// {@return `disableInternalCache` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int disableInternalCache(MemorySegment segment, long index) { return (int) VH_disableInternalCache.get(segment, 0L, index); }
+    public static int disableInternalCache(MemorySegment segment, long index) { return (int) VH_disableInternalCache.get().get(segment, 0L, index); }
     /// {@return `disableInternalCache`}
     public int disableInternalCache() { return disableInternalCache(this.segment(), 0L); }
     /// Sets `disableInternalCache` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void disableInternalCache(MemorySegment segment, long index, int value) { VH_disableInternalCache.set(segment, 0L, index, value); }
+    public static void disableInternalCache(MemorySegment segment, long index, int value) { VH_disableInternalCache.get().set(segment, 0L, index, value); }
     /// Sets `disableInternalCache` with the given value.
     /// @param value the value
     /// @return `this`

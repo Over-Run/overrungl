@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceCustomBorderColorFeaturesEXT extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `customBorderColors`.
     public static final long OFFSET_customBorderColors = LAYOUT.byteOffset(PathElement.groupElement("customBorderColors"));
     /// The memory layout of `customBorderColors`.
     public static final MemoryLayout LAYOUT_customBorderColors = LAYOUT.select(PathElement.groupElement("customBorderColors"));
     /// The [VarHandle] of `customBorderColors` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_customBorderColors = LAYOUT.arrayElementVarHandle(PathElement.groupElement("customBorderColors"));
+    public static final Supplier<VarHandle> VH_customBorderColors = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("customBorderColors")));
     /// The byte offset of `customBorderColorWithoutFormat`.
     public static final long OFFSET_customBorderColorWithoutFormat = LAYOUT.byteOffset(PathElement.groupElement("customBorderColorWithoutFormat"));
     /// The memory layout of `customBorderColorWithoutFormat`.
     public static final MemoryLayout LAYOUT_customBorderColorWithoutFormat = LAYOUT.select(PathElement.groupElement("customBorderColorWithoutFormat"));
     /// The [VarHandle] of `customBorderColorWithoutFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_customBorderColorWithoutFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("customBorderColorWithoutFormat"));
+    public static final Supplier<VarHandle> VH_customBorderColorWithoutFormat = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("customBorderColorWithoutFormat")));
 
     /// Creates `VkPhysicalDeviceCustomBorderColorFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceCustomBorderColorFeaturesEXT extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceCustomBorderColorFeaturesEXT extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceCustomBorderColorFeaturesEXT extends GroupTyp
     /// {@return `customBorderColors` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int customBorderColors(MemorySegment segment, long index) { return (int) VH_customBorderColors.get(segment, 0L, index); }
+    public static int customBorderColors(MemorySegment segment, long index) { return (int) VH_customBorderColors.get().get(segment, 0L, index); }
     /// {@return `customBorderColors`}
     public int customBorderColors() { return customBorderColors(this.segment(), 0L); }
     /// Sets `customBorderColors` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void customBorderColors(MemorySegment segment, long index, int value) { VH_customBorderColors.set(segment, 0L, index, value); }
+    public static void customBorderColors(MemorySegment segment, long index, int value) { VH_customBorderColors.get().set(segment, 0L, index, value); }
     /// Sets `customBorderColors` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceCustomBorderColorFeaturesEXT extends GroupTyp
     /// {@return `customBorderColorWithoutFormat` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int customBorderColorWithoutFormat(MemorySegment segment, long index) { return (int) VH_customBorderColorWithoutFormat.get(segment, 0L, index); }
+    public static int customBorderColorWithoutFormat(MemorySegment segment, long index) { return (int) VH_customBorderColorWithoutFormat.get().get(segment, 0L, index); }
     /// {@return `customBorderColorWithoutFormat`}
     public int customBorderColorWithoutFormat() { return customBorderColorWithoutFormat(this.segment(), 0L); }
     /// Sets `customBorderColorWithoutFormat` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void customBorderColorWithoutFormat(MemorySegment segment, long index, int value) { VH_customBorderColorWithoutFormat.set(segment, 0L, index, value); }
+    public static void customBorderColorWithoutFormat(MemorySegment segment, long index, int value) { VH_customBorderColorWithoutFormat.get().set(segment, 0L, index, value); }
     /// Sets `customBorderColorWithoutFormat` with the given value.
     /// @param value the value
     /// @return `this`

@@ -33,25 +33,25 @@ public final class VkIndirectCommandsTokenDataEXT extends GroupType {
     /// The memory layout of `pPushConstant`.
     public static final MemoryLayout LAYOUT_pPushConstant = LAYOUT.select(PathElement.groupElement("pPushConstant"));
     /// The [VarHandle] of `pPushConstant` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPushConstant = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPushConstant"));
+    public static final Supplier<VarHandle> VH_pPushConstant = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPushConstant")));
     /// The byte offset of `pVertexBuffer`.
     public static final long OFFSET_pVertexBuffer = LAYOUT.byteOffset(PathElement.groupElement("pVertexBuffer"));
     /// The memory layout of `pVertexBuffer`.
     public static final MemoryLayout LAYOUT_pVertexBuffer = LAYOUT.select(PathElement.groupElement("pVertexBuffer"));
     /// The [VarHandle] of `pVertexBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pVertexBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVertexBuffer"));
+    public static final Supplier<VarHandle> VH_pVertexBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVertexBuffer")));
     /// The byte offset of `pIndexBuffer`.
     public static final long OFFSET_pIndexBuffer = LAYOUT.byteOffset(PathElement.groupElement("pIndexBuffer"));
     /// The memory layout of `pIndexBuffer`.
     public static final MemoryLayout LAYOUT_pIndexBuffer = LAYOUT.select(PathElement.groupElement("pIndexBuffer"));
     /// The [VarHandle] of `pIndexBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pIndexBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pIndexBuffer"));
+    public static final Supplier<VarHandle> VH_pIndexBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pIndexBuffer")));
     /// The byte offset of `pExecutionSet`.
     public static final long OFFSET_pExecutionSet = LAYOUT.byteOffset(PathElement.groupElement("pExecutionSet"));
     /// The memory layout of `pExecutionSet`.
     public static final MemoryLayout LAYOUT_pExecutionSet = LAYOUT.select(PathElement.groupElement("pExecutionSet"));
     /// The [VarHandle] of `pExecutionSet` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pExecutionSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pExecutionSet"));
+    public static final Supplier<VarHandle> VH_pExecutionSet = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pExecutionSet")));
 
     /// Creates `VkIndirectCommandsTokenDataEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkIndirectCommandsTokenDataEXT extends GroupType {
     /// {@return `pPushConstant` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static MemorySegment pPushConstant(MemorySegment segment, long index) { return (MemorySegment) VH_pPushConstant.get(segment, 0L, index); }
+    public static MemorySegment pPushConstant(MemorySegment segment, long index) { return (MemorySegment) VH_pPushConstant.get().get(segment, 0L, index); }
     /// {@return `pPushConstant`}
     public MemorySegment pPushConstant() { return pPushConstant(this.segment(), 0L); }
     /// Sets `pPushConstant` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void pPushConstant(MemorySegment segment, long index, MemorySegment value) { VH_pPushConstant.set(segment, 0L, index, value); }
+    public static void pPushConstant(MemorySegment segment, long index, MemorySegment value) { VH_pPushConstant.get().set(segment, 0L, index, value); }
     /// Sets `pPushConstant` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkIndirectCommandsTokenDataEXT extends GroupType {
     /// {@return `pVertexBuffer` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static MemorySegment pVertexBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_pVertexBuffer.get(segment, 0L, index); }
+    public static MemorySegment pVertexBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_pVertexBuffer.get().get(segment, 0L, index); }
     /// {@return `pVertexBuffer`}
     public MemorySegment pVertexBuffer() { return pVertexBuffer(this.segment(), 0L); }
     /// Sets `pVertexBuffer` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void pVertexBuffer(MemorySegment segment, long index, MemorySegment value) { VH_pVertexBuffer.set(segment, 0L, index, value); }
+    public static void pVertexBuffer(MemorySegment segment, long index, MemorySegment value) { VH_pVertexBuffer.get().set(segment, 0L, index, value); }
     /// Sets `pVertexBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkIndirectCommandsTokenDataEXT extends GroupType {
     /// {@return `pIndexBuffer` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static MemorySegment pIndexBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_pIndexBuffer.get(segment, 0L, index); }
+    public static MemorySegment pIndexBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_pIndexBuffer.get().get(segment, 0L, index); }
     /// {@return `pIndexBuffer`}
     public MemorySegment pIndexBuffer() { return pIndexBuffer(this.segment(), 0L); }
     /// Sets `pIndexBuffer` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void pIndexBuffer(MemorySegment segment, long index, MemorySegment value) { VH_pIndexBuffer.set(segment, 0L, index, value); }
+    public static void pIndexBuffer(MemorySegment segment, long index, MemorySegment value) { VH_pIndexBuffer.get().set(segment, 0L, index, value); }
     /// Sets `pIndexBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkIndirectCommandsTokenDataEXT extends GroupType {
     /// {@return `pExecutionSet` at the given index}
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
-    public static MemorySegment pExecutionSet(MemorySegment segment, long index) { return (MemorySegment) VH_pExecutionSet.get(segment, 0L, index); }
+    public static MemorySegment pExecutionSet(MemorySegment segment, long index) { return (MemorySegment) VH_pExecutionSet.get().get(segment, 0L, index); }
     /// {@return `pExecutionSet`}
     public MemorySegment pExecutionSet() { return pExecutionSet(this.segment(), 0L); }
     /// Sets `pExecutionSet` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param value the value
-    public static void pExecutionSet(MemorySegment segment, long index, MemorySegment value) { VH_pExecutionSet.set(segment, 0L, index, value); }
+    public static void pExecutionSet(MemorySegment segment, long index, MemorySegment value) { VH_pExecutionSet.get().set(segment, 0L, index, value); }
     /// Sets `pExecutionSet` with the given value.
     /// @param value the value
     /// @return `this`

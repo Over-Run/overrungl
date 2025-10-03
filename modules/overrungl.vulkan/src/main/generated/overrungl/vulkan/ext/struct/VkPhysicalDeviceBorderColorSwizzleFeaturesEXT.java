@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupTy
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `borderColorSwizzle`.
     public static final long OFFSET_borderColorSwizzle = LAYOUT.byteOffset(PathElement.groupElement("borderColorSwizzle"));
     /// The memory layout of `borderColorSwizzle`.
     public static final MemoryLayout LAYOUT_borderColorSwizzle = LAYOUT.select(PathElement.groupElement("borderColorSwizzle"));
     /// The [VarHandle] of `borderColorSwizzle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_borderColorSwizzle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("borderColorSwizzle"));
+    public static final Supplier<VarHandle> VH_borderColorSwizzle = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("borderColorSwizzle")));
     /// The byte offset of `borderColorSwizzleFromImage`.
     public static final long OFFSET_borderColorSwizzleFromImage = LAYOUT.byteOffset(PathElement.groupElement("borderColorSwizzleFromImage"));
     /// The memory layout of `borderColorSwizzleFromImage`.
     public static final MemoryLayout LAYOUT_borderColorSwizzleFromImage = LAYOUT.select(PathElement.groupElement("borderColorSwizzleFromImage"));
     /// The [VarHandle] of `borderColorSwizzleFromImage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_borderColorSwizzleFromImage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("borderColorSwizzleFromImage"));
+    public static final Supplier<VarHandle> VH_borderColorSwizzleFromImage = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("borderColorSwizzleFromImage")));
 
     /// Creates `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupTy
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupTy
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupTy
     /// {@return `borderColorSwizzle` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int borderColorSwizzle(MemorySegment segment, long index) { return (int) VH_borderColorSwizzle.get(segment, 0L, index); }
+    public static int borderColorSwizzle(MemorySegment segment, long index) { return (int) VH_borderColorSwizzle.get().get(segment, 0L, index); }
     /// {@return `borderColorSwizzle`}
     public int borderColorSwizzle() { return borderColorSwizzle(this.segment(), 0L); }
     /// Sets `borderColorSwizzle` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void borderColorSwizzle(MemorySegment segment, long index, int value) { VH_borderColorSwizzle.set(segment, 0L, index, value); }
+    public static void borderColorSwizzle(MemorySegment segment, long index, int value) { VH_borderColorSwizzle.get().set(segment, 0L, index, value); }
     /// Sets `borderColorSwizzle` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupTy
     /// {@return `borderColorSwizzleFromImage` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int borderColorSwizzleFromImage(MemorySegment segment, long index) { return (int) VH_borderColorSwizzleFromImage.get(segment, 0L, index); }
+    public static int borderColorSwizzleFromImage(MemorySegment segment, long index) { return (int) VH_borderColorSwizzleFromImage.get().get(segment, 0L, index); }
     /// {@return `borderColorSwizzleFromImage`}
     public int borderColorSwizzleFromImage() { return borderColorSwizzleFromImage(this.segment(), 0L); }
     /// Sets `borderColorSwizzleFromImage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void borderColorSwizzleFromImage(MemorySegment segment, long index, int value) { VH_borderColorSwizzleFromImage.set(segment, 0L, index, value); }
+    public static void borderColorSwizzleFromImage(MemorySegment segment, long index, int value) { VH_borderColorSwizzleFromImage.get().set(segment, 0L, index, value); }
     /// Sets `borderColorSwizzleFromImage` with the given value.
     /// @param value the value
     /// @return `this`

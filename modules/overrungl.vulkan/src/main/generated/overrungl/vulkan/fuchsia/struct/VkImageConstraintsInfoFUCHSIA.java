@@ -37,25 +37,25 @@ public final class VkImageConstraintsInfoFUCHSIA extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `formatConstraintsCount`.
     public static final long OFFSET_formatConstraintsCount = LAYOUT.byteOffset(PathElement.groupElement("formatConstraintsCount"));
     /// The memory layout of `formatConstraintsCount`.
     public static final MemoryLayout LAYOUT_formatConstraintsCount = LAYOUT.select(PathElement.groupElement("formatConstraintsCount"));
     /// The [VarHandle] of `formatConstraintsCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_formatConstraintsCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatConstraintsCount"));
+    public static final Supplier<VarHandle> VH_formatConstraintsCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatConstraintsCount")));
     /// The byte offset of `pFormatConstraints`.
     public static final long OFFSET_pFormatConstraints = LAYOUT.byteOffset(PathElement.groupElement("pFormatConstraints"));
     /// The memory layout of `pFormatConstraints`.
     public static final MemoryLayout LAYOUT_pFormatConstraints = LAYOUT.select(PathElement.groupElement("pFormatConstraints"));
     /// The [VarHandle] of `pFormatConstraints` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pFormatConstraints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFormatConstraints"));
+    public static final Supplier<VarHandle> VH_pFormatConstraints = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFormatConstraints")));
     /// The byte offset of `bufferCollectionConstraints`.
     public static final long OFFSET_bufferCollectionConstraints = LAYOUT.byteOffset(PathElement.groupElement("bufferCollectionConstraints"));
     /// The memory layout of `bufferCollectionConstraints`.
@@ -65,7 +65,7 @@ public final class VkImageConstraintsInfoFUCHSIA extends GroupType {
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
 
     /// Creates `VkImageConstraintsInfoFUCHSIA` with the given segment.
     /// @param segment      the memory segment
@@ -116,14 +116,14 @@ public final class VkImageConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,14 +132,14 @@ public final class VkImageConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -148,14 +148,14 @@ public final class VkImageConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `formatConstraintsCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int formatConstraintsCount(MemorySegment segment, long index) { return (int) VH_formatConstraintsCount.get(segment, 0L, index); }
+    public static int formatConstraintsCount(MemorySegment segment, long index) { return (int) VH_formatConstraintsCount.get().get(segment, 0L, index); }
     /// {@return `formatConstraintsCount`}
     public int formatConstraintsCount() { return formatConstraintsCount(this.segment(), 0L); }
     /// Sets `formatConstraintsCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void formatConstraintsCount(MemorySegment segment, long index, int value) { VH_formatConstraintsCount.set(segment, 0L, index, value); }
+    public static void formatConstraintsCount(MemorySegment segment, long index, int value) { VH_formatConstraintsCount.get().set(segment, 0L, index, value); }
     /// Sets `formatConstraintsCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,14 +164,14 @@ public final class VkImageConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `pFormatConstraints` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pFormatConstraints(MemorySegment segment, long index) { return (MemorySegment) VH_pFormatConstraints.get(segment, 0L, index); }
+    public static MemorySegment pFormatConstraints(MemorySegment segment, long index) { return (MemorySegment) VH_pFormatConstraints.get().get(segment, 0L, index); }
     /// {@return `pFormatConstraints`}
     public MemorySegment pFormatConstraints() { return pFormatConstraints(this.segment(), 0L); }
     /// Sets `pFormatConstraints` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pFormatConstraints(MemorySegment segment, long index, MemorySegment value) { VH_pFormatConstraints.set(segment, 0L, index, value); }
+    public static void pFormatConstraints(MemorySegment segment, long index, MemorySegment value) { VH_pFormatConstraints.get().set(segment, 0L, index, value); }
     /// Sets `pFormatConstraints` with the given value.
     /// @param value the value
     /// @return `this`
@@ -200,14 +200,14 @@ public final class VkImageConstraintsInfoFUCHSIA extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`

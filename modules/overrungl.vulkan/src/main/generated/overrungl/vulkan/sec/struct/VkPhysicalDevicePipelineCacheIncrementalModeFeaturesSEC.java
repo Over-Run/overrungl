@@ -31,19 +31,19 @@ public final class VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC exten
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pipelineCacheIncrementalMode`.
     public static final long OFFSET_pipelineCacheIncrementalMode = LAYOUT.byteOffset(PathElement.groupElement("pipelineCacheIncrementalMode"));
     /// The memory layout of `pipelineCacheIncrementalMode`.
     public static final MemoryLayout LAYOUT_pipelineCacheIncrementalMode = LAYOUT.select(PathElement.groupElement("pipelineCacheIncrementalMode"));
     /// The [VarHandle] of `pipelineCacheIncrementalMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineCacheIncrementalMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheIncrementalMode"));
+    public static final Supplier<VarHandle> VH_pipelineCacheIncrementalMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheIncrementalMode")));
 
     /// Creates `VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC exten
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC exten
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC exten
     /// {@return `pipelineCacheIncrementalMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineCacheIncrementalMode(MemorySegment segment, long index) { return (int) VH_pipelineCacheIncrementalMode.get(segment, 0L, index); }
+    public static int pipelineCacheIncrementalMode(MemorySegment segment, long index) { return (int) VH_pipelineCacheIncrementalMode.get().get(segment, 0L, index); }
     /// {@return `pipelineCacheIncrementalMode`}
     public int pipelineCacheIncrementalMode() { return pipelineCacheIncrementalMode(this.segment(), 0L); }
     /// Sets `pipelineCacheIncrementalMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineCacheIncrementalMode(MemorySegment segment, long index, int value) { VH_pipelineCacheIncrementalMode.set(segment, 0L, index, value); }
+    public static void pipelineCacheIncrementalMode(MemorySegment segment, long index, int value) { VH_pipelineCacheIncrementalMode.get().set(segment, 0L, index, value); }
     /// Sets `pipelineCacheIncrementalMode` with the given value.
     /// @param value the value
     /// @return `this`

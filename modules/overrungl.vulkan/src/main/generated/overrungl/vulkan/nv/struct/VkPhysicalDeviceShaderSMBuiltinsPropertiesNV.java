@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceShaderSMBuiltinsPropertiesNV extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderSMCount`.
     public static final long OFFSET_shaderSMCount = LAYOUT.byteOffset(PathElement.groupElement("shaderSMCount"));
     /// The memory layout of `shaderSMCount`.
     public static final MemoryLayout LAYOUT_shaderSMCount = LAYOUT.select(PathElement.groupElement("shaderSMCount"));
     /// The [VarHandle] of `shaderSMCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSMCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSMCount"));
+    public static final Supplier<VarHandle> VH_shaderSMCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSMCount")));
     /// The byte offset of `shaderWarpsPerSM`.
     public static final long OFFSET_shaderWarpsPerSM = LAYOUT.byteOffset(PathElement.groupElement("shaderWarpsPerSM"));
     /// The memory layout of `shaderWarpsPerSM`.
     public static final MemoryLayout LAYOUT_shaderWarpsPerSM = LAYOUT.select(PathElement.groupElement("shaderWarpsPerSM"));
     /// The [VarHandle] of `shaderWarpsPerSM` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderWarpsPerSM = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderWarpsPerSM"));
+    public static final Supplier<VarHandle> VH_shaderWarpsPerSM = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderWarpsPerSM")));
 
     /// Creates `VkPhysicalDeviceShaderSMBuiltinsPropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceShaderSMBuiltinsPropertiesNV extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceShaderSMBuiltinsPropertiesNV extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceShaderSMBuiltinsPropertiesNV extends GroupTyp
     /// {@return `shaderSMCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSMCount(MemorySegment segment, long index) { return (int) VH_shaderSMCount.get(segment, 0L, index); }
+    public static int shaderSMCount(MemorySegment segment, long index) { return (int) VH_shaderSMCount.get().get(segment, 0L, index); }
     /// {@return `shaderSMCount`}
     public int shaderSMCount() { return shaderSMCount(this.segment(), 0L); }
     /// Sets `shaderSMCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSMCount(MemorySegment segment, long index, int value) { VH_shaderSMCount.set(segment, 0L, index, value); }
+    public static void shaderSMCount(MemorySegment segment, long index, int value) { VH_shaderSMCount.get().set(segment, 0L, index, value); }
     /// Sets `shaderSMCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceShaderSMBuiltinsPropertiesNV extends GroupTyp
     /// {@return `shaderWarpsPerSM` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderWarpsPerSM(MemorySegment segment, long index) { return (int) VH_shaderWarpsPerSM.get(segment, 0L, index); }
+    public static int shaderWarpsPerSM(MemorySegment segment, long index) { return (int) VH_shaderWarpsPerSM.get().get(segment, 0L, index); }
     /// {@return `shaderWarpsPerSM`}
     public int shaderWarpsPerSM() { return shaderWarpsPerSM(this.segment(), 0L); }
     /// Sets `shaderWarpsPerSM` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderWarpsPerSM(MemorySegment segment, long index, int value) { VH_shaderWarpsPerSM.set(segment, 0L, index, value); }
+    public static void shaderWarpsPerSM(MemorySegment segment, long index, int value) { VH_shaderWarpsPerSM.get().set(segment, 0L, index, value); }
     /// Sets `shaderWarpsPerSM` with the given value.
     /// @param value the value
     /// @return `this`

@@ -29,13 +29,13 @@ public final class VkVertexInputBindingDivisorDescriptionEXT extends GroupType {
     /// The memory layout of `binding`.
     public static final MemoryLayout LAYOUT_binding = LAYOUT.select(PathElement.groupElement("binding"));
     /// The [VarHandle] of `binding` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_binding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("binding"));
+    public static final Supplier<VarHandle> VH_binding = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("binding")));
     /// The byte offset of `divisor`.
     public static final long OFFSET_divisor = LAYOUT.byteOffset(PathElement.groupElement("divisor"));
     /// The memory layout of `divisor`.
     public static final MemoryLayout LAYOUT_divisor = LAYOUT.select(PathElement.groupElement("divisor"));
     /// The [VarHandle] of `divisor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_divisor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("divisor"));
+    public static final Supplier<VarHandle> VH_divisor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("divisor")));
 
     /// Creates `VkVertexInputBindingDivisorDescriptionEXT` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkVertexInputBindingDivisorDescriptionEXT extends GroupType {
     /// {@return `binding` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int binding(MemorySegment segment, long index) { return (int) VH_binding.get(segment, 0L, index); }
+    public static int binding(MemorySegment segment, long index) { return (int) VH_binding.get().get(segment, 0L, index); }
     /// {@return `binding`}
     public int binding() { return binding(this.segment(), 0L); }
     /// Sets `binding` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void binding(MemorySegment segment, long index, int value) { VH_binding.set(segment, 0L, index, value); }
+    public static void binding(MemorySegment segment, long index, int value) { VH_binding.get().set(segment, 0L, index, value); }
     /// Sets `binding` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkVertexInputBindingDivisorDescriptionEXT extends GroupType {
     /// {@return `divisor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int divisor(MemorySegment segment, long index) { return (int) VH_divisor.get(segment, 0L, index); }
+    public static int divisor(MemorySegment segment, long index) { return (int) VH_divisor.get().get(segment, 0L, index); }
     /// {@return `divisor`}
     public int divisor() { return divisor(this.segment(), 0L); }
     /// Sets `divisor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void divisor(MemorySegment segment, long index, int value) { VH_divisor.set(segment, 0L, index, value); }
+    public static void divisor(MemorySegment segment, long index, int value) { VH_divisor.get().set(segment, 0L, index, value); }
     /// Sets `divisor` with the given value.
     /// @param value the value
     /// @return `this`

@@ -35,31 +35,31 @@ public final class VkAttachmentSampleCountInfoAMD extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `colorAttachmentCount`.
     public static final long OFFSET_colorAttachmentCount = LAYOUT.byteOffset(PathElement.groupElement("colorAttachmentCount"));
     /// The memory layout of `colorAttachmentCount`.
     public static final MemoryLayout LAYOUT_colorAttachmentCount = LAYOUT.select(PathElement.groupElement("colorAttachmentCount"));
     /// The [VarHandle] of `colorAttachmentCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_colorAttachmentCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachmentCount"));
+    public static final Supplier<VarHandle> VH_colorAttachmentCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachmentCount")));
     /// The byte offset of `pColorAttachmentSamples`.
     public static final long OFFSET_pColorAttachmentSamples = LAYOUT.byteOffset(PathElement.groupElement("pColorAttachmentSamples"));
     /// The memory layout of `pColorAttachmentSamples`.
     public static final MemoryLayout LAYOUT_pColorAttachmentSamples = LAYOUT.select(PathElement.groupElement("pColorAttachmentSamples"));
     /// The [VarHandle] of `pColorAttachmentSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pColorAttachmentSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorAttachmentSamples"));
+    public static final Supplier<VarHandle> VH_pColorAttachmentSamples = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorAttachmentSamples")));
     /// The byte offset of `depthStencilAttachmentSamples`.
     public static final long OFFSET_depthStencilAttachmentSamples = LAYOUT.byteOffset(PathElement.groupElement("depthStencilAttachmentSamples"));
     /// The memory layout of `depthStencilAttachmentSamples`.
     public static final MemoryLayout LAYOUT_depthStencilAttachmentSamples = LAYOUT.select(PathElement.groupElement("depthStencilAttachmentSamples"));
     /// The [VarHandle] of `depthStencilAttachmentSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthStencilAttachmentSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthStencilAttachmentSamples"));
+    public static final Supplier<VarHandle> VH_depthStencilAttachmentSamples = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthStencilAttachmentSamples")));
 
     /// Creates `VkAttachmentSampleCountInfoAMD` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkAttachmentSampleCountInfoAMD extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkAttachmentSampleCountInfoAMD extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkAttachmentSampleCountInfoAMD extends GroupType {
     /// {@return `colorAttachmentCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int colorAttachmentCount(MemorySegment segment, long index) { return (int) VH_colorAttachmentCount.get(segment, 0L, index); }
+    public static int colorAttachmentCount(MemorySegment segment, long index) { return (int) VH_colorAttachmentCount.get().get(segment, 0L, index); }
     /// {@return `colorAttachmentCount`}
     public int colorAttachmentCount() { return colorAttachmentCount(this.segment(), 0L); }
     /// Sets `colorAttachmentCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void colorAttachmentCount(MemorySegment segment, long index, int value) { VH_colorAttachmentCount.set(segment, 0L, index, value); }
+    public static void colorAttachmentCount(MemorySegment segment, long index, int value) { VH_colorAttachmentCount.get().set(segment, 0L, index, value); }
     /// Sets `colorAttachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkAttachmentSampleCountInfoAMD extends GroupType {
     /// {@return `pColorAttachmentSamples` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pColorAttachmentSamples(MemorySegment segment, long index) { return (MemorySegment) VH_pColorAttachmentSamples.get(segment, 0L, index); }
+    public static MemorySegment pColorAttachmentSamples(MemorySegment segment, long index) { return (MemorySegment) VH_pColorAttachmentSamples.get().get(segment, 0L, index); }
     /// {@return `pColorAttachmentSamples`}
     public MemorySegment pColorAttachmentSamples() { return pColorAttachmentSamples(this.segment(), 0L); }
     /// Sets `pColorAttachmentSamples` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pColorAttachmentSamples(MemorySegment segment, long index, MemorySegment value) { VH_pColorAttachmentSamples.set(segment, 0L, index, value); }
+    public static void pColorAttachmentSamples(MemorySegment segment, long index, MemorySegment value) { VH_pColorAttachmentSamples.get().set(segment, 0L, index, value); }
     /// Sets `pColorAttachmentSamples` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkAttachmentSampleCountInfoAMD extends GroupType {
     /// {@return `depthStencilAttachmentSamples` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int depthStencilAttachmentSamples(MemorySegment segment, long index) { return (int) VH_depthStencilAttachmentSamples.get(segment, 0L, index); }
+    public static int depthStencilAttachmentSamples(MemorySegment segment, long index) { return (int) VH_depthStencilAttachmentSamples.get().get(segment, 0L, index); }
     /// {@return `depthStencilAttachmentSamples`}
     public int depthStencilAttachmentSamples() { return depthStencilAttachmentSamples(this.segment(), 0L); }
     /// Sets `depthStencilAttachmentSamples` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depthStencilAttachmentSamples(MemorySegment segment, long index, int value) { VH_depthStencilAttachmentSamples.set(segment, 0L, index, value); }
+    public static void depthStencilAttachmentSamples(MemorySegment segment, long index, int value) { VH_depthStencilAttachmentSamples.get().set(segment, 0L, index, value); }
     /// Sets `depthStencilAttachmentSamples` with the given value.
     /// @param value the value
     /// @return `this`

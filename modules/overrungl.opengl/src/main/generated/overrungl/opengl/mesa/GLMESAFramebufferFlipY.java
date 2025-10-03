@@ -2,6 +2,7 @@
 package overrungl.opengl.mesa;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -11,8 +12,8 @@ public final class GLMESAFramebufferFlipY {
     public static final int GL_FRAMEBUFFER_FLIP_Y_MESA = 0x8BBB;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferParameteriMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetFramebufferParameterivMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glFramebufferParameteriMESA = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetFramebufferParameterivMESA = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glFramebufferParameteriMESA;
         public final MemorySegment PFN_glGetFramebufferParameterivMESA;
         private Handles(GLLoadFunc func) {
@@ -32,7 +33,7 @@ public final class GLMESAFramebufferFlipY {
     public void FramebufferParameteriMESA(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferParameteriMESA)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferParameteriMESA");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferParameteriMESA", target, pname, param); }
-        Handles.MH_glFramebufferParameteriMESA.invokeExact(handles.PFN_glFramebufferParameteriMESA, target, pname, param); }
+        Handles.MH_glFramebufferParameteriMESA.get().invokeExact(handles.PFN_glFramebufferParameteriMESA, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferParameteriMESA", e); }
     }
 
@@ -43,7 +44,7 @@ public final class GLMESAFramebufferFlipY {
     public void GetFramebufferParameterivMESA(int target, int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterivMESA)) throw new GLSymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFramebufferParameterivMESA", target, pname, params); }
-        Handles.MH_glGetFramebufferParameterivMESA.invokeExact(handles.PFN_glGetFramebufferParameterivMESA, target, pname, params); }
+        Handles.MH_glGetFramebufferParameterivMESA.get().invokeExact(handles.PFN_glGetFramebufferParameterivMESA, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFramebufferParameterivMESA", e); }
     }
 

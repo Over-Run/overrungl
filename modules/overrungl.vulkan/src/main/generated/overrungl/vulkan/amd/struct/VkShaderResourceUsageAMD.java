@@ -35,31 +35,31 @@ public final class VkShaderResourceUsageAMD extends GroupType {
     /// The memory layout of `numUsedVgprs`.
     public static final MemoryLayout LAYOUT_numUsedVgprs = LAYOUT.select(PathElement.groupElement("numUsedVgprs"));
     /// The [VarHandle] of `numUsedVgprs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_numUsedVgprs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numUsedVgprs"));
+    public static final Supplier<VarHandle> VH_numUsedVgprs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("numUsedVgprs")));
     /// The byte offset of `numUsedSgprs`.
     public static final long OFFSET_numUsedSgprs = LAYOUT.byteOffset(PathElement.groupElement("numUsedSgprs"));
     /// The memory layout of `numUsedSgprs`.
     public static final MemoryLayout LAYOUT_numUsedSgprs = LAYOUT.select(PathElement.groupElement("numUsedSgprs"));
     /// The [VarHandle] of `numUsedSgprs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_numUsedSgprs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numUsedSgprs"));
+    public static final Supplier<VarHandle> VH_numUsedSgprs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("numUsedSgprs")));
     /// The byte offset of `ldsSizePerLocalWorkGroup`.
     public static final long OFFSET_ldsSizePerLocalWorkGroup = LAYOUT.byteOffset(PathElement.groupElement("ldsSizePerLocalWorkGroup"));
     /// The memory layout of `ldsSizePerLocalWorkGroup`.
     public static final MemoryLayout LAYOUT_ldsSizePerLocalWorkGroup = LAYOUT.select(PathElement.groupElement("ldsSizePerLocalWorkGroup"));
     /// The [VarHandle] of `ldsSizePerLocalWorkGroup` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ldsSizePerLocalWorkGroup = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ldsSizePerLocalWorkGroup"));
+    public static final Supplier<VarHandle> VH_ldsSizePerLocalWorkGroup = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ldsSizePerLocalWorkGroup")));
     /// The byte offset of `ldsUsageSizeInBytes`.
     public static final long OFFSET_ldsUsageSizeInBytes = LAYOUT.byteOffset(PathElement.groupElement("ldsUsageSizeInBytes"));
     /// The memory layout of `ldsUsageSizeInBytes`.
     public static final MemoryLayout LAYOUT_ldsUsageSizeInBytes = LAYOUT.select(PathElement.groupElement("ldsUsageSizeInBytes"));
     /// The [VarHandle] of `ldsUsageSizeInBytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ldsUsageSizeInBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ldsUsageSizeInBytes"));
+    public static final Supplier<VarHandle> VH_ldsUsageSizeInBytes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("ldsUsageSizeInBytes")));
     /// The byte offset of `scratchMemUsageInBytes`.
     public static final long OFFSET_scratchMemUsageInBytes = LAYOUT.byteOffset(PathElement.groupElement("scratchMemUsageInBytes"));
     /// The memory layout of `scratchMemUsageInBytes`.
     public static final MemoryLayout LAYOUT_scratchMemUsageInBytes = LAYOUT.select(PathElement.groupElement("scratchMemUsageInBytes"));
     /// The [VarHandle] of `scratchMemUsageInBytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_scratchMemUsageInBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scratchMemUsageInBytes"));
+    public static final Supplier<VarHandle> VH_scratchMemUsageInBytes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("scratchMemUsageInBytes")));
 
     /// Creates `VkShaderResourceUsageAMD` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkShaderResourceUsageAMD extends GroupType {
     /// {@return `numUsedVgprs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int numUsedVgprs(MemorySegment segment, long index) { return (int) VH_numUsedVgprs.get(segment, 0L, index); }
+    public static int numUsedVgprs(MemorySegment segment, long index) { return (int) VH_numUsedVgprs.get().get(segment, 0L, index); }
     /// {@return `numUsedVgprs`}
     public int numUsedVgprs() { return numUsedVgprs(this.segment(), 0L); }
     /// Sets `numUsedVgprs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void numUsedVgprs(MemorySegment segment, long index, int value) { VH_numUsedVgprs.set(segment, 0L, index, value); }
+    public static void numUsedVgprs(MemorySegment segment, long index, int value) { VH_numUsedVgprs.get().set(segment, 0L, index, value); }
     /// Sets `numUsedVgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkShaderResourceUsageAMD extends GroupType {
     /// {@return `numUsedSgprs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int numUsedSgprs(MemorySegment segment, long index) { return (int) VH_numUsedSgprs.get(segment, 0L, index); }
+    public static int numUsedSgprs(MemorySegment segment, long index) { return (int) VH_numUsedSgprs.get().get(segment, 0L, index); }
     /// {@return `numUsedSgprs`}
     public int numUsedSgprs() { return numUsedSgprs(this.segment(), 0L); }
     /// Sets `numUsedSgprs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void numUsedSgprs(MemorySegment segment, long index, int value) { VH_numUsedSgprs.set(segment, 0L, index, value); }
+    public static void numUsedSgprs(MemorySegment segment, long index, int value) { VH_numUsedSgprs.get().set(segment, 0L, index, value); }
     /// Sets `numUsedSgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkShaderResourceUsageAMD extends GroupType {
     /// {@return `ldsSizePerLocalWorkGroup` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int ldsSizePerLocalWorkGroup(MemorySegment segment, long index) { return (int) VH_ldsSizePerLocalWorkGroup.get(segment, 0L, index); }
+    public static int ldsSizePerLocalWorkGroup(MemorySegment segment, long index) { return (int) VH_ldsSizePerLocalWorkGroup.get().get(segment, 0L, index); }
     /// {@return `ldsSizePerLocalWorkGroup`}
     public int ldsSizePerLocalWorkGroup() { return ldsSizePerLocalWorkGroup(this.segment(), 0L); }
     /// Sets `ldsSizePerLocalWorkGroup` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ldsSizePerLocalWorkGroup(MemorySegment segment, long index, int value) { VH_ldsSizePerLocalWorkGroup.set(segment, 0L, index, value); }
+    public static void ldsSizePerLocalWorkGroup(MemorySegment segment, long index, int value) { VH_ldsSizePerLocalWorkGroup.get().set(segment, 0L, index, value); }
     /// Sets `ldsSizePerLocalWorkGroup` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkShaderResourceUsageAMD extends GroupType {
     /// {@return `ldsUsageSizeInBytes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long ldsUsageSizeInBytes(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_ldsUsageSizeInBytes.get(segment, 0L, index)); }
+    public static long ldsUsageSizeInBytes(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_ldsUsageSizeInBytes.get().get(segment, 0L, index)); }
     /// {@return `ldsUsageSizeInBytes`}
     public long ldsUsageSizeInBytes() { return ldsUsageSizeInBytes(this.segment(), 0L); }
     /// Sets `ldsUsageSizeInBytes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void ldsUsageSizeInBytes(MemorySegment segment, long index, long value) { VH_ldsUsageSizeInBytes.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void ldsUsageSizeInBytes(MemorySegment segment, long index, long value) { VH_ldsUsageSizeInBytes.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `ldsUsageSizeInBytes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkShaderResourceUsageAMD extends GroupType {
     /// {@return `scratchMemUsageInBytes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long scratchMemUsageInBytes(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_scratchMemUsageInBytes.get(segment, 0L, index)); }
+    public static long scratchMemUsageInBytes(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_scratchMemUsageInBytes.get().get(segment, 0L, index)); }
     /// {@return `scratchMemUsageInBytes`}
     public long scratchMemUsageInBytes() { return scratchMemUsageInBytes(this.segment(), 0L); }
     /// Sets `scratchMemUsageInBytes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void scratchMemUsageInBytes(MemorySegment segment, long index, long value) { VH_scratchMemUsageInBytes.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void scratchMemUsageInBytes(MemorySegment segment, long index, long value) { VH_scratchMemUsageInBytes.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `scratchMemUsageInBytes` with the given value.
     /// @param value the value
     /// @return `this`

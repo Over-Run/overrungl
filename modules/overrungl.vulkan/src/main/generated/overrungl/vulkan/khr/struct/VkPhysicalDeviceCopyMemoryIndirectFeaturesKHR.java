@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR extends GroupTy
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `indirectMemoryCopy`.
     public static final long OFFSET_indirectMemoryCopy = LAYOUT.byteOffset(PathElement.groupElement("indirectMemoryCopy"));
     /// The memory layout of `indirectMemoryCopy`.
     public static final MemoryLayout LAYOUT_indirectMemoryCopy = LAYOUT.select(PathElement.groupElement("indirectMemoryCopy"));
     /// The [VarHandle] of `indirectMemoryCopy` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indirectMemoryCopy = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectMemoryCopy"));
+    public static final Supplier<VarHandle> VH_indirectMemoryCopy = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectMemoryCopy")));
     /// The byte offset of `indirectMemoryToImageCopy`.
     public static final long OFFSET_indirectMemoryToImageCopy = LAYOUT.byteOffset(PathElement.groupElement("indirectMemoryToImageCopy"));
     /// The memory layout of `indirectMemoryToImageCopy`.
     public static final MemoryLayout LAYOUT_indirectMemoryToImageCopy = LAYOUT.select(PathElement.groupElement("indirectMemoryToImageCopy"));
     /// The [VarHandle] of `indirectMemoryToImageCopy` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indirectMemoryToImageCopy = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectMemoryToImageCopy"));
+    public static final Supplier<VarHandle> VH_indirectMemoryToImageCopy = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectMemoryToImageCopy")));
 
     /// Creates `VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR extends GroupTy
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR extends GroupTy
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR extends GroupTy
     /// {@return `indirectMemoryCopy` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int indirectMemoryCopy(MemorySegment segment, long index) { return (int) VH_indirectMemoryCopy.get(segment, 0L, index); }
+    public static int indirectMemoryCopy(MemorySegment segment, long index) { return (int) VH_indirectMemoryCopy.get().get(segment, 0L, index); }
     /// {@return `indirectMemoryCopy`}
     public int indirectMemoryCopy() { return indirectMemoryCopy(this.segment(), 0L); }
     /// Sets `indirectMemoryCopy` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void indirectMemoryCopy(MemorySegment segment, long index, int value) { VH_indirectMemoryCopy.set(segment, 0L, index, value); }
+    public static void indirectMemoryCopy(MemorySegment segment, long index, int value) { VH_indirectMemoryCopy.get().set(segment, 0L, index, value); }
     /// Sets `indirectMemoryCopy` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR extends GroupTy
     /// {@return `indirectMemoryToImageCopy` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int indirectMemoryToImageCopy(MemorySegment segment, long index) { return (int) VH_indirectMemoryToImageCopy.get(segment, 0L, index); }
+    public static int indirectMemoryToImageCopy(MemorySegment segment, long index) { return (int) VH_indirectMemoryToImageCopy.get().get(segment, 0L, index); }
     /// {@return `indirectMemoryToImageCopy`}
     public int indirectMemoryToImageCopy() { return indirectMemoryToImageCopy(this.segment(), 0L); }
     /// Sets `indirectMemoryToImageCopy` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void indirectMemoryToImageCopy(MemorySegment segment, long index, int value) { VH_indirectMemoryToImageCopy.set(segment, 0L, index, value); }
+    public static void indirectMemoryToImageCopy(MemorySegment segment, long index, int value) { VH_indirectMemoryToImageCopy.get().set(segment, 0L, index, value); }
     /// Sets `indirectMemoryToImageCopy` with the given value.
     /// @param value the value
     /// @return `this`

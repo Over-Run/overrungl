@@ -35,31 +35,31 @@ public final class VkFormatProperties3 extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `linearTilingFeatures`.
     public static final long OFFSET_linearTilingFeatures = LAYOUT.byteOffset(PathElement.groupElement("linearTilingFeatures"));
     /// The memory layout of `linearTilingFeatures`.
     public static final MemoryLayout LAYOUT_linearTilingFeatures = LAYOUT.select(PathElement.groupElement("linearTilingFeatures"));
     /// The [VarHandle] of `linearTilingFeatures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_linearTilingFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("linearTilingFeatures"));
+    public static final Supplier<VarHandle> VH_linearTilingFeatures = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("linearTilingFeatures")));
     /// The byte offset of `optimalTilingFeatures`.
     public static final long OFFSET_optimalTilingFeatures = LAYOUT.byteOffset(PathElement.groupElement("optimalTilingFeatures"));
     /// The memory layout of `optimalTilingFeatures`.
     public static final MemoryLayout LAYOUT_optimalTilingFeatures = LAYOUT.select(PathElement.groupElement("optimalTilingFeatures"));
     /// The [VarHandle] of `optimalTilingFeatures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_optimalTilingFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("optimalTilingFeatures"));
+    public static final Supplier<VarHandle> VH_optimalTilingFeatures = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("optimalTilingFeatures")));
     /// The byte offset of `bufferFeatures`.
     public static final long OFFSET_bufferFeatures = LAYOUT.byteOffset(PathElement.groupElement("bufferFeatures"));
     /// The memory layout of `bufferFeatures`.
     public static final MemoryLayout LAYOUT_bufferFeatures = LAYOUT.select(PathElement.groupElement("bufferFeatures"));
     /// The [VarHandle] of `bufferFeatures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferFeatures"));
+    public static final Supplier<VarHandle> VH_bufferFeatures = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferFeatures")));
 
     /// Creates `VkFormatProperties3` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkFormatProperties3 extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkFormatProperties3 extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkFormatProperties3 extends GroupType {
     /// {@return `linearTilingFeatures` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long linearTilingFeatures(MemorySegment segment, long index) { return (long) VH_linearTilingFeatures.get(segment, 0L, index); }
+    public static long linearTilingFeatures(MemorySegment segment, long index) { return (long) VH_linearTilingFeatures.get().get(segment, 0L, index); }
     /// {@return `linearTilingFeatures`}
     public long linearTilingFeatures() { return linearTilingFeatures(this.segment(), 0L); }
     /// Sets `linearTilingFeatures` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void linearTilingFeatures(MemorySegment segment, long index, long value) { VH_linearTilingFeatures.set(segment, 0L, index, value); }
+    public static void linearTilingFeatures(MemorySegment segment, long index, long value) { VH_linearTilingFeatures.get().set(segment, 0L, index, value); }
     /// Sets `linearTilingFeatures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkFormatProperties3 extends GroupType {
     /// {@return `optimalTilingFeatures` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long optimalTilingFeatures(MemorySegment segment, long index) { return (long) VH_optimalTilingFeatures.get(segment, 0L, index); }
+    public static long optimalTilingFeatures(MemorySegment segment, long index) { return (long) VH_optimalTilingFeatures.get().get(segment, 0L, index); }
     /// {@return `optimalTilingFeatures`}
     public long optimalTilingFeatures() { return optimalTilingFeatures(this.segment(), 0L); }
     /// Sets `optimalTilingFeatures` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void optimalTilingFeatures(MemorySegment segment, long index, long value) { VH_optimalTilingFeatures.set(segment, 0L, index, value); }
+    public static void optimalTilingFeatures(MemorySegment segment, long index, long value) { VH_optimalTilingFeatures.get().set(segment, 0L, index, value); }
     /// Sets `optimalTilingFeatures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkFormatProperties3 extends GroupType {
     /// {@return `bufferFeatures` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long bufferFeatures(MemorySegment segment, long index) { return (long) VH_bufferFeatures.get(segment, 0L, index); }
+    public static long bufferFeatures(MemorySegment segment, long index) { return (long) VH_bufferFeatures.get().get(segment, 0L, index); }
     /// {@return `bufferFeatures`}
     public long bufferFeatures() { return bufferFeatures(this.segment(), 0L); }
     /// Sets `bufferFeatures` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferFeatures(MemorySegment segment, long index, long value) { VH_bufferFeatures.set(segment, 0L, index, value); }
+    public static void bufferFeatures(MemorySegment segment, long index, long value) { VH_bufferFeatures.get().set(segment, 0L, index, value); }
     /// Sets `bufferFeatures` with the given value.
     /// @param value the value
     /// @return `this`

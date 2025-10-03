@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -12,7 +13,7 @@ public final class GLARBClEvent {
     public static final int GL_SYNC_CL_EVENT_COMPLETE_ARB = 0x8241;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glCreateSyncFromCLeventARB = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glCreateSyncFromCLeventARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glCreateSyncFromCLeventARB;
         private Handles(GLLoadFunc func) {
             PFN_glCreateSyncFromCLeventARB = func.invoke("glCreateSyncFromCLeventARB");
@@ -30,7 +31,7 @@ public final class GLARBClEvent {
     public @NonNull MemorySegment CreateSyncFromCLeventARB(@NonNull MemorySegment context, @NonNull MemorySegment event, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateSyncFromCLeventARB)) throw new GLSymbolNotFoundError("Symbol not found: glCreateSyncFromCLeventARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateSyncFromCLeventARB", context, event, flags); }
-        return (MemorySegment) Handles.MH_glCreateSyncFromCLeventARB.invokeExact(handles.PFN_glCreateSyncFromCLeventARB, context, event, flags); }
+        return (MemorySegment) Handles.MH_glCreateSyncFromCLeventARB.get().invokeExact(handles.PFN_glCreateSyncFromCLeventARB, context, event, flags); }
         catch (Throwable e) { throw new RuntimeException("error in CreateSyncFromCLeventARB", e); }
     }
 

@@ -31,19 +31,19 @@ public final class VkClearColorValue extends GroupType {
     /// The memory layout of `float32`.
     public static final MemoryLayout LAYOUT_float32 = LAYOUT.select(PathElement.groupElement("float32"));
     /// The [VarHandle] of `float32` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_float32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("float32"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_float32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("float32"), PathElement.sequenceElement()));
     /// The byte offset of `int32`.
     public static final long OFFSET_int32 = LAYOUT.byteOffset(PathElement.groupElement("int32"));
     /// The memory layout of `int32`.
     public static final MemoryLayout LAYOUT_int32 = LAYOUT.select(PathElement.groupElement("int32"));
     /// The [VarHandle] of `int32` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_int32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("int32"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_int32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("int32"), PathElement.sequenceElement()));
     /// The byte offset of `uint32`.
     public static final long OFFSET_uint32 = LAYOUT.byteOffset(PathElement.groupElement("uint32"));
     /// The memory layout of `uint32`.
     public static final MemoryLayout LAYOUT_uint32 = LAYOUT.select(PathElement.groupElement("uint32"));
     /// The [VarHandle] of `uint32` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_uint32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uint32"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_uint32 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("uint32"), PathElement.sequenceElement()));
 
     /// Creates `VkClearColorValue` with the given segment.
     /// @param segment      the memory segment
@@ -99,7 +99,7 @@ public final class VkClearColorValue extends GroupType {
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param index0 the Index 0 of the array
-    public static float float32(MemorySegment segment, long index, long index0) { return (float) VH_float32.get(segment, 0L, index, index0); }
+    public static float float32(MemorySegment segment, long index, long index0) { return (float) VH_float32.get().get(segment, 0L, index, index0); }
     /// {@return `float32`}
     public MemorySegment float32() { return float32(this.segment(), 0L); }
     /// {@return `float32`}
@@ -115,7 +115,7 @@ public final class VkClearColorValue extends GroupType {
     /// @param index the index of the union buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void float32(MemorySegment segment, long index, long index0, float value) { VH_float32.set(segment, 0L, index, index0, value); }
+    public static void float32(MemorySegment segment, long index, long index0, float value) { VH_float32.get().set(segment, 0L, index, index0, value); }
     /// Sets `float32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,7 +134,7 @@ public final class VkClearColorValue extends GroupType {
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param index0 the Index 0 of the array
-    public static int int32(MemorySegment segment, long index, long index0) { return (int) VH_int32.get(segment, 0L, index, index0); }
+    public static int int32(MemorySegment segment, long index, long index0) { return (int) VH_int32.get().get(segment, 0L, index, index0); }
     /// {@return `int32`}
     public MemorySegment int32() { return int32(this.segment(), 0L); }
     /// {@return `int32`}
@@ -150,7 +150,7 @@ public final class VkClearColorValue extends GroupType {
     /// @param index the index of the union buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void int32(MemorySegment segment, long index, long index0, int value) { VH_int32.set(segment, 0L, index, index0, value); }
+    public static void int32(MemorySegment segment, long index, long index0, int value) { VH_int32.get().set(segment, 0L, index, index0, value); }
     /// Sets `int32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,7 +169,7 @@ public final class VkClearColorValue extends GroupType {
     /// @param segment the segment of the union
     /// @param index the index of the union buffer
     /// @param index0 the Index 0 of the array
-    public static int uint32(MemorySegment segment, long index, long index0) { return (int) VH_uint32.get(segment, 0L, index, index0); }
+    public static int uint32(MemorySegment segment, long index, long index0) { return (int) VH_uint32.get().get(segment, 0L, index, index0); }
     /// {@return `uint32`}
     public MemorySegment uint32() { return uint32(this.segment(), 0L); }
     /// {@return `uint32`}
@@ -185,7 +185,7 @@ public final class VkClearColorValue extends GroupType {
     /// @param index the index of the union buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void uint32(MemorySegment segment, long index, long index0, int value) { VH_uint32.set(segment, 0L, index, index0, value); }
+    public static void uint32(MemorySegment segment, long index, long index0, int value) { VH_uint32.get().set(segment, 0L, index, index0, value); }
     /// Sets `uint32` with the given value.
     /// @param value the value
     /// @return `this`

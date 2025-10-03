@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -12,8 +13,8 @@ public final class GLARBDrawIndirect {
     public static final int GL_DRAW_INDIRECT_BUFFER_BINDING = 0x8F43;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDrawArraysIndirect = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDrawElementsIndirect = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glDrawArraysIndirect = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glDrawElementsIndirect = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glDrawArraysIndirect;
         public final MemorySegment PFN_glDrawElementsIndirect;
         private Handles(GLLoadFunc func) {
@@ -33,7 +34,7 @@ public final class GLARBDrawIndirect {
     public void DrawArraysIndirect(int mode, @NonNull MemorySegment indirect) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysIndirect)) throw new GLSymbolNotFoundError("Symbol not found: glDrawArraysIndirect");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawArraysIndirect", mode, indirect); }
-        Handles.MH_glDrawArraysIndirect.invokeExact(handles.PFN_glDrawArraysIndirect, mode, indirect); }
+        Handles.MH_glDrawArraysIndirect.get().invokeExact(handles.PFN_glDrawArraysIndirect, mode, indirect); }
         catch (Throwable e) { throw new RuntimeException("error in DrawArraysIndirect", e); }
     }
 
@@ -44,7 +45,7 @@ public final class GLARBDrawIndirect {
     public void DrawElementsIndirect(int mode, int type, @NonNull MemorySegment indirect) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsIndirect)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsIndirect");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElementsIndirect", mode, type, indirect); }
-        Handles.MH_glDrawElementsIndirect.invokeExact(handles.PFN_glDrawElementsIndirect, mode, type, indirect); }
+        Handles.MH_glDrawElementsIndirect.get().invokeExact(handles.PFN_glDrawElementsIndirect, mode, type, indirect); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementsIndirect", e); }
     }
 

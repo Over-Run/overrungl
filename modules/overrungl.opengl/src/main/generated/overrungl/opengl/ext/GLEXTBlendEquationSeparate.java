@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -12,7 +13,7 @@ public final class GLEXTBlendEquationSeparate {
     public static final int GL_BLEND_EQUATION_ALPHA_EXT = 0x883D;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBlendEquationSeparateEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glBlendEquationSeparateEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glBlendEquationSeparateEXT;
         private Handles(GLLoadFunc func) {
             PFN_glBlendEquationSeparateEXT = func.invoke("glBlendEquationSeparateEXT", "glBlendEquationSeparate");
@@ -30,7 +31,7 @@ public final class GLEXTBlendEquationSeparate {
     public void BlendEquationSeparateEXT(int modeRGB, int modeAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBlendEquationSeparateEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendEquationSeparateEXT", modeRGB, modeAlpha); }
-        Handles.MH_glBlendEquationSeparateEXT.invokeExact(handles.PFN_glBlendEquationSeparateEXT, modeRGB, modeAlpha); }
+        Handles.MH_glBlendEquationSeparateEXT.get().invokeExact(handles.PFN_glBlendEquationSeparateEXT, modeRGB, modeAlpha); }
         catch (Throwable e) { throw new RuntimeException("error in BlendEquationSeparateEXT", e); }
     }
 

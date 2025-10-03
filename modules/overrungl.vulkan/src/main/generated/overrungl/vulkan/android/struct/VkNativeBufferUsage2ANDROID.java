@@ -29,13 +29,13 @@ public final class VkNativeBufferUsage2ANDROID extends GroupType {
     /// The memory layout of `consumer`.
     public static final MemoryLayout LAYOUT_consumer = LAYOUT.select(PathElement.groupElement("consumer"));
     /// The [VarHandle] of `consumer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_consumer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("consumer"));
+    public static final Supplier<VarHandle> VH_consumer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("consumer")));
     /// The byte offset of `producer`.
     public static final long OFFSET_producer = LAYOUT.byteOffset(PathElement.groupElement("producer"));
     /// The memory layout of `producer`.
     public static final MemoryLayout LAYOUT_producer = LAYOUT.select(PathElement.groupElement("producer"));
     /// The [VarHandle] of `producer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_producer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("producer"));
+    public static final Supplier<VarHandle> VH_producer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("producer")));
 
     /// Creates `VkNativeBufferUsage2ANDROID` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkNativeBufferUsage2ANDROID extends GroupType {
     /// {@return `consumer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long consumer(MemorySegment segment, long index) { return (long) VH_consumer.get(segment, 0L, index); }
+    public static long consumer(MemorySegment segment, long index) { return (long) VH_consumer.get().get(segment, 0L, index); }
     /// {@return `consumer`}
     public long consumer() { return consumer(this.segment(), 0L); }
     /// Sets `consumer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void consumer(MemorySegment segment, long index, long value) { VH_consumer.set(segment, 0L, index, value); }
+    public static void consumer(MemorySegment segment, long index, long value) { VH_consumer.get().set(segment, 0L, index, value); }
     /// Sets `consumer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkNativeBufferUsage2ANDROID extends GroupType {
     /// {@return `producer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long producer(MemorySegment segment, long index) { return (long) VH_producer.get(segment, 0L, index); }
+    public static long producer(MemorySegment segment, long index) { return (long) VH_producer.get().get(segment, 0L, index); }
     /// {@return `producer`}
     public long producer() { return producer(this.segment(), 0L); }
     /// Sets `producer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void producer(MemorySegment segment, long index, long value) { VH_producer.set(segment, 0L, index, value); }
+    public static void producer(MemorySegment segment, long index, long value) { VH_producer.get().set(segment, 0L, index, value); }
     /// Sets `producer` with the given value.
     /// @param value the value
     /// @return `this`

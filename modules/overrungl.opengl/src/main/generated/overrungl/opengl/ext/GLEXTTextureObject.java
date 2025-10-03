@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -15,12 +16,12 @@ public final class GLEXTTextureObject {
     public static final int GL_TEXTURE_3D_BINDING_EXT = 0x806A;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glAreTexturesResidentEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glBindTextureEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDeleteTexturesEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGenTexturesEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsTextureEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPrioritizeTexturesEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glAreTexturesResidentEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glBindTextureEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glDeleteTexturesEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGenTexturesEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glIsTextureEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glPrioritizeTexturesEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glAreTexturesResidentEXT;
         public final MemorySegment PFN_glBindTextureEXT;
         public final MemorySegment PFN_glDeleteTexturesEXT;
@@ -48,7 +49,7 @@ public final class GLEXTTextureObject {
     public boolean AreTexturesResidentEXT(int n, @NonNull MemorySegment textures, @NonNull MemorySegment residences) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAreTexturesResidentEXT)) throw new GLSymbolNotFoundError("Symbol not found: glAreTexturesResidentEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glAreTexturesResidentEXT", n, textures, residences); }
-        return (((byte) Handles.MH_glAreTexturesResidentEXT.invokeExact(handles.PFN_glAreTexturesResidentEXT, n, textures, residences)) != 0); }
+        return (((byte) Handles.MH_glAreTexturesResidentEXT.get().invokeExact(handles.PFN_glAreTexturesResidentEXT, n, textures, residences)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in AreTexturesResidentEXT", e); }
     }
 
@@ -59,7 +60,7 @@ public final class GLEXTTextureObject {
     public void BindTextureEXT(int target, int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindTextureEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBindTextureEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBindTextureEXT", target, texture); }
-        Handles.MH_glBindTextureEXT.invokeExact(handles.PFN_glBindTextureEXT, target, texture); }
+        Handles.MH_glBindTextureEXT.get().invokeExact(handles.PFN_glBindTextureEXT, target, texture); }
         catch (Throwable e) { throw new RuntimeException("error in BindTextureEXT", e); }
     }
 
@@ -70,7 +71,7 @@ public final class GLEXTTextureObject {
     public void DeleteTexturesEXT(int n, @NonNull MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteTexturesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteTexturesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteTexturesEXT", n, textures); }
-        Handles.MH_glDeleteTexturesEXT.invokeExact(handles.PFN_glDeleteTexturesEXT, n, textures); }
+        Handles.MH_glDeleteTexturesEXT.get().invokeExact(handles.PFN_glDeleteTexturesEXT, n, textures); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteTexturesEXT", e); }
     }
 
@@ -81,7 +82,7 @@ public final class GLEXTTextureObject {
     public void GenTexturesEXT(int n, @NonNull MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenTexturesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGenTexturesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGenTexturesEXT", n, textures); }
-        Handles.MH_glGenTexturesEXT.invokeExact(handles.PFN_glGenTexturesEXT, n, textures); }
+        Handles.MH_glGenTexturesEXT.get().invokeExact(handles.PFN_glGenTexturesEXT, n, textures); }
         catch (Throwable e) { throw new RuntimeException("error in GenTexturesEXT", e); }
     }
 
@@ -92,7 +93,7 @@ public final class GLEXTTextureObject {
     public boolean IsTextureEXT(int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsTextureEXT)) throw new GLSymbolNotFoundError("Symbol not found: glIsTextureEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIsTextureEXT", texture); }
-        return (((byte) Handles.MH_glIsTextureEXT.invokeExact(handles.PFN_glIsTextureEXT, texture)) != 0); }
+        return (((byte) Handles.MH_glIsTextureEXT.get().invokeExact(handles.PFN_glIsTextureEXT, texture)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsTextureEXT", e); }
     }
 
@@ -103,7 +104,7 @@ public final class GLEXTTextureObject {
     public void PrioritizeTexturesEXT(int n, @NonNull MemorySegment textures, @NonNull MemorySegment priorities) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPrioritizeTexturesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPrioritizeTexturesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glPrioritizeTexturesEXT", n, textures, priorities); }
-        Handles.MH_glPrioritizeTexturesEXT.invokeExact(handles.PFN_glPrioritizeTexturesEXT, n, textures, priorities); }
+        Handles.MH_glPrioritizeTexturesEXT.get().invokeExact(handles.PFN_glPrioritizeTexturesEXT, n, textures, priorities); }
         catch (Throwable e) { throw new RuntimeException("error in PrioritizeTexturesEXT", e); }
     }
 

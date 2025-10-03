@@ -31,13 +31,13 @@ public final class VkClearAttachment extends GroupType {
     /// The memory layout of `aspectMask`.
     public static final MemoryLayout LAYOUT_aspectMask = LAYOUT.select(PathElement.groupElement("aspectMask"));
     /// The [VarHandle] of `aspectMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_aspectMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("aspectMask"));
+    public static final Supplier<VarHandle> VH_aspectMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("aspectMask")));
     /// The byte offset of `colorAttachment`.
     public static final long OFFSET_colorAttachment = LAYOUT.byteOffset(PathElement.groupElement("colorAttachment"));
     /// The memory layout of `colorAttachment`.
     public static final MemoryLayout LAYOUT_colorAttachment = LAYOUT.select(PathElement.groupElement("colorAttachment"));
     /// The [VarHandle] of `colorAttachment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_colorAttachment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachment"));
+    public static final Supplier<VarHandle> VH_colorAttachment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachment")));
     /// The byte offset of `clearValue`.
     public static final long OFFSET_clearValue = LAYOUT.byteOffset(PathElement.groupElement("clearValue"));
     /// The memory layout of `clearValue`.
@@ -92,14 +92,14 @@ public final class VkClearAttachment extends GroupType {
     /// {@return `aspectMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int aspectMask(MemorySegment segment, long index) { return (int) VH_aspectMask.get(segment, 0L, index); }
+    public static int aspectMask(MemorySegment segment, long index) { return (int) VH_aspectMask.get().get(segment, 0L, index); }
     /// {@return `aspectMask`}
     public int aspectMask() { return aspectMask(this.segment(), 0L); }
     /// Sets `aspectMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void aspectMask(MemorySegment segment, long index, int value) { VH_aspectMask.set(segment, 0L, index, value); }
+    public static void aspectMask(MemorySegment segment, long index, int value) { VH_aspectMask.get().set(segment, 0L, index, value); }
     /// Sets `aspectMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -108,14 +108,14 @@ public final class VkClearAttachment extends GroupType {
     /// {@return `colorAttachment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int colorAttachment(MemorySegment segment, long index) { return (int) VH_colorAttachment.get(segment, 0L, index); }
+    public static int colorAttachment(MemorySegment segment, long index) { return (int) VH_colorAttachment.get().get(segment, 0L, index); }
     /// {@return `colorAttachment`}
     public int colorAttachment() { return colorAttachment(this.segment(), 0L); }
     /// Sets `colorAttachment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void colorAttachment(MemorySegment segment, long index, int value) { VH_colorAttachment.set(segment, 0L, index, value); }
+    public static void colorAttachment(MemorySegment segment, long index, int value) { VH_colorAttachment.get().set(segment, 0L, index, value); }
     /// Sets `colorAttachment` with the given value.
     /// @param value the value
     /// @return `this`

@@ -41,19 +41,19 @@ public final class VkVideoEncodeH264RateControlLayerInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `useMinQp`.
     public static final long OFFSET_useMinQp = LAYOUT.byteOffset(PathElement.groupElement("useMinQp"));
     /// The memory layout of `useMinQp`.
     public static final MemoryLayout LAYOUT_useMinQp = LAYOUT.select(PathElement.groupElement("useMinQp"));
     /// The [VarHandle] of `useMinQp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_useMinQp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMinQp"));
+    public static final Supplier<VarHandle> VH_useMinQp = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMinQp")));
     /// The byte offset of `minQp`.
     public static final long OFFSET_minQp = LAYOUT.byteOffset(PathElement.groupElement("minQp"));
     /// The memory layout of `minQp`.
@@ -63,7 +63,7 @@ public final class VkVideoEncodeH264RateControlLayerInfoKHR extends GroupType {
     /// The memory layout of `useMaxQp`.
     public static final MemoryLayout LAYOUT_useMaxQp = LAYOUT.select(PathElement.groupElement("useMaxQp"));
     /// The [VarHandle] of `useMaxQp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_useMaxQp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxQp"));
+    public static final Supplier<VarHandle> VH_useMaxQp = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxQp")));
     /// The byte offset of `maxQp`.
     public static final long OFFSET_maxQp = LAYOUT.byteOffset(PathElement.groupElement("maxQp"));
     /// The memory layout of `maxQp`.
@@ -73,7 +73,7 @@ public final class VkVideoEncodeH264RateControlLayerInfoKHR extends GroupType {
     /// The memory layout of `useMaxFrameSize`.
     public static final MemoryLayout LAYOUT_useMaxFrameSize = LAYOUT.select(PathElement.groupElement("useMaxFrameSize"));
     /// The [VarHandle] of `useMaxFrameSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_useMaxFrameSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxFrameSize"));
+    public static final Supplier<VarHandle> VH_useMaxFrameSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxFrameSize")));
     /// The byte offset of `maxFrameSize`.
     public static final long OFFSET_maxFrameSize = LAYOUT.byteOffset(PathElement.groupElement("maxFrameSize"));
     /// The memory layout of `maxFrameSize`.
@@ -128,14 +128,14 @@ public final class VkVideoEncodeH264RateControlLayerInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,14 +144,14 @@ public final class VkVideoEncodeH264RateControlLayerInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -160,14 +160,14 @@ public final class VkVideoEncodeH264RateControlLayerInfoKHR extends GroupType {
     /// {@return `useMinQp` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int useMinQp(MemorySegment segment, long index) { return (int) VH_useMinQp.get(segment, 0L, index); }
+    public static int useMinQp(MemorySegment segment, long index) { return (int) VH_useMinQp.get().get(segment, 0L, index); }
     /// {@return `useMinQp`}
     public int useMinQp() { return useMinQp(this.segment(), 0L); }
     /// Sets `useMinQp` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void useMinQp(MemorySegment segment, long index, int value) { VH_useMinQp.set(segment, 0L, index, value); }
+    public static void useMinQp(MemorySegment segment, long index, int value) { VH_useMinQp.get().set(segment, 0L, index, value); }
     /// Sets `useMinQp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -196,14 +196,14 @@ public final class VkVideoEncodeH264RateControlLayerInfoKHR extends GroupType {
     /// {@return `useMaxQp` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int useMaxQp(MemorySegment segment, long index) { return (int) VH_useMaxQp.get(segment, 0L, index); }
+    public static int useMaxQp(MemorySegment segment, long index) { return (int) VH_useMaxQp.get().get(segment, 0L, index); }
     /// {@return `useMaxQp`}
     public int useMaxQp() { return useMaxQp(this.segment(), 0L); }
     /// Sets `useMaxQp` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void useMaxQp(MemorySegment segment, long index, int value) { VH_useMaxQp.set(segment, 0L, index, value); }
+    public static void useMaxQp(MemorySegment segment, long index, int value) { VH_useMaxQp.get().set(segment, 0L, index, value); }
     /// Sets `useMaxQp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,14 +232,14 @@ public final class VkVideoEncodeH264RateControlLayerInfoKHR extends GroupType {
     /// {@return `useMaxFrameSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int useMaxFrameSize(MemorySegment segment, long index) { return (int) VH_useMaxFrameSize.get(segment, 0L, index); }
+    public static int useMaxFrameSize(MemorySegment segment, long index) { return (int) VH_useMaxFrameSize.get().get(segment, 0L, index); }
     /// {@return `useMaxFrameSize`}
     public int useMaxFrameSize() { return useMaxFrameSize(this.segment(), 0L); }
     /// Sets `useMaxFrameSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void useMaxFrameSize(MemorySegment segment, long index, int value) { VH_useMaxFrameSize.set(segment, 0L, index, value); }
+    public static void useMaxFrameSize(MemorySegment segment, long index, int value) { VH_useMaxFrameSize.get().set(segment, 0L, index, value); }
     /// Sets `useMaxFrameSize` with the given value.
     /// @param value the value
     /// @return `this`

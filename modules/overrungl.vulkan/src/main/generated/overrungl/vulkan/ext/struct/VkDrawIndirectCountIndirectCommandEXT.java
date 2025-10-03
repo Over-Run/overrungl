@@ -31,19 +31,19 @@ public final class VkDrawIndirectCountIndirectCommandEXT extends GroupType {
     /// The memory layout of `bufferAddress`.
     public static final MemoryLayout LAYOUT_bufferAddress = LAYOUT.select(PathElement.groupElement("bufferAddress"));
     /// The [VarHandle] of `bufferAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferAddress"));
+    public static final Supplier<VarHandle> VH_bufferAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferAddress")));
     /// The byte offset of `stride`.
     public static final long OFFSET_stride = LAYOUT.byteOffset(PathElement.groupElement("stride"));
     /// The memory layout of `stride`.
     public static final MemoryLayout LAYOUT_stride = LAYOUT.select(PathElement.groupElement("stride"));
     /// The [VarHandle] of `stride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride"));
+    public static final Supplier<VarHandle> VH_stride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride")));
     /// The byte offset of `commandCount`.
     public static final long OFFSET_commandCount = LAYOUT.byteOffset(PathElement.groupElement("commandCount"));
     /// The memory layout of `commandCount`.
     public static final MemoryLayout LAYOUT_commandCount = LAYOUT.select(PathElement.groupElement("commandCount"));
     /// The [VarHandle] of `commandCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_commandCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandCount"));
+    public static final Supplier<VarHandle> VH_commandCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandCount")));
 
     /// Creates `VkDrawIndirectCountIndirectCommandEXT` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkDrawIndirectCountIndirectCommandEXT extends GroupType {
     /// {@return `bufferAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long bufferAddress(MemorySegment segment, long index) { return (long) VH_bufferAddress.get(segment, 0L, index); }
+    public static long bufferAddress(MemorySegment segment, long index) { return (long) VH_bufferAddress.get().get(segment, 0L, index); }
     /// {@return `bufferAddress`}
     public long bufferAddress() { return bufferAddress(this.segment(), 0L); }
     /// Sets `bufferAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferAddress(MemorySegment segment, long index, long value) { VH_bufferAddress.set(segment, 0L, index, value); }
+    public static void bufferAddress(MemorySegment segment, long index, long value) { VH_bufferAddress.get().set(segment, 0L, index, value); }
     /// Sets `bufferAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkDrawIndirectCountIndirectCommandEXT extends GroupType {
     /// {@return `stride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int stride(MemorySegment segment, long index) { return (int) VH_stride.get(segment, 0L, index); }
+    public static int stride(MemorySegment segment, long index) { return (int) VH_stride.get().get(segment, 0L, index); }
     /// {@return `stride`}
     public int stride() { return stride(this.segment(), 0L); }
     /// Sets `stride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stride(MemorySegment segment, long index, int value) { VH_stride.set(segment, 0L, index, value); }
+    public static void stride(MemorySegment segment, long index, int value) { VH_stride.get().set(segment, 0L, index, value); }
     /// Sets `stride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDrawIndirectCountIndirectCommandEXT extends GroupType {
     /// {@return `commandCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int commandCount(MemorySegment segment, long index) { return (int) VH_commandCount.get(segment, 0L, index); }
+    public static int commandCount(MemorySegment segment, long index) { return (int) VH_commandCount.get().get(segment, 0L, index); }
     /// {@return `commandCount`}
     public int commandCount() { return commandCount(this.segment(), 0L); }
     /// Sets `commandCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void commandCount(MemorySegment segment, long index, int value) { VH_commandCount.set(segment, 0L, index, value); }
+    public static void commandCount(MemorySegment segment, long index, int value) { VH_commandCount.get().set(segment, 0L, index, value); }
     /// Sets `commandCount` with the given value.
     /// @param value the value
     /// @return `this`

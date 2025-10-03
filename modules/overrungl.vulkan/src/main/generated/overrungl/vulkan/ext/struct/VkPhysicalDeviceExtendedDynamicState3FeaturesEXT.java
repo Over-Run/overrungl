@@ -91,199 +91,199 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `extendedDynamicState3TessellationDomainOrigin`.
     public static final long OFFSET_extendedDynamicState3TessellationDomainOrigin = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3TessellationDomainOrigin"));
     /// The memory layout of `extendedDynamicState3TessellationDomainOrigin`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3TessellationDomainOrigin = LAYOUT.select(PathElement.groupElement("extendedDynamicState3TessellationDomainOrigin"));
     /// The [VarHandle] of `extendedDynamicState3TessellationDomainOrigin` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3TessellationDomainOrigin = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3TessellationDomainOrigin"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3TessellationDomainOrigin = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3TessellationDomainOrigin")));
     /// The byte offset of `extendedDynamicState3DepthClampEnable`.
     public static final long OFFSET_extendedDynamicState3DepthClampEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3DepthClampEnable"));
     /// The memory layout of `extendedDynamicState3DepthClampEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3DepthClampEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3DepthClampEnable"));
     /// The [VarHandle] of `extendedDynamicState3DepthClampEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3DepthClampEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3DepthClampEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3DepthClampEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3DepthClampEnable")));
     /// The byte offset of `extendedDynamicState3PolygonMode`.
     public static final long OFFSET_extendedDynamicState3PolygonMode = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3PolygonMode"));
     /// The memory layout of `extendedDynamicState3PolygonMode`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3PolygonMode = LAYOUT.select(PathElement.groupElement("extendedDynamicState3PolygonMode"));
     /// The [VarHandle] of `extendedDynamicState3PolygonMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3PolygonMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3PolygonMode"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3PolygonMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3PolygonMode")));
     /// The byte offset of `extendedDynamicState3RasterizationSamples`.
     public static final long OFFSET_extendedDynamicState3RasterizationSamples = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3RasterizationSamples"));
     /// The memory layout of `extendedDynamicState3RasterizationSamples`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3RasterizationSamples = LAYOUT.select(PathElement.groupElement("extendedDynamicState3RasterizationSamples"));
     /// The [VarHandle] of `extendedDynamicState3RasterizationSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3RasterizationSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3RasterizationSamples"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3RasterizationSamples = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3RasterizationSamples")));
     /// The byte offset of `extendedDynamicState3SampleMask`.
     public static final long OFFSET_extendedDynamicState3SampleMask = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3SampleMask"));
     /// The memory layout of `extendedDynamicState3SampleMask`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3SampleMask = LAYOUT.select(PathElement.groupElement("extendedDynamicState3SampleMask"));
     /// The [VarHandle] of `extendedDynamicState3SampleMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3SampleMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3SampleMask"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3SampleMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3SampleMask")));
     /// The byte offset of `extendedDynamicState3AlphaToCoverageEnable`.
     public static final long OFFSET_extendedDynamicState3AlphaToCoverageEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3AlphaToCoverageEnable"));
     /// The memory layout of `extendedDynamicState3AlphaToCoverageEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3AlphaToCoverageEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3AlphaToCoverageEnable"));
     /// The [VarHandle] of `extendedDynamicState3AlphaToCoverageEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3AlphaToCoverageEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3AlphaToCoverageEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3AlphaToCoverageEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3AlphaToCoverageEnable")));
     /// The byte offset of `extendedDynamicState3AlphaToOneEnable`.
     public static final long OFFSET_extendedDynamicState3AlphaToOneEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3AlphaToOneEnable"));
     /// The memory layout of `extendedDynamicState3AlphaToOneEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3AlphaToOneEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3AlphaToOneEnable"));
     /// The [VarHandle] of `extendedDynamicState3AlphaToOneEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3AlphaToOneEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3AlphaToOneEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3AlphaToOneEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3AlphaToOneEnable")));
     /// The byte offset of `extendedDynamicState3LogicOpEnable`.
     public static final long OFFSET_extendedDynamicState3LogicOpEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3LogicOpEnable"));
     /// The memory layout of `extendedDynamicState3LogicOpEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3LogicOpEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3LogicOpEnable"));
     /// The [VarHandle] of `extendedDynamicState3LogicOpEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3LogicOpEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3LogicOpEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3LogicOpEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3LogicOpEnable")));
     /// The byte offset of `extendedDynamicState3ColorBlendEnable`.
     public static final long OFFSET_extendedDynamicState3ColorBlendEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3ColorBlendEnable"));
     /// The memory layout of `extendedDynamicState3ColorBlendEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3ColorBlendEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3ColorBlendEnable"));
     /// The [VarHandle] of `extendedDynamicState3ColorBlendEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3ColorBlendEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ColorBlendEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3ColorBlendEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ColorBlendEnable")));
     /// The byte offset of `extendedDynamicState3ColorBlendEquation`.
     public static final long OFFSET_extendedDynamicState3ColorBlendEquation = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3ColorBlendEquation"));
     /// The memory layout of `extendedDynamicState3ColorBlendEquation`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3ColorBlendEquation = LAYOUT.select(PathElement.groupElement("extendedDynamicState3ColorBlendEquation"));
     /// The [VarHandle] of `extendedDynamicState3ColorBlendEquation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3ColorBlendEquation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ColorBlendEquation"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3ColorBlendEquation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ColorBlendEquation")));
     /// The byte offset of `extendedDynamicState3ColorWriteMask`.
     public static final long OFFSET_extendedDynamicState3ColorWriteMask = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3ColorWriteMask"));
     /// The memory layout of `extendedDynamicState3ColorWriteMask`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3ColorWriteMask = LAYOUT.select(PathElement.groupElement("extendedDynamicState3ColorWriteMask"));
     /// The [VarHandle] of `extendedDynamicState3ColorWriteMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3ColorWriteMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ColorWriteMask"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3ColorWriteMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ColorWriteMask")));
     /// The byte offset of `extendedDynamicState3RasterizationStream`.
     public static final long OFFSET_extendedDynamicState3RasterizationStream = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3RasterizationStream"));
     /// The memory layout of `extendedDynamicState3RasterizationStream`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3RasterizationStream = LAYOUT.select(PathElement.groupElement("extendedDynamicState3RasterizationStream"));
     /// The [VarHandle] of `extendedDynamicState3RasterizationStream` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3RasterizationStream = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3RasterizationStream"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3RasterizationStream = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3RasterizationStream")));
     /// The byte offset of `extendedDynamicState3ConservativeRasterizationMode`.
     public static final long OFFSET_extendedDynamicState3ConservativeRasterizationMode = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3ConservativeRasterizationMode"));
     /// The memory layout of `extendedDynamicState3ConservativeRasterizationMode`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3ConservativeRasterizationMode = LAYOUT.select(PathElement.groupElement("extendedDynamicState3ConservativeRasterizationMode"));
     /// The [VarHandle] of `extendedDynamicState3ConservativeRasterizationMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3ConservativeRasterizationMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ConservativeRasterizationMode"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3ConservativeRasterizationMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ConservativeRasterizationMode")));
     /// The byte offset of `extendedDynamicState3ExtraPrimitiveOverestimationSize`.
     public static final long OFFSET_extendedDynamicState3ExtraPrimitiveOverestimationSize = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3ExtraPrimitiveOverestimationSize"));
     /// The memory layout of `extendedDynamicState3ExtraPrimitiveOverestimationSize`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3ExtraPrimitiveOverestimationSize = LAYOUT.select(PathElement.groupElement("extendedDynamicState3ExtraPrimitiveOverestimationSize"));
     /// The [VarHandle] of `extendedDynamicState3ExtraPrimitiveOverestimationSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3ExtraPrimitiveOverestimationSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ExtraPrimitiveOverestimationSize"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3ExtraPrimitiveOverestimationSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ExtraPrimitiveOverestimationSize")));
     /// The byte offset of `extendedDynamicState3DepthClipEnable`.
     public static final long OFFSET_extendedDynamicState3DepthClipEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3DepthClipEnable"));
     /// The memory layout of `extendedDynamicState3DepthClipEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3DepthClipEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3DepthClipEnable"));
     /// The [VarHandle] of `extendedDynamicState3DepthClipEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3DepthClipEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3DepthClipEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3DepthClipEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3DepthClipEnable")));
     /// The byte offset of `extendedDynamicState3SampleLocationsEnable`.
     public static final long OFFSET_extendedDynamicState3SampleLocationsEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3SampleLocationsEnable"));
     /// The memory layout of `extendedDynamicState3SampleLocationsEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3SampleLocationsEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3SampleLocationsEnable"));
     /// The [VarHandle] of `extendedDynamicState3SampleLocationsEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3SampleLocationsEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3SampleLocationsEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3SampleLocationsEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3SampleLocationsEnable")));
     /// The byte offset of `extendedDynamicState3ColorBlendAdvanced`.
     public static final long OFFSET_extendedDynamicState3ColorBlendAdvanced = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3ColorBlendAdvanced"));
     /// The memory layout of `extendedDynamicState3ColorBlendAdvanced`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3ColorBlendAdvanced = LAYOUT.select(PathElement.groupElement("extendedDynamicState3ColorBlendAdvanced"));
     /// The [VarHandle] of `extendedDynamicState3ColorBlendAdvanced` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3ColorBlendAdvanced = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ColorBlendAdvanced"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3ColorBlendAdvanced = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ColorBlendAdvanced")));
     /// The byte offset of `extendedDynamicState3ProvokingVertexMode`.
     public static final long OFFSET_extendedDynamicState3ProvokingVertexMode = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3ProvokingVertexMode"));
     /// The memory layout of `extendedDynamicState3ProvokingVertexMode`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3ProvokingVertexMode = LAYOUT.select(PathElement.groupElement("extendedDynamicState3ProvokingVertexMode"));
     /// The [VarHandle] of `extendedDynamicState3ProvokingVertexMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3ProvokingVertexMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ProvokingVertexMode"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3ProvokingVertexMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ProvokingVertexMode")));
     /// The byte offset of `extendedDynamicState3LineRasterizationMode`.
     public static final long OFFSET_extendedDynamicState3LineRasterizationMode = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3LineRasterizationMode"));
     /// The memory layout of `extendedDynamicState3LineRasterizationMode`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3LineRasterizationMode = LAYOUT.select(PathElement.groupElement("extendedDynamicState3LineRasterizationMode"));
     /// The [VarHandle] of `extendedDynamicState3LineRasterizationMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3LineRasterizationMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3LineRasterizationMode"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3LineRasterizationMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3LineRasterizationMode")));
     /// The byte offset of `extendedDynamicState3LineStippleEnable`.
     public static final long OFFSET_extendedDynamicState3LineStippleEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3LineStippleEnable"));
     /// The memory layout of `extendedDynamicState3LineStippleEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3LineStippleEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3LineStippleEnable"));
     /// The [VarHandle] of `extendedDynamicState3LineStippleEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3LineStippleEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3LineStippleEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3LineStippleEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3LineStippleEnable")));
     /// The byte offset of `extendedDynamicState3DepthClipNegativeOneToOne`.
     public static final long OFFSET_extendedDynamicState3DepthClipNegativeOneToOne = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3DepthClipNegativeOneToOne"));
     /// The memory layout of `extendedDynamicState3DepthClipNegativeOneToOne`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3DepthClipNegativeOneToOne = LAYOUT.select(PathElement.groupElement("extendedDynamicState3DepthClipNegativeOneToOne"));
     /// The [VarHandle] of `extendedDynamicState3DepthClipNegativeOneToOne` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3DepthClipNegativeOneToOne = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3DepthClipNegativeOneToOne"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3DepthClipNegativeOneToOne = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3DepthClipNegativeOneToOne")));
     /// The byte offset of `extendedDynamicState3ViewportWScalingEnable`.
     public static final long OFFSET_extendedDynamicState3ViewportWScalingEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3ViewportWScalingEnable"));
     /// The memory layout of `extendedDynamicState3ViewportWScalingEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3ViewportWScalingEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3ViewportWScalingEnable"));
     /// The [VarHandle] of `extendedDynamicState3ViewportWScalingEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3ViewportWScalingEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ViewportWScalingEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3ViewportWScalingEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ViewportWScalingEnable")));
     /// The byte offset of `extendedDynamicState3ViewportSwizzle`.
     public static final long OFFSET_extendedDynamicState3ViewportSwizzle = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3ViewportSwizzle"));
     /// The memory layout of `extendedDynamicState3ViewportSwizzle`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3ViewportSwizzle = LAYOUT.select(PathElement.groupElement("extendedDynamicState3ViewportSwizzle"));
     /// The [VarHandle] of `extendedDynamicState3ViewportSwizzle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3ViewportSwizzle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ViewportSwizzle"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3ViewportSwizzle = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ViewportSwizzle")));
     /// The byte offset of `extendedDynamicState3CoverageToColorEnable`.
     public static final long OFFSET_extendedDynamicState3CoverageToColorEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3CoverageToColorEnable"));
     /// The memory layout of `extendedDynamicState3CoverageToColorEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3CoverageToColorEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3CoverageToColorEnable"));
     /// The [VarHandle] of `extendedDynamicState3CoverageToColorEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3CoverageToColorEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageToColorEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3CoverageToColorEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageToColorEnable")));
     /// The byte offset of `extendedDynamicState3CoverageToColorLocation`.
     public static final long OFFSET_extendedDynamicState3CoverageToColorLocation = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3CoverageToColorLocation"));
     /// The memory layout of `extendedDynamicState3CoverageToColorLocation`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3CoverageToColorLocation = LAYOUT.select(PathElement.groupElement("extendedDynamicState3CoverageToColorLocation"));
     /// The [VarHandle] of `extendedDynamicState3CoverageToColorLocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3CoverageToColorLocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageToColorLocation"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3CoverageToColorLocation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageToColorLocation")));
     /// The byte offset of `extendedDynamicState3CoverageModulationMode`.
     public static final long OFFSET_extendedDynamicState3CoverageModulationMode = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3CoverageModulationMode"));
     /// The memory layout of `extendedDynamicState3CoverageModulationMode`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3CoverageModulationMode = LAYOUT.select(PathElement.groupElement("extendedDynamicState3CoverageModulationMode"));
     /// The [VarHandle] of `extendedDynamicState3CoverageModulationMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3CoverageModulationMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageModulationMode"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3CoverageModulationMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageModulationMode")));
     /// The byte offset of `extendedDynamicState3CoverageModulationTableEnable`.
     public static final long OFFSET_extendedDynamicState3CoverageModulationTableEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3CoverageModulationTableEnable"));
     /// The memory layout of `extendedDynamicState3CoverageModulationTableEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3CoverageModulationTableEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3CoverageModulationTableEnable"));
     /// The [VarHandle] of `extendedDynamicState3CoverageModulationTableEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3CoverageModulationTableEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageModulationTableEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3CoverageModulationTableEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageModulationTableEnable")));
     /// The byte offset of `extendedDynamicState3CoverageModulationTable`.
     public static final long OFFSET_extendedDynamicState3CoverageModulationTable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3CoverageModulationTable"));
     /// The memory layout of `extendedDynamicState3CoverageModulationTable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3CoverageModulationTable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3CoverageModulationTable"));
     /// The [VarHandle] of `extendedDynamicState3CoverageModulationTable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3CoverageModulationTable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageModulationTable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3CoverageModulationTable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageModulationTable")));
     /// The byte offset of `extendedDynamicState3CoverageReductionMode`.
     public static final long OFFSET_extendedDynamicState3CoverageReductionMode = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3CoverageReductionMode"));
     /// The memory layout of `extendedDynamicState3CoverageReductionMode`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3CoverageReductionMode = LAYOUT.select(PathElement.groupElement("extendedDynamicState3CoverageReductionMode"));
     /// The [VarHandle] of `extendedDynamicState3CoverageReductionMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3CoverageReductionMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageReductionMode"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3CoverageReductionMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3CoverageReductionMode")));
     /// The byte offset of `extendedDynamicState3RepresentativeFragmentTestEnable`.
     public static final long OFFSET_extendedDynamicState3RepresentativeFragmentTestEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3RepresentativeFragmentTestEnable"));
     /// The memory layout of `extendedDynamicState3RepresentativeFragmentTestEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3RepresentativeFragmentTestEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3RepresentativeFragmentTestEnable"));
     /// The [VarHandle] of `extendedDynamicState3RepresentativeFragmentTestEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3RepresentativeFragmentTestEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3RepresentativeFragmentTestEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3RepresentativeFragmentTestEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3RepresentativeFragmentTestEnable")));
     /// The byte offset of `extendedDynamicState3ShadingRateImageEnable`.
     public static final long OFFSET_extendedDynamicState3ShadingRateImageEnable = LAYOUT.byteOffset(PathElement.groupElement("extendedDynamicState3ShadingRateImageEnable"));
     /// The memory layout of `extendedDynamicState3ShadingRateImageEnable`.
     public static final MemoryLayout LAYOUT_extendedDynamicState3ShadingRateImageEnable = LAYOUT.select(PathElement.groupElement("extendedDynamicState3ShadingRateImageEnable"));
     /// The [VarHandle] of `extendedDynamicState3ShadingRateImageEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedDynamicState3ShadingRateImageEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ShadingRateImageEnable"));
+    public static final Supplier<VarHandle> VH_extendedDynamicState3ShadingRateImageEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ShadingRateImageEnable")));
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -334,14 +334,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -350,14 +350,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,14 +366,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3TessellationDomainOrigin` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3TessellationDomainOrigin(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3TessellationDomainOrigin.get(segment, 0L, index); }
+    public static int extendedDynamicState3TessellationDomainOrigin(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3TessellationDomainOrigin.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3TessellationDomainOrigin`}
     public int extendedDynamicState3TessellationDomainOrigin() { return extendedDynamicState3TessellationDomainOrigin(this.segment(), 0L); }
     /// Sets `extendedDynamicState3TessellationDomainOrigin` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3TessellationDomainOrigin(MemorySegment segment, long index, int value) { VH_extendedDynamicState3TessellationDomainOrigin.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3TessellationDomainOrigin(MemorySegment segment, long index, int value) { VH_extendedDynamicState3TessellationDomainOrigin.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3TessellationDomainOrigin` with the given value.
     /// @param value the value
     /// @return `this`
@@ -382,14 +382,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3DepthClampEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3DepthClampEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3DepthClampEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3DepthClampEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3DepthClampEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3DepthClampEnable`}
     public int extendedDynamicState3DepthClampEnable() { return extendedDynamicState3DepthClampEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3DepthClampEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3DepthClampEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3DepthClampEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3DepthClampEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3DepthClampEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3DepthClampEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -398,14 +398,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3PolygonMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3PolygonMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3PolygonMode.get(segment, 0L, index); }
+    public static int extendedDynamicState3PolygonMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3PolygonMode.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3PolygonMode`}
     public int extendedDynamicState3PolygonMode() { return extendedDynamicState3PolygonMode(this.segment(), 0L); }
     /// Sets `extendedDynamicState3PolygonMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3PolygonMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3PolygonMode.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3PolygonMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3PolygonMode.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3PolygonMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -414,14 +414,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3RasterizationSamples` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3RasterizationSamples(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3RasterizationSamples.get(segment, 0L, index); }
+    public static int extendedDynamicState3RasterizationSamples(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3RasterizationSamples.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3RasterizationSamples`}
     public int extendedDynamicState3RasterizationSamples() { return extendedDynamicState3RasterizationSamples(this.segment(), 0L); }
     /// Sets `extendedDynamicState3RasterizationSamples` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3RasterizationSamples(MemorySegment segment, long index, int value) { VH_extendedDynamicState3RasterizationSamples.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3RasterizationSamples(MemorySegment segment, long index, int value) { VH_extendedDynamicState3RasterizationSamples.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3RasterizationSamples` with the given value.
     /// @param value the value
     /// @return `this`
@@ -430,14 +430,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3SampleMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3SampleMask(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3SampleMask.get(segment, 0L, index); }
+    public static int extendedDynamicState3SampleMask(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3SampleMask.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3SampleMask`}
     public int extendedDynamicState3SampleMask() { return extendedDynamicState3SampleMask(this.segment(), 0L); }
     /// Sets `extendedDynamicState3SampleMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3SampleMask(MemorySegment segment, long index, int value) { VH_extendedDynamicState3SampleMask.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3SampleMask(MemorySegment segment, long index, int value) { VH_extendedDynamicState3SampleMask.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3SampleMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -446,14 +446,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3AlphaToCoverageEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3AlphaToCoverageEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3AlphaToCoverageEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3AlphaToCoverageEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3AlphaToCoverageEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3AlphaToCoverageEnable`}
     public int extendedDynamicState3AlphaToCoverageEnable() { return extendedDynamicState3AlphaToCoverageEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3AlphaToCoverageEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3AlphaToCoverageEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3AlphaToCoverageEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3AlphaToCoverageEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3AlphaToCoverageEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3AlphaToCoverageEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -462,14 +462,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3AlphaToOneEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3AlphaToOneEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3AlphaToOneEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3AlphaToOneEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3AlphaToOneEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3AlphaToOneEnable`}
     public int extendedDynamicState3AlphaToOneEnable() { return extendedDynamicState3AlphaToOneEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3AlphaToOneEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3AlphaToOneEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3AlphaToOneEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3AlphaToOneEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3AlphaToOneEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3AlphaToOneEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -478,14 +478,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3LogicOpEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3LogicOpEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3LogicOpEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3LogicOpEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3LogicOpEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3LogicOpEnable`}
     public int extendedDynamicState3LogicOpEnable() { return extendedDynamicState3LogicOpEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3LogicOpEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3LogicOpEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3LogicOpEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3LogicOpEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3LogicOpEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3LogicOpEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -494,14 +494,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3ColorBlendEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3ColorBlendEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ColorBlendEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3ColorBlendEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ColorBlendEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3ColorBlendEnable`}
     public int extendedDynamicState3ColorBlendEnable() { return extendedDynamicState3ColorBlendEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3ColorBlendEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3ColorBlendEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ColorBlendEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3ColorBlendEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ColorBlendEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3ColorBlendEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -510,14 +510,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3ColorBlendEquation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3ColorBlendEquation(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ColorBlendEquation.get(segment, 0L, index); }
+    public static int extendedDynamicState3ColorBlendEquation(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ColorBlendEquation.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3ColorBlendEquation`}
     public int extendedDynamicState3ColorBlendEquation() { return extendedDynamicState3ColorBlendEquation(this.segment(), 0L); }
     /// Sets `extendedDynamicState3ColorBlendEquation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3ColorBlendEquation(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ColorBlendEquation.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3ColorBlendEquation(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ColorBlendEquation.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3ColorBlendEquation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -526,14 +526,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3ColorWriteMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3ColorWriteMask(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ColorWriteMask.get(segment, 0L, index); }
+    public static int extendedDynamicState3ColorWriteMask(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ColorWriteMask.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3ColorWriteMask`}
     public int extendedDynamicState3ColorWriteMask() { return extendedDynamicState3ColorWriteMask(this.segment(), 0L); }
     /// Sets `extendedDynamicState3ColorWriteMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3ColorWriteMask(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ColorWriteMask.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3ColorWriteMask(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ColorWriteMask.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3ColorWriteMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -542,14 +542,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3RasterizationStream` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3RasterizationStream(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3RasterizationStream.get(segment, 0L, index); }
+    public static int extendedDynamicState3RasterizationStream(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3RasterizationStream.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3RasterizationStream`}
     public int extendedDynamicState3RasterizationStream() { return extendedDynamicState3RasterizationStream(this.segment(), 0L); }
     /// Sets `extendedDynamicState3RasterizationStream` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3RasterizationStream(MemorySegment segment, long index, int value) { VH_extendedDynamicState3RasterizationStream.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3RasterizationStream(MemorySegment segment, long index, int value) { VH_extendedDynamicState3RasterizationStream.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3RasterizationStream` with the given value.
     /// @param value the value
     /// @return `this`
@@ -558,14 +558,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3ConservativeRasterizationMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3ConservativeRasterizationMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ConservativeRasterizationMode.get(segment, 0L, index); }
+    public static int extendedDynamicState3ConservativeRasterizationMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ConservativeRasterizationMode.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3ConservativeRasterizationMode`}
     public int extendedDynamicState3ConservativeRasterizationMode() { return extendedDynamicState3ConservativeRasterizationMode(this.segment(), 0L); }
     /// Sets `extendedDynamicState3ConservativeRasterizationMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3ConservativeRasterizationMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ConservativeRasterizationMode.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3ConservativeRasterizationMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ConservativeRasterizationMode.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3ConservativeRasterizationMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -574,14 +574,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3ExtraPrimitiveOverestimationSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3ExtraPrimitiveOverestimationSize(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ExtraPrimitiveOverestimationSize.get(segment, 0L, index); }
+    public static int extendedDynamicState3ExtraPrimitiveOverestimationSize(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ExtraPrimitiveOverestimationSize.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3ExtraPrimitiveOverestimationSize`}
     public int extendedDynamicState3ExtraPrimitiveOverestimationSize() { return extendedDynamicState3ExtraPrimitiveOverestimationSize(this.segment(), 0L); }
     /// Sets `extendedDynamicState3ExtraPrimitiveOverestimationSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3ExtraPrimitiveOverestimationSize(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ExtraPrimitiveOverestimationSize.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3ExtraPrimitiveOverestimationSize(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ExtraPrimitiveOverestimationSize.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3ExtraPrimitiveOverestimationSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -590,14 +590,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3DepthClipEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3DepthClipEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3DepthClipEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3DepthClipEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3DepthClipEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3DepthClipEnable`}
     public int extendedDynamicState3DepthClipEnable() { return extendedDynamicState3DepthClipEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3DepthClipEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3DepthClipEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3DepthClipEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3DepthClipEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3DepthClipEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3DepthClipEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -606,14 +606,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3SampleLocationsEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3SampleLocationsEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3SampleLocationsEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3SampleLocationsEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3SampleLocationsEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3SampleLocationsEnable`}
     public int extendedDynamicState3SampleLocationsEnable() { return extendedDynamicState3SampleLocationsEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3SampleLocationsEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3SampleLocationsEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3SampleLocationsEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3SampleLocationsEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3SampleLocationsEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3SampleLocationsEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -622,14 +622,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3ColorBlendAdvanced` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3ColorBlendAdvanced(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ColorBlendAdvanced.get(segment, 0L, index); }
+    public static int extendedDynamicState3ColorBlendAdvanced(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ColorBlendAdvanced.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3ColorBlendAdvanced`}
     public int extendedDynamicState3ColorBlendAdvanced() { return extendedDynamicState3ColorBlendAdvanced(this.segment(), 0L); }
     /// Sets `extendedDynamicState3ColorBlendAdvanced` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3ColorBlendAdvanced(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ColorBlendAdvanced.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3ColorBlendAdvanced(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ColorBlendAdvanced.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3ColorBlendAdvanced` with the given value.
     /// @param value the value
     /// @return `this`
@@ -638,14 +638,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3ProvokingVertexMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3ProvokingVertexMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ProvokingVertexMode.get(segment, 0L, index); }
+    public static int extendedDynamicState3ProvokingVertexMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ProvokingVertexMode.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3ProvokingVertexMode`}
     public int extendedDynamicState3ProvokingVertexMode() { return extendedDynamicState3ProvokingVertexMode(this.segment(), 0L); }
     /// Sets `extendedDynamicState3ProvokingVertexMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3ProvokingVertexMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ProvokingVertexMode.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3ProvokingVertexMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ProvokingVertexMode.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3ProvokingVertexMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -654,14 +654,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3LineRasterizationMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3LineRasterizationMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3LineRasterizationMode.get(segment, 0L, index); }
+    public static int extendedDynamicState3LineRasterizationMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3LineRasterizationMode.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3LineRasterizationMode`}
     public int extendedDynamicState3LineRasterizationMode() { return extendedDynamicState3LineRasterizationMode(this.segment(), 0L); }
     /// Sets `extendedDynamicState3LineRasterizationMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3LineRasterizationMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3LineRasterizationMode.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3LineRasterizationMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3LineRasterizationMode.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3LineRasterizationMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -670,14 +670,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3LineStippleEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3LineStippleEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3LineStippleEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3LineStippleEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3LineStippleEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3LineStippleEnable`}
     public int extendedDynamicState3LineStippleEnable() { return extendedDynamicState3LineStippleEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3LineStippleEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3LineStippleEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3LineStippleEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3LineStippleEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3LineStippleEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3LineStippleEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -686,14 +686,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3DepthClipNegativeOneToOne` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3DepthClipNegativeOneToOne(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3DepthClipNegativeOneToOne.get(segment, 0L, index); }
+    public static int extendedDynamicState3DepthClipNegativeOneToOne(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3DepthClipNegativeOneToOne.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3DepthClipNegativeOneToOne`}
     public int extendedDynamicState3DepthClipNegativeOneToOne() { return extendedDynamicState3DepthClipNegativeOneToOne(this.segment(), 0L); }
     /// Sets `extendedDynamicState3DepthClipNegativeOneToOne` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3DepthClipNegativeOneToOne(MemorySegment segment, long index, int value) { VH_extendedDynamicState3DepthClipNegativeOneToOne.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3DepthClipNegativeOneToOne(MemorySegment segment, long index, int value) { VH_extendedDynamicState3DepthClipNegativeOneToOne.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3DepthClipNegativeOneToOne` with the given value.
     /// @param value the value
     /// @return `this`
@@ -702,14 +702,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3ViewportWScalingEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3ViewportWScalingEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ViewportWScalingEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3ViewportWScalingEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ViewportWScalingEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3ViewportWScalingEnable`}
     public int extendedDynamicState3ViewportWScalingEnable() { return extendedDynamicState3ViewportWScalingEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3ViewportWScalingEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3ViewportWScalingEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ViewportWScalingEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3ViewportWScalingEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ViewportWScalingEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3ViewportWScalingEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -718,14 +718,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3ViewportSwizzle` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3ViewportSwizzle(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ViewportSwizzle.get(segment, 0L, index); }
+    public static int extendedDynamicState3ViewportSwizzle(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ViewportSwizzle.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3ViewportSwizzle`}
     public int extendedDynamicState3ViewportSwizzle() { return extendedDynamicState3ViewportSwizzle(this.segment(), 0L); }
     /// Sets `extendedDynamicState3ViewportSwizzle` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3ViewportSwizzle(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ViewportSwizzle.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3ViewportSwizzle(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ViewportSwizzle.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3ViewportSwizzle` with the given value.
     /// @param value the value
     /// @return `this`
@@ -734,14 +734,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3CoverageToColorEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3CoverageToColorEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageToColorEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3CoverageToColorEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageToColorEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3CoverageToColorEnable`}
     public int extendedDynamicState3CoverageToColorEnable() { return extendedDynamicState3CoverageToColorEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3CoverageToColorEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3CoverageToColorEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageToColorEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3CoverageToColorEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageToColorEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3CoverageToColorEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -750,14 +750,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3CoverageToColorLocation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3CoverageToColorLocation(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageToColorLocation.get(segment, 0L, index); }
+    public static int extendedDynamicState3CoverageToColorLocation(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageToColorLocation.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3CoverageToColorLocation`}
     public int extendedDynamicState3CoverageToColorLocation() { return extendedDynamicState3CoverageToColorLocation(this.segment(), 0L); }
     /// Sets `extendedDynamicState3CoverageToColorLocation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3CoverageToColorLocation(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageToColorLocation.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3CoverageToColorLocation(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageToColorLocation.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3CoverageToColorLocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -766,14 +766,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3CoverageModulationMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3CoverageModulationMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageModulationMode.get(segment, 0L, index); }
+    public static int extendedDynamicState3CoverageModulationMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageModulationMode.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3CoverageModulationMode`}
     public int extendedDynamicState3CoverageModulationMode() { return extendedDynamicState3CoverageModulationMode(this.segment(), 0L); }
     /// Sets `extendedDynamicState3CoverageModulationMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3CoverageModulationMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageModulationMode.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3CoverageModulationMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageModulationMode.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3CoverageModulationMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -782,14 +782,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3CoverageModulationTableEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3CoverageModulationTableEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageModulationTableEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3CoverageModulationTableEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageModulationTableEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3CoverageModulationTableEnable`}
     public int extendedDynamicState3CoverageModulationTableEnable() { return extendedDynamicState3CoverageModulationTableEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3CoverageModulationTableEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3CoverageModulationTableEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageModulationTableEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3CoverageModulationTableEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageModulationTableEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3CoverageModulationTableEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -798,14 +798,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3CoverageModulationTable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3CoverageModulationTable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageModulationTable.get(segment, 0L, index); }
+    public static int extendedDynamicState3CoverageModulationTable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageModulationTable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3CoverageModulationTable`}
     public int extendedDynamicState3CoverageModulationTable() { return extendedDynamicState3CoverageModulationTable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3CoverageModulationTable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3CoverageModulationTable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageModulationTable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3CoverageModulationTable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageModulationTable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3CoverageModulationTable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -814,14 +814,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3CoverageReductionMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3CoverageReductionMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageReductionMode.get(segment, 0L, index); }
+    public static int extendedDynamicState3CoverageReductionMode(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3CoverageReductionMode.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3CoverageReductionMode`}
     public int extendedDynamicState3CoverageReductionMode() { return extendedDynamicState3CoverageReductionMode(this.segment(), 0L); }
     /// Sets `extendedDynamicState3CoverageReductionMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3CoverageReductionMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageReductionMode.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3CoverageReductionMode(MemorySegment segment, long index, int value) { VH_extendedDynamicState3CoverageReductionMode.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3CoverageReductionMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -830,14 +830,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3RepresentativeFragmentTestEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3RepresentativeFragmentTestEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3RepresentativeFragmentTestEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3RepresentativeFragmentTestEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3RepresentativeFragmentTestEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3RepresentativeFragmentTestEnable`}
     public int extendedDynamicState3RepresentativeFragmentTestEnable() { return extendedDynamicState3RepresentativeFragmentTestEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3RepresentativeFragmentTestEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3RepresentativeFragmentTestEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3RepresentativeFragmentTestEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3RepresentativeFragmentTestEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3RepresentativeFragmentTestEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3RepresentativeFragmentTestEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -846,14 +846,14 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Grou
     /// {@return `extendedDynamicState3ShadingRateImageEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedDynamicState3ShadingRateImageEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ShadingRateImageEnable.get(segment, 0L, index); }
+    public static int extendedDynamicState3ShadingRateImageEnable(MemorySegment segment, long index) { return (int) VH_extendedDynamicState3ShadingRateImageEnable.get().get(segment, 0L, index); }
     /// {@return `extendedDynamicState3ShadingRateImageEnable`}
     public int extendedDynamicState3ShadingRateImageEnable() { return extendedDynamicState3ShadingRateImageEnable(this.segment(), 0L); }
     /// Sets `extendedDynamicState3ShadingRateImageEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedDynamicState3ShadingRateImageEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ShadingRateImageEnable.set(segment, 0L, index, value); }
+    public static void extendedDynamicState3ShadingRateImageEnable(MemorySegment segment, long index, int value) { VH_extendedDynamicState3ShadingRateImageEnable.get().set(segment, 0L, index, value); }
     /// Sets `extendedDynamicState3ShadingRateImageEnable` with the given value.
     /// @param value the value
     /// @return `this`

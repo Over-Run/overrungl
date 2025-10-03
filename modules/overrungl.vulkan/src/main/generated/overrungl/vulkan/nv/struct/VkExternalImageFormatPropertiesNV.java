@@ -37,19 +37,19 @@ public final class VkExternalImageFormatPropertiesNV extends GroupType {
     /// The memory layout of `externalMemoryFeatures`.
     public static final MemoryLayout LAYOUT_externalMemoryFeatures = LAYOUT.select(PathElement.groupElement("externalMemoryFeatures"));
     /// The [VarHandle] of `externalMemoryFeatures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_externalMemoryFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("externalMemoryFeatures"));
+    public static final Supplier<VarHandle> VH_externalMemoryFeatures = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("externalMemoryFeatures")));
     /// The byte offset of `exportFromImportedHandleTypes`.
     public static final long OFFSET_exportFromImportedHandleTypes = LAYOUT.byteOffset(PathElement.groupElement("exportFromImportedHandleTypes"));
     /// The memory layout of `exportFromImportedHandleTypes`.
     public static final MemoryLayout LAYOUT_exportFromImportedHandleTypes = LAYOUT.select(PathElement.groupElement("exportFromImportedHandleTypes"));
     /// The [VarHandle] of `exportFromImportedHandleTypes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_exportFromImportedHandleTypes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("exportFromImportedHandleTypes"));
+    public static final Supplier<VarHandle> VH_exportFromImportedHandleTypes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("exportFromImportedHandleTypes")));
     /// The byte offset of `compatibleHandleTypes`.
     public static final long OFFSET_compatibleHandleTypes = LAYOUT.byteOffset(PathElement.groupElement("compatibleHandleTypes"));
     /// The memory layout of `compatibleHandleTypes`.
     public static final MemoryLayout LAYOUT_compatibleHandleTypes = LAYOUT.select(PathElement.groupElement("compatibleHandleTypes"));
     /// The [VarHandle] of `compatibleHandleTypes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_compatibleHandleTypes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("compatibleHandleTypes"));
+    public static final Supplier<VarHandle> VH_compatibleHandleTypes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("compatibleHandleTypes")));
 
     /// Creates `VkExternalImageFormatPropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -120,14 +120,14 @@ public final class VkExternalImageFormatPropertiesNV extends GroupType {
     /// {@return `externalMemoryFeatures` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int externalMemoryFeatures(MemorySegment segment, long index) { return (int) VH_externalMemoryFeatures.get(segment, 0L, index); }
+    public static int externalMemoryFeatures(MemorySegment segment, long index) { return (int) VH_externalMemoryFeatures.get().get(segment, 0L, index); }
     /// {@return `externalMemoryFeatures`}
     public int externalMemoryFeatures() { return externalMemoryFeatures(this.segment(), 0L); }
     /// Sets `externalMemoryFeatures` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void externalMemoryFeatures(MemorySegment segment, long index, int value) { VH_externalMemoryFeatures.set(segment, 0L, index, value); }
+    public static void externalMemoryFeatures(MemorySegment segment, long index, int value) { VH_externalMemoryFeatures.get().set(segment, 0L, index, value); }
     /// Sets `externalMemoryFeatures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -136,14 +136,14 @@ public final class VkExternalImageFormatPropertiesNV extends GroupType {
     /// {@return `exportFromImportedHandleTypes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int exportFromImportedHandleTypes(MemorySegment segment, long index) { return (int) VH_exportFromImportedHandleTypes.get(segment, 0L, index); }
+    public static int exportFromImportedHandleTypes(MemorySegment segment, long index) { return (int) VH_exportFromImportedHandleTypes.get().get(segment, 0L, index); }
     /// {@return `exportFromImportedHandleTypes`}
     public int exportFromImportedHandleTypes() { return exportFromImportedHandleTypes(this.segment(), 0L); }
     /// Sets `exportFromImportedHandleTypes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void exportFromImportedHandleTypes(MemorySegment segment, long index, int value) { VH_exportFromImportedHandleTypes.set(segment, 0L, index, value); }
+    public static void exportFromImportedHandleTypes(MemorySegment segment, long index, int value) { VH_exportFromImportedHandleTypes.get().set(segment, 0L, index, value); }
     /// Sets `exportFromImportedHandleTypes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -152,14 +152,14 @@ public final class VkExternalImageFormatPropertiesNV extends GroupType {
     /// {@return `compatibleHandleTypes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int compatibleHandleTypes(MemorySegment segment, long index) { return (int) VH_compatibleHandleTypes.get(segment, 0L, index); }
+    public static int compatibleHandleTypes(MemorySegment segment, long index) { return (int) VH_compatibleHandleTypes.get().get(segment, 0L, index); }
     /// {@return `compatibleHandleTypes`}
     public int compatibleHandleTypes() { return compatibleHandleTypes(this.segment(), 0L); }
     /// Sets `compatibleHandleTypes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void compatibleHandleTypes(MemorySegment segment, long index, int value) { VH_compatibleHandleTypes.set(segment, 0L, index, value); }
+    public static void compatibleHandleTypes(MemorySegment segment, long index, int value) { VH_compatibleHandleTypes.get().set(segment, 0L, index, value); }
     /// Sets `compatibleHandleTypes` with the given value.
     /// @param value the value
     /// @return `this`

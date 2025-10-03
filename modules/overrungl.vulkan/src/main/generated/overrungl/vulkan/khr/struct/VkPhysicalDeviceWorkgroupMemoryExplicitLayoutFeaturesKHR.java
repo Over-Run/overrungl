@@ -37,37 +37,37 @@ public final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR exte
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `workgroupMemoryExplicitLayout`.
     public static final long OFFSET_workgroupMemoryExplicitLayout = LAYOUT.byteOffset(PathElement.groupElement("workgroupMemoryExplicitLayout"));
     /// The memory layout of `workgroupMemoryExplicitLayout`.
     public static final MemoryLayout LAYOUT_workgroupMemoryExplicitLayout = LAYOUT.select(PathElement.groupElement("workgroupMemoryExplicitLayout"));
     /// The [VarHandle] of `workgroupMemoryExplicitLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_workgroupMemoryExplicitLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayout"));
+    public static final Supplier<VarHandle> VH_workgroupMemoryExplicitLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayout")));
     /// The byte offset of `workgroupMemoryExplicitLayoutScalarBlockLayout`.
     public static final long OFFSET_workgroupMemoryExplicitLayoutScalarBlockLayout = LAYOUT.byteOffset(PathElement.groupElement("workgroupMemoryExplicitLayoutScalarBlockLayout"));
     /// The memory layout of `workgroupMemoryExplicitLayoutScalarBlockLayout`.
     public static final MemoryLayout LAYOUT_workgroupMemoryExplicitLayoutScalarBlockLayout = LAYOUT.select(PathElement.groupElement("workgroupMemoryExplicitLayoutScalarBlockLayout"));
     /// The [VarHandle] of `workgroupMemoryExplicitLayoutScalarBlockLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_workgroupMemoryExplicitLayoutScalarBlockLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayoutScalarBlockLayout"));
+    public static final Supplier<VarHandle> VH_workgroupMemoryExplicitLayoutScalarBlockLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayoutScalarBlockLayout")));
     /// The byte offset of `workgroupMemoryExplicitLayout8BitAccess`.
     public static final long OFFSET_workgroupMemoryExplicitLayout8BitAccess = LAYOUT.byteOffset(PathElement.groupElement("workgroupMemoryExplicitLayout8BitAccess"));
     /// The memory layout of `workgroupMemoryExplicitLayout8BitAccess`.
     public static final MemoryLayout LAYOUT_workgroupMemoryExplicitLayout8BitAccess = LAYOUT.select(PathElement.groupElement("workgroupMemoryExplicitLayout8BitAccess"));
     /// The [VarHandle] of `workgroupMemoryExplicitLayout8BitAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_workgroupMemoryExplicitLayout8BitAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayout8BitAccess"));
+    public static final Supplier<VarHandle> VH_workgroupMemoryExplicitLayout8BitAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayout8BitAccess")));
     /// The byte offset of `workgroupMemoryExplicitLayout16BitAccess`.
     public static final long OFFSET_workgroupMemoryExplicitLayout16BitAccess = LAYOUT.byteOffset(PathElement.groupElement("workgroupMemoryExplicitLayout16BitAccess"));
     /// The memory layout of `workgroupMemoryExplicitLayout16BitAccess`.
     public static final MemoryLayout LAYOUT_workgroupMemoryExplicitLayout16BitAccess = LAYOUT.select(PathElement.groupElement("workgroupMemoryExplicitLayout16BitAccess"));
     /// The [VarHandle] of `workgroupMemoryExplicitLayout16BitAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_workgroupMemoryExplicitLayout16BitAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayout16BitAccess"));
+    public static final Supplier<VarHandle> VH_workgroupMemoryExplicitLayout16BitAccess = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayout16BitAccess")));
 
     /// Creates `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR exte
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR exte
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR exte
     /// {@return `workgroupMemoryExplicitLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int workgroupMemoryExplicitLayout(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout.get(segment, 0L, index); }
+    public static int workgroupMemoryExplicitLayout(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout.get().get(segment, 0L, index); }
     /// {@return `workgroupMemoryExplicitLayout`}
     public int workgroupMemoryExplicitLayout() { return workgroupMemoryExplicitLayout(this.segment(), 0L); }
     /// Sets `workgroupMemoryExplicitLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void workgroupMemoryExplicitLayout(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayout.set(segment, 0L, index, value); }
+    public static void workgroupMemoryExplicitLayout(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayout.get().set(segment, 0L, index, value); }
     /// Sets `workgroupMemoryExplicitLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR exte
     /// {@return `workgroupMemoryExplicitLayoutScalarBlockLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int workgroupMemoryExplicitLayoutScalarBlockLayout(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayoutScalarBlockLayout.get(segment, 0L, index); }
+    public static int workgroupMemoryExplicitLayoutScalarBlockLayout(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayoutScalarBlockLayout.get().get(segment, 0L, index); }
     /// {@return `workgroupMemoryExplicitLayoutScalarBlockLayout`}
     public int workgroupMemoryExplicitLayoutScalarBlockLayout() { return workgroupMemoryExplicitLayoutScalarBlockLayout(this.segment(), 0L); }
     /// Sets `workgroupMemoryExplicitLayoutScalarBlockLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void workgroupMemoryExplicitLayoutScalarBlockLayout(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayoutScalarBlockLayout.set(segment, 0L, index, value); }
+    public static void workgroupMemoryExplicitLayoutScalarBlockLayout(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayoutScalarBlockLayout.get().set(segment, 0L, index, value); }
     /// Sets `workgroupMemoryExplicitLayoutScalarBlockLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR exte
     /// {@return `workgroupMemoryExplicitLayout8BitAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int workgroupMemoryExplicitLayout8BitAccess(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout8BitAccess.get(segment, 0L, index); }
+    public static int workgroupMemoryExplicitLayout8BitAccess(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout8BitAccess.get().get(segment, 0L, index); }
     /// {@return `workgroupMemoryExplicitLayout8BitAccess`}
     public int workgroupMemoryExplicitLayout8BitAccess() { return workgroupMemoryExplicitLayout8BitAccess(this.segment(), 0L); }
     /// Sets `workgroupMemoryExplicitLayout8BitAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void workgroupMemoryExplicitLayout8BitAccess(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayout8BitAccess.set(segment, 0L, index, value); }
+    public static void workgroupMemoryExplicitLayout8BitAccess(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayout8BitAccess.get().set(segment, 0L, index, value); }
     /// Sets `workgroupMemoryExplicitLayout8BitAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR exte
     /// {@return `workgroupMemoryExplicitLayout16BitAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int workgroupMemoryExplicitLayout16BitAccess(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout16BitAccess.get(segment, 0L, index); }
+    public static int workgroupMemoryExplicitLayout16BitAccess(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout16BitAccess.get().get(segment, 0L, index); }
     /// {@return `workgroupMemoryExplicitLayout16BitAccess`}
     public int workgroupMemoryExplicitLayout16BitAccess() { return workgroupMemoryExplicitLayout16BitAccess(this.segment(), 0L); }
     /// Sets `workgroupMemoryExplicitLayout16BitAccess` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void workgroupMemoryExplicitLayout16BitAccess(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayout16BitAccess.set(segment, 0L, index, value); }
+    public static void workgroupMemoryExplicitLayout16BitAccess(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayout16BitAccess.get().set(segment, 0L, index, value); }
     /// Sets `workgroupMemoryExplicitLayout16BitAccess` with the given value.
     /// @param value the value
     /// @return `this`

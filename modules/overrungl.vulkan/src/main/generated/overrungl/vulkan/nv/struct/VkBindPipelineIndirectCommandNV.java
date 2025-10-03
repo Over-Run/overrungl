@@ -27,7 +27,7 @@ public final class VkBindPipelineIndirectCommandNV extends GroupType {
     /// The memory layout of `pipelineAddress`.
     public static final MemoryLayout LAYOUT_pipelineAddress = LAYOUT.select(PathElement.groupElement("pipelineAddress"));
     /// The [VarHandle] of `pipelineAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineAddress"));
+    public static final Supplier<VarHandle> VH_pipelineAddress = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineAddress")));
 
     /// Creates `VkBindPipelineIndirectCommandNV` with the given segment.
     /// @param segment      the memory segment
@@ -78,14 +78,14 @@ public final class VkBindPipelineIndirectCommandNV extends GroupType {
     /// {@return `pipelineAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long pipelineAddress(MemorySegment segment, long index) { return (long) VH_pipelineAddress.get(segment, 0L, index); }
+    public static long pipelineAddress(MemorySegment segment, long index) { return (long) VH_pipelineAddress.get().get(segment, 0L, index); }
     /// {@return `pipelineAddress`}
     public long pipelineAddress() { return pipelineAddress(this.segment(), 0L); }
     /// Sets `pipelineAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineAddress(MemorySegment segment, long index, long value) { VH_pipelineAddress.set(segment, 0L, index, value); }
+    public static void pipelineAddress(MemorySegment segment, long index, long value) { VH_pipelineAddress.get().set(segment, 0L, index, value); }
     /// Sets `pipelineAddress` with the given value.
     /// @param value the value
     /// @return `this`

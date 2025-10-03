@@ -2,6 +2,7 @@
 package overrungl.opengl.pgi;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -30,7 +31,7 @@ public final class GLPGIMiscHints {
     public static final int GL_BACK_NORMALS_HINT_PGI = 0x1A223;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glHintPGI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glHintPGI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glHintPGI;
         private Handles(GLLoadFunc func) {
             PFN_glHintPGI = func.invoke("glHintPGI");
@@ -48,7 +49,7 @@ public final class GLPGIMiscHints {
     public void HintPGI(int target, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glHintPGI)) throw new GLSymbolNotFoundError("Symbol not found: glHintPGI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glHintPGI", target, mode); }
-        Handles.MH_glHintPGI.invokeExact(handles.PFN_glHintPGI, target, mode); }
+        Handles.MH_glHintPGI.get().invokeExact(handles.PFN_glHintPGI, target, mode); }
         catch (Throwable e) { throw new RuntimeException("error in HintPGI", e); }
     }
 

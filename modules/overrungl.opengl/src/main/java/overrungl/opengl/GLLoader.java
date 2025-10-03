@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.opengl;
@@ -66,7 +74,7 @@ final class GLLoader {
 
         MemorySegment pVersion;
         try {
-            pVersion = (MemorySegment) GL10.Handles.MH_glGetString.invokeExact(glGetString, GL10.GL_VERSION);
+            pVersion = (MemorySegment) GL10.Handles.MH_glGetString.get().invokeExact(glGetString, GL10.GL_VERSION);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -102,7 +110,7 @@ final class GLLoader {
             if (!hasGL) return GetExtensions.FAIL;
             MemorySegment segment;
             try {
-                segment = (MemorySegment) GL10.Handles.MH_glGetString.invokeExact(glGetString, GL10.GL_VERSION);
+                segment = (MemorySegment) GL10.Handles.MH_glGetString.get().invokeExact(glGetString, GL10.GL_VERSION);
             } catch (Throwable e) {
                 throw new RuntimeException(e);
             }
@@ -121,7 +129,7 @@ final class GLLoader {
             try (MemoryStack stack = MemoryStack.pushLocal()) {
                 var pNumExtsI = stack.ints(0);
                 try {
-                    GL10.Handles.MH_glGetIntegerv.invokeExact(glGetIntegerv, GL30.GL_NUM_EXTENSIONS, pNumExtsI);
+                    GL10.Handles.MH_glGetIntegerv.get().invokeExact(glGetIntegerv, GL30.GL_NUM_EXTENSIONS, pNumExtsI);
                 } catch (Throwable e) {
                     throw new RuntimeException(e);
                 }
@@ -133,7 +141,7 @@ final class GLLoader {
             if (extsI == null) return GetExtensions.FAIL;
             try {
                 for (int index = 0; index < numExtsI; index++) {
-                    extsI[index] = MemoryUtil.nativeString((MemorySegment) GL30.Handles.MH_glGetStringi.invokeExact(glGetStringi, GL10.GL_EXTENSIONS, index));
+                    extsI[index] = MemoryUtil.nativeString((MemorySegment) GL30.Handles.MH_glGetStringi.get().invokeExact(glGetStringi, GL10.GL_EXTENSIONS, index));
                 }
             } catch (Throwable e) {
                 throw new RuntimeException(e);

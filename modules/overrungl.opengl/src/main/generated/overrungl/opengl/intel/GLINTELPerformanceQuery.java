@@ -2,6 +2,7 @@
 package overrungl.opengl.intel;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -30,16 +31,16 @@ public final class GLINTELPerformanceQuery {
     public static final int GL_PERFQUERY_GPA_EXTENDED_COUNTERS_INTEL = 0x9500;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBeginPerfQueryINTEL = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCreatePerfQueryINTEL = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDeletePerfQueryINTEL = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glEndPerfQueryINTEL = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetFirstPerfQueryIdINTEL = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNextPerfQueryIdINTEL = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPerfCounterInfoINTEL = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPerfQueryDataINTEL = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPerfQueryIdByNameINTEL = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPerfQueryInfoINTEL = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glBeginPerfQueryINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCreatePerfQueryINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glDeletePerfQueryINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glEndPerfQueryINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glGetFirstPerfQueryIdINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetNextPerfQueryIdINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetPerfCounterInfoINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetPerfQueryDataINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetPerfQueryIdByNameINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glGetPerfQueryInfoINTEL = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glBeginPerfQueryINTEL;
         public final MemorySegment PFN_glCreatePerfQueryINTEL;
         public final MemorySegment PFN_glDeletePerfQueryINTEL;
@@ -75,7 +76,7 @@ public final class GLINTELPerformanceQuery {
     public void BeginPerfQueryINTEL(int queryHandle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginPerfQueryINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glBeginPerfQueryINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glBeginPerfQueryINTEL", queryHandle); }
-        Handles.MH_glBeginPerfQueryINTEL.invokeExact(handles.PFN_glBeginPerfQueryINTEL, queryHandle); }
+        Handles.MH_glBeginPerfQueryINTEL.get().invokeExact(handles.PFN_glBeginPerfQueryINTEL, queryHandle); }
         catch (Throwable e) { throw new RuntimeException("error in BeginPerfQueryINTEL", e); }
     }
 
@@ -86,7 +87,7 @@ public final class GLINTELPerformanceQuery {
     public void CreatePerfQueryINTEL(int queryId, @NonNull MemorySegment queryHandle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreatePerfQueryINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glCreatePerfQueryINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCreatePerfQueryINTEL", queryId, queryHandle); }
-        Handles.MH_glCreatePerfQueryINTEL.invokeExact(handles.PFN_glCreatePerfQueryINTEL, queryId, queryHandle); }
+        Handles.MH_glCreatePerfQueryINTEL.get().invokeExact(handles.PFN_glCreatePerfQueryINTEL, queryId, queryHandle); }
         catch (Throwable e) { throw new RuntimeException("error in CreatePerfQueryINTEL", e); }
     }
 
@@ -97,7 +98,7 @@ public final class GLINTELPerformanceQuery {
     public void DeletePerfQueryINTEL(int queryHandle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeletePerfQueryINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glDeletePerfQueryINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeletePerfQueryINTEL", queryHandle); }
-        Handles.MH_glDeletePerfQueryINTEL.invokeExact(handles.PFN_glDeletePerfQueryINTEL, queryHandle); }
+        Handles.MH_glDeletePerfQueryINTEL.get().invokeExact(handles.PFN_glDeletePerfQueryINTEL, queryHandle); }
         catch (Throwable e) { throw new RuntimeException("error in DeletePerfQueryINTEL", e); }
     }
 
@@ -108,7 +109,7 @@ public final class GLINTELPerformanceQuery {
     public void EndPerfQueryINTEL(int queryHandle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEndPerfQueryINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glEndPerfQueryINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glEndPerfQueryINTEL", queryHandle); }
-        Handles.MH_glEndPerfQueryINTEL.invokeExact(handles.PFN_glEndPerfQueryINTEL, queryHandle); }
+        Handles.MH_glEndPerfQueryINTEL.get().invokeExact(handles.PFN_glEndPerfQueryINTEL, queryHandle); }
         catch (Throwable e) { throw new RuntimeException("error in EndPerfQueryINTEL", e); }
     }
 
@@ -119,7 +120,7 @@ public final class GLINTELPerformanceQuery {
     public void GetFirstPerfQueryIdINTEL(@NonNull MemorySegment queryId) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFirstPerfQueryIdINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glGetFirstPerfQueryIdINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFirstPerfQueryIdINTEL", queryId); }
-        Handles.MH_glGetFirstPerfQueryIdINTEL.invokeExact(handles.PFN_glGetFirstPerfQueryIdINTEL, queryId); }
+        Handles.MH_glGetFirstPerfQueryIdINTEL.get().invokeExact(handles.PFN_glGetFirstPerfQueryIdINTEL, queryId); }
         catch (Throwable e) { throw new RuntimeException("error in GetFirstPerfQueryIdINTEL", e); }
     }
 
@@ -130,7 +131,7 @@ public final class GLINTELPerformanceQuery {
     public void GetNextPerfQueryIdINTEL(int queryId, @NonNull MemorySegment nextQueryId) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNextPerfQueryIdINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glGetNextPerfQueryIdINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNextPerfQueryIdINTEL", queryId, nextQueryId); }
-        Handles.MH_glGetNextPerfQueryIdINTEL.invokeExact(handles.PFN_glGetNextPerfQueryIdINTEL, queryId, nextQueryId); }
+        Handles.MH_glGetNextPerfQueryIdINTEL.get().invokeExact(handles.PFN_glGetNextPerfQueryIdINTEL, queryId, nextQueryId); }
         catch (Throwable e) { throw new RuntimeException("error in GetNextPerfQueryIdINTEL", e); }
     }
 
@@ -141,7 +142,7 @@ public final class GLINTELPerformanceQuery {
     public void GetPerfCounterInfoINTEL(int queryId, int counterId, int counterNameLength, @NonNull MemorySegment counterName, int counterDescLength, @NonNull MemorySegment counterDesc, @NonNull MemorySegment counterOffset, @NonNull MemorySegment counterDataSize, @NonNull MemorySegment counterTypeEnum, @NonNull MemorySegment counterDataTypeEnum, @NonNull MemorySegment rawCounterMaxValue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfCounterInfoINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glGetPerfCounterInfoINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPerfCounterInfoINTEL", queryId, counterId, counterNameLength, counterName, counterDescLength, counterDesc, counterOffset, counterDataSize, counterTypeEnum, counterDataTypeEnum, rawCounterMaxValue); }
-        Handles.MH_glGetPerfCounterInfoINTEL.invokeExact(handles.PFN_glGetPerfCounterInfoINTEL, queryId, counterId, counterNameLength, counterName, counterDescLength, counterDesc, counterOffset, counterDataSize, counterTypeEnum, counterDataTypeEnum, rawCounterMaxValue); }
+        Handles.MH_glGetPerfCounterInfoINTEL.get().invokeExact(handles.PFN_glGetPerfCounterInfoINTEL, queryId, counterId, counterNameLength, counterName, counterDescLength, counterDesc, counterOffset, counterDataSize, counterTypeEnum, counterDataTypeEnum, rawCounterMaxValue); }
         catch (Throwable e) { throw new RuntimeException("error in GetPerfCounterInfoINTEL", e); }
     }
 
@@ -152,7 +153,7 @@ public final class GLINTELPerformanceQuery {
     public void GetPerfQueryDataINTEL(int queryHandle, int flags, int dataSize, @NonNull MemorySegment data, @NonNull MemorySegment bytesWritten) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfQueryDataINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glGetPerfQueryDataINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPerfQueryDataINTEL", queryHandle, flags, dataSize, data, bytesWritten); }
-        Handles.MH_glGetPerfQueryDataINTEL.invokeExact(handles.PFN_glGetPerfQueryDataINTEL, queryHandle, flags, dataSize, data, bytesWritten); }
+        Handles.MH_glGetPerfQueryDataINTEL.get().invokeExact(handles.PFN_glGetPerfQueryDataINTEL, queryHandle, flags, dataSize, data, bytesWritten); }
         catch (Throwable e) { throw new RuntimeException("error in GetPerfQueryDataINTEL", e); }
     }
 
@@ -163,7 +164,7 @@ public final class GLINTELPerformanceQuery {
     public void GetPerfQueryIdByNameINTEL(@NonNull MemorySegment queryName, @NonNull MemorySegment queryId) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfQueryIdByNameINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glGetPerfQueryIdByNameINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPerfQueryIdByNameINTEL", queryName, queryId); }
-        Handles.MH_glGetPerfQueryIdByNameINTEL.invokeExact(handles.PFN_glGetPerfQueryIdByNameINTEL, queryName, queryId); }
+        Handles.MH_glGetPerfQueryIdByNameINTEL.get().invokeExact(handles.PFN_glGetPerfQueryIdByNameINTEL, queryName, queryId); }
         catch (Throwable e) { throw new RuntimeException("error in GetPerfQueryIdByNameINTEL", e); }
     }
 
@@ -174,7 +175,7 @@ public final class GLINTELPerformanceQuery {
     public void GetPerfQueryInfoINTEL(int queryId, int queryNameLength, @NonNull MemorySegment queryName, @NonNull MemorySegment dataSize, @NonNull MemorySegment noCounters, @NonNull MemorySegment noInstances, @NonNull MemorySegment capsMask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfQueryInfoINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glGetPerfQueryInfoINTEL");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPerfQueryInfoINTEL", queryId, queryNameLength, queryName, dataSize, noCounters, noInstances, capsMask); }
-        Handles.MH_glGetPerfQueryInfoINTEL.invokeExact(handles.PFN_glGetPerfQueryInfoINTEL, queryId, queryNameLength, queryName, dataSize, noCounters, noInstances, capsMask); }
+        Handles.MH_glGetPerfQueryInfoINTEL.get().invokeExact(handles.PFN_glGetPerfQueryInfoINTEL, queryId, queryNameLength, queryName, dataSize, noCounters, noInstances, capsMask); }
         catch (Throwable e) { throw new RuntimeException("error in GetPerfQueryInfoINTEL", e); }
     }
 

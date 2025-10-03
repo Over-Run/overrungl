@@ -33,25 +33,25 @@ public final class VkLayerProperties extends GroupType {
     /// The memory layout of `layerName`.
     public static final MemoryLayout LAYOUT_layerName = LAYOUT.select(PathElement.groupElement("layerName"));
     /// The [VarHandle] of `layerName` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_layerName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layerName"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_layerName = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("layerName"), PathElement.sequenceElement()));
     /// The byte offset of `specVersion`.
     public static final long OFFSET_specVersion = LAYOUT.byteOffset(PathElement.groupElement("specVersion"));
     /// The memory layout of `specVersion`.
     public static final MemoryLayout LAYOUT_specVersion = LAYOUT.select(PathElement.groupElement("specVersion"));
     /// The [VarHandle] of `specVersion` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_specVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("specVersion"));
+    public static final Supplier<VarHandle> VH_specVersion = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("specVersion")));
     /// The byte offset of `implementationVersion`.
     public static final long OFFSET_implementationVersion = LAYOUT.byteOffset(PathElement.groupElement("implementationVersion"));
     /// The memory layout of `implementationVersion`.
     public static final MemoryLayout LAYOUT_implementationVersion = LAYOUT.select(PathElement.groupElement("implementationVersion"));
     /// The [VarHandle] of `implementationVersion` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_implementationVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("implementationVersion"));
+    public static final Supplier<VarHandle> VH_implementationVersion = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("implementationVersion")));
     /// The byte offset of `description`.
     public static final long OFFSET_description = LAYOUT.byteOffset(PathElement.groupElement("description"));
     /// The memory layout of `description`.
     public static final MemoryLayout LAYOUT_description = LAYOUT.select(PathElement.groupElement("description"));
     /// The [VarHandle] of `description` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_description = LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_description = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement()));
 
     /// Creates `VkLayerProperties` with the given segment.
     /// @param segment      the memory segment
@@ -107,7 +107,7 @@ public final class VkLayerProperties extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte layerName(MemorySegment segment, long index, long index0) { return (byte) VH_layerName.get(segment, 0L, index, index0); }
+    public static byte layerName(MemorySegment segment, long index, long index0) { return (byte) VH_layerName.get().get(segment, 0L, index, index0); }
     /// {@return `layerName`}
     public MemorySegment layerName() { return layerName(this.segment(), 0L); }
     /// {@return `layerName`}
@@ -123,7 +123,7 @@ public final class VkLayerProperties extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void layerName(MemorySegment segment, long index, long index0, byte value) { VH_layerName.set(segment, 0L, index, index0, value); }
+    public static void layerName(MemorySegment segment, long index, long index0, byte value) { VH_layerName.get().set(segment, 0L, index, index0, value); }
     /// Sets `layerName` with the given value.
     /// @param value the value
     /// @return `this`
@@ -137,14 +137,14 @@ public final class VkLayerProperties extends GroupType {
     /// {@return `specVersion` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int specVersion(MemorySegment segment, long index) { return (int) VH_specVersion.get(segment, 0L, index); }
+    public static int specVersion(MemorySegment segment, long index) { return (int) VH_specVersion.get().get(segment, 0L, index); }
     /// {@return `specVersion`}
     public int specVersion() { return specVersion(this.segment(), 0L); }
     /// Sets `specVersion` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void specVersion(MemorySegment segment, long index, int value) { VH_specVersion.set(segment, 0L, index, value); }
+    public static void specVersion(MemorySegment segment, long index, int value) { VH_specVersion.get().set(segment, 0L, index, value); }
     /// Sets `specVersion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -153,14 +153,14 @@ public final class VkLayerProperties extends GroupType {
     /// {@return `implementationVersion` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int implementationVersion(MemorySegment segment, long index) { return (int) VH_implementationVersion.get(segment, 0L, index); }
+    public static int implementationVersion(MemorySegment segment, long index) { return (int) VH_implementationVersion.get().get(segment, 0L, index); }
     /// {@return `implementationVersion`}
     public int implementationVersion() { return implementationVersion(this.segment(), 0L); }
     /// Sets `implementationVersion` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void implementationVersion(MemorySegment segment, long index, int value) { VH_implementationVersion.set(segment, 0L, index, value); }
+    public static void implementationVersion(MemorySegment segment, long index, int value) { VH_implementationVersion.get().set(segment, 0L, index, value); }
     /// Sets `implementationVersion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,7 +174,7 @@ public final class VkLayerProperties extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get(segment, 0L, index, index0); }
+    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get().get(segment, 0L, index, index0); }
     /// {@return `description`}
     public MemorySegment description() { return description(this.segment(), 0L); }
     /// {@return `description`}
@@ -190,7 +190,7 @@ public final class VkLayerProperties extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.set(segment, 0L, index, index0, value); }
+    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.get().set(segment, 0L, index, index0, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`

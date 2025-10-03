@@ -27,7 +27,7 @@ public final class VkRefreshCycleDurationGOOGLE extends GroupType {
     /// The memory layout of `refreshDuration`.
     public static final MemoryLayout LAYOUT_refreshDuration = LAYOUT.select(PathElement.groupElement("refreshDuration"));
     /// The [VarHandle] of `refreshDuration` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_refreshDuration = LAYOUT.arrayElementVarHandle(PathElement.groupElement("refreshDuration"));
+    public static final Supplier<VarHandle> VH_refreshDuration = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("refreshDuration")));
 
     /// Creates `VkRefreshCycleDurationGOOGLE` with the given segment.
     /// @param segment      the memory segment
@@ -78,14 +78,14 @@ public final class VkRefreshCycleDurationGOOGLE extends GroupType {
     /// {@return `refreshDuration` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long refreshDuration(MemorySegment segment, long index) { return (long) VH_refreshDuration.get(segment, 0L, index); }
+    public static long refreshDuration(MemorySegment segment, long index) { return (long) VH_refreshDuration.get().get(segment, 0L, index); }
     /// {@return `refreshDuration`}
     public long refreshDuration() { return refreshDuration(this.segment(), 0L); }
     /// Sets `refreshDuration` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void refreshDuration(MemorySegment segment, long index, long value) { VH_refreshDuration.set(segment, 0L, index, value); }
+    public static void refreshDuration(MemorySegment segment, long index, long value) { VH_refreshDuration.get().set(segment, 0L, index, value); }
     /// Sets `refreshDuration` with the given value.
     /// @param value the value
     /// @return `this`

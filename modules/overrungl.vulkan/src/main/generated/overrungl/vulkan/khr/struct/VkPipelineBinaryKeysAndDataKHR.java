@@ -31,19 +31,19 @@ public final class VkPipelineBinaryKeysAndDataKHR extends GroupType {
     /// The memory layout of `binaryCount`.
     public static final MemoryLayout LAYOUT_binaryCount = LAYOUT.select(PathElement.groupElement("binaryCount"));
     /// The [VarHandle] of `binaryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_binaryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("binaryCount"));
+    public static final Supplier<VarHandle> VH_binaryCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("binaryCount")));
     /// The byte offset of `pPipelineBinaryKeys`.
     public static final long OFFSET_pPipelineBinaryKeys = LAYOUT.byteOffset(PathElement.groupElement("pPipelineBinaryKeys"));
     /// The memory layout of `pPipelineBinaryKeys`.
     public static final MemoryLayout LAYOUT_pPipelineBinaryKeys = LAYOUT.select(PathElement.groupElement("pPipelineBinaryKeys"));
     /// The [VarHandle] of `pPipelineBinaryKeys` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPipelineBinaryKeys = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineBinaryKeys"));
+    public static final Supplier<VarHandle> VH_pPipelineBinaryKeys = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineBinaryKeys")));
     /// The byte offset of `pPipelineBinaryData`.
     public static final long OFFSET_pPipelineBinaryData = LAYOUT.byteOffset(PathElement.groupElement("pPipelineBinaryData"));
     /// The memory layout of `pPipelineBinaryData`.
     public static final MemoryLayout LAYOUT_pPipelineBinaryData = LAYOUT.select(PathElement.groupElement("pPipelineBinaryData"));
     /// The [VarHandle] of `pPipelineBinaryData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPipelineBinaryData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineBinaryData"));
+    public static final Supplier<VarHandle> VH_pPipelineBinaryData = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineBinaryData")));
 
     /// Creates `VkPipelineBinaryKeysAndDataKHR` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkPipelineBinaryKeysAndDataKHR extends GroupType {
     /// {@return `binaryCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int binaryCount(MemorySegment segment, long index) { return (int) VH_binaryCount.get(segment, 0L, index); }
+    public static int binaryCount(MemorySegment segment, long index) { return (int) VH_binaryCount.get().get(segment, 0L, index); }
     /// {@return `binaryCount`}
     public int binaryCount() { return binaryCount(this.segment(), 0L); }
     /// Sets `binaryCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void binaryCount(MemorySegment segment, long index, int value) { VH_binaryCount.set(segment, 0L, index, value); }
+    public static void binaryCount(MemorySegment segment, long index, int value) { VH_binaryCount.get().set(segment, 0L, index, value); }
     /// Sets `binaryCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkPipelineBinaryKeysAndDataKHR extends GroupType {
     /// {@return `pPipelineBinaryKeys` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pPipelineBinaryKeys(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineBinaryKeys.get(segment, 0L, index); }
+    public static MemorySegment pPipelineBinaryKeys(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineBinaryKeys.get().get(segment, 0L, index); }
     /// {@return `pPipelineBinaryKeys`}
     public MemorySegment pPipelineBinaryKeys() { return pPipelineBinaryKeys(this.segment(), 0L); }
     /// Sets `pPipelineBinaryKeys` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pPipelineBinaryKeys(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineBinaryKeys.set(segment, 0L, index, value); }
+    public static void pPipelineBinaryKeys(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineBinaryKeys.get().set(segment, 0L, index, value); }
     /// Sets `pPipelineBinaryKeys` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPipelineBinaryKeysAndDataKHR extends GroupType {
     /// {@return `pPipelineBinaryData` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pPipelineBinaryData(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineBinaryData.get(segment, 0L, index); }
+    public static MemorySegment pPipelineBinaryData(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineBinaryData.get().get(segment, 0L, index); }
     /// {@return `pPipelineBinaryData`}
     public MemorySegment pPipelineBinaryData() { return pPipelineBinaryData(this.segment(), 0L); }
     /// Sets `pPipelineBinaryData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pPipelineBinaryData(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineBinaryData.set(segment, 0L, index, value); }
+    public static void pPipelineBinaryData(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineBinaryData.get().set(segment, 0L, index, value); }
     /// Sets `pPipelineBinaryData` with the given value.
     /// @param value the value
     /// @return `this`

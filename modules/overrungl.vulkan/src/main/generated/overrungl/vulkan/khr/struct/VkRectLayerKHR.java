@@ -39,7 +39,7 @@ public final class VkRectLayerKHR extends GroupType {
     /// The memory layout of `layer`.
     public static final MemoryLayout LAYOUT_layer = LAYOUT.select(PathElement.groupElement("layer"));
     /// The [VarHandle] of `layer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_layer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layer"));
+    public static final Supplier<VarHandle> VH_layer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("layer")));
 
     /// Creates `VkRectLayerKHR` with the given segment.
     /// @param segment      the memory segment
@@ -130,14 +130,14 @@ public final class VkRectLayerKHR extends GroupType {
     /// {@return `layer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int layer(MemorySegment segment, long index) { return (int) VH_layer.get(segment, 0L, index); }
+    public static int layer(MemorySegment segment, long index) { return (int) VH_layer.get().get(segment, 0L, index); }
     /// {@return `layer`}
     public int layer() { return layer(this.segment(), 0L); }
     /// Sets `layer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void layer(MemorySegment segment, long index, int value) { VH_layer.set(segment, 0L, index, value); }
+    public static void layer(MemorySegment segment, long index, int value) { VH_layer.get().set(segment, 0L, index, value); }
     /// Sets `layer` with the given value.
     /// @param value the value
     /// @return `this`

@@ -39,43 +39,43 @@ public final class VkVideoEncodeIntraRefreshCapabilitiesKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `intraRefreshModes`.
     public static final long OFFSET_intraRefreshModes = LAYOUT.byteOffset(PathElement.groupElement("intraRefreshModes"));
     /// The memory layout of `intraRefreshModes`.
     public static final MemoryLayout LAYOUT_intraRefreshModes = LAYOUT.select(PathElement.groupElement("intraRefreshModes"));
     /// The [VarHandle] of `intraRefreshModes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_intraRefreshModes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("intraRefreshModes"));
+    public static final Supplier<VarHandle> VH_intraRefreshModes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("intraRefreshModes")));
     /// The byte offset of `maxIntraRefreshCycleDuration`.
     public static final long OFFSET_maxIntraRefreshCycleDuration = LAYOUT.byteOffset(PathElement.groupElement("maxIntraRefreshCycleDuration"));
     /// The memory layout of `maxIntraRefreshCycleDuration`.
     public static final MemoryLayout LAYOUT_maxIntraRefreshCycleDuration = LAYOUT.select(PathElement.groupElement("maxIntraRefreshCycleDuration"));
     /// The [VarHandle] of `maxIntraRefreshCycleDuration` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxIntraRefreshCycleDuration = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxIntraRefreshCycleDuration"));
+    public static final Supplier<VarHandle> VH_maxIntraRefreshCycleDuration = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxIntraRefreshCycleDuration")));
     /// The byte offset of `maxIntraRefreshActiveReferencePictures`.
     public static final long OFFSET_maxIntraRefreshActiveReferencePictures = LAYOUT.byteOffset(PathElement.groupElement("maxIntraRefreshActiveReferencePictures"));
     /// The memory layout of `maxIntraRefreshActiveReferencePictures`.
     public static final MemoryLayout LAYOUT_maxIntraRefreshActiveReferencePictures = LAYOUT.select(PathElement.groupElement("maxIntraRefreshActiveReferencePictures"));
     /// The [VarHandle] of `maxIntraRefreshActiveReferencePictures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxIntraRefreshActiveReferencePictures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxIntraRefreshActiveReferencePictures"));
+    public static final Supplier<VarHandle> VH_maxIntraRefreshActiveReferencePictures = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxIntraRefreshActiveReferencePictures")));
     /// The byte offset of `partitionIndependentIntraRefreshRegions`.
     public static final long OFFSET_partitionIndependentIntraRefreshRegions = LAYOUT.byteOffset(PathElement.groupElement("partitionIndependentIntraRefreshRegions"));
     /// The memory layout of `partitionIndependentIntraRefreshRegions`.
     public static final MemoryLayout LAYOUT_partitionIndependentIntraRefreshRegions = LAYOUT.select(PathElement.groupElement("partitionIndependentIntraRefreshRegions"));
     /// The [VarHandle] of `partitionIndependentIntraRefreshRegions` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_partitionIndependentIntraRefreshRegions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("partitionIndependentIntraRefreshRegions"));
+    public static final Supplier<VarHandle> VH_partitionIndependentIntraRefreshRegions = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("partitionIndependentIntraRefreshRegions")));
     /// The byte offset of `nonRectangularIntraRefreshRegions`.
     public static final long OFFSET_nonRectangularIntraRefreshRegions = LAYOUT.byteOffset(PathElement.groupElement("nonRectangularIntraRefreshRegions"));
     /// The memory layout of `nonRectangularIntraRefreshRegions`.
     public static final MemoryLayout LAYOUT_nonRectangularIntraRefreshRegions = LAYOUT.select(PathElement.groupElement("nonRectangularIntraRefreshRegions"));
     /// The [VarHandle] of `nonRectangularIntraRefreshRegions` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_nonRectangularIntraRefreshRegions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nonRectangularIntraRefreshRegions"));
+    public static final Supplier<VarHandle> VH_nonRectangularIntraRefreshRegions = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("nonRectangularIntraRefreshRegions")));
 
     /// Creates `VkVideoEncodeIntraRefreshCapabilitiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkVideoEncodeIntraRefreshCapabilitiesKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkVideoEncodeIntraRefreshCapabilitiesKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkVideoEncodeIntraRefreshCapabilitiesKHR extends GroupType {
     /// {@return `intraRefreshModes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int intraRefreshModes(MemorySegment segment, long index) { return (int) VH_intraRefreshModes.get(segment, 0L, index); }
+    public static int intraRefreshModes(MemorySegment segment, long index) { return (int) VH_intraRefreshModes.get().get(segment, 0L, index); }
     /// {@return `intraRefreshModes`}
     public int intraRefreshModes() { return intraRefreshModes(this.segment(), 0L); }
     /// Sets `intraRefreshModes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void intraRefreshModes(MemorySegment segment, long index, int value) { VH_intraRefreshModes.set(segment, 0L, index, value); }
+    public static void intraRefreshModes(MemorySegment segment, long index, int value) { VH_intraRefreshModes.get().set(segment, 0L, index, value); }
     /// Sets `intraRefreshModes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkVideoEncodeIntraRefreshCapabilitiesKHR extends GroupType {
     /// {@return `maxIntraRefreshCycleDuration` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxIntraRefreshCycleDuration(MemorySegment segment, long index) { return (int) VH_maxIntraRefreshCycleDuration.get(segment, 0L, index); }
+    public static int maxIntraRefreshCycleDuration(MemorySegment segment, long index) { return (int) VH_maxIntraRefreshCycleDuration.get().get(segment, 0L, index); }
     /// {@return `maxIntraRefreshCycleDuration`}
     public int maxIntraRefreshCycleDuration() { return maxIntraRefreshCycleDuration(this.segment(), 0L); }
     /// Sets `maxIntraRefreshCycleDuration` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxIntraRefreshCycleDuration(MemorySegment segment, long index, int value) { VH_maxIntraRefreshCycleDuration.set(segment, 0L, index, value); }
+    public static void maxIntraRefreshCycleDuration(MemorySegment segment, long index, int value) { VH_maxIntraRefreshCycleDuration.get().set(segment, 0L, index, value); }
     /// Sets `maxIntraRefreshCycleDuration` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkVideoEncodeIntraRefreshCapabilitiesKHR extends GroupType {
     /// {@return `maxIntraRefreshActiveReferencePictures` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxIntraRefreshActiveReferencePictures(MemorySegment segment, long index) { return (int) VH_maxIntraRefreshActiveReferencePictures.get(segment, 0L, index); }
+    public static int maxIntraRefreshActiveReferencePictures(MemorySegment segment, long index) { return (int) VH_maxIntraRefreshActiveReferencePictures.get().get(segment, 0L, index); }
     /// {@return `maxIntraRefreshActiveReferencePictures`}
     public int maxIntraRefreshActiveReferencePictures() { return maxIntraRefreshActiveReferencePictures(this.segment(), 0L); }
     /// Sets `maxIntraRefreshActiveReferencePictures` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxIntraRefreshActiveReferencePictures(MemorySegment segment, long index, int value) { VH_maxIntraRefreshActiveReferencePictures.set(segment, 0L, index, value); }
+    public static void maxIntraRefreshActiveReferencePictures(MemorySegment segment, long index, int value) { VH_maxIntraRefreshActiveReferencePictures.get().set(segment, 0L, index, value); }
     /// Sets `maxIntraRefreshActiveReferencePictures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkVideoEncodeIntraRefreshCapabilitiesKHR extends GroupType {
     /// {@return `partitionIndependentIntraRefreshRegions` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int partitionIndependentIntraRefreshRegions(MemorySegment segment, long index) { return (int) VH_partitionIndependentIntraRefreshRegions.get(segment, 0L, index); }
+    public static int partitionIndependentIntraRefreshRegions(MemorySegment segment, long index) { return (int) VH_partitionIndependentIntraRefreshRegions.get().get(segment, 0L, index); }
     /// {@return `partitionIndependentIntraRefreshRegions`}
     public int partitionIndependentIntraRefreshRegions() { return partitionIndependentIntraRefreshRegions(this.segment(), 0L); }
     /// Sets `partitionIndependentIntraRefreshRegions` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void partitionIndependentIntraRefreshRegions(MemorySegment segment, long index, int value) { VH_partitionIndependentIntraRefreshRegions.set(segment, 0L, index, value); }
+    public static void partitionIndependentIntraRefreshRegions(MemorySegment segment, long index, int value) { VH_partitionIndependentIntraRefreshRegions.get().set(segment, 0L, index, value); }
     /// Sets `partitionIndependentIntraRefreshRegions` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkVideoEncodeIntraRefreshCapabilitiesKHR extends GroupType {
     /// {@return `nonRectangularIntraRefreshRegions` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int nonRectangularIntraRefreshRegions(MemorySegment segment, long index) { return (int) VH_nonRectangularIntraRefreshRegions.get(segment, 0L, index); }
+    public static int nonRectangularIntraRefreshRegions(MemorySegment segment, long index) { return (int) VH_nonRectangularIntraRefreshRegions.get().get(segment, 0L, index); }
     /// {@return `nonRectangularIntraRefreshRegions`}
     public int nonRectangularIntraRefreshRegions() { return nonRectangularIntraRefreshRegions(this.segment(), 0L); }
     /// Sets `nonRectangularIntraRefreshRegions` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void nonRectangularIntraRefreshRegions(MemorySegment segment, long index, int value) { VH_nonRectangularIntraRefreshRegions.set(segment, 0L, index, value); }
+    public static void nonRectangularIntraRefreshRegions(MemorySegment segment, long index, int value) { VH_nonRectangularIntraRefreshRegions.get().set(segment, 0L, index, value); }
     /// Sets `nonRectangularIntraRefreshRegions` with the given value.
     /// @param value the value
     /// @return `this`

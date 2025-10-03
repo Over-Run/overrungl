@@ -35,31 +35,31 @@ public final class VkColorBlendAdvancedEXT extends GroupType {
     /// The memory layout of `advancedBlendOp`.
     public static final MemoryLayout LAYOUT_advancedBlendOp = LAYOUT.select(PathElement.groupElement("advancedBlendOp"));
     /// The [VarHandle] of `advancedBlendOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_advancedBlendOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendOp"));
+    public static final Supplier<VarHandle> VH_advancedBlendOp = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendOp")));
     /// The byte offset of `srcPremultiplied`.
     public static final long OFFSET_srcPremultiplied = LAYOUT.byteOffset(PathElement.groupElement("srcPremultiplied"));
     /// The memory layout of `srcPremultiplied`.
     public static final MemoryLayout LAYOUT_srcPremultiplied = LAYOUT.select(PathElement.groupElement("srcPremultiplied"));
     /// The [VarHandle] of `srcPremultiplied` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcPremultiplied = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcPremultiplied"));
+    public static final Supplier<VarHandle> VH_srcPremultiplied = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcPremultiplied")));
     /// The byte offset of `dstPremultiplied`.
     public static final long OFFSET_dstPremultiplied = LAYOUT.byteOffset(PathElement.groupElement("dstPremultiplied"));
     /// The memory layout of `dstPremultiplied`.
     public static final MemoryLayout LAYOUT_dstPremultiplied = LAYOUT.select(PathElement.groupElement("dstPremultiplied"));
     /// The [VarHandle] of `dstPremultiplied` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstPremultiplied = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPremultiplied"));
+    public static final Supplier<VarHandle> VH_dstPremultiplied = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPremultiplied")));
     /// The byte offset of `blendOverlap`.
     public static final long OFFSET_blendOverlap = LAYOUT.byteOffset(PathElement.groupElement("blendOverlap"));
     /// The memory layout of `blendOverlap`.
     public static final MemoryLayout LAYOUT_blendOverlap = LAYOUT.select(PathElement.groupElement("blendOverlap"));
     /// The [VarHandle] of `blendOverlap` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_blendOverlap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blendOverlap"));
+    public static final Supplier<VarHandle> VH_blendOverlap = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("blendOverlap")));
     /// The byte offset of `clampResults`.
     public static final long OFFSET_clampResults = LAYOUT.byteOffset(PathElement.groupElement("clampResults"));
     /// The memory layout of `clampResults`.
     public static final MemoryLayout LAYOUT_clampResults = LAYOUT.select(PathElement.groupElement("clampResults"));
     /// The [VarHandle] of `clampResults` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clampResults = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clampResults"));
+    public static final Supplier<VarHandle> VH_clampResults = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clampResults")));
 
     /// Creates `VkColorBlendAdvancedEXT` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkColorBlendAdvancedEXT extends GroupType {
     /// {@return `advancedBlendOp` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int advancedBlendOp(MemorySegment segment, long index) { return (int) VH_advancedBlendOp.get(segment, 0L, index); }
+    public static int advancedBlendOp(MemorySegment segment, long index) { return (int) VH_advancedBlendOp.get().get(segment, 0L, index); }
     /// {@return `advancedBlendOp`}
     public int advancedBlendOp() { return advancedBlendOp(this.segment(), 0L); }
     /// Sets `advancedBlendOp` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void advancedBlendOp(MemorySegment segment, long index, int value) { VH_advancedBlendOp.set(segment, 0L, index, value); }
+    public static void advancedBlendOp(MemorySegment segment, long index, int value) { VH_advancedBlendOp.get().set(segment, 0L, index, value); }
     /// Sets `advancedBlendOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkColorBlendAdvancedEXT extends GroupType {
     /// {@return `srcPremultiplied` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int srcPremultiplied(MemorySegment segment, long index) { return (int) VH_srcPremultiplied.get(segment, 0L, index); }
+    public static int srcPremultiplied(MemorySegment segment, long index) { return (int) VH_srcPremultiplied.get().get(segment, 0L, index); }
     /// {@return `srcPremultiplied`}
     public int srcPremultiplied() { return srcPremultiplied(this.segment(), 0L); }
     /// Sets `srcPremultiplied` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcPremultiplied(MemorySegment segment, long index, int value) { VH_srcPremultiplied.set(segment, 0L, index, value); }
+    public static void srcPremultiplied(MemorySegment segment, long index, int value) { VH_srcPremultiplied.get().set(segment, 0L, index, value); }
     /// Sets `srcPremultiplied` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkColorBlendAdvancedEXT extends GroupType {
     /// {@return `dstPremultiplied` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dstPremultiplied(MemorySegment segment, long index) { return (int) VH_dstPremultiplied.get(segment, 0L, index); }
+    public static int dstPremultiplied(MemorySegment segment, long index) { return (int) VH_dstPremultiplied.get().get(segment, 0L, index); }
     /// {@return `dstPremultiplied`}
     public int dstPremultiplied() { return dstPremultiplied(this.segment(), 0L); }
     /// Sets `dstPremultiplied` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstPremultiplied(MemorySegment segment, long index, int value) { VH_dstPremultiplied.set(segment, 0L, index, value); }
+    public static void dstPremultiplied(MemorySegment segment, long index, int value) { VH_dstPremultiplied.get().set(segment, 0L, index, value); }
     /// Sets `dstPremultiplied` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkColorBlendAdvancedEXT extends GroupType {
     /// {@return `blendOverlap` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int blendOverlap(MemorySegment segment, long index) { return (int) VH_blendOverlap.get(segment, 0L, index); }
+    public static int blendOverlap(MemorySegment segment, long index) { return (int) VH_blendOverlap.get().get(segment, 0L, index); }
     /// {@return `blendOverlap`}
     public int blendOverlap() { return blendOverlap(this.segment(), 0L); }
     /// Sets `blendOverlap` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void blendOverlap(MemorySegment segment, long index, int value) { VH_blendOverlap.set(segment, 0L, index, value); }
+    public static void blendOverlap(MemorySegment segment, long index, int value) { VH_blendOverlap.get().set(segment, 0L, index, value); }
     /// Sets `blendOverlap` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkColorBlendAdvancedEXT extends GroupType {
     /// {@return `clampResults` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clampResults(MemorySegment segment, long index) { return (int) VH_clampResults.get(segment, 0L, index); }
+    public static int clampResults(MemorySegment segment, long index) { return (int) VH_clampResults.get().get(segment, 0L, index); }
     /// {@return `clampResults`}
     public int clampResults() { return clampResults(this.segment(), 0L); }
     /// Sets `clampResults` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clampResults(MemorySegment segment, long index, int value) { VH_clampResults.set(segment, 0L, index, value); }
+    public static void clampResults(MemorySegment segment, long index, int value) { VH_clampResults.get().set(segment, 0L, index, value); }
     /// Sets `clampResults` with the given value.
     /// @param value the value
     /// @return `this`

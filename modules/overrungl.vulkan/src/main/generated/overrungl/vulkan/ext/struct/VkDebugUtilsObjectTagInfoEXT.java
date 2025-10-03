@@ -39,43 +39,43 @@ public final class VkDebugUtilsObjectTagInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `objectType`.
     public static final long OFFSET_objectType = LAYOUT.byteOffset(PathElement.groupElement("objectType"));
     /// The memory layout of `objectType`.
     public static final MemoryLayout LAYOUT_objectType = LAYOUT.select(PathElement.groupElement("objectType"));
     /// The [VarHandle] of `objectType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_objectType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("objectType"));
+    public static final Supplier<VarHandle> VH_objectType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("objectType")));
     /// The byte offset of `objectHandle`.
     public static final long OFFSET_objectHandle = LAYOUT.byteOffset(PathElement.groupElement("objectHandle"));
     /// The memory layout of `objectHandle`.
     public static final MemoryLayout LAYOUT_objectHandle = LAYOUT.select(PathElement.groupElement("objectHandle"));
     /// The [VarHandle] of `objectHandle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_objectHandle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("objectHandle"));
+    public static final Supplier<VarHandle> VH_objectHandle = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("objectHandle")));
     /// The byte offset of `tagName`.
     public static final long OFFSET_tagName = LAYOUT.byteOffset(PathElement.groupElement("tagName"));
     /// The memory layout of `tagName`.
     public static final MemoryLayout LAYOUT_tagName = LAYOUT.select(PathElement.groupElement("tagName"));
     /// The [VarHandle] of `tagName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tagName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tagName"));
+    public static final Supplier<VarHandle> VH_tagName = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tagName")));
     /// The byte offset of `tagSize`.
     public static final long OFFSET_tagSize = LAYOUT.byteOffset(PathElement.groupElement("tagSize"));
     /// The memory layout of `tagSize`.
     public static final MemoryLayout LAYOUT_tagSize = LAYOUT.select(PathElement.groupElement("tagSize"));
     /// The [VarHandle] of `tagSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tagSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tagSize"));
+    public static final Supplier<VarHandle> VH_tagSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tagSize")));
     /// The byte offset of `pTag`.
     public static final long OFFSET_pTag = LAYOUT.byteOffset(PathElement.groupElement("pTag"));
     /// The memory layout of `pTag`.
     public static final MemoryLayout LAYOUT_pTag = LAYOUT.select(PathElement.groupElement("pTag"));
     /// The [VarHandle] of `pTag` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pTag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTag"));
+    public static final Supplier<VarHandle> VH_pTag = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTag")));
 
     /// Creates `VkDebugUtilsObjectTagInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkDebugUtilsObjectTagInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkDebugUtilsObjectTagInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDebugUtilsObjectTagInfoEXT extends GroupType {
     /// {@return `objectType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int objectType(MemorySegment segment, long index) { return (int) VH_objectType.get(segment, 0L, index); }
+    public static int objectType(MemorySegment segment, long index) { return (int) VH_objectType.get().get(segment, 0L, index); }
     /// {@return `objectType`}
     public int objectType() { return objectType(this.segment(), 0L); }
     /// Sets `objectType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void objectType(MemorySegment segment, long index, int value) { VH_objectType.set(segment, 0L, index, value); }
+    public static void objectType(MemorySegment segment, long index, int value) { VH_objectType.get().set(segment, 0L, index, value); }
     /// Sets `objectType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDebugUtilsObjectTagInfoEXT extends GroupType {
     /// {@return `objectHandle` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long objectHandle(MemorySegment segment, long index) { return (long) VH_objectHandle.get(segment, 0L, index); }
+    public static long objectHandle(MemorySegment segment, long index) { return (long) VH_objectHandle.get().get(segment, 0L, index); }
     /// {@return `objectHandle`}
     public long objectHandle() { return objectHandle(this.segment(), 0L); }
     /// Sets `objectHandle` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void objectHandle(MemorySegment segment, long index, long value) { VH_objectHandle.set(segment, 0L, index, value); }
+    public static void objectHandle(MemorySegment segment, long index, long value) { VH_objectHandle.get().set(segment, 0L, index, value); }
     /// Sets `objectHandle` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkDebugUtilsObjectTagInfoEXT extends GroupType {
     /// {@return `tagName` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long tagName(MemorySegment segment, long index) { return (long) VH_tagName.get(segment, 0L, index); }
+    public static long tagName(MemorySegment segment, long index) { return (long) VH_tagName.get().get(segment, 0L, index); }
     /// {@return `tagName`}
     public long tagName() { return tagName(this.segment(), 0L); }
     /// Sets `tagName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tagName(MemorySegment segment, long index, long value) { VH_tagName.set(segment, 0L, index, value); }
+    public static void tagName(MemorySegment segment, long index, long value) { VH_tagName.get().set(segment, 0L, index, value); }
     /// Sets `tagName` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkDebugUtilsObjectTagInfoEXT extends GroupType {
     /// {@return `tagSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long tagSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_tagSize.get(segment, 0L, index)); }
+    public static long tagSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_tagSize.get().get(segment, 0L, index)); }
     /// {@return `tagSize`}
     public long tagSize() { return tagSize(this.segment(), 0L); }
     /// Sets `tagSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tagSize(MemorySegment segment, long index, long value) { VH_tagSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
+    public static void tagSize(MemorySegment segment, long index, long value) { VH_tagSize.get().set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
     /// Sets `tagSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkDebugUtilsObjectTagInfoEXT extends GroupType {
     /// {@return `pTag` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pTag(MemorySegment segment, long index) { return (MemorySegment) VH_pTag.get(segment, 0L, index); }
+    public static MemorySegment pTag(MemorySegment segment, long index) { return (MemorySegment) VH_pTag.get().get(segment, 0L, index); }
     /// {@return `pTag`}
     public MemorySegment pTag() { return pTag(this.segment(), 0L); }
     /// Sets `pTag` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pTag(MemorySegment segment, long index, MemorySegment value) { VH_pTag.set(segment, 0L, index, value); }
+    public static void pTag(MemorySegment segment, long index, MemorySegment value) { VH_pTag.get().set(segment, 0L, index, value); }
     /// Sets `pTag` with the given value.
     /// @param value the value
     /// @return `this`

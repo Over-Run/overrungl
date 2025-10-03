@@ -41,31 +41,31 @@ public final class StdVideoVP9ColorConfig extends GroupType {
     /// The memory layout of `BitDepth`.
     public static final MemoryLayout LAYOUT_BitDepth = LAYOUT.select(PathElement.groupElement("BitDepth"));
     /// The [VarHandle] of `BitDepth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_BitDepth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("BitDepth"));
+    public static final Supplier<VarHandle> VH_BitDepth = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("BitDepth")));
     /// The byte offset of `subsampling_x`.
     public static final long OFFSET_subsampling_x = LAYOUT.byteOffset(PathElement.groupElement("subsampling_x"));
     /// The memory layout of `subsampling_x`.
     public static final MemoryLayout LAYOUT_subsampling_x = LAYOUT.select(PathElement.groupElement("subsampling_x"));
     /// The [VarHandle] of `subsampling_x` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subsampling_x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subsampling_x"));
+    public static final Supplier<VarHandle> VH_subsampling_x = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subsampling_x")));
     /// The byte offset of `subsampling_y`.
     public static final long OFFSET_subsampling_y = LAYOUT.byteOffset(PathElement.groupElement("subsampling_y"));
     /// The memory layout of `subsampling_y`.
     public static final MemoryLayout LAYOUT_subsampling_y = LAYOUT.select(PathElement.groupElement("subsampling_y"));
     /// The [VarHandle] of `subsampling_y` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_subsampling_y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subsampling_y"));
+    public static final Supplier<VarHandle> VH_subsampling_y = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("subsampling_y")));
     /// The byte offset of `reserved1`.
     public static final long OFFSET_reserved1 = LAYOUT.byteOffset(PathElement.groupElement("reserved1"));
     /// The memory layout of `reserved1`.
     public static final MemoryLayout LAYOUT_reserved1 = LAYOUT.select(PathElement.groupElement("reserved1"));
     /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"));
+    public static final Supplier<VarHandle> VH_reserved1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1")));
     /// The byte offset of `color_space`.
     public static final long OFFSET_color_space = LAYOUT.byteOffset(PathElement.groupElement("color_space"));
     /// The memory layout of `color_space`.
     public static final MemoryLayout LAYOUT_color_space = LAYOUT.select(PathElement.groupElement("color_space"));
     /// The [VarHandle] of `color_space` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_color_space = LAYOUT.arrayElementVarHandle(PathElement.groupElement("color_space"));
+    public static final Supplier<VarHandle> VH_color_space = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("color_space")));
 
     /// Creates `StdVideoVP9ColorConfig` with the given segment.
     /// @param segment      the memory segment
@@ -136,14 +136,14 @@ public final class StdVideoVP9ColorConfig extends GroupType {
     /// {@return `BitDepth` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte BitDepth(MemorySegment segment, long index) { return (byte) VH_BitDepth.get(segment, 0L, index); }
+    public static byte BitDepth(MemorySegment segment, long index) { return (byte) VH_BitDepth.get().get(segment, 0L, index); }
     /// {@return `BitDepth`}
     public byte BitDepth() { return BitDepth(this.segment(), 0L); }
     /// Sets `BitDepth` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void BitDepth(MemorySegment segment, long index, byte value) { VH_BitDepth.set(segment, 0L, index, value); }
+    public static void BitDepth(MemorySegment segment, long index, byte value) { VH_BitDepth.get().set(segment, 0L, index, value); }
     /// Sets `BitDepth` with the given value.
     /// @param value the value
     /// @return `this`
@@ -152,14 +152,14 @@ public final class StdVideoVP9ColorConfig extends GroupType {
     /// {@return `subsampling_x` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte subsampling_x(MemorySegment segment, long index) { return (byte) VH_subsampling_x.get(segment, 0L, index); }
+    public static byte subsampling_x(MemorySegment segment, long index) { return (byte) VH_subsampling_x.get().get(segment, 0L, index); }
     /// {@return `subsampling_x`}
     public byte subsampling_x() { return subsampling_x(this.segment(), 0L); }
     /// Sets `subsampling_x` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subsampling_x(MemorySegment segment, long index, byte value) { VH_subsampling_x.set(segment, 0L, index, value); }
+    public static void subsampling_x(MemorySegment segment, long index, byte value) { VH_subsampling_x.get().set(segment, 0L, index, value); }
     /// Sets `subsampling_x` with the given value.
     /// @param value the value
     /// @return `this`
@@ -168,14 +168,14 @@ public final class StdVideoVP9ColorConfig extends GroupType {
     /// {@return `subsampling_y` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte subsampling_y(MemorySegment segment, long index) { return (byte) VH_subsampling_y.get(segment, 0L, index); }
+    public static byte subsampling_y(MemorySegment segment, long index) { return (byte) VH_subsampling_y.get().get(segment, 0L, index); }
     /// {@return `subsampling_y`}
     public byte subsampling_y() { return subsampling_y(this.segment(), 0L); }
     /// Sets `subsampling_y` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void subsampling_y(MemorySegment segment, long index, byte value) { VH_subsampling_y.set(segment, 0L, index, value); }
+    public static void subsampling_y(MemorySegment segment, long index, byte value) { VH_subsampling_y.get().set(segment, 0L, index, value); }
     /// Sets `subsampling_y` with the given value.
     /// @param value the value
     /// @return `this`
@@ -184,14 +184,14 @@ public final class StdVideoVP9ColorConfig extends GroupType {
     /// {@return `reserved1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte reserved1(MemorySegment segment, long index) { return (byte) VH_reserved1.get(segment, 0L, index); }
+    public static byte reserved1(MemorySegment segment, long index) { return (byte) VH_reserved1.get().get(segment, 0L, index); }
     /// {@return `reserved1`}
     public byte reserved1() { return reserved1(this.segment(), 0L); }
     /// Sets `reserved1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void reserved1(MemorySegment segment, long index, byte value) { VH_reserved1.set(segment, 0L, index, value); }
+    public static void reserved1(MemorySegment segment, long index, byte value) { VH_reserved1.get().set(segment, 0L, index, value); }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -200,14 +200,14 @@ public final class StdVideoVP9ColorConfig extends GroupType {
     /// {@return `color_space` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int color_space(MemorySegment segment, long index) { return (int) VH_color_space.get(segment, 0L, index); }
+    public static int color_space(MemorySegment segment, long index) { return (int) VH_color_space.get().get(segment, 0L, index); }
     /// {@return `color_space`}
     public int color_space() { return color_space(this.segment(), 0L); }
     /// Sets `color_space` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void color_space(MemorySegment segment, long index, int value) { VH_color_space.set(segment, 0L, index, value); }
+    public static void color_space(MemorySegment segment, long index, int value) { VH_color_space.get().set(segment, 0L, index, value); }
     /// Sets `color_space` with the given value.
     /// @param value the value
     /// @return `this`

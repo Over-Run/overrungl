@@ -33,25 +33,25 @@ public final class VkDebugUtilsLabelEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pLabelName`.
     public static final long OFFSET_pLabelName = LAYOUT.byteOffset(PathElement.groupElement("pLabelName"));
     /// The memory layout of `pLabelName`.
     public static final MemoryLayout LAYOUT_pLabelName = LAYOUT.select(PathElement.groupElement("pLabelName"));
     /// The [VarHandle] of `pLabelName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pLabelName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pLabelName"));
+    public static final Supplier<VarHandle> VH_pLabelName = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pLabelName")));
     /// The byte offset of `color`.
     public static final long OFFSET_color = LAYOUT.byteOffset(PathElement.groupElement("color"));
     /// The memory layout of `color`.
     public static final MemoryLayout LAYOUT_color = LAYOUT.select(PathElement.groupElement("color"));
     /// The [VarHandle] of `color` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_color = LAYOUT.arrayElementVarHandle(PathElement.groupElement("color"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_color = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("color"), PathElement.sequenceElement()));
 
     /// Creates `VkDebugUtilsLabelEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkDebugUtilsLabelEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkDebugUtilsLabelEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkDebugUtilsLabelEXT extends GroupType {
     /// {@return `pLabelName` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pLabelName(MemorySegment segment, long index) { return (MemorySegment) VH_pLabelName.get(segment, 0L, index); }
+    public static MemorySegment pLabelName(MemorySegment segment, long index) { return (MemorySegment) VH_pLabelName.get().get(segment, 0L, index); }
     /// {@return `pLabelName`}
     public MemorySegment pLabelName() { return pLabelName(this.segment(), 0L); }
     /// Sets `pLabelName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pLabelName(MemorySegment segment, long index, MemorySegment value) { VH_pLabelName.set(segment, 0L, index, value); }
+    public static void pLabelName(MemorySegment segment, long index, MemorySegment value) { VH_pLabelName.get().set(segment, 0L, index, value); }
     /// Sets `pLabelName` with the given value.
     /// @param value the value
     /// @return `this`
@@ -155,7 +155,7 @@ public final class VkDebugUtilsLabelEXT extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static float color(MemorySegment segment, long index, long index0) { return (float) VH_color.get(segment, 0L, index, index0); }
+    public static float color(MemorySegment segment, long index, long index0) { return (float) VH_color.get().get(segment, 0L, index, index0); }
     /// {@return `color`}
     public MemorySegment color() { return color(this.segment(), 0L); }
     /// {@return `color`}
@@ -171,7 +171,7 @@ public final class VkDebugUtilsLabelEXT extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void color(MemorySegment segment, long index, long index0, float value) { VH_color.set(segment, 0L, index, index0, value); }
+    public static void color(MemorySegment segment, long index, long index0, float value) { VH_color.get().set(segment, 0L, index, index0, value); }
     /// Sets `color` with the given value.
     /// @param value the value
     /// @return `this`

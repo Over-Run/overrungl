@@ -33,25 +33,25 @@ public final class VkWriteDescriptorSetTensorARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `tensorViewCount`.
     public static final long OFFSET_tensorViewCount = LAYOUT.byteOffset(PathElement.groupElement("tensorViewCount"));
     /// The memory layout of `tensorViewCount`.
     public static final MemoryLayout LAYOUT_tensorViewCount = LAYOUT.select(PathElement.groupElement("tensorViewCount"));
     /// The [VarHandle] of `tensorViewCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tensorViewCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorViewCount"));
+    public static final Supplier<VarHandle> VH_tensorViewCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorViewCount")));
     /// The byte offset of `pTensorViews`.
     public static final long OFFSET_pTensorViews = LAYOUT.byteOffset(PathElement.groupElement("pTensorViews"));
     /// The memory layout of `pTensorViews`.
     public static final MemoryLayout LAYOUT_pTensorViews = LAYOUT.select(PathElement.groupElement("pTensorViews"));
     /// The [VarHandle] of `pTensorViews` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pTensorViews = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTensorViews"));
+    public static final Supplier<VarHandle> VH_pTensorViews = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTensorViews")));
 
     /// Creates `VkWriteDescriptorSetTensorARM` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkWriteDescriptorSetTensorARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkWriteDescriptorSetTensorARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkWriteDescriptorSetTensorARM extends GroupType {
     /// {@return `tensorViewCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tensorViewCount(MemorySegment segment, long index) { return (int) VH_tensorViewCount.get(segment, 0L, index); }
+    public static int tensorViewCount(MemorySegment segment, long index) { return (int) VH_tensorViewCount.get().get(segment, 0L, index); }
     /// {@return `tensorViewCount`}
     public int tensorViewCount() { return tensorViewCount(this.segment(), 0L); }
     /// Sets `tensorViewCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tensorViewCount(MemorySegment segment, long index, int value) { VH_tensorViewCount.set(segment, 0L, index, value); }
+    public static void tensorViewCount(MemorySegment segment, long index, int value) { VH_tensorViewCount.get().set(segment, 0L, index, value); }
     /// Sets `tensorViewCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkWriteDescriptorSetTensorARM extends GroupType {
     /// {@return `pTensorViews` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pTensorViews(MemorySegment segment, long index) { return (MemorySegment) VH_pTensorViews.get(segment, 0L, index); }
+    public static MemorySegment pTensorViews(MemorySegment segment, long index) { return (MemorySegment) VH_pTensorViews.get().get(segment, 0L, index); }
     /// {@return `pTensorViews`}
     public MemorySegment pTensorViews() { return pTensorViews(this.segment(), 0L); }
     /// Sets `pTensorViews` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pTensorViews(MemorySegment segment, long index, MemorySegment value) { VH_pTensorViews.set(segment, 0L, index, value); }
+    public static void pTensorViews(MemorySegment segment, long index, MemorySegment value) { VH_pTensorViews.get().set(segment, 0L, index, value); }
     /// Sets `pTensorViews` with the given value.
     /// @param value the value
     /// @return `this`

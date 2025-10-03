@@ -49,67 +49,67 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `srcStageMask`.
     public static final long OFFSET_srcStageMask = LAYOUT.byteOffset(PathElement.groupElement("srcStageMask"));
     /// The memory layout of `srcStageMask`.
     public static final MemoryLayout LAYOUT_srcStageMask = LAYOUT.select(PathElement.groupElement("srcStageMask"));
     /// The [VarHandle] of `srcStageMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcStageMask"));
+    public static final Supplier<VarHandle> VH_srcStageMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcStageMask")));
     /// The byte offset of `srcAccessMask`.
     public static final long OFFSET_srcAccessMask = LAYOUT.byteOffset(PathElement.groupElement("srcAccessMask"));
     /// The memory layout of `srcAccessMask`.
     public static final MemoryLayout LAYOUT_srcAccessMask = LAYOUT.select(PathElement.groupElement("srcAccessMask"));
     /// The [VarHandle] of `srcAccessMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccessMask"));
+    public static final Supplier<VarHandle> VH_srcAccessMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccessMask")));
     /// The byte offset of `dstStageMask`.
     public static final long OFFSET_dstStageMask = LAYOUT.byteOffset(PathElement.groupElement("dstStageMask"));
     /// The memory layout of `dstStageMask`.
     public static final MemoryLayout LAYOUT_dstStageMask = LAYOUT.select(PathElement.groupElement("dstStageMask"));
     /// The [VarHandle] of `dstStageMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstStageMask"));
+    public static final Supplier<VarHandle> VH_dstStageMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstStageMask")));
     /// The byte offset of `dstAccessMask`.
     public static final long OFFSET_dstAccessMask = LAYOUT.byteOffset(PathElement.groupElement("dstAccessMask"));
     /// The memory layout of `dstAccessMask`.
     public static final MemoryLayout LAYOUT_dstAccessMask = LAYOUT.select(PathElement.groupElement("dstAccessMask"));
     /// The [VarHandle] of `dstAccessMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAccessMask"));
+    public static final Supplier<VarHandle> VH_dstAccessMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAccessMask")));
     /// The byte offset of `oldLayout`.
     public static final long OFFSET_oldLayout = LAYOUT.byteOffset(PathElement.groupElement("oldLayout"));
     /// The memory layout of `oldLayout`.
     public static final MemoryLayout LAYOUT_oldLayout = LAYOUT.select(PathElement.groupElement("oldLayout"));
     /// The [VarHandle] of `oldLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_oldLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("oldLayout"));
+    public static final Supplier<VarHandle> VH_oldLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("oldLayout")));
     /// The byte offset of `newLayout`.
     public static final long OFFSET_newLayout = LAYOUT.byteOffset(PathElement.groupElement("newLayout"));
     /// The memory layout of `newLayout`.
     public static final MemoryLayout LAYOUT_newLayout = LAYOUT.select(PathElement.groupElement("newLayout"));
     /// The [VarHandle] of `newLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_newLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("newLayout"));
+    public static final Supplier<VarHandle> VH_newLayout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("newLayout")));
     /// The byte offset of `srcQueueFamilyIndex`.
     public static final long OFFSET_srcQueueFamilyIndex = LAYOUT.byteOffset(PathElement.groupElement("srcQueueFamilyIndex"));
     /// The memory layout of `srcQueueFamilyIndex`.
     public static final MemoryLayout LAYOUT_srcQueueFamilyIndex = LAYOUT.select(PathElement.groupElement("srcQueueFamilyIndex"));
     /// The [VarHandle] of `srcQueueFamilyIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcQueueFamilyIndex"));
+    public static final Supplier<VarHandle> VH_srcQueueFamilyIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcQueueFamilyIndex")));
     /// The byte offset of `dstQueueFamilyIndex`.
     public static final long OFFSET_dstQueueFamilyIndex = LAYOUT.byteOffset(PathElement.groupElement("dstQueueFamilyIndex"));
     /// The memory layout of `dstQueueFamilyIndex`.
     public static final MemoryLayout LAYOUT_dstQueueFamilyIndex = LAYOUT.select(PathElement.groupElement("dstQueueFamilyIndex"));
     /// The [VarHandle] of `dstQueueFamilyIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstQueueFamilyIndex"));
+    public static final Supplier<VarHandle> VH_dstQueueFamilyIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstQueueFamilyIndex")));
     /// The byte offset of `image`.
     public static final long OFFSET_image = LAYOUT.byteOffset(PathElement.groupElement("image"));
     /// The memory layout of `image`.
     public static final MemoryLayout LAYOUT_image = LAYOUT.select(PathElement.groupElement("image"));
     /// The [VarHandle] of `image` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_image = LAYOUT.arrayElementVarHandle(PathElement.groupElement("image"));
+    public static final Supplier<VarHandle> VH_image = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("image")));
     /// The byte offset of `subresourceRange`.
     public static final long OFFSET_subresourceRange = LAYOUT.byteOffset(PathElement.groupElement("subresourceRange"));
     /// The memory layout of `subresourceRange`.
@@ -164,14 +164,14 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -180,14 +180,14 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -196,14 +196,14 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// {@return `srcStageMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long srcStageMask(MemorySegment segment, long index) { return (long) VH_srcStageMask.get(segment, 0L, index); }
+    public static long srcStageMask(MemorySegment segment, long index) { return (long) VH_srcStageMask.get().get(segment, 0L, index); }
     /// {@return `srcStageMask`}
     public long srcStageMask() { return srcStageMask(this.segment(), 0L); }
     /// Sets `srcStageMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcStageMask(MemorySegment segment, long index, long value) { VH_srcStageMask.set(segment, 0L, index, value); }
+    public static void srcStageMask(MemorySegment segment, long index, long value) { VH_srcStageMask.get().set(segment, 0L, index, value); }
     /// Sets `srcStageMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,14 +212,14 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// {@return `srcAccessMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long srcAccessMask(MemorySegment segment, long index) { return (long) VH_srcAccessMask.get(segment, 0L, index); }
+    public static long srcAccessMask(MemorySegment segment, long index) { return (long) VH_srcAccessMask.get().get(segment, 0L, index); }
     /// {@return `srcAccessMask`}
     public long srcAccessMask() { return srcAccessMask(this.segment(), 0L); }
     /// Sets `srcAccessMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcAccessMask(MemorySegment segment, long index, long value) { VH_srcAccessMask.set(segment, 0L, index, value); }
+    public static void srcAccessMask(MemorySegment segment, long index, long value) { VH_srcAccessMask.get().set(segment, 0L, index, value); }
     /// Sets `srcAccessMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -228,14 +228,14 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// {@return `dstStageMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dstStageMask(MemorySegment segment, long index) { return (long) VH_dstStageMask.get(segment, 0L, index); }
+    public static long dstStageMask(MemorySegment segment, long index) { return (long) VH_dstStageMask.get().get(segment, 0L, index); }
     /// {@return `dstStageMask`}
     public long dstStageMask() { return dstStageMask(this.segment(), 0L); }
     /// Sets `dstStageMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstStageMask(MemorySegment segment, long index, long value) { VH_dstStageMask.set(segment, 0L, index, value); }
+    public static void dstStageMask(MemorySegment segment, long index, long value) { VH_dstStageMask.get().set(segment, 0L, index, value); }
     /// Sets `dstStageMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -244,14 +244,14 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// {@return `dstAccessMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dstAccessMask(MemorySegment segment, long index) { return (long) VH_dstAccessMask.get(segment, 0L, index); }
+    public static long dstAccessMask(MemorySegment segment, long index) { return (long) VH_dstAccessMask.get().get(segment, 0L, index); }
     /// {@return `dstAccessMask`}
     public long dstAccessMask() { return dstAccessMask(this.segment(), 0L); }
     /// Sets `dstAccessMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstAccessMask(MemorySegment segment, long index, long value) { VH_dstAccessMask.set(segment, 0L, index, value); }
+    public static void dstAccessMask(MemorySegment segment, long index, long value) { VH_dstAccessMask.get().set(segment, 0L, index, value); }
     /// Sets `dstAccessMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -260,14 +260,14 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// {@return `oldLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int oldLayout(MemorySegment segment, long index) { return (int) VH_oldLayout.get(segment, 0L, index); }
+    public static int oldLayout(MemorySegment segment, long index) { return (int) VH_oldLayout.get().get(segment, 0L, index); }
     /// {@return `oldLayout`}
     public int oldLayout() { return oldLayout(this.segment(), 0L); }
     /// Sets `oldLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void oldLayout(MemorySegment segment, long index, int value) { VH_oldLayout.set(segment, 0L, index, value); }
+    public static void oldLayout(MemorySegment segment, long index, int value) { VH_oldLayout.get().set(segment, 0L, index, value); }
     /// Sets `oldLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -276,14 +276,14 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// {@return `newLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int newLayout(MemorySegment segment, long index) { return (int) VH_newLayout.get(segment, 0L, index); }
+    public static int newLayout(MemorySegment segment, long index) { return (int) VH_newLayout.get().get(segment, 0L, index); }
     /// {@return `newLayout`}
     public int newLayout() { return newLayout(this.segment(), 0L); }
     /// Sets `newLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void newLayout(MemorySegment segment, long index, int value) { VH_newLayout.set(segment, 0L, index, value); }
+    public static void newLayout(MemorySegment segment, long index, int value) { VH_newLayout.get().set(segment, 0L, index, value); }
     /// Sets `newLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -292,14 +292,14 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// {@return `srcQueueFamilyIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int srcQueueFamilyIndex(MemorySegment segment, long index) { return (int) VH_srcQueueFamilyIndex.get(segment, 0L, index); }
+    public static int srcQueueFamilyIndex(MemorySegment segment, long index) { return (int) VH_srcQueueFamilyIndex.get().get(segment, 0L, index); }
     /// {@return `srcQueueFamilyIndex`}
     public int srcQueueFamilyIndex() { return srcQueueFamilyIndex(this.segment(), 0L); }
     /// Sets `srcQueueFamilyIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcQueueFamilyIndex(MemorySegment segment, long index, int value) { VH_srcQueueFamilyIndex.set(segment, 0L, index, value); }
+    public static void srcQueueFamilyIndex(MemorySegment segment, long index, int value) { VH_srcQueueFamilyIndex.get().set(segment, 0L, index, value); }
     /// Sets `srcQueueFamilyIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -308,14 +308,14 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// {@return `dstQueueFamilyIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dstQueueFamilyIndex(MemorySegment segment, long index) { return (int) VH_dstQueueFamilyIndex.get(segment, 0L, index); }
+    public static int dstQueueFamilyIndex(MemorySegment segment, long index) { return (int) VH_dstQueueFamilyIndex.get().get(segment, 0L, index); }
     /// {@return `dstQueueFamilyIndex`}
     public int dstQueueFamilyIndex() { return dstQueueFamilyIndex(this.segment(), 0L); }
     /// Sets `dstQueueFamilyIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstQueueFamilyIndex(MemorySegment segment, long index, int value) { VH_dstQueueFamilyIndex.set(segment, 0L, index, value); }
+    public static void dstQueueFamilyIndex(MemorySegment segment, long index, int value) { VH_dstQueueFamilyIndex.get().set(segment, 0L, index, value); }
     /// Sets `dstQueueFamilyIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -324,14 +324,14 @@ public final class VkImageMemoryBarrier2 extends GroupType {
     /// {@return `image` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long image(MemorySegment segment, long index) { return (long) VH_image.get(segment, 0L, index); }
+    public static long image(MemorySegment segment, long index) { return (long) VH_image.get().get(segment, 0L, index); }
     /// {@return `image`}
     public long image() { return image(this.segment(), 0L); }
     /// Sets `image` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void image(MemorySegment segment, long index, long value) { VH_image.set(segment, 0L, index, value); }
+    public static void image(MemorySegment segment, long index, long value) { VH_image.get().set(segment, 0L, index, value); }
     /// Sets `image` with the given value.
     /// @param value the value
     /// @return `this`

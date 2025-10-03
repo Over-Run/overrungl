@@ -31,13 +31,13 @@ public final class VkBuildPartitionedAccelerationStructureIndirectCommandNV exte
     /// The memory layout of `opType`.
     public static final MemoryLayout LAYOUT_opType = LAYOUT.select(PathElement.groupElement("opType"));
     /// The [VarHandle] of `opType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_opType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("opType"));
+    public static final Supplier<VarHandle> VH_opType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("opType")));
     /// The byte offset of `argCount`.
     public static final long OFFSET_argCount = LAYOUT.byteOffset(PathElement.groupElement("argCount"));
     /// The memory layout of `argCount`.
     public static final MemoryLayout LAYOUT_argCount = LAYOUT.select(PathElement.groupElement("argCount"));
     /// The [VarHandle] of `argCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_argCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("argCount"));
+    public static final Supplier<VarHandle> VH_argCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("argCount")));
     /// The byte offset of `argData`.
     public static final long OFFSET_argData = LAYOUT.byteOffset(PathElement.groupElement("argData"));
     /// The memory layout of `argData`.
@@ -92,14 +92,14 @@ public final class VkBuildPartitionedAccelerationStructureIndirectCommandNV exte
     /// {@return `opType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int opType(MemorySegment segment, long index) { return (int) VH_opType.get(segment, 0L, index); }
+    public static int opType(MemorySegment segment, long index) { return (int) VH_opType.get().get(segment, 0L, index); }
     /// {@return `opType`}
     public int opType() { return opType(this.segment(), 0L); }
     /// Sets `opType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void opType(MemorySegment segment, long index, int value) { VH_opType.set(segment, 0L, index, value); }
+    public static void opType(MemorySegment segment, long index, int value) { VH_opType.get().set(segment, 0L, index, value); }
     /// Sets `opType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -108,14 +108,14 @@ public final class VkBuildPartitionedAccelerationStructureIndirectCommandNV exte
     /// {@return `argCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int argCount(MemorySegment segment, long index) { return (int) VH_argCount.get(segment, 0L, index); }
+    public static int argCount(MemorySegment segment, long index) { return (int) VH_argCount.get().get(segment, 0L, index); }
     /// {@return `argCount`}
     public int argCount() { return argCount(this.segment(), 0L); }
     /// Sets `argCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void argCount(MemorySegment segment, long index, int value) { VH_argCount.set(segment, 0L, index, value); }
+    public static void argCount(MemorySegment segment, long index, int value) { VH_argCount.get().set(segment, 0L, index, value); }
     /// Sets `argCount` with the given value.
     /// @param value the value
     /// @return `this`

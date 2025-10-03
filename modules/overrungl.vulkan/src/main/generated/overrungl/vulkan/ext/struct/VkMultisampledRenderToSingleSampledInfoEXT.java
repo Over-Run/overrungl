@@ -33,25 +33,25 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends GroupType 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `multisampledRenderToSingleSampledEnable`.
     public static final long OFFSET_multisampledRenderToSingleSampledEnable = LAYOUT.byteOffset(PathElement.groupElement("multisampledRenderToSingleSampledEnable"));
     /// The memory layout of `multisampledRenderToSingleSampledEnable`.
     public static final MemoryLayout LAYOUT_multisampledRenderToSingleSampledEnable = LAYOUT.select(PathElement.groupElement("multisampledRenderToSingleSampledEnable"));
     /// The [VarHandle] of `multisampledRenderToSingleSampledEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_multisampledRenderToSingleSampledEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("multisampledRenderToSingleSampledEnable"));
+    public static final Supplier<VarHandle> VH_multisampledRenderToSingleSampledEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("multisampledRenderToSingleSampledEnable")));
     /// The byte offset of `rasterizationSamples`.
     public static final long OFFSET_rasterizationSamples = LAYOUT.byteOffset(PathElement.groupElement("rasterizationSamples"));
     /// The memory layout of `rasterizationSamples`.
     public static final MemoryLayout LAYOUT_rasterizationSamples = LAYOUT.select(PathElement.groupElement("rasterizationSamples"));
     /// The [VarHandle] of `rasterizationSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rasterizationSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationSamples"));
+    public static final Supplier<VarHandle> VH_rasterizationSamples = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationSamples")));
 
     /// Creates `VkMultisampledRenderToSingleSampledInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends GroupType 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends GroupType 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends GroupType 
     /// {@return `multisampledRenderToSingleSampledEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int multisampledRenderToSingleSampledEnable(MemorySegment segment, long index) { return (int) VH_multisampledRenderToSingleSampledEnable.get(segment, 0L, index); }
+    public static int multisampledRenderToSingleSampledEnable(MemorySegment segment, long index) { return (int) VH_multisampledRenderToSingleSampledEnable.get().get(segment, 0L, index); }
     /// {@return `multisampledRenderToSingleSampledEnable`}
     public int multisampledRenderToSingleSampledEnable() { return multisampledRenderToSingleSampledEnable(this.segment(), 0L); }
     /// Sets `multisampledRenderToSingleSampledEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void multisampledRenderToSingleSampledEnable(MemorySegment segment, long index, int value) { VH_multisampledRenderToSingleSampledEnable.set(segment, 0L, index, value); }
+    public static void multisampledRenderToSingleSampledEnable(MemorySegment segment, long index, int value) { VH_multisampledRenderToSingleSampledEnable.get().set(segment, 0L, index, value); }
     /// Sets `multisampledRenderToSingleSampledEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends GroupType 
     /// {@return `rasterizationSamples` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int rasterizationSamples(MemorySegment segment, long index) { return (int) VH_rasterizationSamples.get(segment, 0L, index); }
+    public static int rasterizationSamples(MemorySegment segment, long index) { return (int) VH_rasterizationSamples.get().get(segment, 0L, index); }
     /// {@return `rasterizationSamples`}
     public int rasterizationSamples() { return rasterizationSamples(this.segment(), 0L); }
     /// Sets `rasterizationSamples` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void rasterizationSamples(MemorySegment segment, long index, int value) { VH_rasterizationSamples.set(segment, 0L, index, value); }
+    public static void rasterizationSamples(MemorySegment segment, long index, int value) { VH_rasterizationSamples.get().set(segment, 0L, index, value); }
     /// Sets `rasterizationSamples` with the given value.
     /// @param value the value
     /// @return `this`

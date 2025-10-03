@@ -35,31 +35,31 @@ public final class VkPipelineCreationFeedbackCreateInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pPipelineCreationFeedback`.
     public static final long OFFSET_pPipelineCreationFeedback = LAYOUT.byteOffset(PathElement.groupElement("pPipelineCreationFeedback"));
     /// The memory layout of `pPipelineCreationFeedback`.
     public static final MemoryLayout LAYOUT_pPipelineCreationFeedback = LAYOUT.select(PathElement.groupElement("pPipelineCreationFeedback"));
     /// The [VarHandle] of `pPipelineCreationFeedback` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPipelineCreationFeedback = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineCreationFeedback"));
+    public static final Supplier<VarHandle> VH_pPipelineCreationFeedback = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineCreationFeedback")));
     /// The byte offset of `pipelineStageCreationFeedbackCount`.
     public static final long OFFSET_pipelineStageCreationFeedbackCount = LAYOUT.byteOffset(PathElement.groupElement("pipelineStageCreationFeedbackCount"));
     /// The memory layout of `pipelineStageCreationFeedbackCount`.
     public static final MemoryLayout LAYOUT_pipelineStageCreationFeedbackCount = LAYOUT.select(PathElement.groupElement("pipelineStageCreationFeedbackCount"));
     /// The [VarHandle] of `pipelineStageCreationFeedbackCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineStageCreationFeedbackCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineStageCreationFeedbackCount"));
+    public static final Supplier<VarHandle> VH_pipelineStageCreationFeedbackCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineStageCreationFeedbackCount")));
     /// The byte offset of `pPipelineStageCreationFeedbacks`.
     public static final long OFFSET_pPipelineStageCreationFeedbacks = LAYOUT.byteOffset(PathElement.groupElement("pPipelineStageCreationFeedbacks"));
     /// The memory layout of `pPipelineStageCreationFeedbacks`.
     public static final MemoryLayout LAYOUT_pPipelineStageCreationFeedbacks = LAYOUT.select(PathElement.groupElement("pPipelineStageCreationFeedbacks"));
     /// The [VarHandle] of `pPipelineStageCreationFeedbacks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPipelineStageCreationFeedbacks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineStageCreationFeedbacks"));
+    public static final Supplier<VarHandle> VH_pPipelineStageCreationFeedbacks = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineStageCreationFeedbacks")));
 
     /// Creates `VkPipelineCreationFeedbackCreateInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPipelineCreationFeedbackCreateInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPipelineCreationFeedbackCreateInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPipelineCreationFeedbackCreateInfoEXT extends GroupType {
     /// {@return `pPipelineCreationFeedback` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pPipelineCreationFeedback(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineCreationFeedback.get(segment, 0L, index); }
+    public static MemorySegment pPipelineCreationFeedback(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineCreationFeedback.get().get(segment, 0L, index); }
     /// {@return `pPipelineCreationFeedback`}
     public MemorySegment pPipelineCreationFeedback() { return pPipelineCreationFeedback(this.segment(), 0L); }
     /// Sets `pPipelineCreationFeedback` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pPipelineCreationFeedback(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineCreationFeedback.set(segment, 0L, index, value); }
+    public static void pPipelineCreationFeedback(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineCreationFeedback.get().set(segment, 0L, index, value); }
     /// Sets `pPipelineCreationFeedback` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPipelineCreationFeedbackCreateInfoEXT extends GroupType {
     /// {@return `pipelineStageCreationFeedbackCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int pipelineStageCreationFeedbackCount(MemorySegment segment, long index) { return (int) VH_pipelineStageCreationFeedbackCount.get(segment, 0L, index); }
+    public static int pipelineStageCreationFeedbackCount(MemorySegment segment, long index) { return (int) VH_pipelineStageCreationFeedbackCount.get().get(segment, 0L, index); }
     /// {@return `pipelineStageCreationFeedbackCount`}
     public int pipelineStageCreationFeedbackCount() { return pipelineStageCreationFeedbackCount(this.segment(), 0L); }
     /// Sets `pipelineStageCreationFeedbackCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipelineStageCreationFeedbackCount(MemorySegment segment, long index, int value) { VH_pipelineStageCreationFeedbackCount.set(segment, 0L, index, value); }
+    public static void pipelineStageCreationFeedbackCount(MemorySegment segment, long index, int value) { VH_pipelineStageCreationFeedbackCount.get().set(segment, 0L, index, value); }
     /// Sets `pipelineStageCreationFeedbackCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPipelineCreationFeedbackCreateInfoEXT extends GroupType {
     /// {@return `pPipelineStageCreationFeedbacks` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pPipelineStageCreationFeedbacks(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineStageCreationFeedbacks.get(segment, 0L, index); }
+    public static MemorySegment pPipelineStageCreationFeedbacks(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineStageCreationFeedbacks.get().get(segment, 0L, index); }
     /// {@return `pPipelineStageCreationFeedbacks`}
     public MemorySegment pPipelineStageCreationFeedbacks() { return pPipelineStageCreationFeedbacks(this.segment(), 0L); }
     /// Sets `pPipelineStageCreationFeedbacks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pPipelineStageCreationFeedbacks(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineStageCreationFeedbacks.set(segment, 0L, index, value); }
+    public static void pPipelineStageCreationFeedbacks(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineStageCreationFeedbacks.get().set(segment, 0L, index, value); }
     /// Sets `pPipelineStageCreationFeedbacks` with the given value.
     /// @param value the value
     /// @return `this`

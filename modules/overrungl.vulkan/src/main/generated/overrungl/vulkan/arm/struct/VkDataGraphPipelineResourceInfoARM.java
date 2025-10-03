@@ -35,31 +35,31 @@ public final class VkDataGraphPipelineResourceInfoARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `descriptorSet`.
     public static final long OFFSET_descriptorSet = LAYOUT.byteOffset(PathElement.groupElement("descriptorSet"));
     /// The memory layout of `descriptorSet`.
     public static final MemoryLayout LAYOUT_descriptorSet = LAYOUT.select(PathElement.groupElement("descriptorSet"));
     /// The [VarHandle] of `descriptorSet` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSet"));
+    public static final Supplier<VarHandle> VH_descriptorSet = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSet")));
     /// The byte offset of `binding`.
     public static final long OFFSET_binding = LAYOUT.byteOffset(PathElement.groupElement("binding"));
     /// The memory layout of `binding`.
     public static final MemoryLayout LAYOUT_binding = LAYOUT.select(PathElement.groupElement("binding"));
     /// The [VarHandle] of `binding` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_binding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("binding"));
+    public static final Supplier<VarHandle> VH_binding = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("binding")));
     /// The byte offset of `arrayElement`.
     public static final long OFFSET_arrayElement = LAYOUT.byteOffset(PathElement.groupElement("arrayElement"));
     /// The memory layout of `arrayElement`.
     public static final MemoryLayout LAYOUT_arrayElement = LAYOUT.select(PathElement.groupElement("arrayElement"));
     /// The [VarHandle] of `arrayElement` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_arrayElement = LAYOUT.arrayElementVarHandle(PathElement.groupElement("arrayElement"));
+    public static final Supplier<VarHandle> VH_arrayElement = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("arrayElement")));
 
     /// Creates `VkDataGraphPipelineResourceInfoARM` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkDataGraphPipelineResourceInfoARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDataGraphPipelineResourceInfoARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkDataGraphPipelineResourceInfoARM extends GroupType {
     /// {@return `descriptorSet` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorSet(MemorySegment segment, long index) { return (int) VH_descriptorSet.get(segment, 0L, index); }
+    public static int descriptorSet(MemorySegment segment, long index) { return (int) VH_descriptorSet.get().get(segment, 0L, index); }
     /// {@return `descriptorSet`}
     public int descriptorSet() { return descriptorSet(this.segment(), 0L); }
     /// Sets `descriptorSet` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorSet(MemorySegment segment, long index, int value) { VH_descriptorSet.set(segment, 0L, index, value); }
+    public static void descriptorSet(MemorySegment segment, long index, int value) { VH_descriptorSet.get().set(segment, 0L, index, value); }
     /// Sets `descriptorSet` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDataGraphPipelineResourceInfoARM extends GroupType {
     /// {@return `binding` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int binding(MemorySegment segment, long index) { return (int) VH_binding.get(segment, 0L, index); }
+    public static int binding(MemorySegment segment, long index) { return (int) VH_binding.get().get(segment, 0L, index); }
     /// {@return `binding`}
     public int binding() { return binding(this.segment(), 0L); }
     /// Sets `binding` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void binding(MemorySegment segment, long index, int value) { VH_binding.set(segment, 0L, index, value); }
+    public static void binding(MemorySegment segment, long index, int value) { VH_binding.get().set(segment, 0L, index, value); }
     /// Sets `binding` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDataGraphPipelineResourceInfoARM extends GroupType {
     /// {@return `arrayElement` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int arrayElement(MemorySegment segment, long index) { return (int) VH_arrayElement.get(segment, 0L, index); }
+    public static int arrayElement(MemorySegment segment, long index) { return (int) VH_arrayElement.get().get(segment, 0L, index); }
     /// {@return `arrayElement`}
     public int arrayElement() { return arrayElement(this.segment(), 0L); }
     /// Sets `arrayElement` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void arrayElement(MemorySegment segment, long index, int value) { VH_arrayElement.set(segment, 0L, index, value); }
+    public static void arrayElement(MemorySegment segment, long index, int value) { VH_arrayElement.get().set(segment, 0L, index, value); }
     /// Sets `arrayElement` with the given value.
     /// @param value the value
     /// @return `this`

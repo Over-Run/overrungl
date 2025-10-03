@@ -29,13 +29,13 @@ public final class VkDisplayPlanePropertiesKHR extends GroupType {
     /// The memory layout of `currentDisplay`.
     public static final MemoryLayout LAYOUT_currentDisplay = LAYOUT.select(PathElement.groupElement("currentDisplay"));
     /// The [VarHandle] of `currentDisplay` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_currentDisplay = LAYOUT.arrayElementVarHandle(PathElement.groupElement("currentDisplay"));
+    public static final Supplier<VarHandle> VH_currentDisplay = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("currentDisplay")));
     /// The byte offset of `currentStackIndex`.
     public static final long OFFSET_currentStackIndex = LAYOUT.byteOffset(PathElement.groupElement("currentStackIndex"));
     /// The memory layout of `currentStackIndex`.
     public static final MemoryLayout LAYOUT_currentStackIndex = LAYOUT.select(PathElement.groupElement("currentStackIndex"));
     /// The [VarHandle] of `currentStackIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_currentStackIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("currentStackIndex"));
+    public static final Supplier<VarHandle> VH_currentStackIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("currentStackIndex")));
 
     /// Creates `VkDisplayPlanePropertiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkDisplayPlanePropertiesKHR extends GroupType {
     /// {@return `currentDisplay` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long currentDisplay(MemorySegment segment, long index) { return (long) VH_currentDisplay.get(segment, 0L, index); }
+    public static long currentDisplay(MemorySegment segment, long index) { return (long) VH_currentDisplay.get().get(segment, 0L, index); }
     /// {@return `currentDisplay`}
     public long currentDisplay() { return currentDisplay(this.segment(), 0L); }
     /// Sets `currentDisplay` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void currentDisplay(MemorySegment segment, long index, long value) { VH_currentDisplay.set(segment, 0L, index, value); }
+    public static void currentDisplay(MemorySegment segment, long index, long value) { VH_currentDisplay.get().set(segment, 0L, index, value); }
     /// Sets `currentDisplay` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkDisplayPlanePropertiesKHR extends GroupType {
     /// {@return `currentStackIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int currentStackIndex(MemorySegment segment, long index) { return (int) VH_currentStackIndex.get(segment, 0L, index); }
+    public static int currentStackIndex(MemorySegment segment, long index) { return (int) VH_currentStackIndex.get().get(segment, 0L, index); }
     /// {@return `currentStackIndex`}
     public int currentStackIndex() { return currentStackIndex(this.segment(), 0L); }
     /// Sets `currentStackIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void currentStackIndex(MemorySegment segment, long index, int value) { VH_currentStackIndex.set(segment, 0L, index, value); }
+    public static void currentStackIndex(MemorySegment segment, long index, int value) { VH_currentStackIndex.get().set(segment, 0L, index, value); }
     /// Sets `currentStackIndex` with the given value.
     /// @param value the value
     /// @return `this`

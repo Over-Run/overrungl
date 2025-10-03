@@ -33,25 +33,25 @@ public final class VkVideoEncodeH264SessionCreateInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `useMaxLevelIdc`.
     public static final long OFFSET_useMaxLevelIdc = LAYOUT.byteOffset(PathElement.groupElement("useMaxLevelIdc"));
     /// The memory layout of `useMaxLevelIdc`.
     public static final MemoryLayout LAYOUT_useMaxLevelIdc = LAYOUT.select(PathElement.groupElement("useMaxLevelIdc"));
     /// The [VarHandle] of `useMaxLevelIdc` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_useMaxLevelIdc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxLevelIdc"));
+    public static final Supplier<VarHandle> VH_useMaxLevelIdc = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxLevelIdc")));
     /// The byte offset of `maxLevelIdc`.
     public static final long OFFSET_maxLevelIdc = LAYOUT.byteOffset(PathElement.groupElement("maxLevelIdc"));
     /// The memory layout of `maxLevelIdc`.
     public static final MemoryLayout LAYOUT_maxLevelIdc = LAYOUT.select(PathElement.groupElement("maxLevelIdc"));
     /// The [VarHandle] of `maxLevelIdc` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxLevelIdc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLevelIdc"));
+    public static final Supplier<VarHandle> VH_maxLevelIdc = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLevelIdc")));
 
     /// Creates `VkVideoEncodeH264SessionCreateInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkVideoEncodeH264SessionCreateInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkVideoEncodeH264SessionCreateInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkVideoEncodeH264SessionCreateInfoKHR extends GroupType {
     /// {@return `useMaxLevelIdc` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int useMaxLevelIdc(MemorySegment segment, long index) { return (int) VH_useMaxLevelIdc.get(segment, 0L, index); }
+    public static int useMaxLevelIdc(MemorySegment segment, long index) { return (int) VH_useMaxLevelIdc.get().get(segment, 0L, index); }
     /// {@return `useMaxLevelIdc`}
     public int useMaxLevelIdc() { return useMaxLevelIdc(this.segment(), 0L); }
     /// Sets `useMaxLevelIdc` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void useMaxLevelIdc(MemorySegment segment, long index, int value) { VH_useMaxLevelIdc.set(segment, 0L, index, value); }
+    public static void useMaxLevelIdc(MemorySegment segment, long index, int value) { VH_useMaxLevelIdc.get().set(segment, 0L, index, value); }
     /// Sets `useMaxLevelIdc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkVideoEncodeH264SessionCreateInfoKHR extends GroupType {
     /// {@return `maxLevelIdc` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxLevelIdc(MemorySegment segment, long index) { return (int) VH_maxLevelIdc.get(segment, 0L, index); }
+    public static int maxLevelIdc(MemorySegment segment, long index) { return (int) VH_maxLevelIdc.get().get(segment, 0L, index); }
     /// {@return `maxLevelIdc`}
     public int maxLevelIdc() { return maxLevelIdc(this.segment(), 0L); }
     /// Sets `maxLevelIdc` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxLevelIdc(MemorySegment segment, long index, int value) { VH_maxLevelIdc.set(segment, 0L, index, value); }
+    public static void maxLevelIdc(MemorySegment segment, long index, int value) { VH_maxLevelIdc.get().set(segment, 0L, index, value); }
     /// Sets `maxLevelIdc` with the given value.
     /// @param value the value
     /// @return `this`

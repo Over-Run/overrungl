@@ -29,13 +29,13 @@ public final class VkDepthClampRangeEXT extends GroupType {
     /// The memory layout of `minDepthClamp`.
     public static final MemoryLayout LAYOUT_minDepthClamp = LAYOUT.select(PathElement.groupElement("minDepthClamp"));
     /// The [VarHandle] of `minDepthClamp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minDepthClamp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minDepthClamp"));
+    public static final Supplier<VarHandle> VH_minDepthClamp = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minDepthClamp")));
     /// The byte offset of `maxDepthClamp`.
     public static final long OFFSET_maxDepthClamp = LAYOUT.byteOffset(PathElement.groupElement("maxDepthClamp"));
     /// The memory layout of `maxDepthClamp`.
     public static final MemoryLayout LAYOUT_maxDepthClamp = LAYOUT.select(PathElement.groupElement("maxDepthClamp"));
     /// The [VarHandle] of `maxDepthClamp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDepthClamp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDepthClamp"));
+    public static final Supplier<VarHandle> VH_maxDepthClamp = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDepthClamp")));
 
     /// Creates `VkDepthClampRangeEXT` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkDepthClampRangeEXT extends GroupType {
     /// {@return `minDepthClamp` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float minDepthClamp(MemorySegment segment, long index) { return (float) VH_minDepthClamp.get(segment, 0L, index); }
+    public static float minDepthClamp(MemorySegment segment, long index) { return (float) VH_minDepthClamp.get().get(segment, 0L, index); }
     /// {@return `minDepthClamp`}
     public float minDepthClamp() { return minDepthClamp(this.segment(), 0L); }
     /// Sets `minDepthClamp` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minDepthClamp(MemorySegment segment, long index, float value) { VH_minDepthClamp.set(segment, 0L, index, value); }
+    public static void minDepthClamp(MemorySegment segment, long index, float value) { VH_minDepthClamp.get().set(segment, 0L, index, value); }
     /// Sets `minDepthClamp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkDepthClampRangeEXT extends GroupType {
     /// {@return `maxDepthClamp` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float maxDepthClamp(MemorySegment segment, long index) { return (float) VH_maxDepthClamp.get(segment, 0L, index); }
+    public static float maxDepthClamp(MemorySegment segment, long index) { return (float) VH_maxDepthClamp.get().get(segment, 0L, index); }
     /// {@return `maxDepthClamp`}
     public float maxDepthClamp() { return maxDepthClamp(this.segment(), 0L); }
     /// Sets `maxDepthClamp` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxDepthClamp(MemorySegment segment, long index, float value) { VH_maxDepthClamp.set(segment, 0L, index, value); }
+    public static void maxDepthClamp(MemorySegment segment, long index, float value) { VH_maxDepthClamp.get().set(segment, 0L, index, value); }
     /// Sets `maxDepthClamp` with the given value.
     /// @param value the value
     /// @return `this`

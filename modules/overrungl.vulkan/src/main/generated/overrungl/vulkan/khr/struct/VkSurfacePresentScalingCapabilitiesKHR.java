@@ -39,31 +39,31 @@ public final class VkSurfacePresentScalingCapabilitiesKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `supportedPresentScaling`.
     public static final long OFFSET_supportedPresentScaling = LAYOUT.byteOffset(PathElement.groupElement("supportedPresentScaling"));
     /// The memory layout of `supportedPresentScaling`.
     public static final MemoryLayout LAYOUT_supportedPresentScaling = LAYOUT.select(PathElement.groupElement("supportedPresentScaling"));
     /// The [VarHandle] of `supportedPresentScaling` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedPresentScaling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedPresentScaling"));
+    public static final Supplier<VarHandle> VH_supportedPresentScaling = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedPresentScaling")));
     /// The byte offset of `supportedPresentGravityX`.
     public static final long OFFSET_supportedPresentGravityX = LAYOUT.byteOffset(PathElement.groupElement("supportedPresentGravityX"));
     /// The memory layout of `supportedPresentGravityX`.
     public static final MemoryLayout LAYOUT_supportedPresentGravityX = LAYOUT.select(PathElement.groupElement("supportedPresentGravityX"));
     /// The [VarHandle] of `supportedPresentGravityX` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedPresentGravityX = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedPresentGravityX"));
+    public static final Supplier<VarHandle> VH_supportedPresentGravityX = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedPresentGravityX")));
     /// The byte offset of `supportedPresentGravityY`.
     public static final long OFFSET_supportedPresentGravityY = LAYOUT.byteOffset(PathElement.groupElement("supportedPresentGravityY"));
     /// The memory layout of `supportedPresentGravityY`.
     public static final MemoryLayout LAYOUT_supportedPresentGravityY = LAYOUT.select(PathElement.groupElement("supportedPresentGravityY"));
     /// The [VarHandle] of `supportedPresentGravityY` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedPresentGravityY = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedPresentGravityY"));
+    public static final Supplier<VarHandle> VH_supportedPresentGravityY = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedPresentGravityY")));
     /// The byte offset of `minScaledImageExtent`.
     public static final long OFFSET_minScaledImageExtent = LAYOUT.byteOffset(PathElement.groupElement("minScaledImageExtent"));
     /// The memory layout of `minScaledImageExtent`.
@@ -122,14 +122,14 @@ public final class VkSurfacePresentScalingCapabilitiesKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,14 +138,14 @@ public final class VkSurfacePresentScalingCapabilitiesKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -154,14 +154,14 @@ public final class VkSurfacePresentScalingCapabilitiesKHR extends GroupType {
     /// {@return `supportedPresentScaling` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedPresentScaling(MemorySegment segment, long index) { return (int) VH_supportedPresentScaling.get(segment, 0L, index); }
+    public static int supportedPresentScaling(MemorySegment segment, long index) { return (int) VH_supportedPresentScaling.get().get(segment, 0L, index); }
     /// {@return `supportedPresentScaling`}
     public int supportedPresentScaling() { return supportedPresentScaling(this.segment(), 0L); }
     /// Sets `supportedPresentScaling` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedPresentScaling(MemorySegment segment, long index, int value) { VH_supportedPresentScaling.set(segment, 0L, index, value); }
+    public static void supportedPresentScaling(MemorySegment segment, long index, int value) { VH_supportedPresentScaling.get().set(segment, 0L, index, value); }
     /// Sets `supportedPresentScaling` with the given value.
     /// @param value the value
     /// @return `this`
@@ -170,14 +170,14 @@ public final class VkSurfacePresentScalingCapabilitiesKHR extends GroupType {
     /// {@return `supportedPresentGravityX` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedPresentGravityX(MemorySegment segment, long index) { return (int) VH_supportedPresentGravityX.get(segment, 0L, index); }
+    public static int supportedPresentGravityX(MemorySegment segment, long index) { return (int) VH_supportedPresentGravityX.get().get(segment, 0L, index); }
     /// {@return `supportedPresentGravityX`}
     public int supportedPresentGravityX() { return supportedPresentGravityX(this.segment(), 0L); }
     /// Sets `supportedPresentGravityX` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedPresentGravityX(MemorySegment segment, long index, int value) { VH_supportedPresentGravityX.set(segment, 0L, index, value); }
+    public static void supportedPresentGravityX(MemorySegment segment, long index, int value) { VH_supportedPresentGravityX.get().set(segment, 0L, index, value); }
     /// Sets `supportedPresentGravityX` with the given value.
     /// @param value the value
     /// @return `this`
@@ -186,14 +186,14 @@ public final class VkSurfacePresentScalingCapabilitiesKHR extends GroupType {
     /// {@return `supportedPresentGravityY` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedPresentGravityY(MemorySegment segment, long index) { return (int) VH_supportedPresentGravityY.get(segment, 0L, index); }
+    public static int supportedPresentGravityY(MemorySegment segment, long index) { return (int) VH_supportedPresentGravityY.get().get(segment, 0L, index); }
     /// {@return `supportedPresentGravityY`}
     public int supportedPresentGravityY() { return supportedPresentGravityY(this.segment(), 0L); }
     /// Sets `supportedPresentGravityY` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedPresentGravityY(MemorySegment segment, long index, int value) { VH_supportedPresentGravityY.set(segment, 0L, index, value); }
+    public static void supportedPresentGravityY(MemorySegment segment, long index, int value) { VH_supportedPresentGravityY.get().set(segment, 0L, index, value); }
     /// Sets `supportedPresentGravityY` with the given value.
     /// @param value the value
     /// @return `this`

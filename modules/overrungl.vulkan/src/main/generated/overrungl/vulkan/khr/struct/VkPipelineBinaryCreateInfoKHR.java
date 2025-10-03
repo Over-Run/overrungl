@@ -35,31 +35,31 @@ public final class VkPipelineBinaryCreateInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pKeysAndDataInfo`.
     public static final long OFFSET_pKeysAndDataInfo = LAYOUT.byteOffset(PathElement.groupElement("pKeysAndDataInfo"));
     /// The memory layout of `pKeysAndDataInfo`.
     public static final MemoryLayout LAYOUT_pKeysAndDataInfo = LAYOUT.select(PathElement.groupElement("pKeysAndDataInfo"));
     /// The [VarHandle] of `pKeysAndDataInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pKeysAndDataInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pKeysAndDataInfo"));
+    public static final Supplier<VarHandle> VH_pKeysAndDataInfo = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pKeysAndDataInfo")));
     /// The byte offset of `pipeline`.
     public static final long OFFSET_pipeline = LAYOUT.byteOffset(PathElement.groupElement("pipeline"));
     /// The memory layout of `pipeline`.
     public static final MemoryLayout LAYOUT_pipeline = LAYOUT.select(PathElement.groupElement("pipeline"));
     /// The [VarHandle] of `pipeline` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipeline = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipeline"));
+    public static final Supplier<VarHandle> VH_pipeline = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipeline")));
     /// The byte offset of `pPipelineCreateInfo`.
     public static final long OFFSET_pPipelineCreateInfo = LAYOUT.byteOffset(PathElement.groupElement("pPipelineCreateInfo"));
     /// The memory layout of `pPipelineCreateInfo`.
     public static final MemoryLayout LAYOUT_pPipelineCreateInfo = LAYOUT.select(PathElement.groupElement("pPipelineCreateInfo"));
     /// The [VarHandle] of `pPipelineCreateInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPipelineCreateInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineCreateInfo"));
+    public static final Supplier<VarHandle> VH_pPipelineCreateInfo = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineCreateInfo")));
 
     /// Creates `VkPipelineBinaryCreateInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPipelineBinaryCreateInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPipelineBinaryCreateInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPipelineBinaryCreateInfoKHR extends GroupType {
     /// {@return `pKeysAndDataInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pKeysAndDataInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pKeysAndDataInfo.get(segment, 0L, index); }
+    public static MemorySegment pKeysAndDataInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pKeysAndDataInfo.get().get(segment, 0L, index); }
     /// {@return `pKeysAndDataInfo`}
     public MemorySegment pKeysAndDataInfo() { return pKeysAndDataInfo(this.segment(), 0L); }
     /// Sets `pKeysAndDataInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pKeysAndDataInfo(MemorySegment segment, long index, MemorySegment value) { VH_pKeysAndDataInfo.set(segment, 0L, index, value); }
+    public static void pKeysAndDataInfo(MemorySegment segment, long index, MemorySegment value) { VH_pKeysAndDataInfo.get().set(segment, 0L, index, value); }
     /// Sets `pKeysAndDataInfo` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPipelineBinaryCreateInfoKHR extends GroupType {
     /// {@return `pipeline` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long pipeline(MemorySegment segment, long index) { return (long) VH_pipeline.get(segment, 0L, index); }
+    public static long pipeline(MemorySegment segment, long index) { return (long) VH_pipeline.get().get(segment, 0L, index); }
     /// {@return `pipeline`}
     public long pipeline() { return pipeline(this.segment(), 0L); }
     /// Sets `pipeline` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pipeline(MemorySegment segment, long index, long value) { VH_pipeline.set(segment, 0L, index, value); }
+    public static void pipeline(MemorySegment segment, long index, long value) { VH_pipeline.get().set(segment, 0L, index, value); }
     /// Sets `pipeline` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPipelineBinaryCreateInfoKHR extends GroupType {
     /// {@return `pPipelineCreateInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pPipelineCreateInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineCreateInfo.get(segment, 0L, index); }
+    public static MemorySegment pPipelineCreateInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineCreateInfo.get().get(segment, 0L, index); }
     /// {@return `pPipelineCreateInfo`}
     public MemorySegment pPipelineCreateInfo() { return pPipelineCreateInfo(this.segment(), 0L); }
     /// Sets `pPipelineCreateInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pPipelineCreateInfo(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineCreateInfo.set(segment, 0L, index, value); }
+    public static void pPipelineCreateInfo(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineCreateInfo.get().set(segment, 0L, index, value); }
     /// Sets `pPipelineCreateInfo` with the given value.
     /// @param value the value
     /// @return `this`

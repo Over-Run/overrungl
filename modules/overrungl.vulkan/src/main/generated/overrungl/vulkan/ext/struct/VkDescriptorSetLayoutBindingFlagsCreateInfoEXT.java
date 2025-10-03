@@ -33,25 +33,25 @@ public final class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT extends GroupT
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `bindingCount`.
     public static final long OFFSET_bindingCount = LAYOUT.byteOffset(PathElement.groupElement("bindingCount"));
     /// The memory layout of `bindingCount`.
     public static final MemoryLayout LAYOUT_bindingCount = LAYOUT.select(PathElement.groupElement("bindingCount"));
     /// The [VarHandle] of `bindingCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bindingCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bindingCount"));
+    public static final Supplier<VarHandle> VH_bindingCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bindingCount")));
     /// The byte offset of `pBindingFlags`.
     public static final long OFFSET_pBindingFlags = LAYOUT.byteOffset(PathElement.groupElement("pBindingFlags"));
     /// The memory layout of `pBindingFlags`.
     public static final MemoryLayout LAYOUT_pBindingFlags = LAYOUT.select(PathElement.groupElement("pBindingFlags"));
     /// The [VarHandle] of `pBindingFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pBindingFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBindingFlags"));
+    public static final Supplier<VarHandle> VH_pBindingFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBindingFlags")));
 
     /// Creates `VkDescriptorSetLayoutBindingFlagsCreateInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT extends GroupT
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT extends GroupT
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT extends GroupT
     /// {@return `bindingCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bindingCount(MemorySegment segment, long index) { return (int) VH_bindingCount.get(segment, 0L, index); }
+    public static int bindingCount(MemorySegment segment, long index) { return (int) VH_bindingCount.get().get(segment, 0L, index); }
     /// {@return `bindingCount`}
     public int bindingCount() { return bindingCount(this.segment(), 0L); }
     /// Sets `bindingCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bindingCount(MemorySegment segment, long index, int value) { VH_bindingCount.set(segment, 0L, index, value); }
+    public static void bindingCount(MemorySegment segment, long index, int value) { VH_bindingCount.get().set(segment, 0L, index, value); }
     /// Sets `bindingCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT extends GroupT
     /// {@return `pBindingFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pBindingFlags(MemorySegment segment, long index) { return (MemorySegment) VH_pBindingFlags.get(segment, 0L, index); }
+    public static MemorySegment pBindingFlags(MemorySegment segment, long index) { return (MemorySegment) VH_pBindingFlags.get().get(segment, 0L, index); }
     /// {@return `pBindingFlags`}
     public MemorySegment pBindingFlags() { return pBindingFlags(this.segment(), 0L); }
     /// Sets `pBindingFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pBindingFlags(MemorySegment segment, long index, MemorySegment value) { VH_pBindingFlags.set(segment, 0L, index, value); }
+    public static void pBindingFlags(MemorySegment segment, long index, MemorySegment value) { VH_pBindingFlags.get().set(segment, 0L, index, value); }
     /// Sets `pBindingFlags` with the given value.
     /// @param value the value
     /// @return `this`

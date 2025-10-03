@@ -53,85 +53,85 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderBufferFloat32Atomics`.
     public static final long OFFSET_shaderBufferFloat32Atomics = LAYOUT.byteOffset(PathElement.groupElement("shaderBufferFloat32Atomics"));
     /// The memory layout of `shaderBufferFloat32Atomics`.
     public static final MemoryLayout LAYOUT_shaderBufferFloat32Atomics = LAYOUT.select(PathElement.groupElement("shaderBufferFloat32Atomics"));
     /// The [VarHandle] of `shaderBufferFloat32Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBufferFloat32Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat32Atomics"));
+    public static final Supplier<VarHandle> VH_shaderBufferFloat32Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat32Atomics")));
     /// The byte offset of `shaderBufferFloat32AtomicAdd`.
     public static final long OFFSET_shaderBufferFloat32AtomicAdd = LAYOUT.byteOffset(PathElement.groupElement("shaderBufferFloat32AtomicAdd"));
     /// The memory layout of `shaderBufferFloat32AtomicAdd`.
     public static final MemoryLayout LAYOUT_shaderBufferFloat32AtomicAdd = LAYOUT.select(PathElement.groupElement("shaderBufferFloat32AtomicAdd"));
     /// The [VarHandle] of `shaderBufferFloat32AtomicAdd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBufferFloat32AtomicAdd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat32AtomicAdd"));
+    public static final Supplier<VarHandle> VH_shaderBufferFloat32AtomicAdd = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat32AtomicAdd")));
     /// The byte offset of `shaderBufferFloat64Atomics`.
     public static final long OFFSET_shaderBufferFloat64Atomics = LAYOUT.byteOffset(PathElement.groupElement("shaderBufferFloat64Atomics"));
     /// The memory layout of `shaderBufferFloat64Atomics`.
     public static final MemoryLayout LAYOUT_shaderBufferFloat64Atomics = LAYOUT.select(PathElement.groupElement("shaderBufferFloat64Atomics"));
     /// The [VarHandle] of `shaderBufferFloat64Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBufferFloat64Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat64Atomics"));
+    public static final Supplier<VarHandle> VH_shaderBufferFloat64Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat64Atomics")));
     /// The byte offset of `shaderBufferFloat64AtomicAdd`.
     public static final long OFFSET_shaderBufferFloat64AtomicAdd = LAYOUT.byteOffset(PathElement.groupElement("shaderBufferFloat64AtomicAdd"));
     /// The memory layout of `shaderBufferFloat64AtomicAdd`.
     public static final MemoryLayout LAYOUT_shaderBufferFloat64AtomicAdd = LAYOUT.select(PathElement.groupElement("shaderBufferFloat64AtomicAdd"));
     /// The [VarHandle] of `shaderBufferFloat64AtomicAdd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderBufferFloat64AtomicAdd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat64AtomicAdd"));
+    public static final Supplier<VarHandle> VH_shaderBufferFloat64AtomicAdd = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat64AtomicAdd")));
     /// The byte offset of `shaderSharedFloat32Atomics`.
     public static final long OFFSET_shaderSharedFloat32Atomics = LAYOUT.byteOffset(PathElement.groupElement("shaderSharedFloat32Atomics"));
     /// The memory layout of `shaderSharedFloat32Atomics`.
     public static final MemoryLayout LAYOUT_shaderSharedFloat32Atomics = LAYOUT.select(PathElement.groupElement("shaderSharedFloat32Atomics"));
     /// The [VarHandle] of `shaderSharedFloat32Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSharedFloat32Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat32Atomics"));
+    public static final Supplier<VarHandle> VH_shaderSharedFloat32Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat32Atomics")));
     /// The byte offset of `shaderSharedFloat32AtomicAdd`.
     public static final long OFFSET_shaderSharedFloat32AtomicAdd = LAYOUT.byteOffset(PathElement.groupElement("shaderSharedFloat32AtomicAdd"));
     /// The memory layout of `shaderSharedFloat32AtomicAdd`.
     public static final MemoryLayout LAYOUT_shaderSharedFloat32AtomicAdd = LAYOUT.select(PathElement.groupElement("shaderSharedFloat32AtomicAdd"));
     /// The [VarHandle] of `shaderSharedFloat32AtomicAdd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSharedFloat32AtomicAdd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat32AtomicAdd"));
+    public static final Supplier<VarHandle> VH_shaderSharedFloat32AtomicAdd = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat32AtomicAdd")));
     /// The byte offset of `shaderSharedFloat64Atomics`.
     public static final long OFFSET_shaderSharedFloat64Atomics = LAYOUT.byteOffset(PathElement.groupElement("shaderSharedFloat64Atomics"));
     /// The memory layout of `shaderSharedFloat64Atomics`.
     public static final MemoryLayout LAYOUT_shaderSharedFloat64Atomics = LAYOUT.select(PathElement.groupElement("shaderSharedFloat64Atomics"));
     /// The [VarHandle] of `shaderSharedFloat64Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSharedFloat64Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat64Atomics"));
+    public static final Supplier<VarHandle> VH_shaderSharedFloat64Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat64Atomics")));
     /// The byte offset of `shaderSharedFloat64AtomicAdd`.
     public static final long OFFSET_shaderSharedFloat64AtomicAdd = LAYOUT.byteOffset(PathElement.groupElement("shaderSharedFloat64AtomicAdd"));
     /// The memory layout of `shaderSharedFloat64AtomicAdd`.
     public static final MemoryLayout LAYOUT_shaderSharedFloat64AtomicAdd = LAYOUT.select(PathElement.groupElement("shaderSharedFloat64AtomicAdd"));
     /// The [VarHandle] of `shaderSharedFloat64AtomicAdd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSharedFloat64AtomicAdd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat64AtomicAdd"));
+    public static final Supplier<VarHandle> VH_shaderSharedFloat64AtomicAdd = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSharedFloat64AtomicAdd")));
     /// The byte offset of `shaderImageFloat32Atomics`.
     public static final long OFFSET_shaderImageFloat32Atomics = LAYOUT.byteOffset(PathElement.groupElement("shaderImageFloat32Atomics"));
     /// The memory layout of `shaderImageFloat32Atomics`.
     public static final MemoryLayout LAYOUT_shaderImageFloat32Atomics = LAYOUT.select(PathElement.groupElement("shaderImageFloat32Atomics"));
     /// The [VarHandle] of `shaderImageFloat32Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderImageFloat32Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderImageFloat32Atomics"));
+    public static final Supplier<VarHandle> VH_shaderImageFloat32Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderImageFloat32Atomics")));
     /// The byte offset of `shaderImageFloat32AtomicAdd`.
     public static final long OFFSET_shaderImageFloat32AtomicAdd = LAYOUT.byteOffset(PathElement.groupElement("shaderImageFloat32AtomicAdd"));
     /// The memory layout of `shaderImageFloat32AtomicAdd`.
     public static final MemoryLayout LAYOUT_shaderImageFloat32AtomicAdd = LAYOUT.select(PathElement.groupElement("shaderImageFloat32AtomicAdd"));
     /// The [VarHandle] of `shaderImageFloat32AtomicAdd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderImageFloat32AtomicAdd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderImageFloat32AtomicAdd"));
+    public static final Supplier<VarHandle> VH_shaderImageFloat32AtomicAdd = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderImageFloat32AtomicAdd")));
     /// The byte offset of `sparseImageFloat32Atomics`.
     public static final long OFFSET_sparseImageFloat32Atomics = LAYOUT.byteOffset(PathElement.groupElement("sparseImageFloat32Atomics"));
     /// The memory layout of `sparseImageFloat32Atomics`.
     public static final MemoryLayout LAYOUT_sparseImageFloat32Atomics = LAYOUT.select(PathElement.groupElement("sparseImageFloat32Atomics"));
     /// The [VarHandle] of `sparseImageFloat32Atomics` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sparseImageFloat32Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sparseImageFloat32Atomics"));
+    public static final Supplier<VarHandle> VH_sparseImageFloat32Atomics = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sparseImageFloat32Atomics")));
     /// The byte offset of `sparseImageFloat32AtomicAdd`.
     public static final long OFFSET_sparseImageFloat32AtomicAdd = LAYOUT.byteOffset(PathElement.groupElement("sparseImageFloat32AtomicAdd"));
     /// The memory layout of `sparseImageFloat32AtomicAdd`.
     public static final MemoryLayout LAYOUT_sparseImageFloat32AtomicAdd = LAYOUT.select(PathElement.groupElement("sparseImageFloat32AtomicAdd"));
     /// The [VarHandle] of `sparseImageFloat32AtomicAdd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sparseImageFloat32AtomicAdd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sparseImageFloat32AtomicAdd"));
+    public static final Supplier<VarHandle> VH_sparseImageFloat32AtomicAdd = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sparseImageFloat32AtomicAdd")));
 
     /// Creates `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment.
     /// @param segment      the memory segment
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `shaderBufferFloat32Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBufferFloat32Atomics(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat32Atomics.get(segment, 0L, index); }
+    public static int shaderBufferFloat32Atomics(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat32Atomics.get().get(segment, 0L, index); }
     /// {@return `shaderBufferFloat32Atomics`}
     public int shaderBufferFloat32Atomics() { return shaderBufferFloat32Atomics(this.segment(), 0L); }
     /// Sets `shaderBufferFloat32Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBufferFloat32Atomics(MemorySegment segment, long index, int value) { VH_shaderBufferFloat32Atomics.set(segment, 0L, index, value); }
+    public static void shaderBufferFloat32Atomics(MemorySegment segment, long index, int value) { VH_shaderBufferFloat32Atomics.get().set(segment, 0L, index, value); }
     /// Sets `shaderBufferFloat32Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `shaderBufferFloat32AtomicAdd` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBufferFloat32AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat32AtomicAdd.get(segment, 0L, index); }
+    public static int shaderBufferFloat32AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat32AtomicAdd.get().get(segment, 0L, index); }
     /// {@return `shaderBufferFloat32AtomicAdd`}
     public int shaderBufferFloat32AtomicAdd() { return shaderBufferFloat32AtomicAdd(this.segment(), 0L); }
     /// Sets `shaderBufferFloat32AtomicAdd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBufferFloat32AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderBufferFloat32AtomicAdd.set(segment, 0L, index, value); }
+    public static void shaderBufferFloat32AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderBufferFloat32AtomicAdd.get().set(segment, 0L, index, value); }
     /// Sets `shaderBufferFloat32AtomicAdd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `shaderBufferFloat64Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBufferFloat64Atomics(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat64Atomics.get(segment, 0L, index); }
+    public static int shaderBufferFloat64Atomics(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat64Atomics.get().get(segment, 0L, index); }
     /// {@return `shaderBufferFloat64Atomics`}
     public int shaderBufferFloat64Atomics() { return shaderBufferFloat64Atomics(this.segment(), 0L); }
     /// Sets `shaderBufferFloat64Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBufferFloat64Atomics(MemorySegment segment, long index, int value) { VH_shaderBufferFloat64Atomics.set(segment, 0L, index, value); }
+    public static void shaderBufferFloat64Atomics(MemorySegment segment, long index, int value) { VH_shaderBufferFloat64Atomics.get().set(segment, 0L, index, value); }
     /// Sets `shaderBufferFloat64Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `shaderBufferFloat64AtomicAdd` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderBufferFloat64AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat64AtomicAdd.get(segment, 0L, index); }
+    public static int shaderBufferFloat64AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderBufferFloat64AtomicAdd.get().get(segment, 0L, index); }
     /// {@return `shaderBufferFloat64AtomicAdd`}
     public int shaderBufferFloat64AtomicAdd() { return shaderBufferFloat64AtomicAdd(this.segment(), 0L); }
     /// Sets `shaderBufferFloat64AtomicAdd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderBufferFloat64AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderBufferFloat64AtomicAdd.set(segment, 0L, index, value); }
+    public static void shaderBufferFloat64AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderBufferFloat64AtomicAdd.get().set(segment, 0L, index, value); }
     /// Sets `shaderBufferFloat64AtomicAdd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `shaderSharedFloat32Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSharedFloat32Atomics(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat32Atomics.get(segment, 0L, index); }
+    public static int shaderSharedFloat32Atomics(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat32Atomics.get().get(segment, 0L, index); }
     /// {@return `shaderSharedFloat32Atomics`}
     public int shaderSharedFloat32Atomics() { return shaderSharedFloat32Atomics(this.segment(), 0L); }
     /// Sets `shaderSharedFloat32Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSharedFloat32Atomics(MemorySegment segment, long index, int value) { VH_shaderSharedFloat32Atomics.set(segment, 0L, index, value); }
+    public static void shaderSharedFloat32Atomics(MemorySegment segment, long index, int value) { VH_shaderSharedFloat32Atomics.get().set(segment, 0L, index, value); }
     /// Sets `shaderSharedFloat32Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `shaderSharedFloat32AtomicAdd` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSharedFloat32AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat32AtomicAdd.get(segment, 0L, index); }
+    public static int shaderSharedFloat32AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat32AtomicAdd.get().get(segment, 0L, index); }
     /// {@return `shaderSharedFloat32AtomicAdd`}
     public int shaderSharedFloat32AtomicAdd() { return shaderSharedFloat32AtomicAdd(this.segment(), 0L); }
     /// Sets `shaderSharedFloat32AtomicAdd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSharedFloat32AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderSharedFloat32AtomicAdd.set(segment, 0L, index, value); }
+    public static void shaderSharedFloat32AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderSharedFloat32AtomicAdd.get().set(segment, 0L, index, value); }
     /// Sets `shaderSharedFloat32AtomicAdd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,14 +310,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `shaderSharedFloat64Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSharedFloat64Atomics(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat64Atomics.get(segment, 0L, index); }
+    public static int shaderSharedFloat64Atomics(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat64Atomics.get().get(segment, 0L, index); }
     /// {@return `shaderSharedFloat64Atomics`}
     public int shaderSharedFloat64Atomics() { return shaderSharedFloat64Atomics(this.segment(), 0L); }
     /// Sets `shaderSharedFloat64Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSharedFloat64Atomics(MemorySegment segment, long index, int value) { VH_shaderSharedFloat64Atomics.set(segment, 0L, index, value); }
+    public static void shaderSharedFloat64Atomics(MemorySegment segment, long index, int value) { VH_shaderSharedFloat64Atomics.get().set(segment, 0L, index, value); }
     /// Sets `shaderSharedFloat64Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,14 +326,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `shaderSharedFloat64AtomicAdd` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderSharedFloat64AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat64AtomicAdd.get(segment, 0L, index); }
+    public static int shaderSharedFloat64AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderSharedFloat64AtomicAdd.get().get(segment, 0L, index); }
     /// {@return `shaderSharedFloat64AtomicAdd`}
     public int shaderSharedFloat64AtomicAdd() { return shaderSharedFloat64AtomicAdd(this.segment(), 0L); }
     /// Sets `shaderSharedFloat64AtomicAdd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderSharedFloat64AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderSharedFloat64AtomicAdd.set(segment, 0L, index, value); }
+    public static void shaderSharedFloat64AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderSharedFloat64AtomicAdd.get().set(segment, 0L, index, value); }
     /// Sets `shaderSharedFloat64AtomicAdd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,14 +342,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `shaderImageFloat32Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderImageFloat32Atomics(MemorySegment segment, long index) { return (int) VH_shaderImageFloat32Atomics.get(segment, 0L, index); }
+    public static int shaderImageFloat32Atomics(MemorySegment segment, long index) { return (int) VH_shaderImageFloat32Atomics.get().get(segment, 0L, index); }
     /// {@return `shaderImageFloat32Atomics`}
     public int shaderImageFloat32Atomics() { return shaderImageFloat32Atomics(this.segment(), 0L); }
     /// Sets `shaderImageFloat32Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderImageFloat32Atomics(MemorySegment segment, long index, int value) { VH_shaderImageFloat32Atomics.set(segment, 0L, index, value); }
+    public static void shaderImageFloat32Atomics(MemorySegment segment, long index, int value) { VH_shaderImageFloat32Atomics.get().set(segment, 0L, index, value); }
     /// Sets `shaderImageFloat32Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -358,14 +358,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `shaderImageFloat32AtomicAdd` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderImageFloat32AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderImageFloat32AtomicAdd.get(segment, 0L, index); }
+    public static int shaderImageFloat32AtomicAdd(MemorySegment segment, long index) { return (int) VH_shaderImageFloat32AtomicAdd.get().get(segment, 0L, index); }
     /// {@return `shaderImageFloat32AtomicAdd`}
     public int shaderImageFloat32AtomicAdd() { return shaderImageFloat32AtomicAdd(this.segment(), 0L); }
     /// Sets `shaderImageFloat32AtomicAdd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderImageFloat32AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderImageFloat32AtomicAdd.set(segment, 0L, index, value); }
+    public static void shaderImageFloat32AtomicAdd(MemorySegment segment, long index, int value) { VH_shaderImageFloat32AtomicAdd.get().set(segment, 0L, index, value); }
     /// Sets `shaderImageFloat32AtomicAdd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -374,14 +374,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `sparseImageFloat32Atomics` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sparseImageFloat32Atomics(MemorySegment segment, long index) { return (int) VH_sparseImageFloat32Atomics.get(segment, 0L, index); }
+    public static int sparseImageFloat32Atomics(MemorySegment segment, long index) { return (int) VH_sparseImageFloat32Atomics.get().get(segment, 0L, index); }
     /// {@return `sparseImageFloat32Atomics`}
     public int sparseImageFloat32Atomics() { return sparseImageFloat32Atomics(this.segment(), 0L); }
     /// Sets `sparseImageFloat32Atomics` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sparseImageFloat32Atomics(MemorySegment segment, long index, int value) { VH_sparseImageFloat32Atomics.set(segment, 0L, index, value); }
+    public static void sparseImageFloat32Atomics(MemorySegment segment, long index, int value) { VH_sparseImageFloat32Atomics.get().set(segment, 0L, index, value); }
     /// Sets `sparseImageFloat32Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -390,14 +390,14 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTyp
     /// {@return `sparseImageFloat32AtomicAdd` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sparseImageFloat32AtomicAdd(MemorySegment segment, long index) { return (int) VH_sparseImageFloat32AtomicAdd.get(segment, 0L, index); }
+    public static int sparseImageFloat32AtomicAdd(MemorySegment segment, long index) { return (int) VH_sparseImageFloat32AtomicAdd.get().get(segment, 0L, index); }
     /// {@return `sparseImageFloat32AtomicAdd`}
     public int sparseImageFloat32AtomicAdd() { return sparseImageFloat32AtomicAdd(this.segment(), 0L); }
     /// Sets `sparseImageFloat32AtomicAdd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sparseImageFloat32AtomicAdd(MemorySegment segment, long index, int value) { VH_sparseImageFloat32AtomicAdd.set(segment, 0L, index, value); }
+    public static void sparseImageFloat32AtomicAdd(MemorySegment segment, long index, int value) { VH_sparseImageFloat32AtomicAdd.get().set(segment, 0L, index, value); }
     /// Sets `sparseImageFloat32AtomicAdd` with the given value.
     /// @param value the value
     /// @return `this`

@@ -29,13 +29,13 @@ public final class StdVideoEncodeAV1ExtensionHeader extends GroupType {
     /// The memory layout of `temporal_id`.
     public static final MemoryLayout LAYOUT_temporal_id = LAYOUT.select(PathElement.groupElement("temporal_id"));
     /// The [VarHandle] of `temporal_id` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_temporal_id = LAYOUT.arrayElementVarHandle(PathElement.groupElement("temporal_id"));
+    public static final Supplier<VarHandle> VH_temporal_id = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("temporal_id")));
     /// The byte offset of `spatial_id`.
     public static final long OFFSET_spatial_id = LAYOUT.byteOffset(PathElement.groupElement("spatial_id"));
     /// The memory layout of `spatial_id`.
     public static final MemoryLayout LAYOUT_spatial_id = LAYOUT.select(PathElement.groupElement("spatial_id"));
     /// The [VarHandle] of `spatial_id` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_spatial_id = LAYOUT.arrayElementVarHandle(PathElement.groupElement("spatial_id"));
+    public static final Supplier<VarHandle> VH_spatial_id = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("spatial_id")));
 
     /// Creates `StdVideoEncodeAV1ExtensionHeader` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class StdVideoEncodeAV1ExtensionHeader extends GroupType {
     /// {@return `temporal_id` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte temporal_id(MemorySegment segment, long index) { return (byte) VH_temporal_id.get(segment, 0L, index); }
+    public static byte temporal_id(MemorySegment segment, long index) { return (byte) VH_temporal_id.get().get(segment, 0L, index); }
     /// {@return `temporal_id`}
     public byte temporal_id() { return temporal_id(this.segment(), 0L); }
     /// Sets `temporal_id` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void temporal_id(MemorySegment segment, long index, byte value) { VH_temporal_id.set(segment, 0L, index, value); }
+    public static void temporal_id(MemorySegment segment, long index, byte value) { VH_temporal_id.get().set(segment, 0L, index, value); }
     /// Sets `temporal_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class StdVideoEncodeAV1ExtensionHeader extends GroupType {
     /// {@return `spatial_id` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte spatial_id(MemorySegment segment, long index) { return (byte) VH_spatial_id.get(segment, 0L, index); }
+    public static byte spatial_id(MemorySegment segment, long index) { return (byte) VH_spatial_id.get().get(segment, 0L, index); }
     /// {@return `spatial_id`}
     public byte spatial_id() { return spatial_id(this.segment(), 0L); }
     /// Sets `spatial_id` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void spatial_id(MemorySegment segment, long index, byte value) { VH_spatial_id.set(segment, 0L, index, value); }
+    public static void spatial_id(MemorySegment segment, long index, byte value) { VH_spatial_id.get().set(segment, 0L, index, value); }
     /// Sets `spatial_id` with the given value.
     /// @param value the value
     /// @return `this`

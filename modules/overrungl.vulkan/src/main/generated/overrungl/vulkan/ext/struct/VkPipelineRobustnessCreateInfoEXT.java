@@ -37,37 +37,37 @@ public final class VkPipelineRobustnessCreateInfoEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `storageBuffers`.
     public static final long OFFSET_storageBuffers = LAYOUT.byteOffset(PathElement.groupElement("storageBuffers"));
     /// The memory layout of `storageBuffers`.
     public static final MemoryLayout LAYOUT_storageBuffers = LAYOUT.select(PathElement.groupElement("storageBuffers"));
     /// The [VarHandle] of `storageBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storageBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageBuffers"));
+    public static final Supplier<VarHandle> VH_storageBuffers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageBuffers")));
     /// The byte offset of `uniformBuffers`.
     public static final long OFFSET_uniformBuffers = LAYOUT.byteOffset(PathElement.groupElement("uniformBuffers"));
     /// The memory layout of `uniformBuffers`.
     public static final MemoryLayout LAYOUT_uniformBuffers = LAYOUT.select(PathElement.groupElement("uniformBuffers"));
     /// The [VarHandle] of `uniformBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_uniformBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformBuffers"));
+    public static final Supplier<VarHandle> VH_uniformBuffers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformBuffers")));
     /// The byte offset of `vertexInputs`.
     public static final long OFFSET_vertexInputs = LAYOUT.byteOffset(PathElement.groupElement("vertexInputs"));
     /// The memory layout of `vertexInputs`.
     public static final MemoryLayout LAYOUT_vertexInputs = LAYOUT.select(PathElement.groupElement("vertexInputs"));
     /// The [VarHandle] of `vertexInputs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexInputs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexInputs"));
+    public static final Supplier<VarHandle> VH_vertexInputs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexInputs")));
     /// The byte offset of `images`.
     public static final long OFFSET_images = LAYOUT.byteOffset(PathElement.groupElement("images"));
     /// The memory layout of `images`.
     public static final MemoryLayout LAYOUT_images = LAYOUT.select(PathElement.groupElement("images"));
     /// The [VarHandle] of `images` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_images = LAYOUT.arrayElementVarHandle(PathElement.groupElement("images"));
+    public static final Supplier<VarHandle> VH_images = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("images")));
 
     /// Creates `VkPipelineRobustnessCreateInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPipelineRobustnessCreateInfoEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPipelineRobustnessCreateInfoEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPipelineRobustnessCreateInfoEXT extends GroupType {
     /// {@return `storageBuffers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int storageBuffers(MemorySegment segment, long index) { return (int) VH_storageBuffers.get(segment, 0L, index); }
+    public static int storageBuffers(MemorySegment segment, long index) { return (int) VH_storageBuffers.get().get(segment, 0L, index); }
     /// {@return `storageBuffers`}
     public int storageBuffers() { return storageBuffers(this.segment(), 0L); }
     /// Sets `storageBuffers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void storageBuffers(MemorySegment segment, long index, int value) { VH_storageBuffers.set(segment, 0L, index, value); }
+    public static void storageBuffers(MemorySegment segment, long index, int value) { VH_storageBuffers.get().set(segment, 0L, index, value); }
     /// Sets `storageBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPipelineRobustnessCreateInfoEXT extends GroupType {
     /// {@return `uniformBuffers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int uniformBuffers(MemorySegment segment, long index) { return (int) VH_uniformBuffers.get(segment, 0L, index); }
+    public static int uniformBuffers(MemorySegment segment, long index) { return (int) VH_uniformBuffers.get().get(segment, 0L, index); }
     /// {@return `uniformBuffers`}
     public int uniformBuffers() { return uniformBuffers(this.segment(), 0L); }
     /// Sets `uniformBuffers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void uniformBuffers(MemorySegment segment, long index, int value) { VH_uniformBuffers.set(segment, 0L, index, value); }
+    public static void uniformBuffers(MemorySegment segment, long index, int value) { VH_uniformBuffers.get().set(segment, 0L, index, value); }
     /// Sets `uniformBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPipelineRobustnessCreateInfoEXT extends GroupType {
     /// {@return `vertexInputs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertexInputs(MemorySegment segment, long index) { return (int) VH_vertexInputs.get(segment, 0L, index); }
+    public static int vertexInputs(MemorySegment segment, long index) { return (int) VH_vertexInputs.get().get(segment, 0L, index); }
     /// {@return `vertexInputs`}
     public int vertexInputs() { return vertexInputs(this.segment(), 0L); }
     /// Sets `vertexInputs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexInputs(MemorySegment segment, long index, int value) { VH_vertexInputs.set(segment, 0L, index, value); }
+    public static void vertexInputs(MemorySegment segment, long index, int value) { VH_vertexInputs.get().set(segment, 0L, index, value); }
     /// Sets `vertexInputs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPipelineRobustnessCreateInfoEXT extends GroupType {
     /// {@return `images` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int images(MemorySegment segment, long index) { return (int) VH_images.get(segment, 0L, index); }
+    public static int images(MemorySegment segment, long index) { return (int) VH_images.get().get(segment, 0L, index); }
     /// {@return `images`}
     public int images() { return images(this.segment(), 0L); }
     /// Sets `images` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void images(MemorySegment segment, long index, int value) { VH_images.set(segment, 0L, index, value); }
+    public static void images(MemorySegment segment, long index, int value) { VH_images.get().set(segment, 0L, index, value); }
     /// Sets `images` with the given value.
     /// @param value the value
     /// @return `this`

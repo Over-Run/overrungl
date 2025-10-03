@@ -33,25 +33,25 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Grou
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `depthClampMode`.
     public static final long OFFSET_depthClampMode = LAYOUT.byteOffset(PathElement.groupElement("depthClampMode"));
     /// The memory layout of `depthClampMode`.
     public static final MemoryLayout LAYOUT_depthClampMode = LAYOUT.select(PathElement.groupElement("depthClampMode"));
     /// The [VarHandle] of `depthClampMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthClampMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthClampMode"));
+    public static final Supplier<VarHandle> VH_depthClampMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthClampMode")));
     /// The byte offset of `pDepthClampRange`.
     public static final long OFFSET_pDepthClampRange = LAYOUT.byteOffset(PathElement.groupElement("pDepthClampRange"));
     /// The memory layout of `pDepthClampRange`.
     public static final MemoryLayout LAYOUT_pDepthClampRange = LAYOUT.select(PathElement.groupElement("pDepthClampRange"));
     /// The [VarHandle] of `pDepthClampRange` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDepthClampRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDepthClampRange"));
+    public static final Supplier<VarHandle> VH_pDepthClampRange = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDepthClampRange")));
 
     /// Creates `VkPipelineViewportDepthClampControlCreateInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Grou
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Grou
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Grou
     /// {@return `depthClampMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int depthClampMode(MemorySegment segment, long index) { return (int) VH_depthClampMode.get(segment, 0L, index); }
+    public static int depthClampMode(MemorySegment segment, long index) { return (int) VH_depthClampMode.get().get(segment, 0L, index); }
     /// {@return `depthClampMode`}
     public int depthClampMode() { return depthClampMode(this.segment(), 0L); }
     /// Sets `depthClampMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depthClampMode(MemorySegment segment, long index, int value) { VH_depthClampMode.set(segment, 0L, index, value); }
+    public static void depthClampMode(MemorySegment segment, long index, int value) { VH_depthClampMode.get().set(segment, 0L, index, value); }
     /// Sets `depthClampMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Grou
     /// {@return `pDepthClampRange` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDepthClampRange(MemorySegment segment, long index) { return (MemorySegment) VH_pDepthClampRange.get(segment, 0L, index); }
+    public static MemorySegment pDepthClampRange(MemorySegment segment, long index) { return (MemorySegment) VH_pDepthClampRange.get().get(segment, 0L, index); }
     /// {@return `pDepthClampRange`}
     public MemorySegment pDepthClampRange() { return pDepthClampRange(this.segment(), 0L); }
     /// Sets `pDepthClampRange` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDepthClampRange(MemorySegment segment, long index, MemorySegment value) { VH_pDepthClampRange.set(segment, 0L, index, value); }
+    public static void pDepthClampRange(MemorySegment segment, long index, MemorySegment value) { VH_pDepthClampRange.get().set(segment, 0L, index, value); }
     /// Sets `pDepthClampRange` with the given value.
     /// @param value the value
     /// @return `this`

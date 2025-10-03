@@ -2,6 +2,7 @@
 package overrungl.opengl.amd;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -19,8 +20,8 @@ public final class GLAMDSparseTexture {
     public static final int GL_TEXTURE_STORAGE_SPARSE_BIT_AMD = 0x00000001;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glTexStorageSparseAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTextureStorageSparseAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glTexStorageSparseAMD = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glTextureStorageSparseAMD = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glTexStorageSparseAMD;
         public final MemorySegment PFN_glTextureStorageSparseAMD;
         private Handles(GLLoadFunc func) {
@@ -40,7 +41,7 @@ public final class GLAMDSparseTexture {
     public void TexStorageSparseAMD(int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageSparseAMD)) throw new GLSymbolNotFoundError("Symbol not found: glTexStorageSparseAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexStorageSparseAMD", target, internalFormat, width, height, depth, layers, flags); }
-        Handles.MH_glTexStorageSparseAMD.invokeExact(handles.PFN_glTexStorageSparseAMD, target, internalFormat, width, height, depth, layers, flags); }
+        Handles.MH_glTexStorageSparseAMD.get().invokeExact(handles.PFN_glTexStorageSparseAMD, target, internalFormat, width, height, depth, layers, flags); }
         catch (Throwable e) { throw new RuntimeException("error in TexStorageSparseAMD", e); }
     }
 
@@ -51,7 +52,7 @@ public final class GLAMDSparseTexture {
     public void TextureStorageSparseAMD(int texture, int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageSparseAMD)) throw new GLSymbolNotFoundError("Symbol not found: glTextureStorageSparseAMD");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureStorageSparseAMD", texture, target, internalFormat, width, height, depth, layers, flags); }
-        Handles.MH_glTextureStorageSparseAMD.invokeExact(handles.PFN_glTextureStorageSparseAMD, texture, target, internalFormat, width, height, depth, layers, flags); }
+        Handles.MH_glTextureStorageSparseAMD.get().invokeExact(handles.PFN_glTextureStorageSparseAMD, texture, target, internalFormat, width, height, depth, layers, flags); }
         catch (Throwable e) { throw new RuntimeException("error in TextureStorageSparseAMD", e); }
     }
 

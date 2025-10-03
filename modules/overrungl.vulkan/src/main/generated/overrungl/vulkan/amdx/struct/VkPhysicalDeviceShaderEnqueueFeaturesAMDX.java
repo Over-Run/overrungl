@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceShaderEnqueueFeaturesAMDX extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `shaderEnqueue`.
     public static final long OFFSET_shaderEnqueue = LAYOUT.byteOffset(PathElement.groupElement("shaderEnqueue"));
     /// The memory layout of `shaderEnqueue`.
     public static final MemoryLayout LAYOUT_shaderEnqueue = LAYOUT.select(PathElement.groupElement("shaderEnqueue"));
     /// The [VarHandle] of `shaderEnqueue` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderEnqueue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderEnqueue"));
+    public static final Supplier<VarHandle> VH_shaderEnqueue = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderEnqueue")));
     /// The byte offset of `shaderMeshEnqueue`.
     public static final long OFFSET_shaderMeshEnqueue = LAYOUT.byteOffset(PathElement.groupElement("shaderMeshEnqueue"));
     /// The memory layout of `shaderMeshEnqueue`.
     public static final MemoryLayout LAYOUT_shaderMeshEnqueue = LAYOUT.select(PathElement.groupElement("shaderMeshEnqueue"));
     /// The [VarHandle] of `shaderMeshEnqueue` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderMeshEnqueue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderMeshEnqueue"));
+    public static final Supplier<VarHandle> VH_shaderMeshEnqueue = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderMeshEnqueue")));
 
     /// Creates `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceShaderEnqueueFeaturesAMDX extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceShaderEnqueueFeaturesAMDX extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceShaderEnqueueFeaturesAMDX extends GroupType {
     /// {@return `shaderEnqueue` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderEnqueue(MemorySegment segment, long index) { return (int) VH_shaderEnqueue.get(segment, 0L, index); }
+    public static int shaderEnqueue(MemorySegment segment, long index) { return (int) VH_shaderEnqueue.get().get(segment, 0L, index); }
     /// {@return `shaderEnqueue`}
     public int shaderEnqueue() { return shaderEnqueue(this.segment(), 0L); }
     /// Sets `shaderEnqueue` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderEnqueue(MemorySegment segment, long index, int value) { VH_shaderEnqueue.set(segment, 0L, index, value); }
+    public static void shaderEnqueue(MemorySegment segment, long index, int value) { VH_shaderEnqueue.get().set(segment, 0L, index, value); }
     /// Sets `shaderEnqueue` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceShaderEnqueueFeaturesAMDX extends GroupType {
     /// {@return `shaderMeshEnqueue` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int shaderMeshEnqueue(MemorySegment segment, long index) { return (int) VH_shaderMeshEnqueue.get(segment, 0L, index); }
+    public static int shaderMeshEnqueue(MemorySegment segment, long index) { return (int) VH_shaderMeshEnqueue.get().get(segment, 0L, index); }
     /// {@return `shaderMeshEnqueue`}
     public int shaderMeshEnqueue() { return shaderMeshEnqueue(this.segment(), 0L); }
     /// Sets `shaderMeshEnqueue` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void shaderMeshEnqueue(MemorySegment segment, long index, int value) { VH_shaderMeshEnqueue.set(segment, 0L, index, value); }
+    public static void shaderMeshEnqueue(MemorySegment segment, long index, int value) { VH_shaderMeshEnqueue.get().set(segment, 0L, index, value); }
     /// Sets `shaderMeshEnqueue` with the given value.
     /// @param value the value
     /// @return `this`

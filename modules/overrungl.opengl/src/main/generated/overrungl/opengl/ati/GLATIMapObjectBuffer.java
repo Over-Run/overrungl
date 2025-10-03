@@ -2,6 +2,7 @@
 package overrungl.opengl.ati;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,8 +11,8 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLATIMapObjectBuffer {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glMapObjectBufferATI = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glUnmapObjectBufferATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glMapObjectBufferATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glUnmapObjectBufferATI = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glMapObjectBufferATI;
         public final MemorySegment PFN_glUnmapObjectBufferATI;
         private Handles(GLLoadFunc func) {
@@ -31,7 +32,7 @@ public final class GLATIMapObjectBuffer {
     public @NonNull MemorySegment MapObjectBufferATI(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapObjectBufferATI)) throw new GLSymbolNotFoundError("Symbol not found: glMapObjectBufferATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMapObjectBufferATI", buffer); }
-        return (MemorySegment) Handles.MH_glMapObjectBufferATI.invokeExact(handles.PFN_glMapObjectBufferATI, buffer); }
+        return (MemorySegment) Handles.MH_glMapObjectBufferATI.get().invokeExact(handles.PFN_glMapObjectBufferATI, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in MapObjectBufferATI", e); }
     }
 
@@ -42,7 +43,7 @@ public final class GLATIMapObjectBuffer {
     public void UnmapObjectBufferATI(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUnmapObjectBufferATI)) throw new GLSymbolNotFoundError("Symbol not found: glUnmapObjectBufferATI");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUnmapObjectBufferATI", buffer); }
-        Handles.MH_glUnmapObjectBufferATI.invokeExact(handles.PFN_glUnmapObjectBufferATI, buffer); }
+        Handles.MH_glUnmapObjectBufferATI.get().invokeExact(handles.PFN_glUnmapObjectBufferATI, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in UnmapObjectBufferATI", e); }
     }
 

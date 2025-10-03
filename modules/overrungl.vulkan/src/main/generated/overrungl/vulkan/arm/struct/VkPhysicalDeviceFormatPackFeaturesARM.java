@@ -31,19 +31,19 @@ public final class VkPhysicalDeviceFormatPackFeaturesARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `formatPack`.
     public static final long OFFSET_formatPack = LAYOUT.byteOffset(PathElement.groupElement("formatPack"));
     /// The memory layout of `formatPack`.
     public static final MemoryLayout LAYOUT_formatPack = LAYOUT.select(PathElement.groupElement("formatPack"));
     /// The [VarHandle] of `formatPack` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_formatPack = LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatPack"));
+    public static final Supplier<VarHandle> VH_formatPack = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatPack")));
 
     /// Creates `VkPhysicalDeviceFormatPackFeaturesARM` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkPhysicalDeviceFormatPackFeaturesARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceFormatPackFeaturesARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceFormatPackFeaturesARM extends GroupType {
     /// {@return `formatPack` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int formatPack(MemorySegment segment, long index) { return (int) VH_formatPack.get(segment, 0L, index); }
+    public static int formatPack(MemorySegment segment, long index) { return (int) VH_formatPack.get().get(segment, 0L, index); }
     /// {@return `formatPack`}
     public int formatPack() { return formatPack(this.segment(), 0L); }
     /// Sets `formatPack` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void formatPack(MemorySegment segment, long index, int value) { VH_formatPack.set(segment, 0L, index, value); }
+    public static void formatPack(MemorySegment segment, long index, int value) { VH_formatPack.get().set(segment, 0L, index, value); }
     /// Sets `formatPack` with the given value.
     /// @param value the value
     /// @return `this`

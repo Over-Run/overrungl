@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -12,8 +13,8 @@ public final class GLEXTCompiledVertexArray {
     public static final int GL_ARRAY_ELEMENT_LOCK_COUNT_EXT = 0x81A9;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glLockArraysEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glUnlockArraysEXT = downcallHandle(FunctionDescriptor.ofVoid());
+        public static final Supplier<MethodHandle> MH_glLockArraysEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glUnlockArraysEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid()));
         public final MemorySegment PFN_glLockArraysEXT;
         public final MemorySegment PFN_glUnlockArraysEXT;
         private Handles(GLLoadFunc func) {
@@ -33,7 +34,7 @@ public final class GLEXTCompiledVertexArray {
     public void LockArraysEXT(int first, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLockArraysEXT)) throw new GLSymbolNotFoundError("Symbol not found: glLockArraysEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLockArraysEXT", first, count); }
-        Handles.MH_glLockArraysEXT.invokeExact(handles.PFN_glLockArraysEXT, first, count); }
+        Handles.MH_glLockArraysEXT.get().invokeExact(handles.PFN_glLockArraysEXT, first, count); }
         catch (Throwable e) { throw new RuntimeException("error in LockArraysEXT", e); }
     }
 
@@ -44,7 +45,7 @@ public final class GLEXTCompiledVertexArray {
     public void UnlockArraysEXT() {
         if (MemoryUtil.isNullPointer(handles.PFN_glUnlockArraysEXT)) throw new GLSymbolNotFoundError("Symbol not found: glUnlockArraysEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glUnlockArraysEXT"); }
-        Handles.MH_glUnlockArraysEXT.invokeExact(handles.PFN_glUnlockArraysEXT); }
+        Handles.MH_glUnlockArraysEXT.get().invokeExact(handles.PFN_glUnlockArraysEXT); }
         catch (Throwable e) { throw new RuntimeException("error in UnlockArraysEXT", e); }
     }
 

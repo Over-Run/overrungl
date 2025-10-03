@@ -35,31 +35,31 @@ public final class StdVideoEncodeAV1DecoderModelInfo extends GroupType {
     /// The memory layout of `buffer_delay_length_minus_1`.
     public static final MemoryLayout LAYOUT_buffer_delay_length_minus_1 = LAYOUT.select(PathElement.groupElement("buffer_delay_length_minus_1"));
     /// The [VarHandle] of `buffer_delay_length_minus_1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_buffer_delay_length_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer_delay_length_minus_1"));
+    public static final Supplier<VarHandle> VH_buffer_delay_length_minus_1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer_delay_length_minus_1")));
     /// The byte offset of `buffer_removal_time_length_minus_1`.
     public static final long OFFSET_buffer_removal_time_length_minus_1 = LAYOUT.byteOffset(PathElement.groupElement("buffer_removal_time_length_minus_1"));
     /// The memory layout of `buffer_removal_time_length_minus_1`.
     public static final MemoryLayout LAYOUT_buffer_removal_time_length_minus_1 = LAYOUT.select(PathElement.groupElement("buffer_removal_time_length_minus_1"));
     /// The [VarHandle] of `buffer_removal_time_length_minus_1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_buffer_removal_time_length_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer_removal_time_length_minus_1"));
+    public static final Supplier<VarHandle> VH_buffer_removal_time_length_minus_1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer_removal_time_length_minus_1")));
     /// The byte offset of `frame_presentation_time_length_minus_1`.
     public static final long OFFSET_frame_presentation_time_length_minus_1 = LAYOUT.byteOffset(PathElement.groupElement("frame_presentation_time_length_minus_1"));
     /// The memory layout of `frame_presentation_time_length_minus_1`.
     public static final MemoryLayout LAYOUT_frame_presentation_time_length_minus_1 = LAYOUT.select(PathElement.groupElement("frame_presentation_time_length_minus_1"));
     /// The [VarHandle] of `frame_presentation_time_length_minus_1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_frame_presentation_time_length_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frame_presentation_time_length_minus_1"));
+    public static final Supplier<VarHandle> VH_frame_presentation_time_length_minus_1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("frame_presentation_time_length_minus_1")));
     /// The byte offset of `reserved1`.
     public static final long OFFSET_reserved1 = LAYOUT.byteOffset(PathElement.groupElement("reserved1"));
     /// The memory layout of `reserved1`.
     public static final MemoryLayout LAYOUT_reserved1 = LAYOUT.select(PathElement.groupElement("reserved1"));
     /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"));
+    public static final Supplier<VarHandle> VH_reserved1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1")));
     /// The byte offset of `num_units_in_decoding_tick`.
     public static final long OFFSET_num_units_in_decoding_tick = LAYOUT.byteOffset(PathElement.groupElement("num_units_in_decoding_tick"));
     /// The memory layout of `num_units_in_decoding_tick`.
     public static final MemoryLayout LAYOUT_num_units_in_decoding_tick = LAYOUT.select(PathElement.groupElement("num_units_in_decoding_tick"));
     /// The [VarHandle] of `num_units_in_decoding_tick` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_num_units_in_decoding_tick = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_units_in_decoding_tick"));
+    public static final Supplier<VarHandle> VH_num_units_in_decoding_tick = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_units_in_decoding_tick")));
 
     /// Creates `StdVideoEncodeAV1DecoderModelInfo` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class StdVideoEncodeAV1DecoderModelInfo extends GroupType {
     /// {@return `buffer_delay_length_minus_1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte buffer_delay_length_minus_1(MemorySegment segment, long index) { return (byte) VH_buffer_delay_length_minus_1.get(segment, 0L, index); }
+    public static byte buffer_delay_length_minus_1(MemorySegment segment, long index) { return (byte) VH_buffer_delay_length_minus_1.get().get(segment, 0L, index); }
     /// {@return `buffer_delay_length_minus_1`}
     public byte buffer_delay_length_minus_1() { return buffer_delay_length_minus_1(this.segment(), 0L); }
     /// Sets `buffer_delay_length_minus_1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void buffer_delay_length_minus_1(MemorySegment segment, long index, byte value) { VH_buffer_delay_length_minus_1.set(segment, 0L, index, value); }
+    public static void buffer_delay_length_minus_1(MemorySegment segment, long index, byte value) { VH_buffer_delay_length_minus_1.get().set(segment, 0L, index, value); }
     /// Sets `buffer_delay_length_minus_1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class StdVideoEncodeAV1DecoderModelInfo extends GroupType {
     /// {@return `buffer_removal_time_length_minus_1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte buffer_removal_time_length_minus_1(MemorySegment segment, long index) { return (byte) VH_buffer_removal_time_length_minus_1.get(segment, 0L, index); }
+    public static byte buffer_removal_time_length_minus_1(MemorySegment segment, long index) { return (byte) VH_buffer_removal_time_length_minus_1.get().get(segment, 0L, index); }
     /// {@return `buffer_removal_time_length_minus_1`}
     public byte buffer_removal_time_length_minus_1() { return buffer_removal_time_length_minus_1(this.segment(), 0L); }
     /// Sets `buffer_removal_time_length_minus_1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void buffer_removal_time_length_minus_1(MemorySegment segment, long index, byte value) { VH_buffer_removal_time_length_minus_1.set(segment, 0L, index, value); }
+    public static void buffer_removal_time_length_minus_1(MemorySegment segment, long index, byte value) { VH_buffer_removal_time_length_minus_1.get().set(segment, 0L, index, value); }
     /// Sets `buffer_removal_time_length_minus_1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class StdVideoEncodeAV1DecoderModelInfo extends GroupType {
     /// {@return `frame_presentation_time_length_minus_1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte frame_presentation_time_length_minus_1(MemorySegment segment, long index) { return (byte) VH_frame_presentation_time_length_minus_1.get(segment, 0L, index); }
+    public static byte frame_presentation_time_length_minus_1(MemorySegment segment, long index) { return (byte) VH_frame_presentation_time_length_minus_1.get().get(segment, 0L, index); }
     /// {@return `frame_presentation_time_length_minus_1`}
     public byte frame_presentation_time_length_minus_1() { return frame_presentation_time_length_minus_1(this.segment(), 0L); }
     /// Sets `frame_presentation_time_length_minus_1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void frame_presentation_time_length_minus_1(MemorySegment segment, long index, byte value) { VH_frame_presentation_time_length_minus_1.set(segment, 0L, index, value); }
+    public static void frame_presentation_time_length_minus_1(MemorySegment segment, long index, byte value) { VH_frame_presentation_time_length_minus_1.get().set(segment, 0L, index, value); }
     /// Sets `frame_presentation_time_length_minus_1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class StdVideoEncodeAV1DecoderModelInfo extends GroupType {
     /// {@return `reserved1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte reserved1(MemorySegment segment, long index) { return (byte) VH_reserved1.get(segment, 0L, index); }
+    public static byte reserved1(MemorySegment segment, long index) { return (byte) VH_reserved1.get().get(segment, 0L, index); }
     /// {@return `reserved1`}
     public byte reserved1() { return reserved1(this.segment(), 0L); }
     /// Sets `reserved1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void reserved1(MemorySegment segment, long index, byte value) { VH_reserved1.set(segment, 0L, index, value); }
+    public static void reserved1(MemorySegment segment, long index, byte value) { VH_reserved1.get().set(segment, 0L, index, value); }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class StdVideoEncodeAV1DecoderModelInfo extends GroupType {
     /// {@return `num_units_in_decoding_tick` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int num_units_in_decoding_tick(MemorySegment segment, long index) { return (int) VH_num_units_in_decoding_tick.get(segment, 0L, index); }
+    public static int num_units_in_decoding_tick(MemorySegment segment, long index) { return (int) VH_num_units_in_decoding_tick.get().get(segment, 0L, index); }
     /// {@return `num_units_in_decoding_tick`}
     public int num_units_in_decoding_tick() { return num_units_in_decoding_tick(this.segment(), 0L); }
     /// Sets `num_units_in_decoding_tick` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void num_units_in_decoding_tick(MemorySegment segment, long index, int value) { VH_num_units_in_decoding_tick.set(segment, 0L, index, value); }
+    public static void num_units_in_decoding_tick(MemorySegment segment, long index, int value) { VH_num_units_in_decoding_tick.get().set(segment, 0L, index, value); }
     /// Sets `num_units_in_decoding_tick` with the given value.
     /// @param value the value
     /// @return `this`

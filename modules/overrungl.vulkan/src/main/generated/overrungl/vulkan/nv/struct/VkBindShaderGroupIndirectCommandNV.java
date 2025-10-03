@@ -27,7 +27,7 @@ public final class VkBindShaderGroupIndirectCommandNV extends GroupType {
     /// The memory layout of `groupIndex`.
     public static final MemoryLayout LAYOUT_groupIndex = LAYOUT.select(PathElement.groupElement("groupIndex"));
     /// The [VarHandle] of `groupIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_groupIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("groupIndex"));
+    public static final Supplier<VarHandle> VH_groupIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("groupIndex")));
 
     /// Creates `VkBindShaderGroupIndirectCommandNV` with the given segment.
     /// @param segment      the memory segment
@@ -78,14 +78,14 @@ public final class VkBindShaderGroupIndirectCommandNV extends GroupType {
     /// {@return `groupIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int groupIndex(MemorySegment segment, long index) { return (int) VH_groupIndex.get(segment, 0L, index); }
+    public static int groupIndex(MemorySegment segment, long index) { return (int) VH_groupIndex.get().get(segment, 0L, index); }
     /// {@return `groupIndex`}
     public int groupIndex() { return groupIndex(this.segment(), 0L); }
     /// Sets `groupIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void groupIndex(MemorySegment segment, long index, int value) { VH_groupIndex.set(segment, 0L, index, value); }
+    public static void groupIndex(MemorySegment segment, long index, int value) { VH_groupIndex.get().set(segment, 0L, index, value); }
     /// Sets `groupIndex` with the given value.
     /// @param value the value
     /// @return `this`

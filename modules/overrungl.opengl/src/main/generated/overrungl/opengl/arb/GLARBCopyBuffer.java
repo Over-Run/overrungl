@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -12,7 +13,7 @@ public final class GLARBCopyBuffer {
     public static final int GL_COPY_WRITE_BUFFER = 0x8F37;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glCopyBufferSubData = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final Supplier<MethodHandle> MH_glCopyBufferSubData = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)));
         public final MemorySegment PFN_glCopyBufferSubData;
         private Handles(GLLoadFunc func) {
             PFN_glCopyBufferSubData = func.invoke("glCopyBufferSubData");
@@ -30,7 +31,7 @@ public final class GLARBCopyBuffer {
     public void CopyBufferSubData(int readTarget, int writeTarget, long readOffset, long writeOffset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyBufferSubData)) throw new GLSymbolNotFoundError("Symbol not found: glCopyBufferSubData");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyBufferSubData", readTarget, writeTarget, readOffset, writeOffset, size); }
-        Handles.MH_glCopyBufferSubData.invokeExact(handles.PFN_glCopyBufferSubData, readTarget, writeTarget, readOffset, writeOffset, size); }
+        Handles.MH_glCopyBufferSubData.get().invokeExact(handles.PFN_glCopyBufferSubData, readTarget, writeTarget, readOffset, writeOffset, size); }
         catch (Throwable e) { throw new RuntimeException("error in CopyBufferSubData", e); }
     }
 

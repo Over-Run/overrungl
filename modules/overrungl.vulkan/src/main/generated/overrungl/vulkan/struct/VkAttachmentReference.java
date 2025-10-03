@@ -29,13 +29,13 @@ public final class VkAttachmentReference extends GroupType {
     /// The memory layout of `attachment`.
     public static final MemoryLayout LAYOUT_attachment = LAYOUT.select(PathElement.groupElement("attachment"));
     /// The [VarHandle] of `attachment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_attachment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachment"));
+    public static final Supplier<VarHandle> VH_attachment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachment")));
     /// The byte offset of `layout`.
     public static final long OFFSET_layout = LAYOUT.byteOffset(PathElement.groupElement("layout"));
     /// The memory layout of `layout`.
     public static final MemoryLayout LAYOUT_layout = LAYOUT.select(PathElement.groupElement("layout"));
     /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
+    public static final Supplier<VarHandle> VH_layout = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout")));
 
     /// Creates `VkAttachmentReference` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkAttachmentReference extends GroupType {
     /// {@return `attachment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int attachment(MemorySegment segment, long index) { return (int) VH_attachment.get(segment, 0L, index); }
+    public static int attachment(MemorySegment segment, long index) { return (int) VH_attachment.get().get(segment, 0L, index); }
     /// {@return `attachment`}
     public int attachment() { return attachment(this.segment(), 0L); }
     /// Sets `attachment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void attachment(MemorySegment segment, long index, int value) { VH_attachment.set(segment, 0L, index, value); }
+    public static void attachment(MemorySegment segment, long index, int value) { VH_attachment.get().set(segment, 0L, index, value); }
     /// Sets `attachment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkAttachmentReference extends GroupType {
     /// {@return `layout` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int layout(MemorySegment segment, long index) { return (int) VH_layout.get(segment, 0L, index); }
+    public static int layout(MemorySegment segment, long index) { return (int) VH_layout.get().get(segment, 0L, index); }
     /// {@return `layout`}
     public int layout() { return layout(this.segment(), 0L); }
     /// Sets `layout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void layout(MemorySegment segment, long index, int value) { VH_layout.set(segment, 0L, index, value); }
+    public static void layout(MemorySegment segment, long index, int value) { VH_layout.get().set(segment, 0L, index, value); }
     /// Sets `layout` with the given value.
     /// @param value the value
     /// @return `this`

@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -13,8 +14,8 @@ public final class GLEXTCullVertex {
     public static final int GL_CULL_VERTEX_OBJECT_POSITION_EXT = 0x81AC;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glCullParameterdvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCullParameterfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glCullParameterdvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glCullParameterfvEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glCullParameterdvEXT;
         public final MemorySegment PFN_glCullParameterfvEXT;
         private Handles(GLLoadFunc func) {
@@ -34,7 +35,7 @@ public final class GLEXTCullVertex {
     public void CullParameterdvEXT(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCullParameterdvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCullParameterdvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCullParameterdvEXT", pname, params); }
-        Handles.MH_glCullParameterdvEXT.invokeExact(handles.PFN_glCullParameterdvEXT, pname, params); }
+        Handles.MH_glCullParameterdvEXT.get().invokeExact(handles.PFN_glCullParameterdvEXT, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in CullParameterdvEXT", e); }
     }
 
@@ -45,7 +46,7 @@ public final class GLEXTCullVertex {
     public void CullParameterfvEXT(int pname, @NonNull MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCullParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCullParameterfvEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCullParameterfvEXT", pname, params); }
-        Handles.MH_glCullParameterfvEXT.invokeExact(handles.PFN_glCullParameterfvEXT, pname, params); }
+        Handles.MH_glCullParameterfvEXT.get().invokeExact(handles.PFN_glCullParameterfvEXT, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in CullParameterfvEXT", e); }
     }
 

@@ -45,61 +45,61 @@ public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV exte
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `maxVerticesPerCluster`.
     public static final long OFFSET_maxVerticesPerCluster = LAYOUT.byteOffset(PathElement.groupElement("maxVerticesPerCluster"));
     /// The memory layout of `maxVerticesPerCluster`.
     public static final MemoryLayout LAYOUT_maxVerticesPerCluster = LAYOUT.select(PathElement.groupElement("maxVerticesPerCluster"));
     /// The [VarHandle] of `maxVerticesPerCluster` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxVerticesPerCluster = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxVerticesPerCluster"));
+    public static final Supplier<VarHandle> VH_maxVerticesPerCluster = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxVerticesPerCluster")));
     /// The byte offset of `maxTrianglesPerCluster`.
     public static final long OFFSET_maxTrianglesPerCluster = LAYOUT.byteOffset(PathElement.groupElement("maxTrianglesPerCluster"));
     /// The memory layout of `maxTrianglesPerCluster`.
     public static final MemoryLayout LAYOUT_maxTrianglesPerCluster = LAYOUT.select(PathElement.groupElement("maxTrianglesPerCluster"));
     /// The [VarHandle] of `maxTrianglesPerCluster` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTrianglesPerCluster = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTrianglesPerCluster"));
+    public static final Supplier<VarHandle> VH_maxTrianglesPerCluster = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTrianglesPerCluster")));
     /// The byte offset of `clusterScratchByteAlignment`.
     public static final long OFFSET_clusterScratchByteAlignment = LAYOUT.byteOffset(PathElement.groupElement("clusterScratchByteAlignment"));
     /// The memory layout of `clusterScratchByteAlignment`.
     public static final MemoryLayout LAYOUT_clusterScratchByteAlignment = LAYOUT.select(PathElement.groupElement("clusterScratchByteAlignment"));
     /// The [VarHandle] of `clusterScratchByteAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterScratchByteAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterScratchByteAlignment"));
+    public static final Supplier<VarHandle> VH_clusterScratchByteAlignment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterScratchByteAlignment")));
     /// The byte offset of `clusterByteAlignment`.
     public static final long OFFSET_clusterByteAlignment = LAYOUT.byteOffset(PathElement.groupElement("clusterByteAlignment"));
     /// The memory layout of `clusterByteAlignment`.
     public static final MemoryLayout LAYOUT_clusterByteAlignment = LAYOUT.select(PathElement.groupElement("clusterByteAlignment"));
     /// The [VarHandle] of `clusterByteAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterByteAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterByteAlignment"));
+    public static final Supplier<VarHandle> VH_clusterByteAlignment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterByteAlignment")));
     /// The byte offset of `clusterTemplateByteAlignment`.
     public static final long OFFSET_clusterTemplateByteAlignment = LAYOUT.byteOffset(PathElement.groupElement("clusterTemplateByteAlignment"));
     /// The memory layout of `clusterTemplateByteAlignment`.
     public static final MemoryLayout LAYOUT_clusterTemplateByteAlignment = LAYOUT.select(PathElement.groupElement("clusterTemplateByteAlignment"));
     /// The [VarHandle] of `clusterTemplateByteAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterTemplateByteAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterTemplateByteAlignment"));
+    public static final Supplier<VarHandle> VH_clusterTemplateByteAlignment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterTemplateByteAlignment")));
     /// The byte offset of `clusterBottomLevelByteAlignment`.
     public static final long OFFSET_clusterBottomLevelByteAlignment = LAYOUT.byteOffset(PathElement.groupElement("clusterBottomLevelByteAlignment"));
     /// The memory layout of `clusterBottomLevelByteAlignment`.
     public static final MemoryLayout LAYOUT_clusterBottomLevelByteAlignment = LAYOUT.select(PathElement.groupElement("clusterBottomLevelByteAlignment"));
     /// The [VarHandle] of `clusterBottomLevelByteAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterBottomLevelByteAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterBottomLevelByteAlignment"));
+    public static final Supplier<VarHandle> VH_clusterBottomLevelByteAlignment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterBottomLevelByteAlignment")));
     /// The byte offset of `clusterTemplateBoundsByteAlignment`.
     public static final long OFFSET_clusterTemplateBoundsByteAlignment = LAYOUT.byteOffset(PathElement.groupElement("clusterTemplateBoundsByteAlignment"));
     /// The memory layout of `clusterTemplateBoundsByteAlignment`.
     public static final MemoryLayout LAYOUT_clusterTemplateBoundsByteAlignment = LAYOUT.select(PathElement.groupElement("clusterTemplateBoundsByteAlignment"));
     /// The [VarHandle] of `clusterTemplateBoundsByteAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_clusterTemplateBoundsByteAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterTemplateBoundsByteAlignment"));
+    public static final Supplier<VarHandle> VH_clusterTemplateBoundsByteAlignment = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterTemplateBoundsByteAlignment")));
     /// The byte offset of `maxClusterGeometryIndex`.
     public static final long OFFSET_maxClusterGeometryIndex = LAYOUT.byteOffset(PathElement.groupElement("maxClusterGeometryIndex"));
     /// The memory layout of `maxClusterGeometryIndex`.
     public static final MemoryLayout LAYOUT_maxClusterGeometryIndex = LAYOUT.select(PathElement.groupElement("maxClusterGeometryIndex"));
     /// The [VarHandle] of `maxClusterGeometryIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxClusterGeometryIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxClusterGeometryIndex"));
+    public static final Supplier<VarHandle> VH_maxClusterGeometryIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxClusterGeometryIndex")));
 
     /// Creates `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV exte
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV exte
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV exte
     /// {@return `maxVerticesPerCluster` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxVerticesPerCluster(MemorySegment segment, long index) { return (int) VH_maxVerticesPerCluster.get(segment, 0L, index); }
+    public static int maxVerticesPerCluster(MemorySegment segment, long index) { return (int) VH_maxVerticesPerCluster.get().get(segment, 0L, index); }
     /// {@return `maxVerticesPerCluster`}
     public int maxVerticesPerCluster() { return maxVerticesPerCluster(this.segment(), 0L); }
     /// Sets `maxVerticesPerCluster` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxVerticesPerCluster(MemorySegment segment, long index, int value) { VH_maxVerticesPerCluster.set(segment, 0L, index, value); }
+    public static void maxVerticesPerCluster(MemorySegment segment, long index, int value) { VH_maxVerticesPerCluster.get().set(segment, 0L, index, value); }
     /// Sets `maxVerticesPerCluster` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV exte
     /// {@return `maxTrianglesPerCluster` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTrianglesPerCluster(MemorySegment segment, long index) { return (int) VH_maxTrianglesPerCluster.get(segment, 0L, index); }
+    public static int maxTrianglesPerCluster(MemorySegment segment, long index) { return (int) VH_maxTrianglesPerCluster.get().get(segment, 0L, index); }
     /// {@return `maxTrianglesPerCluster`}
     public int maxTrianglesPerCluster() { return maxTrianglesPerCluster(this.segment(), 0L); }
     /// Sets `maxTrianglesPerCluster` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTrianglesPerCluster(MemorySegment segment, long index, int value) { VH_maxTrianglesPerCluster.set(segment, 0L, index, value); }
+    public static void maxTrianglesPerCluster(MemorySegment segment, long index, int value) { VH_maxTrianglesPerCluster.get().set(segment, 0L, index, value); }
     /// Sets `maxTrianglesPerCluster` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV exte
     /// {@return `clusterScratchByteAlignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clusterScratchByteAlignment(MemorySegment segment, long index) { return (int) VH_clusterScratchByteAlignment.get(segment, 0L, index); }
+    public static int clusterScratchByteAlignment(MemorySegment segment, long index) { return (int) VH_clusterScratchByteAlignment.get().get(segment, 0L, index); }
     /// {@return `clusterScratchByteAlignment`}
     public int clusterScratchByteAlignment() { return clusterScratchByteAlignment(this.segment(), 0L); }
     /// Sets `clusterScratchByteAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterScratchByteAlignment(MemorySegment segment, long index, int value) { VH_clusterScratchByteAlignment.set(segment, 0L, index, value); }
+    public static void clusterScratchByteAlignment(MemorySegment segment, long index, int value) { VH_clusterScratchByteAlignment.get().set(segment, 0L, index, value); }
     /// Sets `clusterScratchByteAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV exte
     /// {@return `clusterByteAlignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clusterByteAlignment(MemorySegment segment, long index) { return (int) VH_clusterByteAlignment.get(segment, 0L, index); }
+    public static int clusterByteAlignment(MemorySegment segment, long index) { return (int) VH_clusterByteAlignment.get().get(segment, 0L, index); }
     /// {@return `clusterByteAlignment`}
     public int clusterByteAlignment() { return clusterByteAlignment(this.segment(), 0L); }
     /// Sets `clusterByteAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterByteAlignment(MemorySegment segment, long index, int value) { VH_clusterByteAlignment.set(segment, 0L, index, value); }
+    public static void clusterByteAlignment(MemorySegment segment, long index, int value) { VH_clusterByteAlignment.get().set(segment, 0L, index, value); }
     /// Sets `clusterByteAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV exte
     /// {@return `clusterTemplateByteAlignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clusterTemplateByteAlignment(MemorySegment segment, long index) { return (int) VH_clusterTemplateByteAlignment.get(segment, 0L, index); }
+    public static int clusterTemplateByteAlignment(MemorySegment segment, long index) { return (int) VH_clusterTemplateByteAlignment.get().get(segment, 0L, index); }
     /// {@return `clusterTemplateByteAlignment`}
     public int clusterTemplateByteAlignment() { return clusterTemplateByteAlignment(this.segment(), 0L); }
     /// Sets `clusterTemplateByteAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterTemplateByteAlignment(MemorySegment segment, long index, int value) { VH_clusterTemplateByteAlignment.set(segment, 0L, index, value); }
+    public static void clusterTemplateByteAlignment(MemorySegment segment, long index, int value) { VH_clusterTemplateByteAlignment.get().set(segment, 0L, index, value); }
     /// Sets `clusterTemplateByteAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV exte
     /// {@return `clusterBottomLevelByteAlignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clusterBottomLevelByteAlignment(MemorySegment segment, long index) { return (int) VH_clusterBottomLevelByteAlignment.get(segment, 0L, index); }
+    public static int clusterBottomLevelByteAlignment(MemorySegment segment, long index) { return (int) VH_clusterBottomLevelByteAlignment.get().get(segment, 0L, index); }
     /// {@return `clusterBottomLevelByteAlignment`}
     public int clusterBottomLevelByteAlignment() { return clusterBottomLevelByteAlignment(this.segment(), 0L); }
     /// Sets `clusterBottomLevelByteAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterBottomLevelByteAlignment(MemorySegment segment, long index, int value) { VH_clusterBottomLevelByteAlignment.set(segment, 0L, index, value); }
+    public static void clusterBottomLevelByteAlignment(MemorySegment segment, long index, int value) { VH_clusterBottomLevelByteAlignment.get().set(segment, 0L, index, value); }
     /// Sets `clusterBottomLevelByteAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV exte
     /// {@return `clusterTemplateBoundsByteAlignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int clusterTemplateBoundsByteAlignment(MemorySegment segment, long index) { return (int) VH_clusterTemplateBoundsByteAlignment.get(segment, 0L, index); }
+    public static int clusterTemplateBoundsByteAlignment(MemorySegment segment, long index) { return (int) VH_clusterTemplateBoundsByteAlignment.get().get(segment, 0L, index); }
     /// {@return `clusterTemplateBoundsByteAlignment`}
     public int clusterTemplateBoundsByteAlignment() { return clusterTemplateBoundsByteAlignment(this.segment(), 0L); }
     /// Sets `clusterTemplateBoundsByteAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void clusterTemplateBoundsByteAlignment(MemorySegment segment, long index, int value) { VH_clusterTemplateBoundsByteAlignment.set(segment, 0L, index, value); }
+    public static void clusterTemplateBoundsByteAlignment(MemorySegment segment, long index, int value) { VH_clusterTemplateBoundsByteAlignment.get().set(segment, 0L, index, value); }
     /// Sets `clusterTemplateBoundsByteAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV exte
     /// {@return `maxClusterGeometryIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxClusterGeometryIndex(MemorySegment segment, long index) { return (int) VH_maxClusterGeometryIndex.get(segment, 0L, index); }
+    public static int maxClusterGeometryIndex(MemorySegment segment, long index) { return (int) VH_maxClusterGeometryIndex.get().get(segment, 0L, index); }
     /// {@return `maxClusterGeometryIndex`}
     public int maxClusterGeometryIndex() { return maxClusterGeometryIndex(this.segment(), 0L); }
     /// Sets `maxClusterGeometryIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxClusterGeometryIndex(MemorySegment segment, long index, int value) { VH_maxClusterGeometryIndex.set(segment, 0L, index, value); }
+    public static void maxClusterGeometryIndex(MemorySegment segment, long index, int value) { VH_maxClusterGeometryIndex.get().set(segment, 0L, index, value); }
     /// Sets `maxClusterGeometryIndex` with the given value.
     /// @param value the value
     /// @return `this`

@@ -2,6 +2,7 @@
 package overrungl.opengl.arb;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -15,7 +16,7 @@ public final class GLARBTextureBufferObject {
     public static final int GL_TEXTURE_BUFFER_FORMAT_ARB = 0x8C2E;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glTexBufferARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glTexBufferARB = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glTexBufferARB;
         private Handles(GLLoadFunc func) {
             PFN_glTexBufferARB = func.invoke("glTexBufferARB", "glTexBuffer");
@@ -33,7 +34,7 @@ public final class GLARBTextureBufferObject {
     public void TexBufferARB(int target, int internalformat, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferARB)) throw new GLSymbolNotFoundError("Symbol not found: glTexBufferARB");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexBufferARB", target, internalformat, buffer); }
-        Handles.MH_glTexBufferARB.invokeExact(handles.PFN_glTexBufferARB, target, internalformat, buffer); }
+        Handles.MH_glTexBufferARB.get().invokeExact(handles.PFN_glTexBufferARB, target, internalformat, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in TexBufferARB", e); }
     }
 

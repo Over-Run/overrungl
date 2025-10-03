@@ -33,25 +33,25 @@ public final class VkPhysicalDeviceVariablePointerFeaturesKHR extends GroupType 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `variablePointersStorageBuffer`.
     public static final long OFFSET_variablePointersStorageBuffer = LAYOUT.byteOffset(PathElement.groupElement("variablePointersStorageBuffer"));
     /// The memory layout of `variablePointersStorageBuffer`.
     public static final MemoryLayout LAYOUT_variablePointersStorageBuffer = LAYOUT.select(PathElement.groupElement("variablePointersStorageBuffer"));
     /// The [VarHandle] of `variablePointersStorageBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_variablePointersStorageBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("variablePointersStorageBuffer"));
+    public static final Supplier<VarHandle> VH_variablePointersStorageBuffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("variablePointersStorageBuffer")));
     /// The byte offset of `variablePointers`.
     public static final long OFFSET_variablePointers = LAYOUT.byteOffset(PathElement.groupElement("variablePointers"));
     /// The memory layout of `variablePointers`.
     public static final MemoryLayout LAYOUT_variablePointers = LAYOUT.select(PathElement.groupElement("variablePointers"));
     /// The [VarHandle] of `variablePointers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_variablePointers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("variablePointers"));
+    public static final Supplier<VarHandle> VH_variablePointers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("variablePointers")));
 
     /// Creates `VkPhysicalDeviceVariablePointerFeaturesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkPhysicalDeviceVariablePointerFeaturesKHR extends GroupType 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceVariablePointerFeaturesKHR extends GroupType 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceVariablePointerFeaturesKHR extends GroupType 
     /// {@return `variablePointersStorageBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int variablePointersStorageBuffer(MemorySegment segment, long index) { return (int) VH_variablePointersStorageBuffer.get(segment, 0L, index); }
+    public static int variablePointersStorageBuffer(MemorySegment segment, long index) { return (int) VH_variablePointersStorageBuffer.get().get(segment, 0L, index); }
     /// {@return `variablePointersStorageBuffer`}
     public int variablePointersStorageBuffer() { return variablePointersStorageBuffer(this.segment(), 0L); }
     /// Sets `variablePointersStorageBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void variablePointersStorageBuffer(MemorySegment segment, long index, int value) { VH_variablePointersStorageBuffer.set(segment, 0L, index, value); }
+    public static void variablePointersStorageBuffer(MemorySegment segment, long index, int value) { VH_variablePointersStorageBuffer.get().set(segment, 0L, index, value); }
     /// Sets `variablePointersStorageBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceVariablePointerFeaturesKHR extends GroupType 
     /// {@return `variablePointers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int variablePointers(MemorySegment segment, long index) { return (int) VH_variablePointers.get(segment, 0L, index); }
+    public static int variablePointers(MemorySegment segment, long index) { return (int) VH_variablePointers.get().get(segment, 0L, index); }
     /// {@return `variablePointers`}
     public int variablePointers() { return variablePointers(this.segment(), 0L); }
     /// Sets `variablePointers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void variablePointers(MemorySegment segment, long index, int value) { VH_variablePointers.set(segment, 0L, index, value); }
+    public static void variablePointers(MemorySegment segment, long index, int value) { VH_variablePointers.get().set(segment, 0L, index, value); }
     /// Sets `variablePointers` with the given value.
     /// @param value the value
     /// @return `this`

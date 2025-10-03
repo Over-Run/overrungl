@@ -2,6 +2,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -16,7 +17,7 @@ public final class VKEXTFragmentDensityMapOffset {
     public static final int VK_STRUCTURE_TYPE_RENDERING_END_INFO_EXT = 1000619003;
     public static final int VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT = 0x00008000;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdEndRendering2EXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_vkCmdEndRendering2EXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)));
         private Handles() {}
     }
 
@@ -29,7 +30,7 @@ public final class VKEXTFragmentDensityMapOffset {
     public static void vkCmdEndRendering2EXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pRenderingEndInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRendering2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndRendering2EXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndRendering2EXT", commandBuffer, pRenderingEndInfo); }
-        Handles.MH_vkCmdEndRendering2EXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRendering2EXT, commandBuffer.segment(), pRenderingEndInfo); }
+        Handles.MH_vkCmdEndRendering2EXT.get().invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRendering2EXT, commandBuffer.segment(), pRenderingEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndRendering2EXT", e); }
     }
 

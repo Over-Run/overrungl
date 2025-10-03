@@ -29,13 +29,13 @@ public final class VkPresentTimeGOOGLE extends GroupType {
     /// The memory layout of `presentID`.
     public static final MemoryLayout LAYOUT_presentID = LAYOUT.select(PathElement.groupElement("presentID"));
     /// The [VarHandle] of `presentID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_presentID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentID"));
+    public static final Supplier<VarHandle> VH_presentID = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentID")));
     /// The byte offset of `desiredPresentTime`.
     public static final long OFFSET_desiredPresentTime = LAYOUT.byteOffset(PathElement.groupElement("desiredPresentTime"));
     /// The memory layout of `desiredPresentTime`.
     public static final MemoryLayout LAYOUT_desiredPresentTime = LAYOUT.select(PathElement.groupElement("desiredPresentTime"));
     /// The [VarHandle] of `desiredPresentTime` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_desiredPresentTime = LAYOUT.arrayElementVarHandle(PathElement.groupElement("desiredPresentTime"));
+    public static final Supplier<VarHandle> VH_desiredPresentTime = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("desiredPresentTime")));
 
     /// Creates `VkPresentTimeGOOGLE` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkPresentTimeGOOGLE extends GroupType {
     /// {@return `presentID` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int presentID(MemorySegment segment, long index) { return (int) VH_presentID.get(segment, 0L, index); }
+    public static int presentID(MemorySegment segment, long index) { return (int) VH_presentID.get().get(segment, 0L, index); }
     /// {@return `presentID`}
     public int presentID() { return presentID(this.segment(), 0L); }
     /// Sets `presentID` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void presentID(MemorySegment segment, long index, int value) { VH_presentID.set(segment, 0L, index, value); }
+    public static void presentID(MemorySegment segment, long index, int value) { VH_presentID.get().set(segment, 0L, index, value); }
     /// Sets `presentID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkPresentTimeGOOGLE extends GroupType {
     /// {@return `desiredPresentTime` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long desiredPresentTime(MemorySegment segment, long index) { return (long) VH_desiredPresentTime.get(segment, 0L, index); }
+    public static long desiredPresentTime(MemorySegment segment, long index) { return (long) VH_desiredPresentTime.get().get(segment, 0L, index); }
     /// {@return `desiredPresentTime`}
     public long desiredPresentTime() { return desiredPresentTime(this.segment(), 0L); }
     /// Sets `desiredPresentTime` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void desiredPresentTime(MemorySegment segment, long index, long value) { VH_desiredPresentTime.set(segment, 0L, index, value); }
+    public static void desiredPresentTime(MemorySegment segment, long index, long value) { VH_desiredPresentTime.get().set(segment, 0L, index, value); }
     /// Sets `desiredPresentTime` with the given value.
     /// @param value the value
     /// @return `this`

@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -17,8 +18,8 @@ public final class GLEXTSemaphoreWin32 {
     public static final int GL_D3D12_FENCE_VALUE_EXT = 0x9595;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glImportSemaphoreWin32HandleEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glImportSemaphoreWin32NameEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glImportSemaphoreWin32HandleEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glImportSemaphoreWin32NameEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glImportSemaphoreWin32HandleEXT;
         public final MemorySegment PFN_glImportSemaphoreWin32NameEXT;
         private Handles(GLLoadFunc func) {
@@ -38,7 +39,7 @@ public final class GLEXTSemaphoreWin32 {
     public void ImportSemaphoreWin32HandleEXT(int semaphore, int handleType, @NonNull MemorySegment handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportSemaphoreWin32HandleEXT)) throw new GLSymbolNotFoundError("Symbol not found: glImportSemaphoreWin32HandleEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glImportSemaphoreWin32HandleEXT", semaphore, handleType, handle); }
-        Handles.MH_glImportSemaphoreWin32HandleEXT.invokeExact(handles.PFN_glImportSemaphoreWin32HandleEXT, semaphore, handleType, handle); }
+        Handles.MH_glImportSemaphoreWin32HandleEXT.get().invokeExact(handles.PFN_glImportSemaphoreWin32HandleEXT, semaphore, handleType, handle); }
         catch (Throwable e) { throw new RuntimeException("error in ImportSemaphoreWin32HandleEXT", e); }
     }
 
@@ -49,7 +50,7 @@ public final class GLEXTSemaphoreWin32 {
     public void ImportSemaphoreWin32NameEXT(int semaphore, int handleType, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportSemaphoreWin32NameEXT)) throw new GLSymbolNotFoundError("Symbol not found: glImportSemaphoreWin32NameEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glImportSemaphoreWin32NameEXT", semaphore, handleType, name); }
-        Handles.MH_glImportSemaphoreWin32NameEXT.invokeExact(handles.PFN_glImportSemaphoreWin32NameEXT, semaphore, handleType, name); }
+        Handles.MH_glImportSemaphoreWin32NameEXT.get().invokeExact(handles.PFN_glImportSemaphoreWin32NameEXT, semaphore, handleType, name); }
         catch (Throwable e) { throw new RuntimeException("error in ImportSemaphoreWin32NameEXT", e); }
     }
 

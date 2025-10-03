@@ -2,6 +2,7 @@
 package overrungl.opengl.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -22,7 +23,7 @@ public final class GLNVViewportSwizzle {
     public static final int GL_VIEWPORT_SWIZZLE_W_NV = 0x935B;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glViewportSwizzleNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glViewportSwizzleNV = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glViewportSwizzleNV;
         private Handles(GLLoadFunc func) {
             PFN_glViewportSwizzleNV = func.invoke("glViewportSwizzleNV");
@@ -40,7 +41,7 @@ public final class GLNVViewportSwizzle {
     public void ViewportSwizzleNV(int index, int swizzlex, int swizzley, int swizzlez, int swizzlew) {
         if (MemoryUtil.isNullPointer(handles.PFN_glViewportSwizzleNV)) throw new GLSymbolNotFoundError("Symbol not found: glViewportSwizzleNV");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glViewportSwizzleNV", index, swizzlex, swizzley, swizzlez, swizzlew); }
-        Handles.MH_glViewportSwizzleNV.invokeExact(handles.PFN_glViewportSwizzleNV, index, swizzlex, swizzley, swizzlez, swizzlew); }
+        Handles.MH_glViewportSwizzleNV.get().invokeExact(handles.PFN_glViewportSwizzleNV, index, swizzlex, swizzley, swizzlez, swizzlew); }
         catch (Throwable e) { throw new RuntimeException("error in ViewportSwizzleNV", e); }
     }
 

@@ -79,163 +79,163 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `lineSubPixelPrecisionBits`.
     public static final long OFFSET_lineSubPixelPrecisionBits = LAYOUT.byteOffset(PathElement.groupElement("lineSubPixelPrecisionBits"));
     /// The memory layout of `lineSubPixelPrecisionBits`.
     public static final MemoryLayout LAYOUT_lineSubPixelPrecisionBits = LAYOUT.select(PathElement.groupElement("lineSubPixelPrecisionBits"));
     /// The [VarHandle] of `lineSubPixelPrecisionBits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_lineSubPixelPrecisionBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineSubPixelPrecisionBits"));
+    public static final Supplier<VarHandle> VH_lineSubPixelPrecisionBits = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineSubPixelPrecisionBits")));
     /// The byte offset of `maxVertexAttribDivisor`.
     public static final long OFFSET_maxVertexAttribDivisor = LAYOUT.byteOffset(PathElement.groupElement("maxVertexAttribDivisor"));
     /// The memory layout of `maxVertexAttribDivisor`.
     public static final MemoryLayout LAYOUT_maxVertexAttribDivisor = LAYOUT.select(PathElement.groupElement("maxVertexAttribDivisor"));
     /// The [VarHandle] of `maxVertexAttribDivisor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxVertexAttribDivisor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxVertexAttribDivisor"));
+    public static final Supplier<VarHandle> VH_maxVertexAttribDivisor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxVertexAttribDivisor")));
     /// The byte offset of `supportsNonZeroFirstInstance`.
     public static final long OFFSET_supportsNonZeroFirstInstance = LAYOUT.byteOffset(PathElement.groupElement("supportsNonZeroFirstInstance"));
     /// The memory layout of `supportsNonZeroFirstInstance`.
     public static final MemoryLayout LAYOUT_supportsNonZeroFirstInstance = LAYOUT.select(PathElement.groupElement("supportsNonZeroFirstInstance"));
     /// The [VarHandle] of `supportsNonZeroFirstInstance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportsNonZeroFirstInstance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportsNonZeroFirstInstance"));
+    public static final Supplier<VarHandle> VH_supportsNonZeroFirstInstance = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportsNonZeroFirstInstance")));
     /// The byte offset of `maxPushDescriptors`.
     public static final long OFFSET_maxPushDescriptors = LAYOUT.byteOffset(PathElement.groupElement("maxPushDescriptors"));
     /// The memory layout of `maxPushDescriptors`.
     public static final MemoryLayout LAYOUT_maxPushDescriptors = LAYOUT.select(PathElement.groupElement("maxPushDescriptors"));
     /// The [VarHandle] of `maxPushDescriptors` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPushDescriptors = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPushDescriptors"));
+    public static final Supplier<VarHandle> VH_maxPushDescriptors = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPushDescriptors")));
     /// The byte offset of `dynamicRenderingLocalReadDepthStencilAttachments`.
     public static final long OFFSET_dynamicRenderingLocalReadDepthStencilAttachments = LAYOUT.byteOffset(PathElement.groupElement("dynamicRenderingLocalReadDepthStencilAttachments"));
     /// The memory layout of `dynamicRenderingLocalReadDepthStencilAttachments`.
     public static final MemoryLayout LAYOUT_dynamicRenderingLocalReadDepthStencilAttachments = LAYOUT.select(PathElement.groupElement("dynamicRenderingLocalReadDepthStencilAttachments"));
     /// The [VarHandle] of `dynamicRenderingLocalReadDepthStencilAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dynamicRenderingLocalReadDepthStencilAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicRenderingLocalReadDepthStencilAttachments"));
+    public static final Supplier<VarHandle> VH_dynamicRenderingLocalReadDepthStencilAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicRenderingLocalReadDepthStencilAttachments")));
     /// The byte offset of `dynamicRenderingLocalReadMultisampledAttachments`.
     public static final long OFFSET_dynamicRenderingLocalReadMultisampledAttachments = LAYOUT.byteOffset(PathElement.groupElement("dynamicRenderingLocalReadMultisampledAttachments"));
     /// The memory layout of `dynamicRenderingLocalReadMultisampledAttachments`.
     public static final MemoryLayout LAYOUT_dynamicRenderingLocalReadMultisampledAttachments = LAYOUT.select(PathElement.groupElement("dynamicRenderingLocalReadMultisampledAttachments"));
     /// The [VarHandle] of `dynamicRenderingLocalReadMultisampledAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dynamicRenderingLocalReadMultisampledAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicRenderingLocalReadMultisampledAttachments"));
+    public static final Supplier<VarHandle> VH_dynamicRenderingLocalReadMultisampledAttachments = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicRenderingLocalReadMultisampledAttachments")));
     /// The byte offset of `earlyFragmentMultisampleCoverageAfterSampleCounting`.
     public static final long OFFSET_earlyFragmentMultisampleCoverageAfterSampleCounting = LAYOUT.byteOffset(PathElement.groupElement("earlyFragmentMultisampleCoverageAfterSampleCounting"));
     /// The memory layout of `earlyFragmentMultisampleCoverageAfterSampleCounting`.
     public static final MemoryLayout LAYOUT_earlyFragmentMultisampleCoverageAfterSampleCounting = LAYOUT.select(PathElement.groupElement("earlyFragmentMultisampleCoverageAfterSampleCounting"));
     /// The [VarHandle] of `earlyFragmentMultisampleCoverageAfterSampleCounting` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_earlyFragmentMultisampleCoverageAfterSampleCounting = LAYOUT.arrayElementVarHandle(PathElement.groupElement("earlyFragmentMultisampleCoverageAfterSampleCounting"));
+    public static final Supplier<VarHandle> VH_earlyFragmentMultisampleCoverageAfterSampleCounting = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("earlyFragmentMultisampleCoverageAfterSampleCounting")));
     /// The byte offset of `earlyFragmentSampleMaskTestBeforeSampleCounting`.
     public static final long OFFSET_earlyFragmentSampleMaskTestBeforeSampleCounting = LAYOUT.byteOffset(PathElement.groupElement("earlyFragmentSampleMaskTestBeforeSampleCounting"));
     /// The memory layout of `earlyFragmentSampleMaskTestBeforeSampleCounting`.
     public static final MemoryLayout LAYOUT_earlyFragmentSampleMaskTestBeforeSampleCounting = LAYOUT.select(PathElement.groupElement("earlyFragmentSampleMaskTestBeforeSampleCounting"));
     /// The [VarHandle] of `earlyFragmentSampleMaskTestBeforeSampleCounting` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_earlyFragmentSampleMaskTestBeforeSampleCounting = LAYOUT.arrayElementVarHandle(PathElement.groupElement("earlyFragmentSampleMaskTestBeforeSampleCounting"));
+    public static final Supplier<VarHandle> VH_earlyFragmentSampleMaskTestBeforeSampleCounting = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("earlyFragmentSampleMaskTestBeforeSampleCounting")));
     /// The byte offset of `depthStencilSwizzleOneSupport`.
     public static final long OFFSET_depthStencilSwizzleOneSupport = LAYOUT.byteOffset(PathElement.groupElement("depthStencilSwizzleOneSupport"));
     /// The memory layout of `depthStencilSwizzleOneSupport`.
     public static final MemoryLayout LAYOUT_depthStencilSwizzleOneSupport = LAYOUT.select(PathElement.groupElement("depthStencilSwizzleOneSupport"));
     /// The [VarHandle] of `depthStencilSwizzleOneSupport` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthStencilSwizzleOneSupport = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthStencilSwizzleOneSupport"));
+    public static final Supplier<VarHandle> VH_depthStencilSwizzleOneSupport = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthStencilSwizzleOneSupport")));
     /// The byte offset of `polygonModePointSize`.
     public static final long OFFSET_polygonModePointSize = LAYOUT.byteOffset(PathElement.groupElement("polygonModePointSize"));
     /// The memory layout of `polygonModePointSize`.
     public static final MemoryLayout LAYOUT_polygonModePointSize = LAYOUT.select(PathElement.groupElement("polygonModePointSize"));
     /// The [VarHandle] of `polygonModePointSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_polygonModePointSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("polygonModePointSize"));
+    public static final Supplier<VarHandle> VH_polygonModePointSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("polygonModePointSize")));
     /// The byte offset of `nonStrictSinglePixelWideLinesUseParallelogram`.
     public static final long OFFSET_nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT.byteOffset(PathElement.groupElement("nonStrictSinglePixelWideLinesUseParallelogram"));
     /// The memory layout of `nonStrictSinglePixelWideLinesUseParallelogram`.
     public static final MemoryLayout LAYOUT_nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT.select(PathElement.groupElement("nonStrictSinglePixelWideLinesUseParallelogram"));
     /// The [VarHandle] of `nonStrictSinglePixelWideLinesUseParallelogram` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nonStrictSinglePixelWideLinesUseParallelogram"));
+    public static final Supplier<VarHandle> VH_nonStrictSinglePixelWideLinesUseParallelogram = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("nonStrictSinglePixelWideLinesUseParallelogram")));
     /// The byte offset of `nonStrictWideLinesUseParallelogram`.
     public static final long OFFSET_nonStrictWideLinesUseParallelogram = LAYOUT.byteOffset(PathElement.groupElement("nonStrictWideLinesUseParallelogram"));
     /// The memory layout of `nonStrictWideLinesUseParallelogram`.
     public static final MemoryLayout LAYOUT_nonStrictWideLinesUseParallelogram = LAYOUT.select(PathElement.groupElement("nonStrictWideLinesUseParallelogram"));
     /// The [VarHandle] of `nonStrictWideLinesUseParallelogram` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_nonStrictWideLinesUseParallelogram = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nonStrictWideLinesUseParallelogram"));
+    public static final Supplier<VarHandle> VH_nonStrictWideLinesUseParallelogram = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("nonStrictWideLinesUseParallelogram")));
     /// The byte offset of `blockTexelViewCompatibleMultipleLayers`.
     public static final long OFFSET_blockTexelViewCompatibleMultipleLayers = LAYOUT.byteOffset(PathElement.groupElement("blockTexelViewCompatibleMultipleLayers"));
     /// The memory layout of `blockTexelViewCompatibleMultipleLayers`.
     public static final MemoryLayout LAYOUT_blockTexelViewCompatibleMultipleLayers = LAYOUT.select(PathElement.groupElement("blockTexelViewCompatibleMultipleLayers"));
     /// The [VarHandle] of `blockTexelViewCompatibleMultipleLayers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_blockTexelViewCompatibleMultipleLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockTexelViewCompatibleMultipleLayers"));
+    public static final Supplier<VarHandle> VH_blockTexelViewCompatibleMultipleLayers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockTexelViewCompatibleMultipleLayers")));
     /// The byte offset of `maxCombinedImageSamplerDescriptorCount`.
     public static final long OFFSET_maxCombinedImageSamplerDescriptorCount = LAYOUT.byteOffset(PathElement.groupElement("maxCombinedImageSamplerDescriptorCount"));
     /// The memory layout of `maxCombinedImageSamplerDescriptorCount`.
     public static final MemoryLayout LAYOUT_maxCombinedImageSamplerDescriptorCount = LAYOUT.select(PathElement.groupElement("maxCombinedImageSamplerDescriptorCount"));
     /// The [VarHandle] of `maxCombinedImageSamplerDescriptorCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxCombinedImageSamplerDescriptorCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCombinedImageSamplerDescriptorCount"));
+    public static final Supplier<VarHandle> VH_maxCombinedImageSamplerDescriptorCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCombinedImageSamplerDescriptorCount")));
     /// The byte offset of `fragmentShadingRateClampCombinerInputs`.
     public static final long OFFSET_fragmentShadingRateClampCombinerInputs = LAYOUT.byteOffset(PathElement.groupElement("fragmentShadingRateClampCombinerInputs"));
     /// The memory layout of `fragmentShadingRateClampCombinerInputs`.
     public static final MemoryLayout LAYOUT_fragmentShadingRateClampCombinerInputs = LAYOUT.select(PathElement.groupElement("fragmentShadingRateClampCombinerInputs"));
     /// The [VarHandle] of `fragmentShadingRateClampCombinerInputs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShadingRateClampCombinerInputs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateClampCombinerInputs"));
+    public static final Supplier<VarHandle> VH_fragmentShadingRateClampCombinerInputs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateClampCombinerInputs")));
     /// The byte offset of `defaultRobustnessStorageBuffers`.
     public static final long OFFSET_defaultRobustnessStorageBuffers = LAYOUT.byteOffset(PathElement.groupElement("defaultRobustnessStorageBuffers"));
     /// The memory layout of `defaultRobustnessStorageBuffers`.
     public static final MemoryLayout LAYOUT_defaultRobustnessStorageBuffers = LAYOUT.select(PathElement.groupElement("defaultRobustnessStorageBuffers"));
     /// The [VarHandle] of `defaultRobustnessStorageBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_defaultRobustnessStorageBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessStorageBuffers"));
+    public static final Supplier<VarHandle> VH_defaultRobustnessStorageBuffers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessStorageBuffers")));
     /// The byte offset of `defaultRobustnessUniformBuffers`.
     public static final long OFFSET_defaultRobustnessUniformBuffers = LAYOUT.byteOffset(PathElement.groupElement("defaultRobustnessUniformBuffers"));
     /// The memory layout of `defaultRobustnessUniformBuffers`.
     public static final MemoryLayout LAYOUT_defaultRobustnessUniformBuffers = LAYOUT.select(PathElement.groupElement("defaultRobustnessUniformBuffers"));
     /// The [VarHandle] of `defaultRobustnessUniformBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_defaultRobustnessUniformBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessUniformBuffers"));
+    public static final Supplier<VarHandle> VH_defaultRobustnessUniformBuffers = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessUniformBuffers")));
     /// The byte offset of `defaultRobustnessVertexInputs`.
     public static final long OFFSET_defaultRobustnessVertexInputs = LAYOUT.byteOffset(PathElement.groupElement("defaultRobustnessVertexInputs"));
     /// The memory layout of `defaultRobustnessVertexInputs`.
     public static final MemoryLayout LAYOUT_defaultRobustnessVertexInputs = LAYOUT.select(PathElement.groupElement("defaultRobustnessVertexInputs"));
     /// The [VarHandle] of `defaultRobustnessVertexInputs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_defaultRobustnessVertexInputs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessVertexInputs"));
+    public static final Supplier<VarHandle> VH_defaultRobustnessVertexInputs = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessVertexInputs")));
     /// The byte offset of `defaultRobustnessImages`.
     public static final long OFFSET_defaultRobustnessImages = LAYOUT.byteOffset(PathElement.groupElement("defaultRobustnessImages"));
     /// The memory layout of `defaultRobustnessImages`.
     public static final MemoryLayout LAYOUT_defaultRobustnessImages = LAYOUT.select(PathElement.groupElement("defaultRobustnessImages"));
     /// The [VarHandle] of `defaultRobustnessImages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_defaultRobustnessImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessImages"));
+    public static final Supplier<VarHandle> VH_defaultRobustnessImages = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessImages")));
     /// The byte offset of `copySrcLayoutCount`.
     public static final long OFFSET_copySrcLayoutCount = LAYOUT.byteOffset(PathElement.groupElement("copySrcLayoutCount"));
     /// The memory layout of `copySrcLayoutCount`.
     public static final MemoryLayout LAYOUT_copySrcLayoutCount = LAYOUT.select(PathElement.groupElement("copySrcLayoutCount"));
     /// The [VarHandle] of `copySrcLayoutCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_copySrcLayoutCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("copySrcLayoutCount"));
+    public static final Supplier<VarHandle> VH_copySrcLayoutCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("copySrcLayoutCount")));
     /// The byte offset of `pCopySrcLayouts`.
     public static final long OFFSET_pCopySrcLayouts = LAYOUT.byteOffset(PathElement.groupElement("pCopySrcLayouts"));
     /// The memory layout of `pCopySrcLayouts`.
     public static final MemoryLayout LAYOUT_pCopySrcLayouts = LAYOUT.select(PathElement.groupElement("pCopySrcLayouts"));
     /// The [VarHandle] of `pCopySrcLayouts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pCopySrcLayouts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCopySrcLayouts"));
+    public static final Supplier<VarHandle> VH_pCopySrcLayouts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCopySrcLayouts")));
     /// The byte offset of `copyDstLayoutCount`.
     public static final long OFFSET_copyDstLayoutCount = LAYOUT.byteOffset(PathElement.groupElement("copyDstLayoutCount"));
     /// The memory layout of `copyDstLayoutCount`.
     public static final MemoryLayout LAYOUT_copyDstLayoutCount = LAYOUT.select(PathElement.groupElement("copyDstLayoutCount"));
     /// The [VarHandle] of `copyDstLayoutCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_copyDstLayoutCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("copyDstLayoutCount"));
+    public static final Supplier<VarHandle> VH_copyDstLayoutCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("copyDstLayoutCount")));
     /// The byte offset of `pCopyDstLayouts`.
     public static final long OFFSET_pCopyDstLayouts = LAYOUT.byteOffset(PathElement.groupElement("pCopyDstLayouts"));
     /// The memory layout of `pCopyDstLayouts`.
     public static final MemoryLayout LAYOUT_pCopyDstLayouts = LAYOUT.select(PathElement.groupElement("pCopyDstLayouts"));
     /// The [VarHandle] of `pCopyDstLayouts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pCopyDstLayouts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCopyDstLayouts"));
+    public static final Supplier<VarHandle> VH_pCopyDstLayouts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCopyDstLayouts")));
     /// The byte offset of `optimalTilingLayoutUUID`.
     public static final long OFFSET_optimalTilingLayoutUUID = LAYOUT.byteOffset(PathElement.groupElement("optimalTilingLayoutUUID"));
     /// The memory layout of `optimalTilingLayoutUUID`.
     public static final MemoryLayout LAYOUT_optimalTilingLayoutUUID = LAYOUT.select(PathElement.groupElement("optimalTilingLayoutUUID"));
     /// The [VarHandle] of `optimalTilingLayoutUUID` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_optimalTilingLayoutUUID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("optimalTilingLayoutUUID"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_optimalTilingLayoutUUID = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("optimalTilingLayoutUUID"), PathElement.sequenceElement()));
     /// The byte offset of `identicalMemoryTypeRequirements`.
     public static final long OFFSET_identicalMemoryTypeRequirements = LAYOUT.byteOffset(PathElement.groupElement("identicalMemoryTypeRequirements"));
     /// The memory layout of `identicalMemoryTypeRequirements`.
     public static final MemoryLayout LAYOUT_identicalMemoryTypeRequirements = LAYOUT.select(PathElement.groupElement("identicalMemoryTypeRequirements"));
     /// The [VarHandle] of `identicalMemoryTypeRequirements` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_identicalMemoryTypeRequirements = LAYOUT.arrayElementVarHandle(PathElement.groupElement("identicalMemoryTypeRequirements"));
+    public static final Supplier<VarHandle> VH_identicalMemoryTypeRequirements = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("identicalMemoryTypeRequirements")));
 
     /// Creates `VkPhysicalDeviceVulkan14Properties` with the given segment.
     /// @param segment      the memory segment
@@ -286,14 +286,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,14 +302,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,14 +318,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `lineSubPixelPrecisionBits` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int lineSubPixelPrecisionBits(MemorySegment segment, long index) { return (int) VH_lineSubPixelPrecisionBits.get(segment, 0L, index); }
+    public static int lineSubPixelPrecisionBits(MemorySegment segment, long index) { return (int) VH_lineSubPixelPrecisionBits.get().get(segment, 0L, index); }
     /// {@return `lineSubPixelPrecisionBits`}
     public int lineSubPixelPrecisionBits() { return lineSubPixelPrecisionBits(this.segment(), 0L); }
     /// Sets `lineSubPixelPrecisionBits` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void lineSubPixelPrecisionBits(MemorySegment segment, long index, int value) { VH_lineSubPixelPrecisionBits.set(segment, 0L, index, value); }
+    public static void lineSubPixelPrecisionBits(MemorySegment segment, long index, int value) { VH_lineSubPixelPrecisionBits.get().set(segment, 0L, index, value); }
     /// Sets `lineSubPixelPrecisionBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -334,14 +334,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `maxVertexAttribDivisor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxVertexAttribDivisor(MemorySegment segment, long index) { return (int) VH_maxVertexAttribDivisor.get(segment, 0L, index); }
+    public static int maxVertexAttribDivisor(MemorySegment segment, long index) { return (int) VH_maxVertexAttribDivisor.get().get(segment, 0L, index); }
     /// {@return `maxVertexAttribDivisor`}
     public int maxVertexAttribDivisor() { return maxVertexAttribDivisor(this.segment(), 0L); }
     /// Sets `maxVertexAttribDivisor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxVertexAttribDivisor(MemorySegment segment, long index, int value) { VH_maxVertexAttribDivisor.set(segment, 0L, index, value); }
+    public static void maxVertexAttribDivisor(MemorySegment segment, long index, int value) { VH_maxVertexAttribDivisor.get().set(segment, 0L, index, value); }
     /// Sets `maxVertexAttribDivisor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -350,14 +350,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `supportsNonZeroFirstInstance` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportsNonZeroFirstInstance(MemorySegment segment, long index) { return (int) VH_supportsNonZeroFirstInstance.get(segment, 0L, index); }
+    public static int supportsNonZeroFirstInstance(MemorySegment segment, long index) { return (int) VH_supportsNonZeroFirstInstance.get().get(segment, 0L, index); }
     /// {@return `supportsNonZeroFirstInstance`}
     public int supportsNonZeroFirstInstance() { return supportsNonZeroFirstInstance(this.segment(), 0L); }
     /// Sets `supportsNonZeroFirstInstance` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportsNonZeroFirstInstance(MemorySegment segment, long index, int value) { VH_supportsNonZeroFirstInstance.set(segment, 0L, index, value); }
+    public static void supportsNonZeroFirstInstance(MemorySegment segment, long index, int value) { VH_supportsNonZeroFirstInstance.get().set(segment, 0L, index, value); }
     /// Sets `supportsNonZeroFirstInstance` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,14 +366,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `maxPushDescriptors` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxPushDescriptors(MemorySegment segment, long index) { return (int) VH_maxPushDescriptors.get(segment, 0L, index); }
+    public static int maxPushDescriptors(MemorySegment segment, long index) { return (int) VH_maxPushDescriptors.get().get(segment, 0L, index); }
     /// {@return `maxPushDescriptors`}
     public int maxPushDescriptors() { return maxPushDescriptors(this.segment(), 0L); }
     /// Sets `maxPushDescriptors` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxPushDescriptors(MemorySegment segment, long index, int value) { VH_maxPushDescriptors.set(segment, 0L, index, value); }
+    public static void maxPushDescriptors(MemorySegment segment, long index, int value) { VH_maxPushDescriptors.get().set(segment, 0L, index, value); }
     /// Sets `maxPushDescriptors` with the given value.
     /// @param value the value
     /// @return `this`
@@ -382,14 +382,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `dynamicRenderingLocalReadDepthStencilAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dynamicRenderingLocalReadDepthStencilAttachments(MemorySegment segment, long index) { return (int) VH_dynamicRenderingLocalReadDepthStencilAttachments.get(segment, 0L, index); }
+    public static int dynamicRenderingLocalReadDepthStencilAttachments(MemorySegment segment, long index) { return (int) VH_dynamicRenderingLocalReadDepthStencilAttachments.get().get(segment, 0L, index); }
     /// {@return `dynamicRenderingLocalReadDepthStencilAttachments`}
     public int dynamicRenderingLocalReadDepthStencilAttachments() { return dynamicRenderingLocalReadDepthStencilAttachments(this.segment(), 0L); }
     /// Sets `dynamicRenderingLocalReadDepthStencilAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dynamicRenderingLocalReadDepthStencilAttachments(MemorySegment segment, long index, int value) { VH_dynamicRenderingLocalReadDepthStencilAttachments.set(segment, 0L, index, value); }
+    public static void dynamicRenderingLocalReadDepthStencilAttachments(MemorySegment segment, long index, int value) { VH_dynamicRenderingLocalReadDepthStencilAttachments.get().set(segment, 0L, index, value); }
     /// Sets `dynamicRenderingLocalReadDepthStencilAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -398,14 +398,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `dynamicRenderingLocalReadMultisampledAttachments` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dynamicRenderingLocalReadMultisampledAttachments(MemorySegment segment, long index) { return (int) VH_dynamicRenderingLocalReadMultisampledAttachments.get(segment, 0L, index); }
+    public static int dynamicRenderingLocalReadMultisampledAttachments(MemorySegment segment, long index) { return (int) VH_dynamicRenderingLocalReadMultisampledAttachments.get().get(segment, 0L, index); }
     /// {@return `dynamicRenderingLocalReadMultisampledAttachments`}
     public int dynamicRenderingLocalReadMultisampledAttachments() { return dynamicRenderingLocalReadMultisampledAttachments(this.segment(), 0L); }
     /// Sets `dynamicRenderingLocalReadMultisampledAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dynamicRenderingLocalReadMultisampledAttachments(MemorySegment segment, long index, int value) { VH_dynamicRenderingLocalReadMultisampledAttachments.set(segment, 0L, index, value); }
+    public static void dynamicRenderingLocalReadMultisampledAttachments(MemorySegment segment, long index, int value) { VH_dynamicRenderingLocalReadMultisampledAttachments.get().set(segment, 0L, index, value); }
     /// Sets `dynamicRenderingLocalReadMultisampledAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -414,14 +414,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `earlyFragmentMultisampleCoverageAfterSampleCounting` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int earlyFragmentMultisampleCoverageAfterSampleCounting(MemorySegment segment, long index) { return (int) VH_earlyFragmentMultisampleCoverageAfterSampleCounting.get(segment, 0L, index); }
+    public static int earlyFragmentMultisampleCoverageAfterSampleCounting(MemorySegment segment, long index) { return (int) VH_earlyFragmentMultisampleCoverageAfterSampleCounting.get().get(segment, 0L, index); }
     /// {@return `earlyFragmentMultisampleCoverageAfterSampleCounting`}
     public int earlyFragmentMultisampleCoverageAfterSampleCounting() { return earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), 0L); }
     /// Sets `earlyFragmentMultisampleCoverageAfterSampleCounting` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void earlyFragmentMultisampleCoverageAfterSampleCounting(MemorySegment segment, long index, int value) { VH_earlyFragmentMultisampleCoverageAfterSampleCounting.set(segment, 0L, index, value); }
+    public static void earlyFragmentMultisampleCoverageAfterSampleCounting(MemorySegment segment, long index, int value) { VH_earlyFragmentMultisampleCoverageAfterSampleCounting.get().set(segment, 0L, index, value); }
     /// Sets `earlyFragmentMultisampleCoverageAfterSampleCounting` with the given value.
     /// @param value the value
     /// @return `this`
@@ -430,14 +430,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `earlyFragmentSampleMaskTestBeforeSampleCounting` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int earlyFragmentSampleMaskTestBeforeSampleCounting(MemorySegment segment, long index) { return (int) VH_earlyFragmentSampleMaskTestBeforeSampleCounting.get(segment, 0L, index); }
+    public static int earlyFragmentSampleMaskTestBeforeSampleCounting(MemorySegment segment, long index) { return (int) VH_earlyFragmentSampleMaskTestBeforeSampleCounting.get().get(segment, 0L, index); }
     /// {@return `earlyFragmentSampleMaskTestBeforeSampleCounting`}
     public int earlyFragmentSampleMaskTestBeforeSampleCounting() { return earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), 0L); }
     /// Sets `earlyFragmentSampleMaskTestBeforeSampleCounting` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void earlyFragmentSampleMaskTestBeforeSampleCounting(MemorySegment segment, long index, int value) { VH_earlyFragmentSampleMaskTestBeforeSampleCounting.set(segment, 0L, index, value); }
+    public static void earlyFragmentSampleMaskTestBeforeSampleCounting(MemorySegment segment, long index, int value) { VH_earlyFragmentSampleMaskTestBeforeSampleCounting.get().set(segment, 0L, index, value); }
     /// Sets `earlyFragmentSampleMaskTestBeforeSampleCounting` with the given value.
     /// @param value the value
     /// @return `this`
@@ -446,14 +446,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `depthStencilSwizzleOneSupport` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int depthStencilSwizzleOneSupport(MemorySegment segment, long index) { return (int) VH_depthStencilSwizzleOneSupport.get(segment, 0L, index); }
+    public static int depthStencilSwizzleOneSupport(MemorySegment segment, long index) { return (int) VH_depthStencilSwizzleOneSupport.get().get(segment, 0L, index); }
     /// {@return `depthStencilSwizzleOneSupport`}
     public int depthStencilSwizzleOneSupport() { return depthStencilSwizzleOneSupport(this.segment(), 0L); }
     /// Sets `depthStencilSwizzleOneSupport` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void depthStencilSwizzleOneSupport(MemorySegment segment, long index, int value) { VH_depthStencilSwizzleOneSupport.set(segment, 0L, index, value); }
+    public static void depthStencilSwizzleOneSupport(MemorySegment segment, long index, int value) { VH_depthStencilSwizzleOneSupport.get().set(segment, 0L, index, value); }
     /// Sets `depthStencilSwizzleOneSupport` with the given value.
     /// @param value the value
     /// @return `this`
@@ -462,14 +462,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `polygonModePointSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int polygonModePointSize(MemorySegment segment, long index) { return (int) VH_polygonModePointSize.get(segment, 0L, index); }
+    public static int polygonModePointSize(MemorySegment segment, long index) { return (int) VH_polygonModePointSize.get().get(segment, 0L, index); }
     /// {@return `polygonModePointSize`}
     public int polygonModePointSize() { return polygonModePointSize(this.segment(), 0L); }
     /// Sets `polygonModePointSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void polygonModePointSize(MemorySegment segment, long index, int value) { VH_polygonModePointSize.set(segment, 0L, index, value); }
+    public static void polygonModePointSize(MemorySegment segment, long index, int value) { VH_polygonModePointSize.get().set(segment, 0L, index, value); }
     /// Sets `polygonModePointSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -478,14 +478,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `nonStrictSinglePixelWideLinesUseParallelogram` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int nonStrictSinglePixelWideLinesUseParallelogram(MemorySegment segment, long index) { return (int) VH_nonStrictSinglePixelWideLinesUseParallelogram.get(segment, 0L, index); }
+    public static int nonStrictSinglePixelWideLinesUseParallelogram(MemorySegment segment, long index) { return (int) VH_nonStrictSinglePixelWideLinesUseParallelogram.get().get(segment, 0L, index); }
     /// {@return `nonStrictSinglePixelWideLinesUseParallelogram`}
     public int nonStrictSinglePixelWideLinesUseParallelogram() { return nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), 0L); }
     /// Sets `nonStrictSinglePixelWideLinesUseParallelogram` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void nonStrictSinglePixelWideLinesUseParallelogram(MemorySegment segment, long index, int value) { VH_nonStrictSinglePixelWideLinesUseParallelogram.set(segment, 0L, index, value); }
+    public static void nonStrictSinglePixelWideLinesUseParallelogram(MemorySegment segment, long index, int value) { VH_nonStrictSinglePixelWideLinesUseParallelogram.get().set(segment, 0L, index, value); }
     /// Sets `nonStrictSinglePixelWideLinesUseParallelogram` with the given value.
     /// @param value the value
     /// @return `this`
@@ -494,14 +494,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `nonStrictWideLinesUseParallelogram` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int nonStrictWideLinesUseParallelogram(MemorySegment segment, long index) { return (int) VH_nonStrictWideLinesUseParallelogram.get(segment, 0L, index); }
+    public static int nonStrictWideLinesUseParallelogram(MemorySegment segment, long index) { return (int) VH_nonStrictWideLinesUseParallelogram.get().get(segment, 0L, index); }
     /// {@return `nonStrictWideLinesUseParallelogram`}
     public int nonStrictWideLinesUseParallelogram() { return nonStrictWideLinesUseParallelogram(this.segment(), 0L); }
     /// Sets `nonStrictWideLinesUseParallelogram` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void nonStrictWideLinesUseParallelogram(MemorySegment segment, long index, int value) { VH_nonStrictWideLinesUseParallelogram.set(segment, 0L, index, value); }
+    public static void nonStrictWideLinesUseParallelogram(MemorySegment segment, long index, int value) { VH_nonStrictWideLinesUseParallelogram.get().set(segment, 0L, index, value); }
     /// Sets `nonStrictWideLinesUseParallelogram` with the given value.
     /// @param value the value
     /// @return `this`
@@ -510,14 +510,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `blockTexelViewCompatibleMultipleLayers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int blockTexelViewCompatibleMultipleLayers(MemorySegment segment, long index) { return (int) VH_blockTexelViewCompatibleMultipleLayers.get(segment, 0L, index); }
+    public static int blockTexelViewCompatibleMultipleLayers(MemorySegment segment, long index) { return (int) VH_blockTexelViewCompatibleMultipleLayers.get().get(segment, 0L, index); }
     /// {@return `blockTexelViewCompatibleMultipleLayers`}
     public int blockTexelViewCompatibleMultipleLayers() { return blockTexelViewCompatibleMultipleLayers(this.segment(), 0L); }
     /// Sets `blockTexelViewCompatibleMultipleLayers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void blockTexelViewCompatibleMultipleLayers(MemorySegment segment, long index, int value) { VH_blockTexelViewCompatibleMultipleLayers.set(segment, 0L, index, value); }
+    public static void blockTexelViewCompatibleMultipleLayers(MemorySegment segment, long index, int value) { VH_blockTexelViewCompatibleMultipleLayers.get().set(segment, 0L, index, value); }
     /// Sets `blockTexelViewCompatibleMultipleLayers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -526,14 +526,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `maxCombinedImageSamplerDescriptorCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxCombinedImageSamplerDescriptorCount(MemorySegment segment, long index) { return (int) VH_maxCombinedImageSamplerDescriptorCount.get(segment, 0L, index); }
+    public static int maxCombinedImageSamplerDescriptorCount(MemorySegment segment, long index) { return (int) VH_maxCombinedImageSamplerDescriptorCount.get().get(segment, 0L, index); }
     /// {@return `maxCombinedImageSamplerDescriptorCount`}
     public int maxCombinedImageSamplerDescriptorCount() { return maxCombinedImageSamplerDescriptorCount(this.segment(), 0L); }
     /// Sets `maxCombinedImageSamplerDescriptorCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxCombinedImageSamplerDescriptorCount(MemorySegment segment, long index, int value) { VH_maxCombinedImageSamplerDescriptorCount.set(segment, 0L, index, value); }
+    public static void maxCombinedImageSamplerDescriptorCount(MemorySegment segment, long index, int value) { VH_maxCombinedImageSamplerDescriptorCount.get().set(segment, 0L, index, value); }
     /// Sets `maxCombinedImageSamplerDescriptorCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -542,14 +542,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `fragmentShadingRateClampCombinerInputs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int fragmentShadingRateClampCombinerInputs(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateClampCombinerInputs.get(segment, 0L, index); }
+    public static int fragmentShadingRateClampCombinerInputs(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateClampCombinerInputs.get().get(segment, 0L, index); }
     /// {@return `fragmentShadingRateClampCombinerInputs`}
     public int fragmentShadingRateClampCombinerInputs() { return fragmentShadingRateClampCombinerInputs(this.segment(), 0L); }
     /// Sets `fragmentShadingRateClampCombinerInputs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fragmentShadingRateClampCombinerInputs(MemorySegment segment, long index, int value) { VH_fragmentShadingRateClampCombinerInputs.set(segment, 0L, index, value); }
+    public static void fragmentShadingRateClampCombinerInputs(MemorySegment segment, long index, int value) { VH_fragmentShadingRateClampCombinerInputs.get().set(segment, 0L, index, value); }
     /// Sets `fragmentShadingRateClampCombinerInputs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -558,14 +558,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `defaultRobustnessStorageBuffers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int defaultRobustnessStorageBuffers(MemorySegment segment, long index) { return (int) VH_defaultRobustnessStorageBuffers.get(segment, 0L, index); }
+    public static int defaultRobustnessStorageBuffers(MemorySegment segment, long index) { return (int) VH_defaultRobustnessStorageBuffers.get().get(segment, 0L, index); }
     /// {@return `defaultRobustnessStorageBuffers`}
     public int defaultRobustnessStorageBuffers() { return defaultRobustnessStorageBuffers(this.segment(), 0L); }
     /// Sets `defaultRobustnessStorageBuffers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void defaultRobustnessStorageBuffers(MemorySegment segment, long index, int value) { VH_defaultRobustnessStorageBuffers.set(segment, 0L, index, value); }
+    public static void defaultRobustnessStorageBuffers(MemorySegment segment, long index, int value) { VH_defaultRobustnessStorageBuffers.get().set(segment, 0L, index, value); }
     /// Sets `defaultRobustnessStorageBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -574,14 +574,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `defaultRobustnessUniformBuffers` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int defaultRobustnessUniformBuffers(MemorySegment segment, long index) { return (int) VH_defaultRobustnessUniformBuffers.get(segment, 0L, index); }
+    public static int defaultRobustnessUniformBuffers(MemorySegment segment, long index) { return (int) VH_defaultRobustnessUniformBuffers.get().get(segment, 0L, index); }
     /// {@return `defaultRobustnessUniformBuffers`}
     public int defaultRobustnessUniformBuffers() { return defaultRobustnessUniformBuffers(this.segment(), 0L); }
     /// Sets `defaultRobustnessUniformBuffers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void defaultRobustnessUniformBuffers(MemorySegment segment, long index, int value) { VH_defaultRobustnessUniformBuffers.set(segment, 0L, index, value); }
+    public static void defaultRobustnessUniformBuffers(MemorySegment segment, long index, int value) { VH_defaultRobustnessUniformBuffers.get().set(segment, 0L, index, value); }
     /// Sets `defaultRobustnessUniformBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -590,14 +590,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `defaultRobustnessVertexInputs` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int defaultRobustnessVertexInputs(MemorySegment segment, long index) { return (int) VH_defaultRobustnessVertexInputs.get(segment, 0L, index); }
+    public static int defaultRobustnessVertexInputs(MemorySegment segment, long index) { return (int) VH_defaultRobustnessVertexInputs.get().get(segment, 0L, index); }
     /// {@return `defaultRobustnessVertexInputs`}
     public int defaultRobustnessVertexInputs() { return defaultRobustnessVertexInputs(this.segment(), 0L); }
     /// Sets `defaultRobustnessVertexInputs` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void defaultRobustnessVertexInputs(MemorySegment segment, long index, int value) { VH_defaultRobustnessVertexInputs.set(segment, 0L, index, value); }
+    public static void defaultRobustnessVertexInputs(MemorySegment segment, long index, int value) { VH_defaultRobustnessVertexInputs.get().set(segment, 0L, index, value); }
     /// Sets `defaultRobustnessVertexInputs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -606,14 +606,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `defaultRobustnessImages` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int defaultRobustnessImages(MemorySegment segment, long index) { return (int) VH_defaultRobustnessImages.get(segment, 0L, index); }
+    public static int defaultRobustnessImages(MemorySegment segment, long index) { return (int) VH_defaultRobustnessImages.get().get(segment, 0L, index); }
     /// {@return `defaultRobustnessImages`}
     public int defaultRobustnessImages() { return defaultRobustnessImages(this.segment(), 0L); }
     /// Sets `defaultRobustnessImages` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void defaultRobustnessImages(MemorySegment segment, long index, int value) { VH_defaultRobustnessImages.set(segment, 0L, index, value); }
+    public static void defaultRobustnessImages(MemorySegment segment, long index, int value) { VH_defaultRobustnessImages.get().set(segment, 0L, index, value); }
     /// Sets `defaultRobustnessImages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -622,14 +622,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `copySrcLayoutCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int copySrcLayoutCount(MemorySegment segment, long index) { return (int) VH_copySrcLayoutCount.get(segment, 0L, index); }
+    public static int copySrcLayoutCount(MemorySegment segment, long index) { return (int) VH_copySrcLayoutCount.get().get(segment, 0L, index); }
     /// {@return `copySrcLayoutCount`}
     public int copySrcLayoutCount() { return copySrcLayoutCount(this.segment(), 0L); }
     /// Sets `copySrcLayoutCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void copySrcLayoutCount(MemorySegment segment, long index, int value) { VH_copySrcLayoutCount.set(segment, 0L, index, value); }
+    public static void copySrcLayoutCount(MemorySegment segment, long index, int value) { VH_copySrcLayoutCount.get().set(segment, 0L, index, value); }
     /// Sets `copySrcLayoutCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -638,14 +638,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `pCopySrcLayouts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pCopySrcLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pCopySrcLayouts.get(segment, 0L, index); }
+    public static MemorySegment pCopySrcLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pCopySrcLayouts.get().get(segment, 0L, index); }
     /// {@return `pCopySrcLayouts`}
     public MemorySegment pCopySrcLayouts() { return pCopySrcLayouts(this.segment(), 0L); }
     /// Sets `pCopySrcLayouts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pCopySrcLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pCopySrcLayouts.set(segment, 0L, index, value); }
+    public static void pCopySrcLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pCopySrcLayouts.get().set(segment, 0L, index, value); }
     /// Sets `pCopySrcLayouts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -654,14 +654,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `copyDstLayoutCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int copyDstLayoutCount(MemorySegment segment, long index) { return (int) VH_copyDstLayoutCount.get(segment, 0L, index); }
+    public static int copyDstLayoutCount(MemorySegment segment, long index) { return (int) VH_copyDstLayoutCount.get().get(segment, 0L, index); }
     /// {@return `copyDstLayoutCount`}
     public int copyDstLayoutCount() { return copyDstLayoutCount(this.segment(), 0L); }
     /// Sets `copyDstLayoutCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void copyDstLayoutCount(MemorySegment segment, long index, int value) { VH_copyDstLayoutCount.set(segment, 0L, index, value); }
+    public static void copyDstLayoutCount(MemorySegment segment, long index, int value) { VH_copyDstLayoutCount.get().set(segment, 0L, index, value); }
     /// Sets `copyDstLayoutCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -670,14 +670,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `pCopyDstLayouts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pCopyDstLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pCopyDstLayouts.get(segment, 0L, index); }
+    public static MemorySegment pCopyDstLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pCopyDstLayouts.get().get(segment, 0L, index); }
     /// {@return `pCopyDstLayouts`}
     public MemorySegment pCopyDstLayouts() { return pCopyDstLayouts(this.segment(), 0L); }
     /// Sets `pCopyDstLayouts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pCopyDstLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pCopyDstLayouts.set(segment, 0L, index, value); }
+    public static void pCopyDstLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pCopyDstLayouts.get().set(segment, 0L, index, value); }
     /// Sets `pCopyDstLayouts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -691,7 +691,7 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte optimalTilingLayoutUUID(MemorySegment segment, long index, long index0) { return (byte) VH_optimalTilingLayoutUUID.get(segment, 0L, index, index0); }
+    public static byte optimalTilingLayoutUUID(MemorySegment segment, long index, long index0) { return (byte) VH_optimalTilingLayoutUUID.get().get(segment, 0L, index, index0); }
     /// {@return `optimalTilingLayoutUUID`}
     public MemorySegment optimalTilingLayoutUUID() { return optimalTilingLayoutUUID(this.segment(), 0L); }
     /// {@return `optimalTilingLayoutUUID`}
@@ -707,7 +707,7 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void optimalTilingLayoutUUID(MemorySegment segment, long index, long index0, byte value) { VH_optimalTilingLayoutUUID.set(segment, 0L, index, index0, value); }
+    public static void optimalTilingLayoutUUID(MemorySegment segment, long index, long index0, byte value) { VH_optimalTilingLayoutUUID.get().set(segment, 0L, index, index0, value); }
     /// Sets `optimalTilingLayoutUUID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -721,14 +721,14 @@ public final class VkPhysicalDeviceVulkan14Properties extends GroupType {
     /// {@return `identicalMemoryTypeRequirements` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int identicalMemoryTypeRequirements(MemorySegment segment, long index) { return (int) VH_identicalMemoryTypeRequirements.get(segment, 0L, index); }
+    public static int identicalMemoryTypeRequirements(MemorySegment segment, long index) { return (int) VH_identicalMemoryTypeRequirements.get().get(segment, 0L, index); }
     /// {@return `identicalMemoryTypeRequirements`}
     public int identicalMemoryTypeRequirements() { return identicalMemoryTypeRequirements(this.segment(), 0L); }
     /// Sets `identicalMemoryTypeRequirements` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void identicalMemoryTypeRequirements(MemorySegment segment, long index, int value) { VH_identicalMemoryTypeRequirements.set(segment, 0L, index, value); }
+    public static void identicalMemoryTypeRequirements(MemorySegment segment, long index, int value) { VH_identicalMemoryTypeRequirements.get().set(segment, 0L, index, value); }
     /// Sets `identicalMemoryTypeRequirements` with the given value.
     /// @param value the value
     /// @return `this`

@@ -49,55 +49,55 @@ public final class StdVideoEncodeH264SliceHeader extends GroupType {
     /// The memory layout of `first_mb_in_slice`.
     public static final MemoryLayout LAYOUT_first_mb_in_slice = LAYOUT.select(PathElement.groupElement("first_mb_in_slice"));
     /// The [VarHandle] of `first_mb_in_slice` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_first_mb_in_slice = LAYOUT.arrayElementVarHandle(PathElement.groupElement("first_mb_in_slice"));
+    public static final Supplier<VarHandle> VH_first_mb_in_slice = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("first_mb_in_slice")));
     /// The byte offset of `slice_type`.
     public static final long OFFSET_slice_type = LAYOUT.byteOffset(PathElement.groupElement("slice_type"));
     /// The memory layout of `slice_type`.
     public static final MemoryLayout LAYOUT_slice_type = LAYOUT.select(PathElement.groupElement("slice_type"));
     /// The [VarHandle] of `slice_type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_type"));
+    public static final Supplier<VarHandle> VH_slice_type = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_type")));
     /// The byte offset of `slice_alpha_c0_offset_div2`.
     public static final long OFFSET_slice_alpha_c0_offset_div2 = LAYOUT.byteOffset(PathElement.groupElement("slice_alpha_c0_offset_div2"));
     /// The memory layout of `slice_alpha_c0_offset_div2`.
     public static final MemoryLayout LAYOUT_slice_alpha_c0_offset_div2 = LAYOUT.select(PathElement.groupElement("slice_alpha_c0_offset_div2"));
     /// The [VarHandle] of `slice_alpha_c0_offset_div2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_alpha_c0_offset_div2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_alpha_c0_offset_div2"));
+    public static final Supplier<VarHandle> VH_slice_alpha_c0_offset_div2 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_alpha_c0_offset_div2")));
     /// The byte offset of `slice_beta_offset_div2`.
     public static final long OFFSET_slice_beta_offset_div2 = LAYOUT.byteOffset(PathElement.groupElement("slice_beta_offset_div2"));
     /// The memory layout of `slice_beta_offset_div2`.
     public static final MemoryLayout LAYOUT_slice_beta_offset_div2 = LAYOUT.select(PathElement.groupElement("slice_beta_offset_div2"));
     /// The [VarHandle] of `slice_beta_offset_div2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_beta_offset_div2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_beta_offset_div2"));
+    public static final Supplier<VarHandle> VH_slice_beta_offset_div2 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_beta_offset_div2")));
     /// The byte offset of `slice_qp_delta`.
     public static final long OFFSET_slice_qp_delta = LAYOUT.byteOffset(PathElement.groupElement("slice_qp_delta"));
     /// The memory layout of `slice_qp_delta`.
     public static final MemoryLayout LAYOUT_slice_qp_delta = LAYOUT.select(PathElement.groupElement("slice_qp_delta"));
     /// The [VarHandle] of `slice_qp_delta` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_slice_qp_delta = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_qp_delta"));
+    public static final Supplier<VarHandle> VH_slice_qp_delta = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_qp_delta")));
     /// The byte offset of `reserved1`.
     public static final long OFFSET_reserved1 = LAYOUT.byteOffset(PathElement.groupElement("reserved1"));
     /// The memory layout of `reserved1`.
     public static final MemoryLayout LAYOUT_reserved1 = LAYOUT.select(PathElement.groupElement("reserved1"));
     /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"));
+    public static final Supplier<VarHandle> VH_reserved1 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1")));
     /// The byte offset of `cabac_init_idc`.
     public static final long OFFSET_cabac_init_idc = LAYOUT.byteOffset(PathElement.groupElement("cabac_init_idc"));
     /// The memory layout of `cabac_init_idc`.
     public static final MemoryLayout LAYOUT_cabac_init_idc = LAYOUT.select(PathElement.groupElement("cabac_init_idc"));
     /// The [VarHandle] of `cabac_init_idc` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cabac_init_idc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cabac_init_idc"));
+    public static final Supplier<VarHandle> VH_cabac_init_idc = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cabac_init_idc")));
     /// The byte offset of `disable_deblocking_filter_idc`.
     public static final long OFFSET_disable_deblocking_filter_idc = LAYOUT.byteOffset(PathElement.groupElement("disable_deblocking_filter_idc"));
     /// The memory layout of `disable_deblocking_filter_idc`.
     public static final MemoryLayout LAYOUT_disable_deblocking_filter_idc = LAYOUT.select(PathElement.groupElement("disable_deblocking_filter_idc"));
     /// The [VarHandle] of `disable_deblocking_filter_idc` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_disable_deblocking_filter_idc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("disable_deblocking_filter_idc"));
+    public static final Supplier<VarHandle> VH_disable_deblocking_filter_idc = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("disable_deblocking_filter_idc")));
     /// The byte offset of `pWeightTable`.
     public static final long OFFSET_pWeightTable = LAYOUT.byteOffset(PathElement.groupElement("pWeightTable"));
     /// The memory layout of `pWeightTable`.
     public static final MemoryLayout LAYOUT_pWeightTable = LAYOUT.select(PathElement.groupElement("pWeightTable"));
     /// The [VarHandle] of `pWeightTable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pWeightTable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWeightTable"));
+    public static final Supplier<VarHandle> VH_pWeightTable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWeightTable")));
 
     /// Creates `StdVideoEncodeH264SliceHeader` with the given segment.
     /// @param segment      the memory segment
@@ -168,14 +168,14 @@ public final class StdVideoEncodeH264SliceHeader extends GroupType {
     /// {@return `first_mb_in_slice` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int first_mb_in_slice(MemorySegment segment, long index) { return (int) VH_first_mb_in_slice.get(segment, 0L, index); }
+    public static int first_mb_in_slice(MemorySegment segment, long index) { return (int) VH_first_mb_in_slice.get().get(segment, 0L, index); }
     /// {@return `first_mb_in_slice`}
     public int first_mb_in_slice() { return first_mb_in_slice(this.segment(), 0L); }
     /// Sets `first_mb_in_slice` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void first_mb_in_slice(MemorySegment segment, long index, int value) { VH_first_mb_in_slice.set(segment, 0L, index, value); }
+    public static void first_mb_in_slice(MemorySegment segment, long index, int value) { VH_first_mb_in_slice.get().set(segment, 0L, index, value); }
     /// Sets `first_mb_in_slice` with the given value.
     /// @param value the value
     /// @return `this`
@@ -184,14 +184,14 @@ public final class StdVideoEncodeH264SliceHeader extends GroupType {
     /// {@return `slice_type` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int slice_type(MemorySegment segment, long index) { return (int) VH_slice_type.get(segment, 0L, index); }
+    public static int slice_type(MemorySegment segment, long index) { return (int) VH_slice_type.get().get(segment, 0L, index); }
     /// {@return `slice_type`}
     public int slice_type() { return slice_type(this.segment(), 0L); }
     /// Sets `slice_type` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_type(MemorySegment segment, long index, int value) { VH_slice_type.set(segment, 0L, index, value); }
+    public static void slice_type(MemorySegment segment, long index, int value) { VH_slice_type.get().set(segment, 0L, index, value); }
     /// Sets `slice_type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -200,14 +200,14 @@ public final class StdVideoEncodeH264SliceHeader extends GroupType {
     /// {@return `slice_alpha_c0_offset_div2` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte slice_alpha_c0_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_alpha_c0_offset_div2.get(segment, 0L, index); }
+    public static byte slice_alpha_c0_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_alpha_c0_offset_div2.get().get(segment, 0L, index); }
     /// {@return `slice_alpha_c0_offset_div2`}
     public byte slice_alpha_c0_offset_div2() { return slice_alpha_c0_offset_div2(this.segment(), 0L); }
     /// Sets `slice_alpha_c0_offset_div2` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_alpha_c0_offset_div2(MemorySegment segment, long index, byte value) { VH_slice_alpha_c0_offset_div2.set(segment, 0L, index, value); }
+    public static void slice_alpha_c0_offset_div2(MemorySegment segment, long index, byte value) { VH_slice_alpha_c0_offset_div2.get().set(segment, 0L, index, value); }
     /// Sets `slice_alpha_c0_offset_div2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -216,14 +216,14 @@ public final class StdVideoEncodeH264SliceHeader extends GroupType {
     /// {@return `slice_beta_offset_div2` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte slice_beta_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_beta_offset_div2.get(segment, 0L, index); }
+    public static byte slice_beta_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_beta_offset_div2.get().get(segment, 0L, index); }
     /// {@return `slice_beta_offset_div2`}
     public byte slice_beta_offset_div2() { return slice_beta_offset_div2(this.segment(), 0L); }
     /// Sets `slice_beta_offset_div2` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_beta_offset_div2(MemorySegment segment, long index, byte value) { VH_slice_beta_offset_div2.set(segment, 0L, index, value); }
+    public static void slice_beta_offset_div2(MemorySegment segment, long index, byte value) { VH_slice_beta_offset_div2.get().set(segment, 0L, index, value); }
     /// Sets `slice_beta_offset_div2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,14 +232,14 @@ public final class StdVideoEncodeH264SliceHeader extends GroupType {
     /// {@return `slice_qp_delta` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte slice_qp_delta(MemorySegment segment, long index) { return (byte) VH_slice_qp_delta.get(segment, 0L, index); }
+    public static byte slice_qp_delta(MemorySegment segment, long index) { return (byte) VH_slice_qp_delta.get().get(segment, 0L, index); }
     /// {@return `slice_qp_delta`}
     public byte slice_qp_delta() { return slice_qp_delta(this.segment(), 0L); }
     /// Sets `slice_qp_delta` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void slice_qp_delta(MemorySegment segment, long index, byte value) { VH_slice_qp_delta.set(segment, 0L, index, value); }
+    public static void slice_qp_delta(MemorySegment segment, long index, byte value) { VH_slice_qp_delta.get().set(segment, 0L, index, value); }
     /// Sets `slice_qp_delta` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,14 +248,14 @@ public final class StdVideoEncodeH264SliceHeader extends GroupType {
     /// {@return `reserved1` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte reserved1(MemorySegment segment, long index) { return (byte) VH_reserved1.get(segment, 0L, index); }
+    public static byte reserved1(MemorySegment segment, long index) { return (byte) VH_reserved1.get().get(segment, 0L, index); }
     /// {@return `reserved1`}
     public byte reserved1() { return reserved1(this.segment(), 0L); }
     /// Sets `reserved1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void reserved1(MemorySegment segment, long index, byte value) { VH_reserved1.set(segment, 0L, index, value); }
+    public static void reserved1(MemorySegment segment, long index, byte value) { VH_reserved1.get().set(segment, 0L, index, value); }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -264,14 +264,14 @@ public final class StdVideoEncodeH264SliceHeader extends GroupType {
     /// {@return `cabac_init_idc` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cabac_init_idc(MemorySegment segment, long index) { return (int) VH_cabac_init_idc.get(segment, 0L, index); }
+    public static int cabac_init_idc(MemorySegment segment, long index) { return (int) VH_cabac_init_idc.get().get(segment, 0L, index); }
     /// {@return `cabac_init_idc`}
     public int cabac_init_idc() { return cabac_init_idc(this.segment(), 0L); }
     /// Sets `cabac_init_idc` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cabac_init_idc(MemorySegment segment, long index, int value) { VH_cabac_init_idc.set(segment, 0L, index, value); }
+    public static void cabac_init_idc(MemorySegment segment, long index, int value) { VH_cabac_init_idc.get().set(segment, 0L, index, value); }
     /// Sets `cabac_init_idc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -280,14 +280,14 @@ public final class StdVideoEncodeH264SliceHeader extends GroupType {
     /// {@return `disable_deblocking_filter_idc` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int disable_deblocking_filter_idc(MemorySegment segment, long index) { return (int) VH_disable_deblocking_filter_idc.get(segment, 0L, index); }
+    public static int disable_deblocking_filter_idc(MemorySegment segment, long index) { return (int) VH_disable_deblocking_filter_idc.get().get(segment, 0L, index); }
     /// {@return `disable_deblocking_filter_idc`}
     public int disable_deblocking_filter_idc() { return disable_deblocking_filter_idc(this.segment(), 0L); }
     /// Sets `disable_deblocking_filter_idc` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void disable_deblocking_filter_idc(MemorySegment segment, long index, int value) { VH_disable_deblocking_filter_idc.set(segment, 0L, index, value); }
+    public static void disable_deblocking_filter_idc(MemorySegment segment, long index, int value) { VH_disable_deblocking_filter_idc.get().set(segment, 0L, index, value); }
     /// Sets `disable_deblocking_filter_idc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -296,14 +296,14 @@ public final class StdVideoEncodeH264SliceHeader extends GroupType {
     /// {@return `pWeightTable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pWeightTable(MemorySegment segment, long index) { return (MemorySegment) VH_pWeightTable.get(segment, 0L, index); }
+    public static MemorySegment pWeightTable(MemorySegment segment, long index) { return (MemorySegment) VH_pWeightTable.get().get(segment, 0L, index); }
     /// {@return `pWeightTable`}
     public MemorySegment pWeightTable() { return pWeightTable(this.segment(), 0L); }
     /// Sets `pWeightTable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pWeightTable(MemorySegment segment, long index, MemorySegment value) { VH_pWeightTable.set(segment, 0L, index, value); }
+    public static void pWeightTable(MemorySegment segment, long index, MemorySegment value) { VH_pWeightTable.get().set(segment, 0L, index, value); }
     /// Sets `pWeightTable` with the given value.
     /// @param value the value
     /// @return `this`

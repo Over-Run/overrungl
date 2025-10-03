@@ -31,19 +31,19 @@ public final class VkDescriptorBufferInfo extends GroupType {
     /// The memory layout of `buffer`.
     public static final MemoryLayout LAYOUT_buffer = LAYOUT.select(PathElement.groupElement("buffer"));
     /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
+    public static final Supplier<VarHandle> VH_buffer = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer")));
     /// The byte offset of `offset`.
     public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
     /// The memory layout of `offset`.
     public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
     /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
+    public static final Supplier<VarHandle> VH_offset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset")));
     /// The byte offset of `range`.
     public static final long OFFSET_range = LAYOUT.byteOffset(PathElement.groupElement("range"));
     /// The memory layout of `range`.
     public static final MemoryLayout LAYOUT_range = LAYOUT.select(PathElement.groupElement("range"));
     /// The [VarHandle] of `range` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_range = LAYOUT.arrayElementVarHandle(PathElement.groupElement("range"));
+    public static final Supplier<VarHandle> VH_range = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("range")));
 
     /// Creates `VkDescriptorBufferInfo` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkDescriptorBufferInfo extends GroupType {
     /// {@return `buffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long buffer(MemorySegment segment, long index) { return (long) VH_buffer.get(segment, 0L, index); }
+    public static long buffer(MemorySegment segment, long index) { return (long) VH_buffer.get().get(segment, 0L, index); }
     /// {@return `buffer`}
     public long buffer() { return buffer(this.segment(), 0L); }
     /// Sets `buffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void buffer(MemorySegment segment, long index, long value) { VH_buffer.set(segment, 0L, index, value); }
+    public static void buffer(MemorySegment segment, long index, long value) { VH_buffer.get().set(segment, 0L, index, value); }
     /// Sets `buffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkDescriptorBufferInfo extends GroupType {
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long offset(MemorySegment segment, long index) { return (long) VH_offset.get(segment, 0L, index); }
+    public static long offset(MemorySegment segment, long index) { return (long) VH_offset.get().get(segment, 0L, index); }
     /// {@return `offset`}
     public long offset() { return offset(this.segment(), 0L); }
     /// Sets `offset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void offset(MemorySegment segment, long index, long value) { VH_offset.set(segment, 0L, index, value); }
+    public static void offset(MemorySegment segment, long index, long value) { VH_offset.get().set(segment, 0L, index, value); }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDescriptorBufferInfo extends GroupType {
     /// {@return `range` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long range(MemorySegment segment, long index) { return (long) VH_range.get(segment, 0L, index); }
+    public static long range(MemorySegment segment, long index) { return (long) VH_range.get().get(segment, 0L, index); }
     /// {@return `range`}
     public long range() { return range(this.segment(), 0L); }
     /// Sets `range` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void range(MemorySegment segment, long index, long value) { VH_range.set(segment, 0L, index, value); }
+    public static void range(MemorySegment segment, long index, long value) { VH_range.get().set(segment, 0L, index, value); }
     /// Sets `range` with the given value.
     /// @param value the value
     /// @return `this`

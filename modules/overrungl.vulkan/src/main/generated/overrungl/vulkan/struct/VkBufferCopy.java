@@ -31,19 +31,19 @@ public final class VkBufferCopy extends GroupType {
     /// The memory layout of `srcOffset`.
     public static final MemoryLayout LAYOUT_srcOffset = LAYOUT.select(PathElement.groupElement("srcOffset"));
     /// The [VarHandle] of `srcOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcOffset"));
+    public static final Supplier<VarHandle> VH_srcOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcOffset")));
     /// The byte offset of `dstOffset`.
     public static final long OFFSET_dstOffset = LAYOUT.byteOffset(PathElement.groupElement("dstOffset"));
     /// The memory layout of `dstOffset`.
     public static final MemoryLayout LAYOUT_dstOffset = LAYOUT.select(PathElement.groupElement("dstOffset"));
     /// The [VarHandle] of `dstOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstOffset"));
+    public static final Supplier<VarHandle> VH_dstOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstOffset")));
     /// The byte offset of `size`.
     public static final long OFFSET_size = LAYOUT.byteOffset(PathElement.groupElement("size"));
     /// The memory layout of `size`.
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final Supplier<VarHandle> VH_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("size")));
 
     /// Creates `VkBufferCopy` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkBufferCopy extends GroupType {
     /// {@return `srcOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long srcOffset(MemorySegment segment, long index) { return (long) VH_srcOffset.get(segment, 0L, index); }
+    public static long srcOffset(MemorySegment segment, long index) { return (long) VH_srcOffset.get().get(segment, 0L, index); }
     /// {@return `srcOffset`}
     public long srcOffset() { return srcOffset(this.segment(), 0L); }
     /// Sets `srcOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcOffset(MemorySegment segment, long index, long value) { VH_srcOffset.set(segment, 0L, index, value); }
+    public static void srcOffset(MemorySegment segment, long index, long value) { VH_srcOffset.get().set(segment, 0L, index, value); }
     /// Sets `srcOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkBufferCopy extends GroupType {
     /// {@return `dstOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long dstOffset(MemorySegment segment, long index) { return (long) VH_dstOffset.get(segment, 0L, index); }
+    public static long dstOffset(MemorySegment segment, long index) { return (long) VH_dstOffset.get().get(segment, 0L, index); }
     /// {@return `dstOffset`}
     public long dstOffset() { return dstOffset(this.segment(), 0L); }
     /// Sets `dstOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstOffset(MemorySegment segment, long index, long value) { VH_dstOffset.set(segment, 0L, index, value); }
+    public static void dstOffset(MemorySegment segment, long index, long value) { VH_dstOffset.get().set(segment, 0L, index, value); }
     /// Sets `dstOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkBufferCopy extends GroupType {
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long size(MemorySegment segment, long index) { return (long) VH_size.get(segment, 0L, index); }
+    public static long size(MemorySegment segment, long index) { return (long) VH_size.get().get(segment, 0L, index); }
     /// {@return `size`}
     public long size() { return size(this.segment(), 0L); }
     /// Sets `size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void size(MemorySegment segment, long index, long value) { VH_size.set(segment, 0L, index, value); }
+    public static void size(MemorySegment segment, long index, long value) { VH_size.get().set(segment, 0L, index, value); }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`

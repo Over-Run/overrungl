@@ -35,31 +35,31 @@ public final class VkQueryPoolPerformanceCreateInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `queueFamilyIndex`.
     public static final long OFFSET_queueFamilyIndex = LAYOUT.byteOffset(PathElement.groupElement("queueFamilyIndex"));
     /// The memory layout of `queueFamilyIndex`.
     public static final MemoryLayout LAYOUT_queueFamilyIndex = LAYOUT.select(PathElement.groupElement("queueFamilyIndex"));
     /// The [VarHandle] of `queueFamilyIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_queueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyIndex"));
+    public static final Supplier<VarHandle> VH_queueFamilyIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyIndex")));
     /// The byte offset of `counterIndexCount`.
     public static final long OFFSET_counterIndexCount = LAYOUT.byteOffset(PathElement.groupElement("counterIndexCount"));
     /// The memory layout of `counterIndexCount`.
     public static final MemoryLayout LAYOUT_counterIndexCount = LAYOUT.select(PathElement.groupElement("counterIndexCount"));
     /// The [VarHandle] of `counterIndexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_counterIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("counterIndexCount"));
+    public static final Supplier<VarHandle> VH_counterIndexCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("counterIndexCount")));
     /// The byte offset of `pCounterIndices`.
     public static final long OFFSET_pCounterIndices = LAYOUT.byteOffset(PathElement.groupElement("pCounterIndices"));
     /// The memory layout of `pCounterIndices`.
     public static final MemoryLayout LAYOUT_pCounterIndices = LAYOUT.select(PathElement.groupElement("pCounterIndices"));
     /// The [VarHandle] of `pCounterIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pCounterIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCounterIndices"));
+    public static final Supplier<VarHandle> VH_pCounterIndices = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCounterIndices")));
 
     /// Creates `VkQueryPoolPerformanceCreateInfoKHR` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkQueryPoolPerformanceCreateInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkQueryPoolPerformanceCreateInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkQueryPoolPerformanceCreateInfoKHR extends GroupType {
     /// {@return `queueFamilyIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int queueFamilyIndex(MemorySegment segment, long index) { return (int) VH_queueFamilyIndex.get(segment, 0L, index); }
+    public static int queueFamilyIndex(MemorySegment segment, long index) { return (int) VH_queueFamilyIndex.get().get(segment, 0L, index); }
     /// {@return `queueFamilyIndex`}
     public int queueFamilyIndex() { return queueFamilyIndex(this.segment(), 0L); }
     /// Sets `queueFamilyIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void queueFamilyIndex(MemorySegment segment, long index, int value) { VH_queueFamilyIndex.set(segment, 0L, index, value); }
+    public static void queueFamilyIndex(MemorySegment segment, long index, int value) { VH_queueFamilyIndex.get().set(segment, 0L, index, value); }
     /// Sets `queueFamilyIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkQueryPoolPerformanceCreateInfoKHR extends GroupType {
     /// {@return `counterIndexCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int counterIndexCount(MemorySegment segment, long index) { return (int) VH_counterIndexCount.get(segment, 0L, index); }
+    public static int counterIndexCount(MemorySegment segment, long index) { return (int) VH_counterIndexCount.get().get(segment, 0L, index); }
     /// {@return `counterIndexCount`}
     public int counterIndexCount() { return counterIndexCount(this.segment(), 0L); }
     /// Sets `counterIndexCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void counterIndexCount(MemorySegment segment, long index, int value) { VH_counterIndexCount.set(segment, 0L, index, value); }
+    public static void counterIndexCount(MemorySegment segment, long index, int value) { VH_counterIndexCount.get().set(segment, 0L, index, value); }
     /// Sets `counterIndexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkQueryPoolPerformanceCreateInfoKHR extends GroupType {
     /// {@return `pCounterIndices` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pCounterIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pCounterIndices.get(segment, 0L, index); }
+    public static MemorySegment pCounterIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pCounterIndices.get().get(segment, 0L, index); }
     /// {@return `pCounterIndices`}
     public MemorySegment pCounterIndices() { return pCounterIndices(this.segment(), 0L); }
     /// Sets `pCounterIndices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pCounterIndices(MemorySegment segment, long index, MemorySegment value) { VH_pCounterIndices.set(segment, 0L, index, value); }
+    public static void pCounterIndices(MemorySegment segment, long index, MemorySegment value) { VH_pCounterIndices.get().set(segment, 0L, index, value); }
     /// Sets `pCounterIndices` with the given value.
     /// @param value the value
     /// @return `this`

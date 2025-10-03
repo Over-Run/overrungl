@@ -31,19 +31,19 @@ public final class STBVorbisComment extends GroupType {
     /// The memory layout of `vendor`.
     public static final MemoryLayout LAYOUT_vendor = LAYOUT.select(PathElement.groupElement("vendor"));
     /// The [VarHandle] of `vendor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vendor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendor"));
+    public static final Supplier<VarHandle> VH_vendor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendor")));
     /// The byte offset of `comment_list_length`.
     public static final long OFFSET_comment_list_length = LAYOUT.byteOffset(PathElement.groupElement("comment_list_length"));
     /// The memory layout of `comment_list_length`.
     public static final MemoryLayout LAYOUT_comment_list_length = LAYOUT.select(PathElement.groupElement("comment_list_length"));
     /// The [VarHandle] of `comment_list_length` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_comment_list_length = LAYOUT.arrayElementVarHandle(PathElement.groupElement("comment_list_length"));
+    public static final Supplier<VarHandle> VH_comment_list_length = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("comment_list_length")));
     /// The byte offset of `comment_list`.
     public static final long OFFSET_comment_list = LAYOUT.byteOffset(PathElement.groupElement("comment_list"));
     /// The memory layout of `comment_list`.
     public static final MemoryLayout LAYOUT_comment_list = LAYOUT.select(PathElement.groupElement("comment_list"));
     /// The [VarHandle] of `comment_list` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_comment_list = LAYOUT.arrayElementVarHandle(PathElement.groupElement("comment_list"));
+    public static final Supplier<VarHandle> VH_comment_list = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("comment_list")));
 
     /// Creates `STBVorbisComment` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class STBVorbisComment extends GroupType {
     /// {@return `vendor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment vendor(MemorySegment segment, long index) { return (MemorySegment) VH_vendor.get(segment, 0L, index); }
+    public static MemorySegment vendor(MemorySegment segment, long index) { return (MemorySegment) VH_vendor.get().get(segment, 0L, index); }
     /// {@return `vendor`}
     public MemorySegment vendor() { return vendor(this.segment(), 0L); }
     /// Sets `vendor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vendor(MemorySegment segment, long index, MemorySegment value) { VH_vendor.set(segment, 0L, index, value); }
+    public static void vendor(MemorySegment segment, long index, MemorySegment value) { VH_vendor.get().set(segment, 0L, index, value); }
     /// Sets `vendor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class STBVorbisComment extends GroupType {
     /// {@return `comment_list_length` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int comment_list_length(MemorySegment segment, long index) { return (int) VH_comment_list_length.get(segment, 0L, index); }
+    public static int comment_list_length(MemorySegment segment, long index) { return (int) VH_comment_list_length.get().get(segment, 0L, index); }
     /// {@return `comment_list_length`}
     public int comment_list_length() { return comment_list_length(this.segment(), 0L); }
     /// Sets `comment_list_length` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void comment_list_length(MemorySegment segment, long index, int value) { VH_comment_list_length.set(segment, 0L, index, value); }
+    public static void comment_list_length(MemorySegment segment, long index, int value) { VH_comment_list_length.get().set(segment, 0L, index, value); }
     /// Sets `comment_list_length` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class STBVorbisComment extends GroupType {
     /// {@return `comment_list` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment comment_list(MemorySegment segment, long index) { return (MemorySegment) VH_comment_list.get(segment, 0L, index); }
+    public static MemorySegment comment_list(MemorySegment segment, long index) { return (MemorySegment) VH_comment_list.get().get(segment, 0L, index); }
     /// {@return `comment_list`}
     public MemorySegment comment_list() { return comment_list(this.segment(), 0L); }
     /// Sets `comment_list` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void comment_list(MemorySegment segment, long index, MemorySegment value) { VH_comment_list.set(segment, 0L, index, value); }
+    public static void comment_list(MemorySegment segment, long index, MemorySegment value) { VH_comment_list.get().set(segment, 0L, index, value); }
     /// Sets `comment_list` with the given value.
     /// @param value the value
     /// @return `this`

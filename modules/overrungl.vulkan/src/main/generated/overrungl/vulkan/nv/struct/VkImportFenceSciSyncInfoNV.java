@@ -35,31 +35,31 @@ public final class VkImportFenceSciSyncInfoNV extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `fence`.
     public static final long OFFSET_fence = LAYOUT.byteOffset(PathElement.groupElement("fence"));
     /// The memory layout of `fence`.
     public static final MemoryLayout LAYOUT_fence = LAYOUT.select(PathElement.groupElement("fence"));
     /// The [VarHandle] of `fence` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fence = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fence"));
+    public static final Supplier<VarHandle> VH_fence = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("fence")));
     /// The byte offset of `handleType`.
     public static final long OFFSET_handleType = LAYOUT.byteOffset(PathElement.groupElement("handleType"));
     /// The memory layout of `handleType`.
     public static final MemoryLayout LAYOUT_handleType = LAYOUT.select(PathElement.groupElement("handleType"));
     /// The [VarHandle] of `handleType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_handleType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("handleType"));
+    public static final Supplier<VarHandle> VH_handleType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("handleType")));
     /// The byte offset of `handle`.
     public static final long OFFSET_handle = LAYOUT.byteOffset(PathElement.groupElement("handle"));
     /// The memory layout of `handle`.
     public static final MemoryLayout LAYOUT_handle = LAYOUT.select(PathElement.groupElement("handle"));
     /// The [VarHandle] of `handle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_handle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("handle"));
+    public static final Supplier<VarHandle> VH_handle = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("handle")));
 
     /// Creates `VkImportFenceSciSyncInfoNV` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkImportFenceSciSyncInfoNV extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkImportFenceSciSyncInfoNV extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkImportFenceSciSyncInfoNV extends GroupType {
     /// {@return `fence` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long fence(MemorySegment segment, long index) { return (long) VH_fence.get(segment, 0L, index); }
+    public static long fence(MemorySegment segment, long index) { return (long) VH_fence.get().get(segment, 0L, index); }
     /// {@return `fence`}
     public long fence() { return fence(this.segment(), 0L); }
     /// Sets `fence` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void fence(MemorySegment segment, long index, long value) { VH_fence.set(segment, 0L, index, value); }
+    public static void fence(MemorySegment segment, long index, long value) { VH_fence.get().set(segment, 0L, index, value); }
     /// Sets `fence` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkImportFenceSciSyncInfoNV extends GroupType {
     /// {@return `handleType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int handleType(MemorySegment segment, long index) { return (int) VH_handleType.get(segment, 0L, index); }
+    public static int handleType(MemorySegment segment, long index) { return (int) VH_handleType.get().get(segment, 0L, index); }
     /// {@return `handleType`}
     public int handleType() { return handleType(this.segment(), 0L); }
     /// Sets `handleType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void handleType(MemorySegment segment, long index, int value) { VH_handleType.set(segment, 0L, index, value); }
+    public static void handleType(MemorySegment segment, long index, int value) { VH_handleType.get().set(segment, 0L, index, value); }
     /// Sets `handleType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkImportFenceSciSyncInfoNV extends GroupType {
     /// {@return `handle` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment handle(MemorySegment segment, long index) { return (MemorySegment) VH_handle.get(segment, 0L, index); }
+    public static MemorySegment handle(MemorySegment segment, long index) { return (MemorySegment) VH_handle.get().get(segment, 0L, index); }
     /// {@return `handle`}
     public MemorySegment handle() { return handle(this.segment(), 0L); }
     /// Sets `handle` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void handle(MemorySegment segment, long index, MemorySegment value) { VH_handle.set(segment, 0L, index, value); }
+    public static void handle(MemorySegment segment, long index, MemorySegment value) { VH_handle.get().set(segment, 0L, index, value); }
     /// Sets `handle` with the given value.
     /// @param value the value
     /// @return `this`

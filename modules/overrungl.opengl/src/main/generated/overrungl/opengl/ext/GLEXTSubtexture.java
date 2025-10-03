@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,8 +11,8 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLEXTSubtexture {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glTexSubImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexSubImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glTexSubImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexSubImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glTexSubImage1DEXT;
         public final MemorySegment PFN_glTexSubImage2DEXT;
         private Handles(GLLoadFunc func) {
@@ -31,7 +32,7 @@ public final class GLEXTSubtexture {
     public void TexSubImage1DEXT(int target, int level, int xoffset, int width, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexSubImage1DEXT", target, level, xoffset, width, format, type, pixels); }
-        Handles.MH_glTexSubImage1DEXT.invokeExact(handles.PFN_glTexSubImage1DEXT, target, level, xoffset, width, format, type, pixels); }
+        Handles.MH_glTexSubImage1DEXT.get().invokeExact(handles.PFN_glTexSubImage1DEXT, target, level, xoffset, width, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexSubImage1DEXT", e); }
     }
 
@@ -42,7 +43,7 @@ public final class GLEXTSubtexture {
     public void TexSubImage2DEXT(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, @NonNull MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexSubImage2DEXT", target, level, xoffset, yoffset, width, height, format, type, pixels); }
-        Handles.MH_glTexSubImage2DEXT.invokeExact(handles.PFN_glTexSubImage2DEXT, target, level, xoffset, yoffset, width, height, format, type, pixels); }
+        Handles.MH_glTexSubImage2DEXT.get().invokeExact(handles.PFN_glTexSubImage2DEXT, target, level, xoffset, yoffset, width, height, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexSubImage2DEXT", e); }
     }
 

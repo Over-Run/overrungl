@@ -2,6 +2,7 @@
 package overrungl.opengl.oes;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -11,28 +12,28 @@ public final class GLOESByteCoordinates {
     public static final int GL_BYTE = 0x1400;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glMultiTexCoord1bOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glMultiTexCoord1bvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoord2bOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glMultiTexCoord2bvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoord3bOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glMultiTexCoord3bvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoord4bOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glMultiTexCoord4bvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoord1bOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glTexCoord1bvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoord2bOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glTexCoord2bvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoord3bOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glTexCoord3bvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoord4bOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glTexCoord4bvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertex2bOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glVertex2bvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertex3bOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glVertex3bvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertex4bOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glVertex4bvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord1bOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord1bvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord2bOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord2bvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord3bOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord3bvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord4bOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glMultiTexCoord4bvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexCoord1bOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glTexCoord1bvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexCoord2bOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glTexCoord2bvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexCoord3bOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glTexCoord3bvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glTexCoord4bOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glTexCoord4bvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glVertex2bOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glVertex2bvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glVertex3bOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glVertex3bvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glVertex4bOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE)));
+        public static final Supplier<MethodHandle> MH_glVertex4bvOES = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glMultiTexCoord1bOES;
         public final MemorySegment PFN_glMultiTexCoord1bvOES;
         public final MemorySegment PFN_glMultiTexCoord2bOES;
@@ -92,7 +93,7 @@ public final class GLOESByteCoordinates {
     public void MultiTexCoord1bOES(int texture, byte s) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1bOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord1bOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord1bOES", texture, s); }
-        Handles.MH_glMultiTexCoord1bOES.invokeExact(handles.PFN_glMultiTexCoord1bOES, texture, s); }
+        Handles.MH_glMultiTexCoord1bOES.get().invokeExact(handles.PFN_glMultiTexCoord1bOES, texture, s); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1bOES", e); }
     }
 
@@ -103,7 +104,7 @@ public final class GLOESByteCoordinates {
     public void MultiTexCoord1bvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord1bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord1bvOES", texture, coords); }
-        Handles.MH_glMultiTexCoord1bvOES.invokeExact(handles.PFN_glMultiTexCoord1bvOES, texture, coords); }
+        Handles.MH_glMultiTexCoord1bvOES.get().invokeExact(handles.PFN_glMultiTexCoord1bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1bvOES", e); }
     }
 
@@ -114,7 +115,7 @@ public final class GLOESByteCoordinates {
     public void MultiTexCoord2bOES(int texture, byte s, byte t) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2bOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord2bOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord2bOES", texture, s, t); }
-        Handles.MH_glMultiTexCoord2bOES.invokeExact(handles.PFN_glMultiTexCoord2bOES, texture, s, t); }
+        Handles.MH_glMultiTexCoord2bOES.get().invokeExact(handles.PFN_glMultiTexCoord2bOES, texture, s, t); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2bOES", e); }
     }
 
@@ -125,7 +126,7 @@ public final class GLOESByteCoordinates {
     public void MultiTexCoord2bvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord2bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord2bvOES", texture, coords); }
-        Handles.MH_glMultiTexCoord2bvOES.invokeExact(handles.PFN_glMultiTexCoord2bvOES, texture, coords); }
+        Handles.MH_glMultiTexCoord2bvOES.get().invokeExact(handles.PFN_glMultiTexCoord2bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2bvOES", e); }
     }
 
@@ -136,7 +137,7 @@ public final class GLOESByteCoordinates {
     public void MultiTexCoord3bOES(int texture, byte s, byte t, byte r) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3bOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord3bOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord3bOES", texture, s, t, r); }
-        Handles.MH_glMultiTexCoord3bOES.invokeExact(handles.PFN_glMultiTexCoord3bOES, texture, s, t, r); }
+        Handles.MH_glMultiTexCoord3bOES.get().invokeExact(handles.PFN_glMultiTexCoord3bOES, texture, s, t, r); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3bOES", e); }
     }
 
@@ -147,7 +148,7 @@ public final class GLOESByteCoordinates {
     public void MultiTexCoord3bvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord3bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord3bvOES", texture, coords); }
-        Handles.MH_glMultiTexCoord3bvOES.invokeExact(handles.PFN_glMultiTexCoord3bvOES, texture, coords); }
+        Handles.MH_glMultiTexCoord3bvOES.get().invokeExact(handles.PFN_glMultiTexCoord3bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3bvOES", e); }
     }
 
@@ -158,7 +159,7 @@ public final class GLOESByteCoordinates {
     public void MultiTexCoord4bOES(int texture, byte s, byte t, byte r, byte q) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4bOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord4bOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord4bOES", texture, s, t, r, q); }
-        Handles.MH_glMultiTexCoord4bOES.invokeExact(handles.PFN_glMultiTexCoord4bOES, texture, s, t, r, q); }
+        Handles.MH_glMultiTexCoord4bOES.get().invokeExact(handles.PFN_glMultiTexCoord4bOES, texture, s, t, r, q); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4bOES", e); }
     }
 
@@ -169,7 +170,7 @@ public final class GLOESByteCoordinates {
     public void MultiTexCoord4bvOES(int texture, @NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord4bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoord4bvOES", texture, coords); }
-        Handles.MH_glMultiTexCoord4bvOES.invokeExact(handles.PFN_glMultiTexCoord4bvOES, texture, coords); }
+        Handles.MH_glMultiTexCoord4bvOES.get().invokeExact(handles.PFN_glMultiTexCoord4bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4bvOES", e); }
     }
 
@@ -180,7 +181,7 @@ public final class GLOESByteCoordinates {
     public void TexCoord1bOES(byte s) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1bOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord1bOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord1bOES", s); }
-        Handles.MH_glTexCoord1bOES.invokeExact(handles.PFN_glTexCoord1bOES, s); }
+        Handles.MH_glTexCoord1bOES.get().invokeExact(handles.PFN_glTexCoord1bOES, s); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord1bOES", e); }
     }
 
@@ -191,7 +192,7 @@ public final class GLOESByteCoordinates {
     public void TexCoord1bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord1bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord1bvOES", coords); }
-        Handles.MH_glTexCoord1bvOES.invokeExact(handles.PFN_glTexCoord1bvOES, coords); }
+        Handles.MH_glTexCoord1bvOES.get().invokeExact(handles.PFN_glTexCoord1bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord1bvOES", e); }
     }
 
@@ -202,7 +203,7 @@ public final class GLOESByteCoordinates {
     public void TexCoord2bOES(byte s, byte t) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2bOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord2bOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord2bOES", s, t); }
-        Handles.MH_glTexCoord2bOES.invokeExact(handles.PFN_glTexCoord2bOES, s, t); }
+        Handles.MH_glTexCoord2bOES.get().invokeExact(handles.PFN_glTexCoord2bOES, s, t); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord2bOES", e); }
     }
 
@@ -213,7 +214,7 @@ public final class GLOESByteCoordinates {
     public void TexCoord2bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord2bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord2bvOES", coords); }
-        Handles.MH_glTexCoord2bvOES.invokeExact(handles.PFN_glTexCoord2bvOES, coords); }
+        Handles.MH_glTexCoord2bvOES.get().invokeExact(handles.PFN_glTexCoord2bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord2bvOES", e); }
     }
 
@@ -224,7 +225,7 @@ public final class GLOESByteCoordinates {
     public void TexCoord3bOES(byte s, byte t, byte r) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3bOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord3bOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord3bOES", s, t, r); }
-        Handles.MH_glTexCoord3bOES.invokeExact(handles.PFN_glTexCoord3bOES, s, t, r); }
+        Handles.MH_glTexCoord3bOES.get().invokeExact(handles.PFN_glTexCoord3bOES, s, t, r); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord3bOES", e); }
     }
 
@@ -235,7 +236,7 @@ public final class GLOESByteCoordinates {
     public void TexCoord3bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord3bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord3bvOES", coords); }
-        Handles.MH_glTexCoord3bvOES.invokeExact(handles.PFN_glTexCoord3bvOES, coords); }
+        Handles.MH_glTexCoord3bvOES.get().invokeExact(handles.PFN_glTexCoord3bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord3bvOES", e); }
     }
 
@@ -246,7 +247,7 @@ public final class GLOESByteCoordinates {
     public void TexCoord4bOES(byte s, byte t, byte r, byte q) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4bOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord4bOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord4bOES", s, t, r, q); }
-        Handles.MH_glTexCoord4bOES.invokeExact(handles.PFN_glTexCoord4bOES, s, t, r, q); }
+        Handles.MH_glTexCoord4bOES.get().invokeExact(handles.PFN_glTexCoord4bOES, s, t, r, q); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord4bOES", e); }
     }
 
@@ -257,7 +258,7 @@ public final class GLOESByteCoordinates {
     public void TexCoord4bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord4bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoord4bvOES", coords); }
-        Handles.MH_glTexCoord4bvOES.invokeExact(handles.PFN_glTexCoord4bvOES, coords); }
+        Handles.MH_glTexCoord4bvOES.get().invokeExact(handles.PFN_glTexCoord4bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord4bvOES", e); }
     }
 
@@ -268,7 +269,7 @@ public final class GLOESByteCoordinates {
     public void Vertex2bOES(byte x, byte y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex2bOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex2bOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex2bOES", x, y); }
-        Handles.MH_glVertex2bOES.invokeExact(handles.PFN_glVertex2bOES, x, y); }
+        Handles.MH_glVertex2bOES.get().invokeExact(handles.PFN_glVertex2bOES, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex2bOES", e); }
     }
 
@@ -279,7 +280,7 @@ public final class GLOESByteCoordinates {
     public void Vertex2bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex2bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex2bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex2bvOES", coords); }
-        Handles.MH_glVertex2bvOES.invokeExact(handles.PFN_glVertex2bvOES, coords); }
+        Handles.MH_glVertex2bvOES.get().invokeExact(handles.PFN_glVertex2bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex2bvOES", e); }
     }
 
@@ -290,7 +291,7 @@ public final class GLOESByteCoordinates {
     public void Vertex3bOES(byte x, byte y, byte z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex3bOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex3bOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex3bOES", x, y, z); }
-        Handles.MH_glVertex3bOES.invokeExact(handles.PFN_glVertex3bOES, x, y, z); }
+        Handles.MH_glVertex3bOES.get().invokeExact(handles.PFN_glVertex3bOES, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex3bOES", e); }
     }
 
@@ -301,7 +302,7 @@ public final class GLOESByteCoordinates {
     public void Vertex3bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex3bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex3bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex3bvOES", coords); }
-        Handles.MH_glVertex3bvOES.invokeExact(handles.PFN_glVertex3bvOES, coords); }
+        Handles.MH_glVertex3bvOES.get().invokeExact(handles.PFN_glVertex3bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex3bvOES", e); }
     }
 
@@ -312,7 +313,7 @@ public final class GLOESByteCoordinates {
     public void Vertex4bOES(byte x, byte y, byte z, byte w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex4bOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex4bOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex4bOES", x, y, z, w); }
-        Handles.MH_glVertex4bOES.invokeExact(handles.PFN_glVertex4bOES, x, y, z, w); }
+        Handles.MH_glVertex4bOES.get().invokeExact(handles.PFN_glVertex4bOES, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex4bOES", e); }
     }
 
@@ -323,7 +324,7 @@ public final class GLOESByteCoordinates {
     public void Vertex4bvOES(@NonNull MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex4bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex4bvOES");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glVertex4bvOES", coords); }
-        Handles.MH_glVertex4bvOES.invokeExact(handles.PFN_glVertex4bvOES, coords); }
+        Handles.MH_glVertex4bvOES.get().invokeExact(handles.PFN_glVertex4bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex4bvOES", e); }
     }
 

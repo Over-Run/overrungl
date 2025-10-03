@@ -55,91 +55,91 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `maxDrawMeshTasksCount`.
     public static final long OFFSET_maxDrawMeshTasksCount = LAYOUT.byteOffset(PathElement.groupElement("maxDrawMeshTasksCount"));
     /// The memory layout of `maxDrawMeshTasksCount`.
     public static final MemoryLayout LAYOUT_maxDrawMeshTasksCount = LAYOUT.select(PathElement.groupElement("maxDrawMeshTasksCount"));
     /// The [VarHandle] of `maxDrawMeshTasksCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDrawMeshTasksCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDrawMeshTasksCount"));
+    public static final Supplier<VarHandle> VH_maxDrawMeshTasksCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDrawMeshTasksCount")));
     /// The byte offset of `maxTaskWorkGroupInvocations`.
     public static final long OFFSET_maxTaskWorkGroupInvocations = LAYOUT.byteOffset(PathElement.groupElement("maxTaskWorkGroupInvocations"));
     /// The memory layout of `maxTaskWorkGroupInvocations`.
     public static final MemoryLayout LAYOUT_maxTaskWorkGroupInvocations = LAYOUT.select(PathElement.groupElement("maxTaskWorkGroupInvocations"));
     /// The [VarHandle] of `maxTaskWorkGroupInvocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTaskWorkGroupInvocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskWorkGroupInvocations"));
+    public static final Supplier<VarHandle> VH_maxTaskWorkGroupInvocations = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskWorkGroupInvocations")));
     /// The byte offset of `maxTaskWorkGroupSize`.
     public static final long OFFSET_maxTaskWorkGroupSize = LAYOUT.byteOffset(PathElement.groupElement("maxTaskWorkGroupSize"));
     /// The memory layout of `maxTaskWorkGroupSize`.
     public static final MemoryLayout LAYOUT_maxTaskWorkGroupSize = LAYOUT.select(PathElement.groupElement("maxTaskWorkGroupSize"));
     /// The [VarHandle] of `maxTaskWorkGroupSize` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_maxTaskWorkGroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskWorkGroupSize"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_maxTaskWorkGroupSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskWorkGroupSize"), PathElement.sequenceElement()));
     /// The byte offset of `maxTaskTotalMemorySize`.
     public static final long OFFSET_maxTaskTotalMemorySize = LAYOUT.byteOffset(PathElement.groupElement("maxTaskTotalMemorySize"));
     /// The memory layout of `maxTaskTotalMemorySize`.
     public static final MemoryLayout LAYOUT_maxTaskTotalMemorySize = LAYOUT.select(PathElement.groupElement("maxTaskTotalMemorySize"));
     /// The [VarHandle] of `maxTaskTotalMemorySize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTaskTotalMemorySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskTotalMemorySize"));
+    public static final Supplier<VarHandle> VH_maxTaskTotalMemorySize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskTotalMemorySize")));
     /// The byte offset of `maxTaskOutputCount`.
     public static final long OFFSET_maxTaskOutputCount = LAYOUT.byteOffset(PathElement.groupElement("maxTaskOutputCount"));
     /// The memory layout of `maxTaskOutputCount`.
     public static final MemoryLayout LAYOUT_maxTaskOutputCount = LAYOUT.select(PathElement.groupElement("maxTaskOutputCount"));
     /// The [VarHandle] of `maxTaskOutputCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTaskOutputCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskOutputCount"));
+    public static final Supplier<VarHandle> VH_maxTaskOutputCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskOutputCount")));
     /// The byte offset of `maxMeshWorkGroupInvocations`.
     public static final long OFFSET_maxMeshWorkGroupInvocations = LAYOUT.byteOffset(PathElement.groupElement("maxMeshWorkGroupInvocations"));
     /// The memory layout of `maxMeshWorkGroupInvocations`.
     public static final MemoryLayout LAYOUT_maxMeshWorkGroupInvocations = LAYOUT.select(PathElement.groupElement("maxMeshWorkGroupInvocations"));
     /// The [VarHandle] of `maxMeshWorkGroupInvocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxMeshWorkGroupInvocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshWorkGroupInvocations"));
+    public static final Supplier<VarHandle> VH_maxMeshWorkGroupInvocations = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshWorkGroupInvocations")));
     /// The byte offset of `maxMeshWorkGroupSize`.
     public static final long OFFSET_maxMeshWorkGroupSize = LAYOUT.byteOffset(PathElement.groupElement("maxMeshWorkGroupSize"));
     /// The memory layout of `maxMeshWorkGroupSize`.
     public static final MemoryLayout LAYOUT_maxMeshWorkGroupSize = LAYOUT.select(PathElement.groupElement("maxMeshWorkGroupSize"));
     /// The [VarHandle] of `maxMeshWorkGroupSize` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_maxMeshWorkGroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshWorkGroupSize"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_maxMeshWorkGroupSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshWorkGroupSize"), PathElement.sequenceElement()));
     /// The byte offset of `maxMeshTotalMemorySize`.
     public static final long OFFSET_maxMeshTotalMemorySize = LAYOUT.byteOffset(PathElement.groupElement("maxMeshTotalMemorySize"));
     /// The memory layout of `maxMeshTotalMemorySize`.
     public static final MemoryLayout LAYOUT_maxMeshTotalMemorySize = LAYOUT.select(PathElement.groupElement("maxMeshTotalMemorySize"));
     /// The [VarHandle] of `maxMeshTotalMemorySize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxMeshTotalMemorySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshTotalMemorySize"));
+    public static final Supplier<VarHandle> VH_maxMeshTotalMemorySize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshTotalMemorySize")));
     /// The byte offset of `maxMeshOutputVertices`.
     public static final long OFFSET_maxMeshOutputVertices = LAYOUT.byteOffset(PathElement.groupElement("maxMeshOutputVertices"));
     /// The memory layout of `maxMeshOutputVertices`.
     public static final MemoryLayout LAYOUT_maxMeshOutputVertices = LAYOUT.select(PathElement.groupElement("maxMeshOutputVertices"));
     /// The [VarHandle] of `maxMeshOutputVertices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxMeshOutputVertices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshOutputVertices"));
+    public static final Supplier<VarHandle> VH_maxMeshOutputVertices = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshOutputVertices")));
     /// The byte offset of `maxMeshOutputPrimitives`.
     public static final long OFFSET_maxMeshOutputPrimitives = LAYOUT.byteOffset(PathElement.groupElement("maxMeshOutputPrimitives"));
     /// The memory layout of `maxMeshOutputPrimitives`.
     public static final MemoryLayout LAYOUT_maxMeshOutputPrimitives = LAYOUT.select(PathElement.groupElement("maxMeshOutputPrimitives"));
     /// The [VarHandle] of `maxMeshOutputPrimitives` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxMeshOutputPrimitives = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshOutputPrimitives"));
+    public static final Supplier<VarHandle> VH_maxMeshOutputPrimitives = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshOutputPrimitives")));
     /// The byte offset of `maxMeshMultiviewViewCount`.
     public static final long OFFSET_maxMeshMultiviewViewCount = LAYOUT.byteOffset(PathElement.groupElement("maxMeshMultiviewViewCount"));
     /// The memory layout of `maxMeshMultiviewViewCount`.
     public static final MemoryLayout LAYOUT_maxMeshMultiviewViewCount = LAYOUT.select(PathElement.groupElement("maxMeshMultiviewViewCount"));
     /// The [VarHandle] of `maxMeshMultiviewViewCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxMeshMultiviewViewCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshMultiviewViewCount"));
+    public static final Supplier<VarHandle> VH_maxMeshMultiviewViewCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshMultiviewViewCount")));
     /// The byte offset of `meshOutputPerVertexGranularity`.
     public static final long OFFSET_meshOutputPerVertexGranularity = LAYOUT.byteOffset(PathElement.groupElement("meshOutputPerVertexGranularity"));
     /// The memory layout of `meshOutputPerVertexGranularity`.
     public static final MemoryLayout LAYOUT_meshOutputPerVertexGranularity = LAYOUT.select(PathElement.groupElement("meshOutputPerVertexGranularity"));
     /// The [VarHandle] of `meshOutputPerVertexGranularity` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_meshOutputPerVertexGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("meshOutputPerVertexGranularity"));
+    public static final Supplier<VarHandle> VH_meshOutputPerVertexGranularity = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("meshOutputPerVertexGranularity")));
     /// The byte offset of `meshOutputPerPrimitiveGranularity`.
     public static final long OFFSET_meshOutputPerPrimitiveGranularity = LAYOUT.byteOffset(PathElement.groupElement("meshOutputPerPrimitiveGranularity"));
     /// The memory layout of `meshOutputPerPrimitiveGranularity`.
     public static final MemoryLayout LAYOUT_meshOutputPerPrimitiveGranularity = LAYOUT.select(PathElement.groupElement("meshOutputPerPrimitiveGranularity"));
     /// The [VarHandle] of `meshOutputPerPrimitiveGranularity` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_meshOutputPerPrimitiveGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("meshOutputPerPrimitiveGranularity"));
+    public static final Supplier<VarHandle> VH_meshOutputPerPrimitiveGranularity = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("meshOutputPerPrimitiveGranularity")));
 
     /// Creates `VkPhysicalDeviceMeshShaderPropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -190,14 +190,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `maxDrawMeshTasksCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxDrawMeshTasksCount(MemorySegment segment, long index) { return (int) VH_maxDrawMeshTasksCount.get(segment, 0L, index); }
+    public static int maxDrawMeshTasksCount(MemorySegment segment, long index) { return (int) VH_maxDrawMeshTasksCount.get().get(segment, 0L, index); }
     /// {@return `maxDrawMeshTasksCount`}
     public int maxDrawMeshTasksCount() { return maxDrawMeshTasksCount(this.segment(), 0L); }
     /// Sets `maxDrawMeshTasksCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxDrawMeshTasksCount(MemorySegment segment, long index, int value) { VH_maxDrawMeshTasksCount.set(segment, 0L, index, value); }
+    public static void maxDrawMeshTasksCount(MemorySegment segment, long index, int value) { VH_maxDrawMeshTasksCount.get().set(segment, 0L, index, value); }
     /// Sets `maxDrawMeshTasksCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,14 +238,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `maxTaskWorkGroupInvocations` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTaskWorkGroupInvocations(MemorySegment segment, long index) { return (int) VH_maxTaskWorkGroupInvocations.get(segment, 0L, index); }
+    public static int maxTaskWorkGroupInvocations(MemorySegment segment, long index) { return (int) VH_maxTaskWorkGroupInvocations.get().get(segment, 0L, index); }
     /// {@return `maxTaskWorkGroupInvocations`}
     public int maxTaskWorkGroupInvocations() { return maxTaskWorkGroupInvocations(this.segment(), 0L); }
     /// Sets `maxTaskWorkGroupInvocations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTaskWorkGroupInvocations(MemorySegment segment, long index, int value) { VH_maxTaskWorkGroupInvocations.set(segment, 0L, index, value); }
+    public static void maxTaskWorkGroupInvocations(MemorySegment segment, long index, int value) { VH_maxTaskWorkGroupInvocations.get().set(segment, 0L, index, value); }
     /// Sets `maxTaskWorkGroupInvocations` with the given value.
     /// @param value the value
     /// @return `this`
@@ -259,7 +259,7 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int maxTaskWorkGroupSize(MemorySegment segment, long index, long index0) { return (int) VH_maxTaskWorkGroupSize.get(segment, 0L, index, index0); }
+    public static int maxTaskWorkGroupSize(MemorySegment segment, long index, long index0) { return (int) VH_maxTaskWorkGroupSize.get().get(segment, 0L, index, index0); }
     /// {@return `maxTaskWorkGroupSize`}
     public MemorySegment maxTaskWorkGroupSize() { return maxTaskWorkGroupSize(this.segment(), 0L); }
     /// {@return `maxTaskWorkGroupSize`}
@@ -275,7 +275,7 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void maxTaskWorkGroupSize(MemorySegment segment, long index, long index0, int value) { VH_maxTaskWorkGroupSize.set(segment, 0L, index, index0, value); }
+    public static void maxTaskWorkGroupSize(MemorySegment segment, long index, long index0, int value) { VH_maxTaskWorkGroupSize.get().set(segment, 0L, index, index0, value); }
     /// Sets `maxTaskWorkGroupSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -289,14 +289,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `maxTaskTotalMemorySize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTaskTotalMemorySize(MemorySegment segment, long index) { return (int) VH_maxTaskTotalMemorySize.get(segment, 0L, index); }
+    public static int maxTaskTotalMemorySize(MemorySegment segment, long index) { return (int) VH_maxTaskTotalMemorySize.get().get(segment, 0L, index); }
     /// {@return `maxTaskTotalMemorySize`}
     public int maxTaskTotalMemorySize() { return maxTaskTotalMemorySize(this.segment(), 0L); }
     /// Sets `maxTaskTotalMemorySize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTaskTotalMemorySize(MemorySegment segment, long index, int value) { VH_maxTaskTotalMemorySize.set(segment, 0L, index, value); }
+    public static void maxTaskTotalMemorySize(MemorySegment segment, long index, int value) { VH_maxTaskTotalMemorySize.get().set(segment, 0L, index, value); }
     /// Sets `maxTaskTotalMemorySize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -305,14 +305,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `maxTaskOutputCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTaskOutputCount(MemorySegment segment, long index) { return (int) VH_maxTaskOutputCount.get(segment, 0L, index); }
+    public static int maxTaskOutputCount(MemorySegment segment, long index) { return (int) VH_maxTaskOutputCount.get().get(segment, 0L, index); }
     /// {@return `maxTaskOutputCount`}
     public int maxTaskOutputCount() { return maxTaskOutputCount(this.segment(), 0L); }
     /// Sets `maxTaskOutputCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTaskOutputCount(MemorySegment segment, long index, int value) { VH_maxTaskOutputCount.set(segment, 0L, index, value); }
+    public static void maxTaskOutputCount(MemorySegment segment, long index, int value) { VH_maxTaskOutputCount.get().set(segment, 0L, index, value); }
     /// Sets `maxTaskOutputCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -321,14 +321,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `maxMeshWorkGroupInvocations` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxMeshWorkGroupInvocations(MemorySegment segment, long index) { return (int) VH_maxMeshWorkGroupInvocations.get(segment, 0L, index); }
+    public static int maxMeshWorkGroupInvocations(MemorySegment segment, long index) { return (int) VH_maxMeshWorkGroupInvocations.get().get(segment, 0L, index); }
     /// {@return `maxMeshWorkGroupInvocations`}
     public int maxMeshWorkGroupInvocations() { return maxMeshWorkGroupInvocations(this.segment(), 0L); }
     /// Sets `maxMeshWorkGroupInvocations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxMeshWorkGroupInvocations(MemorySegment segment, long index, int value) { VH_maxMeshWorkGroupInvocations.set(segment, 0L, index, value); }
+    public static void maxMeshWorkGroupInvocations(MemorySegment segment, long index, int value) { VH_maxMeshWorkGroupInvocations.get().set(segment, 0L, index, value); }
     /// Sets `maxMeshWorkGroupInvocations` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,7 +342,7 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static int maxMeshWorkGroupSize(MemorySegment segment, long index, long index0) { return (int) VH_maxMeshWorkGroupSize.get(segment, 0L, index, index0); }
+    public static int maxMeshWorkGroupSize(MemorySegment segment, long index, long index0) { return (int) VH_maxMeshWorkGroupSize.get().get(segment, 0L, index, index0); }
     /// {@return `maxMeshWorkGroupSize`}
     public MemorySegment maxMeshWorkGroupSize() { return maxMeshWorkGroupSize(this.segment(), 0L); }
     /// {@return `maxMeshWorkGroupSize`}
@@ -358,7 +358,7 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void maxMeshWorkGroupSize(MemorySegment segment, long index, long index0, int value) { VH_maxMeshWorkGroupSize.set(segment, 0L, index, index0, value); }
+    public static void maxMeshWorkGroupSize(MemorySegment segment, long index, long index0, int value) { VH_maxMeshWorkGroupSize.get().set(segment, 0L, index, index0, value); }
     /// Sets `maxMeshWorkGroupSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -372,14 +372,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `maxMeshTotalMemorySize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxMeshTotalMemorySize(MemorySegment segment, long index) { return (int) VH_maxMeshTotalMemorySize.get(segment, 0L, index); }
+    public static int maxMeshTotalMemorySize(MemorySegment segment, long index) { return (int) VH_maxMeshTotalMemorySize.get().get(segment, 0L, index); }
     /// {@return `maxMeshTotalMemorySize`}
     public int maxMeshTotalMemorySize() { return maxMeshTotalMemorySize(this.segment(), 0L); }
     /// Sets `maxMeshTotalMemorySize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxMeshTotalMemorySize(MemorySegment segment, long index, int value) { VH_maxMeshTotalMemorySize.set(segment, 0L, index, value); }
+    public static void maxMeshTotalMemorySize(MemorySegment segment, long index, int value) { VH_maxMeshTotalMemorySize.get().set(segment, 0L, index, value); }
     /// Sets `maxMeshTotalMemorySize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -388,14 +388,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `maxMeshOutputVertices` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxMeshOutputVertices(MemorySegment segment, long index) { return (int) VH_maxMeshOutputVertices.get(segment, 0L, index); }
+    public static int maxMeshOutputVertices(MemorySegment segment, long index) { return (int) VH_maxMeshOutputVertices.get().get(segment, 0L, index); }
     /// {@return `maxMeshOutputVertices`}
     public int maxMeshOutputVertices() { return maxMeshOutputVertices(this.segment(), 0L); }
     /// Sets `maxMeshOutputVertices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxMeshOutputVertices(MemorySegment segment, long index, int value) { VH_maxMeshOutputVertices.set(segment, 0L, index, value); }
+    public static void maxMeshOutputVertices(MemorySegment segment, long index, int value) { VH_maxMeshOutputVertices.get().set(segment, 0L, index, value); }
     /// Sets `maxMeshOutputVertices` with the given value.
     /// @param value the value
     /// @return `this`
@@ -404,14 +404,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `maxMeshOutputPrimitives` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxMeshOutputPrimitives(MemorySegment segment, long index) { return (int) VH_maxMeshOutputPrimitives.get(segment, 0L, index); }
+    public static int maxMeshOutputPrimitives(MemorySegment segment, long index) { return (int) VH_maxMeshOutputPrimitives.get().get(segment, 0L, index); }
     /// {@return `maxMeshOutputPrimitives`}
     public int maxMeshOutputPrimitives() { return maxMeshOutputPrimitives(this.segment(), 0L); }
     /// Sets `maxMeshOutputPrimitives` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxMeshOutputPrimitives(MemorySegment segment, long index, int value) { VH_maxMeshOutputPrimitives.set(segment, 0L, index, value); }
+    public static void maxMeshOutputPrimitives(MemorySegment segment, long index, int value) { VH_maxMeshOutputPrimitives.get().set(segment, 0L, index, value); }
     /// Sets `maxMeshOutputPrimitives` with the given value.
     /// @param value the value
     /// @return `this`
@@ -420,14 +420,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `maxMeshMultiviewViewCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxMeshMultiviewViewCount(MemorySegment segment, long index) { return (int) VH_maxMeshMultiviewViewCount.get(segment, 0L, index); }
+    public static int maxMeshMultiviewViewCount(MemorySegment segment, long index) { return (int) VH_maxMeshMultiviewViewCount.get().get(segment, 0L, index); }
     /// {@return `maxMeshMultiviewViewCount`}
     public int maxMeshMultiviewViewCount() { return maxMeshMultiviewViewCount(this.segment(), 0L); }
     /// Sets `maxMeshMultiviewViewCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxMeshMultiviewViewCount(MemorySegment segment, long index, int value) { VH_maxMeshMultiviewViewCount.set(segment, 0L, index, value); }
+    public static void maxMeshMultiviewViewCount(MemorySegment segment, long index, int value) { VH_maxMeshMultiviewViewCount.get().set(segment, 0L, index, value); }
     /// Sets `maxMeshMultiviewViewCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -436,14 +436,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `meshOutputPerVertexGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int meshOutputPerVertexGranularity(MemorySegment segment, long index) { return (int) VH_meshOutputPerVertexGranularity.get(segment, 0L, index); }
+    public static int meshOutputPerVertexGranularity(MemorySegment segment, long index) { return (int) VH_meshOutputPerVertexGranularity.get().get(segment, 0L, index); }
     /// {@return `meshOutputPerVertexGranularity`}
     public int meshOutputPerVertexGranularity() { return meshOutputPerVertexGranularity(this.segment(), 0L); }
     /// Sets `meshOutputPerVertexGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void meshOutputPerVertexGranularity(MemorySegment segment, long index, int value) { VH_meshOutputPerVertexGranularity.set(segment, 0L, index, value); }
+    public static void meshOutputPerVertexGranularity(MemorySegment segment, long index, int value) { VH_meshOutputPerVertexGranularity.get().set(segment, 0L, index, value); }
     /// Sets `meshOutputPerVertexGranularity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -452,14 +452,14 @@ public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// {@return `meshOutputPerPrimitiveGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int meshOutputPerPrimitiveGranularity(MemorySegment segment, long index) { return (int) VH_meshOutputPerPrimitiveGranularity.get(segment, 0L, index); }
+    public static int meshOutputPerPrimitiveGranularity(MemorySegment segment, long index) { return (int) VH_meshOutputPerPrimitiveGranularity.get().get(segment, 0L, index); }
     /// {@return `meshOutputPerPrimitiveGranularity`}
     public int meshOutputPerPrimitiveGranularity() { return meshOutputPerPrimitiveGranularity(this.segment(), 0L); }
     /// Sets `meshOutputPerPrimitiveGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void meshOutputPerPrimitiveGranularity(MemorySegment segment, long index, int value) { VH_meshOutputPerPrimitiveGranularity.set(segment, 0L, index, value); }
+    public static void meshOutputPerPrimitiveGranularity(MemorySegment segment, long index, int value) { VH_meshOutputPerPrimitiveGranularity.get().set(segment, 0L, index, value); }
     /// Sets `meshOutputPerPrimitiveGranularity` with the given value.
     /// @param value the value
     /// @return `this`

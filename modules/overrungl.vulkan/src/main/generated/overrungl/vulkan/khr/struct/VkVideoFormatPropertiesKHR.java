@@ -41,19 +41,19 @@ public final class VkVideoFormatPropertiesKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `format`.
     public static final long OFFSET_format = LAYOUT.byteOffset(PathElement.groupElement("format"));
     /// The memory layout of `format`.
     public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
     /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
+    public static final Supplier<VarHandle> VH_format = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("format")));
     /// The byte offset of `componentMapping`.
     public static final long OFFSET_componentMapping = LAYOUT.byteOffset(PathElement.groupElement("componentMapping"));
     /// The memory layout of `componentMapping`.
@@ -63,25 +63,25 @@ public final class VkVideoFormatPropertiesKHR extends GroupType {
     /// The memory layout of `imageCreateFlags`.
     public static final MemoryLayout LAYOUT_imageCreateFlags = LAYOUT.select(PathElement.groupElement("imageCreateFlags"));
     /// The [VarHandle] of `imageCreateFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageCreateFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateFlags"));
+    public static final Supplier<VarHandle> VH_imageCreateFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateFlags")));
     /// The byte offset of `imageType`.
     public static final long OFFSET_imageType = LAYOUT.byteOffset(PathElement.groupElement("imageType"));
     /// The memory layout of `imageType`.
     public static final MemoryLayout LAYOUT_imageType = LAYOUT.select(PathElement.groupElement("imageType"));
     /// The [VarHandle] of `imageType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageType"));
+    public static final Supplier<VarHandle> VH_imageType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageType")));
     /// The byte offset of `imageTiling`.
     public static final long OFFSET_imageTiling = LAYOUT.byteOffset(PathElement.groupElement("imageTiling"));
     /// The memory layout of `imageTiling`.
     public static final MemoryLayout LAYOUT_imageTiling = LAYOUT.select(PathElement.groupElement("imageTiling"));
     /// The [VarHandle] of `imageTiling` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageTiling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageTiling"));
+    public static final Supplier<VarHandle> VH_imageTiling = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageTiling")));
     /// The byte offset of `imageUsageFlags`.
     public static final long OFFSET_imageUsageFlags = LAYOUT.byteOffset(PathElement.groupElement("imageUsageFlags"));
     /// The memory layout of `imageUsageFlags`.
     public static final MemoryLayout LAYOUT_imageUsageFlags = LAYOUT.select(PathElement.groupElement("imageUsageFlags"));
     /// The [VarHandle] of `imageUsageFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageUsageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageUsageFlags"));
+    public static final Supplier<VarHandle> VH_imageUsageFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageUsageFlags")));
 
     /// Creates `VkVideoFormatPropertiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -132,14 +132,14 @@ public final class VkVideoFormatPropertiesKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -148,14 +148,14 @@ public final class VkVideoFormatPropertiesKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,14 +164,14 @@ public final class VkVideoFormatPropertiesKHR extends GroupType {
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
+    public static int format(MemorySegment segment, long index) { return (int) VH_format.get().get(segment, 0L, index); }
     /// {@return `format`}
     public int format() { return format(this.segment(), 0L); }
     /// Sets `format` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void format(MemorySegment segment, long index, int value) { VH_format.set(segment, 0L, index, value); }
+    public static void format(MemorySegment segment, long index, int value) { VH_format.get().set(segment, 0L, index, value); }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -200,14 +200,14 @@ public final class VkVideoFormatPropertiesKHR extends GroupType {
     /// {@return `imageCreateFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageCreateFlags(MemorySegment segment, long index) { return (int) VH_imageCreateFlags.get(segment, 0L, index); }
+    public static int imageCreateFlags(MemorySegment segment, long index) { return (int) VH_imageCreateFlags.get().get(segment, 0L, index); }
     /// {@return `imageCreateFlags`}
     public int imageCreateFlags() { return imageCreateFlags(this.segment(), 0L); }
     /// Sets `imageCreateFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageCreateFlags(MemorySegment segment, long index, int value) { VH_imageCreateFlags.set(segment, 0L, index, value); }
+    public static void imageCreateFlags(MemorySegment segment, long index, int value) { VH_imageCreateFlags.get().set(segment, 0L, index, value); }
     /// Sets `imageCreateFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -216,14 +216,14 @@ public final class VkVideoFormatPropertiesKHR extends GroupType {
     /// {@return `imageType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageType(MemorySegment segment, long index) { return (int) VH_imageType.get(segment, 0L, index); }
+    public static int imageType(MemorySegment segment, long index) { return (int) VH_imageType.get().get(segment, 0L, index); }
     /// {@return `imageType`}
     public int imageType() { return imageType(this.segment(), 0L); }
     /// Sets `imageType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageType(MemorySegment segment, long index, int value) { VH_imageType.set(segment, 0L, index, value); }
+    public static void imageType(MemorySegment segment, long index, int value) { VH_imageType.get().set(segment, 0L, index, value); }
     /// Sets `imageType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,14 +232,14 @@ public final class VkVideoFormatPropertiesKHR extends GroupType {
     /// {@return `imageTiling` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageTiling(MemorySegment segment, long index) { return (int) VH_imageTiling.get(segment, 0L, index); }
+    public static int imageTiling(MemorySegment segment, long index) { return (int) VH_imageTiling.get().get(segment, 0L, index); }
     /// {@return `imageTiling`}
     public int imageTiling() { return imageTiling(this.segment(), 0L); }
     /// Sets `imageTiling` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageTiling(MemorySegment segment, long index, int value) { VH_imageTiling.set(segment, 0L, index, value); }
+    public static void imageTiling(MemorySegment segment, long index, int value) { VH_imageTiling.get().set(segment, 0L, index, value); }
     /// Sets `imageTiling` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,14 +248,14 @@ public final class VkVideoFormatPropertiesKHR extends GroupType {
     /// {@return `imageUsageFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int imageUsageFlags(MemorySegment segment, long index) { return (int) VH_imageUsageFlags.get(segment, 0L, index); }
+    public static int imageUsageFlags(MemorySegment segment, long index) { return (int) VH_imageUsageFlags.get().get(segment, 0L, index); }
     /// {@return `imageUsageFlags`}
     public int imageUsageFlags() { return imageUsageFlags(this.segment(), 0L); }
     /// Sets `imageUsageFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void imageUsageFlags(MemorySegment segment, long index, int value) { VH_imageUsageFlags.set(segment, 0L, index, value); }
+    public static void imageUsageFlags(MemorySegment segment, long index, int value) { VH_imageUsageFlags.get().set(segment, 0L, index, value); }
     /// Sets `imageUsageFlags` with the given value.
     /// @param value the value
     /// @return `this`

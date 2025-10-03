@@ -37,37 +37,37 @@ public final class VkViewport extends GroupType {
     /// The memory layout of `x`.
     public static final MemoryLayout LAYOUT_x = LAYOUT.select(PathElement.groupElement("x"));
     /// The [VarHandle] of `x` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("x"));
+    public static final Supplier<VarHandle> VH_x = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("x")));
     /// The byte offset of `y`.
     public static final long OFFSET_y = LAYOUT.byteOffset(PathElement.groupElement("y"));
     /// The memory layout of `y`.
     public static final MemoryLayout LAYOUT_y = LAYOUT.select(PathElement.groupElement("y"));
     /// The [VarHandle] of `y` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y"));
+    public static final Supplier<VarHandle> VH_y = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("y")));
     /// The byte offset of `width`.
     public static final long OFFSET_width = LAYOUT.byteOffset(PathElement.groupElement("width"));
     /// The memory layout of `width`.
     public static final MemoryLayout LAYOUT_width = LAYOUT.select(PathElement.groupElement("width"));
     /// The [VarHandle] of `width` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("width"));
+    public static final Supplier<VarHandle> VH_width = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("width")));
     /// The byte offset of `height`.
     public static final long OFFSET_height = LAYOUT.byteOffset(PathElement.groupElement("height"));
     /// The memory layout of `height`.
     public static final MemoryLayout LAYOUT_height = LAYOUT.select(PathElement.groupElement("height"));
     /// The [VarHandle] of `height` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("height"));
+    public static final Supplier<VarHandle> VH_height = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("height")));
     /// The byte offset of `minDepth`.
     public static final long OFFSET_minDepth = LAYOUT.byteOffset(PathElement.groupElement("minDepth"));
     /// The memory layout of `minDepth`.
     public static final MemoryLayout LAYOUT_minDepth = LAYOUT.select(PathElement.groupElement("minDepth"));
     /// The [VarHandle] of `minDepth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minDepth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minDepth"));
+    public static final Supplier<VarHandle> VH_minDepth = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minDepth")));
     /// The byte offset of `maxDepth`.
     public static final long OFFSET_maxDepth = LAYOUT.byteOffset(PathElement.groupElement("maxDepth"));
     /// The memory layout of `maxDepth`.
     public static final MemoryLayout LAYOUT_maxDepth = LAYOUT.select(PathElement.groupElement("maxDepth"));
     /// The [VarHandle] of `maxDepth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDepth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDepth"));
+    public static final Supplier<VarHandle> VH_maxDepth = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDepth")));
 
     /// Creates `VkViewport` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkViewport extends GroupType {
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float x(MemorySegment segment, long index) { return (float) VH_x.get(segment, 0L, index); }
+    public static float x(MemorySegment segment, long index) { return (float) VH_x.get().get(segment, 0L, index); }
     /// {@return `x`}
     public float x() { return x(this.segment(), 0L); }
     /// Sets `x` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void x(MemorySegment segment, long index, float value) { VH_x.set(segment, 0L, index, value); }
+    public static void x(MemorySegment segment, long index, float value) { VH_x.get().set(segment, 0L, index, value); }
     /// Sets `x` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkViewport extends GroupType {
     /// {@return `y` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float y(MemorySegment segment, long index) { return (float) VH_y.get(segment, 0L, index); }
+    public static float y(MemorySegment segment, long index) { return (float) VH_y.get().get(segment, 0L, index); }
     /// {@return `y`}
     public float y() { return y(this.segment(), 0L); }
     /// Sets `y` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void y(MemorySegment segment, long index, float value) { VH_y.set(segment, 0L, index, value); }
+    public static void y(MemorySegment segment, long index, float value) { VH_y.get().set(segment, 0L, index, value); }
     /// Sets `y` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkViewport extends GroupType {
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float width(MemorySegment segment, long index) { return (float) VH_width.get(segment, 0L, index); }
+    public static float width(MemorySegment segment, long index) { return (float) VH_width.get().get(segment, 0L, index); }
     /// {@return `width`}
     public float width() { return width(this.segment(), 0L); }
     /// Sets `width` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void width(MemorySegment segment, long index, float value) { VH_width.set(segment, 0L, index, value); }
+    public static void width(MemorySegment segment, long index, float value) { VH_width.get().set(segment, 0L, index, value); }
     /// Sets `width` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkViewport extends GroupType {
     /// {@return `height` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float height(MemorySegment segment, long index) { return (float) VH_height.get(segment, 0L, index); }
+    public static float height(MemorySegment segment, long index) { return (float) VH_height.get().get(segment, 0L, index); }
     /// {@return `height`}
     public float height() { return height(this.segment(), 0L); }
     /// Sets `height` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void height(MemorySegment segment, long index, float value) { VH_height.set(segment, 0L, index, value); }
+    public static void height(MemorySegment segment, long index, float value) { VH_height.get().set(segment, 0L, index, value); }
     /// Sets `height` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkViewport extends GroupType {
     /// {@return `minDepth` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float minDepth(MemorySegment segment, long index) { return (float) VH_minDepth.get(segment, 0L, index); }
+    public static float minDepth(MemorySegment segment, long index) { return (float) VH_minDepth.get().get(segment, 0L, index); }
     /// {@return `minDepth`}
     public float minDepth() { return minDepth(this.segment(), 0L); }
     /// Sets `minDepth` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minDepth(MemorySegment segment, long index, float value) { VH_minDepth.set(segment, 0L, index, value); }
+    public static void minDepth(MemorySegment segment, long index, float value) { VH_minDepth.get().set(segment, 0L, index, value); }
     /// Sets `minDepth` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkViewport extends GroupType {
     /// {@return `maxDepth` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float maxDepth(MemorySegment segment, long index) { return (float) VH_maxDepth.get(segment, 0L, index); }
+    public static float maxDepth(MemorySegment segment, long index) { return (float) VH_maxDepth.get().get(segment, 0L, index); }
     /// {@return `maxDepth`}
     public float maxDepth() { return maxDepth(this.segment(), 0L); }
     /// Sets `maxDepth` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxDepth(MemorySegment segment, long index, float value) { VH_maxDepth.set(segment, 0L, index, value); }
+    public static void maxDepth(MemorySegment segment, long index, float value) { VH_maxDepth.get().set(segment, 0L, index, value); }
     /// Sets `maxDepth` with the given value.
     /// @param value the value
     /// @return `this`

@@ -37,37 +37,37 @@ public final class VkPhysicalDeviceCooperativeVectorPropertiesNV extends GroupTy
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `cooperativeVectorSupportedStages`.
     public static final long OFFSET_cooperativeVectorSupportedStages = LAYOUT.byteOffset(PathElement.groupElement("cooperativeVectorSupportedStages"));
     /// The memory layout of `cooperativeVectorSupportedStages`.
     public static final MemoryLayout LAYOUT_cooperativeVectorSupportedStages = LAYOUT.select(PathElement.groupElement("cooperativeVectorSupportedStages"));
     /// The [VarHandle] of `cooperativeVectorSupportedStages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cooperativeVectorSupportedStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeVectorSupportedStages"));
+    public static final Supplier<VarHandle> VH_cooperativeVectorSupportedStages = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeVectorSupportedStages")));
     /// The byte offset of `cooperativeVectorTrainingFloat16Accumulation`.
     public static final long OFFSET_cooperativeVectorTrainingFloat16Accumulation = LAYOUT.byteOffset(PathElement.groupElement("cooperativeVectorTrainingFloat16Accumulation"));
     /// The memory layout of `cooperativeVectorTrainingFloat16Accumulation`.
     public static final MemoryLayout LAYOUT_cooperativeVectorTrainingFloat16Accumulation = LAYOUT.select(PathElement.groupElement("cooperativeVectorTrainingFloat16Accumulation"));
     /// The [VarHandle] of `cooperativeVectorTrainingFloat16Accumulation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cooperativeVectorTrainingFloat16Accumulation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeVectorTrainingFloat16Accumulation"));
+    public static final Supplier<VarHandle> VH_cooperativeVectorTrainingFloat16Accumulation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeVectorTrainingFloat16Accumulation")));
     /// The byte offset of `cooperativeVectorTrainingFloat32Accumulation`.
     public static final long OFFSET_cooperativeVectorTrainingFloat32Accumulation = LAYOUT.byteOffset(PathElement.groupElement("cooperativeVectorTrainingFloat32Accumulation"));
     /// The memory layout of `cooperativeVectorTrainingFloat32Accumulation`.
     public static final MemoryLayout LAYOUT_cooperativeVectorTrainingFloat32Accumulation = LAYOUT.select(PathElement.groupElement("cooperativeVectorTrainingFloat32Accumulation"));
     /// The [VarHandle] of `cooperativeVectorTrainingFloat32Accumulation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cooperativeVectorTrainingFloat32Accumulation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeVectorTrainingFloat32Accumulation"));
+    public static final Supplier<VarHandle> VH_cooperativeVectorTrainingFloat32Accumulation = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeVectorTrainingFloat32Accumulation")));
     /// The byte offset of `maxCooperativeVectorComponents`.
     public static final long OFFSET_maxCooperativeVectorComponents = LAYOUT.byteOffset(PathElement.groupElement("maxCooperativeVectorComponents"));
     /// The memory layout of `maxCooperativeVectorComponents`.
     public static final MemoryLayout LAYOUT_maxCooperativeVectorComponents = LAYOUT.select(PathElement.groupElement("maxCooperativeVectorComponents"));
     /// The [VarHandle] of `maxCooperativeVectorComponents` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxCooperativeVectorComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCooperativeVectorComponents"));
+    public static final Supplier<VarHandle> VH_maxCooperativeVectorComponents = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCooperativeVectorComponents")));
 
     /// Creates `VkPhysicalDeviceCooperativeVectorPropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceCooperativeVectorPropertiesNV extends GroupTy
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceCooperativeVectorPropertiesNV extends GroupTy
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceCooperativeVectorPropertiesNV extends GroupTy
     /// {@return `cooperativeVectorSupportedStages` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cooperativeVectorSupportedStages(MemorySegment segment, long index) { return (int) VH_cooperativeVectorSupportedStages.get(segment, 0L, index); }
+    public static int cooperativeVectorSupportedStages(MemorySegment segment, long index) { return (int) VH_cooperativeVectorSupportedStages.get().get(segment, 0L, index); }
     /// {@return `cooperativeVectorSupportedStages`}
     public int cooperativeVectorSupportedStages() { return cooperativeVectorSupportedStages(this.segment(), 0L); }
     /// Sets `cooperativeVectorSupportedStages` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cooperativeVectorSupportedStages(MemorySegment segment, long index, int value) { VH_cooperativeVectorSupportedStages.set(segment, 0L, index, value); }
+    public static void cooperativeVectorSupportedStages(MemorySegment segment, long index, int value) { VH_cooperativeVectorSupportedStages.get().set(segment, 0L, index, value); }
     /// Sets `cooperativeVectorSupportedStages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceCooperativeVectorPropertiesNV extends GroupTy
     /// {@return `cooperativeVectorTrainingFloat16Accumulation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cooperativeVectorTrainingFloat16Accumulation(MemorySegment segment, long index) { return (int) VH_cooperativeVectorTrainingFloat16Accumulation.get(segment, 0L, index); }
+    public static int cooperativeVectorTrainingFloat16Accumulation(MemorySegment segment, long index) { return (int) VH_cooperativeVectorTrainingFloat16Accumulation.get().get(segment, 0L, index); }
     /// {@return `cooperativeVectorTrainingFloat16Accumulation`}
     public int cooperativeVectorTrainingFloat16Accumulation() { return cooperativeVectorTrainingFloat16Accumulation(this.segment(), 0L); }
     /// Sets `cooperativeVectorTrainingFloat16Accumulation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cooperativeVectorTrainingFloat16Accumulation(MemorySegment segment, long index, int value) { VH_cooperativeVectorTrainingFloat16Accumulation.set(segment, 0L, index, value); }
+    public static void cooperativeVectorTrainingFloat16Accumulation(MemorySegment segment, long index, int value) { VH_cooperativeVectorTrainingFloat16Accumulation.get().set(segment, 0L, index, value); }
     /// Sets `cooperativeVectorTrainingFloat16Accumulation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceCooperativeVectorPropertiesNV extends GroupTy
     /// {@return `cooperativeVectorTrainingFloat32Accumulation` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int cooperativeVectorTrainingFloat32Accumulation(MemorySegment segment, long index) { return (int) VH_cooperativeVectorTrainingFloat32Accumulation.get(segment, 0L, index); }
+    public static int cooperativeVectorTrainingFloat32Accumulation(MemorySegment segment, long index) { return (int) VH_cooperativeVectorTrainingFloat32Accumulation.get().get(segment, 0L, index); }
     /// {@return `cooperativeVectorTrainingFloat32Accumulation`}
     public int cooperativeVectorTrainingFloat32Accumulation() { return cooperativeVectorTrainingFloat32Accumulation(this.segment(), 0L); }
     /// Sets `cooperativeVectorTrainingFloat32Accumulation` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cooperativeVectorTrainingFloat32Accumulation(MemorySegment segment, long index, int value) { VH_cooperativeVectorTrainingFloat32Accumulation.set(segment, 0L, index, value); }
+    public static void cooperativeVectorTrainingFloat32Accumulation(MemorySegment segment, long index, int value) { VH_cooperativeVectorTrainingFloat32Accumulation.get().set(segment, 0L, index, value); }
     /// Sets `cooperativeVectorTrainingFloat32Accumulation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceCooperativeVectorPropertiesNV extends GroupTy
     /// {@return `maxCooperativeVectorComponents` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxCooperativeVectorComponents(MemorySegment segment, long index) { return (int) VH_maxCooperativeVectorComponents.get(segment, 0L, index); }
+    public static int maxCooperativeVectorComponents(MemorySegment segment, long index) { return (int) VH_maxCooperativeVectorComponents.get().get(segment, 0L, index); }
     /// {@return `maxCooperativeVectorComponents`}
     public int maxCooperativeVectorComponents() { return maxCooperativeVectorComponents(this.segment(), 0L); }
     /// Sets `maxCooperativeVectorComponents` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxCooperativeVectorComponents(MemorySegment segment, long index, int value) { VH_maxCooperativeVectorComponents.set(segment, 0L, index, value); }
+    public static void maxCooperativeVectorComponents(MemorySegment segment, long index, int value) { VH_maxCooperativeVectorComponents.get().set(segment, 0L, index, value); }
     /// Sets `maxCooperativeVectorComponents` with the given value.
     /// @param value the value
     /// @return `this`

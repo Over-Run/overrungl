@@ -33,25 +33,25 @@ public final class VkViewportSwizzleNV extends GroupType {
     /// The memory layout of `x`.
     public static final MemoryLayout LAYOUT_x = LAYOUT.select(PathElement.groupElement("x"));
     /// The [VarHandle] of `x` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("x"));
+    public static final Supplier<VarHandle> VH_x = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("x")));
     /// The byte offset of `y`.
     public static final long OFFSET_y = LAYOUT.byteOffset(PathElement.groupElement("y"));
     /// The memory layout of `y`.
     public static final MemoryLayout LAYOUT_y = LAYOUT.select(PathElement.groupElement("y"));
     /// The [VarHandle] of `y` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y"));
+    public static final Supplier<VarHandle> VH_y = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("y")));
     /// The byte offset of `z`.
     public static final long OFFSET_z = LAYOUT.byteOffset(PathElement.groupElement("z"));
     /// The memory layout of `z`.
     public static final MemoryLayout LAYOUT_z = LAYOUT.select(PathElement.groupElement("z"));
     /// The [VarHandle] of `z` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_z = LAYOUT.arrayElementVarHandle(PathElement.groupElement("z"));
+    public static final Supplier<VarHandle> VH_z = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("z")));
     /// The byte offset of `w`.
     public static final long OFFSET_w = LAYOUT.byteOffset(PathElement.groupElement("w"));
     /// The memory layout of `w`.
     public static final MemoryLayout LAYOUT_w = LAYOUT.select(PathElement.groupElement("w"));
     /// The [VarHandle] of `w` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_w = LAYOUT.arrayElementVarHandle(PathElement.groupElement("w"));
+    public static final Supplier<VarHandle> VH_w = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("w")));
 
     /// Creates `VkViewportSwizzleNV` with the given segment.
     /// @param segment      the memory segment
@@ -102,14 +102,14 @@ public final class VkViewportSwizzleNV extends GroupType {
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int x(MemorySegment segment, long index) { return (int) VH_x.get(segment, 0L, index); }
+    public static int x(MemorySegment segment, long index) { return (int) VH_x.get().get(segment, 0L, index); }
     /// {@return `x`}
     public int x() { return x(this.segment(), 0L); }
     /// Sets `x` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void x(MemorySegment segment, long index, int value) { VH_x.set(segment, 0L, index, value); }
+    public static void x(MemorySegment segment, long index, int value) { VH_x.get().set(segment, 0L, index, value); }
     /// Sets `x` with the given value.
     /// @param value the value
     /// @return `this`
@@ -118,14 +118,14 @@ public final class VkViewportSwizzleNV extends GroupType {
     /// {@return `y` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int y(MemorySegment segment, long index) { return (int) VH_y.get(segment, 0L, index); }
+    public static int y(MemorySegment segment, long index) { return (int) VH_y.get().get(segment, 0L, index); }
     /// {@return `y`}
     public int y() { return y(this.segment(), 0L); }
     /// Sets `y` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void y(MemorySegment segment, long index, int value) { VH_y.set(segment, 0L, index, value); }
+    public static void y(MemorySegment segment, long index, int value) { VH_y.get().set(segment, 0L, index, value); }
     /// Sets `y` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkViewportSwizzleNV extends GroupType {
     /// {@return `z` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int z(MemorySegment segment, long index) { return (int) VH_z.get(segment, 0L, index); }
+    public static int z(MemorySegment segment, long index) { return (int) VH_z.get().get(segment, 0L, index); }
     /// {@return `z`}
     public int z() { return z(this.segment(), 0L); }
     /// Sets `z` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void z(MemorySegment segment, long index, int value) { VH_z.set(segment, 0L, index, value); }
+    public static void z(MemorySegment segment, long index, int value) { VH_z.get().set(segment, 0L, index, value); }
     /// Sets `z` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkViewportSwizzleNV extends GroupType {
     /// {@return `w` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int w(MemorySegment segment, long index) { return (int) VH_w.get(segment, 0L, index); }
+    public static int w(MemorySegment segment, long index) { return (int) VH_w.get().get(segment, 0L, index); }
     /// {@return `w`}
     public int w() { return w(this.segment(), 0L); }
     /// Sets `w` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void w(MemorySegment segment, long index, int value) { VH_w.set(segment, 0L, index, value); }
+    public static void w(MemorySegment segment, long index, int value) { VH_w.get().set(segment, 0L, index, value); }
     /// Sets `w` with the given value.
     /// @param value the value
     /// @return `this`

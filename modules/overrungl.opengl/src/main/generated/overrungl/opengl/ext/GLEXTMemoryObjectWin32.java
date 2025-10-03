@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -19,8 +20,8 @@ public final class GLEXTMemoryObjectWin32 {
     public static final int GL_HANDLE_TYPE_D3D11_IMAGE_KMT_EXT = 0x958C;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glImportMemoryWin32HandleEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glImportMemoryWin32NameEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glImportMemoryWin32HandleEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glImportMemoryWin32NameEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glImportMemoryWin32HandleEXT;
         public final MemorySegment PFN_glImportMemoryWin32NameEXT;
         private Handles(GLLoadFunc func) {
@@ -40,7 +41,7 @@ public final class GLEXTMemoryObjectWin32 {
     public void ImportMemoryWin32HandleEXT(int memory, long size, int handleType, @NonNull MemorySegment handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryWin32HandleEXT)) throw new GLSymbolNotFoundError("Symbol not found: glImportMemoryWin32HandleEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glImportMemoryWin32HandleEXT", memory, size, handleType, handle); }
-        Handles.MH_glImportMemoryWin32HandleEXT.invokeExact(handles.PFN_glImportMemoryWin32HandleEXT, memory, size, handleType, handle); }
+        Handles.MH_glImportMemoryWin32HandleEXT.get().invokeExact(handles.PFN_glImportMemoryWin32HandleEXT, memory, size, handleType, handle); }
         catch (Throwable e) { throw new RuntimeException("error in ImportMemoryWin32HandleEXT", e); }
     }
 
@@ -51,7 +52,7 @@ public final class GLEXTMemoryObjectWin32 {
     public void ImportMemoryWin32NameEXT(int memory, long size, int handleType, @NonNull MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryWin32NameEXT)) throw new GLSymbolNotFoundError("Symbol not found: glImportMemoryWin32NameEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glImportMemoryWin32NameEXT", memory, size, handleType, name); }
-        Handles.MH_glImportMemoryWin32NameEXT.invokeExact(handles.PFN_glImportMemoryWin32NameEXT, memory, size, handleType, name); }
+        Handles.MH_glImportMemoryWin32NameEXT.get().invokeExact(handles.PFN_glImportMemoryWin32NameEXT, memory, size, handleType, name); }
         catch (Throwable e) { throw new RuntimeException("error in ImportMemoryWin32NameEXT", e); }
     }
 

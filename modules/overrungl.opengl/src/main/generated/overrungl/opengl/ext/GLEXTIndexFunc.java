@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -13,7 +14,7 @@ public final class GLEXTIndexFunc {
     public static final int GL_INDEX_TEST_REF_EXT = 0x81B7;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glIndexFuncEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final Supplier<MethodHandle> MH_glIndexFuncEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT)));
         public final MemorySegment PFN_glIndexFuncEXT;
         private Handles(GLLoadFunc func) {
             PFN_glIndexFuncEXT = func.invoke("glIndexFuncEXT");
@@ -31,7 +32,7 @@ public final class GLEXTIndexFunc {
     public void IndexFuncEXT(int func, float ref) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexFuncEXT)) throw new GLSymbolNotFoundError("Symbol not found: glIndexFuncEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glIndexFuncEXT", func, ref); }
-        Handles.MH_glIndexFuncEXT.invokeExact(handles.PFN_glIndexFuncEXT, func, ref); }
+        Handles.MH_glIndexFuncEXT.get().invokeExact(handles.PFN_glIndexFuncEXT, func, ref); }
         catch (Throwable e) { throw new RuntimeException("error in IndexFuncEXT", e); }
     }
 

@@ -41,49 +41,49 @@ public final class VkTensorDescriptionARM extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `tiling`.
     public static final long OFFSET_tiling = LAYOUT.byteOffset(PathElement.groupElement("tiling"));
     /// The memory layout of `tiling`.
     public static final MemoryLayout LAYOUT_tiling = LAYOUT.select(PathElement.groupElement("tiling"));
     /// The [VarHandle] of `tiling` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tiling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tiling"));
+    public static final Supplier<VarHandle> VH_tiling = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("tiling")));
     /// The byte offset of `format`.
     public static final long OFFSET_format = LAYOUT.byteOffset(PathElement.groupElement("format"));
     /// The memory layout of `format`.
     public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
     /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
+    public static final Supplier<VarHandle> VH_format = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("format")));
     /// The byte offset of `dimensionCount`.
     public static final long OFFSET_dimensionCount = LAYOUT.byteOffset(PathElement.groupElement("dimensionCount"));
     /// The memory layout of `dimensionCount`.
     public static final MemoryLayout LAYOUT_dimensionCount = LAYOUT.select(PathElement.groupElement("dimensionCount"));
     /// The [VarHandle] of `dimensionCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dimensionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dimensionCount"));
+    public static final Supplier<VarHandle> VH_dimensionCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dimensionCount")));
     /// The byte offset of `pDimensions`.
     public static final long OFFSET_pDimensions = LAYOUT.byteOffset(PathElement.groupElement("pDimensions"));
     /// The memory layout of `pDimensions`.
     public static final MemoryLayout LAYOUT_pDimensions = LAYOUT.select(PathElement.groupElement("pDimensions"));
     /// The [VarHandle] of `pDimensions` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDimensions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDimensions"));
+    public static final Supplier<VarHandle> VH_pDimensions = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDimensions")));
     /// The byte offset of `pStrides`.
     public static final long OFFSET_pStrides = LAYOUT.byteOffset(PathElement.groupElement("pStrides"));
     /// The memory layout of `pStrides`.
     public static final MemoryLayout LAYOUT_pStrides = LAYOUT.select(PathElement.groupElement("pStrides"));
     /// The [VarHandle] of `pStrides` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStrides = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStrides"));
+    public static final Supplier<VarHandle> VH_pStrides = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStrides")));
     /// The byte offset of `usage`.
     public static final long OFFSET_usage = LAYOUT.byteOffset(PathElement.groupElement("usage"));
     /// The memory layout of `usage`.
     public static final MemoryLayout LAYOUT_usage = LAYOUT.select(PathElement.groupElement("usage"));
     /// The [VarHandle] of `usage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_usage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("usage"));
+    public static final Supplier<VarHandle> VH_usage = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("usage")));
 
     /// Creates `VkTensorDescriptionARM` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkTensorDescriptionARM extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkTensorDescriptionARM extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkTensorDescriptionARM extends GroupType {
     /// {@return `tiling` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int tiling(MemorySegment segment, long index) { return (int) VH_tiling.get(segment, 0L, index); }
+    public static int tiling(MemorySegment segment, long index) { return (int) VH_tiling.get().get(segment, 0L, index); }
     /// {@return `tiling`}
     public int tiling() { return tiling(this.segment(), 0L); }
     /// Sets `tiling` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void tiling(MemorySegment segment, long index, int value) { VH_tiling.set(segment, 0L, index, value); }
+    public static void tiling(MemorySegment segment, long index, int value) { VH_tiling.get().set(segment, 0L, index, value); }
     /// Sets `tiling` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkTensorDescriptionARM extends GroupType {
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
+    public static int format(MemorySegment segment, long index) { return (int) VH_format.get().get(segment, 0L, index); }
     /// {@return `format`}
     public int format() { return format(this.segment(), 0L); }
     /// Sets `format` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void format(MemorySegment segment, long index, int value) { VH_format.set(segment, 0L, index, value); }
+    public static void format(MemorySegment segment, long index, int value) { VH_format.get().set(segment, 0L, index, value); }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkTensorDescriptionARM extends GroupType {
     /// {@return `dimensionCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dimensionCount(MemorySegment segment, long index) { return (int) VH_dimensionCount.get(segment, 0L, index); }
+    public static int dimensionCount(MemorySegment segment, long index) { return (int) VH_dimensionCount.get().get(segment, 0L, index); }
     /// {@return `dimensionCount`}
     public int dimensionCount() { return dimensionCount(this.segment(), 0L); }
     /// Sets `dimensionCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dimensionCount(MemorySegment segment, long index, int value) { VH_dimensionCount.set(segment, 0L, index, value); }
+    public static void dimensionCount(MemorySegment segment, long index, int value) { VH_dimensionCount.get().set(segment, 0L, index, value); }
     /// Sets `dimensionCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkTensorDescriptionARM extends GroupType {
     /// {@return `pDimensions` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDimensions(MemorySegment segment, long index) { return (MemorySegment) VH_pDimensions.get(segment, 0L, index); }
+    public static MemorySegment pDimensions(MemorySegment segment, long index) { return (MemorySegment) VH_pDimensions.get().get(segment, 0L, index); }
     /// {@return `pDimensions`}
     public MemorySegment pDimensions() { return pDimensions(this.segment(), 0L); }
     /// Sets `pDimensions` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDimensions(MemorySegment segment, long index, MemorySegment value) { VH_pDimensions.set(segment, 0L, index, value); }
+    public static void pDimensions(MemorySegment segment, long index, MemorySegment value) { VH_pDimensions.get().set(segment, 0L, index, value); }
     /// Sets `pDimensions` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkTensorDescriptionARM extends GroupType {
     /// {@return `pStrides` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pStrides(MemorySegment segment, long index) { return (MemorySegment) VH_pStrides.get(segment, 0L, index); }
+    public static MemorySegment pStrides(MemorySegment segment, long index) { return (MemorySegment) VH_pStrides.get().get(segment, 0L, index); }
     /// {@return `pStrides`}
     public MemorySegment pStrides() { return pStrides(this.segment(), 0L); }
     /// Sets `pStrides` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pStrides(MemorySegment segment, long index, MemorySegment value) { VH_pStrides.set(segment, 0L, index, value); }
+    public static void pStrides(MemorySegment segment, long index, MemorySegment value) { VH_pStrides.get().set(segment, 0L, index, value); }
     /// Sets `pStrides` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkTensorDescriptionARM extends GroupType {
     /// {@return `usage` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long usage(MemorySegment segment, long index) { return (long) VH_usage.get(segment, 0L, index); }
+    public static long usage(MemorySegment segment, long index) { return (long) VH_usage.get().get(segment, 0L, index); }
     /// {@return `usage`}
     public long usage() { return usage(this.segment(), 0L); }
     /// Sets `usage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void usage(MemorySegment segment, long index, long value) { VH_usage.set(segment, 0L, index, value); }
+    public static void usage(MemorySegment segment, long index, long value) { VH_usage.get().set(segment, 0L, index, value); }
     /// Sets `usage` with the given value.
     /// @param value the value
     /// @return `this`

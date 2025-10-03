@@ -29,13 +29,13 @@ public final class VkMutableDescriptorTypeListEXT extends GroupType {
     /// The memory layout of `descriptorTypeCount`.
     public static final MemoryLayout LAYOUT_descriptorTypeCount = LAYOUT.select(PathElement.groupElement("descriptorTypeCount"));
     /// The [VarHandle] of `descriptorTypeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorTypeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorTypeCount"));
+    public static final Supplier<VarHandle> VH_descriptorTypeCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorTypeCount")));
     /// The byte offset of `pDescriptorTypes`.
     public static final long OFFSET_pDescriptorTypes = LAYOUT.byteOffset(PathElement.groupElement("pDescriptorTypes"));
     /// The memory layout of `pDescriptorTypes`.
     public static final MemoryLayout LAYOUT_pDescriptorTypes = LAYOUT.select(PathElement.groupElement("pDescriptorTypes"));
     /// The [VarHandle] of `pDescriptorTypes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDescriptorTypes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDescriptorTypes"));
+    public static final Supplier<VarHandle> VH_pDescriptorTypes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDescriptorTypes")));
 
     /// Creates `VkMutableDescriptorTypeListEXT` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkMutableDescriptorTypeListEXT extends GroupType {
     /// {@return `descriptorTypeCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int descriptorTypeCount(MemorySegment segment, long index) { return (int) VH_descriptorTypeCount.get(segment, 0L, index); }
+    public static int descriptorTypeCount(MemorySegment segment, long index) { return (int) VH_descriptorTypeCount.get().get(segment, 0L, index); }
     /// {@return `descriptorTypeCount`}
     public int descriptorTypeCount() { return descriptorTypeCount(this.segment(), 0L); }
     /// Sets `descriptorTypeCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void descriptorTypeCount(MemorySegment segment, long index, int value) { VH_descriptorTypeCount.set(segment, 0L, index, value); }
+    public static void descriptorTypeCount(MemorySegment segment, long index, int value) { VH_descriptorTypeCount.get().set(segment, 0L, index, value); }
     /// Sets `descriptorTypeCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkMutableDescriptorTypeListEXT extends GroupType {
     /// {@return `pDescriptorTypes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pDescriptorTypes(MemorySegment segment, long index) { return (MemorySegment) VH_pDescriptorTypes.get(segment, 0L, index); }
+    public static MemorySegment pDescriptorTypes(MemorySegment segment, long index) { return (MemorySegment) VH_pDescriptorTypes.get().get(segment, 0L, index); }
     /// {@return `pDescriptorTypes`}
     public MemorySegment pDescriptorTypes() { return pDescriptorTypes(this.segment(), 0L); }
     /// Sets `pDescriptorTypes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pDescriptorTypes(MemorySegment segment, long index, MemorySegment value) { VH_pDescriptorTypes.set(segment, 0L, index, value); }
+    public static void pDescriptorTypes(MemorySegment segment, long index, MemorySegment value) { VH_pDescriptorTypes.get().set(segment, 0L, index, value); }
     /// Sets `pDescriptorTypes` with the given value.
     /// @param value the value
     /// @return `this`

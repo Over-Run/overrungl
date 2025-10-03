@@ -35,31 +35,31 @@ public final class VkImageDrmFormatModifierExplicitCreateInfoEXT extends GroupTy
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `drmFormatModifier`.
     public static final long OFFSET_drmFormatModifier = LAYOUT.byteOffset(PathElement.groupElement("drmFormatModifier"));
     /// The memory layout of `drmFormatModifier`.
     public static final MemoryLayout LAYOUT_drmFormatModifier = LAYOUT.select(PathElement.groupElement("drmFormatModifier"));
     /// The [VarHandle] of `drmFormatModifier` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_drmFormatModifier = LAYOUT.arrayElementVarHandle(PathElement.groupElement("drmFormatModifier"));
+    public static final Supplier<VarHandle> VH_drmFormatModifier = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("drmFormatModifier")));
     /// The byte offset of `drmFormatModifierPlaneCount`.
     public static final long OFFSET_drmFormatModifierPlaneCount = LAYOUT.byteOffset(PathElement.groupElement("drmFormatModifierPlaneCount"));
     /// The memory layout of `drmFormatModifierPlaneCount`.
     public static final MemoryLayout LAYOUT_drmFormatModifierPlaneCount = LAYOUT.select(PathElement.groupElement("drmFormatModifierPlaneCount"));
     /// The [VarHandle] of `drmFormatModifierPlaneCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_drmFormatModifierPlaneCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("drmFormatModifierPlaneCount"));
+    public static final Supplier<VarHandle> VH_drmFormatModifierPlaneCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("drmFormatModifierPlaneCount")));
     /// The byte offset of `pPlaneLayouts`.
     public static final long OFFSET_pPlaneLayouts = LAYOUT.byteOffset(PathElement.groupElement("pPlaneLayouts"));
     /// The memory layout of `pPlaneLayouts`.
     public static final MemoryLayout LAYOUT_pPlaneLayouts = LAYOUT.select(PathElement.groupElement("pPlaneLayouts"));
     /// The [VarHandle] of `pPlaneLayouts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pPlaneLayouts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPlaneLayouts"));
+    public static final Supplier<VarHandle> VH_pPlaneLayouts = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPlaneLayouts")));
 
     /// Creates `VkImageDrmFormatModifierExplicitCreateInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkImageDrmFormatModifierExplicitCreateInfoEXT extends GroupTy
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkImageDrmFormatModifierExplicitCreateInfoEXT extends GroupTy
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkImageDrmFormatModifierExplicitCreateInfoEXT extends GroupTy
     /// {@return `drmFormatModifier` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long drmFormatModifier(MemorySegment segment, long index) { return (long) VH_drmFormatModifier.get(segment, 0L, index); }
+    public static long drmFormatModifier(MemorySegment segment, long index) { return (long) VH_drmFormatModifier.get().get(segment, 0L, index); }
     /// {@return `drmFormatModifier`}
     public long drmFormatModifier() { return drmFormatModifier(this.segment(), 0L); }
     /// Sets `drmFormatModifier` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void drmFormatModifier(MemorySegment segment, long index, long value) { VH_drmFormatModifier.set(segment, 0L, index, value); }
+    public static void drmFormatModifier(MemorySegment segment, long index, long value) { VH_drmFormatModifier.get().set(segment, 0L, index, value); }
     /// Sets `drmFormatModifier` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkImageDrmFormatModifierExplicitCreateInfoEXT extends GroupTy
     /// {@return `drmFormatModifierPlaneCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int drmFormatModifierPlaneCount(MemorySegment segment, long index) { return (int) VH_drmFormatModifierPlaneCount.get(segment, 0L, index); }
+    public static int drmFormatModifierPlaneCount(MemorySegment segment, long index) { return (int) VH_drmFormatModifierPlaneCount.get().get(segment, 0L, index); }
     /// {@return `drmFormatModifierPlaneCount`}
     public int drmFormatModifierPlaneCount() { return drmFormatModifierPlaneCount(this.segment(), 0L); }
     /// Sets `drmFormatModifierPlaneCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void drmFormatModifierPlaneCount(MemorySegment segment, long index, int value) { VH_drmFormatModifierPlaneCount.set(segment, 0L, index, value); }
+    public static void drmFormatModifierPlaneCount(MemorySegment segment, long index, int value) { VH_drmFormatModifierPlaneCount.get().set(segment, 0L, index, value); }
     /// Sets `drmFormatModifierPlaneCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkImageDrmFormatModifierExplicitCreateInfoEXT extends GroupTy
     /// {@return `pPlaneLayouts` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pPlaneLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pPlaneLayouts.get(segment, 0L, index); }
+    public static MemorySegment pPlaneLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pPlaneLayouts.get().get(segment, 0L, index); }
     /// {@return `pPlaneLayouts`}
     public MemorySegment pPlaneLayouts() { return pPlaneLayouts(this.segment(), 0L); }
     /// Sets `pPlaneLayouts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pPlaneLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pPlaneLayouts.set(segment, 0L, index, value); }
+    public static void pPlaneLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pPlaneLayouts.get().set(segment, 0L, index, value); }
     /// Sets `pPlaneLayouts` with the given value.
     /// @param value the value
     /// @return `this`

@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.vulkan;
@@ -45,7 +53,7 @@ public class VkDevice extends VkDispatchableHandleDevice {
         }
         return new VKCapabilitiesDevice(segment, (device, name) -> {
             try {
-                return (MemorySegment) VK10.Handles.MH_vkGetDeviceProcAddr.invokeExact(PFN_vkGetDeviceProcAddr, device, name);
+                return (MemorySegment) VK10.Handles.MH_vkGetDeviceProcAddr.get().invokeExact(PFN_vkGetDeviceProcAddr, device, name);
             } catch (Throwable e) {
                 throw new RuntimeException(e);
             }

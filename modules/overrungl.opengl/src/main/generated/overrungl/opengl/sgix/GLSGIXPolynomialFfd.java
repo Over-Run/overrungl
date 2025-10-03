@@ -2,6 +2,7 @@
 package overrungl.opengl.sgix;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -16,10 +17,10 @@ public final class GLSGIXPolynomialFfd {
     public static final int GL_MAX_DEFORMATION_ORDER_SGIX = 0x8197;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDeformationMap3dSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDeformationMap3fSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDeformSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glLoadIdentityDeformationMapSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glDeformationMap3dSGIX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glDeformationMap3fSGIX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
+        public static final Supplier<MethodHandle> MH_glDeformSGIX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glLoadIdentityDeformationMapSGIX = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glDeformationMap3dSGIX;
         public final MemorySegment PFN_glDeformationMap3fSGIX;
         public final MemorySegment PFN_glDeformSGIX;
@@ -43,7 +44,7 @@ public final class GLSGIXPolynomialFfd {
     public void DeformationMap3dSGIX(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double w1, double w2, int wstride, int worder, @NonNull MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeformationMap3dSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glDeformationMap3dSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeformationMap3dSGIX", target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, w1, w2, wstride, worder, points); }
-        Handles.MH_glDeformationMap3dSGIX.invokeExact(handles.PFN_glDeformationMap3dSGIX, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, w1, w2, wstride, worder, points); }
+        Handles.MH_glDeformationMap3dSGIX.get().invokeExact(handles.PFN_glDeformationMap3dSGIX, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, w1, w2, wstride, worder, points); }
         catch (Throwable e) { throw new RuntimeException("error in DeformationMap3dSGIX", e); }
     }
 
@@ -54,7 +55,7 @@ public final class GLSGIXPolynomialFfd {
     public void DeformationMap3fSGIX(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float w1, float w2, int wstride, int worder, @NonNull MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeformationMap3fSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glDeformationMap3fSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeformationMap3fSGIX", target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, w1, w2, wstride, worder, points); }
-        Handles.MH_glDeformationMap3fSGIX.invokeExact(handles.PFN_glDeformationMap3fSGIX, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, w1, w2, wstride, worder, points); }
+        Handles.MH_glDeformationMap3fSGIX.get().invokeExact(handles.PFN_glDeformationMap3fSGIX, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, w1, w2, wstride, worder, points); }
         catch (Throwable e) { throw new RuntimeException("error in DeformationMap3fSGIX", e); }
     }
 
@@ -65,7 +66,7 @@ public final class GLSGIXPolynomialFfd {
     public void DeformSGIX(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeformSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glDeformSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glDeformSGIX", mask); }
-        Handles.MH_glDeformSGIX.invokeExact(handles.PFN_glDeformSGIX, mask); }
+        Handles.MH_glDeformSGIX.get().invokeExact(handles.PFN_glDeformSGIX, mask); }
         catch (Throwable e) { throw new RuntimeException("error in DeformSGIX", e); }
     }
 
@@ -76,7 +77,7 @@ public final class GLSGIXPolynomialFfd {
     public void LoadIdentityDeformationMapSGIX(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLoadIdentityDeformationMapSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glLoadIdentityDeformationMapSGIX");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glLoadIdentityDeformationMapSGIX", mask); }
-        Handles.MH_glLoadIdentityDeformationMapSGIX.invokeExact(handles.PFN_glLoadIdentityDeformationMapSGIX, mask); }
+        Handles.MH_glLoadIdentityDeformationMapSGIX.get().invokeExact(handles.PFN_glLoadIdentityDeformationMapSGIX, mask); }
         catch (Throwable e) { throw new RuntimeException("error in LoadIdentityDeformationMapSGIX", e); }
     }
 

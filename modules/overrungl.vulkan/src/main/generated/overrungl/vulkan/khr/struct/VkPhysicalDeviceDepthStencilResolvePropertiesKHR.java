@@ -37,37 +37,37 @@ public final class VkPhysicalDeviceDepthStencilResolvePropertiesKHR extends Grou
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `supportedDepthResolveModes`.
     public static final long OFFSET_supportedDepthResolveModes = LAYOUT.byteOffset(PathElement.groupElement("supportedDepthResolveModes"));
     /// The memory layout of `supportedDepthResolveModes`.
     public static final MemoryLayout LAYOUT_supportedDepthResolveModes = LAYOUT.select(PathElement.groupElement("supportedDepthResolveModes"));
     /// The [VarHandle] of `supportedDepthResolveModes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedDepthResolveModes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedDepthResolveModes"));
+    public static final Supplier<VarHandle> VH_supportedDepthResolveModes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedDepthResolveModes")));
     /// The byte offset of `supportedStencilResolveModes`.
     public static final long OFFSET_supportedStencilResolveModes = LAYOUT.byteOffset(PathElement.groupElement("supportedStencilResolveModes"));
     /// The memory layout of `supportedStencilResolveModes`.
     public static final MemoryLayout LAYOUT_supportedStencilResolveModes = LAYOUT.select(PathElement.groupElement("supportedStencilResolveModes"));
     /// The [VarHandle] of `supportedStencilResolveModes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedStencilResolveModes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedStencilResolveModes"));
+    public static final Supplier<VarHandle> VH_supportedStencilResolveModes = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedStencilResolveModes")));
     /// The byte offset of `independentResolveNone`.
     public static final long OFFSET_independentResolveNone = LAYOUT.byteOffset(PathElement.groupElement("independentResolveNone"));
     /// The memory layout of `independentResolveNone`.
     public static final MemoryLayout LAYOUT_independentResolveNone = LAYOUT.select(PathElement.groupElement("independentResolveNone"));
     /// The [VarHandle] of `independentResolveNone` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_independentResolveNone = LAYOUT.arrayElementVarHandle(PathElement.groupElement("independentResolveNone"));
+    public static final Supplier<VarHandle> VH_independentResolveNone = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("independentResolveNone")));
     /// The byte offset of `independentResolve`.
     public static final long OFFSET_independentResolve = LAYOUT.byteOffset(PathElement.groupElement("independentResolve"));
     /// The memory layout of `independentResolve`.
     public static final MemoryLayout LAYOUT_independentResolve = LAYOUT.select(PathElement.groupElement("independentResolve"));
     /// The [VarHandle] of `independentResolve` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_independentResolve = LAYOUT.arrayElementVarHandle(PathElement.groupElement("independentResolve"));
+    public static final Supplier<VarHandle> VH_independentResolve = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("independentResolve")));
 
     /// Creates `VkPhysicalDeviceDepthStencilResolvePropertiesKHR` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class VkPhysicalDeviceDepthStencilResolvePropertiesKHR extends Grou
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class VkPhysicalDeviceDepthStencilResolvePropertiesKHR extends Grou
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPhysicalDeviceDepthStencilResolvePropertiesKHR extends Grou
     /// {@return `supportedDepthResolveModes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedDepthResolveModes(MemorySegment segment, long index) { return (int) VH_supportedDepthResolveModes.get(segment, 0L, index); }
+    public static int supportedDepthResolveModes(MemorySegment segment, long index) { return (int) VH_supportedDepthResolveModes.get().get(segment, 0L, index); }
     /// {@return `supportedDepthResolveModes`}
     public int supportedDepthResolveModes() { return supportedDepthResolveModes(this.segment(), 0L); }
     /// Sets `supportedDepthResolveModes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedDepthResolveModes(MemorySegment segment, long index, int value) { VH_supportedDepthResolveModes.set(segment, 0L, index, value); }
+    public static void supportedDepthResolveModes(MemorySegment segment, long index, int value) { VH_supportedDepthResolveModes.get().set(segment, 0L, index, value); }
     /// Sets `supportedDepthResolveModes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPhysicalDeviceDepthStencilResolvePropertiesKHR extends Grou
     /// {@return `supportedStencilResolveModes` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int supportedStencilResolveModes(MemorySegment segment, long index) { return (int) VH_supportedStencilResolveModes.get(segment, 0L, index); }
+    public static int supportedStencilResolveModes(MemorySegment segment, long index) { return (int) VH_supportedStencilResolveModes.get().get(segment, 0L, index); }
     /// {@return `supportedStencilResolveModes`}
     public int supportedStencilResolveModes() { return supportedStencilResolveModes(this.segment(), 0L); }
     /// Sets `supportedStencilResolveModes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void supportedStencilResolveModes(MemorySegment segment, long index, int value) { VH_supportedStencilResolveModes.set(segment, 0L, index, value); }
+    public static void supportedStencilResolveModes(MemorySegment segment, long index, int value) { VH_supportedStencilResolveModes.get().set(segment, 0L, index, value); }
     /// Sets `supportedStencilResolveModes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPhysicalDeviceDepthStencilResolvePropertiesKHR extends Grou
     /// {@return `independentResolveNone` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int independentResolveNone(MemorySegment segment, long index) { return (int) VH_independentResolveNone.get(segment, 0L, index); }
+    public static int independentResolveNone(MemorySegment segment, long index) { return (int) VH_independentResolveNone.get().get(segment, 0L, index); }
     /// {@return `independentResolveNone`}
     public int independentResolveNone() { return independentResolveNone(this.segment(), 0L); }
     /// Sets `independentResolveNone` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void independentResolveNone(MemorySegment segment, long index, int value) { VH_independentResolveNone.set(segment, 0L, index, value); }
+    public static void independentResolveNone(MemorySegment segment, long index, int value) { VH_independentResolveNone.get().set(segment, 0L, index, value); }
     /// Sets `independentResolveNone` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPhysicalDeviceDepthStencilResolvePropertiesKHR extends Grou
     /// {@return `independentResolve` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int independentResolve(MemorySegment segment, long index) { return (int) VH_independentResolve.get(segment, 0L, index); }
+    public static int independentResolve(MemorySegment segment, long index) { return (int) VH_independentResolve.get().get(segment, 0L, index); }
     /// {@return `independentResolve`}
     public int independentResolve() { return independentResolve(this.segment(), 0L); }
     /// Sets `independentResolve` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void independentResolve(MemorySegment segment, long index, int value) { VH_independentResolve.set(segment, 0L, index, value); }
+    public static void independentResolve(MemorySegment segment, long index, int value) { VH_independentResolve.get().set(segment, 0L, index, value); }
     /// Sets `independentResolve` with the given value.
     /// @param value the value
     /// @return `this`

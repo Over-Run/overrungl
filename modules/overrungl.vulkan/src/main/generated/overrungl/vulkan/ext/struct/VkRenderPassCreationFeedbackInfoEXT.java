@@ -27,7 +27,7 @@ public final class VkRenderPassCreationFeedbackInfoEXT extends GroupType {
     /// The memory layout of `postMergeSubpassCount`.
     public static final MemoryLayout LAYOUT_postMergeSubpassCount = LAYOUT.select(PathElement.groupElement("postMergeSubpassCount"));
     /// The [VarHandle] of `postMergeSubpassCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_postMergeSubpassCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("postMergeSubpassCount"));
+    public static final Supplier<VarHandle> VH_postMergeSubpassCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("postMergeSubpassCount")));
 
     /// Creates `VkRenderPassCreationFeedbackInfoEXT` with the given segment.
     /// @param segment      the memory segment
@@ -78,14 +78,14 @@ public final class VkRenderPassCreationFeedbackInfoEXT extends GroupType {
     /// {@return `postMergeSubpassCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int postMergeSubpassCount(MemorySegment segment, long index) { return (int) VH_postMergeSubpassCount.get(segment, 0L, index); }
+    public static int postMergeSubpassCount(MemorySegment segment, long index) { return (int) VH_postMergeSubpassCount.get().get(segment, 0L, index); }
     /// {@return `postMergeSubpassCount`}
     public int postMergeSubpassCount() { return postMergeSubpassCount(this.segment(), 0L); }
     /// Sets `postMergeSubpassCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void postMergeSubpassCount(MemorySegment segment, long index, int value) { VH_postMergeSubpassCount.set(segment, 0L, index, value); }
+    public static void postMergeSubpassCount(MemorySegment segment, long index, int value) { VH_postMergeSubpassCount.get().set(segment, 0L, index, value); }
     /// Sets `postMergeSubpassCount` with the given value.
     /// @param value the value
     /// @return `this`

@@ -27,7 +27,7 @@ public final class VkSetStateFlagsIndirectCommandNV extends GroupType {
     /// The memory layout of `data`.
     public static final MemoryLayout LAYOUT_data = LAYOUT.select(PathElement.groupElement("data"));
     /// The [VarHandle] of `data` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_data = LAYOUT.arrayElementVarHandle(PathElement.groupElement("data"));
+    public static final Supplier<VarHandle> VH_data = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("data")));
 
     /// Creates `VkSetStateFlagsIndirectCommandNV` with the given segment.
     /// @param segment      the memory segment
@@ -78,14 +78,14 @@ public final class VkSetStateFlagsIndirectCommandNV extends GroupType {
     /// {@return `data` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int data(MemorySegment segment, long index) { return (int) VH_data.get(segment, 0L, index); }
+    public static int data(MemorySegment segment, long index) { return (int) VH_data.get().get(segment, 0L, index); }
     /// {@return `data`}
     public int data() { return data(this.segment(), 0L); }
     /// Sets `data` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void data(MemorySegment segment, long index, int value) { VH_data.set(segment, 0L, index, value); }
+    public static void data(MemorySegment segment, long index, int value) { VH_data.get().set(segment, 0L, index, value); }
     /// Sets `data` with the given value.
     /// @param value the value
     /// @return `this`

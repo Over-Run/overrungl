@@ -37,37 +37,37 @@ public final class StdVideoAV1CDEF extends GroupType {
     /// The memory layout of `cdef_damping_minus_3`.
     public static final MemoryLayout LAYOUT_cdef_damping_minus_3 = LAYOUT.select(PathElement.groupElement("cdef_damping_minus_3"));
     /// The [VarHandle] of `cdef_damping_minus_3` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cdef_damping_minus_3 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_damping_minus_3"));
+    public static final Supplier<VarHandle> VH_cdef_damping_minus_3 = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_damping_minus_3")));
     /// The byte offset of `cdef_bits`.
     public static final long OFFSET_cdef_bits = LAYOUT.byteOffset(PathElement.groupElement("cdef_bits"));
     /// The memory layout of `cdef_bits`.
     public static final MemoryLayout LAYOUT_cdef_bits = LAYOUT.select(PathElement.groupElement("cdef_bits"));
     /// The [VarHandle] of `cdef_bits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_cdef_bits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_bits"));
+    public static final Supplier<VarHandle> VH_cdef_bits = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_bits")));
     /// The byte offset of `cdef_y_pri_strength`.
     public static final long OFFSET_cdef_y_pri_strength = LAYOUT.byteOffset(PathElement.groupElement("cdef_y_pri_strength"));
     /// The memory layout of `cdef_y_pri_strength`.
     public static final MemoryLayout LAYOUT_cdef_y_pri_strength = LAYOUT.select(PathElement.groupElement("cdef_y_pri_strength"));
     /// The [VarHandle] of `cdef_y_pri_strength` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_cdef_y_pri_strength = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_y_pri_strength"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_cdef_y_pri_strength = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_y_pri_strength"), PathElement.sequenceElement()));
     /// The byte offset of `cdef_y_sec_strength`.
     public static final long OFFSET_cdef_y_sec_strength = LAYOUT.byteOffset(PathElement.groupElement("cdef_y_sec_strength"));
     /// The memory layout of `cdef_y_sec_strength`.
     public static final MemoryLayout LAYOUT_cdef_y_sec_strength = LAYOUT.select(PathElement.groupElement("cdef_y_sec_strength"));
     /// The [VarHandle] of `cdef_y_sec_strength` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_cdef_y_sec_strength = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_y_sec_strength"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_cdef_y_sec_strength = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_y_sec_strength"), PathElement.sequenceElement()));
     /// The byte offset of `cdef_uv_pri_strength`.
     public static final long OFFSET_cdef_uv_pri_strength = LAYOUT.byteOffset(PathElement.groupElement("cdef_uv_pri_strength"));
     /// The memory layout of `cdef_uv_pri_strength`.
     public static final MemoryLayout LAYOUT_cdef_uv_pri_strength = LAYOUT.select(PathElement.groupElement("cdef_uv_pri_strength"));
     /// The [VarHandle] of `cdef_uv_pri_strength` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_cdef_uv_pri_strength = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_uv_pri_strength"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_cdef_uv_pri_strength = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_uv_pri_strength"), PathElement.sequenceElement()));
     /// The byte offset of `cdef_uv_sec_strength`.
     public static final long OFFSET_cdef_uv_sec_strength = LAYOUT.byteOffset(PathElement.groupElement("cdef_uv_sec_strength"));
     /// The memory layout of `cdef_uv_sec_strength`.
     public static final MemoryLayout LAYOUT_cdef_uv_sec_strength = LAYOUT.select(PathElement.groupElement("cdef_uv_sec_strength"));
     /// The [VarHandle] of `cdef_uv_sec_strength` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_cdef_uv_sec_strength = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_uv_sec_strength"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_cdef_uv_sec_strength = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_uv_sec_strength"), PathElement.sequenceElement()));
 
     /// Creates `StdVideoAV1CDEF` with the given segment.
     /// @param segment      the memory segment
@@ -118,14 +118,14 @@ public final class StdVideoAV1CDEF extends GroupType {
     /// {@return `cdef_damping_minus_3` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte cdef_damping_minus_3(MemorySegment segment, long index) { return (byte) VH_cdef_damping_minus_3.get(segment, 0L, index); }
+    public static byte cdef_damping_minus_3(MemorySegment segment, long index) { return (byte) VH_cdef_damping_minus_3.get().get(segment, 0L, index); }
     /// {@return `cdef_damping_minus_3`}
     public byte cdef_damping_minus_3() { return cdef_damping_minus_3(this.segment(), 0L); }
     /// Sets `cdef_damping_minus_3` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cdef_damping_minus_3(MemorySegment segment, long index, byte value) { VH_cdef_damping_minus_3.set(segment, 0L, index, value); }
+    public static void cdef_damping_minus_3(MemorySegment segment, long index, byte value) { VH_cdef_damping_minus_3.get().set(segment, 0L, index, value); }
     /// Sets `cdef_damping_minus_3` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,14 +134,14 @@ public final class StdVideoAV1CDEF extends GroupType {
     /// {@return `cdef_bits` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static byte cdef_bits(MemorySegment segment, long index) { return (byte) VH_cdef_bits.get(segment, 0L, index); }
+    public static byte cdef_bits(MemorySegment segment, long index) { return (byte) VH_cdef_bits.get().get(segment, 0L, index); }
     /// {@return `cdef_bits`}
     public byte cdef_bits() { return cdef_bits(this.segment(), 0L); }
     /// Sets `cdef_bits` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void cdef_bits(MemorySegment segment, long index, byte value) { VH_cdef_bits.set(segment, 0L, index, value); }
+    public static void cdef_bits(MemorySegment segment, long index, byte value) { VH_cdef_bits.get().set(segment, 0L, index, value); }
     /// Sets `cdef_bits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -155,7 +155,7 @@ public final class StdVideoAV1CDEF extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte cdef_y_pri_strength(MemorySegment segment, long index, long index0) { return (byte) VH_cdef_y_pri_strength.get(segment, 0L, index, index0); }
+    public static byte cdef_y_pri_strength(MemorySegment segment, long index, long index0) { return (byte) VH_cdef_y_pri_strength.get().get(segment, 0L, index, index0); }
     /// {@return `cdef_y_pri_strength`}
     public MemorySegment cdef_y_pri_strength() { return cdef_y_pri_strength(this.segment(), 0L); }
     /// {@return `cdef_y_pri_strength`}
@@ -171,7 +171,7 @@ public final class StdVideoAV1CDEF extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void cdef_y_pri_strength(MemorySegment segment, long index, long index0, byte value) { VH_cdef_y_pri_strength.set(segment, 0L, index, index0, value); }
+    public static void cdef_y_pri_strength(MemorySegment segment, long index, long index0, byte value) { VH_cdef_y_pri_strength.get().set(segment, 0L, index, index0, value); }
     /// Sets `cdef_y_pri_strength` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,7 +190,7 @@ public final class StdVideoAV1CDEF extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte cdef_y_sec_strength(MemorySegment segment, long index, long index0) { return (byte) VH_cdef_y_sec_strength.get(segment, 0L, index, index0); }
+    public static byte cdef_y_sec_strength(MemorySegment segment, long index, long index0) { return (byte) VH_cdef_y_sec_strength.get().get(segment, 0L, index, index0); }
     /// {@return `cdef_y_sec_strength`}
     public MemorySegment cdef_y_sec_strength() { return cdef_y_sec_strength(this.segment(), 0L); }
     /// {@return `cdef_y_sec_strength`}
@@ -206,7 +206,7 @@ public final class StdVideoAV1CDEF extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void cdef_y_sec_strength(MemorySegment segment, long index, long index0, byte value) { VH_cdef_y_sec_strength.set(segment, 0L, index, index0, value); }
+    public static void cdef_y_sec_strength(MemorySegment segment, long index, long index0, byte value) { VH_cdef_y_sec_strength.get().set(segment, 0L, index, index0, value); }
     /// Sets `cdef_y_sec_strength` with the given value.
     /// @param value the value
     /// @return `this`
@@ -225,7 +225,7 @@ public final class StdVideoAV1CDEF extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte cdef_uv_pri_strength(MemorySegment segment, long index, long index0) { return (byte) VH_cdef_uv_pri_strength.get(segment, 0L, index, index0); }
+    public static byte cdef_uv_pri_strength(MemorySegment segment, long index, long index0) { return (byte) VH_cdef_uv_pri_strength.get().get(segment, 0L, index, index0); }
     /// {@return `cdef_uv_pri_strength`}
     public MemorySegment cdef_uv_pri_strength() { return cdef_uv_pri_strength(this.segment(), 0L); }
     /// {@return `cdef_uv_pri_strength`}
@@ -241,7 +241,7 @@ public final class StdVideoAV1CDEF extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void cdef_uv_pri_strength(MemorySegment segment, long index, long index0, byte value) { VH_cdef_uv_pri_strength.set(segment, 0L, index, index0, value); }
+    public static void cdef_uv_pri_strength(MemorySegment segment, long index, long index0, byte value) { VH_cdef_uv_pri_strength.get().set(segment, 0L, index, index0, value); }
     /// Sets `cdef_uv_pri_strength` with the given value.
     /// @param value the value
     /// @return `this`
@@ -260,7 +260,7 @@ public final class StdVideoAV1CDEF extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte cdef_uv_sec_strength(MemorySegment segment, long index, long index0) { return (byte) VH_cdef_uv_sec_strength.get(segment, 0L, index, index0); }
+    public static byte cdef_uv_sec_strength(MemorySegment segment, long index, long index0) { return (byte) VH_cdef_uv_sec_strength.get().get(segment, 0L, index, index0); }
     /// {@return `cdef_uv_sec_strength`}
     public MemorySegment cdef_uv_sec_strength() { return cdef_uv_sec_strength(this.segment(), 0L); }
     /// {@return `cdef_uv_sec_strength`}
@@ -276,7 +276,7 @@ public final class StdVideoAV1CDEF extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void cdef_uv_sec_strength(MemorySegment segment, long index, long index0, byte value) { VH_cdef_uv_sec_strength.set(segment, 0L, index, index0, value); }
+    public static void cdef_uv_sec_strength(MemorySegment segment, long index, long index0, byte value) { VH_cdef_uv_sec_strength.get().set(segment, 0L, index, index0, value); }
     /// Sets `cdef_uv_sec_strength` with the given value.
     /// @param value the value
     /// @return `this`

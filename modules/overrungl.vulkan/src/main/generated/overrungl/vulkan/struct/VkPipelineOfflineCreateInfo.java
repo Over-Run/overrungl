@@ -35,31 +35,31 @@ public final class VkPipelineOfflineCreateInfo extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `pipelineIdentifier`.
     public static final long OFFSET_pipelineIdentifier = LAYOUT.byteOffset(PathElement.groupElement("pipelineIdentifier"));
     /// The memory layout of `pipelineIdentifier`.
     public static final MemoryLayout LAYOUT_pipelineIdentifier = LAYOUT.select(PathElement.groupElement("pipelineIdentifier"));
     /// The [VarHandle] of `pipelineIdentifier` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_pipelineIdentifier = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineIdentifier"), PathElement.sequenceElement());
+    public static final Supplier<VarHandle> VH_pipelineIdentifier = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineIdentifier"), PathElement.sequenceElement()));
     /// The byte offset of `matchControl`.
     public static final long OFFSET_matchControl = LAYOUT.byteOffset(PathElement.groupElement("matchControl"));
     /// The memory layout of `matchControl`.
     public static final MemoryLayout LAYOUT_matchControl = LAYOUT.select(PathElement.groupElement("matchControl"));
     /// The [VarHandle] of `matchControl` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_matchControl = LAYOUT.arrayElementVarHandle(PathElement.groupElement("matchControl"));
+    public static final Supplier<VarHandle> VH_matchControl = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("matchControl")));
     /// The byte offset of `poolEntrySize`.
     public static final long OFFSET_poolEntrySize = LAYOUT.byteOffset(PathElement.groupElement("poolEntrySize"));
     /// The memory layout of `poolEntrySize`.
     public static final MemoryLayout LAYOUT_poolEntrySize = LAYOUT.select(PathElement.groupElement("poolEntrySize"));
     /// The [VarHandle] of `poolEntrySize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_poolEntrySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("poolEntrySize"));
+    public static final Supplier<VarHandle> VH_poolEntrySize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("poolEntrySize")));
 
     /// Creates `VkPipelineOfflineCreateInfo` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPipelineOfflineCreateInfo extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPipelineOfflineCreateInfo extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -147,7 +147,7 @@ public final class VkPipelineOfflineCreateInfo extends GroupType {
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
-    public static byte pipelineIdentifier(MemorySegment segment, long index, long index0) { return (byte) VH_pipelineIdentifier.get(segment, 0L, index, index0); }
+    public static byte pipelineIdentifier(MemorySegment segment, long index, long index0) { return (byte) VH_pipelineIdentifier.get().get(segment, 0L, index, index0); }
     /// {@return `pipelineIdentifier`}
     public MemorySegment pipelineIdentifier() { return pipelineIdentifier(this.segment(), 0L); }
     /// {@return `pipelineIdentifier`}
@@ -163,7 +163,7 @@ public final class VkPipelineOfflineCreateInfo extends GroupType {
     /// @param index the index of the struct buffer
     /// @param index0 the Index 0 of the array
     /// @param value the value
-    public static void pipelineIdentifier(MemorySegment segment, long index, long index0, byte value) { VH_pipelineIdentifier.set(segment, 0L, index, index0, value); }
+    public static void pipelineIdentifier(MemorySegment segment, long index, long index0, byte value) { VH_pipelineIdentifier.get().set(segment, 0L, index, index0, value); }
     /// Sets `pipelineIdentifier` with the given value.
     /// @param value the value
     /// @return `this`
@@ -177,14 +177,14 @@ public final class VkPipelineOfflineCreateInfo extends GroupType {
     /// {@return `matchControl` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int matchControl(MemorySegment segment, long index) { return (int) VH_matchControl.get(segment, 0L, index); }
+    public static int matchControl(MemorySegment segment, long index) { return (int) VH_matchControl.get().get(segment, 0L, index); }
     /// {@return `matchControl`}
     public int matchControl() { return matchControl(this.segment(), 0L); }
     /// Sets `matchControl` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void matchControl(MemorySegment segment, long index, int value) { VH_matchControl.set(segment, 0L, index, value); }
+    public static void matchControl(MemorySegment segment, long index, int value) { VH_matchControl.get().set(segment, 0L, index, value); }
     /// Sets `matchControl` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,14 +193,14 @@ public final class VkPipelineOfflineCreateInfo extends GroupType {
     /// {@return `poolEntrySize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long poolEntrySize(MemorySegment segment, long index) { return (long) VH_poolEntrySize.get(segment, 0L, index); }
+    public static long poolEntrySize(MemorySegment segment, long index) { return (long) VH_poolEntrySize.get().get(segment, 0L, index); }
     /// {@return `poolEntrySize`}
     public long poolEntrySize() { return poolEntrySize(this.segment(), 0L); }
     /// Sets `poolEntrySize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void poolEntrySize(MemorySegment segment, long index, long value) { VH_poolEntrySize.set(segment, 0L, index, value); }
+    public static void poolEntrySize(MemorySegment segment, long index, long value) { VH_poolEntrySize.get().set(segment, 0L, index, value); }
     /// Sets `poolEntrySize` with the given value.
     /// @param value the value
     /// @return `this`

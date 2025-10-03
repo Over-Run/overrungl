@@ -41,31 +41,31 @@ public final class VkBufferImageCopy2 extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `bufferOffset`.
     public static final long OFFSET_bufferOffset = LAYOUT.byteOffset(PathElement.groupElement("bufferOffset"));
     /// The memory layout of `bufferOffset`.
     public static final MemoryLayout LAYOUT_bufferOffset = LAYOUT.select(PathElement.groupElement("bufferOffset"));
     /// The [VarHandle] of `bufferOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferOffset"));
+    public static final Supplier<VarHandle> VH_bufferOffset = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferOffset")));
     /// The byte offset of `bufferRowLength`.
     public static final long OFFSET_bufferRowLength = LAYOUT.byteOffset(PathElement.groupElement("bufferRowLength"));
     /// The memory layout of `bufferRowLength`.
     public static final MemoryLayout LAYOUT_bufferRowLength = LAYOUT.select(PathElement.groupElement("bufferRowLength"));
     /// The [VarHandle] of `bufferRowLength` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferRowLength = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferRowLength"));
+    public static final Supplier<VarHandle> VH_bufferRowLength = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferRowLength")));
     /// The byte offset of `bufferImageHeight`.
     public static final long OFFSET_bufferImageHeight = LAYOUT.byteOffset(PathElement.groupElement("bufferImageHeight"));
     /// The memory layout of `bufferImageHeight`.
     public static final MemoryLayout LAYOUT_bufferImageHeight = LAYOUT.select(PathElement.groupElement("bufferImageHeight"));
     /// The [VarHandle] of `bufferImageHeight` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferImageHeight = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferImageHeight"));
+    public static final Supplier<VarHandle> VH_bufferImageHeight = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferImageHeight")));
     /// The byte offset of `imageSubresource`.
     public static final long OFFSET_imageSubresource = LAYOUT.byteOffset(PathElement.groupElement("imageSubresource"));
     /// The memory layout of `imageSubresource`.
@@ -128,14 +128,14 @@ public final class VkBufferImageCopy2 extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,14 +144,14 @@ public final class VkBufferImageCopy2 extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -160,14 +160,14 @@ public final class VkBufferImageCopy2 extends GroupType {
     /// {@return `bufferOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long bufferOffset(MemorySegment segment, long index) { return (long) VH_bufferOffset.get(segment, 0L, index); }
+    public static long bufferOffset(MemorySegment segment, long index) { return (long) VH_bufferOffset.get().get(segment, 0L, index); }
     /// {@return `bufferOffset`}
     public long bufferOffset() { return bufferOffset(this.segment(), 0L); }
     /// Sets `bufferOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferOffset(MemorySegment segment, long index, long value) { VH_bufferOffset.set(segment, 0L, index, value); }
+    public static void bufferOffset(MemorySegment segment, long index, long value) { VH_bufferOffset.get().set(segment, 0L, index, value); }
     /// Sets `bufferOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,14 +176,14 @@ public final class VkBufferImageCopy2 extends GroupType {
     /// {@return `bufferRowLength` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferRowLength(MemorySegment segment, long index) { return (int) VH_bufferRowLength.get(segment, 0L, index); }
+    public static int bufferRowLength(MemorySegment segment, long index) { return (int) VH_bufferRowLength.get().get(segment, 0L, index); }
     /// {@return `bufferRowLength`}
     public int bufferRowLength() { return bufferRowLength(this.segment(), 0L); }
     /// Sets `bufferRowLength` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferRowLength(MemorySegment segment, long index, int value) { VH_bufferRowLength.set(segment, 0L, index, value); }
+    public static void bufferRowLength(MemorySegment segment, long index, int value) { VH_bufferRowLength.get().set(segment, 0L, index, value); }
     /// Sets `bufferRowLength` with the given value.
     /// @param value the value
     /// @return `this`
@@ -192,14 +192,14 @@ public final class VkBufferImageCopy2 extends GroupType {
     /// {@return `bufferImageHeight` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int bufferImageHeight(MemorySegment segment, long index) { return (int) VH_bufferImageHeight.get(segment, 0L, index); }
+    public static int bufferImageHeight(MemorySegment segment, long index) { return (int) VH_bufferImageHeight.get().get(segment, 0L, index); }
     /// {@return `bufferImageHeight`}
     public int bufferImageHeight() { return bufferImageHeight(this.segment(), 0L); }
     /// Sets `bufferImageHeight` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void bufferImageHeight(MemorySegment segment, long index, int value) { VH_bufferImageHeight.set(segment, 0L, index, value); }
+    public static void bufferImageHeight(MemorySegment segment, long index, int value) { VH_bufferImageHeight.get().set(segment, 0L, index, value); }
     /// Sets `bufferImageHeight` with the given value.
     /// @param value the value
     /// @return `this`

@@ -31,19 +31,19 @@ public final class VkStridedDeviceAddressRangeKHR extends GroupType {
     /// The memory layout of `address`.
     public static final MemoryLayout LAYOUT_address = LAYOUT.select(PathElement.groupElement("address"));
     /// The [VarHandle] of `address` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_address = LAYOUT.arrayElementVarHandle(PathElement.groupElement("address"));
+    public static final Supplier<VarHandle> VH_address = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("address")));
     /// The byte offset of `size`.
     public static final long OFFSET_size = LAYOUT.byteOffset(PathElement.groupElement("size"));
     /// The memory layout of `size`.
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final Supplier<VarHandle> VH_size = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("size")));
     /// The byte offset of `stride`.
     public static final long OFFSET_stride = LAYOUT.byteOffset(PathElement.groupElement("stride"));
     /// The memory layout of `stride`.
     public static final MemoryLayout LAYOUT_stride = LAYOUT.select(PathElement.groupElement("stride"));
     /// The [VarHandle] of `stride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride"));
+    public static final Supplier<VarHandle> VH_stride = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride")));
 
     /// Creates `VkStridedDeviceAddressRangeKHR` with the given segment.
     /// @param segment      the memory segment
@@ -94,14 +94,14 @@ public final class VkStridedDeviceAddressRangeKHR extends GroupType {
     /// {@return `address` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long address(MemorySegment segment, long index) { return (long) VH_address.get(segment, 0L, index); }
+    public static long address(MemorySegment segment, long index) { return (long) VH_address.get().get(segment, 0L, index); }
     /// {@return `address`}
     public long address() { return address(this.segment(), 0L); }
     /// Sets `address` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void address(MemorySegment segment, long index, long value) { VH_address.set(segment, 0L, index, value); }
+    public static void address(MemorySegment segment, long index, long value) { VH_address.get().set(segment, 0L, index, value); }
     /// Sets `address` with the given value.
     /// @param value the value
     /// @return `this`
@@ -110,14 +110,14 @@ public final class VkStridedDeviceAddressRangeKHR extends GroupType {
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long size(MemorySegment segment, long index) { return (long) VH_size.get(segment, 0L, index); }
+    public static long size(MemorySegment segment, long index) { return (long) VH_size.get().get(segment, 0L, index); }
     /// {@return `size`}
     public long size() { return size(this.segment(), 0L); }
     /// Sets `size` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void size(MemorySegment segment, long index, long value) { VH_size.set(segment, 0L, index, value); }
+    public static void size(MemorySegment segment, long index, long value) { VH_size.get().set(segment, 0L, index, value); }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkStridedDeviceAddressRangeKHR extends GroupType {
     /// {@return `stride` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long stride(MemorySegment segment, long index) { return (long) VH_stride.get(segment, 0L, index); }
+    public static long stride(MemorySegment segment, long index) { return (long) VH_stride.get().get(segment, 0L, index); }
     /// {@return `stride`}
     public long stride() { return stride(this.segment(), 0L); }
     /// Sets `stride` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void stride(MemorySegment segment, long index, long value) { VH_stride.set(segment, 0L, index, value); }
+    public static void stride(MemorySegment segment, long index, long value) { VH_stride.get().set(segment, 0L, index, value); }
     /// Sets `stride` with the given value.
     /// @param value the value
     /// @return `this`

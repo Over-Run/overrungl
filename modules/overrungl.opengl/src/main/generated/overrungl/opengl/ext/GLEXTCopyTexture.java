@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -10,11 +11,11 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class GLEXTCopyTexture {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glCopyTexImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCopyTexImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCopyTexSubImage1DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCopyTexSubImage2DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCopyTexSubImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final Supplier<MethodHandle> MH_glCopyTexImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCopyTexImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCopyTexSubImage1DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCopyTexSubImage2DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
+        public static final Supplier<MethodHandle> MH_glCopyTexSubImage3DEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)));
         public final MemorySegment PFN_glCopyTexImage1DEXT;
         public final MemorySegment PFN_glCopyTexImage2DEXT;
         public final MemorySegment PFN_glCopyTexSubImage1DEXT;
@@ -40,7 +41,7 @@ public final class GLEXTCopyTexture {
     public void CopyTexImage1DEXT(int target, int level, int internalformat, int x, int y, int width, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyTexImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyTexImage1DEXT", target, level, internalformat, x, y, width, border); }
-        Handles.MH_glCopyTexImage1DEXT.invokeExact(handles.PFN_glCopyTexImage1DEXT, target, level, internalformat, x, y, width, border); }
+        Handles.MH_glCopyTexImage1DEXT.get().invokeExact(handles.PFN_glCopyTexImage1DEXT, target, level, internalformat, x, y, width, border); }
         catch (Throwable e) { throw new RuntimeException("error in CopyTexImage1DEXT", e); }
     }
 
@@ -51,7 +52,7 @@ public final class GLEXTCopyTexture {
     public void CopyTexImage2DEXT(int target, int level, int internalformat, int x, int y, int width, int height, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyTexImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyTexImage2DEXT", target, level, internalformat, x, y, width, height, border); }
-        Handles.MH_glCopyTexImage2DEXT.invokeExact(handles.PFN_glCopyTexImage2DEXT, target, level, internalformat, x, y, width, height, border); }
+        Handles.MH_glCopyTexImage2DEXT.get().invokeExact(handles.PFN_glCopyTexImage2DEXT, target, level, internalformat, x, y, width, height, border); }
         catch (Throwable e) { throw new RuntimeException("error in CopyTexImage2DEXT", e); }
     }
 
@@ -62,7 +63,7 @@ public final class GLEXTCopyTexture {
     public void CopyTexSubImage1DEXT(int target, int level, int xoffset, int x, int y, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyTexSubImage1DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyTexSubImage1DEXT", target, level, xoffset, x, y, width); }
-        Handles.MH_glCopyTexSubImage1DEXT.invokeExact(handles.PFN_glCopyTexSubImage1DEXT, target, level, xoffset, x, y, width); }
+        Handles.MH_glCopyTexSubImage1DEXT.get().invokeExact(handles.PFN_glCopyTexSubImage1DEXT, target, level, xoffset, x, y, width); }
         catch (Throwable e) { throw new RuntimeException("error in CopyTexSubImage1DEXT", e); }
     }
 
@@ -73,7 +74,7 @@ public final class GLEXTCopyTexture {
     public void CopyTexSubImage2DEXT(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyTexSubImage2DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyTexSubImage2DEXT", target, level, xoffset, yoffset, x, y, width, height); }
-        Handles.MH_glCopyTexSubImage2DEXT.invokeExact(handles.PFN_glCopyTexSubImage2DEXT, target, level, xoffset, yoffset, x, y, width, height); }
+        Handles.MH_glCopyTexSubImage2DEXT.get().invokeExact(handles.PFN_glCopyTexSubImage2DEXT, target, level, xoffset, yoffset, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in CopyTexSubImage2DEXT", e); }
     }
 
@@ -84,7 +85,7 @@ public final class GLEXTCopyTexture {
     public void CopyTexSubImage3DEXT(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyTexSubImage3DEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyTexSubImage3DEXT", target, level, xoffset, yoffset, zoffset, x, y, width, height); }
-        Handles.MH_glCopyTexSubImage3DEXT.invokeExact(handles.PFN_glCopyTexSubImage3DEXT, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
+        Handles.MH_glCopyTexSubImage3DEXT.get().invokeExact(handles.PFN_glCopyTexSubImage3DEXT, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in CopyTexSubImage3DEXT", e); }
     }
 

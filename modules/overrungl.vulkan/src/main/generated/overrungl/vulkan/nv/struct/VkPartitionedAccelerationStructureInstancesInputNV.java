@@ -39,43 +39,43 @@ public final class VkPartitionedAccelerationStructureInstancesInputNV extends Gr
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `instanceCount`.
     public static final long OFFSET_instanceCount = LAYOUT.byteOffset(PathElement.groupElement("instanceCount"));
     /// The memory layout of `instanceCount`.
     public static final MemoryLayout LAYOUT_instanceCount = LAYOUT.select(PathElement.groupElement("instanceCount"));
     /// The [VarHandle] of `instanceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_instanceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceCount"));
+    public static final Supplier<VarHandle> VH_instanceCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceCount")));
     /// The byte offset of `maxInstancePerPartitionCount`.
     public static final long OFFSET_maxInstancePerPartitionCount = LAYOUT.byteOffset(PathElement.groupElement("maxInstancePerPartitionCount"));
     /// The memory layout of `maxInstancePerPartitionCount`.
     public static final MemoryLayout LAYOUT_maxInstancePerPartitionCount = LAYOUT.select(PathElement.groupElement("maxInstancePerPartitionCount"));
     /// The [VarHandle] of `maxInstancePerPartitionCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxInstancePerPartitionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInstancePerPartitionCount"));
+    public static final Supplier<VarHandle> VH_maxInstancePerPartitionCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInstancePerPartitionCount")));
     /// The byte offset of `partitionCount`.
     public static final long OFFSET_partitionCount = LAYOUT.byteOffset(PathElement.groupElement("partitionCount"));
     /// The memory layout of `partitionCount`.
     public static final MemoryLayout LAYOUT_partitionCount = LAYOUT.select(PathElement.groupElement("partitionCount"));
     /// The [VarHandle] of `partitionCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_partitionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("partitionCount"));
+    public static final Supplier<VarHandle> VH_partitionCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("partitionCount")));
     /// The byte offset of `maxInstanceInGlobalPartitionCount`.
     public static final long OFFSET_maxInstanceInGlobalPartitionCount = LAYOUT.byteOffset(PathElement.groupElement("maxInstanceInGlobalPartitionCount"));
     /// The memory layout of `maxInstanceInGlobalPartitionCount`.
     public static final MemoryLayout LAYOUT_maxInstanceInGlobalPartitionCount = LAYOUT.select(PathElement.groupElement("maxInstanceInGlobalPartitionCount"));
     /// The [VarHandle] of `maxInstanceInGlobalPartitionCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxInstanceInGlobalPartitionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInstanceInGlobalPartitionCount"));
+    public static final Supplier<VarHandle> VH_maxInstanceInGlobalPartitionCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInstanceInGlobalPartitionCount")));
 
     /// Creates `VkPartitionedAccelerationStructureInstancesInputNV` with the given segment.
     /// @param segment      the memory segment
@@ -126,14 +126,14 @@ public final class VkPartitionedAccelerationStructureInstancesInputNV extends Gr
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPartitionedAccelerationStructureInstancesInputNV extends Gr
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPartitionedAccelerationStructureInstancesInputNV extends Gr
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPartitionedAccelerationStructureInstancesInputNV extends Gr
     /// {@return `instanceCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int instanceCount(MemorySegment segment, long index) { return (int) VH_instanceCount.get(segment, 0L, index); }
+    public static int instanceCount(MemorySegment segment, long index) { return (int) VH_instanceCount.get().get(segment, 0L, index); }
     /// {@return `instanceCount`}
     public int instanceCount() { return instanceCount(this.segment(), 0L); }
     /// Sets `instanceCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void instanceCount(MemorySegment segment, long index, int value) { VH_instanceCount.set(segment, 0L, index, value); }
+    public static void instanceCount(MemorySegment segment, long index, int value) { VH_instanceCount.get().set(segment, 0L, index, value); }
     /// Sets `instanceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -190,14 +190,14 @@ public final class VkPartitionedAccelerationStructureInstancesInputNV extends Gr
     /// {@return `maxInstancePerPartitionCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxInstancePerPartitionCount(MemorySegment segment, long index) { return (int) VH_maxInstancePerPartitionCount.get(segment, 0L, index); }
+    public static int maxInstancePerPartitionCount(MemorySegment segment, long index) { return (int) VH_maxInstancePerPartitionCount.get().get(segment, 0L, index); }
     /// {@return `maxInstancePerPartitionCount`}
     public int maxInstancePerPartitionCount() { return maxInstancePerPartitionCount(this.segment(), 0L); }
     /// Sets `maxInstancePerPartitionCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxInstancePerPartitionCount(MemorySegment segment, long index, int value) { VH_maxInstancePerPartitionCount.set(segment, 0L, index, value); }
+    public static void maxInstancePerPartitionCount(MemorySegment segment, long index, int value) { VH_maxInstancePerPartitionCount.get().set(segment, 0L, index, value); }
     /// Sets `maxInstancePerPartitionCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,14 +206,14 @@ public final class VkPartitionedAccelerationStructureInstancesInputNV extends Gr
     /// {@return `partitionCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int partitionCount(MemorySegment segment, long index) { return (int) VH_partitionCount.get(segment, 0L, index); }
+    public static int partitionCount(MemorySegment segment, long index) { return (int) VH_partitionCount.get().get(segment, 0L, index); }
     /// {@return `partitionCount`}
     public int partitionCount() { return partitionCount(this.segment(), 0L); }
     /// Sets `partitionCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void partitionCount(MemorySegment segment, long index, int value) { VH_partitionCount.set(segment, 0L, index, value); }
+    public static void partitionCount(MemorySegment segment, long index, int value) { VH_partitionCount.get().set(segment, 0L, index, value); }
     /// Sets `partitionCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,14 +222,14 @@ public final class VkPartitionedAccelerationStructureInstancesInputNV extends Gr
     /// {@return `maxInstanceInGlobalPartitionCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxInstanceInGlobalPartitionCount(MemorySegment segment, long index) { return (int) VH_maxInstanceInGlobalPartitionCount.get(segment, 0L, index); }
+    public static int maxInstanceInGlobalPartitionCount(MemorySegment segment, long index) { return (int) VH_maxInstanceInGlobalPartitionCount.get().get(segment, 0L, index); }
     /// {@return `maxInstanceInGlobalPartitionCount`}
     public int maxInstanceInGlobalPartitionCount() { return maxInstanceInGlobalPartitionCount(this.segment(), 0L); }
     /// Sets `maxInstanceInGlobalPartitionCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxInstanceInGlobalPartitionCount(MemorySegment segment, long index, int value) { VH_maxInstanceInGlobalPartitionCount.set(segment, 0L, index, value); }
+    public static void maxInstanceInGlobalPartitionCount(MemorySegment segment, long index, int value) { VH_maxInstanceInGlobalPartitionCount.get().set(segment, 0L, index, value); }
     /// Sets `maxInstanceInGlobalPartitionCount` with the given value.
     /// @param value the value
     /// @return `this`

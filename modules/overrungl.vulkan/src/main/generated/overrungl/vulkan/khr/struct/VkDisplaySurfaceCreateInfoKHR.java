@@ -45,55 +45,55 @@ public final class VkDisplaySurfaceCreateInfoKHR extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `displayMode`.
     public static final long OFFSET_displayMode = LAYOUT.byteOffset(PathElement.groupElement("displayMode"));
     /// The memory layout of `displayMode`.
     public static final MemoryLayout LAYOUT_displayMode = LAYOUT.select(PathElement.groupElement("displayMode"));
     /// The [VarHandle] of `displayMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_displayMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayMode"));
+    public static final Supplier<VarHandle> VH_displayMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayMode")));
     /// The byte offset of `planeIndex`.
     public static final long OFFSET_planeIndex = LAYOUT.byteOffset(PathElement.groupElement("planeIndex"));
     /// The memory layout of `planeIndex`.
     public static final MemoryLayout LAYOUT_planeIndex = LAYOUT.select(PathElement.groupElement("planeIndex"));
     /// The [VarHandle] of `planeIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_planeIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("planeIndex"));
+    public static final Supplier<VarHandle> VH_planeIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("planeIndex")));
     /// The byte offset of `planeStackIndex`.
     public static final long OFFSET_planeStackIndex = LAYOUT.byteOffset(PathElement.groupElement("planeStackIndex"));
     /// The memory layout of `planeStackIndex`.
     public static final MemoryLayout LAYOUT_planeStackIndex = LAYOUT.select(PathElement.groupElement("planeStackIndex"));
     /// The [VarHandle] of `planeStackIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_planeStackIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("planeStackIndex"));
+    public static final Supplier<VarHandle> VH_planeStackIndex = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("planeStackIndex")));
     /// The byte offset of `transform`.
     public static final long OFFSET_transform = LAYOUT.byteOffset(PathElement.groupElement("transform"));
     /// The memory layout of `transform`.
     public static final MemoryLayout LAYOUT_transform = LAYOUT.select(PathElement.groupElement("transform"));
     /// The [VarHandle] of `transform` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_transform = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transform"));
+    public static final Supplier<VarHandle> VH_transform = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("transform")));
     /// The byte offset of `globalAlpha`.
     public static final long OFFSET_globalAlpha = LAYOUT.byteOffset(PathElement.groupElement("globalAlpha"));
     /// The memory layout of `globalAlpha`.
     public static final MemoryLayout LAYOUT_globalAlpha = LAYOUT.select(PathElement.groupElement("globalAlpha"));
     /// The [VarHandle] of `globalAlpha` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_globalAlpha = LAYOUT.arrayElementVarHandle(PathElement.groupElement("globalAlpha"));
+    public static final Supplier<VarHandle> VH_globalAlpha = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("globalAlpha")));
     /// The byte offset of `alphaMode`.
     public static final long OFFSET_alphaMode = LAYOUT.byteOffset(PathElement.groupElement("alphaMode"));
     /// The memory layout of `alphaMode`.
     public static final MemoryLayout LAYOUT_alphaMode = LAYOUT.select(PathElement.groupElement("alphaMode"));
     /// The [VarHandle] of `alphaMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_alphaMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("alphaMode"));
+    public static final Supplier<VarHandle> VH_alphaMode = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("alphaMode")));
     /// The byte offset of `imageExtent`.
     public static final long OFFSET_imageExtent = LAYOUT.byteOffset(PathElement.groupElement("imageExtent"));
     /// The memory layout of `imageExtent`.
@@ -148,14 +148,14 @@ public final class VkDisplaySurfaceCreateInfoKHR extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,14 +164,14 @@ public final class VkDisplaySurfaceCreateInfoKHR extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -180,14 +180,14 @@ public final class VkDisplaySurfaceCreateInfoKHR extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -196,14 +196,14 @@ public final class VkDisplaySurfaceCreateInfoKHR extends GroupType {
     /// {@return `displayMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long displayMode(MemorySegment segment, long index) { return (long) VH_displayMode.get(segment, 0L, index); }
+    public static long displayMode(MemorySegment segment, long index) { return (long) VH_displayMode.get().get(segment, 0L, index); }
     /// {@return `displayMode`}
     public long displayMode() { return displayMode(this.segment(), 0L); }
     /// Sets `displayMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void displayMode(MemorySegment segment, long index, long value) { VH_displayMode.set(segment, 0L, index, value); }
+    public static void displayMode(MemorySegment segment, long index, long value) { VH_displayMode.get().set(segment, 0L, index, value); }
     /// Sets `displayMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,14 +212,14 @@ public final class VkDisplaySurfaceCreateInfoKHR extends GroupType {
     /// {@return `planeIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int planeIndex(MemorySegment segment, long index) { return (int) VH_planeIndex.get(segment, 0L, index); }
+    public static int planeIndex(MemorySegment segment, long index) { return (int) VH_planeIndex.get().get(segment, 0L, index); }
     /// {@return `planeIndex`}
     public int planeIndex() { return planeIndex(this.segment(), 0L); }
     /// Sets `planeIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void planeIndex(MemorySegment segment, long index, int value) { VH_planeIndex.set(segment, 0L, index, value); }
+    public static void planeIndex(MemorySegment segment, long index, int value) { VH_planeIndex.get().set(segment, 0L, index, value); }
     /// Sets `planeIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -228,14 +228,14 @@ public final class VkDisplaySurfaceCreateInfoKHR extends GroupType {
     /// {@return `planeStackIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int planeStackIndex(MemorySegment segment, long index) { return (int) VH_planeStackIndex.get(segment, 0L, index); }
+    public static int planeStackIndex(MemorySegment segment, long index) { return (int) VH_planeStackIndex.get().get(segment, 0L, index); }
     /// {@return `planeStackIndex`}
     public int planeStackIndex() { return planeStackIndex(this.segment(), 0L); }
     /// Sets `planeStackIndex` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void planeStackIndex(MemorySegment segment, long index, int value) { VH_planeStackIndex.set(segment, 0L, index, value); }
+    public static void planeStackIndex(MemorySegment segment, long index, int value) { VH_planeStackIndex.get().set(segment, 0L, index, value); }
     /// Sets `planeStackIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -244,14 +244,14 @@ public final class VkDisplaySurfaceCreateInfoKHR extends GroupType {
     /// {@return `transform` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int transform(MemorySegment segment, long index) { return (int) VH_transform.get(segment, 0L, index); }
+    public static int transform(MemorySegment segment, long index) { return (int) VH_transform.get().get(segment, 0L, index); }
     /// {@return `transform`}
     public int transform() { return transform(this.segment(), 0L); }
     /// Sets `transform` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void transform(MemorySegment segment, long index, int value) { VH_transform.set(segment, 0L, index, value); }
+    public static void transform(MemorySegment segment, long index, int value) { VH_transform.get().set(segment, 0L, index, value); }
     /// Sets `transform` with the given value.
     /// @param value the value
     /// @return `this`
@@ -260,14 +260,14 @@ public final class VkDisplaySurfaceCreateInfoKHR extends GroupType {
     /// {@return `globalAlpha` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static float globalAlpha(MemorySegment segment, long index) { return (float) VH_globalAlpha.get(segment, 0L, index); }
+    public static float globalAlpha(MemorySegment segment, long index) { return (float) VH_globalAlpha.get().get(segment, 0L, index); }
     /// {@return `globalAlpha`}
     public float globalAlpha() { return globalAlpha(this.segment(), 0L); }
     /// Sets `globalAlpha` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void globalAlpha(MemorySegment segment, long index, float value) { VH_globalAlpha.set(segment, 0L, index, value); }
+    public static void globalAlpha(MemorySegment segment, long index, float value) { VH_globalAlpha.get().set(segment, 0L, index, value); }
     /// Sets `globalAlpha` with the given value.
     /// @param value the value
     /// @return `this`
@@ -276,14 +276,14 @@ public final class VkDisplaySurfaceCreateInfoKHR extends GroupType {
     /// {@return `alphaMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int alphaMode(MemorySegment segment, long index) { return (int) VH_alphaMode.get(segment, 0L, index); }
+    public static int alphaMode(MemorySegment segment, long index) { return (int) VH_alphaMode.get().get(segment, 0L, index); }
     /// {@return `alphaMode`}
     public int alphaMode() { return alphaMode(this.segment(), 0L); }
     /// Sets `alphaMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void alphaMode(MemorySegment segment, long index, int value) { VH_alphaMode.set(segment, 0L, index, value); }
+    public static void alphaMode(MemorySegment segment, long index, int value) { VH_alphaMode.get().set(segment, 0L, index, value); }
     /// Sets `alphaMode` with the given value.
     /// @param value the value
     /// @return `this`

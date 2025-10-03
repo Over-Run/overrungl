@@ -29,13 +29,13 @@ public final class VkPipelineCreationFeedback extends GroupType {
     /// The memory layout of `flags`.
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final Supplier<VarHandle> VH_flags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags")));
     /// The byte offset of `duration`.
     public static final long OFFSET_duration = LAYOUT.byteOffset(PathElement.groupElement("duration"));
     /// The memory layout of `duration`.
     public static final MemoryLayout LAYOUT_duration = LAYOUT.select(PathElement.groupElement("duration"));
     /// The [VarHandle] of `duration` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_duration = LAYOUT.arrayElementVarHandle(PathElement.groupElement("duration"));
+    public static final Supplier<VarHandle> VH_duration = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("duration")));
 
     /// Creates `VkPipelineCreationFeedback` with the given segment.
     /// @param segment      the memory segment
@@ -86,14 +86,14 @@ public final class VkPipelineCreationFeedback extends GroupType {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get().get(segment, 0L, index); }
     /// {@return `flags`}
     public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.get().set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -102,14 +102,14 @@ public final class VkPipelineCreationFeedback extends GroupType {
     /// {@return `duration` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long duration(MemorySegment segment, long index) { return (long) VH_duration.get(segment, 0L, index); }
+    public static long duration(MemorySegment segment, long index) { return (long) VH_duration.get().get(segment, 0L, index); }
     /// {@return `duration`}
     public long duration() { return duration(this.segment(), 0L); }
     /// Sets `duration` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void duration(MemorySegment segment, long index, long value) { VH_duration.set(segment, 0L, index, value); }
+    public static void duration(MemorySegment segment, long index, long value) { VH_duration.get().set(segment, 0L, index, value); }
     /// Sets `duration` with the given value.
     /// @param value the value
     /// @return `this`

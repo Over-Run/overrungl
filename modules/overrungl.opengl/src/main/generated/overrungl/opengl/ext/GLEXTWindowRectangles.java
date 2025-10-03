@@ -2,6 +2,7 @@
 package overrungl.opengl.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.function.*;
 import org.jspecify.annotations.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
@@ -16,7 +17,7 @@ public final class GLEXTWindowRectangles {
     public static final int GL_NUM_WINDOW_RECTANGLES_EXT = 0x8F15;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glWindowRectanglesEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final Supplier<MethodHandle> MH_glWindowRectanglesEXT = StableValue.supplier(() -> downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)));
         public final MemorySegment PFN_glWindowRectanglesEXT;
         private Handles(GLLoadFunc func) {
             PFN_glWindowRectanglesEXT = func.invoke("glWindowRectanglesEXT");
@@ -34,7 +35,7 @@ public final class GLEXTWindowRectangles {
     public void WindowRectanglesEXT(int mode, int count, @NonNull MemorySegment box) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowRectanglesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glWindowRectanglesEXT");
         try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowRectanglesEXT", mode, count, box); }
-        Handles.MH_glWindowRectanglesEXT.invokeExact(handles.PFN_glWindowRectanglesEXT, mode, count, box); }
+        Handles.MH_glWindowRectanglesEXT.get().invokeExact(handles.PFN_glWindowRectanglesEXT, mode, count, box); }
         catch (Throwable e) { throw new RuntimeException("error in WindowRectanglesEXT", e); }
     }
 

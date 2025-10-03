@@ -35,31 +35,31 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `extendedSparseAddressSpaceSize`.
     public static final long OFFSET_extendedSparseAddressSpaceSize = LAYOUT.byteOffset(PathElement.groupElement("extendedSparseAddressSpaceSize"));
     /// The memory layout of `extendedSparseAddressSpaceSize`.
     public static final MemoryLayout LAYOUT_extendedSparseAddressSpaceSize = LAYOUT.select(PathElement.groupElement("extendedSparseAddressSpaceSize"));
     /// The [VarHandle] of `extendedSparseAddressSpaceSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedSparseAddressSpaceSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedSparseAddressSpaceSize"));
+    public static final Supplier<VarHandle> VH_extendedSparseAddressSpaceSize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedSparseAddressSpaceSize")));
     /// The byte offset of `extendedSparseImageUsageFlags`.
     public static final long OFFSET_extendedSparseImageUsageFlags = LAYOUT.byteOffset(PathElement.groupElement("extendedSparseImageUsageFlags"));
     /// The memory layout of `extendedSparseImageUsageFlags`.
     public static final MemoryLayout LAYOUT_extendedSparseImageUsageFlags = LAYOUT.select(PathElement.groupElement("extendedSparseImageUsageFlags"));
     /// The [VarHandle] of `extendedSparseImageUsageFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedSparseImageUsageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedSparseImageUsageFlags"));
+    public static final Supplier<VarHandle> VH_extendedSparseImageUsageFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedSparseImageUsageFlags")));
     /// The byte offset of `extendedSparseBufferUsageFlags`.
     public static final long OFFSET_extendedSparseBufferUsageFlags = LAYOUT.byteOffset(PathElement.groupElement("extendedSparseBufferUsageFlags"));
     /// The memory layout of `extendedSparseBufferUsageFlags`.
     public static final MemoryLayout LAYOUT_extendedSparseBufferUsageFlags = LAYOUT.select(PathElement.groupElement("extendedSparseBufferUsageFlags"));
     /// The [VarHandle] of `extendedSparseBufferUsageFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_extendedSparseBufferUsageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedSparseBufferUsageFlags"));
+    public static final Supplier<VarHandle> VH_extendedSparseBufferUsageFlags = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedSparseBufferUsageFlags")));
 
     /// Creates `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// {@return `extendedSparseAddressSpaceSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long extendedSparseAddressSpaceSize(MemorySegment segment, long index) { return (long) VH_extendedSparseAddressSpaceSize.get(segment, 0L, index); }
+    public static long extendedSparseAddressSpaceSize(MemorySegment segment, long index) { return (long) VH_extendedSparseAddressSpaceSize.get().get(segment, 0L, index); }
     /// {@return `extendedSparseAddressSpaceSize`}
     public long extendedSparseAddressSpaceSize() { return extendedSparseAddressSpaceSize(this.segment(), 0L); }
     /// Sets `extendedSparseAddressSpaceSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedSparseAddressSpaceSize(MemorySegment segment, long index, long value) { VH_extendedSparseAddressSpaceSize.set(segment, 0L, index, value); }
+    public static void extendedSparseAddressSpaceSize(MemorySegment segment, long index, long value) { VH_extendedSparseAddressSpaceSize.get().set(segment, 0L, index, value); }
     /// Sets `extendedSparseAddressSpaceSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// {@return `extendedSparseImageUsageFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedSparseImageUsageFlags(MemorySegment segment, long index) { return (int) VH_extendedSparseImageUsageFlags.get(segment, 0L, index); }
+    public static int extendedSparseImageUsageFlags(MemorySegment segment, long index) { return (int) VH_extendedSparseImageUsageFlags.get().get(segment, 0L, index); }
     /// {@return `extendedSparseImageUsageFlags`}
     public int extendedSparseImageUsageFlags() { return extendedSparseImageUsageFlags(this.segment(), 0L); }
     /// Sets `extendedSparseImageUsageFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedSparseImageUsageFlags(MemorySegment segment, long index, int value) { VH_extendedSparseImageUsageFlags.set(segment, 0L, index, value); }
+    public static void extendedSparseImageUsageFlags(MemorySegment segment, long index, int value) { VH_extendedSparseImageUsageFlags.get().set(segment, 0L, index, value); }
     /// Sets `extendedSparseImageUsageFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// {@return `extendedSparseBufferUsageFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int extendedSparseBufferUsageFlags(MemorySegment segment, long index) { return (int) VH_extendedSparseBufferUsageFlags.get(segment, 0L, index); }
+    public static int extendedSparseBufferUsageFlags(MemorySegment segment, long index) { return (int) VH_extendedSparseBufferUsageFlags.get().get(segment, 0L, index); }
     /// {@return `extendedSparseBufferUsageFlags`}
     public int extendedSparseBufferUsageFlags() { return extendedSparseBufferUsageFlags(this.segment(), 0L); }
     /// Sets `extendedSparseBufferUsageFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void extendedSparseBufferUsageFlags(MemorySegment segment, long index, int value) { VH_extendedSparseBufferUsageFlags.set(segment, 0L, index, value); }
+    public static void extendedSparseBufferUsageFlags(MemorySegment segment, long index, int value) { VH_extendedSparseBufferUsageFlags.get().set(segment, 0L, index, value); }
     /// Sets `extendedSparseBufferUsageFlags` with the given value.
     /// @param value the value
     /// @return `this`

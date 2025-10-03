@@ -45,61 +45,61 @@ public final class VkClusterAccelerationStructureTriangleClusterInputNV extends 
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `vertexFormat`.
     public static final long OFFSET_vertexFormat = LAYOUT.byteOffset(PathElement.groupElement("vertexFormat"));
     /// The memory layout of `vertexFormat`.
     public static final MemoryLayout LAYOUT_vertexFormat = LAYOUT.select(PathElement.groupElement("vertexFormat"));
     /// The [VarHandle] of `vertexFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexFormat"));
+    public static final Supplier<VarHandle> VH_vertexFormat = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexFormat")));
     /// The byte offset of `maxGeometryIndexValue`.
     public static final long OFFSET_maxGeometryIndexValue = LAYOUT.byteOffset(PathElement.groupElement("maxGeometryIndexValue"));
     /// The memory layout of `maxGeometryIndexValue`.
     public static final MemoryLayout LAYOUT_maxGeometryIndexValue = LAYOUT.select(PathElement.groupElement("maxGeometryIndexValue"));
     /// The [VarHandle] of `maxGeometryIndexValue` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxGeometryIndexValue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxGeometryIndexValue"));
+    public static final Supplier<VarHandle> VH_maxGeometryIndexValue = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxGeometryIndexValue")));
     /// The byte offset of `maxClusterUniqueGeometryCount`.
     public static final long OFFSET_maxClusterUniqueGeometryCount = LAYOUT.byteOffset(PathElement.groupElement("maxClusterUniqueGeometryCount"));
     /// The memory layout of `maxClusterUniqueGeometryCount`.
     public static final MemoryLayout LAYOUT_maxClusterUniqueGeometryCount = LAYOUT.select(PathElement.groupElement("maxClusterUniqueGeometryCount"));
     /// The [VarHandle] of `maxClusterUniqueGeometryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxClusterUniqueGeometryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxClusterUniqueGeometryCount"));
+    public static final Supplier<VarHandle> VH_maxClusterUniqueGeometryCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxClusterUniqueGeometryCount")));
     /// The byte offset of `maxClusterTriangleCount`.
     public static final long OFFSET_maxClusterTriangleCount = LAYOUT.byteOffset(PathElement.groupElement("maxClusterTriangleCount"));
     /// The memory layout of `maxClusterTriangleCount`.
     public static final MemoryLayout LAYOUT_maxClusterTriangleCount = LAYOUT.select(PathElement.groupElement("maxClusterTriangleCount"));
     /// The [VarHandle] of `maxClusterTriangleCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxClusterTriangleCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxClusterTriangleCount"));
+    public static final Supplier<VarHandle> VH_maxClusterTriangleCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxClusterTriangleCount")));
     /// The byte offset of `maxClusterVertexCount`.
     public static final long OFFSET_maxClusterVertexCount = LAYOUT.byteOffset(PathElement.groupElement("maxClusterVertexCount"));
     /// The memory layout of `maxClusterVertexCount`.
     public static final MemoryLayout LAYOUT_maxClusterVertexCount = LAYOUT.select(PathElement.groupElement("maxClusterVertexCount"));
     /// The [VarHandle] of `maxClusterVertexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxClusterVertexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxClusterVertexCount"));
+    public static final Supplier<VarHandle> VH_maxClusterVertexCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxClusterVertexCount")));
     /// The byte offset of `maxTotalTriangleCount`.
     public static final long OFFSET_maxTotalTriangleCount = LAYOUT.byteOffset(PathElement.groupElement("maxTotalTriangleCount"));
     /// The memory layout of `maxTotalTriangleCount`.
     public static final MemoryLayout LAYOUT_maxTotalTriangleCount = LAYOUT.select(PathElement.groupElement("maxTotalTriangleCount"));
     /// The [VarHandle] of `maxTotalTriangleCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTotalTriangleCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTotalTriangleCount"));
+    public static final Supplier<VarHandle> VH_maxTotalTriangleCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTotalTriangleCount")));
     /// The byte offset of `maxTotalVertexCount`.
     public static final long OFFSET_maxTotalVertexCount = LAYOUT.byteOffset(PathElement.groupElement("maxTotalVertexCount"));
     /// The memory layout of `maxTotalVertexCount`.
     public static final MemoryLayout LAYOUT_maxTotalVertexCount = LAYOUT.select(PathElement.groupElement("maxTotalVertexCount"));
     /// The [VarHandle] of `maxTotalVertexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxTotalVertexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTotalVertexCount"));
+    public static final Supplier<VarHandle> VH_maxTotalVertexCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTotalVertexCount")));
     /// The byte offset of `minPositionTruncateBitCount`.
     public static final long OFFSET_minPositionTruncateBitCount = LAYOUT.byteOffset(PathElement.groupElement("minPositionTruncateBitCount"));
     /// The memory layout of `minPositionTruncateBitCount`.
     public static final MemoryLayout LAYOUT_minPositionTruncateBitCount = LAYOUT.select(PathElement.groupElement("minPositionTruncateBitCount"));
     /// The [VarHandle] of `minPositionTruncateBitCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minPositionTruncateBitCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minPositionTruncateBitCount"));
+    public static final Supplier<VarHandle> VH_minPositionTruncateBitCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("minPositionTruncateBitCount")));
 
     /// Creates `VkClusterAccelerationStructureTriangleClusterInputNV` with the given segment.
     /// @param segment      the memory segment
@@ -150,14 +150,14 @@ public final class VkClusterAccelerationStructureTriangleClusterInputNV extends 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkClusterAccelerationStructureTriangleClusterInputNV extends 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkClusterAccelerationStructureTriangleClusterInputNV extends 
     /// {@return `vertexFormat` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vertexFormat(MemorySegment segment, long index) { return (int) VH_vertexFormat.get(segment, 0L, index); }
+    public static int vertexFormat(MemorySegment segment, long index) { return (int) VH_vertexFormat.get().get(segment, 0L, index); }
     /// {@return `vertexFormat`}
     public int vertexFormat() { return vertexFormat(this.segment(), 0L); }
     /// Sets `vertexFormat` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vertexFormat(MemorySegment segment, long index, int value) { VH_vertexFormat.set(segment, 0L, index, value); }
+    public static void vertexFormat(MemorySegment segment, long index, int value) { VH_vertexFormat.get().set(segment, 0L, index, value); }
     /// Sets `vertexFormat` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkClusterAccelerationStructureTriangleClusterInputNV extends 
     /// {@return `maxGeometryIndexValue` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxGeometryIndexValue(MemorySegment segment, long index) { return (int) VH_maxGeometryIndexValue.get(segment, 0L, index); }
+    public static int maxGeometryIndexValue(MemorySegment segment, long index) { return (int) VH_maxGeometryIndexValue.get().get(segment, 0L, index); }
     /// {@return `maxGeometryIndexValue`}
     public int maxGeometryIndexValue() { return maxGeometryIndexValue(this.segment(), 0L); }
     /// Sets `maxGeometryIndexValue` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxGeometryIndexValue(MemorySegment segment, long index, int value) { VH_maxGeometryIndexValue.set(segment, 0L, index, value); }
+    public static void maxGeometryIndexValue(MemorySegment segment, long index, int value) { VH_maxGeometryIndexValue.get().set(segment, 0L, index, value); }
     /// Sets `maxGeometryIndexValue` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkClusterAccelerationStructureTriangleClusterInputNV extends 
     /// {@return `maxClusterUniqueGeometryCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxClusterUniqueGeometryCount(MemorySegment segment, long index) { return (int) VH_maxClusterUniqueGeometryCount.get(segment, 0L, index); }
+    public static int maxClusterUniqueGeometryCount(MemorySegment segment, long index) { return (int) VH_maxClusterUniqueGeometryCount.get().get(segment, 0L, index); }
     /// {@return `maxClusterUniqueGeometryCount`}
     public int maxClusterUniqueGeometryCount() { return maxClusterUniqueGeometryCount(this.segment(), 0L); }
     /// Sets `maxClusterUniqueGeometryCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxClusterUniqueGeometryCount(MemorySegment segment, long index, int value) { VH_maxClusterUniqueGeometryCount.set(segment, 0L, index, value); }
+    public static void maxClusterUniqueGeometryCount(MemorySegment segment, long index, int value) { VH_maxClusterUniqueGeometryCount.get().set(segment, 0L, index, value); }
     /// Sets `maxClusterUniqueGeometryCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkClusterAccelerationStructureTriangleClusterInputNV extends 
     /// {@return `maxClusterTriangleCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxClusterTriangleCount(MemorySegment segment, long index) { return (int) VH_maxClusterTriangleCount.get(segment, 0L, index); }
+    public static int maxClusterTriangleCount(MemorySegment segment, long index) { return (int) VH_maxClusterTriangleCount.get().get(segment, 0L, index); }
     /// {@return `maxClusterTriangleCount`}
     public int maxClusterTriangleCount() { return maxClusterTriangleCount(this.segment(), 0L); }
     /// Sets `maxClusterTriangleCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxClusterTriangleCount(MemorySegment segment, long index, int value) { VH_maxClusterTriangleCount.set(segment, 0L, index, value); }
+    public static void maxClusterTriangleCount(MemorySegment segment, long index, int value) { VH_maxClusterTriangleCount.get().set(segment, 0L, index, value); }
     /// Sets `maxClusterTriangleCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkClusterAccelerationStructureTriangleClusterInputNV extends 
     /// {@return `maxClusterVertexCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxClusterVertexCount(MemorySegment segment, long index) { return (int) VH_maxClusterVertexCount.get(segment, 0L, index); }
+    public static int maxClusterVertexCount(MemorySegment segment, long index) { return (int) VH_maxClusterVertexCount.get().get(segment, 0L, index); }
     /// {@return `maxClusterVertexCount`}
     public int maxClusterVertexCount() { return maxClusterVertexCount(this.segment(), 0L); }
     /// Sets `maxClusterVertexCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxClusterVertexCount(MemorySegment segment, long index, int value) { VH_maxClusterVertexCount.set(segment, 0L, index, value); }
+    public static void maxClusterVertexCount(MemorySegment segment, long index, int value) { VH_maxClusterVertexCount.get().set(segment, 0L, index, value); }
     /// Sets `maxClusterVertexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,14 +262,14 @@ public final class VkClusterAccelerationStructureTriangleClusterInputNV extends 
     /// {@return `maxTotalTriangleCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTotalTriangleCount(MemorySegment segment, long index) { return (int) VH_maxTotalTriangleCount.get(segment, 0L, index); }
+    public static int maxTotalTriangleCount(MemorySegment segment, long index) { return (int) VH_maxTotalTriangleCount.get().get(segment, 0L, index); }
     /// {@return `maxTotalTriangleCount`}
     public int maxTotalTriangleCount() { return maxTotalTriangleCount(this.segment(), 0L); }
     /// Sets `maxTotalTriangleCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTotalTriangleCount(MemorySegment segment, long index, int value) { VH_maxTotalTriangleCount.set(segment, 0L, index, value); }
+    public static void maxTotalTriangleCount(MemorySegment segment, long index, int value) { VH_maxTotalTriangleCount.get().set(segment, 0L, index, value); }
     /// Sets `maxTotalTriangleCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,14 +278,14 @@ public final class VkClusterAccelerationStructureTriangleClusterInputNV extends 
     /// {@return `maxTotalVertexCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int maxTotalVertexCount(MemorySegment segment, long index) { return (int) VH_maxTotalVertexCount.get(segment, 0L, index); }
+    public static int maxTotalVertexCount(MemorySegment segment, long index) { return (int) VH_maxTotalVertexCount.get().get(segment, 0L, index); }
     /// {@return `maxTotalVertexCount`}
     public int maxTotalVertexCount() { return maxTotalVertexCount(this.segment(), 0L); }
     /// Sets `maxTotalVertexCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void maxTotalVertexCount(MemorySegment segment, long index, int value) { VH_maxTotalVertexCount.set(segment, 0L, index, value); }
+    public static void maxTotalVertexCount(MemorySegment segment, long index, int value) { VH_maxTotalVertexCount.get().set(segment, 0L, index, value); }
     /// Sets `maxTotalVertexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,14 +294,14 @@ public final class VkClusterAccelerationStructureTriangleClusterInputNV extends 
     /// {@return `minPositionTruncateBitCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int minPositionTruncateBitCount(MemorySegment segment, long index) { return (int) VH_minPositionTruncateBitCount.get(segment, 0L, index); }
+    public static int minPositionTruncateBitCount(MemorySegment segment, long index) { return (int) VH_minPositionTruncateBitCount.get().get(segment, 0L, index); }
     /// {@return `minPositionTruncateBitCount`}
     public int minPositionTruncateBitCount() { return minPositionTruncateBitCount(this.segment(), 0L); }
     /// Sets `minPositionTruncateBitCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void minPositionTruncateBitCount(MemorySegment segment, long index, int value) { VH_minPositionTruncateBitCount.set(segment, 0L, index, value); }
+    public static void minPositionTruncateBitCount(MemorySegment segment, long index, int value) { VH_minPositionTruncateBitCount.get().set(segment, 0L, index, value); }
     /// Sets `minPositionTruncateBitCount` with the given value.
     /// @param value the value
     /// @return `this`

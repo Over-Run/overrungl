@@ -35,31 +35,31 @@ public final class VkDeviceFaultCountsEXT extends GroupType {
     /// The memory layout of `sType`.
     public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final Supplier<VarHandle> VH_sType = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType")));
     /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
     /// The memory layout of `pNext`.
     public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final Supplier<VarHandle> VH_pNext = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext")));
     /// The byte offset of `addressInfoCount`.
     public static final long OFFSET_addressInfoCount = LAYOUT.byteOffset(PathElement.groupElement("addressInfoCount"));
     /// The memory layout of `addressInfoCount`.
     public static final MemoryLayout LAYOUT_addressInfoCount = LAYOUT.select(PathElement.groupElement("addressInfoCount"));
     /// The [VarHandle] of `addressInfoCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_addressInfoCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("addressInfoCount"));
+    public static final Supplier<VarHandle> VH_addressInfoCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("addressInfoCount")));
     /// The byte offset of `vendorInfoCount`.
     public static final long OFFSET_vendorInfoCount = LAYOUT.byteOffset(PathElement.groupElement("vendorInfoCount"));
     /// The memory layout of `vendorInfoCount`.
     public static final MemoryLayout LAYOUT_vendorInfoCount = LAYOUT.select(PathElement.groupElement("vendorInfoCount"));
     /// The [VarHandle] of `vendorInfoCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vendorInfoCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorInfoCount"));
+    public static final Supplier<VarHandle> VH_vendorInfoCount = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorInfoCount")));
     /// The byte offset of `vendorBinarySize`.
     public static final long OFFSET_vendorBinarySize = LAYOUT.byteOffset(PathElement.groupElement("vendorBinarySize"));
     /// The memory layout of `vendorBinarySize`.
     public static final MemoryLayout LAYOUT_vendorBinarySize = LAYOUT.select(PathElement.groupElement("vendorBinarySize"));
     /// The [VarHandle] of `vendorBinarySize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vendorBinarySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorBinarySize"));
+    public static final Supplier<VarHandle> VH_vendorBinarySize = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorBinarySize")));
 
     /// Creates `VkDeviceFaultCountsEXT` with the given segment.
     /// @param segment      the memory segment
@@ -110,14 +110,14 @@ public final class VkDeviceFaultCountsEXT extends GroupType {
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get().get(segment, 0L, index); }
     /// {@return `sType`}
     public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.get().set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -126,14 +126,14 @@ public final class VkDeviceFaultCountsEXT extends GroupType {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get().get(segment, 0L, index); }
     /// {@return `pNext`}
     public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.get().set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -142,14 +142,14 @@ public final class VkDeviceFaultCountsEXT extends GroupType {
     /// {@return `addressInfoCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int addressInfoCount(MemorySegment segment, long index) { return (int) VH_addressInfoCount.get(segment, 0L, index); }
+    public static int addressInfoCount(MemorySegment segment, long index) { return (int) VH_addressInfoCount.get().get(segment, 0L, index); }
     /// {@return `addressInfoCount`}
     public int addressInfoCount() { return addressInfoCount(this.segment(), 0L); }
     /// Sets `addressInfoCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void addressInfoCount(MemorySegment segment, long index, int value) { VH_addressInfoCount.set(segment, 0L, index, value); }
+    public static void addressInfoCount(MemorySegment segment, long index, int value) { VH_addressInfoCount.get().set(segment, 0L, index, value); }
     /// Sets `addressInfoCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,14 +158,14 @@ public final class VkDeviceFaultCountsEXT extends GroupType {
     /// {@return `vendorInfoCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int vendorInfoCount(MemorySegment segment, long index) { return (int) VH_vendorInfoCount.get(segment, 0L, index); }
+    public static int vendorInfoCount(MemorySegment segment, long index) { return (int) VH_vendorInfoCount.get().get(segment, 0L, index); }
     /// {@return `vendorInfoCount`}
     public int vendorInfoCount() { return vendorInfoCount(this.segment(), 0L); }
     /// Sets `vendorInfoCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vendorInfoCount(MemorySegment segment, long index, int value) { VH_vendorInfoCount.set(segment, 0L, index, value); }
+    public static void vendorInfoCount(MemorySegment segment, long index, int value) { VH_vendorInfoCount.get().set(segment, 0L, index, value); }
     /// Sets `vendorInfoCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,14 +174,14 @@ public final class VkDeviceFaultCountsEXT extends GroupType {
     /// {@return `vendorBinarySize` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static long vendorBinarySize(MemorySegment segment, long index) { return (long) VH_vendorBinarySize.get(segment, 0L, index); }
+    public static long vendorBinarySize(MemorySegment segment, long index) { return (long) VH_vendorBinarySize.get().get(segment, 0L, index); }
     /// {@return `vendorBinarySize`}
     public long vendorBinarySize() { return vendorBinarySize(this.segment(), 0L); }
     /// Sets `vendorBinarySize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void vendorBinarySize(MemorySegment segment, long index, long value) { VH_vendorBinarySize.set(segment, 0L, index, value); }
+    public static void vendorBinarySize(MemorySegment segment, long index, long value) { VH_vendorBinarySize.get().set(segment, 0L, index, value); }
     /// Sets `vendorBinarySize` with the given value.
     /// @param value the value
     /// @return `this`

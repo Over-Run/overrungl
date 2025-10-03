@@ -41,49 +41,49 @@ public final class VkPipelineColorBlendAttachmentState extends GroupType {
     /// The memory layout of `blendEnable`.
     public static final MemoryLayout LAYOUT_blendEnable = LAYOUT.select(PathElement.groupElement("blendEnable"));
     /// The [VarHandle] of `blendEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_blendEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blendEnable"));
+    public static final Supplier<VarHandle> VH_blendEnable = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("blendEnable")));
     /// The byte offset of `srcColorBlendFactor`.
     public static final long OFFSET_srcColorBlendFactor = LAYOUT.byteOffset(PathElement.groupElement("srcColorBlendFactor"));
     /// The memory layout of `srcColorBlendFactor`.
     public static final MemoryLayout LAYOUT_srcColorBlendFactor = LAYOUT.select(PathElement.groupElement("srcColorBlendFactor"));
     /// The [VarHandle] of `srcColorBlendFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcColorBlendFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcColorBlendFactor"));
+    public static final Supplier<VarHandle> VH_srcColorBlendFactor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcColorBlendFactor")));
     /// The byte offset of `dstColorBlendFactor`.
     public static final long OFFSET_dstColorBlendFactor = LAYOUT.byteOffset(PathElement.groupElement("dstColorBlendFactor"));
     /// The memory layout of `dstColorBlendFactor`.
     public static final MemoryLayout LAYOUT_dstColorBlendFactor = LAYOUT.select(PathElement.groupElement("dstColorBlendFactor"));
     /// The [VarHandle] of `dstColorBlendFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstColorBlendFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstColorBlendFactor"));
+    public static final Supplier<VarHandle> VH_dstColorBlendFactor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstColorBlendFactor")));
     /// The byte offset of `colorBlendOp`.
     public static final long OFFSET_colorBlendOp = LAYOUT.byteOffset(PathElement.groupElement("colorBlendOp"));
     /// The memory layout of `colorBlendOp`.
     public static final MemoryLayout LAYOUT_colorBlendOp = LAYOUT.select(PathElement.groupElement("colorBlendOp"));
     /// The [VarHandle] of `colorBlendOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_colorBlendOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorBlendOp"));
+    public static final Supplier<VarHandle> VH_colorBlendOp = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorBlendOp")));
     /// The byte offset of `srcAlphaBlendFactor`.
     public static final long OFFSET_srcAlphaBlendFactor = LAYOUT.byteOffset(PathElement.groupElement("srcAlphaBlendFactor"));
     /// The memory layout of `srcAlphaBlendFactor`.
     public static final MemoryLayout LAYOUT_srcAlphaBlendFactor = LAYOUT.select(PathElement.groupElement("srcAlphaBlendFactor"));
     /// The [VarHandle] of `srcAlphaBlendFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcAlphaBlendFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAlphaBlendFactor"));
+    public static final Supplier<VarHandle> VH_srcAlphaBlendFactor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAlphaBlendFactor")));
     /// The byte offset of `dstAlphaBlendFactor`.
     public static final long OFFSET_dstAlphaBlendFactor = LAYOUT.byteOffset(PathElement.groupElement("dstAlphaBlendFactor"));
     /// The memory layout of `dstAlphaBlendFactor`.
     public static final MemoryLayout LAYOUT_dstAlphaBlendFactor = LAYOUT.select(PathElement.groupElement("dstAlphaBlendFactor"));
     /// The [VarHandle] of `dstAlphaBlendFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstAlphaBlendFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAlphaBlendFactor"));
+    public static final Supplier<VarHandle> VH_dstAlphaBlendFactor = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAlphaBlendFactor")));
     /// The byte offset of `alphaBlendOp`.
     public static final long OFFSET_alphaBlendOp = LAYOUT.byteOffset(PathElement.groupElement("alphaBlendOp"));
     /// The memory layout of `alphaBlendOp`.
     public static final MemoryLayout LAYOUT_alphaBlendOp = LAYOUT.select(PathElement.groupElement("alphaBlendOp"));
     /// The [VarHandle] of `alphaBlendOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_alphaBlendOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("alphaBlendOp"));
+    public static final Supplier<VarHandle> VH_alphaBlendOp = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("alphaBlendOp")));
     /// The byte offset of `colorWriteMask`.
     public static final long OFFSET_colorWriteMask = LAYOUT.byteOffset(PathElement.groupElement("colorWriteMask"));
     /// The memory layout of `colorWriteMask`.
     public static final MemoryLayout LAYOUT_colorWriteMask = LAYOUT.select(PathElement.groupElement("colorWriteMask"));
     /// The [VarHandle] of `colorWriteMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_colorWriteMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorWriteMask"));
+    public static final Supplier<VarHandle> VH_colorWriteMask = StableValue.supplier(() -> LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorWriteMask")));
 
     /// Creates `VkPipelineColorBlendAttachmentState` with the given segment.
     /// @param segment      the memory segment
@@ -134,14 +134,14 @@ public final class VkPipelineColorBlendAttachmentState extends GroupType {
     /// {@return `blendEnable` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int blendEnable(MemorySegment segment, long index) { return (int) VH_blendEnable.get(segment, 0L, index); }
+    public static int blendEnable(MemorySegment segment, long index) { return (int) VH_blendEnable.get().get(segment, 0L, index); }
     /// {@return `blendEnable`}
     public int blendEnable() { return blendEnable(this.segment(), 0L); }
     /// Sets `blendEnable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void blendEnable(MemorySegment segment, long index, int value) { VH_blendEnable.set(segment, 0L, index, value); }
+    public static void blendEnable(MemorySegment segment, long index, int value) { VH_blendEnable.get().set(segment, 0L, index, value); }
     /// Sets `blendEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,14 +150,14 @@ public final class VkPipelineColorBlendAttachmentState extends GroupType {
     /// {@return `srcColorBlendFactor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int srcColorBlendFactor(MemorySegment segment, long index) { return (int) VH_srcColorBlendFactor.get(segment, 0L, index); }
+    public static int srcColorBlendFactor(MemorySegment segment, long index) { return (int) VH_srcColorBlendFactor.get().get(segment, 0L, index); }
     /// {@return `srcColorBlendFactor`}
     public int srcColorBlendFactor() { return srcColorBlendFactor(this.segment(), 0L); }
     /// Sets `srcColorBlendFactor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcColorBlendFactor(MemorySegment segment, long index, int value) { VH_srcColorBlendFactor.set(segment, 0L, index, value); }
+    public static void srcColorBlendFactor(MemorySegment segment, long index, int value) { VH_srcColorBlendFactor.get().set(segment, 0L, index, value); }
     /// Sets `srcColorBlendFactor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,14 +166,14 @@ public final class VkPipelineColorBlendAttachmentState extends GroupType {
     /// {@return `dstColorBlendFactor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dstColorBlendFactor(MemorySegment segment, long index) { return (int) VH_dstColorBlendFactor.get(segment, 0L, index); }
+    public static int dstColorBlendFactor(MemorySegment segment, long index) { return (int) VH_dstColorBlendFactor.get().get(segment, 0L, index); }
     /// {@return `dstColorBlendFactor`}
     public int dstColorBlendFactor() { return dstColorBlendFactor(this.segment(), 0L); }
     /// Sets `dstColorBlendFactor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstColorBlendFactor(MemorySegment segment, long index, int value) { VH_dstColorBlendFactor.set(segment, 0L, index, value); }
+    public static void dstColorBlendFactor(MemorySegment segment, long index, int value) { VH_dstColorBlendFactor.get().set(segment, 0L, index, value); }
     /// Sets `dstColorBlendFactor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,14 +182,14 @@ public final class VkPipelineColorBlendAttachmentState extends GroupType {
     /// {@return `colorBlendOp` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int colorBlendOp(MemorySegment segment, long index) { return (int) VH_colorBlendOp.get(segment, 0L, index); }
+    public static int colorBlendOp(MemorySegment segment, long index) { return (int) VH_colorBlendOp.get().get(segment, 0L, index); }
     /// {@return `colorBlendOp`}
     public int colorBlendOp() { return colorBlendOp(this.segment(), 0L); }
     /// Sets `colorBlendOp` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void colorBlendOp(MemorySegment segment, long index, int value) { VH_colorBlendOp.set(segment, 0L, index, value); }
+    public static void colorBlendOp(MemorySegment segment, long index, int value) { VH_colorBlendOp.get().set(segment, 0L, index, value); }
     /// Sets `colorBlendOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,14 +198,14 @@ public final class VkPipelineColorBlendAttachmentState extends GroupType {
     /// {@return `srcAlphaBlendFactor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int srcAlphaBlendFactor(MemorySegment segment, long index) { return (int) VH_srcAlphaBlendFactor.get(segment, 0L, index); }
+    public static int srcAlphaBlendFactor(MemorySegment segment, long index) { return (int) VH_srcAlphaBlendFactor.get().get(segment, 0L, index); }
     /// {@return `srcAlphaBlendFactor`}
     public int srcAlphaBlendFactor() { return srcAlphaBlendFactor(this.segment(), 0L); }
     /// Sets `srcAlphaBlendFactor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void srcAlphaBlendFactor(MemorySegment segment, long index, int value) { VH_srcAlphaBlendFactor.set(segment, 0L, index, value); }
+    public static void srcAlphaBlendFactor(MemorySegment segment, long index, int value) { VH_srcAlphaBlendFactor.get().set(segment, 0L, index, value); }
     /// Sets `srcAlphaBlendFactor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,14 +214,14 @@ public final class VkPipelineColorBlendAttachmentState extends GroupType {
     /// {@return `dstAlphaBlendFactor` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int dstAlphaBlendFactor(MemorySegment segment, long index) { return (int) VH_dstAlphaBlendFactor.get(segment, 0L, index); }
+    public static int dstAlphaBlendFactor(MemorySegment segment, long index) { return (int) VH_dstAlphaBlendFactor.get().get(segment, 0L, index); }
     /// {@return `dstAlphaBlendFactor`}
     public int dstAlphaBlendFactor() { return dstAlphaBlendFactor(this.segment(), 0L); }
     /// Sets `dstAlphaBlendFactor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void dstAlphaBlendFactor(MemorySegment segment, long index, int value) { VH_dstAlphaBlendFactor.set(segment, 0L, index, value); }
+    public static void dstAlphaBlendFactor(MemorySegment segment, long index, int value) { VH_dstAlphaBlendFactor.get().set(segment, 0L, index, value); }
     /// Sets `dstAlphaBlendFactor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,14 +230,14 @@ public final class VkPipelineColorBlendAttachmentState extends GroupType {
     /// {@return `alphaBlendOp` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int alphaBlendOp(MemorySegment segment, long index) { return (int) VH_alphaBlendOp.get(segment, 0L, index); }
+    public static int alphaBlendOp(MemorySegment segment, long index) { return (int) VH_alphaBlendOp.get().get(segment, 0L, index); }
     /// {@return `alphaBlendOp`}
     public int alphaBlendOp() { return alphaBlendOp(this.segment(), 0L); }
     /// Sets `alphaBlendOp` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void alphaBlendOp(MemorySegment segment, long index, int value) { VH_alphaBlendOp.set(segment, 0L, index, value); }
+    public static void alphaBlendOp(MemorySegment segment, long index, int value) { VH_alphaBlendOp.get().set(segment, 0L, index, value); }
     /// Sets `alphaBlendOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,14 +246,14 @@ public final class VkPipelineColorBlendAttachmentState extends GroupType {
     /// {@return `colorWriteMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
-    public static int colorWriteMask(MemorySegment segment, long index) { return (int) VH_colorWriteMask.get(segment, 0L, index); }
+    public static int colorWriteMask(MemorySegment segment, long index) { return (int) VH_colorWriteMask.get().get(segment, 0L, index); }
     /// {@return `colorWriteMask`}
     public int colorWriteMask() { return colorWriteMask(this.segment(), 0L); }
     /// Sets `colorWriteMask` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index the index of the struct buffer
     /// @param value the value
-    public static void colorWriteMask(MemorySegment segment, long index, int value) { VH_colorWriteMask.set(segment, 0L, index, value); }
+    public static void colorWriteMask(MemorySegment segment, long index, int value) { VH_colorWriteMask.get().set(segment, 0L, index, value); }
     /// Sets `colorWriteMask` with the given value.
     /// @param value the value
     /// @return `this`
