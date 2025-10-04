@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.glfw;
@@ -75,6 +83,8 @@ public final class GLFWNative {
         public static final MethodHandle MH_glfwGetGLXContext = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of [`glfwGetGLXWindow`][#glfwGetGLXWindow].
         public static final MethodHandle MH_glfwGetGLXWindow = downcallHandle(FunctionDescriptor.of(CanonicalTypes.C_LONG, ValueLayout.ADDRESS));
+        /// The method handle of [`glfwGetGLXFBConfig`][#glfwGetGLXFBConfig].
+        public static final MethodHandle MH_glfwGetGLXFBConfig = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of [`glfwGetWaylandDisplay`][#glfwGetWaylandDisplay].
         public static final MethodHandle MH_glfwGetWaylandDisplay = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS));
         /// The method handle of [`glfwGetWaylandMonitor`][#glfwGetWaylandMonitor].
@@ -87,6 +97,8 @@ public final class GLFWNative {
         public static final MethodHandle MH_glfwGetEGLContext = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of [`glfwGetEGLSurface`][#glfwGetEGLSurface].
         public static final MethodHandle MH_glfwGetEGLSurface = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of [`glfwGetEGLConfig`][#glfwGetEGLConfig].
+        public static final MethodHandle MH_glfwGetEGLConfig = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of [`glfwGetOSMesaColorBuffer`][#glfwGetOSMesaColorBuffer].
         public static final MethodHandle MH_glfwGetOSMesaColorBuffer = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of [`glfwGetOSMesaDepthBuffer`][#glfwGetOSMesaDepthBuffer].
@@ -125,6 +137,8 @@ public final class GLFWNative {
         public final MemorySegment PFN_glfwGetGLXContext;
         /// The function address of [`glfwGetGLXWindow`][#glfwGetGLXWindow].
         public final MemorySegment PFN_glfwGetGLXWindow;
+        /// The function address of [`glfwGetGLXFBConfig`][#glfwGetGLXFBConfig].
+        public final MemorySegment PFN_glfwGetGLXFBConfig;
         /// The function address of [`glfwGetWaylandDisplay`][#glfwGetWaylandDisplay].
         public final MemorySegment PFN_glfwGetWaylandDisplay;
         /// The function address of [`glfwGetWaylandMonitor`][#glfwGetWaylandMonitor].
@@ -137,6 +151,8 @@ public final class GLFWNative {
         public final MemorySegment PFN_glfwGetEGLContext;
         /// The function address of [`glfwGetEGLSurface`][#glfwGetEGLSurface].
         public final MemorySegment PFN_glfwGetEGLSurface;
+        /// The function address of [`glfwGetEGLConfig`][#glfwGetEGLConfig].
+        public final MemorySegment PFN_glfwGetEGLConfig;
         /// The function address of [`glfwGetOSMesaColorBuffer`][#glfwGetOSMesaColorBuffer].
         public final MemorySegment PFN_glfwGetOSMesaColorBuffer;
         /// The function address of [`glfwGetOSMesaDepthBuffer`][#glfwGetOSMesaDepthBuffer].
@@ -162,12 +178,14 @@ public final class GLFWNative {
             PFN_glfwGetX11SelectionString = _lookup.find("glfwGetX11SelectionString").orElse(MemorySegment.NULL);
             PFN_glfwGetGLXContext = _lookup.find("glfwGetGLXContext").orElse(MemorySegment.NULL);
             PFN_glfwGetGLXWindow = _lookup.find("glfwGetGLXWindow").orElse(MemorySegment.NULL);
+            PFN_glfwGetGLXFBConfig = _lookup.find("glfwGetGLXFBConfig").orElse(MemorySegment.NULL);
             PFN_glfwGetWaylandDisplay = _lookup.find("glfwGetWaylandDisplay").orElse(MemorySegment.NULL);
             PFN_glfwGetWaylandMonitor = _lookup.find("glfwGetWaylandMonitor").orElse(MemorySegment.NULL);
             PFN_glfwGetWaylandWindow = _lookup.find("glfwGetWaylandWindow").orElse(MemorySegment.NULL);
             PFN_glfwGetEGLDisplay = _lookup.find("glfwGetEGLDisplay").orElse(MemorySegment.NULL);
             PFN_glfwGetEGLContext = _lookup.find("glfwGetEGLContext").orElse(MemorySegment.NULL);
             PFN_glfwGetEGLSurface = _lookup.find("glfwGetEGLSurface").orElse(MemorySegment.NULL);
+            PFN_glfwGetEGLConfig = _lookup.find("glfwGetEGLConfig").orElse(MemorySegment.NULL);
             PFN_glfwGetOSMesaColorBuffer = _lookup.find("glfwGetOSMesaColorBuffer").orElse(MemorySegment.NULL);
             PFN_glfwGetOSMesaDepthBuffer = _lookup.find("glfwGetOSMesaDepthBuffer").orElse(MemorySegment.NULL);
             PFN_glfwGetOSMesaContext = _lookup.find("glfwGetOSMesaContext").orElse(MemorySegment.NULL);
@@ -358,6 +376,17 @@ public final class GLFWNative {
         catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXWindow", e); }
     }
 
+    /// Invokes `glfwGetGLXFBConfig`.
+    /// ```
+    /// (int) GLFWboolean glfwGetGLXFBConfig(GLFWwindow* window, GLXFBConfig* config);
+    /// ```
+    public static boolean glfwGetGLXFBConfig(@NonNull MemorySegment window, @NonNull MemorySegment config) {
+        if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetGLXFBConfig)) throw new SymbolNotFoundError("Symbol not found: glfwGetGLXFBConfig");
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glfwGetGLXFBConfig", window, config); }
+        return (((int) Handles.MH_glfwGetGLXFBConfig.invokeExact(Handles.get().PFN_glfwGetGLXFBConfig, window, config)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXFBConfig", e); }
+    }
+
     /// Invokes `glfwGetWaylandDisplay`.
     /// ```
     /// struct wl_display * glfwGetWaylandDisplay();
@@ -422,6 +451,17 @@ public final class GLFWNative {
         try { if (TRACE_DOWNCALLS) { traceDowncall("glfwGetEGLSurface", window); }
         return (MemorySegment) Handles.MH_glfwGetEGLSurface.invokeExact(Handles.get().PFN_glfwGetEGLSurface, window); }
         catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLSurface", e); }
+    }
+
+    /// Invokes `glfwGetEGLConfig`.
+    /// ```
+    /// (int) GLFWboolean glfwGetEGLConfig(GLFWwindow* window, EGLConfig* config);
+    /// ```
+    public static boolean glfwGetEGLConfig(@NonNull MemorySegment window, @NonNull MemorySegment config) {
+        if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetEGLConfig)) throw new SymbolNotFoundError("Symbol not found: glfwGetEGLConfig");
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glfwGetEGLConfig", window, config); }
+        return (((int) Handles.MH_glfwGetEGLConfig.invokeExact(Handles.get().PFN_glfwGetEGLConfig, window, config)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLConfig", e); }
     }
 
     /// Invokes `glfwGetOSMesaColorBuffer`.

@@ -3,6 +3,7 @@
 import "windows.gen";
 import "x11.gen";
 
+using GLFWboolean = java GLFWboolean;
 using GLFWmonitor = struct GLFWmonitor;
 using GLFWwindow = struct GLFWwindow;
 
@@ -10,9 +11,11 @@ using CGDirectDisplayID = uint32_t;
 using id = void*;
 using GLXContext = struct __GLXcontextRec *;
 using GLXWindow = XID;
+using GLXFBConfig = struct __GLXFBConfigRec *;
 using EGLDisplay = void*;
 using EGLContext = void*;
 using EGLSurface = void*;
+using EGLConfig = void*;
 using OSMesaContext = struct OSMesaContext *;
 
 fn opt const char* glfwGetWin32Adapter(GLFWmonitor* monitor);
@@ -36,6 +39,7 @@ fn opt const char* glfwGetX11SelectionString();
 
 fn opt GLXContext glfwGetGLXContext(GLFWwindow* window);
 fn opt GLXWindow glfwGetGLXWindow(GLFWwindow* window);
+fn opt GLFWboolean glfwGetGLXFBConfig(GLFWwindow* window, GLXFBConfig* config);
 
 fn opt struct wl_display* glfwGetWaylandDisplay();
 fn opt struct wl_output* glfwGetWaylandMonitor(GLFWmonitor* monitor);
@@ -44,6 +48,7 @@ fn opt struct wl_surface* glfwGetWaylandWindow(GLFWwindow* window);
 fn opt EGLDisplay glfwGetEGLDisplay();
 fn opt EGLContext glfwGetEGLContext(GLFWwindow* window);
 fn opt EGLSurface glfwGetEGLSurface(GLFWwindow* window);
+fn opt GLFWboolean glfwGetEGLConfig(GLFWwindow* window, EGLConfig* config);
 
 fn opt int glfwGetOSMesaColorBuffer(GLFWwindow* window, int* width, int* height, int* format, void** buffer);
 fn opt int glfwGetOSMesaDepthBuffer(GLFWwindow* window, int* width, int* height, int* bytesPerValue, void** buffer);
