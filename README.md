@@ -114,10 +114,10 @@ The customizer can generate a list of modules to be enabled.
 
 ### Display and Input
 
-| Library                                                                          | Description                                                                                                                                                                                                                                |
-|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [GLFW](http://www.glfw.org/)                                                     | Create multiple windows, handle user input (keyboard, mouse, gaming peripherals) and manage contexts. Also features multi-monitor support, clipboard access, file drag-n-drop, and [much more](http://www.glfw.org/docs/latest/news.html). |
-| [Native File Dialog Extended](https://github.com/btzy/nativefiledialog-extended) | A small C library that portably invokes native file open, folder select and file save dialogs.                                                                                                                                             |
+| Library                                                                          | Description                                                                                         |
+|----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| [GLFW](http://www.glfw.org/)                                                     | GLFW provides a simple API for creating windows, contexts and surfaces, receiving input and events. |
+| [Native File Dialog Extended](https://github.com/btzy/nativefiledialog-extended) | A small C library that portably invokes native file open, folder select and file save dialogs.      |
 
 ### Audio
 
@@ -128,10 +128,10 @@ The customizer can generate a list of modules to be enabled.
 
 ### Graphics
 
-| Library                                                                                      | Description                                        |
-|----------------------------------------------------------------------------------------------|----------------------------------------------------|
-| [Vulkan Memory Allocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator) | Easy to integrate Vulkan memory allocation library |
-
+| Library                                                                                      | Description                                                                |
+|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| [Shaderc](https://github.com/google/shaderc)                                                 | A collection of tools, libraries, and tests for Vulkan shader compilation. |
+| [Vulkan Memory Allocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator) | Easy to integrate Vulkan memory allocation library                         |
 
 ### [stb](https://github.com/nothings/stb) - single-file public domain libraries for C/C++
 

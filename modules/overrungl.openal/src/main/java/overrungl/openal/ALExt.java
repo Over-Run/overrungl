@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.openal;
@@ -1984,7 +1992,7 @@ public final class ALExt {
 
     /// Invokes `alBufferDataStatic`.
     /// ```
-    /// void alBufferDataStatic((unsigned int) ALuint buffer, (int) ALenum format, ALvoid* data, (int) ALsizei size, (int) ALsizei freq);
+    /// void alBufferDataStatic((unsigned int) const ALuint buffer, (int) ALenum format, ALvoid* data, (int) ALsizei size, (int) ALsizei freq);
     /// ```
     public static void alBufferDataStatic(int buffer, int format, @NonNull MemorySegment data, int size, int freq) {
         try { if (TRACE_DOWNCALLS) { traceDowncall("alBufferDataStatic", buffer, format, data, size, freq); }

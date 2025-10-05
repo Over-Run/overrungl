@@ -22,35 +22,13 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-        maven { url = uri("https://maven.aliyun.com/repository/public") }
-        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
-    }
+plugins {
+    id("module.conventions")
+    id("submodule.conventions")
 }
 
-val projName: String by settings
-
-rootProject.name = projName
-
-file("modules").listFiles()?.forEach {
-    val s = it.name.substringAfterLast("overrungl.")
-    include(s)
-    project(":$s").projectDir = it
+overrunglModule {
+    artifactName = "overrungl-shaderc"
+    publishInfo = Artifact.SHADERC
+    nativeBinding = NativeBinding.SHADERC
 }
-
-include(
-    "generators:core",
-    "generators:glfw",
-    "generators:nfd",
-    "generators:openal",
-    "generators:opengl",
-    "generators:shaderc",
-    "generators:stb",
-    "generators:vma",
-    "generators:vulkan"
-)
-
-include("javadocAggregator")
