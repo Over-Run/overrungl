@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.gen.file
@@ -196,6 +204,7 @@ data class EnumType(
 }
 
 
+const val BOOLEAN_LAYOUT = "ValueLayout.JAVA_BOOLEAN"
 const val CHAR_LAYOUT = "ValueLayout.JAVA_CHAR"
 const val BYTE_LAYOUT = "ValueLayout.JAVA_BYTE"
 const val SHORT_LAYOUT = "ValueLayout.JAVA_SHORT"
@@ -243,6 +252,7 @@ private fun dynamic(
         builtinType[originalName] = it
     }
 
+val c_bool = value("bool", "boolean", BOOLEAN_LAYOUT, 'Z')
 val c_char = value("char", "byte", BYTE_LAYOUT, 'B')
 val c_short = value("short", "short", SHORT_LAYOUT, 'S')
 val c_int = value("int", "int", INT_LAYOUT, 'I')
@@ -311,6 +321,7 @@ val uintptr_t = dynamic(
     processor = size_t.processor
 )
 
+val jboolean = value("jboolean", "boolean", BOOLEAN_LAYOUT, 'Z')
 val jchar = value("jchar", "char", CHAR_LAYOUT, 'C')
 val jbyte = value("jbyte", "byte", BYTE_LAYOUT, 'B')
 val jshort = value("jshort", "short", SHORT_LAYOUT, 'S')

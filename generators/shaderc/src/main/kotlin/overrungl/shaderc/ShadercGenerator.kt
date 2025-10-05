@@ -22,35 +22,23 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-        maven { url = uri("https://maven.aliyun.com/repository/public") }
-        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
-    }
+package overrungl.shaderc
+
+import overrungl.gen.file.DefinitionFile
+import overrungl.gen.generateLookupAccessor
+import overrungl.gen.writeNativeImageRegistration
+
+const val shadercPackage = "overrungl.shaderc"
+const val shadercLookup = "ShadercLibrary.lookup()"
+
+fun main() {
+    DefinitionFile("shaderc.gen").compile(shadercPackage, "Shaderc", shadercLookup)
+    writeNativeImageRegistration(shadercPackage)
+    generateLookupAccessor(
+        packageName = "shaderc",
+        className = "ShadercLibrary",
+        moduleName = "shaderc",
+        basename = "shaderc_shared",
+        versionRef = "SHADERC_VERSION"
+    )
 }
-
-val projName: String by settings
-
-rootProject.name = projName
-
-file("modules").listFiles()?.forEach {
-    val s = it.name.substringAfterLast("overrungl.")
-    include(s)
-    project(":$s").projectDir = it
-}
-
-include(
-    "generators:core",
-    "generators:glfw",
-    "generators:nfd",
-    "generators:openal",
-    "generators:opengl",
-    "generators:shaderc",
-    "generators:stb",
-    "generators:vma",
-    "generators:vulkan"
-)
-
-include("javadocAggregator")

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,11 +12,21 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.demo.util;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
@@ -66,6 +76,19 @@ public final class IOUtil {
             return arena.allocateFrom(ValueLayout.JAVA_BYTE, is.readAllBytes());
         } catch (URISyntaxException e) {
             throw new IllegalArgumentException("Illegal URI: " + resource, e);
+        }
+    }
+
+    /// Read text from file on classpath.
+    ///
+    /// @param filename the filename
+    /// @return the content of the file
+    /// @since 0.2.0
+    public static String readClasspath(String filename) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(IOUtil.class.getClassLoader().getResourceAsStream(filename))))) {
+            return reader.readAllAsString();
+        } catch (Exception e) {
+            throw new RuntimeException("failed to read file on classpath: " + filename, e);
         }
     }
 }

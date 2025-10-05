@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.demo.vulkan;
@@ -29,12 +37,12 @@ import overrungl.vulkan.khr.struct.VkSwapchainCreateInfoKHR;
 import overrungl.vulkan.struct.*;
 import overrungl.vulkan.union.VkClearValue;
 
-import java.io.IOException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.util.*;
 
 import static overrungl.glfw.GLFW.*;
+import static overrungl.shaderc.Shaderc.*;
 import static overrungl.vulkan.VK10.*;
 import static overrungl.vulkan.VK11.vkEnumerateInstanceVersion;
 import static overrungl.vulkan.khr.VKKHRSurface.*;
@@ -508,24 +516,41 @@ public class VulkanDemo {
         }
     }
 
-    private long createShaderModule(String filename) {
+    private long createShaderModule(String filename, int shaderKind) {
         try (Arena arena = Arena.ofConfined()) {
-            MemorySegment code = IOUtil.ioResourceToSegment(arena, filename);
+            MemorySegment shaderTextMem = arena.allocateFrom(IOUtil.readClasspath(filename));
+            // compile shader
+            MemorySegment compiler = shaderc_compiler_initialize();
+            MemorySegment compileOptions = shaderc_compile_options_initialize();
+            shaderc_compile_options_set_optimization_level(compileOptions, ENABLE_VALIDATION_LAYERS ? shaderc_optimization_level_zero : shaderc_optimization_level_performance);
+            MemorySegment compileResult = shaderc_compile_into_spv(compiler,
+                shaderTextMem, shaderTextMem.byteSize() - 1,
+                shaderKind,
+                arena.allocateFrom(filename),
+                arena.allocateFrom("main"),
+                compileOptions);
+            if (shaderc_result_get_compilation_status(compileResult) != shaderc_compilation_status_success) {
+                System.err.println(MemoryUtil.nativeString(shaderc_result_get_error_message(compileResult)));
+            }
+            MemorySegment code = shaderc_result_get_bytes(compileResult);
+            long codeSize = shaderc_result_get_length(compileResult);
+
             var createInfo = VkShaderModuleCreateInfo.alloc(arena)
                 .sType(VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO)
-                .codeSize(code.byteSize())
+                .codeSize(codeSize)
                 .pCode(code);
             LongPtr p = LongPtr.alloc(arena);
             check(vkCreateShaderModule(device, createInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create shader module from " + filename);
+            shaderc_result_release(compileResult);
+            shaderc_compile_options_release(compileOptions);
+            shaderc_compiler_release(compiler);
             return p.value();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 
     private void createGraphicsPipeline() {
-        long vertexShader = createShaderModule("vk/vert.spv");
-        long fragmentShader = createShaderModule("vk/frag.spv");
+        long vertexShader = createShaderModule("vk/vert.vert", shaderc_glsl_vertex_shader);
+        long fragmentShader = createShaderModule("vk/frag.frag", shaderc_glsl_fragment_shader);
 
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             MemorySegment main = stack.allocateFrom("main");

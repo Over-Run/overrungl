@@ -1,0 +1,7 @@
+{
+  "resources": [
+    {
+      "glob": "overrungl.shaderc/**/*shaderc_shared.*"
+    }
+  ]
+}

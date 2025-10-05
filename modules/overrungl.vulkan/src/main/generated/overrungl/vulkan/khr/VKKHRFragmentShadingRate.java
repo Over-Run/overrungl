@@ -51,7 +51,7 @@ public final class VKKHRFragmentShadingRate {
 
     /// Invokes `vkCmdSetFragmentShadingRateKHR`.
     /// ```
-    /// void vkCmdSetFragmentShadingRateKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkExtent2D* pFragmentSize, (int) VkFragmentShadingRateCombinerOpKHR combinerOps[2]);
+    /// void vkCmdSetFragmentShadingRateKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkExtent2D* pFragmentSize, (int) const VkFragmentShadingRateCombinerOpKHR combinerOps[2]);
     /// ```
     public static void vkCmdSetFragmentShadingRateKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pFragmentSize, @NonNull MemorySegment combinerOps) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetFragmentShadingRateKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetFragmentShadingRateKHR");
