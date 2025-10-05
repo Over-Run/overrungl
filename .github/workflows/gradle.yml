@@ -49,6 +49,7 @@ jobs:
           path: |
             modules/**/build/reports/
       - name: Capture build artifacts
+        if: ${{ runner.os == 'Linux' }}
         uses: actions/upload-artifact@v4
         with:
           name: artifacts-${{ runner.os }}-jdk${{ matrix.java }}
