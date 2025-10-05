@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.internal;
@@ -99,17 +107,7 @@ public final class RuntimeHelper {
             return SymbolLookup.libraryLookup(localFile, Arena.global());
         }
 
-        // 2. Load from java.library.path with System::loadLibrary
-        try {
-            System.loadLibrary(basename);
-            if (debug) {
-                OverrunGL.apiLog("[OverrunGL] Loading native library from java.library.path: " + System.mapLibraryName(basename));
-            }
-            return SymbolLookup.loaderLookup();
-        } catch (UnsatisfiedLinkError _) {
-        }
-
-        // 3. Load from classpath (copy)
+        // 2. Load from classpath (copy)
         try {
             if (!Files.exists(tmpdir)) {
                 // Create directory
@@ -121,7 +119,7 @@ public final class RuntimeHelper {
                 Files.createDirectories(tmpdir);
             }
         } catch (IOException e) {
-            throw new IllegalStateException("Couldn't create temporary directory to store native libraries: " + tmpdir + "; try setting -Doverrungl.natives or -Djava.library.path to a valid path", e);
+            throw new IllegalStateException("Couldn't create temporary directory to store native libraries: " + tmpdir + "; try setting -Doverrungl.natives to a valid path containing required libraries", e);
         }
         var libFile = tmpdir.resolve(basename + "-" + version + suffix);
         if (!Files.exists(libFile)) {
@@ -130,7 +128,7 @@ public final class RuntimeHelper {
             try (var is = ClassLoader.getSystemResourceAsStream(fromPath)) {
                 Files.copy(Objects.requireNonNull(is, "File not found in classpath: " + fromPath), libFile);
             } catch (Exception e) {
-                throw new IllegalStateException("Couldn't load native library from: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives or -Djava.library.path to a valid path", e);
+                throw new IllegalStateException("Couldn't load native library from: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives to a valid path containing required libraries", e);
             }
         }
         if (debug) {
