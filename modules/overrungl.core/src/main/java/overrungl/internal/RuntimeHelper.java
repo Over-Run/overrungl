@@ -27,7 +27,7 @@ package overrungl.internal;
 import io.github.overrun.platform.Architecture;
 import io.github.overrun.platform.Platform;
 import overrungl.OverrunGL;
-import overrungl.OverrunGLConfigurations;
+import overrungl.OverrunGLConfig;
 
 import java.io.IOException;
 import java.lang.foreign.*;
@@ -50,8 +50,9 @@ public final class RuntimeHelper {
     private static final Linker LINKER = Linker.nativeLinker();
     /// Trace downcall invocation and print a debug message with [OverrunGL#apiLogger()].
     ///
-    /// Specify with -D{@systemProperty overrungl.trace.downcalls}=true
-    public static final boolean TRACE_DOWNCALLS = Boolean.getBoolean("overrungl.trace.downcalls");
+    /// Specify with [OverrunGLConfig#TRACE_DOWNCALLS]
+    public static final boolean TRACE_DOWNCALLS = OverrunGLConfig.TRACE_DOWNCALLS.get();
+    private static final boolean DEBUG = OverrunGLConfig.DEBUG.get();
 
     /**
      * constructor
@@ -93,7 +94,6 @@ public final class RuntimeHelper {
      */
     public static SymbolLookup load(String module, String basename, String version)
         throws IllegalStateException {
-        boolean debug = OverrunGLConfigurations.DEBUG.get();
         final Platform os = Platform.current();
         final var suffix = os.sharedLibrarySuffix();
         final var path = os.sharedLibraryName(basename);
@@ -101,7 +101,7 @@ public final class RuntimeHelper {
         // 1. Load from natives directory
         var localFile = Path.of(System.getProperty("overrungl.natives", "."), path);
         if (Files.exists(localFile)) {
-            if (debug) {
+            if (DEBUG) {
                 OverrunGL.apiLog("[OverrunGL] Loading native library from overrungl.natives: " + localFile);
             }
             return SymbolLookup.libraryLookup(localFile, Arena.global());
@@ -131,7 +131,7 @@ public final class RuntimeHelper {
                 throw new IllegalStateException("Couldn't load native library from: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives to a valid path containing required libraries", e);
             }
         }
-        if (debug) {
+        if (DEBUG) {
             OverrunGL.apiLog("[OverrunGL] Loading native library from classpath: " + libFile);
         }
         return SymbolLookup.libraryLookup(libFile, Arena.global());
