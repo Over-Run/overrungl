@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 enum class NativePlatform(
@@ -46,6 +54,7 @@ enum class NativeBinding(
     GLFW("glfw", "glfw", NativePlatform.enumEntries),
     NFD("nfd", "nfd", NativePlatform.enumEntries),
     OPENAL("openal", "openal", NativePlatform.enumEntries),
+    SHADERC("shaderc", "shaderc_shared", NativePlatform.enumEntries),
     STB("stb", "stb", NativePlatform.enumEntries),
     VMA("vma", "VulkanMemoryAllocator", NativePlatform.enumEntries),
 }
@@ -71,7 +80,7 @@ enum class Artifact(
         ":joml"
     ),
     NFD(
-        "OverrunGL - Native File Dialog",
+        "OverrunGL - Native File Dialog bindings",
         "A tiny, neat C library that portably invokes native file open and save dialogs.",
         ":nfd"
     ),
@@ -84,6 +93,11 @@ enum class Artifact(
         "OverrunGL - OpenGL bindings",
         "The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms.",
         ":opengl"
+    ),
+    SHADERC(
+        "OverrunGL - Shaderc bindings",
+        "A collection of tools, libraries, and tests for Vulkan shader compilation.",
+        ":shaderc"
     ),
     STB(
         "OverrunGL - stb bindings",

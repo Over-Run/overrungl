@@ -1851,7 +1851,7 @@ public final class VK10 {
 
     /// Invokes `vkCmdSetBlendConstants`.
     /// ```
-    /// void vkCmdSetBlendConstants((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, float blendConstants[4]);
+    /// void vkCmdSetBlendConstants((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const float blendConstants[4]);
     /// ```
     public static void vkCmdSetBlendConstants(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment blendConstants) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetBlendConstants)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetBlendConstants");

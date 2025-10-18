@@ -36,7 +36,7 @@ public final class VKNVFragmentShadingRateEnums {
 
     /// Invokes `vkCmdSetFragmentShadingRateEnumNV`.
     /// ```
-    /// void vkCmdSetFragmentShadingRateEnumNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkFragmentShadingRateNV shadingRate, (int) VkFragmentShadingRateCombinerOpKHR combinerOps[2]);
+    /// void vkCmdSetFragmentShadingRateEnumNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkFragmentShadingRateNV shadingRate, (int) const VkFragmentShadingRateCombinerOpKHR combinerOps[2]);
     /// ```
     public static void vkCmdSetFragmentShadingRateEnumNV(@NonNull VkCommandBuffer commandBuffer, int shadingRate, @NonNull MemorySegment combinerOps) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetFragmentShadingRateEnumNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetFragmentShadingRateEnumNV");

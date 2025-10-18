@@ -22,35 +22,15 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-        maven { url = uri("https://maven.aliyun.com/repository/public") }
-        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
-    }
+/// The Shaderc binding.
+///
+/// - [Source](https://github.com/google/shaderc)
+///
+/// @since 0.2.0
+module overrungl.shaderc {
+    exports overrungl.shaderc;
+
+    requires transitive overrungl.core;
+    requires static org.graalvm.nativeimage;
+    requires static org.jspecify;
 }
-
-val projName: String by settings
-
-rootProject.name = projName
-
-file("modules").listFiles()?.forEach {
-    val s = it.name.substringAfterLast("overrungl.")
-    include(s)
-    project(":$s").projectDir = it
-}
-
-include(
-    "generators:core",
-    "generators:glfw",
-    "generators:nfd",
-    "generators:openal",
-    "generators:opengl",
-    "generators:shaderc",
-    "generators:stb",
-    "generators:vma",
-    "generators:vulkan"
-)
-
-include("javadocAggregator")
