@@ -88,6 +88,7 @@ publishing.publications {
 
 publishing.repositories {
     maven {
+        name = "stagingRepo"
         setUrl(layout.buildDirectory.dir("staging-deploy"))
     }
     mavenLocal()

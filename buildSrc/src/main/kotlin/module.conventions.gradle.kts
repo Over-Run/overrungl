@@ -145,6 +145,23 @@ the<IdeaModel>().module {
 }
 
 afterEvaluate {
+    overrunglModule.nativeBinding.orNull?.also { nativeBinding ->
+        nativeBinding.platforms.forEach { platform ->
+            val nativeFileName = nativeFileName(nativeBinding, platform)
+            val file = rootProject.projectDir.resolve("natives").resolve(nativeFileName)
+            tasks.register<Jar>("${nativeBinding.bindingName}${platform.classifier}Jar") {
+                archiveBaseName.set(overrunglModule.artifactName)
+                archiveClassifier.set(platform.classifier)
+                outputs.upToDateWhen { false }
+                from(file)
+                into("overrungl.${File(nativeFileName).parent}")
+                if (!file.exists()) {
+                    System.err.println("warning: $file not found for ${nativeBinding.bindingName}")
+                }
+            }
+        }
+    }
+
     overrunglModule.publishInfo.orNull?.also {
         rootProject.pluginManager.withPlugin("publishing") {
             rootProject.extensions.configure<PublishingExtension>("publishing") {
@@ -161,13 +178,7 @@ afterEvaluate {
 
                         overrunglModule.nativeBinding.orNull?.also { nativeBinding ->
                             nativeBinding.platforms.forEach { platform ->
-                                val nativeFileName = nativeFileName(nativeBinding, platform)
-                                val file = rootProject.projectDir.resolve("natives").resolve(nativeFileName)
-                                artifact(tasks.register<Jar>("${nativeBinding.bindingName}${platform.classifier}Jar") {
-                                    archiveBaseName.set(overrunglModule.artifactName)
-                                    archiveClassifier.set(platform.classifier)
-                                    from(file) { into("overrungl.${File(nativeFileName).parent}") }
-                                })
+                                artifact(tasks.named("${nativeBinding.bindingName}${platform.classifier}Jar"))
 
                                 val projGroupId1 = projGroupId
                                 val artifactName1 = overrunglModule.artifactName
