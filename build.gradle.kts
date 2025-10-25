@@ -279,8 +279,12 @@ tasks.register("downloadLatestNatives") {
 
             // validate
             println("Validating ${binding.bindingName}.zip")
+            val sha256 = (asset["digest"] as String?)?.substringAfter("sha256:")
+            if (sha256 == null) {
+                System.err.println("warning: digest for ${binding.bindingName}.zip is null")
+                return@forEach
+            }
             val md = MessageDigest.getInstance("SHA-256")
-            val sha256 = (asset["digest"] as String).substringAfter("sha256:")
             DigestInputStream(Files.newInputStream(zipPath), md).use {
                 it.readAllBytes()
             }

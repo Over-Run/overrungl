@@ -43,14 +43,6 @@ jobs:
         run: ./gradlew publishAllPublicationsToStagingRepoRepository
       - name: Publish
         run: ./gradlew jreleaserRelease --no-configuration-cache
-      - name: Upload build reports
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-reports
-          path: |
-            build/reports/
-            modules/**/build/reports/
       - name: JReleaser release output
         if: always()
         uses: actions/upload-artifact@v4
