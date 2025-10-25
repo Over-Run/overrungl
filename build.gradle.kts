@@ -99,13 +99,21 @@ jreleaser {
     }
     release {
         github {
-            skipTag = true
-            skipRelease = true
-            files = false
-            artifacts = false
-            checksums = false
-            signatures = false
-            catalogs = false
+            repoOwner = "Over-Run"
+            name = "overrungl"
+            username = "squid233"
+            update {
+                enabled = true
+                section("BODY")
+                section("ASSETS")
+            }
+            prerelease {
+                pattern = ".*-(SNAPSHOT|(alpha|beta|rc)\\.\\d+)"
+            }
+            changelog {
+                formatted = Active.ALWAYS
+                preset = "conventional-commits"
+            }
         }
     }
     deploy {
@@ -133,7 +141,9 @@ jreleaser {
 }
 
 tasks.register("downloadLatestNatives") {
-    val token = rootProject.findProperty("overrungl.github.release.token") as String?
+    val token = rootProject.findProperty("overrungl.native.download.github.token") as String?
+        ?: System.getProperty("OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN")
+        ?: System.getenv("OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN")
     val nativesPath = rootDir.resolve("natives").toPath()
     val nativesInfoPath = nativesPath.resolve("info")
     val nativesInfoETagPath = nativesInfoPath.resolve("etag.json")
@@ -147,7 +157,7 @@ tasks.register("downloadLatestNatives") {
 
     doLast {
         if (token == null) {
-            throw IllegalStateException("GitHub token not found; please specify project property overrungl.github.release.token")
+            throw IllegalStateException("GitHub token not found; please specify project property overrungl.native.download.github.token or system property or environment variable OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN")
         }
 
         nativesPath.createDirectories()

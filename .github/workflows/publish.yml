@@ -7,9 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     env:
-      overrungl.github.release.token: ${{ secrets.NATIVE_DOWNLOAD_TOKEN }}
+      OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN: ${{ secrets.NATIVE_DOWNLOAD_TOKEN }}
       JRELEASER_MAVENCENTRAL_USERNAME: ${{ secrets.JRELEASER_MAVENCENTRAL_USERNAME }}
       JRELEASER_MAVENCENTRAL_PASSWORD: ${{ secrets.JRELEASER_MAVENCENTRAL_PASSWORD }}
       JRELEASER_NEXUS2_USERNAME: ${{ secrets.JRELEASER_NEXUS2_USERNAME }}
@@ -20,6 +20,8 @@ jobs:
       JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up JDK 25
         uses: actions/setup-java@v4
         with:
