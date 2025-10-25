@@ -108,7 +108,7 @@ jreleaser {
                 section("ASSETS")
             }
             prerelease {
-                pattern = ".*-(SNAPSHOT|(alpha|beta|rc)\\.\\d+)"
+                pattern = ".*-(alpha|beta|rc)\\.\\d+"
             }
             changelog {
                 formatted = Active.ALWAYS

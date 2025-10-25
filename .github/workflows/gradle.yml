@@ -43,10 +43,12 @@ jobs:
       - name: Build with Gradle Wrapper
         run: ./gradlew build
       - name: Upload build reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: build-reports-${{ runner.os }}-jdk${{ matrix.java }}
           path: |
+            build/reports/
             modules/**/build/reports/
       - name: Capture build artifacts
         if: ${{ runner.os == 'Linux' }}
