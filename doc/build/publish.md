@@ -11,6 +11,10 @@ To publish this library, you need a GPG key and the write permission of Maven Ce
 - [stb](https://github.com/Over-Run/stb-ci)
 - [vma](https://github.com/Over-Run/VulkanMemoryAllocator-ci)
 
+Use `gradlew downloadLatestNatives` to download files from these repositories.
+You need to generate a GitHub token with `public_repo` permission
+and specify `overrungl.github.release.token` in `GRADLE_USER_HOME/gradle.properites`.
+
 ## Packing Natives
 
 The build script packs the native libraries into jars.

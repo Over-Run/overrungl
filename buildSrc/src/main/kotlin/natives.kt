@@ -49,14 +49,15 @@ enum class NativePlatform(
 enum class NativeBinding(
     val bindingName: String,
     val basename: String,
+    val repo: String,
     val platforms: List<NativePlatform>
 ) {
-    GLFW("glfw", "glfw", NativePlatform.enumEntries),
-    NFD("nfd", "nfd", NativePlatform.enumEntries),
-    OPENAL("openal", "openal", NativePlatform.enumEntries),
-    SHADERC("shaderc", "shaderc_shared", NativePlatform.enumEntries),
-    STB("stb", "stb", NativePlatform.enumEntries),
-    VMA("vma", "VulkanMemoryAllocator", NativePlatform.enumEntries),
+    GLFW("glfw", "glfw", "Over-Run/glfw-ci", NativePlatform.enumEntries),
+    NFD("nfd", "nfd", "Over-Run/nfd-ci", NativePlatform.enumEntries),
+    OPENAL("openal", "openal", "Over-Run/openal-ci", NativePlatform.enumEntries),
+    SHADERC("shaderc", "shaderc_shared", "Over-Run/shaderc-ci", NativePlatform.enumEntries),
+    STB("stb", "stb", "Over-Run/stb-ci", NativePlatform.enumEntries),
+    VMA("vma", "VulkanMemoryAllocator", "Over-Run/VulkanMemoryAllocator-ci", NativePlatform.enumEntries),
 }
 
 enum class Artifact(

@@ -1,0 +1,43 @@
+name: Publish to Maven Central
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      overrungl.github.release.token: ${{ secrets.NATIVE_DOWNLOAD_TOKEN }}
+      JRELEASER_MAVENCENTRAL_USERNAME: ${{ secrets.JRELEASER_MAVENCENTRAL_USERNAME }}
+      JRELEASER_MAVENCENTRAL_PASSWORD: ${{ secrets.JRELEASER_MAVENCENTRAL_PASSWORD }}
+      JRELEASER_NEXUS2_USERNAME: ${{ secrets.JRELEASER_NEXUS2_USERNAME }}
+      JRELEASER_NEXUS2_PASSWORD: ${{ secrets.JRELEASER_NEXUS2_PASSWORD }}
+      JRELEASER_GPG_PASSPHRASE: ${{ secrets.JRELEASER_GPG_PASSPHRASE }}
+      JRELEASER_GPG_PUBLIC_KEY: ${{ secrets.JRELEASER_GPG_PUBLIC_KEY }}
+      JRELEASER_GPG_SECRET_KEY: ${{ secrets.JRELEASER_GPG_SECRET_KEY }}
+      JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 25
+        uses: actions/setup-java@v4
+        with:
+          java-version: |
+            25
+          distribution: 'graalvm'
+      - name: Make gradlew executable
+        if: ${{ runner.os != 'Windows' }}
+        run: chmod +x ./gradlew
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
+      - name: Download natives
+        run: ./gradlew downloadLatestNatives
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build
+      - name: Stage
+        run: ./gradlew publishAllPublicationsToStagingRepoRepository
+      - name: Publish
+        run: ./gradlew jreleaserRelease --no-configuration-cache

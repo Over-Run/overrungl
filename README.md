@@ -1,7 +1,7 @@
 # OverrunGL - Overrun Game Library
 
-![Maven Central](https://img.shields.io/maven-central/v/io.github.over-run/overrungl)
-![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.over-run/overrungl?server=https%3A%2F%2Fs01.oss.sonatype.org)
+![Release version](https://img.shields.io/maven-central/v/io.github.over-run/overrungl?label=release&color=blue)
+![Snapshot version](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fcentral.sonatype.com%2Frepository%2Fmaven-snapshots%2Fio%2Fgithub%2Fover-run%2Foverrungl%2Fmaven-metadata.xml&label=snapshot)
 
 [![Java CI with Gradle](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml/badge.svg?event=push)](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml)
 <!--[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8279/badge)](https://www.bestpractices.dev/projects/8279)-->
@@ -80,19 +80,19 @@ dependencies {
 }
 ```
 
-<!--### Using -SNAPSHOT Versions
+### Using -SNAPSHOT Versions
 
 We publish `-SNAPSHOT` versions frequently.
 
 For `-SNAPSHOT` versions, you can check
-the [list of available versions](https://s01.oss.sonatype.org/content/repositories/snapshots/io/github/over-run/overrungl/maven-metadata.xml)
+the [list of available versions](https://central.sonatype.com/repository/maven-snapshots/io/github/over-run/overrungl/maven-metadata.xml)
 and include this maven repository:
 
 ```kotlin
 repositories {
-    maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
+    maven("https://central.sonatype.com/repository/maven-snapshots/")
 }
-```-->
+```
 
 ### Enable native access
 
