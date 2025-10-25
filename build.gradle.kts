@@ -110,9 +110,9 @@ jreleaser {
             prerelease {
                 pattern = ".*-(alpha|beta|rc)\\.\\d+"
             }
-            changelog {
-                formatted = Active.ALWAYS
-                preset = "conventional-commits"
+            releaseNotes {
+                enabled = true
+                configurationFile = ".github/release.yml"
             }
         }
     }
