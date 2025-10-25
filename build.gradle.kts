@@ -102,11 +102,7 @@ jreleaser {
             repoOwner = "Over-Run"
             name = "overrungl"
             username = "squid233"
-            update {
-                enabled = true
-                section("BODY")
-                section("ASSETS")
-            }
+            overwrite = true
             prerelease {
                 pattern = ".*-(alpha|beta|rc)\\.\\d+"
             }
