@@ -1,7 +1,13 @@
 {
-  "resources": [
-    {
-      "glob": "overrungl.stb/**/*stb.*"
-    }
+  "resources": [{ "glob": "overrungl.stb/**/*stb.*" }],
+  "reflection": [
+    { "type": "overrungl.stb.STBIIORead", "allPublicMethods": true },
+    { "type": "overrungl.stb.STBIIOSkip", "allPublicMethods": true },
+    { "type": "overrungl.stb.STBIIOEof", "allPublicMethods": true },
+    { "type": "overrungl.stb.STBIRInputCallback", "allPublicMethods": true },
+    { "type": "overrungl.stb.STBIROutputCallback", "allPublicMethods": true },
+    { "type": "overrungl.stb.STBIRKernelCallback", "allPublicMethods": true },
+    { "type": "overrungl.stb.STBIRSupportCallback", "allPublicMethods": true },
+    { "type": "overrungl.stb.STBIWriteFunc", "allPublicMethods": true }
   ]
 }

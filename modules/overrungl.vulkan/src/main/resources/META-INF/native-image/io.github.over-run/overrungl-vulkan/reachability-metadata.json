@@ -1,0 +1,15 @@
+{
+  "reflection": [
+    { "type": "overrungl.vulkan.upcall.VkInternalAllocationNotification", "allPublicMethods": true },
+    { "type": "overrungl.vulkan.upcall.VkInternalFreeNotification", "allPublicMethods": true },
+    { "type": "overrungl.vulkan.upcall.VkReallocationFunction", "allPublicMethods": true },
+    { "type": "overrungl.vulkan.upcall.VkAllocationFunction", "allPublicMethods": true },
+    { "type": "overrungl.vulkan.upcall.VkFreeFunction", "allPublicMethods": true },
+    { "type": "overrungl.vulkan.upcall.VkVoidFunction", "allPublicMethods": true },
+    { "type": "overrungl.vulkan.upcall.VkDebugReportCallbackEXT", "allPublicMethods": true },
+    { "type": "overrungl.vulkan.upcall.VkDebugUtilsMessengerCallbackEXT", "allPublicMethods": true },
+    { "type": "overrungl.vulkan.upcall.VkFaultCallbackFunction", "allPublicMethods": true },
+    { "type": "overrungl.vulkan.upcall.VkDeviceMemoryReportCallbackEXT", "allPublicMethods": true },
+    { "type": "overrungl.vulkan.upcall.VkGetInstanceProcAddrLUNARG", "allPublicMethods": true }
+  ]
+}

@@ -1,7 +1,7 @@
 {
-  "resources": [
-    {
-      "glob": "overrungl.shaderc/**/*shaderc_shared.*"
-    }
+  "resources": [{ "glob": "overrungl.shaderc/**/*shaderc_shared.*" }],
+  "reflection": [
+    { "type": "overrungl.shaderc.ShadercIncludeResolveFn", "allPublicMethods": true },
+    { "type": "overrungl.shaderc.ShadercIncludeResultReleaseFn", "allPublicMethods": true }
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "reflection": [
+    { "type": "overrungl.opengl.GLDebugProc", "allPublicMethods": true },
+    { "type": "overrungl.opengl.amd.GLDebugProcAMD", "allPublicMethods": true }
+  ]
+}

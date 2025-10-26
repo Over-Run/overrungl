@@ -24,18 +24,20 @@
 
 package overrungl.gen
 
+import overrungl.gen.file.compiledUpcallTypes
 import kotlin.io.path.Path
+import kotlin.io.path.createDirectories
 import kotlin.io.path.createParentDirectories
 
 private const val className = "ForeignRegistrationFeature"
 val nativeImageDowncallDescriptors = mutableListOf<String>()
 val nativeImageUpcallDescriptors = mutableListOf<String>()
-//TODO add a document to instruct users to register their *static* upcall method
 
 fun writeNativeImageRegistration(
     packageName: String,
     downcall: List<String> = nativeImageDowncallDescriptors,
-    upcall: List<String> = nativeImageUpcallDescriptors
+    upcall: List<String> = nativeImageUpcallDescriptors,
+    libBasename: String?
 ) {
     val basePath = Path(packageName.replace('.', '/'), "$className.java")
     val path = Path("src/main/generated/").resolve(basePath)
@@ -62,4 +64,37 @@ fun writeNativeImageRegistration(
         appendLine("    }")
         appendLine("}")
     })
+    val nativeImgRoot =
+        Path("src/main/resources/META-INF/native-image/io.github.over-run", packageName.replace('.', '-'))
+    nativeImgRoot.createDirectories()
+    writeString(
+        nativeImgRoot.resolve("native-image.properties"),
+        buildString {
+            appendLine(GENERATOR_NOTICE_SHARP)
+            appendLine("Args=--features=$packageName.$className")
+        }
+    )
+    if (libBasename != null || compiledUpcallTypes.isNotEmpty()) {
+        writeString(
+            nativeImgRoot.resolve("reachability-metadata.json"),
+            buildString {
+                appendLine("{")
+                if (libBasename != null) {
+                    append("""  "resources": [{ "glob": "$packageName/**/*$libBasename.*" }]""")
+                    if (compiledUpcallTypes.isNotEmpty()) {
+                        append(",")
+                    }
+                    appendLine()
+                }
+                if (compiledUpcallTypes.isNotEmpty()) {
+                    appendLine("""  "reflection": [""")
+                    appendLine(compiledUpcallTypes.joinToString(separator = ",\n") {
+                        """    { "type": "$it", "allPublicMethods": true }"""
+                    })
+                    appendLine("  ]")
+                }
+                appendLine("}")
+            }
+        )
+    }
 }

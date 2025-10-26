@@ -25,6 +25,7 @@
 package overrungl.gen
 
 const val GENERATOR_NOTICE = "// This file is auto-generated. DO NOT EDIT!"
+const val GENERATOR_NOTICE_SHARP = "# This file is auto-generated. DO NOT EDIT!"
 val commentedFileHeader = """
 $GENERATOR_NOTICE
 """.trimIndent()
