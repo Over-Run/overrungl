@@ -55,7 +55,7 @@ as well as providing better memory management.
 ## Getting Started
 
 You can check the [wiki](https://github.com/Over-Run/overrungl/wiki) or
-the [samples](modules/samples/src/test/java/overrungl/demo).
+the [samples](modules/samples/src/test/java/overrungl/demo). To run samples, check [run.md](doc/build/run.md).
 
 Feel free to ask questions in [discussions](https://github.com/Over-Run/overrungl/discussions) in case you have trouble in setup works, such as environment configuring.
 
