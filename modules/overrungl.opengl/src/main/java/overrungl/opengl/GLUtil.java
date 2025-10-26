@@ -113,8 +113,8 @@ public final class GLUtil {
                 printDetail(sb, "Severity", getDebugSeverity(severity));
                 printDetail(sb, "Message", MemoryUtil.nativeString(message));
                 var stack = Thread.currentThread().getStackTrace();
-                for (int i = 3; i < stack.length; i++) {
-                    sb.append("    at ").append(stack[i]).append("\n");
+                for (StackTraceElement element : stack) {
+                    sb.append("    at ").append(element).append("\n");
                 }
                 logger.accept(sb.toString());
             }), MemorySegment.NULL);
@@ -146,8 +146,8 @@ public final class GLUtil {
                 printDetail(sb, "Severity", getSeverityARB(severity));
                 printDetail(sb, "Message", MemoryUtil.nativeString(message));
                 var stack = Thread.currentThread().getStackTrace();
-                for (int i = 3; i < stack.length; i++) {
-                    sb.append("    at ").append(stack[i]).append("\n");
+                for (StackTraceElement element : stack) {
+                    sb.append("    at ").append(element).append("\n");
                 }
                 logger.accept(sb.toString());
             }), MemorySegment.NULL);
@@ -165,8 +165,8 @@ public final class GLUtil {
                 printDetail(sb, "Severity", getSeverityAMD(severity));
                 printDetail(sb, "Message", MemoryUtil.nativeString(message));
                 var stack = Thread.currentThread().getStackTrace();
-                for (int i = 3; i < stack.length; i++) {
-                    sb.append("    at ").append(stack[i]).append("\n");
+                for (StackTraceElement element : stack) {
+                    sb.append("    at ").append(element).append("\n");
                 }
                 logger.accept(sb.toString());
             }), MemorySegment.NULL);

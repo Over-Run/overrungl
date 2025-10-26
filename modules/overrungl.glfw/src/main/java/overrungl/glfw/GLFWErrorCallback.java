@@ -60,8 +60,8 @@ public final class GLFWErrorCallback {
                 .append("]: ")
                 .append(MemoryUtil.nativeString(description)).append("\n");
             var stack = Thread.currentThread().getStackTrace();
-            for (int i = 3; i < stack.length; i++) {
-                sb.append("    at ").append(stack[i]).append("\n");
+            for (StackTraceElement element : stack) {
+                sb.append("    at ").append(element).append("\n");
             }
             logger.accept(sb.toString());
         };
