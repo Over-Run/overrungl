@@ -1,7 +1,27 @@
 {
-  "resources": [
-    {
-      "glob": "overrungl.glfw/**/*glfw.*"
-    }
+  "resources": [{ "glob": "overrungl.glfw/**/*glfw.*" }],
+  "reflection": [
+    { "type": "overrungl.glfw.GLFWAllocateFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWReallocateFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWDeallocateFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWErrorFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWWindowPosFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWWindowSizeFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWWindowCloseFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWWindowRefreshFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWWindowFocusFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWWindowIconifyFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWWindowMaximizeFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWFramebufferSizeFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWWindowContentScaleFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWMouseButtonFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWCursorPosFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWCursorEnterFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWScrollFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWKeyFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWCharFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWDropFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWMonitorFun", "allPublicMethods": true },
+    { "type": "overrungl.glfw.GLFWJoystickFun", "allPublicMethods": true }
   ]
 }

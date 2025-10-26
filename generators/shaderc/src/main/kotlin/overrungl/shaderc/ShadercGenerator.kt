@@ -33,7 +33,7 @@ const val shadercLookup = "ShadercLibrary.lookup()"
 
 fun main() {
     DefinitionFile("shaderc.gen").compile(shadercPackage, "Shaderc", shadercLookup)
-    writeNativeImageRegistration(shadercPackage)
+    writeNativeImageRegistration(shadercPackage, libBasename = "shaderc_shared")
     generateLookupAccessor(
         packageName = "shaderc",
         className = "ShadercLibrary",

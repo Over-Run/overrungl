@@ -861,7 +861,7 @@ fun main() {
         appendLine()
     })
 
-    writeNativeImageRegistration(vulkanPackage)
+    writeNativeImageRegistration(vulkanPackage, libBasename = null)
 
     formatTraits(root.getElementsByTagName("formats").item(0) as Element)
     vkUtil()
