@@ -52,7 +52,7 @@ public final class OverrunGL {
     /**
      * The version of OpenAL native libraries.
      */
-    public static final String OPENAL_VERSION = "0.1.0.0";
+    public static final String OPENAL_VERSION = "0.2.0.0";
     /// The version of Shaderc native libraries.
     ///
     /// @since 0.2.0

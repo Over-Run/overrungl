@@ -22,33 +22,31 @@
  * SOFTWARE.
  */
 
-plugins {
-    id("me.champeau.jmh") version "0.7.3"
-    id("module.conventions")
-    id("submodule.conventions")
-}
+import io.github.overrun.platform.Architecture;
+import io.github.overrun.platform.Platform;
 
-overrunglModule {
-    artifactName = "overrungl-samples"
-}
-
-val jmhVersion: String by rootProject
-val timerVersion: String by rootProject
-
-dependencies {
-    Artifact.entries.forEach {
-        implementation(project(it.subprojectName))
+/// Detects the current platform and architecture and copies files to working directory.
+///
+/// @since 0.2.0
+void main(String[] args) {
+    Platform platform = Platform.current();
+    if (platform instanceof Platform.Unknown) {
+        throw new IllegalStateException("platform is unknown");
     }
-    implementation("io.github.over-run:timer:$timerVersion")
-    jmh("org.openjdk.jmh:jmh-core:$jmhVersion")
-    jmhAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:$jmhVersion")
-}
-
-tasks.register<JavaExec>("deployNatives") {
-    dependsOn(tasks["classes"])
-    classpath = sourceSets.test.get().runtimeClasspath
-    workingDir = rootDir
-    mainClass = "NativeDeployer"
-    standardInput = System.`in`
-    args = NativeBinding.entries.map { "${it.bindingName}:${it.basename}" }
+    Architecture arch = Architecture.current();
+    if (arch == Architecture.UNKNOWN) {
+        throw new IllegalStateException("architecture is unknown; platform: " + platform.familyName());
+    }
+    String dir = platform.familyName() + "-" + arch;
+    Path dstDir = Path.of(IO.readln("Please enter the destination directory: "));
+    for (String arg : args) {
+        String[] split = arg.split(":", 2);
+        Path src = Path.of("natives", split[0], dir, platform.sharedLibraryName(split[1]));
+        try {
+            Files.copy(src, dstDir.resolve(src.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Copied " + src);
+    }
 }
