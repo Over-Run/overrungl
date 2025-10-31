@@ -30,12 +30,12 @@ public final class GLARBTransformFeedback2 {
         public final MemorySegment PFN_glDrawTransformFeedback;
         private Handles(GLLoadFunc func) {
             PFN_glBindTransformFeedback = func.invoke("glBindTransformFeedback");
-            PFN_glDeleteTransformFeedbacks = func.invoke("glDeleteTransformFeedbacks");
-            PFN_glGenTransformFeedbacks = func.invoke("glGenTransformFeedbacks");
-            PFN_glIsTransformFeedback = func.invoke("glIsTransformFeedback");
-            PFN_glPauseTransformFeedback = func.invoke("glPauseTransformFeedback");
-            PFN_glResumeTransformFeedback = func.invoke("glResumeTransformFeedback");
-            PFN_glDrawTransformFeedback = func.invoke("glDrawTransformFeedback");
+            PFN_glDeleteTransformFeedbacks = func.invoke("glDeleteTransformFeedbacks", "glDeleteTransformFeedbacksNV");
+            PFN_glGenTransformFeedbacks = func.invoke("glGenTransformFeedbacks", "glGenTransformFeedbacksNV");
+            PFN_glIsTransformFeedback = func.invoke("glIsTransformFeedback", "glIsTransformFeedbackNV");
+            PFN_glPauseTransformFeedback = func.invoke("glPauseTransformFeedback", "glPauseTransformFeedbackNV");
+            PFN_glResumeTransformFeedback = func.invoke("glResumeTransformFeedback", "glResumeTransformFeedbackNV");
+            PFN_glDrawTransformFeedback = func.invoke("glDrawTransformFeedback", "glDrawTransformFeedbackEXT", "glDrawTransformFeedbackNV");
         }
     }
 

@@ -48,16 +48,17 @@ public final class GLARBViewportArray {
         public final MemorySegment PFN_glDepthRangeArraydvNV;
         public final MemorySegment PFN_glDepthRangeIndexeddNV;
         private Handles(GLLoadFunc func) {
-            PFN_glViewportArrayv = func.invoke("glViewportArrayv");
-            PFN_glViewportIndexedf = func.invoke("glViewportIndexedf");
-            PFN_glViewportIndexedfv = func.invoke("glViewportIndexedfv");
-            PFN_glScissorArrayv = func.invoke("glScissorArrayv");
-            PFN_glScissorIndexed = func.invoke("glScissorIndexed");
-            PFN_glScissorIndexedv = func.invoke("glScissorIndexedv");
+            PFN_glViewportArrayv = func.invoke("glViewportArrayv", "glViewportArrayvNV", "glViewportArrayvOES");
+            PFN_glViewportIndexedf = func.invoke("glViewportIndexedf", "glViewportIndexedfOES", "glViewportIndexedfNV");
+            PFN_glViewportIndexedfv = func.invoke("glViewportIndexedfv", "glViewportIndexedfvOES", "glViewportIndexedfvNV");
+            PFN_glScissorArrayv = func.invoke("glScissorArrayv", "glScissorArrayvNV", "glScissorArrayvOES");
+            PFN_glScissorIndexed = func.invoke("glScissorIndexed", "glScissorIndexedNV", "glScissorIndexedOES");
+            PFN_glScissorIndexedv = func.invoke("glScissorIndexedv", "glScissorIndexedvNV", "glScissorIndexedvOES");
             PFN_glDepthRangeArrayv = func.invoke("glDepthRangeArrayv");
             PFN_glDepthRangeIndexed = func.invoke("glDepthRangeIndexed");
-            PFN_glGetFloati_v = func.invoke("glGetFloati_v");
-            PFN_glGetDoublei_v = func.invoke("glGetDoublei_v");PFN_glDepthRangeArraydvNV = func.invoke("glDepthRangeArraydvNV");
+            PFN_glGetFloati_v = func.invoke("glGetFloati_v", "glGetFloatIndexedvEXT", "glGetFloati_vEXT", "glGetFloati_vNV", "glGetFloati_vOES");
+            PFN_glGetDoublei_v = func.invoke("glGetDoublei_v", "glGetDoubleIndexedvEXT", "glGetDoublei_vEXT");
+            PFN_glDepthRangeArraydvNV = func.invoke("glDepthRangeArraydvNV");
             PFN_glDepthRangeIndexeddNV = func.invoke("glDepthRangeIndexeddNV");
         }
     }

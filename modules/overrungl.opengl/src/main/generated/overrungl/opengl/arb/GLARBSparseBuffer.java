@@ -19,7 +19,9 @@ public final class GLARBSparseBuffer {
         public final MemorySegment PFN_glNamedBufferPageCommitmentEXT;
         public final MemorySegment PFN_glNamedBufferPageCommitmentARB;
         private Handles(GLLoadFunc func) {
-            PFN_glBufferPageCommitmentARB = func.invoke("glBufferPageCommitmentARB");PFN_glNamedBufferPageCommitmentEXT = func.invoke("glNamedBufferPageCommitmentEXT");PFN_glNamedBufferPageCommitmentARB = func.invoke("glNamedBufferPageCommitmentARB");
+            PFN_glBufferPageCommitmentARB = func.invoke("glBufferPageCommitmentARB");
+            PFN_glNamedBufferPageCommitmentEXT = func.invoke("glNamedBufferPageCommitmentEXT");
+            PFN_glNamedBufferPageCommitmentARB = func.invoke("glNamedBufferPageCommitmentARB");
         }
     }
 

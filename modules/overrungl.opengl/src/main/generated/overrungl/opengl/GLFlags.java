@@ -277,6 +277,7 @@ public final class GLFlags {
     public final boolean GL_EXT_draw_range_elements;
     public final boolean GL_EXT_external_buffer;
     public final boolean GL_EXT_fog_coord;
+    public final boolean GL_EXT_fragment_shading_rate;
     public final boolean GL_EXT_framebuffer_blit;
     public final boolean GL_EXT_framebuffer_blit_layers;
     public final boolean GL_EXT_framebuffer_multisample;
@@ -295,6 +296,7 @@ public final class GLFlags {
     public final boolean GL_EXT_memory_object;
     public final boolean GL_EXT_memory_object_fd;
     public final boolean GL_EXT_memory_object_win32;
+    public final boolean GL_EXT_mesh_shader;
     public final boolean GL_EXT_misc_attribute;
     public final boolean GL_EXT_multi_draw_arrays;
     public final boolean GL_EXT_multisample;
@@ -922,6 +924,7 @@ public final class GLFlags {
         GL_EXT_draw_range_elements = loader.hasExtension(version, exts, "GL_EXT_draw_range_elements");
         GL_EXT_external_buffer = loader.hasExtension(version, exts, "GL_EXT_external_buffer");
         GL_EXT_fog_coord = loader.hasExtension(version, exts, "GL_EXT_fog_coord");
+        GL_EXT_fragment_shading_rate = loader.hasExtension(version, exts, "GL_EXT_fragment_shading_rate");
         GL_EXT_framebuffer_blit = loader.hasExtension(version, exts, "GL_EXT_framebuffer_blit");
         GL_EXT_framebuffer_blit_layers = loader.hasExtension(version, exts, "GL_EXT_framebuffer_blit_layers");
         GL_EXT_framebuffer_multisample = loader.hasExtension(version, exts, "GL_EXT_framebuffer_multisample");
@@ -940,6 +943,7 @@ public final class GLFlags {
         GL_EXT_memory_object = loader.hasExtension(version, exts, "GL_EXT_memory_object");
         GL_EXT_memory_object_fd = loader.hasExtension(version, exts, "GL_EXT_memory_object_fd");
         GL_EXT_memory_object_win32 = loader.hasExtension(version, exts, "GL_EXT_memory_object_win32");
+        GL_EXT_mesh_shader = loader.hasExtension(version, exts, "GL_EXT_mesh_shader");
         GL_EXT_misc_attribute = loader.hasExtension(version, exts, "GL_EXT_misc_attribute");
         GL_EXT_multi_draw_arrays = loader.hasExtension(version, exts, "GL_EXT_multi_draw_arrays");
         GL_EXT_multisample = loader.hasExtension(version, exts, "GL_EXT_multisample");

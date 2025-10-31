@@ -20,10 +20,10 @@ public final class GLARBVertexArrayObject {
         public final MemorySegment PFN_glGenVertexArrays;
         public final MemorySegment PFN_glIsVertexArray;
         private Handles(GLLoadFunc func) {
-            PFN_glBindVertexArray = func.invoke("glBindVertexArray");
-            PFN_glDeleteVertexArrays = func.invoke("glDeleteVertexArrays");
-            PFN_glGenVertexArrays = func.invoke("glGenVertexArrays");
-            PFN_glIsVertexArray = func.invoke("glIsVertexArray");
+            PFN_glBindVertexArray = func.invoke("glBindVertexArray", "glBindVertexArrayOES");
+            PFN_glDeleteVertexArrays = func.invoke("glDeleteVertexArrays", "glDeleteVertexArraysAPPLE", "glDeleteVertexArraysOES");
+            PFN_glGenVertexArrays = func.invoke("glGenVertexArrays", "glGenVertexArraysAPPLE", "glGenVertexArraysOES");
+            PFN_glIsVertexArray = func.invoke("glIsVertexArray", "glIsVertexArrayAPPLE", "glIsVertexArrayOES");
         }
     }
 

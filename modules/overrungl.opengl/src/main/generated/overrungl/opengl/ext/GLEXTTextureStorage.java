@@ -48,7 +48,8 @@ public final class GLEXTTextureStorage {
         private Handles(GLLoadFunc func) {
             PFN_glTexStorage1DEXT = func.invoke("glTexStorage1DEXT", "glTexStorage1D");
             PFN_glTexStorage2DEXT = func.invoke("glTexStorage2DEXT", "glTexStorage2D");
-            PFN_glTexStorage3DEXT = func.invoke("glTexStorage3DEXT", "glTexStorage3D");PFN_glTextureStorage1DEXT = func.invoke("glTextureStorage1DEXT");
+            PFN_glTexStorage3DEXT = func.invoke("glTexStorage3DEXT", "glTexStorage3D");
+            PFN_glTextureStorage1DEXT = func.invoke("glTextureStorage1DEXT");
             PFN_glTextureStorage2DEXT = func.invoke("glTextureStorage2DEXT");
             PFN_glTextureStorage3DEXT = func.invoke("glTextureStorage3DEXT");
         }

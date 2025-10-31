@@ -36,7 +36,8 @@ public final class GLNVMemoryAttachment {
             PFN_glGetMemoryObjectDetachedResourcesuivNV = func.invoke("glGetMemoryObjectDetachedResourcesuivNV");
             PFN_glResetMemoryObjectParameterNV = func.invoke("glResetMemoryObjectParameterNV");
             PFN_glTexAttachMemoryNV = func.invoke("glTexAttachMemoryNV");
-            PFN_glBufferAttachMemoryNV = func.invoke("glBufferAttachMemoryNV");PFN_glTextureAttachMemoryNV = func.invoke("glTextureAttachMemoryNV");
+            PFN_glBufferAttachMemoryNV = func.invoke("glBufferAttachMemoryNV");
+            PFN_glTextureAttachMemoryNV = func.invoke("glTextureAttachMemoryNV");
             PFN_glNamedBufferAttachMemoryNV = func.invoke("glNamedBufferAttachMemoryNV");
         }
     }

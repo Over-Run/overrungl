@@ -19,10 +19,10 @@ public final class GLARBDrawElementsBaseVertex {
         public final MemorySegment PFN_glDrawElementsInstancedBaseVertex;
         public final MemorySegment PFN_glMultiDrawElementsBaseVertex;
         private Handles(GLLoadFunc func) {
-            PFN_glDrawElementsBaseVertex = func.invoke("glDrawElementsBaseVertex");
-            PFN_glDrawRangeElementsBaseVertex = func.invoke("glDrawRangeElementsBaseVertex");
-            PFN_glDrawElementsInstancedBaseVertex = func.invoke("glDrawElementsInstancedBaseVertex");
-            PFN_glMultiDrawElementsBaseVertex = func.invoke("glMultiDrawElementsBaseVertex");
+            PFN_glDrawElementsBaseVertex = func.invoke("glDrawElementsBaseVertex", "glDrawElementsBaseVertexEXT", "glDrawElementsBaseVertexOES");
+            PFN_glDrawRangeElementsBaseVertex = func.invoke("glDrawRangeElementsBaseVertex", "glDrawRangeElementsBaseVertexEXT", "glDrawRangeElementsBaseVertexOES");
+            PFN_glDrawElementsInstancedBaseVertex = func.invoke("glDrawElementsInstancedBaseVertex", "glDrawElementsInstancedBaseVertexEXT", "glDrawElementsInstancedBaseVertexOES");
+            PFN_glMultiDrawElementsBaseVertex = func.invoke("glMultiDrawElementsBaseVertex", "glMultiDrawElementsBaseVertexEXT");
         }
     }
 

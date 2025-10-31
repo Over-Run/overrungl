@@ -19,7 +19,7 @@ public final class GLARBClipControl {
         public static final MethodHandle MH_glClipControl = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glClipControl;
         private Handles(GLLoadFunc func) {
-            PFN_glClipControl = func.invoke("glClipControl");
+            PFN_glClipControl = func.invoke("glClipControl", "glClipControlEXT");
         }
     }
 

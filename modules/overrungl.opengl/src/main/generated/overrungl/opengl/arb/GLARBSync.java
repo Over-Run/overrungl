@@ -40,13 +40,13 @@ public final class GLARBSync {
         public final MemorySegment PFN_glGetInteger64v;
         public final MemorySegment PFN_glGetSynciv;
         private Handles(GLLoadFunc func) {
-            PFN_glFenceSync = func.invoke("glFenceSync");
-            PFN_glIsSync = func.invoke("glIsSync");
-            PFN_glDeleteSync = func.invoke("glDeleteSync");
-            PFN_glClientWaitSync = func.invoke("glClientWaitSync");
-            PFN_glWaitSync = func.invoke("glWaitSync");
-            PFN_glGetInteger64v = func.invoke("glGetInteger64v");
-            PFN_glGetSynciv = func.invoke("glGetSynciv");
+            PFN_glFenceSync = func.invoke("glFenceSync", "glFenceSyncAPPLE");
+            PFN_glIsSync = func.invoke("glIsSync", "glIsSyncAPPLE");
+            PFN_glDeleteSync = func.invoke("glDeleteSync", "glDeleteSyncAPPLE");
+            PFN_glClientWaitSync = func.invoke("glClientWaitSync", "glClientWaitSyncAPPLE");
+            PFN_glWaitSync = func.invoke("glWaitSync", "glWaitSyncAPPLE");
+            PFN_glGetInteger64v = func.invoke("glGetInteger64v", "glGetInteger64vAPPLE", "glGetInteger64vEXT");
+            PFN_glGetSynciv = func.invoke("glGetSynciv", "glGetSyncivAPPLE");
         }
     }
 

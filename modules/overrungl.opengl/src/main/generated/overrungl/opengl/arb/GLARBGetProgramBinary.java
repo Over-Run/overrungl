@@ -21,9 +21,9 @@ public final class GLARBGetProgramBinary {
         public final MemorySegment PFN_glProgramBinary;
         public final MemorySegment PFN_glProgramParameteri;
         private Handles(GLLoadFunc func) {
-            PFN_glGetProgramBinary = func.invoke("glGetProgramBinary");
-            PFN_glProgramBinary = func.invoke("glProgramBinary");
-            PFN_glProgramParameteri = func.invoke("glProgramParameteri");
+            PFN_glGetProgramBinary = func.invoke("glGetProgramBinary", "glGetProgramBinaryOES");
+            PFN_glProgramBinary = func.invoke("glProgramBinary", "glProgramBinaryOES");
+            PFN_glProgramParameteri = func.invoke("glProgramParameteri", "glProgramParameteriARB", "glProgramParameteriEXT");
         }
     }
 

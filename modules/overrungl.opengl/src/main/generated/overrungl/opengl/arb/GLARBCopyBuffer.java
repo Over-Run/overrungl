@@ -15,7 +15,7 @@ public final class GLARBCopyBuffer {
         public static final MethodHandle MH_glCopyBufferSubData = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glCopyBufferSubData;
         private Handles(GLLoadFunc func) {
-            PFN_glCopyBufferSubData = func.invoke("glCopyBufferSubData");
+            PFN_glCopyBufferSubData = func.invoke("glCopyBufferSubData", "glCopyBufferSubDataNV");
         }
     }
 

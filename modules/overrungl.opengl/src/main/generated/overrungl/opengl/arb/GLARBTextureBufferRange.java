@@ -16,7 +16,7 @@ public final class GLARBTextureBufferRange {
         public static final MethodHandle MH_glTexBufferRange = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glTexBufferRange;
         private Handles(GLLoadFunc func) {
-            PFN_glTexBufferRange = func.invoke("glTexBufferRange");
+            PFN_glTexBufferRange = func.invoke("glTexBufferRange", "glTexBufferRangeEXT", "glTexBufferRangeOES");
         }
     }
 

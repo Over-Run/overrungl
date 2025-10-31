@@ -18,9 +18,9 @@ public final class GLARBTextureStorage {
         public final MemorySegment PFN_glTexStorage2D;
         public final MemorySegment PFN_glTexStorage3D;
         private Handles(GLLoadFunc func) {
-            PFN_glTexStorage1D = func.invoke("glTexStorage1D");
-            PFN_glTexStorage2D = func.invoke("glTexStorage2D");
-            PFN_glTexStorage3D = func.invoke("glTexStorage3D");
+            PFN_glTexStorage1D = func.invoke("glTexStorage1D", "glTexStorage1DEXT");
+            PFN_glTexStorage2D = func.invoke("glTexStorage2D", "glTexStorage2DEXT");
+            PFN_glTexStorage3D = func.invoke("glTexStorage3D", "glTexStorage3DEXT");
         }
     }
 

@@ -33,7 +33,7 @@ import overrungl.gen.file.unsigned_char_boolean
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
 
-// gl.xml updated: 2025-10-03
+// gl.xml updated: 2025-10-31
 
 const val openglPackage = "overrungl.opengl"
 fun extPackage(vendor: String): String {
@@ -183,7 +183,10 @@ fun main() {
                                 require.getAttribute("profile")
                             else null,
                             reqEnums,
-                            reqCommands
+                            reqCommands,
+                            api = if (require.hasAttribute("api"))
+                                require.getAttribute("api")
+                            else null
                         )
                     )
                 }
@@ -326,6 +329,12 @@ fun main() {
             val requireList = extension.getElementsByTagName("require")
             for (i1 in 0 until requireList.length) {
                 val require = requireList.item(i1) as Element
+                val api = if (require.hasAttribute("api"))
+                    require.getAttribute("api")
+                else null
+                if (api != null && api.split('|').none { it == "gl" || it == "glcore" }) {
+                    continue
+                }
                 val requireEnums = mutableListOf<GLRequireEnum>()
                 val requireCommands = mutableListOf<GLRequireCommand>()
                 require.getElementsByTagName("enum").also {
@@ -340,7 +349,14 @@ fun main() {
                         requireCommands.add(GLRequireCommand(node.getAttribute("name")))
                     }
                 }
-                extensionRequires.add(GLRequire(null, requireEnums, requireCommands))
+                extensionRequires.add(
+                    GLRequire(
+                        null,
+                        requireEnums,
+                        requireCommands,
+                        api = api
+                    )
+                )
             }
             extensions.add(GLExtension(name, extensionRequires))
         }
@@ -367,12 +383,18 @@ fun main() {
                     } else {
                         constructorParam = "GLLoadFunc func"
                         handlesConstructorCode = buildString {
+                            var generated = false
                             extension.requires.forEach { require ->
-                                require.commands.forEachIndexed { index, command ->
-                                    if (index > 0) {
+                                require.commands.forEach { command ->
+                                    if (!generated) {
+                                        generated = true
+                                    } else {
                                         appendLine()
                                     }
                                     append("""PFN_${command.name} = func.invoke("${command.name}"""")
+                                    if (aliasMap.containsKey(command.name)) {
+                                        aliasMap[command.name]!!.forEach { append(""", "$it"""") }
+                                    }
                                     aliasMap.entries.find { it.value.contains(command.name) }?.key?.also { append(""", "$it"""") }
                                     append(");")
                                 }
@@ -496,7 +518,12 @@ interface GLRemoveEntry {
 data class GLRemoveEnum(override val name: String, override val removeNumber: String) : GLRemoveEntry
 data class GLRemoveCommand(override val name: String, override val removeNumber: String) : GLRemoveEntry
 
-data class GLRequire(val profile: String?, val enums: List<GLRequireEnum>, val commands: List<GLRequireCommand>)
+data class GLRequire(
+    val profile: String?,
+    val enums: List<GLRequireEnum>,
+    val commands: List<GLRequireCommand>,
+    val api: String?
+)
 
 data class GLFeature(val number: String, val requires: List<GLRequire>) {
     fun <T : GLRequireEntry> coreForEach(
@@ -506,11 +533,13 @@ data class GLFeature(val number: String, val requires: List<GLRequire>) {
     ) {
         requires.forEach { require ->
             listGetter(require).forEach { e ->
-                if ((require.profile == null && (removed.find { it.name == e.name }?.let {
+                val notES = require.api == null || require.api.split('|').any { it == "gl" || it == "glcore" }
+                val coreProfile = {
+                    (require.profile == null && (removed.find { it.name == e.name }?.let {
                         isAOlder(it.removeNumber, number)
-                    } != false)) ||
-                    require.profile == "core"
-                ) {
+                    } != false)) || require.profile == "core"
+                }
+                if (notES && coreProfile()) {
                     action(e)
                 }
             }

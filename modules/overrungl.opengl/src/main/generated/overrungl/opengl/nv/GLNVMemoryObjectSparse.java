@@ -20,7 +20,8 @@ public final class GLNVMemoryObjectSparse {
         public final MemorySegment PFN_glTexturePageCommitmentMemNV;
         private Handles(GLLoadFunc func) {
             PFN_glBufferPageCommitmentMemNV = func.invoke("glBufferPageCommitmentMemNV");
-            PFN_glTexPageCommitmentMemNV = func.invoke("glTexPageCommitmentMemNV");PFN_glNamedBufferPageCommitmentMemNV = func.invoke("glNamedBufferPageCommitmentMemNV");
+            PFN_glTexPageCommitmentMemNV = func.invoke("glTexPageCommitmentMemNV");
+            PFN_glNamedBufferPageCommitmentMemNV = func.invoke("glNamedBufferPageCommitmentMemNV");
             PFN_glTexturePageCommitmentMemNV = func.invoke("glTexturePageCommitmentMemNV");
         }
     }

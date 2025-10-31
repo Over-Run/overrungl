@@ -42,7 +42,7 @@ public final class GLARBGeometryShader4 {
             PFN_glProgramParameteriARB = func.invoke("glProgramParameteriARB", "glProgramParameteri");
             PFN_glFramebufferTextureARB = func.invoke("glFramebufferTextureARB", "glFramebufferTexture");
             PFN_glFramebufferTextureLayerARB = func.invoke("glFramebufferTextureLayerARB", "glFramebufferTextureLayer");
-            PFN_glFramebufferTextureFaceARB = func.invoke("glFramebufferTextureFaceARB");
+            PFN_glFramebufferTextureFaceARB = func.invoke("glFramebufferTextureFaceARB", "glFramebufferTextureFaceEXT");
         }
     }
 

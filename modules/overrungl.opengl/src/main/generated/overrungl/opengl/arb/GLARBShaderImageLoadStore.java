@@ -80,7 +80,7 @@ public final class GLARBShaderImageLoadStore {
         public final MemorySegment PFN_glMemoryBarrier;
         private Handles(GLLoadFunc func) {
             PFN_glBindImageTexture = func.invoke("glBindImageTexture");
-            PFN_glMemoryBarrier = func.invoke("glMemoryBarrier");
+            PFN_glMemoryBarrier = func.invoke("glMemoryBarrier", "glMemoryBarrierEXT");
         }
     }
 

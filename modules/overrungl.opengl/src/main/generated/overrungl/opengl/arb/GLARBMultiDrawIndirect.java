@@ -15,8 +15,8 @@ public final class GLARBMultiDrawIndirect {
         public final MemorySegment PFN_glMultiDrawArraysIndirect;
         public final MemorySegment PFN_glMultiDrawElementsIndirect;
         private Handles(GLLoadFunc func) {
-            PFN_glMultiDrawArraysIndirect = func.invoke("glMultiDrawArraysIndirect");
-            PFN_glMultiDrawElementsIndirect = func.invoke("glMultiDrawElementsIndirect");
+            PFN_glMultiDrawArraysIndirect = func.invoke("glMultiDrawArraysIndirect", "glMultiDrawArraysIndirectAMD", "glMultiDrawArraysIndirectEXT");
+            PFN_glMultiDrawElementsIndirect = func.invoke("glMultiDrawElementsIndirect", "glMultiDrawElementsIndirectAMD", "glMultiDrawElementsIndirectEXT");
         }
     }
 

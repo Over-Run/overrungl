@@ -15,7 +15,7 @@ public final class GLKHRParallelShaderCompile {
         public static final MethodHandle MH_glMaxShaderCompilerThreadsKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMaxShaderCompilerThreadsKHR;
         private Handles(GLLoadFunc func) {
-            PFN_glMaxShaderCompilerThreadsKHR = func.invoke("glMaxShaderCompilerThreadsKHR");
+            PFN_glMaxShaderCompilerThreadsKHR = func.invoke("glMaxShaderCompilerThreadsKHR", "glMaxShaderCompilerThreadsARB");
         }
     }
 

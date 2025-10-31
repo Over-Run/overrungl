@@ -76,7 +76,8 @@ public final class GLNVTransformFeedback {
             PFN_glActiveVaryingNV = func.invoke("glActiveVaryingNV");
             PFN_glGetVaryingLocationNV = func.invoke("glGetVaryingLocationNV");
             PFN_glGetActiveVaryingNV = func.invoke("glGetActiveVaryingNV");
-            PFN_glGetTransformFeedbackVaryingNV = func.invoke("glGetTransformFeedbackVaryingNV");PFN_glTransformFeedbackStreamAttribsNV = func.invoke("glTransformFeedbackStreamAttribsNV");
+            PFN_glGetTransformFeedbackVaryingNV = func.invoke("glGetTransformFeedbackVaryingNV");
+            PFN_glTransformFeedbackStreamAttribsNV = func.invoke("glTransformFeedbackStreamAttribsNV");
         }
     }
 

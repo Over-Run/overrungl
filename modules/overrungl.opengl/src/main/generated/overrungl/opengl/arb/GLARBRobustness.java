@@ -66,7 +66,8 @@ public final class GLARBRobustness {
             PFN_glGetnUniformfvARB = func.invoke("glGetnUniformfvARB");
             PFN_glGetnUniformivARB = func.invoke("glGetnUniformivARB");
             PFN_glGetnUniformuivARB = func.invoke("glGetnUniformuivARB");
-            PFN_glGetnUniformdvARB = func.invoke("glGetnUniformdvARB");PFN_glGetnMapdvARB = func.invoke("glGetnMapdvARB");
+            PFN_glGetnUniformdvARB = func.invoke("glGetnUniformdvARB");
+            PFN_glGetnMapdvARB = func.invoke("glGetnMapdvARB");
             PFN_glGetnMapfvARB = func.invoke("glGetnMapfvARB");
             PFN_glGetnMapivARB = func.invoke("glGetnMapivARB");
             PFN_glGetnPixelMapfvARB = func.invoke("glGetnPixelMapfvARB");

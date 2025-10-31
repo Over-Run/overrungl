@@ -15,7 +15,7 @@ public final class GLARBTransformFeedbackInstanced {
         public final MemorySegment PFN_glDrawTransformFeedbackInstanced;
         public final MemorySegment PFN_glDrawTransformFeedbackStreamInstanced;
         private Handles(GLLoadFunc func) {
-            PFN_glDrawTransformFeedbackInstanced = func.invoke("glDrawTransformFeedbackInstanced");
+            PFN_glDrawTransformFeedbackInstanced = func.invoke("glDrawTransformFeedbackInstanced", "glDrawTransformFeedbackInstancedEXT");
             PFN_glDrawTransformFeedbackStreamInstanced = func.invoke("glDrawTransformFeedbackStreamInstanced");
         }
     }

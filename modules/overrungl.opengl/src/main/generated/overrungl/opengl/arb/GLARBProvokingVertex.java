@@ -17,7 +17,7 @@ public final class GLARBProvokingVertex {
         public static final MethodHandle MH_glProvokingVertex = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glProvokingVertex;
         private Handles(GLLoadFunc func) {
-            PFN_glProvokingVertex = func.invoke("glProvokingVertex");
+            PFN_glProvokingVertex = func.invoke("glProvokingVertex", "glProvokingVertexEXT");
         }
     }
 

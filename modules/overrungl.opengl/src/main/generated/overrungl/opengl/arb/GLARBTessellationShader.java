@@ -52,7 +52,7 @@ public final class GLARBTessellationShader {
         public final MemorySegment PFN_glPatchParameteri;
         public final MemorySegment PFN_glPatchParameterfv;
         private Handles(GLLoadFunc func) {
-            PFN_glPatchParameteri = func.invoke("glPatchParameteri");
+            PFN_glPatchParameteri = func.invoke("glPatchParameteri", "glPatchParameteriEXT", "glPatchParameteriOES");
             PFN_glPatchParameterfv = func.invoke("glPatchParameterfv");
         }
     }

@@ -14,7 +14,7 @@ public final class GLARBPolygonOffsetClamp {
         public static final MethodHandle MH_glPolygonOffsetClamp = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glPolygonOffsetClamp;
         private Handles(GLLoadFunc func) {
-            PFN_glPolygonOffsetClamp = func.invoke("glPolygonOffsetClamp");
+            PFN_glPolygonOffsetClamp = func.invoke("glPolygonOffsetClamp", "glPolygonOffsetClampEXT");
         }
     }
 

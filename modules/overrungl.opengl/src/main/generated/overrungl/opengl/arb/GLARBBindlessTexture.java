@@ -44,17 +44,17 @@ public final class GLARBBindlessTexture {
         public final MemorySegment PFN_glVertexAttribL1ui64vARB;
         public final MemorySegment PFN_glGetVertexAttribLui64vARB;
         private Handles(GLLoadFunc func) {
-            PFN_glGetTextureHandleARB = func.invoke("glGetTextureHandleARB");
-            PFN_glGetTextureSamplerHandleARB = func.invoke("glGetTextureSamplerHandleARB");
+            PFN_glGetTextureHandleARB = func.invoke("glGetTextureHandleARB", "glGetTextureHandleIMG");
+            PFN_glGetTextureSamplerHandleARB = func.invoke("glGetTextureSamplerHandleARB", "glGetTextureSamplerHandleIMG");
             PFN_glMakeTextureHandleResidentARB = func.invoke("glMakeTextureHandleResidentARB");
             PFN_glMakeTextureHandleNonResidentARB = func.invoke("glMakeTextureHandleNonResidentARB");
             PFN_glGetImageHandleARB = func.invoke("glGetImageHandleARB");
             PFN_glMakeImageHandleResidentARB = func.invoke("glMakeImageHandleResidentARB");
             PFN_glMakeImageHandleNonResidentARB = func.invoke("glMakeImageHandleNonResidentARB");
-            PFN_glUniformHandleui64ARB = func.invoke("glUniformHandleui64ARB");
-            PFN_glUniformHandleui64vARB = func.invoke("glUniformHandleui64vARB");
-            PFN_glProgramUniformHandleui64ARB = func.invoke("glProgramUniformHandleui64ARB");
-            PFN_glProgramUniformHandleui64vARB = func.invoke("glProgramUniformHandleui64vARB");
+            PFN_glUniformHandleui64ARB = func.invoke("glUniformHandleui64ARB", "glUniformHandleui64IMG");
+            PFN_glUniformHandleui64vARB = func.invoke("glUniformHandleui64vARB", "glUniformHandleui64vIMG");
+            PFN_glProgramUniformHandleui64ARB = func.invoke("glProgramUniformHandleui64ARB", "glProgramUniformHandleui64IMG");
+            PFN_glProgramUniformHandleui64vARB = func.invoke("glProgramUniformHandleui64vARB", "glProgramUniformHandleui64vIMG");
             PFN_glIsTextureHandleResidentARB = func.invoke("glIsTextureHandleResidentARB");
             PFN_glIsImageHandleResidentARB = func.invoke("glIsImageHandleResidentARB");
             PFN_glVertexAttribL1ui64ARB = func.invoke("glVertexAttribL1ui64ARB");

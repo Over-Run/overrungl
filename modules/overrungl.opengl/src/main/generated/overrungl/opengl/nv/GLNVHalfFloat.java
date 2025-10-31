@@ -143,9 +143,12 @@ public final class GLNVHalfFloat {
             PFN_glVertexAttribs1hvNV = func.invoke("glVertexAttribs1hvNV");
             PFN_glVertexAttribs2hvNV = func.invoke("glVertexAttribs2hvNV");
             PFN_glVertexAttribs3hvNV = func.invoke("glVertexAttribs3hvNV");
-            PFN_glVertexAttribs4hvNV = func.invoke("glVertexAttribs4hvNV");PFN_glFogCoordhNV = func.invoke("glFogCoordhNV");
-            PFN_glFogCoordhvNV = func.invoke("glFogCoordhvNV");PFN_glSecondaryColor3hNV = func.invoke("glSecondaryColor3hNV");
-            PFN_glSecondaryColor3hvNV = func.invoke("glSecondaryColor3hvNV");PFN_glVertexWeighthNV = func.invoke("glVertexWeighthNV");
+            PFN_glVertexAttribs4hvNV = func.invoke("glVertexAttribs4hvNV");
+            PFN_glFogCoordhNV = func.invoke("glFogCoordhNV");
+            PFN_glFogCoordhvNV = func.invoke("glFogCoordhvNV");
+            PFN_glSecondaryColor3hNV = func.invoke("glSecondaryColor3hNV");
+            PFN_glSecondaryColor3hvNV = func.invoke("glSecondaryColor3hvNV");
+            PFN_glVertexWeighthNV = func.invoke("glVertexWeighthNV");
             PFN_glVertexWeighthvNV = func.invoke("glVertexWeighthvNV");
         }
     }

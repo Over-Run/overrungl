@@ -15,7 +15,8 @@ public final class GLEXTEGLImageStorage {
         public final MemorySegment PFN_glEGLImageTargetTexStorageEXT;
         public final MemorySegment PFN_glEGLImageTargetTextureStorageEXT;
         private Handles(GLLoadFunc func) {
-            PFN_glEGLImageTargetTexStorageEXT = func.invoke("glEGLImageTargetTexStorageEXT");PFN_glEGLImageTargetTextureStorageEXT = func.invoke("glEGLImageTargetTextureStorageEXT");
+            PFN_glEGLImageTargetTexStorageEXT = func.invoke("glEGLImageTargetTexStorageEXT");
+            PFN_glEGLImageTargetTextureStorageEXT = func.invoke("glEGLImageTargetTextureStorageEXT");
         }
     }
 

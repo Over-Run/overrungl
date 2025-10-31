@@ -26,7 +26,8 @@ public final class GLNVTextureMultisample {
         public final MemorySegment PFN_glTextureImage3DMultisampleCoverageNV;
         private Handles(GLLoadFunc func) {
             PFN_glTexImage2DMultisampleCoverageNV = func.invoke("glTexImage2DMultisampleCoverageNV");
-            PFN_glTexImage3DMultisampleCoverageNV = func.invoke("glTexImage3DMultisampleCoverageNV");PFN_glTextureImage2DMultisampleNV = func.invoke("glTextureImage2DMultisampleNV");
+            PFN_glTexImage3DMultisampleCoverageNV = func.invoke("glTexImage3DMultisampleCoverageNV");
+            PFN_glTextureImage2DMultisampleNV = func.invoke("glTextureImage2DMultisampleNV");
             PFN_glTextureImage3DMultisampleNV = func.invoke("glTextureImage3DMultisampleNV");
             PFN_glTextureImage2DMultisampleCoverageNV = func.invoke("glTextureImage2DMultisampleCoverageNV");
             PFN_glTextureImage3DMultisampleCoverageNV = func.invoke("glTextureImage3DMultisampleCoverageNV");

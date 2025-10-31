@@ -24,7 +24,7 @@ public final class GLARBSparseTexture {
         public static final MethodHandle MH_glTexPageCommitmentARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
         public final MemorySegment PFN_glTexPageCommitmentARB;
         private Handles(GLLoadFunc func) {
-            PFN_glTexPageCommitmentARB = func.invoke("glTexPageCommitmentARB");
+            PFN_glTexPageCommitmentARB = func.invoke("glTexPageCommitmentARB", "glTexPageCommitmentEXT");
         }
     }
 

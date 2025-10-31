@@ -46,10 +46,6 @@ public final class GLOESFixedPoint {
         public static final MethodHandle MH_glTexParameterxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glTexParameterxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glTranslatexOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetLightxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetMaterialxvOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glPointParameterxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glSampleCoveragexOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
         public static final MethodHandle MH_glAccumxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glBitmapxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glBlendColorxOES = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
@@ -153,10 +149,6 @@ public final class GLOESFixedPoint {
         public final MemorySegment PFN_glTexParameterxOES;
         public final MemorySegment PFN_glTexParameterxvOES;
         public final MemorySegment PFN_glTranslatexOES;
-        public final MemorySegment PFN_glGetLightxvOES;
-        public final MemorySegment PFN_glGetMaterialxvOES;
-        public final MemorySegment PFN_glPointParameterxOES;
-        public final MemorySegment PFN_glSampleCoveragexOES;
         public final MemorySegment PFN_glAccumxOES;
         public final MemorySegment PFN_glBitmapxOES;
         public final MemorySegment PFN_glBlendColorxOES;
@@ -260,10 +252,8 @@ public final class GLOESFixedPoint {
             PFN_glTexEnvxvOES = func.invoke("glTexEnvxvOES");
             PFN_glTexParameterxOES = func.invoke("glTexParameterxOES");
             PFN_glTexParameterxvOES = func.invoke("glTexParameterxvOES");
-            PFN_glTranslatexOES = func.invoke("glTranslatexOES");PFN_glGetLightxvOES = func.invoke("glGetLightxvOES");
-            PFN_glGetMaterialxvOES = func.invoke("glGetMaterialxvOES");
-            PFN_glPointParameterxOES = func.invoke("glPointParameterxOES");
-            PFN_glSampleCoveragexOES = func.invoke("glSampleCoveragexOES");PFN_glAccumxOES = func.invoke("glAccumxOES");
+            PFN_glTranslatexOES = func.invoke("glTranslatexOES");
+            PFN_glAccumxOES = func.invoke("glAccumxOES");
             PFN_glBitmapxOES = func.invoke("glBitmapxOES");
             PFN_glBlendColorxOES = func.invoke("glBlendColorxOES");
             PFN_glClearAccumxOES = func.invoke("glClearAccumxOES");
@@ -721,50 +711,6 @@ public final class GLOESFixedPoint {
         try { if (TRACE_DOWNCALLS) { traceDowncall("glTranslatexOES", x, y, z); }
         Handles.MH_glTranslatexOES.invokeExact(handles.PFN_glTranslatexOES, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in TranslatexOES", e); }
-    }
-
-    /// Invokes `glGetLightxvOES`.
-    /// ```
-    /// void glGetLightxvOES((unsigned int) GLenum light, (unsigned int) GLenum pname, GLfixed* params);
-    /// ```
-    public void GetLightxvOES(int light, int pname, @NonNull MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetLightxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetLightxvOES");
-        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetLightxvOES", light, pname, params); }
-        Handles.MH_glGetLightxvOES.invokeExact(handles.PFN_glGetLightxvOES, light, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in GetLightxvOES", e); }
-    }
-
-    /// Invokes `glGetMaterialxvOES`.
-    /// ```
-    /// void glGetMaterialxvOES((unsigned int) GLenum face, (unsigned int) GLenum pname, GLfixed* params);
-    /// ```
-    public void GetMaterialxvOES(int face, int pname, @NonNull MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetMaterialxvOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetMaterialxvOES");
-        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMaterialxvOES", face, pname, params); }
-        Handles.MH_glGetMaterialxvOES.invokeExact(handles.PFN_glGetMaterialxvOES, face, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in GetMaterialxvOES", e); }
-    }
-
-    /// Invokes `glPointParameterxOES`.
-    /// ```
-    /// void glPointParameterxOES((unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
-    /// ```
-    public void PointParameterxOES(int pname, int param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterxOES)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterxOES");
-        try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameterxOES", pname, param); }
-        Handles.MH_glPointParameterxOES.invokeExact(handles.PFN_glPointParameterxOES, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in PointParameterxOES", e); }
-    }
-
-    /// Invokes `glSampleCoveragexOES`.
-    /// ```
-    /// void glSampleCoveragexOES(((int32_t) khronos_int32_t) GLclampx value, GLboolean invert);
-    /// ```
-    public void SampleCoveragexOES(int value, boolean invert) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSampleCoveragexOES)) throw new GLSymbolNotFoundError("Symbol not found: glSampleCoveragexOES");
-        try { if (TRACE_DOWNCALLS) { traceDowncall("glSampleCoveragexOES", value, invert); }
-        Handles.MH_glSampleCoveragexOES.invokeExact(handles.PFN_glSampleCoveragexOES, value, ((invert) ? (byte)1 : (byte)0)); }
-        catch (Throwable e) { throw new RuntimeException("error in SampleCoveragexOES", e); }
     }
 
     /// Invokes `glAccumxOES`.
