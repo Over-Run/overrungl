@@ -18,7 +18,7 @@ public final class GLARBTextureView {
         public static final MethodHandle MH_glTextureView = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTextureView;
         private Handles(GLLoadFunc func) {
-            PFN_glTextureView = func.invoke("glTextureView");
+            PFN_glTextureView = func.invoke("glTextureView", "glTextureViewEXT", "glTextureViewOES");
         }
     }
 

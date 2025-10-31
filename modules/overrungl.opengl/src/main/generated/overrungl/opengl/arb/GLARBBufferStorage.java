@@ -22,7 +22,7 @@ public final class GLARBBufferStorage {
         public static final MethodHandle MH_glBufferStorage = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBufferStorage;
         private Handles(GLLoadFunc func) {
-            PFN_glBufferStorage = func.invoke("glBufferStorage");
+            PFN_glBufferStorage = func.invoke("glBufferStorage", "glBufferStorageEXT");
         }
     }
 

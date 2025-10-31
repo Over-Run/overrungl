@@ -32,8 +32,8 @@ public final class GLEXTMultisample {
         public final MemorySegment PFN_glSampleMaskEXT;
         public final MemorySegment PFN_glSamplePatternEXT;
         private Handles(GLLoadFunc func) {
-            PFN_glSampleMaskEXT = func.invoke("glSampleMaskEXT");
-            PFN_glSamplePatternEXT = func.invoke("glSamplePatternEXT");
+            PFN_glSampleMaskEXT = func.invoke("glSampleMaskEXT", "glSampleMaskSGIS");
+            PFN_glSamplePatternEXT = func.invoke("glSamplePatternEXT", "glSamplePatternSGIS");
         }
     }
 

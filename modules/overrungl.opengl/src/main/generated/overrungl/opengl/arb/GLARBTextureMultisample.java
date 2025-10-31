@@ -42,7 +42,7 @@ public final class GLARBTextureMultisample {
         private Handles(GLLoadFunc func) {
             PFN_glTexImage2DMultisample = func.invoke("glTexImage2DMultisample");
             PFN_glTexImage3DMultisample = func.invoke("glTexImage3DMultisample");
-            PFN_glGetMultisamplefv = func.invoke("glGetMultisamplefv");
+            PFN_glGetMultisamplefv = func.invoke("glGetMultisamplefv", "glGetMultisamplefvNV");
             PFN_glSampleMaski = func.invoke("glSampleMaski");
         }
     }

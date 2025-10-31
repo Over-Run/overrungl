@@ -16,8 +16,8 @@ public final class GLARBClearTexture {
         public final MemorySegment PFN_glClearTexImage;
         public final MemorySegment PFN_glClearTexSubImage;
         private Handles(GLLoadFunc func) {
-            PFN_glClearTexImage = func.invoke("glClearTexImage");
-            PFN_glClearTexSubImage = func.invoke("glClearTexSubImage");
+            PFN_glClearTexImage = func.invoke("glClearTexImage", "glClearTexImageEXT");
+            PFN_glClearTexSubImage = func.invoke("glClearTexSubImage", "glClearTexSubImageEXT");
         }
     }
 

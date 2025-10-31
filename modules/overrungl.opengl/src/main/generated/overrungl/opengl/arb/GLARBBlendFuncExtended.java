@@ -20,8 +20,8 @@ public final class GLARBBlendFuncExtended {
         public final MemorySegment PFN_glBindFragDataLocationIndexed;
         public final MemorySegment PFN_glGetFragDataIndex;
         private Handles(GLLoadFunc func) {
-            PFN_glBindFragDataLocationIndexed = func.invoke("glBindFragDataLocationIndexed");
-            PFN_glGetFragDataIndex = func.invoke("glGetFragDataIndex");
+            PFN_glBindFragDataLocationIndexed = func.invoke("glBindFragDataLocationIndexed", "glBindFragDataLocationIndexedEXT");
+            PFN_glGetFragDataIndex = func.invoke("glGetFragDataIndex", "glGetFragDataIndexEXT");
         }
     }
 

@@ -71,9 +71,9 @@ public final class GLARBUniformBufferObject {
             PFN_glGetActiveUniformBlockiv = func.invoke("glGetActiveUniformBlockiv");
             PFN_glGetActiveUniformBlockName = func.invoke("glGetActiveUniformBlockName");
             PFN_glUniformBlockBinding = func.invoke("glUniformBlockBinding");
-            PFN_glBindBufferRange = func.invoke("glBindBufferRange");
-            PFN_glBindBufferBase = func.invoke("glBindBufferBase");
-            PFN_glGetIntegeri_v = func.invoke("glGetIntegeri_v");
+            PFN_glBindBufferRange = func.invoke("glBindBufferRange", "glBindBufferRangeEXT", "glBindBufferRangeNV");
+            PFN_glBindBufferBase = func.invoke("glBindBufferBase", "glBindBufferBaseEXT", "glBindBufferBaseNV");
+            PFN_glGetIntegeri_v = func.invoke("glGetIntegeri_v", "glGetIntegerIndexedvEXT");
         }
     }
 

@@ -117,7 +117,8 @@ public final class GLEXTGpuShader4 {
             PFN_glUniform1uivEXT = func.invoke("glUniform1uivEXT", "glUniform1uiv");
             PFN_glUniform2uivEXT = func.invoke("glUniform2uivEXT", "glUniform2uiv");
             PFN_glUniform3uivEXT = func.invoke("glUniform3uivEXT", "glUniform3uiv");
-            PFN_glUniform4uivEXT = func.invoke("glUniform4uivEXT", "glUniform4uiv");PFN_glVertexAttribI1iEXT = func.invoke("glVertexAttribI1iEXT", "glVertexAttribI1i");
+            PFN_glUniform4uivEXT = func.invoke("glUniform4uivEXT", "glUniform4uiv");
+            PFN_glVertexAttribI1iEXT = func.invoke("glVertexAttribI1iEXT", "glVertexAttribI1i");
             PFN_glVertexAttribI2iEXT = func.invoke("glVertexAttribI2iEXT", "glVertexAttribI2i");
             PFN_glVertexAttribI3iEXT = func.invoke("glVertexAttribI3iEXT", "glVertexAttribI3i");
             PFN_glVertexAttribI4iEXT = func.invoke("glVertexAttribI4iEXT", "glVertexAttribI4i");

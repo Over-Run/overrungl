@@ -124,26 +124,26 @@ public final class GLARBFramebufferObject {
         public final MemorySegment PFN_glRenderbufferStorageMultisample;
         public final MemorySegment PFN_glFramebufferTextureLayer;
         private Handles(GLLoadFunc func) {
-            PFN_glIsRenderbuffer = func.invoke("glIsRenderbuffer");
+            PFN_glIsRenderbuffer = func.invoke("glIsRenderbuffer", "glIsRenderbufferEXT");
             PFN_glBindRenderbuffer = func.invoke("glBindRenderbuffer");
-            PFN_glDeleteRenderbuffers = func.invoke("glDeleteRenderbuffers");
-            PFN_glGenRenderbuffers = func.invoke("glGenRenderbuffers");
-            PFN_glRenderbufferStorage = func.invoke("glRenderbufferStorage");
-            PFN_glGetRenderbufferParameteriv = func.invoke("glGetRenderbufferParameteriv");
-            PFN_glIsFramebuffer = func.invoke("glIsFramebuffer");
+            PFN_glDeleteRenderbuffers = func.invoke("glDeleteRenderbuffers", "glDeleteRenderbuffersEXT");
+            PFN_glGenRenderbuffers = func.invoke("glGenRenderbuffers", "glGenRenderbuffersEXT");
+            PFN_glRenderbufferStorage = func.invoke("glRenderbufferStorage", "glRenderbufferStorageEXT");
+            PFN_glGetRenderbufferParameteriv = func.invoke("glGetRenderbufferParameteriv", "glGetRenderbufferParameterivEXT");
+            PFN_glIsFramebuffer = func.invoke("glIsFramebuffer", "glIsFramebufferEXT");
             PFN_glBindFramebuffer = func.invoke("glBindFramebuffer");
-            PFN_glDeleteFramebuffers = func.invoke("glDeleteFramebuffers");
-            PFN_glGenFramebuffers = func.invoke("glGenFramebuffers");
-            PFN_glCheckFramebufferStatus = func.invoke("glCheckFramebufferStatus");
-            PFN_glFramebufferTexture1D = func.invoke("glFramebufferTexture1D");
-            PFN_glFramebufferTexture2D = func.invoke("glFramebufferTexture2D");
-            PFN_glFramebufferTexture3D = func.invoke("glFramebufferTexture3D");
-            PFN_glFramebufferRenderbuffer = func.invoke("glFramebufferRenderbuffer");
-            PFN_glGetFramebufferAttachmentParameteriv = func.invoke("glGetFramebufferAttachmentParameteriv");
-            PFN_glGenerateMipmap = func.invoke("glGenerateMipmap");
-            PFN_glBlitFramebuffer = func.invoke("glBlitFramebuffer");
-            PFN_glRenderbufferStorageMultisample = func.invoke("glRenderbufferStorageMultisample");
-            PFN_glFramebufferTextureLayer = func.invoke("glFramebufferTextureLayer");
+            PFN_glDeleteFramebuffers = func.invoke("glDeleteFramebuffers", "glDeleteFramebuffersEXT");
+            PFN_glGenFramebuffers = func.invoke("glGenFramebuffers", "glGenFramebuffersEXT");
+            PFN_glCheckFramebufferStatus = func.invoke("glCheckFramebufferStatus", "glCheckFramebufferStatusEXT");
+            PFN_glFramebufferTexture1D = func.invoke("glFramebufferTexture1D", "glFramebufferTexture1DEXT");
+            PFN_glFramebufferTexture2D = func.invoke("glFramebufferTexture2D", "glFramebufferTexture2DEXT");
+            PFN_glFramebufferTexture3D = func.invoke("glFramebufferTexture3D", "glFramebufferTexture3DEXT");
+            PFN_glFramebufferRenderbuffer = func.invoke("glFramebufferRenderbuffer", "glFramebufferRenderbufferEXT");
+            PFN_glGetFramebufferAttachmentParameteriv = func.invoke("glGetFramebufferAttachmentParameteriv", "glGetFramebufferAttachmentParameterivEXT");
+            PFN_glGenerateMipmap = func.invoke("glGenerateMipmap", "glGenerateMipmapEXT");
+            PFN_glBlitFramebuffer = func.invoke("glBlitFramebuffer", "glBlitFramebufferEXT", "glBlitFramebufferNV");
+            PFN_glRenderbufferStorageMultisample = func.invoke("glRenderbufferStorageMultisample", "glRenderbufferStorageMultisampleEXT", "glRenderbufferStorageMultisampleNV");
+            PFN_glFramebufferTextureLayer = func.invoke("glFramebufferTextureLayer", "glFramebufferTextureLayerARB", "glFramebufferTextureLayerEXT");
         }
     }
 

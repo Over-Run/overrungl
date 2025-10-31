@@ -71,11 +71,14 @@ public final class GLEXTMemoryObject {
             PFN_glTexStorageMem2DMultisampleEXT = func.invoke("glTexStorageMem2DMultisampleEXT");
             PFN_glTexStorageMem3DEXT = func.invoke("glTexStorageMem3DEXT");
             PFN_glTexStorageMem3DMultisampleEXT = func.invoke("glTexStorageMem3DMultisampleEXT");
-            PFN_glBufferStorageMemEXT = func.invoke("glBufferStorageMemEXT");PFN_glTextureStorageMem2DEXT = func.invoke("glTextureStorageMem2DEXT");
+            PFN_glBufferStorageMemEXT = func.invoke("glBufferStorageMemEXT");
+            PFN_glTextureStorageMem2DEXT = func.invoke("glTextureStorageMem2DEXT");
             PFN_glTextureStorageMem2DMultisampleEXT = func.invoke("glTextureStorageMem2DMultisampleEXT");
             PFN_glTextureStorageMem3DEXT = func.invoke("glTextureStorageMem3DEXT");
             PFN_glTextureStorageMem3DMultisampleEXT = func.invoke("glTextureStorageMem3DMultisampleEXT");
-            PFN_glNamedBufferStorageMemEXT = func.invoke("glNamedBufferStorageMemEXT");PFN_glTexStorageMem1DEXT = func.invoke("glTexStorageMem1DEXT");PFN_glTextureStorageMem1DEXT = func.invoke("glTextureStorageMem1DEXT");
+            PFN_glNamedBufferStorageMemEXT = func.invoke("glNamedBufferStorageMemEXT");
+            PFN_glTexStorageMem1DEXT = func.invoke("glTexStorageMem1DEXT");
+            PFN_glTextureStorageMem1DEXT = func.invoke("glTextureStorageMem1DEXT");
         }
     }
 

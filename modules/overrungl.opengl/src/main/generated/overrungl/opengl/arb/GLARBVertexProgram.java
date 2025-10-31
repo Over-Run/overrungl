@@ -254,9 +254,9 @@ public final class GLARBVertexProgram {
             PFN_glEnableVertexAttribArrayARB = func.invoke("glEnableVertexAttribArrayARB", "glEnableVertexAttribArray");
             PFN_glDisableVertexAttribArrayARB = func.invoke("glDisableVertexAttribArrayARB", "glDisableVertexAttribArray");
             PFN_glProgramStringARB = func.invoke("glProgramStringARB");
-            PFN_glBindProgramARB = func.invoke("glBindProgramARB");
-            PFN_glDeleteProgramsARB = func.invoke("glDeleteProgramsARB");
-            PFN_glGenProgramsARB = func.invoke("glGenProgramsARB");
+            PFN_glBindProgramARB = func.invoke("glBindProgramARB", "glBindProgramNV");
+            PFN_glDeleteProgramsARB = func.invoke("glDeleteProgramsARB", "glDeleteProgramsNV");
+            PFN_glGenProgramsARB = func.invoke("glGenProgramsARB", "glGenProgramsNV");
             PFN_glProgramEnvParameter4dARB = func.invoke("glProgramEnvParameter4dARB");
             PFN_glProgramEnvParameter4dvARB = func.invoke("glProgramEnvParameter4dvARB");
             PFN_glProgramEnvParameter4fARB = func.invoke("glProgramEnvParameter4fARB");
@@ -275,7 +275,7 @@ public final class GLARBVertexProgram {
             PFN_glGetVertexAttribfvARB = func.invoke("glGetVertexAttribfvARB", "glGetVertexAttribfv");
             PFN_glGetVertexAttribivARB = func.invoke("glGetVertexAttribivARB", "glGetVertexAttribiv");
             PFN_glGetVertexAttribPointervARB = func.invoke("glGetVertexAttribPointervARB", "glGetVertexAttribPointerv");
-            PFN_glIsProgramARB = func.invoke("glIsProgramARB");
+            PFN_glIsProgramARB = func.invoke("glIsProgramARB", "glIsProgramNV");
         }
     }
 

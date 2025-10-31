@@ -96,7 +96,8 @@ public final class GLARBVertexType2101010Rev {
             PFN_glVertexAttribP3ui = func.invoke("glVertexAttribP3ui");
             PFN_glVertexAttribP3uiv = func.invoke("glVertexAttribP3uiv");
             PFN_glVertexAttribP4ui = func.invoke("glVertexAttribP4ui");
-            PFN_glVertexAttribP4uiv = func.invoke("glVertexAttribP4uiv");PFN_glVertexP2ui = func.invoke("glVertexP2ui");
+            PFN_glVertexAttribP4uiv = func.invoke("glVertexAttribP4uiv");
+            PFN_glVertexP2ui = func.invoke("glVertexP2ui");
             PFN_glVertexP2uiv = func.invoke("glVertexP2uiv");
             PFN_glVertexP3ui = func.invoke("glVertexP3ui");
             PFN_glVertexP3uiv = func.invoke("glVertexP3uiv");

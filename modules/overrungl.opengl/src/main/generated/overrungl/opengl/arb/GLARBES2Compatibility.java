@@ -40,8 +40,8 @@ public final class GLARBES2Compatibility {
             PFN_glReleaseShaderCompiler = func.invoke("glReleaseShaderCompiler");
             PFN_glShaderBinary = func.invoke("glShaderBinary");
             PFN_glGetShaderPrecisionFormat = func.invoke("glGetShaderPrecisionFormat");
-            PFN_glDepthRangef = func.invoke("glDepthRangef");
-            PFN_glClearDepthf = func.invoke("glClearDepthf");
+            PFN_glDepthRangef = func.invoke("glDepthRangef", "glDepthRangefOES");
+            PFN_glClearDepthf = func.invoke("glClearDepthf", "glClearDepthfOES");
         }
     }
 

@@ -124,7 +124,8 @@ public final class GLAMDGpuShaderInt64 {
             PFN_glUniform3ui64vNV = func.invoke("glUniform3ui64vNV");
             PFN_glUniform4ui64vNV = func.invoke("glUniform4ui64vNV");
             PFN_glGetUniformi64vNV = func.invoke("glGetUniformi64vNV");
-            PFN_glGetUniformui64vNV = func.invoke("glGetUniformui64vNV");PFN_glProgramUniform1i64NV = func.invoke("glProgramUniform1i64NV");
+            PFN_glGetUniformui64vNV = func.invoke("glGetUniformui64vNV");
+            PFN_glProgramUniform1i64NV = func.invoke("glProgramUniform1i64NV");
             PFN_glProgramUniform2i64NV = func.invoke("glProgramUniform2i64NV");
             PFN_glProgramUniform3i64NV = func.invoke("glProgramUniform3i64NV");
             PFN_glProgramUniform4i64NV = func.invoke("glProgramUniform4i64NV");

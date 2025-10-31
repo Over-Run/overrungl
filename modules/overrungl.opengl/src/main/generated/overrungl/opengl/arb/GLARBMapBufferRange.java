@@ -21,8 +21,8 @@ public final class GLARBMapBufferRange {
         public final MemorySegment PFN_glMapBufferRange;
         public final MemorySegment PFN_glFlushMappedBufferRange;
         private Handles(GLLoadFunc func) {
-            PFN_glMapBufferRange = func.invoke("glMapBufferRange");
-            PFN_glFlushMappedBufferRange = func.invoke("glFlushMappedBufferRange");
+            PFN_glMapBufferRange = func.invoke("glMapBufferRange", "glMapBufferRangeEXT");
+            PFN_glFlushMappedBufferRange = func.invoke("glFlushMappedBufferRange", "glFlushMappedBufferRangeAPPLE", "glFlushMappedBufferRangeEXT");
         }
     }
 

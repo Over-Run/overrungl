@@ -48,12 +48,12 @@ public final class GLARBSamplerObjects {
             PFN_glSamplerParameteriv = func.invoke("glSamplerParameteriv");
             PFN_glSamplerParameterf = func.invoke("glSamplerParameterf");
             PFN_glSamplerParameterfv = func.invoke("glSamplerParameterfv");
-            PFN_glSamplerParameterIiv = func.invoke("glSamplerParameterIiv");
-            PFN_glSamplerParameterIuiv = func.invoke("glSamplerParameterIuiv");
+            PFN_glSamplerParameterIiv = func.invoke("glSamplerParameterIiv", "glSamplerParameterIivEXT", "glSamplerParameterIivOES");
+            PFN_glSamplerParameterIuiv = func.invoke("glSamplerParameterIuiv", "glSamplerParameterIuivEXT", "glSamplerParameterIuivOES");
             PFN_glGetSamplerParameteriv = func.invoke("glGetSamplerParameteriv");
-            PFN_glGetSamplerParameterIiv = func.invoke("glGetSamplerParameterIiv");
+            PFN_glGetSamplerParameterIiv = func.invoke("glGetSamplerParameterIiv", "glGetSamplerParameterIivEXT", "glGetSamplerParameterIivOES");
             PFN_glGetSamplerParameterfv = func.invoke("glGetSamplerParameterfv");
-            PFN_glGetSamplerParameterIuiv = func.invoke("glGetSamplerParameterIuiv");
+            PFN_glGetSamplerParameterIuiv = func.invoke("glGetSamplerParameterIuiv", "glGetSamplerParameterIuivEXT", "glGetSamplerParameterIuivOES");
         }
     }
 

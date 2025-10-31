@@ -19,7 +19,8 @@ public final class GLOVRMultiview {
         public final MemorySegment PFN_glFramebufferTextureMultiviewOVR;
         public final MemorySegment PFN_glNamedFramebufferTextureMultiviewOVR;
         private Handles(GLLoadFunc func) {
-            PFN_glFramebufferTextureMultiviewOVR = func.invoke("glFramebufferTextureMultiviewOVR");PFN_glNamedFramebufferTextureMultiviewOVR = func.invoke("glNamedFramebufferTextureMultiviewOVR");
+            PFN_glFramebufferTextureMultiviewOVR = func.invoke("glFramebufferTextureMultiviewOVR");
+            PFN_glNamedFramebufferTextureMultiviewOVR = func.invoke("glNamedFramebufferTextureMultiviewOVR");
         }
     }
 

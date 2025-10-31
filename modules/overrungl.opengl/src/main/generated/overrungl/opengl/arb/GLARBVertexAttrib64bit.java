@@ -44,16 +44,16 @@ public final class GLARBVertexAttrib64bit {
         public final MemorySegment PFN_glVertexAttribLPointer;
         public final MemorySegment PFN_glGetVertexAttribLdv;
         private Handles(GLLoadFunc func) {
-            PFN_glVertexAttribL1d = func.invoke("glVertexAttribL1d");
-            PFN_glVertexAttribL2d = func.invoke("glVertexAttribL2d");
-            PFN_glVertexAttribL3d = func.invoke("glVertexAttribL3d");
-            PFN_glVertexAttribL4d = func.invoke("glVertexAttribL4d");
-            PFN_glVertexAttribL1dv = func.invoke("glVertexAttribL1dv");
-            PFN_glVertexAttribL2dv = func.invoke("glVertexAttribL2dv");
-            PFN_glVertexAttribL3dv = func.invoke("glVertexAttribL3dv");
-            PFN_glVertexAttribL4dv = func.invoke("glVertexAttribL4dv");
-            PFN_glVertexAttribLPointer = func.invoke("glVertexAttribLPointer");
-            PFN_glGetVertexAttribLdv = func.invoke("glGetVertexAttribLdv");
+            PFN_glVertexAttribL1d = func.invoke("glVertexAttribL1d", "glVertexAttribL1dEXT");
+            PFN_glVertexAttribL2d = func.invoke("glVertexAttribL2d", "glVertexAttribL2dEXT");
+            PFN_glVertexAttribL3d = func.invoke("glVertexAttribL3d", "glVertexAttribL3dEXT");
+            PFN_glVertexAttribL4d = func.invoke("glVertexAttribL4d", "glVertexAttribL4dEXT");
+            PFN_glVertexAttribL1dv = func.invoke("glVertexAttribL1dv", "glVertexAttribL1dvEXT");
+            PFN_glVertexAttribL2dv = func.invoke("glVertexAttribL2dv", "glVertexAttribL2dvEXT");
+            PFN_glVertexAttribL3dv = func.invoke("glVertexAttribL3dv", "glVertexAttribL3dvEXT");
+            PFN_glVertexAttribL4dv = func.invoke("glVertexAttribL4dv", "glVertexAttribL4dvEXT");
+            PFN_glVertexAttribLPointer = func.invoke("glVertexAttribLPointer", "glVertexAttribLPointerEXT");
+            PFN_glGetVertexAttribLdv = func.invoke("glGetVertexAttribLdv", "glGetVertexAttribLdvEXT");
         }
     }
 

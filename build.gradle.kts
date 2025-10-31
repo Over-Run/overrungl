@@ -152,9 +152,7 @@ tasks.register("downloadLatestNatives") {
     }
 
     doLast {
-        if (token == null) {
-            throw IllegalStateException("GitHub token not found; please specify project property overrungl.native.download.github.token or system property or environment variable OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN")
-        }
+        suggestGitHubToken(token)
 
         nativesPath.createDirectories()
         nativesInfoPath.createDirectories()
@@ -186,7 +184,11 @@ tasks.register("downloadLatestNatives") {
             val request = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.github.com/repos/${binding.repo}/releases/latest"))
                 .header("Accept", "application/vnd.github+json")
-                .header("Authorization", "Bearer $token")
+                .also {
+                    if (token != null) {
+                        it.header("Authorization", "Bearer $token")
+                    }
+                }
                 .header("X-GitHub-Api-Version", "2022-11-28")
                 .also {
                     infoETagMap[binding.bindingName].also { eTag ->
@@ -204,7 +206,7 @@ tasks.register("downloadLatestNatives") {
             }
 
             if (response.statusCode() != 200) {
-                System.err.println("warning: ${binding.bindingName}: response code: ${response.statusCode()}")
+                System.err.println("warning: failed to download ${binding.bindingName}.json; response code: ${response.statusCode()}")
                 return@forEach
             }
 
@@ -240,7 +242,11 @@ tasks.register("downloadLatestNatives") {
             val request = HttpRequest.newBuilder()
                 .uri(URI.create(asset["url"] as String))
                 .header("Accept", "application/octet-stream")
-                .header("Authorization", "Bearer $token")
+                .also {
+                    if (token != null) {
+                        it.header("Authorization", "Bearer $token")
+                    }
+                }
                 .header("X-GitHub-Api-Version", "2022-11-28")
                 .also {
                     zipETagMap[binding.bindingName].also { eTag ->
@@ -259,7 +265,7 @@ tasks.register("downloadLatestNatives") {
             }
 
             if (response.statusCode() != 200) {
-                System.err.println("warning: ${binding.bindingName}: response code: ${response.statusCode()}")
+                System.err.println("warning: failed to download ${binding.bindingName}.zip; response code: ${response.statusCode()}")
                 response.body().close()
                 return@forEach
             }
@@ -317,5 +323,26 @@ tasks.register("downloadLatestNatives") {
             println("Extracting ${binding.bindingName}.zip")
             unzipTo(nativesPath.toFile(), nativesBindingZipMap[binding]!!.toFile())
         }
+    }
+}
+
+tasks.register("updateKhr") {
+    val token = rootProject.findProperty("overrungl.native.download.github.token") as String?
+        ?: System.getProperty("OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN")
+        ?: System.getenv("OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN")
+    val glXml = project(":generators:opengl").projectDir.resolve("src/main/resources/gl.xml")
+    val vkRes = project(":generators:vulkan").projectDir.resolve("src/main/resources/")
+    val vkXml = vkRes.resolve("vk.xml")
+    val videoXml = vkRes.resolve("video.xml")
+
+    doLast {
+        suggestGitHubToken(token)
+
+        val httpClient = HttpClient.newBuilder()
+            .followRedirects(HttpClient.Redirect.NORMAL)
+            .build()
+        httpClient.downloadRepoFile(token, "KhronosGroup", "Vulkan-Docs", "xml/vk.xml", vkXml)
+        httpClient.downloadRepoFile(token, "KhronosGroup", "Vulkan-Docs", "xml/video.xml", videoXml)
+        httpClient.downloadRepoFile(token, "KhronosGroup", "OpenGL-Registry", "xml/gl.xml", glXml)
     }
 }

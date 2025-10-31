@@ -13,7 +13,7 @@ public final class GLARBCopyImage {
         public static final MethodHandle MH_glCopyImageSubData = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glCopyImageSubData;
         private Handles(GLLoadFunc func) {
-            PFN_glCopyImageSubData = func.invoke("glCopyImageSubData");
+            PFN_glCopyImageSubData = func.invoke("glCopyImageSubData", "glCopyImageSubDataEXT", "glCopyImageSubDataOES");
         }
     }
 

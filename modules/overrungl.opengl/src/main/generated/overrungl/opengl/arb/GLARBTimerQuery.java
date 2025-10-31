@@ -19,9 +19,9 @@ public final class GLARBTimerQuery {
         public final MemorySegment PFN_glGetQueryObjecti64v;
         public final MemorySegment PFN_glGetQueryObjectui64v;
         private Handles(GLLoadFunc func) {
-            PFN_glQueryCounter = func.invoke("glQueryCounter");
-            PFN_glGetQueryObjecti64v = func.invoke("glGetQueryObjecti64v");
-            PFN_glGetQueryObjectui64v = func.invoke("glGetQueryObjectui64v");
+            PFN_glQueryCounter = func.invoke("glQueryCounter", "glQueryCounterEXT");
+            PFN_glGetQueryObjecti64v = func.invoke("glGetQueryObjecti64v", "glGetQueryObjecti64vEXT");
+            PFN_glGetQueryObjectui64v = func.invoke("glGetQueryObjectui64v", "glGetQueryObjectui64vEXT");
         }
     }
 

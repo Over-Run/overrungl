@@ -16,7 +16,7 @@ public final class GLARBTextureStorageMultisample {
         public final MemorySegment PFN_glTexStorage3DMultisample;
         private Handles(GLLoadFunc func) {
             PFN_glTexStorage2DMultisample = func.invoke("glTexStorage2DMultisample");
-            PFN_glTexStorage3DMultisample = func.invoke("glTexStorage3DMultisample");
+            PFN_glTexStorage3DMultisample = func.invoke("glTexStorage3DMultisample", "glTexStorage3DMultisampleOES");
         }
     }
 
