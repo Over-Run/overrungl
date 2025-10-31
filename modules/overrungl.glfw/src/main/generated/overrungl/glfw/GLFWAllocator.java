@@ -1,5 +1,4 @@
 // This file is auto-generated. DO NOT EDIT!
-//@formatter:off
 package overrungl.glfw;
 
 import java.lang.foreign.*;

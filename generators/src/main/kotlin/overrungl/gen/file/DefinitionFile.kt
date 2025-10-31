@@ -70,7 +70,6 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         path.createParentDirectories()
         val sb = StringBuilder()
         sb.appendLine(commentedFileHeader)
-        sb.appendLine(formatter_off)
         sb.appendLine(
             """
                 |package $packageName;
@@ -267,7 +266,6 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         path.createParentDirectories()
         val sb = StringBuilder()
         sb.appendLine(commentedFileHeader)
-        sb.appendLine(formatter_off)
         sb.appendLine(
             """
             |package $packageName;
@@ -734,8 +732,8 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
 
         if (!writeWholeFile) {
             sb.append("    ")
+            sb.appendLine(formatter_off)
         }
-        sb.appendLine(formatter_off)
 
         // fields
         sb.appendLine("    //region Fields")
@@ -809,8 +807,8 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
 
         if (!writeWholeFile) {
             sb.append("    ")
+            sb.appendLine(formatter_on)
         }
-        sb.appendLine(formatter_on)
 
         val finalString = if (writeWholeFile) {
             sb.toString()

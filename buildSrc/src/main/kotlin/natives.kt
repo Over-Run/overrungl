@@ -40,10 +40,6 @@ enum class NativePlatform(
     WIN_ARM64("windows", "arm64", nativeLibPrefix = "", nativeLibSuffix = ".dll");
 
     val classifier = "natives-$osFamilyName-$osArch"
-
-    companion object {
-        val enumEntries = values().toList()
-    }
 }
 
 enum class NativeBinding(
@@ -52,12 +48,12 @@ enum class NativeBinding(
     val repo: String,
     val platforms: List<NativePlatform>
 ) {
-    GLFW("glfw", "glfw", "Over-Run/glfw-ci", NativePlatform.enumEntries),
-    NFD("nfd", "nfd", "Over-Run/nfd-ci", NativePlatform.enumEntries),
-    OPENAL("openal", "openal", "Over-Run/openal-ci", NativePlatform.enumEntries),
-    SHADERC("shaderc", "shaderc_shared", "Over-Run/shaderc-ci", NativePlatform.enumEntries),
-    STB("stb", "stb", "Over-Run/stb-ci", NativePlatform.enumEntries),
-    VMA("vma", "VulkanMemoryAllocator", "Over-Run/VulkanMemoryAllocator-ci", NativePlatform.enumEntries),
+    GLFW("glfw", "glfw", "Over-Run/glfw-ci", NativePlatform.entries),
+    NFD("nfd", "nfd", "Over-Run/nfd-ci", NativePlatform.entries),
+    OPENAL("openal", "openal", "Over-Run/openal-ci", NativePlatform.entries),
+    SHADERC("shaderc", "shaderc_shared", "Over-Run/shaderc-ci", NativePlatform.entries),
+    STB("stb", "stb", "Over-Run/stb-ci", NativePlatform.entries),
+    VMA("vma", "VulkanMemoryAllocator", "Over-Run/VulkanMemoryAllocator-ci", NativePlatform.entries),
 }
 
 enum class Artifact(
