@@ -24,23 +24,28 @@
 
 package overrungl.vulkan
 
-// vk.xml: 2025-10-31
-// video.xml: 2025-10-31
+class JavaGenerator : BaseGenerator() {
+    override fun endFeature() {
+        super.endFeature()
+    }
 
-const val vulkanPackage = "overrungl.vulkan"
+    override fun genCmd(cmdInfo: CmdInfo, name: String, alias: String?) {
+        super.genCmd(cmdInfo, name, alias)
+    }
 
-const val extBase = 1000000000
-const val extBlockSize = 1000
+    override fun genGroup(groupInfo: GroupInfo, groupName: String, alias: String?) {
+        super.genGroup(groupInfo, groupName, alias)
+    }
 
-fun main() {
-    val gen = JavaGenerator()
-    val reg = Registry(
-        gen, BaseGeneratorOptions(
-            customDirectory = "src/main/generated",
-            customApiName = "vulkan",
-            videoXmlPath = "video.xml"
-        )
-    )
-    reg.loadFile("vk.xml")
-    reg.apiGen()
+    override fun genType(typeInfo: TypeInfo, typeName: String, alias: String?) {
+        super.genType(typeInfo, typeName, alias)
+    }
+
+    override fun genStruct(typeInfo: TypeInfo, typeName: String, alias: String?) {
+        super.genStruct(typeInfo, typeName, alias)
+    }
+
+    override fun genEnum(enumInfo: EnumInfo, typeName: String, alias: String?) {
+        super.genEnum(enumInfo, typeName, alias)
+    }
 }

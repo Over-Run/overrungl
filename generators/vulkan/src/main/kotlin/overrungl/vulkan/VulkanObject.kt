@@ -52,14 +52,14 @@ data class Extension(
     val featureRequirement: List<FeatureRequirement>,
     val ratified: Boolean,
 
-    val handles: MutableMap<String, MutableList<Handle>>,
-    val commands: MutableList<Command>,
-    val structs: MutableList<Struct>,
-    val enums: MutableList<VkEnum>,
-    val bitmasks: MutableList<Bitmask>,
-    val flags: MutableMap<String, MutableList<Flags>>,
-    val enumFields: MutableMap<String, MutableList<EnumField>>,
-    val flagBits: MutableMap<String, MutableList<Flag>>
+    val handles: MutableMap<String, MutableList<Handle>> = mutableMapOf(),
+    val commands: MutableList<Command> = mutableListOf(),
+    val structs: MutableList<Struct> = mutableListOf(),
+    val enums: MutableList<VkEnum> = mutableListOf(),
+    val bitmasks: MutableList<Bitmask> = mutableListOf(),
+    val flags: MutableMap<String, MutableList<Flags>> = mutableMapOf(),
+    val enumFields: MutableMap<String, MutableList<EnumField>> = mutableMapOf(),
+    val flagBits: MutableMap<String, MutableList<Flag>> = mutableMapOf(),
 )
 
 data class Version(
@@ -70,17 +70,23 @@ data class Version(
     val featureRequirement: List<FeatureRequirement>
 )
 
+data class Legacy(
+    val link: String?,
+    var version: Any?, // String | Version
+    val extensions: MutableList<String>
+)
+
 data class Handle(
     val name: String,
-    val aliases: List<String>,
+    val aliases: MutableList<String>,
 
     val type: String,
     val protect: String?,
 
-    val parent: Handle?,
+    var parent: Any?, // String | Handle
 
-    val instance: Boolean,
-    val device: Boolean,
+    var instance: Boolean,
+    var device: Boolean,
 
     val dispatchable: Boolean,
 
@@ -99,9 +105,9 @@ enum class ExternSync {
 
 data class Param(
     val name: String,
-    val alias: String,
+    val alias: String?,
 
-    val type: String,
+    var type: String,
     val fullType: String,
 
     val noAutoValidity: Boolean,
@@ -159,7 +165,7 @@ data class Command(
 
     val implicitExternSyncParams: List<String>,
 
-    // val legacy: Legacy?,
+    val legacy: Legacy?,
 
     val cPrototype: String,
     val cFunctionPointer: String
@@ -199,9 +205,9 @@ data class Member(
 
 data class Struct(
     val name: String,
-    val aliases: List<String>,
+    val aliases: MutableList<String>,
 
-    val extensions: List<String>,
+    val extensions: MutableList<String>,
     val version: Version?,
     val protect: String?,
 
@@ -223,7 +229,7 @@ data class Struct(
 
 data class EnumField(
     val name: String,
-    val aliases: List<String>,
+    val aliases: MutableList<String>,
 
     val protect: String?,
 
@@ -238,26 +244,26 @@ data class EnumField(
 
 data class VkEnum(
     val name: String,
-    val aliases: List<String>,
+    val aliases: MutableList<String>,
 
     val protect: String?,
 
     val bitWidth: Int,
-    val returnedOnly: Boolean,
+    var returnedOnly: Boolean,
 
     val fields: List<EnumField>,
 
-    val extensions: List<String>,
+    val extensions: MutableList<String>,
     val fieldExtensions: MutableList<String>,
 
-    val videoStdHeader: String? = null
+    var videoStdHeader: String? = null
 ) {
     operator fun compareTo(other: Param): Int = name.compareTo(other.name)
 }
 
 data class Flag(
     val name: String,
-    val aliases: List<String>,
+    val aliases: MutableList<String>,
 
     val protect: String?,
 
@@ -273,17 +279,17 @@ data class Flag(
 
 data class Bitmask(
     val name: String,
-    val aliases: List<String>,
+    val aliases: MutableList<String>,
 
     val flagName: String,
     val protect: String?,
 
     val bitWidth: Int,
-    val returnedOnly: Boolean,
+    var returnedOnly: Boolean,
 
     val flags: List<Flag>,
 
-    val extensions: List<String>,
+    val extensions: MutableList<String>,
     val flagExtensions: MutableList<String>
 ) {
     operator fun compareTo(other: Param): Int = name.compareTo(other.name)
@@ -291,14 +297,14 @@ data class Bitmask(
 
 data class Flags(
     val name: String,
-    val aliases: List<String>,
+    val aliases: MutableList<String>,
 
     val bitmaskName: String?,
     val protect: String?,
 
     val baseFlagsType: String,
     val bitWidth: Int,
-    val returnedOnly: Boolean,
+    var returnedOnly: Boolean,
 
     val extensions: MutableList<String>
 ) {

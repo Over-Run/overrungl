@@ -31,16 +31,16 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 // ported from scripts/reg.py
 
-fun apiNameMatch(str: String?, supported: String?): Boolean {
+fun apiNameMatch(str: String?, supportedList: List<String>?): Boolean {
     if (str != null) {
-        return supported == null || str in supported.split(',')
+        return supportedList == null || supportedList.isEmpty() || str in supportedList
     }
     return false
 }
 
 fun matchAPIProfile(api: String?, profile: String?, elem: Element): Boolean {
     if (elem.hasAttribute("api")) {
-        val elemApi = elem.getAttribute("api")
+        val elemApi = elem.getAttributeOrNull("api")
         api ?: throw RuntimeException("No API requested, but 'api' attribute is present with value '$elemApi'")
         if (api != elemApi) {
             return false
@@ -64,7 +64,7 @@ fun mergeAPIs(tree: Element, fromApiNames: List<String>, toApiName: String) {
     while (stack.isNotEmpty()) {
         val parent = stack.removeLast()
 
-        parent.getElementsByTagName("*").forEachElement { child ->
+        parent.forEachImmediateChildren(copy = true) { child ->
             if (child.tagName == "remove") {
                 parent.removeChild(child)
             } else {
@@ -82,48 +82,78 @@ fun mergeAPIs(tree: Element, fromApiNames: List<String>, toApiName: String) {
 
             if (child.hasAttribute("api")) {
                 var definitionName: String? = null
-                var definitionVariants: NodeList? = null
+                val definitionVariants = mutableListOf<Element>()
 
                 if (child.tagName in listOf("type")) {
                     if (child.hasAttribute("name")) {
                         definitionName = child.getAttribute("name")
-                        definitionVariants = parent.findAll("${child.tagName}[@name='$definitionName']")
+                        parent.forEachNamedImmediateTags(child.tagName) {
+                            if (it.getAttribute("name") == definitionName) {
+                                definitionVariants.add(it)
+                            }
+                        }
                     } else {
                         definitionName = child.getElementsByTagName("name").item(0).textContent
-                        definitionVariants = parent.findAll("${child.tagName}/name[.='$definitionName']/..")
+                        parent.forEachNamedImmediateTags(child.tagName) {
+                            it.forEachNamedImmediateTags("name") { name ->
+                                if (name.textContent == definitionName) {
+                                    definitionVariants.add(it)
+                                }
+                            }
+                        }
                     }
                 } else if (child.tagName in listOf("member", "param")) {
                     definitionName = child.getElementsByTagName("name").item(0).textContent
-                    definitionVariants = parent.findAll("${child.tagName}/name[.='$definitionName']/..")
+                    parent.forEachNamedImmediateTags(child.tagName) {
+                        it.forEachNamedImmediateTags("name") { name ->
+                            if (name.textContent == definitionName) {
+                                definitionVariants.add(it)
+                            }
+                        }
+                    }
                 } else if (child.tagName in listOf("enum", "feature")) {
                     definitionName = child.getAttribute("name")
-                    definitionVariants = parent.findAll("${child.tagName}[@name='$definitionName']")
+                    parent.forEachNamedImmediateTags(child.tagName) {
+                        if (it.getAttribute("name") == definitionName) {
+                            definitionVariants.add(it)
+                        }
+                    }
                 } else if (child.tagName in listOf("require")) {
-                    if (child.getAttribute("api") in fromApiNames) {
+                    if (child.getAttributeOrNull("api") in fromApiNames) {
                         child.setAttribute("api", toApiName)
                     }
                 } else if (child.tagName in listOf("command")) {
-                    definitionName = child.find("proto/name")?.textContent
-                    definitionVariants = parent.findAll("${child.tagName}/proto/name[.='$definitionName']/../..")
+                    definitionName = child.findChildChild("proto", "name")?.textContent
+                    parent.forEachNamedImmediateTags(child.tagName) {
+                        it.forEachNamedImmediateTags("proto") { proto ->
+                            proto.forEachNamedImmediateTags("name") { name ->
+                                if (name.textContent == definitionName) {
+                                    definitionVariants.add(it)
+                                }
+                            }
+                        }
+                    }
                 }
 
                 if (definitionName != null) {
                     var bestMatchApi: String? = null
                     var requires: String? = null
                     (listOf(toApiName) + fromApiNames).forEach { apiName ->
-                        definitionVariants!!.forEachElement { variant ->
-                            if (variant.hasAttribute("requires") && variant.getAttribute("api") == apiName) {
+                        definitionVariants.forEach { variant ->
+                            if (variant.hasAttribute("requires") && variant.getAttributeOrNull("api") == apiName) {
                                 requires = variant.getAttribute("requires")
                             }
-                            if (apiName in variant.getAttribute("api").split(',') && bestMatchApi == null) {
-                                bestMatchApi = variant.getAttribute("api")
+                            if ((variant.getAttributeOrNull("api")?.split(',')?.contains(apiName)
+                                    ?: true) && bestMatchApi == null
+                            ) {
+                                bestMatchApi = variant.getAttributeOrNull("api")
                             }
                         }
                     }
 
                     if (bestMatchApi != null) {
-                        definitionVariants!!.forEachElement { variant ->
-                            if (variant.getAttribute("api") != bestMatchApi) {
+                        definitionVariants.forEach { variant ->
+                            if (variant.getAttributeOrNull("api") != bestMatchApi) {
                                 parent.removeChild(variant)
                             } else {
                                 if (requires != null && !variant.hasAttribute("requires")) {
@@ -144,10 +174,10 @@ fun mergeInternalFeatures(tree: Element, apiName: String) {
     val publicFeatures = mutableListOf<Element>()
 
     tree.getElementsByTagName("feature").forEachElement { feature ->
-        val api = feature.getAttribute("api")
+        val api = feature.getAttributeOrNull("api")
         val apiType = feature.getAttribute("apitype")
 
-        if (apiName !in api.split(',')) {
+        if (!(api?.split(',')?.contains(apiName) ?: true)) {
             return@forEachElement
         }
 
@@ -240,12 +270,13 @@ fun stripNonmatchingAPIs(tree: Element, apiName: String, actuallyDelete: Boolean
     while (stack.isNotEmpty()) {
         val parent = stack.removeLast()
 
-        parent.getElementsByTagName("*").forEachElement { child ->
-            val api = child.getAttribute("api")
+        parent.forEachImmediateChildren(copy = true) { child ->
+            val api = child.getAttributeOrNull("api")
+            val split = api?.split(',')
 
-            if (apiNameMatch(apiName, api)) {
+            if (apiNameMatch(apiName, split)) {
                 stack.add(child)
-            } else if (!apiNameMatch(apiName, api)) {
+            } else {
                 if (actuallyDelete) {
                     parent.removeChild(child)
                 }
@@ -467,10 +498,10 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
         enumValueMap.clear()
 
         typeMap.clear()
-        reg!!.findAll("types/type")!!.forEachElement { typeElem ->
+        reg!!.forEachChildrenChildren("types", "type") { typeElem ->
             var name = typeElem.getAttribute("name")
             if (name.isEmpty()) {
-                val nameElem = typeElem.getElementsByTagName("name").item(0)
+                val nameElem = typeElem.findChild("name")
                 if (nameElem == null || nameElem.textContent == null) {
                     throw RuntimeException("Type without a name!")
                 }
@@ -481,16 +512,16 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
         }
 
         groupMap.clear()
-        reg!!.getElementsByTagName("enums").forEachElement { group ->
+        reg!!.forEachNamedImmediateTags("enums") { group ->
             addElementInfo(group, GroupInfo(group), "group", groupMap)
         }
 
         enumMap.clear()
-        reg!!.getElementsByTagName("enums").forEachElement { enums ->
+        reg!!.forEachNamedImmediateTags("enums") { enums ->
             val required = enums.hasAttribute("type")
             val typeName = enums.getAttribute("name")
             assert(typeName !in aliasMap)
-            enums.getElementsByTagName("enum").forEachElement { enum ->
+            enums.forEachNamedImmediateTags("enum") { enum ->
                 val enumInfo = EnumInfo(enum)
                 enumInfo.required = required
                 addElementInfo(enum, enumInfo, "enum", enumMap)
@@ -500,10 +531,10 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
 
         cmdMap.clear()
         val cmdAlias = mutableListOf<CommandAlias>()
-        reg!!.findAll("commands/command")!!.forEachElement { cmd ->
+        reg!!.forEachChildrenChildren("commands", "command") { cmd ->
             var name = cmd.getAttribute("name")
             if (name.isEmpty()) {
-                val nameElem = cmd.find("proto/name")
+                val nameElem = cmd.findChildChild("proto", "name")
                 if (nameElem == null || nameElem.textContent == null) {
                     throw RuntimeException("Command without a name!")
                 }
@@ -523,7 +554,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             if (alias in cmdMap) {
                 val aliasInfo = cmdMap[alias]!!
                 val cmdElem = aliasInfo.elem.cloneNode(true) as Element
-                cmdElem.find("proto/name")!!.textContent = name
+                cmdElem.findChildChild("proto", "name")!!.textContent = name
                 cmdElem.setAttribute("name", name)
                 cmdElem.setAttribute("alias", alias)
                 val export = cmd.getAttribute("export")
@@ -541,12 +572,12 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
         }
 
         apiMap.clear()
-        reg!!.getElementsByTagName("feature").forEachElement { feature ->
+        reg!!.forEachNamedImmediateTags("feature") { feature ->
             val featureInfo = FeatureInfo(feature)
             addElementInfo(feature, featureInfo, "feature", apiMap)
 
-            feature.getElementsByTagName("require").forEachElement { elem ->
-                elem.getElementsByTagName("enum").forEachElement { enum ->
+            feature.forEachNamedImmediateTags("require") { elem ->
+                elem.forEachNamedImmediateTags("enum") { enum ->
                     var addEnumInfo = false
                     val groupName = enum.getAttribute("extends")
                     if (groupName.isNotEmpty()) {
@@ -571,14 +602,15 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             }
         }
 
-        extensions = reg!!.findAll("extensions/extension")
+        reg!!.childNodes
+        extensions = reg!!.findChildChildren("extensions", "extension")
         extMap.clear()
         extensions!!.forEachElement { feature ->
             val featureInfo = FeatureInfo(feature)
             addElementInfo(feature, featureInfo, "extension", extMap)
 
-            feature.getElementsByTagName("require").forEachElement { elem ->
-                elem.getElementsByTagName("enum").forEachElement { enum ->
+            feature.forEachNamedImmediateTags("require") { elem ->
+                elem.forEachNamedImmediateTags("enum") { enum ->
                     var addEnumInfo = false
                     val groupName = enum.getAttribute("extends")
                     if (groupName.isNotEmpty()) {
@@ -630,7 +662,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                         }
                     }
                 }
-                typeInfo.elem.findAll(".//type")!!.forEachElement { subType ->
+                typeInfo.elem.getElementsByTagName("type").forEachElement { subType ->
                     gen.logInfo {
                         "markRequired: type requires dependent <type>"
                     }
@@ -642,7 +674,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                         }
                     }
                 }
-                typeInfo.elem.findAll(".//enum")!!.forEachElement { subEnum ->
+                typeInfo.elem.getElementsByTagName("enum").forEachElement { subEnum ->
                     gen.logInfo {
                         "markRequired: type requires dependent <enum>"
                     }
@@ -682,7 +714,14 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
 
                     if (groupName in groupMap) {
                         val gi = groupMap[groupName]!!
-                        val giEnum = gi.elem.find("enum[@name='$enumName']")
+                        val giEnum = gi.elem.let { e ->
+                            e.forEachNamedImmediateTags("enum") {
+                                if (it.getAttribute("name") == enumName) {
+                                    return@let it
+                                }
+                            }
+                            return@let null
+                        }
                         if (giEnum != null) {
                             gi.elem.removeChild(giEnum)
                         } else {
@@ -702,8 +741,8 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                     }
 
                     var count = 0
-                    reg!!.getElementsByTagName("enums").forEachElement { enums ->
-                        enums.getElementsByTagName("enum").forEachElement { thisEnum ->
+                    reg!!.forEachNamedImmediateTags("enums") { enums ->
+                        enums.forEachNamedImmediateTags("enum") { thisEnum ->
                             if (thisEnum.getAttribute("name") == enumName) {
                                 count++
                                 enums.removeChild(thisEnum)
@@ -720,8 +759,8 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             }
 
             enum.required = required
-            val depName = enum.elem.getAttribute("alias")
-            if (depName.isNotEmpty()) {
+            val depName = enum.elem.getAttributeOrNull("alias")
+            if (depName != null) {
                 gen.logInfo {
                     "markEnumRequired: Generating dependent enum $depName for alias $enumName required = ${enum.required}"
                 }
@@ -743,8 +782,8 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             cmd.required = required
 
             if (genOpts.requireCommandAliases) {
-                val depName = cmd.elem.getAttribute("alias")
-                if (depName.isNotEmpty()) {
+                val depName = cmd.elem.getAttributeOrNull("alias")
+                if (depName != null) {
                     gen.logInfo {
                         "Generating dependent command $depName for alias $cmdName"
                     }
@@ -753,7 +792,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             }
 
             if (required) {
-                cmd.elem.findAll(".//type")!!.forEachElement { typeElem ->
+                cmd.elem.getElementsByTagName("type").forEachElement { typeElem ->
                     gen.logInfo {
                         "markRequired: command implicitly requires dependent type ${typeElem.textContent}"
                     }
@@ -772,18 +811,18 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             "markRequired (feature = <too long to print>, required = $required)"
         }
 
-        feature.getElementsByTagName("type").forEachElement { typeElem ->
+        feature.forEachNamedImmediateTags("type") { typeElem ->
             markTypeRequired(typeElem.getAttribute("name"), required)
         }
-        feature.getElementsByTagName("enum").forEachElement { enumElem ->
+        feature.forEachNamedImmediateTags("enum") { enumElem ->
             markEnumRequired(enumElem.getAttribute("name"), required)
         }
 
-        feature.getElementsByTagName("command").forEachElement { cmdElem ->
+        feature.forEachNamedImmediateTags("command") { cmdElem ->
             markCmdRequired(cmdElem.getAttribute("name"), required)
         }
 
-        feature.getElementsByTagName("extend").forEachElement { extendElem ->
+        feature.forEachNamedImmediateTags("extend") { extendElem ->
             val extendType = extendElem.getAttribute("type")
             if (extendType == "command") {
                 val commandName = extendElem.getAttribute("name")
@@ -820,9 +859,9 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
         }
     }
 
-    fun getAlias(elem: Element, map: Map<String, BaseInfo>): String {
-        var alias = elem.getAttribute("alias")
-        if (alias.isEmpty()) {
+    fun getAlias(elem: Element, map: Map<String, BaseInfo>): String? {
+        var alias = elem.getAttributeOrNull("alias")
+        if (alias == null || alias.isEmpty()) {
             val name = elem.getAttribute("name")
             val typeInfo = lookupElementInfo(name, map)
             if (typeInfo == null) {
@@ -830,12 +869,12 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                     "$name is not a known name"
                 }
             }
-            alias = typeInfo!!.elem.getAttribute("alias")
+            alias = typeInfo!!.elem.getAttributeOrNull("alias")
         }
         return alias
     }
 
-    fun checkForCorrectionAliases(alias: String, require: Element, tag: String): Boolean {
+    fun checkForCorrectionAliases(alias: String?, require: Element, tag: String): Boolean {
         return false
     }
 
@@ -843,35 +882,35 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
     fun fillFeatureMap(interfaceElem: Element, featureName: String, api: String?, profile: String?) {
         gen.featureMap[featureName] = FeatureMap()
 
-        interfaceElem.getElementsByTagName("require").forEachElement { require ->
+        interfaceElem.forEachNamedImmediateTags("require") { require ->
             if (matchAPIProfile(api, profile, require)) {
-                val requiredKey = require.getAttribute("depends")
+                val requiredKey = require.getAttributeOrNull("depends")
 
-                require.getElementsByTagName("type").forEachElement { typeElem ->
+                require.forEachNamedImmediateTags("type") { typeElem ->
                     val typeName = typeElem.getAttribute("name")
                     var typeInfo = lookupElementInfo(typeName, typeMap)
 
                     if (typeInfo != null) {
                         var alias = getAlias(typeElem, typeMap)
                         if (!checkForCorrectionAliases(alias, require, "type")) {
-                            while (alias.isNotEmpty()) {
+                            while (alias != null && alias.isNotEmpty()) {
                                 typeInfo = lookupElementInfo(alias, typeMap)
                                 if (typeInfo == null) {
                                     throw RuntimeException("Missing alias $alias")
                                 }
-                                alias = typeInfo.elem.getAttribute("alias")
+                                alias = typeInfo.elem.getAttributeOrNull("alias")
                             }
 
                             val typeCat = typeInfo.elem.getAttribute("category")
-                            val typeExtends = typeInfo.elem.getAttribute("structextends")
+                            val typeExtends = typeInfo.elem.getAttributeOrNull("structextends")
                             if (requiredKey !in gen.featureMap[featureName]!![typeCat]) {
                                 gen.featureMap[featureName]!![typeCat][requiredKey] = mutableMapOf<String, Any>()
                             }
                             if (typeExtends !in gen.featureMap[featureName]!![typeCat][requiredKey] as Map<*, *>) {
-                                (gen.featureMap[featureName]!![typeCat][requiredKey] as MutableMap<String, List<String>>)[typeExtends] =
+                                (gen.featureMap[featureName]!![typeCat][requiredKey] as MutableMap<String?, List<String>>)[typeExtends] =
                                     mutableListOf()
                             }
-                            ((gen.featureMap[featureName]!![typeCat][requiredKey] as MutableMap<String, List<String>>)[typeExtends] as MutableList<String>)
+                            ((gen.featureMap[featureName]!![typeCat][requiredKey] as MutableMap<String?, List<String>>)[typeExtends] as MutableList<String>)
                                 .add(typeName)
                         } else {
                             gen.logWarn {
@@ -881,21 +920,21 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                     }
                 }
 
-                require.getElementsByTagName("enum").forEachElement { enumElem ->
+                require.forEachNamedImmediateTags("enum") { enumElem ->
                     val enumName = enumElem.getAttribute("name")
                     val typeInfo = lookupElementInfo(enumName, enumMap)
 
                     val alias = getAlias(enumElem, enumMap)
                     if (!checkForCorrectionAliases(alias, require, "enum")) {
-                        val enumExtends = typeInfo!!.elem.getAttribute("extends")
+                        val enumExtends = typeInfo!!.elem.getAttributeOrNull("extends")
                         if (requiredKey !in gen.featureMap[featureName]!!.enumconstant) {
                             gen.featureMap[featureName]!!.enumconstant[requiredKey] = mutableMapOf<String, Any>()
                         }
                         if (enumExtends !in gen.featureMap[featureName]!!.enumconstant[requiredKey] as Map<*, *>) {
-                            (gen.featureMap[featureName]!!.enumconstant[requiredKey] as MutableMap<String, List<String>>)[enumExtends] =
+                            (gen.featureMap[featureName]!!.enumconstant[requiredKey] as MutableMap<String?, List<String>>)[enumExtends] =
                                 mutableListOf()
                         }
-                        ((gen.featureMap[featureName]!!.enumconstant[requiredKey] as MutableMap<String, List<String>>)[enumExtends] as MutableList<String>)
+                        ((gen.featureMap[featureName]!!.enumconstant[requiredKey] as MutableMap<String?, List<String>>)[enumExtends] as MutableList<String>)
                             .add(enumName)
                     } else {
                         gen.logWarn {
@@ -904,7 +943,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                     }
                 }
 
-                require.getElementsByTagName("command").forEachElement { cmdElem ->
+                require.forEachNamedImmediateTags("command") { cmdElem ->
                     val alias = getAlias(cmdElem, cmdMap)
                     if (!checkForCorrectionAliases(alias, require, "command")) {
                         if (requiredKey !in gen.featureMap[featureName]!!.command) {
@@ -923,7 +962,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
     }
 
     fun requireFeatures(interfaceElem: Element, featureName: String, api: String?, profile: String?) {
-        interfaceElem.getElementsByTagName("require").forEachElement { feature ->
+        interfaceElem.forEachNamedImmediateTags("require") { feature ->
             if (matchAPIProfile(api, profile, feature)) {
                 markRequired(featureName, feature, true)
             }
@@ -933,10 +972,10 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
     fun deprecateFeatures(interfaceElem: Element, featureName: String, api: String?, profile: String?) {
         val versionMatch = APIConventions().isApiVersionName(featureName)
 
-        interfaceElem.getElementsByTagName("deprecate").forEachElement { deprecation ->
+        interfaceElem.forEachNamedImmediateTags("deprecate") { deprecation ->
             if (matchAPIProfile(api, profile, deprecation)) {
                 fun setDeprecate(tag: String, map: Map<String, BaseInfo>) {
-                    deprecation.getElementsByTagName(tag).forEachElement { elem ->
+                    deprecation.forEachNamedImmediateTags(tag) { elem ->
                         val info = lookupElementInfo(elem.getAttribute("name"), map)
                         if (info != null) {
                             if (versionMatch) {
@@ -961,7 +1000,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
     }
 
     fun removeFeatures(interfaceElem: Element, featureName: String, api: String?, profile: String?) {
-        interfaceElem.getElementsByTagName("remove").forEachElement { feature ->
+        interfaceElem.forEachNamedImmediateTags("remove") { feature ->
             if (matchAPIProfile(api, profile, feature)) {
                 markRequired(featureName, feature, false)
             }
@@ -969,9 +1008,9 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
     }
 
     fun assignAdditionalValidity(interfaceElem: Element, api: String?, profile: String?) {
-        interfaceElem.getElementsByTagName("require").forEachElement { feature ->
+        interfaceElem.forEachNamedImmediateTags("require") { feature ->
             if (matchAPIProfile(api, profile, feature)) {
-                feature.getElementsByTagName("usage").forEachElement { v ->
+                feature.forEachNamedImmediateTags("usage") { v ->
                     if (v.hasAttribute("command")) {
                         cmdMap[v.getAttribute("command")]!!.additionalValidity.add(v.cloneNode(true) as Element)
                     }
@@ -984,9 +1023,9 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
     }
 
     fun removeAdditionalValidity(interfaceElem: Element, api: String?, profile: String?) {
-        interfaceElem.getElementsByTagName("remove").forEachElement { feature ->
+        interfaceElem.forEachNamedImmediateTags("remove") { feature ->
             if (matchAPIProfile(api, profile, feature)) {
-                feature.getElementsByTagName("usage").forEachElement { v ->
+                feature.forEachNamedImmediateTags("usage") { v ->
                     if (v.hasAttribute("command")) {
                         cmdMap[v.getAttribute("command")]!!.removedValidity.add(v.cloneNode(true) as Element)
                     }
@@ -1017,14 +1056,14 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             gen.logInfo { "Skipping $ftype $fname (not required)" }
             return
         }
-        if (!f.declared) {
+        if (f.declared) {
             gen.logInfo { "Skipping $ftype $fname (already declared)" }
             return
         }
         f.declared = true
 
-        val alias = f.elem.getAttribute("alias")
-        if (alias.isNotEmpty()) {
+        val alias = f.elem.getAttributeOrNull("alias")
+        if (alias != null) {
             gen.logInfo { "$fname is an alias of $alias" }
         }
 
@@ -1033,7 +1072,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
         if (ftype == "type") {
             genProc = gen::genType as GenProc
 
-            if (alias.isNotEmpty()) {
+            if (alias != null) {
                 generateFeature(alias, "type", typeMap)
             }
             val requires = f.elem.getAttribute("requires")
@@ -1042,12 +1081,12 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                 generateFeature(requires, "type", typeMap)
             }
 
-            f.elem.findAll(".//type")!!.forEachElement { subtype ->
+            f.elem.getElementsByTagName("type").forEachElement { subtype ->
                 gen.logInfo { "Generating required dependent <type> ${subtype.textContent}" }
                 generateFeature(subtype.textContent, "type", typeMap)
             }
 
-            f.elem.findAll(".//enum")!!.forEachElement { subtype ->
+            f.elem.getElementsByTagName("enum").forEachElement { subtype ->
                 gen.logInfo { "Generating required dependent <enum> ${subtype.textContent}" }
                 generateFeature(subtype.textContent, "enum", typeMap)
             }
@@ -1057,7 +1096,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                     "Type $fname is an enum group, so generate that instead"
                 }
                 val group = lookupElementInfo(fname, groupMap)
-                if (alias.isNotEmpty()) {
+                if (alias != null) {
                     gen.logInfo {
                         "Generating alias $fname for enumerated type $alias"
                     }
@@ -1077,7 +1116,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                     }
 
                     val enumAliases = mutableListOf<String>()
-                    group.elem.getElementsByTagName("enum").forEachElement { elem ->
+                    group.elem.forEachNamedImmediateTags("enum") { elem ->
                         val name = elem.getAttribute("name")
 
                         var required = false
@@ -1102,13 +1141,13 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                         }
                         if (required) {
                             elem.setAttribute("required", "true")
-                            val enumAlias = elem.getAttribute("alias")
-                            if (enumAlias.isNotEmpty()) {
+                            val enumAlias = elem.getAttributeOrNull("alias")
+                            if (enumAlias != null) {
                                 enumAliases.add(enumAlias)
                             }
                         }
                     }
-                    group.elem.getElementsByTagName("enum").forEachElement { elem ->
+                    group.elem.forEachNamedImmediateTags("enum") { elem ->
                         val name = elem.getAttribute("name")
                         if (name in enumAliases) {
                             elem.setAttribute("required", "true")
@@ -1126,12 +1165,12 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                 followupFeature = f.elem.getAttribute("bitvalues")
             }
         } else if (ftype == "command") {
-            if (alias.isNotEmpty()) {
+            if (alias != null) {
                 generateFeature(alias, "command", cmdMap)
             }
 
             genProc = gen::genCmd as GenProc
-            f.elem.findAll(".//type")!!.forEachElement { typeElem ->
+            f.elem.getElementsByTagName("type").forEachElement { typeElem ->
                 val depName = typeElem.textContent
                 gen.logInfo {
                     "Generating required parameter type $depName"
@@ -1139,7 +1178,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                 generateFeature(depName, "type", typeMap)
             }
         } else if (ftype == "enum") {
-            if (alias.isNotEmpty()) {
+            if (alias != null) {
                 generateFeature(alias, "enum", enumMap)
             }
 
@@ -1167,16 +1206,16 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
     }
 
     fun generateRequiredInterface(interfaceElem: Element) {
-        interfaceElem.getElementsByTagName("require").forEachElement { features ->
-            features.getElementsByTagName("type").forEachElement { t ->
+        interfaceElem.forEachNamedImmediateTags("require") { features ->
+            features.forEachNamedImmediateTags("type") { t ->
                 generateFeature(t.getAttribute("name"), "type", typeMap, explicit = true)
             }
-            features.getElementsByTagName("enum").forEachElement { e ->
+            features.forEachNamedImmediateTags("enum") { e ->
                 if (!e.hasAttribute("extends")) {
                     generateFeature(e.getAttribute("name"), "enum", enumMap, explicit = true)
                 }
             }
-            features.getElementsByTagName("command").forEachElement { c ->
+            features.forEachNamedImmediateTags("command") { c ->
                 generateFeature(c.getAttribute("name"), "command", cmdMap, explicit = true)
             }
         }
@@ -1244,7 +1283,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
     fun apiGen() {
         gen.logInfo { "*******************************************" }
         gen.logInfo {
-            "  Registry.apiGen file: ${genOpts.filename} api: ${genOpts.apiName} profile: ${genOpts.profile}"
+            "  Registry.apiGen file: $filename api: ${genOpts.apiName} profile: ${genOpts.profile}"
         }
         gen.logInfo { "*******************************************" }
 
@@ -1257,8 +1296,9 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
         val features = mutableListOf<FeatureInfo>()
         var apiMatch = false
         apiMap.values.forEach { fi ->
-            val api = fi.elem.getAttribute("api")
-            if (apiNameMatch(genOpts.apiName, api)) {
+            val api = if (fi.elem.hasAttribute("api")) fi.elem.getAttributeOrNull("api")
+            else null
+            if (apiNameMatch(genOpts.apiName, api?.split(','))) {
                 apiMatch = true
                 if (regVersions.matches(fi.name)) {
                     fi.emit = regEmitVersions.matches(fi.name)
@@ -1291,7 +1331,9 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             val extName = ei.name
             var include = false
 
-            if (apiNameMatch(genOpts.defaultExtensions, ei.elem.getAttribute("supported"))) {
+            val supported = ei.elem.getAttribute("supported")
+            val split = supported.split(',')
+            if (apiNameMatch(genOpts.defaultExtensions, split)) {
                 gen.logInfo {
                     "Including extension $extName (defaultExtensions matches the 'supported' attribute)"
                 }
@@ -1299,7 +1341,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             }
 
             if (regAddExtensions.matches(extName)) {
-                if (!apiNameMatch(genOpts.apiName, ei.elem.getAttribute("supported"))) {
+                if (!apiNameMatch(genOpts.apiName, split)) {
                     gen.logInfo {
                         "NOT including extension $extName (matches explicitly requested, but does not match the 'supported' attribute)"
                     }
@@ -1363,6 +1405,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
         tagValidExtensionStructs()
 
         gen.logInfo { "PASS 3: GENERATE INTERFACES FOR FEATURES" }
+
         gen.beginFile(genOpts)
         features.forEach { f ->
             gen.logInfo { "PASS 3: Generating interface for ${f.name}" }

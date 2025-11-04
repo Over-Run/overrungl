@@ -20,6 +20,9 @@ import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.io.path.exists
 
+// TODO
+const val ACTUALLY_WRITE = false
+
 fun replaceCode(originalCode: String, replacingCode: String): String {
     check(originalCode.indexOf(GENERATOR_BEGIN) != -1 && originalCode.indexOf(GENERATOR_END) != -1) { "Generator region not found" }
     val split = originalCode.split(GENERATOR_BEGIN, GENERATOR_END)
@@ -29,5 +32,7 @@ fun replaceCode(originalCode: String, replacingCode: String): String {
 // do not write if contents are equal
 fun writeString(path: Path, content: String) {
     if (path.exists() && Files.readString(path) == content) return
-    Files.writeString(path, content)
+    if (ACTUALLY_WRITE) {
+        Files.writeString(path, content)
+    }
 }

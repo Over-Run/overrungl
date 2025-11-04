@@ -26,6 +26,6 @@ package overrungl.vulkan
 
 fun String.toInt0(): Int {
     if (startsWith("0x") || startsWith("0X"))
-        return toInt(16)
+        return substring(2).toInt(16)
     return toInt()
 }

@@ -24,23 +24,8 @@
 
 package overrungl.vulkan
 
-// vk.xml: 2025-10-31
-// video.xml: 2025-10-31
+private val WHITESPACE_REGEX = Regex("\\s+")
 
-const val vulkanPackage = "overrungl.vulkan"
-
-const val extBase = 1000000000
-const val extBlockSize = 1000
-
-fun main() {
-    val gen = JavaGenerator()
-    val reg = Registry(
-        gen, BaseGeneratorOptions(
-            customDirectory = "src/main/generated",
-            customApiName = "vulkan",
-            videoXmlPath = "video.xml"
-        )
-    )
-    reg.loadFile("vk.xml")
-    reg.apiGen()
+fun CharSequence.split(limit: Int = 0): List<String> {
+    return split(WHITESPACE_REGEX, limit)
 }

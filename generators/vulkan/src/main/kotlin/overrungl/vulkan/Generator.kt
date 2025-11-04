@@ -39,7 +39,7 @@ fun regSortCategoryKey(feature: FeatureInfo) =
     else 2.0
 
 fun regSortOrderKey(feature: FeatureInfo) = feature.sortOrder
-fun regSortFeatureVersionKey(feature: FeatureInfo) = feature.versionNumber.toFloat()
+fun regSortFeatureVersionKey(feature: FeatureInfo) = feature.versionNumber.toFloatOrNull()
 fun regSortExtensionNumberKey(feature: FeatureInfo) = feature.number
 
 fun regSortFeatures(featureList: MutableList<FeatureInfo>) {
@@ -57,7 +57,6 @@ class MissingGeneratorOptionsConventionsError(msg: String? = null) :
 
 open class GeneratorOptions(
     val conventions: ConventionsBase? = null,
-    val filename: String? = null,
     val directory: String = ".",
     val genPath: String? = null,
     val apiName: String? = null,
@@ -106,7 +105,6 @@ open class OutputGenerator {
     var fileSuffix: String = ""
     var conventions: ConventionsBase? = null
     var output: StringBuilder? = null
-    var outputFile: String? = null
 
     companion object {
         val categoryToPath = mapOf(
@@ -128,6 +126,8 @@ open class OutputGenerator {
     }
 
     fun logMsg(level: System.Logger.Level, messageSupplier: () -> String) {
+        if (level.severity <= System.Logger.Level.WARNING.severity)
+            return
         System.getLogger("LOGGER").log(level, messageSupplier)
         if (level == System.Logger.Level.ERROR) {
             throw IllegalStateException(messageSupplier())
@@ -235,27 +235,27 @@ open class OutputGenerator {
         conventions = genOpts.conventions
 
         output = StringBuilder()
-        outputFile = genOpts.filename
     }
 
     open fun beginFile(genOpts: GeneratorOptions) {
         outputGenBeginFile(genOpts)
     }
 
-    fun outputGenEndFile() {
-        if (output != null && outputFile != null) {
-            if (genOpts == null) {
-                throw MissingGeneratorOptionsError()
-            }
+    fun writeOutput(filename: String?) {
+        if (genOpts == null) {
+            throw MissingGeneratorOptionsError()
+        }
 
-            if (genOpts!!.filename != null) {
-                val directory = Path.of(genOpts!!.directory)
-                Files.createDirectories(directory)
-                writeString(directory.resolve(genOpts!!.filename!!), output.toString())
-            }
+        if (output != null && filename != null) {
+            val directory = Path.of(genOpts!!.directory)
+            Files.createDirectories(directory)
+            writeString(directory.resolve(filename), output.toString())
         } else {
             println(output)
         }
+    }
+
+    fun outputGenEndFile() {
         output = null
         genOpts = null
     }
@@ -289,15 +289,15 @@ open class OutputGenerator {
         }
     }
 
-    open fun genType(typeInfo: TypeInfo, name: String, alias: String?) {
-        validateFeature("type", name)
+    open fun genType(typeInfo: TypeInfo, typeName: String, alias: String?) {
+        validateFeature("type", typeName)
     }
 
     open fun genStruct(typeInfo: TypeInfo, typeName: String, alias: String?) {
         validateFeature("struct", typeName)
 
-        typeInfo.elem.findAll(".//member")!!.forEachElement { member ->
-            member.getElementsByTagName("comment").forEachElement { comment ->
+        typeInfo.elem.getElementsByTagName("member").forEachElement { member ->
+            member.getElementsByTagName("comment").toElementList().forEach { comment ->
                 member.removeChild(comment)
             }
         }
@@ -314,22 +314,111 @@ open class OutputGenerator {
     open fun genCmd(cmdInfo: CmdInfo, name: String, alias: String?) {
         validateFeature("command", name)
     }
+
+    fun makeProtoName(name: String/*, tail: String*/): String {
+        if (genOpts == null) {
+            throw MissingGeneratorOptionsError()
+        }
+        return name// + tail
+    }
+
+    fun makeTypedefName(name: String/*, tail: String*/): String {
+        if (genOpts == null) {
+            throw MissingGeneratorOptionsError()
+        }
+        return "(*PFN_$name)"
+    }
+
+    fun makeCParamDecl(param: Element): String {
+        if (genOpts == null) {
+            throw MissingGeneratorOptionsError()
+        }
+        if (genOpts!!.conventions == null) {
+            throw MissingGeneratorOptionsConventionsError()
+        }
+
+        val paramdecl = StringBuilder()
+        var prefix = param.textContent ?: ""
+
+        /*param.childNodes.forEach { elem ->
+            if (elem !is Element) return@forEach
+
+            val text = elem.textContent ?: ""
+            val tail = elem.nextSibling?.let { if (it.nodeType == Node.TEXT_NODE) it.textContent else null } ?: ""
+
+            paramdecl.append(prefix).append(text).append(tail)
+
+            prefix = ""
+        }*/
+
+        paramdecl.append(prefix)
+        return paramdecl.toString().split().joinToString(" ")
+    }
+
+    fun makeCDecls(cmd: Element): List<String> {
+        if (genOpts == null) {
+            throw MissingGeneratorOptionsError()
+        }
+        val proto = cmd.findChild("proto")
+        val params = cmd.findChildren("param")
+        val pdecl = StringBuilder()
+        val tdecl = StringBuilder()
+        tdecl.append("typedef ")
+
+        /*pdecl.append(proto?.textContent ?: "")
+        tdecl.append(proto?.textContent ?: "")*/
+        proto!!.forEachImmediateChildren { elem ->
+            val text = elem.textContent ?: ""
+            //val tail = elem.nextSibling?.let { if (it.nodeType == Node.TEXT_NODE) it.textContent else null } ?: ""
+            if (elem.tagName == "name") {
+                pdecl.append(makeProtoName(text))
+                tdecl.append(makeTypedefName(text))
+            } else {
+                pdecl.append(text).append(" ")//.append(tail)
+                tdecl.append(text).append(" ")//.append(tail)
+            }
+        }
+
+        val pdecl1 = pdecl.split().joinToString(" ")
+        val tdecl1 = tdecl.split().joinToString(" ")
+
+        val indentdecl = StringBuilder()
+        if (params.isNotEmpty()) {
+            indentdecl.append("(")
+            params.joinTo(indentdecl, ", ") { makeCParamDecl(it) }
+            indentdecl.append(");")
+        } else {
+            indentdecl.append("(void);")
+        }
+
+        val paramdecl = StringBuilder();
+        paramdecl.append("(")
+        if (params.isNotEmpty()) {
+            val paramNames = params.map { it.textContent }
+            paramNames.joinToString(paramdecl, ", ")
+        } else {
+            paramdecl.append("void")
+        }
+        paramdecl.append(");")
+
+        return listOf(pdecl1 + indentdecl, tdecl1 + paramdecl)
+    }
 }
 
 class FeatureMap {
-    val enumconstant = mutableMapOf<String, Any>()
-    val command = mutableMapOf<String, Any>()
-    val enum = mutableMapOf<String, Any>()
-    val struct = mutableMapOf<String, Any>()
-    val handle = mutableMapOf<String, Any>()
-    val basetype = mutableMapOf<String, Any>()
-    val include = mutableMapOf<String, Any>()
-    val define = mutableMapOf<String, Any>()
-    val bitmask = mutableMapOf<String, Any>()
-    val union = mutableMapOf<String, Any>()
-    val funcpointer = mutableMapOf<String, Any>()
+    val enumconstant = mutableMapOf<String?, Any>()
+    val command = mutableMapOf<String?, Any>()
+    val enum = mutableMapOf<String?, Any>()
+    val struct = mutableMapOf<String?, Any>()
+    val handle = mutableMapOf<String?, Any>()
+    val basetype = mutableMapOf<String?, Any>()
+    val include = mutableMapOf<String?, Any>()
+    val define = mutableMapOf<String?, Any>()
+    val bitmask = mutableMapOf<String?, Any>()
+    val union = mutableMapOf<String?, Any>()
+    val funcpointer = mutableMapOf<String?, Any>()
 
-    operator fun get(typeCat: String): MutableMap<String, Any> = when (typeCat) {
+    operator fun get(typeCat: String): MutableMap<String?, Any> = when (typeCat) {
         "enumconstant" -> enumconstant
         "command" -> command
         "enum" -> enum
