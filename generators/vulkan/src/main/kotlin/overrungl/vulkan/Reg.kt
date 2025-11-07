@@ -386,7 +386,7 @@ class FeatureInfo(elem: Element) : BaseInfo(elem) {
             supported = null
             deprecates = elem.getElementsByTagName("deprecate")
         } else {
-            category = name.split('_', limit = 2)[1]
+            category = name.split('_', limit = 3)[1]
             version = "0"
             versionNumber = "0"
             number = elem.getAttributeOr("number", "0").toInt()
@@ -406,7 +406,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
     val enumMap = mutableMapOf<String, EnumInfo>()
     val cmdMap = mutableMapOf<String, CmdInfo>()
     val aliasMap = mutableMapOf<String, String>()
-    val enumValueMap = mutableMapOf<String, String>()
+    val enumValueMap = mutableMapOf<String, String?>()
     val apiMap = mutableMapOf<String, FeatureInfo>()
     var extensions: NodeList? = null
     val extMap = mutableMapOf<String, FeatureInfo>()
@@ -463,7 +463,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
         breakPat = Regex(regexp)
     }
 
-    fun addEnumValue(enum: Element, typeName: String) {
+    fun addEnumValue(enum: Element, typeName: String?) {
         var typeName0 = typeName
         val value = enum.getAttribute("name")
         if (enum.hasAttribute("alias")) {
@@ -476,7 +476,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
         if (value in enumValueMap) {
             assert(typeName0 == enumValueMap[value])
         } else {
-            enumValueMap[value] = typeName
+            enumValueMap[value] = typeName0
         }
     }
 
@@ -579,8 +579,8 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             feature.forEachNamedImmediateTags("require") { elem ->
                 elem.forEachNamedImmediateTags("enum") { enum ->
                     var addEnumInfo = false
-                    val groupName = enum.getAttribute("extends")
-                    if (groupName.isNotEmpty()) {
+                    val groupName = enum.getAttributeOrNull("extends")
+                    if (groupName != null) {
                         enum.setAttribute("version", featureInfo.version)
                         if (groupName in groupMap) {
                             groupMap[groupName]!!.elem.appendChild(enum.cloneNode(true))
@@ -612,8 +612,8 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             feature.forEachNamedImmediateTags("require") { elem ->
                 elem.forEachNamedImmediateTags("enum") { enum ->
                     var addEnumInfo = false
-                    val groupName = enum.getAttribute("extends")
-                    if (groupName.isNotEmpty()) {
+                    val groupName = enum.getAttributeOrNull("extends")
+                    if (groupName != null) {
                         if (!enum.hasAttribute("extnumber")) {
                             enum.setAttribute("extnumber", featureInfo.number.toString())
                         }
@@ -983,7 +983,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
                             } else {
                                 info.deprecatedByExtensions.add(featureName)
                             }
-                            info.deprecatedLink = deprecation.getAttribute("explanationlink")
+                            info.deprecatedLink = deprecation.getAttributeOrNull("explanationlink")
                         } else {
                             gen.logError {
                                 "${elem.getAttribute("name")} is tagged for deprecation but not present in registry"

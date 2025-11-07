@@ -24,7 +24,13 @@
 
 package overrungl.vulkan
 
+import org.w3c.dom.Element
+
 class JavaGenerator : BaseGenerator() {
+    override fun beginFeature(interfaceElem: Element, emit: Boolean) {
+        super.beginFeature(interfaceElem, emit)
+    }
+
     override fun endFeature() {
         super.endFeature()
     }

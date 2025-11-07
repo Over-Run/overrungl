@@ -25,7 +25,6 @@
 package overrungl.vulkan
 
 import org.w3c.dom.Element
-import overrungl.gen.writeString
 import java.nio.file.Files
 import java.nio.file.Path
 
@@ -104,7 +103,6 @@ open class OutputGenerator {
     var emit = false
     var fileSuffix: String = ""
     var conventions: ConventionsBase? = null
-    var output: StringBuilder? = null
 
     companion object {
         val categoryToPath = mapOf(
@@ -179,7 +177,7 @@ open class OutputGenerator {
             val bitpos = value.toInt0()
             numVal = 1 shl bitpos
             value = String.format("0x%08x", numVal)
-            if (bitWidth == 64 || bitWidth >= 32) {
+            if (bitWidth == 64 || bitpos >= 32) {
                 value = "${value}L"
             }
             return numVal to value
@@ -233,30 +231,13 @@ open class OutputGenerator {
         }
 
         conventions = genOpts.conventions
-
-        output = StringBuilder()
     }
 
     open fun beginFile(genOpts: GeneratorOptions) {
         outputGenBeginFile(genOpts)
     }
 
-    fun writeOutput(filename: String?) {
-        if (genOpts == null) {
-            throw MissingGeneratorOptionsError()
-        }
-
-        if (output != null && filename != null) {
-            val directory = Path.of(genOpts!!.directory)
-            Files.createDirectories(directory)
-            writeString(directory.resolve(filename), output.toString())
-        } else {
-            println(output)
-        }
-    }
-
     fun outputGenEndFile() {
-        output = null
         genOpts = null
     }
 
@@ -406,8 +387,10 @@ open class OutputGenerator {
 }
 
 class FeatureMap {
-    val enumconstant = mutableMapOf<String?, Any>()
-    val command = mutableMapOf<String?, Any>()
+    // Any: Map<String, List<String>> | List<String>
+
+    val enumconstant = mutableMapOf<String?, Any>() // map dimensions: [requiredKey][enumExtends]
+    val command = mutableMapOf<String?, Any>() // Any: List<String>
     val enum = mutableMapOf<String?, Any>()
     val struct = mutableMapOf<String?, Any>()
     val handle = mutableMapOf<String?, Any>()

@@ -39,6 +39,9 @@ import kotlin.io.path.createParentDirectories
 // vk.xml: 2025-10-31
 // video.xml: 2025-10-31
 
+const val extBase = 1000000000
+const val extBlockSize = 1000
+
 val vkApiVersionRegex = Regex("VK_API_VERSION_\\d+_\\d+")
 
 // VkImageLayout=[VK_IMAGE_LAYOUT_UNDEFINED, ...]
