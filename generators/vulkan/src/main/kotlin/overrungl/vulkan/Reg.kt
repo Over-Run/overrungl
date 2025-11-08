@@ -694,7 +694,7 @@ class Registry(gen: OutputGenerator? = null, genOpts: GeneratorOptions? = null) 
             }
 
             typeInfo.required = required
-        } else if (".h" !in typename) { // TODO: maybe .java
+        } else if (".h" !in typename) {
             gen.logWarn { "type: $typename IS NOT DEFINED" }
         }
     }

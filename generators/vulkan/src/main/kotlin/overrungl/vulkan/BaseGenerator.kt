@@ -540,12 +540,12 @@ open class BaseGenerator : OutputGenerator() {
         val params = mutableListOf<Param>()
         cmdInfo.elem.forEachNamedImmediateTags("param") { param ->
             val paramName = param.getElementsByTagName("name").item(0).textContent
-            val paramType = textIfFind(param, "type")
+            val paramType = textIfFind(param, "type")!!
             val paramAlias = param.getAttributeOrNull("alias")
 
             val cdecl = makeCParamDecl(param)
             val paramFullType = cdecl.split().dropLast(1).joinToString(" ")
-            val pointer = "*" in cdecl || paramType!!.startsWith("PFN_")
+            val pointer = "*" in cdecl || paramType.startsWith("PFN_")
             val paramConst = "const" in cdecl
             val fixedSizeArray = cdecl.split('[')
                 .filter { it.endsWith(']') }
@@ -577,7 +577,7 @@ open class BaseGenerator : OutputGenerator() {
                 Param(
                     paramName,
                     paramAlias,
-                    paramType!!,
+                    paramType,
                     paramFullType,
                     paramNoautovalidity,
                     paramConst,
