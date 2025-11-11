@@ -137,14 +137,10 @@ fun formatTraits(formatsNode: Element) {
         appendLine("package $vulkanPackage;")
         appendLine()
         appendLine("import java.util.*;")
-        val imports = mutableListOf<String>()
-        vkEnumDefineClassMap.forEach { (type, pairs) ->
-            if (type == "VkFormat") {
-                pairs.forEach { (className, _) ->
-                    if (!imports.contains(className)) {
-                        imports.add(className)
-                    }
-                }
+        val imports = mutableSetOf<String>()
+        generatedEnumToClass.forEach { (enumName, classFullName) ->
+            if (enumName.startsWith("VK_FORMAT_")) {
+                imports.add(classFullName)
             }
         }
         imports.sorted().forEach { appendLine("import static $it.*;") }

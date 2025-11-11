@@ -162,14 +162,12 @@ open class BaseGenerator : OutputGenerator() {
     override fun beginFile(genOpts: GeneratorOptions) {
         super.beginFile(genOpts)
 
-        registry!!.tree!!.forEachChildrenChildren("platforms", "platform") { platform ->
+        registry!!.reg!!.forEachChildrenChildren("platforms", "platform") { platform ->
             vk.platforms[platform.getAttribute("name")] = platform.getAttribute("protect") // TODO: empty?
         }
 
-        registry!!.tree!!.forEachNamedImmediateTags("tags") { tags ->
-            tags.forEachNamedImmediateTags("tag") { tag ->
-                vk.vendorTags.add(tag.getAttribute("name"))
-            }
+        registry!!.reg!!.forEachChildrenChildren("tags", "tag") { tag ->
+            vk.vendorTags.add(tag.getAttribute("name"))
         }
 
         if (genOpts.videoXmlPath != null) {
@@ -997,10 +995,7 @@ private class VideoStdGenerator : BaseGenerator() {
             }
         }
 
-        val headerFile = "overrungl/vulkan/video/${
-            name.split('_')
-                .joinToString("") { it.replaceFirstChar(Char::uppercaseChar) }
-        }.java"
+        val headerFile = "vk_video/$name.h"
 
         vk.videoStd!!.headers[name] = VideoStdHeader(name, version, headerFile, depends)
 

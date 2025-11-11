@@ -38,6 +38,20 @@ const val vulkanPackage = "overrungl.vulkan"
 val generatedPackages = mutableSetOf<String>()
 val gen = JavaGenerator()
 
+private var genVendors: List<String>? = null
+internal val generatedEnumToClass = mutableMapOf<String, String>()
+private val primitiveTypes = listOf(
+    "boolean",
+    "char",
+    "byte",
+    "short",
+    "int",
+    "long",
+    "float",
+    "double",
+    "void",
+)
+
 private val whitespaceRegex = Regex("\\s+")
 
 val predefinedTypeMap = mapOf(
@@ -85,8 +99,18 @@ val predefinedTypeMap = mapOf(
     // nvscibuf.h
     "NvSciBufAttrList" to "int",
     "NvSciBufObj" to "int",
+    // other
+    "MTLDevice_id" to "MemorySegment",
+    "MTLCommandQueue_id" to "MemorySegment",
+    "MTLBuffer_id" to "MemorySegment",
+    "MTLTexture_id" to "MemorySegment",
+    "MTLSharedEvent_id" to "MemorySegment",
+    "IOSurfaceRef" to "MemorySegment",
     // Vulkan
+    "VkSampleMask" to "int",
     "VkBool32" to "int",
+    "VkFlags" to "int",
+    "VkFlags64" to "long",
     "VkDeviceSize" to "long",
     "VkDeviceAddress" to "long",
     "PFN_vkVoidFunction" to "MemorySegment",
@@ -98,7 +122,27 @@ val ignoredDefineList = listOf(
     "VK_DEFINE_NON_DISPATCHABLE_HANDLE",
 )
 
-fun mapTypeName(name: String): String {
+fun ofByValueStruct(member: Member): Struct? {
+    if (member.pointer || member.fixedSizeArray.isNotEmpty()) {
+        return null
+    }
+
+    val dealiasName = gen.dealias(member.type, gen.structAliasMap)
+    if (dealiasName in gen.vk.structs) {
+        return gen.vk.structs[dealiasName]!!
+    }
+
+    if (gen.vk.videoStd != null) {
+        val videoStd = gen.vk.videoStd!!
+        if (member.type in videoStd.structs) {
+            return videoStd.structs[dealiasName]!!
+        }
+    }
+
+    return null
+}
+
+fun mapTypeName(name: String, useRawType: Boolean = false): String {
     val mapToBaseType = predefinedTypeMap[name]
     if (mapToBaseType != null) {
         return mapToBaseType
@@ -106,7 +150,9 @@ fun mapTypeName(name: String): String {
     // TODO: value class
     var dealiasName: String = gen.dealias(name, gen.handleAliasMap)
     if (dealiasName in gen.vk.handles) {
-        return if (gen.vk.handles[dealiasName]!!.dispatchable) name else "long"
+        return if (gen.vk.handles[dealiasName]!!.dispatchable) {
+            if (useRawType) "MemorySegment" else name
+        } else "long"
     }
     dealiasName = gen.dealias(name, gen.flagsAliasMap)
     if (dealiasName in gen.vk.flags) {
@@ -120,11 +166,36 @@ fun mapTypeName(name: String): String {
     if (dealiasName in gen.vk.enums) {
         return if (gen.vk.enums[dealiasName]!!.bitWidth > 32) "long" else "int"
     }
+    dealiasName = gen.dealias(name, gen.structAliasMap)
+    if (dealiasName in gen.vk.structs) {
+        val struct = gen.vk.structs[dealiasName]!!
+        val name1 = struct.name
+        val vendor = detectVendor(genVendors!!, name1)
+        return if (useRawType) "MemorySegment"
+        else "$vulkanPackage${if (vendor != null) ".$vendor" else ""}.${if (struct.union) "union" else "struct"}.$name1"
+    }
+
+    if (gen.vk.videoStd != null) {
+        val videoStd = gen.vk.videoStd!!
+        if (name in videoStd.enums) {
+            return if (videoStd.enums[name]!!.bitWidth > 32) "long" else "int"
+        }
+        if (name in videoStd.structs) {
+            val struct = videoStd.structs[dealiasName]!!
+            return if (useRawType) "MemorySegment" else "$vulkanPackage.video.${struct.name}"
+        }
+    }
+
     return name
 }
 
 fun mapParamTypeName(param: Param): String =
-    if (param.pointer) "@NonNull MemorySegment" else mapTypeName(param.type)
+    if (param.pointer || param.fixedSizeArray.isNotEmpty()) "@NonNull MemorySegment"
+    else {
+        val typeName = mapTypeName(param.type)
+        if (typeName !in primitiveTypes) "@NonNull $typeName"
+        else typeName
+    }
 
 fun mapJavaTypeToValueLayout(name: String, rawType: String): String {
     if (rawType == "size_t") return "CanonicalTypes.SIZE_T"
@@ -139,9 +210,12 @@ fun mapJavaTypeToValueLayout(name: String, rawType: String): String {
         "double" -> "ValueLayout.JAVA_DOUBLE"
         "MemorySegment" -> "ValueLayout.ADDRESS"
         else -> {
-            val dealias = gen.dealias(name, gen.handleAliasMap)
+            val dealias = gen.dealias(rawType, gen.handleAliasMap)
             if (dealias in gen.vk.handles && gen.vk.handles[dealias]!!.dispatchable) {
                 return "ValueLayout.ADDRESS"
+            }
+            if ("overrungl" in name) {
+                return "$name.LAYOUT"
             }
             throw IllegalArgumentException(name)
         }
@@ -165,8 +239,16 @@ fun mapJavaTypeToSignature(name: String, rawType: String, sizeTLong: Boolean): S
     }
 }
 
+fun detectVendor(vendors: List<String>, name: String): String? {
+    if (name.startsWith("StdVideo") || name.startsWith("VulkanVideo")) {
+        return "video"
+    }
+    return vendors.find { s -> name.endsWith(s) }?.lowercase()
+}
+
 private data class SimpleParamType(
     val pointer: Boolean,
+    val fixedSizeArray: List<String>,
     val type: String
 )
 
@@ -185,7 +267,7 @@ private fun functionDescriptor(returnType: String, params: List<SimpleParamType>
             }
         }
         params.joinTo(this, separator = ", ") {
-            val rawType = if (it.pointer) "MemorySegment" else it.type
+            val rawType = if (it.pointer || it.fixedSizeArray.isNotEmpty()) "MemorySegment" else it.type
             mapJavaTypeToValueLayout(mapTypeName(rawType), rawType)
         }
         append(")")
@@ -193,7 +275,9 @@ private fun functionDescriptor(returnType: String, params: List<SimpleParamType>
 }
 
 fun functionDescriptor(cmd: Command): String {
-    return functionDescriptor(cmd.returnType, cmd.params.map { SimpleParamType(it.pointer, it.type) })
+    return functionDescriptor(
+        cmd.returnType,
+        cmd.params.map { SimpleParamType(it.pointer, it.fixedSizeArray, it.type) })
 }
 
 @Suppress("UNCHECKED_CAST")
@@ -216,18 +300,21 @@ fun main() {
     )
     reg.loadFile("vk.xml")
     reg.apiGen()
+    genVendors = gen.vk.vendorTags.sortedWith { s1, s2 -> s2.length.compareTo(s1.length) }
 
     gen.featureMap.forEach { (name, featureMap) ->
         genFeature(name, featureMap)
     }
+    genVideoStdHeaders()
     genUpcalls()
     genStructs()
     genCapabilities()
     genModuleInfo()
 
-    writeNativeImageRegistration("overrungl.vulkan", libBasename = null)
+    writeNativeImageRegistration(vulkanPackage, libBasename = null)
 
     formatTraits(reg.reg!!.getElementsByTagName("formats").item(0) as Element)
+    vkUtil()
 }
 
 @Suppress("UNCHECKED_CAST")
@@ -239,21 +326,26 @@ fun genFeature(name: String, featureMap: FeatureMap) {
     val category = fi.category
     val isVersion = category == "VERSION"
 
-    val packageName = if (isVersion) "overrungl.vulkan"
-    else "overrungl.vulkan.${category.lowercase()}"
+    val packageName = if (isVersion) vulkanPackage
+    else "$vulkanPackage.${category.lowercase()}"
     generatedPackages.add(packageName)
     val directoryName = if (isVersion) "overrungl/vulkan"
     else "overrungl/vulkan/${category.lowercase()}"
     val className = if (isVersion) name.replace("_VERSION_", "").replace("_", "")
     else name.split('_').joinToString("") { it.replaceFirstChar(Char::uppercaseChar) }
 
-    output.appendLine(commentedFileHeader)
-    output.appendLine("package $packageName;")
-    output.appendLine("import module java.base;")
-    output.appendLine("import org.jspecify.annotations.*;")
-    output.appendLine("import overrungl.util.*;")
+    output.appendLine(
+        """
+            $commentedFileHeader
+            package $packageName;
+            import java.lang.foreign.*;
+            import java.lang.invoke.*;
+            import org.jspecify.annotations.*;
+            import overrungl.util.*;
+        """.trimIndent()
+    )
     if (!isVersion) {
-        output.appendLine("import overrungl.vulkan.*;")
+        output.appendLine("import $vulkanPackage.*;")
     }
     if (featureMap.command.isNotEmpty()) {
         output.appendLine("import static overrungl.internal.RuntimeHelper.*;")
@@ -273,23 +365,24 @@ fun genFeature(name: String, featureMap: FeatureMap) {
         map as Map<String?, List<String>>
         if (null in map) {
             map[null]!!.forEach { enumName ->
-                if (enumName in vk.constants) {
-                    val constant = vk.constants[enumName]!!
+                var dealiasName = enumName
+                var elem = registry.enumMap[dealiasName]!!.elem
+                while (elem.hasAttribute("alias")) {
+                    val attr = elem.getAttribute("alias")
+                    dealiasName = attr
+                    elem = registry.enumMap[attr]!!.elem
+                }
+                if (dealiasName in vk.constants) {
+                    val constant = vk.constants[dealiasName]!!
                     output.appendLine(
-                        "    public static final ${mapTypeName(constant.type)} ${constant.name} = ${
+                        "    public static final ${mapTypeName(constant.type)} $enumName = ${
                             constant.valueStr
                                 .replace("ULL", "L")
                                 .replace("U", "")
                         };"
                     )
+                    generatedEnumToClass[enumName] = "$packageName.$className"
                 } else {
-                    var dealiasName = enumName
-                    var elem = registry.enumMap[dealiasName]!!.elem
-                    while (elem.hasAttribute("alias")) {
-                        val attr = elem.getAttribute("alias")
-                        dealiasName = attr
-                        elem = registry.enumMap[attr]!!.elem
-                    }
                     val valueStr: String
                     val type: String
                     if (elem.hasAttribute("value")) {
@@ -306,7 +399,8 @@ fun genFeature(name: String, featureMap: FeatureMap) {
                     } else {
                         throw AssertionError()
                     }
-                    output.appendLine("    public static final $type $dealiasName = $valueStr;")
+                    output.appendLine("    public static final $type $enumName = $valueStr;")
+                    generatedEnumToClass[enumName] = "$packageName.$className"
                 }
             }
         }
@@ -321,26 +415,34 @@ fun genFeature(name: String, featureMap: FeatureMap) {
                     // ignore.
                     return@forEach
                 }
-                val bitmaskDealiasTypeName = gen.dealias(typeName, gen.bitmaskAliasMap)
-                if (bitmaskDealiasTypeName in vk.bitmasks) {
-                    val bitmask = vk.bitmasks[bitmaskDealiasTypeName]!!
+                if (typeName in vk.bitmasks) {
+                    val bitmask = vk.bitmasks[typeName]!!
                     val bitWidth = bitmask.bitWidth
                     // TODO: value class
                     val javaType = if (bitWidth > 32) "long" else "int"
                     bitmask.flags.forEach { flag ->
                         if (!isEnumConstExtended(flag.name)) {
                             output.appendLine("    public static final $javaType ${flag.name} = ${flag.valueStr};")
+                            generatedEnumToClass[flag.name] = "$packageName.$className"
+                            flag.aliases.forEach {
+                                output.appendLine("    public static final $javaType $it = ${flag.valueStr};")
+                                generatedEnumToClass[it] = "$packageName.$className"
+                            }
                         }
                     }
-                } else {
-                    val enumDealiasTypeName = gen.dealias(typeName, gen.enumAliasMap)
-                    val enum = vk.enums[enumDealiasTypeName]!!
+                } else if (typeName in vk.enums) {
+                    val enum = vk.enums[typeName]!!
                     val bitWidth = enum.bitWidth
                     // TODO: value class
                     val javaType = if (bitWidth > 32) "long" else "int"
                     enum.fields.forEach { enumField ->
                         if (!isEnumConstExtended(enumField.name)) {
                             output.appendLine("    public static final $javaType ${enumField.name} = ${enumField.valueStr};")
+                            generatedEnumToClass[enumField.name] = "$packageName.$className"
+                            enumField.aliases.forEach {
+                                output.appendLine("    public static final $javaType $it = ${enumField.valueStr};")
+                                generatedEnumToClass[it] = "$packageName.$className"
+                            }
                         }
                     }
                 }
@@ -348,6 +450,8 @@ fun genFeature(name: String, featureMap: FeatureMap) {
         }
     }
 
+    // special case for VK_EXT_tooling_info
+    val generatedEnums = mutableSetOf<String>()
     featureMap.enumconstant.forEach { (requiredKey, map) ->
         map as Map<String?, List<String>>
         map.forEach { (enumExtends, list) ->
@@ -368,7 +472,10 @@ fun genFeature(name: String, featureMap: FeatureMap) {
                     type = if (enum.second.bitWidth > 32) "long" else "int"
                     valueStr = enum.first.valueStr
                 }
-                output.appendLine("    public static final $type $enumConstName = $valueStr;")
+                if (enumConstName !in generatedEnums)
+                    output.appendLine("    public static final $type $enumConstName = $valueStr;")
+                generatedEnumToClass[enumConstName] = "$packageName.$className"
+                generatedEnums.add(enumConstName)
             }
         }
     }
@@ -461,7 +568,8 @@ fun genFeature(name: String, featureMap: FeatureMap) {
                 if (mappedReturnType != "void") {
                     output.append("return ($mappedReturnType) ")
                 }
-                val hasSizeT = cmd.params.any { if (it.pointer) false else it.type == "size_t" }
+                val hasSizeT =
+                    cmd.params.any { if (it.pointer || it.fixedSizeArray.isNotEmpty()) false else it.type == "size_t" }
                 output.append("Handles.MH_$cmdName.invoke")
                 if (hasSizeT) {
                     output.append("(")
@@ -471,11 +579,11 @@ fun genFeature(name: String, featureMap: FeatureMap) {
                 output.append(capabilities).append(".PFN_").append(cmdName)
                 cmd.params.forEach {
                     output.append(", ")
-                    val isSizeT = !it.pointer && it.type == "size_t"
+                    val isSizeT = !it.pointer && it.fixedSizeArray.isEmpty() && it.type == "size_t"
                     if (isSizeT) output.append("MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, ")
                     output.append(it.name)
                     // call .segment() for dispatchable handles
-                    if (!it.pointer) {
+                    if (!it.pointer && it.fixedSizeArray.isEmpty()) {
                         val dealias = gen.dealias(it.type, gen.handleAliasMap)
                         if (dealias in vk.handles && vk.handles[dealias]!!.dispatchable) {
                             output.append(".segment()")
@@ -501,8 +609,17 @@ fun genFeature(name: String, featureMap: FeatureMap) {
     )
 }
 
+fun genVideoStdHeaders() {
+    // TODO
+    val videoStd = gen.vk.videoStd!!
+    videoStd.constants.forEach { println(it) }
+    videoStd.enums.forEach { println(it) }
+    videoStd.headers.forEach { (name, header) ->
+    }
+}
+
 fun genUpcalls() {
-    generatedPackages.add("overrungl.vulkan.upcall")
+    generatedPackages.add("$vulkanPackage.upcall")
 
     val root = gen.registry!!.reg!!
     root.forEachChildrenChildren("types", "type") { elem ->
@@ -513,7 +630,7 @@ fun genUpcalls() {
         val split = cDecl.substringAfter("typedef ")
             .split("(")
             .map { it.substringBeforeLast(")").trim() }
-        val returnType = mapTypeName(split[0])
+        val returnType = mapTypeName(split[0], useRawType = true)
         val name = "Vk${split[1].substringAfter("PFN_vk")}"
         val paramsStr = split[2].split(whitespaceRegex).joinToString(separator = " ")
         val params = if (paramsStr == "void") {
@@ -533,8 +650,9 @@ fun genUpcalls() {
                 appendLine(
                     """
                         $commentedFileHeader
-                        package overrungl.vulkan.upcall;
-                        import module java.base;
+                        package $vulkanPackage.upcall;
+                        import java.lang.foreign.*;
+                        import java.lang.invoke.*;
                         import overrungl.internal.*;
                         import overrungl.upcall.*;
                         import overrungl.util.*;
@@ -555,8 +673,8 @@ fun genUpcalls() {
                 append("    FunctionDescriptor DESCRIPTOR = ")
                 val functionDescriptor = functionDescriptor(
                     returnType,
-                    params.map { (type, _) -> SimpleParamType("*" in type, type) })
-                nativeImageUpcallDescriptors.add("overrungl.vulkan.upcall.$name.DESCRIPTOR")
+                    params.map { (type, _) -> SimpleParamType("*" in type, listOf(), type) })
+                nativeImageUpcallDescriptors.add("$vulkanPackage.upcall.$name.DESCRIPTOR")
                 append(functionDescriptor)
                 appendLine(";")
                 // method handle
@@ -581,7 +699,7 @@ fun genUpcalls() {
                 // invoke
                 append("    $returnType invoke(")
                 params.joinTo(this, separator = ", ") {
-                    "${if ("*" in it.first) "MemorySegment" else mapTypeName(it.first)} ${it.second}"
+                    "${if ("*" in it.first) "MemorySegment" else mapTypeName(it.first, useRawType = true)} ${it.second}"
                 }
                 appendLine(");")
                 if (hasSizeT) {
@@ -594,7 +712,7 @@ fun genUpcalls() {
                                 if ("*" in it.first) "MemorySegment" else {
                                     if (it.first == "size_t") {
                                         if (sizeTLong) "long" else "int"
-                                    } else mapTypeName(it.first)
+                                    } else mapTypeName(it.first, useRawType = true)
                                 }
                             } ${it.second}"
                         }
@@ -613,7 +731,12 @@ fun genUpcalls() {
                 } else {
                     append("    default $returnType invoke_(")
                     params.joinTo(this, separator = ", ") {
-                        "${if ("*" in it.first) "MemorySegment" else mapTypeName(it.first)} ${it.second}"
+                        "${
+                            if ("*" in it.first) "MemorySegment" else mapTypeName(
+                                it.first,
+                                useRawType = true
+                            )
+                        } ${it.second}"
                     }
                     appendLine(") {")
                     append("        ")
@@ -639,6 +762,238 @@ fun genUpcalls() {
 }
 
 fun genStructs() {
+    (gen.vk.structs.values.map { it.name to it }
+        + gen.structAliasMap.map { it.key to gen.vk.structs[it.value]!! }
+        + gen.vk.videoStd!!.structs.map { it.key to it.value }).forEach { (structName, it) ->
+        var hasBitField = false
+        forNestedMember(it) { list ->
+            if (list.any { member -> member.bitFieldWidth != null }) {
+                hasBitField = true
+                return@forNestedMember
+            }
+        }
+        if (hasBitField) {
+            println("WARNING: Skipping $structName (bitfields are not supported)")
+            return@forEach
+        }
+        val category = if (it.union) "union" else "struct"
+        val categoryUppercase = if (it.union) "Union" else "Struct"
+        val vendor = detectVendor(genVendors!!, structName)
+        val directoryName = "overrungl/vulkan/${if (vendor != null) "$vendor/" else ""}$category"
+        val packageName = directoryName.replace('/', '.')
+        generatedPackages.add(packageName)
+        writeString(
+            Path("src/main/generated", directoryName, "$structName.java").createParentDirectories(),
+            buildString {
+                appendLine(
+                    """
+                        $commentedFileHeader
+                        package $packageName;
+                        import java.lang.foreign.*;
+                        import java.lang.foreign.MemoryLayout.PathElement;
+                        import java.lang.invoke.*;
+                        import java.util.function.*;
+                        import org.jspecify.annotations.*;
+                        import overrungl.struct.*;
+                        import overrungl.util.*;
+
+                        /// Represents `$structName`.
+                        /// ## Layout
+                        /// ```
+                        /// $category $structName {
+                    """.trimIndent()
+                )
+                it.members.forEach { member ->
+                    append("///     ")
+                    append(member.cDeclaration)
+                    appendLine(";")
+                }
+                appendLine("/// }")
+                appendLine("/// ```")
+                appendLine("public final class $structName extends GroupType {")
+
+                // layout
+                append("    public static final ${categoryUppercase}Layout LAYOUT = ")
+                if (it.union) {
+                    appendLine("MemoryLayout.unionLayout(")
+                } else {
+                    appendLine("LayoutBuilder.struct(")
+                }
+                it.members.joinTo(this, separator = ",\n") { member ->
+                    buildString {
+                        append("        ")
+                        member.fixedSizeArray.forEach { fixedSize ->
+                            append("MemoryLayout.sequenceLayout(")
+                            if (fixedSize in generatedEnumToClass)
+                                append(generatedEnumToClass[fixedSize]).append('.')
+                            append(fixedSize)
+                            append(", ")
+                        }
+                        val rawType = if (member.pointer) "MemorySegment" else member.type
+                        append(mapJavaTypeToValueLayout(mapTypeName(rawType), rawType))
+                        repeat(member.fixedSizeArray.size) {
+                            append(')')
+                        }
+                        append(".withName(\"${member.name}\")")
+                    }
+                }
+                appendLine()
+                appendLine("    );")
+
+                // offsets
+                it.members.forEach { member ->
+                    appendLine("    public static final long OFFSET_${member.name} = LAYOUT.byteOffset(PathElement.groupElement(\"${member.name}\"));")
+                }
+                // layouts
+                it.members.forEach { member ->
+                    appendLine("    public static final MemoryLayout LAYOUT_${member.name} = LAYOUT.select(PathElement.groupElement(\"${member.name}\"));")
+                }
+                // var handles
+                forNestedMember(it) { list ->
+                    append("    public static final VarHandle VH_")
+                    list.joinTo(this, separator = "$") { member -> member.name }
+                    append(" = LAYOUT.arrayElementVarHandle(")
+                    list.forEachIndexed { i, member ->
+                        if (i > 0) append(", ")
+                        append("PathElement.groupElement(\"${member.name}\")")
+                        repeat(member.fixedSizeArray.size) {
+                            append(", PathElement.sequenceElement()")
+                        }
+                    }
+                    appendLine(");")
+                }
+                appendLine()
+
+                // constructor
+                appendLine("    public $structName(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }")
+                appendLine("    public static $structName of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new $structName(segment, estimateCount(segment, LAYOUT)); }")
+                appendLine("    public static $structName ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new $structName(segment.reinterpret(LAYOUT.byteSize()), 1); }")
+                appendLine("    public static $structName ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new $structName(segment.reinterpret(LAYOUT.scale(0, count)), count); }")
+                appendLine("    public static $structName alloc(SegmentAllocator allocator) { return new $structName(allocator.allocate(LAYOUT), 1); }")
+                appendLine("    public static $structName alloc(SegmentAllocator allocator, long count) { return new $structName(allocator.allocate(LAYOUT, count), count); }")
+                if (it.sType != null) {
+                    appendLine("    public static $structName allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(${generatedEnumToClass[it.sType]}.${it.sType}); }")
+                    appendLine(
+                        """
+                        |    public static $structName allocInit(SegmentAllocator allocator, long count) {
+                        |        var s = alloc(allocator, count);
+                        |        for (long i = 0; i < count; i++) s.sTypeAt(i, ${generatedEnumToClass[it.sType]}.${it.sType});
+                        |        return s;
+                        |    }"""
+                            .trimMargin()
+                    )
+                }
+
+                appendLine("    public $structName copyFrom($structName src) { this.segment().copyFrom(src.segment()); return this; }")
+                appendLine("    public $structName reinterpret(long count) { return new $structName(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }")
+
+                appendLine("    public $structName asSlice(long index) { return new $structName(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }")
+                appendLine("    public $structName asSlice(long index, long count) { return new $structName(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }")
+                appendLine("    public $structName at(long index, Consumer<$structName> func) { func.accept(asSlice(index)); return this; }")
+
+                // setter & getter
+                fun getter(at: Boolean) {
+                    forNestedMember(it) { list ->
+                        val last = list.last()
+                        val typeName = if (last.pointer) "MemorySegment" else mapTypeName(last.type, useRawType = true)
+                        val funName = list.joinToString(separator = "$") { member -> member.name }
+                        append("    public $typeName $funName")
+                        if (at) append("At")
+                        append("(")
+                        if (at) append("long index")
+                        var coordinate = 0
+                        list.forEach { member ->
+                            repeat(member.fixedSizeArray.size) { i ->
+                                if (at || i > 0) append(", ")
+                                append("long index")
+                                append(coordinate)
+                                coordinate++
+                            }
+                        }
+                        append(") { return ($typeName) VH_$funName.get(this.segment(), 0L, ")
+                        append(if (at) "index" else "0L")
+                        coordinate = 0
+                        list.forEach { member ->
+                            repeat(member.fixedSizeArray.size) {
+                                append(", index")
+                                append(coordinate)
+                                coordinate++
+                            }
+                        }
+                        appendLine("); }")
+                    }
+                }
+                getter(true)
+                getter(false)
+
+                fun setter(at: Boolean) {
+                    forNestedMember(it) { list ->
+                        val last = list.last()
+                        val typeName = if (last.pointer) "MemorySegment" else mapTypeName(last.type, useRawType = true)
+                        val funName = list.joinToString(separator = "$") { member -> member.name }
+                        var hasArg = at
+                        append("    public $structName $funName")
+                        if (at) append("At")
+                        append("(")
+                        if (at) append("long index")
+                        var coordinate = 0
+                        list.forEach { member ->
+                            repeat(member.fixedSizeArray.size) { i ->
+                                if (at || i > 0) append(", ")
+                                append("long index")
+                                append(coordinate)
+                                coordinate++
+                                hasArg = true
+                            }
+                        }
+                        if (hasArg) append(", ")
+                        append(typeName)
+                        append(" value")
+                        append(") { VH_$funName.set(this.segment(), 0L, ")
+                        append(if (at) "index" else "0L")
+                        coordinate = 0
+                        list.forEach { member ->
+                            repeat(member.fixedSizeArray.size) {
+                                append(", index")
+                                append(coordinate)
+                                coordinate++
+                            }
+                        }
+                        appendLine(", value); return this; }")
+                    }
+                }
+                setter(true)
+                setter(false)
+
+                // member slice
+                it.members.forEach { member ->
+                    appendLine("    public MemorySegment _${member.name}At(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_${member.name}, index), LAYOUT_${member.name}); }")
+                    appendLine("    public MemorySegment _${member.name}() { return _${member.name}At(0L); }")
+                    appendLine("    public $structName _${member.name}At(long index, MemorySegment src) { _${member.name}At(index).copyFrom(src); return this; }")
+                    appendLine("    public $structName _${member.name}(MemorySegment src) { return _${member.name}At(0L, src); }")
+                }
+
+                appendLine("}")
+            }
+        )
+    }
+}
+
+fun forNestedMember(
+    struct: Struct,
+    stack: ArrayDeque<Member> = ArrayDeque(),
+    targetMemberAction: (List<Member>) -> Unit
+) {
+    struct.members.forEach { member ->
+        stack.add(member)
+        val nestedStruct = ofByValueStruct(member)
+        if (nestedStruct != null) {
+            forNestedMember(nestedStruct, stack, targetMemberAction)
+        } else {
+            targetMemberAction(stack.toList())
+        }
+        stack.removeLast()
+    }
 }
 
 fun genCapabilities(device: Boolean) {
@@ -647,7 +1002,7 @@ fun genCapabilities(device: Boolean) {
     val className = "VKCapabilities$upperName"
     writeString(Path("src/main/generated/overrungl/vulkan/$className.java"), buildString {
         appendLine(commentedFileHeader)
-        appendLine("package overrungl.vulkan;")
+        appendLine("package $vulkanPackage;")
         appendLine("import java.lang.foreign.*;")
         appendLine("public final class $className {")
         gen.vk.commands.values.forEach {
@@ -703,5 +1058,55 @@ fun genModuleInfo() {
                 }
             """.trimIndent()
         )
+    })
+}
+
+private fun vkUtil() {
+    writeString(Path("src/main/generated/overrungl/vulkan/VKUtil.java"), buildString {
+        appendLine(commentedFileHeader)
+        appendLine("package $vulkanPackage;")
+        val imports = mutableSetOf<String>()
+        val typeList = listOf("VkImageLayout", "VkObjectType", "VkResult")
+        typeList.forEach {
+            gen.vk.enums[it]!!.fields.forEach { f ->
+                imports.add(generatedEnumToClass[f.name]!!)
+            }
+        }
+        imports.sorted().forEach { appendLine("import static $it.*;") }
+        appendLine()
+
+        appendLine(
+            """
+                /// This class provides methods to convert Vulkan enum to string.
+                public final class VKUtil {
+                    private VKUtil() {}
+            """.trimIndent()
+        )
+        appendLine()
+
+        fun getString(typeName: String, function: (String) -> String = { it }) {
+            appendLine("    public static String get${typeName}String(int value) { return switch (value) {")
+            gen.vk.enums["Vk$typeName"]!!.fields.forEach {
+                appendLine("""        case ${it.name} -> "${function(it.name)}";""")
+            }
+            appendLine("""        default -> "Vk$typeName(" + value + ")";""")
+            appendLine("    }; }")
+            appendLine()
+        }
+
+        getString("ImageLayout") { it.substringAfter("VK_IMAGE_LAYOUT_") }
+        getString("ObjectType") {
+            if (it == "VK_OBJECT_TYPE_UNKNOWN") return@getString it
+            it.split('_')
+                .joinToString("") { s ->
+                    if (genVendors!!.contains(s)) {
+                        s
+                    } else s.lowercase().replaceFirstChar(Char::uppercaseChar)
+                }
+                .replace("VkObjectType", "Vk")
+        }
+        getString("Result")
+
+        appendLine("}")
     })
 }

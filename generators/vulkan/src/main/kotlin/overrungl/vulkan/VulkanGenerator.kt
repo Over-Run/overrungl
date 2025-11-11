@@ -867,7 +867,7 @@ fun main() {
     vkUtil()
 }
 
-fun vkUtil() {
+private fun vkUtil() {
     writeString(Path("src/main/generated/overrungl/vulkan/VKUtil.java"), buildString {
         appendLine(commentedFileHeader)
         appendLine("package $vulkanPackage;")
