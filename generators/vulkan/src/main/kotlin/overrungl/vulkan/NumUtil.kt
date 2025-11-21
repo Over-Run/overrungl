@@ -29,3 +29,9 @@ fun String.toInt0(): Int {
         return substring(2).toInt(16)
     return toInt()
 }
+
+fun String.toLong0(): Long {
+    if (startsWith("0x") || startsWith("0X"))
+        return substring(2).toLong(16)
+    return toLong()
+}

@@ -97,7 +97,7 @@ open class OutputGenerator {
     var genOpts: GeneratorOptions? = null
     var registry: Registry? = null
     val featureMap = mutableMapOf<String, FeatureMap>()
-    val extBase = 1000000000
+    val extBase = 1000000000L
     val extBlockSize = 1000
     val madeDirs = mutableMapOf<Path, Nothing?>()
     var emit = false
@@ -150,7 +150,7 @@ open class OutputGenerator {
         bitWidth: Int = 32,
         forceSuffix: Boolean = false,
         parentForAliasDereference: Element? = null
-    ): Pair<Int?, String?> {
+    ): Pair<Long?, String?> {
         if (genOpts == null) {
             throw MissingGeneratorOptionsError()
         }
@@ -159,11 +159,11 @@ open class OutputGenerator {
         }
 
         val name = elem.getAttribute("name")
-        var numVal: Int? = null
+        var numVal: Long? = null
         if (elem.hasAttribute("value")) {
             var value = elem.getAttribute("value")
             if (needsNum) {
-                numVal = value.toInt0()
+                numVal = value.toLong0()
             }
             if (forceSuffix) {
                 if (bitWidth == 64) {
@@ -175,7 +175,7 @@ open class OutputGenerator {
         if (elem.hasAttribute("bitpos")) {
             var value = elem.getAttribute("bitpos")
             val bitpos = value.toInt0()
-            numVal = 1 shl bitpos
+            numVal = 1L shl bitpos
             value = String.format("0x%08x", numVal)
             if (bitWidth == 64 || bitpos >= 32) {
                 value = "${value}L"

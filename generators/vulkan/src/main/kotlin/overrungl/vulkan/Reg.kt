@@ -349,7 +349,7 @@ class GroupInfo(elem: Element) : BaseInfo(elem) {
 }
 
 class EnumInfo(elem: Element) : BaseInfo(elem) {
-    val type = elem.getAttribute("type")
+    val type = elem.getAttributeOrNull("type")
 }
 
 class CmdInfo(elem: Element) : BaseInfo(elem) {

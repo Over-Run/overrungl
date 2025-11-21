@@ -234,7 +234,7 @@ data class EnumField(
     val protect: String?,
 
     val negative: Boolean,
-    val value: Int,
+    val value: Long,
     val valueStr: String,
 
     val extensions: MutableList<String>
@@ -267,7 +267,7 @@ data class Flag(
 
     val protect: String?,
 
-    val value: Int,
+    val value: Long,
     val valueStr: String,
     val multiBit: Boolean,
     val zero: Boolean,
@@ -333,7 +333,10 @@ data class VideoStdHeader(
 
     val headerFile: String,
 
-    val depends: List<String>
+    val depends: List<String>,
+
+    val enumInfo: MutableList<EnumInfo> = mutableListOf(),
+    val defineInfo: MutableMap<String, TypeInfo> = mutableMapOf()
 )
 
 data class VideoStd(

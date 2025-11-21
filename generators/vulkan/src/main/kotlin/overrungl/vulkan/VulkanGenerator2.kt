@@ -30,8 +30,8 @@ import kotlin.io.path.Path
 import kotlin.io.path.createDirectories
 import kotlin.io.path.createParentDirectories
 
-// vk.xml: 2025-10-31
-// video.xml: 2025-10-31
+// vk.xml: 2025-11-21
+// video.xml: 2025-11-21
 
 const val vulkanPackage = "overrungl.vulkan"
 
@@ -39,6 +39,8 @@ val generatedPackages = mutableSetOf<String>()
 val gen = JavaGenerator()
 
 private var genVendors: List<String>? = null
+
+// enum field name -> fully qualified class name
 internal val generatedEnumToClass = mutableMapOf<String, String>()
 private val primitiveTypes = listOf(
     "boolean",
@@ -182,7 +184,7 @@ fun mapTypeName(name: String, useRawType: Boolean = false): String {
         }
         if (name in videoStd.structs) {
             val struct = videoStd.structs[dealiasName]!!
-            return if (useRawType) "MemorySegment" else "$vulkanPackage.video.${struct.name}"
+            return if (useRawType) "MemorySegment" else "$vulkanPackage.video.struct.${struct.name}"
         }
     }
 
@@ -610,11 +612,68 @@ fun genFeature(name: String, featureMap: FeatureMap) {
 }
 
 fun genVideoStdHeaders() {
-    // TODO
+    // note: currently don't care about STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED,
+    // which is the only alias (and is deprecated)
     val videoStd = gen.vk.videoStd!!
-    videoStd.constants.forEach { println(it) }
-    videoStd.enums.forEach { println(it) }
-    videoStd.headers.forEach { (name, header) ->
+    videoStd.headers.forEach { (headerName, header) ->
+        val className = headerName
+            .split('_')
+            .joinToString(separator = "") { it.replaceFirstChar(Char::uppercaseChar) }
+        writeString(Path("src/main/generated/overrungl/vulkan/video/$className.java"), buildString {
+            appendLine(commentedFileHeader)
+            appendLine("package $vulkanPackage.video;")
+            if (className != "VulkanVideoCodecsCommon") {
+                appendLine("import static $vulkanPackage.video.VulkanVideoCodecsCommon.*;")
+            }
+            appendLine("public final class $className {")
+
+            header.defineInfo.forEach { (name, info) ->
+                if (name == "VK_MAKE_VIDEO_STD_VERSION") {
+                    appendLine(
+                        """
+                            |    public static int VK_MAKE_VIDEO_STD_VERSION(int major, int minor, int patch) {
+                            |        return (major << 22) | (minor << 12) | patch;
+                            |    }
+                        """.trimMargin()
+                    )
+                } else if (name.contains("API_VERSION")) {
+                    val valueStr = info.elem.textContent.trim().split(whitespaceRegex, limit = 3)[2]
+                    appendLine("    public static final int $name = $valueStr;")
+                } else {
+                    throw IllegalStateException("$name in $headerName")
+                }
+            }
+            header.enumInfo.forEach { enumInfo ->
+                val name = enumInfo.elem.getAttribute("name")
+                when (name) {
+                    in videoStd.constants -> {
+                        val constant = videoStd.constants[name]!!
+                        val mapTypeName = mapTypeName(constant.type)
+                        val valueStr = if (mapTypeName == "byte") "(byte) ${constant.valueStr}" else constant.valueStr
+                        appendLine("    public static final $mapTypeName $name = $valueStr;")
+                        generatedEnumToClass[name] = "$vulkanPackage.video.$className"
+                    }
+
+                    else -> {
+                        val value = enumInfo.elem.getAttribute("value")
+                        val javaType = if (value.contains('"')) "String" else "int"
+                        appendLine("    public static final $javaType $name = $value;")
+                        generatedEnumToClass[name] = "$vulkanPackage.video.$className"
+                    }
+                }
+            }
+            videoStd.enums.forEach { (name, enum) ->
+                if (enum.videoStdHeader == headerName) {
+                    val javaType = if (enum.bitWidth > 32) "long" else "int"
+                    enum.fields.forEach { enumField ->
+                        appendLine("    public static final $javaType ${enumField.name} = ${enumField.valueStr};")
+                        generatedEnumToClass[enumField.name] = "$vulkanPackage.video.$className"
+                    }
+                }
+            }
+            appendLine("    private $className() { }")
+            appendLine("}")
+        })
     }
 }
 

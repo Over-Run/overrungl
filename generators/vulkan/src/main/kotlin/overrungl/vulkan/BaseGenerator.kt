@@ -163,7 +163,7 @@ open class BaseGenerator : OutputGenerator() {
         super.beginFile(genOpts)
 
         registry!!.reg!!.forEachChildrenChildren("platforms", "platform") { platform ->
-            vk.platforms[platform.getAttribute("name")] = platform.getAttribute("protect") // TODO: empty?
+            vk.platforms[platform.getAttribute("name")] = platform.getAttribute("protect")
         }
 
         registry!!.reg!!.forEachChildrenChildren("tags", "tag") { tag ->
@@ -377,7 +377,7 @@ open class BaseGenerator : OutputGenerator() {
                     else valueStr.toInt(intBase)
                 )
             }
-            vk.constants[constantName] = Constant(constantName, typeName, value, valueStr)
+            vk.constants[constantName] = Constant(constantName, typeName!!, value, valueStr)
         }
     }
 
@@ -742,10 +742,10 @@ open class BaseGenerator : OutputGenerator() {
                 val protect = elem.getAttribute("protect")
 
                 val (valueInt, valueStr) = enumToValue(elem, true, bitWidth)
-                val flagZero = valueInt == 0
+                val flagZero = valueInt == 0L
                 var flagMultiBit = false
                 if (elem.hasAttribute("bitpos") && elem.getAttribute("value").isNotEmpty()) {
-                    flagMultiBit = valueInt != 0
+                    flagMultiBit = valueInt != 0L
                 }
 
                 if (fields.find { it.name == flagName } == null) {
@@ -1037,10 +1037,19 @@ private class VideoStdGenerator : BaseGenerator() {
 
         assert(currentVideoStdHeader != null)
 
-        if (typeInfo.elem.getAttribute("category") == "struct") {
+        val category = typeInfo.elem.getAttribute("category")
+        if (category == "struct") {
             assert(alias == null)
             vk.structs[typeName]!!.videoStdHeader = currentVideoStdHeader!!.name
+        } else if (category == "define") {
+            currentVideoStdHeader!!.defineInfo[typeInfo.elem.findChild("name")!!.textContent] = typeInfo
         }
+    }
+
+    override fun genEnum(enumInfo: EnumInfo, typeName: String, alias: String?) {
+        super.genEnum(enumInfo, typeName, alias)
+
+        currentVideoStdHeader!!.enumInfo.add(enumInfo)
     }
 }
 
