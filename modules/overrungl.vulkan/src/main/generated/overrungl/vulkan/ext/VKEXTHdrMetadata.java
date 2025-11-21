@@ -11,16 +11,15 @@ public final class VKEXTHdrMetadata {
     public static final int VK_EXT_HDR_METADATA_SPEC_VERSION = 3;
     public static final String VK_EXT_HDR_METADATA_EXTENSION_NAME = "VK_EXT_hdr_metadata";
     public static final int VK_STRUCTURE_TYPE_HDR_METADATA_EXT = 1000105000;
+    private VKEXTHdrMetadata() {}
     public static final class Handles {
         public static final MethodHandle MH_vkSetHdrMetadataEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKEXTHdrMetadata() {}
-
     /// Invokes `vkSetHdrMetadataEXT`.
     /// ```
-    /// void vkSetHdrMetadataEXT((struct VkDevice*) VkDevice device, uint32_t swapchainCount, const VkSwapchainKHR* pSwapchains, const VkHdrMetadataEXT* pMetadata);
+    /// void vkSetHdrMetadataEXT(VkDevice device, uint32_t swapchainCount, const VkSwapchainKHR* pSwapchains, const VkHdrMetadataEXT* pMetadata);
     /// ```
     public static void vkSetHdrMetadataEXT(@NonNull VkDevice device, int swapchainCount, @NonNull MemorySegment pSwapchains, @NonNull MemorySegment pMetadata) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetHdrMetadataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetHdrMetadataEXT");

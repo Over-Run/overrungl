@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,16 +12,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSampleLocationsInfoEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (int) VkSampleCountFlagBits sampleLocationsPerPixel;
-///     (struct VkExtent2D) VkExtent2D sampleLocationGridSize;
+///     VkSampleCountFlagBits sampleLocationsPerPixel;
+///     VkExtent2D sampleLocationGridSize;
 ///     uint32_t sampleLocationsCount;
 ///     const VkSampleLocationEXT* pSampleLocations;
-/// };
+/// }
 /// ```
 public final class VkSampleLocationsInfoEXT extends GroupType {
-    /// The struct layout of `VkSampleLocationsInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -31,261 +29,93 @@ public final class VkSampleLocationsInfoEXT extends GroupType {
         ValueLayout.JAVA_INT.withName("sampleLocationsCount"),
         ValueLayout.ADDRESS.withName("pSampleLocations")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `sampleLocationsPerPixel`.
     public static final long OFFSET_sampleLocationsPerPixel = LAYOUT.byteOffset(PathElement.groupElement("sampleLocationsPerPixel"));
-    /// The memory layout of `sampleLocationsPerPixel`.
-    public static final MemoryLayout LAYOUT_sampleLocationsPerPixel = LAYOUT.select(PathElement.groupElement("sampleLocationsPerPixel"));
-    /// The [VarHandle] of `sampleLocationsPerPixel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sampleLocationsPerPixel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationsPerPixel"));
-    /// The byte offset of `sampleLocationGridSize`.
     public static final long OFFSET_sampleLocationGridSize = LAYOUT.byteOffset(PathElement.groupElement("sampleLocationGridSize"));
-    /// The memory layout of `sampleLocationGridSize`.
-    public static final MemoryLayout LAYOUT_sampleLocationGridSize = LAYOUT.select(PathElement.groupElement("sampleLocationGridSize"));
-    /// The byte offset of `sampleLocationsCount`.
     public static final long OFFSET_sampleLocationsCount = LAYOUT.byteOffset(PathElement.groupElement("sampleLocationsCount"));
-    /// The memory layout of `sampleLocationsCount`.
-    public static final MemoryLayout LAYOUT_sampleLocationsCount = LAYOUT.select(PathElement.groupElement("sampleLocationsCount"));
-    /// The [VarHandle] of `sampleLocationsCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sampleLocationsCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationsCount"));
-    /// The byte offset of `pSampleLocations`.
     public static final long OFFSET_pSampleLocations = LAYOUT.byteOffset(PathElement.groupElement("pSampleLocations"));
-    /// The memory layout of `pSampleLocations`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_sampleLocationsPerPixel = LAYOUT.select(PathElement.groupElement("sampleLocationsPerPixel"));
+    public static final MemoryLayout LAYOUT_sampleLocationGridSize = LAYOUT.select(PathElement.groupElement("sampleLocationGridSize"));
+    public static final MemoryLayout LAYOUT_sampleLocationsCount = LAYOUT.select(PathElement.groupElement("sampleLocationsCount"));
     public static final MemoryLayout LAYOUT_pSampleLocations = LAYOUT.select(PathElement.groupElement("pSampleLocations"));
-    /// The [VarHandle] of `pSampleLocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_sampleLocationsPerPixel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationsPerPixel"));
+    public static final VarHandle VH_sampleLocationGridSize$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationGridSize"), PathElement.groupElement("width"));
+    public static final VarHandle VH_sampleLocationGridSize$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationGridSize"), PathElement.groupElement("height"));
+    public static final VarHandle VH_sampleLocationsCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationsCount"));
     public static final VarHandle VH_pSampleLocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSampleLocations"));
 
-    /// Creates `VkSampleLocationsInfoEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkSampleLocationsInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkSampleLocationsInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSampleLocationsInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSampleLocationsInfoEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkSampleLocationsInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSampleLocationsInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSampleLocationsInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkSampleLocationsInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSampleLocationsInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSampleLocationsInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkSampleLocationsInfoEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSampleLocationsInfoEXT`
     public static VkSampleLocationsInfoEXT alloc(SegmentAllocator allocator) { return new VkSampleLocationsInfoEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkSampleLocationsInfoEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkSampleLocationsInfoEXT`
     public static VkSampleLocationsInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkSampleLocationsInfoEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkSampleLocationsInfoEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTSampleLocations.VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT); }
+    public static VkSampleLocationsInfoEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTSampleLocations.VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT);
+        return s;
+    }
     public VkSampleLocationsInfoEXT copyFrom(VkSampleLocationsInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkSampleLocationsInfoEXT reinterpret(long count) { return new VkSampleLocationsInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `sampleLocationsPerPixel` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sampleLocationsPerPixel(MemorySegment segment, long index) { return (int) VH_sampleLocationsPerPixel.get(segment, 0L, index); }
-    /// {@return `sampleLocationsPerPixel`}
-    public int sampleLocationsPerPixel() { return sampleLocationsPerPixel(this.segment(), 0L); }
-    /// Sets `sampleLocationsPerPixel` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sampleLocationsPerPixel(MemorySegment segment, long index, int value) { VH_sampleLocationsPerPixel.set(segment, 0L, index, value); }
-    /// Sets `sampleLocationsPerPixel` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT sampleLocationsPerPixel(int value) { sampleLocationsPerPixel(this.segment(), 0L, value); return this; }
-
-    /// {@return `sampleLocationGridSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment sampleLocationGridSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_sampleLocationGridSize, index), LAYOUT_sampleLocationGridSize); }
-    /// {@return `sampleLocationGridSize`}
-    public MemorySegment sampleLocationGridSize() { return sampleLocationGridSize(this.segment(), 0L); }
-    /// Sets `sampleLocationGridSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sampleLocationGridSize(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_sampleLocationGridSize, index), LAYOUT_sampleLocationGridSize.byteSize()); }
-    /// Sets `sampleLocationGridSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT sampleLocationGridSize(MemorySegment value) { sampleLocationGridSize(this.segment(), 0L, value); return this; }
-    /// Accepts `sampleLocationGridSize` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkSampleLocationsInfoEXT sampleLocationGridSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(sampleLocationGridSize())); return this; }
-
-    /// {@return `sampleLocationsCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sampleLocationsCount(MemorySegment segment, long index) { return (int) VH_sampleLocationsCount.get(segment, 0L, index); }
-    /// {@return `sampleLocationsCount`}
-    public int sampleLocationsCount() { return sampleLocationsCount(this.segment(), 0L); }
-    /// Sets `sampleLocationsCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sampleLocationsCount(MemorySegment segment, long index, int value) { VH_sampleLocationsCount.set(segment, 0L, index, value); }
-    /// Sets `sampleLocationsCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT sampleLocationsCount(int value) { sampleLocationsCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pSampleLocations` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pSampleLocations(MemorySegment segment, long index) { return (MemorySegment) VH_pSampleLocations.get(segment, 0L, index); }
-    /// {@return `pSampleLocations`}
-    public MemorySegment pSampleLocations() { return pSampleLocations(this.segment(), 0L); }
-    /// Sets `pSampleLocations` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pSampleLocations(MemorySegment segment, long index, MemorySegment value) { VH_pSampleLocations.set(segment, 0L, index, value); }
-    /// Sets `pSampleLocations` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT pSampleLocations(MemorySegment value) { pSampleLocations(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkSampleLocationsInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSampleLocationsInfoEXT`
     public VkSampleLocationsInfoEXT asSlice(long index) { return new VkSampleLocationsInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkSampleLocationsInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSampleLocationsInfoEXT`
     public VkSampleLocationsInfoEXT asSlice(long index, long count) { return new VkSampleLocationsInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkSampleLocationsInfoEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkSampleLocationsInfoEXT at(long index, Consumer<VkSampleLocationsInfoEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `sampleLocationsPerPixel` at the given index}
-    /// @param index the index of the struct buffer
-    public int sampleLocationsPerPixelAt(long index) { return sampleLocationsPerPixel(this.segment(), index); }
-    /// Sets `sampleLocationsPerPixel` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT sampleLocationsPerPixelAt(long index, int value) { sampleLocationsPerPixel(this.segment(), index, value); return this; }
-
-    /// {@return `sampleLocationGridSize` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment sampleLocationGridSizeAt(long index) { return sampleLocationGridSize(this.segment(), index); }
-    /// Sets `sampleLocationGridSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT sampleLocationGridSizeAt(long index, MemorySegment value) { sampleLocationGridSize(this.segment(), index, value); return this; }
-    /// Accepts `sampleLocationGridSize` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkSampleLocationsInfoEXT sampleLocationGridSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(sampleLocationGridSizeAt(index))); return this; }
-
-    /// {@return `sampleLocationsCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int sampleLocationsCountAt(long index) { return sampleLocationsCount(this.segment(), index); }
-    /// Sets `sampleLocationsCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT sampleLocationsCountAt(long index, int value) { sampleLocationsCount(this.segment(), index, value); return this; }
-
-    /// {@return `pSampleLocations` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pSampleLocationsAt(long index) { return pSampleLocations(this.segment(), index); }
-    /// Sets `pSampleLocations` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSampleLocationsInfoEXT pSampleLocationsAt(long index, MemorySegment value) { pSampleLocations(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int sampleLocationsPerPixelAt(long index) { return (int) VH_sampleLocationsPerPixel.get(this.segment(), 0L, index); }
+    public int sampleLocationGridSize$widthAt(long index) { return (int) VH_sampleLocationGridSize$width.get(this.segment(), 0L, index); }
+    public int sampleLocationGridSize$heightAt(long index) { return (int) VH_sampleLocationGridSize$height.get(this.segment(), 0L, index); }
+    public int sampleLocationsCountAt(long index) { return (int) VH_sampleLocationsCount.get(this.segment(), 0L, index); }
+    public MemorySegment pSampleLocationsAt(long index) { return (MemorySegment) VH_pSampleLocations.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int sampleLocationsPerPixel() { return (int) VH_sampleLocationsPerPixel.get(this.segment(), 0L, 0L); }
+    public int sampleLocationGridSize$width() { return (int) VH_sampleLocationGridSize$width.get(this.segment(), 0L, 0L); }
+    public int sampleLocationGridSize$height() { return (int) VH_sampleLocationGridSize$height.get(this.segment(), 0L, 0L); }
+    public int sampleLocationsCount() { return (int) VH_sampleLocationsCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pSampleLocations() { return (MemorySegment) VH_pSampleLocations.get(this.segment(), 0L, 0L); }
+    public VkSampleLocationsInfoEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkSampleLocationsInfoEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkSampleLocationsInfoEXT sampleLocationsPerPixelAt(long index, int value) { VH_sampleLocationsPerPixel.set(this.segment(), 0L, index, value); return this; }
+    public VkSampleLocationsInfoEXT sampleLocationGridSize$widthAt(long index, int value) { VH_sampleLocationGridSize$width.set(this.segment(), 0L, index, value); return this; }
+    public VkSampleLocationsInfoEXT sampleLocationGridSize$heightAt(long index, int value) { VH_sampleLocationGridSize$height.set(this.segment(), 0L, index, value); return this; }
+    public VkSampleLocationsInfoEXT sampleLocationsCountAt(long index, int value) { VH_sampleLocationsCount.set(this.segment(), 0L, index, value); return this; }
+    public VkSampleLocationsInfoEXT pSampleLocationsAt(long index, MemorySegment value) { VH_pSampleLocations.set(this.segment(), 0L, index, value); return this; }
+    public VkSampleLocationsInfoEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSampleLocationsInfoEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSampleLocationsInfoEXT sampleLocationsPerPixel(int value) { VH_sampleLocationsPerPixel.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSampleLocationsInfoEXT sampleLocationGridSize$width(int value) { VH_sampleLocationGridSize$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSampleLocationsInfoEXT sampleLocationGridSize$height(int value) { VH_sampleLocationGridSize$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSampleLocationsInfoEXT sampleLocationsCount(int value) { VH_sampleLocationsCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSampleLocationsInfoEXT pSampleLocations(MemorySegment value) { VH_pSampleLocations.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkSampleLocationsInfoEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkSampleLocationsInfoEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkSampleLocationsInfoEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkSampleLocationsInfoEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _sampleLocationsPerPixelAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sampleLocationsPerPixel, index), LAYOUT_sampleLocationsPerPixel); }
+    public MemorySegment _sampleLocationsPerPixel() { return _sampleLocationsPerPixelAt(0L); }
+    public VkSampleLocationsInfoEXT _sampleLocationsPerPixelAt(long index, MemorySegment src) { _sampleLocationsPerPixelAt(index).copyFrom(src); return this; }
+    public VkSampleLocationsInfoEXT _sampleLocationsPerPixel(MemorySegment src) { return _sampleLocationsPerPixelAt(0L, src); }
+    public MemorySegment _sampleLocationGridSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sampleLocationGridSize, index), LAYOUT_sampleLocationGridSize); }
+    public MemorySegment _sampleLocationGridSize() { return _sampleLocationGridSizeAt(0L); }
+    public VkSampleLocationsInfoEXT _sampleLocationGridSizeAt(long index, MemorySegment src) { _sampleLocationGridSizeAt(index).copyFrom(src); return this; }
+    public VkSampleLocationsInfoEXT _sampleLocationGridSize(MemorySegment src) { return _sampleLocationGridSizeAt(0L, src); }
+    public MemorySegment _sampleLocationsCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sampleLocationsCount, index), LAYOUT_sampleLocationsCount); }
+    public MemorySegment _sampleLocationsCount() { return _sampleLocationsCountAt(0L); }
+    public VkSampleLocationsInfoEXT _sampleLocationsCountAt(long index, MemorySegment src) { _sampleLocationsCountAt(index).copyFrom(src); return this; }
+    public VkSampleLocationsInfoEXT _sampleLocationsCount(MemorySegment src) { return _sampleLocationsCountAt(0L, src); }
+    public MemorySegment _pSampleLocationsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pSampleLocations, index), LAYOUT_pSampleLocations); }
+    public MemorySegment _pSampleLocations() { return _pSampleLocationsAt(0L); }
+    public VkSampleLocationsInfoEXT _pSampleLocationsAt(long index, MemorySegment src) { _pSampleLocationsAt(index).copyFrom(src); return this; }
+    public VkSampleLocationsInfoEXT _pSampleLocations(MemorySegment src) { return _pSampleLocationsAt(0L, src); }
 }

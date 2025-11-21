@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_shader_float_controls` - device extension
 public final class VKKHRShaderFloatControls {
     public static final int VK_KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION = 4;
@@ -10,7 +13,5 @@ public final class VKKHRShaderFloatControls {
     public static final int VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY_KHR = 0;
     public static final int VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL_KHR = 1;
     public static final int VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE_KHR = 2;
-
     private VKKHRShaderFloatControls() {}
-
 }

@@ -8,6 +8,8 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_ARM_tensors` - device extension
 public final class VKARMTensors {
+    public static final int VK_ARM_TENSORS_SPEC_VERSION = 1;
+    public static final String VK_ARM_TENSORS_EXTENSION_NAME = "VK_ARM_tensors";
     public static final long VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM = 0x00000001L;
     public static final long VK_TENSOR_CREATE_PROTECTED_BIT_ARM = 0x00000002L;
     public static final long VK_TENSOR_USAGE_SHADER_BIT_ARM = 0x00000002L;
@@ -16,8 +18,6 @@ public final class VKARMTensors {
     public static final long VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM = 0x00000010L;
     public static final int VK_TENSOR_TILING_OPTIMAL_ARM = 0;
     public static final int VK_TENSOR_TILING_LINEAR_ARM = 1;
-    public static final int VK_ARM_TENSORS_SPEC_VERSION = 1;
-    public static final String VK_ARM_TENSORS_EXTENSION_NAME = "VK_ARM_tensors";
     public static final int VK_STRUCTURE_TYPE_TENSOR_CREATE_INFO_ARM = 1000460000;
     public static final int VK_STRUCTURE_TYPE_TENSOR_VIEW_CREATE_INFO_ARM = 1000460001;
     public static final int VK_STRUCTURE_TYPE_BIND_TENSOR_MEMORY_INFO_ARM = 1000460002;
@@ -52,6 +52,7 @@ public final class VKARMTensors {
     public static final long VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM = 0x00000004L;
     public static final long VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM = 0x00000001L;
     public static final int VK_STRUCTURE_TYPE_FRAME_BOUNDARY_TENSORS_ARM = 1000460023;
+    private VKARMTensors() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateTensorARM = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkDestroyTensorARM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
@@ -67,11 +68,9 @@ public final class VKARMTensors {
         private Handles() {}
     }
 
-    private VKARMTensors() {}
-
     /// Invokes `vkCreateTensorARM`.
     /// ```
-    /// (int) VkResult vkCreateTensorARM((struct VkDevice*) VkDevice device, const VkTensorCreateInfoARM* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkTensorARM* pTensor);
+    /// VkResult vkCreateTensorARM(VkDevice device, const VkTensorCreateInfoARM* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkTensorARM* pTensor);
     /// ```
     public static int vkCreateTensorARM(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pTensor) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateTensorARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateTensorARM");
@@ -82,7 +81,7 @@ public final class VKARMTensors {
 
     /// Invokes `vkDestroyTensorARM`.
     /// ```
-    /// void vkDestroyTensorARM((struct VkDevice*) VkDevice device, (uint64_t) VkTensorARM tensor, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroyTensorARM(VkDevice device, VkTensorARM tensor, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyTensorARM(@NonNull VkDevice device, long tensor, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyTensorARM)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyTensorARM");
@@ -93,7 +92,7 @@ public final class VKARMTensors {
 
     /// Invokes `vkCreateTensorViewARM`.
     /// ```
-    /// (int) VkResult vkCreateTensorViewARM((struct VkDevice*) VkDevice device, const VkTensorViewCreateInfoARM* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkTensorViewARM* pView);
+    /// VkResult vkCreateTensorViewARM(VkDevice device, const VkTensorViewCreateInfoARM* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkTensorViewARM* pView);
     /// ```
     public static int vkCreateTensorViewARM(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pView) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateTensorViewARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateTensorViewARM");
@@ -104,7 +103,7 @@ public final class VKARMTensors {
 
     /// Invokes `vkDestroyTensorViewARM`.
     /// ```
-    /// void vkDestroyTensorViewARM((struct VkDevice*) VkDevice device, (uint64_t) VkTensorViewARM tensorView, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroyTensorViewARM(VkDevice device, VkTensorViewARM tensorView, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyTensorViewARM(@NonNull VkDevice device, long tensorView, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyTensorViewARM)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyTensorViewARM");
@@ -115,7 +114,7 @@ public final class VKARMTensors {
 
     /// Invokes `vkGetTensorMemoryRequirementsARM`.
     /// ```
-    /// void vkGetTensorMemoryRequirementsARM((struct VkDevice*) VkDevice device, const VkTensorMemoryRequirementsInfoARM* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// void vkGetTensorMemoryRequirementsARM(VkDevice device, const VkTensorMemoryRequirementsInfoARM* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
     public static void vkGetTensorMemoryRequirementsARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetTensorMemoryRequirementsARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetTensorMemoryRequirementsARM");
@@ -126,7 +125,7 @@ public final class VKARMTensors {
 
     /// Invokes `vkBindTensorMemoryARM`.
     /// ```
-    /// (int) VkResult vkBindTensorMemoryARM((struct VkDevice*) VkDevice device, uint32_t bindInfoCount, const VkBindTensorMemoryInfoARM* pBindInfos);
+    /// VkResult vkBindTensorMemoryARM(VkDevice device, uint32_t bindInfoCount, const VkBindTensorMemoryInfoARM* pBindInfos);
     /// ```
     public static int vkBindTensorMemoryARM(@NonNull VkDevice device, int bindInfoCount, @NonNull MemorySegment pBindInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindTensorMemoryARM)) throw new VKSymbolNotFoundError("Symbol not found: vkBindTensorMemoryARM");
@@ -137,7 +136,7 @@ public final class VKARMTensors {
 
     /// Invokes `vkGetDeviceTensorMemoryRequirementsARM`.
     /// ```
-    /// void vkGetDeviceTensorMemoryRequirementsARM((struct VkDevice*) VkDevice device, const VkDeviceTensorMemoryRequirementsARM* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// void vkGetDeviceTensorMemoryRequirementsARM(VkDevice device, const VkDeviceTensorMemoryRequirementsARM* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
     public static void vkGetDeviceTensorMemoryRequirementsARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceTensorMemoryRequirementsARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceTensorMemoryRequirementsARM");
@@ -148,7 +147,7 @@ public final class VKARMTensors {
 
     /// Invokes `vkCmdCopyTensorARM`.
     /// ```
-    /// void vkCmdCopyTensorARM((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkCopyTensorInfoARM* pCopyTensorInfo);
+    /// void vkCmdCopyTensorARM(VkCommandBuffer commandBuffer, const VkCopyTensorInfoARM* pCopyTensorInfo);
     /// ```
     public static void vkCmdCopyTensorARM(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pCopyTensorInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyTensorARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyTensorARM");
@@ -159,7 +158,7 @@ public final class VKARMTensors {
 
     /// Invokes `vkGetPhysicalDeviceExternalTensorPropertiesARM`.
     /// ```
-    /// void vkGetPhysicalDeviceExternalTensorPropertiesARM((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalTensorInfoARM* pExternalTensorInfo, VkExternalTensorPropertiesARM* pExternalTensorProperties);
+    /// void vkGetPhysicalDeviceExternalTensorPropertiesARM(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalTensorInfoARM* pExternalTensorInfo, VkExternalTensorPropertiesARM* pExternalTensorProperties);
     /// ```
     public static void vkGetPhysicalDeviceExternalTensorPropertiesARM(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pExternalTensorInfo, @NonNull MemorySegment pExternalTensorProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalTensorPropertiesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalTensorPropertiesARM");
@@ -170,7 +169,7 @@ public final class VKARMTensors {
 
     /// Invokes `vkGetTensorOpaqueCaptureDescriptorDataARM`.
     /// ```
-    /// (int) VkResult vkGetTensorOpaqueCaptureDescriptorDataARM((struct VkDevice*) VkDevice device, const VkTensorCaptureDescriptorDataInfoARM* pInfo, void* pData);
+    /// VkResult vkGetTensorOpaqueCaptureDescriptorDataARM(VkDevice device, const VkTensorCaptureDescriptorDataInfoARM* pInfo, void* pData);
     /// ```
     public static int vkGetTensorOpaqueCaptureDescriptorDataARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetTensorOpaqueCaptureDescriptorDataARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetTensorOpaqueCaptureDescriptorDataARM");
@@ -181,7 +180,7 @@ public final class VKARMTensors {
 
     /// Invokes `vkGetTensorViewOpaqueCaptureDescriptorDataARM`.
     /// ```
-    /// (int) VkResult vkGetTensorViewOpaqueCaptureDescriptorDataARM((struct VkDevice*) VkDevice device, const VkTensorViewCaptureDescriptorDataInfoARM* pInfo, void* pData);
+    /// VkResult vkGetTensorViewOpaqueCaptureDescriptorDataARM(VkDevice device, const VkTensorViewCaptureDescriptorDataInfoARM* pInfo, void* pData);
     /// ```
     public static int vkGetTensorViewOpaqueCaptureDescriptorDataARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetTensorViewOpaqueCaptureDescriptorDataARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetTensorViewOpaqueCaptureDescriptorDataARM");

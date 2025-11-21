@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -15,171 +14,58 @@ import overrungl.util.*;
 /// struct VkDrmFormatModifierPropertiesEXT {
 ///     uint64_t drmFormatModifier;
 ///     uint32_t drmFormatModifierPlaneCount;
-///     ((uint32_t) VkFlags) VkFormatFeatureFlags drmFormatModifierTilingFeatures;
-/// };
+///     VkFormatFeatureFlags drmFormatModifierTilingFeatures;
+/// }
 /// ```
 public final class VkDrmFormatModifierPropertiesEXT extends GroupType {
-    /// The struct layout of `VkDrmFormatModifierPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("drmFormatModifier"),
         ValueLayout.JAVA_INT.withName("drmFormatModifierPlaneCount"),
         ValueLayout.JAVA_INT.withName("drmFormatModifierTilingFeatures")
     );
-    /// The byte offset of `drmFormatModifier`.
     public static final long OFFSET_drmFormatModifier = LAYOUT.byteOffset(PathElement.groupElement("drmFormatModifier"));
-    /// The memory layout of `drmFormatModifier`.
-    public static final MemoryLayout LAYOUT_drmFormatModifier = LAYOUT.select(PathElement.groupElement("drmFormatModifier"));
-    /// The [VarHandle] of `drmFormatModifier` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_drmFormatModifier = LAYOUT.arrayElementVarHandle(PathElement.groupElement("drmFormatModifier"));
-    /// The byte offset of `drmFormatModifierPlaneCount`.
     public static final long OFFSET_drmFormatModifierPlaneCount = LAYOUT.byteOffset(PathElement.groupElement("drmFormatModifierPlaneCount"));
-    /// The memory layout of `drmFormatModifierPlaneCount`.
-    public static final MemoryLayout LAYOUT_drmFormatModifierPlaneCount = LAYOUT.select(PathElement.groupElement("drmFormatModifierPlaneCount"));
-    /// The [VarHandle] of `drmFormatModifierPlaneCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_drmFormatModifierPlaneCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("drmFormatModifierPlaneCount"));
-    /// The byte offset of `drmFormatModifierTilingFeatures`.
     public static final long OFFSET_drmFormatModifierTilingFeatures = LAYOUT.byteOffset(PathElement.groupElement("drmFormatModifierTilingFeatures"));
-    /// The memory layout of `drmFormatModifierTilingFeatures`.
+    public static final MemoryLayout LAYOUT_drmFormatModifier = LAYOUT.select(PathElement.groupElement("drmFormatModifier"));
+    public static final MemoryLayout LAYOUT_drmFormatModifierPlaneCount = LAYOUT.select(PathElement.groupElement("drmFormatModifierPlaneCount"));
     public static final MemoryLayout LAYOUT_drmFormatModifierTilingFeatures = LAYOUT.select(PathElement.groupElement("drmFormatModifierTilingFeatures"));
-    /// The [VarHandle] of `drmFormatModifierTilingFeatures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_drmFormatModifier = LAYOUT.arrayElementVarHandle(PathElement.groupElement("drmFormatModifier"));
+    public static final VarHandle VH_drmFormatModifierPlaneCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("drmFormatModifierPlaneCount"));
     public static final VarHandle VH_drmFormatModifierTilingFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("drmFormatModifierTilingFeatures"));
 
-    /// Creates `VkDrmFormatModifierPropertiesEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkDrmFormatModifierPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkDrmFormatModifierPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDrmFormatModifierPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrmFormatModifierPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkDrmFormatModifierPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDrmFormatModifierPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrmFormatModifierPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkDrmFormatModifierPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDrmFormatModifierPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrmFormatModifierPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkDrmFormatModifierPropertiesEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDrmFormatModifierPropertiesEXT`
     public static VkDrmFormatModifierPropertiesEXT alloc(SegmentAllocator allocator) { return new VkDrmFormatModifierPropertiesEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkDrmFormatModifierPropertiesEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkDrmFormatModifierPropertiesEXT`
     public static VkDrmFormatModifierPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkDrmFormatModifierPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkDrmFormatModifierPropertiesEXT copyFrom(VkDrmFormatModifierPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkDrmFormatModifierPropertiesEXT reinterpret(long count) { return new VkDrmFormatModifierPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `drmFormatModifier` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long drmFormatModifier(MemorySegment segment, long index) { return (long) VH_drmFormatModifier.get(segment, 0L, index); }
-    /// {@return `drmFormatModifier`}
-    public long drmFormatModifier() { return drmFormatModifier(this.segment(), 0L); }
-    /// Sets `drmFormatModifier` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void drmFormatModifier(MemorySegment segment, long index, long value) { VH_drmFormatModifier.set(segment, 0L, index, value); }
-    /// Sets `drmFormatModifier` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDrmFormatModifierPropertiesEXT drmFormatModifier(long value) { drmFormatModifier(this.segment(), 0L, value); return this; }
-
-    /// {@return `drmFormatModifierPlaneCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int drmFormatModifierPlaneCount(MemorySegment segment, long index) { return (int) VH_drmFormatModifierPlaneCount.get(segment, 0L, index); }
-    /// {@return `drmFormatModifierPlaneCount`}
-    public int drmFormatModifierPlaneCount() { return drmFormatModifierPlaneCount(this.segment(), 0L); }
-    /// Sets `drmFormatModifierPlaneCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void drmFormatModifierPlaneCount(MemorySegment segment, long index, int value) { VH_drmFormatModifierPlaneCount.set(segment, 0L, index, value); }
-    /// Sets `drmFormatModifierPlaneCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDrmFormatModifierPropertiesEXT drmFormatModifierPlaneCount(int value) { drmFormatModifierPlaneCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `drmFormatModifierTilingFeatures` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int drmFormatModifierTilingFeatures(MemorySegment segment, long index) { return (int) VH_drmFormatModifierTilingFeatures.get(segment, 0L, index); }
-    /// {@return `drmFormatModifierTilingFeatures`}
-    public int drmFormatModifierTilingFeatures() { return drmFormatModifierTilingFeatures(this.segment(), 0L); }
-    /// Sets `drmFormatModifierTilingFeatures` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void drmFormatModifierTilingFeatures(MemorySegment segment, long index, int value) { VH_drmFormatModifierTilingFeatures.set(segment, 0L, index, value); }
-    /// Sets `drmFormatModifierTilingFeatures` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDrmFormatModifierPropertiesEXT drmFormatModifierTilingFeatures(int value) { drmFormatModifierTilingFeatures(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkDrmFormatModifierPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDrmFormatModifierPropertiesEXT`
     public VkDrmFormatModifierPropertiesEXT asSlice(long index) { return new VkDrmFormatModifierPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkDrmFormatModifierPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDrmFormatModifierPropertiesEXT`
     public VkDrmFormatModifierPropertiesEXT asSlice(long index, long count) { return new VkDrmFormatModifierPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkDrmFormatModifierPropertiesEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkDrmFormatModifierPropertiesEXT at(long index, Consumer<VkDrmFormatModifierPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `drmFormatModifier` at the given index}
-    /// @param index the index of the struct buffer
-    public long drmFormatModifierAt(long index) { return drmFormatModifier(this.segment(), index); }
-    /// Sets `drmFormatModifier` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDrmFormatModifierPropertiesEXT drmFormatModifierAt(long index, long value) { drmFormatModifier(this.segment(), index, value); return this; }
-
-    /// {@return `drmFormatModifierPlaneCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int drmFormatModifierPlaneCountAt(long index) { return drmFormatModifierPlaneCount(this.segment(), index); }
-    /// Sets `drmFormatModifierPlaneCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDrmFormatModifierPropertiesEXT drmFormatModifierPlaneCountAt(long index, int value) { drmFormatModifierPlaneCount(this.segment(), index, value); return this; }
-
-    /// {@return `drmFormatModifierTilingFeatures` at the given index}
-    /// @param index the index of the struct buffer
-    public int drmFormatModifierTilingFeaturesAt(long index) { return drmFormatModifierTilingFeatures(this.segment(), index); }
-    /// Sets `drmFormatModifierTilingFeatures` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDrmFormatModifierPropertiesEXT drmFormatModifierTilingFeaturesAt(long index, int value) { drmFormatModifierTilingFeatures(this.segment(), index, value); return this; }
-
+    public long drmFormatModifierAt(long index) { return (long) VH_drmFormatModifier.get(this.segment(), 0L, index); }
+    public int drmFormatModifierPlaneCountAt(long index) { return (int) VH_drmFormatModifierPlaneCount.get(this.segment(), 0L, index); }
+    public int drmFormatModifierTilingFeaturesAt(long index) { return (int) VH_drmFormatModifierTilingFeatures.get(this.segment(), 0L, index); }
+    public long drmFormatModifier() { return (long) VH_drmFormatModifier.get(this.segment(), 0L, 0L); }
+    public int drmFormatModifierPlaneCount() { return (int) VH_drmFormatModifierPlaneCount.get(this.segment(), 0L, 0L); }
+    public int drmFormatModifierTilingFeatures() { return (int) VH_drmFormatModifierTilingFeatures.get(this.segment(), 0L, 0L); }
+    public VkDrmFormatModifierPropertiesEXT drmFormatModifierAt(long index, long value) { VH_drmFormatModifier.set(this.segment(), 0L, index, value); return this; }
+    public VkDrmFormatModifierPropertiesEXT drmFormatModifierPlaneCountAt(long index, int value) { VH_drmFormatModifierPlaneCount.set(this.segment(), 0L, index, value); return this; }
+    public VkDrmFormatModifierPropertiesEXT drmFormatModifierTilingFeaturesAt(long index, int value) { VH_drmFormatModifierTilingFeatures.set(this.segment(), 0L, index, value); return this; }
+    public VkDrmFormatModifierPropertiesEXT drmFormatModifier(long value) { VH_drmFormatModifier.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDrmFormatModifierPropertiesEXT drmFormatModifierPlaneCount(int value) { VH_drmFormatModifierPlaneCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDrmFormatModifierPropertiesEXT drmFormatModifierTilingFeatures(int value) { VH_drmFormatModifierTilingFeatures.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _drmFormatModifierAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_drmFormatModifier, index), LAYOUT_drmFormatModifier); }
+    public MemorySegment _drmFormatModifier() { return _drmFormatModifierAt(0L); }
+    public VkDrmFormatModifierPropertiesEXT _drmFormatModifierAt(long index, MemorySegment src) { _drmFormatModifierAt(index).copyFrom(src); return this; }
+    public VkDrmFormatModifierPropertiesEXT _drmFormatModifier(MemorySegment src) { return _drmFormatModifierAt(0L, src); }
+    public MemorySegment _drmFormatModifierPlaneCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_drmFormatModifierPlaneCount, index), LAYOUT_drmFormatModifierPlaneCount); }
+    public MemorySegment _drmFormatModifierPlaneCount() { return _drmFormatModifierPlaneCountAt(0L); }
+    public VkDrmFormatModifierPropertiesEXT _drmFormatModifierPlaneCountAt(long index, MemorySegment src) { _drmFormatModifierPlaneCountAt(index).copyFrom(src); return this; }
+    public VkDrmFormatModifierPropertiesEXT _drmFormatModifierPlaneCount(MemorySegment src) { return _drmFormatModifierPlaneCountAt(0L, src); }
+    public MemorySegment _drmFormatModifierTilingFeaturesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_drmFormatModifierTilingFeatures, index), LAYOUT_drmFormatModifierTilingFeatures); }
+    public MemorySegment _drmFormatModifierTilingFeatures() { return _drmFormatModifierTilingFeaturesAt(0L); }
+    public VkDrmFormatModifierPropertiesEXT _drmFormatModifierTilingFeaturesAt(long index, MemorySegment src) { _drmFormatModifierTilingFeaturesAt(index).copyFrom(src); return this; }
+    public VkDrmFormatModifierPropertiesEXT _drmFormatModifierTilingFeatures(MemorySegment src) { return _drmFormatModifierTilingFeaturesAt(0L, src); }
 }

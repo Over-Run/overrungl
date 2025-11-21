@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.fuchsia.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,23 +12,22 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBufferCollectionPropertiesFUCHSIA {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t memoryTypeBits;
 ///     uint32_t bufferCount;
 ///     uint32_t createInfoIndex;
 ///     uint64_t sysmemPixelFormat;
-///     ((uint32_t) VkFlags) VkFormatFeatureFlags formatFeatures;
-///     (struct VkSysmemColorSpaceFUCHSIA) VkSysmemColorSpaceFUCHSIA sysmemColorSpaceIndex;
-///     (struct VkComponentMapping) VkComponentMapping samplerYcbcrConversionComponents;
-///     (int) VkSamplerYcbcrModelConversion suggestedYcbcrModel;
-///     (int) VkSamplerYcbcrRange suggestedYcbcrRange;
-///     (int) VkChromaLocation suggestedXChromaOffset;
-///     (int) VkChromaLocation suggestedYChromaOffset;
-/// };
+///     VkFormatFeatureFlags formatFeatures;
+///     VkSysmemColorSpaceFUCHSIA sysmemColorSpaceIndex;
+///     VkComponentMapping samplerYcbcrConversionComponents;
+///     VkSamplerYcbcrModelConversion suggestedYcbcrModel;
+///     VkSamplerYcbcrRange suggestedYcbcrRange;
+///     VkChromaLocation suggestedXChromaOffset;
+///     VkChromaLocation suggestedYChromaOffset;
+/// }
 /// ```
 public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
-    /// The struct layout of `VkBufferCollectionPropertiesFUCHSIA`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -45,485 +43,190 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
         ValueLayout.JAVA_INT.withName("suggestedXChromaOffset"),
         ValueLayout.JAVA_INT.withName("suggestedYChromaOffset")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `memoryTypeBits`.
     public static final long OFFSET_memoryTypeBits = LAYOUT.byteOffset(PathElement.groupElement("memoryTypeBits"));
-    /// The memory layout of `memoryTypeBits`.
-    public static final MemoryLayout LAYOUT_memoryTypeBits = LAYOUT.select(PathElement.groupElement("memoryTypeBits"));
-    /// The [VarHandle] of `memoryTypeBits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_memoryTypeBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryTypeBits"));
-    /// The byte offset of `bufferCount`.
     public static final long OFFSET_bufferCount = LAYOUT.byteOffset(PathElement.groupElement("bufferCount"));
-    /// The memory layout of `bufferCount`.
-    public static final MemoryLayout LAYOUT_bufferCount = LAYOUT.select(PathElement.groupElement("bufferCount"));
-    /// The [VarHandle] of `bufferCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCount"));
-    /// The byte offset of `createInfoIndex`.
     public static final long OFFSET_createInfoIndex = LAYOUT.byteOffset(PathElement.groupElement("createInfoIndex"));
-    /// The memory layout of `createInfoIndex`.
-    public static final MemoryLayout LAYOUT_createInfoIndex = LAYOUT.select(PathElement.groupElement("createInfoIndex"));
-    /// The [VarHandle] of `createInfoIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_createInfoIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("createInfoIndex"));
-    /// The byte offset of `sysmemPixelFormat`.
     public static final long OFFSET_sysmemPixelFormat = LAYOUT.byteOffset(PathElement.groupElement("sysmemPixelFormat"));
-    /// The memory layout of `sysmemPixelFormat`.
-    public static final MemoryLayout LAYOUT_sysmemPixelFormat = LAYOUT.select(PathElement.groupElement("sysmemPixelFormat"));
-    /// The [VarHandle] of `sysmemPixelFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sysmemPixelFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemPixelFormat"));
-    /// The byte offset of `formatFeatures`.
     public static final long OFFSET_formatFeatures = LAYOUT.byteOffset(PathElement.groupElement("formatFeatures"));
-    /// The memory layout of `formatFeatures`.
-    public static final MemoryLayout LAYOUT_formatFeatures = LAYOUT.select(PathElement.groupElement("formatFeatures"));
-    /// The [VarHandle] of `formatFeatures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_formatFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatFeatures"));
-    /// The byte offset of `sysmemColorSpaceIndex`.
     public static final long OFFSET_sysmemColorSpaceIndex = LAYOUT.byteOffset(PathElement.groupElement("sysmemColorSpaceIndex"));
-    /// The memory layout of `sysmemColorSpaceIndex`.
-    public static final MemoryLayout LAYOUT_sysmemColorSpaceIndex = LAYOUT.select(PathElement.groupElement("sysmemColorSpaceIndex"));
-    /// The byte offset of `samplerYcbcrConversionComponents`.
     public static final long OFFSET_samplerYcbcrConversionComponents = LAYOUT.byteOffset(PathElement.groupElement("samplerYcbcrConversionComponents"));
-    /// The memory layout of `samplerYcbcrConversionComponents`.
-    public static final MemoryLayout LAYOUT_samplerYcbcrConversionComponents = LAYOUT.select(PathElement.groupElement("samplerYcbcrConversionComponents"));
-    /// The byte offset of `suggestedYcbcrModel`.
     public static final long OFFSET_suggestedYcbcrModel = LAYOUT.byteOffset(PathElement.groupElement("suggestedYcbcrModel"));
-    /// The memory layout of `suggestedYcbcrModel`.
-    public static final MemoryLayout LAYOUT_suggestedYcbcrModel = LAYOUT.select(PathElement.groupElement("suggestedYcbcrModel"));
-    /// The [VarHandle] of `suggestedYcbcrModel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_suggestedYcbcrModel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYcbcrModel"));
-    /// The byte offset of `suggestedYcbcrRange`.
     public static final long OFFSET_suggestedYcbcrRange = LAYOUT.byteOffset(PathElement.groupElement("suggestedYcbcrRange"));
-    /// The memory layout of `suggestedYcbcrRange`.
-    public static final MemoryLayout LAYOUT_suggestedYcbcrRange = LAYOUT.select(PathElement.groupElement("suggestedYcbcrRange"));
-    /// The [VarHandle] of `suggestedYcbcrRange` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_suggestedYcbcrRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYcbcrRange"));
-    /// The byte offset of `suggestedXChromaOffset`.
     public static final long OFFSET_suggestedXChromaOffset = LAYOUT.byteOffset(PathElement.groupElement("suggestedXChromaOffset"));
-    /// The memory layout of `suggestedXChromaOffset`.
-    public static final MemoryLayout LAYOUT_suggestedXChromaOffset = LAYOUT.select(PathElement.groupElement("suggestedXChromaOffset"));
-    /// The [VarHandle] of `suggestedXChromaOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_suggestedXChromaOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedXChromaOffset"));
-    /// The byte offset of `suggestedYChromaOffset`.
     public static final long OFFSET_suggestedYChromaOffset = LAYOUT.byteOffset(PathElement.groupElement("suggestedYChromaOffset"));
-    /// The memory layout of `suggestedYChromaOffset`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_memoryTypeBits = LAYOUT.select(PathElement.groupElement("memoryTypeBits"));
+    public static final MemoryLayout LAYOUT_bufferCount = LAYOUT.select(PathElement.groupElement("bufferCount"));
+    public static final MemoryLayout LAYOUT_createInfoIndex = LAYOUT.select(PathElement.groupElement("createInfoIndex"));
+    public static final MemoryLayout LAYOUT_sysmemPixelFormat = LAYOUT.select(PathElement.groupElement("sysmemPixelFormat"));
+    public static final MemoryLayout LAYOUT_formatFeatures = LAYOUT.select(PathElement.groupElement("formatFeatures"));
+    public static final MemoryLayout LAYOUT_sysmemColorSpaceIndex = LAYOUT.select(PathElement.groupElement("sysmemColorSpaceIndex"));
+    public static final MemoryLayout LAYOUT_samplerYcbcrConversionComponents = LAYOUT.select(PathElement.groupElement("samplerYcbcrConversionComponents"));
+    public static final MemoryLayout LAYOUT_suggestedYcbcrModel = LAYOUT.select(PathElement.groupElement("suggestedYcbcrModel"));
+    public static final MemoryLayout LAYOUT_suggestedYcbcrRange = LAYOUT.select(PathElement.groupElement("suggestedYcbcrRange"));
+    public static final MemoryLayout LAYOUT_suggestedXChromaOffset = LAYOUT.select(PathElement.groupElement("suggestedXChromaOffset"));
     public static final MemoryLayout LAYOUT_suggestedYChromaOffset = LAYOUT.select(PathElement.groupElement("suggestedYChromaOffset"));
-    /// The [VarHandle] of `suggestedYChromaOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_memoryTypeBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryTypeBits"));
+    public static final VarHandle VH_bufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCount"));
+    public static final VarHandle VH_createInfoIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("createInfoIndex"));
+    public static final VarHandle VH_sysmemPixelFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemPixelFormat"));
+    public static final VarHandle VH_formatFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatFeatures"));
+    public static final VarHandle VH_sysmemColorSpaceIndex$sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemColorSpaceIndex"), PathElement.groupElement("sType"));
+    public static final VarHandle VH_sysmemColorSpaceIndex$pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemColorSpaceIndex"), PathElement.groupElement("pNext"));
+    public static final VarHandle VH_sysmemColorSpaceIndex$colorSpace = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemColorSpaceIndex"), PathElement.groupElement("colorSpace"));
+    public static final VarHandle VH_samplerYcbcrConversionComponents$r = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerYcbcrConversionComponents"), PathElement.groupElement("r"));
+    public static final VarHandle VH_samplerYcbcrConversionComponents$g = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerYcbcrConversionComponents"), PathElement.groupElement("g"));
+    public static final VarHandle VH_samplerYcbcrConversionComponents$b = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerYcbcrConversionComponents"), PathElement.groupElement("b"));
+    public static final VarHandle VH_samplerYcbcrConversionComponents$a = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerYcbcrConversionComponents"), PathElement.groupElement("a"));
+    public static final VarHandle VH_suggestedYcbcrModel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYcbcrModel"));
+    public static final VarHandle VH_suggestedYcbcrRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYcbcrRange"));
+    public static final VarHandle VH_suggestedXChromaOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedXChromaOffset"));
     public static final VarHandle VH_suggestedYChromaOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYChromaOffset"));
 
-    /// Creates `VkBufferCollectionPropertiesFUCHSIA` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkBufferCollectionPropertiesFUCHSIA` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkBufferCollectionPropertiesFUCHSIA of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCollectionPropertiesFUCHSIA(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkBufferCollectionPropertiesFUCHSIA` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkBufferCollectionPropertiesFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCollectionPropertiesFUCHSIA(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkBufferCollectionPropertiesFUCHSIA` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkBufferCollectionPropertiesFUCHSIA ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCollectionPropertiesFUCHSIA(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
     public static VkBufferCollectionPropertiesFUCHSIA alloc(SegmentAllocator allocator) { return new VkBufferCollectionPropertiesFUCHSIA(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
     public static VkBufferCollectionPropertiesFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkBufferCollectionPropertiesFUCHSIA(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.fuchsia.VKFUCHSIABufferCollection.VK_STRUCTURE_TYPE_BUFFER_COLLECTION_PROPERTIES_FUCHSIA); }
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.fuchsia.VKFUCHSIABufferCollection.VK_STRUCTURE_TYPE_BUFFER_COLLECTION_PROPERTIES_FUCHSIA);
+        return s;
+    }
     public VkBufferCollectionPropertiesFUCHSIA copyFrom(VkBufferCollectionPropertiesFUCHSIA src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkBufferCollectionPropertiesFUCHSIA reinterpret(long count) { return new VkBufferCollectionPropertiesFUCHSIA(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `memoryTypeBits` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int memoryTypeBits(MemorySegment segment, long index) { return (int) VH_memoryTypeBits.get(segment, 0L, index); }
-    /// {@return `memoryTypeBits`}
-    public int memoryTypeBits() { return memoryTypeBits(this.segment(), 0L); }
-    /// Sets `memoryTypeBits` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void memoryTypeBits(MemorySegment segment, long index, int value) { VH_memoryTypeBits.set(segment, 0L, index, value); }
-    /// Sets `memoryTypeBits` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA memoryTypeBits(int value) { memoryTypeBits(this.segment(), 0L, value); return this; }
-
-    /// {@return `bufferCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int bufferCount(MemorySegment segment, long index) { return (int) VH_bufferCount.get(segment, 0L, index); }
-    /// {@return `bufferCount`}
-    public int bufferCount() { return bufferCount(this.segment(), 0L); }
-    /// Sets `bufferCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void bufferCount(MemorySegment segment, long index, int value) { VH_bufferCount.set(segment, 0L, index, value); }
-    /// Sets `bufferCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA bufferCount(int value) { bufferCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `createInfoIndex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int createInfoIndex(MemorySegment segment, long index) { return (int) VH_createInfoIndex.get(segment, 0L, index); }
-    /// {@return `createInfoIndex`}
-    public int createInfoIndex() { return createInfoIndex(this.segment(), 0L); }
-    /// Sets `createInfoIndex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void createInfoIndex(MemorySegment segment, long index, int value) { VH_createInfoIndex.set(segment, 0L, index, value); }
-    /// Sets `createInfoIndex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA createInfoIndex(int value) { createInfoIndex(this.segment(), 0L, value); return this; }
-
-    /// {@return `sysmemPixelFormat` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long sysmemPixelFormat(MemorySegment segment, long index) { return (long) VH_sysmemPixelFormat.get(segment, 0L, index); }
-    /// {@return `sysmemPixelFormat`}
-    public long sysmemPixelFormat() { return sysmemPixelFormat(this.segment(), 0L); }
-    /// Sets `sysmemPixelFormat` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sysmemPixelFormat(MemorySegment segment, long index, long value) { VH_sysmemPixelFormat.set(segment, 0L, index, value); }
-    /// Sets `sysmemPixelFormat` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA sysmemPixelFormat(long value) { sysmemPixelFormat(this.segment(), 0L, value); return this; }
-
-    /// {@return `formatFeatures` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int formatFeatures(MemorySegment segment, long index) { return (int) VH_formatFeatures.get(segment, 0L, index); }
-    /// {@return `formatFeatures`}
-    public int formatFeatures() { return formatFeatures(this.segment(), 0L); }
-    /// Sets `formatFeatures` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void formatFeatures(MemorySegment segment, long index, int value) { VH_formatFeatures.set(segment, 0L, index, value); }
-    /// Sets `formatFeatures` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA formatFeatures(int value) { formatFeatures(this.segment(), 0L, value); return this; }
-
-    /// {@return `sysmemColorSpaceIndex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment sysmemColorSpaceIndex(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_sysmemColorSpaceIndex, index), LAYOUT_sysmemColorSpaceIndex); }
-    /// {@return `sysmemColorSpaceIndex`}
-    public MemorySegment sysmemColorSpaceIndex() { return sysmemColorSpaceIndex(this.segment(), 0L); }
-    /// Sets `sysmemColorSpaceIndex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sysmemColorSpaceIndex(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_sysmemColorSpaceIndex, index), LAYOUT_sysmemColorSpaceIndex.byteSize()); }
-    /// Sets `sysmemColorSpaceIndex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex(MemorySegment value) { sysmemColorSpaceIndex(this.segment(), 0L, value); return this; }
-    /// Accepts `sysmemColorSpaceIndex` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex(Consumer<overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA.of(sysmemColorSpaceIndex())); return this; }
-
-    /// {@return `samplerYcbcrConversionComponents` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment samplerYcbcrConversionComponents(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_samplerYcbcrConversionComponents, index), LAYOUT_samplerYcbcrConversionComponents); }
-    /// {@return `samplerYcbcrConversionComponents`}
-    public MemorySegment samplerYcbcrConversionComponents() { return samplerYcbcrConversionComponents(this.segment(), 0L); }
-    /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void samplerYcbcrConversionComponents(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_samplerYcbcrConversionComponents, index), LAYOUT_samplerYcbcrConversionComponents.byteSize()); }
-    /// Sets `samplerYcbcrConversionComponents` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents(MemorySegment value) { samplerYcbcrConversionComponents(this.segment(), 0L, value); return this; }
-    /// Accepts `samplerYcbcrConversionComponents` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents(Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(samplerYcbcrConversionComponents())); return this; }
-
-    /// {@return `suggestedYcbcrModel` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int suggestedYcbcrModel(MemorySegment segment, long index) { return (int) VH_suggestedYcbcrModel.get(segment, 0L, index); }
-    /// {@return `suggestedYcbcrModel`}
-    public int suggestedYcbcrModel() { return suggestedYcbcrModel(this.segment(), 0L); }
-    /// Sets `suggestedYcbcrModel` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void suggestedYcbcrModel(MemorySegment segment, long index, int value) { VH_suggestedYcbcrModel.set(segment, 0L, index, value); }
-    /// Sets `suggestedYcbcrModel` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrModel(int value) { suggestedYcbcrModel(this.segment(), 0L, value); return this; }
-
-    /// {@return `suggestedYcbcrRange` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int suggestedYcbcrRange(MemorySegment segment, long index) { return (int) VH_suggestedYcbcrRange.get(segment, 0L, index); }
-    /// {@return `suggestedYcbcrRange`}
-    public int suggestedYcbcrRange() { return suggestedYcbcrRange(this.segment(), 0L); }
-    /// Sets `suggestedYcbcrRange` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void suggestedYcbcrRange(MemorySegment segment, long index, int value) { VH_suggestedYcbcrRange.set(segment, 0L, index, value); }
-    /// Sets `suggestedYcbcrRange` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrRange(int value) { suggestedYcbcrRange(this.segment(), 0L, value); return this; }
-
-    /// {@return `suggestedXChromaOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int suggestedXChromaOffset(MemorySegment segment, long index) { return (int) VH_suggestedXChromaOffset.get(segment, 0L, index); }
-    /// {@return `suggestedXChromaOffset`}
-    public int suggestedXChromaOffset() { return suggestedXChromaOffset(this.segment(), 0L); }
-    /// Sets `suggestedXChromaOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void suggestedXChromaOffset(MemorySegment segment, long index, int value) { VH_suggestedXChromaOffset.set(segment, 0L, index, value); }
-    /// Sets `suggestedXChromaOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedXChromaOffset(int value) { suggestedXChromaOffset(this.segment(), 0L, value); return this; }
-
-    /// {@return `suggestedYChromaOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int suggestedYChromaOffset(MemorySegment segment, long index) { return (int) VH_suggestedYChromaOffset.get(segment, 0L, index); }
-    /// {@return `suggestedYChromaOffset`}
-    public int suggestedYChromaOffset() { return suggestedYChromaOffset(this.segment(), 0L); }
-    /// Sets `suggestedYChromaOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void suggestedYChromaOffset(MemorySegment segment, long index, int value) { VH_suggestedYChromaOffset.set(segment, 0L, index, value); }
-    /// Sets `suggestedYChromaOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedYChromaOffset(int value) { suggestedYChromaOffset(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkBufferCollectionPropertiesFUCHSIA`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkBufferCollectionPropertiesFUCHSIA`
     public VkBufferCollectionPropertiesFUCHSIA asSlice(long index) { return new VkBufferCollectionPropertiesFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkBufferCollectionPropertiesFUCHSIA`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkBufferCollectionPropertiesFUCHSIA`
     public VkBufferCollectionPropertiesFUCHSIA asSlice(long index, long count) { return new VkBufferCollectionPropertiesFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkBufferCollectionPropertiesFUCHSIA` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkBufferCollectionPropertiesFUCHSIA at(long index, Consumer<VkBufferCollectionPropertiesFUCHSIA> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `memoryTypeBits` at the given index}
-    /// @param index the index of the struct buffer
-    public int memoryTypeBitsAt(long index) { return memoryTypeBits(this.segment(), index); }
-    /// Sets `memoryTypeBits` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA memoryTypeBitsAt(long index, int value) { memoryTypeBits(this.segment(), index, value); return this; }
-
-    /// {@return `bufferCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int bufferCountAt(long index) { return bufferCount(this.segment(), index); }
-    /// Sets `bufferCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA bufferCountAt(long index, int value) { bufferCount(this.segment(), index, value); return this; }
-
-    /// {@return `createInfoIndex` at the given index}
-    /// @param index the index of the struct buffer
-    public int createInfoIndexAt(long index) { return createInfoIndex(this.segment(), index); }
-    /// Sets `createInfoIndex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA createInfoIndexAt(long index, int value) { createInfoIndex(this.segment(), index, value); return this; }
-
-    /// {@return `sysmemPixelFormat` at the given index}
-    /// @param index the index of the struct buffer
-    public long sysmemPixelFormatAt(long index) { return sysmemPixelFormat(this.segment(), index); }
-    /// Sets `sysmemPixelFormat` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA sysmemPixelFormatAt(long index, long value) { sysmemPixelFormat(this.segment(), index, value); return this; }
-
-    /// {@return `formatFeatures` at the given index}
-    /// @param index the index of the struct buffer
-    public int formatFeaturesAt(long index) { return formatFeatures(this.segment(), index); }
-    /// Sets `formatFeatures` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA formatFeaturesAt(long index, int value) { formatFeatures(this.segment(), index, value); return this; }
-
-    /// {@return `sysmemColorSpaceIndex` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment sysmemColorSpaceIndexAt(long index) { return sysmemColorSpaceIndex(this.segment(), index); }
-    /// Sets `sysmemColorSpaceIndex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndexAt(long index, MemorySegment value) { sysmemColorSpaceIndex(this.segment(), index, value); return this; }
-    /// Accepts `sysmemColorSpaceIndex` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndexAt(long index, Consumer<overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA.of(sysmemColorSpaceIndexAt(index))); return this; }
-
-    /// {@return `samplerYcbcrConversionComponents` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment samplerYcbcrConversionComponentsAt(long index) { return samplerYcbcrConversionComponents(this.segment(), index); }
-    /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponentsAt(long index, MemorySegment value) { samplerYcbcrConversionComponents(this.segment(), index, value); return this; }
-    /// Accepts `samplerYcbcrConversionComponents` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponentsAt(long index, Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(samplerYcbcrConversionComponentsAt(index))); return this; }
-
-    /// {@return `suggestedYcbcrModel` at the given index}
-    /// @param index the index of the struct buffer
-    public int suggestedYcbcrModelAt(long index) { return suggestedYcbcrModel(this.segment(), index); }
-    /// Sets `suggestedYcbcrModel` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrModelAt(long index, int value) { suggestedYcbcrModel(this.segment(), index, value); return this; }
-
-    /// {@return `suggestedYcbcrRange` at the given index}
-    /// @param index the index of the struct buffer
-    public int suggestedYcbcrRangeAt(long index) { return suggestedYcbcrRange(this.segment(), index); }
-    /// Sets `suggestedYcbcrRange` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrRangeAt(long index, int value) { suggestedYcbcrRange(this.segment(), index, value); return this; }
-
-    /// {@return `suggestedXChromaOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public int suggestedXChromaOffsetAt(long index) { return suggestedXChromaOffset(this.segment(), index); }
-    /// Sets `suggestedXChromaOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedXChromaOffsetAt(long index, int value) { suggestedXChromaOffset(this.segment(), index, value); return this; }
-
-    /// {@return `suggestedYChromaOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public int suggestedYChromaOffsetAt(long index) { return suggestedYChromaOffset(this.segment(), index); }
-    /// Sets `suggestedYChromaOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedYChromaOffsetAt(long index, int value) { suggestedYChromaOffset(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int memoryTypeBitsAt(long index) { return (int) VH_memoryTypeBits.get(this.segment(), 0L, index); }
+    public int bufferCountAt(long index) { return (int) VH_bufferCount.get(this.segment(), 0L, index); }
+    public int createInfoIndexAt(long index) { return (int) VH_createInfoIndex.get(this.segment(), 0L, index); }
+    public long sysmemPixelFormatAt(long index) { return (long) VH_sysmemPixelFormat.get(this.segment(), 0L, index); }
+    public int formatFeaturesAt(long index) { return (int) VH_formatFeatures.get(this.segment(), 0L, index); }
+    public int sysmemColorSpaceIndex$sTypeAt(long index) { return (int) VH_sysmemColorSpaceIndex$sType.get(this.segment(), 0L, index); }
+    public MemorySegment sysmemColorSpaceIndex$pNextAt(long index) { return (MemorySegment) VH_sysmemColorSpaceIndex$pNext.get(this.segment(), 0L, index); }
+    public int sysmemColorSpaceIndex$colorSpaceAt(long index) { return (int) VH_sysmemColorSpaceIndex$colorSpace.get(this.segment(), 0L, index); }
+    public int samplerYcbcrConversionComponents$rAt(long index) { return (int) VH_samplerYcbcrConversionComponents$r.get(this.segment(), 0L, index); }
+    public int samplerYcbcrConversionComponents$gAt(long index) { return (int) VH_samplerYcbcrConversionComponents$g.get(this.segment(), 0L, index); }
+    public int samplerYcbcrConversionComponents$bAt(long index) { return (int) VH_samplerYcbcrConversionComponents$b.get(this.segment(), 0L, index); }
+    public int samplerYcbcrConversionComponents$aAt(long index) { return (int) VH_samplerYcbcrConversionComponents$a.get(this.segment(), 0L, index); }
+    public int suggestedYcbcrModelAt(long index) { return (int) VH_suggestedYcbcrModel.get(this.segment(), 0L, index); }
+    public int suggestedYcbcrRangeAt(long index) { return (int) VH_suggestedYcbcrRange.get(this.segment(), 0L, index); }
+    public int suggestedXChromaOffsetAt(long index) { return (int) VH_suggestedXChromaOffset.get(this.segment(), 0L, index); }
+    public int suggestedYChromaOffsetAt(long index) { return (int) VH_suggestedYChromaOffset.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int memoryTypeBits() { return (int) VH_memoryTypeBits.get(this.segment(), 0L, 0L); }
+    public int bufferCount() { return (int) VH_bufferCount.get(this.segment(), 0L, 0L); }
+    public int createInfoIndex() { return (int) VH_createInfoIndex.get(this.segment(), 0L, 0L); }
+    public long sysmemPixelFormat() { return (long) VH_sysmemPixelFormat.get(this.segment(), 0L, 0L); }
+    public int formatFeatures() { return (int) VH_formatFeatures.get(this.segment(), 0L, 0L); }
+    public int sysmemColorSpaceIndex$sType() { return (int) VH_sysmemColorSpaceIndex$sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment sysmemColorSpaceIndex$pNext() { return (MemorySegment) VH_sysmemColorSpaceIndex$pNext.get(this.segment(), 0L, 0L); }
+    public int sysmemColorSpaceIndex$colorSpace() { return (int) VH_sysmemColorSpaceIndex$colorSpace.get(this.segment(), 0L, 0L); }
+    public int samplerYcbcrConversionComponents$r() { return (int) VH_samplerYcbcrConversionComponents$r.get(this.segment(), 0L, 0L); }
+    public int samplerYcbcrConversionComponents$g() { return (int) VH_samplerYcbcrConversionComponents$g.get(this.segment(), 0L, 0L); }
+    public int samplerYcbcrConversionComponents$b() { return (int) VH_samplerYcbcrConversionComponents$b.get(this.segment(), 0L, 0L); }
+    public int samplerYcbcrConversionComponents$a() { return (int) VH_samplerYcbcrConversionComponents$a.get(this.segment(), 0L, 0L); }
+    public int suggestedYcbcrModel() { return (int) VH_suggestedYcbcrModel.get(this.segment(), 0L, 0L); }
+    public int suggestedYcbcrRange() { return (int) VH_suggestedYcbcrRange.get(this.segment(), 0L, 0L); }
+    public int suggestedXChromaOffset() { return (int) VH_suggestedXChromaOffset.get(this.segment(), 0L, 0L); }
+    public int suggestedYChromaOffset() { return (int) VH_suggestedYChromaOffset.get(this.segment(), 0L, 0L); }
+    public VkBufferCollectionPropertiesFUCHSIA sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA memoryTypeBitsAt(long index, int value) { VH_memoryTypeBits.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA bufferCountAt(long index, int value) { VH_bufferCount.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA createInfoIndexAt(long index, int value) { VH_createInfoIndex.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA sysmemPixelFormatAt(long index, long value) { VH_sysmemPixelFormat.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA formatFeaturesAt(long index, int value) { VH_formatFeatures.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex$sTypeAt(long index, int value) { VH_sysmemColorSpaceIndex$sType.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex$pNextAt(long index, MemorySegment value) { VH_sysmemColorSpaceIndex$pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex$colorSpaceAt(long index, int value) { VH_sysmemColorSpaceIndex$colorSpace.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents$rAt(long index, int value) { VH_samplerYcbcrConversionComponents$r.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents$gAt(long index, int value) { VH_samplerYcbcrConversionComponents$g.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents$bAt(long index, int value) { VH_samplerYcbcrConversionComponents$b.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents$aAt(long index, int value) { VH_samplerYcbcrConversionComponents$a.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrModelAt(long index, int value) { VH_suggestedYcbcrModel.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrRangeAt(long index, int value) { VH_suggestedYcbcrRange.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA suggestedXChromaOffsetAt(long index, int value) { VH_suggestedXChromaOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYChromaOffsetAt(long index, int value) { VH_suggestedYChromaOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA memoryTypeBits(int value) { VH_memoryTypeBits.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA bufferCount(int value) { VH_bufferCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA createInfoIndex(int value) { VH_createInfoIndex.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA sysmemPixelFormat(long value) { VH_sysmemPixelFormat.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA formatFeatures(int value) { VH_formatFeatures.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex$sType(int value) { VH_sysmemColorSpaceIndex$sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex$pNext(MemorySegment value) { VH_sysmemColorSpaceIndex$pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex$colorSpace(int value) { VH_sysmemColorSpaceIndex$colorSpace.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents$r(int value) { VH_samplerYcbcrConversionComponents$r.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents$g(int value) { VH_samplerYcbcrConversionComponents$g.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents$b(int value) { VH_samplerYcbcrConversionComponents$b.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents$a(int value) { VH_samplerYcbcrConversionComponents$a.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrModel(int value) { VH_suggestedYcbcrModel.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrRange(int value) { VH_suggestedYcbcrRange.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA suggestedXChromaOffset(int value) { VH_suggestedXChromaOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYChromaOffset(int value) { VH_suggestedYChromaOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _memoryTypeBitsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_memoryTypeBits, index), LAYOUT_memoryTypeBits); }
+    public MemorySegment _memoryTypeBits() { return _memoryTypeBitsAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _memoryTypeBitsAt(long index, MemorySegment src) { _memoryTypeBitsAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _memoryTypeBits(MemorySegment src) { return _memoryTypeBitsAt(0L, src); }
+    public MemorySegment _bufferCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_bufferCount, index), LAYOUT_bufferCount); }
+    public MemorySegment _bufferCount() { return _bufferCountAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _bufferCountAt(long index, MemorySegment src) { _bufferCountAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _bufferCount(MemorySegment src) { return _bufferCountAt(0L, src); }
+    public MemorySegment _createInfoIndexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_createInfoIndex, index), LAYOUT_createInfoIndex); }
+    public MemorySegment _createInfoIndex() { return _createInfoIndexAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _createInfoIndexAt(long index, MemorySegment src) { _createInfoIndexAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _createInfoIndex(MemorySegment src) { return _createInfoIndexAt(0L, src); }
+    public MemorySegment _sysmemPixelFormatAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sysmemPixelFormat, index), LAYOUT_sysmemPixelFormat); }
+    public MemorySegment _sysmemPixelFormat() { return _sysmemPixelFormatAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _sysmemPixelFormatAt(long index, MemorySegment src) { _sysmemPixelFormatAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _sysmemPixelFormat(MemorySegment src) { return _sysmemPixelFormatAt(0L, src); }
+    public MemorySegment _formatFeaturesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_formatFeatures, index), LAYOUT_formatFeatures); }
+    public MemorySegment _formatFeatures() { return _formatFeaturesAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _formatFeaturesAt(long index, MemorySegment src) { _formatFeaturesAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _formatFeatures(MemorySegment src) { return _formatFeaturesAt(0L, src); }
+    public MemorySegment _sysmemColorSpaceIndexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sysmemColorSpaceIndex, index), LAYOUT_sysmemColorSpaceIndex); }
+    public MemorySegment _sysmemColorSpaceIndex() { return _sysmemColorSpaceIndexAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _sysmemColorSpaceIndexAt(long index, MemorySegment src) { _sysmemColorSpaceIndexAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _sysmemColorSpaceIndex(MemorySegment src) { return _sysmemColorSpaceIndexAt(0L, src); }
+    public MemorySegment _samplerYcbcrConversionComponentsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_samplerYcbcrConversionComponents, index), LAYOUT_samplerYcbcrConversionComponents); }
+    public MemorySegment _samplerYcbcrConversionComponents() { return _samplerYcbcrConversionComponentsAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _samplerYcbcrConversionComponentsAt(long index, MemorySegment src) { _samplerYcbcrConversionComponentsAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _samplerYcbcrConversionComponents(MemorySegment src) { return _samplerYcbcrConversionComponentsAt(0L, src); }
+    public MemorySegment _suggestedYcbcrModelAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_suggestedYcbcrModel, index), LAYOUT_suggestedYcbcrModel); }
+    public MemorySegment _suggestedYcbcrModel() { return _suggestedYcbcrModelAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _suggestedYcbcrModelAt(long index, MemorySegment src) { _suggestedYcbcrModelAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _suggestedYcbcrModel(MemorySegment src) { return _suggestedYcbcrModelAt(0L, src); }
+    public MemorySegment _suggestedYcbcrRangeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_suggestedYcbcrRange, index), LAYOUT_suggestedYcbcrRange); }
+    public MemorySegment _suggestedYcbcrRange() { return _suggestedYcbcrRangeAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _suggestedYcbcrRangeAt(long index, MemorySegment src) { _suggestedYcbcrRangeAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _suggestedYcbcrRange(MemorySegment src) { return _suggestedYcbcrRangeAt(0L, src); }
+    public MemorySegment _suggestedXChromaOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_suggestedXChromaOffset, index), LAYOUT_suggestedXChromaOffset); }
+    public MemorySegment _suggestedXChromaOffset() { return _suggestedXChromaOffsetAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _suggestedXChromaOffsetAt(long index, MemorySegment src) { _suggestedXChromaOffsetAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _suggestedXChromaOffset(MemorySegment src) { return _suggestedXChromaOffsetAt(0L, src); }
+    public MemorySegment _suggestedYChromaOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_suggestedYChromaOffset, index), LAYOUT_suggestedYChromaOffset); }
+    public MemorySegment _suggestedYChromaOffset() { return _suggestedYChromaOffsetAt(0L); }
+    public VkBufferCollectionPropertiesFUCHSIA _suggestedYChromaOffsetAt(long index, MemorySegment src) { _suggestedYChromaOffsetAt(index).copyFrom(src); return this; }
+    public VkBufferCollectionPropertiesFUCHSIA _suggestedYChromaOffset(MemorySegment src) { return _suggestedYChromaOffsetAt(0L, src); }
 }

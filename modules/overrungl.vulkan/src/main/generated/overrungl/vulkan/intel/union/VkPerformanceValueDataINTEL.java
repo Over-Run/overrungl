@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.intel.union;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -16,12 +15,11 @@ import overrungl.util.*;
 ///     uint32_t value32;
 ///     uint64_t value64;
 ///     float valueFloat;
-///     (uint32_t) VkBool32 valueBool;
+///     VkBool32 valueBool;
 ///     const char* valueString;
-/// };
+/// }
 /// ```
 public final class VkPerformanceValueDataINTEL extends GroupType {
-    /// The union layout of `VkPerformanceValueDataINTEL`.
     public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.JAVA_INT.withName("value32"),
         ValueLayout.JAVA_LONG.withName("value64"),
@@ -29,223 +27,71 @@ public final class VkPerformanceValueDataINTEL extends GroupType {
         ValueLayout.JAVA_INT.withName("valueBool"),
         ValueLayout.ADDRESS.withName("valueString")
     );
-    /// The byte offset of `value32`.
     public static final long OFFSET_value32 = LAYOUT.byteOffset(PathElement.groupElement("value32"));
-    /// The memory layout of `value32`.
-    public static final MemoryLayout LAYOUT_value32 = LAYOUT.select(PathElement.groupElement("value32"));
-    /// The [VarHandle] of `value32` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_value32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("value32"));
-    /// The byte offset of `value64`.
     public static final long OFFSET_value64 = LAYOUT.byteOffset(PathElement.groupElement("value64"));
-    /// The memory layout of `value64`.
-    public static final MemoryLayout LAYOUT_value64 = LAYOUT.select(PathElement.groupElement("value64"));
-    /// The [VarHandle] of `value64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_value64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("value64"));
-    /// The byte offset of `valueFloat`.
     public static final long OFFSET_valueFloat = LAYOUT.byteOffset(PathElement.groupElement("valueFloat"));
-    /// The memory layout of `valueFloat`.
-    public static final MemoryLayout LAYOUT_valueFloat = LAYOUT.select(PathElement.groupElement("valueFloat"));
-    /// The [VarHandle] of `valueFloat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_valueFloat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueFloat"));
-    /// The byte offset of `valueBool`.
     public static final long OFFSET_valueBool = LAYOUT.byteOffset(PathElement.groupElement("valueBool"));
-    /// The memory layout of `valueBool`.
-    public static final MemoryLayout LAYOUT_valueBool = LAYOUT.select(PathElement.groupElement("valueBool"));
-    /// The [VarHandle] of `valueBool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_valueBool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueBool"));
-    /// The byte offset of `valueString`.
     public static final long OFFSET_valueString = LAYOUT.byteOffset(PathElement.groupElement("valueString"));
-    /// The memory layout of `valueString`.
+    public static final MemoryLayout LAYOUT_value32 = LAYOUT.select(PathElement.groupElement("value32"));
+    public static final MemoryLayout LAYOUT_value64 = LAYOUT.select(PathElement.groupElement("value64"));
+    public static final MemoryLayout LAYOUT_valueFloat = LAYOUT.select(PathElement.groupElement("valueFloat"));
+    public static final MemoryLayout LAYOUT_valueBool = LAYOUT.select(PathElement.groupElement("valueBool"));
     public static final MemoryLayout LAYOUT_valueString = LAYOUT.select(PathElement.groupElement("valueString"));
-    /// The [VarHandle] of `valueString` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_value32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("value32"));
+    public static final VarHandle VH_value64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("value64"));
+    public static final VarHandle VH_valueFloat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueFloat"));
+    public static final VarHandle VH_valueBool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueBool"));
     public static final VarHandle VH_valueString = LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueString"));
 
-    /// Creates `VkPerformanceValueDataINTEL` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this union buffer
     public VkPerformanceValueDataINTEL(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPerformanceValueDataINTEL` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPerformanceValueDataINTEL of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceValueDataINTEL(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPerformanceValueDataINTEL` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPerformanceValueDataINTEL ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceValueDataINTEL(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPerformanceValueDataINTEL` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPerformanceValueDataINTEL ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceValueDataINTEL(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPerformanceValueDataINTEL`
     public static VkPerformanceValueDataINTEL alloc(SegmentAllocator allocator) { return new VkPerformanceValueDataINTEL(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPerformanceValueDataINTEL`
     public static VkPerformanceValueDataINTEL alloc(SegmentAllocator allocator, long count) { return new VkPerformanceValueDataINTEL(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkPerformanceValueDataINTEL copyFrom(VkPerformanceValueDataINTEL src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPerformanceValueDataINTEL reinterpret(long count) { return new VkPerformanceValueDataINTEL(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `value32` at the given index}
-    /// @param segment the segment of the union
-    /// @param index the index of the union buffer
-    public static int value32(MemorySegment segment, long index) { return (int) VH_value32.get(segment, 0L, index); }
-    /// {@return `value32`}
-    public int value32() { return value32(this.segment(), 0L); }
-    /// Sets `value32` with the given value at the given index.
-    /// @param segment the segment of the union
-    /// @param index the index of the union buffer
-    /// @param value the value
-    public static void value32(MemorySegment segment, long index, int value) { VH_value32.set(segment, 0L, index, value); }
-    /// Sets `value32` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueDataINTEL value32(int value) { value32(this.segment(), 0L, value); return this; }
-
-    /// {@return `value64` at the given index}
-    /// @param segment the segment of the union
-    /// @param index the index of the union buffer
-    public static long value64(MemorySegment segment, long index) { return (long) VH_value64.get(segment, 0L, index); }
-    /// {@return `value64`}
-    public long value64() { return value64(this.segment(), 0L); }
-    /// Sets `value64` with the given value at the given index.
-    /// @param segment the segment of the union
-    /// @param index the index of the union buffer
-    /// @param value the value
-    public static void value64(MemorySegment segment, long index, long value) { VH_value64.set(segment, 0L, index, value); }
-    /// Sets `value64` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueDataINTEL value64(long value) { value64(this.segment(), 0L, value); return this; }
-
-    /// {@return `valueFloat` at the given index}
-    /// @param segment the segment of the union
-    /// @param index the index of the union buffer
-    public static float valueFloat(MemorySegment segment, long index) { return (float) VH_valueFloat.get(segment, 0L, index); }
-    /// {@return `valueFloat`}
-    public float valueFloat() { return valueFloat(this.segment(), 0L); }
-    /// Sets `valueFloat` with the given value at the given index.
-    /// @param segment the segment of the union
-    /// @param index the index of the union buffer
-    /// @param value the value
-    public static void valueFloat(MemorySegment segment, long index, float value) { VH_valueFloat.set(segment, 0L, index, value); }
-    /// Sets `valueFloat` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueDataINTEL valueFloat(float value) { valueFloat(this.segment(), 0L, value); return this; }
-
-    /// {@return `valueBool` at the given index}
-    /// @param segment the segment of the union
-    /// @param index the index of the union buffer
-    public static int valueBool(MemorySegment segment, long index) { return (int) VH_valueBool.get(segment, 0L, index); }
-    /// {@return `valueBool`}
-    public int valueBool() { return valueBool(this.segment(), 0L); }
-    /// Sets `valueBool` with the given value at the given index.
-    /// @param segment the segment of the union
-    /// @param index the index of the union buffer
-    /// @param value the value
-    public static void valueBool(MemorySegment segment, long index, int value) { VH_valueBool.set(segment, 0L, index, value); }
-    /// Sets `valueBool` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueDataINTEL valueBool(int value) { valueBool(this.segment(), 0L, value); return this; }
-
-    /// {@return `valueString` at the given index}
-    /// @param segment the segment of the union
-    /// @param index the index of the union buffer
-    public static MemorySegment valueString(MemorySegment segment, long index) { return (MemorySegment) VH_valueString.get(segment, 0L, index); }
-    /// {@return `valueString`}
-    public MemorySegment valueString() { return valueString(this.segment(), 0L); }
-    /// Sets `valueString` with the given value at the given index.
-    /// @param segment the segment of the union
-    /// @param index the index of the union buffer
-    /// @param value the value
-    public static void valueString(MemorySegment segment, long index, MemorySegment value) { VH_valueString.set(segment, 0L, index, value); }
-    /// Sets `valueString` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueDataINTEL valueString(MemorySegment value) { valueString(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPerformanceValueDataINTEL`.
-    /// @param index the index of the union buffer
-    /// @return the slice of `VkPerformanceValueDataINTEL`
     public VkPerformanceValueDataINTEL asSlice(long index) { return new VkPerformanceValueDataINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPerformanceValueDataINTEL`.
-    /// @param index the index of the union buffer
-    /// @param count the count
-    /// @return the slice of `VkPerformanceValueDataINTEL`
     public VkPerformanceValueDataINTEL asSlice(long index, long count) { return new VkPerformanceValueDataINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPerformanceValueDataINTEL` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPerformanceValueDataINTEL at(long index, Consumer<VkPerformanceValueDataINTEL> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `value32` at the given index}
-    /// @param index the index of the union buffer
-    public int value32At(long index) { return value32(this.segment(), index); }
-    /// Sets `value32` with the given value at the given index.
-    /// @param index the index of the union buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueDataINTEL value32At(long index, int value) { value32(this.segment(), index, value); return this; }
-
-    /// {@return `value64` at the given index}
-    /// @param index the index of the union buffer
-    public long value64At(long index) { return value64(this.segment(), index); }
-    /// Sets `value64` with the given value at the given index.
-    /// @param index the index of the union buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueDataINTEL value64At(long index, long value) { value64(this.segment(), index, value); return this; }
-
-    /// {@return `valueFloat` at the given index}
-    /// @param index the index of the union buffer
-    public float valueFloatAt(long index) { return valueFloat(this.segment(), index); }
-    /// Sets `valueFloat` with the given value at the given index.
-    /// @param index the index of the union buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueDataINTEL valueFloatAt(long index, float value) { valueFloat(this.segment(), index, value); return this; }
-
-    /// {@return `valueBool` at the given index}
-    /// @param index the index of the union buffer
-    public int valueBoolAt(long index) { return valueBool(this.segment(), index); }
-    /// Sets `valueBool` with the given value at the given index.
-    /// @param index the index of the union buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueDataINTEL valueBoolAt(long index, int value) { valueBool(this.segment(), index, value); return this; }
-
-    /// {@return `valueString` at the given index}
-    /// @param index the index of the union buffer
-    public MemorySegment valueStringAt(long index) { return valueString(this.segment(), index); }
-    /// Sets `valueString` with the given value at the given index.
-    /// @param index the index of the union buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueDataINTEL valueStringAt(long index, MemorySegment value) { valueString(this.segment(), index, value); return this; }
-
+    public int value32At(long index) { return (int) VH_value32.get(this.segment(), 0L, index); }
+    public long value64At(long index) { return (long) VH_value64.get(this.segment(), 0L, index); }
+    public float valueFloatAt(long index) { return (float) VH_valueFloat.get(this.segment(), 0L, index); }
+    public int valueBoolAt(long index) { return (int) VH_valueBool.get(this.segment(), 0L, index); }
+    public MemorySegment valueStringAt(long index) { return (MemorySegment) VH_valueString.get(this.segment(), 0L, index); }
+    public int value32() { return (int) VH_value32.get(this.segment(), 0L, 0L); }
+    public long value64() { return (long) VH_value64.get(this.segment(), 0L, 0L); }
+    public float valueFloat() { return (float) VH_valueFloat.get(this.segment(), 0L, 0L); }
+    public int valueBool() { return (int) VH_valueBool.get(this.segment(), 0L, 0L); }
+    public MemorySegment valueString() { return (MemorySegment) VH_valueString.get(this.segment(), 0L, 0L); }
+    public VkPerformanceValueDataINTEL value32At(long index, int value) { VH_value32.set(this.segment(), 0L, index, value); return this; }
+    public VkPerformanceValueDataINTEL value64At(long index, long value) { VH_value64.set(this.segment(), 0L, index, value); return this; }
+    public VkPerformanceValueDataINTEL valueFloatAt(long index, float value) { VH_valueFloat.set(this.segment(), 0L, index, value); return this; }
+    public VkPerformanceValueDataINTEL valueBoolAt(long index, int value) { VH_valueBool.set(this.segment(), 0L, index, value); return this; }
+    public VkPerformanceValueDataINTEL valueStringAt(long index, MemorySegment value) { VH_valueString.set(this.segment(), 0L, index, value); return this; }
+    public VkPerformanceValueDataINTEL value32(int value) { VH_value32.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPerformanceValueDataINTEL value64(long value) { VH_value64.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPerformanceValueDataINTEL valueFloat(float value) { VH_valueFloat.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPerformanceValueDataINTEL valueBool(int value) { VH_valueBool.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPerformanceValueDataINTEL valueString(MemorySegment value) { VH_valueString.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _value32At(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_value32, index), LAYOUT_value32); }
+    public MemorySegment _value32() { return _value32At(0L); }
+    public VkPerformanceValueDataINTEL _value32At(long index, MemorySegment src) { _value32At(index).copyFrom(src); return this; }
+    public VkPerformanceValueDataINTEL _value32(MemorySegment src) { return _value32At(0L, src); }
+    public MemorySegment _value64At(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_value64, index), LAYOUT_value64); }
+    public MemorySegment _value64() { return _value64At(0L); }
+    public VkPerformanceValueDataINTEL _value64At(long index, MemorySegment src) { _value64At(index).copyFrom(src); return this; }
+    public VkPerformanceValueDataINTEL _value64(MemorySegment src) { return _value64At(0L, src); }
+    public MemorySegment _valueFloatAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_valueFloat, index), LAYOUT_valueFloat); }
+    public MemorySegment _valueFloat() { return _valueFloatAt(0L); }
+    public VkPerformanceValueDataINTEL _valueFloatAt(long index, MemorySegment src) { _valueFloatAt(index).copyFrom(src); return this; }
+    public VkPerformanceValueDataINTEL _valueFloat(MemorySegment src) { return _valueFloatAt(0L, src); }
+    public MemorySegment _valueBoolAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_valueBool, index), LAYOUT_valueBool); }
+    public MemorySegment _valueBool() { return _valueBoolAt(0L); }
+    public VkPerformanceValueDataINTEL _valueBoolAt(long index, MemorySegment src) { _valueBoolAt(index).copyFrom(src); return this; }
+    public VkPerformanceValueDataINTEL _valueBool(MemorySegment src) { return _valueBoolAt(0L, src); }
+    public MemorySegment _valueStringAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_valueString, index), LAYOUT_valueString); }
+    public MemorySegment _valueString() { return _valueStringAt(0L); }
+    public VkPerformanceValueDataINTEL _valueStringAt(long index, MemorySegment src) { _valueStringAt(index).copyFrom(src); return this; }
+    public VkPerformanceValueDataINTEL _valueString(MemorySegment src) { return _valueStringAt(0L, src); }
 }

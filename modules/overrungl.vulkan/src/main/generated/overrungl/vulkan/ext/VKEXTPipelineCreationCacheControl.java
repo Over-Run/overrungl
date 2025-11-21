@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_EXT_pipeline_creation_cache_control` - device extension
 public final class VKEXTPipelineCreationCacheControl {
     public static final int VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION = 3;
@@ -12,7 +15,5 @@ public final class VKEXTPipelineCreationCacheControl {
     public static final int VK_PIPELINE_COMPILE_REQUIRED_EXT = 1000297000;
     public static final int VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT = 1000297000;
     public static final int VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT = 0x00000001;
-
     private VKEXTPipelineCreationCacheControl() {}
-
 }

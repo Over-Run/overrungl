@@ -8,6 +8,9 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_NV_partitioned_acceleration_structure` - device extension
 public final class VKNVPartitionedAccelerationStructure {
+    public static final int VK_NV_PARTITIONED_ACCELERATION_STRUCTURE_SPEC_VERSION = 1;
+    public static final String VK_NV_PARTITIONED_ACCELERATION_STRUCTURE_EXTENSION_NAME = "VK_NV_partitioned_acceleration_structure";
+    public static final int VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV = (~0);
     public static final int VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_INSTANCE_NV = 0;
     public static final int VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_UPDATE_INSTANCE_NV = 1;
     public static final int VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_PARTITION_TRANSLATION_NV = 2;
@@ -16,8 +19,6 @@ public final class VKNVPartitionedAccelerationStructure {
     public static final int VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_FORCE_OPAQUE_BIT_NV = 0x00000004;
     public static final int VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_FORCE_NO_OPAQUE_BIT_NV = 0x00000008;
     public static final int VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_ENABLE_EXPLICIT_BOUNDING_BOX_NV = 0x00000010;
-    public static final int VK_NV_PARTITIONED_ACCELERATION_STRUCTURE_SPEC_VERSION = 1;
-    public static final String VK_NV_PARTITIONED_ACCELERATION_STRUCTURE_EXTENSION_NAME = "VK_NV_partitioned_acceleration_structure";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_FEATURES_NV = 1000570000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_PROPERTIES_NV = 1000570001;
     public static final int VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV = 1000570002;
@@ -25,18 +26,16 @@ public final class VKNVPartitionedAccelerationStructure {
     public static final int VK_STRUCTURE_TYPE_BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV = 1000570004;
     public static final int VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_FLAGS_NV = 1000570005;
     public static final int VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV = 1000570000;
-    public static final int VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV = (~0);
+    private VKNVPartitionedAccelerationStructure() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetPartitionedAccelerationStructuresBuildSizesNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdBuildPartitionedAccelerationStructuresNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKNVPartitionedAccelerationStructure() {}
-
     /// Invokes `vkGetPartitionedAccelerationStructuresBuildSizesNV`.
     /// ```
-    /// void vkGetPartitionedAccelerationStructuresBuildSizesNV((struct VkDevice*) VkDevice device, const VkPartitionedAccelerationStructureInstancesInputNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
+    /// void vkGetPartitionedAccelerationStructuresBuildSizesNV(VkDevice device, const VkPartitionedAccelerationStructureInstancesInputNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
     /// ```
     public static void vkGetPartitionedAccelerationStructuresBuildSizesNV(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pSizeInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPartitionedAccelerationStructuresBuildSizesNV");
@@ -47,7 +46,7 @@ public final class VKNVPartitionedAccelerationStructure {
 
     /// Invokes `vkCmdBuildPartitionedAccelerationStructuresNV`.
     /// ```
-    /// void vkCmdBuildPartitionedAccelerationStructuresNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkBuildPartitionedAccelerationStructureInfoNV* pBuildInfo);
+    /// void vkCmdBuildPartitionedAccelerationStructuresNV(VkCommandBuffer commandBuffer, const VkBuildPartitionedAccelerationStructureInfoNV* pBuildInfo);
     /// ```
     public static void vkCmdBuildPartitionedAccelerationStructuresNV(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pBuildInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildPartitionedAccelerationStructuresNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBuildPartitionedAccelerationStructuresNV");

@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkColorBlendAdvancedEXT {
-///     (int) VkBlendOp advancedBlendOp;
-///     (uint32_t) VkBool32 srcPremultiplied;
-///     (uint32_t) VkBool32 dstPremultiplied;
-///     (int) VkBlendOverlapEXT blendOverlap;
-///     (uint32_t) VkBool32 clampResults;
-/// };
+///     VkBlendOp advancedBlendOp;
+///     VkBool32 srcPremultiplied;
+///     VkBool32 dstPremultiplied;
+///     VkBlendOverlapEXT blendOverlap;
+///     VkBool32 clampResults;
+/// }
 /// ```
 public final class VkColorBlendAdvancedEXT extends GroupType {
-    /// The struct layout of `VkColorBlendAdvancedEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("advancedBlendOp"),
         ValueLayout.JAVA_INT.withName("srcPremultiplied"),
@@ -29,223 +27,71 @@ public final class VkColorBlendAdvancedEXT extends GroupType {
         ValueLayout.JAVA_INT.withName("blendOverlap"),
         ValueLayout.JAVA_INT.withName("clampResults")
     );
-    /// The byte offset of `advancedBlendOp`.
     public static final long OFFSET_advancedBlendOp = LAYOUT.byteOffset(PathElement.groupElement("advancedBlendOp"));
-    /// The memory layout of `advancedBlendOp`.
-    public static final MemoryLayout LAYOUT_advancedBlendOp = LAYOUT.select(PathElement.groupElement("advancedBlendOp"));
-    /// The [VarHandle] of `advancedBlendOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_advancedBlendOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendOp"));
-    /// The byte offset of `srcPremultiplied`.
     public static final long OFFSET_srcPremultiplied = LAYOUT.byteOffset(PathElement.groupElement("srcPremultiplied"));
-    /// The memory layout of `srcPremultiplied`.
-    public static final MemoryLayout LAYOUT_srcPremultiplied = LAYOUT.select(PathElement.groupElement("srcPremultiplied"));
-    /// The [VarHandle] of `srcPremultiplied` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcPremultiplied = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcPremultiplied"));
-    /// The byte offset of `dstPremultiplied`.
     public static final long OFFSET_dstPremultiplied = LAYOUT.byteOffset(PathElement.groupElement("dstPremultiplied"));
-    /// The memory layout of `dstPremultiplied`.
-    public static final MemoryLayout LAYOUT_dstPremultiplied = LAYOUT.select(PathElement.groupElement("dstPremultiplied"));
-    /// The [VarHandle] of `dstPremultiplied` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstPremultiplied = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPremultiplied"));
-    /// The byte offset of `blendOverlap`.
     public static final long OFFSET_blendOverlap = LAYOUT.byteOffset(PathElement.groupElement("blendOverlap"));
-    /// The memory layout of `blendOverlap`.
-    public static final MemoryLayout LAYOUT_blendOverlap = LAYOUT.select(PathElement.groupElement("blendOverlap"));
-    /// The [VarHandle] of `blendOverlap` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_blendOverlap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blendOverlap"));
-    /// The byte offset of `clampResults`.
     public static final long OFFSET_clampResults = LAYOUT.byteOffset(PathElement.groupElement("clampResults"));
-    /// The memory layout of `clampResults`.
+    public static final MemoryLayout LAYOUT_advancedBlendOp = LAYOUT.select(PathElement.groupElement("advancedBlendOp"));
+    public static final MemoryLayout LAYOUT_srcPremultiplied = LAYOUT.select(PathElement.groupElement("srcPremultiplied"));
+    public static final MemoryLayout LAYOUT_dstPremultiplied = LAYOUT.select(PathElement.groupElement("dstPremultiplied"));
+    public static final MemoryLayout LAYOUT_blendOverlap = LAYOUT.select(PathElement.groupElement("blendOverlap"));
     public static final MemoryLayout LAYOUT_clampResults = LAYOUT.select(PathElement.groupElement("clampResults"));
-    /// The [VarHandle] of `clampResults` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_advancedBlendOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendOp"));
+    public static final VarHandle VH_srcPremultiplied = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcPremultiplied"));
+    public static final VarHandle VH_dstPremultiplied = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPremultiplied"));
+    public static final VarHandle VH_blendOverlap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blendOverlap"));
     public static final VarHandle VH_clampResults = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clampResults"));
 
-    /// Creates `VkColorBlendAdvancedEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkColorBlendAdvancedEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkColorBlendAdvancedEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkColorBlendAdvancedEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkColorBlendAdvancedEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkColorBlendAdvancedEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkColorBlendAdvancedEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkColorBlendAdvancedEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkColorBlendAdvancedEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkColorBlendAdvancedEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkColorBlendAdvancedEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkColorBlendAdvancedEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkColorBlendAdvancedEXT`
     public static VkColorBlendAdvancedEXT alloc(SegmentAllocator allocator) { return new VkColorBlendAdvancedEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkColorBlendAdvancedEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkColorBlendAdvancedEXT`
     public static VkColorBlendAdvancedEXT alloc(SegmentAllocator allocator, long count) { return new VkColorBlendAdvancedEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkColorBlendAdvancedEXT copyFrom(VkColorBlendAdvancedEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkColorBlendAdvancedEXT reinterpret(long count) { return new VkColorBlendAdvancedEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `advancedBlendOp` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int advancedBlendOp(MemorySegment segment, long index) { return (int) VH_advancedBlendOp.get(segment, 0L, index); }
-    /// {@return `advancedBlendOp`}
-    public int advancedBlendOp() { return advancedBlendOp(this.segment(), 0L); }
-    /// Sets `advancedBlendOp` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void advancedBlendOp(MemorySegment segment, long index, int value) { VH_advancedBlendOp.set(segment, 0L, index, value); }
-    /// Sets `advancedBlendOp` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkColorBlendAdvancedEXT advancedBlendOp(int value) { advancedBlendOp(this.segment(), 0L, value); return this; }
-
-    /// {@return `srcPremultiplied` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int srcPremultiplied(MemorySegment segment, long index) { return (int) VH_srcPremultiplied.get(segment, 0L, index); }
-    /// {@return `srcPremultiplied`}
-    public int srcPremultiplied() { return srcPremultiplied(this.segment(), 0L); }
-    /// Sets `srcPremultiplied` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcPremultiplied(MemorySegment segment, long index, int value) { VH_srcPremultiplied.set(segment, 0L, index, value); }
-    /// Sets `srcPremultiplied` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkColorBlendAdvancedEXT srcPremultiplied(int value) { srcPremultiplied(this.segment(), 0L, value); return this; }
-
-    /// {@return `dstPremultiplied` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int dstPremultiplied(MemorySegment segment, long index) { return (int) VH_dstPremultiplied.get(segment, 0L, index); }
-    /// {@return `dstPremultiplied`}
-    public int dstPremultiplied() { return dstPremultiplied(this.segment(), 0L); }
-    /// Sets `dstPremultiplied` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstPremultiplied(MemorySegment segment, long index, int value) { VH_dstPremultiplied.set(segment, 0L, index, value); }
-    /// Sets `dstPremultiplied` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkColorBlendAdvancedEXT dstPremultiplied(int value) { dstPremultiplied(this.segment(), 0L, value); return this; }
-
-    /// {@return `blendOverlap` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int blendOverlap(MemorySegment segment, long index) { return (int) VH_blendOverlap.get(segment, 0L, index); }
-    /// {@return `blendOverlap`}
-    public int blendOverlap() { return blendOverlap(this.segment(), 0L); }
-    /// Sets `blendOverlap` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void blendOverlap(MemorySegment segment, long index, int value) { VH_blendOverlap.set(segment, 0L, index, value); }
-    /// Sets `blendOverlap` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkColorBlendAdvancedEXT blendOverlap(int value) { blendOverlap(this.segment(), 0L, value); return this; }
-
-    /// {@return `clampResults` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int clampResults(MemorySegment segment, long index) { return (int) VH_clampResults.get(segment, 0L, index); }
-    /// {@return `clampResults`}
-    public int clampResults() { return clampResults(this.segment(), 0L); }
-    /// Sets `clampResults` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void clampResults(MemorySegment segment, long index, int value) { VH_clampResults.set(segment, 0L, index, value); }
-    /// Sets `clampResults` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkColorBlendAdvancedEXT clampResults(int value) { clampResults(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkColorBlendAdvancedEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkColorBlendAdvancedEXT`
     public VkColorBlendAdvancedEXT asSlice(long index) { return new VkColorBlendAdvancedEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkColorBlendAdvancedEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkColorBlendAdvancedEXT`
     public VkColorBlendAdvancedEXT asSlice(long index, long count) { return new VkColorBlendAdvancedEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkColorBlendAdvancedEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkColorBlendAdvancedEXT at(long index, Consumer<VkColorBlendAdvancedEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `advancedBlendOp` at the given index}
-    /// @param index the index of the struct buffer
-    public int advancedBlendOpAt(long index) { return advancedBlendOp(this.segment(), index); }
-    /// Sets `advancedBlendOp` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkColorBlendAdvancedEXT advancedBlendOpAt(long index, int value) { advancedBlendOp(this.segment(), index, value); return this; }
-
-    /// {@return `srcPremultiplied` at the given index}
-    /// @param index the index of the struct buffer
-    public int srcPremultipliedAt(long index) { return srcPremultiplied(this.segment(), index); }
-    /// Sets `srcPremultiplied` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkColorBlendAdvancedEXT srcPremultipliedAt(long index, int value) { srcPremultiplied(this.segment(), index, value); return this; }
-
-    /// {@return `dstPremultiplied` at the given index}
-    /// @param index the index of the struct buffer
-    public int dstPremultipliedAt(long index) { return dstPremultiplied(this.segment(), index); }
-    /// Sets `dstPremultiplied` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkColorBlendAdvancedEXT dstPremultipliedAt(long index, int value) { dstPremultiplied(this.segment(), index, value); return this; }
-
-    /// {@return `blendOverlap` at the given index}
-    /// @param index the index of the struct buffer
-    public int blendOverlapAt(long index) { return blendOverlap(this.segment(), index); }
-    /// Sets `blendOverlap` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkColorBlendAdvancedEXT blendOverlapAt(long index, int value) { blendOverlap(this.segment(), index, value); return this; }
-
-    /// {@return `clampResults` at the given index}
-    /// @param index the index of the struct buffer
-    public int clampResultsAt(long index) { return clampResults(this.segment(), index); }
-    /// Sets `clampResults` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkColorBlendAdvancedEXT clampResultsAt(long index, int value) { clampResults(this.segment(), index, value); return this; }
-
+    public int advancedBlendOpAt(long index) { return (int) VH_advancedBlendOp.get(this.segment(), 0L, index); }
+    public int srcPremultipliedAt(long index) { return (int) VH_srcPremultiplied.get(this.segment(), 0L, index); }
+    public int dstPremultipliedAt(long index) { return (int) VH_dstPremultiplied.get(this.segment(), 0L, index); }
+    public int blendOverlapAt(long index) { return (int) VH_blendOverlap.get(this.segment(), 0L, index); }
+    public int clampResultsAt(long index) { return (int) VH_clampResults.get(this.segment(), 0L, index); }
+    public int advancedBlendOp() { return (int) VH_advancedBlendOp.get(this.segment(), 0L, 0L); }
+    public int srcPremultiplied() { return (int) VH_srcPremultiplied.get(this.segment(), 0L, 0L); }
+    public int dstPremultiplied() { return (int) VH_dstPremultiplied.get(this.segment(), 0L, 0L); }
+    public int blendOverlap() { return (int) VH_blendOverlap.get(this.segment(), 0L, 0L); }
+    public int clampResults() { return (int) VH_clampResults.get(this.segment(), 0L, 0L); }
+    public VkColorBlendAdvancedEXT advancedBlendOpAt(long index, int value) { VH_advancedBlendOp.set(this.segment(), 0L, index, value); return this; }
+    public VkColorBlendAdvancedEXT srcPremultipliedAt(long index, int value) { VH_srcPremultiplied.set(this.segment(), 0L, index, value); return this; }
+    public VkColorBlendAdvancedEXT dstPremultipliedAt(long index, int value) { VH_dstPremultiplied.set(this.segment(), 0L, index, value); return this; }
+    public VkColorBlendAdvancedEXT blendOverlapAt(long index, int value) { VH_blendOverlap.set(this.segment(), 0L, index, value); return this; }
+    public VkColorBlendAdvancedEXT clampResultsAt(long index, int value) { VH_clampResults.set(this.segment(), 0L, index, value); return this; }
+    public VkColorBlendAdvancedEXT advancedBlendOp(int value) { VH_advancedBlendOp.set(this.segment(), 0L, 0L, value); return this; }
+    public VkColorBlendAdvancedEXT srcPremultiplied(int value) { VH_srcPremultiplied.set(this.segment(), 0L, 0L, value); return this; }
+    public VkColorBlendAdvancedEXT dstPremultiplied(int value) { VH_dstPremultiplied.set(this.segment(), 0L, 0L, value); return this; }
+    public VkColorBlendAdvancedEXT blendOverlap(int value) { VH_blendOverlap.set(this.segment(), 0L, 0L, value); return this; }
+    public VkColorBlendAdvancedEXT clampResults(int value) { VH_clampResults.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _advancedBlendOpAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_advancedBlendOp, index), LAYOUT_advancedBlendOp); }
+    public MemorySegment _advancedBlendOp() { return _advancedBlendOpAt(0L); }
+    public VkColorBlendAdvancedEXT _advancedBlendOpAt(long index, MemorySegment src) { _advancedBlendOpAt(index).copyFrom(src); return this; }
+    public VkColorBlendAdvancedEXT _advancedBlendOp(MemorySegment src) { return _advancedBlendOpAt(0L, src); }
+    public MemorySegment _srcPremultipliedAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcPremultiplied, index), LAYOUT_srcPremultiplied); }
+    public MemorySegment _srcPremultiplied() { return _srcPremultipliedAt(0L); }
+    public VkColorBlendAdvancedEXT _srcPremultipliedAt(long index, MemorySegment src) { _srcPremultipliedAt(index).copyFrom(src); return this; }
+    public VkColorBlendAdvancedEXT _srcPremultiplied(MemorySegment src) { return _srcPremultipliedAt(0L, src); }
+    public MemorySegment _dstPremultipliedAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstPremultiplied, index), LAYOUT_dstPremultiplied); }
+    public MemorySegment _dstPremultiplied() { return _dstPremultipliedAt(0L); }
+    public VkColorBlendAdvancedEXT _dstPremultipliedAt(long index, MemorySegment src) { _dstPremultipliedAt(index).copyFrom(src); return this; }
+    public VkColorBlendAdvancedEXT _dstPremultiplied(MemorySegment src) { return _dstPremultipliedAt(0L, src); }
+    public MemorySegment _blendOverlapAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_blendOverlap, index), LAYOUT_blendOverlap); }
+    public MemorySegment _blendOverlap() { return _blendOverlapAt(0L); }
+    public VkColorBlendAdvancedEXT _blendOverlapAt(long index, MemorySegment src) { _blendOverlapAt(index).copyFrom(src); return this; }
+    public VkColorBlendAdvancedEXT _blendOverlap(MemorySegment src) { return _blendOverlapAt(0L, src); }
+    public MemorySegment _clampResultsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_clampResults, index), LAYOUT_clampResults); }
+    public MemorySegment _clampResults() { return _clampResultsAt(0L); }
+    public VkColorBlendAdvancedEXT _clampResultsAt(long index, MemorySegment src) { _clampResultsAt(index).copyFrom(src); return this; }
+    public VkColorBlendAdvancedEXT _clampResults(MemorySegment src) { return _clampResultsAt(0L, src); }
 }

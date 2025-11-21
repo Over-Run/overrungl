@@ -13,16 +13,15 @@ public final class VKEXTColorWriteEnable {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT = 1000381000;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT = 1000381001;
     public static final int VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT = 1000381000;
+    private VKEXTColorWriteEnable() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetColorWriteEnableEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKEXTColorWriteEnable() {}
-
     /// Invokes `vkCmdSetColorWriteEnableEXT`.
     /// ```
-    /// void vkCmdSetColorWriteEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t attachmentCount, const VkBool32* pColorWriteEnables);
+    /// void vkCmdSetColorWriteEnableEXT(VkCommandBuffer commandBuffer, uint32_t attachmentCount, const VkBool32* pColorWriteEnables);
     /// ```
     public static void vkCmdSetColorWriteEnableEXT(@NonNull VkCommandBuffer commandBuffer, int attachmentCount, @NonNull MemorySegment pColorWriteEnables) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorWriteEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetColorWriteEnableEXT");

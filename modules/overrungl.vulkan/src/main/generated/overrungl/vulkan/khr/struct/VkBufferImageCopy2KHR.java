@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,18 +12,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBufferImageCopy2KHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (uint64_t) VkDeviceSize bufferOffset;
+///     VkDeviceSize bufferOffset;
 ///     uint32_t bufferRowLength;
 ///     uint32_t bufferImageHeight;
-///     (struct VkImageSubresourceLayers) VkImageSubresourceLayers imageSubresource;
-///     (struct VkOffset3D) VkOffset3D imageOffset;
-///     (struct VkExtent3D) VkExtent3D imageExtent;
-/// };
+///     VkImageSubresourceLayers imageSubresource;
+///     VkOffset3D imageOffset;
+///     VkExtent3D imageExtent;
+/// }
 /// ```
 public final class VkBufferImageCopy2KHR extends GroupType {
-    /// The struct layout of `VkBufferImageCopy2KHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -35,337 +33,145 @@ public final class VkBufferImageCopy2KHR extends GroupType {
         overrungl.vulkan.struct.VkOffset3D.LAYOUT.withName("imageOffset"),
         overrungl.vulkan.struct.VkExtent3D.LAYOUT.withName("imageExtent")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `bufferOffset`.
     public static final long OFFSET_bufferOffset = LAYOUT.byteOffset(PathElement.groupElement("bufferOffset"));
-    /// The memory layout of `bufferOffset`.
-    public static final MemoryLayout LAYOUT_bufferOffset = LAYOUT.select(PathElement.groupElement("bufferOffset"));
-    /// The [VarHandle] of `bufferOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferOffset"));
-    /// The byte offset of `bufferRowLength`.
     public static final long OFFSET_bufferRowLength = LAYOUT.byteOffset(PathElement.groupElement("bufferRowLength"));
-    /// The memory layout of `bufferRowLength`.
-    public static final MemoryLayout LAYOUT_bufferRowLength = LAYOUT.select(PathElement.groupElement("bufferRowLength"));
-    /// The [VarHandle] of `bufferRowLength` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferRowLength = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferRowLength"));
-    /// The byte offset of `bufferImageHeight`.
     public static final long OFFSET_bufferImageHeight = LAYOUT.byteOffset(PathElement.groupElement("bufferImageHeight"));
-    /// The memory layout of `bufferImageHeight`.
-    public static final MemoryLayout LAYOUT_bufferImageHeight = LAYOUT.select(PathElement.groupElement("bufferImageHeight"));
-    /// The [VarHandle] of `bufferImageHeight` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferImageHeight = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferImageHeight"));
-    /// The byte offset of `imageSubresource`.
     public static final long OFFSET_imageSubresource = LAYOUT.byteOffset(PathElement.groupElement("imageSubresource"));
-    /// The memory layout of `imageSubresource`.
-    public static final MemoryLayout LAYOUT_imageSubresource = LAYOUT.select(PathElement.groupElement("imageSubresource"));
-    /// The byte offset of `imageOffset`.
     public static final long OFFSET_imageOffset = LAYOUT.byteOffset(PathElement.groupElement("imageOffset"));
-    /// The memory layout of `imageOffset`.
-    public static final MemoryLayout LAYOUT_imageOffset = LAYOUT.select(PathElement.groupElement("imageOffset"));
-    /// The byte offset of `imageExtent`.
     public static final long OFFSET_imageExtent = LAYOUT.byteOffset(PathElement.groupElement("imageExtent"));
-    /// The memory layout of `imageExtent`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_bufferOffset = LAYOUT.select(PathElement.groupElement("bufferOffset"));
+    public static final MemoryLayout LAYOUT_bufferRowLength = LAYOUT.select(PathElement.groupElement("bufferRowLength"));
+    public static final MemoryLayout LAYOUT_bufferImageHeight = LAYOUT.select(PathElement.groupElement("bufferImageHeight"));
+    public static final MemoryLayout LAYOUT_imageSubresource = LAYOUT.select(PathElement.groupElement("imageSubresource"));
+    public static final MemoryLayout LAYOUT_imageOffset = LAYOUT.select(PathElement.groupElement("imageOffset"));
     public static final MemoryLayout LAYOUT_imageExtent = LAYOUT.select(PathElement.groupElement("imageExtent"));
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_bufferOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferOffset"));
+    public static final VarHandle VH_bufferRowLength = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferRowLength"));
+    public static final VarHandle VH_bufferImageHeight = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferImageHeight"));
+    public static final VarHandle VH_imageSubresource$aspectMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageSubresource"), PathElement.groupElement("aspectMask"));
+    public static final VarHandle VH_imageSubresource$mipLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageSubresource"), PathElement.groupElement("mipLevel"));
+    public static final VarHandle VH_imageSubresource$baseArrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageSubresource"), PathElement.groupElement("baseArrayLayer"));
+    public static final VarHandle VH_imageSubresource$layerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageSubresource"), PathElement.groupElement("layerCount"));
+    public static final VarHandle VH_imageOffset$x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageOffset"), PathElement.groupElement("x"));
+    public static final VarHandle VH_imageOffset$y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageOffset"), PathElement.groupElement("y"));
+    public static final VarHandle VH_imageOffset$z = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageOffset"), PathElement.groupElement("z"));
+    public static final VarHandle VH_imageExtent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageExtent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_imageExtent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageExtent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_imageExtent$depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageExtent"), PathElement.groupElement("depth"));
 
-    /// Creates `VkBufferImageCopy2KHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkBufferImageCopy2KHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkBufferImageCopy2KHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkBufferImageCopy2KHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferImageCopy2KHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkBufferImageCopy2KHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkBufferImageCopy2KHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferImageCopy2KHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkBufferImageCopy2KHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkBufferImageCopy2KHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferImageCopy2KHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkBufferImageCopy2KHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkBufferImageCopy2KHR`
     public static VkBufferImageCopy2KHR alloc(SegmentAllocator allocator) { return new VkBufferImageCopy2KHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkBufferImageCopy2KHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkBufferImageCopy2KHR`
     public static VkBufferImageCopy2KHR alloc(SegmentAllocator allocator, long count) { return new VkBufferImageCopy2KHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkBufferImageCopy2KHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK13.VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2); }
+    public static VkBufferImageCopy2KHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK13.VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2);
+        return s;
+    }
     public VkBufferImageCopy2KHR copyFrom(VkBufferImageCopy2KHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkBufferImageCopy2KHR reinterpret(long count) { return new VkBufferImageCopy2KHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `bufferOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long bufferOffset(MemorySegment segment, long index) { return (long) VH_bufferOffset.get(segment, 0L, index); }
-    /// {@return `bufferOffset`}
-    public long bufferOffset() { return bufferOffset(this.segment(), 0L); }
-    /// Sets `bufferOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void bufferOffset(MemorySegment segment, long index, long value) { VH_bufferOffset.set(segment, 0L, index, value); }
-    /// Sets `bufferOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR bufferOffset(long value) { bufferOffset(this.segment(), 0L, value); return this; }
-
-    /// {@return `bufferRowLength` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int bufferRowLength(MemorySegment segment, long index) { return (int) VH_bufferRowLength.get(segment, 0L, index); }
-    /// {@return `bufferRowLength`}
-    public int bufferRowLength() { return bufferRowLength(this.segment(), 0L); }
-    /// Sets `bufferRowLength` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void bufferRowLength(MemorySegment segment, long index, int value) { VH_bufferRowLength.set(segment, 0L, index, value); }
-    /// Sets `bufferRowLength` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR bufferRowLength(int value) { bufferRowLength(this.segment(), 0L, value); return this; }
-
-    /// {@return `bufferImageHeight` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int bufferImageHeight(MemorySegment segment, long index) { return (int) VH_bufferImageHeight.get(segment, 0L, index); }
-    /// {@return `bufferImageHeight`}
-    public int bufferImageHeight() { return bufferImageHeight(this.segment(), 0L); }
-    /// Sets `bufferImageHeight` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void bufferImageHeight(MemorySegment segment, long index, int value) { VH_bufferImageHeight.set(segment, 0L, index, value); }
-    /// Sets `bufferImageHeight` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR bufferImageHeight(int value) { bufferImageHeight(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageSubresource` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment imageSubresource(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageSubresource, index), LAYOUT_imageSubresource); }
-    /// {@return `imageSubresource`}
-    public MemorySegment imageSubresource() { return imageSubresource(this.segment(), 0L); }
-    /// Sets `imageSubresource` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageSubresource(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageSubresource, index), LAYOUT_imageSubresource.byteSize()); }
-    /// Sets `imageSubresource` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageSubresource(MemorySegment value) { imageSubresource(this.segment(), 0L, value); return this; }
-    /// Accepts `imageSubresource` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageSubresource(Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(imageSubresource())); return this; }
-
-    /// {@return `imageOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment imageOffset(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageOffset, index), LAYOUT_imageOffset); }
-    /// {@return `imageOffset`}
-    public MemorySegment imageOffset() { return imageOffset(this.segment(), 0L); }
-    /// Sets `imageOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageOffset(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageOffset, index), LAYOUT_imageOffset.byteSize()); }
-    /// Sets `imageOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageOffset(MemorySegment value) { imageOffset(this.segment(), 0L, value); return this; }
-    /// Accepts `imageOffset` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageOffset(Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(imageOffset())); return this; }
-
-    /// {@return `imageExtent` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment imageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageExtent, index), LAYOUT_imageExtent); }
-    /// {@return `imageExtent`}
-    public MemorySegment imageExtent() { return imageExtent(this.segment(), 0L); }
-    /// Sets `imageExtent` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageExtent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageExtent, index), LAYOUT_imageExtent.byteSize()); }
-    /// Sets `imageExtent` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageExtent(MemorySegment value) { imageExtent(this.segment(), 0L, value); return this; }
-    /// Accepts `imageExtent` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageExtent(Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(imageExtent())); return this; }
-
-    /// Creates a slice of `VkBufferImageCopy2KHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkBufferImageCopy2KHR`
     public VkBufferImageCopy2KHR asSlice(long index) { return new VkBufferImageCopy2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkBufferImageCopy2KHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkBufferImageCopy2KHR`
     public VkBufferImageCopy2KHR asSlice(long index, long count) { return new VkBufferImageCopy2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkBufferImageCopy2KHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkBufferImageCopy2KHR at(long index, Consumer<VkBufferImageCopy2KHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `bufferOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public long bufferOffsetAt(long index) { return bufferOffset(this.segment(), index); }
-    /// Sets `bufferOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR bufferOffsetAt(long index, long value) { bufferOffset(this.segment(), index, value); return this; }
-
-    /// {@return `bufferRowLength` at the given index}
-    /// @param index the index of the struct buffer
-    public int bufferRowLengthAt(long index) { return bufferRowLength(this.segment(), index); }
-    /// Sets `bufferRowLength` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR bufferRowLengthAt(long index, int value) { bufferRowLength(this.segment(), index, value); return this; }
-
-    /// {@return `bufferImageHeight` at the given index}
-    /// @param index the index of the struct buffer
-    public int bufferImageHeightAt(long index) { return bufferImageHeight(this.segment(), index); }
-    /// Sets `bufferImageHeight` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR bufferImageHeightAt(long index, int value) { bufferImageHeight(this.segment(), index, value); return this; }
-
-    /// {@return `imageSubresource` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment imageSubresourceAt(long index) { return imageSubresource(this.segment(), index); }
-    /// Sets `imageSubresource` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageSubresourceAt(long index, MemorySegment value) { imageSubresource(this.segment(), index, value); return this; }
-    /// Accepts `imageSubresource` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageSubresourceAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(imageSubresourceAt(index))); return this; }
-
-    /// {@return `imageOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment imageOffsetAt(long index) { return imageOffset(this.segment(), index); }
-    /// Sets `imageOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageOffsetAt(long index, MemorySegment value) { imageOffset(this.segment(), index, value); return this; }
-    /// Accepts `imageOffset` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageOffsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(imageOffsetAt(index))); return this; }
-
-    /// {@return `imageExtent` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment imageExtentAt(long index) { return imageExtent(this.segment(), index); }
-    /// Sets `imageExtent` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageExtentAt(long index, MemorySegment value) { imageExtent(this.segment(), index, value); return this; }
-    /// Accepts `imageExtent` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkBufferImageCopy2KHR imageExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(imageExtentAt(index))); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long bufferOffsetAt(long index) { return (long) VH_bufferOffset.get(this.segment(), 0L, index); }
+    public int bufferRowLengthAt(long index) { return (int) VH_bufferRowLength.get(this.segment(), 0L, index); }
+    public int bufferImageHeightAt(long index) { return (int) VH_bufferImageHeight.get(this.segment(), 0L, index); }
+    public int imageSubresource$aspectMaskAt(long index) { return (int) VH_imageSubresource$aspectMask.get(this.segment(), 0L, index); }
+    public int imageSubresource$mipLevelAt(long index) { return (int) VH_imageSubresource$mipLevel.get(this.segment(), 0L, index); }
+    public int imageSubresource$baseArrayLayerAt(long index) { return (int) VH_imageSubresource$baseArrayLayer.get(this.segment(), 0L, index); }
+    public int imageSubresource$layerCountAt(long index) { return (int) VH_imageSubresource$layerCount.get(this.segment(), 0L, index); }
+    public int imageOffset$xAt(long index) { return (int) VH_imageOffset$x.get(this.segment(), 0L, index); }
+    public int imageOffset$yAt(long index) { return (int) VH_imageOffset$y.get(this.segment(), 0L, index); }
+    public int imageOffset$zAt(long index) { return (int) VH_imageOffset$z.get(this.segment(), 0L, index); }
+    public int imageExtent$widthAt(long index) { return (int) VH_imageExtent$width.get(this.segment(), 0L, index); }
+    public int imageExtent$heightAt(long index) { return (int) VH_imageExtent$height.get(this.segment(), 0L, index); }
+    public int imageExtent$depthAt(long index) { return (int) VH_imageExtent$depth.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long bufferOffset() { return (long) VH_bufferOffset.get(this.segment(), 0L, 0L); }
+    public int bufferRowLength() { return (int) VH_bufferRowLength.get(this.segment(), 0L, 0L); }
+    public int bufferImageHeight() { return (int) VH_bufferImageHeight.get(this.segment(), 0L, 0L); }
+    public int imageSubresource$aspectMask() { return (int) VH_imageSubresource$aspectMask.get(this.segment(), 0L, 0L); }
+    public int imageSubresource$mipLevel() { return (int) VH_imageSubresource$mipLevel.get(this.segment(), 0L, 0L); }
+    public int imageSubresource$baseArrayLayer() { return (int) VH_imageSubresource$baseArrayLayer.get(this.segment(), 0L, 0L); }
+    public int imageSubresource$layerCount() { return (int) VH_imageSubresource$layerCount.get(this.segment(), 0L, 0L); }
+    public int imageOffset$x() { return (int) VH_imageOffset$x.get(this.segment(), 0L, 0L); }
+    public int imageOffset$y() { return (int) VH_imageOffset$y.get(this.segment(), 0L, 0L); }
+    public int imageOffset$z() { return (int) VH_imageOffset$z.get(this.segment(), 0L, 0L); }
+    public int imageExtent$width() { return (int) VH_imageExtent$width.get(this.segment(), 0L, 0L); }
+    public int imageExtent$height() { return (int) VH_imageExtent$height.get(this.segment(), 0L, 0L); }
+    public int imageExtent$depth() { return (int) VH_imageExtent$depth.get(this.segment(), 0L, 0L); }
+    public VkBufferImageCopy2KHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR bufferOffsetAt(long index, long value) { VH_bufferOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR bufferRowLengthAt(long index, int value) { VH_bufferRowLength.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR bufferImageHeightAt(long index, int value) { VH_bufferImageHeight.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR imageSubresource$aspectMaskAt(long index, int value) { VH_imageSubresource$aspectMask.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR imageSubresource$mipLevelAt(long index, int value) { VH_imageSubresource$mipLevel.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR imageSubresource$baseArrayLayerAt(long index, int value) { VH_imageSubresource$baseArrayLayer.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR imageSubresource$layerCountAt(long index, int value) { VH_imageSubresource$layerCount.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR imageOffset$xAt(long index, int value) { VH_imageOffset$x.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR imageOffset$yAt(long index, int value) { VH_imageOffset$y.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR imageOffset$zAt(long index, int value) { VH_imageOffset$z.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR imageExtent$widthAt(long index, int value) { VH_imageExtent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR imageExtent$heightAt(long index, int value) { VH_imageExtent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR imageExtent$depthAt(long index, int value) { VH_imageExtent$depth.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferImageCopy2KHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR bufferOffset(long value) { VH_bufferOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR bufferRowLength(int value) { VH_bufferRowLength.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR bufferImageHeight(int value) { VH_bufferImageHeight.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR imageSubresource$aspectMask(int value) { VH_imageSubresource$aspectMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR imageSubresource$mipLevel(int value) { VH_imageSubresource$mipLevel.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR imageSubresource$baseArrayLayer(int value) { VH_imageSubresource$baseArrayLayer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR imageSubresource$layerCount(int value) { VH_imageSubresource$layerCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR imageOffset$x(int value) { VH_imageOffset$x.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR imageOffset$y(int value) { VH_imageOffset$y.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR imageOffset$z(int value) { VH_imageOffset$z.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR imageExtent$width(int value) { VH_imageExtent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR imageExtent$height(int value) { VH_imageExtent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferImageCopy2KHR imageExtent$depth(int value) { VH_imageExtent$depth.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkBufferImageCopy2KHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkBufferImageCopy2KHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkBufferImageCopy2KHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkBufferImageCopy2KHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _bufferOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_bufferOffset, index), LAYOUT_bufferOffset); }
+    public MemorySegment _bufferOffset() { return _bufferOffsetAt(0L); }
+    public VkBufferImageCopy2KHR _bufferOffsetAt(long index, MemorySegment src) { _bufferOffsetAt(index).copyFrom(src); return this; }
+    public VkBufferImageCopy2KHR _bufferOffset(MemorySegment src) { return _bufferOffsetAt(0L, src); }
+    public MemorySegment _bufferRowLengthAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_bufferRowLength, index), LAYOUT_bufferRowLength); }
+    public MemorySegment _bufferRowLength() { return _bufferRowLengthAt(0L); }
+    public VkBufferImageCopy2KHR _bufferRowLengthAt(long index, MemorySegment src) { _bufferRowLengthAt(index).copyFrom(src); return this; }
+    public VkBufferImageCopy2KHR _bufferRowLength(MemorySegment src) { return _bufferRowLengthAt(0L, src); }
+    public MemorySegment _bufferImageHeightAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_bufferImageHeight, index), LAYOUT_bufferImageHeight); }
+    public MemorySegment _bufferImageHeight() { return _bufferImageHeightAt(0L); }
+    public VkBufferImageCopy2KHR _bufferImageHeightAt(long index, MemorySegment src) { _bufferImageHeightAt(index).copyFrom(src); return this; }
+    public VkBufferImageCopy2KHR _bufferImageHeight(MemorySegment src) { return _bufferImageHeightAt(0L, src); }
+    public MemorySegment _imageSubresourceAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageSubresource, index), LAYOUT_imageSubresource); }
+    public MemorySegment _imageSubresource() { return _imageSubresourceAt(0L); }
+    public VkBufferImageCopy2KHR _imageSubresourceAt(long index, MemorySegment src) { _imageSubresourceAt(index).copyFrom(src); return this; }
+    public VkBufferImageCopy2KHR _imageSubresource(MemorySegment src) { return _imageSubresourceAt(0L, src); }
+    public MemorySegment _imageOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageOffset, index), LAYOUT_imageOffset); }
+    public MemorySegment _imageOffset() { return _imageOffsetAt(0L); }
+    public VkBufferImageCopy2KHR _imageOffsetAt(long index, MemorySegment src) { _imageOffsetAt(index).copyFrom(src); return this; }
+    public VkBufferImageCopy2KHR _imageOffset(MemorySegment src) { return _imageOffsetAt(0L, src); }
+    public MemorySegment _imageExtentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageExtent, index), LAYOUT_imageExtent); }
+    public MemorySegment _imageExtent() { return _imageExtentAt(0L); }
+    public VkBufferImageCopy2KHR _imageExtentAt(long index, MemorySegment src) { _imageExtentAt(index).copyFrom(src); return this; }
+    public VkBufferImageCopy2KHR _imageExtent(MemorySegment src) { return _imageExtentAt(0L, src); }
 }

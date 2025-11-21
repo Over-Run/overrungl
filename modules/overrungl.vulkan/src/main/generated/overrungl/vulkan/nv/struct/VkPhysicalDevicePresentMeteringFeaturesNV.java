@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,173 +12,66 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePresentMeteringFeaturesNV {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 presentMetering;
-/// };
+///     VkBool32 presentMetering;
+/// }
 /// ```
 public final class VkPhysicalDevicePresentMeteringFeaturesNV extends GroupType {
-    /// The struct layout of `VkPhysicalDevicePresentMeteringFeaturesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("presentMetering")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `presentMetering`.
     public static final long OFFSET_presentMetering = LAYOUT.byteOffset(PathElement.groupElement("presentMetering"));
-    /// The memory layout of `presentMetering`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_presentMetering = LAYOUT.select(PathElement.groupElement("presentMetering"));
-    /// The [VarHandle] of `presentMetering` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     public static final VarHandle VH_presentMetering = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentMetering"));
 
-    /// Creates `VkPhysicalDevicePresentMeteringFeaturesNV` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDevicePresentMeteringFeaturesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDevicePresentMeteringFeaturesNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDevicePresentMeteringFeaturesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePresentMeteringFeaturesNV(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDevicePresentMeteringFeaturesNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDevicePresentMeteringFeaturesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePresentMeteringFeaturesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDevicePresentMeteringFeaturesNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDevicePresentMeteringFeaturesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePresentMeteringFeaturesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDevicePresentMeteringFeaturesNV` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDevicePresentMeteringFeaturesNV`
     public static VkPhysicalDevicePresentMeteringFeaturesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDevicePresentMeteringFeaturesNV(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDevicePresentMeteringFeaturesNV` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDevicePresentMeteringFeaturesNV`
     public static VkPhysicalDevicePresentMeteringFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePresentMeteringFeaturesNV(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDevicePresentMeteringFeaturesNV allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.nv.VKNVPresentMetering.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV); }
+    public static VkPhysicalDevicePresentMeteringFeaturesNV allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.nv.VKNVPresentMetering.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV);
+        return s;
+    }
     public VkPhysicalDevicePresentMeteringFeaturesNV copyFrom(VkPhysicalDevicePresentMeteringFeaturesNV src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDevicePresentMeteringFeaturesNV reinterpret(long count) { return new VkPhysicalDevicePresentMeteringFeaturesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentMeteringFeaturesNV sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentMeteringFeaturesNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `presentMetering` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int presentMetering(MemorySegment segment, long index) { return (int) VH_presentMetering.get(segment, 0L, index); }
-    /// {@return `presentMetering`}
-    public int presentMetering() { return presentMetering(this.segment(), 0L); }
-    /// Sets `presentMetering` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void presentMetering(MemorySegment segment, long index, int value) { VH_presentMetering.set(segment, 0L, index, value); }
-    /// Sets `presentMetering` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentMeteringFeaturesNV presentMetering(int value) { presentMetering(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDevicePresentMeteringFeaturesNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDevicePresentMeteringFeaturesNV`
     public VkPhysicalDevicePresentMeteringFeaturesNV asSlice(long index) { return new VkPhysicalDevicePresentMeteringFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDevicePresentMeteringFeaturesNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDevicePresentMeteringFeaturesNV`
     public VkPhysicalDevicePresentMeteringFeaturesNV asSlice(long index, long count) { return new VkPhysicalDevicePresentMeteringFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDevicePresentMeteringFeaturesNV` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDevicePresentMeteringFeaturesNV at(long index, Consumer<VkPhysicalDevicePresentMeteringFeaturesNV> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentMeteringFeaturesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentMeteringFeaturesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `presentMetering` at the given index}
-    /// @param index the index of the struct buffer
-    public int presentMeteringAt(long index) { return presentMetering(this.segment(), index); }
-    /// Sets `presentMetering` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentMeteringFeaturesNV presentMeteringAt(long index, int value) { presentMetering(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int presentMeteringAt(long index) { return (int) VH_presentMetering.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int presentMetering() { return (int) VH_presentMetering.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDevicePresentMeteringFeaturesNV sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePresentMeteringFeaturesNV pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePresentMeteringFeaturesNV presentMeteringAt(long index, int value) { VH_presentMetering.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePresentMeteringFeaturesNV sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDevicePresentMeteringFeaturesNV pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDevicePresentMeteringFeaturesNV presentMetering(int value) { VH_presentMetering.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDevicePresentMeteringFeaturesNV _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePresentMeteringFeaturesNV _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDevicePresentMeteringFeaturesNV _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePresentMeteringFeaturesNV _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _presentMeteringAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_presentMetering, index), LAYOUT_presentMetering); }
+    public MemorySegment _presentMetering() { return _presentMeteringAt(0L); }
+    public VkPhysicalDevicePresentMeteringFeaturesNV _presentMeteringAt(long index, MemorySegment src) { _presentMeteringAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePresentMeteringFeaturesNV _presentMetering(MemorySegment src) { return _presentMeteringAt(0L, src); }
 }

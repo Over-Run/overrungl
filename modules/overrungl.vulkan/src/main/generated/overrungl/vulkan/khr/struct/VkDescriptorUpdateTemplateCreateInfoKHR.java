@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,20 +12,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorUpdateTemplateCreateInfoKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkDescriptorUpdateTemplateCreateFlags flags;
+///     VkDescriptorUpdateTemplateCreateFlags flags;
 ///     uint32_t descriptorUpdateEntryCount;
 ///     const VkDescriptorUpdateTemplateEntry* pDescriptorUpdateEntries;
-///     (int) VkDescriptorUpdateTemplateType templateType;
-///     (uint64_t) VkDescriptorSetLayout descriptorSetLayout;
-///     (int) VkPipelineBindPoint pipelineBindPoint;
-///     (uint64_t) VkPipelineLayout pipelineLayout;
+///     VkDescriptorUpdateTemplateType templateType;
+///     VkDescriptorSetLayout descriptorSetLayout;
+///     VkPipelineBindPoint pipelineBindPoint;
+///     VkPipelineLayout pipelineLayout;
 ///     uint32_t set;
-/// };
+/// }
 /// ```
 public final class VkDescriptorUpdateTemplateCreateInfoKHR extends GroupType {
-    /// The struct layout of `VkDescriptorUpdateTemplateCreateInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -39,378 +37,132 @@ public final class VkDescriptorUpdateTemplateCreateInfoKHR extends GroupType {
         ValueLayout.JAVA_LONG.withName("pipelineLayout"),
         ValueLayout.JAVA_INT.withName("set")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `descriptorUpdateEntryCount`.
     public static final long OFFSET_descriptorUpdateEntryCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorUpdateEntryCount"));
-    /// The memory layout of `descriptorUpdateEntryCount`.
-    public static final MemoryLayout LAYOUT_descriptorUpdateEntryCount = LAYOUT.select(PathElement.groupElement("descriptorUpdateEntryCount"));
-    /// The [VarHandle] of `descriptorUpdateEntryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorUpdateEntryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorUpdateEntryCount"));
-    /// The byte offset of `pDescriptorUpdateEntries`.
     public static final long OFFSET_pDescriptorUpdateEntries = LAYOUT.byteOffset(PathElement.groupElement("pDescriptorUpdateEntries"));
-    /// The memory layout of `pDescriptorUpdateEntries`.
-    public static final MemoryLayout LAYOUT_pDescriptorUpdateEntries = LAYOUT.select(PathElement.groupElement("pDescriptorUpdateEntries"));
-    /// The [VarHandle] of `pDescriptorUpdateEntries` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDescriptorUpdateEntries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDescriptorUpdateEntries"));
-    /// The byte offset of `templateType`.
     public static final long OFFSET_templateType = LAYOUT.byteOffset(PathElement.groupElement("templateType"));
-    /// The memory layout of `templateType`.
-    public static final MemoryLayout LAYOUT_templateType = LAYOUT.select(PathElement.groupElement("templateType"));
-    /// The [VarHandle] of `templateType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_templateType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("templateType"));
-    /// The byte offset of `descriptorSetLayout`.
     public static final long OFFSET_descriptorSetLayout = LAYOUT.byteOffset(PathElement.groupElement("descriptorSetLayout"));
-    /// The memory layout of `descriptorSetLayout`.
-    public static final MemoryLayout LAYOUT_descriptorSetLayout = LAYOUT.select(PathElement.groupElement("descriptorSetLayout"));
-    /// The [VarHandle] of `descriptorSetLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorSetLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayout"));
-    /// The byte offset of `pipelineBindPoint`.
     public static final long OFFSET_pipelineBindPoint = LAYOUT.byteOffset(PathElement.groupElement("pipelineBindPoint"));
-    /// The memory layout of `pipelineBindPoint`.
-    public static final MemoryLayout LAYOUT_pipelineBindPoint = LAYOUT.select(PathElement.groupElement("pipelineBindPoint"));
-    /// The [VarHandle] of `pipelineBindPoint` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineBindPoint = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBindPoint"));
-    /// The byte offset of `pipelineLayout`.
     public static final long OFFSET_pipelineLayout = LAYOUT.byteOffset(PathElement.groupElement("pipelineLayout"));
-    /// The memory layout of `pipelineLayout`.
-    public static final MemoryLayout LAYOUT_pipelineLayout = LAYOUT.select(PathElement.groupElement("pipelineLayout"));
-    /// The [VarHandle] of `pipelineLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineLayout"));
-    /// The byte offset of `set`.
     public static final long OFFSET_set = LAYOUT.byteOffset(PathElement.groupElement("set"));
-    /// The memory layout of `set`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_descriptorUpdateEntryCount = LAYOUT.select(PathElement.groupElement("descriptorUpdateEntryCount"));
+    public static final MemoryLayout LAYOUT_pDescriptorUpdateEntries = LAYOUT.select(PathElement.groupElement("pDescriptorUpdateEntries"));
+    public static final MemoryLayout LAYOUT_templateType = LAYOUT.select(PathElement.groupElement("templateType"));
+    public static final MemoryLayout LAYOUT_descriptorSetLayout = LAYOUT.select(PathElement.groupElement("descriptorSetLayout"));
+    public static final MemoryLayout LAYOUT_pipelineBindPoint = LAYOUT.select(PathElement.groupElement("pipelineBindPoint"));
+    public static final MemoryLayout LAYOUT_pipelineLayout = LAYOUT.select(PathElement.groupElement("pipelineLayout"));
     public static final MemoryLayout LAYOUT_set = LAYOUT.select(PathElement.groupElement("set"));
-    /// The [VarHandle] of `set` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_descriptorUpdateEntryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorUpdateEntryCount"));
+    public static final VarHandle VH_pDescriptorUpdateEntries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDescriptorUpdateEntries"));
+    public static final VarHandle VH_templateType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("templateType"));
+    public static final VarHandle VH_descriptorSetLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayout"));
+    public static final VarHandle VH_pipelineBindPoint = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBindPoint"));
+    public static final VarHandle VH_pipelineLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineLayout"));
     public static final VarHandle VH_set = LAYOUT.arrayElementVarHandle(PathElement.groupElement("set"));
 
-    /// Creates `VkDescriptorUpdateTemplateCreateInfoKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkDescriptorUpdateTemplateCreateInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkDescriptorUpdateTemplateCreateInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDescriptorUpdateTemplateCreateInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorUpdateTemplateCreateInfoKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkDescriptorUpdateTemplateCreateInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDescriptorUpdateTemplateCreateInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorUpdateTemplateCreateInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkDescriptorUpdateTemplateCreateInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDescriptorUpdateTemplateCreateInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorUpdateTemplateCreateInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkDescriptorUpdateTemplateCreateInfoKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDescriptorUpdateTemplateCreateInfoKHR`
     public static VkDescriptorUpdateTemplateCreateInfoKHR alloc(SegmentAllocator allocator) { return new VkDescriptorUpdateTemplateCreateInfoKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkDescriptorUpdateTemplateCreateInfoKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkDescriptorUpdateTemplateCreateInfoKHR`
     public static VkDescriptorUpdateTemplateCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkDescriptorUpdateTemplateCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkDescriptorUpdateTemplateCreateInfoKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO); }
+    public static VkDescriptorUpdateTemplateCreateInfoKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO);
+        return s;
+    }
     public VkDescriptorUpdateTemplateCreateInfoKHR copyFrom(VkDescriptorUpdateTemplateCreateInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkDescriptorUpdateTemplateCreateInfoKHR reinterpret(long count) { return new VkDescriptorUpdateTemplateCreateInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `descriptorUpdateEntryCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int descriptorUpdateEntryCount(MemorySegment segment, long index) { return (int) VH_descriptorUpdateEntryCount.get(segment, 0L, index); }
-    /// {@return `descriptorUpdateEntryCount`}
-    public int descriptorUpdateEntryCount() { return descriptorUpdateEntryCount(this.segment(), 0L); }
-    /// Sets `descriptorUpdateEntryCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void descriptorUpdateEntryCount(MemorySegment segment, long index, int value) { VH_descriptorUpdateEntryCount.set(segment, 0L, index, value); }
-    /// Sets `descriptorUpdateEntryCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR descriptorUpdateEntryCount(int value) { descriptorUpdateEntryCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pDescriptorUpdateEntries` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pDescriptorUpdateEntries(MemorySegment segment, long index) { return (MemorySegment) VH_pDescriptorUpdateEntries.get(segment, 0L, index); }
-    /// {@return `pDescriptorUpdateEntries`}
-    public MemorySegment pDescriptorUpdateEntries() { return pDescriptorUpdateEntries(this.segment(), 0L); }
-    /// Sets `pDescriptorUpdateEntries` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pDescriptorUpdateEntries(MemorySegment segment, long index, MemorySegment value) { VH_pDescriptorUpdateEntries.set(segment, 0L, index, value); }
-    /// Sets `pDescriptorUpdateEntries` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR pDescriptorUpdateEntries(MemorySegment value) { pDescriptorUpdateEntries(this.segment(), 0L, value); return this; }
-
-    /// {@return `templateType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int templateType(MemorySegment segment, long index) { return (int) VH_templateType.get(segment, 0L, index); }
-    /// {@return `templateType`}
-    public int templateType() { return templateType(this.segment(), 0L); }
-    /// Sets `templateType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void templateType(MemorySegment segment, long index, int value) { VH_templateType.set(segment, 0L, index, value); }
-    /// Sets `templateType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR templateType(int value) { templateType(this.segment(), 0L, value); return this; }
-
-    /// {@return `descriptorSetLayout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long descriptorSetLayout(MemorySegment segment, long index) { return (long) VH_descriptorSetLayout.get(segment, 0L, index); }
-    /// {@return `descriptorSetLayout`}
-    public long descriptorSetLayout() { return descriptorSetLayout(this.segment(), 0L); }
-    /// Sets `descriptorSetLayout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void descriptorSetLayout(MemorySegment segment, long index, long value) { VH_descriptorSetLayout.set(segment, 0L, index, value); }
-    /// Sets `descriptorSetLayout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR descriptorSetLayout(long value) { descriptorSetLayout(this.segment(), 0L, value); return this; }
-
-    /// {@return `pipelineBindPoint` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int pipelineBindPoint(MemorySegment segment, long index) { return (int) VH_pipelineBindPoint.get(segment, 0L, index); }
-    /// {@return `pipelineBindPoint`}
-    public int pipelineBindPoint() { return pipelineBindPoint(this.segment(), 0L); }
-    /// Sets `pipelineBindPoint` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pipelineBindPoint(MemorySegment segment, long index, int value) { VH_pipelineBindPoint.set(segment, 0L, index, value); }
-    /// Sets `pipelineBindPoint` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR pipelineBindPoint(int value) { pipelineBindPoint(this.segment(), 0L, value); return this; }
-
-    /// {@return `pipelineLayout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long pipelineLayout(MemorySegment segment, long index) { return (long) VH_pipelineLayout.get(segment, 0L, index); }
-    /// {@return `pipelineLayout`}
-    public long pipelineLayout() { return pipelineLayout(this.segment(), 0L); }
-    /// Sets `pipelineLayout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pipelineLayout(MemorySegment segment, long index, long value) { VH_pipelineLayout.set(segment, 0L, index, value); }
-    /// Sets `pipelineLayout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR pipelineLayout(long value) { pipelineLayout(this.segment(), 0L, value); return this; }
-
-    /// {@return `set` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int set(MemorySegment segment, long index) { return (int) VH_set.get(segment, 0L, index); }
-    /// {@return `set`}
-    public int set() { return set(this.segment(), 0L); }
-    /// Sets `set` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void set(MemorySegment segment, long index, int value) { VH_set.set(segment, 0L, index, value); }
-    /// Sets `set` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR set(int value) { set(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkDescriptorUpdateTemplateCreateInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDescriptorUpdateTemplateCreateInfoKHR`
     public VkDescriptorUpdateTemplateCreateInfoKHR asSlice(long index) { return new VkDescriptorUpdateTemplateCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkDescriptorUpdateTemplateCreateInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDescriptorUpdateTemplateCreateInfoKHR`
     public VkDescriptorUpdateTemplateCreateInfoKHR asSlice(long index, long count) { return new VkDescriptorUpdateTemplateCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkDescriptorUpdateTemplateCreateInfoKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkDescriptorUpdateTemplateCreateInfoKHR at(long index, Consumer<VkDescriptorUpdateTemplateCreateInfoKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `descriptorUpdateEntryCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int descriptorUpdateEntryCountAt(long index) { return descriptorUpdateEntryCount(this.segment(), index); }
-    /// Sets `descriptorUpdateEntryCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR descriptorUpdateEntryCountAt(long index, int value) { descriptorUpdateEntryCount(this.segment(), index, value); return this; }
-
-    /// {@return `pDescriptorUpdateEntries` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pDescriptorUpdateEntriesAt(long index) { return pDescriptorUpdateEntries(this.segment(), index); }
-    /// Sets `pDescriptorUpdateEntries` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR pDescriptorUpdateEntriesAt(long index, MemorySegment value) { pDescriptorUpdateEntries(this.segment(), index, value); return this; }
-
-    /// {@return `templateType` at the given index}
-    /// @param index the index of the struct buffer
-    public int templateTypeAt(long index) { return templateType(this.segment(), index); }
-    /// Sets `templateType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR templateTypeAt(long index, int value) { templateType(this.segment(), index, value); return this; }
-
-    /// {@return `descriptorSetLayout` at the given index}
-    /// @param index the index of the struct buffer
-    public long descriptorSetLayoutAt(long index) { return descriptorSetLayout(this.segment(), index); }
-    /// Sets `descriptorSetLayout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR descriptorSetLayoutAt(long index, long value) { descriptorSetLayout(this.segment(), index, value); return this; }
-
-    /// {@return `pipelineBindPoint` at the given index}
-    /// @param index the index of the struct buffer
-    public int pipelineBindPointAt(long index) { return pipelineBindPoint(this.segment(), index); }
-    /// Sets `pipelineBindPoint` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR pipelineBindPointAt(long index, int value) { pipelineBindPoint(this.segment(), index, value); return this; }
-
-    /// {@return `pipelineLayout` at the given index}
-    /// @param index the index of the struct buffer
-    public long pipelineLayoutAt(long index) { return pipelineLayout(this.segment(), index); }
-    /// Sets `pipelineLayout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR pipelineLayoutAt(long index, long value) { pipelineLayout(this.segment(), index, value); return this; }
-
-    /// {@return `set` at the given index}
-    /// @param index the index of the struct buffer
-    public int setAt(long index) { return set(this.segment(), index); }
-    /// Sets `set` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateCreateInfoKHR setAt(long index, int value) { set(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public int descriptorUpdateEntryCountAt(long index) { return (int) VH_descriptorUpdateEntryCount.get(this.segment(), 0L, index); }
+    public MemorySegment pDescriptorUpdateEntriesAt(long index) { return (MemorySegment) VH_pDescriptorUpdateEntries.get(this.segment(), 0L, index); }
+    public int templateTypeAt(long index) { return (int) VH_templateType.get(this.segment(), 0L, index); }
+    public long descriptorSetLayoutAt(long index) { return (long) VH_descriptorSetLayout.get(this.segment(), 0L, index); }
+    public int pipelineBindPointAt(long index) { return (int) VH_pipelineBindPoint.get(this.segment(), 0L, index); }
+    public long pipelineLayoutAt(long index) { return (long) VH_pipelineLayout.get(this.segment(), 0L, index); }
+    public int setAt(long index) { return (int) VH_set.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public int descriptorUpdateEntryCount() { return (int) VH_descriptorUpdateEntryCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pDescriptorUpdateEntries() { return (MemorySegment) VH_pDescriptorUpdateEntries.get(this.segment(), 0L, 0L); }
+    public int templateType() { return (int) VH_templateType.get(this.segment(), 0L, 0L); }
+    public long descriptorSetLayout() { return (long) VH_descriptorSetLayout.get(this.segment(), 0L, 0L); }
+    public int pipelineBindPoint() { return (int) VH_pipelineBindPoint.get(this.segment(), 0L, 0L); }
+    public long pipelineLayout() { return (long) VH_pipelineLayout.get(this.segment(), 0L, 0L); }
+    public int set() { return (int) VH_set.get(this.segment(), 0L, 0L); }
+    public VkDescriptorUpdateTemplateCreateInfoKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR descriptorUpdateEntryCountAt(long index, int value) { VH_descriptorUpdateEntryCount.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR pDescriptorUpdateEntriesAt(long index, MemorySegment value) { VH_pDescriptorUpdateEntries.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR templateTypeAt(long index, int value) { VH_templateType.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR descriptorSetLayoutAt(long index, long value) { VH_descriptorSetLayout.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR pipelineBindPointAt(long index, int value) { VH_pipelineBindPoint.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR pipelineLayoutAt(long index, long value) { VH_pipelineLayout.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR setAt(long index, int value) { VH_set.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR descriptorUpdateEntryCount(int value) { VH_descriptorUpdateEntryCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR pDescriptorUpdateEntries(MemorySegment value) { VH_pDescriptorUpdateEntries.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR templateType(int value) { VH_templateType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR descriptorSetLayout(long value) { VH_descriptorSetLayout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR pipelineBindPoint(int value) { VH_pipelineBindPoint.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR pipelineLayout(long value) { VH_pipelineLayout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR set(int value) { VH_set.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _descriptorUpdateEntryCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_descriptorUpdateEntryCount, index), LAYOUT_descriptorUpdateEntryCount); }
+    public MemorySegment _descriptorUpdateEntryCount() { return _descriptorUpdateEntryCountAt(0L); }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _descriptorUpdateEntryCountAt(long index, MemorySegment src) { _descriptorUpdateEntryCountAt(index).copyFrom(src); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _descriptorUpdateEntryCount(MemorySegment src) { return _descriptorUpdateEntryCountAt(0L, src); }
+    public MemorySegment _pDescriptorUpdateEntriesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pDescriptorUpdateEntries, index), LAYOUT_pDescriptorUpdateEntries); }
+    public MemorySegment _pDescriptorUpdateEntries() { return _pDescriptorUpdateEntriesAt(0L); }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _pDescriptorUpdateEntriesAt(long index, MemorySegment src) { _pDescriptorUpdateEntriesAt(index).copyFrom(src); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _pDescriptorUpdateEntries(MemorySegment src) { return _pDescriptorUpdateEntriesAt(0L, src); }
+    public MemorySegment _templateTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_templateType, index), LAYOUT_templateType); }
+    public MemorySegment _templateType() { return _templateTypeAt(0L); }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _templateTypeAt(long index, MemorySegment src) { _templateTypeAt(index).copyFrom(src); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _templateType(MemorySegment src) { return _templateTypeAt(0L, src); }
+    public MemorySegment _descriptorSetLayoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_descriptorSetLayout, index), LAYOUT_descriptorSetLayout); }
+    public MemorySegment _descriptorSetLayout() { return _descriptorSetLayoutAt(0L); }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _descriptorSetLayoutAt(long index, MemorySegment src) { _descriptorSetLayoutAt(index).copyFrom(src); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _descriptorSetLayout(MemorySegment src) { return _descriptorSetLayoutAt(0L, src); }
+    public MemorySegment _pipelineBindPointAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pipelineBindPoint, index), LAYOUT_pipelineBindPoint); }
+    public MemorySegment _pipelineBindPoint() { return _pipelineBindPointAt(0L); }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _pipelineBindPointAt(long index, MemorySegment src) { _pipelineBindPointAt(index).copyFrom(src); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _pipelineBindPoint(MemorySegment src) { return _pipelineBindPointAt(0L, src); }
+    public MemorySegment _pipelineLayoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pipelineLayout, index), LAYOUT_pipelineLayout); }
+    public MemorySegment _pipelineLayout() { return _pipelineLayoutAt(0L); }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _pipelineLayoutAt(long index, MemorySegment src) { _pipelineLayoutAt(index).copyFrom(src); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _pipelineLayout(MemorySegment src) { return _pipelineLayoutAt(0L, src); }
+    public MemorySegment _setAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_set, index), LAYOUT_set); }
+    public MemorySegment _set() { return _setAt(0L); }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _setAt(long index, MemorySegment src) { _setAt(index).copyFrom(src); return this; }
+    public VkDescriptorUpdateTemplateCreateInfoKHR _set(MemorySegment src) { return _setAt(0L, src); }
 }

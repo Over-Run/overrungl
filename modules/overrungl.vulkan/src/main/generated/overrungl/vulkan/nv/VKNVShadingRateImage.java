@@ -8,6 +8,8 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_NV_shading_rate_image` - device extension
 public final class VKNVShadingRateImage {
+    public static final int VK_NV_SHADING_RATE_IMAGE_SPEC_VERSION = 3;
+    public static final String VK_NV_SHADING_RATE_IMAGE_EXTENSION_NAME = "VK_NV_shading_rate_image";
     public static final int VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV = 0;
     public static final int VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV = 1;
     public static final int VK_SHADING_RATE_PALETTE_ENTRY_8_INVOCATIONS_PER_PIXEL_NV = 2;
@@ -24,18 +26,17 @@ public final class VKNVShadingRateImage {
     public static final int VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV = 1;
     public static final int VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV = 2;
     public static final int VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV = 3;
-    public static final int VK_NV_SHADING_RATE_IMAGE_SPEC_VERSION = 3;
-    public static final String VK_NV_SHADING_RATE_IMAGE_EXTENSION_NAME = "VK_NV_shading_rate_image";
     public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV = 1000164000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV = 1000164001;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV = 1000164002;
-    public static final int VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV = 1000226003;
+    public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV = 1000164005;
+    public static final int VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV = 1000164003;
     public static final int VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV = 1000164004;
+    public static final int VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV = 1000164006;
     public static final int VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV = 0x00800000;
     public static final int VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV = 0x00000100;
     public static final int VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV = 0x00400000;
-    public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV = 1000164005;
-    public static final int VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV = 1000164006;
+    private VKNVShadingRateImage() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdBindShadingRateImageNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetViewportShadingRatePaletteNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
@@ -43,11 +44,9 @@ public final class VKNVShadingRateImage {
         private Handles() {}
     }
 
-    private VKNVShadingRateImage() {}
-
     /// Invokes `vkCmdBindShadingRateImageNV`.
     /// ```
-    /// void vkCmdBindShadingRateImageNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkImageView imageView, (int) VkImageLayout imageLayout);
+    /// void vkCmdBindShadingRateImageNV(VkCommandBuffer commandBuffer, VkImageView imageView, VkImageLayout imageLayout);
     /// ```
     public static void vkCmdBindShadingRateImageNV(@NonNull VkCommandBuffer commandBuffer, long imageView, int imageLayout) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindShadingRateImageNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindShadingRateImageNV");
@@ -58,7 +57,7 @@ public final class VKNVShadingRateImage {
 
     /// Invokes `vkCmdSetViewportShadingRatePaletteNV`.
     /// ```
-    /// void vkCmdSetViewportShadingRatePaletteNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkShadingRatePaletteNV* pShadingRatePalettes);
+    /// void vkCmdSetViewportShadingRatePaletteNV(VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkShadingRatePaletteNV* pShadingRatePalettes);
     /// ```
     public static void vkCmdSetViewportShadingRatePaletteNV(@NonNull VkCommandBuffer commandBuffer, int firstViewport, int viewportCount, @NonNull MemorySegment pShadingRatePalettes) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportShadingRatePaletteNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetViewportShadingRatePaletteNV");
@@ -69,7 +68,7 @@ public final class VKNVShadingRateImage {
 
     /// Invokes `vkCmdSetCoarseSampleOrderNV`.
     /// ```
-    /// void vkCmdSetCoarseSampleOrderNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkCoarseSampleOrderTypeNV sampleOrderType, uint32_t customSampleOrderCount, const VkCoarseSampleOrderCustomNV* pCustomSampleOrders);
+    /// void vkCmdSetCoarseSampleOrderNV(VkCommandBuffer commandBuffer, VkCoarseSampleOrderTypeNV sampleOrderType, uint32_t customSampleOrderCount, const VkCoarseSampleOrderCustomNV* pCustomSampleOrders);
     /// ```
     public static void vkCmdSetCoarseSampleOrderNV(@NonNull VkCommandBuffer commandBuffer, int sampleOrderType, int customSampleOrderCount, @NonNull MemorySegment pCustomSampleOrders) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoarseSampleOrderNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCoarseSampleOrderNV");

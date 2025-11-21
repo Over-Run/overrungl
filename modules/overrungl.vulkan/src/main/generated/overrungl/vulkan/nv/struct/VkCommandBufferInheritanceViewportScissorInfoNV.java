@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandBufferInheritanceViewportScissorInfoNV {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (uint32_t) VkBool32 viewportScissor2D;
+///     VkBool32 viewportScissor2D;
 ///     uint32_t viewportDepthCount;
 ///     const VkViewport* pViewportDepths;
-/// };
+/// }
 /// ```
 public final class VkCommandBufferInheritanceViewportScissorInfoNV extends GroupType {
-    /// The struct layout of `VkCommandBufferInheritanceViewportScissorInfoNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,223 +27,77 @@ public final class VkCommandBufferInheritanceViewportScissorInfoNV extends Group
         ValueLayout.JAVA_INT.withName("viewportDepthCount"),
         ValueLayout.ADDRESS.withName("pViewportDepths")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `viewportScissor2D`.
     public static final long OFFSET_viewportScissor2D = LAYOUT.byteOffset(PathElement.groupElement("viewportScissor2D"));
-    /// The memory layout of `viewportScissor2D`.
-    public static final MemoryLayout LAYOUT_viewportScissor2D = LAYOUT.select(PathElement.groupElement("viewportScissor2D"));
-    /// The [VarHandle] of `viewportScissor2D` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_viewportScissor2D = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportScissor2D"));
-    /// The byte offset of `viewportDepthCount`.
     public static final long OFFSET_viewportDepthCount = LAYOUT.byteOffset(PathElement.groupElement("viewportDepthCount"));
-    /// The memory layout of `viewportDepthCount`.
-    public static final MemoryLayout LAYOUT_viewportDepthCount = LAYOUT.select(PathElement.groupElement("viewportDepthCount"));
-    /// The [VarHandle] of `viewportDepthCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_viewportDepthCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportDepthCount"));
-    /// The byte offset of `pViewportDepths`.
     public static final long OFFSET_pViewportDepths = LAYOUT.byteOffset(PathElement.groupElement("pViewportDepths"));
-    /// The memory layout of `pViewportDepths`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_viewportScissor2D = LAYOUT.select(PathElement.groupElement("viewportScissor2D"));
+    public static final MemoryLayout LAYOUT_viewportDepthCount = LAYOUT.select(PathElement.groupElement("viewportDepthCount"));
     public static final MemoryLayout LAYOUT_pViewportDepths = LAYOUT.select(PathElement.groupElement("pViewportDepths"));
-    /// The [VarHandle] of `pViewportDepths` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_viewportScissor2D = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportScissor2D"));
+    public static final VarHandle VH_viewportDepthCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportDepthCount"));
     public static final VarHandle VH_pViewportDepths = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pViewportDepths"));
 
-    /// Creates `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkCommandBufferInheritanceViewportScissorInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferInheritanceViewportScissorInfoNV(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkCommandBufferInheritanceViewportScissorInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferInheritanceViewportScissorInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkCommandBufferInheritanceViewportScissorInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferInheritanceViewportScissorInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkCommandBufferInheritanceViewportScissorInfoNV`
     public static VkCommandBufferInheritanceViewportScissorInfoNV alloc(SegmentAllocator allocator) { return new VkCommandBufferInheritanceViewportScissorInfoNV(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkCommandBufferInheritanceViewportScissorInfoNV`
     public static VkCommandBufferInheritanceViewportScissorInfoNV alloc(SegmentAllocator allocator, long count) { return new VkCommandBufferInheritanceViewportScissorInfoNV(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkCommandBufferInheritanceViewportScissorInfoNV allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.nv.VKNVInheritedViewportScissor.VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV); }
+    public static VkCommandBufferInheritanceViewportScissorInfoNV allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.nv.VKNVInheritedViewportScissor.VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV);
+        return s;
+    }
     public VkCommandBufferInheritanceViewportScissorInfoNV copyFrom(VkCommandBufferInheritanceViewportScissorInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkCommandBufferInheritanceViewportScissorInfoNV reinterpret(long count) { return new VkCommandBufferInheritanceViewportScissorInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `viewportScissor2D` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int viewportScissor2D(MemorySegment segment, long index) { return (int) VH_viewportScissor2D.get(segment, 0L, index); }
-    /// {@return `viewportScissor2D`}
-    public int viewportScissor2D() { return viewportScissor2D(this.segment(), 0L); }
-    /// Sets `viewportScissor2D` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void viewportScissor2D(MemorySegment segment, long index, int value) { VH_viewportScissor2D.set(segment, 0L, index, value); }
-    /// Sets `viewportScissor2D` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV viewportScissor2D(int value) { viewportScissor2D(this.segment(), 0L, value); return this; }
-
-    /// {@return `viewportDepthCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int viewportDepthCount(MemorySegment segment, long index) { return (int) VH_viewportDepthCount.get(segment, 0L, index); }
-    /// {@return `viewportDepthCount`}
-    public int viewportDepthCount() { return viewportDepthCount(this.segment(), 0L); }
-    /// Sets `viewportDepthCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void viewportDepthCount(MemorySegment segment, long index, int value) { VH_viewportDepthCount.set(segment, 0L, index, value); }
-    /// Sets `viewportDepthCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV viewportDepthCount(int value) { viewportDepthCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pViewportDepths` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pViewportDepths(MemorySegment segment, long index) { return (MemorySegment) VH_pViewportDepths.get(segment, 0L, index); }
-    /// {@return `pViewportDepths`}
-    public MemorySegment pViewportDepths() { return pViewportDepths(this.segment(), 0L); }
-    /// Sets `pViewportDepths` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pViewportDepths(MemorySegment segment, long index, MemorySegment value) { VH_pViewportDepths.set(segment, 0L, index, value); }
-    /// Sets `pViewportDepths` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV pViewportDepths(MemorySegment value) { pViewportDepths(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkCommandBufferInheritanceViewportScissorInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkCommandBufferInheritanceViewportScissorInfoNV`
     public VkCommandBufferInheritanceViewportScissorInfoNV asSlice(long index) { return new VkCommandBufferInheritanceViewportScissorInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkCommandBufferInheritanceViewportScissorInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkCommandBufferInheritanceViewportScissorInfoNV`
     public VkCommandBufferInheritanceViewportScissorInfoNV asSlice(long index, long count) { return new VkCommandBufferInheritanceViewportScissorInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkCommandBufferInheritanceViewportScissorInfoNV` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkCommandBufferInheritanceViewportScissorInfoNV at(long index, Consumer<VkCommandBufferInheritanceViewportScissorInfoNV> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `viewportScissor2D` at the given index}
-    /// @param index the index of the struct buffer
-    public int viewportScissor2DAt(long index) { return viewportScissor2D(this.segment(), index); }
-    /// Sets `viewportScissor2D` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV viewportScissor2DAt(long index, int value) { viewportScissor2D(this.segment(), index, value); return this; }
-
-    /// {@return `viewportDepthCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int viewportDepthCountAt(long index) { return viewportDepthCount(this.segment(), index); }
-    /// Sets `viewportDepthCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV viewportDepthCountAt(long index, int value) { viewportDepthCount(this.segment(), index, value); return this; }
-
-    /// {@return `pViewportDepths` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pViewportDepthsAt(long index) { return pViewportDepths(this.segment(), index); }
-    /// Sets `pViewportDepths` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV pViewportDepthsAt(long index, MemorySegment value) { pViewportDepths(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int viewportScissor2DAt(long index) { return (int) VH_viewportScissor2D.get(this.segment(), 0L, index); }
+    public int viewportDepthCountAt(long index) { return (int) VH_viewportDepthCount.get(this.segment(), 0L, index); }
+    public MemorySegment pViewportDepthsAt(long index) { return (MemorySegment) VH_pViewportDepths.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int viewportScissor2D() { return (int) VH_viewportScissor2D.get(this.segment(), 0L, 0L); }
+    public int viewportDepthCount() { return (int) VH_viewportDepthCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pViewportDepths() { return (MemorySegment) VH_pViewportDepths.get(this.segment(), 0L, 0L); }
+    public VkCommandBufferInheritanceViewportScissorInfoNV sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV viewportScissor2DAt(long index, int value) { VH_viewportScissor2D.set(this.segment(), 0L, index, value); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV viewportDepthCountAt(long index, int value) { VH_viewportDepthCount.set(this.segment(), 0L, index, value); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV pViewportDepthsAt(long index, MemorySegment value) { VH_pViewportDepths.set(this.segment(), 0L, index, value); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV viewportScissor2D(int value) { VH_viewportScissor2D.set(this.segment(), 0L, 0L, value); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV viewportDepthCount(int value) { VH_viewportDepthCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV pViewportDepths(MemorySegment value) { VH_pViewportDepths.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkCommandBufferInheritanceViewportScissorInfoNV _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkCommandBufferInheritanceViewportScissorInfoNV _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _viewportScissor2DAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_viewportScissor2D, index), LAYOUT_viewportScissor2D); }
+    public MemorySegment _viewportScissor2D() { return _viewportScissor2DAt(0L); }
+    public VkCommandBufferInheritanceViewportScissorInfoNV _viewportScissor2DAt(long index, MemorySegment src) { _viewportScissor2DAt(index).copyFrom(src); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV _viewportScissor2D(MemorySegment src) { return _viewportScissor2DAt(0L, src); }
+    public MemorySegment _viewportDepthCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_viewportDepthCount, index), LAYOUT_viewportDepthCount); }
+    public MemorySegment _viewportDepthCount() { return _viewportDepthCountAt(0L); }
+    public VkCommandBufferInheritanceViewportScissorInfoNV _viewportDepthCountAt(long index, MemorySegment src) { _viewportDepthCountAt(index).copyFrom(src); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV _viewportDepthCount(MemorySegment src) { return _viewportDepthCountAt(0L, src); }
+    public MemorySegment _pViewportDepthsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pViewportDepths, index), LAYOUT_pViewportDepths); }
+    public MemorySegment _pViewportDepths() { return _pViewportDepthsAt(0L); }
+    public VkCommandBufferInheritanceViewportScissorInfoNV _pViewportDepthsAt(long index, MemorySegment src) { _pViewportDepthsAt(index).copyFrom(src); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV _pViewportDepths(MemorySegment src) { return _pViewportDepthsAt(0L, src); }
 }

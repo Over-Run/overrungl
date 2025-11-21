@@ -8,15 +8,17 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_performance_query` - device extension
 public final class VKKHRPerformanceQuery {
+    public static final int VK_KHR_PERFORMANCE_QUERY_SPEC_VERSION = 1;
+    public static final String VK_KHR_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_KHR_performance_query";
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR = 0x00000001;
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_KHR = 0x00000001;
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR = 0x00000002;
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_KHR = 0x00000002;
     public static final int VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR = 0;
-    public static final int VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR = 1;
-    public static final int VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR = 2;
     public static final int VK_QUERY_SCOPE_COMMAND_BUFFER_KHR = 0;
+    public static final int VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR = 1;
     public static final int VK_QUERY_SCOPE_RENDER_PASS_KHR = 1;
+    public static final int VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR = 2;
     public static final int VK_QUERY_SCOPE_COMMAND_KHR = 2;
     public static final int VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR = 0;
     public static final int VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR = 1;
@@ -35,8 +37,6 @@ public final class VKKHRPerformanceQuery {
     public static final int VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR = 8;
     public static final int VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR = 9;
     public static final int VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR = 10;
-    public static final int VK_KHR_PERFORMANCE_QUERY_SPEC_VERSION = 1;
-    public static final String VK_KHR_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_KHR_performance_query";
     public static final int VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR = 1000116000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR = 1000116000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR = 1000116001;
@@ -45,7 +45,7 @@ public final class VKKHRPerformanceQuery {
     public static final int VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR = 1000116004;
     public static final int VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_KHR = 1000116005;
     public static final int VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_KHR = 1000116006;
-    public static final int VK_STRUCTURE_TYPE_PERFORMANCE_QUERY_RESERVATION_INFO_KHR = 1000116007;
+    private VKKHRPerformanceQuery() {}
     public static final class Handles {
         public static final MethodHandle MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -54,11 +54,9 @@ public final class VKKHRPerformanceQuery {
         private Handles() {}
     }
 
-    private VKKHRPerformanceQuery() {}
-
     /// Invokes `vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR`.
     /// ```
-    /// (int) VkResult vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, uint32_t* pCounterCount, VkPerformanceCounterKHR* pCounters, VkPerformanceCounterDescriptionKHR* pCounterDescriptions);
+    /// VkResult vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, uint32_t* pCounterCount, VkPerformanceCounterKHR* pCounters, VkPerformanceCounterDescriptionKHR* pCounterDescriptions);
     /// ```
     public static int vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(@NonNull VkPhysicalDevice physicalDevice, int queueFamilyIndex, @NonNull MemorySegment pCounterCount, @NonNull MemorySegment pCounters, @NonNull MemorySegment pCounterDescriptions) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR");
@@ -69,7 +67,7 @@ public final class VKKHRPerformanceQuery {
 
     /// Invokes `vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR`.
     /// ```
-    /// void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkQueryPoolPerformanceCreateInfoKHR* pPerformanceQueryCreateInfo, uint32_t* pNumPasses);
+    /// void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(VkPhysicalDevice physicalDevice, const VkQueryPoolPerformanceCreateInfoKHR* pPerformanceQueryCreateInfo, uint32_t* pNumPasses);
     /// ```
     public static void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pPerformanceQueryCreateInfo, @NonNull MemorySegment pNumPasses) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR");
@@ -80,7 +78,7 @@ public final class VKKHRPerformanceQuery {
 
     /// Invokes `vkAcquireProfilingLockKHR`.
     /// ```
-    /// (int) VkResult vkAcquireProfilingLockKHR((struct VkDevice*) VkDevice device, const VkAcquireProfilingLockInfoKHR* pInfo);
+    /// VkResult vkAcquireProfilingLockKHR(VkDevice device, const VkAcquireProfilingLockInfoKHR* pInfo);
     /// ```
     public static int vkAcquireProfilingLockKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquireProfilingLockKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireProfilingLockKHR");
@@ -91,7 +89,7 @@ public final class VKKHRPerformanceQuery {
 
     /// Invokes `vkReleaseProfilingLockKHR`.
     /// ```
-    /// void vkReleaseProfilingLockKHR((struct VkDevice*) VkDevice device);
+    /// void vkReleaseProfilingLockKHR(VkDevice device);
     /// ```
     public static void vkReleaseProfilingLockKHR(@NonNull VkDevice device) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleaseProfilingLockKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkReleaseProfilingLockKHR");

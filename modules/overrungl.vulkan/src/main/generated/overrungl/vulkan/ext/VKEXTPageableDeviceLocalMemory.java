@@ -11,16 +11,15 @@ public final class VKEXTPageableDeviceLocalMemory {
     public static final int VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_SPEC_VERSION = 1;
     public static final String VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT = 1000412000;
+    private VKEXTPageableDeviceLocalMemory() {}
     public static final class Handles {
         public static final MethodHandle MH_vkSetDeviceMemoryPriorityEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT));
         private Handles() {}
     }
 
-    private VKEXTPageableDeviceLocalMemory() {}
-
     /// Invokes `vkSetDeviceMemoryPriorityEXT`.
     /// ```
-    /// void vkSetDeviceMemoryPriorityEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDeviceMemory memory, float priority);
+    /// void vkSetDeviceMemoryPriorityEXT(VkDevice device, VkDeviceMemory memory, float priority);
     /// ```
     public static void vkSetDeviceMemoryPriorityEXT(@NonNull VkDevice device, long memory, float priority) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetDeviceMemoryPriorityEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetDeviceMemoryPriorityEXT");

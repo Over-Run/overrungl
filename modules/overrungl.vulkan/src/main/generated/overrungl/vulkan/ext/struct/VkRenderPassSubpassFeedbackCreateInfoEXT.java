@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,173 +12,66 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderPassSubpassFeedbackCreateInfoEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
 ///     VkRenderPassSubpassFeedbackInfoEXT* pSubpassFeedback;
-/// };
+/// }
 /// ```
 public final class VkRenderPassSubpassFeedbackCreateInfoEXT extends GroupType {
-    /// The struct layout of `VkRenderPassSubpassFeedbackCreateInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("pSubpassFeedback")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `pSubpassFeedback`.
     public static final long OFFSET_pSubpassFeedback = LAYOUT.byteOffset(PathElement.groupElement("pSubpassFeedback"));
-    /// The memory layout of `pSubpassFeedback`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_pSubpassFeedback = LAYOUT.select(PathElement.groupElement("pSubpassFeedback"));
-    /// The [VarHandle] of `pSubpassFeedback` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     public static final VarHandle VH_pSubpassFeedback = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSubpassFeedback"));
 
-    /// Creates `VkRenderPassSubpassFeedbackCreateInfoEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkRenderPassSubpassFeedbackCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkRenderPassSubpassFeedbackCreateInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassSubpassFeedbackCreateInfoEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkRenderPassSubpassFeedbackCreateInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkRenderPassSubpassFeedbackCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassSubpassFeedbackCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkRenderPassSubpassFeedbackCreateInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkRenderPassSubpassFeedbackCreateInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassSubpassFeedbackCreateInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkRenderPassSubpassFeedbackCreateInfoEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkRenderPassSubpassFeedbackCreateInfoEXT`
     public static VkRenderPassSubpassFeedbackCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkRenderPassSubpassFeedbackCreateInfoEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkRenderPassSubpassFeedbackCreateInfoEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkRenderPassSubpassFeedbackCreateInfoEXT`
     public static VkRenderPassSubpassFeedbackCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkRenderPassSubpassFeedbackCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkRenderPassSubpassFeedbackCreateInfoEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTSubpassMergeFeedback.VK_STRUCTURE_TYPE_RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT); }
+    public static VkRenderPassSubpassFeedbackCreateInfoEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTSubpassMergeFeedback.VK_STRUCTURE_TYPE_RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT);
+        return s;
+    }
     public VkRenderPassSubpassFeedbackCreateInfoEXT copyFrom(VkRenderPassSubpassFeedbackCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkRenderPassSubpassFeedbackCreateInfoEXT reinterpret(long count) { return new VkRenderPassSubpassFeedbackCreateInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassSubpassFeedbackCreateInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassSubpassFeedbackCreateInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `pSubpassFeedback` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pSubpassFeedback(MemorySegment segment, long index) { return (MemorySegment) VH_pSubpassFeedback.get(segment, 0L, index); }
-    /// {@return `pSubpassFeedback`}
-    public MemorySegment pSubpassFeedback() { return pSubpassFeedback(this.segment(), 0L); }
-    /// Sets `pSubpassFeedback` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pSubpassFeedback(MemorySegment segment, long index, MemorySegment value) { VH_pSubpassFeedback.set(segment, 0L, index, value); }
-    /// Sets `pSubpassFeedback` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassSubpassFeedbackCreateInfoEXT pSubpassFeedback(MemorySegment value) { pSubpassFeedback(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkRenderPassSubpassFeedbackCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkRenderPassSubpassFeedbackCreateInfoEXT`
     public VkRenderPassSubpassFeedbackCreateInfoEXT asSlice(long index) { return new VkRenderPassSubpassFeedbackCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkRenderPassSubpassFeedbackCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkRenderPassSubpassFeedbackCreateInfoEXT`
     public VkRenderPassSubpassFeedbackCreateInfoEXT asSlice(long index, long count) { return new VkRenderPassSubpassFeedbackCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkRenderPassSubpassFeedbackCreateInfoEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkRenderPassSubpassFeedbackCreateInfoEXT at(long index, Consumer<VkRenderPassSubpassFeedbackCreateInfoEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassSubpassFeedbackCreateInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassSubpassFeedbackCreateInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `pSubpassFeedback` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pSubpassFeedbackAt(long index) { return pSubpassFeedback(this.segment(), index); }
-    /// Sets `pSubpassFeedback` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassSubpassFeedbackCreateInfoEXT pSubpassFeedbackAt(long index, MemorySegment value) { pSubpassFeedback(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public MemorySegment pSubpassFeedbackAt(long index) { return (MemorySegment) VH_pSubpassFeedback.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public MemorySegment pSubpassFeedback() { return (MemorySegment) VH_pSubpassFeedback.get(this.segment(), 0L, 0L); }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT pSubpassFeedbackAt(long index, MemorySegment value) { VH_pSubpassFeedback.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT pSubpassFeedback(MemorySegment value) { VH_pSubpassFeedback.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _pSubpassFeedbackAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pSubpassFeedback, index), LAYOUT_pSubpassFeedback); }
+    public MemorySegment _pSubpassFeedback() { return _pSubpassFeedbackAt(0L); }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT _pSubpassFeedbackAt(long index, MemorySegment src) { _pSubpassFeedbackAt(index).copyFrom(src); return this; }
+    public VkRenderPassSubpassFeedbackCreateInfoEXT _pSubpassFeedback(MemorySegment src) { return _pSubpassFeedbackAt(0L, src); }
 }

@@ -18,6 +18,7 @@ public final class VKNVMeshShader {
     public static final int VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV = 0x00100000;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT = 1000202002;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT = 1000202003;
+    private VKNVMeshShader() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdDrawMeshTasksNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
@@ -25,11 +26,9 @@ public final class VKNVMeshShader {
         private Handles() {}
     }
 
-    private VKNVMeshShader() {}
-
     /// Invokes `vkCmdDrawMeshTasksNV`.
     /// ```
-    /// void vkCmdDrawMeshTasksNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t taskCount, uint32_t firstTask);
+    /// void vkCmdDrawMeshTasksNV(VkCommandBuffer commandBuffer, uint32_t taskCount, uint32_t firstTask);
     /// ```
     public static void vkCmdDrawMeshTasksNV(@NonNull VkCommandBuffer commandBuffer, int taskCount, int firstTask) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksNV");
@@ -40,7 +39,7 @@ public final class VKNVMeshShader {
 
     /// Invokes `vkCmdDrawMeshTasksIndirectNV`.
     /// ```
-    /// void vkCmdDrawMeshTasksIndirectNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, uint32_t drawCount, uint32_t stride);
+    /// void vkCmdDrawMeshTasksIndirectNV(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, uint32_t drawCount, uint32_t stride);
     /// ```
     public static void vkCmdDrawMeshTasksIndirectNV(@NonNull VkCommandBuffer commandBuffer, long buffer, long offset, int drawCount, int stride) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksIndirectNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksIndirectNV");
@@ -51,7 +50,7 @@ public final class VKNVMeshShader {
 
     /// Invokes `vkCmdDrawMeshTasksIndirectCountNV`.
     /// ```
-    /// void vkCmdDrawMeshTasksIndirectCountNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, (uint64_t) VkBuffer countBuffer, (uint64_t) VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride);
+    /// void vkCmdDrawMeshTasksIndirectCountNV(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride);
     /// ```
     public static void vkCmdDrawMeshTasksIndirectCountNV(@NonNull VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksIndirectCountNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksIndirectCountNV");

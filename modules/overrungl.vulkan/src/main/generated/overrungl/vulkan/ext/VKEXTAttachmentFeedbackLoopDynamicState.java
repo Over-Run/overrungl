@@ -12,16 +12,15 @@ public final class VKEXTAttachmentFeedbackLoopDynamicState {
     public static final String VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_attachment_feedback_loop_dynamic_state";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT = 1000524000;
     public static final int VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT = 1000524000;
+    private VKEXTAttachmentFeedbackLoopDynamicState() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetAttachmentFeedbackLoopEnableEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         private Handles() {}
     }
 
-    private VKEXTAttachmentFeedbackLoopDynamicState() {}
-
     /// Invokes `vkCmdSetAttachmentFeedbackLoopEnableEXT`.
     /// ```
-    /// void vkCmdSetAttachmentFeedbackLoopEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint32_t) VkFlags) VkImageAspectFlags aspectMask);
+    /// void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask);
     /// ```
     public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(@NonNull VkCommandBuffer commandBuffer, int aspectMask) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetAttachmentFeedbackLoopEnableEXT");

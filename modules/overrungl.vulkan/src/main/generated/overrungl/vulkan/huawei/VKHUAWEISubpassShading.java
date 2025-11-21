@@ -17,17 +17,16 @@ public final class VKHUAWEISubpassShading {
     public static final long VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI = 0x8000000000L;
     public static final long VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HUAWEI = 0x8000000000L;
     public static final int VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI = 0x00004000;
+    private VKHUAWEISubpassShading() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdSubpassShadingHUAWEI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKHUAWEISubpassShading() {}
-
     /// Invokes `vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI`.
     /// ```
-    /// (int) VkResult vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI((struct VkDevice*) VkDevice device, (uint64_t) VkRenderPass renderpass, VkExtent2D* pMaxWorkgroupSize);
+    /// VkResult vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(VkDevice device, VkRenderPass renderpass, VkExtent2D* pMaxWorkgroupSize);
     /// ```
     public static int vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(@NonNull VkDevice device, long renderpass, @NonNull MemorySegment pMaxWorkgroupSize) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI");
@@ -38,7 +37,7 @@ public final class VKHUAWEISubpassShading {
 
     /// Invokes `vkCmdSubpassShadingHUAWEI`.
     /// ```
-    /// void vkCmdSubpassShadingHUAWEI((struct VkCommandBuffer*) VkCommandBuffer commandBuffer);
+    /// void vkCmdSubpassShadingHUAWEI(VkCommandBuffer commandBuffer);
     /// ```
     public static void vkCmdSubpassShadingHUAWEI(@NonNull VkCommandBuffer commandBuffer) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSubpassShadingHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSubpassShadingHUAWEI");

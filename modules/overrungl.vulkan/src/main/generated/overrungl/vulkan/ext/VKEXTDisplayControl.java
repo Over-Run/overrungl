@@ -8,17 +8,18 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_EXT_display_control` - device extension
 public final class VKEXTDisplayControl {
+    public static final int VK_EXT_DISPLAY_CONTROL_SPEC_VERSION = 1;
+    public static final String VK_EXT_DISPLAY_CONTROL_EXTENSION_NAME = "VK_EXT_display_control";
     public static final int VK_DISPLAY_POWER_STATE_OFF_EXT = 0;
     public static final int VK_DISPLAY_POWER_STATE_SUSPEND_EXT = 1;
     public static final int VK_DISPLAY_POWER_STATE_ON_EXT = 2;
     public static final int VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT = 0;
     public static final int VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT = 0;
-    public static final int VK_EXT_DISPLAY_CONTROL_SPEC_VERSION = 1;
-    public static final String VK_EXT_DISPLAY_CONTROL_EXTENSION_NAME = "VK_EXT_display_control";
     public static final int VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT = 1000091000;
     public static final int VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT = 1000091001;
     public static final int VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT = 1000091002;
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT = 1000091003;
+    private VKEXTDisplayControl() {}
     public static final class Handles {
         public static final MethodHandle MH_vkDisplayPowerControlEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkRegisterDeviceEventEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -27,11 +28,9 @@ public final class VKEXTDisplayControl {
         private Handles() {}
     }
 
-    private VKEXTDisplayControl() {}
-
     /// Invokes `vkDisplayPowerControlEXT`.
     /// ```
-    /// (int) VkResult vkDisplayPowerControlEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDisplayKHR display, const VkDisplayPowerInfoEXT* pDisplayPowerInfo);
+    /// VkResult vkDisplayPowerControlEXT(VkDevice device, VkDisplayKHR display, const VkDisplayPowerInfoEXT* pDisplayPowerInfo);
     /// ```
     public static int vkDisplayPowerControlEXT(@NonNull VkDevice device, long display, @NonNull MemorySegment pDisplayPowerInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDisplayPowerControlEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDisplayPowerControlEXT");
@@ -42,7 +41,7 @@ public final class VKEXTDisplayControl {
 
     /// Invokes `vkRegisterDeviceEventEXT`.
     /// ```
-    /// (int) VkResult vkRegisterDeviceEventEXT((struct VkDevice*) VkDevice device, const VkDeviceEventInfoEXT* pDeviceEventInfo, const VkAllocationCallbacks* pAllocator, VkFence* pFence);
+    /// VkResult vkRegisterDeviceEventEXT(VkDevice device, const VkDeviceEventInfoEXT* pDeviceEventInfo, const VkAllocationCallbacks* pAllocator, VkFence* pFence);
     /// ```
     public static int vkRegisterDeviceEventEXT(@NonNull VkDevice device, @NonNull MemorySegment pDeviceEventInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pFence) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkRegisterDeviceEventEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkRegisterDeviceEventEXT");
@@ -53,7 +52,7 @@ public final class VKEXTDisplayControl {
 
     /// Invokes `vkRegisterDisplayEventEXT`.
     /// ```
-    /// (int) VkResult vkRegisterDisplayEventEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDisplayKHR display, const VkDisplayEventInfoEXT* pDisplayEventInfo, const VkAllocationCallbacks* pAllocator, VkFence* pFence);
+    /// VkResult vkRegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, const VkDisplayEventInfoEXT* pDisplayEventInfo, const VkAllocationCallbacks* pAllocator, VkFence* pFence);
     /// ```
     public static int vkRegisterDisplayEventEXT(@NonNull VkDevice device, long display, @NonNull MemorySegment pDisplayEventInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pFence) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkRegisterDisplayEventEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkRegisterDisplayEventEXT");
@@ -64,7 +63,7 @@ public final class VKEXTDisplayControl {
 
     /// Invokes `vkGetSwapchainCounterEXT`.
     /// ```
-    /// (int) VkResult vkGetSwapchainCounterEXT((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, (int) VkSurfaceCounterFlagBitsEXT counter, uint64_t* pCounterValue);
+    /// VkResult vkGetSwapchainCounterEXT(VkDevice device, VkSwapchainKHR swapchain, VkSurfaceCounterFlagBitsEXT counter, uint64_t* pCounterValue);
     /// ```
     public static int vkGetSwapchainCounterEXT(@NonNull VkDevice device, long swapchain, int counter, @NonNull MemorySegment pCounterValue) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainCounterEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSwapchainCounterEXT");

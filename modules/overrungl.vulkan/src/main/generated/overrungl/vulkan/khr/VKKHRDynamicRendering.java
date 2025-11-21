@@ -19,17 +19,16 @@ public final class VKKHRDynamicRendering {
     public static final int VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT_KHR = 0x00000001;
     public static final int VK_RENDERING_SUSPENDING_BIT_KHR = 0x00000002;
     public static final int VK_RENDERING_RESUMING_BIT_KHR = 0x00000004;
+    private VKKHRDynamicRendering() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdBeginRenderingKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdEndRenderingKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRDynamicRendering() {}
-
     /// Invokes `vkCmdBeginRenderingKHR`.
     /// ```
-    /// void vkCmdBeginRenderingKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingInfo* pRenderingInfo);
+    /// void vkCmdBeginRenderingKHR(VkCommandBuffer commandBuffer, const VkRenderingInfo* pRenderingInfo);
     /// ```
     public static void vkCmdBeginRenderingKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pRenderingInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRenderingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginRenderingKHR");
@@ -40,7 +39,7 @@ public final class VKKHRDynamicRendering {
 
     /// Invokes `vkCmdEndRenderingKHR`.
     /// ```
-    /// void vkCmdEndRenderingKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer);
+    /// void vkCmdEndRenderingKHR(VkCommandBuffer commandBuffer);
     /// ```
     public static void vkCmdEndRenderingKHR(@NonNull VkCommandBuffer commandBuffer) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRenderingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndRenderingKHR");

@@ -15,6 +15,7 @@ public final class VKKHRMaintenance4 {
     public static final int VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS_KHR = 1000413002;
     public static final int VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS_KHR = 1000413003;
     public static final int VK_IMAGE_ASPECT_NONE_KHR = 0;
+    private VKKHRMaintenance4() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetDeviceBufferMemoryRequirementsKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetDeviceImageMemoryRequirementsKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -22,11 +23,9 @@ public final class VKKHRMaintenance4 {
         private Handles() {}
     }
 
-    private VKKHRMaintenance4() {}
-
     /// Invokes `vkGetDeviceBufferMemoryRequirementsKHR`.
     /// ```
-    /// void vkGetDeviceBufferMemoryRequirementsKHR((struct VkDevice*) VkDevice device, const VkDeviceBufferMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// void vkGetDeviceBufferMemoryRequirementsKHR(VkDevice device, const VkDeviceBufferMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
     public static void vkGetDeviceBufferMemoryRequirementsKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceBufferMemoryRequirementsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceBufferMemoryRequirementsKHR");
@@ -37,7 +36,7 @@ public final class VKKHRMaintenance4 {
 
     /// Invokes `vkGetDeviceImageMemoryRequirementsKHR`.
     /// ```
-    /// void vkGetDeviceImageMemoryRequirementsKHR((struct VkDevice*) VkDevice device, const VkDeviceImageMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// void vkGetDeviceImageMemoryRequirementsKHR(VkDevice device, const VkDeviceImageMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
     public static void vkGetDeviceImageMemoryRequirementsKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceImageMemoryRequirementsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceImageMemoryRequirementsKHR");
@@ -48,7 +47,7 @@ public final class VKKHRMaintenance4 {
 
     /// Invokes `vkGetDeviceImageSparseMemoryRequirementsKHR`.
     /// ```
-    /// void vkGetDeviceImageSparseMemoryRequirementsKHR((struct VkDevice*) VkDevice device, const VkDeviceImageMemoryRequirements* pInfo, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements);
+    /// void vkGetDeviceImageSparseMemoryRequirementsKHR(VkDevice device, const VkDeviceImageMemoryRequirements* pInfo, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements);
     /// ```
     public static void vkGetDeviceImageSparseMemoryRequirementsKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pSparseMemoryRequirementCount, @NonNull MemorySegment pSparseMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceImageSparseMemoryRequirementsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceImageSparseMemoryRequirementsKHR");

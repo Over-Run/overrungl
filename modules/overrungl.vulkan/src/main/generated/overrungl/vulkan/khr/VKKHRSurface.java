@@ -8,6 +8,8 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_surface` - instance extension
 public final class VKKHRSurface {
+    public static final int VK_KHR_SURFACE_SPEC_VERSION = 25;
+    public static final String VK_KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface";
     public static final int VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR = 0x00000001;
     public static final int VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR = 0x00000002;
     public static final int VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR = 0x00000004;
@@ -27,11 +29,10 @@ public final class VKKHRSurface {
     public static final int VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR = 0x00000002;
     public static final int VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR = 0x00000004;
     public static final int VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR = 0x00000008;
-    public static final int VK_KHR_SURFACE_SPEC_VERSION = 25;
-    public static final String VK_KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface";
     public static final int VK_ERROR_SURFACE_LOST_KHR = -1000000000;
     public static final int VK_ERROR_NATIVE_WINDOW_IN_USE_KHR = -1000000001;
     public static final int VK_OBJECT_TYPE_SURFACE_KHR = 1000000000;
+    private VKKHRSurface() {}
     public static final class Handles {
         public static final MethodHandle MH_vkDestroySurfaceKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceSupportKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
@@ -41,11 +42,9 @@ public final class VKKHRSurface {
         private Handles() {}
     }
 
-    private VKKHRSurface() {}
-
     /// Invokes `vkDestroySurfaceKHR`.
     /// ```
-    /// void vkDestroySurfaceKHR((struct VkInstance*) VkInstance instance, (uint64_t) VkSurfaceKHR surface, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroySurfaceKHR(@NonNull VkInstance instance, long surface, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDestroySurfaceKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroySurfaceKHR");
@@ -56,7 +55,7 @@ public final class VKKHRSurface {
 
     /// Invokes `vkGetPhysicalDeviceSurfaceSupportKHR`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceSurfaceSupportKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, (uint64_t) VkSurfaceKHR surface, VkBool32* pSupported);
+    /// VkResult vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, VkSurfaceKHR surface, VkBool32* pSupported);
     /// ```
     public static int vkGetPhysicalDeviceSurfaceSupportKHR(@NonNull VkPhysicalDevice physicalDevice, int queueFamilyIndex, long surface, @NonNull MemorySegment pSupported) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceSupportKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceSupportKHR");
@@ -67,7 +66,7 @@ public final class VKKHRSurface {
 
     /// Invokes `vkGetPhysicalDeviceSurfaceCapabilitiesKHR`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkSurfaceKHR surface, VkSurfaceCapabilitiesKHR* pSurfaceCapabilities);
+    /// VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilitiesKHR* pSurfaceCapabilities);
     /// ```
     public static int vkGetPhysicalDeviceSurfaceCapabilitiesKHR(@NonNull VkPhysicalDevice physicalDevice, long surface, @NonNull MemorySegment pSurfaceCapabilities) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
@@ -78,7 +77,7 @@ public final class VKKHRSurface {
 
     /// Invokes `vkGetPhysicalDeviceSurfaceFormatsKHR`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceSurfaceFormatsKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkSurfaceKHR surface, uint32_t* pSurfaceFormatCount, VkSurfaceFormatKHR* pSurfaceFormats);
+    /// VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pSurfaceFormatCount, VkSurfaceFormatKHR* pSurfaceFormats);
     /// ```
     public static int vkGetPhysicalDeviceSurfaceFormatsKHR(@NonNull VkPhysicalDevice physicalDevice, long surface, @NonNull MemorySegment pSurfaceFormatCount, @NonNull MemorySegment pSurfaceFormats) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceFormatsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceFormatsKHR");
@@ -89,7 +88,7 @@ public final class VKKHRSurface {
 
     /// Invokes `vkGetPhysicalDeviceSurfacePresentModesKHR`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceSurfacePresentModesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkSurfaceKHR surface, uint32_t* pPresentModeCount, VkPresentModeKHR* pPresentModes);
+    /// VkResult vkGetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pPresentModeCount, VkPresentModeKHR* pPresentModes);
     /// ```
     public static int vkGetPhysicalDeviceSurfacePresentModesKHR(@NonNull VkPhysicalDevice physicalDevice, long surface, @NonNull MemorySegment pPresentModeCount, @NonNull MemorySegment pPresentModes) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfacePresentModesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfacePresentModesKHR");

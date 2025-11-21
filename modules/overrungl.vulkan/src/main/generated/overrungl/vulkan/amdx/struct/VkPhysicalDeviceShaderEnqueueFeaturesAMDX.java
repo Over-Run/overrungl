@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.amdx.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,206 +12,79 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderEnqueueFeaturesAMDX {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 shaderEnqueue;
-///     (uint32_t) VkBool32 shaderMeshEnqueue;
-/// };
+///     VkBool32 shaderEnqueue;
+///     VkBool32 shaderMeshEnqueue;
+/// }
 /// ```
 public final class VkPhysicalDeviceShaderEnqueueFeaturesAMDX extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderEnqueue"),
         ValueLayout.JAVA_INT.withName("shaderMeshEnqueue")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `shaderEnqueue`.
     public static final long OFFSET_shaderEnqueue = LAYOUT.byteOffset(PathElement.groupElement("shaderEnqueue"));
-    /// The memory layout of `shaderEnqueue`.
-    public static final MemoryLayout LAYOUT_shaderEnqueue = LAYOUT.select(PathElement.groupElement("shaderEnqueue"));
-    /// The [VarHandle] of `shaderEnqueue` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderEnqueue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderEnqueue"));
-    /// The byte offset of `shaderMeshEnqueue`.
     public static final long OFFSET_shaderMeshEnqueue = LAYOUT.byteOffset(PathElement.groupElement("shaderMeshEnqueue"));
-    /// The memory layout of `shaderMeshEnqueue`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_shaderEnqueue = LAYOUT.select(PathElement.groupElement("shaderEnqueue"));
     public static final MemoryLayout LAYOUT_shaderMeshEnqueue = LAYOUT.select(PathElement.groupElement("shaderMeshEnqueue"));
-    /// The [VarHandle] of `shaderMeshEnqueue` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_shaderEnqueue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderEnqueue"));
     public static final VarHandle VH_shaderMeshEnqueue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderMeshEnqueue"));
 
-    /// Creates `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceShaderEnqueueFeaturesAMDX(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceShaderEnqueueFeaturesAMDX of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceShaderEnqueueFeaturesAMDX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceShaderEnqueueFeaturesAMDX ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`
     public static VkPhysicalDeviceShaderEnqueueFeaturesAMDX alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`
     public static VkPhysicalDeviceShaderEnqueueFeaturesAMDX alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceShaderEnqueueFeaturesAMDX allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.amdx.VKAMDXShaderEnqueue.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX); }
+    public static VkPhysicalDeviceShaderEnqueueFeaturesAMDX allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.amdx.VKAMDXShaderEnqueue.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX);
+        return s;
+    }
     public VkPhysicalDeviceShaderEnqueueFeaturesAMDX copyFrom(VkPhysicalDeviceShaderEnqueueFeaturesAMDX src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceShaderEnqueueFeaturesAMDX reinterpret(long count) { return new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `shaderEnqueue` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int shaderEnqueue(MemorySegment segment, long index) { return (int) VH_shaderEnqueue.get(segment, 0L, index); }
-    /// {@return `shaderEnqueue`}
-    public int shaderEnqueue() { return shaderEnqueue(this.segment(), 0L); }
-    /// Sets `shaderEnqueue` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderEnqueue(MemorySegment segment, long index, int value) { VH_shaderEnqueue.set(segment, 0L, index, value); }
-    /// Sets `shaderEnqueue` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX shaderEnqueue(int value) { shaderEnqueue(this.segment(), 0L, value); return this; }
-
-    /// {@return `shaderMeshEnqueue` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int shaderMeshEnqueue(MemorySegment segment, long index) { return (int) VH_shaderMeshEnqueue.get(segment, 0L, index); }
-    /// {@return `shaderMeshEnqueue`}
-    public int shaderMeshEnqueue() { return shaderMeshEnqueue(this.segment(), 0L); }
-    /// Sets `shaderMeshEnqueue` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderMeshEnqueue(MemorySegment segment, long index, int value) { VH_shaderMeshEnqueue.set(segment, 0L, index, value); }
-    /// Sets `shaderMeshEnqueue` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX shaderMeshEnqueue(int value) { shaderMeshEnqueue(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`
     public VkPhysicalDeviceShaderEnqueueFeaturesAMDX asSlice(long index) { return new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`
     public VkPhysicalDeviceShaderEnqueueFeaturesAMDX asSlice(long index, long count) { return new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceShaderEnqueueFeaturesAMDX at(long index, Consumer<VkPhysicalDeviceShaderEnqueueFeaturesAMDX> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `shaderEnqueue` at the given index}
-    /// @param index the index of the struct buffer
-    public int shaderEnqueueAt(long index) { return shaderEnqueue(this.segment(), index); }
-    /// Sets `shaderEnqueue` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX shaderEnqueueAt(long index, int value) { shaderEnqueue(this.segment(), index, value); return this; }
-
-    /// {@return `shaderMeshEnqueue` at the given index}
-    /// @param index the index of the struct buffer
-    public int shaderMeshEnqueueAt(long index) { return shaderMeshEnqueue(this.segment(), index); }
-    /// Sets `shaderMeshEnqueue` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX shaderMeshEnqueueAt(long index, int value) { shaderMeshEnqueue(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int shaderEnqueueAt(long index) { return (int) VH_shaderEnqueue.get(this.segment(), 0L, index); }
+    public int shaderMeshEnqueueAt(long index) { return (int) VH_shaderMeshEnqueue.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int shaderEnqueue() { return (int) VH_shaderEnqueue.get(this.segment(), 0L, 0L); }
+    public int shaderMeshEnqueue() { return (int) VH_shaderMeshEnqueue.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX shaderEnqueueAt(long index, int value) { VH_shaderEnqueue.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX shaderMeshEnqueueAt(long index, int value) { VH_shaderMeshEnqueue.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX shaderEnqueue(int value) { VH_shaderEnqueue.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX shaderMeshEnqueue(int value) { VH_shaderMeshEnqueue.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _shaderEnqueueAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderEnqueue, index), LAYOUT_shaderEnqueue); }
+    public MemorySegment _shaderEnqueue() { return _shaderEnqueueAt(0L); }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX _shaderEnqueueAt(long index, MemorySegment src) { _shaderEnqueueAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX _shaderEnqueue(MemorySegment src) { return _shaderEnqueueAt(0L, src); }
+    public MemorySegment _shaderMeshEnqueueAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderMeshEnqueue, index), LAYOUT_shaderMeshEnqueue); }
+    public MemorySegment _shaderMeshEnqueue() { return _shaderMeshEnqueueAt(0L); }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX _shaderMeshEnqueueAt(long index, MemorySegment src) { _shaderMeshEnqueueAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX _shaderMeshEnqueue(MemorySegment src) { return _shaderMeshEnqueueAt(0L, src); }
 }

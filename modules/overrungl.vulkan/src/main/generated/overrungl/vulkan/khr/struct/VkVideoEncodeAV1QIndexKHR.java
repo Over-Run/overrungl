@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -16,170 +15,57 @@ import overrungl.util.*;
 ///     uint32_t intraQIndex;
 ///     uint32_t predictiveQIndex;
 ///     uint32_t bipredictiveQIndex;
-/// };
+/// }
 /// ```
 public final class VkVideoEncodeAV1QIndexKHR extends GroupType {
-    /// The struct layout of `VkVideoEncodeAV1QIndexKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("intraQIndex"),
         ValueLayout.JAVA_INT.withName("predictiveQIndex"),
         ValueLayout.JAVA_INT.withName("bipredictiveQIndex")
     );
-    /// The byte offset of `intraQIndex`.
     public static final long OFFSET_intraQIndex = LAYOUT.byteOffset(PathElement.groupElement("intraQIndex"));
-    /// The memory layout of `intraQIndex`.
-    public static final MemoryLayout LAYOUT_intraQIndex = LAYOUT.select(PathElement.groupElement("intraQIndex"));
-    /// The [VarHandle] of `intraQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_intraQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("intraQIndex"));
-    /// The byte offset of `predictiveQIndex`.
     public static final long OFFSET_predictiveQIndex = LAYOUT.byteOffset(PathElement.groupElement("predictiveQIndex"));
-    /// The memory layout of `predictiveQIndex`.
-    public static final MemoryLayout LAYOUT_predictiveQIndex = LAYOUT.select(PathElement.groupElement("predictiveQIndex"));
-    /// The [VarHandle] of `predictiveQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_predictiveQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("predictiveQIndex"));
-    /// The byte offset of `bipredictiveQIndex`.
     public static final long OFFSET_bipredictiveQIndex = LAYOUT.byteOffset(PathElement.groupElement("bipredictiveQIndex"));
-    /// The memory layout of `bipredictiveQIndex`.
+    public static final MemoryLayout LAYOUT_intraQIndex = LAYOUT.select(PathElement.groupElement("intraQIndex"));
+    public static final MemoryLayout LAYOUT_predictiveQIndex = LAYOUT.select(PathElement.groupElement("predictiveQIndex"));
     public static final MemoryLayout LAYOUT_bipredictiveQIndex = LAYOUT.select(PathElement.groupElement("bipredictiveQIndex"));
-    /// The [VarHandle] of `bipredictiveQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_intraQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("intraQIndex"));
+    public static final VarHandle VH_predictiveQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("predictiveQIndex"));
     public static final VarHandle VH_bipredictiveQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bipredictiveQIndex"));
 
-    /// Creates `VkVideoEncodeAV1QIndexKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkVideoEncodeAV1QIndexKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkVideoEncodeAV1QIndexKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoEncodeAV1QIndexKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1QIndexKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkVideoEncodeAV1QIndexKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoEncodeAV1QIndexKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1QIndexKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkVideoEncodeAV1QIndexKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoEncodeAV1QIndexKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1QIndexKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkVideoEncodeAV1QIndexKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoEncodeAV1QIndexKHR`
     public static VkVideoEncodeAV1QIndexKHR alloc(SegmentAllocator allocator) { return new VkVideoEncodeAV1QIndexKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkVideoEncodeAV1QIndexKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkVideoEncodeAV1QIndexKHR`
     public static VkVideoEncodeAV1QIndexKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeAV1QIndexKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkVideoEncodeAV1QIndexKHR copyFrom(VkVideoEncodeAV1QIndexKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkVideoEncodeAV1QIndexKHR reinterpret(long count) { return new VkVideoEncodeAV1QIndexKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `intraQIndex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int intraQIndex(MemorySegment segment, long index) { return (int) VH_intraQIndex.get(segment, 0L, index); }
-    /// {@return `intraQIndex`}
-    public int intraQIndex() { return intraQIndex(this.segment(), 0L); }
-    /// Sets `intraQIndex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void intraQIndex(MemorySegment segment, long index, int value) { VH_intraQIndex.set(segment, 0L, index, value); }
-    /// Sets `intraQIndex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeAV1QIndexKHR intraQIndex(int value) { intraQIndex(this.segment(), 0L, value); return this; }
-
-    /// {@return `predictiveQIndex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int predictiveQIndex(MemorySegment segment, long index) { return (int) VH_predictiveQIndex.get(segment, 0L, index); }
-    /// {@return `predictiveQIndex`}
-    public int predictiveQIndex() { return predictiveQIndex(this.segment(), 0L); }
-    /// Sets `predictiveQIndex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void predictiveQIndex(MemorySegment segment, long index, int value) { VH_predictiveQIndex.set(segment, 0L, index, value); }
-    /// Sets `predictiveQIndex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeAV1QIndexKHR predictiveQIndex(int value) { predictiveQIndex(this.segment(), 0L, value); return this; }
-
-    /// {@return `bipredictiveQIndex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int bipredictiveQIndex(MemorySegment segment, long index) { return (int) VH_bipredictiveQIndex.get(segment, 0L, index); }
-    /// {@return `bipredictiveQIndex`}
-    public int bipredictiveQIndex() { return bipredictiveQIndex(this.segment(), 0L); }
-    /// Sets `bipredictiveQIndex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void bipredictiveQIndex(MemorySegment segment, long index, int value) { VH_bipredictiveQIndex.set(segment, 0L, index, value); }
-    /// Sets `bipredictiveQIndex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeAV1QIndexKHR bipredictiveQIndex(int value) { bipredictiveQIndex(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkVideoEncodeAV1QIndexKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoEncodeAV1QIndexKHR`
     public VkVideoEncodeAV1QIndexKHR asSlice(long index) { return new VkVideoEncodeAV1QIndexKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkVideoEncodeAV1QIndexKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoEncodeAV1QIndexKHR`
     public VkVideoEncodeAV1QIndexKHR asSlice(long index, long count) { return new VkVideoEncodeAV1QIndexKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkVideoEncodeAV1QIndexKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkVideoEncodeAV1QIndexKHR at(long index, Consumer<VkVideoEncodeAV1QIndexKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `intraQIndex` at the given index}
-    /// @param index the index of the struct buffer
-    public int intraQIndexAt(long index) { return intraQIndex(this.segment(), index); }
-    /// Sets `intraQIndex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeAV1QIndexKHR intraQIndexAt(long index, int value) { intraQIndex(this.segment(), index, value); return this; }
-
-    /// {@return `predictiveQIndex` at the given index}
-    /// @param index the index of the struct buffer
-    public int predictiveQIndexAt(long index) { return predictiveQIndex(this.segment(), index); }
-    /// Sets `predictiveQIndex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeAV1QIndexKHR predictiveQIndexAt(long index, int value) { predictiveQIndex(this.segment(), index, value); return this; }
-
-    /// {@return `bipredictiveQIndex` at the given index}
-    /// @param index the index of the struct buffer
-    public int bipredictiveQIndexAt(long index) { return bipredictiveQIndex(this.segment(), index); }
-    /// Sets `bipredictiveQIndex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeAV1QIndexKHR bipredictiveQIndexAt(long index, int value) { bipredictiveQIndex(this.segment(), index, value); return this; }
-
+    public int intraQIndexAt(long index) { return (int) VH_intraQIndex.get(this.segment(), 0L, index); }
+    public int predictiveQIndexAt(long index) { return (int) VH_predictiveQIndex.get(this.segment(), 0L, index); }
+    public int bipredictiveQIndexAt(long index) { return (int) VH_bipredictiveQIndex.get(this.segment(), 0L, index); }
+    public int intraQIndex() { return (int) VH_intraQIndex.get(this.segment(), 0L, 0L); }
+    public int predictiveQIndex() { return (int) VH_predictiveQIndex.get(this.segment(), 0L, 0L); }
+    public int bipredictiveQIndex() { return (int) VH_bipredictiveQIndex.get(this.segment(), 0L, 0L); }
+    public VkVideoEncodeAV1QIndexKHR intraQIndexAt(long index, int value) { VH_intraQIndex.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeAV1QIndexKHR predictiveQIndexAt(long index, int value) { VH_predictiveQIndex.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeAV1QIndexKHR bipredictiveQIndexAt(long index, int value) { VH_bipredictiveQIndex.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeAV1QIndexKHR intraQIndex(int value) { VH_intraQIndex.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeAV1QIndexKHR predictiveQIndex(int value) { VH_predictiveQIndex.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeAV1QIndexKHR bipredictiveQIndex(int value) { VH_bipredictiveQIndex.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _intraQIndexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_intraQIndex, index), LAYOUT_intraQIndex); }
+    public MemorySegment _intraQIndex() { return _intraQIndexAt(0L); }
+    public VkVideoEncodeAV1QIndexKHR _intraQIndexAt(long index, MemorySegment src) { _intraQIndexAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeAV1QIndexKHR _intraQIndex(MemorySegment src) { return _intraQIndexAt(0L, src); }
+    public MemorySegment _predictiveQIndexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_predictiveQIndex, index), LAYOUT_predictiveQIndex); }
+    public MemorySegment _predictiveQIndex() { return _predictiveQIndexAt(0L); }
+    public VkVideoEncodeAV1QIndexKHR _predictiveQIndexAt(long index, MemorySegment src) { _predictiveQIndexAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeAV1QIndexKHR _predictiveQIndex(MemorySegment src) { return _predictiveQIndexAt(0L, src); }
+    public MemorySegment _bipredictiveQIndexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_bipredictiveQIndex, index), LAYOUT_bipredictiveQIndex); }
+    public MemorySegment _bipredictiveQIndex() { return _bipredictiveQIndexAt(0L); }
+    public VkVideoEncodeAV1QIndexKHR _bipredictiveQIndexAt(long index, MemorySegment src) { _bipredictiveQIndexAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeAV1QIndexKHR _bipredictiveQIndex(MemorySegment src) { return _bipredictiveQIndexAt(0L, src); }
 }

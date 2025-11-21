@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,17 +12,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkComputePipelineCreateInfo {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkPipelineCreateFlags flags;
-///     (struct VkPipelineShaderStageCreateInfo) VkPipelineShaderStageCreateInfo stage;
-///     (uint64_t) VkPipelineLayout layout;
-///     (uint64_t) VkPipeline basePipelineHandle;
+///     VkPipelineCreateFlags flags;
+///     VkPipelineShaderStageCreateInfo stage;
+///     VkPipelineLayout layout;
+///     VkPipeline basePipelineHandle;
 ///     int32_t basePipelineIndex;
-/// };
+/// }
 /// ```
 public final class VkComputePipelineCreateInfo extends GroupType {
-    /// The struct layout of `VkComputePipelineCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -33,292 +31,129 @@ public final class VkComputePipelineCreateInfo extends GroupType {
         ValueLayout.JAVA_LONG.withName("basePipelineHandle"),
         ValueLayout.JAVA_INT.withName("basePipelineIndex")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `stage`.
     public static final long OFFSET_stage = LAYOUT.byteOffset(PathElement.groupElement("stage"));
-    /// The memory layout of `stage`.
-    public static final MemoryLayout LAYOUT_stage = LAYOUT.select(PathElement.groupElement("stage"));
-    /// The byte offset of `layout`.
     public static final long OFFSET_layout = LAYOUT.byteOffset(PathElement.groupElement("layout"));
-    /// The memory layout of `layout`.
-    public static final MemoryLayout LAYOUT_layout = LAYOUT.select(PathElement.groupElement("layout"));
-    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
-    /// The byte offset of `basePipelineHandle`.
     public static final long OFFSET_basePipelineHandle = LAYOUT.byteOffset(PathElement.groupElement("basePipelineHandle"));
-    /// The memory layout of `basePipelineHandle`.
-    public static final MemoryLayout LAYOUT_basePipelineHandle = LAYOUT.select(PathElement.groupElement("basePipelineHandle"));
-    /// The [VarHandle] of `basePipelineHandle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_basePipelineHandle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("basePipelineHandle"));
-    /// The byte offset of `basePipelineIndex`.
     public static final long OFFSET_basePipelineIndex = LAYOUT.byteOffset(PathElement.groupElement("basePipelineIndex"));
-    /// The memory layout of `basePipelineIndex`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_stage = LAYOUT.select(PathElement.groupElement("stage"));
+    public static final MemoryLayout LAYOUT_layout = LAYOUT.select(PathElement.groupElement("layout"));
+    public static final MemoryLayout LAYOUT_basePipelineHandle = LAYOUT.select(PathElement.groupElement("basePipelineHandle"));
     public static final MemoryLayout LAYOUT_basePipelineIndex = LAYOUT.select(PathElement.groupElement("basePipelineIndex"));
-    /// The [VarHandle] of `basePipelineIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_stage$sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stage"), PathElement.groupElement("sType"));
+    public static final VarHandle VH_stage$pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stage"), PathElement.groupElement("pNext"));
+    public static final VarHandle VH_stage$flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stage"), PathElement.groupElement("flags"));
+    public static final VarHandle VH_stage$stage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stage"), PathElement.groupElement("stage"));
+    public static final VarHandle VH_stage$module = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stage"), PathElement.groupElement("module"));
+    public static final VarHandle VH_stage$pName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stage"), PathElement.groupElement("pName"));
+    public static final VarHandle VH_stage$pSpecializationInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stage"), PathElement.groupElement("pSpecializationInfo"));
+    public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
+    public static final VarHandle VH_basePipelineHandle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("basePipelineHandle"));
     public static final VarHandle VH_basePipelineIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("basePipelineIndex"));
 
-    /// Creates `VkComputePipelineCreateInfo` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkComputePipelineCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkComputePipelineCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkComputePipelineCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkComputePipelineCreateInfo(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkComputePipelineCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkComputePipelineCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkComputePipelineCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkComputePipelineCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkComputePipelineCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkComputePipelineCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkComputePipelineCreateInfo` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkComputePipelineCreateInfo`
     public static VkComputePipelineCreateInfo alloc(SegmentAllocator allocator) { return new VkComputePipelineCreateInfo(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkComputePipelineCreateInfo` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkComputePipelineCreateInfo`
     public static VkComputePipelineCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkComputePipelineCreateInfo(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkComputePipelineCreateInfo allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO); }
+    public static VkComputePipelineCreateInfo allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO);
+        return s;
+    }
     public VkComputePipelineCreateInfo copyFrom(VkComputePipelineCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkComputePipelineCreateInfo reinterpret(long count) { return new VkComputePipelineCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `stage` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment stage(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_stage, index), LAYOUT_stage); }
-    /// {@return `stage`}
-    public MemorySegment stage() { return stage(this.segment(), 0L); }
-    /// Sets `stage` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void stage(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_stage, index), LAYOUT_stage.byteSize()); }
-    /// Sets `stage` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo stage(MemorySegment value) { stage(this.segment(), 0L, value); return this; }
-    /// Accepts `stage` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkComputePipelineCreateInfo stage(Consumer<overrungl.vulkan.struct.VkPipelineShaderStageCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkPipelineShaderStageCreateInfo.of(stage())); return this; }
-
-    /// {@return `layout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long layout(MemorySegment segment, long index) { return (long) VH_layout.get(segment, 0L, index); }
-    /// {@return `layout`}
-    public long layout() { return layout(this.segment(), 0L); }
-    /// Sets `layout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void layout(MemorySegment segment, long index, long value) { VH_layout.set(segment, 0L, index, value); }
-    /// Sets `layout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo layout(long value) { layout(this.segment(), 0L, value); return this; }
-
-    /// {@return `basePipelineHandle` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long basePipelineHandle(MemorySegment segment, long index) { return (long) VH_basePipelineHandle.get(segment, 0L, index); }
-    /// {@return `basePipelineHandle`}
-    public long basePipelineHandle() { return basePipelineHandle(this.segment(), 0L); }
-    /// Sets `basePipelineHandle` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void basePipelineHandle(MemorySegment segment, long index, long value) { VH_basePipelineHandle.set(segment, 0L, index, value); }
-    /// Sets `basePipelineHandle` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo basePipelineHandle(long value) { basePipelineHandle(this.segment(), 0L, value); return this; }
-
-    /// {@return `basePipelineIndex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int basePipelineIndex(MemorySegment segment, long index) { return (int) VH_basePipelineIndex.get(segment, 0L, index); }
-    /// {@return `basePipelineIndex`}
-    public int basePipelineIndex() { return basePipelineIndex(this.segment(), 0L); }
-    /// Sets `basePipelineIndex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void basePipelineIndex(MemorySegment segment, long index, int value) { VH_basePipelineIndex.set(segment, 0L, index, value); }
-    /// Sets `basePipelineIndex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo basePipelineIndex(int value) { basePipelineIndex(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkComputePipelineCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkComputePipelineCreateInfo`
     public VkComputePipelineCreateInfo asSlice(long index) { return new VkComputePipelineCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkComputePipelineCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkComputePipelineCreateInfo`
     public VkComputePipelineCreateInfo asSlice(long index, long count) { return new VkComputePipelineCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkComputePipelineCreateInfo` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkComputePipelineCreateInfo at(long index, Consumer<VkComputePipelineCreateInfo> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `stage` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment stageAt(long index) { return stage(this.segment(), index); }
-    /// Sets `stage` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo stageAt(long index, MemorySegment value) { stage(this.segment(), index, value); return this; }
-    /// Accepts `stage` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkComputePipelineCreateInfo stageAt(long index, Consumer<overrungl.vulkan.struct.VkPipelineShaderStageCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkPipelineShaderStageCreateInfo.of(stageAt(index))); return this; }
-
-    /// {@return `layout` at the given index}
-    /// @param index the index of the struct buffer
-    public long layoutAt(long index) { return layout(this.segment(), index); }
-    /// Sets `layout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo layoutAt(long index, long value) { layout(this.segment(), index, value); return this; }
-
-    /// {@return `basePipelineHandle` at the given index}
-    /// @param index the index of the struct buffer
-    public long basePipelineHandleAt(long index) { return basePipelineHandle(this.segment(), index); }
-    /// Sets `basePipelineHandle` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo basePipelineHandleAt(long index, long value) { basePipelineHandle(this.segment(), index, value); return this; }
-
-    /// {@return `basePipelineIndex` at the given index}
-    /// @param index the index of the struct buffer
-    public int basePipelineIndexAt(long index) { return basePipelineIndex(this.segment(), index); }
-    /// Sets `basePipelineIndex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkComputePipelineCreateInfo basePipelineIndexAt(long index, int value) { basePipelineIndex(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public int stage$sTypeAt(long index) { return (int) VH_stage$sType.get(this.segment(), 0L, index); }
+    public MemorySegment stage$pNextAt(long index) { return (MemorySegment) VH_stage$pNext.get(this.segment(), 0L, index); }
+    public int stage$flagsAt(long index) { return (int) VH_stage$flags.get(this.segment(), 0L, index); }
+    public int stage$stageAt(long index) { return (int) VH_stage$stage.get(this.segment(), 0L, index); }
+    public long stage$moduleAt(long index) { return (long) VH_stage$module.get(this.segment(), 0L, index); }
+    public MemorySegment stage$pNameAt(long index) { return (MemorySegment) VH_stage$pName.get(this.segment(), 0L, index); }
+    public MemorySegment stage$pSpecializationInfoAt(long index) { return (MemorySegment) VH_stage$pSpecializationInfo.get(this.segment(), 0L, index); }
+    public long layoutAt(long index) { return (long) VH_layout.get(this.segment(), 0L, index); }
+    public long basePipelineHandleAt(long index) { return (long) VH_basePipelineHandle.get(this.segment(), 0L, index); }
+    public int basePipelineIndexAt(long index) { return (int) VH_basePipelineIndex.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public int stage$sType() { return (int) VH_stage$sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment stage$pNext() { return (MemorySegment) VH_stage$pNext.get(this.segment(), 0L, 0L); }
+    public int stage$flags() { return (int) VH_stage$flags.get(this.segment(), 0L, 0L); }
+    public int stage$stage() { return (int) VH_stage$stage.get(this.segment(), 0L, 0L); }
+    public long stage$module() { return (long) VH_stage$module.get(this.segment(), 0L, 0L); }
+    public MemorySegment stage$pName() { return (MemorySegment) VH_stage$pName.get(this.segment(), 0L, 0L); }
+    public MemorySegment stage$pSpecializationInfo() { return (MemorySegment) VH_stage$pSpecializationInfo.get(this.segment(), 0L, 0L); }
+    public long layout() { return (long) VH_layout.get(this.segment(), 0L, 0L); }
+    public long basePipelineHandle() { return (long) VH_basePipelineHandle.get(this.segment(), 0L, 0L); }
+    public int basePipelineIndex() { return (int) VH_basePipelineIndex.get(this.segment(), 0L, 0L); }
+    public VkComputePipelineCreateInfo sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo stage$sTypeAt(long index, int value) { VH_stage$sType.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo stage$pNextAt(long index, MemorySegment value) { VH_stage$pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo stage$flagsAt(long index, int value) { VH_stage$flags.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo stage$stageAt(long index, int value) { VH_stage$stage.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo stage$moduleAt(long index, long value) { VH_stage$module.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo stage$pNameAt(long index, MemorySegment value) { VH_stage$pName.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo stage$pSpecializationInfoAt(long index, MemorySegment value) { VH_stage$pSpecializationInfo.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo layoutAt(long index, long value) { VH_layout.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo basePipelineHandleAt(long index, long value) { VH_basePipelineHandle.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo basePipelineIndexAt(long index, int value) { VH_basePipelineIndex.set(this.segment(), 0L, index, value); return this; }
+    public VkComputePipelineCreateInfo sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo stage$sType(int value) { VH_stage$sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo stage$pNext(MemorySegment value) { VH_stage$pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo stage$flags(int value) { VH_stage$flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo stage$stage(int value) { VH_stage$stage.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo stage$module(long value) { VH_stage$module.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo stage$pName(MemorySegment value) { VH_stage$pName.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo stage$pSpecializationInfo(MemorySegment value) { VH_stage$pSpecializationInfo.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo layout(long value) { VH_layout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo basePipelineHandle(long value) { VH_basePipelineHandle.set(this.segment(), 0L, 0L, value); return this; }
+    public VkComputePipelineCreateInfo basePipelineIndex(int value) { VH_basePipelineIndex.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkComputePipelineCreateInfo _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkComputePipelineCreateInfo _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkComputePipelineCreateInfo _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkComputePipelineCreateInfo _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkComputePipelineCreateInfo _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkComputePipelineCreateInfo _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _stageAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_stage, index), LAYOUT_stage); }
+    public MemorySegment _stage() { return _stageAt(0L); }
+    public VkComputePipelineCreateInfo _stageAt(long index, MemorySegment src) { _stageAt(index).copyFrom(src); return this; }
+    public VkComputePipelineCreateInfo _stage(MemorySegment src) { return _stageAt(0L, src); }
+    public MemorySegment _layoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_layout, index), LAYOUT_layout); }
+    public MemorySegment _layout() { return _layoutAt(0L); }
+    public VkComputePipelineCreateInfo _layoutAt(long index, MemorySegment src) { _layoutAt(index).copyFrom(src); return this; }
+    public VkComputePipelineCreateInfo _layout(MemorySegment src) { return _layoutAt(0L, src); }
+    public MemorySegment _basePipelineHandleAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_basePipelineHandle, index), LAYOUT_basePipelineHandle); }
+    public MemorySegment _basePipelineHandle() { return _basePipelineHandleAt(0L); }
+    public VkComputePipelineCreateInfo _basePipelineHandleAt(long index, MemorySegment src) { _basePipelineHandleAt(index).copyFrom(src); return this; }
+    public VkComputePipelineCreateInfo _basePipelineHandle(MemorySegment src) { return _basePipelineHandleAt(0L, src); }
+    public MemorySegment _basePipelineIndexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_basePipelineIndex, index), LAYOUT_basePipelineIndex); }
+    public MemorySegment _basePipelineIndex() { return _basePipelineIndexAt(0L); }
+    public VkComputePipelineCreateInfo _basePipelineIndexAt(long index, MemorySegment src) { _basePipelineIndexAt(index).copyFrom(src); return this; }
+    public VkComputePipelineCreateInfo _basePipelineIndex(MemorySegment src) { return _basePipelineIndexAt(0L, src); }
 }

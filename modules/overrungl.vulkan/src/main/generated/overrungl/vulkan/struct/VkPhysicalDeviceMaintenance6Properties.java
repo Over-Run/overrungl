@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMaintenance6Properties {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 blockTexelViewCompatibleMultipleLayers;
+///     VkBool32 blockTexelViewCompatibleMultipleLayers;
 ///     uint32_t maxCombinedImageSamplerDescriptorCount;
-///     (uint32_t) VkBool32 fragmentShadingRateClampCombinerInputs;
-/// };
+///     VkBool32 fragmentShadingRateClampCombinerInputs;
+/// }
 /// ```
 public final class VkPhysicalDeviceMaintenance6Properties extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceMaintenance6Properties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,223 +27,77 @@ public final class VkPhysicalDeviceMaintenance6Properties extends GroupType {
         ValueLayout.JAVA_INT.withName("maxCombinedImageSamplerDescriptorCount"),
         ValueLayout.JAVA_INT.withName("fragmentShadingRateClampCombinerInputs")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `blockTexelViewCompatibleMultipleLayers`.
     public static final long OFFSET_blockTexelViewCompatibleMultipleLayers = LAYOUT.byteOffset(PathElement.groupElement("blockTexelViewCompatibleMultipleLayers"));
-    /// The memory layout of `blockTexelViewCompatibleMultipleLayers`.
-    public static final MemoryLayout LAYOUT_blockTexelViewCompatibleMultipleLayers = LAYOUT.select(PathElement.groupElement("blockTexelViewCompatibleMultipleLayers"));
-    /// The [VarHandle] of `blockTexelViewCompatibleMultipleLayers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_blockTexelViewCompatibleMultipleLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockTexelViewCompatibleMultipleLayers"));
-    /// The byte offset of `maxCombinedImageSamplerDescriptorCount`.
     public static final long OFFSET_maxCombinedImageSamplerDescriptorCount = LAYOUT.byteOffset(PathElement.groupElement("maxCombinedImageSamplerDescriptorCount"));
-    /// The memory layout of `maxCombinedImageSamplerDescriptorCount`.
-    public static final MemoryLayout LAYOUT_maxCombinedImageSamplerDescriptorCount = LAYOUT.select(PathElement.groupElement("maxCombinedImageSamplerDescriptorCount"));
-    /// The [VarHandle] of `maxCombinedImageSamplerDescriptorCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxCombinedImageSamplerDescriptorCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCombinedImageSamplerDescriptorCount"));
-    /// The byte offset of `fragmentShadingRateClampCombinerInputs`.
     public static final long OFFSET_fragmentShadingRateClampCombinerInputs = LAYOUT.byteOffset(PathElement.groupElement("fragmentShadingRateClampCombinerInputs"));
-    /// The memory layout of `fragmentShadingRateClampCombinerInputs`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_blockTexelViewCompatibleMultipleLayers = LAYOUT.select(PathElement.groupElement("blockTexelViewCompatibleMultipleLayers"));
+    public static final MemoryLayout LAYOUT_maxCombinedImageSamplerDescriptorCount = LAYOUT.select(PathElement.groupElement("maxCombinedImageSamplerDescriptorCount"));
     public static final MemoryLayout LAYOUT_fragmentShadingRateClampCombinerInputs = LAYOUT.select(PathElement.groupElement("fragmentShadingRateClampCombinerInputs"));
-    /// The [VarHandle] of `fragmentShadingRateClampCombinerInputs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_blockTexelViewCompatibleMultipleLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blockTexelViewCompatibleMultipleLayers"));
+    public static final VarHandle VH_maxCombinedImageSamplerDescriptorCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCombinedImageSamplerDescriptorCount"));
     public static final VarHandle VH_fragmentShadingRateClampCombinerInputs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateClampCombinerInputs"));
 
-    /// Creates `VkPhysicalDeviceMaintenance6Properties` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceMaintenance6Properties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceMaintenance6Properties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceMaintenance6Properties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance6Properties(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceMaintenance6Properties` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceMaintenance6Properties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance6Properties(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceMaintenance6Properties` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceMaintenance6Properties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance6Properties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance6Properties` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceMaintenance6Properties`
     public static VkPhysicalDeviceMaintenance6Properties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMaintenance6Properties(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance6Properties` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceMaintenance6Properties`
     public static VkPhysicalDeviceMaintenance6Properties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMaintenance6Properties(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceMaintenance6Properties allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK14.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES); }
+    public static VkPhysicalDeviceMaintenance6Properties allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK14.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES);
+        return s;
+    }
     public VkPhysicalDeviceMaintenance6Properties copyFrom(VkPhysicalDeviceMaintenance6Properties src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceMaintenance6Properties reinterpret(long count) { return new VkPhysicalDeviceMaintenance6Properties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance6Properties sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance6Properties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `blockTexelViewCompatibleMultipleLayers` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int blockTexelViewCompatibleMultipleLayers(MemorySegment segment, long index) { return (int) VH_blockTexelViewCompatibleMultipleLayers.get(segment, 0L, index); }
-    /// {@return `blockTexelViewCompatibleMultipleLayers`}
-    public int blockTexelViewCompatibleMultipleLayers() { return blockTexelViewCompatibleMultipleLayers(this.segment(), 0L); }
-    /// Sets `blockTexelViewCompatibleMultipleLayers` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void blockTexelViewCompatibleMultipleLayers(MemorySegment segment, long index, int value) { VH_blockTexelViewCompatibleMultipleLayers.set(segment, 0L, index, value); }
-    /// Sets `blockTexelViewCompatibleMultipleLayers` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance6Properties blockTexelViewCompatibleMultipleLayers(int value) { blockTexelViewCompatibleMultipleLayers(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxCombinedImageSamplerDescriptorCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxCombinedImageSamplerDescriptorCount(MemorySegment segment, long index) { return (int) VH_maxCombinedImageSamplerDescriptorCount.get(segment, 0L, index); }
-    /// {@return `maxCombinedImageSamplerDescriptorCount`}
-    public int maxCombinedImageSamplerDescriptorCount() { return maxCombinedImageSamplerDescriptorCount(this.segment(), 0L); }
-    /// Sets `maxCombinedImageSamplerDescriptorCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxCombinedImageSamplerDescriptorCount(MemorySegment segment, long index, int value) { VH_maxCombinedImageSamplerDescriptorCount.set(segment, 0L, index, value); }
-    /// Sets `maxCombinedImageSamplerDescriptorCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance6Properties maxCombinedImageSamplerDescriptorCount(int value) { maxCombinedImageSamplerDescriptorCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `fragmentShadingRateClampCombinerInputs` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int fragmentShadingRateClampCombinerInputs(MemorySegment segment, long index) { return (int) VH_fragmentShadingRateClampCombinerInputs.get(segment, 0L, index); }
-    /// {@return `fragmentShadingRateClampCombinerInputs`}
-    public int fragmentShadingRateClampCombinerInputs() { return fragmentShadingRateClampCombinerInputs(this.segment(), 0L); }
-    /// Sets `fragmentShadingRateClampCombinerInputs` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void fragmentShadingRateClampCombinerInputs(MemorySegment segment, long index, int value) { VH_fragmentShadingRateClampCombinerInputs.set(segment, 0L, index, value); }
-    /// Sets `fragmentShadingRateClampCombinerInputs` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance6Properties fragmentShadingRateClampCombinerInputs(int value) { fragmentShadingRateClampCombinerInputs(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceMaintenance6Properties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceMaintenance6Properties`
     public VkPhysicalDeviceMaintenance6Properties asSlice(long index) { return new VkPhysicalDeviceMaintenance6Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceMaintenance6Properties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceMaintenance6Properties`
     public VkPhysicalDeviceMaintenance6Properties asSlice(long index, long count) { return new VkPhysicalDeviceMaintenance6Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceMaintenance6Properties` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceMaintenance6Properties at(long index, Consumer<VkPhysicalDeviceMaintenance6Properties> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance6Properties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance6Properties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `blockTexelViewCompatibleMultipleLayers` at the given index}
-    /// @param index the index of the struct buffer
-    public int blockTexelViewCompatibleMultipleLayersAt(long index) { return blockTexelViewCompatibleMultipleLayers(this.segment(), index); }
-    /// Sets `blockTexelViewCompatibleMultipleLayers` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance6Properties blockTexelViewCompatibleMultipleLayersAt(long index, int value) { blockTexelViewCompatibleMultipleLayers(this.segment(), index, value); return this; }
-
-    /// {@return `maxCombinedImageSamplerDescriptorCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxCombinedImageSamplerDescriptorCountAt(long index) { return maxCombinedImageSamplerDescriptorCount(this.segment(), index); }
-    /// Sets `maxCombinedImageSamplerDescriptorCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance6Properties maxCombinedImageSamplerDescriptorCountAt(long index, int value) { maxCombinedImageSamplerDescriptorCount(this.segment(), index, value); return this; }
-
-    /// {@return `fragmentShadingRateClampCombinerInputs` at the given index}
-    /// @param index the index of the struct buffer
-    public int fragmentShadingRateClampCombinerInputsAt(long index) { return fragmentShadingRateClampCombinerInputs(this.segment(), index); }
-    /// Sets `fragmentShadingRateClampCombinerInputs` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance6Properties fragmentShadingRateClampCombinerInputsAt(long index, int value) { fragmentShadingRateClampCombinerInputs(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int blockTexelViewCompatibleMultipleLayersAt(long index) { return (int) VH_blockTexelViewCompatibleMultipleLayers.get(this.segment(), 0L, index); }
+    public int maxCombinedImageSamplerDescriptorCountAt(long index) { return (int) VH_maxCombinedImageSamplerDescriptorCount.get(this.segment(), 0L, index); }
+    public int fragmentShadingRateClampCombinerInputsAt(long index) { return (int) VH_fragmentShadingRateClampCombinerInputs.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int blockTexelViewCompatibleMultipleLayers() { return (int) VH_blockTexelViewCompatibleMultipleLayers.get(this.segment(), 0L, 0L); }
+    public int maxCombinedImageSamplerDescriptorCount() { return (int) VH_maxCombinedImageSamplerDescriptorCount.get(this.segment(), 0L, 0L); }
+    public int fragmentShadingRateClampCombinerInputs() { return (int) VH_fragmentShadingRateClampCombinerInputs.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceMaintenance6Properties sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMaintenance6Properties pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMaintenance6Properties blockTexelViewCompatibleMultipleLayersAt(long index, int value) { VH_blockTexelViewCompatibleMultipleLayers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMaintenance6Properties maxCombinedImageSamplerDescriptorCountAt(long index, int value) { VH_maxCombinedImageSamplerDescriptorCount.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMaintenance6Properties fragmentShadingRateClampCombinerInputsAt(long index, int value) { VH_fragmentShadingRateClampCombinerInputs.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMaintenance6Properties sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceMaintenance6Properties pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceMaintenance6Properties blockTexelViewCompatibleMultipleLayers(int value) { VH_blockTexelViewCompatibleMultipleLayers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceMaintenance6Properties maxCombinedImageSamplerDescriptorCount(int value) { VH_maxCombinedImageSamplerDescriptorCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceMaintenance6Properties fragmentShadingRateClampCombinerInputs(int value) { VH_fragmentShadingRateClampCombinerInputs.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceMaintenance6Properties _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMaintenance6Properties _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceMaintenance6Properties _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMaintenance6Properties _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _blockTexelViewCompatibleMultipleLayersAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_blockTexelViewCompatibleMultipleLayers, index), LAYOUT_blockTexelViewCompatibleMultipleLayers); }
+    public MemorySegment _blockTexelViewCompatibleMultipleLayers() { return _blockTexelViewCompatibleMultipleLayersAt(0L); }
+    public VkPhysicalDeviceMaintenance6Properties _blockTexelViewCompatibleMultipleLayersAt(long index, MemorySegment src) { _blockTexelViewCompatibleMultipleLayersAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMaintenance6Properties _blockTexelViewCompatibleMultipleLayers(MemorySegment src) { return _blockTexelViewCompatibleMultipleLayersAt(0L, src); }
+    public MemorySegment _maxCombinedImageSamplerDescriptorCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxCombinedImageSamplerDescriptorCount, index), LAYOUT_maxCombinedImageSamplerDescriptorCount); }
+    public MemorySegment _maxCombinedImageSamplerDescriptorCount() { return _maxCombinedImageSamplerDescriptorCountAt(0L); }
+    public VkPhysicalDeviceMaintenance6Properties _maxCombinedImageSamplerDescriptorCountAt(long index, MemorySegment src) { _maxCombinedImageSamplerDescriptorCountAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMaintenance6Properties _maxCombinedImageSamplerDescriptorCount(MemorySegment src) { return _maxCombinedImageSamplerDescriptorCountAt(0L, src); }
+    public MemorySegment _fragmentShadingRateClampCombinerInputsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_fragmentShadingRateClampCombinerInputs, index), LAYOUT_fragmentShadingRateClampCombinerInputs); }
+    public MemorySegment _fragmentShadingRateClampCombinerInputs() { return _fragmentShadingRateClampCombinerInputsAt(0L); }
+    public VkPhysicalDeviceMaintenance6Properties _fragmentShadingRateClampCombinerInputsAt(long index, MemorySegment src) { _fragmentShadingRateClampCombinerInputsAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMaintenance6Properties _fragmentShadingRateClampCombinerInputs(MemorySegment src) { return _fragmentShadingRateClampCombinerInputsAt(0L, src); }
 }

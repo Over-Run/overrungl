@@ -20,6 +20,7 @@ public final class VKKHRBufferDeviceAddress {
     public static final int VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT_KHR = 0x00000002;
     public static final int VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR = 0x00000004;
     public static final int VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR = -1000257000;
+    private VKKHRBufferDeviceAddress() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetBufferDeviceAddressKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetBufferOpaqueCaptureAddressKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -27,11 +28,9 @@ public final class VKKHRBufferDeviceAddress {
         private Handles() {}
     }
 
-    private VKKHRBufferDeviceAddress() {}
-
     /// Invokes `vkGetBufferDeviceAddressKHR`.
     /// ```
-    /// (uint64_t) VkDeviceAddress vkGetBufferDeviceAddressKHR((struct VkDevice*) VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
+    /// VkDeviceAddress vkGetBufferDeviceAddressKHR(VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
     /// ```
     public static long vkGetBufferDeviceAddressKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferDeviceAddressKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressKHR");
@@ -42,7 +41,7 @@ public final class VKKHRBufferDeviceAddress {
 
     /// Invokes `vkGetBufferOpaqueCaptureAddressKHR`.
     /// ```
-    /// uint64_t vkGetBufferOpaqueCaptureAddressKHR((struct VkDevice*) VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
+    /// uint64_t vkGetBufferOpaqueCaptureAddressKHR(VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
     /// ```
     public static long vkGetBufferOpaqueCaptureAddressKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferOpaqueCaptureAddressKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferOpaqueCaptureAddressKHR");
@@ -53,7 +52,7 @@ public final class VKKHRBufferDeviceAddress {
 
     /// Invokes `vkGetDeviceMemoryOpaqueCaptureAddressKHR`.
     /// ```
-    /// uint64_t vkGetDeviceMemoryOpaqueCaptureAddressKHR((struct VkDevice*) VkDevice device, const VkDeviceMemoryOpaqueCaptureAddressInfo* pInfo);
+    /// uint64_t vkGetDeviceMemoryOpaqueCaptureAddressKHR(VkDevice device, const VkDeviceMemoryOpaqueCaptureAddressInfo* pInfo);
     /// ```
     public static long vkGetDeviceMemoryOpaqueCaptureAddressKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceMemoryOpaqueCaptureAddressKHR");

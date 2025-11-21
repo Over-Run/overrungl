@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,21 +12,20 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkOpticalFlowSessionCreateInfoNV {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t width;
 ///     uint32_t height;
-///     (int) VkFormat imageFormat;
-///     (int) VkFormat flowVectorFormat;
-///     (int) VkFormat costFormat;
-///     ((uint32_t) VkFlags) VkOpticalFlowGridSizeFlagsNV outputGridSize;
-///     ((uint32_t) VkFlags) VkOpticalFlowGridSizeFlagsNV hintGridSize;
-///     (int) VkOpticalFlowPerformanceLevelNV performanceLevel;
-///     ((uint32_t) VkFlags) VkOpticalFlowSessionCreateFlagsNV flags;
-/// };
+///     VkFormat imageFormat;
+///     VkFormat flowVectorFormat;
+///     VkFormat costFormat;
+///     VkOpticalFlowGridSizeFlagsNV outputGridSize;
+///     VkOpticalFlowGridSizeFlagsNV hintGridSize;
+///     VkOpticalFlowPerformanceLevelNV performanceLevel;
+///     VkOpticalFlowSessionCreateFlagsNV flags;
+/// }
 /// ```
 public final class VkOpticalFlowSessionCreateInfoNV extends GroupType {
-    /// The struct layout of `VkOpticalFlowSessionCreateInfoNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,409 +39,143 @@ public final class VkOpticalFlowSessionCreateInfoNV extends GroupType {
         ValueLayout.JAVA_INT.withName("performanceLevel"),
         ValueLayout.JAVA_INT.withName("flags")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `width`.
     public static final long OFFSET_width = LAYOUT.byteOffset(PathElement.groupElement("width"));
-    /// The memory layout of `width`.
-    public static final MemoryLayout LAYOUT_width = LAYOUT.select(PathElement.groupElement("width"));
-    /// The [VarHandle] of `width` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("width"));
-    /// The byte offset of `height`.
     public static final long OFFSET_height = LAYOUT.byteOffset(PathElement.groupElement("height"));
-    /// The memory layout of `height`.
-    public static final MemoryLayout LAYOUT_height = LAYOUT.select(PathElement.groupElement("height"));
-    /// The [VarHandle] of `height` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("height"));
-    /// The byte offset of `imageFormat`.
     public static final long OFFSET_imageFormat = LAYOUT.byteOffset(PathElement.groupElement("imageFormat"));
-    /// The memory layout of `imageFormat`.
-    public static final MemoryLayout LAYOUT_imageFormat = LAYOUT.select(PathElement.groupElement("imageFormat"));
-    /// The [VarHandle] of `imageFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageFormat"));
-    /// The byte offset of `flowVectorFormat`.
     public static final long OFFSET_flowVectorFormat = LAYOUT.byteOffset(PathElement.groupElement("flowVectorFormat"));
-    /// The memory layout of `flowVectorFormat`.
-    public static final MemoryLayout LAYOUT_flowVectorFormat = LAYOUT.select(PathElement.groupElement("flowVectorFormat"));
-    /// The [VarHandle] of `flowVectorFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flowVectorFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flowVectorFormat"));
-    /// The byte offset of `costFormat`.
     public static final long OFFSET_costFormat = LAYOUT.byteOffset(PathElement.groupElement("costFormat"));
-    /// The memory layout of `costFormat`.
-    public static final MemoryLayout LAYOUT_costFormat = LAYOUT.select(PathElement.groupElement("costFormat"));
-    /// The [VarHandle] of `costFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_costFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("costFormat"));
-    /// The byte offset of `outputGridSize`.
     public static final long OFFSET_outputGridSize = LAYOUT.byteOffset(PathElement.groupElement("outputGridSize"));
-    /// The memory layout of `outputGridSize`.
-    public static final MemoryLayout LAYOUT_outputGridSize = LAYOUT.select(PathElement.groupElement("outputGridSize"));
-    /// The [VarHandle] of `outputGridSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_outputGridSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("outputGridSize"));
-    /// The byte offset of `hintGridSize`.
     public static final long OFFSET_hintGridSize = LAYOUT.byteOffset(PathElement.groupElement("hintGridSize"));
-    /// The memory layout of `hintGridSize`.
-    public static final MemoryLayout LAYOUT_hintGridSize = LAYOUT.select(PathElement.groupElement("hintGridSize"));
-    /// The [VarHandle] of `hintGridSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_hintGridSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hintGridSize"));
-    /// The byte offset of `performanceLevel`.
     public static final long OFFSET_performanceLevel = LAYOUT.byteOffset(PathElement.groupElement("performanceLevel"));
-    /// The memory layout of `performanceLevel`.
-    public static final MemoryLayout LAYOUT_performanceLevel = LAYOUT.select(PathElement.groupElement("performanceLevel"));
-    /// The [VarHandle] of `performanceLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_performanceLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("performanceLevel"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_width = LAYOUT.select(PathElement.groupElement("width"));
+    public static final MemoryLayout LAYOUT_height = LAYOUT.select(PathElement.groupElement("height"));
+    public static final MemoryLayout LAYOUT_imageFormat = LAYOUT.select(PathElement.groupElement("imageFormat"));
+    public static final MemoryLayout LAYOUT_flowVectorFormat = LAYOUT.select(PathElement.groupElement("flowVectorFormat"));
+    public static final MemoryLayout LAYOUT_costFormat = LAYOUT.select(PathElement.groupElement("costFormat"));
+    public static final MemoryLayout LAYOUT_outputGridSize = LAYOUT.select(PathElement.groupElement("outputGridSize"));
+    public static final MemoryLayout LAYOUT_hintGridSize = LAYOUT.select(PathElement.groupElement("hintGridSize"));
+    public static final MemoryLayout LAYOUT_performanceLevel = LAYOUT.select(PathElement.groupElement("performanceLevel"));
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("width"));
+    public static final VarHandle VH_height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("height"));
+    public static final VarHandle VH_imageFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageFormat"));
+    public static final VarHandle VH_flowVectorFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flowVectorFormat"));
+    public static final VarHandle VH_costFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("costFormat"));
+    public static final VarHandle VH_outputGridSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("outputGridSize"));
+    public static final VarHandle VH_hintGridSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hintGridSize"));
+    public static final VarHandle VH_performanceLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("performanceLevel"));
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
 
-    /// Creates `VkOpticalFlowSessionCreateInfoNV` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkOpticalFlowSessionCreateInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkOpticalFlowSessionCreateInfoNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkOpticalFlowSessionCreateInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOpticalFlowSessionCreateInfoNV(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkOpticalFlowSessionCreateInfoNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkOpticalFlowSessionCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOpticalFlowSessionCreateInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkOpticalFlowSessionCreateInfoNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkOpticalFlowSessionCreateInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkOpticalFlowSessionCreateInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkOpticalFlowSessionCreateInfoNV` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkOpticalFlowSessionCreateInfoNV`
     public static VkOpticalFlowSessionCreateInfoNV alloc(SegmentAllocator allocator) { return new VkOpticalFlowSessionCreateInfoNV(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkOpticalFlowSessionCreateInfoNV` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkOpticalFlowSessionCreateInfoNV`
     public static VkOpticalFlowSessionCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkOpticalFlowSessionCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkOpticalFlowSessionCreateInfoNV allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.nv.VKNVOpticalFlow.VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_INFO_NV); }
+    public static VkOpticalFlowSessionCreateInfoNV allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.nv.VKNVOpticalFlow.VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_INFO_NV);
+        return s;
+    }
     public VkOpticalFlowSessionCreateInfoNV copyFrom(VkOpticalFlowSessionCreateInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkOpticalFlowSessionCreateInfoNV reinterpret(long count) { return new VkOpticalFlowSessionCreateInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `width` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int width(MemorySegment segment, long index) { return (int) VH_width.get(segment, 0L, index); }
-    /// {@return `width`}
-    public int width() { return width(this.segment(), 0L); }
-    /// Sets `width` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void width(MemorySegment segment, long index, int value) { VH_width.set(segment, 0L, index, value); }
-    /// Sets `width` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV width(int value) { width(this.segment(), 0L, value); return this; }
-
-    /// {@return `height` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int height(MemorySegment segment, long index) { return (int) VH_height.get(segment, 0L, index); }
-    /// {@return `height`}
-    public int height() { return height(this.segment(), 0L); }
-    /// Sets `height` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void height(MemorySegment segment, long index, int value) { VH_height.set(segment, 0L, index, value); }
-    /// Sets `height` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV height(int value) { height(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageFormat` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int imageFormat(MemorySegment segment, long index) { return (int) VH_imageFormat.get(segment, 0L, index); }
-    /// {@return `imageFormat`}
-    public int imageFormat() { return imageFormat(this.segment(), 0L); }
-    /// Sets `imageFormat` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageFormat(MemorySegment segment, long index, int value) { VH_imageFormat.set(segment, 0L, index, value); }
-    /// Sets `imageFormat` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV imageFormat(int value) { imageFormat(this.segment(), 0L, value); return this; }
-
-    /// {@return `flowVectorFormat` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flowVectorFormat(MemorySegment segment, long index) { return (int) VH_flowVectorFormat.get(segment, 0L, index); }
-    /// {@return `flowVectorFormat`}
-    public int flowVectorFormat() { return flowVectorFormat(this.segment(), 0L); }
-    /// Sets `flowVectorFormat` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flowVectorFormat(MemorySegment segment, long index, int value) { VH_flowVectorFormat.set(segment, 0L, index, value); }
-    /// Sets `flowVectorFormat` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV flowVectorFormat(int value) { flowVectorFormat(this.segment(), 0L, value); return this; }
-
-    /// {@return `costFormat` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int costFormat(MemorySegment segment, long index) { return (int) VH_costFormat.get(segment, 0L, index); }
-    /// {@return `costFormat`}
-    public int costFormat() { return costFormat(this.segment(), 0L); }
-    /// Sets `costFormat` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void costFormat(MemorySegment segment, long index, int value) { VH_costFormat.set(segment, 0L, index, value); }
-    /// Sets `costFormat` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV costFormat(int value) { costFormat(this.segment(), 0L, value); return this; }
-
-    /// {@return `outputGridSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int outputGridSize(MemorySegment segment, long index) { return (int) VH_outputGridSize.get(segment, 0L, index); }
-    /// {@return `outputGridSize`}
-    public int outputGridSize() { return outputGridSize(this.segment(), 0L); }
-    /// Sets `outputGridSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void outputGridSize(MemorySegment segment, long index, int value) { VH_outputGridSize.set(segment, 0L, index, value); }
-    /// Sets `outputGridSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV outputGridSize(int value) { outputGridSize(this.segment(), 0L, value); return this; }
-
-    /// {@return `hintGridSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int hintGridSize(MemorySegment segment, long index) { return (int) VH_hintGridSize.get(segment, 0L, index); }
-    /// {@return `hintGridSize`}
-    public int hintGridSize() { return hintGridSize(this.segment(), 0L); }
-    /// Sets `hintGridSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void hintGridSize(MemorySegment segment, long index, int value) { VH_hintGridSize.set(segment, 0L, index, value); }
-    /// Sets `hintGridSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV hintGridSize(int value) { hintGridSize(this.segment(), 0L, value); return this; }
-
-    /// {@return `performanceLevel` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int performanceLevel(MemorySegment segment, long index) { return (int) VH_performanceLevel.get(segment, 0L, index); }
-    /// {@return `performanceLevel`}
-    public int performanceLevel() { return performanceLevel(this.segment(), 0L); }
-    /// Sets `performanceLevel` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void performanceLevel(MemorySegment segment, long index, int value) { VH_performanceLevel.set(segment, 0L, index, value); }
-    /// Sets `performanceLevel` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV performanceLevel(int value) { performanceLevel(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkOpticalFlowSessionCreateInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkOpticalFlowSessionCreateInfoNV`
     public VkOpticalFlowSessionCreateInfoNV asSlice(long index) { return new VkOpticalFlowSessionCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkOpticalFlowSessionCreateInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkOpticalFlowSessionCreateInfoNV`
     public VkOpticalFlowSessionCreateInfoNV asSlice(long index, long count) { return new VkOpticalFlowSessionCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkOpticalFlowSessionCreateInfoNV` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkOpticalFlowSessionCreateInfoNV at(long index, Consumer<VkOpticalFlowSessionCreateInfoNV> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `width` at the given index}
-    /// @param index the index of the struct buffer
-    public int widthAt(long index) { return width(this.segment(), index); }
-    /// Sets `width` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV widthAt(long index, int value) { width(this.segment(), index, value); return this; }
-
-    /// {@return `height` at the given index}
-    /// @param index the index of the struct buffer
-    public int heightAt(long index) { return height(this.segment(), index); }
-    /// Sets `height` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV heightAt(long index, int value) { height(this.segment(), index, value); return this; }
-
-    /// {@return `imageFormat` at the given index}
-    /// @param index the index of the struct buffer
-    public int imageFormatAt(long index) { return imageFormat(this.segment(), index); }
-    /// Sets `imageFormat` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV imageFormatAt(long index, int value) { imageFormat(this.segment(), index, value); return this; }
-
-    /// {@return `flowVectorFormat` at the given index}
-    /// @param index the index of the struct buffer
-    public int flowVectorFormatAt(long index) { return flowVectorFormat(this.segment(), index); }
-    /// Sets `flowVectorFormat` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV flowVectorFormatAt(long index, int value) { flowVectorFormat(this.segment(), index, value); return this; }
-
-    /// {@return `costFormat` at the given index}
-    /// @param index the index of the struct buffer
-    public int costFormatAt(long index) { return costFormat(this.segment(), index); }
-    /// Sets `costFormat` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV costFormatAt(long index, int value) { costFormat(this.segment(), index, value); return this; }
-
-    /// {@return `outputGridSize` at the given index}
-    /// @param index the index of the struct buffer
-    public int outputGridSizeAt(long index) { return outputGridSize(this.segment(), index); }
-    /// Sets `outputGridSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV outputGridSizeAt(long index, int value) { outputGridSize(this.segment(), index, value); return this; }
-
-    /// {@return `hintGridSize` at the given index}
-    /// @param index the index of the struct buffer
-    public int hintGridSizeAt(long index) { return hintGridSize(this.segment(), index); }
-    /// Sets `hintGridSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV hintGridSizeAt(long index, int value) { hintGridSize(this.segment(), index, value); return this; }
-
-    /// {@return `performanceLevel` at the given index}
-    /// @param index the index of the struct buffer
-    public int performanceLevelAt(long index) { return performanceLevel(this.segment(), index); }
-    /// Sets `performanceLevel` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV performanceLevelAt(long index, int value) { performanceLevel(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreateInfoNV flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int widthAt(long index) { return (int) VH_width.get(this.segment(), 0L, index); }
+    public int heightAt(long index) { return (int) VH_height.get(this.segment(), 0L, index); }
+    public int imageFormatAt(long index) { return (int) VH_imageFormat.get(this.segment(), 0L, index); }
+    public int flowVectorFormatAt(long index) { return (int) VH_flowVectorFormat.get(this.segment(), 0L, index); }
+    public int costFormatAt(long index) { return (int) VH_costFormat.get(this.segment(), 0L, index); }
+    public int outputGridSizeAt(long index) { return (int) VH_outputGridSize.get(this.segment(), 0L, index); }
+    public int hintGridSizeAt(long index) { return (int) VH_hintGridSize.get(this.segment(), 0L, index); }
+    public int performanceLevelAt(long index) { return (int) VH_performanceLevel.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int width() { return (int) VH_width.get(this.segment(), 0L, 0L); }
+    public int height() { return (int) VH_height.get(this.segment(), 0L, 0L); }
+    public int imageFormat() { return (int) VH_imageFormat.get(this.segment(), 0L, 0L); }
+    public int flowVectorFormat() { return (int) VH_flowVectorFormat.get(this.segment(), 0L, 0L); }
+    public int costFormat() { return (int) VH_costFormat.get(this.segment(), 0L, 0L); }
+    public int outputGridSize() { return (int) VH_outputGridSize.get(this.segment(), 0L, 0L); }
+    public int hintGridSize() { return (int) VH_hintGridSize.get(this.segment(), 0L, 0L); }
+    public int performanceLevel() { return (int) VH_performanceLevel.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public VkOpticalFlowSessionCreateInfoNV sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV widthAt(long index, int value) { VH_width.set(this.segment(), 0L, index, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV heightAt(long index, int value) { VH_height.set(this.segment(), 0L, index, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV imageFormatAt(long index, int value) { VH_imageFormat.set(this.segment(), 0L, index, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV flowVectorFormatAt(long index, int value) { VH_flowVectorFormat.set(this.segment(), 0L, index, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV costFormatAt(long index, int value) { VH_costFormat.set(this.segment(), 0L, index, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV outputGridSizeAt(long index, int value) { VH_outputGridSize.set(this.segment(), 0L, index, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV hintGridSizeAt(long index, int value) { VH_hintGridSize.set(this.segment(), 0L, index, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV performanceLevelAt(long index, int value) { VH_performanceLevel.set(this.segment(), 0L, index, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV width(int value) { VH_width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV height(int value) { VH_height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV imageFormat(int value) { VH_imageFormat.set(this.segment(), 0L, 0L, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV flowVectorFormat(int value) { VH_flowVectorFormat.set(this.segment(), 0L, 0L, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV costFormat(int value) { VH_costFormat.set(this.segment(), 0L, 0L, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV outputGridSize(int value) { VH_outputGridSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV hintGridSize(int value) { VH_hintGridSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV performanceLevel(int value) { VH_performanceLevel.set(this.segment(), 0L, 0L, value); return this; }
+    public VkOpticalFlowSessionCreateInfoNV flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkOpticalFlowSessionCreateInfoNV _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkOpticalFlowSessionCreateInfoNV _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkOpticalFlowSessionCreateInfoNV _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkOpticalFlowSessionCreateInfoNV _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _widthAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_width, index), LAYOUT_width); }
+    public MemorySegment _width() { return _widthAt(0L); }
+    public VkOpticalFlowSessionCreateInfoNV _widthAt(long index, MemorySegment src) { _widthAt(index).copyFrom(src); return this; }
+    public VkOpticalFlowSessionCreateInfoNV _width(MemorySegment src) { return _widthAt(0L, src); }
+    public MemorySegment _heightAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_height, index), LAYOUT_height); }
+    public MemorySegment _height() { return _heightAt(0L); }
+    public VkOpticalFlowSessionCreateInfoNV _heightAt(long index, MemorySegment src) { _heightAt(index).copyFrom(src); return this; }
+    public VkOpticalFlowSessionCreateInfoNV _height(MemorySegment src) { return _heightAt(0L, src); }
+    public MemorySegment _imageFormatAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageFormat, index), LAYOUT_imageFormat); }
+    public MemorySegment _imageFormat() { return _imageFormatAt(0L); }
+    public VkOpticalFlowSessionCreateInfoNV _imageFormatAt(long index, MemorySegment src) { _imageFormatAt(index).copyFrom(src); return this; }
+    public VkOpticalFlowSessionCreateInfoNV _imageFormat(MemorySegment src) { return _imageFormatAt(0L, src); }
+    public MemorySegment _flowVectorFormatAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flowVectorFormat, index), LAYOUT_flowVectorFormat); }
+    public MemorySegment _flowVectorFormat() { return _flowVectorFormatAt(0L); }
+    public VkOpticalFlowSessionCreateInfoNV _flowVectorFormatAt(long index, MemorySegment src) { _flowVectorFormatAt(index).copyFrom(src); return this; }
+    public VkOpticalFlowSessionCreateInfoNV _flowVectorFormat(MemorySegment src) { return _flowVectorFormatAt(0L, src); }
+    public MemorySegment _costFormatAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_costFormat, index), LAYOUT_costFormat); }
+    public MemorySegment _costFormat() { return _costFormatAt(0L); }
+    public VkOpticalFlowSessionCreateInfoNV _costFormatAt(long index, MemorySegment src) { _costFormatAt(index).copyFrom(src); return this; }
+    public VkOpticalFlowSessionCreateInfoNV _costFormat(MemorySegment src) { return _costFormatAt(0L, src); }
+    public MemorySegment _outputGridSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_outputGridSize, index), LAYOUT_outputGridSize); }
+    public MemorySegment _outputGridSize() { return _outputGridSizeAt(0L); }
+    public VkOpticalFlowSessionCreateInfoNV _outputGridSizeAt(long index, MemorySegment src) { _outputGridSizeAt(index).copyFrom(src); return this; }
+    public VkOpticalFlowSessionCreateInfoNV _outputGridSize(MemorySegment src) { return _outputGridSizeAt(0L, src); }
+    public MemorySegment _hintGridSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_hintGridSize, index), LAYOUT_hintGridSize); }
+    public MemorySegment _hintGridSize() { return _hintGridSizeAt(0L); }
+    public VkOpticalFlowSessionCreateInfoNV _hintGridSizeAt(long index, MemorySegment src) { _hintGridSizeAt(index).copyFrom(src); return this; }
+    public VkOpticalFlowSessionCreateInfoNV _hintGridSize(MemorySegment src) { return _hintGridSizeAt(0L, src); }
+    public MemorySegment _performanceLevelAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_performanceLevel, index), LAYOUT_performanceLevel); }
+    public MemorySegment _performanceLevel() { return _performanceLevelAt(0L); }
+    public VkOpticalFlowSessionCreateInfoNV _performanceLevelAt(long index, MemorySegment src) { _performanceLevelAt(index).copyFrom(src); return this; }
+    public VkOpticalFlowSessionCreateInfoNV _performanceLevel(MemorySegment src) { return _performanceLevelAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkOpticalFlowSessionCreateInfoNV _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkOpticalFlowSessionCreateInfoNV _flags(MemorySegment src) { return _flagsAt(0L, src); }
 }

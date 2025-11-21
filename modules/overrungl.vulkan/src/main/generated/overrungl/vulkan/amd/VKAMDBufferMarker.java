@@ -10,17 +10,16 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class VKAMDBufferMarker {
     public static final int VK_AMD_BUFFER_MARKER_SPEC_VERSION = 1;
     public static final String VK_AMD_BUFFER_MARKER_EXTENSION_NAME = "VK_AMD_buffer_marker";
+    private VKAMDBufferMarker() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdWriteBufferMarkerAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdWriteBufferMarker2AMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         private Handles() {}
     }
 
-    private VKAMDBufferMarker() {}
-
     /// Invokes `vkCmdWriteBufferMarkerAMD`.
     /// ```
-    /// void vkCmdWriteBufferMarkerAMD((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPipelineStageFlagBits pipelineStage, (uint64_t) VkBuffer dstBuffer, (uint64_t) VkDeviceSize dstOffset, uint32_t marker);
+    /// void vkCmdWriteBufferMarkerAMD(VkCommandBuffer commandBuffer, VkPipelineStageFlagBits pipelineStage, VkBuffer dstBuffer, VkDeviceSize dstOffset, uint32_t marker);
     /// ```
     public static void vkCmdWriteBufferMarkerAMD(@NonNull VkCommandBuffer commandBuffer, int pipelineStage, long dstBuffer, long dstOffset, int marker) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteBufferMarkerAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdWriteBufferMarkerAMD");
@@ -31,7 +30,7 @@ public final class VKAMDBufferMarker {
 
     /// Invokes `vkCmdWriteBufferMarker2AMD`.
     /// ```
-    /// void vkCmdWriteBufferMarker2AMD((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint64_t) VkFlags64) VkPipelineStageFlags2 stage, (uint64_t) VkBuffer dstBuffer, (uint64_t) VkDeviceSize dstOffset, uint32_t marker);
+    /// void vkCmdWriteBufferMarker2AMD(VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkBuffer dstBuffer, VkDeviceSize dstOffset, uint32_t marker);
     /// ```
     public static void vkCmdWriteBufferMarker2AMD(@NonNull VkCommandBuffer commandBuffer, long stage, long dstBuffer, long dstOffset, int marker) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteBufferMarker2AMD)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdWriteBufferMarker2AMD");

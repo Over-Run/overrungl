@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineDynamicStateCreateInfo {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkPipelineDynamicStateCreateFlags flags;
+///     VkPipelineDynamicStateCreateFlags flags;
 ///     uint32_t dynamicStateCount;
 ///     const VkDynamicState* pDynamicStates;
-/// };
+/// }
 /// ```
 public final class VkPipelineDynamicStateCreateInfo extends GroupType {
-    /// The struct layout of `VkPipelineDynamicStateCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,223 +27,77 @@ public final class VkPipelineDynamicStateCreateInfo extends GroupType {
         ValueLayout.JAVA_INT.withName("dynamicStateCount"),
         ValueLayout.ADDRESS.withName("pDynamicStates")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `dynamicStateCount`.
     public static final long OFFSET_dynamicStateCount = LAYOUT.byteOffset(PathElement.groupElement("dynamicStateCount"));
-    /// The memory layout of `dynamicStateCount`.
-    public static final MemoryLayout LAYOUT_dynamicStateCount = LAYOUT.select(PathElement.groupElement("dynamicStateCount"));
-    /// The [VarHandle] of `dynamicStateCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dynamicStateCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicStateCount"));
-    /// The byte offset of `pDynamicStates`.
     public static final long OFFSET_pDynamicStates = LAYOUT.byteOffset(PathElement.groupElement("pDynamicStates"));
-    /// The memory layout of `pDynamicStates`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_dynamicStateCount = LAYOUT.select(PathElement.groupElement("dynamicStateCount"));
     public static final MemoryLayout LAYOUT_pDynamicStates = LAYOUT.select(PathElement.groupElement("pDynamicStates"));
-    /// The [VarHandle] of `pDynamicStates` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_dynamicStateCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicStateCount"));
     public static final VarHandle VH_pDynamicStates = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDynamicStates"));
 
-    /// Creates `VkPipelineDynamicStateCreateInfo` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPipelineDynamicStateCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPipelineDynamicStateCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPipelineDynamicStateCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineDynamicStateCreateInfo(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPipelineDynamicStateCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPipelineDynamicStateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineDynamicStateCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPipelineDynamicStateCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPipelineDynamicStateCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineDynamicStateCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPipelineDynamicStateCreateInfo` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineDynamicStateCreateInfo`
     public static VkPipelineDynamicStateCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineDynamicStateCreateInfo(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPipelineDynamicStateCreateInfo` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPipelineDynamicStateCreateInfo`
     public static VkPipelineDynamicStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineDynamicStateCreateInfo(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPipelineDynamicStateCreateInfo allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO); }
+    public static VkPipelineDynamicStateCreateInfo allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO);
+        return s;
+    }
     public VkPipelineDynamicStateCreateInfo copyFrom(VkPipelineDynamicStateCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPipelineDynamicStateCreateInfo reinterpret(long count) { return new VkPipelineDynamicStateCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineDynamicStateCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineDynamicStateCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineDynamicStateCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `dynamicStateCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int dynamicStateCount(MemorySegment segment, long index) { return (int) VH_dynamicStateCount.get(segment, 0L, index); }
-    /// {@return `dynamicStateCount`}
-    public int dynamicStateCount() { return dynamicStateCount(this.segment(), 0L); }
-    /// Sets `dynamicStateCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dynamicStateCount(MemorySegment segment, long index, int value) { VH_dynamicStateCount.set(segment, 0L, index, value); }
-    /// Sets `dynamicStateCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineDynamicStateCreateInfo dynamicStateCount(int value) { dynamicStateCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pDynamicStates` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pDynamicStates(MemorySegment segment, long index) { return (MemorySegment) VH_pDynamicStates.get(segment, 0L, index); }
-    /// {@return `pDynamicStates`}
-    public MemorySegment pDynamicStates() { return pDynamicStates(this.segment(), 0L); }
-    /// Sets `pDynamicStates` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pDynamicStates(MemorySegment segment, long index, MemorySegment value) { VH_pDynamicStates.set(segment, 0L, index, value); }
-    /// Sets `pDynamicStates` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineDynamicStateCreateInfo pDynamicStates(MemorySegment value) { pDynamicStates(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPipelineDynamicStateCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPipelineDynamicStateCreateInfo`
     public VkPipelineDynamicStateCreateInfo asSlice(long index) { return new VkPipelineDynamicStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPipelineDynamicStateCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPipelineDynamicStateCreateInfo`
     public VkPipelineDynamicStateCreateInfo asSlice(long index, long count) { return new VkPipelineDynamicStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPipelineDynamicStateCreateInfo` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPipelineDynamicStateCreateInfo at(long index, Consumer<VkPipelineDynamicStateCreateInfo> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineDynamicStateCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineDynamicStateCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineDynamicStateCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `dynamicStateCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int dynamicStateCountAt(long index) { return dynamicStateCount(this.segment(), index); }
-    /// Sets `dynamicStateCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineDynamicStateCreateInfo dynamicStateCountAt(long index, int value) { dynamicStateCount(this.segment(), index, value); return this; }
-
-    /// {@return `pDynamicStates` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pDynamicStatesAt(long index) { return pDynamicStates(this.segment(), index); }
-    /// Sets `pDynamicStates` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineDynamicStateCreateInfo pDynamicStatesAt(long index, MemorySegment value) { pDynamicStates(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public int dynamicStateCountAt(long index) { return (int) VH_dynamicStateCount.get(this.segment(), 0L, index); }
+    public MemorySegment pDynamicStatesAt(long index) { return (MemorySegment) VH_pDynamicStates.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public int dynamicStateCount() { return (int) VH_dynamicStateCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pDynamicStates() { return (MemorySegment) VH_pDynamicStates.get(this.segment(), 0L, 0L); }
+    public VkPipelineDynamicStateCreateInfo sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineDynamicStateCreateInfo pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineDynamicStateCreateInfo flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineDynamicStateCreateInfo dynamicStateCountAt(long index, int value) { VH_dynamicStateCount.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineDynamicStateCreateInfo pDynamicStatesAt(long index, MemorySegment value) { VH_pDynamicStates.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineDynamicStateCreateInfo sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineDynamicStateCreateInfo pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineDynamicStateCreateInfo flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineDynamicStateCreateInfo dynamicStateCount(int value) { VH_dynamicStateCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineDynamicStateCreateInfo pDynamicStates(MemorySegment value) { VH_pDynamicStates.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPipelineDynamicStateCreateInfo _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPipelineDynamicStateCreateInfo _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPipelineDynamicStateCreateInfo _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPipelineDynamicStateCreateInfo _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkPipelineDynamicStateCreateInfo _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkPipelineDynamicStateCreateInfo _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _dynamicStateCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dynamicStateCount, index), LAYOUT_dynamicStateCount); }
+    public MemorySegment _dynamicStateCount() { return _dynamicStateCountAt(0L); }
+    public VkPipelineDynamicStateCreateInfo _dynamicStateCountAt(long index, MemorySegment src) { _dynamicStateCountAt(index).copyFrom(src); return this; }
+    public VkPipelineDynamicStateCreateInfo _dynamicStateCount(MemorySegment src) { return _dynamicStateCountAt(0L, src); }
+    public MemorySegment _pDynamicStatesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pDynamicStates, index), LAYOUT_pDynamicStates); }
+    public MemorySegment _pDynamicStates() { return _pDynamicStatesAt(0L); }
+    public VkPipelineDynamicStateCreateInfo _pDynamicStatesAt(long index, MemorySegment src) { _pDynamicStatesAt(index).copyFrom(src); return this; }
+    public VkPipelineDynamicStateCreateInfo _pDynamicStates(MemorySegment src) { return _pDynamicStatesAt(0L, src); }
 }

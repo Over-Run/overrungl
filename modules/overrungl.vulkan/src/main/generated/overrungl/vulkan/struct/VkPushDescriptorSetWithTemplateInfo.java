@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,16 +12,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPushDescriptorSetWithTemplateInfo {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (uint64_t) VkDescriptorUpdateTemplate descriptorUpdateTemplate;
-///     (uint64_t) VkPipelineLayout layout;
+///     VkDescriptorUpdateTemplate descriptorUpdateTemplate;
+///     VkPipelineLayout layout;
 ///     uint32_t set;
 ///     const void* pData;
-/// };
+/// }
 /// ```
 public final class VkPushDescriptorSetWithTemplateInfo extends GroupType {
-    /// The struct layout of `VkPushDescriptorSetWithTemplateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -31,254 +29,88 @@ public final class VkPushDescriptorSetWithTemplateInfo extends GroupType {
         ValueLayout.JAVA_INT.withName("set"),
         ValueLayout.ADDRESS.withName("pData")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `descriptorUpdateTemplate`.
     public static final long OFFSET_descriptorUpdateTemplate = LAYOUT.byteOffset(PathElement.groupElement("descriptorUpdateTemplate"));
-    /// The memory layout of `descriptorUpdateTemplate`.
-    public static final MemoryLayout LAYOUT_descriptorUpdateTemplate = LAYOUT.select(PathElement.groupElement("descriptorUpdateTemplate"));
-    /// The [VarHandle] of `descriptorUpdateTemplate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorUpdateTemplate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorUpdateTemplate"));
-    /// The byte offset of `layout`.
     public static final long OFFSET_layout = LAYOUT.byteOffset(PathElement.groupElement("layout"));
-    /// The memory layout of `layout`.
-    public static final MemoryLayout LAYOUT_layout = LAYOUT.select(PathElement.groupElement("layout"));
-    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
-    /// The byte offset of `set`.
     public static final long OFFSET_set = LAYOUT.byteOffset(PathElement.groupElement("set"));
-    /// The memory layout of `set`.
-    public static final MemoryLayout LAYOUT_set = LAYOUT.select(PathElement.groupElement("set"));
-    /// The [VarHandle] of `set` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_set = LAYOUT.arrayElementVarHandle(PathElement.groupElement("set"));
-    /// The byte offset of `pData`.
     public static final long OFFSET_pData = LAYOUT.byteOffset(PathElement.groupElement("pData"));
-    /// The memory layout of `pData`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_descriptorUpdateTemplate = LAYOUT.select(PathElement.groupElement("descriptorUpdateTemplate"));
+    public static final MemoryLayout LAYOUT_layout = LAYOUT.select(PathElement.groupElement("layout"));
+    public static final MemoryLayout LAYOUT_set = LAYOUT.select(PathElement.groupElement("set"));
     public static final MemoryLayout LAYOUT_pData = LAYOUT.select(PathElement.groupElement("pData"));
-    /// The [VarHandle] of `pData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_descriptorUpdateTemplate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorUpdateTemplate"));
+    public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
+    public static final VarHandle VH_set = LAYOUT.arrayElementVarHandle(PathElement.groupElement("set"));
     public static final VarHandle VH_pData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pData"));
 
-    /// Creates `VkPushDescriptorSetWithTemplateInfo` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPushDescriptorSetWithTemplateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPushDescriptorSetWithTemplateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPushDescriptorSetWithTemplateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPushDescriptorSetWithTemplateInfo(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPushDescriptorSetWithTemplateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPushDescriptorSetWithTemplateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPushDescriptorSetWithTemplateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPushDescriptorSetWithTemplateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPushDescriptorSetWithTemplateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPushDescriptorSetWithTemplateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPushDescriptorSetWithTemplateInfo` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPushDescriptorSetWithTemplateInfo`
     public static VkPushDescriptorSetWithTemplateInfo alloc(SegmentAllocator allocator) { return new VkPushDescriptorSetWithTemplateInfo(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPushDescriptorSetWithTemplateInfo` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPushDescriptorSetWithTemplateInfo`
     public static VkPushDescriptorSetWithTemplateInfo alloc(SegmentAllocator allocator, long count) { return new VkPushDescriptorSetWithTemplateInfo(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPushDescriptorSetWithTemplateInfo allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK14.VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO); }
+    public static VkPushDescriptorSetWithTemplateInfo allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK14.VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO);
+        return s;
+    }
     public VkPushDescriptorSetWithTemplateInfo copyFrom(VkPushDescriptorSetWithTemplateInfo src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPushDescriptorSetWithTemplateInfo reinterpret(long count) { return new VkPushDescriptorSetWithTemplateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `descriptorUpdateTemplate` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long descriptorUpdateTemplate(MemorySegment segment, long index) { return (long) VH_descriptorUpdateTemplate.get(segment, 0L, index); }
-    /// {@return `descriptorUpdateTemplate`}
-    public long descriptorUpdateTemplate() { return descriptorUpdateTemplate(this.segment(), 0L); }
-    /// Sets `descriptorUpdateTemplate` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void descriptorUpdateTemplate(MemorySegment segment, long index, long value) { VH_descriptorUpdateTemplate.set(segment, 0L, index, value); }
-    /// Sets `descriptorUpdateTemplate` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo descriptorUpdateTemplate(long value) { descriptorUpdateTemplate(this.segment(), 0L, value); return this; }
-
-    /// {@return `layout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long layout(MemorySegment segment, long index) { return (long) VH_layout.get(segment, 0L, index); }
-    /// {@return `layout`}
-    public long layout() { return layout(this.segment(), 0L); }
-    /// Sets `layout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void layout(MemorySegment segment, long index, long value) { VH_layout.set(segment, 0L, index, value); }
-    /// Sets `layout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo layout(long value) { layout(this.segment(), 0L, value); return this; }
-
-    /// {@return `set` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int set(MemorySegment segment, long index) { return (int) VH_set.get(segment, 0L, index); }
-    /// {@return `set`}
-    public int set() { return set(this.segment(), 0L); }
-    /// Sets `set` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void set(MemorySegment segment, long index, int value) { VH_set.set(segment, 0L, index, value); }
-    /// Sets `set` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo set(int value) { set(this.segment(), 0L, value); return this; }
-
-    /// {@return `pData` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pData(MemorySegment segment, long index) { return (MemorySegment) VH_pData.get(segment, 0L, index); }
-    /// {@return `pData`}
-    public MemorySegment pData() { return pData(this.segment(), 0L); }
-    /// Sets `pData` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pData(MemorySegment segment, long index, MemorySegment value) { VH_pData.set(segment, 0L, index, value); }
-    /// Sets `pData` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo pData(MemorySegment value) { pData(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPushDescriptorSetWithTemplateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPushDescriptorSetWithTemplateInfo`
     public VkPushDescriptorSetWithTemplateInfo asSlice(long index) { return new VkPushDescriptorSetWithTemplateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPushDescriptorSetWithTemplateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPushDescriptorSetWithTemplateInfo`
     public VkPushDescriptorSetWithTemplateInfo asSlice(long index, long count) { return new VkPushDescriptorSetWithTemplateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPushDescriptorSetWithTemplateInfo` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPushDescriptorSetWithTemplateInfo at(long index, Consumer<VkPushDescriptorSetWithTemplateInfo> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `descriptorUpdateTemplate` at the given index}
-    /// @param index the index of the struct buffer
-    public long descriptorUpdateTemplateAt(long index) { return descriptorUpdateTemplate(this.segment(), index); }
-    /// Sets `descriptorUpdateTemplate` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo descriptorUpdateTemplateAt(long index, long value) { descriptorUpdateTemplate(this.segment(), index, value); return this; }
-
-    /// {@return `layout` at the given index}
-    /// @param index the index of the struct buffer
-    public long layoutAt(long index) { return layout(this.segment(), index); }
-    /// Sets `layout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo layoutAt(long index, long value) { layout(this.segment(), index, value); return this; }
-
-    /// {@return `set` at the given index}
-    /// @param index the index of the struct buffer
-    public int setAt(long index) { return set(this.segment(), index); }
-    /// Sets `set` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo setAt(long index, int value) { set(this.segment(), index, value); return this; }
-
-    /// {@return `pData` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pDataAt(long index) { return pData(this.segment(), index); }
-    /// Sets `pData` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPushDescriptorSetWithTemplateInfo pDataAt(long index, MemorySegment value) { pData(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long descriptorUpdateTemplateAt(long index) { return (long) VH_descriptorUpdateTemplate.get(this.segment(), 0L, index); }
+    public long layoutAt(long index) { return (long) VH_layout.get(this.segment(), 0L, index); }
+    public int setAt(long index) { return (int) VH_set.get(this.segment(), 0L, index); }
+    public MemorySegment pDataAt(long index) { return (MemorySegment) VH_pData.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long descriptorUpdateTemplate() { return (long) VH_descriptorUpdateTemplate.get(this.segment(), 0L, 0L); }
+    public long layout() { return (long) VH_layout.get(this.segment(), 0L, 0L); }
+    public int set() { return (int) VH_set.get(this.segment(), 0L, 0L); }
+    public MemorySegment pData() { return (MemorySegment) VH_pData.get(this.segment(), 0L, 0L); }
+    public VkPushDescriptorSetWithTemplateInfo sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPushDescriptorSetWithTemplateInfo pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPushDescriptorSetWithTemplateInfo descriptorUpdateTemplateAt(long index, long value) { VH_descriptorUpdateTemplate.set(this.segment(), 0L, index, value); return this; }
+    public VkPushDescriptorSetWithTemplateInfo layoutAt(long index, long value) { VH_layout.set(this.segment(), 0L, index, value); return this; }
+    public VkPushDescriptorSetWithTemplateInfo setAt(long index, int value) { VH_set.set(this.segment(), 0L, index, value); return this; }
+    public VkPushDescriptorSetWithTemplateInfo pDataAt(long index, MemorySegment value) { VH_pData.set(this.segment(), 0L, index, value); return this; }
+    public VkPushDescriptorSetWithTemplateInfo sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPushDescriptorSetWithTemplateInfo pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPushDescriptorSetWithTemplateInfo descriptorUpdateTemplate(long value) { VH_descriptorUpdateTemplate.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPushDescriptorSetWithTemplateInfo layout(long value) { VH_layout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPushDescriptorSetWithTemplateInfo set(int value) { VH_set.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPushDescriptorSetWithTemplateInfo pData(MemorySegment value) { VH_pData.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPushDescriptorSetWithTemplateInfo _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPushDescriptorSetWithTemplateInfo _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPushDescriptorSetWithTemplateInfo _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPushDescriptorSetWithTemplateInfo _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _descriptorUpdateTemplateAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_descriptorUpdateTemplate, index), LAYOUT_descriptorUpdateTemplate); }
+    public MemorySegment _descriptorUpdateTemplate() { return _descriptorUpdateTemplateAt(0L); }
+    public VkPushDescriptorSetWithTemplateInfo _descriptorUpdateTemplateAt(long index, MemorySegment src) { _descriptorUpdateTemplateAt(index).copyFrom(src); return this; }
+    public VkPushDescriptorSetWithTemplateInfo _descriptorUpdateTemplate(MemorySegment src) { return _descriptorUpdateTemplateAt(0L, src); }
+    public MemorySegment _layoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_layout, index), LAYOUT_layout); }
+    public MemorySegment _layout() { return _layoutAt(0L); }
+    public VkPushDescriptorSetWithTemplateInfo _layoutAt(long index, MemorySegment src) { _layoutAt(index).copyFrom(src); return this; }
+    public VkPushDescriptorSetWithTemplateInfo _layout(MemorySegment src) { return _layoutAt(0L, src); }
+    public MemorySegment _setAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_set, index), LAYOUT_set); }
+    public MemorySegment _set() { return _setAt(0L); }
+    public VkPushDescriptorSetWithTemplateInfo _setAt(long index, MemorySegment src) { _setAt(index).copyFrom(src); return this; }
+    public VkPushDescriptorSetWithTemplateInfo _set(MemorySegment src) { return _setAt(0L, src); }
+    public MemorySegment _pDataAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pData, index), LAYOUT_pData); }
+    public MemorySegment _pData() { return _pDataAt(0L); }
+    public VkPushDescriptorSetWithTemplateInfo _pDataAt(long index, MemorySegment src) { _pDataAt(index).copyFrom(src); return this; }
+    public VkPushDescriptorSetWithTemplateInfo _pData(MemorySegment src) { return _pDataAt(0L, src); }
 }

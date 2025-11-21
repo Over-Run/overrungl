@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,206 +12,79 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceProvokingVertexPropertiesEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 provokingVertexModePerPipeline;
-///     (uint32_t) VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex;
-/// };
+///     VkBool32 provokingVertexModePerPipeline;
+///     VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex;
+/// }
 /// ```
 public final class VkPhysicalDeviceProvokingVertexPropertiesEXT extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceProvokingVertexPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("provokingVertexModePerPipeline"),
         ValueLayout.JAVA_INT.withName("transformFeedbackPreservesTriangleFanProvokingVertex")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `provokingVertexModePerPipeline`.
     public static final long OFFSET_provokingVertexModePerPipeline = LAYOUT.byteOffset(PathElement.groupElement("provokingVertexModePerPipeline"));
-    /// The memory layout of `provokingVertexModePerPipeline`.
-    public static final MemoryLayout LAYOUT_provokingVertexModePerPipeline = LAYOUT.select(PathElement.groupElement("provokingVertexModePerPipeline"));
-    /// The [VarHandle] of `provokingVertexModePerPipeline` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_provokingVertexModePerPipeline = LAYOUT.arrayElementVarHandle(PathElement.groupElement("provokingVertexModePerPipeline"));
-    /// The byte offset of `transformFeedbackPreservesTriangleFanProvokingVertex`.
     public static final long OFFSET_transformFeedbackPreservesTriangleFanProvokingVertex = LAYOUT.byteOffset(PathElement.groupElement("transformFeedbackPreservesTriangleFanProvokingVertex"));
-    /// The memory layout of `transformFeedbackPreservesTriangleFanProvokingVertex`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_provokingVertexModePerPipeline = LAYOUT.select(PathElement.groupElement("provokingVertexModePerPipeline"));
     public static final MemoryLayout LAYOUT_transformFeedbackPreservesTriangleFanProvokingVertex = LAYOUT.select(PathElement.groupElement("transformFeedbackPreservesTriangleFanProvokingVertex"));
-    /// The [VarHandle] of `transformFeedbackPreservesTriangleFanProvokingVertex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_provokingVertexModePerPipeline = LAYOUT.arrayElementVarHandle(PathElement.groupElement("provokingVertexModePerPipeline"));
     public static final VarHandle VH_transformFeedbackPreservesTriangleFanProvokingVertex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedbackPreservesTriangleFanProvokingVertex"));
 
-    /// Creates `VkPhysicalDeviceProvokingVertexPropertiesEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceProvokingVertexPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceProvokingVertexPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceProvokingVertexPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceProvokingVertexPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceProvokingVertexPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceProvokingVertexPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceProvokingVertexPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceProvokingVertexPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceProvokingVertexPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceProvokingVertexPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceProvokingVertexPropertiesEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceProvokingVertexPropertiesEXT`
     public static VkPhysicalDeviceProvokingVertexPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceProvokingVertexPropertiesEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceProvokingVertexPropertiesEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceProvokingVertexPropertiesEXT`
     public static VkPhysicalDeviceProvokingVertexPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceProvokingVertexPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceProvokingVertexPropertiesEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTProvokingVertex.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_PROPERTIES_EXT); }
+    public static VkPhysicalDeviceProvokingVertexPropertiesEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTProvokingVertex.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_PROPERTIES_EXT);
+        return s;
+    }
     public VkPhysicalDeviceProvokingVertexPropertiesEXT copyFrom(VkPhysicalDeviceProvokingVertexPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceProvokingVertexPropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceProvokingVertexPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceProvokingVertexPropertiesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceProvokingVertexPropertiesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `provokingVertexModePerPipeline` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int provokingVertexModePerPipeline(MemorySegment segment, long index) { return (int) VH_provokingVertexModePerPipeline.get(segment, 0L, index); }
-    /// {@return `provokingVertexModePerPipeline`}
-    public int provokingVertexModePerPipeline() { return provokingVertexModePerPipeline(this.segment(), 0L); }
-    /// Sets `provokingVertexModePerPipeline` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void provokingVertexModePerPipeline(MemorySegment segment, long index, int value) { VH_provokingVertexModePerPipeline.set(segment, 0L, index, value); }
-    /// Sets `provokingVertexModePerPipeline` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceProvokingVertexPropertiesEXT provokingVertexModePerPipeline(int value) { provokingVertexModePerPipeline(this.segment(), 0L, value); return this; }
-
-    /// {@return `transformFeedbackPreservesTriangleFanProvokingVertex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int transformFeedbackPreservesTriangleFanProvokingVertex(MemorySegment segment, long index) { return (int) VH_transformFeedbackPreservesTriangleFanProvokingVertex.get(segment, 0L, index); }
-    /// {@return `transformFeedbackPreservesTriangleFanProvokingVertex`}
-    public int transformFeedbackPreservesTriangleFanProvokingVertex() { return transformFeedbackPreservesTriangleFanProvokingVertex(this.segment(), 0L); }
-    /// Sets `transformFeedbackPreservesTriangleFanProvokingVertex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void transformFeedbackPreservesTriangleFanProvokingVertex(MemorySegment segment, long index, int value) { VH_transformFeedbackPreservesTriangleFanProvokingVertex.set(segment, 0L, index, value); }
-    /// Sets `transformFeedbackPreservesTriangleFanProvokingVertex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceProvokingVertexPropertiesEXT transformFeedbackPreservesTriangleFanProvokingVertex(int value) { transformFeedbackPreservesTriangleFanProvokingVertex(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceProvokingVertexPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceProvokingVertexPropertiesEXT`
     public VkPhysicalDeviceProvokingVertexPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceProvokingVertexPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceProvokingVertexPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceProvokingVertexPropertiesEXT`
     public VkPhysicalDeviceProvokingVertexPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceProvokingVertexPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceProvokingVertexPropertiesEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceProvokingVertexPropertiesEXT at(long index, Consumer<VkPhysicalDeviceProvokingVertexPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceProvokingVertexPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceProvokingVertexPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `provokingVertexModePerPipeline` at the given index}
-    /// @param index the index of the struct buffer
-    public int provokingVertexModePerPipelineAt(long index) { return provokingVertexModePerPipeline(this.segment(), index); }
-    /// Sets `provokingVertexModePerPipeline` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceProvokingVertexPropertiesEXT provokingVertexModePerPipelineAt(long index, int value) { provokingVertexModePerPipeline(this.segment(), index, value); return this; }
-
-    /// {@return `transformFeedbackPreservesTriangleFanProvokingVertex` at the given index}
-    /// @param index the index of the struct buffer
-    public int transformFeedbackPreservesTriangleFanProvokingVertexAt(long index) { return transformFeedbackPreservesTriangleFanProvokingVertex(this.segment(), index); }
-    /// Sets `transformFeedbackPreservesTriangleFanProvokingVertex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceProvokingVertexPropertiesEXT transformFeedbackPreservesTriangleFanProvokingVertexAt(long index, int value) { transformFeedbackPreservesTriangleFanProvokingVertex(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int provokingVertexModePerPipelineAt(long index) { return (int) VH_provokingVertexModePerPipeline.get(this.segment(), 0L, index); }
+    public int transformFeedbackPreservesTriangleFanProvokingVertexAt(long index) { return (int) VH_transformFeedbackPreservesTriangleFanProvokingVertex.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int provokingVertexModePerPipeline() { return (int) VH_provokingVertexModePerPipeline.get(this.segment(), 0L, 0L); }
+    public int transformFeedbackPreservesTriangleFanProvokingVertex() { return (int) VH_transformFeedbackPreservesTriangleFanProvokingVertex.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT provokingVertexModePerPipelineAt(long index, int value) { VH_provokingVertexModePerPipeline.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT transformFeedbackPreservesTriangleFanProvokingVertexAt(long index, int value) { VH_transformFeedbackPreservesTriangleFanProvokingVertex.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT provokingVertexModePerPipeline(int value) { VH_provokingVertexModePerPipeline.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT transformFeedbackPreservesTriangleFanProvokingVertex(int value) { VH_transformFeedbackPreservesTriangleFanProvokingVertex.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _provokingVertexModePerPipelineAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_provokingVertexModePerPipeline, index), LAYOUT_provokingVertexModePerPipeline); }
+    public MemorySegment _provokingVertexModePerPipeline() { return _provokingVertexModePerPipelineAt(0L); }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT _provokingVertexModePerPipelineAt(long index, MemorySegment src) { _provokingVertexModePerPipelineAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT _provokingVertexModePerPipeline(MemorySegment src) { return _provokingVertexModePerPipelineAt(0L, src); }
+    public MemorySegment _transformFeedbackPreservesTriangleFanProvokingVertexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_transformFeedbackPreservesTriangleFanProvokingVertex, index), LAYOUT_transformFeedbackPreservesTriangleFanProvokingVertex); }
+    public MemorySegment _transformFeedbackPreservesTriangleFanProvokingVertex() { return _transformFeedbackPreservesTriangleFanProvokingVertexAt(0L); }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT _transformFeedbackPreservesTriangleFanProvokingVertexAt(long index, MemorySegment src) { _transformFeedbackPreservesTriangleFanProvokingVertexAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT _transformFeedbackPreservesTriangleFanProvokingVertex(MemorySegment src) { return _transformFeedbackPreservesTriangleFanProvokingVertexAt(0L, src); }
 }

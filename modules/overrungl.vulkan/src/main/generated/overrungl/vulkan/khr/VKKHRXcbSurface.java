@@ -11,17 +11,16 @@ public final class VKKHRXcbSurface {
     public static final int VK_KHR_XCB_SURFACE_SPEC_VERSION = 6;
     public static final String VK_KHR_XCB_SURFACE_EXTENSION_NAME = "VK_KHR_xcb_surface";
     public static final int VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR = 1000005000;
+    private VKKHRXcbSurface() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateXcbSurfaceKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceXcbPresentationSupportKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         private Handles() {}
     }
 
-    private VKKHRXcbSurface() {}
-
     /// Invokes `vkCreateXcbSurfaceKHR`.
     /// ```
-    /// (int) VkResult vkCreateXcbSurfaceKHR((struct VkInstance*) VkInstance instance, const VkXcbSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// VkResult vkCreateXcbSurfaceKHR(VkInstance instance, const VkXcbSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateXcbSurfaceKHR(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateXcbSurfaceKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateXcbSurfaceKHR");
@@ -32,7 +31,7 @@ public final class VKKHRXcbSurface {
 
     /// Invokes `vkGetPhysicalDeviceXcbPresentationSupportKHR`.
     /// ```
-    /// (uint32_t) VkBool32 vkGetPhysicalDeviceXcbPresentationSupportKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, xcb_connection_t* connection, (uint32_t) xcb_visualid_t visual_id);
+    /// VkBool32 vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, xcb_connection_t* connection, xcb_visualid_t visual_id);
     /// ```
     public static int vkGetPhysicalDeviceXcbPresentationSupportKHR(@NonNull VkPhysicalDevice physicalDevice, int queueFamilyIndex, @NonNull MemorySegment connection, int visual_id) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceXcbPresentationSupportKHR");

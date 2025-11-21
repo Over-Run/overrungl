@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,206 +12,79 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineBinaryInfoKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t binaryCount;
 ///     const VkPipelineBinaryKHR* pPipelineBinaries;
-/// };
+/// }
 /// ```
 public final class VkPipelineBinaryInfoKHR extends GroupType {
-    /// The struct layout of `VkPipelineBinaryInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("binaryCount"),
         ValueLayout.ADDRESS.withName("pPipelineBinaries")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `binaryCount`.
     public static final long OFFSET_binaryCount = LAYOUT.byteOffset(PathElement.groupElement("binaryCount"));
-    /// The memory layout of `binaryCount`.
-    public static final MemoryLayout LAYOUT_binaryCount = LAYOUT.select(PathElement.groupElement("binaryCount"));
-    /// The [VarHandle] of `binaryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_binaryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("binaryCount"));
-    /// The byte offset of `pPipelineBinaries`.
     public static final long OFFSET_pPipelineBinaries = LAYOUT.byteOffset(PathElement.groupElement("pPipelineBinaries"));
-    /// The memory layout of `pPipelineBinaries`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_binaryCount = LAYOUT.select(PathElement.groupElement("binaryCount"));
     public static final MemoryLayout LAYOUT_pPipelineBinaries = LAYOUT.select(PathElement.groupElement("pPipelineBinaries"));
-    /// The [VarHandle] of `pPipelineBinaries` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_binaryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("binaryCount"));
     public static final VarHandle VH_pPipelineBinaries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineBinaries"));
 
-    /// Creates `VkPipelineBinaryInfoKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPipelineBinaryInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPipelineBinaryInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPipelineBinaryInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineBinaryInfoKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPipelineBinaryInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPipelineBinaryInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineBinaryInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPipelineBinaryInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPipelineBinaryInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineBinaryInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPipelineBinaryInfoKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineBinaryInfoKHR`
     public static VkPipelineBinaryInfoKHR alloc(SegmentAllocator allocator) { return new VkPipelineBinaryInfoKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPipelineBinaryInfoKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPipelineBinaryInfoKHR`
     public static VkPipelineBinaryInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineBinaryInfoKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPipelineBinaryInfoKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRPipelineBinary.VK_STRUCTURE_TYPE_PIPELINE_BINARY_INFO_KHR); }
+    public static VkPipelineBinaryInfoKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRPipelineBinary.VK_STRUCTURE_TYPE_PIPELINE_BINARY_INFO_KHR);
+        return s;
+    }
     public VkPipelineBinaryInfoKHR copyFrom(VkPipelineBinaryInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPipelineBinaryInfoKHR reinterpret(long count) { return new VkPipelineBinaryInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineBinaryInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineBinaryInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `binaryCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int binaryCount(MemorySegment segment, long index) { return (int) VH_binaryCount.get(segment, 0L, index); }
-    /// {@return `binaryCount`}
-    public int binaryCount() { return binaryCount(this.segment(), 0L); }
-    /// Sets `binaryCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void binaryCount(MemorySegment segment, long index, int value) { VH_binaryCount.set(segment, 0L, index, value); }
-    /// Sets `binaryCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineBinaryInfoKHR binaryCount(int value) { binaryCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pPipelineBinaries` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pPipelineBinaries(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineBinaries.get(segment, 0L, index); }
-    /// {@return `pPipelineBinaries`}
-    public MemorySegment pPipelineBinaries() { return pPipelineBinaries(this.segment(), 0L); }
-    /// Sets `pPipelineBinaries` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pPipelineBinaries(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineBinaries.set(segment, 0L, index, value); }
-    /// Sets `pPipelineBinaries` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineBinaryInfoKHR pPipelineBinaries(MemorySegment value) { pPipelineBinaries(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPipelineBinaryInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPipelineBinaryInfoKHR`
     public VkPipelineBinaryInfoKHR asSlice(long index) { return new VkPipelineBinaryInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPipelineBinaryInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPipelineBinaryInfoKHR`
     public VkPipelineBinaryInfoKHR asSlice(long index, long count) { return new VkPipelineBinaryInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPipelineBinaryInfoKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPipelineBinaryInfoKHR at(long index, Consumer<VkPipelineBinaryInfoKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineBinaryInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineBinaryInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `binaryCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int binaryCountAt(long index) { return binaryCount(this.segment(), index); }
-    /// Sets `binaryCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineBinaryInfoKHR binaryCountAt(long index, int value) { binaryCount(this.segment(), index, value); return this; }
-
-    /// {@return `pPipelineBinaries` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pPipelineBinariesAt(long index) { return pPipelineBinaries(this.segment(), index); }
-    /// Sets `pPipelineBinaries` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineBinaryInfoKHR pPipelineBinariesAt(long index, MemorySegment value) { pPipelineBinaries(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int binaryCountAt(long index) { return (int) VH_binaryCount.get(this.segment(), 0L, index); }
+    public MemorySegment pPipelineBinariesAt(long index) { return (MemorySegment) VH_pPipelineBinaries.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int binaryCount() { return (int) VH_binaryCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pPipelineBinaries() { return (MemorySegment) VH_pPipelineBinaries.get(this.segment(), 0L, 0L); }
+    public VkPipelineBinaryInfoKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineBinaryInfoKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineBinaryInfoKHR binaryCountAt(long index, int value) { VH_binaryCount.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineBinaryInfoKHR pPipelineBinariesAt(long index, MemorySegment value) { VH_pPipelineBinaries.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineBinaryInfoKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineBinaryInfoKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineBinaryInfoKHR binaryCount(int value) { VH_binaryCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineBinaryInfoKHR pPipelineBinaries(MemorySegment value) { VH_pPipelineBinaries.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPipelineBinaryInfoKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPipelineBinaryInfoKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPipelineBinaryInfoKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPipelineBinaryInfoKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _binaryCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_binaryCount, index), LAYOUT_binaryCount); }
+    public MemorySegment _binaryCount() { return _binaryCountAt(0L); }
+    public VkPipelineBinaryInfoKHR _binaryCountAt(long index, MemorySegment src) { _binaryCountAt(index).copyFrom(src); return this; }
+    public VkPipelineBinaryInfoKHR _binaryCount(MemorySegment src) { return _binaryCountAt(0L, src); }
+    public MemorySegment _pPipelineBinariesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pPipelineBinaries, index), LAYOUT_pPipelineBinaries); }
+    public MemorySegment _pPipelineBinaries() { return _pPipelineBinariesAt(0L); }
+    public VkPipelineBinaryInfoKHR _pPipelineBinariesAt(long index, MemorySegment src) { _pPipelineBinariesAt(index).copyFrom(src); return this; }
+    public VkPipelineBinaryInfoKHR _pPipelineBinaries(MemorySegment src) { return _pPipelineBinariesAt(0L, src); }
 }

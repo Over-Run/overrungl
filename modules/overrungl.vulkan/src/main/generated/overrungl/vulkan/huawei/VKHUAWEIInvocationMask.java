@@ -14,16 +14,15 @@ public final class VKHUAWEIInvocationMask {
     public static final long VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI = 0x8000000000L;
     public static final int VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI = 0x00040000;
     public static final long VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI = 0x10000000000L;
+    private VKHUAWEIInvocationMask() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdBindInvocationMaskHUAWEI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         private Handles() {}
     }
 
-    private VKHUAWEIInvocationMask() {}
-
     /// Invokes `vkCmdBindInvocationMaskHUAWEI`.
     /// ```
-    /// void vkCmdBindInvocationMaskHUAWEI((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkImageView imageView, (int) VkImageLayout imageLayout);
+    /// void vkCmdBindInvocationMaskHUAWEI(VkCommandBuffer commandBuffer, VkImageView imageView, VkImageLayout imageLayout);
     /// ```
     public static void vkCmdBindInvocationMaskHUAWEI(@NonNull VkCommandBuffer commandBuffer, long imageView, int imageLayout) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindInvocationMaskHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindInvocationMaskHUAWEI");

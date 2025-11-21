@@ -8,6 +8,8 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_NV_device_generated_commands` - device extension
 public final class VKNVDeviceGeneratedCommands {
+    public static final int VK_NV_DEVICE_GENERATED_COMMANDS_SPEC_VERSION = 3;
+    public static final String VK_NV_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME = "VK_NV_device_generated_commands";
     public static final int VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV = 0x00000001;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV = 0;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV = 1;
@@ -20,8 +22,6 @@ public final class VKNVDeviceGeneratedCommands {
     public static final int VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV = 0x00000001;
     public static final int VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NV = 0x00000002;
     public static final int VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NV = 0x00000004;
-    public static final int VK_NV_DEVICE_GENERATED_COMMANDS_SPEC_VERSION = 3;
-    public static final String VK_NV_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME = "VK_NV_device_generated_commands";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_NV = 1000277000;
     public static final int VK_STRUCTURE_TYPE_GRAPHICS_SHADER_GROUP_CREATE_INFO_NV = 1000277001;
     public static final int VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV = 1000277002;
@@ -35,6 +35,7 @@ public final class VKNVDeviceGeneratedCommands {
     public static final int VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV = 0x00020000;
     public static final int VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV = 0x00040000;
     public static final int VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV = 1000277000;
+    private VKNVDeviceGeneratedCommands() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetGeneratedCommandsMemoryRequirementsNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdPreprocessGeneratedCommandsNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -45,11 +46,9 @@ public final class VKNVDeviceGeneratedCommands {
         private Handles() {}
     }
 
-    private VKNVDeviceGeneratedCommands() {}
-
     /// Invokes `vkGetGeneratedCommandsMemoryRequirementsNV`.
     /// ```
-    /// void vkGetGeneratedCommandsMemoryRequirementsNV((struct VkDevice*) VkDevice device, const VkGeneratedCommandsMemoryRequirementsInfoNV* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// void vkGetGeneratedCommandsMemoryRequirementsNV(VkDevice device, const VkGeneratedCommandsMemoryRequirementsInfoNV* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
     public static void vkGetGeneratedCommandsMemoryRequirementsNV(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetGeneratedCommandsMemoryRequirementsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetGeneratedCommandsMemoryRequirementsNV");
@@ -60,7 +59,7 @@ public final class VKNVDeviceGeneratedCommands {
 
     /// Invokes `vkCmdPreprocessGeneratedCommandsNV`.
     /// ```
-    /// void vkCmdPreprocessGeneratedCommandsNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo);
+    /// void vkCmdPreprocessGeneratedCommandsNV(VkCommandBuffer commandBuffer, const VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo);
     /// ```
     public static void vkCmdPreprocessGeneratedCommandsNV(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pGeneratedCommandsInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPreprocessGeneratedCommandsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPreprocessGeneratedCommandsNV");
@@ -71,7 +70,7 @@ public final class VKNVDeviceGeneratedCommands {
 
     /// Invokes `vkCmdExecuteGeneratedCommandsNV`.
     /// ```
-    /// void vkCmdExecuteGeneratedCommandsNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 isPreprocessed, const VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo);
+    /// void vkCmdExecuteGeneratedCommandsNV(VkCommandBuffer commandBuffer, VkBool32 isPreprocessed, const VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo);
     /// ```
     public static void vkCmdExecuteGeneratedCommandsNV(@NonNull VkCommandBuffer commandBuffer, int isPreprocessed, @NonNull MemorySegment pGeneratedCommandsInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdExecuteGeneratedCommandsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdExecuteGeneratedCommandsNV");
@@ -82,7 +81,7 @@ public final class VKNVDeviceGeneratedCommands {
 
     /// Invokes `vkCmdBindPipelineShaderGroupNV`.
     /// ```
-    /// void vkCmdBindPipelineShaderGroupNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPipelineBindPoint pipelineBindPoint, (uint64_t) VkPipeline pipeline, uint32_t groupIndex);
+    /// void vkCmdBindPipelineShaderGroupNV(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline, uint32_t groupIndex);
     /// ```
     public static void vkCmdBindPipelineShaderGroupNV(@NonNull VkCommandBuffer commandBuffer, int pipelineBindPoint, long pipeline, int groupIndex) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindPipelineShaderGroupNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindPipelineShaderGroupNV");
@@ -93,7 +92,7 @@ public final class VKNVDeviceGeneratedCommands {
 
     /// Invokes `vkCreateIndirectCommandsLayoutNV`.
     /// ```
-    /// (int) VkResult vkCreateIndirectCommandsLayoutNV((struct VkDevice*) VkDevice device, const VkIndirectCommandsLayoutCreateInfoNV* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkIndirectCommandsLayoutNV* pIndirectCommandsLayout);
+    /// VkResult vkCreateIndirectCommandsLayoutNV(VkDevice device, const VkIndirectCommandsLayoutCreateInfoNV* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkIndirectCommandsLayoutNV* pIndirectCommandsLayout);
     /// ```
     public static int vkCreateIndirectCommandsLayoutNV(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pIndirectCommandsLayout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateIndirectCommandsLayoutNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateIndirectCommandsLayoutNV");
@@ -104,7 +103,7 @@ public final class VKNVDeviceGeneratedCommands {
 
     /// Invokes `vkDestroyIndirectCommandsLayoutNV`.
     /// ```
-    /// void vkDestroyIndirectCommandsLayoutNV((struct VkDevice*) VkDevice device, (uint64_t) VkIndirectCommandsLayoutNV indirectCommandsLayout, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroyIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyIndirectCommandsLayoutNV(@NonNull VkDevice device, long indirectCommandsLayout, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyIndirectCommandsLayoutNV)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyIndirectCommandsLayoutNV");

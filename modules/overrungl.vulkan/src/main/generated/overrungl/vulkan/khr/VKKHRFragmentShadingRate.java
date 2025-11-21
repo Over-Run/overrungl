@@ -8,14 +8,14 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_fragment_shading_rate` - device extension
 public final class VKKHRFragmentShadingRate {
+    public static final int VK_KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION = 2;
+    public static final String VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME = "VK_KHR_fragment_shading_rate";
     public static final int VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR = 0;
     public static final int VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR = 1;
     public static final int VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR = 2;
     public static final int VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR = 3;
     public static final int VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR = 4;
-    public static final int VK_KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION = 2;
-    public static final String VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME = "VK_KHR_fragment_shading_rate";
-    public static final int VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR = 1000226003;
+    public static final int VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR = 1000164003;
     public static final int VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR = 1000226000;
     public static final int VK_STRUCTURE_TYPE_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR = 1000226000;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR = 1000226001;
@@ -27,20 +27,19 @@ public final class VKKHRFragmentShadingRate {
     public static final int VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = 0x00400000;
     public static final int VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = 0x40000000;
     public static final long VK_FORMAT_FEATURE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = 0x40000000L;
-    public static final int VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR = 1000226006;
+    public static final int VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR = 1000044006;
     public static final int VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = 0x00200000;
     public static final int VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = 0x00200000;
+    private VKKHRFragmentShadingRate() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceFragmentShadingRatesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdSetFragmentShadingRateKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRFragmentShadingRate() {}
-
     /// Invokes `vkGetPhysicalDeviceFragmentShadingRatesKHR`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceFragmentShadingRatesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pFragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR* pFragmentShadingRates);
+    /// VkResult vkGetPhysicalDeviceFragmentShadingRatesKHR(VkPhysicalDevice physicalDevice, uint32_t* pFragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR* pFragmentShadingRates);
     /// ```
     public static int vkGetPhysicalDeviceFragmentShadingRatesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pFragmentShadingRateCount, @NonNull MemorySegment pFragmentShadingRates) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceFragmentShadingRatesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceFragmentShadingRatesKHR");
@@ -51,7 +50,7 @@ public final class VKKHRFragmentShadingRate {
 
     /// Invokes `vkCmdSetFragmentShadingRateKHR`.
     /// ```
-    /// void vkCmdSetFragmentShadingRateKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkExtent2D* pFragmentSize, (int) const VkFragmentShadingRateCombinerOpKHR combinerOps[2]);
+    /// void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, const VkExtent2D* pFragmentSize, const VkFragmentShadingRateCombinerOpKHR combinerOps[2]);
     /// ```
     public static void vkCmdSetFragmentShadingRateKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pFragmentSize, @NonNull MemorySegment combinerOps) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetFragmentShadingRateKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetFragmentShadingRateKHR");

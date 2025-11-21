@@ -15,16 +15,15 @@ public final class VKEXTExternalMemoryHost {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT = 1000178002;
     public static final int VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT = 0x00000080;
     public static final int VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT = 0x00000100;
+    private VKEXTExternalMemoryHost() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetMemoryHostPointerPropertiesEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKEXTExternalMemoryHost() {}
-
     /// Invokes `vkGetMemoryHostPointerPropertiesEXT`.
     /// ```
-    /// (int) VkResult vkGetMemoryHostPointerPropertiesEXT((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, const void* pHostPointer, VkMemoryHostPointerPropertiesEXT* pMemoryHostPointerProperties);
+    /// VkResult vkGetMemoryHostPointerPropertiesEXT(VkDevice device, VkExternalMemoryHandleTypeFlagBits handleType, const void* pHostPointer, VkMemoryHostPointerPropertiesEXT* pMemoryHostPointerProperties);
     /// ```
     public static int vkGetMemoryHostPointerPropertiesEXT(@NonNull VkDevice device, int handleType, @NonNull MemorySegment pHostPointer, @NonNull MemorySegment pMemoryHostPointerProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryHostPointerPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryHostPointerPropertiesEXT");

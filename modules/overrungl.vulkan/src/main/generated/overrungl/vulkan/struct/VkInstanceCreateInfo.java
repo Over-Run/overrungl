@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,18 +12,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkInstanceCreateInfo {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkInstanceCreateFlags flags;
+///     VkInstanceCreateFlags flags;
 ///     const VkApplicationInfo* pApplicationInfo;
 ///     uint32_t enabledLayerCount;
-///     const char* const * ppEnabledLayerNames;
+///     const char* const* ppEnabledLayerNames;
 ///     uint32_t enabledExtensionCount;
-///     const char* const * ppEnabledExtensionNames;
-/// };
+///     const char* const* ppEnabledExtensionNames;
+/// }
 /// ```
 public final class VkInstanceCreateInfo extends GroupType {
-    /// The struct layout of `VkInstanceCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -35,316 +33,110 @@ public final class VkInstanceCreateInfo extends GroupType {
         ValueLayout.JAVA_INT.withName("enabledExtensionCount"),
         ValueLayout.ADDRESS.withName("ppEnabledExtensionNames")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `pApplicationInfo`.
     public static final long OFFSET_pApplicationInfo = LAYOUT.byteOffset(PathElement.groupElement("pApplicationInfo"));
-    /// The memory layout of `pApplicationInfo`.
-    public static final MemoryLayout LAYOUT_pApplicationInfo = LAYOUT.select(PathElement.groupElement("pApplicationInfo"));
-    /// The [VarHandle] of `pApplicationInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pApplicationInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pApplicationInfo"));
-    /// The byte offset of `enabledLayerCount`.
     public static final long OFFSET_enabledLayerCount = LAYOUT.byteOffset(PathElement.groupElement("enabledLayerCount"));
-    /// The memory layout of `enabledLayerCount`.
-    public static final MemoryLayout LAYOUT_enabledLayerCount = LAYOUT.select(PathElement.groupElement("enabledLayerCount"));
-    /// The [VarHandle] of `enabledLayerCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_enabledLayerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("enabledLayerCount"));
-    /// The byte offset of `ppEnabledLayerNames`.
     public static final long OFFSET_ppEnabledLayerNames = LAYOUT.byteOffset(PathElement.groupElement("ppEnabledLayerNames"));
-    /// The memory layout of `ppEnabledLayerNames`.
-    public static final MemoryLayout LAYOUT_ppEnabledLayerNames = LAYOUT.select(PathElement.groupElement("ppEnabledLayerNames"));
-    /// The [VarHandle] of `ppEnabledLayerNames` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_ppEnabledLayerNames = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppEnabledLayerNames"));
-    /// The byte offset of `enabledExtensionCount`.
     public static final long OFFSET_enabledExtensionCount = LAYOUT.byteOffset(PathElement.groupElement("enabledExtensionCount"));
-    /// The memory layout of `enabledExtensionCount`.
-    public static final MemoryLayout LAYOUT_enabledExtensionCount = LAYOUT.select(PathElement.groupElement("enabledExtensionCount"));
-    /// The [VarHandle] of `enabledExtensionCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_enabledExtensionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("enabledExtensionCount"));
-    /// The byte offset of `ppEnabledExtensionNames`.
     public static final long OFFSET_ppEnabledExtensionNames = LAYOUT.byteOffset(PathElement.groupElement("ppEnabledExtensionNames"));
-    /// The memory layout of `ppEnabledExtensionNames`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_pApplicationInfo = LAYOUT.select(PathElement.groupElement("pApplicationInfo"));
+    public static final MemoryLayout LAYOUT_enabledLayerCount = LAYOUT.select(PathElement.groupElement("enabledLayerCount"));
+    public static final MemoryLayout LAYOUT_ppEnabledLayerNames = LAYOUT.select(PathElement.groupElement("ppEnabledLayerNames"));
+    public static final MemoryLayout LAYOUT_enabledExtensionCount = LAYOUT.select(PathElement.groupElement("enabledExtensionCount"));
     public static final MemoryLayout LAYOUT_ppEnabledExtensionNames = LAYOUT.select(PathElement.groupElement("ppEnabledExtensionNames"));
-    /// The [VarHandle] of `ppEnabledExtensionNames` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_pApplicationInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pApplicationInfo"));
+    public static final VarHandle VH_enabledLayerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("enabledLayerCount"));
+    public static final VarHandle VH_ppEnabledLayerNames = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppEnabledLayerNames"));
+    public static final VarHandle VH_enabledExtensionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("enabledExtensionCount"));
     public static final VarHandle VH_ppEnabledExtensionNames = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppEnabledExtensionNames"));
 
-    /// Creates `VkInstanceCreateInfo` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkInstanceCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkInstanceCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkInstanceCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkInstanceCreateInfo(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkInstanceCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkInstanceCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkInstanceCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkInstanceCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkInstanceCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkInstanceCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkInstanceCreateInfo` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkInstanceCreateInfo`
     public static VkInstanceCreateInfo alloc(SegmentAllocator allocator) { return new VkInstanceCreateInfo(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkInstanceCreateInfo`
     public static VkInstanceCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkInstanceCreateInfo(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO); }
+    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO);
+        return s;
+    }
     public VkInstanceCreateInfo copyFrom(VkInstanceCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkInstanceCreateInfo reinterpret(long count) { return new VkInstanceCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `pApplicationInfo` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pApplicationInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pApplicationInfo.get(segment, 0L, index); }
-    /// {@return `pApplicationInfo`}
-    public MemorySegment pApplicationInfo() { return pApplicationInfo(this.segment(), 0L); }
-    /// Sets `pApplicationInfo` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pApplicationInfo(MemorySegment segment, long index, MemorySegment value) { VH_pApplicationInfo.set(segment, 0L, index, value); }
-    /// Sets `pApplicationInfo` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo pApplicationInfo(MemorySegment value) { pApplicationInfo(this.segment(), 0L, value); return this; }
-
-    /// {@return `enabledLayerCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int enabledLayerCount(MemorySegment segment, long index) { return (int) VH_enabledLayerCount.get(segment, 0L, index); }
-    /// {@return `enabledLayerCount`}
-    public int enabledLayerCount() { return enabledLayerCount(this.segment(), 0L); }
-    /// Sets `enabledLayerCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void enabledLayerCount(MemorySegment segment, long index, int value) { VH_enabledLayerCount.set(segment, 0L, index, value); }
-    /// Sets `enabledLayerCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo enabledLayerCount(int value) { enabledLayerCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `ppEnabledLayerNames` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment ppEnabledLayerNames(MemorySegment segment, long index) { return (MemorySegment) VH_ppEnabledLayerNames.get(segment, 0L, index); }
-    /// {@return `ppEnabledLayerNames`}
-    public MemorySegment ppEnabledLayerNames() { return ppEnabledLayerNames(this.segment(), 0L); }
-    /// Sets `ppEnabledLayerNames` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void ppEnabledLayerNames(MemorySegment segment, long index, MemorySegment value) { VH_ppEnabledLayerNames.set(segment, 0L, index, value); }
-    /// Sets `ppEnabledLayerNames` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo ppEnabledLayerNames(MemorySegment value) { ppEnabledLayerNames(this.segment(), 0L, value); return this; }
-
-    /// {@return `enabledExtensionCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int enabledExtensionCount(MemorySegment segment, long index) { return (int) VH_enabledExtensionCount.get(segment, 0L, index); }
-    /// {@return `enabledExtensionCount`}
-    public int enabledExtensionCount() { return enabledExtensionCount(this.segment(), 0L); }
-    /// Sets `enabledExtensionCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void enabledExtensionCount(MemorySegment segment, long index, int value) { VH_enabledExtensionCount.set(segment, 0L, index, value); }
-    /// Sets `enabledExtensionCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo enabledExtensionCount(int value) { enabledExtensionCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `ppEnabledExtensionNames` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment ppEnabledExtensionNames(MemorySegment segment, long index) { return (MemorySegment) VH_ppEnabledExtensionNames.get(segment, 0L, index); }
-    /// {@return `ppEnabledExtensionNames`}
-    public MemorySegment ppEnabledExtensionNames() { return ppEnabledExtensionNames(this.segment(), 0L); }
-    /// Sets `ppEnabledExtensionNames` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void ppEnabledExtensionNames(MemorySegment segment, long index, MemorySegment value) { VH_ppEnabledExtensionNames.set(segment, 0L, index, value); }
-    /// Sets `ppEnabledExtensionNames` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo ppEnabledExtensionNames(MemorySegment value) { ppEnabledExtensionNames(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkInstanceCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkInstanceCreateInfo`
     public VkInstanceCreateInfo asSlice(long index) { return new VkInstanceCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkInstanceCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkInstanceCreateInfo`
     public VkInstanceCreateInfo asSlice(long index, long count) { return new VkInstanceCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkInstanceCreateInfo` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkInstanceCreateInfo at(long index, Consumer<VkInstanceCreateInfo> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `pApplicationInfo` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pApplicationInfoAt(long index) { return pApplicationInfo(this.segment(), index); }
-    /// Sets `pApplicationInfo` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo pApplicationInfoAt(long index, MemorySegment value) { pApplicationInfo(this.segment(), index, value); return this; }
-
-    /// {@return `enabledLayerCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int enabledLayerCountAt(long index) { return enabledLayerCount(this.segment(), index); }
-    /// Sets `enabledLayerCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo enabledLayerCountAt(long index, int value) { enabledLayerCount(this.segment(), index, value); return this; }
-
-    /// {@return `ppEnabledLayerNames` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment ppEnabledLayerNamesAt(long index) { return ppEnabledLayerNames(this.segment(), index); }
-    /// Sets `ppEnabledLayerNames` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo ppEnabledLayerNamesAt(long index, MemorySegment value) { ppEnabledLayerNames(this.segment(), index, value); return this; }
-
-    /// {@return `enabledExtensionCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int enabledExtensionCountAt(long index) { return enabledExtensionCount(this.segment(), index); }
-    /// Sets `enabledExtensionCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo enabledExtensionCountAt(long index, int value) { enabledExtensionCount(this.segment(), index, value); return this; }
-
-    /// {@return `ppEnabledExtensionNames` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment ppEnabledExtensionNamesAt(long index) { return ppEnabledExtensionNames(this.segment(), index); }
-    /// Sets `ppEnabledExtensionNames` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkInstanceCreateInfo ppEnabledExtensionNamesAt(long index, MemorySegment value) { ppEnabledExtensionNames(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public MemorySegment pApplicationInfoAt(long index) { return (MemorySegment) VH_pApplicationInfo.get(this.segment(), 0L, index); }
+    public int enabledLayerCountAt(long index) { return (int) VH_enabledLayerCount.get(this.segment(), 0L, index); }
+    public MemorySegment ppEnabledLayerNamesAt(long index) { return (MemorySegment) VH_ppEnabledLayerNames.get(this.segment(), 0L, index); }
+    public int enabledExtensionCountAt(long index) { return (int) VH_enabledExtensionCount.get(this.segment(), 0L, index); }
+    public MemorySegment ppEnabledExtensionNamesAt(long index) { return (MemorySegment) VH_ppEnabledExtensionNames.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public MemorySegment pApplicationInfo() { return (MemorySegment) VH_pApplicationInfo.get(this.segment(), 0L, 0L); }
+    public int enabledLayerCount() { return (int) VH_enabledLayerCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment ppEnabledLayerNames() { return (MemorySegment) VH_ppEnabledLayerNames.get(this.segment(), 0L, 0L); }
+    public int enabledExtensionCount() { return (int) VH_enabledExtensionCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment ppEnabledExtensionNames() { return (MemorySegment) VH_ppEnabledExtensionNames.get(this.segment(), 0L, 0L); }
+    public VkInstanceCreateInfo sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkInstanceCreateInfo pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkInstanceCreateInfo flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkInstanceCreateInfo pApplicationInfoAt(long index, MemorySegment value) { VH_pApplicationInfo.set(this.segment(), 0L, index, value); return this; }
+    public VkInstanceCreateInfo enabledLayerCountAt(long index, int value) { VH_enabledLayerCount.set(this.segment(), 0L, index, value); return this; }
+    public VkInstanceCreateInfo ppEnabledLayerNamesAt(long index, MemorySegment value) { VH_ppEnabledLayerNames.set(this.segment(), 0L, index, value); return this; }
+    public VkInstanceCreateInfo enabledExtensionCountAt(long index, int value) { VH_enabledExtensionCount.set(this.segment(), 0L, index, value); return this; }
+    public VkInstanceCreateInfo ppEnabledExtensionNamesAt(long index, MemorySegment value) { VH_ppEnabledExtensionNames.set(this.segment(), 0L, index, value); return this; }
+    public VkInstanceCreateInfo sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkInstanceCreateInfo pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkInstanceCreateInfo flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkInstanceCreateInfo pApplicationInfo(MemorySegment value) { VH_pApplicationInfo.set(this.segment(), 0L, 0L, value); return this; }
+    public VkInstanceCreateInfo enabledLayerCount(int value) { VH_enabledLayerCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkInstanceCreateInfo ppEnabledLayerNames(MemorySegment value) { VH_ppEnabledLayerNames.set(this.segment(), 0L, 0L, value); return this; }
+    public VkInstanceCreateInfo enabledExtensionCount(int value) { VH_enabledExtensionCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkInstanceCreateInfo ppEnabledExtensionNames(MemorySegment value) { VH_ppEnabledExtensionNames.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkInstanceCreateInfo _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkInstanceCreateInfo _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkInstanceCreateInfo _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkInstanceCreateInfo _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkInstanceCreateInfo _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkInstanceCreateInfo _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _pApplicationInfoAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pApplicationInfo, index), LAYOUT_pApplicationInfo); }
+    public MemorySegment _pApplicationInfo() { return _pApplicationInfoAt(0L); }
+    public VkInstanceCreateInfo _pApplicationInfoAt(long index, MemorySegment src) { _pApplicationInfoAt(index).copyFrom(src); return this; }
+    public VkInstanceCreateInfo _pApplicationInfo(MemorySegment src) { return _pApplicationInfoAt(0L, src); }
+    public MemorySegment _enabledLayerCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_enabledLayerCount, index), LAYOUT_enabledLayerCount); }
+    public MemorySegment _enabledLayerCount() { return _enabledLayerCountAt(0L); }
+    public VkInstanceCreateInfo _enabledLayerCountAt(long index, MemorySegment src) { _enabledLayerCountAt(index).copyFrom(src); return this; }
+    public VkInstanceCreateInfo _enabledLayerCount(MemorySegment src) { return _enabledLayerCountAt(0L, src); }
+    public MemorySegment _ppEnabledLayerNamesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_ppEnabledLayerNames, index), LAYOUT_ppEnabledLayerNames); }
+    public MemorySegment _ppEnabledLayerNames() { return _ppEnabledLayerNamesAt(0L); }
+    public VkInstanceCreateInfo _ppEnabledLayerNamesAt(long index, MemorySegment src) { _ppEnabledLayerNamesAt(index).copyFrom(src); return this; }
+    public VkInstanceCreateInfo _ppEnabledLayerNames(MemorySegment src) { return _ppEnabledLayerNamesAt(0L, src); }
+    public MemorySegment _enabledExtensionCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_enabledExtensionCount, index), LAYOUT_enabledExtensionCount); }
+    public MemorySegment _enabledExtensionCount() { return _enabledExtensionCountAt(0L); }
+    public VkInstanceCreateInfo _enabledExtensionCountAt(long index, MemorySegment src) { _enabledExtensionCountAt(index).copyFrom(src); return this; }
+    public VkInstanceCreateInfo _enabledExtensionCount(MemorySegment src) { return _enabledExtensionCountAt(0L, src); }
+    public MemorySegment _ppEnabledExtensionNamesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_ppEnabledExtensionNames, index), LAYOUT_ppEnabledExtensionNames); }
+    public MemorySegment _ppEnabledExtensionNames() { return _ppEnabledExtensionNamesAt(0L); }
+    public VkInstanceCreateInfo _ppEnabledExtensionNamesAt(long index, MemorySegment src) { _ppEnabledExtensionNamesAt(index).copyFrom(src); return this; }
+    public VkInstanceCreateInfo _ppEnabledExtensionNames(MemorySegment src) { return _ppEnabledExtensionNamesAt(0L, src); }
 }

@@ -8,36 +8,50 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_cooperative_matrix` - device extension
 public final class VKKHRCooperativeMatrix {
-    public static final int VK_SCOPE_DEVICE_KHR = 1;
-    public static final int VK_SCOPE_WORKGROUP_KHR = 2;
-    public static final int VK_SCOPE_SUBGROUP_KHR = 3;
-    public static final int VK_SCOPE_QUEUE_FAMILY_KHR = 5;
-    public static final int VK_COMPONENT_TYPE_FLOAT16_KHR = 0;
-    public static final int VK_COMPONENT_TYPE_FLOAT32_KHR = 1;
-    public static final int VK_COMPONENT_TYPE_FLOAT64_KHR = 2;
-    public static final int VK_COMPONENT_TYPE_SINT8_KHR = 3;
-    public static final int VK_COMPONENT_TYPE_SINT16_KHR = 4;
-    public static final int VK_COMPONENT_TYPE_SINT32_KHR = 5;
-    public static final int VK_COMPONENT_TYPE_SINT64_KHR = 6;
-    public static final int VK_COMPONENT_TYPE_UINT8_KHR = 7;
-    public static final int VK_COMPONENT_TYPE_UINT16_KHR = 8;
-    public static final int VK_COMPONENT_TYPE_UINT32_KHR = 9;
-    public static final int VK_COMPONENT_TYPE_UINT64_KHR = 10;
     public static final int VK_KHR_COOPERATIVE_MATRIX_SPEC_VERSION = 2;
     public static final String VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_KHR_cooperative_matrix";
+    public static final int VK_SCOPE_DEVICE_KHR = 1;
+    public static final int VK_SCOPE_DEVICE_NV = 1;
+    public static final int VK_SCOPE_WORKGROUP_KHR = 2;
+    public static final int VK_SCOPE_WORKGROUP_NV = 2;
+    public static final int VK_SCOPE_SUBGROUP_KHR = 3;
+    public static final int VK_SCOPE_SUBGROUP_NV = 3;
+    public static final int VK_SCOPE_QUEUE_FAMILY_KHR = 5;
+    public static final int VK_SCOPE_QUEUE_FAMILY_NV = 5;
+    public static final int VK_COMPONENT_TYPE_FLOAT16_KHR = 0;
+    public static final int VK_COMPONENT_TYPE_FLOAT16_NV = 0;
+    public static final int VK_COMPONENT_TYPE_FLOAT32_KHR = 1;
+    public static final int VK_COMPONENT_TYPE_FLOAT32_NV = 1;
+    public static final int VK_COMPONENT_TYPE_FLOAT64_KHR = 2;
+    public static final int VK_COMPONENT_TYPE_FLOAT64_NV = 2;
+    public static final int VK_COMPONENT_TYPE_SINT8_KHR = 3;
+    public static final int VK_COMPONENT_TYPE_SINT8_NV = 3;
+    public static final int VK_COMPONENT_TYPE_SINT16_KHR = 4;
+    public static final int VK_COMPONENT_TYPE_SINT16_NV = 4;
+    public static final int VK_COMPONENT_TYPE_SINT32_KHR = 5;
+    public static final int VK_COMPONENT_TYPE_SINT32_NV = 5;
+    public static final int VK_COMPONENT_TYPE_SINT64_KHR = 6;
+    public static final int VK_COMPONENT_TYPE_SINT64_NV = 6;
+    public static final int VK_COMPONENT_TYPE_UINT8_KHR = 7;
+    public static final int VK_COMPONENT_TYPE_UINT8_NV = 7;
+    public static final int VK_COMPONENT_TYPE_UINT16_KHR = 8;
+    public static final int VK_COMPONENT_TYPE_UINT16_NV = 8;
+    public static final int VK_COMPONENT_TYPE_UINT32_KHR = 9;
+    public static final int VK_COMPONENT_TYPE_UINT32_NV = 9;
+    public static final int VK_COMPONENT_TYPE_UINT64_KHR = 10;
+    public static final int VK_COMPONENT_TYPE_UINT64_NV = 10;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_KHR = 1000506000;
     public static final int VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_KHR = 1000506001;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR = 1000506002;
+    private VKKHRCooperativeMatrix() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRCooperativeMatrix() {}
-
     /// Invokes `vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeMatrixPropertiesKHR* pProperties);
+    /// VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeMatrixPropertiesKHR* pProperties);
     /// ```
     public static int vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pPropertyCount, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR");

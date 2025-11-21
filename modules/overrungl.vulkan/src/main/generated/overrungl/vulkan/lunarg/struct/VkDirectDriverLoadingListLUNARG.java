@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.lunarg.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDirectDriverLoadingListLUNARG {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (int) VkDirectDriverLoadingModeLUNARG mode;
+///     VkDirectDriverLoadingModeLUNARG mode;
 ///     uint32_t driverCount;
 ///     const VkDirectDriverLoadingInfoLUNARG* pDrivers;
-/// };
+/// }
 /// ```
 public final class VkDirectDriverLoadingListLUNARG extends GroupType {
-    /// The struct layout of `VkDirectDriverLoadingListLUNARG`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,223 +27,77 @@ public final class VkDirectDriverLoadingListLUNARG extends GroupType {
         ValueLayout.JAVA_INT.withName("driverCount"),
         ValueLayout.ADDRESS.withName("pDrivers")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `mode`.
     public static final long OFFSET_mode = LAYOUT.byteOffset(PathElement.groupElement("mode"));
-    /// The memory layout of `mode`.
-    public static final MemoryLayout LAYOUT_mode = LAYOUT.select(PathElement.groupElement("mode"));
-    /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
-    /// The byte offset of `driverCount`.
     public static final long OFFSET_driverCount = LAYOUT.byteOffset(PathElement.groupElement("driverCount"));
-    /// The memory layout of `driverCount`.
-    public static final MemoryLayout LAYOUT_driverCount = LAYOUT.select(PathElement.groupElement("driverCount"));
-    /// The [VarHandle] of `driverCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_driverCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverCount"));
-    /// The byte offset of `pDrivers`.
     public static final long OFFSET_pDrivers = LAYOUT.byteOffset(PathElement.groupElement("pDrivers"));
-    /// The memory layout of `pDrivers`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_mode = LAYOUT.select(PathElement.groupElement("mode"));
+    public static final MemoryLayout LAYOUT_driverCount = LAYOUT.select(PathElement.groupElement("driverCount"));
     public static final MemoryLayout LAYOUT_pDrivers = LAYOUT.select(PathElement.groupElement("pDrivers"));
-    /// The [VarHandle] of `pDrivers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
+    public static final VarHandle VH_driverCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverCount"));
     public static final VarHandle VH_pDrivers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDrivers"));
 
-    /// Creates `VkDirectDriverLoadingListLUNARG` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkDirectDriverLoadingListLUNARG(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkDirectDriverLoadingListLUNARG` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDirectDriverLoadingListLUNARG of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDirectDriverLoadingListLUNARG(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkDirectDriverLoadingListLUNARG` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDirectDriverLoadingListLUNARG ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDirectDriverLoadingListLUNARG(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkDirectDriverLoadingListLUNARG` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDirectDriverLoadingListLUNARG ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDirectDriverLoadingListLUNARG(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkDirectDriverLoadingListLUNARG` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDirectDriverLoadingListLUNARG`
     public static VkDirectDriverLoadingListLUNARG alloc(SegmentAllocator allocator) { return new VkDirectDriverLoadingListLUNARG(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkDirectDriverLoadingListLUNARG` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkDirectDriverLoadingListLUNARG`
     public static VkDirectDriverLoadingListLUNARG alloc(SegmentAllocator allocator, long count) { return new VkDirectDriverLoadingListLUNARG(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkDirectDriverLoadingListLUNARG allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.lunarg.VKLUNARGDirectDriverLoading.VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG); }
+    public static VkDirectDriverLoadingListLUNARG allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.lunarg.VKLUNARGDirectDriverLoading.VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG);
+        return s;
+    }
     public VkDirectDriverLoadingListLUNARG copyFrom(VkDirectDriverLoadingListLUNARG src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkDirectDriverLoadingListLUNARG reinterpret(long count) { return new VkDirectDriverLoadingListLUNARG(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDirectDriverLoadingListLUNARG sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDirectDriverLoadingListLUNARG pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `mode` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
-    /// {@return `mode`}
-    public int mode() { return mode(this.segment(), 0L); }
-    /// Sets `mode` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void mode(MemorySegment segment, long index, int value) { VH_mode.set(segment, 0L, index, value); }
-    /// Sets `mode` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDirectDriverLoadingListLUNARG mode(int value) { mode(this.segment(), 0L, value); return this; }
-
-    /// {@return `driverCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int driverCount(MemorySegment segment, long index) { return (int) VH_driverCount.get(segment, 0L, index); }
-    /// {@return `driverCount`}
-    public int driverCount() { return driverCount(this.segment(), 0L); }
-    /// Sets `driverCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void driverCount(MemorySegment segment, long index, int value) { VH_driverCount.set(segment, 0L, index, value); }
-    /// Sets `driverCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDirectDriverLoadingListLUNARG driverCount(int value) { driverCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pDrivers` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pDrivers(MemorySegment segment, long index) { return (MemorySegment) VH_pDrivers.get(segment, 0L, index); }
-    /// {@return `pDrivers`}
-    public MemorySegment pDrivers() { return pDrivers(this.segment(), 0L); }
-    /// Sets `pDrivers` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pDrivers(MemorySegment segment, long index, MemorySegment value) { VH_pDrivers.set(segment, 0L, index, value); }
-    /// Sets `pDrivers` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDirectDriverLoadingListLUNARG pDrivers(MemorySegment value) { pDrivers(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkDirectDriverLoadingListLUNARG`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDirectDriverLoadingListLUNARG`
     public VkDirectDriverLoadingListLUNARG asSlice(long index) { return new VkDirectDriverLoadingListLUNARG(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkDirectDriverLoadingListLUNARG`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDirectDriverLoadingListLUNARG`
     public VkDirectDriverLoadingListLUNARG asSlice(long index, long count) { return new VkDirectDriverLoadingListLUNARG(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkDirectDriverLoadingListLUNARG` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkDirectDriverLoadingListLUNARG at(long index, Consumer<VkDirectDriverLoadingListLUNARG> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDirectDriverLoadingListLUNARG sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDirectDriverLoadingListLUNARG pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `mode` at the given index}
-    /// @param index the index of the struct buffer
-    public int modeAt(long index) { return mode(this.segment(), index); }
-    /// Sets `mode` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDirectDriverLoadingListLUNARG modeAt(long index, int value) { mode(this.segment(), index, value); return this; }
-
-    /// {@return `driverCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int driverCountAt(long index) { return driverCount(this.segment(), index); }
-    /// Sets `driverCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDirectDriverLoadingListLUNARG driverCountAt(long index, int value) { driverCount(this.segment(), index, value); return this; }
-
-    /// {@return `pDrivers` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pDriversAt(long index) { return pDrivers(this.segment(), index); }
-    /// Sets `pDrivers` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDirectDriverLoadingListLUNARG pDriversAt(long index, MemorySegment value) { pDrivers(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int modeAt(long index) { return (int) VH_mode.get(this.segment(), 0L, index); }
+    public int driverCountAt(long index) { return (int) VH_driverCount.get(this.segment(), 0L, index); }
+    public MemorySegment pDriversAt(long index) { return (MemorySegment) VH_pDrivers.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int mode() { return (int) VH_mode.get(this.segment(), 0L, 0L); }
+    public int driverCount() { return (int) VH_driverCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pDrivers() { return (MemorySegment) VH_pDrivers.get(this.segment(), 0L, 0L); }
+    public VkDirectDriverLoadingListLUNARG sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkDirectDriverLoadingListLUNARG pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkDirectDriverLoadingListLUNARG modeAt(long index, int value) { VH_mode.set(this.segment(), 0L, index, value); return this; }
+    public VkDirectDriverLoadingListLUNARG driverCountAt(long index, int value) { VH_driverCount.set(this.segment(), 0L, index, value); return this; }
+    public VkDirectDriverLoadingListLUNARG pDriversAt(long index, MemorySegment value) { VH_pDrivers.set(this.segment(), 0L, index, value); return this; }
+    public VkDirectDriverLoadingListLUNARG sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDirectDriverLoadingListLUNARG pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDirectDriverLoadingListLUNARG mode(int value) { VH_mode.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDirectDriverLoadingListLUNARG driverCount(int value) { VH_driverCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDirectDriverLoadingListLUNARG pDrivers(MemorySegment value) { VH_pDrivers.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkDirectDriverLoadingListLUNARG _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkDirectDriverLoadingListLUNARG _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkDirectDriverLoadingListLUNARG _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkDirectDriverLoadingListLUNARG _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _modeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_mode, index), LAYOUT_mode); }
+    public MemorySegment _mode() { return _modeAt(0L); }
+    public VkDirectDriverLoadingListLUNARG _modeAt(long index, MemorySegment src) { _modeAt(index).copyFrom(src); return this; }
+    public VkDirectDriverLoadingListLUNARG _mode(MemorySegment src) { return _modeAt(0L, src); }
+    public MemorySegment _driverCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_driverCount, index), LAYOUT_driverCount); }
+    public MemorySegment _driverCount() { return _driverCountAt(0L); }
+    public VkDirectDriverLoadingListLUNARG _driverCountAt(long index, MemorySegment src) { _driverCountAt(index).copyFrom(src); return this; }
+    public VkDirectDriverLoadingListLUNARG _driverCount(MemorySegment src) { return _driverCountAt(0L, src); }
+    public MemorySegment _pDriversAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pDrivers, index), LAYOUT_pDrivers); }
+    public MemorySegment _pDrivers() { return _pDriversAt(0L); }
+    public VkDirectDriverLoadingListLUNARG _pDriversAt(long index, MemorySegment src) { _pDriversAt(index).copyFrom(src); return this; }
+    public VkDirectDriverLoadingListLUNARG _pDrivers(MemorySegment src) { return _pDriversAt(0L, src); }
 }

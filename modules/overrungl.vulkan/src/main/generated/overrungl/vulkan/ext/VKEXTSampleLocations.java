@@ -17,17 +17,16 @@ public final class VKEXTSampleLocations {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT = 1000143003;
     public static final int VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT = 1000143004;
     public static final int VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT = 1000143000;
+    private VKEXTSampleLocations() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetSampleLocationsEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceMultisamplePropertiesEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKEXTSampleLocations() {}
-
     /// Invokes `vkCmdSetSampleLocationsEXT`.
     /// ```
-    /// void vkCmdSetSampleLocationsEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkSampleLocationsInfoEXT* pSampleLocationsInfo);
+    /// void vkCmdSetSampleLocationsEXT(VkCommandBuffer commandBuffer, const VkSampleLocationsInfoEXT* pSampleLocationsInfo);
     /// ```
     public static void vkCmdSetSampleLocationsEXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pSampleLocationsInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetSampleLocationsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetSampleLocationsEXT");
@@ -38,7 +37,7 @@ public final class VKEXTSampleLocations {
 
     /// Invokes `vkGetPhysicalDeviceMultisamplePropertiesEXT`.
     /// ```
-    /// void vkGetPhysicalDeviceMultisamplePropertiesEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (int) VkSampleCountFlagBits samples, VkMultisamplePropertiesEXT* pMultisampleProperties);
+    /// void vkGetPhysicalDeviceMultisamplePropertiesEXT(VkPhysicalDevice physicalDevice, VkSampleCountFlagBits samples, VkMultisamplePropertiesEXT* pMultisampleProperties);
     /// ```
     public static void vkGetPhysicalDeviceMultisamplePropertiesEXT(@NonNull VkPhysicalDevice physicalDevice, int samples, @NonNull MemorySegment pMultisampleProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceMultisamplePropertiesEXT");

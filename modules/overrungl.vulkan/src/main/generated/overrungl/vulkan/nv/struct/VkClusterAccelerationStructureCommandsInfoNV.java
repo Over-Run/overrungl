@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,20 +12,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkClusterAccelerationStructureCommandsInfoNV {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (struct VkClusterAccelerationStructureInputInfoNV) VkClusterAccelerationStructureInputInfoNV input;
-///     (uint64_t) VkDeviceAddress dstImplicitData;
-///     (uint64_t) VkDeviceAddress scratchData;
-///     (struct VkStridedDeviceAddressRegionKHR) VkStridedDeviceAddressRegionKHR dstAddressesArray;
-///     (struct VkStridedDeviceAddressRegionKHR) VkStridedDeviceAddressRegionKHR dstSizesArray;
-///     (struct VkStridedDeviceAddressRegionKHR) VkStridedDeviceAddressRegionKHR srcInfosArray;
-///     (uint64_t) VkDeviceAddress srcInfosCount;
-///     ((uint32_t) VkFlags) VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags;
-/// };
+///     VkClusterAccelerationStructureInputInfoNV input;
+///     VkDeviceAddress dstImplicitData;
+///     VkDeviceAddress scratchData;
+///     VkStridedDeviceAddressRegionKHR dstAddressesArray;
+///     VkStridedDeviceAddressRegionKHR dstSizesArray;
+///     VkStridedDeviceAddressRegionKHR srcInfosArray;
+///     VkDeviceAddress srcInfosCount;
+///     VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags;
+/// }
 /// ```
 public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupType {
-    /// The struct layout of `VkClusterAccelerationStructureCommandsInfoNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -39,406 +37,202 @@ public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupTyp
         ValueLayout.JAVA_LONG.withName("srcInfosCount"),
         ValueLayout.JAVA_INT.withName("addressResolutionFlags")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `input`.
     public static final long OFFSET_input = LAYOUT.byteOffset(PathElement.groupElement("input"));
-    /// The memory layout of `input`.
-    public static final MemoryLayout LAYOUT_input = LAYOUT.select(PathElement.groupElement("input"));
-    /// The byte offset of `dstImplicitData`.
     public static final long OFFSET_dstImplicitData = LAYOUT.byteOffset(PathElement.groupElement("dstImplicitData"));
-    /// The memory layout of `dstImplicitData`.
-    public static final MemoryLayout LAYOUT_dstImplicitData = LAYOUT.select(PathElement.groupElement("dstImplicitData"));
-    /// The [VarHandle] of `dstImplicitData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstImplicitData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstImplicitData"));
-    /// The byte offset of `scratchData`.
     public static final long OFFSET_scratchData = LAYOUT.byteOffset(PathElement.groupElement("scratchData"));
-    /// The memory layout of `scratchData`.
-    public static final MemoryLayout LAYOUT_scratchData = LAYOUT.select(PathElement.groupElement("scratchData"));
-    /// The [VarHandle] of `scratchData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_scratchData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scratchData"));
-    /// The byte offset of `dstAddressesArray`.
     public static final long OFFSET_dstAddressesArray = LAYOUT.byteOffset(PathElement.groupElement("dstAddressesArray"));
-    /// The memory layout of `dstAddressesArray`.
-    public static final MemoryLayout LAYOUT_dstAddressesArray = LAYOUT.select(PathElement.groupElement("dstAddressesArray"));
-    /// The byte offset of `dstSizesArray`.
     public static final long OFFSET_dstSizesArray = LAYOUT.byteOffset(PathElement.groupElement("dstSizesArray"));
-    /// The memory layout of `dstSizesArray`.
-    public static final MemoryLayout LAYOUT_dstSizesArray = LAYOUT.select(PathElement.groupElement("dstSizesArray"));
-    /// The byte offset of `srcInfosArray`.
     public static final long OFFSET_srcInfosArray = LAYOUT.byteOffset(PathElement.groupElement("srcInfosArray"));
-    /// The memory layout of `srcInfosArray`.
-    public static final MemoryLayout LAYOUT_srcInfosArray = LAYOUT.select(PathElement.groupElement("srcInfosArray"));
-    /// The byte offset of `srcInfosCount`.
     public static final long OFFSET_srcInfosCount = LAYOUT.byteOffset(PathElement.groupElement("srcInfosCount"));
-    /// The memory layout of `srcInfosCount`.
-    public static final MemoryLayout LAYOUT_srcInfosCount = LAYOUT.select(PathElement.groupElement("srcInfosCount"));
-    /// The [VarHandle] of `srcInfosCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcInfosCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcInfosCount"));
-    /// The byte offset of `addressResolutionFlags`.
     public static final long OFFSET_addressResolutionFlags = LAYOUT.byteOffset(PathElement.groupElement("addressResolutionFlags"));
-    /// The memory layout of `addressResolutionFlags`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_input = LAYOUT.select(PathElement.groupElement("input"));
+    public static final MemoryLayout LAYOUT_dstImplicitData = LAYOUT.select(PathElement.groupElement("dstImplicitData"));
+    public static final MemoryLayout LAYOUT_scratchData = LAYOUT.select(PathElement.groupElement("scratchData"));
+    public static final MemoryLayout LAYOUT_dstAddressesArray = LAYOUT.select(PathElement.groupElement("dstAddressesArray"));
+    public static final MemoryLayout LAYOUT_dstSizesArray = LAYOUT.select(PathElement.groupElement("dstSizesArray"));
+    public static final MemoryLayout LAYOUT_srcInfosArray = LAYOUT.select(PathElement.groupElement("srcInfosArray"));
+    public static final MemoryLayout LAYOUT_srcInfosCount = LAYOUT.select(PathElement.groupElement("srcInfosCount"));
     public static final MemoryLayout LAYOUT_addressResolutionFlags = LAYOUT.select(PathElement.groupElement("addressResolutionFlags"));
-    /// The [VarHandle] of `addressResolutionFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_input$sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input"), PathElement.groupElement("sType"));
+    public static final VarHandle VH_input$pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input"), PathElement.groupElement("pNext"));
+    public static final VarHandle VH_input$maxAccelerationStructureCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input"), PathElement.groupElement("maxAccelerationStructureCount"));
+    public static final VarHandle VH_input$flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input"), PathElement.groupElement("flags"));
+    public static final VarHandle VH_input$opType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input"), PathElement.groupElement("opType"));
+    public static final VarHandle VH_input$opMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input"), PathElement.groupElement("opMode"));
+    public static final VarHandle VH_input$opInput$pClustersBottomLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input"), PathElement.groupElement("opInput"), PathElement.groupElement("pClustersBottomLevel"));
+    public static final VarHandle VH_input$opInput$pTriangleClusters = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input"), PathElement.groupElement("opInput"), PathElement.groupElement("pTriangleClusters"));
+    public static final VarHandle VH_input$opInput$pMoveObjects = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input"), PathElement.groupElement("opInput"), PathElement.groupElement("pMoveObjects"));
+    public static final VarHandle VH_dstImplicitData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstImplicitData"));
+    public static final VarHandle VH_scratchData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scratchData"));
+    public static final VarHandle VH_dstAddressesArray$deviceAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAddressesArray"), PathElement.groupElement("deviceAddress"));
+    public static final VarHandle VH_dstAddressesArray$stride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAddressesArray"), PathElement.groupElement("stride"));
+    public static final VarHandle VH_dstAddressesArray$size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAddressesArray"), PathElement.groupElement("size"));
+    public static final VarHandle VH_dstSizesArray$deviceAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstSizesArray"), PathElement.groupElement("deviceAddress"));
+    public static final VarHandle VH_dstSizesArray$stride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstSizesArray"), PathElement.groupElement("stride"));
+    public static final VarHandle VH_dstSizesArray$size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstSizesArray"), PathElement.groupElement("size"));
+    public static final VarHandle VH_srcInfosArray$deviceAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcInfosArray"), PathElement.groupElement("deviceAddress"));
+    public static final VarHandle VH_srcInfosArray$stride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcInfosArray"), PathElement.groupElement("stride"));
+    public static final VarHandle VH_srcInfosArray$size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcInfosArray"), PathElement.groupElement("size"));
+    public static final VarHandle VH_srcInfosCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcInfosCount"));
     public static final VarHandle VH_addressResolutionFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("addressResolutionFlags"));
 
-    /// Creates `VkClusterAccelerationStructureCommandsInfoNV` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkClusterAccelerationStructureCommandsInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkClusterAccelerationStructureCommandsInfoNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkClusterAccelerationStructureCommandsInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureCommandsInfoNV(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkClusterAccelerationStructureCommandsInfoNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkClusterAccelerationStructureCommandsInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureCommandsInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkClusterAccelerationStructureCommandsInfoNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkClusterAccelerationStructureCommandsInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureCommandsInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkClusterAccelerationStructureCommandsInfoNV` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkClusterAccelerationStructureCommandsInfoNV`
     public static VkClusterAccelerationStructureCommandsInfoNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureCommandsInfoNV(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkClusterAccelerationStructureCommandsInfoNV` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkClusterAccelerationStructureCommandsInfoNV`
     public static VkClusterAccelerationStructureCommandsInfoNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureCommandsInfoNV(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkClusterAccelerationStructureCommandsInfoNV allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.nv.VKNVClusterAccelerationStructure.VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV); }
+    public static VkClusterAccelerationStructureCommandsInfoNV allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.nv.VKNVClusterAccelerationStructure.VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV);
+        return s;
+    }
     public VkClusterAccelerationStructureCommandsInfoNV copyFrom(VkClusterAccelerationStructureCommandsInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkClusterAccelerationStructureCommandsInfoNV reinterpret(long count) { return new VkClusterAccelerationStructureCommandsInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `input` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment input(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_input, index), LAYOUT_input); }
-    /// {@return `input`}
-    public MemorySegment input() { return input(this.segment(), 0L); }
-    /// Sets `input` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void input(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_input, index), LAYOUT_input.byteSize()); }
-    /// Sets `input` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV input(MemorySegment value) { input(this.segment(), 0L, value); return this; }
-    /// Accepts `input` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV input(Consumer<overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV> func) { func.accept(overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV.of(input())); return this; }
-
-    /// {@return `dstImplicitData` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long dstImplicitData(MemorySegment segment, long index) { return (long) VH_dstImplicitData.get(segment, 0L, index); }
-    /// {@return `dstImplicitData`}
-    public long dstImplicitData() { return dstImplicitData(this.segment(), 0L); }
-    /// Sets `dstImplicitData` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstImplicitData(MemorySegment segment, long index, long value) { VH_dstImplicitData.set(segment, 0L, index, value); }
-    /// Sets `dstImplicitData` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV dstImplicitData(long value) { dstImplicitData(this.segment(), 0L, value); return this; }
-
-    /// {@return `scratchData` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long scratchData(MemorySegment segment, long index) { return (long) VH_scratchData.get(segment, 0L, index); }
-    /// {@return `scratchData`}
-    public long scratchData() { return scratchData(this.segment(), 0L); }
-    /// Sets `scratchData` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void scratchData(MemorySegment segment, long index, long value) { VH_scratchData.set(segment, 0L, index, value); }
-    /// Sets `scratchData` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV scratchData(long value) { scratchData(this.segment(), 0L, value); return this; }
-
-    /// {@return `dstAddressesArray` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment dstAddressesArray(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_dstAddressesArray, index), LAYOUT_dstAddressesArray); }
-    /// {@return `dstAddressesArray`}
-    public MemorySegment dstAddressesArray() { return dstAddressesArray(this.segment(), 0L); }
-    /// Sets `dstAddressesArray` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstAddressesArray(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_dstAddressesArray, index), LAYOUT_dstAddressesArray.byteSize()); }
-    /// Sets `dstAddressesArray` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArray(MemorySegment value) { dstAddressesArray(this.segment(), 0L, value); return this; }
-    /// Accepts `dstAddressesArray` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArray(Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstAddressesArray())); return this; }
-
-    /// {@return `dstSizesArray` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment dstSizesArray(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_dstSizesArray, index), LAYOUT_dstSizesArray); }
-    /// {@return `dstSizesArray`}
-    public MemorySegment dstSizesArray() { return dstSizesArray(this.segment(), 0L); }
-    /// Sets `dstSizesArray` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstSizesArray(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_dstSizesArray, index), LAYOUT_dstSizesArray.byteSize()); }
-    /// Sets `dstSizesArray` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArray(MemorySegment value) { dstSizesArray(this.segment(), 0L, value); return this; }
-    /// Accepts `dstSizesArray` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArray(Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstSizesArray())); return this; }
-
-    /// {@return `srcInfosArray` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment srcInfosArray(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_srcInfosArray, index), LAYOUT_srcInfosArray); }
-    /// {@return `srcInfosArray`}
-    public MemorySegment srcInfosArray() { return srcInfosArray(this.segment(), 0L); }
-    /// Sets `srcInfosArray` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcInfosArray(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_srcInfosArray, index), LAYOUT_srcInfosArray.byteSize()); }
-    /// Sets `srcInfosArray` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray(MemorySegment value) { srcInfosArray(this.segment(), 0L, value); return this; }
-    /// Accepts `srcInfosArray` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray(Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(srcInfosArray())); return this; }
-
-    /// {@return `srcInfosCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long srcInfosCount(MemorySegment segment, long index) { return (long) VH_srcInfosCount.get(segment, 0L, index); }
-    /// {@return `srcInfosCount`}
-    public long srcInfosCount() { return srcInfosCount(this.segment(), 0L); }
-    /// Sets `srcInfosCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcInfosCount(MemorySegment segment, long index, long value) { VH_srcInfosCount.set(segment, 0L, index, value); }
-    /// Sets `srcInfosCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV srcInfosCount(long value) { srcInfosCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `addressResolutionFlags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int addressResolutionFlags(MemorySegment segment, long index) { return (int) VH_addressResolutionFlags.get(segment, 0L, index); }
-    /// {@return `addressResolutionFlags`}
-    public int addressResolutionFlags() { return addressResolutionFlags(this.segment(), 0L); }
-    /// Sets `addressResolutionFlags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void addressResolutionFlags(MemorySegment segment, long index, int value) { VH_addressResolutionFlags.set(segment, 0L, index, value); }
-    /// Sets `addressResolutionFlags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlags(int value) { addressResolutionFlags(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkClusterAccelerationStructureCommandsInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkClusterAccelerationStructureCommandsInfoNV`
     public VkClusterAccelerationStructureCommandsInfoNV asSlice(long index) { return new VkClusterAccelerationStructureCommandsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkClusterAccelerationStructureCommandsInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkClusterAccelerationStructureCommandsInfoNV`
     public VkClusterAccelerationStructureCommandsInfoNV asSlice(long index, long count) { return new VkClusterAccelerationStructureCommandsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkClusterAccelerationStructureCommandsInfoNV` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkClusterAccelerationStructureCommandsInfoNV at(long index, Consumer<VkClusterAccelerationStructureCommandsInfoNV> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `input` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment inputAt(long index) { return input(this.segment(), index); }
-    /// Sets `input` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV inputAt(long index, MemorySegment value) { input(this.segment(), index, value); return this; }
-    /// Accepts `input` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV inputAt(long index, Consumer<overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV> func) { func.accept(overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV.of(inputAt(index))); return this; }
-
-    /// {@return `dstImplicitData` at the given index}
-    /// @param index the index of the struct buffer
-    public long dstImplicitDataAt(long index) { return dstImplicitData(this.segment(), index); }
-    /// Sets `dstImplicitData` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV dstImplicitDataAt(long index, long value) { dstImplicitData(this.segment(), index, value); return this; }
-
-    /// {@return `scratchData` at the given index}
-    /// @param index the index of the struct buffer
-    public long scratchDataAt(long index) { return scratchData(this.segment(), index); }
-    /// Sets `scratchData` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV scratchDataAt(long index, long value) { scratchData(this.segment(), index, value); return this; }
-
-    /// {@return `dstAddressesArray` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment dstAddressesArrayAt(long index) { return dstAddressesArray(this.segment(), index); }
-    /// Sets `dstAddressesArray` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArrayAt(long index, MemorySegment value) { dstAddressesArray(this.segment(), index, value); return this; }
-    /// Accepts `dstAddressesArray` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstAddressesArrayAt(index))); return this; }
-
-    /// {@return `dstSizesArray` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment dstSizesArrayAt(long index) { return dstSizesArray(this.segment(), index); }
-    /// Sets `dstSizesArray` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArrayAt(long index, MemorySegment value) { dstSizesArray(this.segment(), index, value); return this; }
-    /// Accepts `dstSizesArray` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstSizesArrayAt(index))); return this; }
-
-    /// {@return `srcInfosArray` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment srcInfosArrayAt(long index) { return srcInfosArray(this.segment(), index); }
-    /// Sets `srcInfosArray` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArrayAt(long index, MemorySegment value) { srcInfosArray(this.segment(), index, value); return this; }
-    /// Accepts `srcInfosArray` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(srcInfosArrayAt(index))); return this; }
-
-    /// {@return `srcInfosCount` at the given index}
-    /// @param index the index of the struct buffer
-    public long srcInfosCountAt(long index) { return srcInfosCount(this.segment(), index); }
-    /// Sets `srcInfosCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV srcInfosCountAt(long index, long value) { srcInfosCount(this.segment(), index, value); return this; }
-
-    /// {@return `addressResolutionFlags` at the given index}
-    /// @param index the index of the struct buffer
-    public int addressResolutionFlagsAt(long index) { return addressResolutionFlags(this.segment(), index); }
-    /// Sets `addressResolutionFlags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlagsAt(long index, int value) { addressResolutionFlags(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int input$sTypeAt(long index) { return (int) VH_input$sType.get(this.segment(), 0L, index); }
+    public MemorySegment input$pNextAt(long index) { return (MemorySegment) VH_input$pNext.get(this.segment(), 0L, index); }
+    public int input$maxAccelerationStructureCountAt(long index) { return (int) VH_input$maxAccelerationStructureCount.get(this.segment(), 0L, index); }
+    public int input$flagsAt(long index) { return (int) VH_input$flags.get(this.segment(), 0L, index); }
+    public int input$opTypeAt(long index) { return (int) VH_input$opType.get(this.segment(), 0L, index); }
+    public int input$opModeAt(long index) { return (int) VH_input$opMode.get(this.segment(), 0L, index); }
+    public MemorySegment input$opInput$pClustersBottomLevelAt(long index) { return (MemorySegment) VH_input$opInput$pClustersBottomLevel.get(this.segment(), 0L, index); }
+    public MemorySegment input$opInput$pTriangleClustersAt(long index) { return (MemorySegment) VH_input$opInput$pTriangleClusters.get(this.segment(), 0L, index); }
+    public MemorySegment input$opInput$pMoveObjectsAt(long index) { return (MemorySegment) VH_input$opInput$pMoveObjects.get(this.segment(), 0L, index); }
+    public long dstImplicitDataAt(long index) { return (long) VH_dstImplicitData.get(this.segment(), 0L, index); }
+    public long scratchDataAt(long index) { return (long) VH_scratchData.get(this.segment(), 0L, index); }
+    public long dstAddressesArray$deviceAddressAt(long index) { return (long) VH_dstAddressesArray$deviceAddress.get(this.segment(), 0L, index); }
+    public long dstAddressesArray$strideAt(long index) { return (long) VH_dstAddressesArray$stride.get(this.segment(), 0L, index); }
+    public long dstAddressesArray$sizeAt(long index) { return (long) VH_dstAddressesArray$size.get(this.segment(), 0L, index); }
+    public long dstSizesArray$deviceAddressAt(long index) { return (long) VH_dstSizesArray$deviceAddress.get(this.segment(), 0L, index); }
+    public long dstSizesArray$strideAt(long index) { return (long) VH_dstSizesArray$stride.get(this.segment(), 0L, index); }
+    public long dstSizesArray$sizeAt(long index) { return (long) VH_dstSizesArray$size.get(this.segment(), 0L, index); }
+    public long srcInfosArray$deviceAddressAt(long index) { return (long) VH_srcInfosArray$deviceAddress.get(this.segment(), 0L, index); }
+    public long srcInfosArray$strideAt(long index) { return (long) VH_srcInfosArray$stride.get(this.segment(), 0L, index); }
+    public long srcInfosArray$sizeAt(long index) { return (long) VH_srcInfosArray$size.get(this.segment(), 0L, index); }
+    public long srcInfosCountAt(long index) { return (long) VH_srcInfosCount.get(this.segment(), 0L, index); }
+    public int addressResolutionFlagsAt(long index) { return (int) VH_addressResolutionFlags.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int input$sType() { return (int) VH_input$sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment input$pNext() { return (MemorySegment) VH_input$pNext.get(this.segment(), 0L, 0L); }
+    public int input$maxAccelerationStructureCount() { return (int) VH_input$maxAccelerationStructureCount.get(this.segment(), 0L, 0L); }
+    public int input$flags() { return (int) VH_input$flags.get(this.segment(), 0L, 0L); }
+    public int input$opType() { return (int) VH_input$opType.get(this.segment(), 0L, 0L); }
+    public int input$opMode() { return (int) VH_input$opMode.get(this.segment(), 0L, 0L); }
+    public MemorySegment input$opInput$pClustersBottomLevel() { return (MemorySegment) VH_input$opInput$pClustersBottomLevel.get(this.segment(), 0L, 0L); }
+    public MemorySegment input$opInput$pTriangleClusters() { return (MemorySegment) VH_input$opInput$pTriangleClusters.get(this.segment(), 0L, 0L); }
+    public MemorySegment input$opInput$pMoveObjects() { return (MemorySegment) VH_input$opInput$pMoveObjects.get(this.segment(), 0L, 0L); }
+    public long dstImplicitData() { return (long) VH_dstImplicitData.get(this.segment(), 0L, 0L); }
+    public long scratchData() { return (long) VH_scratchData.get(this.segment(), 0L, 0L); }
+    public long dstAddressesArray$deviceAddress() { return (long) VH_dstAddressesArray$deviceAddress.get(this.segment(), 0L, 0L); }
+    public long dstAddressesArray$stride() { return (long) VH_dstAddressesArray$stride.get(this.segment(), 0L, 0L); }
+    public long dstAddressesArray$size() { return (long) VH_dstAddressesArray$size.get(this.segment(), 0L, 0L); }
+    public long dstSizesArray$deviceAddress() { return (long) VH_dstSizesArray$deviceAddress.get(this.segment(), 0L, 0L); }
+    public long dstSizesArray$stride() { return (long) VH_dstSizesArray$stride.get(this.segment(), 0L, 0L); }
+    public long dstSizesArray$size() { return (long) VH_dstSizesArray$size.get(this.segment(), 0L, 0L); }
+    public long srcInfosArray$deviceAddress() { return (long) VH_srcInfosArray$deviceAddress.get(this.segment(), 0L, 0L); }
+    public long srcInfosArray$stride() { return (long) VH_srcInfosArray$stride.get(this.segment(), 0L, 0L); }
+    public long srcInfosArray$size() { return (long) VH_srcInfosArray$size.get(this.segment(), 0L, 0L); }
+    public long srcInfosCount() { return (long) VH_srcInfosCount.get(this.segment(), 0L, 0L); }
+    public int addressResolutionFlags() { return (int) VH_addressResolutionFlags.get(this.segment(), 0L, 0L); }
+    public VkClusterAccelerationStructureCommandsInfoNV sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$sTypeAt(long index, int value) { VH_input$sType.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$pNextAt(long index, MemorySegment value) { VH_input$pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$maxAccelerationStructureCountAt(long index, int value) { VH_input$maxAccelerationStructureCount.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$flagsAt(long index, int value) { VH_input$flags.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$opTypeAt(long index, int value) { VH_input$opType.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$opModeAt(long index, int value) { VH_input$opMode.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$opInput$pClustersBottomLevelAt(long index, MemorySegment value) { VH_input$opInput$pClustersBottomLevel.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$opInput$pTriangleClustersAt(long index, MemorySegment value) { VH_input$opInput$pTriangleClusters.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$opInput$pMoveObjectsAt(long index, MemorySegment value) { VH_input$opInput$pMoveObjects.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstImplicitDataAt(long index, long value) { VH_dstImplicitData.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV scratchDataAt(long index, long value) { VH_scratchData.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArray$deviceAddressAt(long index, long value) { VH_dstAddressesArray$deviceAddress.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArray$strideAt(long index, long value) { VH_dstAddressesArray$stride.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArray$sizeAt(long index, long value) { VH_dstAddressesArray$size.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArray$deviceAddressAt(long index, long value) { VH_dstSizesArray$deviceAddress.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArray$strideAt(long index, long value) { VH_dstSizesArray$stride.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArray$sizeAt(long index, long value) { VH_dstSizesArray$size.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray$deviceAddressAt(long index, long value) { VH_srcInfosArray$deviceAddress.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray$strideAt(long index, long value) { VH_srcInfosArray$stride.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray$sizeAt(long index, long value) { VH_srcInfosArray$size.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosCountAt(long index, long value) { VH_srcInfosCount.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlagsAt(long index, int value) { VH_addressResolutionFlags.set(this.segment(), 0L, index, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$sType(int value) { VH_input$sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$pNext(MemorySegment value) { VH_input$pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$maxAccelerationStructureCount(int value) { VH_input$maxAccelerationStructureCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$flags(int value) { VH_input$flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$opType(int value) { VH_input$opType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$opMode(int value) { VH_input$opMode.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$opInput$pClustersBottomLevel(MemorySegment value) { VH_input$opInput$pClustersBottomLevel.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$opInput$pTriangleClusters(MemorySegment value) { VH_input$opInput$pTriangleClusters.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV input$opInput$pMoveObjects(MemorySegment value) { VH_input$opInput$pMoveObjects.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstImplicitData(long value) { VH_dstImplicitData.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV scratchData(long value) { VH_scratchData.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArray$deviceAddress(long value) { VH_dstAddressesArray$deviceAddress.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArray$stride(long value) { VH_dstAddressesArray$stride.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArray$size(long value) { VH_dstAddressesArray$size.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArray$deviceAddress(long value) { VH_dstSizesArray$deviceAddress.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArray$stride(long value) { VH_dstSizesArray$stride.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArray$size(long value) { VH_dstSizesArray$size.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray$deviceAddress(long value) { VH_srcInfosArray$deviceAddress.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray$stride(long value) { VH_srcInfosArray$stride.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray$size(long value) { VH_srcInfosArray$size.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosCount(long value) { VH_srcInfosCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlags(int value) { VH_addressResolutionFlags.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkClusterAccelerationStructureCommandsInfoNV _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkClusterAccelerationStructureCommandsInfoNV _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _inputAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_input, index), LAYOUT_input); }
+    public MemorySegment _input() { return _inputAt(0L); }
+    public VkClusterAccelerationStructureCommandsInfoNV _inputAt(long index, MemorySegment src) { _inputAt(index).copyFrom(src); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV _input(MemorySegment src) { return _inputAt(0L, src); }
+    public MemorySegment _dstImplicitDataAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstImplicitData, index), LAYOUT_dstImplicitData); }
+    public MemorySegment _dstImplicitData() { return _dstImplicitDataAt(0L); }
+    public VkClusterAccelerationStructureCommandsInfoNV _dstImplicitDataAt(long index, MemorySegment src) { _dstImplicitDataAt(index).copyFrom(src); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV _dstImplicitData(MemorySegment src) { return _dstImplicitDataAt(0L, src); }
+    public MemorySegment _scratchDataAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_scratchData, index), LAYOUT_scratchData); }
+    public MemorySegment _scratchData() { return _scratchDataAt(0L); }
+    public VkClusterAccelerationStructureCommandsInfoNV _scratchDataAt(long index, MemorySegment src) { _scratchDataAt(index).copyFrom(src); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV _scratchData(MemorySegment src) { return _scratchDataAt(0L, src); }
+    public MemorySegment _dstAddressesArrayAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstAddressesArray, index), LAYOUT_dstAddressesArray); }
+    public MemorySegment _dstAddressesArray() { return _dstAddressesArrayAt(0L); }
+    public VkClusterAccelerationStructureCommandsInfoNV _dstAddressesArrayAt(long index, MemorySegment src) { _dstAddressesArrayAt(index).copyFrom(src); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV _dstAddressesArray(MemorySegment src) { return _dstAddressesArrayAt(0L, src); }
+    public MemorySegment _dstSizesArrayAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstSizesArray, index), LAYOUT_dstSizesArray); }
+    public MemorySegment _dstSizesArray() { return _dstSizesArrayAt(0L); }
+    public VkClusterAccelerationStructureCommandsInfoNV _dstSizesArrayAt(long index, MemorySegment src) { _dstSizesArrayAt(index).copyFrom(src); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV _dstSizesArray(MemorySegment src) { return _dstSizesArrayAt(0L, src); }
+    public MemorySegment _srcInfosArrayAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcInfosArray, index), LAYOUT_srcInfosArray); }
+    public MemorySegment _srcInfosArray() { return _srcInfosArrayAt(0L); }
+    public VkClusterAccelerationStructureCommandsInfoNV _srcInfosArrayAt(long index, MemorySegment src) { _srcInfosArrayAt(index).copyFrom(src); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV _srcInfosArray(MemorySegment src) { return _srcInfosArrayAt(0L, src); }
+    public MemorySegment _srcInfosCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcInfosCount, index), LAYOUT_srcInfosCount); }
+    public MemorySegment _srcInfosCount() { return _srcInfosCountAt(0L); }
+    public VkClusterAccelerationStructureCommandsInfoNV _srcInfosCountAt(long index, MemorySegment src) { _srcInfosCountAt(index).copyFrom(src); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV _srcInfosCount(MemorySegment src) { return _srcInfosCountAt(0L, src); }
+    public MemorySegment _addressResolutionFlagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_addressResolutionFlags, index), LAYOUT_addressResolutionFlags); }
+    public MemorySegment _addressResolutionFlags() { return _addressResolutionFlagsAt(0L); }
+    public VkClusterAccelerationStructureCommandsInfoNV _addressResolutionFlagsAt(long index, MemorySegment src) { _addressResolutionFlagsAt(index).copyFrom(src); return this; }
+    public VkClusterAccelerationStructureCommandsInfoNV _addressResolutionFlags(MemorySegment src) { return _addressResolutionFlagsAt(0L, src); }
 }

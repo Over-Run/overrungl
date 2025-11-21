@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,213 +12,109 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureCreateInfoNV {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (uint64_t) VkDeviceSize compactedSize;
-///     (struct VkAccelerationStructureInfoNV) VkAccelerationStructureInfoNV info;
-/// };
+///     VkDeviceSize compactedSize;
+///     VkAccelerationStructureInfoNV info;
+/// }
 /// ```
 public final class VkAccelerationStructureCreateInfoNV extends GroupType {
-    /// The struct layout of `VkAccelerationStructureCreateInfoNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("compactedSize"),
         overrungl.vulkan.nv.struct.VkAccelerationStructureInfoNV.LAYOUT.withName("info")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `compactedSize`.
     public static final long OFFSET_compactedSize = LAYOUT.byteOffset(PathElement.groupElement("compactedSize"));
-    /// The memory layout of `compactedSize`.
-    public static final MemoryLayout LAYOUT_compactedSize = LAYOUT.select(PathElement.groupElement("compactedSize"));
-    /// The [VarHandle] of `compactedSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_compactedSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("compactedSize"));
-    /// The byte offset of `info`.
     public static final long OFFSET_info = LAYOUT.byteOffset(PathElement.groupElement("info"));
-    /// The memory layout of `info`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_compactedSize = LAYOUT.select(PathElement.groupElement("compactedSize"));
     public static final MemoryLayout LAYOUT_info = LAYOUT.select(PathElement.groupElement("info"));
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_compactedSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("compactedSize"));
+    public static final VarHandle VH_info$sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("info"), PathElement.groupElement("sType"));
+    public static final VarHandle VH_info$pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("info"), PathElement.groupElement("pNext"));
+    public static final VarHandle VH_info$type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("info"), PathElement.groupElement("type"));
+    public static final VarHandle VH_info$flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("info"), PathElement.groupElement("flags"));
+    public static final VarHandle VH_info$instanceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("info"), PathElement.groupElement("instanceCount"));
+    public static final VarHandle VH_info$geometryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("info"), PathElement.groupElement("geometryCount"));
+    public static final VarHandle VH_info$pGeometries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("info"), PathElement.groupElement("pGeometries"));
 
-    /// Creates `VkAccelerationStructureCreateInfoNV` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkAccelerationStructureCreateInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkAccelerationStructureCreateInfoNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkAccelerationStructureCreateInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureCreateInfoNV(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkAccelerationStructureCreateInfoNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkAccelerationStructureCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureCreateInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkAccelerationStructureCreateInfoNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkAccelerationStructureCreateInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureCreateInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkAccelerationStructureCreateInfoNV` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkAccelerationStructureCreateInfoNV`
     public static VkAccelerationStructureCreateInfoNV alloc(SegmentAllocator allocator) { return new VkAccelerationStructureCreateInfoNV(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkAccelerationStructureCreateInfoNV` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkAccelerationStructureCreateInfoNV`
     public static VkAccelerationStructureCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkAccelerationStructureCreateInfoNV allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.nv.VKNVRayTracing.VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV); }
+    public static VkAccelerationStructureCreateInfoNV allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.nv.VKNVRayTracing.VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV);
+        return s;
+    }
     public VkAccelerationStructureCreateInfoNV copyFrom(VkAccelerationStructureCreateInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkAccelerationStructureCreateInfoNV reinterpret(long count) { return new VkAccelerationStructureCreateInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureCreateInfoNV sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureCreateInfoNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `compactedSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long compactedSize(MemorySegment segment, long index) { return (long) VH_compactedSize.get(segment, 0L, index); }
-    /// {@return `compactedSize`}
-    public long compactedSize() { return compactedSize(this.segment(), 0L); }
-    /// Sets `compactedSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void compactedSize(MemorySegment segment, long index, long value) { VH_compactedSize.set(segment, 0L, index, value); }
-    /// Sets `compactedSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureCreateInfoNV compactedSize(long value) { compactedSize(this.segment(), 0L, value); return this; }
-
-    /// {@return `info` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment info(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_info, index), LAYOUT_info); }
-    /// {@return `info`}
-    public MemorySegment info() { return info(this.segment(), 0L); }
-    /// Sets `info` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void info(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_info, index), LAYOUT_info.byteSize()); }
-    /// Sets `info` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureCreateInfoNV info(MemorySegment value) { info(this.segment(), 0L, value); return this; }
-    /// Accepts `info` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkAccelerationStructureCreateInfoNV info(Consumer<overrungl.vulkan.nv.struct.VkAccelerationStructureInfoNV> func) { func.accept(overrungl.vulkan.nv.struct.VkAccelerationStructureInfoNV.of(info())); return this; }
-
-    /// Creates a slice of `VkAccelerationStructureCreateInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkAccelerationStructureCreateInfoNV`
     public VkAccelerationStructureCreateInfoNV asSlice(long index) { return new VkAccelerationStructureCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkAccelerationStructureCreateInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkAccelerationStructureCreateInfoNV`
     public VkAccelerationStructureCreateInfoNV asSlice(long index, long count) { return new VkAccelerationStructureCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkAccelerationStructureCreateInfoNV` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkAccelerationStructureCreateInfoNV at(long index, Consumer<VkAccelerationStructureCreateInfoNV> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureCreateInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureCreateInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `compactedSize` at the given index}
-    /// @param index the index of the struct buffer
-    public long compactedSizeAt(long index) { return compactedSize(this.segment(), index); }
-    /// Sets `compactedSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureCreateInfoNV compactedSizeAt(long index, long value) { compactedSize(this.segment(), index, value); return this; }
-
-    /// {@return `info` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment infoAt(long index) { return info(this.segment(), index); }
-    /// Sets `info` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureCreateInfoNV infoAt(long index, MemorySegment value) { info(this.segment(), index, value); return this; }
-    /// Accepts `info` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkAccelerationStructureCreateInfoNV infoAt(long index, Consumer<overrungl.vulkan.nv.struct.VkAccelerationStructureInfoNV> func) { func.accept(overrungl.vulkan.nv.struct.VkAccelerationStructureInfoNV.of(infoAt(index))); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long compactedSizeAt(long index) { return (long) VH_compactedSize.get(this.segment(), 0L, index); }
+    public int info$sTypeAt(long index) { return (int) VH_info$sType.get(this.segment(), 0L, index); }
+    public MemorySegment info$pNextAt(long index) { return (MemorySegment) VH_info$pNext.get(this.segment(), 0L, index); }
+    public int info$typeAt(long index) { return (int) VH_info$type.get(this.segment(), 0L, index); }
+    public int info$flagsAt(long index) { return (int) VH_info$flags.get(this.segment(), 0L, index); }
+    public int info$instanceCountAt(long index) { return (int) VH_info$instanceCount.get(this.segment(), 0L, index); }
+    public int info$geometryCountAt(long index) { return (int) VH_info$geometryCount.get(this.segment(), 0L, index); }
+    public MemorySegment info$pGeometriesAt(long index) { return (MemorySegment) VH_info$pGeometries.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long compactedSize() { return (long) VH_compactedSize.get(this.segment(), 0L, 0L); }
+    public int info$sType() { return (int) VH_info$sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment info$pNext() { return (MemorySegment) VH_info$pNext.get(this.segment(), 0L, 0L); }
+    public int info$type() { return (int) VH_info$type.get(this.segment(), 0L, 0L); }
+    public int info$flags() { return (int) VH_info$flags.get(this.segment(), 0L, 0L); }
+    public int info$instanceCount() { return (int) VH_info$instanceCount.get(this.segment(), 0L, 0L); }
+    public int info$geometryCount() { return (int) VH_info$geometryCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment info$pGeometries() { return (MemorySegment) VH_info$pGeometries.get(this.segment(), 0L, 0L); }
+    public VkAccelerationStructureCreateInfoNV sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkAccelerationStructureCreateInfoNV pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkAccelerationStructureCreateInfoNV compactedSizeAt(long index, long value) { VH_compactedSize.set(this.segment(), 0L, index, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$sTypeAt(long index, int value) { VH_info$sType.set(this.segment(), 0L, index, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$pNextAt(long index, MemorySegment value) { VH_info$pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$typeAt(long index, int value) { VH_info$type.set(this.segment(), 0L, index, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$flagsAt(long index, int value) { VH_info$flags.set(this.segment(), 0L, index, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$instanceCountAt(long index, int value) { VH_info$instanceCount.set(this.segment(), 0L, index, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$geometryCountAt(long index, int value) { VH_info$geometryCount.set(this.segment(), 0L, index, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$pGeometriesAt(long index, MemorySegment value) { VH_info$pGeometries.set(this.segment(), 0L, index, value); return this; }
+    public VkAccelerationStructureCreateInfoNV sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAccelerationStructureCreateInfoNV pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAccelerationStructureCreateInfoNV compactedSize(long value) { VH_compactedSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$sType(int value) { VH_info$sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$pNext(MemorySegment value) { VH_info$pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$type(int value) { VH_info$type.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$flags(int value) { VH_info$flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$instanceCount(int value) { VH_info$instanceCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$geometryCount(int value) { VH_info$geometryCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAccelerationStructureCreateInfoNV info$pGeometries(MemorySegment value) { VH_info$pGeometries.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkAccelerationStructureCreateInfoNV _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkAccelerationStructureCreateInfoNV _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkAccelerationStructureCreateInfoNV _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkAccelerationStructureCreateInfoNV _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _compactedSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_compactedSize, index), LAYOUT_compactedSize); }
+    public MemorySegment _compactedSize() { return _compactedSizeAt(0L); }
+    public VkAccelerationStructureCreateInfoNV _compactedSizeAt(long index, MemorySegment src) { _compactedSizeAt(index).copyFrom(src); return this; }
+    public VkAccelerationStructureCreateInfoNV _compactedSize(MemorySegment src) { return _compactedSizeAt(0L, src); }
+    public MemorySegment _infoAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_info, index), LAYOUT_info); }
+    public MemorySegment _info() { return _infoAt(0L); }
+    public VkAccelerationStructureCreateInfoNV _infoAt(long index, MemorySegment src) { _infoAt(index).copyFrom(src); return this; }
+    public VkAccelerationStructureCreateInfoNV _info(MemorySegment src) { return _infoAt(0L, src); }
 }

@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderTileImagePropertiesEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 shaderTileImageCoherentReadAccelerated;
-///     (uint32_t) VkBool32 shaderTileImageReadSampleFromPixelRateInvocation;
-///     (uint32_t) VkBool32 shaderTileImageReadFromHelperInvocation;
-/// };
+///     VkBool32 shaderTileImageCoherentReadAccelerated;
+///     VkBool32 shaderTileImageReadSampleFromPixelRateInvocation;
+///     VkBool32 shaderTileImageReadFromHelperInvocation;
+/// }
 /// ```
 public final class VkPhysicalDeviceShaderTileImagePropertiesEXT extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceShaderTileImagePropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,223 +27,77 @@ public final class VkPhysicalDeviceShaderTileImagePropertiesEXT extends GroupTyp
         ValueLayout.JAVA_INT.withName("shaderTileImageReadSampleFromPixelRateInvocation"),
         ValueLayout.JAVA_INT.withName("shaderTileImageReadFromHelperInvocation")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `shaderTileImageCoherentReadAccelerated`.
     public static final long OFFSET_shaderTileImageCoherentReadAccelerated = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageCoherentReadAccelerated"));
-    /// The memory layout of `shaderTileImageCoherentReadAccelerated`.
-    public static final MemoryLayout LAYOUT_shaderTileImageCoherentReadAccelerated = LAYOUT.select(PathElement.groupElement("shaderTileImageCoherentReadAccelerated"));
-    /// The [VarHandle] of `shaderTileImageCoherentReadAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderTileImageCoherentReadAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageCoherentReadAccelerated"));
-    /// The byte offset of `shaderTileImageReadSampleFromPixelRateInvocation`.
     public static final long OFFSET_shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageReadSampleFromPixelRateInvocation"));
-    /// The memory layout of `shaderTileImageReadSampleFromPixelRateInvocation`.
-    public static final MemoryLayout LAYOUT_shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT.select(PathElement.groupElement("shaderTileImageReadSampleFromPixelRateInvocation"));
-    /// The [VarHandle] of `shaderTileImageReadSampleFromPixelRateInvocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageReadSampleFromPixelRateInvocation"));
-    /// The byte offset of `shaderTileImageReadFromHelperInvocation`.
     public static final long OFFSET_shaderTileImageReadFromHelperInvocation = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageReadFromHelperInvocation"));
-    /// The memory layout of `shaderTileImageReadFromHelperInvocation`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_shaderTileImageCoherentReadAccelerated = LAYOUT.select(PathElement.groupElement("shaderTileImageCoherentReadAccelerated"));
+    public static final MemoryLayout LAYOUT_shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT.select(PathElement.groupElement("shaderTileImageReadSampleFromPixelRateInvocation"));
     public static final MemoryLayout LAYOUT_shaderTileImageReadFromHelperInvocation = LAYOUT.select(PathElement.groupElement("shaderTileImageReadFromHelperInvocation"));
-    /// The [VarHandle] of `shaderTileImageReadFromHelperInvocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_shaderTileImageCoherentReadAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageCoherentReadAccelerated"));
+    public static final VarHandle VH_shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageReadSampleFromPixelRateInvocation"));
     public static final VarHandle VH_shaderTileImageReadFromHelperInvocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageReadFromHelperInvocation"));
 
-    /// Creates `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceShaderTileImagePropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceShaderTileImagePropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderTileImagePropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceShaderTileImagePropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderTileImagePropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceShaderTileImagePropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderTileImagePropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceShaderTileImagePropertiesEXT`
     public static VkPhysicalDeviceShaderTileImagePropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderTileImagePropertiesEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceShaderTileImagePropertiesEXT`
     public static VkPhysicalDeviceShaderTileImagePropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderTileImagePropertiesEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceShaderTileImagePropertiesEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTShaderTileImage.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT); }
+    public static VkPhysicalDeviceShaderTileImagePropertiesEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTShaderTileImage.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT);
+        return s;
+    }
     public VkPhysicalDeviceShaderTileImagePropertiesEXT copyFrom(VkPhysicalDeviceShaderTileImagePropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceShaderTileImagePropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceShaderTileImagePropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `shaderTileImageCoherentReadAccelerated` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int shaderTileImageCoherentReadAccelerated(MemorySegment segment, long index) { return (int) VH_shaderTileImageCoherentReadAccelerated.get(segment, 0L, index); }
-    /// {@return `shaderTileImageCoherentReadAccelerated`}
-    public int shaderTileImageCoherentReadAccelerated() { return shaderTileImageCoherentReadAccelerated(this.segment(), 0L); }
-    /// Sets `shaderTileImageCoherentReadAccelerated` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderTileImageCoherentReadAccelerated(MemorySegment segment, long index, int value) { VH_shaderTileImageCoherentReadAccelerated.set(segment, 0L, index, value); }
-    /// Sets `shaderTileImageCoherentReadAccelerated` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageCoherentReadAccelerated(int value) { shaderTileImageCoherentReadAccelerated(this.segment(), 0L, value); return this; }
-
-    /// {@return `shaderTileImageReadSampleFromPixelRateInvocation` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int shaderTileImageReadSampleFromPixelRateInvocation(MemorySegment segment, long index) { return (int) VH_shaderTileImageReadSampleFromPixelRateInvocation.get(segment, 0L, index); }
-    /// {@return `shaderTileImageReadSampleFromPixelRateInvocation`}
-    public int shaderTileImageReadSampleFromPixelRateInvocation() { return shaderTileImageReadSampleFromPixelRateInvocation(this.segment(), 0L); }
-    /// Sets `shaderTileImageReadSampleFromPixelRateInvocation` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderTileImageReadSampleFromPixelRateInvocation(MemorySegment segment, long index, int value) { VH_shaderTileImageReadSampleFromPixelRateInvocation.set(segment, 0L, index, value); }
-    /// Sets `shaderTileImageReadSampleFromPixelRateInvocation` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageReadSampleFromPixelRateInvocation(int value) { shaderTileImageReadSampleFromPixelRateInvocation(this.segment(), 0L, value); return this; }
-
-    /// {@return `shaderTileImageReadFromHelperInvocation` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int shaderTileImageReadFromHelperInvocation(MemorySegment segment, long index) { return (int) VH_shaderTileImageReadFromHelperInvocation.get(segment, 0L, index); }
-    /// {@return `shaderTileImageReadFromHelperInvocation`}
-    public int shaderTileImageReadFromHelperInvocation() { return shaderTileImageReadFromHelperInvocation(this.segment(), 0L); }
-    /// Sets `shaderTileImageReadFromHelperInvocation` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderTileImageReadFromHelperInvocation(MemorySegment segment, long index, int value) { VH_shaderTileImageReadFromHelperInvocation.set(segment, 0L, index, value); }
-    /// Sets `shaderTileImageReadFromHelperInvocation` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageReadFromHelperInvocation(int value) { shaderTileImageReadFromHelperInvocation(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceShaderTileImagePropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceShaderTileImagePropertiesEXT`
     public VkPhysicalDeviceShaderTileImagePropertiesEXT asSlice(long index) { return new VkPhysicalDeviceShaderTileImagePropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceShaderTileImagePropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceShaderTileImagePropertiesEXT`
     public VkPhysicalDeviceShaderTileImagePropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceShaderTileImagePropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceShaderTileImagePropertiesEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceShaderTileImagePropertiesEXT at(long index, Consumer<VkPhysicalDeviceShaderTileImagePropertiesEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `shaderTileImageCoherentReadAccelerated` at the given index}
-    /// @param index the index of the struct buffer
-    public int shaderTileImageCoherentReadAcceleratedAt(long index) { return shaderTileImageCoherentReadAccelerated(this.segment(), index); }
-    /// Sets `shaderTileImageCoherentReadAccelerated` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageCoherentReadAcceleratedAt(long index, int value) { shaderTileImageCoherentReadAccelerated(this.segment(), index, value); return this; }
-
-    /// {@return `shaderTileImageReadSampleFromPixelRateInvocation` at the given index}
-    /// @param index the index of the struct buffer
-    public int shaderTileImageReadSampleFromPixelRateInvocationAt(long index) { return shaderTileImageReadSampleFromPixelRateInvocation(this.segment(), index); }
-    /// Sets `shaderTileImageReadSampleFromPixelRateInvocation` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageReadSampleFromPixelRateInvocationAt(long index, int value) { shaderTileImageReadSampleFromPixelRateInvocation(this.segment(), index, value); return this; }
-
-    /// {@return `shaderTileImageReadFromHelperInvocation` at the given index}
-    /// @param index the index of the struct buffer
-    public int shaderTileImageReadFromHelperInvocationAt(long index) { return shaderTileImageReadFromHelperInvocation(this.segment(), index); }
-    /// Sets `shaderTileImageReadFromHelperInvocation` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageReadFromHelperInvocationAt(long index, int value) { shaderTileImageReadFromHelperInvocation(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int shaderTileImageCoherentReadAcceleratedAt(long index) { return (int) VH_shaderTileImageCoherentReadAccelerated.get(this.segment(), 0L, index); }
+    public int shaderTileImageReadSampleFromPixelRateInvocationAt(long index) { return (int) VH_shaderTileImageReadSampleFromPixelRateInvocation.get(this.segment(), 0L, index); }
+    public int shaderTileImageReadFromHelperInvocationAt(long index) { return (int) VH_shaderTileImageReadFromHelperInvocation.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int shaderTileImageCoherentReadAccelerated() { return (int) VH_shaderTileImageCoherentReadAccelerated.get(this.segment(), 0L, 0L); }
+    public int shaderTileImageReadSampleFromPixelRateInvocation() { return (int) VH_shaderTileImageReadSampleFromPixelRateInvocation.get(this.segment(), 0L, 0L); }
+    public int shaderTileImageReadFromHelperInvocation() { return (int) VH_shaderTileImageReadFromHelperInvocation.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageCoherentReadAcceleratedAt(long index, int value) { VH_shaderTileImageCoherentReadAccelerated.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageReadSampleFromPixelRateInvocationAt(long index, int value) { VH_shaderTileImageReadSampleFromPixelRateInvocation.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageReadFromHelperInvocationAt(long index, int value) { VH_shaderTileImageReadFromHelperInvocation.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageCoherentReadAccelerated(int value) { VH_shaderTileImageCoherentReadAccelerated.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageReadSampleFromPixelRateInvocation(int value) { VH_shaderTileImageReadSampleFromPixelRateInvocation.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT shaderTileImageReadFromHelperInvocation(int value) { VH_shaderTileImageReadFromHelperInvocation.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _shaderTileImageCoherentReadAcceleratedAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderTileImageCoherentReadAccelerated, index), LAYOUT_shaderTileImageCoherentReadAccelerated); }
+    public MemorySegment _shaderTileImageCoherentReadAccelerated() { return _shaderTileImageCoherentReadAcceleratedAt(0L); }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT _shaderTileImageCoherentReadAcceleratedAt(long index, MemorySegment src) { _shaderTileImageCoherentReadAcceleratedAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT _shaderTileImageCoherentReadAccelerated(MemorySegment src) { return _shaderTileImageCoherentReadAcceleratedAt(0L, src); }
+    public MemorySegment _shaderTileImageReadSampleFromPixelRateInvocationAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderTileImageReadSampleFromPixelRateInvocation, index), LAYOUT_shaderTileImageReadSampleFromPixelRateInvocation); }
+    public MemorySegment _shaderTileImageReadSampleFromPixelRateInvocation() { return _shaderTileImageReadSampleFromPixelRateInvocationAt(0L); }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT _shaderTileImageReadSampleFromPixelRateInvocationAt(long index, MemorySegment src) { _shaderTileImageReadSampleFromPixelRateInvocationAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT _shaderTileImageReadSampleFromPixelRateInvocation(MemorySegment src) { return _shaderTileImageReadSampleFromPixelRateInvocationAt(0L, src); }
+    public MemorySegment _shaderTileImageReadFromHelperInvocationAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderTileImageReadFromHelperInvocation, index), LAYOUT_shaderTileImageReadFromHelperInvocation); }
+    public MemorySegment _shaderTileImageReadFromHelperInvocation() { return _shaderTileImageReadFromHelperInvocationAt(0L); }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT _shaderTileImageReadFromHelperInvocationAt(long index, MemorySegment src) { _shaderTileImageReadFromHelperInvocationAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT _shaderTileImageReadFromHelperInvocation(MemorySegment src) { return _shaderTileImageReadFromHelperInvocationAt(0L, src); }
 }

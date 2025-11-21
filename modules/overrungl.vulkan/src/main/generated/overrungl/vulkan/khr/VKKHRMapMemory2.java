@@ -12,17 +12,16 @@ public final class VKKHRMapMemory2 {
     public static final String VK_KHR_MAP_MEMORY_2_EXTENSION_NAME = "VK_KHR_map_memory2";
     public static final int VK_STRUCTURE_TYPE_MEMORY_MAP_INFO_KHR = 1000271000;
     public static final int VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR = 1000271001;
+    private VKKHRMapMemory2() {}
     public static final class Handles {
         public static final MethodHandle MH_vkMapMemory2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkUnmapMemory2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRMapMemory2() {}
-
     /// Invokes `vkMapMemory2KHR`.
     /// ```
-    /// (int) VkResult vkMapMemory2KHR((struct VkDevice*) VkDevice device, const VkMemoryMapInfo* pMemoryMapInfo, void** ppData);
+    /// VkResult vkMapMemory2KHR(VkDevice device, const VkMemoryMapInfo* pMemoryMapInfo, void** ppData);
     /// ```
     public static int vkMapMemory2KHR(@NonNull VkDevice device, @NonNull MemorySegment pMemoryMapInfo, @NonNull MemorySegment ppData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkMapMemory2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkMapMemory2KHR");
@@ -33,7 +32,7 @@ public final class VKKHRMapMemory2 {
 
     /// Invokes `vkUnmapMemory2KHR`.
     /// ```
-    /// (int) VkResult vkUnmapMemory2KHR((struct VkDevice*) VkDevice device, const VkMemoryUnmapInfo* pMemoryUnmapInfo);
+    /// VkResult vkUnmapMemory2KHR(VkDevice device, const VkMemoryUnmapInfo* pMemoryUnmapInfo);
     /// ```
     public static int vkUnmapMemory2KHR(@NonNull VkDevice device, @NonNull MemorySegment pMemoryUnmapInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkUnmapMemory2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkUnmapMemory2KHR");

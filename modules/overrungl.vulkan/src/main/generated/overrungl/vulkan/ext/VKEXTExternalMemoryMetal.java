@@ -16,17 +16,16 @@ public final class VKEXTExternalMemoryMetal {
     public static final int VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT = 0x00010000;
     public static final int VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT = 0x00020000;
     public static final int VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT = 0x00040000;
+    private VKEXTExternalMemoryMetal() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetMemoryMetalHandleEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetMemoryMetalHandlePropertiesEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKEXTExternalMemoryMetal() {}
-
     /// Invokes `vkGetMemoryMetalHandleEXT`.
     /// ```
-    /// (int) VkResult vkGetMemoryMetalHandleEXT((struct VkDevice*) VkDevice device, const VkMemoryGetMetalHandleInfoEXT* pGetMetalHandleInfo, void** pHandle);
+    /// VkResult vkGetMemoryMetalHandleEXT(VkDevice device, const VkMemoryGetMetalHandleInfoEXT* pGetMetalHandleInfo, void** pHandle);
     /// ```
     public static int vkGetMemoryMetalHandleEXT(@NonNull VkDevice device, @NonNull MemorySegment pGetMetalHandleInfo, @NonNull MemorySegment pHandle) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryMetalHandleEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryMetalHandleEXT");
@@ -37,7 +36,7 @@ public final class VKEXTExternalMemoryMetal {
 
     /// Invokes `vkGetMemoryMetalHandlePropertiesEXT`.
     /// ```
-    /// (int) VkResult vkGetMemoryMetalHandlePropertiesEXT((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, const void* pHandle, VkMemoryMetalHandlePropertiesEXT* pMemoryMetalHandleProperties);
+    /// VkResult vkGetMemoryMetalHandlePropertiesEXT(VkDevice device, VkExternalMemoryHandleTypeFlagBits handleType, const void* pHandle, VkMemoryMetalHandlePropertiesEXT* pMemoryMetalHandleProperties);
     /// ```
     public static int vkGetMemoryMetalHandlePropertiesEXT(@NonNull VkDevice device, int handleType, @NonNull MemorySegment pHandle, @NonNull MemorySegment pMemoryMetalHandleProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryMetalHandlePropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryMetalHandlePropertiesEXT");

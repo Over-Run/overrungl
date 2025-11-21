@@ -11,16 +11,15 @@ public final class VKMVKMacosSurface {
     public static final int VK_MVK_MACOS_SURFACE_SPEC_VERSION = 3;
     public static final String VK_MVK_MACOS_SURFACE_EXTENSION_NAME = "VK_MVK_macos_surface";
     public static final int VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK = 1000123000;
+    private VKMVKMacosSurface() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateMacOSSurfaceMVK = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKMVKMacosSurface() {}
-
     /// Invokes `vkCreateMacOSSurfaceMVK`.
     /// ```
-    /// (int) VkResult vkCreateMacOSSurfaceMVK((struct VkInstance*) VkInstance instance, const VkMacOSSurfaceCreateInfoMVK* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, const VkMacOSSurfaceCreateInfoMVK* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateMacOSSurfaceMVK(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateMacOSSurfaceMVK)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateMacOSSurfaceMVK");

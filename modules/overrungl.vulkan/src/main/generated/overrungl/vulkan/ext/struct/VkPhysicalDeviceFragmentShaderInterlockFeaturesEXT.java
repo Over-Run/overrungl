@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 fragmentShaderSampleInterlock;
-///     (uint32_t) VkBool32 fragmentShaderPixelInterlock;
-///     (uint32_t) VkBool32 fragmentShaderShadingRateInterlock;
-/// };
+///     VkBool32 fragmentShaderSampleInterlock;
+///     VkBool32 fragmentShaderPixelInterlock;
+///     VkBool32 fragmentShaderShadingRateInterlock;
+/// }
 /// ```
 public final class VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,223 +27,77 @@ public final class VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT extends Gr
         ValueLayout.JAVA_INT.withName("fragmentShaderPixelInterlock"),
         ValueLayout.JAVA_INT.withName("fragmentShaderShadingRateInterlock")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `fragmentShaderSampleInterlock`.
     public static final long OFFSET_fragmentShaderSampleInterlock = LAYOUT.byteOffset(PathElement.groupElement("fragmentShaderSampleInterlock"));
-    /// The memory layout of `fragmentShaderSampleInterlock`.
-    public static final MemoryLayout LAYOUT_fragmentShaderSampleInterlock = LAYOUT.select(PathElement.groupElement("fragmentShaderSampleInterlock"));
-    /// The [VarHandle] of `fragmentShaderSampleInterlock` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShaderSampleInterlock = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShaderSampleInterlock"));
-    /// The byte offset of `fragmentShaderPixelInterlock`.
     public static final long OFFSET_fragmentShaderPixelInterlock = LAYOUT.byteOffset(PathElement.groupElement("fragmentShaderPixelInterlock"));
-    /// The memory layout of `fragmentShaderPixelInterlock`.
-    public static final MemoryLayout LAYOUT_fragmentShaderPixelInterlock = LAYOUT.select(PathElement.groupElement("fragmentShaderPixelInterlock"));
-    /// The [VarHandle] of `fragmentShaderPixelInterlock` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fragmentShaderPixelInterlock = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShaderPixelInterlock"));
-    /// The byte offset of `fragmentShaderShadingRateInterlock`.
     public static final long OFFSET_fragmentShaderShadingRateInterlock = LAYOUT.byteOffset(PathElement.groupElement("fragmentShaderShadingRateInterlock"));
-    /// The memory layout of `fragmentShaderShadingRateInterlock`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_fragmentShaderSampleInterlock = LAYOUT.select(PathElement.groupElement("fragmentShaderSampleInterlock"));
+    public static final MemoryLayout LAYOUT_fragmentShaderPixelInterlock = LAYOUT.select(PathElement.groupElement("fragmentShaderPixelInterlock"));
     public static final MemoryLayout LAYOUT_fragmentShaderShadingRateInterlock = LAYOUT.select(PathElement.groupElement("fragmentShaderShadingRateInterlock"));
-    /// The [VarHandle] of `fragmentShaderShadingRateInterlock` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_fragmentShaderSampleInterlock = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShaderSampleInterlock"));
+    public static final VarHandle VH_fragmentShaderPixelInterlock = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShaderPixelInterlock"));
     public static final VarHandle VH_fragmentShaderShadingRateInterlock = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShaderShadingRateInterlock"));
 
-    /// Creates `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`
     public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`
     public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTFragmentShaderInterlock.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT); }
+    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTFragmentShaderInterlock.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT);
+        return s;
+    }
     public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT copyFrom(VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT reinterpret(long count) { return new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `fragmentShaderSampleInterlock` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int fragmentShaderSampleInterlock(MemorySegment segment, long index) { return (int) VH_fragmentShaderSampleInterlock.get(segment, 0L, index); }
-    /// {@return `fragmentShaderSampleInterlock`}
-    public int fragmentShaderSampleInterlock() { return fragmentShaderSampleInterlock(this.segment(), 0L); }
-    /// Sets `fragmentShaderSampleInterlock` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void fragmentShaderSampleInterlock(MemorySegment segment, long index, int value) { VH_fragmentShaderSampleInterlock.set(segment, 0L, index, value); }
-    /// Sets `fragmentShaderSampleInterlock` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderSampleInterlock(int value) { fragmentShaderSampleInterlock(this.segment(), 0L, value); return this; }
-
-    /// {@return `fragmentShaderPixelInterlock` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int fragmentShaderPixelInterlock(MemorySegment segment, long index) { return (int) VH_fragmentShaderPixelInterlock.get(segment, 0L, index); }
-    /// {@return `fragmentShaderPixelInterlock`}
-    public int fragmentShaderPixelInterlock() { return fragmentShaderPixelInterlock(this.segment(), 0L); }
-    /// Sets `fragmentShaderPixelInterlock` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void fragmentShaderPixelInterlock(MemorySegment segment, long index, int value) { VH_fragmentShaderPixelInterlock.set(segment, 0L, index, value); }
-    /// Sets `fragmentShaderPixelInterlock` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderPixelInterlock(int value) { fragmentShaderPixelInterlock(this.segment(), 0L, value); return this; }
-
-    /// {@return `fragmentShaderShadingRateInterlock` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int fragmentShaderShadingRateInterlock(MemorySegment segment, long index) { return (int) VH_fragmentShaderShadingRateInterlock.get(segment, 0L, index); }
-    /// {@return `fragmentShaderShadingRateInterlock`}
-    public int fragmentShaderShadingRateInterlock() { return fragmentShaderShadingRateInterlock(this.segment(), 0L); }
-    /// Sets `fragmentShaderShadingRateInterlock` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void fragmentShaderShadingRateInterlock(MemorySegment segment, long index, int value) { VH_fragmentShaderShadingRateInterlock.set(segment, 0L, index, value); }
-    /// Sets `fragmentShaderShadingRateInterlock` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderShadingRateInterlock(int value) { fragmentShaderShadingRateInterlock(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`
     public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`
     public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT at(long index, Consumer<VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `fragmentShaderSampleInterlock` at the given index}
-    /// @param index the index of the struct buffer
-    public int fragmentShaderSampleInterlockAt(long index) { return fragmentShaderSampleInterlock(this.segment(), index); }
-    /// Sets `fragmentShaderSampleInterlock` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderSampleInterlockAt(long index, int value) { fragmentShaderSampleInterlock(this.segment(), index, value); return this; }
-
-    /// {@return `fragmentShaderPixelInterlock` at the given index}
-    /// @param index the index of the struct buffer
-    public int fragmentShaderPixelInterlockAt(long index) { return fragmentShaderPixelInterlock(this.segment(), index); }
-    /// Sets `fragmentShaderPixelInterlock` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderPixelInterlockAt(long index, int value) { fragmentShaderPixelInterlock(this.segment(), index, value); return this; }
-
-    /// {@return `fragmentShaderShadingRateInterlock` at the given index}
-    /// @param index the index of the struct buffer
-    public int fragmentShaderShadingRateInterlockAt(long index) { return fragmentShaderShadingRateInterlock(this.segment(), index); }
-    /// Sets `fragmentShaderShadingRateInterlock` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderShadingRateInterlockAt(long index, int value) { fragmentShaderShadingRateInterlock(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int fragmentShaderSampleInterlockAt(long index) { return (int) VH_fragmentShaderSampleInterlock.get(this.segment(), 0L, index); }
+    public int fragmentShaderPixelInterlockAt(long index) { return (int) VH_fragmentShaderPixelInterlock.get(this.segment(), 0L, index); }
+    public int fragmentShaderShadingRateInterlockAt(long index) { return (int) VH_fragmentShaderShadingRateInterlock.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int fragmentShaderSampleInterlock() { return (int) VH_fragmentShaderSampleInterlock.get(this.segment(), 0L, 0L); }
+    public int fragmentShaderPixelInterlock() { return (int) VH_fragmentShaderPixelInterlock.get(this.segment(), 0L, 0L); }
+    public int fragmentShaderShadingRateInterlock() { return (int) VH_fragmentShaderShadingRateInterlock.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderSampleInterlockAt(long index, int value) { VH_fragmentShaderSampleInterlock.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderPixelInterlockAt(long index, int value) { VH_fragmentShaderPixelInterlock.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderShadingRateInterlockAt(long index, int value) { VH_fragmentShaderShadingRateInterlock.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderSampleInterlock(int value) { VH_fragmentShaderSampleInterlock.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderPixelInterlock(int value) { VH_fragmentShaderPixelInterlock.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT fragmentShaderShadingRateInterlock(int value) { VH_fragmentShaderShadingRateInterlock.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _fragmentShaderSampleInterlockAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_fragmentShaderSampleInterlock, index), LAYOUT_fragmentShaderSampleInterlock); }
+    public MemorySegment _fragmentShaderSampleInterlock() { return _fragmentShaderSampleInterlockAt(0L); }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT _fragmentShaderSampleInterlockAt(long index, MemorySegment src) { _fragmentShaderSampleInterlockAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT _fragmentShaderSampleInterlock(MemorySegment src) { return _fragmentShaderSampleInterlockAt(0L, src); }
+    public MemorySegment _fragmentShaderPixelInterlockAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_fragmentShaderPixelInterlock, index), LAYOUT_fragmentShaderPixelInterlock); }
+    public MemorySegment _fragmentShaderPixelInterlock() { return _fragmentShaderPixelInterlockAt(0L); }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT _fragmentShaderPixelInterlockAt(long index, MemorySegment src) { _fragmentShaderPixelInterlockAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT _fragmentShaderPixelInterlock(MemorySegment src) { return _fragmentShaderPixelInterlockAt(0L, src); }
+    public MemorySegment _fragmentShaderShadingRateInterlockAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_fragmentShaderShadingRateInterlock, index), LAYOUT_fragmentShaderShadingRateInterlock); }
+    public MemorySegment _fragmentShaderShadingRateInterlock() { return _fragmentShaderShadingRateInterlockAt(0L); }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT _fragmentShaderShadingRateInterlockAt(long index, MemorySegment src) { _fragmentShaderShadingRateInterlockAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT _fragmentShaderShadingRateInterlock(MemorySegment src) { return _fragmentShaderShadingRateInterlockAt(0L, src); }
 }

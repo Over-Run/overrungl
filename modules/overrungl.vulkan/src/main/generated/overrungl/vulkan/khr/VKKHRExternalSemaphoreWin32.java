@@ -14,17 +14,16 @@ public final class VKKHRExternalSemaphoreWin32 {
     public static final int VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR = 1000078001;
     public static final int VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR = 1000078002;
     public static final int VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR = 1000078003;
+    private VKKHRExternalSemaphoreWin32() {}
     public static final class Handles {
         public static final MethodHandle MH_vkImportSemaphoreWin32HandleKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetSemaphoreWin32HandleKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRExternalSemaphoreWin32() {}
-
     /// Invokes `vkImportSemaphoreWin32HandleKHR`.
     /// ```
-    /// (int) VkResult vkImportSemaphoreWin32HandleKHR((struct VkDevice*) VkDevice device, const VkImportSemaphoreWin32HandleInfoKHR* pImportSemaphoreWin32HandleInfo);
+    /// VkResult vkImportSemaphoreWin32HandleKHR(VkDevice device, const VkImportSemaphoreWin32HandleInfoKHR* pImportSemaphoreWin32HandleInfo);
     /// ```
     public static int vkImportSemaphoreWin32HandleKHR(@NonNull VkDevice device, @NonNull MemorySegment pImportSemaphoreWin32HandleInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkImportSemaphoreWin32HandleKHR");
@@ -35,7 +34,7 @@ public final class VKKHRExternalSemaphoreWin32 {
 
     /// Invokes `vkGetSemaphoreWin32HandleKHR`.
     /// ```
-    /// (int) VkResult vkGetSemaphoreWin32HandleKHR((struct VkDevice*) VkDevice device, const VkSemaphoreGetWin32HandleInfoKHR* pGetWin32HandleInfo, HANDLE* pHandle);
+    /// VkResult vkGetSemaphoreWin32HandleKHR(VkDevice device, const VkSemaphoreGetWin32HandleInfoKHR* pGetWin32HandleInfo, HANDLE* pHandle);
     /// ```
     public static int vkGetSemaphoreWin32HandleKHR(@NonNull VkDevice device, @NonNull MemorySegment pGetWin32HandleInfo, @NonNull MemorySegment pHandle) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSemaphoreWin32HandleKHR");

@@ -24,6 +24,7 @@ public final class VKEXTHostImageCopy {
     public static final long VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT_EXT = 0x400000000000L;
     public static final int VK_HOST_IMAGE_COPY_MEMCPY_BIT_EXT = 0x00000001;
     public static final int VK_HOST_IMAGE_COPY_MEMCPY_EXT = 0x00000001;
+    private VKEXTHostImageCopy() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCopyMemoryToImageEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCopyImageToMemoryEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -33,11 +34,9 @@ public final class VKEXTHostImageCopy {
         private Handles() {}
     }
 
-    private VKEXTHostImageCopy() {}
-
     /// Invokes `vkCopyMemoryToImageEXT`.
     /// ```
-    /// (int) VkResult vkCopyMemoryToImageEXT((struct VkDevice*) VkDevice device, const VkCopyMemoryToImageInfo* pCopyMemoryToImageInfo);
+    /// VkResult vkCopyMemoryToImageEXT(VkDevice device, const VkCopyMemoryToImageInfo* pCopyMemoryToImageInfo);
     /// ```
     public static int vkCopyMemoryToImageEXT(@NonNull VkDevice device, @NonNull MemorySegment pCopyMemoryToImageInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyMemoryToImageEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCopyMemoryToImageEXT");
@@ -48,7 +47,7 @@ public final class VKEXTHostImageCopy {
 
     /// Invokes `vkCopyImageToMemoryEXT`.
     /// ```
-    /// (int) VkResult vkCopyImageToMemoryEXT((struct VkDevice*) VkDevice device, const VkCopyImageToMemoryInfo* pCopyImageToMemoryInfo);
+    /// VkResult vkCopyImageToMemoryEXT(VkDevice device, const VkCopyImageToMemoryInfo* pCopyImageToMemoryInfo);
     /// ```
     public static int vkCopyImageToMemoryEXT(@NonNull VkDevice device, @NonNull MemorySegment pCopyImageToMemoryInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyImageToMemoryEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCopyImageToMemoryEXT");
@@ -59,7 +58,7 @@ public final class VKEXTHostImageCopy {
 
     /// Invokes `vkCopyImageToImageEXT`.
     /// ```
-    /// (int) VkResult vkCopyImageToImageEXT((struct VkDevice*) VkDevice device, const VkCopyImageToImageInfo* pCopyImageToImageInfo);
+    /// VkResult vkCopyImageToImageEXT(VkDevice device, const VkCopyImageToImageInfo* pCopyImageToImageInfo);
     /// ```
     public static int vkCopyImageToImageEXT(@NonNull VkDevice device, @NonNull MemorySegment pCopyImageToImageInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyImageToImageEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCopyImageToImageEXT");
@@ -70,7 +69,7 @@ public final class VKEXTHostImageCopy {
 
     /// Invokes `vkTransitionImageLayoutEXT`.
     /// ```
-    /// (int) VkResult vkTransitionImageLayoutEXT((struct VkDevice*) VkDevice device, uint32_t transitionCount, const VkHostImageLayoutTransitionInfo* pTransitions);
+    /// VkResult vkTransitionImageLayoutEXT(VkDevice device, uint32_t transitionCount, const VkHostImageLayoutTransitionInfo* pTransitions);
     /// ```
     public static int vkTransitionImageLayoutEXT(@NonNull VkDevice device, int transitionCount, @NonNull MemorySegment pTransitions) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkTransitionImageLayoutEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkTransitionImageLayoutEXT");
@@ -81,7 +80,7 @@ public final class VKEXTHostImageCopy {
 
     /// Invokes `vkGetImageSubresourceLayout2EXT`.
     /// ```
-    /// void vkGetImageSubresourceLayout2EXT((struct VkDevice*) VkDevice device, (uint64_t) VkImage image, const VkImageSubresource2* pSubresource, VkSubresourceLayout2* pLayout);
+    /// void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, const VkImageSubresource2* pSubresource, VkSubresourceLayout2* pLayout);
     /// ```
     public static void vkGetImageSubresourceLayout2EXT(@NonNull VkDevice device, long image, @NonNull MemorySegment pSubresource, @NonNull MemorySegment pLayout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageSubresourceLayout2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2EXT");

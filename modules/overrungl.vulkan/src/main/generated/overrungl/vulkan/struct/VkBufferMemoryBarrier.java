@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,19 +12,18 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBufferMemoryBarrier {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkAccessFlags srcAccessMask;
-///     ((uint32_t) VkFlags) VkAccessFlags dstAccessMask;
+///     VkAccessFlags srcAccessMask;
+///     VkAccessFlags dstAccessMask;
 ///     uint32_t srcQueueFamilyIndex;
 ///     uint32_t dstQueueFamilyIndex;
-///     (uint64_t) VkBuffer buffer;
-///     (uint64_t) VkDeviceSize offset;
-///     (uint64_t) VkDeviceSize size;
-/// };
+///     VkBuffer buffer;
+///     VkDeviceSize offset;
+///     VkDeviceSize size;
+/// }
 /// ```
 public final class VkBufferMemoryBarrier extends GroupType {
-    /// The struct layout of `VkBufferMemoryBarrier`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -37,347 +35,121 @@ public final class VkBufferMemoryBarrier extends GroupType {
         ValueLayout.JAVA_LONG.withName("offset"),
         ValueLayout.JAVA_LONG.withName("size")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `srcAccessMask`.
     public static final long OFFSET_srcAccessMask = LAYOUT.byteOffset(PathElement.groupElement("srcAccessMask"));
-    /// The memory layout of `srcAccessMask`.
-    public static final MemoryLayout LAYOUT_srcAccessMask = LAYOUT.select(PathElement.groupElement("srcAccessMask"));
-    /// The [VarHandle] of `srcAccessMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccessMask"));
-    /// The byte offset of `dstAccessMask`.
     public static final long OFFSET_dstAccessMask = LAYOUT.byteOffset(PathElement.groupElement("dstAccessMask"));
-    /// The memory layout of `dstAccessMask`.
-    public static final MemoryLayout LAYOUT_dstAccessMask = LAYOUT.select(PathElement.groupElement("dstAccessMask"));
-    /// The [VarHandle] of `dstAccessMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAccessMask"));
-    /// The byte offset of `srcQueueFamilyIndex`.
     public static final long OFFSET_srcQueueFamilyIndex = LAYOUT.byteOffset(PathElement.groupElement("srcQueueFamilyIndex"));
-    /// The memory layout of `srcQueueFamilyIndex`.
-    public static final MemoryLayout LAYOUT_srcQueueFamilyIndex = LAYOUT.select(PathElement.groupElement("srcQueueFamilyIndex"));
-    /// The [VarHandle] of `srcQueueFamilyIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcQueueFamilyIndex"));
-    /// The byte offset of `dstQueueFamilyIndex`.
     public static final long OFFSET_dstQueueFamilyIndex = LAYOUT.byteOffset(PathElement.groupElement("dstQueueFamilyIndex"));
-    /// The memory layout of `dstQueueFamilyIndex`.
-    public static final MemoryLayout LAYOUT_dstQueueFamilyIndex = LAYOUT.select(PathElement.groupElement("dstQueueFamilyIndex"));
-    /// The [VarHandle] of `dstQueueFamilyIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstQueueFamilyIndex"));
-    /// The byte offset of `buffer`.
     public static final long OFFSET_buffer = LAYOUT.byteOffset(PathElement.groupElement("buffer"));
-    /// The memory layout of `buffer`.
-    public static final MemoryLayout LAYOUT_buffer = LAYOUT.select(PathElement.groupElement("buffer"));
-    /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
-    /// The byte offset of `offset`.
     public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
-    /// The memory layout of `offset`.
-    public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
-    /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
-    /// The byte offset of `size`.
     public static final long OFFSET_size = LAYOUT.byteOffset(PathElement.groupElement("size"));
-    /// The memory layout of `size`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_srcAccessMask = LAYOUT.select(PathElement.groupElement("srcAccessMask"));
+    public static final MemoryLayout LAYOUT_dstAccessMask = LAYOUT.select(PathElement.groupElement("dstAccessMask"));
+    public static final MemoryLayout LAYOUT_srcQueueFamilyIndex = LAYOUT.select(PathElement.groupElement("srcQueueFamilyIndex"));
+    public static final MemoryLayout LAYOUT_dstQueueFamilyIndex = LAYOUT.select(PathElement.groupElement("dstQueueFamilyIndex"));
+    public static final MemoryLayout LAYOUT_buffer = LAYOUT.select(PathElement.groupElement("buffer"));
+    public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
     public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
-    /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_srcAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccessMask"));
+    public static final VarHandle VH_dstAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAccessMask"));
+    public static final VarHandle VH_srcQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcQueueFamilyIndex"));
+    public static final VarHandle VH_dstQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstQueueFamilyIndex"));
+    public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
+    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
     public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
 
-    /// Creates `VkBufferMemoryBarrier` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkBufferMemoryBarrier(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkBufferMemoryBarrier` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkBufferMemoryBarrier of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferMemoryBarrier(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkBufferMemoryBarrier` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkBufferMemoryBarrier ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferMemoryBarrier(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkBufferMemoryBarrier` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkBufferMemoryBarrier ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferMemoryBarrier(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkBufferMemoryBarrier` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkBufferMemoryBarrier`
     public static VkBufferMemoryBarrier alloc(SegmentAllocator allocator) { return new VkBufferMemoryBarrier(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkBufferMemoryBarrier` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkBufferMemoryBarrier`
     public static VkBufferMemoryBarrier alloc(SegmentAllocator allocator, long count) { return new VkBufferMemoryBarrier(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkBufferMemoryBarrier allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER); }
+    public static VkBufferMemoryBarrier allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER);
+        return s;
+    }
     public VkBufferMemoryBarrier copyFrom(VkBufferMemoryBarrier src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkBufferMemoryBarrier reinterpret(long count) { return new VkBufferMemoryBarrier(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `srcAccessMask` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int srcAccessMask(MemorySegment segment, long index) { return (int) VH_srcAccessMask.get(segment, 0L, index); }
-    /// {@return `srcAccessMask`}
-    public int srcAccessMask() { return srcAccessMask(this.segment(), 0L); }
-    /// Sets `srcAccessMask` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcAccessMask(MemorySegment segment, long index, int value) { VH_srcAccessMask.set(segment, 0L, index, value); }
-    /// Sets `srcAccessMask` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier srcAccessMask(int value) { srcAccessMask(this.segment(), 0L, value); return this; }
-
-    /// {@return `dstAccessMask` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int dstAccessMask(MemorySegment segment, long index) { return (int) VH_dstAccessMask.get(segment, 0L, index); }
-    /// {@return `dstAccessMask`}
-    public int dstAccessMask() { return dstAccessMask(this.segment(), 0L); }
-    /// Sets `dstAccessMask` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstAccessMask(MemorySegment segment, long index, int value) { VH_dstAccessMask.set(segment, 0L, index, value); }
-    /// Sets `dstAccessMask` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier dstAccessMask(int value) { dstAccessMask(this.segment(), 0L, value); return this; }
-
-    /// {@return `srcQueueFamilyIndex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int srcQueueFamilyIndex(MemorySegment segment, long index) { return (int) VH_srcQueueFamilyIndex.get(segment, 0L, index); }
-    /// {@return `srcQueueFamilyIndex`}
-    public int srcQueueFamilyIndex() { return srcQueueFamilyIndex(this.segment(), 0L); }
-    /// Sets `srcQueueFamilyIndex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcQueueFamilyIndex(MemorySegment segment, long index, int value) { VH_srcQueueFamilyIndex.set(segment, 0L, index, value); }
-    /// Sets `srcQueueFamilyIndex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier srcQueueFamilyIndex(int value) { srcQueueFamilyIndex(this.segment(), 0L, value); return this; }
-
-    /// {@return `dstQueueFamilyIndex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int dstQueueFamilyIndex(MemorySegment segment, long index) { return (int) VH_dstQueueFamilyIndex.get(segment, 0L, index); }
-    /// {@return `dstQueueFamilyIndex`}
-    public int dstQueueFamilyIndex() { return dstQueueFamilyIndex(this.segment(), 0L); }
-    /// Sets `dstQueueFamilyIndex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstQueueFamilyIndex(MemorySegment segment, long index, int value) { VH_dstQueueFamilyIndex.set(segment, 0L, index, value); }
-    /// Sets `dstQueueFamilyIndex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier dstQueueFamilyIndex(int value) { dstQueueFamilyIndex(this.segment(), 0L, value); return this; }
-
-    /// {@return `buffer` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long buffer(MemorySegment segment, long index) { return (long) VH_buffer.get(segment, 0L, index); }
-    /// {@return `buffer`}
-    public long buffer() { return buffer(this.segment(), 0L); }
-    /// Sets `buffer` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void buffer(MemorySegment segment, long index, long value) { VH_buffer.set(segment, 0L, index, value); }
-    /// Sets `buffer` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier buffer(long value) { buffer(this.segment(), 0L, value); return this; }
-
-    /// {@return `offset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long offset(MemorySegment segment, long index) { return (long) VH_offset.get(segment, 0L, index); }
-    /// {@return `offset`}
-    public long offset() { return offset(this.segment(), 0L); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void offset(MemorySegment segment, long index, long value) { VH_offset.set(segment, 0L, index, value); }
-    /// Sets `offset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier offset(long value) { offset(this.segment(), 0L, value); return this; }
-
-    /// {@return `size` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long size(MemorySegment segment, long index) { return (long) VH_size.get(segment, 0L, index); }
-    /// {@return `size`}
-    public long size() { return size(this.segment(), 0L); }
-    /// Sets `size` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void size(MemorySegment segment, long index, long value) { VH_size.set(segment, 0L, index, value); }
-    /// Sets `size` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier size(long value) { size(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkBufferMemoryBarrier`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkBufferMemoryBarrier`
     public VkBufferMemoryBarrier asSlice(long index) { return new VkBufferMemoryBarrier(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkBufferMemoryBarrier`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkBufferMemoryBarrier`
     public VkBufferMemoryBarrier asSlice(long index, long count) { return new VkBufferMemoryBarrier(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkBufferMemoryBarrier` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkBufferMemoryBarrier at(long index, Consumer<VkBufferMemoryBarrier> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `srcAccessMask` at the given index}
-    /// @param index the index of the struct buffer
-    public int srcAccessMaskAt(long index) { return srcAccessMask(this.segment(), index); }
-    /// Sets `srcAccessMask` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier srcAccessMaskAt(long index, int value) { srcAccessMask(this.segment(), index, value); return this; }
-
-    /// {@return `dstAccessMask` at the given index}
-    /// @param index the index of the struct buffer
-    public int dstAccessMaskAt(long index) { return dstAccessMask(this.segment(), index); }
-    /// Sets `dstAccessMask` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier dstAccessMaskAt(long index, int value) { dstAccessMask(this.segment(), index, value); return this; }
-
-    /// {@return `srcQueueFamilyIndex` at the given index}
-    /// @param index the index of the struct buffer
-    public int srcQueueFamilyIndexAt(long index) { return srcQueueFamilyIndex(this.segment(), index); }
-    /// Sets `srcQueueFamilyIndex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier srcQueueFamilyIndexAt(long index, int value) { srcQueueFamilyIndex(this.segment(), index, value); return this; }
-
-    /// {@return `dstQueueFamilyIndex` at the given index}
-    /// @param index the index of the struct buffer
-    public int dstQueueFamilyIndexAt(long index) { return dstQueueFamilyIndex(this.segment(), index); }
-    /// Sets `dstQueueFamilyIndex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier dstQueueFamilyIndexAt(long index, int value) { dstQueueFamilyIndex(this.segment(), index, value); return this; }
-
-    /// {@return `buffer` at the given index}
-    /// @param index the index of the struct buffer
-    public long bufferAt(long index) { return buffer(this.segment(), index); }
-    /// Sets `buffer` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier bufferAt(long index, long value) { buffer(this.segment(), index, value); return this; }
-
-    /// {@return `offset` at the given index}
-    /// @param index the index of the struct buffer
-    public long offsetAt(long index) { return offset(this.segment(), index); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier offsetAt(long index, long value) { offset(this.segment(), index, value); return this; }
-
-    /// {@return `size` at the given index}
-    /// @param index the index of the struct buffer
-    public long sizeAt(long index) { return size(this.segment(), index); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkBufferMemoryBarrier sizeAt(long index, long value) { size(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int srcAccessMaskAt(long index) { return (int) VH_srcAccessMask.get(this.segment(), 0L, index); }
+    public int dstAccessMaskAt(long index) { return (int) VH_dstAccessMask.get(this.segment(), 0L, index); }
+    public int srcQueueFamilyIndexAt(long index) { return (int) VH_srcQueueFamilyIndex.get(this.segment(), 0L, index); }
+    public int dstQueueFamilyIndexAt(long index) { return (int) VH_dstQueueFamilyIndex.get(this.segment(), 0L, index); }
+    public long bufferAt(long index) { return (long) VH_buffer.get(this.segment(), 0L, index); }
+    public long offsetAt(long index) { return (long) VH_offset.get(this.segment(), 0L, index); }
+    public long sizeAt(long index) { return (long) VH_size.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int srcAccessMask() { return (int) VH_srcAccessMask.get(this.segment(), 0L, 0L); }
+    public int dstAccessMask() { return (int) VH_dstAccessMask.get(this.segment(), 0L, 0L); }
+    public int srcQueueFamilyIndex() { return (int) VH_srcQueueFamilyIndex.get(this.segment(), 0L, 0L); }
+    public int dstQueueFamilyIndex() { return (int) VH_dstQueueFamilyIndex.get(this.segment(), 0L, 0L); }
+    public long buffer() { return (long) VH_buffer.get(this.segment(), 0L, 0L); }
+    public long offset() { return (long) VH_offset.get(this.segment(), 0L, 0L); }
+    public long size() { return (long) VH_size.get(this.segment(), 0L, 0L); }
+    public VkBufferMemoryBarrier sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferMemoryBarrier pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferMemoryBarrier srcAccessMaskAt(long index, int value) { VH_srcAccessMask.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferMemoryBarrier dstAccessMaskAt(long index, int value) { VH_dstAccessMask.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferMemoryBarrier srcQueueFamilyIndexAt(long index, int value) { VH_srcQueueFamilyIndex.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferMemoryBarrier dstQueueFamilyIndexAt(long index, int value) { VH_dstQueueFamilyIndex.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferMemoryBarrier bufferAt(long index, long value) { VH_buffer.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferMemoryBarrier offsetAt(long index, long value) { VH_offset.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferMemoryBarrier sizeAt(long index, long value) { VH_size.set(this.segment(), 0L, index, value); return this; }
+    public VkBufferMemoryBarrier sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferMemoryBarrier pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferMemoryBarrier srcAccessMask(int value) { VH_srcAccessMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferMemoryBarrier dstAccessMask(int value) { VH_dstAccessMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferMemoryBarrier srcQueueFamilyIndex(int value) { VH_srcQueueFamilyIndex.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferMemoryBarrier dstQueueFamilyIndex(int value) { VH_dstQueueFamilyIndex.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferMemoryBarrier buffer(long value) { VH_buffer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferMemoryBarrier offset(long value) { VH_offset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkBufferMemoryBarrier size(long value) { VH_size.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkBufferMemoryBarrier _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkBufferMemoryBarrier _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkBufferMemoryBarrier _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkBufferMemoryBarrier _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _srcAccessMaskAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcAccessMask, index), LAYOUT_srcAccessMask); }
+    public MemorySegment _srcAccessMask() { return _srcAccessMaskAt(0L); }
+    public VkBufferMemoryBarrier _srcAccessMaskAt(long index, MemorySegment src) { _srcAccessMaskAt(index).copyFrom(src); return this; }
+    public VkBufferMemoryBarrier _srcAccessMask(MemorySegment src) { return _srcAccessMaskAt(0L, src); }
+    public MemorySegment _dstAccessMaskAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstAccessMask, index), LAYOUT_dstAccessMask); }
+    public MemorySegment _dstAccessMask() { return _dstAccessMaskAt(0L); }
+    public VkBufferMemoryBarrier _dstAccessMaskAt(long index, MemorySegment src) { _dstAccessMaskAt(index).copyFrom(src); return this; }
+    public VkBufferMemoryBarrier _dstAccessMask(MemorySegment src) { return _dstAccessMaskAt(0L, src); }
+    public MemorySegment _srcQueueFamilyIndexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcQueueFamilyIndex, index), LAYOUT_srcQueueFamilyIndex); }
+    public MemorySegment _srcQueueFamilyIndex() { return _srcQueueFamilyIndexAt(0L); }
+    public VkBufferMemoryBarrier _srcQueueFamilyIndexAt(long index, MemorySegment src) { _srcQueueFamilyIndexAt(index).copyFrom(src); return this; }
+    public VkBufferMemoryBarrier _srcQueueFamilyIndex(MemorySegment src) { return _srcQueueFamilyIndexAt(0L, src); }
+    public MemorySegment _dstQueueFamilyIndexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstQueueFamilyIndex, index), LAYOUT_dstQueueFamilyIndex); }
+    public MemorySegment _dstQueueFamilyIndex() { return _dstQueueFamilyIndexAt(0L); }
+    public VkBufferMemoryBarrier _dstQueueFamilyIndexAt(long index, MemorySegment src) { _dstQueueFamilyIndexAt(index).copyFrom(src); return this; }
+    public VkBufferMemoryBarrier _dstQueueFamilyIndex(MemorySegment src) { return _dstQueueFamilyIndexAt(0L, src); }
+    public MemorySegment _bufferAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_buffer, index), LAYOUT_buffer); }
+    public MemorySegment _buffer() { return _bufferAt(0L); }
+    public VkBufferMemoryBarrier _bufferAt(long index, MemorySegment src) { _bufferAt(index).copyFrom(src); return this; }
+    public VkBufferMemoryBarrier _buffer(MemorySegment src) { return _bufferAt(0L, src); }
+    public MemorySegment _offsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_offset, index), LAYOUT_offset); }
+    public MemorySegment _offset() { return _offsetAt(0L); }
+    public VkBufferMemoryBarrier _offsetAt(long index, MemorySegment src) { _offsetAt(index).copyFrom(src); return this; }
+    public VkBufferMemoryBarrier _offset(MemorySegment src) { return _offsetAt(0L, src); }
+    public MemorySegment _sizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_size, index), LAYOUT_size); }
+    public MemorySegment _size() { return _sizeAt(0L); }
+    public VkBufferMemoryBarrier _sizeAt(long index, MemorySegment src) { _sizeAt(index).copyFrom(src); return this; }
+    public VkBufferMemoryBarrier _size(MemorySegment src) { return _sizeAt(0L, src); }
 }

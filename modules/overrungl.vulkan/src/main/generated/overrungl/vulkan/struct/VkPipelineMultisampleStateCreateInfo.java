@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,19 +12,18 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineMultisampleStateCreateInfo {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkPipelineMultisampleStateCreateFlags flags;
-///     (int) VkSampleCountFlagBits rasterizationSamples;
-///     (uint32_t) VkBool32 sampleShadingEnable;
+///     VkPipelineMultisampleStateCreateFlags flags;
+///     VkSampleCountFlagBits rasterizationSamples;
+///     VkBool32 sampleShadingEnable;
 ///     float minSampleShading;
 ///     const VkSampleMask* pSampleMask;
-///     (uint32_t) VkBool32 alphaToCoverageEnable;
-///     (uint32_t) VkBool32 alphaToOneEnable;
-/// };
+///     VkBool32 alphaToCoverageEnable;
+///     VkBool32 alphaToOneEnable;
+/// }
 /// ```
 public final class VkPipelineMultisampleStateCreateInfo extends GroupType {
-    /// The struct layout of `VkPipelineMultisampleStateCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -37,347 +35,121 @@ public final class VkPipelineMultisampleStateCreateInfo extends GroupType {
         ValueLayout.JAVA_INT.withName("alphaToCoverageEnable"),
         ValueLayout.JAVA_INT.withName("alphaToOneEnable")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `rasterizationSamples`.
     public static final long OFFSET_rasterizationSamples = LAYOUT.byteOffset(PathElement.groupElement("rasterizationSamples"));
-    /// The memory layout of `rasterizationSamples`.
-    public static final MemoryLayout LAYOUT_rasterizationSamples = LAYOUT.select(PathElement.groupElement("rasterizationSamples"));
-    /// The [VarHandle] of `rasterizationSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_rasterizationSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationSamples"));
-    /// The byte offset of `sampleShadingEnable`.
     public static final long OFFSET_sampleShadingEnable = LAYOUT.byteOffset(PathElement.groupElement("sampleShadingEnable"));
-    /// The memory layout of `sampleShadingEnable`.
-    public static final MemoryLayout LAYOUT_sampleShadingEnable = LAYOUT.select(PathElement.groupElement("sampleShadingEnable"));
-    /// The [VarHandle] of `sampleShadingEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sampleShadingEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleShadingEnable"));
-    /// The byte offset of `minSampleShading`.
     public static final long OFFSET_minSampleShading = LAYOUT.byteOffset(PathElement.groupElement("minSampleShading"));
-    /// The memory layout of `minSampleShading`.
-    public static final MemoryLayout LAYOUT_minSampleShading = LAYOUT.select(PathElement.groupElement("minSampleShading"));
-    /// The [VarHandle] of `minSampleShading` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minSampleShading = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSampleShading"));
-    /// The byte offset of `pSampleMask`.
     public static final long OFFSET_pSampleMask = LAYOUT.byteOffset(PathElement.groupElement("pSampleMask"));
-    /// The memory layout of `pSampleMask`.
-    public static final MemoryLayout LAYOUT_pSampleMask = LAYOUT.select(PathElement.groupElement("pSampleMask"));
-    /// The [VarHandle] of `pSampleMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pSampleMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSampleMask"));
-    /// The byte offset of `alphaToCoverageEnable`.
     public static final long OFFSET_alphaToCoverageEnable = LAYOUT.byteOffset(PathElement.groupElement("alphaToCoverageEnable"));
-    /// The memory layout of `alphaToCoverageEnable`.
-    public static final MemoryLayout LAYOUT_alphaToCoverageEnable = LAYOUT.select(PathElement.groupElement("alphaToCoverageEnable"));
-    /// The [VarHandle] of `alphaToCoverageEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_alphaToCoverageEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("alphaToCoverageEnable"));
-    /// The byte offset of `alphaToOneEnable`.
     public static final long OFFSET_alphaToOneEnable = LAYOUT.byteOffset(PathElement.groupElement("alphaToOneEnable"));
-    /// The memory layout of `alphaToOneEnable`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_rasterizationSamples = LAYOUT.select(PathElement.groupElement("rasterizationSamples"));
+    public static final MemoryLayout LAYOUT_sampleShadingEnable = LAYOUT.select(PathElement.groupElement("sampleShadingEnable"));
+    public static final MemoryLayout LAYOUT_minSampleShading = LAYOUT.select(PathElement.groupElement("minSampleShading"));
+    public static final MemoryLayout LAYOUT_pSampleMask = LAYOUT.select(PathElement.groupElement("pSampleMask"));
+    public static final MemoryLayout LAYOUT_alphaToCoverageEnable = LAYOUT.select(PathElement.groupElement("alphaToCoverageEnable"));
     public static final MemoryLayout LAYOUT_alphaToOneEnable = LAYOUT.select(PathElement.groupElement("alphaToOneEnable"));
-    /// The [VarHandle] of `alphaToOneEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_rasterizationSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationSamples"));
+    public static final VarHandle VH_sampleShadingEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleShadingEnable"));
+    public static final VarHandle VH_minSampleShading = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSampleShading"));
+    public static final VarHandle VH_pSampleMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSampleMask"));
+    public static final VarHandle VH_alphaToCoverageEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("alphaToCoverageEnable"));
     public static final VarHandle VH_alphaToOneEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("alphaToOneEnable"));
 
-    /// Creates `VkPipelineMultisampleStateCreateInfo` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPipelineMultisampleStateCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPipelineMultisampleStateCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPipelineMultisampleStateCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineMultisampleStateCreateInfo(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPipelineMultisampleStateCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPipelineMultisampleStateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineMultisampleStateCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPipelineMultisampleStateCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPipelineMultisampleStateCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineMultisampleStateCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPipelineMultisampleStateCreateInfo` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineMultisampleStateCreateInfo`
     public static VkPipelineMultisampleStateCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineMultisampleStateCreateInfo(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPipelineMultisampleStateCreateInfo` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPipelineMultisampleStateCreateInfo`
     public static VkPipelineMultisampleStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineMultisampleStateCreateInfo(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPipelineMultisampleStateCreateInfo allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO); }
+    public static VkPipelineMultisampleStateCreateInfo allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO);
+        return s;
+    }
     public VkPipelineMultisampleStateCreateInfo copyFrom(VkPipelineMultisampleStateCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPipelineMultisampleStateCreateInfo reinterpret(long count) { return new VkPipelineMultisampleStateCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `rasterizationSamples` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int rasterizationSamples(MemorySegment segment, long index) { return (int) VH_rasterizationSamples.get(segment, 0L, index); }
-    /// {@return `rasterizationSamples`}
-    public int rasterizationSamples() { return rasterizationSamples(this.segment(), 0L); }
-    /// Sets `rasterizationSamples` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void rasterizationSamples(MemorySegment segment, long index, int value) { VH_rasterizationSamples.set(segment, 0L, index, value); }
-    /// Sets `rasterizationSamples` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo rasterizationSamples(int value) { rasterizationSamples(this.segment(), 0L, value); return this; }
-
-    /// {@return `sampleShadingEnable` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sampleShadingEnable(MemorySegment segment, long index) { return (int) VH_sampleShadingEnable.get(segment, 0L, index); }
-    /// {@return `sampleShadingEnable`}
-    public int sampleShadingEnable() { return sampleShadingEnable(this.segment(), 0L); }
-    /// Sets `sampleShadingEnable` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sampleShadingEnable(MemorySegment segment, long index, int value) { VH_sampleShadingEnable.set(segment, 0L, index, value); }
-    /// Sets `sampleShadingEnable` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo sampleShadingEnable(int value) { sampleShadingEnable(this.segment(), 0L, value); return this; }
-
-    /// {@return `minSampleShading` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static float minSampleShading(MemorySegment segment, long index) { return (float) VH_minSampleShading.get(segment, 0L, index); }
-    /// {@return `minSampleShading`}
-    public float minSampleShading() { return minSampleShading(this.segment(), 0L); }
-    /// Sets `minSampleShading` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minSampleShading(MemorySegment segment, long index, float value) { VH_minSampleShading.set(segment, 0L, index, value); }
-    /// Sets `minSampleShading` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo minSampleShading(float value) { minSampleShading(this.segment(), 0L, value); return this; }
-
-    /// {@return `pSampleMask` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pSampleMask(MemorySegment segment, long index) { return (MemorySegment) VH_pSampleMask.get(segment, 0L, index); }
-    /// {@return `pSampleMask`}
-    public MemorySegment pSampleMask() { return pSampleMask(this.segment(), 0L); }
-    /// Sets `pSampleMask` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pSampleMask(MemorySegment segment, long index, MemorySegment value) { VH_pSampleMask.set(segment, 0L, index, value); }
-    /// Sets `pSampleMask` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo pSampleMask(MemorySegment value) { pSampleMask(this.segment(), 0L, value); return this; }
-
-    /// {@return `alphaToCoverageEnable` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int alphaToCoverageEnable(MemorySegment segment, long index) { return (int) VH_alphaToCoverageEnable.get(segment, 0L, index); }
-    /// {@return `alphaToCoverageEnable`}
-    public int alphaToCoverageEnable() { return alphaToCoverageEnable(this.segment(), 0L); }
-    /// Sets `alphaToCoverageEnable` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void alphaToCoverageEnable(MemorySegment segment, long index, int value) { VH_alphaToCoverageEnable.set(segment, 0L, index, value); }
-    /// Sets `alphaToCoverageEnable` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo alphaToCoverageEnable(int value) { alphaToCoverageEnable(this.segment(), 0L, value); return this; }
-
-    /// {@return `alphaToOneEnable` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int alphaToOneEnable(MemorySegment segment, long index) { return (int) VH_alphaToOneEnable.get(segment, 0L, index); }
-    /// {@return `alphaToOneEnable`}
-    public int alphaToOneEnable() { return alphaToOneEnable(this.segment(), 0L); }
-    /// Sets `alphaToOneEnable` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void alphaToOneEnable(MemorySegment segment, long index, int value) { VH_alphaToOneEnable.set(segment, 0L, index, value); }
-    /// Sets `alphaToOneEnable` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo alphaToOneEnable(int value) { alphaToOneEnable(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPipelineMultisampleStateCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPipelineMultisampleStateCreateInfo`
     public VkPipelineMultisampleStateCreateInfo asSlice(long index) { return new VkPipelineMultisampleStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPipelineMultisampleStateCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPipelineMultisampleStateCreateInfo`
     public VkPipelineMultisampleStateCreateInfo asSlice(long index, long count) { return new VkPipelineMultisampleStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPipelineMultisampleStateCreateInfo` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPipelineMultisampleStateCreateInfo at(long index, Consumer<VkPipelineMultisampleStateCreateInfo> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `rasterizationSamples` at the given index}
-    /// @param index the index of the struct buffer
-    public int rasterizationSamplesAt(long index) { return rasterizationSamples(this.segment(), index); }
-    /// Sets `rasterizationSamples` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo rasterizationSamplesAt(long index, int value) { rasterizationSamples(this.segment(), index, value); return this; }
-
-    /// {@return `sampleShadingEnable` at the given index}
-    /// @param index the index of the struct buffer
-    public int sampleShadingEnableAt(long index) { return sampleShadingEnable(this.segment(), index); }
-    /// Sets `sampleShadingEnable` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo sampleShadingEnableAt(long index, int value) { sampleShadingEnable(this.segment(), index, value); return this; }
-
-    /// {@return `minSampleShading` at the given index}
-    /// @param index the index of the struct buffer
-    public float minSampleShadingAt(long index) { return minSampleShading(this.segment(), index); }
-    /// Sets `minSampleShading` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo minSampleShadingAt(long index, float value) { minSampleShading(this.segment(), index, value); return this; }
-
-    /// {@return `pSampleMask` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pSampleMaskAt(long index) { return pSampleMask(this.segment(), index); }
-    /// Sets `pSampleMask` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo pSampleMaskAt(long index, MemorySegment value) { pSampleMask(this.segment(), index, value); return this; }
-
-    /// {@return `alphaToCoverageEnable` at the given index}
-    /// @param index the index of the struct buffer
-    public int alphaToCoverageEnableAt(long index) { return alphaToCoverageEnable(this.segment(), index); }
-    /// Sets `alphaToCoverageEnable` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo alphaToCoverageEnableAt(long index, int value) { alphaToCoverageEnable(this.segment(), index, value); return this; }
-
-    /// {@return `alphaToOneEnable` at the given index}
-    /// @param index the index of the struct buffer
-    public int alphaToOneEnableAt(long index) { return alphaToOneEnable(this.segment(), index); }
-    /// Sets `alphaToOneEnable` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo alphaToOneEnableAt(long index, int value) { alphaToOneEnable(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public int rasterizationSamplesAt(long index) { return (int) VH_rasterizationSamples.get(this.segment(), 0L, index); }
+    public int sampleShadingEnableAt(long index) { return (int) VH_sampleShadingEnable.get(this.segment(), 0L, index); }
+    public float minSampleShadingAt(long index) { return (float) VH_minSampleShading.get(this.segment(), 0L, index); }
+    public MemorySegment pSampleMaskAt(long index) { return (MemorySegment) VH_pSampleMask.get(this.segment(), 0L, index); }
+    public int alphaToCoverageEnableAt(long index) { return (int) VH_alphaToCoverageEnable.get(this.segment(), 0L, index); }
+    public int alphaToOneEnableAt(long index) { return (int) VH_alphaToOneEnable.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public int rasterizationSamples() { return (int) VH_rasterizationSamples.get(this.segment(), 0L, 0L); }
+    public int sampleShadingEnable() { return (int) VH_sampleShadingEnable.get(this.segment(), 0L, 0L); }
+    public float minSampleShading() { return (float) VH_minSampleShading.get(this.segment(), 0L, 0L); }
+    public MemorySegment pSampleMask() { return (MemorySegment) VH_pSampleMask.get(this.segment(), 0L, 0L); }
+    public int alphaToCoverageEnable() { return (int) VH_alphaToCoverageEnable.get(this.segment(), 0L, 0L); }
+    public int alphaToOneEnable() { return (int) VH_alphaToOneEnable.get(this.segment(), 0L, 0L); }
+    public VkPipelineMultisampleStateCreateInfo sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo rasterizationSamplesAt(long index, int value) { VH_rasterizationSamples.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo sampleShadingEnableAt(long index, int value) { VH_sampleShadingEnable.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo minSampleShadingAt(long index, float value) { VH_minSampleShading.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo pSampleMaskAt(long index, MemorySegment value) { VH_pSampleMask.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo alphaToCoverageEnableAt(long index, int value) { VH_alphaToCoverageEnable.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo alphaToOneEnableAt(long index, int value) { VH_alphaToOneEnable.set(this.segment(), 0L, index, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo rasterizationSamples(int value) { VH_rasterizationSamples.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo sampleShadingEnable(int value) { VH_sampleShadingEnable.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo minSampleShading(float value) { VH_minSampleShading.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo pSampleMask(MemorySegment value) { VH_pSampleMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo alphaToCoverageEnable(int value) { VH_alphaToCoverageEnable.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPipelineMultisampleStateCreateInfo alphaToOneEnable(int value) { VH_alphaToOneEnable.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPipelineMultisampleStateCreateInfo _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPipelineMultisampleStateCreateInfo _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPipelineMultisampleStateCreateInfo _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPipelineMultisampleStateCreateInfo _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkPipelineMultisampleStateCreateInfo _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkPipelineMultisampleStateCreateInfo _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _rasterizationSamplesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_rasterizationSamples, index), LAYOUT_rasterizationSamples); }
+    public MemorySegment _rasterizationSamples() { return _rasterizationSamplesAt(0L); }
+    public VkPipelineMultisampleStateCreateInfo _rasterizationSamplesAt(long index, MemorySegment src) { _rasterizationSamplesAt(index).copyFrom(src); return this; }
+    public VkPipelineMultisampleStateCreateInfo _rasterizationSamples(MemorySegment src) { return _rasterizationSamplesAt(0L, src); }
+    public MemorySegment _sampleShadingEnableAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sampleShadingEnable, index), LAYOUT_sampleShadingEnable); }
+    public MemorySegment _sampleShadingEnable() { return _sampleShadingEnableAt(0L); }
+    public VkPipelineMultisampleStateCreateInfo _sampleShadingEnableAt(long index, MemorySegment src) { _sampleShadingEnableAt(index).copyFrom(src); return this; }
+    public VkPipelineMultisampleStateCreateInfo _sampleShadingEnable(MemorySegment src) { return _sampleShadingEnableAt(0L, src); }
+    public MemorySegment _minSampleShadingAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minSampleShading, index), LAYOUT_minSampleShading); }
+    public MemorySegment _minSampleShading() { return _minSampleShadingAt(0L); }
+    public VkPipelineMultisampleStateCreateInfo _minSampleShadingAt(long index, MemorySegment src) { _minSampleShadingAt(index).copyFrom(src); return this; }
+    public VkPipelineMultisampleStateCreateInfo _minSampleShading(MemorySegment src) { return _minSampleShadingAt(0L, src); }
+    public MemorySegment _pSampleMaskAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pSampleMask, index), LAYOUT_pSampleMask); }
+    public MemorySegment _pSampleMask() { return _pSampleMaskAt(0L); }
+    public VkPipelineMultisampleStateCreateInfo _pSampleMaskAt(long index, MemorySegment src) { _pSampleMaskAt(index).copyFrom(src); return this; }
+    public VkPipelineMultisampleStateCreateInfo _pSampleMask(MemorySegment src) { return _pSampleMaskAt(0L, src); }
+    public MemorySegment _alphaToCoverageEnableAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_alphaToCoverageEnable, index), LAYOUT_alphaToCoverageEnable); }
+    public MemorySegment _alphaToCoverageEnable() { return _alphaToCoverageEnableAt(0L); }
+    public VkPipelineMultisampleStateCreateInfo _alphaToCoverageEnableAt(long index, MemorySegment src) { _alphaToCoverageEnableAt(index).copyFrom(src); return this; }
+    public VkPipelineMultisampleStateCreateInfo _alphaToCoverageEnable(MemorySegment src) { return _alphaToCoverageEnableAt(0L, src); }
+    public MemorySegment _alphaToOneEnableAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_alphaToOneEnable, index), LAYOUT_alphaToOneEnable); }
+    public MemorySegment _alphaToOneEnable() { return _alphaToOneEnableAt(0L); }
+    public VkPipelineMultisampleStateCreateInfo _alphaToOneEnableAt(long index, MemorySegment src) { _alphaToOneEnableAt(index).copyFrom(src); return this; }
+    public VkPipelineMultisampleStateCreateInfo _alphaToOneEnable(MemorySegment src) { return _alphaToOneEnableAt(0L, src); }
 }

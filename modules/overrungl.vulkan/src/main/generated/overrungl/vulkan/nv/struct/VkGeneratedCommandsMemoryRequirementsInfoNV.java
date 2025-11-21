@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,16 +12,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkGeneratedCommandsMemoryRequirementsInfoNV {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (int) VkPipelineBindPoint pipelineBindPoint;
-///     (uint64_t) VkPipeline pipeline;
-///     (uint64_t) VkIndirectCommandsLayoutNV indirectCommandsLayout;
+///     VkPipelineBindPoint pipelineBindPoint;
+///     VkPipeline pipeline;
+///     VkIndirectCommandsLayoutNV indirectCommandsLayout;
 ///     uint32_t maxSequencesCount;
-/// };
+/// }
 /// ```
 public final class VkGeneratedCommandsMemoryRequirementsInfoNV extends GroupType {
-    /// The struct layout of `VkGeneratedCommandsMemoryRequirementsInfoNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -31,254 +29,88 @@ public final class VkGeneratedCommandsMemoryRequirementsInfoNV extends GroupType
         ValueLayout.JAVA_LONG.withName("indirectCommandsLayout"),
         ValueLayout.JAVA_INT.withName("maxSequencesCount")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `pipelineBindPoint`.
     public static final long OFFSET_pipelineBindPoint = LAYOUT.byteOffset(PathElement.groupElement("pipelineBindPoint"));
-    /// The memory layout of `pipelineBindPoint`.
-    public static final MemoryLayout LAYOUT_pipelineBindPoint = LAYOUT.select(PathElement.groupElement("pipelineBindPoint"));
-    /// The [VarHandle] of `pipelineBindPoint` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipelineBindPoint = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBindPoint"));
-    /// The byte offset of `pipeline`.
     public static final long OFFSET_pipeline = LAYOUT.byteOffset(PathElement.groupElement("pipeline"));
-    /// The memory layout of `pipeline`.
-    public static final MemoryLayout LAYOUT_pipeline = LAYOUT.select(PathElement.groupElement("pipeline"));
-    /// The [VarHandle] of `pipeline` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pipeline = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipeline"));
-    /// The byte offset of `indirectCommandsLayout`.
     public static final long OFFSET_indirectCommandsLayout = LAYOUT.byteOffset(PathElement.groupElement("indirectCommandsLayout"));
-    /// The memory layout of `indirectCommandsLayout`.
-    public static final MemoryLayout LAYOUT_indirectCommandsLayout = LAYOUT.select(PathElement.groupElement("indirectCommandsLayout"));
-    /// The [VarHandle] of `indirectCommandsLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indirectCommandsLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectCommandsLayout"));
-    /// The byte offset of `maxSequencesCount`.
     public static final long OFFSET_maxSequencesCount = LAYOUT.byteOffset(PathElement.groupElement("maxSequencesCount"));
-    /// The memory layout of `maxSequencesCount`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_pipelineBindPoint = LAYOUT.select(PathElement.groupElement("pipelineBindPoint"));
+    public static final MemoryLayout LAYOUT_pipeline = LAYOUT.select(PathElement.groupElement("pipeline"));
+    public static final MemoryLayout LAYOUT_indirectCommandsLayout = LAYOUT.select(PathElement.groupElement("indirectCommandsLayout"));
     public static final MemoryLayout LAYOUT_maxSequencesCount = LAYOUT.select(PathElement.groupElement("maxSequencesCount"));
-    /// The [VarHandle] of `maxSequencesCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_pipelineBindPoint = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBindPoint"));
+    public static final VarHandle VH_pipeline = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipeline"));
+    public static final VarHandle VH_indirectCommandsLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectCommandsLayout"));
     public static final VarHandle VH_maxSequencesCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSequencesCount"));
 
-    /// Creates `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkGeneratedCommandsMemoryRequirementsInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeneratedCommandsMemoryRequirementsInfoNV(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkGeneratedCommandsMemoryRequirementsInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeneratedCommandsMemoryRequirementsInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkGeneratedCommandsMemoryRequirementsInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeneratedCommandsMemoryRequirementsInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoNV`
     public static VkGeneratedCommandsMemoryRequirementsInfoNV alloc(SegmentAllocator allocator) { return new VkGeneratedCommandsMemoryRequirementsInfoNV(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoNV`
     public static VkGeneratedCommandsMemoryRequirementsInfoNV alloc(SegmentAllocator allocator, long count) { return new VkGeneratedCommandsMemoryRequirementsInfoNV(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkGeneratedCommandsMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.nv.VKNVDeviceGeneratedCommands.VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV); }
+    public static VkGeneratedCommandsMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.nv.VKNVDeviceGeneratedCommands.VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV);
+        return s;
+    }
     public VkGeneratedCommandsMemoryRequirementsInfoNV copyFrom(VkGeneratedCommandsMemoryRequirementsInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkGeneratedCommandsMemoryRequirementsInfoNV reinterpret(long count) { return new VkGeneratedCommandsMemoryRequirementsInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `pipelineBindPoint` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int pipelineBindPoint(MemorySegment segment, long index) { return (int) VH_pipelineBindPoint.get(segment, 0L, index); }
-    /// {@return `pipelineBindPoint`}
-    public int pipelineBindPoint() { return pipelineBindPoint(this.segment(), 0L); }
-    /// Sets `pipelineBindPoint` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pipelineBindPoint(MemorySegment segment, long index, int value) { VH_pipelineBindPoint.set(segment, 0L, index, value); }
-    /// Sets `pipelineBindPoint` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV pipelineBindPoint(int value) { pipelineBindPoint(this.segment(), 0L, value); return this; }
-
-    /// {@return `pipeline` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long pipeline(MemorySegment segment, long index) { return (long) VH_pipeline.get(segment, 0L, index); }
-    /// {@return `pipeline`}
-    public long pipeline() { return pipeline(this.segment(), 0L); }
-    /// Sets `pipeline` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pipeline(MemorySegment segment, long index, long value) { VH_pipeline.set(segment, 0L, index, value); }
-    /// Sets `pipeline` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV pipeline(long value) { pipeline(this.segment(), 0L, value); return this; }
-
-    /// {@return `indirectCommandsLayout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long indirectCommandsLayout(MemorySegment segment, long index) { return (long) VH_indirectCommandsLayout.get(segment, 0L, index); }
-    /// {@return `indirectCommandsLayout`}
-    public long indirectCommandsLayout() { return indirectCommandsLayout(this.segment(), 0L); }
-    /// Sets `indirectCommandsLayout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void indirectCommandsLayout(MemorySegment segment, long index, long value) { VH_indirectCommandsLayout.set(segment, 0L, index, value); }
-    /// Sets `indirectCommandsLayout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV indirectCommandsLayout(long value) { indirectCommandsLayout(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxSequencesCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxSequencesCount(MemorySegment segment, long index) { return (int) VH_maxSequencesCount.get(segment, 0L, index); }
-    /// {@return `maxSequencesCount`}
-    public int maxSequencesCount() { return maxSequencesCount(this.segment(), 0L); }
-    /// Sets `maxSequencesCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxSequencesCount(MemorySegment segment, long index, int value) { VH_maxSequencesCount.set(segment, 0L, index, value); }
-    /// Sets `maxSequencesCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV maxSequencesCount(int value) { maxSequencesCount(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkGeneratedCommandsMemoryRequirementsInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkGeneratedCommandsMemoryRequirementsInfoNV`
     public VkGeneratedCommandsMemoryRequirementsInfoNV asSlice(long index) { return new VkGeneratedCommandsMemoryRequirementsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkGeneratedCommandsMemoryRequirementsInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkGeneratedCommandsMemoryRequirementsInfoNV`
     public VkGeneratedCommandsMemoryRequirementsInfoNV asSlice(long index, long count) { return new VkGeneratedCommandsMemoryRequirementsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkGeneratedCommandsMemoryRequirementsInfoNV` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkGeneratedCommandsMemoryRequirementsInfoNV at(long index, Consumer<VkGeneratedCommandsMemoryRequirementsInfoNV> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `pipelineBindPoint` at the given index}
-    /// @param index the index of the struct buffer
-    public int pipelineBindPointAt(long index) { return pipelineBindPoint(this.segment(), index); }
-    /// Sets `pipelineBindPoint` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV pipelineBindPointAt(long index, int value) { pipelineBindPoint(this.segment(), index, value); return this; }
-
-    /// {@return `pipeline` at the given index}
-    /// @param index the index of the struct buffer
-    public long pipelineAt(long index) { return pipeline(this.segment(), index); }
-    /// Sets `pipeline` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV pipelineAt(long index, long value) { pipeline(this.segment(), index, value); return this; }
-
-    /// {@return `indirectCommandsLayout` at the given index}
-    /// @param index the index of the struct buffer
-    public long indirectCommandsLayoutAt(long index) { return indirectCommandsLayout(this.segment(), index); }
-    /// Sets `indirectCommandsLayout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV indirectCommandsLayoutAt(long index, long value) { indirectCommandsLayout(this.segment(), index, value); return this; }
-
-    /// {@return `maxSequencesCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxSequencesCountAt(long index) { return maxSequencesCount(this.segment(), index); }
-    /// Sets `maxSequencesCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoNV maxSequencesCountAt(long index, int value) { maxSequencesCount(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int pipelineBindPointAt(long index) { return (int) VH_pipelineBindPoint.get(this.segment(), 0L, index); }
+    public long pipelineAt(long index) { return (long) VH_pipeline.get(this.segment(), 0L, index); }
+    public long indirectCommandsLayoutAt(long index) { return (long) VH_indirectCommandsLayout.get(this.segment(), 0L, index); }
+    public int maxSequencesCountAt(long index) { return (int) VH_maxSequencesCount.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int pipelineBindPoint() { return (int) VH_pipelineBindPoint.get(this.segment(), 0L, 0L); }
+    public long pipeline() { return (long) VH_pipeline.get(this.segment(), 0L, 0L); }
+    public long indirectCommandsLayout() { return (long) VH_indirectCommandsLayout.get(this.segment(), 0L, 0L); }
+    public int maxSequencesCount() { return (int) VH_maxSequencesCount.get(this.segment(), 0L, 0L); }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV pipelineBindPointAt(long index, int value) { VH_pipelineBindPoint.set(this.segment(), 0L, index, value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV pipelineAt(long index, long value) { VH_pipeline.set(this.segment(), 0L, index, value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV indirectCommandsLayoutAt(long index, long value) { VH_indirectCommandsLayout.set(this.segment(), 0L, index, value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV maxSequencesCountAt(long index, int value) { VH_maxSequencesCount.set(this.segment(), 0L, index, value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV pipelineBindPoint(int value) { VH_pipelineBindPoint.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV pipeline(long value) { VH_pipeline.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV indirectCommandsLayout(long value) { VH_indirectCommandsLayout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV maxSequencesCount(int value) { VH_maxSequencesCount.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _pipelineBindPointAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pipelineBindPoint, index), LAYOUT_pipelineBindPoint); }
+    public MemorySegment _pipelineBindPoint() { return _pipelineBindPointAt(0L); }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _pipelineBindPointAt(long index, MemorySegment src) { _pipelineBindPointAt(index).copyFrom(src); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _pipelineBindPoint(MemorySegment src) { return _pipelineBindPointAt(0L, src); }
+    public MemorySegment _pipelineAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pipeline, index), LAYOUT_pipeline); }
+    public MemorySegment _pipeline() { return _pipelineAt(0L); }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _pipelineAt(long index, MemorySegment src) { _pipelineAt(index).copyFrom(src); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _pipeline(MemorySegment src) { return _pipelineAt(0L, src); }
+    public MemorySegment _indirectCommandsLayoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_indirectCommandsLayout, index), LAYOUT_indirectCommandsLayout); }
+    public MemorySegment _indirectCommandsLayout() { return _indirectCommandsLayoutAt(0L); }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _indirectCommandsLayoutAt(long index, MemorySegment src) { _indirectCommandsLayoutAt(index).copyFrom(src); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _indirectCommandsLayout(MemorySegment src) { return _indirectCommandsLayoutAt(0L, src); }
+    public MemorySegment _maxSequencesCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxSequencesCount, index), LAYOUT_maxSequencesCount); }
+    public MemorySegment _maxSequencesCount() { return _maxSequencesCountAt(0L); }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _maxSequencesCountAt(long index, MemorySegment src) { _maxSequencesCountAt(index).copyFrom(src); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoNV _maxSequencesCount(MemorySegment src) { return _maxSequencesCountAt(0L, src); }
 }

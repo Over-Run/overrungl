@@ -25,6 +25,7 @@ public final class VKKHRPipelineBinary {
     public static final int VK_PIPELINE_BINARY_MISSING_KHR = 1000483000;
     public static final int VK_ERROR_NOT_ENOUGH_SPACE_KHR = -1000483000;
     public static final long VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR = 0x80000000L;
+    private VKKHRPipelineBinary() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreatePipelineBinariesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkDestroyPipelineBinaryKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
@@ -34,11 +35,9 @@ public final class VKKHRPipelineBinary {
         private Handles() {}
     }
 
-    private VKKHRPipelineBinary() {}
-
     /// Invokes `vkCreatePipelineBinariesKHR`.
     /// ```
-    /// (int) VkResult vkCreatePipelineBinariesKHR((struct VkDevice*) VkDevice device, const VkPipelineBinaryCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkPipelineBinaryHandlesInfoKHR* pBinaries);
+    /// VkResult vkCreatePipelineBinariesKHR(VkDevice device, const VkPipelineBinaryCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkPipelineBinaryHandlesInfoKHR* pBinaries);
     /// ```
     public static int vkCreatePipelineBinariesKHR(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pBinaries) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreatePipelineBinariesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreatePipelineBinariesKHR");
@@ -49,7 +48,7 @@ public final class VKKHRPipelineBinary {
 
     /// Invokes `vkDestroyPipelineBinaryKHR`.
     /// ```
-    /// void vkDestroyPipelineBinaryKHR((struct VkDevice*) VkDevice device, (uint64_t) VkPipelineBinaryKHR pipelineBinary, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroyPipelineBinaryKHR(VkDevice device, VkPipelineBinaryKHR pipelineBinary, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyPipelineBinaryKHR(@NonNull VkDevice device, long pipelineBinary, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyPipelineBinaryKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyPipelineBinaryKHR");
@@ -60,7 +59,7 @@ public final class VKKHRPipelineBinary {
 
     /// Invokes `vkGetPipelineKeyKHR`.
     /// ```
-    /// (int) VkResult vkGetPipelineKeyKHR((struct VkDevice*) VkDevice device, const VkPipelineCreateInfoKHR* pPipelineCreateInfo, VkPipelineBinaryKeyKHR* pPipelineKey);
+    /// VkResult vkGetPipelineKeyKHR(VkDevice device, const VkPipelineCreateInfoKHR* pPipelineCreateInfo, VkPipelineBinaryKeyKHR* pPipelineKey);
     /// ```
     public static int vkGetPipelineKeyKHR(@NonNull VkDevice device, @NonNull MemorySegment pPipelineCreateInfo, @NonNull MemorySegment pPipelineKey) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineKeyKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelineKeyKHR");
@@ -71,7 +70,7 @@ public final class VKKHRPipelineBinary {
 
     /// Invokes `vkGetPipelineBinaryDataKHR`.
     /// ```
-    /// (int) VkResult vkGetPipelineBinaryDataKHR((struct VkDevice*) VkDevice device, const VkPipelineBinaryDataInfoKHR* pInfo, VkPipelineBinaryKeyKHR* pPipelineBinaryKey, size_t* pPipelineBinaryDataSize, void* pPipelineBinaryData);
+    /// VkResult vkGetPipelineBinaryDataKHR(VkDevice device, const VkPipelineBinaryDataInfoKHR* pInfo, VkPipelineBinaryKeyKHR* pPipelineBinaryKey, size_t* pPipelineBinaryDataSize, void* pPipelineBinaryData);
     /// ```
     public static int vkGetPipelineBinaryDataKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pPipelineBinaryKey, @NonNull MemorySegment pPipelineBinaryDataSize, @NonNull MemorySegment pPipelineBinaryData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineBinaryDataKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelineBinaryDataKHR");
@@ -82,7 +81,7 @@ public final class VKKHRPipelineBinary {
 
     /// Invokes `vkReleaseCapturedPipelineDataKHR`.
     /// ```
-    /// (int) VkResult vkReleaseCapturedPipelineDataKHR((struct VkDevice*) VkDevice device, const VkReleaseCapturedPipelineDataInfoKHR* pInfo, const VkAllocationCallbacks* pAllocator);
+    /// VkResult vkReleaseCapturedPipelineDataKHR(VkDevice device, const VkReleaseCapturedPipelineDataInfoKHR* pInfo, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static int vkReleaseCapturedPipelineDataKHR(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleaseCapturedPipelineDataKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkReleaseCapturedPipelineDataKHR");

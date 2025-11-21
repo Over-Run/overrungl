@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDepthBiasInfoEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
 ///     float depthBiasConstantFactor;
 ///     float depthBiasClamp;
 ///     float depthBiasSlopeFactor;
-/// };
+/// }
 /// ```
 public final class VkDepthBiasInfoEXT extends GroupType {
-    /// The struct layout of `VkDepthBiasInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,223 +27,77 @@ public final class VkDepthBiasInfoEXT extends GroupType {
         ValueLayout.JAVA_FLOAT.withName("depthBiasClamp"),
         ValueLayout.JAVA_FLOAT.withName("depthBiasSlopeFactor")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `depthBiasConstantFactor`.
     public static final long OFFSET_depthBiasConstantFactor = LAYOUT.byteOffset(PathElement.groupElement("depthBiasConstantFactor"));
-    /// The memory layout of `depthBiasConstantFactor`.
-    public static final MemoryLayout LAYOUT_depthBiasConstantFactor = LAYOUT.select(PathElement.groupElement("depthBiasConstantFactor"));
-    /// The [VarHandle] of `depthBiasConstantFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthBiasConstantFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasConstantFactor"));
-    /// The byte offset of `depthBiasClamp`.
     public static final long OFFSET_depthBiasClamp = LAYOUT.byteOffset(PathElement.groupElement("depthBiasClamp"));
-    /// The memory layout of `depthBiasClamp`.
-    public static final MemoryLayout LAYOUT_depthBiasClamp = LAYOUT.select(PathElement.groupElement("depthBiasClamp"));
-    /// The [VarHandle] of `depthBiasClamp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_depthBiasClamp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasClamp"));
-    /// The byte offset of `depthBiasSlopeFactor`.
     public static final long OFFSET_depthBiasSlopeFactor = LAYOUT.byteOffset(PathElement.groupElement("depthBiasSlopeFactor"));
-    /// The memory layout of `depthBiasSlopeFactor`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_depthBiasConstantFactor = LAYOUT.select(PathElement.groupElement("depthBiasConstantFactor"));
+    public static final MemoryLayout LAYOUT_depthBiasClamp = LAYOUT.select(PathElement.groupElement("depthBiasClamp"));
     public static final MemoryLayout LAYOUT_depthBiasSlopeFactor = LAYOUT.select(PathElement.groupElement("depthBiasSlopeFactor"));
-    /// The [VarHandle] of `depthBiasSlopeFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_depthBiasConstantFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasConstantFactor"));
+    public static final VarHandle VH_depthBiasClamp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasClamp"));
     public static final VarHandle VH_depthBiasSlopeFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasSlopeFactor"));
 
-    /// Creates `VkDepthBiasInfoEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkDepthBiasInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkDepthBiasInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDepthBiasInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDepthBiasInfoEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkDepthBiasInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDepthBiasInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDepthBiasInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkDepthBiasInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDepthBiasInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDepthBiasInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkDepthBiasInfoEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDepthBiasInfoEXT`
     public static VkDepthBiasInfoEXT alloc(SegmentAllocator allocator) { return new VkDepthBiasInfoEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkDepthBiasInfoEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkDepthBiasInfoEXT`
     public static VkDepthBiasInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDepthBiasInfoEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkDepthBiasInfoEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTDepthBiasControl.VK_STRUCTURE_TYPE_DEPTH_BIAS_INFO_EXT); }
+    public static VkDepthBiasInfoEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTDepthBiasControl.VK_STRUCTURE_TYPE_DEPTH_BIAS_INFO_EXT);
+        return s;
+    }
     public VkDepthBiasInfoEXT copyFrom(VkDepthBiasInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkDepthBiasInfoEXT reinterpret(long count) { return new VkDepthBiasInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `depthBiasConstantFactor` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static float depthBiasConstantFactor(MemorySegment segment, long index) { return (float) VH_depthBiasConstantFactor.get(segment, 0L, index); }
-    /// {@return `depthBiasConstantFactor`}
-    public float depthBiasConstantFactor() { return depthBiasConstantFactor(this.segment(), 0L); }
-    /// Sets `depthBiasConstantFactor` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void depthBiasConstantFactor(MemorySegment segment, long index, float value) { VH_depthBiasConstantFactor.set(segment, 0L, index, value); }
-    /// Sets `depthBiasConstantFactor` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT depthBiasConstantFactor(float value) { depthBiasConstantFactor(this.segment(), 0L, value); return this; }
-
-    /// {@return `depthBiasClamp` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static float depthBiasClamp(MemorySegment segment, long index) { return (float) VH_depthBiasClamp.get(segment, 0L, index); }
-    /// {@return `depthBiasClamp`}
-    public float depthBiasClamp() { return depthBiasClamp(this.segment(), 0L); }
-    /// Sets `depthBiasClamp` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void depthBiasClamp(MemorySegment segment, long index, float value) { VH_depthBiasClamp.set(segment, 0L, index, value); }
-    /// Sets `depthBiasClamp` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT depthBiasClamp(float value) { depthBiasClamp(this.segment(), 0L, value); return this; }
-
-    /// {@return `depthBiasSlopeFactor` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static float depthBiasSlopeFactor(MemorySegment segment, long index) { return (float) VH_depthBiasSlopeFactor.get(segment, 0L, index); }
-    /// {@return `depthBiasSlopeFactor`}
-    public float depthBiasSlopeFactor() { return depthBiasSlopeFactor(this.segment(), 0L); }
-    /// Sets `depthBiasSlopeFactor` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void depthBiasSlopeFactor(MemorySegment segment, long index, float value) { VH_depthBiasSlopeFactor.set(segment, 0L, index, value); }
-    /// Sets `depthBiasSlopeFactor` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT depthBiasSlopeFactor(float value) { depthBiasSlopeFactor(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkDepthBiasInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDepthBiasInfoEXT`
     public VkDepthBiasInfoEXT asSlice(long index) { return new VkDepthBiasInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkDepthBiasInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDepthBiasInfoEXT`
     public VkDepthBiasInfoEXT asSlice(long index, long count) { return new VkDepthBiasInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkDepthBiasInfoEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkDepthBiasInfoEXT at(long index, Consumer<VkDepthBiasInfoEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `depthBiasConstantFactor` at the given index}
-    /// @param index the index of the struct buffer
-    public float depthBiasConstantFactorAt(long index) { return depthBiasConstantFactor(this.segment(), index); }
-    /// Sets `depthBiasConstantFactor` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT depthBiasConstantFactorAt(long index, float value) { depthBiasConstantFactor(this.segment(), index, value); return this; }
-
-    /// {@return `depthBiasClamp` at the given index}
-    /// @param index the index of the struct buffer
-    public float depthBiasClampAt(long index) { return depthBiasClamp(this.segment(), index); }
-    /// Sets `depthBiasClamp` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT depthBiasClampAt(long index, float value) { depthBiasClamp(this.segment(), index, value); return this; }
-
-    /// {@return `depthBiasSlopeFactor` at the given index}
-    /// @param index the index of the struct buffer
-    public float depthBiasSlopeFactorAt(long index) { return depthBiasSlopeFactor(this.segment(), index); }
-    /// Sets `depthBiasSlopeFactor` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT depthBiasSlopeFactorAt(long index, float value) { depthBiasSlopeFactor(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public float depthBiasConstantFactorAt(long index) { return (float) VH_depthBiasConstantFactor.get(this.segment(), 0L, index); }
+    public float depthBiasClampAt(long index) { return (float) VH_depthBiasClamp.get(this.segment(), 0L, index); }
+    public float depthBiasSlopeFactorAt(long index) { return (float) VH_depthBiasSlopeFactor.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public float depthBiasConstantFactor() { return (float) VH_depthBiasConstantFactor.get(this.segment(), 0L, 0L); }
+    public float depthBiasClamp() { return (float) VH_depthBiasClamp.get(this.segment(), 0L, 0L); }
+    public float depthBiasSlopeFactor() { return (float) VH_depthBiasSlopeFactor.get(this.segment(), 0L, 0L); }
+    public VkDepthBiasInfoEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkDepthBiasInfoEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkDepthBiasInfoEXT depthBiasConstantFactorAt(long index, float value) { VH_depthBiasConstantFactor.set(this.segment(), 0L, index, value); return this; }
+    public VkDepthBiasInfoEXT depthBiasClampAt(long index, float value) { VH_depthBiasClamp.set(this.segment(), 0L, index, value); return this; }
+    public VkDepthBiasInfoEXT depthBiasSlopeFactorAt(long index, float value) { VH_depthBiasSlopeFactor.set(this.segment(), 0L, index, value); return this; }
+    public VkDepthBiasInfoEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDepthBiasInfoEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDepthBiasInfoEXT depthBiasConstantFactor(float value) { VH_depthBiasConstantFactor.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDepthBiasInfoEXT depthBiasClamp(float value) { VH_depthBiasClamp.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDepthBiasInfoEXT depthBiasSlopeFactor(float value) { VH_depthBiasSlopeFactor.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkDepthBiasInfoEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkDepthBiasInfoEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkDepthBiasInfoEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkDepthBiasInfoEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _depthBiasConstantFactorAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_depthBiasConstantFactor, index), LAYOUT_depthBiasConstantFactor); }
+    public MemorySegment _depthBiasConstantFactor() { return _depthBiasConstantFactorAt(0L); }
+    public VkDepthBiasInfoEXT _depthBiasConstantFactorAt(long index, MemorySegment src) { _depthBiasConstantFactorAt(index).copyFrom(src); return this; }
+    public VkDepthBiasInfoEXT _depthBiasConstantFactor(MemorySegment src) { return _depthBiasConstantFactorAt(0L, src); }
+    public MemorySegment _depthBiasClampAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_depthBiasClamp, index), LAYOUT_depthBiasClamp); }
+    public MemorySegment _depthBiasClamp() { return _depthBiasClampAt(0L); }
+    public VkDepthBiasInfoEXT _depthBiasClampAt(long index, MemorySegment src) { _depthBiasClampAt(index).copyFrom(src); return this; }
+    public VkDepthBiasInfoEXT _depthBiasClamp(MemorySegment src) { return _depthBiasClampAt(0L, src); }
+    public MemorySegment _depthBiasSlopeFactorAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_depthBiasSlopeFactor, index), LAYOUT_depthBiasSlopeFactor); }
+    public MemorySegment _depthBiasSlopeFactor() { return _depthBiasSlopeFactorAt(0L); }
+    public VkDepthBiasInfoEXT _depthBiasSlopeFactorAt(long index, MemorySegment src) { _depthBiasSlopeFactorAt(index).copyFrom(src); return this; }
+    public VkDepthBiasInfoEXT _depthBiasSlopeFactor(MemorySegment src) { return _depthBiasSlopeFactorAt(0L, src); }
 }

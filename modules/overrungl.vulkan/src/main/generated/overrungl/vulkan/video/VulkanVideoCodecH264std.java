@@ -9,7 +9,7 @@ public final class VulkanVideoCodecH264std {
     public static final int STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
     public static final int STD_VIDEO_H264_MAX_NUM_LIST_REF = 32;
     public static final int STD_VIDEO_H264_MAX_CHROMA_PLANES = 2;
-    public static final int STD_VIDEO_H264_NO_REFERENCE_PICTURE = 0xFF;
+    public static final byte STD_VIDEO_H264_NO_REFERENCE_PICTURE = (byte) 0xFF;
     public static final int STD_VIDEO_H264_CHROMA_FORMAT_IDC_MONOCHROME = 0;
     public static final int STD_VIDEO_H264_CHROMA_FORMAT_IDC_420 = 1;
     public static final int STD_VIDEO_H264_CHROMA_FORMAT_IDC_422 = 2;

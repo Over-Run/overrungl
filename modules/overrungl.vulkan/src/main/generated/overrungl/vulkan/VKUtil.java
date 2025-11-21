@@ -43,7 +43,6 @@ import static overrungl.vulkan.nv.VKNVRayTracing.*;
 import static overrungl.vulkan.nvx.VKNVXBinaryImport.*;
 
 /// This class provides methods to convert Vulkan enum to string.
-/// @since 0.1.0
 public final class VKUtil {
     private VKUtil() {}
 
@@ -110,8 +109,8 @@ public final class VKUtil {
         case VK_OBJECT_TYPE_DESCRIPTOR_SET -> "VkDescriptorSet";
         case VK_OBJECT_TYPE_FRAMEBUFFER -> "VkFramebuffer";
         case VK_OBJECT_TYPE_COMMAND_POOL -> "VkCommandPool";
-        case VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION -> "VkSamplerYcbcrConversion";
         case VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE -> "VkDescriptorUpdateTemplate";
+        case VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION -> "VkSamplerYcbcrConversion";
         case VK_OBJECT_TYPE_PRIVATE_DATA_SLOT -> "VkPrivateDataSlot";
         case VK_OBJECT_TYPE_SURFACE_KHR -> "VkSurfaceKHR";
         case VK_OBJECT_TYPE_SWAPCHAIN_KHR -> "VkSwapchainKHR";
@@ -146,7 +145,6 @@ public final class VKUtil {
     }; }
 
     public static String getResultString(int value) { return switch (value) {
-        case VK_ERROR_VALIDATION_FAILED -> "VK_ERROR_VALIDATION_FAILED";
         case VK_SUCCESS -> "VK_SUCCESS";
         case VK_NOT_READY -> "VK_NOT_READY";
         case VK_TIMEOUT -> "VK_TIMEOUT";
@@ -166,10 +164,11 @@ public final class VKUtil {
         case VK_ERROR_FORMAT_NOT_SUPPORTED -> "VK_ERROR_FORMAT_NOT_SUPPORTED";
         case VK_ERROR_FRAGMENTED_POOL -> "VK_ERROR_FRAGMENTED_POOL";
         case VK_ERROR_UNKNOWN -> "VK_ERROR_UNKNOWN";
+        case VK_ERROR_VALIDATION_FAILED -> "VK_ERROR_VALIDATION_FAILED";
         case VK_ERROR_OUT_OF_POOL_MEMORY -> "VK_ERROR_OUT_OF_POOL_MEMORY";
         case VK_ERROR_INVALID_EXTERNAL_HANDLE -> "VK_ERROR_INVALID_EXTERNAL_HANDLE";
-        case VK_ERROR_FRAGMENTATION -> "VK_ERROR_FRAGMENTATION";
         case VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS -> "VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS";
+        case VK_ERROR_FRAGMENTATION -> "VK_ERROR_FRAGMENTATION";
         case VK_PIPELINE_COMPILE_REQUIRED -> "VK_PIPELINE_COMPILE_REQUIRED";
         case VK_ERROR_NOT_PERMITTED -> "VK_ERROR_NOT_PERMITTED";
         case VK_ERROR_SURFACE_LOST_KHR -> "VK_ERROR_SURFACE_LOST_KHR";

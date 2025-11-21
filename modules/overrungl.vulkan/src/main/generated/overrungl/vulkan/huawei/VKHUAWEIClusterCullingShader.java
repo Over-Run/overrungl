@@ -16,17 +16,16 @@ public final class VKHUAWEIClusterCullingShader {
     public static final long VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI = 0x20000000000L;
     public static final int VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI = 0x00080000;
     public static final int VK_QUERY_PIPELINE_STATISTIC_CLUSTER_CULLING_SHADER_INVOCATIONS_BIT_HUAWEI = 0x00002000;
+    private VKHUAWEIClusterCullingShader() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdDrawClusterHUAWEI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdDrawClusterIndirectHUAWEI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         private Handles() {}
     }
 
-    private VKHUAWEIClusterCullingShader() {}
-
     /// Invokes `vkCmdDrawClusterHUAWEI`.
     /// ```
-    /// void vkCmdDrawClusterHUAWEI((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ);
+    /// void vkCmdDrawClusterHUAWEI(VkCommandBuffer commandBuffer, uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ);
     /// ```
     public static void vkCmdDrawClusterHUAWEI(@NonNull VkCommandBuffer commandBuffer, int groupCountX, int groupCountY, int groupCountZ) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawClusterHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawClusterHUAWEI");
@@ -37,7 +36,7 @@ public final class VKHUAWEIClusterCullingShader {
 
     /// Invokes `vkCmdDrawClusterIndirectHUAWEI`.
     /// ```
-    /// void vkCmdDrawClusterIndirectHUAWEI((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset);
+    /// void vkCmdDrawClusterIndirectHUAWEI(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset);
     /// ```
     public static void vkCmdDrawClusterIndirectHUAWEI(@NonNull VkCommandBuffer commandBuffer, long buffer, long offset) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawClusterIndirectHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawClusterIndirectHUAWEI");

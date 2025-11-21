@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,16 +12,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePCIBusInfoPropertiesEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t pciDomain;
 ///     uint32_t pciBus;
 ///     uint32_t pciDevice;
 ///     uint32_t pciFunction;
-/// };
+/// }
 /// ```
 public final class VkPhysicalDevicePCIBusInfoPropertiesEXT extends GroupType {
-    /// The struct layout of `VkPhysicalDevicePCIBusInfoPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -31,254 +29,88 @@ public final class VkPhysicalDevicePCIBusInfoPropertiesEXT extends GroupType {
         ValueLayout.JAVA_INT.withName("pciDevice"),
         ValueLayout.JAVA_INT.withName("pciFunction")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `pciDomain`.
     public static final long OFFSET_pciDomain = LAYOUT.byteOffset(PathElement.groupElement("pciDomain"));
-    /// The memory layout of `pciDomain`.
-    public static final MemoryLayout LAYOUT_pciDomain = LAYOUT.select(PathElement.groupElement("pciDomain"));
-    /// The [VarHandle] of `pciDomain` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pciDomain = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pciDomain"));
-    /// The byte offset of `pciBus`.
     public static final long OFFSET_pciBus = LAYOUT.byteOffset(PathElement.groupElement("pciBus"));
-    /// The memory layout of `pciBus`.
-    public static final MemoryLayout LAYOUT_pciBus = LAYOUT.select(PathElement.groupElement("pciBus"));
-    /// The [VarHandle] of `pciBus` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pciBus = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pciBus"));
-    /// The byte offset of `pciDevice`.
     public static final long OFFSET_pciDevice = LAYOUT.byteOffset(PathElement.groupElement("pciDevice"));
-    /// The memory layout of `pciDevice`.
-    public static final MemoryLayout LAYOUT_pciDevice = LAYOUT.select(PathElement.groupElement("pciDevice"));
-    /// The [VarHandle] of `pciDevice` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pciDevice = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pciDevice"));
-    /// The byte offset of `pciFunction`.
     public static final long OFFSET_pciFunction = LAYOUT.byteOffset(PathElement.groupElement("pciFunction"));
-    /// The memory layout of `pciFunction`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_pciDomain = LAYOUT.select(PathElement.groupElement("pciDomain"));
+    public static final MemoryLayout LAYOUT_pciBus = LAYOUT.select(PathElement.groupElement("pciBus"));
+    public static final MemoryLayout LAYOUT_pciDevice = LAYOUT.select(PathElement.groupElement("pciDevice"));
     public static final MemoryLayout LAYOUT_pciFunction = LAYOUT.select(PathElement.groupElement("pciFunction"));
-    /// The [VarHandle] of `pciFunction` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_pciDomain = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pciDomain"));
+    public static final VarHandle VH_pciBus = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pciBus"));
+    public static final VarHandle VH_pciDevice = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pciDevice"));
     public static final VarHandle VH_pciFunction = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pciFunction"));
 
-    /// Creates `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDevicePCIBusInfoPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDevicePCIBusInfoPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDevicePCIBusInfoPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
     public static VkPhysicalDevicePCIBusInfoPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
     public static VkPhysicalDevicePCIBusInfoPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDevicePCIBusInfoPropertiesEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTPciBusInfo.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT); }
+    public static VkPhysicalDevicePCIBusInfoPropertiesEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTPciBusInfo.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT);
+        return s;
+    }
     public VkPhysicalDevicePCIBusInfoPropertiesEXT copyFrom(VkPhysicalDevicePCIBusInfoPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDevicePCIBusInfoPropertiesEXT reinterpret(long count) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `pciDomain` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int pciDomain(MemorySegment segment, long index) { return (int) VH_pciDomain.get(segment, 0L, index); }
-    /// {@return `pciDomain`}
-    public int pciDomain() { return pciDomain(this.segment(), 0L); }
-    /// Sets `pciDomain` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pciDomain(MemorySegment segment, long index, int value) { VH_pciDomain.set(segment, 0L, index, value); }
-    /// Sets `pciDomain` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDomain(int value) { pciDomain(this.segment(), 0L, value); return this; }
-
-    /// {@return `pciBus` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int pciBus(MemorySegment segment, long index) { return (int) VH_pciBus.get(segment, 0L, index); }
-    /// {@return `pciBus`}
-    public int pciBus() { return pciBus(this.segment(), 0L); }
-    /// Sets `pciBus` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pciBus(MemorySegment segment, long index, int value) { VH_pciBus.set(segment, 0L, index, value); }
-    /// Sets `pciBus` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciBus(int value) { pciBus(this.segment(), 0L, value); return this; }
-
-    /// {@return `pciDevice` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int pciDevice(MemorySegment segment, long index) { return (int) VH_pciDevice.get(segment, 0L, index); }
-    /// {@return `pciDevice`}
-    public int pciDevice() { return pciDevice(this.segment(), 0L); }
-    /// Sets `pciDevice` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pciDevice(MemorySegment segment, long index, int value) { VH_pciDevice.set(segment, 0L, index, value); }
-    /// Sets `pciDevice` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDevice(int value) { pciDevice(this.segment(), 0L, value); return this; }
-
-    /// {@return `pciFunction` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int pciFunction(MemorySegment segment, long index) { return (int) VH_pciFunction.get(segment, 0L, index); }
-    /// {@return `pciFunction`}
-    public int pciFunction() { return pciFunction(this.segment(), 0L); }
-    /// Sets `pciFunction` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pciFunction(MemorySegment segment, long index, int value) { VH_pciFunction.set(segment, 0L, index, value); }
-    /// Sets `pciFunction` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciFunction(int value) { pciFunction(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`
     public VkPhysicalDevicePCIBusInfoPropertiesEXT asSlice(long index) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`
     public VkPhysicalDevicePCIBusInfoPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDevicePCIBusInfoPropertiesEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDevicePCIBusInfoPropertiesEXT at(long index, Consumer<VkPhysicalDevicePCIBusInfoPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `pciDomain` at the given index}
-    /// @param index the index of the struct buffer
-    public int pciDomainAt(long index) { return pciDomain(this.segment(), index); }
-    /// Sets `pciDomain` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDomainAt(long index, int value) { pciDomain(this.segment(), index, value); return this; }
-
-    /// {@return `pciBus` at the given index}
-    /// @param index the index of the struct buffer
-    public int pciBusAt(long index) { return pciBus(this.segment(), index); }
-    /// Sets `pciBus` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciBusAt(long index, int value) { pciBus(this.segment(), index, value); return this; }
-
-    /// {@return `pciDevice` at the given index}
-    /// @param index the index of the struct buffer
-    public int pciDeviceAt(long index) { return pciDevice(this.segment(), index); }
-    /// Sets `pciDevice` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDeviceAt(long index, int value) { pciDevice(this.segment(), index, value); return this; }
-
-    /// {@return `pciFunction` at the given index}
-    /// @param index the index of the struct buffer
-    public int pciFunctionAt(long index) { return pciFunction(this.segment(), index); }
-    /// Sets `pciFunction` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciFunctionAt(long index, int value) { pciFunction(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int pciDomainAt(long index) { return (int) VH_pciDomain.get(this.segment(), 0L, index); }
+    public int pciBusAt(long index) { return (int) VH_pciBus.get(this.segment(), 0L, index); }
+    public int pciDeviceAt(long index) { return (int) VH_pciDevice.get(this.segment(), 0L, index); }
+    public int pciFunctionAt(long index) { return (int) VH_pciFunction.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int pciDomain() { return (int) VH_pciDomain.get(this.segment(), 0L, 0L); }
+    public int pciBus() { return (int) VH_pciBus.get(this.segment(), 0L, 0L); }
+    public int pciDevice() { return (int) VH_pciDevice.get(this.segment(), 0L, 0L); }
+    public int pciFunction() { return (int) VH_pciFunction.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDomainAt(long index, int value) { VH_pciDomain.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciBusAt(long index, int value) { VH_pciBus.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDeviceAt(long index, int value) { VH_pciDevice.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciFunctionAt(long index, int value) { VH_pciFunction.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDomain(int value) { VH_pciDomain.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciBus(int value) { VH_pciBus.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDevice(int value) { VH_pciDevice.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciFunction(int value) { VH_pciFunction.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _pciDomainAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pciDomain, index), LAYOUT_pciDomain); }
+    public MemorySegment _pciDomain() { return _pciDomainAt(0L); }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _pciDomainAt(long index, MemorySegment src) { _pciDomainAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _pciDomain(MemorySegment src) { return _pciDomainAt(0L, src); }
+    public MemorySegment _pciBusAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pciBus, index), LAYOUT_pciBus); }
+    public MemorySegment _pciBus() { return _pciBusAt(0L); }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _pciBusAt(long index, MemorySegment src) { _pciBusAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _pciBus(MemorySegment src) { return _pciBusAt(0L, src); }
+    public MemorySegment _pciDeviceAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pciDevice, index), LAYOUT_pciDevice); }
+    public MemorySegment _pciDevice() { return _pciDeviceAt(0L); }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _pciDeviceAt(long index, MemorySegment src) { _pciDeviceAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _pciDevice(MemorySegment src) { return _pciDeviceAt(0L, src); }
+    public MemorySegment _pciFunctionAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pciFunction, index), LAYOUT_pciFunction); }
+    public MemorySegment _pciFunction() { return _pciFunctionAt(0L); }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _pciFunctionAt(long index, MemorySegment src) { _pciFunctionAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT _pciFunction(MemorySegment src) { return _pciFunctionAt(0L, src); }
 }

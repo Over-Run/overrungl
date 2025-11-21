@@ -11,16 +11,15 @@ public final class VKMVKIosSurface {
     public static final int VK_MVK_IOS_SURFACE_SPEC_VERSION = 3;
     public static final String VK_MVK_IOS_SURFACE_EXTENSION_NAME = "VK_MVK_ios_surface";
     public static final int VK_STRUCTURE_TYPE_IOS_SURFACE_CREATE_INFO_MVK = 1000122000;
+    private VKMVKIosSurface() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateIOSSurfaceMVK = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKMVKIosSurface() {}
-
     /// Invokes `vkCreateIOSSurfaceMVK`.
     /// ```
-    /// (int) VkResult vkCreateIOSSurfaceMVK((struct VkInstance*) VkInstance instance, const VkIOSSurfaceCreateInfoMVK* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// VkResult vkCreateIOSSurfaceMVK(VkInstance instance, const VkIOSSurfaceCreateInfoMVK* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateIOSSurfaceMVK(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateIOSSurfaceMVK)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateIOSSurfaceMVK");

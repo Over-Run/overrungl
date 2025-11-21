@@ -9,8 +9,8 @@ public final class VulkanVideoCodecAv1std {
     public static final int STD_VIDEO_AV1_MAX_TILE_ROWS = 64;
     public static final int STD_VIDEO_AV1_MAX_SEGMENTS = 8;
     public static final int STD_VIDEO_AV1_SEG_LVL_MAX = 8;
-    public static final int STD_VIDEO_AV1_PRIMARY_REF_NONE = 7;
-    public static final int STD_VIDEO_AV1_SELECT_INTEGER_MV = 2;
+    public static final byte STD_VIDEO_AV1_PRIMARY_REF_NONE = (byte) 7;
+    public static final byte STD_VIDEO_AV1_SELECT_INTEGER_MV = (byte) 2;
     public static final int STD_VIDEO_AV1_SELECT_SCREEN_CONTENT_TOOLS = 2;
     public static final int STD_VIDEO_AV1_SKIP_MODE_FRAMES = 2;
     public static final int STD_VIDEO_AV1_MAX_LOOP_FILTER_STRENGTHS = 4;
@@ -83,7 +83,6 @@ public final class VulkanVideoCodecAv1std {
     public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_INVALID = 0x7FFFFFFF;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709 = 1;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED = 2;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED = 2;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M = 4;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G = 5;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_601 = 6;

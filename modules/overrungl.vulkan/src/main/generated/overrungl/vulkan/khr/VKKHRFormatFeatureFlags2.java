@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_format_feature_flags2` - device extension
 public final class VKKHRFormatFeatureFlags2 {
     public static final int VK_KHR_FORMAT_FEATURE_FLAGS_2_SPEC_VERSION = 2;
@@ -34,7 +37,5 @@ public final class VKKHRFormatFeatureFlags2 {
     public static final long VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT_KHR = 0x200000000L;
     public static final long VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_MINMAX_BIT_KHR = 0x00010000L;
     public static final long VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT = 0x00002000L;
-
     private VKKHRFormatFeatureFlags2() {}
-
 }

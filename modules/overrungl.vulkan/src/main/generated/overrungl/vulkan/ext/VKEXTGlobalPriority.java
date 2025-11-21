@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_EXT_global_priority` - device extension
 public final class VKEXTGlobalPriority {
     public static final int VK_EXT_GLOBAL_PRIORITY_SPEC_VERSION = 2;
@@ -12,7 +15,5 @@ public final class VKEXTGlobalPriority {
     public static final int VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT = 256;
     public static final int VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT = 512;
     public static final int VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT = 1024;
-
     private VKEXTGlobalPriority() {}
-
 }

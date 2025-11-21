@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.arm.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,16 +12,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDataGraphPipelinePropertyQueryResultARM {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (int) VkDataGraphPipelinePropertyARM property;
-///     (uint32_t) VkBool32 isText;
+///     VkDataGraphPipelinePropertyARM property;
+///     VkBool32 isText;
 ///     size_t dataSize;
 ///     void* pData;
-/// };
+/// }
 /// ```
 public final class VkDataGraphPipelinePropertyQueryResultARM extends GroupType {
-    /// The struct layout of `VkDataGraphPipelinePropertyQueryResultARM`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -31,254 +29,88 @@ public final class VkDataGraphPipelinePropertyQueryResultARM extends GroupType {
         CanonicalTypes.SIZE_T.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `property`.
     public static final long OFFSET_property = LAYOUT.byteOffset(PathElement.groupElement("property"));
-    /// The memory layout of `property`.
-    public static final MemoryLayout LAYOUT_property = LAYOUT.select(PathElement.groupElement("property"));
-    /// The [VarHandle] of `property` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_property = LAYOUT.arrayElementVarHandle(PathElement.groupElement("property"));
-    /// The byte offset of `isText`.
     public static final long OFFSET_isText = LAYOUT.byteOffset(PathElement.groupElement("isText"));
-    /// The memory layout of `isText`.
-    public static final MemoryLayout LAYOUT_isText = LAYOUT.select(PathElement.groupElement("isText"));
-    /// The [VarHandle] of `isText` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_isText = LAYOUT.arrayElementVarHandle(PathElement.groupElement("isText"));
-    /// The byte offset of `dataSize`.
     public static final long OFFSET_dataSize = LAYOUT.byteOffset(PathElement.groupElement("dataSize"));
-    /// The memory layout of `dataSize`.
-    public static final MemoryLayout LAYOUT_dataSize = LAYOUT.select(PathElement.groupElement("dataSize"));
-    /// The [VarHandle] of `dataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataSize"));
-    /// The byte offset of `pData`.
     public static final long OFFSET_pData = LAYOUT.byteOffset(PathElement.groupElement("pData"));
-    /// The memory layout of `pData`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_property = LAYOUT.select(PathElement.groupElement("property"));
+    public static final MemoryLayout LAYOUT_isText = LAYOUT.select(PathElement.groupElement("isText"));
+    public static final MemoryLayout LAYOUT_dataSize = LAYOUT.select(PathElement.groupElement("dataSize"));
     public static final MemoryLayout LAYOUT_pData = LAYOUT.select(PathElement.groupElement("pData"));
-    /// The [VarHandle] of `pData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_property = LAYOUT.arrayElementVarHandle(PathElement.groupElement("property"));
+    public static final VarHandle VH_isText = LAYOUT.arrayElementVarHandle(PathElement.groupElement("isText"));
+    public static final VarHandle VH_dataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataSize"));
     public static final VarHandle VH_pData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pData"));
 
-    /// Creates `VkDataGraphPipelinePropertyQueryResultARM` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkDataGraphPipelinePropertyQueryResultARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkDataGraphPipelinePropertyQueryResultARM` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDataGraphPipelinePropertyQueryResultARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelinePropertyQueryResultARM(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkDataGraphPipelinePropertyQueryResultARM` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDataGraphPipelinePropertyQueryResultARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelinePropertyQueryResultARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkDataGraphPipelinePropertyQueryResultARM` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDataGraphPipelinePropertyQueryResultARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelinePropertyQueryResultARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkDataGraphPipelinePropertyQueryResultARM` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDataGraphPipelinePropertyQueryResultARM`
     public static VkDataGraphPipelinePropertyQueryResultARM alloc(SegmentAllocator allocator) { return new VkDataGraphPipelinePropertyQueryResultARM(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkDataGraphPipelinePropertyQueryResultARM` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkDataGraphPipelinePropertyQueryResultARM`
     public static VkDataGraphPipelinePropertyQueryResultARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelinePropertyQueryResultARM(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkDataGraphPipelinePropertyQueryResultARM allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.arm.VKARMDataGraph.VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_PROPERTY_QUERY_RESULT_ARM); }
+    public static VkDataGraphPipelinePropertyQueryResultARM allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.arm.VKARMDataGraph.VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_PROPERTY_QUERY_RESULT_ARM);
+        return s;
+    }
     public VkDataGraphPipelinePropertyQueryResultARM copyFrom(VkDataGraphPipelinePropertyQueryResultARM src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkDataGraphPipelinePropertyQueryResultARM reinterpret(long count) { return new VkDataGraphPipelinePropertyQueryResultARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `property` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int property(MemorySegment segment, long index) { return (int) VH_property.get(segment, 0L, index); }
-    /// {@return `property`}
-    public int property() { return property(this.segment(), 0L); }
-    /// Sets `property` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void property(MemorySegment segment, long index, int value) { VH_property.set(segment, 0L, index, value); }
-    /// Sets `property` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM property(int value) { property(this.segment(), 0L, value); return this; }
-
-    /// {@return `isText` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int isText(MemorySegment segment, long index) { return (int) VH_isText.get(segment, 0L, index); }
-    /// {@return `isText`}
-    public int isText() { return isText(this.segment(), 0L); }
-    /// Sets `isText` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void isText(MemorySegment segment, long index, int value) { VH_isText.set(segment, 0L, index, value); }
-    /// Sets `isText` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM isText(int value) { isText(this.segment(), 0L, value); return this; }
-
-    /// {@return `dataSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long dataSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_dataSize.get(segment, 0L, index)); }
-    /// {@return `dataSize`}
-    public long dataSize() { return dataSize(this.segment(), 0L); }
-    /// Sets `dataSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dataSize(MemorySegment segment, long index, long value) { VH_dataSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
-    /// Sets `dataSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM dataSize(long value) { dataSize(this.segment(), 0L, value); return this; }
-
-    /// {@return `pData` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pData(MemorySegment segment, long index) { return (MemorySegment) VH_pData.get(segment, 0L, index); }
-    /// {@return `pData`}
-    public MemorySegment pData() { return pData(this.segment(), 0L); }
-    /// Sets `pData` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pData(MemorySegment segment, long index, MemorySegment value) { VH_pData.set(segment, 0L, index, value); }
-    /// Sets `pData` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM pData(MemorySegment value) { pData(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkDataGraphPipelinePropertyQueryResultARM`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDataGraphPipelinePropertyQueryResultARM`
     public VkDataGraphPipelinePropertyQueryResultARM asSlice(long index) { return new VkDataGraphPipelinePropertyQueryResultARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkDataGraphPipelinePropertyQueryResultARM`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDataGraphPipelinePropertyQueryResultARM`
     public VkDataGraphPipelinePropertyQueryResultARM asSlice(long index, long count) { return new VkDataGraphPipelinePropertyQueryResultARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkDataGraphPipelinePropertyQueryResultARM` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkDataGraphPipelinePropertyQueryResultARM at(long index, Consumer<VkDataGraphPipelinePropertyQueryResultARM> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `property` at the given index}
-    /// @param index the index of the struct buffer
-    public int propertyAt(long index) { return property(this.segment(), index); }
-    /// Sets `property` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM propertyAt(long index, int value) { property(this.segment(), index, value); return this; }
-
-    /// {@return `isText` at the given index}
-    /// @param index the index of the struct buffer
-    public int isTextAt(long index) { return isText(this.segment(), index); }
-    /// Sets `isText` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM isTextAt(long index, int value) { isText(this.segment(), index, value); return this; }
-
-    /// {@return `dataSize` at the given index}
-    /// @param index the index of the struct buffer
-    public long dataSizeAt(long index) { return dataSize(this.segment(), index); }
-    /// Sets `dataSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM dataSizeAt(long index, long value) { dataSize(this.segment(), index, value); return this; }
-
-    /// {@return `pData` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pDataAt(long index) { return pData(this.segment(), index); }
-    /// Sets `pData` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelinePropertyQueryResultARM pDataAt(long index, MemorySegment value) { pData(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int propertyAt(long index) { return (int) VH_property.get(this.segment(), 0L, index); }
+    public int isTextAt(long index) { return (int) VH_isText.get(this.segment(), 0L, index); }
+    public long dataSizeAt(long index) { return (long) VH_dataSize.get(this.segment(), 0L, index); }
+    public MemorySegment pDataAt(long index) { return (MemorySegment) VH_pData.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int property() { return (int) VH_property.get(this.segment(), 0L, 0L); }
+    public int isText() { return (int) VH_isText.get(this.segment(), 0L, 0L); }
+    public long dataSize() { return (long) VH_dataSize.get(this.segment(), 0L, 0L); }
+    public MemorySegment pData() { return (MemorySegment) VH_pData.get(this.segment(), 0L, 0L); }
+    public VkDataGraphPipelinePropertyQueryResultARM sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM propertyAt(long index, int value) { VH_property.set(this.segment(), 0L, index, value); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM isTextAt(long index, int value) { VH_isText.set(this.segment(), 0L, index, value); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM dataSizeAt(long index, long value) { VH_dataSize.set(this.segment(), 0L, index, value); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM pDataAt(long index, MemorySegment value) { VH_pData.set(this.segment(), 0L, index, value); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM property(int value) { VH_property.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM isText(int value) { VH_isText.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM dataSize(long value) { VH_dataSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM pData(MemorySegment value) { VH_pData.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkDataGraphPipelinePropertyQueryResultARM _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkDataGraphPipelinePropertyQueryResultARM _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _propertyAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_property, index), LAYOUT_property); }
+    public MemorySegment _property() { return _propertyAt(0L); }
+    public VkDataGraphPipelinePropertyQueryResultARM _propertyAt(long index, MemorySegment src) { _propertyAt(index).copyFrom(src); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM _property(MemorySegment src) { return _propertyAt(0L, src); }
+    public MemorySegment _isTextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_isText, index), LAYOUT_isText); }
+    public MemorySegment _isText() { return _isTextAt(0L); }
+    public VkDataGraphPipelinePropertyQueryResultARM _isTextAt(long index, MemorySegment src) { _isTextAt(index).copyFrom(src); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM _isText(MemorySegment src) { return _isTextAt(0L, src); }
+    public MemorySegment _dataSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dataSize, index), LAYOUT_dataSize); }
+    public MemorySegment _dataSize() { return _dataSizeAt(0L); }
+    public VkDataGraphPipelinePropertyQueryResultARM _dataSizeAt(long index, MemorySegment src) { _dataSizeAt(index).copyFrom(src); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM _dataSize(MemorySegment src) { return _dataSizeAt(0L, src); }
+    public MemorySegment _pDataAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pData, index), LAYOUT_pData); }
+    public MemorySegment _pData() { return _pDataAt(0L); }
+    public VkDataGraphPipelinePropertyQueryResultARM _pDataAt(long index, MemorySegment src) { _pDataAt(index).copyFrom(src); return this; }
+    public VkDataGraphPipelinePropertyQueryResultARM _pData(MemorySegment src) { return _pDataAt(0L, src); }
 }

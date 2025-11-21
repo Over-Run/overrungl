@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.valve.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,206 +12,79 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMutableDescriptorTypeCreateInfoVALVE {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t mutableDescriptorTypeListCount;
 ///     const VkMutableDescriptorTypeListEXT* pMutableDescriptorTypeLists;
-/// };
+/// }
 /// ```
 public final class VkMutableDescriptorTypeCreateInfoVALVE extends GroupType {
-    /// The struct layout of `VkMutableDescriptorTypeCreateInfoVALVE`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("mutableDescriptorTypeListCount"),
         ValueLayout.ADDRESS.withName("pMutableDescriptorTypeLists")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `mutableDescriptorTypeListCount`.
     public static final long OFFSET_mutableDescriptorTypeListCount = LAYOUT.byteOffset(PathElement.groupElement("mutableDescriptorTypeListCount"));
-    /// The memory layout of `mutableDescriptorTypeListCount`.
-    public static final MemoryLayout LAYOUT_mutableDescriptorTypeListCount = LAYOUT.select(PathElement.groupElement("mutableDescriptorTypeListCount"));
-    /// The [VarHandle] of `mutableDescriptorTypeListCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_mutableDescriptorTypeListCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mutableDescriptorTypeListCount"));
-    /// The byte offset of `pMutableDescriptorTypeLists`.
     public static final long OFFSET_pMutableDescriptorTypeLists = LAYOUT.byteOffset(PathElement.groupElement("pMutableDescriptorTypeLists"));
-    /// The memory layout of `pMutableDescriptorTypeLists`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_mutableDescriptorTypeListCount = LAYOUT.select(PathElement.groupElement("mutableDescriptorTypeListCount"));
     public static final MemoryLayout LAYOUT_pMutableDescriptorTypeLists = LAYOUT.select(PathElement.groupElement("pMutableDescriptorTypeLists"));
-    /// The [VarHandle] of `pMutableDescriptorTypeLists` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_mutableDescriptorTypeListCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mutableDescriptorTypeListCount"));
     public static final VarHandle VH_pMutableDescriptorTypeLists = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMutableDescriptorTypeLists"));
 
-    /// Creates `VkMutableDescriptorTypeCreateInfoVALVE` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkMutableDescriptorTypeCreateInfoVALVE(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkMutableDescriptorTypeCreateInfoVALVE` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMutableDescriptorTypeCreateInfoVALVE of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMutableDescriptorTypeCreateInfoVALVE(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkMutableDescriptorTypeCreateInfoVALVE` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMutableDescriptorTypeCreateInfoVALVE ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMutableDescriptorTypeCreateInfoVALVE(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkMutableDescriptorTypeCreateInfoVALVE` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMutableDescriptorTypeCreateInfoVALVE ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkMutableDescriptorTypeCreateInfoVALVE(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkMutableDescriptorTypeCreateInfoVALVE` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkMutableDescriptorTypeCreateInfoVALVE`
     public static VkMutableDescriptorTypeCreateInfoVALVE alloc(SegmentAllocator allocator) { return new VkMutableDescriptorTypeCreateInfoVALVE(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkMutableDescriptorTypeCreateInfoVALVE` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkMutableDescriptorTypeCreateInfoVALVE`
     public static VkMutableDescriptorTypeCreateInfoVALVE alloc(SegmentAllocator allocator, long count) { return new VkMutableDescriptorTypeCreateInfoVALVE(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkMutableDescriptorTypeCreateInfoVALVE allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTMutableDescriptorType.VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT); }
+    public static VkMutableDescriptorTypeCreateInfoVALVE allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTMutableDescriptorType.VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT);
+        return s;
+    }
     public VkMutableDescriptorTypeCreateInfoVALVE copyFrom(VkMutableDescriptorTypeCreateInfoVALVE src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkMutableDescriptorTypeCreateInfoVALVE reinterpret(long count) { return new VkMutableDescriptorTypeCreateInfoVALVE(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeCreateInfoVALVE sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeCreateInfoVALVE pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `mutableDescriptorTypeListCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int mutableDescriptorTypeListCount(MemorySegment segment, long index) { return (int) VH_mutableDescriptorTypeListCount.get(segment, 0L, index); }
-    /// {@return `mutableDescriptorTypeListCount`}
-    public int mutableDescriptorTypeListCount() { return mutableDescriptorTypeListCount(this.segment(), 0L); }
-    /// Sets `mutableDescriptorTypeListCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void mutableDescriptorTypeListCount(MemorySegment segment, long index, int value) { VH_mutableDescriptorTypeListCount.set(segment, 0L, index, value); }
-    /// Sets `mutableDescriptorTypeListCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeCreateInfoVALVE mutableDescriptorTypeListCount(int value) { mutableDescriptorTypeListCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pMutableDescriptorTypeLists` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pMutableDescriptorTypeLists(MemorySegment segment, long index) { return (MemorySegment) VH_pMutableDescriptorTypeLists.get(segment, 0L, index); }
-    /// {@return `pMutableDescriptorTypeLists`}
-    public MemorySegment pMutableDescriptorTypeLists() { return pMutableDescriptorTypeLists(this.segment(), 0L); }
-    /// Sets `pMutableDescriptorTypeLists` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pMutableDescriptorTypeLists(MemorySegment segment, long index, MemorySegment value) { VH_pMutableDescriptorTypeLists.set(segment, 0L, index, value); }
-    /// Sets `pMutableDescriptorTypeLists` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeCreateInfoVALVE pMutableDescriptorTypeLists(MemorySegment value) { pMutableDescriptorTypeLists(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkMutableDescriptorTypeCreateInfoVALVE`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkMutableDescriptorTypeCreateInfoVALVE`
     public VkMutableDescriptorTypeCreateInfoVALVE asSlice(long index) { return new VkMutableDescriptorTypeCreateInfoVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkMutableDescriptorTypeCreateInfoVALVE`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkMutableDescriptorTypeCreateInfoVALVE`
     public VkMutableDescriptorTypeCreateInfoVALVE asSlice(long index, long count) { return new VkMutableDescriptorTypeCreateInfoVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkMutableDescriptorTypeCreateInfoVALVE` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkMutableDescriptorTypeCreateInfoVALVE at(long index, Consumer<VkMutableDescriptorTypeCreateInfoVALVE> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeCreateInfoVALVE sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeCreateInfoVALVE pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `mutableDescriptorTypeListCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int mutableDescriptorTypeListCountAt(long index) { return mutableDescriptorTypeListCount(this.segment(), index); }
-    /// Sets `mutableDescriptorTypeListCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeCreateInfoVALVE mutableDescriptorTypeListCountAt(long index, int value) { mutableDescriptorTypeListCount(this.segment(), index, value); return this; }
-
-    /// {@return `pMutableDescriptorTypeLists` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pMutableDescriptorTypeListsAt(long index) { return pMutableDescriptorTypeLists(this.segment(), index); }
-    /// Sets `pMutableDescriptorTypeLists` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeCreateInfoVALVE pMutableDescriptorTypeListsAt(long index, MemorySegment value) { pMutableDescriptorTypeLists(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int mutableDescriptorTypeListCountAt(long index) { return (int) VH_mutableDescriptorTypeListCount.get(this.segment(), 0L, index); }
+    public MemorySegment pMutableDescriptorTypeListsAt(long index) { return (MemorySegment) VH_pMutableDescriptorTypeLists.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int mutableDescriptorTypeListCount() { return (int) VH_mutableDescriptorTypeListCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pMutableDescriptorTypeLists() { return (MemorySegment) VH_pMutableDescriptorTypeLists.get(this.segment(), 0L, 0L); }
+    public VkMutableDescriptorTypeCreateInfoVALVE sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkMutableDescriptorTypeCreateInfoVALVE pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkMutableDescriptorTypeCreateInfoVALVE mutableDescriptorTypeListCountAt(long index, int value) { VH_mutableDescriptorTypeListCount.set(this.segment(), 0L, index, value); return this; }
+    public VkMutableDescriptorTypeCreateInfoVALVE pMutableDescriptorTypeListsAt(long index, MemorySegment value) { VH_pMutableDescriptorTypeLists.set(this.segment(), 0L, index, value); return this; }
+    public VkMutableDescriptorTypeCreateInfoVALVE sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMutableDescriptorTypeCreateInfoVALVE pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMutableDescriptorTypeCreateInfoVALVE mutableDescriptorTypeListCount(int value) { VH_mutableDescriptorTypeListCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMutableDescriptorTypeCreateInfoVALVE pMutableDescriptorTypeLists(MemorySegment value) { VH_pMutableDescriptorTypeLists.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkMutableDescriptorTypeCreateInfoVALVE _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkMutableDescriptorTypeCreateInfoVALVE _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkMutableDescriptorTypeCreateInfoVALVE _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkMutableDescriptorTypeCreateInfoVALVE _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _mutableDescriptorTypeListCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_mutableDescriptorTypeListCount, index), LAYOUT_mutableDescriptorTypeListCount); }
+    public MemorySegment _mutableDescriptorTypeListCount() { return _mutableDescriptorTypeListCountAt(0L); }
+    public VkMutableDescriptorTypeCreateInfoVALVE _mutableDescriptorTypeListCountAt(long index, MemorySegment src) { _mutableDescriptorTypeListCountAt(index).copyFrom(src); return this; }
+    public VkMutableDescriptorTypeCreateInfoVALVE _mutableDescriptorTypeListCount(MemorySegment src) { return _mutableDescriptorTypeListCountAt(0L, src); }
+    public MemorySegment _pMutableDescriptorTypeListsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pMutableDescriptorTypeLists, index), LAYOUT_pMutableDescriptorTypeLists); }
+    public MemorySegment _pMutableDescriptorTypeLists() { return _pMutableDescriptorTypeListsAt(0L); }
+    public VkMutableDescriptorTypeCreateInfoVALVE _pMutableDescriptorTypeListsAt(long index, MemorySegment src) { _pMutableDescriptorTypeListsAt(index).copyFrom(src); return this; }
+    public VkMutableDescriptorTypeCreateInfoVALVE _pMutableDescriptorTypeLists(MemorySegment src) { return _pMutableDescriptorTypeListsAt(0L, src); }
 }

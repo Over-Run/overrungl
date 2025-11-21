@@ -12,17 +12,16 @@ public final class VKKHRExternalFenceFd {
     public static final String VK_KHR_EXTERNAL_FENCE_FD_EXTENSION_NAME = "VK_KHR_external_fence_fd";
     public static final int VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR = 1000115000;
     public static final int VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR = 1000115001;
+    private VKKHRExternalFenceFd() {}
     public static final class Handles {
         public static final MethodHandle MH_vkImportFenceFdKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetFenceFdKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRExternalFenceFd() {}
-
     /// Invokes `vkImportFenceFdKHR`.
     /// ```
-    /// (int) VkResult vkImportFenceFdKHR((struct VkDevice*) VkDevice device, const VkImportFenceFdInfoKHR* pImportFenceFdInfo);
+    /// VkResult vkImportFenceFdKHR(VkDevice device, const VkImportFenceFdInfoKHR* pImportFenceFdInfo);
     /// ```
     public static int vkImportFenceFdKHR(@NonNull VkDevice device, @NonNull MemorySegment pImportFenceFdInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportFenceFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkImportFenceFdKHR");
@@ -33,7 +32,7 @@ public final class VKKHRExternalFenceFd {
 
     /// Invokes `vkGetFenceFdKHR`.
     /// ```
-    /// (int) VkResult vkGetFenceFdKHR((struct VkDevice*) VkDevice device, const VkFenceGetFdInfoKHR* pGetFdInfo, int* pFd);
+    /// VkResult vkGetFenceFdKHR(VkDevice device, const VkFenceGetFdInfoKHR* pGetFdInfo, int* pFd);
     /// ```
     public static int vkGetFenceFdKHR(@NonNull VkDevice device, @NonNull MemorySegment pGetFdInfo, @NonNull MemorySegment pFd) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetFenceFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetFenceFdKHR");

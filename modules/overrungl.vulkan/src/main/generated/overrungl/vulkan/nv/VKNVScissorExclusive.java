@@ -14,17 +14,16 @@ public final class VKNVScissorExclusive {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV = 1000205002;
     public static final int VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV = 1000205000;
     public static final int VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV = 1000205001;
+    private VKNVScissorExclusive() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetExclusiveScissorEnableNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdSetExclusiveScissorNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKNVScissorExclusive() {}
-
     /// Invokes `vkCmdSetExclusiveScissorEnableNV`.
     /// ```
-    /// void vkCmdSetExclusiveScissorEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstExclusiveScissor, uint32_t exclusiveScissorCount, const VkBool32* pExclusiveScissorEnables);
+    /// void vkCmdSetExclusiveScissorEnableNV(VkCommandBuffer commandBuffer, uint32_t firstExclusiveScissor, uint32_t exclusiveScissorCount, const VkBool32* pExclusiveScissorEnables);
     /// ```
     public static void vkCmdSetExclusiveScissorEnableNV(@NonNull VkCommandBuffer commandBuffer, int firstExclusiveScissor, int exclusiveScissorCount, @NonNull MemorySegment pExclusiveScissorEnables) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorEnableNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorEnableNV");
@@ -35,7 +34,7 @@ public final class VKNVScissorExclusive {
 
     /// Invokes `vkCmdSetExclusiveScissorNV`.
     /// ```
-    /// void vkCmdSetExclusiveScissorNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstExclusiveScissor, uint32_t exclusiveScissorCount, const VkRect2D* pExclusiveScissors);
+    /// void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint32_t firstExclusiveScissor, uint32_t exclusiveScissorCount, const VkRect2D* pExclusiveScissors);
     /// ```
     public static void vkCmdSetExclusiveScissorNV(@NonNull VkCommandBuffer commandBuffer, int firstExclusiveScissor, int exclusiveScissorCount, @NonNull MemorySegment pExclusiveScissors) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorNV");

@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,173 +12,66 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkShaderRequiredSubgroupSizeCreateInfoEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t requiredSubgroupSize;
-/// };
+/// }
 /// ```
 public final class VkShaderRequiredSubgroupSizeCreateInfoEXT extends GroupType {
-    /// The struct layout of `VkShaderRequiredSubgroupSizeCreateInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("requiredSubgroupSize")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `requiredSubgroupSize`.
     public static final long OFFSET_requiredSubgroupSize = LAYOUT.byteOffset(PathElement.groupElement("requiredSubgroupSize"));
-    /// The memory layout of `requiredSubgroupSize`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_requiredSubgroupSize = LAYOUT.select(PathElement.groupElement("requiredSubgroupSize"));
-    /// The [VarHandle] of `requiredSubgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     public static final VarHandle VH_requiredSubgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiredSubgroupSize"));
 
-    /// Creates `VkShaderRequiredSubgroupSizeCreateInfoEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkShaderRequiredSubgroupSizeCreateInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkShaderRequiredSubgroupSizeCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkShaderRequiredSubgroupSizeCreateInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkShaderRequiredSubgroupSizeCreateInfoEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkShaderRequiredSubgroupSizeCreateInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkShaderRequiredSubgroupSizeCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkShaderRequiredSubgroupSizeCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkShaderRequiredSubgroupSizeCreateInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkShaderRequiredSubgroupSizeCreateInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkShaderRequiredSubgroupSizeCreateInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkShaderRequiredSubgroupSizeCreateInfoEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkShaderRequiredSubgroupSizeCreateInfoEXT`
     public static VkShaderRequiredSubgroupSizeCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkShaderRequiredSubgroupSizeCreateInfoEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkShaderRequiredSubgroupSizeCreateInfoEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkShaderRequiredSubgroupSizeCreateInfoEXT`
     public static VkShaderRequiredSubgroupSizeCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkShaderRequiredSubgroupSizeCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkShaderRequiredSubgroupSizeCreateInfoEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK13.VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO); }
+    public static VkShaderRequiredSubgroupSizeCreateInfoEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK13.VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO);
+        return s;
+    }
     public VkShaderRequiredSubgroupSizeCreateInfoEXT copyFrom(VkShaderRequiredSubgroupSizeCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkShaderRequiredSubgroupSizeCreateInfoEXT reinterpret(long count) { return new VkShaderRequiredSubgroupSizeCreateInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkShaderRequiredSubgroupSizeCreateInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkShaderRequiredSubgroupSizeCreateInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `requiredSubgroupSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int requiredSubgroupSize(MemorySegment segment, long index) { return (int) VH_requiredSubgroupSize.get(segment, 0L, index); }
-    /// {@return `requiredSubgroupSize`}
-    public int requiredSubgroupSize() { return requiredSubgroupSize(this.segment(), 0L); }
-    /// Sets `requiredSubgroupSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void requiredSubgroupSize(MemorySegment segment, long index, int value) { VH_requiredSubgroupSize.set(segment, 0L, index, value); }
-    /// Sets `requiredSubgroupSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkShaderRequiredSubgroupSizeCreateInfoEXT requiredSubgroupSize(int value) { requiredSubgroupSize(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkShaderRequiredSubgroupSizeCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkShaderRequiredSubgroupSizeCreateInfoEXT`
     public VkShaderRequiredSubgroupSizeCreateInfoEXT asSlice(long index) { return new VkShaderRequiredSubgroupSizeCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkShaderRequiredSubgroupSizeCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkShaderRequiredSubgroupSizeCreateInfoEXT`
     public VkShaderRequiredSubgroupSizeCreateInfoEXT asSlice(long index, long count) { return new VkShaderRequiredSubgroupSizeCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkShaderRequiredSubgroupSizeCreateInfoEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkShaderRequiredSubgroupSizeCreateInfoEXT at(long index, Consumer<VkShaderRequiredSubgroupSizeCreateInfoEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkShaderRequiredSubgroupSizeCreateInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkShaderRequiredSubgroupSizeCreateInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `requiredSubgroupSize` at the given index}
-    /// @param index the index of the struct buffer
-    public int requiredSubgroupSizeAt(long index) { return requiredSubgroupSize(this.segment(), index); }
-    /// Sets `requiredSubgroupSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkShaderRequiredSubgroupSizeCreateInfoEXT requiredSubgroupSizeAt(long index, int value) { requiredSubgroupSize(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int requiredSubgroupSizeAt(long index) { return (int) VH_requiredSubgroupSize.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int requiredSubgroupSize() { return (int) VH_requiredSubgroupSize.get(this.segment(), 0L, 0L); }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT requiredSubgroupSizeAt(long index, int value) { VH_requiredSubgroupSize.set(this.segment(), 0L, index, value); return this; }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT requiredSubgroupSize(int value) { VH_requiredSubgroupSize.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _requiredSubgroupSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_requiredSubgroupSize, index), LAYOUT_requiredSubgroupSize); }
+    public MemorySegment _requiredSubgroupSize() { return _requiredSubgroupSizeAt(0L); }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT _requiredSubgroupSizeAt(long index, MemorySegment src) { _requiredSubgroupSizeAt(index).copyFrom(src); return this; }
+    public VkShaderRequiredSubgroupSizeCreateInfoEXT _requiredSubgroupSize(MemorySegment src) { return _requiredSubgroupSizeAt(0L, src); }
 }

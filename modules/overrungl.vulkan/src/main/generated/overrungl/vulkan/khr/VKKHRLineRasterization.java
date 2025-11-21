@@ -18,16 +18,15 @@ public final class VKKHRLineRasterization {
     public static final int VK_LINE_RASTERIZATION_MODE_RECTANGULAR_KHR = 1;
     public static final int VK_LINE_RASTERIZATION_MODE_BRESENHAM_KHR = 2;
     public static final int VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_KHR = 3;
+    private VKKHRLineRasterization() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetLineStippleKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT));
         private Handles() {}
     }
 
-    private VKKHRLineRasterization() {}
-
     /// Invokes `vkCmdSetLineStippleKHR`.
     /// ```
-    /// void vkCmdSetLineStippleKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t lineStippleFactor, uint16_t lineStipplePattern);
+    /// void vkCmdSetLineStippleKHR(VkCommandBuffer commandBuffer, uint32_t lineStippleFactor, uint16_t lineStipplePattern);
     /// ```
     public static void vkCmdSetLineStippleKHR(@NonNull VkCommandBuffer commandBuffer, int lineStippleFactor, short lineStipplePattern) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineStippleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetLineStippleKHR");

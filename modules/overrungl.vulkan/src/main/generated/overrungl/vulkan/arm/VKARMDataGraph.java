@@ -8,6 +8,9 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_ARM_data_graph` - device extension
 public final class VKARMDataGraph {
+    public static final int VK_ARM_DATA_GRAPH_SPEC_VERSION = 1;
+    public static final String VK_ARM_DATA_GRAPH_EXTENSION_NAME = "VK_ARM_data_graph";
+    public static final int VK_MAX_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_SET_NAME_SIZE_ARM = 128;
     public static final int VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM = 0;
     public static final int VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ARM = 0;
     public static final long VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM = 0x00000001L;
@@ -15,8 +18,6 @@ public final class VKARMDataGraph {
     public static final int VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ARM = 1;
     public static final int VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_DEFAULT_ARM = 0;
     public static final int VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_SPIRV_EXTENDED_INSTRUCTION_SET_ARM = 0;
-    public static final int VK_ARM_DATA_GRAPH_SPEC_VERSION = 1;
-    public static final String VK_ARM_DATA_GRAPH_EXTENSION_NAME = "VK_ARM_data_graph";
     public static final int VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CREATE_INFO_ARM = 1000507000;
     public static final int VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_CREATE_INFO_ARM = 1000507001;
     public static final int VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_ARM = 1000507002;
@@ -45,8 +46,8 @@ public final class VKARMDataGraph {
     public static final long VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM = 0x00000020L;
     public static final long VK_FORMAT_FEATURE_2_TENSOR_DATA_GRAPH_BIT_ARM = 0x1000000000000L;
     public static final long VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM = 0x20000000L;
-    public static final int VK_MAX_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_SET_NAME_SIZE_ARM = 128;
     public static final int VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM = 1000507015;
+    private VKARMDataGraph() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateDataGraphPipelinesARM = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCreateDataGraphPipelineSessionARM = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -62,11 +63,9 @@ public final class VKARMDataGraph {
         private Handles() {}
     }
 
-    private VKARMDataGraph() {}
-
     /// Invokes `vkCreateDataGraphPipelinesARM`.
     /// ```
-    /// (int) VkResult vkCreateDataGraphPipelinesARM((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR deferredOperation, (uint64_t) VkPipelineCache pipelineCache, uint32_t createInfoCount, const VkDataGraphPipelineCreateInfoARM* pCreateInfos, const VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
+    /// VkResult vkCreateDataGraphPipelinesARM(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint32_t createInfoCount, const VkDataGraphPipelineCreateInfoARM* pCreateInfos, const VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
     /// ```
     public static int vkCreateDataGraphPipelinesARM(@NonNull VkDevice device, long deferredOperation, long pipelineCache, int createInfoCount, @NonNull MemorySegment pCreateInfos, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pPipelines) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateDataGraphPipelinesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDataGraphPipelinesARM");
@@ -77,7 +76,7 @@ public final class VKARMDataGraph {
 
     /// Invokes `vkCreateDataGraphPipelineSessionARM`.
     /// ```
-    /// (int) VkResult vkCreateDataGraphPipelineSessionARM((struct VkDevice*) VkDevice device, const VkDataGraphPipelineSessionCreateInfoARM* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDataGraphPipelineSessionARM* pSession);
+    /// VkResult vkCreateDataGraphPipelineSessionARM(VkDevice device, const VkDataGraphPipelineSessionCreateInfoARM* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDataGraphPipelineSessionARM* pSession);
     /// ```
     public static int vkCreateDataGraphPipelineSessionARM(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSession) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateDataGraphPipelineSessionARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDataGraphPipelineSessionARM");
@@ -88,7 +87,7 @@ public final class VKARMDataGraph {
 
     /// Invokes `vkGetDataGraphPipelineSessionBindPointRequirementsARM`.
     /// ```
-    /// (int) VkResult vkGetDataGraphPipelineSessionBindPointRequirementsARM((struct VkDevice*) VkDevice device, const VkDataGraphPipelineSessionBindPointRequirementsInfoARM* pInfo, uint32_t* pBindPointRequirementCount, VkDataGraphPipelineSessionBindPointRequirementARM* pBindPointRequirements);
+    /// VkResult vkGetDataGraphPipelineSessionBindPointRequirementsARM(VkDevice device, const VkDataGraphPipelineSessionBindPointRequirementsInfoARM* pInfo, uint32_t* pBindPointRequirementCount, VkDataGraphPipelineSessionBindPointRequirementARM* pBindPointRequirements);
     /// ```
     public static int vkGetDataGraphPipelineSessionBindPointRequirementsARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pBindPointRequirementCount, @NonNull MemorySegment pBindPointRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDataGraphPipelineSessionBindPointRequirementsARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDataGraphPipelineSessionBindPointRequirementsARM");
@@ -99,7 +98,7 @@ public final class VKARMDataGraph {
 
     /// Invokes `vkGetDataGraphPipelineSessionMemoryRequirementsARM`.
     /// ```
-    /// void vkGetDataGraphPipelineSessionMemoryRequirementsARM((struct VkDevice*) VkDevice device, const VkDataGraphPipelineSessionMemoryRequirementsInfoARM* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// void vkGetDataGraphPipelineSessionMemoryRequirementsARM(VkDevice device, const VkDataGraphPipelineSessionMemoryRequirementsInfoARM* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
     public static void vkGetDataGraphPipelineSessionMemoryRequirementsARM(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDataGraphPipelineSessionMemoryRequirementsARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDataGraphPipelineSessionMemoryRequirementsARM");
@@ -110,7 +109,7 @@ public final class VKARMDataGraph {
 
     /// Invokes `vkBindDataGraphPipelineSessionMemoryARM`.
     /// ```
-    /// (int) VkResult vkBindDataGraphPipelineSessionMemoryARM((struct VkDevice*) VkDevice device, uint32_t bindInfoCount, const VkBindDataGraphPipelineSessionMemoryInfoARM* pBindInfos);
+    /// VkResult vkBindDataGraphPipelineSessionMemoryARM(VkDevice device, uint32_t bindInfoCount, const VkBindDataGraphPipelineSessionMemoryInfoARM* pBindInfos);
     /// ```
     public static int vkBindDataGraphPipelineSessionMemoryARM(@NonNull VkDevice device, int bindInfoCount, @NonNull MemorySegment pBindInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindDataGraphPipelineSessionMemoryARM)) throw new VKSymbolNotFoundError("Symbol not found: vkBindDataGraphPipelineSessionMemoryARM");
@@ -121,7 +120,7 @@ public final class VKARMDataGraph {
 
     /// Invokes `vkDestroyDataGraphPipelineSessionARM`.
     /// ```
-    /// void vkDestroyDataGraphPipelineSessionARM((struct VkDevice*) VkDevice device, (uint64_t) VkDataGraphPipelineSessionARM session, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroyDataGraphPipelineSessionARM(VkDevice device, VkDataGraphPipelineSessionARM session, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyDataGraphPipelineSessionARM(@NonNull VkDevice device, long session, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyDataGraphPipelineSessionARM)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyDataGraphPipelineSessionARM");
@@ -132,7 +131,7 @@ public final class VKARMDataGraph {
 
     /// Invokes `vkCmdDispatchDataGraphARM`.
     /// ```
-    /// void vkCmdDispatchDataGraphARM((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDataGraphPipelineSessionARM session, const VkDataGraphPipelineDispatchInfoARM* pInfo);
+    /// void vkCmdDispatchDataGraphARM(VkCommandBuffer commandBuffer, VkDataGraphPipelineSessionARM session, const VkDataGraphPipelineDispatchInfoARM* pInfo);
     /// ```
     public static void vkCmdDispatchDataGraphARM(@NonNull VkCommandBuffer commandBuffer, long session, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDispatchDataGraphARM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDispatchDataGraphARM");
@@ -143,7 +142,7 @@ public final class VKARMDataGraph {
 
     /// Invokes `vkGetDataGraphPipelineAvailablePropertiesARM`.
     /// ```
-    /// (int) VkResult vkGetDataGraphPipelineAvailablePropertiesARM((struct VkDevice*) VkDevice device, const VkDataGraphPipelineInfoARM* pPipelineInfo, uint32_t* pPropertiesCount, VkDataGraphPipelinePropertyARM* pProperties);
+    /// VkResult vkGetDataGraphPipelineAvailablePropertiesARM(VkDevice device, const VkDataGraphPipelineInfoARM* pPipelineInfo, uint32_t* pPropertiesCount, VkDataGraphPipelinePropertyARM* pProperties);
     /// ```
     public static int vkGetDataGraphPipelineAvailablePropertiesARM(@NonNull VkDevice device, @NonNull MemorySegment pPipelineInfo, @NonNull MemorySegment pPropertiesCount, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDataGraphPipelineAvailablePropertiesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDataGraphPipelineAvailablePropertiesARM");
@@ -154,7 +153,7 @@ public final class VKARMDataGraph {
 
     /// Invokes `vkGetDataGraphPipelinePropertiesARM`.
     /// ```
-    /// (int) VkResult vkGetDataGraphPipelinePropertiesARM((struct VkDevice*) VkDevice device, const VkDataGraphPipelineInfoARM* pPipelineInfo, uint32_t propertiesCount, VkDataGraphPipelinePropertyQueryResultARM* pProperties);
+    /// VkResult vkGetDataGraphPipelinePropertiesARM(VkDevice device, const VkDataGraphPipelineInfoARM* pPipelineInfo, uint32_t propertiesCount, VkDataGraphPipelinePropertyQueryResultARM* pProperties);
     /// ```
     public static int vkGetDataGraphPipelinePropertiesARM(@NonNull VkDevice device, @NonNull MemorySegment pPipelineInfo, int propertiesCount, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDataGraphPipelinePropertiesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDataGraphPipelinePropertiesARM");
@@ -165,7 +164,7 @@ public final class VKARMDataGraph {
 
     /// Invokes `vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, uint32_t* pQueueFamilyDataGraphPropertyCount, VkQueueFamilyDataGraphPropertiesARM* pQueueFamilyDataGraphProperties);
+    /// VkResult vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, uint32_t* pQueueFamilyDataGraphPropertyCount, VkQueueFamilyDataGraphPropertiesARM* pQueueFamilyDataGraphProperties);
     /// ```
     public static int vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM(@NonNull VkPhysicalDevice physicalDevice, int queueFamilyIndex, @NonNull MemorySegment pQueueFamilyDataGraphPropertyCount, @NonNull MemorySegment pQueueFamilyDataGraphProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM");
@@ -176,7 +175,7 @@ public final class VKARMDataGraph {
 
     /// Invokes `vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM`.
     /// ```
-    /// void vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* pQueueFamilyDataGraphProcessingEngineInfo, VkQueueFamilyDataGraphProcessingEnginePropertiesARM* pQueueFamilyDataGraphProcessingEngineProperties);
+    /// void vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* pQueueFamilyDataGraphProcessingEngineInfo, VkQueueFamilyDataGraphProcessingEnginePropertiesARM* pQueueFamilyDataGraphProcessingEngineProperties);
     /// ```
     public static void vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pQueueFamilyDataGraphProcessingEngineInfo, @NonNull MemorySegment pQueueFamilyDataGraphProcessingEngineProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM");

@@ -14,6 +14,7 @@ public final class VKEXTPrivateData {
     public static final int VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO_EXT = 1000295001;
     public static final int VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO_EXT = 1000295002;
     public static final int VK_OBJECT_TYPE_PRIVATE_DATA_SLOT_EXT = 1000295000;
+    private VKEXTPrivateData() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreatePrivateDataSlotEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkDestroyPrivateDataSlotEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
@@ -22,11 +23,9 @@ public final class VKEXTPrivateData {
         private Handles() {}
     }
 
-    private VKEXTPrivateData() {}
-
     /// Invokes `vkCreatePrivateDataSlotEXT`.
     /// ```
-    /// (int) VkResult vkCreatePrivateDataSlotEXT((struct VkDevice*) VkDevice device, const VkPrivateDataSlotCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkPrivateDataSlot* pPrivateDataSlot);
+    /// VkResult vkCreatePrivateDataSlotEXT(VkDevice device, const VkPrivateDataSlotCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkPrivateDataSlot* pPrivateDataSlot);
     /// ```
     public static int vkCreatePrivateDataSlotEXT(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pPrivateDataSlot) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreatePrivateDataSlotEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreatePrivateDataSlotEXT");
@@ -37,7 +36,7 @@ public final class VKEXTPrivateData {
 
     /// Invokes `vkDestroyPrivateDataSlotEXT`.
     /// ```
-    /// void vkDestroyPrivateDataSlotEXT((struct VkDevice*) VkDevice device, (uint64_t) VkPrivateDataSlot privateDataSlot, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlot privateDataSlot, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyPrivateDataSlotEXT(@NonNull VkDevice device, long privateDataSlot, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyPrivateDataSlotEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyPrivateDataSlotEXT");
@@ -48,7 +47,7 @@ public final class VKEXTPrivateData {
 
     /// Invokes `vkSetPrivateDataEXT`.
     /// ```
-    /// (int) VkResult vkSetPrivateDataEXT((struct VkDevice*) VkDevice device, (int) VkObjectType objectType, uint64_t objectHandle, (uint64_t) VkPrivateDataSlot privateDataSlot, uint64_t data);
+    /// VkResult vkSetPrivateDataEXT(VkDevice device, VkObjectType objectType, uint64_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t data);
     /// ```
     public static int vkSetPrivateDataEXT(@NonNull VkDevice device, int objectType, long objectHandle, long privateDataSlot, long data) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetPrivateDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetPrivateDataEXT");
@@ -59,7 +58,7 @@ public final class VKEXTPrivateData {
 
     /// Invokes `vkGetPrivateDataEXT`.
     /// ```
-    /// void vkGetPrivateDataEXT((struct VkDevice*) VkDevice device, (int) VkObjectType objectType, uint64_t objectHandle, (uint64_t) VkPrivateDataSlot privateDataSlot, uint64_t* pData);
+    /// void vkGetPrivateDataEXT(VkDevice device, VkObjectType objectType, uint64_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t* pData);
     /// ```
     public static void vkGetPrivateDataEXT(@NonNull VkDevice device, int objectType, long objectHandle, long privateDataSlot, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPrivateDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPrivateDataEXT");

@@ -8,12 +8,13 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_EXT_validation_cache` - device extension
 public final class VKEXTValidationCache {
-    public static final int VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT = 1;
     public static final int VK_EXT_VALIDATION_CACHE_SPEC_VERSION = 1;
     public static final String VK_EXT_VALIDATION_CACHE_EXTENSION_NAME = "VK_EXT_validation_cache";
+    public static final int VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT = 1;
     public static final int VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT = 1000160000;
     public static final int VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT = 1000160001;
     public static final int VK_OBJECT_TYPE_VALIDATION_CACHE_EXT = 1000160000;
+    private VKEXTValidationCache() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateValidationCacheEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkDestroyValidationCacheEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
@@ -22,11 +23,9 @@ public final class VKEXTValidationCache {
         private Handles() {}
     }
 
-    private VKEXTValidationCache() {}
-
     /// Invokes `vkCreateValidationCacheEXT`.
     /// ```
-    /// (int) VkResult vkCreateValidationCacheEXT((struct VkDevice*) VkDevice device, const VkValidationCacheCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkValidationCacheEXT* pValidationCache);
+    /// VkResult vkCreateValidationCacheEXT(VkDevice device, const VkValidationCacheCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkValidationCacheEXT* pValidationCache);
     /// ```
     public static int vkCreateValidationCacheEXT(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pValidationCache) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateValidationCacheEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateValidationCacheEXT");
@@ -37,7 +36,7 @@ public final class VKEXTValidationCache {
 
     /// Invokes `vkDestroyValidationCacheEXT`.
     /// ```
-    /// void vkDestroyValidationCacheEXT((struct VkDevice*) VkDevice device, (uint64_t) VkValidationCacheEXT validationCache, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroyValidationCacheEXT(VkDevice device, VkValidationCacheEXT validationCache, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyValidationCacheEXT(@NonNull VkDevice device, long validationCache, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyValidationCacheEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyValidationCacheEXT");
@@ -48,7 +47,7 @@ public final class VKEXTValidationCache {
 
     /// Invokes `vkMergeValidationCachesEXT`.
     /// ```
-    /// (int) VkResult vkMergeValidationCachesEXT((struct VkDevice*) VkDevice device, (uint64_t) VkValidationCacheEXT dstCache, uint32_t srcCacheCount, const VkValidationCacheEXT* pSrcCaches);
+    /// VkResult vkMergeValidationCachesEXT(VkDevice device, VkValidationCacheEXT dstCache, uint32_t srcCacheCount, const VkValidationCacheEXT* pSrcCaches);
     /// ```
     public static int vkMergeValidationCachesEXT(@NonNull VkDevice device, long dstCache, int srcCacheCount, @NonNull MemorySegment pSrcCaches) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkMergeValidationCachesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkMergeValidationCachesEXT");
@@ -59,7 +58,7 @@ public final class VKEXTValidationCache {
 
     /// Invokes `vkGetValidationCacheDataEXT`.
     /// ```
-    /// (int) VkResult vkGetValidationCacheDataEXT((struct VkDevice*) VkDevice device, (uint64_t) VkValidationCacheEXT validationCache, size_t* pDataSize, void* pData);
+    /// VkResult vkGetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, size_t* pDataSize, void* pData);
     /// ```
     public static int vkGetValidationCacheDataEXT(@NonNull VkDevice device, long validationCache, @NonNull MemorySegment pDataSize, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetValidationCacheDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetValidationCacheDataEXT");

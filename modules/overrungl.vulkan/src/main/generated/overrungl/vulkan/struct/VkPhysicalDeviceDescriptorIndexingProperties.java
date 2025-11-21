@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,16 +12,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDescriptorIndexingProperties {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxUpdateAfterBindDescriptorsInAllPools;
-///     (uint32_t) VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
-///     (uint32_t) VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
-///     (uint32_t) VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
-///     (uint32_t) VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
-///     (uint32_t) VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
-///     (uint32_t) VkBool32 robustBufferAccessUpdateAfterBind;
-///     (uint32_t) VkBool32 quadDivergentImplicitLod;
+///     VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
+///     VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
+///     VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
+///     VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
+///     VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
+///     VkBool32 robustBufferAccessUpdateAfterBind;
+///     VkBool32 quadDivergentImplicitLod;
 ///     uint32_t maxPerStageDescriptorUpdateAfterBindSamplers;
 ///     uint32_t maxPerStageDescriptorUpdateAfterBindUniformBuffers;
 ///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageBuffers;
@@ -38,10 +37,9 @@ import overrungl.util.*;
 ///     uint32_t maxDescriptorSetUpdateAfterBindSampledImages;
 ///     uint32_t maxDescriptorSetUpdateAfterBindStorageImages;
 ///     uint32_t maxDescriptorSetUpdateAfterBindInputAttachments;
-/// };
+/// }
 /// ```
 public final class VkPhysicalDeviceDescriptorIndexingProperties extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceDescriptorIndexingProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -69,843 +67,297 @@ public final class VkPhysicalDeviceDescriptorIndexingProperties extends GroupTyp
         ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindStorageImages"),
         ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindInputAttachments")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `maxUpdateAfterBindDescriptorsInAllPools`.
     public static final long OFFSET_maxUpdateAfterBindDescriptorsInAllPools = LAYOUT.byteOffset(PathElement.groupElement("maxUpdateAfterBindDescriptorsInAllPools"));
-    /// The memory layout of `maxUpdateAfterBindDescriptorsInAllPools`.
-    public static final MemoryLayout LAYOUT_maxUpdateAfterBindDescriptorsInAllPools = LAYOUT.select(PathElement.groupElement("maxUpdateAfterBindDescriptorsInAllPools"));
-    /// The [VarHandle] of `maxUpdateAfterBindDescriptorsInAllPools` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxUpdateAfterBindDescriptorsInAllPools = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxUpdateAfterBindDescriptorsInAllPools"));
-    /// The byte offset of `shaderUniformBufferArrayNonUniformIndexingNative`.
     public static final long OFFSET_shaderUniformBufferArrayNonUniformIndexingNative = LAYOUT.byteOffset(PathElement.groupElement("shaderUniformBufferArrayNonUniformIndexingNative"));
-    /// The memory layout of `shaderUniformBufferArrayNonUniformIndexingNative`.
-    public static final MemoryLayout LAYOUT_shaderUniformBufferArrayNonUniformIndexingNative = LAYOUT.select(PathElement.groupElement("shaderUniformBufferArrayNonUniformIndexingNative"));
-    /// The [VarHandle] of `shaderUniformBufferArrayNonUniformIndexingNative` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderUniformBufferArrayNonUniformIndexingNative = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderUniformBufferArrayNonUniformIndexingNative"));
-    /// The byte offset of `shaderSampledImageArrayNonUniformIndexingNative`.
     public static final long OFFSET_shaderSampledImageArrayNonUniformIndexingNative = LAYOUT.byteOffset(PathElement.groupElement("shaderSampledImageArrayNonUniformIndexingNative"));
-    /// The memory layout of `shaderSampledImageArrayNonUniformIndexingNative`.
-    public static final MemoryLayout LAYOUT_shaderSampledImageArrayNonUniformIndexingNative = LAYOUT.select(PathElement.groupElement("shaderSampledImageArrayNonUniformIndexingNative"));
-    /// The [VarHandle] of `shaderSampledImageArrayNonUniformIndexingNative` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderSampledImageArrayNonUniformIndexingNative = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSampledImageArrayNonUniformIndexingNative"));
-    /// The byte offset of `shaderStorageBufferArrayNonUniformIndexingNative`.
     public static final long OFFSET_shaderStorageBufferArrayNonUniformIndexingNative = LAYOUT.byteOffset(PathElement.groupElement("shaderStorageBufferArrayNonUniformIndexingNative"));
-    /// The memory layout of `shaderStorageBufferArrayNonUniformIndexingNative`.
-    public static final MemoryLayout LAYOUT_shaderStorageBufferArrayNonUniformIndexingNative = LAYOUT.select(PathElement.groupElement("shaderStorageBufferArrayNonUniformIndexingNative"));
-    /// The [VarHandle] of `shaderStorageBufferArrayNonUniformIndexingNative` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderStorageBufferArrayNonUniformIndexingNative = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageBufferArrayNonUniformIndexingNative"));
-    /// The byte offset of `shaderStorageImageArrayNonUniformIndexingNative`.
     public static final long OFFSET_shaderStorageImageArrayNonUniformIndexingNative = LAYOUT.byteOffset(PathElement.groupElement("shaderStorageImageArrayNonUniformIndexingNative"));
-    /// The memory layout of `shaderStorageImageArrayNonUniformIndexingNative`.
-    public static final MemoryLayout LAYOUT_shaderStorageImageArrayNonUniformIndexingNative = LAYOUT.select(PathElement.groupElement("shaderStorageImageArrayNonUniformIndexingNative"));
-    /// The [VarHandle] of `shaderStorageImageArrayNonUniformIndexingNative` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderStorageImageArrayNonUniformIndexingNative = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageImageArrayNonUniformIndexingNative"));
-    /// The byte offset of `shaderInputAttachmentArrayNonUniformIndexingNative`.
     public static final long OFFSET_shaderInputAttachmentArrayNonUniformIndexingNative = LAYOUT.byteOffset(PathElement.groupElement("shaderInputAttachmentArrayNonUniformIndexingNative"));
-    /// The memory layout of `shaderInputAttachmentArrayNonUniformIndexingNative`.
-    public static final MemoryLayout LAYOUT_shaderInputAttachmentArrayNonUniformIndexingNative = LAYOUT.select(PathElement.groupElement("shaderInputAttachmentArrayNonUniformIndexingNative"));
-    /// The [VarHandle] of `shaderInputAttachmentArrayNonUniformIndexingNative` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_shaderInputAttachmentArrayNonUniformIndexingNative = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderInputAttachmentArrayNonUniformIndexingNative"));
-    /// The byte offset of `robustBufferAccessUpdateAfterBind`.
     public static final long OFFSET_robustBufferAccessUpdateAfterBind = LAYOUT.byteOffset(PathElement.groupElement("robustBufferAccessUpdateAfterBind"));
-    /// The memory layout of `robustBufferAccessUpdateAfterBind`.
-    public static final MemoryLayout LAYOUT_robustBufferAccessUpdateAfterBind = LAYOUT.select(PathElement.groupElement("robustBufferAccessUpdateAfterBind"));
-    /// The [VarHandle] of `robustBufferAccessUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_robustBufferAccessUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustBufferAccessUpdateAfterBind"));
-    /// The byte offset of `quadDivergentImplicitLod`.
     public static final long OFFSET_quadDivergentImplicitLod = LAYOUT.byteOffset(PathElement.groupElement("quadDivergentImplicitLod"));
-    /// The memory layout of `quadDivergentImplicitLod`.
-    public static final MemoryLayout LAYOUT_quadDivergentImplicitLod = LAYOUT.select(PathElement.groupElement("quadDivergentImplicitLod"));
-    /// The [VarHandle] of `quadDivergentImplicitLod` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_quadDivergentImplicitLod = LAYOUT.arrayElementVarHandle(PathElement.groupElement("quadDivergentImplicitLod"));
-    /// The byte offset of `maxPerStageDescriptorUpdateAfterBindSamplers`.
     public static final long OFFSET_maxPerStageDescriptorUpdateAfterBindSamplers = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindSamplers"));
-    /// The memory layout of `maxPerStageDescriptorUpdateAfterBindSamplers`.
-    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindSamplers = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindSamplers"));
-    /// The [VarHandle] of `maxPerStageDescriptorUpdateAfterBindSamplers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindSamplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindSamplers"));
-    /// The byte offset of `maxPerStageDescriptorUpdateAfterBindUniformBuffers`.
     public static final long OFFSET_maxPerStageDescriptorUpdateAfterBindUniformBuffers = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindUniformBuffers"));
-    /// The memory layout of `maxPerStageDescriptorUpdateAfterBindUniformBuffers`.
-    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindUniformBuffers = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindUniformBuffers"));
-    /// The [VarHandle] of `maxPerStageDescriptorUpdateAfterBindUniformBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindUniformBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindUniformBuffers"));
-    /// The byte offset of `maxPerStageDescriptorUpdateAfterBindStorageBuffers`.
     public static final long OFFSET_maxPerStageDescriptorUpdateAfterBindStorageBuffers = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindStorageBuffers"));
-    /// The memory layout of `maxPerStageDescriptorUpdateAfterBindStorageBuffers`.
-    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindStorageBuffers = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindStorageBuffers"));
-    /// The [VarHandle] of `maxPerStageDescriptorUpdateAfterBindStorageBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindStorageBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindStorageBuffers"));
-    /// The byte offset of `maxPerStageDescriptorUpdateAfterBindSampledImages`.
     public static final long OFFSET_maxPerStageDescriptorUpdateAfterBindSampledImages = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindSampledImages"));
-    /// The memory layout of `maxPerStageDescriptorUpdateAfterBindSampledImages`.
-    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindSampledImages = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindSampledImages"));
-    /// The [VarHandle] of `maxPerStageDescriptorUpdateAfterBindSampledImages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindSampledImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindSampledImages"));
-    /// The byte offset of `maxPerStageDescriptorUpdateAfterBindStorageImages`.
     public static final long OFFSET_maxPerStageDescriptorUpdateAfterBindStorageImages = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindStorageImages"));
-    /// The memory layout of `maxPerStageDescriptorUpdateAfterBindStorageImages`.
-    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindStorageImages = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindStorageImages"));
-    /// The [VarHandle] of `maxPerStageDescriptorUpdateAfterBindStorageImages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindStorageImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindStorageImages"));
-    /// The byte offset of `maxPerStageDescriptorUpdateAfterBindInputAttachments`.
     public static final long OFFSET_maxPerStageDescriptorUpdateAfterBindInputAttachments = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInputAttachments"));
-    /// The memory layout of `maxPerStageDescriptorUpdateAfterBindInputAttachments`.
-    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindInputAttachments = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInputAttachments"));
-    /// The [VarHandle] of `maxPerStageDescriptorUpdateAfterBindInputAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindInputAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInputAttachments"));
-    /// The byte offset of `maxPerStageUpdateAfterBindResources`.
     public static final long OFFSET_maxPerStageUpdateAfterBindResources = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageUpdateAfterBindResources"));
-    /// The memory layout of `maxPerStageUpdateAfterBindResources`.
-    public static final MemoryLayout LAYOUT_maxPerStageUpdateAfterBindResources = LAYOUT.select(PathElement.groupElement("maxPerStageUpdateAfterBindResources"));
-    /// The [VarHandle] of `maxPerStageUpdateAfterBindResources` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerStageUpdateAfterBindResources = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageUpdateAfterBindResources"));
-    /// The byte offset of `maxDescriptorSetUpdateAfterBindSamplers`.
     public static final long OFFSET_maxDescriptorSetUpdateAfterBindSamplers = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetUpdateAfterBindSamplers"));
-    /// The memory layout of `maxDescriptorSetUpdateAfterBindSamplers`.
-    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindSamplers = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindSamplers"));
-    /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindSamplers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindSamplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindSamplers"));
-    /// The byte offset of `maxDescriptorSetUpdateAfterBindUniformBuffers`.
     public static final long OFFSET_maxDescriptorSetUpdateAfterBindUniformBuffers = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetUpdateAfterBindUniformBuffers"));
-    /// The memory layout of `maxDescriptorSetUpdateAfterBindUniformBuffers`.
-    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindUniformBuffers = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindUniformBuffers"));
-    /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindUniformBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindUniformBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindUniformBuffers"));
-    /// The byte offset of `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic`.
     public static final long OFFSET_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetUpdateAfterBindUniformBuffersDynamic"));
-    /// The memory layout of `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic`.
-    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindUniformBuffersDynamic"));
-    /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindUniformBuffersDynamic"));
-    /// The byte offset of `maxDescriptorSetUpdateAfterBindStorageBuffers`.
     public static final long OFFSET_maxDescriptorSetUpdateAfterBindStorageBuffers = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageBuffers"));
-    /// The memory layout of `maxDescriptorSetUpdateAfterBindStorageBuffers`.
-    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindStorageBuffers = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageBuffers"));
-    /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindStorageBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindStorageBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageBuffers"));
-    /// The byte offset of `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic`.
     public static final long OFFSET_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageBuffersDynamic"));
-    /// The memory layout of `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic`.
-    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageBuffersDynamic"));
-    /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageBuffersDynamic"));
-    /// The byte offset of `maxDescriptorSetUpdateAfterBindSampledImages`.
     public static final long OFFSET_maxDescriptorSetUpdateAfterBindSampledImages = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetUpdateAfterBindSampledImages"));
-    /// The memory layout of `maxDescriptorSetUpdateAfterBindSampledImages`.
-    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindSampledImages = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindSampledImages"));
-    /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindSampledImages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindSampledImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindSampledImages"));
-    /// The byte offset of `maxDescriptorSetUpdateAfterBindStorageImages`.
     public static final long OFFSET_maxDescriptorSetUpdateAfterBindStorageImages = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageImages"));
-    /// The memory layout of `maxDescriptorSetUpdateAfterBindStorageImages`.
-    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindStorageImages = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageImages"));
-    /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindStorageImages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindStorageImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageImages"));
-    /// The byte offset of `maxDescriptorSetUpdateAfterBindInputAttachments`.
     public static final long OFFSET_maxDescriptorSetUpdateAfterBindInputAttachments = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetUpdateAfterBindInputAttachments"));
-    /// The memory layout of `maxDescriptorSetUpdateAfterBindInputAttachments`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_maxUpdateAfterBindDescriptorsInAllPools = LAYOUT.select(PathElement.groupElement("maxUpdateAfterBindDescriptorsInAllPools"));
+    public static final MemoryLayout LAYOUT_shaderUniformBufferArrayNonUniformIndexingNative = LAYOUT.select(PathElement.groupElement("shaderUniformBufferArrayNonUniformIndexingNative"));
+    public static final MemoryLayout LAYOUT_shaderSampledImageArrayNonUniformIndexingNative = LAYOUT.select(PathElement.groupElement("shaderSampledImageArrayNonUniformIndexingNative"));
+    public static final MemoryLayout LAYOUT_shaderStorageBufferArrayNonUniformIndexingNative = LAYOUT.select(PathElement.groupElement("shaderStorageBufferArrayNonUniformIndexingNative"));
+    public static final MemoryLayout LAYOUT_shaderStorageImageArrayNonUniformIndexingNative = LAYOUT.select(PathElement.groupElement("shaderStorageImageArrayNonUniformIndexingNative"));
+    public static final MemoryLayout LAYOUT_shaderInputAttachmentArrayNonUniformIndexingNative = LAYOUT.select(PathElement.groupElement("shaderInputAttachmentArrayNonUniformIndexingNative"));
+    public static final MemoryLayout LAYOUT_robustBufferAccessUpdateAfterBind = LAYOUT.select(PathElement.groupElement("robustBufferAccessUpdateAfterBind"));
+    public static final MemoryLayout LAYOUT_quadDivergentImplicitLod = LAYOUT.select(PathElement.groupElement("quadDivergentImplicitLod"));
+    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindSamplers = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindSamplers"));
+    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindUniformBuffers = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindUniformBuffers"));
+    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindStorageBuffers = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindStorageBuffers"));
+    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindSampledImages = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindSampledImages"));
+    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindStorageImages = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindStorageImages"));
+    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindInputAttachments = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInputAttachments"));
+    public static final MemoryLayout LAYOUT_maxPerStageUpdateAfterBindResources = LAYOUT.select(PathElement.groupElement("maxPerStageUpdateAfterBindResources"));
+    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindSamplers = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindSamplers"));
+    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindUniformBuffers = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindUniformBuffers"));
+    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindUniformBuffersDynamic"));
+    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindStorageBuffers = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageBuffers"));
+    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageBuffersDynamic"));
+    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindSampledImages = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindSampledImages"));
+    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindStorageImages = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageImages"));
     public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindInputAttachments = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindInputAttachments"));
-    /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindInputAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_maxUpdateAfterBindDescriptorsInAllPools = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxUpdateAfterBindDescriptorsInAllPools"));
+    public static final VarHandle VH_shaderUniformBufferArrayNonUniformIndexingNative = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderUniformBufferArrayNonUniformIndexingNative"));
+    public static final VarHandle VH_shaderSampledImageArrayNonUniformIndexingNative = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSampledImageArrayNonUniformIndexingNative"));
+    public static final VarHandle VH_shaderStorageBufferArrayNonUniformIndexingNative = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageBufferArrayNonUniformIndexingNative"));
+    public static final VarHandle VH_shaderStorageImageArrayNonUniformIndexingNative = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageImageArrayNonUniformIndexingNative"));
+    public static final VarHandle VH_shaderInputAttachmentArrayNonUniformIndexingNative = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderInputAttachmentArrayNonUniformIndexingNative"));
+    public static final VarHandle VH_robustBufferAccessUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustBufferAccessUpdateAfterBind"));
+    public static final VarHandle VH_quadDivergentImplicitLod = LAYOUT.arrayElementVarHandle(PathElement.groupElement("quadDivergentImplicitLod"));
+    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindSamplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindSamplers"));
+    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindUniformBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindUniformBuffers"));
+    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindStorageBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindStorageBuffers"));
+    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindSampledImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindSampledImages"));
+    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindStorageImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindStorageImages"));
+    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindInputAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInputAttachments"));
+    public static final VarHandle VH_maxPerStageUpdateAfterBindResources = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageUpdateAfterBindResources"));
+    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindSamplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindSamplers"));
+    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindUniformBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindUniformBuffers"));
+    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindUniformBuffersDynamic"));
+    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindStorageBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageBuffers"));
+    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageBuffersDynamic"));
+    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindSampledImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindSampledImages"));
+    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindStorageImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindStorageImages"));
     public static final VarHandle VH_maxDescriptorSetUpdateAfterBindInputAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindInputAttachments"));
 
-    /// Creates `VkPhysicalDeviceDescriptorIndexingProperties` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceDescriptorIndexingProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceDescriptorIndexingProperties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceDescriptorIndexingProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorIndexingProperties(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceDescriptorIndexingProperties` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceDescriptorIndexingProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorIndexingProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceDescriptorIndexingProperties` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceDescriptorIndexingProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorIndexingProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorIndexingProperties` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceDescriptorIndexingProperties`
     public static VkPhysicalDeviceDescriptorIndexingProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDescriptorIndexingProperties(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorIndexingProperties` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceDescriptorIndexingProperties`
     public static VkPhysicalDeviceDescriptorIndexingProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDescriptorIndexingProperties(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceDescriptorIndexingProperties allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK12.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES); }
+    public static VkPhysicalDeviceDescriptorIndexingProperties allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK12.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES);
+        return s;
+    }
     public VkPhysicalDeviceDescriptorIndexingProperties copyFrom(VkPhysicalDeviceDescriptorIndexingProperties src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceDescriptorIndexingProperties reinterpret(long count) { return new VkPhysicalDeviceDescriptorIndexingProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxUpdateAfterBindDescriptorsInAllPools` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxUpdateAfterBindDescriptorsInAllPools(MemorySegment segment, long index) { return (int) VH_maxUpdateAfterBindDescriptorsInAllPools.get(segment, 0L, index); }
-    /// {@return `maxUpdateAfterBindDescriptorsInAllPools`}
-    public int maxUpdateAfterBindDescriptorsInAllPools() { return maxUpdateAfterBindDescriptorsInAllPools(this.segment(), 0L); }
-    /// Sets `maxUpdateAfterBindDescriptorsInAllPools` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxUpdateAfterBindDescriptorsInAllPools(MemorySegment segment, long index, int value) { VH_maxUpdateAfterBindDescriptorsInAllPools.set(segment, 0L, index, value); }
-    /// Sets `maxUpdateAfterBindDescriptorsInAllPools` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxUpdateAfterBindDescriptorsInAllPools(int value) { maxUpdateAfterBindDescriptorsInAllPools(this.segment(), 0L, value); return this; }
-
-    /// {@return `shaderUniformBufferArrayNonUniformIndexingNative` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int shaderUniformBufferArrayNonUniformIndexingNative(MemorySegment segment, long index) { return (int) VH_shaderUniformBufferArrayNonUniformIndexingNative.get(segment, 0L, index); }
-    /// {@return `shaderUniformBufferArrayNonUniformIndexingNative`}
-    public int shaderUniformBufferArrayNonUniformIndexingNative() { return shaderUniformBufferArrayNonUniformIndexingNative(this.segment(), 0L); }
-    /// Sets `shaderUniformBufferArrayNonUniformIndexingNative` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderUniformBufferArrayNonUniformIndexingNative(MemorySegment segment, long index, int value) { VH_shaderUniformBufferArrayNonUniformIndexingNative.set(segment, 0L, index, value); }
-    /// Sets `shaderUniformBufferArrayNonUniformIndexingNative` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties shaderUniformBufferArrayNonUniformIndexingNative(int value) { shaderUniformBufferArrayNonUniformIndexingNative(this.segment(), 0L, value); return this; }
-
-    /// {@return `shaderSampledImageArrayNonUniformIndexingNative` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int shaderSampledImageArrayNonUniformIndexingNative(MemorySegment segment, long index) { return (int) VH_shaderSampledImageArrayNonUniformIndexingNative.get(segment, 0L, index); }
-    /// {@return `shaderSampledImageArrayNonUniformIndexingNative`}
-    public int shaderSampledImageArrayNonUniformIndexingNative() { return shaderSampledImageArrayNonUniformIndexingNative(this.segment(), 0L); }
-    /// Sets `shaderSampledImageArrayNonUniformIndexingNative` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderSampledImageArrayNonUniformIndexingNative(MemorySegment segment, long index, int value) { VH_shaderSampledImageArrayNonUniformIndexingNative.set(segment, 0L, index, value); }
-    /// Sets `shaderSampledImageArrayNonUniformIndexingNative` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties shaderSampledImageArrayNonUniformIndexingNative(int value) { shaderSampledImageArrayNonUniformIndexingNative(this.segment(), 0L, value); return this; }
-
-    /// {@return `shaderStorageBufferArrayNonUniformIndexingNative` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int shaderStorageBufferArrayNonUniformIndexingNative(MemorySegment segment, long index) { return (int) VH_shaderStorageBufferArrayNonUniformIndexingNative.get(segment, 0L, index); }
-    /// {@return `shaderStorageBufferArrayNonUniformIndexingNative`}
-    public int shaderStorageBufferArrayNonUniformIndexingNative() { return shaderStorageBufferArrayNonUniformIndexingNative(this.segment(), 0L); }
-    /// Sets `shaderStorageBufferArrayNonUniformIndexingNative` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderStorageBufferArrayNonUniformIndexingNative(MemorySegment segment, long index, int value) { VH_shaderStorageBufferArrayNonUniformIndexingNative.set(segment, 0L, index, value); }
-    /// Sets `shaderStorageBufferArrayNonUniformIndexingNative` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties shaderStorageBufferArrayNonUniformIndexingNative(int value) { shaderStorageBufferArrayNonUniformIndexingNative(this.segment(), 0L, value); return this; }
-
-    /// {@return `shaderStorageImageArrayNonUniformIndexingNative` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int shaderStorageImageArrayNonUniformIndexingNative(MemorySegment segment, long index) { return (int) VH_shaderStorageImageArrayNonUniformIndexingNative.get(segment, 0L, index); }
-    /// {@return `shaderStorageImageArrayNonUniformIndexingNative`}
-    public int shaderStorageImageArrayNonUniformIndexingNative() { return shaderStorageImageArrayNonUniformIndexingNative(this.segment(), 0L); }
-    /// Sets `shaderStorageImageArrayNonUniformIndexingNative` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderStorageImageArrayNonUniformIndexingNative(MemorySegment segment, long index, int value) { VH_shaderStorageImageArrayNonUniformIndexingNative.set(segment, 0L, index, value); }
-    /// Sets `shaderStorageImageArrayNonUniformIndexingNative` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties shaderStorageImageArrayNonUniformIndexingNative(int value) { shaderStorageImageArrayNonUniformIndexingNative(this.segment(), 0L, value); return this; }
-
-    /// {@return `shaderInputAttachmentArrayNonUniformIndexingNative` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int shaderInputAttachmentArrayNonUniformIndexingNative(MemorySegment segment, long index) { return (int) VH_shaderInputAttachmentArrayNonUniformIndexingNative.get(segment, 0L, index); }
-    /// {@return `shaderInputAttachmentArrayNonUniformIndexingNative`}
-    public int shaderInputAttachmentArrayNonUniformIndexingNative() { return shaderInputAttachmentArrayNonUniformIndexingNative(this.segment(), 0L); }
-    /// Sets `shaderInputAttachmentArrayNonUniformIndexingNative` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderInputAttachmentArrayNonUniformIndexingNative(MemorySegment segment, long index, int value) { VH_shaderInputAttachmentArrayNonUniformIndexingNative.set(segment, 0L, index, value); }
-    /// Sets `shaderInputAttachmentArrayNonUniformIndexingNative` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties shaderInputAttachmentArrayNonUniformIndexingNative(int value) { shaderInputAttachmentArrayNonUniformIndexingNative(this.segment(), 0L, value); return this; }
-
-    /// {@return `robustBufferAccessUpdateAfterBind` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int robustBufferAccessUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_robustBufferAccessUpdateAfterBind.get(segment, 0L, index); }
-    /// {@return `robustBufferAccessUpdateAfterBind`}
-    public int robustBufferAccessUpdateAfterBind() { return robustBufferAccessUpdateAfterBind(this.segment(), 0L); }
-    /// Sets `robustBufferAccessUpdateAfterBind` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void robustBufferAccessUpdateAfterBind(MemorySegment segment, long index, int value) { VH_robustBufferAccessUpdateAfterBind.set(segment, 0L, index, value); }
-    /// Sets `robustBufferAccessUpdateAfterBind` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties robustBufferAccessUpdateAfterBind(int value) { robustBufferAccessUpdateAfterBind(this.segment(), 0L, value); return this; }
-
-    /// {@return `quadDivergentImplicitLod` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int quadDivergentImplicitLod(MemorySegment segment, long index) { return (int) VH_quadDivergentImplicitLod.get(segment, 0L, index); }
-    /// {@return `quadDivergentImplicitLod`}
-    public int quadDivergentImplicitLod() { return quadDivergentImplicitLod(this.segment(), 0L); }
-    /// Sets `quadDivergentImplicitLod` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void quadDivergentImplicitLod(MemorySegment segment, long index, int value) { VH_quadDivergentImplicitLod.set(segment, 0L, index, value); }
-    /// Sets `quadDivergentImplicitLod` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties quadDivergentImplicitLod(int value) { quadDivergentImplicitLod(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindSamplers` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxPerStageDescriptorUpdateAfterBindSamplers(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindSamplers.get(segment, 0L, index); }
-    /// {@return `maxPerStageDescriptorUpdateAfterBindSamplers`}
-    public int maxPerStageDescriptorUpdateAfterBindSamplers() { return maxPerStageDescriptorUpdateAfterBindSamplers(this.segment(), 0L); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindSamplers` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxPerStageDescriptorUpdateAfterBindSamplers(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindSamplers.set(segment, 0L, index, value); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindSamplers` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindSamplers(int value) { maxPerStageDescriptorUpdateAfterBindSamplers(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindUniformBuffers` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxPerStageDescriptorUpdateAfterBindUniformBuffers(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindUniformBuffers.get(segment, 0L, index); }
-    /// {@return `maxPerStageDescriptorUpdateAfterBindUniformBuffers`}
-    public int maxPerStageDescriptorUpdateAfterBindUniformBuffers() { return maxPerStageDescriptorUpdateAfterBindUniformBuffers(this.segment(), 0L); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindUniformBuffers` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxPerStageDescriptorUpdateAfterBindUniformBuffers(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindUniformBuffers.set(segment, 0L, index, value); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindUniformBuffers` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindUniformBuffers(int value) { maxPerStageDescriptorUpdateAfterBindUniformBuffers(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindStorageBuffers` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxPerStageDescriptorUpdateAfterBindStorageBuffers(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindStorageBuffers.get(segment, 0L, index); }
-    /// {@return `maxPerStageDescriptorUpdateAfterBindStorageBuffers`}
-    public int maxPerStageDescriptorUpdateAfterBindStorageBuffers() { return maxPerStageDescriptorUpdateAfterBindStorageBuffers(this.segment(), 0L); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindStorageBuffers` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxPerStageDescriptorUpdateAfterBindStorageBuffers(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindStorageBuffers.set(segment, 0L, index, value); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindStorageBuffers` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindStorageBuffers(int value) { maxPerStageDescriptorUpdateAfterBindStorageBuffers(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindSampledImages` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxPerStageDescriptorUpdateAfterBindSampledImages(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindSampledImages.get(segment, 0L, index); }
-    /// {@return `maxPerStageDescriptorUpdateAfterBindSampledImages`}
-    public int maxPerStageDescriptorUpdateAfterBindSampledImages() { return maxPerStageDescriptorUpdateAfterBindSampledImages(this.segment(), 0L); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindSampledImages` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxPerStageDescriptorUpdateAfterBindSampledImages(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindSampledImages.set(segment, 0L, index, value); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindSampledImages` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindSampledImages(int value) { maxPerStageDescriptorUpdateAfterBindSampledImages(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindStorageImages` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxPerStageDescriptorUpdateAfterBindStorageImages(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindStorageImages.get(segment, 0L, index); }
-    /// {@return `maxPerStageDescriptorUpdateAfterBindStorageImages`}
-    public int maxPerStageDescriptorUpdateAfterBindStorageImages() { return maxPerStageDescriptorUpdateAfterBindStorageImages(this.segment(), 0L); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindStorageImages` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxPerStageDescriptorUpdateAfterBindStorageImages(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindStorageImages.set(segment, 0L, index, value); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindStorageImages` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindStorageImages(int value) { maxPerStageDescriptorUpdateAfterBindStorageImages(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindInputAttachments` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxPerStageDescriptorUpdateAfterBindInputAttachments(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindInputAttachments.get(segment, 0L, index); }
-    /// {@return `maxPerStageDescriptorUpdateAfterBindInputAttachments`}
-    public int maxPerStageDescriptorUpdateAfterBindInputAttachments() { return maxPerStageDescriptorUpdateAfterBindInputAttachments(this.segment(), 0L); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindInputAttachments` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxPerStageDescriptorUpdateAfterBindInputAttachments(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindInputAttachments.set(segment, 0L, index, value); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindInputAttachments` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindInputAttachments(int value) { maxPerStageDescriptorUpdateAfterBindInputAttachments(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxPerStageUpdateAfterBindResources` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxPerStageUpdateAfterBindResources(MemorySegment segment, long index) { return (int) VH_maxPerStageUpdateAfterBindResources.get(segment, 0L, index); }
-    /// {@return `maxPerStageUpdateAfterBindResources`}
-    public int maxPerStageUpdateAfterBindResources() { return maxPerStageUpdateAfterBindResources(this.segment(), 0L); }
-    /// Sets `maxPerStageUpdateAfterBindResources` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxPerStageUpdateAfterBindResources(MemorySegment segment, long index, int value) { VH_maxPerStageUpdateAfterBindResources.set(segment, 0L, index, value); }
-    /// Sets `maxPerStageUpdateAfterBindResources` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageUpdateAfterBindResources(int value) { maxPerStageUpdateAfterBindResources(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindSamplers` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxDescriptorSetUpdateAfterBindSamplers(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindSamplers.get(segment, 0L, index); }
-    /// {@return `maxDescriptorSetUpdateAfterBindSamplers`}
-    public int maxDescriptorSetUpdateAfterBindSamplers() { return maxDescriptorSetUpdateAfterBindSamplers(this.segment(), 0L); }
-    /// Sets `maxDescriptorSetUpdateAfterBindSamplers` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDescriptorSetUpdateAfterBindSamplers(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindSamplers.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetUpdateAfterBindSamplers` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindSamplers(int value) { maxDescriptorSetUpdateAfterBindSamplers(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindUniformBuffers` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxDescriptorSetUpdateAfterBindUniformBuffers(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindUniformBuffers.get(segment, 0L, index); }
-    /// {@return `maxDescriptorSetUpdateAfterBindUniformBuffers`}
-    public int maxDescriptorSetUpdateAfterBindUniformBuffers() { return maxDescriptorSetUpdateAfterBindUniformBuffers(this.segment(), 0L); }
-    /// Sets `maxDescriptorSetUpdateAfterBindUniformBuffers` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDescriptorSetUpdateAfterBindUniformBuffers(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindUniformBuffers.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetUpdateAfterBindUniformBuffers` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindUniformBuffers(int value) { maxDescriptorSetUpdateAfterBindUniformBuffers(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic.get(segment, 0L, index); }
-    /// {@return `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic`}
-    public int maxDescriptorSetUpdateAfterBindUniformBuffersDynamic() { return maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(this.segment(), 0L); }
-    /// Sets `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(int value) { maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindStorageBuffers` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxDescriptorSetUpdateAfterBindStorageBuffers(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindStorageBuffers.get(segment, 0L, index); }
-    /// {@return `maxDescriptorSetUpdateAfterBindStorageBuffers`}
-    public int maxDescriptorSetUpdateAfterBindStorageBuffers() { return maxDescriptorSetUpdateAfterBindStorageBuffers(this.segment(), 0L); }
-    /// Sets `maxDescriptorSetUpdateAfterBindStorageBuffers` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDescriptorSetUpdateAfterBindStorageBuffers(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindStorageBuffers.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetUpdateAfterBindStorageBuffers` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageBuffers(int value) { maxDescriptorSetUpdateAfterBindStorageBuffers(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic.get(segment, 0L, index); }
-    /// {@return `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic`}
-    public int maxDescriptorSetUpdateAfterBindStorageBuffersDynamic() { return maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(this.segment(), 0L); }
-    /// Sets `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(int value) { maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindSampledImages` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxDescriptorSetUpdateAfterBindSampledImages(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindSampledImages.get(segment, 0L, index); }
-    /// {@return `maxDescriptorSetUpdateAfterBindSampledImages`}
-    public int maxDescriptorSetUpdateAfterBindSampledImages() { return maxDescriptorSetUpdateAfterBindSampledImages(this.segment(), 0L); }
-    /// Sets `maxDescriptorSetUpdateAfterBindSampledImages` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDescriptorSetUpdateAfterBindSampledImages(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindSampledImages.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetUpdateAfterBindSampledImages` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindSampledImages(int value) { maxDescriptorSetUpdateAfterBindSampledImages(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindStorageImages` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxDescriptorSetUpdateAfterBindStorageImages(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindStorageImages.get(segment, 0L, index); }
-    /// {@return `maxDescriptorSetUpdateAfterBindStorageImages`}
-    public int maxDescriptorSetUpdateAfterBindStorageImages() { return maxDescriptorSetUpdateAfterBindStorageImages(this.segment(), 0L); }
-    /// Sets `maxDescriptorSetUpdateAfterBindStorageImages` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDescriptorSetUpdateAfterBindStorageImages(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindStorageImages.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetUpdateAfterBindStorageImages` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageImages(int value) { maxDescriptorSetUpdateAfterBindStorageImages(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindInputAttachments` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxDescriptorSetUpdateAfterBindInputAttachments(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindInputAttachments.get(segment, 0L, index); }
-    /// {@return `maxDescriptorSetUpdateAfterBindInputAttachments`}
-    public int maxDescriptorSetUpdateAfterBindInputAttachments() { return maxDescriptorSetUpdateAfterBindInputAttachments(this.segment(), 0L); }
-    /// Sets `maxDescriptorSetUpdateAfterBindInputAttachments` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDescriptorSetUpdateAfterBindInputAttachments(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindInputAttachments.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetUpdateAfterBindInputAttachments` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindInputAttachments(int value) { maxDescriptorSetUpdateAfterBindInputAttachments(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceDescriptorIndexingProperties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceDescriptorIndexingProperties`
     public VkPhysicalDeviceDescriptorIndexingProperties asSlice(long index) { return new VkPhysicalDeviceDescriptorIndexingProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceDescriptorIndexingProperties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceDescriptorIndexingProperties`
     public VkPhysicalDeviceDescriptorIndexingProperties asSlice(long index, long count) { return new VkPhysicalDeviceDescriptorIndexingProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceDescriptorIndexingProperties` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceDescriptorIndexingProperties at(long index, Consumer<VkPhysicalDeviceDescriptorIndexingProperties> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `maxUpdateAfterBindDescriptorsInAllPools` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxUpdateAfterBindDescriptorsInAllPoolsAt(long index) { return maxUpdateAfterBindDescriptorsInAllPools(this.segment(), index); }
-    /// Sets `maxUpdateAfterBindDescriptorsInAllPools` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxUpdateAfterBindDescriptorsInAllPoolsAt(long index, int value) { maxUpdateAfterBindDescriptorsInAllPools(this.segment(), index, value); return this; }
-
-    /// {@return `shaderUniformBufferArrayNonUniformIndexingNative` at the given index}
-    /// @param index the index of the struct buffer
-    public int shaderUniformBufferArrayNonUniformIndexingNativeAt(long index) { return shaderUniformBufferArrayNonUniformIndexingNative(this.segment(), index); }
-    /// Sets `shaderUniformBufferArrayNonUniformIndexingNative` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties shaderUniformBufferArrayNonUniformIndexingNativeAt(long index, int value) { shaderUniformBufferArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
-
-    /// {@return `shaderSampledImageArrayNonUniformIndexingNative` at the given index}
-    /// @param index the index of the struct buffer
-    public int shaderSampledImageArrayNonUniformIndexingNativeAt(long index) { return shaderSampledImageArrayNonUniformIndexingNative(this.segment(), index); }
-    /// Sets `shaderSampledImageArrayNonUniformIndexingNative` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties shaderSampledImageArrayNonUniformIndexingNativeAt(long index, int value) { shaderSampledImageArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
-
-    /// {@return `shaderStorageBufferArrayNonUniformIndexingNative` at the given index}
-    /// @param index the index of the struct buffer
-    public int shaderStorageBufferArrayNonUniformIndexingNativeAt(long index) { return shaderStorageBufferArrayNonUniformIndexingNative(this.segment(), index); }
-    /// Sets `shaderStorageBufferArrayNonUniformIndexingNative` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties shaderStorageBufferArrayNonUniformIndexingNativeAt(long index, int value) { shaderStorageBufferArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
-
-    /// {@return `shaderStorageImageArrayNonUniformIndexingNative` at the given index}
-    /// @param index the index of the struct buffer
-    public int shaderStorageImageArrayNonUniformIndexingNativeAt(long index) { return shaderStorageImageArrayNonUniformIndexingNative(this.segment(), index); }
-    /// Sets `shaderStorageImageArrayNonUniformIndexingNative` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties shaderStorageImageArrayNonUniformIndexingNativeAt(long index, int value) { shaderStorageImageArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
-
-    /// {@return `shaderInputAttachmentArrayNonUniformIndexingNative` at the given index}
-    /// @param index the index of the struct buffer
-    public int shaderInputAttachmentArrayNonUniformIndexingNativeAt(long index) { return shaderInputAttachmentArrayNonUniformIndexingNative(this.segment(), index); }
-    /// Sets `shaderInputAttachmentArrayNonUniformIndexingNative` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties shaderInputAttachmentArrayNonUniformIndexingNativeAt(long index, int value) { shaderInputAttachmentArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
-
-    /// {@return `robustBufferAccessUpdateAfterBind` at the given index}
-    /// @param index the index of the struct buffer
-    public int robustBufferAccessUpdateAfterBindAt(long index) { return robustBufferAccessUpdateAfterBind(this.segment(), index); }
-    /// Sets `robustBufferAccessUpdateAfterBind` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties robustBufferAccessUpdateAfterBindAt(long index, int value) { robustBufferAccessUpdateAfterBind(this.segment(), index, value); return this; }
-
-    /// {@return `quadDivergentImplicitLod` at the given index}
-    /// @param index the index of the struct buffer
-    public int quadDivergentImplicitLodAt(long index) { return quadDivergentImplicitLod(this.segment(), index); }
-    /// Sets `quadDivergentImplicitLod` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties quadDivergentImplicitLodAt(long index, int value) { quadDivergentImplicitLod(this.segment(), index, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindSamplers` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxPerStageDescriptorUpdateAfterBindSamplersAt(long index) { return maxPerStageDescriptorUpdateAfterBindSamplers(this.segment(), index); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindSamplers` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindSamplersAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindSamplers(this.segment(), index, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindUniformBuffers` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(long index) { return maxPerStageDescriptorUpdateAfterBindUniformBuffers(this.segment(), index); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindUniformBuffers` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindUniformBuffers(this.segment(), index, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindStorageBuffers` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(long index) { return maxPerStageDescriptorUpdateAfterBindStorageBuffers(this.segment(), index); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindStorageBuffers` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindStorageBuffers(this.segment(), index, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindSampledImages` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxPerStageDescriptorUpdateAfterBindSampledImagesAt(long index) { return maxPerStageDescriptorUpdateAfterBindSampledImages(this.segment(), index); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindSampledImages` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindSampledImagesAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindSampledImages(this.segment(), index, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindStorageImages` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxPerStageDescriptorUpdateAfterBindStorageImagesAt(long index) { return maxPerStageDescriptorUpdateAfterBindStorageImages(this.segment(), index); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindStorageImages` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindStorageImagesAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindStorageImages(this.segment(), index, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindInputAttachments` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(long index) { return maxPerStageDescriptorUpdateAfterBindInputAttachments(this.segment(), index); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindInputAttachments` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindInputAttachments(this.segment(), index, value); return this; }
-
-    /// {@return `maxPerStageUpdateAfterBindResources` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxPerStageUpdateAfterBindResourcesAt(long index) { return maxPerStageUpdateAfterBindResources(this.segment(), index); }
-    /// Sets `maxPerStageUpdateAfterBindResources` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageUpdateAfterBindResourcesAt(long index, int value) { maxPerStageUpdateAfterBindResources(this.segment(), index, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindSamplers` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxDescriptorSetUpdateAfterBindSamplersAt(long index) { return maxDescriptorSetUpdateAfterBindSamplers(this.segment(), index); }
-    /// Sets `maxDescriptorSetUpdateAfterBindSamplers` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindSamplersAt(long index, int value) { maxDescriptorSetUpdateAfterBindSamplers(this.segment(), index, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindUniformBuffers` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxDescriptorSetUpdateAfterBindUniformBuffersAt(long index) { return maxDescriptorSetUpdateAfterBindUniformBuffers(this.segment(), index); }
-    /// Sets `maxDescriptorSetUpdateAfterBindUniformBuffers` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindUniformBuffersAt(long index, int value) { maxDescriptorSetUpdateAfterBindUniformBuffers(this.segment(), index, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(this.segment(), index); }
-    /// Sets `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(this.segment(), index, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindStorageBuffers` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxDescriptorSetUpdateAfterBindStorageBuffersAt(long index) { return maxDescriptorSetUpdateAfterBindStorageBuffers(this.segment(), index); }
-    /// Sets `maxDescriptorSetUpdateAfterBindStorageBuffers` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageBuffersAt(long index, int value) { maxDescriptorSetUpdateAfterBindStorageBuffers(this.segment(), index, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(this.segment(), index); }
-    /// Sets `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(this.segment(), index, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindSampledImages` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxDescriptorSetUpdateAfterBindSampledImagesAt(long index) { return maxDescriptorSetUpdateAfterBindSampledImages(this.segment(), index); }
-    /// Sets `maxDescriptorSetUpdateAfterBindSampledImages` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindSampledImagesAt(long index, int value) { maxDescriptorSetUpdateAfterBindSampledImages(this.segment(), index, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindStorageImages` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxDescriptorSetUpdateAfterBindStorageImagesAt(long index) { return maxDescriptorSetUpdateAfterBindStorageImages(this.segment(), index); }
-    /// Sets `maxDescriptorSetUpdateAfterBindStorageImages` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageImagesAt(long index, int value) { maxDescriptorSetUpdateAfterBindStorageImages(this.segment(), index, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindInputAttachments` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxDescriptorSetUpdateAfterBindInputAttachmentsAt(long index) { return maxDescriptorSetUpdateAfterBindInputAttachments(this.segment(), index); }
-    /// Sets `maxDescriptorSetUpdateAfterBindInputAttachments` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindInputAttachmentsAt(long index, int value) { maxDescriptorSetUpdateAfterBindInputAttachments(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int maxUpdateAfterBindDescriptorsInAllPoolsAt(long index) { return (int) VH_maxUpdateAfterBindDescriptorsInAllPools.get(this.segment(), 0L, index); }
+    public int shaderUniformBufferArrayNonUniformIndexingNativeAt(long index) { return (int) VH_shaderUniformBufferArrayNonUniformIndexingNative.get(this.segment(), 0L, index); }
+    public int shaderSampledImageArrayNonUniformIndexingNativeAt(long index) { return (int) VH_shaderSampledImageArrayNonUniformIndexingNative.get(this.segment(), 0L, index); }
+    public int shaderStorageBufferArrayNonUniformIndexingNativeAt(long index) { return (int) VH_shaderStorageBufferArrayNonUniformIndexingNative.get(this.segment(), 0L, index); }
+    public int shaderStorageImageArrayNonUniformIndexingNativeAt(long index) { return (int) VH_shaderStorageImageArrayNonUniformIndexingNative.get(this.segment(), 0L, index); }
+    public int shaderInputAttachmentArrayNonUniformIndexingNativeAt(long index) { return (int) VH_shaderInputAttachmentArrayNonUniformIndexingNative.get(this.segment(), 0L, index); }
+    public int robustBufferAccessUpdateAfterBindAt(long index) { return (int) VH_robustBufferAccessUpdateAfterBind.get(this.segment(), 0L, index); }
+    public int quadDivergentImplicitLodAt(long index) { return (int) VH_quadDivergentImplicitLod.get(this.segment(), 0L, index); }
+    public int maxPerStageDescriptorUpdateAfterBindSamplersAt(long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindSamplers.get(this.segment(), 0L, index); }
+    public int maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindUniformBuffers.get(this.segment(), 0L, index); }
+    public int maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindStorageBuffers.get(this.segment(), 0L, index); }
+    public int maxPerStageDescriptorUpdateAfterBindSampledImagesAt(long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindSampledImages.get(this.segment(), 0L, index); }
+    public int maxPerStageDescriptorUpdateAfterBindStorageImagesAt(long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindStorageImages.get(this.segment(), 0L, index); }
+    public int maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindInputAttachments.get(this.segment(), 0L, index); }
+    public int maxPerStageUpdateAfterBindResourcesAt(long index) { return (int) VH_maxPerStageUpdateAfterBindResources.get(this.segment(), 0L, index); }
+    public int maxDescriptorSetUpdateAfterBindSamplersAt(long index) { return (int) VH_maxDescriptorSetUpdateAfterBindSamplers.get(this.segment(), 0L, index); }
+    public int maxDescriptorSetUpdateAfterBindUniformBuffersAt(long index) { return (int) VH_maxDescriptorSetUpdateAfterBindUniformBuffers.get(this.segment(), 0L, index); }
+    public int maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(long index) { return (int) VH_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic.get(this.segment(), 0L, index); }
+    public int maxDescriptorSetUpdateAfterBindStorageBuffersAt(long index) { return (int) VH_maxDescriptorSetUpdateAfterBindStorageBuffers.get(this.segment(), 0L, index); }
+    public int maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(long index) { return (int) VH_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic.get(this.segment(), 0L, index); }
+    public int maxDescriptorSetUpdateAfterBindSampledImagesAt(long index) { return (int) VH_maxDescriptorSetUpdateAfterBindSampledImages.get(this.segment(), 0L, index); }
+    public int maxDescriptorSetUpdateAfterBindStorageImagesAt(long index) { return (int) VH_maxDescriptorSetUpdateAfterBindStorageImages.get(this.segment(), 0L, index); }
+    public int maxDescriptorSetUpdateAfterBindInputAttachmentsAt(long index) { return (int) VH_maxDescriptorSetUpdateAfterBindInputAttachments.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int maxUpdateAfterBindDescriptorsInAllPools() { return (int) VH_maxUpdateAfterBindDescriptorsInAllPools.get(this.segment(), 0L, 0L); }
+    public int shaderUniformBufferArrayNonUniformIndexingNative() { return (int) VH_shaderUniformBufferArrayNonUniformIndexingNative.get(this.segment(), 0L, 0L); }
+    public int shaderSampledImageArrayNonUniformIndexingNative() { return (int) VH_shaderSampledImageArrayNonUniformIndexingNative.get(this.segment(), 0L, 0L); }
+    public int shaderStorageBufferArrayNonUniformIndexingNative() { return (int) VH_shaderStorageBufferArrayNonUniformIndexingNative.get(this.segment(), 0L, 0L); }
+    public int shaderStorageImageArrayNonUniformIndexingNative() { return (int) VH_shaderStorageImageArrayNonUniformIndexingNative.get(this.segment(), 0L, 0L); }
+    public int shaderInputAttachmentArrayNonUniformIndexingNative() { return (int) VH_shaderInputAttachmentArrayNonUniformIndexingNative.get(this.segment(), 0L, 0L); }
+    public int robustBufferAccessUpdateAfterBind() { return (int) VH_robustBufferAccessUpdateAfterBind.get(this.segment(), 0L, 0L); }
+    public int quadDivergentImplicitLod() { return (int) VH_quadDivergentImplicitLod.get(this.segment(), 0L, 0L); }
+    public int maxPerStageDescriptorUpdateAfterBindSamplers() { return (int) VH_maxPerStageDescriptorUpdateAfterBindSamplers.get(this.segment(), 0L, 0L); }
+    public int maxPerStageDescriptorUpdateAfterBindUniformBuffers() { return (int) VH_maxPerStageDescriptorUpdateAfterBindUniformBuffers.get(this.segment(), 0L, 0L); }
+    public int maxPerStageDescriptorUpdateAfterBindStorageBuffers() { return (int) VH_maxPerStageDescriptorUpdateAfterBindStorageBuffers.get(this.segment(), 0L, 0L); }
+    public int maxPerStageDescriptorUpdateAfterBindSampledImages() { return (int) VH_maxPerStageDescriptorUpdateAfterBindSampledImages.get(this.segment(), 0L, 0L); }
+    public int maxPerStageDescriptorUpdateAfterBindStorageImages() { return (int) VH_maxPerStageDescriptorUpdateAfterBindStorageImages.get(this.segment(), 0L, 0L); }
+    public int maxPerStageDescriptorUpdateAfterBindInputAttachments() { return (int) VH_maxPerStageDescriptorUpdateAfterBindInputAttachments.get(this.segment(), 0L, 0L); }
+    public int maxPerStageUpdateAfterBindResources() { return (int) VH_maxPerStageUpdateAfterBindResources.get(this.segment(), 0L, 0L); }
+    public int maxDescriptorSetUpdateAfterBindSamplers() { return (int) VH_maxDescriptorSetUpdateAfterBindSamplers.get(this.segment(), 0L, 0L); }
+    public int maxDescriptorSetUpdateAfterBindUniformBuffers() { return (int) VH_maxDescriptorSetUpdateAfterBindUniformBuffers.get(this.segment(), 0L, 0L); }
+    public int maxDescriptorSetUpdateAfterBindUniformBuffersDynamic() { return (int) VH_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic.get(this.segment(), 0L, 0L); }
+    public int maxDescriptorSetUpdateAfterBindStorageBuffers() { return (int) VH_maxDescriptorSetUpdateAfterBindStorageBuffers.get(this.segment(), 0L, 0L); }
+    public int maxDescriptorSetUpdateAfterBindStorageBuffersDynamic() { return (int) VH_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic.get(this.segment(), 0L, 0L); }
+    public int maxDescriptorSetUpdateAfterBindSampledImages() { return (int) VH_maxDescriptorSetUpdateAfterBindSampledImages.get(this.segment(), 0L, 0L); }
+    public int maxDescriptorSetUpdateAfterBindStorageImages() { return (int) VH_maxDescriptorSetUpdateAfterBindStorageImages.get(this.segment(), 0L, 0L); }
+    public int maxDescriptorSetUpdateAfterBindInputAttachments() { return (int) VH_maxDescriptorSetUpdateAfterBindInputAttachments.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxUpdateAfterBindDescriptorsInAllPoolsAt(long index, int value) { VH_maxUpdateAfterBindDescriptorsInAllPools.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties shaderUniformBufferArrayNonUniformIndexingNativeAt(long index, int value) { VH_shaderUniformBufferArrayNonUniformIndexingNative.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties shaderSampledImageArrayNonUniformIndexingNativeAt(long index, int value) { VH_shaderSampledImageArrayNonUniformIndexingNative.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties shaderStorageBufferArrayNonUniformIndexingNativeAt(long index, int value) { VH_shaderStorageBufferArrayNonUniformIndexingNative.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties shaderStorageImageArrayNonUniformIndexingNativeAt(long index, int value) { VH_shaderStorageImageArrayNonUniformIndexingNative.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties shaderInputAttachmentArrayNonUniformIndexingNativeAt(long index, int value) { VH_shaderInputAttachmentArrayNonUniformIndexingNative.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties robustBufferAccessUpdateAfterBindAt(long index, int value) { VH_robustBufferAccessUpdateAfterBind.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties quadDivergentImplicitLodAt(long index, int value) { VH_quadDivergentImplicitLod.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindSamplersAt(long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindSamplers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindUniformBuffers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindStorageBuffers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindSampledImagesAt(long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindSampledImages.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindStorageImagesAt(long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindStorageImages.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindInputAttachments.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageUpdateAfterBindResourcesAt(long index, int value) { VH_maxPerStageUpdateAfterBindResources.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindSamplersAt(long index, int value) { VH_maxDescriptorSetUpdateAfterBindSamplers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindUniformBuffersAt(long index, int value) { VH_maxDescriptorSetUpdateAfterBindUniformBuffers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(long index, int value) { VH_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageBuffersAt(long index, int value) { VH_maxDescriptorSetUpdateAfterBindStorageBuffers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(long index, int value) { VH_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindSampledImagesAt(long index, int value) { VH_maxDescriptorSetUpdateAfterBindSampledImages.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageImagesAt(long index, int value) { VH_maxDescriptorSetUpdateAfterBindStorageImages.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindInputAttachmentsAt(long index, int value) { VH_maxDescriptorSetUpdateAfterBindInputAttachments.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxUpdateAfterBindDescriptorsInAllPools(int value) { VH_maxUpdateAfterBindDescriptorsInAllPools.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties shaderUniformBufferArrayNonUniformIndexingNative(int value) { VH_shaderUniformBufferArrayNonUniformIndexingNative.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties shaderSampledImageArrayNonUniformIndexingNative(int value) { VH_shaderSampledImageArrayNonUniformIndexingNative.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties shaderStorageBufferArrayNonUniformIndexingNative(int value) { VH_shaderStorageBufferArrayNonUniformIndexingNative.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties shaderStorageImageArrayNonUniformIndexingNative(int value) { VH_shaderStorageImageArrayNonUniformIndexingNative.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties shaderInputAttachmentArrayNonUniformIndexingNative(int value) { VH_shaderInputAttachmentArrayNonUniformIndexingNative.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties robustBufferAccessUpdateAfterBind(int value) { VH_robustBufferAccessUpdateAfterBind.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties quadDivergentImplicitLod(int value) { VH_quadDivergentImplicitLod.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindSamplers(int value) { VH_maxPerStageDescriptorUpdateAfterBindSamplers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindUniformBuffers(int value) { VH_maxPerStageDescriptorUpdateAfterBindUniformBuffers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindStorageBuffers(int value) { VH_maxPerStageDescriptorUpdateAfterBindStorageBuffers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindSampledImages(int value) { VH_maxPerStageDescriptorUpdateAfterBindSampledImages.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindStorageImages(int value) { VH_maxPerStageDescriptorUpdateAfterBindStorageImages.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageDescriptorUpdateAfterBindInputAttachments(int value) { VH_maxPerStageDescriptorUpdateAfterBindInputAttachments.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxPerStageUpdateAfterBindResources(int value) { VH_maxPerStageUpdateAfterBindResources.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindSamplers(int value) { VH_maxDescriptorSetUpdateAfterBindSamplers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindUniformBuffers(int value) { VH_maxDescriptorSetUpdateAfterBindUniformBuffers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(int value) { VH_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageBuffers(int value) { VH_maxDescriptorSetUpdateAfterBindStorageBuffers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(int value) { VH_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindSampledImages(int value) { VH_maxDescriptorSetUpdateAfterBindSampledImages.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindStorageImages(int value) { VH_maxDescriptorSetUpdateAfterBindStorageImages.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties maxDescriptorSetUpdateAfterBindInputAttachments(int value) { VH_maxDescriptorSetUpdateAfterBindInputAttachments.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _maxUpdateAfterBindDescriptorsInAllPoolsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxUpdateAfterBindDescriptorsInAllPools, index), LAYOUT_maxUpdateAfterBindDescriptorsInAllPools); }
+    public MemorySegment _maxUpdateAfterBindDescriptorsInAllPools() { return _maxUpdateAfterBindDescriptorsInAllPoolsAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxUpdateAfterBindDescriptorsInAllPoolsAt(long index, MemorySegment src) { _maxUpdateAfterBindDescriptorsInAllPoolsAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxUpdateAfterBindDescriptorsInAllPools(MemorySegment src) { return _maxUpdateAfterBindDescriptorsInAllPoolsAt(0L, src); }
+    public MemorySegment _shaderUniformBufferArrayNonUniformIndexingNativeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderUniformBufferArrayNonUniformIndexingNative, index), LAYOUT_shaderUniformBufferArrayNonUniformIndexingNative); }
+    public MemorySegment _shaderUniformBufferArrayNonUniformIndexingNative() { return _shaderUniformBufferArrayNonUniformIndexingNativeAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _shaderUniformBufferArrayNonUniformIndexingNativeAt(long index, MemorySegment src) { _shaderUniformBufferArrayNonUniformIndexingNativeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _shaderUniformBufferArrayNonUniformIndexingNative(MemorySegment src) { return _shaderUniformBufferArrayNonUniformIndexingNativeAt(0L, src); }
+    public MemorySegment _shaderSampledImageArrayNonUniformIndexingNativeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderSampledImageArrayNonUniformIndexingNative, index), LAYOUT_shaderSampledImageArrayNonUniformIndexingNative); }
+    public MemorySegment _shaderSampledImageArrayNonUniformIndexingNative() { return _shaderSampledImageArrayNonUniformIndexingNativeAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _shaderSampledImageArrayNonUniformIndexingNativeAt(long index, MemorySegment src) { _shaderSampledImageArrayNonUniformIndexingNativeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _shaderSampledImageArrayNonUniformIndexingNative(MemorySegment src) { return _shaderSampledImageArrayNonUniformIndexingNativeAt(0L, src); }
+    public MemorySegment _shaderStorageBufferArrayNonUniformIndexingNativeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderStorageBufferArrayNonUniformIndexingNative, index), LAYOUT_shaderStorageBufferArrayNonUniformIndexingNative); }
+    public MemorySegment _shaderStorageBufferArrayNonUniformIndexingNative() { return _shaderStorageBufferArrayNonUniformIndexingNativeAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _shaderStorageBufferArrayNonUniformIndexingNativeAt(long index, MemorySegment src) { _shaderStorageBufferArrayNonUniformIndexingNativeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _shaderStorageBufferArrayNonUniformIndexingNative(MemorySegment src) { return _shaderStorageBufferArrayNonUniformIndexingNativeAt(0L, src); }
+    public MemorySegment _shaderStorageImageArrayNonUniformIndexingNativeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderStorageImageArrayNonUniformIndexingNative, index), LAYOUT_shaderStorageImageArrayNonUniformIndexingNative); }
+    public MemorySegment _shaderStorageImageArrayNonUniformIndexingNative() { return _shaderStorageImageArrayNonUniformIndexingNativeAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _shaderStorageImageArrayNonUniformIndexingNativeAt(long index, MemorySegment src) { _shaderStorageImageArrayNonUniformIndexingNativeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _shaderStorageImageArrayNonUniformIndexingNative(MemorySegment src) { return _shaderStorageImageArrayNonUniformIndexingNativeAt(0L, src); }
+    public MemorySegment _shaderInputAttachmentArrayNonUniformIndexingNativeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderInputAttachmentArrayNonUniformIndexingNative, index), LAYOUT_shaderInputAttachmentArrayNonUniformIndexingNative); }
+    public MemorySegment _shaderInputAttachmentArrayNonUniformIndexingNative() { return _shaderInputAttachmentArrayNonUniformIndexingNativeAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _shaderInputAttachmentArrayNonUniformIndexingNativeAt(long index, MemorySegment src) { _shaderInputAttachmentArrayNonUniformIndexingNativeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _shaderInputAttachmentArrayNonUniformIndexingNative(MemorySegment src) { return _shaderInputAttachmentArrayNonUniformIndexingNativeAt(0L, src); }
+    public MemorySegment _robustBufferAccessUpdateAfterBindAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_robustBufferAccessUpdateAfterBind, index), LAYOUT_robustBufferAccessUpdateAfterBind); }
+    public MemorySegment _robustBufferAccessUpdateAfterBind() { return _robustBufferAccessUpdateAfterBindAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _robustBufferAccessUpdateAfterBindAt(long index, MemorySegment src) { _robustBufferAccessUpdateAfterBindAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _robustBufferAccessUpdateAfterBind(MemorySegment src) { return _robustBufferAccessUpdateAfterBindAt(0L, src); }
+    public MemorySegment _quadDivergentImplicitLodAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_quadDivergentImplicitLod, index), LAYOUT_quadDivergentImplicitLod); }
+    public MemorySegment _quadDivergentImplicitLod() { return _quadDivergentImplicitLodAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _quadDivergentImplicitLodAt(long index, MemorySegment src) { _quadDivergentImplicitLodAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _quadDivergentImplicitLod(MemorySegment src) { return _quadDivergentImplicitLodAt(0L, src); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindSamplersAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxPerStageDescriptorUpdateAfterBindSamplers, index), LAYOUT_maxPerStageDescriptorUpdateAfterBindSamplers); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindSamplers() { return _maxPerStageDescriptorUpdateAfterBindSamplersAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindSamplersAt(long index, MemorySegment src) { _maxPerStageDescriptorUpdateAfterBindSamplersAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindSamplers(MemorySegment src) { return _maxPerStageDescriptorUpdateAfterBindSamplersAt(0L, src); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxPerStageDescriptorUpdateAfterBindUniformBuffers, index), LAYOUT_maxPerStageDescriptorUpdateAfterBindUniformBuffers); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindUniformBuffers() { return _maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(long index, MemorySegment src) { _maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindUniformBuffers(MemorySegment src) { return _maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(0L, src); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxPerStageDescriptorUpdateAfterBindStorageBuffers, index), LAYOUT_maxPerStageDescriptorUpdateAfterBindStorageBuffers); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindStorageBuffers() { return _maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(long index, MemorySegment src) { _maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindStorageBuffers(MemorySegment src) { return _maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(0L, src); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindSampledImagesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxPerStageDescriptorUpdateAfterBindSampledImages, index), LAYOUT_maxPerStageDescriptorUpdateAfterBindSampledImages); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindSampledImages() { return _maxPerStageDescriptorUpdateAfterBindSampledImagesAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindSampledImagesAt(long index, MemorySegment src) { _maxPerStageDescriptorUpdateAfterBindSampledImagesAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindSampledImages(MemorySegment src) { return _maxPerStageDescriptorUpdateAfterBindSampledImagesAt(0L, src); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindStorageImagesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxPerStageDescriptorUpdateAfterBindStorageImages, index), LAYOUT_maxPerStageDescriptorUpdateAfterBindStorageImages); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindStorageImages() { return _maxPerStageDescriptorUpdateAfterBindStorageImagesAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindStorageImagesAt(long index, MemorySegment src) { _maxPerStageDescriptorUpdateAfterBindStorageImagesAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindStorageImages(MemorySegment src) { return _maxPerStageDescriptorUpdateAfterBindStorageImagesAt(0L, src); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxPerStageDescriptorUpdateAfterBindInputAttachments, index), LAYOUT_maxPerStageDescriptorUpdateAfterBindInputAttachments); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindInputAttachments() { return _maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(long index, MemorySegment src) { _maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageDescriptorUpdateAfterBindInputAttachments(MemorySegment src) { return _maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(0L, src); }
+    public MemorySegment _maxPerStageUpdateAfterBindResourcesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxPerStageUpdateAfterBindResources, index), LAYOUT_maxPerStageUpdateAfterBindResources); }
+    public MemorySegment _maxPerStageUpdateAfterBindResources() { return _maxPerStageUpdateAfterBindResourcesAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageUpdateAfterBindResourcesAt(long index, MemorySegment src) { _maxPerStageUpdateAfterBindResourcesAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxPerStageUpdateAfterBindResources(MemorySegment src) { return _maxPerStageUpdateAfterBindResourcesAt(0L, src); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindSamplersAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDescriptorSetUpdateAfterBindSamplers, index), LAYOUT_maxDescriptorSetUpdateAfterBindSamplers); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindSamplers() { return _maxDescriptorSetUpdateAfterBindSamplersAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindSamplersAt(long index, MemorySegment src) { _maxDescriptorSetUpdateAfterBindSamplersAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindSamplers(MemorySegment src) { return _maxDescriptorSetUpdateAfterBindSamplersAt(0L, src); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindUniformBuffersAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDescriptorSetUpdateAfterBindUniformBuffers, index), LAYOUT_maxDescriptorSetUpdateAfterBindUniformBuffers); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindUniformBuffers() { return _maxDescriptorSetUpdateAfterBindUniformBuffersAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindUniformBuffersAt(long index, MemorySegment src) { _maxDescriptorSetUpdateAfterBindUniformBuffersAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindUniformBuffers(MemorySegment src) { return _maxDescriptorSetUpdateAfterBindUniformBuffersAt(0L, src); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic, index), LAYOUT_maxDescriptorSetUpdateAfterBindUniformBuffersDynamic); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindUniformBuffersDynamic() { return _maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(long index, MemorySegment src) { _maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(MemorySegment src) { return _maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(0L, src); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindStorageBuffersAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDescriptorSetUpdateAfterBindStorageBuffers, index), LAYOUT_maxDescriptorSetUpdateAfterBindStorageBuffers); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindStorageBuffers() { return _maxDescriptorSetUpdateAfterBindStorageBuffersAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindStorageBuffersAt(long index, MemorySegment src) { _maxDescriptorSetUpdateAfterBindStorageBuffersAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindStorageBuffers(MemorySegment src) { return _maxDescriptorSetUpdateAfterBindStorageBuffersAt(0L, src); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic, index), LAYOUT_maxDescriptorSetUpdateAfterBindStorageBuffersDynamic); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindStorageBuffersDynamic() { return _maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(long index, MemorySegment src) { _maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(MemorySegment src) { return _maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(0L, src); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindSampledImagesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDescriptorSetUpdateAfterBindSampledImages, index), LAYOUT_maxDescriptorSetUpdateAfterBindSampledImages); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindSampledImages() { return _maxDescriptorSetUpdateAfterBindSampledImagesAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindSampledImagesAt(long index, MemorySegment src) { _maxDescriptorSetUpdateAfterBindSampledImagesAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindSampledImages(MemorySegment src) { return _maxDescriptorSetUpdateAfterBindSampledImagesAt(0L, src); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindStorageImagesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDescriptorSetUpdateAfterBindStorageImages, index), LAYOUT_maxDescriptorSetUpdateAfterBindStorageImages); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindStorageImages() { return _maxDescriptorSetUpdateAfterBindStorageImagesAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindStorageImagesAt(long index, MemorySegment src) { _maxDescriptorSetUpdateAfterBindStorageImagesAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindStorageImages(MemorySegment src) { return _maxDescriptorSetUpdateAfterBindStorageImagesAt(0L, src); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindInputAttachmentsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDescriptorSetUpdateAfterBindInputAttachments, index), LAYOUT_maxDescriptorSetUpdateAfterBindInputAttachments); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindInputAttachments() { return _maxDescriptorSetUpdateAfterBindInputAttachmentsAt(0L); }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindInputAttachmentsAt(long index, MemorySegment src) { _maxDescriptorSetUpdateAfterBindInputAttachmentsAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDescriptorIndexingProperties _maxDescriptorSetUpdateAfterBindInputAttachments(MemorySegment src) { return _maxDescriptorSetUpdateAfterBindInputAttachmentsAt(0L, src); }
 }

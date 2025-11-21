@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,206 +12,79 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSurfacePresentModeCompatibilityKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t presentModeCount;
 ///     VkPresentModeKHR* pPresentModes;
-/// };
+/// }
 /// ```
 public final class VkSurfacePresentModeCompatibilityKHR extends GroupType {
-    /// The struct layout of `VkSurfacePresentModeCompatibilityKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("presentModeCount"),
         ValueLayout.ADDRESS.withName("pPresentModes")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `presentModeCount`.
     public static final long OFFSET_presentModeCount = LAYOUT.byteOffset(PathElement.groupElement("presentModeCount"));
-    /// The memory layout of `presentModeCount`.
-    public static final MemoryLayout LAYOUT_presentModeCount = LAYOUT.select(PathElement.groupElement("presentModeCount"));
-    /// The [VarHandle] of `presentModeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_presentModeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentModeCount"));
-    /// The byte offset of `pPresentModes`.
     public static final long OFFSET_pPresentModes = LAYOUT.byteOffset(PathElement.groupElement("pPresentModes"));
-    /// The memory layout of `pPresentModes`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_presentModeCount = LAYOUT.select(PathElement.groupElement("presentModeCount"));
     public static final MemoryLayout LAYOUT_pPresentModes = LAYOUT.select(PathElement.groupElement("pPresentModes"));
-    /// The [VarHandle] of `pPresentModes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_presentModeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentModeCount"));
     public static final VarHandle VH_pPresentModes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPresentModes"));
 
-    /// Creates `VkSurfacePresentModeCompatibilityKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkSurfacePresentModeCompatibilityKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkSurfacePresentModeCompatibilityKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSurfacePresentModeCompatibilityKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfacePresentModeCompatibilityKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkSurfacePresentModeCompatibilityKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSurfacePresentModeCompatibilityKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfacePresentModeCompatibilityKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkSurfacePresentModeCompatibilityKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSurfacePresentModeCompatibilityKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfacePresentModeCompatibilityKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkSurfacePresentModeCompatibilityKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSurfacePresentModeCompatibilityKHR`
     public static VkSurfacePresentModeCompatibilityKHR alloc(SegmentAllocator allocator) { return new VkSurfacePresentModeCompatibilityKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkSurfacePresentModeCompatibilityKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkSurfacePresentModeCompatibilityKHR`
     public static VkSurfacePresentModeCompatibilityKHR alloc(SegmentAllocator allocator, long count) { return new VkSurfacePresentModeCompatibilityKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkSurfacePresentModeCompatibilityKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRSurfaceMaintenance1.VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_KHR); }
+    public static VkSurfacePresentModeCompatibilityKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRSurfaceMaintenance1.VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_KHR);
+        return s;
+    }
     public VkSurfacePresentModeCompatibilityKHR copyFrom(VkSurfacePresentModeCompatibilityKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkSurfacePresentModeCompatibilityKHR reinterpret(long count) { return new VkSurfacePresentModeCompatibilityKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSurfacePresentModeCompatibilityKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSurfacePresentModeCompatibilityKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `presentModeCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int presentModeCount(MemorySegment segment, long index) { return (int) VH_presentModeCount.get(segment, 0L, index); }
-    /// {@return `presentModeCount`}
-    public int presentModeCount() { return presentModeCount(this.segment(), 0L); }
-    /// Sets `presentModeCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void presentModeCount(MemorySegment segment, long index, int value) { VH_presentModeCount.set(segment, 0L, index, value); }
-    /// Sets `presentModeCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSurfacePresentModeCompatibilityKHR presentModeCount(int value) { presentModeCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pPresentModes` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pPresentModes(MemorySegment segment, long index) { return (MemorySegment) VH_pPresentModes.get(segment, 0L, index); }
-    /// {@return `pPresentModes`}
-    public MemorySegment pPresentModes() { return pPresentModes(this.segment(), 0L); }
-    /// Sets `pPresentModes` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pPresentModes(MemorySegment segment, long index, MemorySegment value) { VH_pPresentModes.set(segment, 0L, index, value); }
-    /// Sets `pPresentModes` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSurfacePresentModeCompatibilityKHR pPresentModes(MemorySegment value) { pPresentModes(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkSurfacePresentModeCompatibilityKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSurfacePresentModeCompatibilityKHR`
     public VkSurfacePresentModeCompatibilityKHR asSlice(long index) { return new VkSurfacePresentModeCompatibilityKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkSurfacePresentModeCompatibilityKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSurfacePresentModeCompatibilityKHR`
     public VkSurfacePresentModeCompatibilityKHR asSlice(long index, long count) { return new VkSurfacePresentModeCompatibilityKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkSurfacePresentModeCompatibilityKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkSurfacePresentModeCompatibilityKHR at(long index, Consumer<VkSurfacePresentModeCompatibilityKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSurfacePresentModeCompatibilityKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSurfacePresentModeCompatibilityKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `presentModeCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int presentModeCountAt(long index) { return presentModeCount(this.segment(), index); }
-    /// Sets `presentModeCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSurfacePresentModeCompatibilityKHR presentModeCountAt(long index, int value) { presentModeCount(this.segment(), index, value); return this; }
-
-    /// {@return `pPresentModes` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pPresentModesAt(long index) { return pPresentModes(this.segment(), index); }
-    /// Sets `pPresentModes` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSurfacePresentModeCompatibilityKHR pPresentModesAt(long index, MemorySegment value) { pPresentModes(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int presentModeCountAt(long index) { return (int) VH_presentModeCount.get(this.segment(), 0L, index); }
+    public MemorySegment pPresentModesAt(long index) { return (MemorySegment) VH_pPresentModes.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int presentModeCount() { return (int) VH_presentModeCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pPresentModes() { return (MemorySegment) VH_pPresentModes.get(this.segment(), 0L, 0L); }
+    public VkSurfacePresentModeCompatibilityKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkSurfacePresentModeCompatibilityKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkSurfacePresentModeCompatibilityKHR presentModeCountAt(long index, int value) { VH_presentModeCount.set(this.segment(), 0L, index, value); return this; }
+    public VkSurfacePresentModeCompatibilityKHR pPresentModesAt(long index, MemorySegment value) { VH_pPresentModes.set(this.segment(), 0L, index, value); return this; }
+    public VkSurfacePresentModeCompatibilityKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSurfacePresentModeCompatibilityKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSurfacePresentModeCompatibilityKHR presentModeCount(int value) { VH_presentModeCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSurfacePresentModeCompatibilityKHR pPresentModes(MemorySegment value) { VH_pPresentModes.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkSurfacePresentModeCompatibilityKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkSurfacePresentModeCompatibilityKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkSurfacePresentModeCompatibilityKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkSurfacePresentModeCompatibilityKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _presentModeCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_presentModeCount, index), LAYOUT_presentModeCount); }
+    public MemorySegment _presentModeCount() { return _presentModeCountAt(0L); }
+    public VkSurfacePresentModeCompatibilityKHR _presentModeCountAt(long index, MemorySegment src) { _presentModeCountAt(index).copyFrom(src); return this; }
+    public VkSurfacePresentModeCompatibilityKHR _presentModeCount(MemorySegment src) { return _presentModeCountAt(0L, src); }
+    public MemorySegment _pPresentModesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pPresentModes, index), LAYOUT_pPresentModes); }
+    public MemorySegment _pPresentModes() { return _pPresentModesAt(0L); }
+    public VkSurfacePresentModeCompatibilityKHR _pPresentModesAt(long index, MemorySegment src) { _pPresentModesAt(index).copyFrom(src); return this; }
+    public VkSurfacePresentModeCompatibilityKHR _pPresentModes(MemorySegment src) { return _pPresentModesAt(0L, src); }
 }

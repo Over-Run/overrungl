@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,19 +12,18 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayPlaneCapabilitiesKHR {
-///     ((uint32_t) VkFlags) VkDisplayPlaneAlphaFlagsKHR supportedAlpha;
-///     (struct VkOffset2D) VkOffset2D minSrcPosition;
-///     (struct VkOffset2D) VkOffset2D maxSrcPosition;
-///     (struct VkExtent2D) VkExtent2D minSrcExtent;
-///     (struct VkExtent2D) VkExtent2D maxSrcExtent;
-///     (struct VkOffset2D) VkOffset2D minDstPosition;
-///     (struct VkOffset2D) VkOffset2D maxDstPosition;
-///     (struct VkExtent2D) VkExtent2D minDstExtent;
-///     (struct VkExtent2D) VkExtent2D maxDstExtent;
-/// };
+///     VkDisplayPlaneAlphaFlagsKHR supportedAlpha;
+///     VkOffset2D minSrcPosition;
+///     VkOffset2D maxSrcPosition;
+///     VkExtent2D minSrcExtent;
+///     VkExtent2D maxSrcExtent;
+///     VkOffset2D minDstPosition;
+///     VkOffset2D maxDstPosition;
+///     VkExtent2D minDstExtent;
+///     VkExtent2D maxDstExtent;
+/// }
 /// ```
 public final class VkDisplayPlaneCapabilitiesKHR extends GroupType {
-    /// The struct layout of `VkDisplayPlaneCapabilitiesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("supportedAlpha"),
         overrungl.vulkan.struct.VkOffset2D.LAYOUT.withName("minSrcPosition"),
@@ -37,403 +35,155 @@ public final class VkDisplayPlaneCapabilitiesKHR extends GroupType {
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("minDstExtent"),
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("maxDstExtent")
     );
-    /// The byte offset of `supportedAlpha`.
     public static final long OFFSET_supportedAlpha = LAYOUT.byteOffset(PathElement.groupElement("supportedAlpha"));
-    /// The memory layout of `supportedAlpha`.
-    public static final MemoryLayout LAYOUT_supportedAlpha = LAYOUT.select(PathElement.groupElement("supportedAlpha"));
-    /// The [VarHandle] of `supportedAlpha` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedAlpha = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedAlpha"));
-    /// The byte offset of `minSrcPosition`.
     public static final long OFFSET_minSrcPosition = LAYOUT.byteOffset(PathElement.groupElement("minSrcPosition"));
-    /// The memory layout of `minSrcPosition`.
-    public static final MemoryLayout LAYOUT_minSrcPosition = LAYOUT.select(PathElement.groupElement("minSrcPosition"));
-    /// The byte offset of `maxSrcPosition`.
     public static final long OFFSET_maxSrcPosition = LAYOUT.byteOffset(PathElement.groupElement("maxSrcPosition"));
-    /// The memory layout of `maxSrcPosition`.
-    public static final MemoryLayout LAYOUT_maxSrcPosition = LAYOUT.select(PathElement.groupElement("maxSrcPosition"));
-    /// The byte offset of `minSrcExtent`.
     public static final long OFFSET_minSrcExtent = LAYOUT.byteOffset(PathElement.groupElement("minSrcExtent"));
-    /// The memory layout of `minSrcExtent`.
-    public static final MemoryLayout LAYOUT_minSrcExtent = LAYOUT.select(PathElement.groupElement("minSrcExtent"));
-    /// The byte offset of `maxSrcExtent`.
     public static final long OFFSET_maxSrcExtent = LAYOUT.byteOffset(PathElement.groupElement("maxSrcExtent"));
-    /// The memory layout of `maxSrcExtent`.
-    public static final MemoryLayout LAYOUT_maxSrcExtent = LAYOUT.select(PathElement.groupElement("maxSrcExtent"));
-    /// The byte offset of `minDstPosition`.
     public static final long OFFSET_minDstPosition = LAYOUT.byteOffset(PathElement.groupElement("minDstPosition"));
-    /// The memory layout of `minDstPosition`.
-    public static final MemoryLayout LAYOUT_minDstPosition = LAYOUT.select(PathElement.groupElement("minDstPosition"));
-    /// The byte offset of `maxDstPosition`.
     public static final long OFFSET_maxDstPosition = LAYOUT.byteOffset(PathElement.groupElement("maxDstPosition"));
-    /// The memory layout of `maxDstPosition`.
-    public static final MemoryLayout LAYOUT_maxDstPosition = LAYOUT.select(PathElement.groupElement("maxDstPosition"));
-    /// The byte offset of `minDstExtent`.
     public static final long OFFSET_minDstExtent = LAYOUT.byteOffset(PathElement.groupElement("minDstExtent"));
-    /// The memory layout of `minDstExtent`.
-    public static final MemoryLayout LAYOUT_minDstExtent = LAYOUT.select(PathElement.groupElement("minDstExtent"));
-    /// The byte offset of `maxDstExtent`.
     public static final long OFFSET_maxDstExtent = LAYOUT.byteOffset(PathElement.groupElement("maxDstExtent"));
-    /// The memory layout of `maxDstExtent`.
+    public static final MemoryLayout LAYOUT_supportedAlpha = LAYOUT.select(PathElement.groupElement("supportedAlpha"));
+    public static final MemoryLayout LAYOUT_minSrcPosition = LAYOUT.select(PathElement.groupElement("minSrcPosition"));
+    public static final MemoryLayout LAYOUT_maxSrcPosition = LAYOUT.select(PathElement.groupElement("maxSrcPosition"));
+    public static final MemoryLayout LAYOUT_minSrcExtent = LAYOUT.select(PathElement.groupElement("minSrcExtent"));
+    public static final MemoryLayout LAYOUT_maxSrcExtent = LAYOUT.select(PathElement.groupElement("maxSrcExtent"));
+    public static final MemoryLayout LAYOUT_minDstPosition = LAYOUT.select(PathElement.groupElement("minDstPosition"));
+    public static final MemoryLayout LAYOUT_maxDstPosition = LAYOUT.select(PathElement.groupElement("maxDstPosition"));
+    public static final MemoryLayout LAYOUT_minDstExtent = LAYOUT.select(PathElement.groupElement("minDstExtent"));
     public static final MemoryLayout LAYOUT_maxDstExtent = LAYOUT.select(PathElement.groupElement("maxDstExtent"));
+    public static final VarHandle VH_supportedAlpha = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedAlpha"));
+    public static final VarHandle VH_minSrcPosition$x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSrcPosition"), PathElement.groupElement("x"));
+    public static final VarHandle VH_minSrcPosition$y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSrcPosition"), PathElement.groupElement("y"));
+    public static final VarHandle VH_maxSrcPosition$x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSrcPosition"), PathElement.groupElement("x"));
+    public static final VarHandle VH_maxSrcPosition$y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSrcPosition"), PathElement.groupElement("y"));
+    public static final VarHandle VH_minSrcExtent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSrcExtent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_minSrcExtent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSrcExtent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_maxSrcExtent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSrcExtent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_maxSrcExtent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSrcExtent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_minDstPosition$x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minDstPosition"), PathElement.groupElement("x"));
+    public static final VarHandle VH_minDstPosition$y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minDstPosition"), PathElement.groupElement("y"));
+    public static final VarHandle VH_maxDstPosition$x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDstPosition"), PathElement.groupElement("x"));
+    public static final VarHandle VH_maxDstPosition$y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDstPosition"), PathElement.groupElement("y"));
+    public static final VarHandle VH_minDstExtent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minDstExtent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_minDstExtent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minDstExtent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_maxDstExtent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDstExtent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_maxDstExtent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDstExtent"), PathElement.groupElement("height"));
 
-    /// Creates `VkDisplayPlaneCapabilitiesKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkDisplayPlaneCapabilitiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkDisplayPlaneCapabilitiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDisplayPlaneCapabilitiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneCapabilitiesKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkDisplayPlaneCapabilitiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDisplayPlaneCapabilitiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneCapabilitiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkDisplayPlaneCapabilitiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDisplayPlaneCapabilitiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneCapabilitiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
     public static VkDisplayPlaneCapabilitiesKHR alloc(SegmentAllocator allocator) { return new VkDisplayPlaneCapabilitiesKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
     public static VkDisplayPlaneCapabilitiesKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPlaneCapabilitiesKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR copyFrom(VkDisplayPlaneCapabilitiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkDisplayPlaneCapabilitiesKHR reinterpret(long count) { return new VkDisplayPlaneCapabilitiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `supportedAlpha` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int supportedAlpha(MemorySegment segment, long index) { return (int) VH_supportedAlpha.get(segment, 0L, index); }
-    /// {@return `supportedAlpha`}
-    public int supportedAlpha() { return supportedAlpha(this.segment(), 0L); }
-    /// Sets `supportedAlpha` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void supportedAlpha(MemorySegment segment, long index, int value) { VH_supportedAlpha.set(segment, 0L, index, value); }
-    /// Sets `supportedAlpha` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR supportedAlpha(int value) { supportedAlpha(this.segment(), 0L, value); return this; }
-
-    /// {@return `minSrcPosition` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment minSrcPosition(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minSrcPosition, index), LAYOUT_minSrcPosition); }
-    /// {@return `minSrcPosition`}
-    public MemorySegment minSrcPosition() { return minSrcPosition(this.segment(), 0L); }
-    /// Sets `minSrcPosition` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minSrcPosition(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minSrcPosition, index), LAYOUT_minSrcPosition.byteSize()); }
-    /// Sets `minSrcPosition` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minSrcPosition(MemorySegment value) { minSrcPosition(this.segment(), 0L, value); return this; }
-    /// Accepts `minSrcPosition` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minSrcPosition(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minSrcPosition())); return this; }
-
-    /// {@return `maxSrcPosition` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment maxSrcPosition(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxSrcPosition, index), LAYOUT_maxSrcPosition); }
-    /// {@return `maxSrcPosition`}
-    public MemorySegment maxSrcPosition() { return maxSrcPosition(this.segment(), 0L); }
-    /// Sets `maxSrcPosition` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxSrcPosition(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxSrcPosition, index), LAYOUT_maxSrcPosition.byteSize()); }
-    /// Sets `maxSrcPosition` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxSrcPosition(MemorySegment value) { maxSrcPosition(this.segment(), 0L, value); return this; }
-    /// Accepts `maxSrcPosition` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxSrcPosition(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxSrcPosition())); return this; }
-
-    /// {@return `minSrcExtent` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment minSrcExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minSrcExtent, index), LAYOUT_minSrcExtent); }
-    /// {@return `minSrcExtent`}
-    public MemorySegment minSrcExtent() { return minSrcExtent(this.segment(), 0L); }
-    /// Sets `minSrcExtent` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minSrcExtent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minSrcExtent, index), LAYOUT_minSrcExtent.byteSize()); }
-    /// Sets `minSrcExtent` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minSrcExtent(MemorySegment value) { minSrcExtent(this.segment(), 0L, value); return this; }
-    /// Accepts `minSrcExtent` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minSrcExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minSrcExtent())); return this; }
-
-    /// {@return `maxSrcExtent` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment maxSrcExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxSrcExtent, index), LAYOUT_maxSrcExtent); }
-    /// {@return `maxSrcExtent`}
-    public MemorySegment maxSrcExtent() { return maxSrcExtent(this.segment(), 0L); }
-    /// Sets `maxSrcExtent` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxSrcExtent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxSrcExtent, index), LAYOUT_maxSrcExtent.byteSize()); }
-    /// Sets `maxSrcExtent` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxSrcExtent(MemorySegment value) { maxSrcExtent(this.segment(), 0L, value); return this; }
-    /// Accepts `maxSrcExtent` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxSrcExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxSrcExtent())); return this; }
-
-    /// {@return `minDstPosition` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment minDstPosition(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minDstPosition, index), LAYOUT_minDstPosition); }
-    /// {@return `minDstPosition`}
-    public MemorySegment minDstPosition() { return minDstPosition(this.segment(), 0L); }
-    /// Sets `minDstPosition` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minDstPosition(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minDstPosition, index), LAYOUT_minDstPosition.byteSize()); }
-    /// Sets `minDstPosition` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minDstPosition(MemorySegment value) { minDstPosition(this.segment(), 0L, value); return this; }
-    /// Accepts `minDstPosition` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minDstPosition(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minDstPosition())); return this; }
-
-    /// {@return `maxDstPosition` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment maxDstPosition(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxDstPosition, index), LAYOUT_maxDstPosition); }
-    /// {@return `maxDstPosition`}
-    public MemorySegment maxDstPosition() { return maxDstPosition(this.segment(), 0L); }
-    /// Sets `maxDstPosition` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDstPosition(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxDstPosition, index), LAYOUT_maxDstPosition.byteSize()); }
-    /// Sets `maxDstPosition` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxDstPosition(MemorySegment value) { maxDstPosition(this.segment(), 0L, value); return this; }
-    /// Accepts `maxDstPosition` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxDstPosition(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxDstPosition())); return this; }
-
-    /// {@return `minDstExtent` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment minDstExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minDstExtent, index), LAYOUT_minDstExtent); }
-    /// {@return `minDstExtent`}
-    public MemorySegment minDstExtent() { return minDstExtent(this.segment(), 0L); }
-    /// Sets `minDstExtent` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minDstExtent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minDstExtent, index), LAYOUT_minDstExtent.byteSize()); }
-    /// Sets `minDstExtent` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minDstExtent(MemorySegment value) { minDstExtent(this.segment(), 0L, value); return this; }
-    /// Accepts `minDstExtent` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minDstExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minDstExtent())); return this; }
-
-    /// {@return `maxDstExtent` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment maxDstExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxDstExtent, index), LAYOUT_maxDstExtent); }
-    /// {@return `maxDstExtent`}
-    public MemorySegment maxDstExtent() { return maxDstExtent(this.segment(), 0L); }
-    /// Sets `maxDstExtent` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDstExtent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxDstExtent, index), LAYOUT_maxDstExtent.byteSize()); }
-    /// Sets `maxDstExtent` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxDstExtent(MemorySegment value) { maxDstExtent(this.segment(), 0L, value); return this; }
-    /// Accepts `maxDstExtent` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxDstExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxDstExtent())); return this; }
-
-    /// Creates a slice of `VkDisplayPlaneCapabilitiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDisplayPlaneCapabilitiesKHR`
     public VkDisplayPlaneCapabilitiesKHR asSlice(long index) { return new VkDisplayPlaneCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkDisplayPlaneCapabilitiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDisplayPlaneCapabilitiesKHR`
     public VkDisplayPlaneCapabilitiesKHR asSlice(long index, long count) { return new VkDisplayPlaneCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkDisplayPlaneCapabilitiesKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR at(long index, Consumer<VkDisplayPlaneCapabilitiesKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `supportedAlpha` at the given index}
-    /// @param index the index of the struct buffer
-    public int supportedAlphaAt(long index) { return supportedAlpha(this.segment(), index); }
-    /// Sets `supportedAlpha` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR supportedAlphaAt(long index, int value) { supportedAlpha(this.segment(), index, value); return this; }
-
-    /// {@return `minSrcPosition` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment minSrcPositionAt(long index) { return minSrcPosition(this.segment(), index); }
-    /// Sets `minSrcPosition` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minSrcPositionAt(long index, MemorySegment value) { minSrcPosition(this.segment(), index, value); return this; }
-    /// Accepts `minSrcPosition` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minSrcPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minSrcPositionAt(index))); return this; }
-
-    /// {@return `maxSrcPosition` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment maxSrcPositionAt(long index) { return maxSrcPosition(this.segment(), index); }
-    /// Sets `maxSrcPosition` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxSrcPositionAt(long index, MemorySegment value) { maxSrcPosition(this.segment(), index, value); return this; }
-    /// Accepts `maxSrcPosition` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxSrcPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxSrcPositionAt(index))); return this; }
-
-    /// {@return `minSrcExtent` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment minSrcExtentAt(long index) { return minSrcExtent(this.segment(), index); }
-    /// Sets `minSrcExtent` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minSrcExtentAt(long index, MemorySegment value) { minSrcExtent(this.segment(), index, value); return this; }
-    /// Accepts `minSrcExtent` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minSrcExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minSrcExtentAt(index))); return this; }
-
-    /// {@return `maxSrcExtent` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment maxSrcExtentAt(long index) { return maxSrcExtent(this.segment(), index); }
-    /// Sets `maxSrcExtent` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxSrcExtentAt(long index, MemorySegment value) { maxSrcExtent(this.segment(), index, value); return this; }
-    /// Accepts `maxSrcExtent` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxSrcExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxSrcExtentAt(index))); return this; }
-
-    /// {@return `minDstPosition` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment minDstPositionAt(long index) { return minDstPosition(this.segment(), index); }
-    /// Sets `minDstPosition` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minDstPositionAt(long index, MemorySegment value) { minDstPosition(this.segment(), index, value); return this; }
-    /// Accepts `minDstPosition` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minDstPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minDstPositionAt(index))); return this; }
-
-    /// {@return `maxDstPosition` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment maxDstPositionAt(long index) { return maxDstPosition(this.segment(), index); }
-    /// Sets `maxDstPosition` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxDstPositionAt(long index, MemorySegment value) { maxDstPosition(this.segment(), index, value); return this; }
-    /// Accepts `maxDstPosition` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxDstPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxDstPositionAt(index))); return this; }
-
-    /// {@return `minDstExtent` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment minDstExtentAt(long index) { return minDstExtent(this.segment(), index); }
-    /// Sets `minDstExtent` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minDstExtentAt(long index, MemorySegment value) { minDstExtent(this.segment(), index, value); return this; }
-    /// Accepts `minDstExtent` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minDstExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minDstExtentAt(index))); return this; }
-
-    /// {@return `maxDstExtent` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment maxDstExtentAt(long index) { return maxDstExtent(this.segment(), index); }
-    /// Sets `maxDstExtent` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxDstExtentAt(long index, MemorySegment value) { maxDstExtent(this.segment(), index, value); return this; }
-    /// Accepts `maxDstExtent` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxDstExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxDstExtentAt(index))); return this; }
-
+    public int supportedAlphaAt(long index) { return (int) VH_supportedAlpha.get(this.segment(), 0L, index); }
+    public int minSrcPosition$xAt(long index) { return (int) VH_minSrcPosition$x.get(this.segment(), 0L, index); }
+    public int minSrcPosition$yAt(long index) { return (int) VH_minSrcPosition$y.get(this.segment(), 0L, index); }
+    public int maxSrcPosition$xAt(long index) { return (int) VH_maxSrcPosition$x.get(this.segment(), 0L, index); }
+    public int maxSrcPosition$yAt(long index) { return (int) VH_maxSrcPosition$y.get(this.segment(), 0L, index); }
+    public int minSrcExtent$widthAt(long index) { return (int) VH_minSrcExtent$width.get(this.segment(), 0L, index); }
+    public int minSrcExtent$heightAt(long index) { return (int) VH_minSrcExtent$height.get(this.segment(), 0L, index); }
+    public int maxSrcExtent$widthAt(long index) { return (int) VH_maxSrcExtent$width.get(this.segment(), 0L, index); }
+    public int maxSrcExtent$heightAt(long index) { return (int) VH_maxSrcExtent$height.get(this.segment(), 0L, index); }
+    public int minDstPosition$xAt(long index) { return (int) VH_minDstPosition$x.get(this.segment(), 0L, index); }
+    public int minDstPosition$yAt(long index) { return (int) VH_minDstPosition$y.get(this.segment(), 0L, index); }
+    public int maxDstPosition$xAt(long index) { return (int) VH_maxDstPosition$x.get(this.segment(), 0L, index); }
+    public int maxDstPosition$yAt(long index) { return (int) VH_maxDstPosition$y.get(this.segment(), 0L, index); }
+    public int minDstExtent$widthAt(long index) { return (int) VH_minDstExtent$width.get(this.segment(), 0L, index); }
+    public int minDstExtent$heightAt(long index) { return (int) VH_minDstExtent$height.get(this.segment(), 0L, index); }
+    public int maxDstExtent$widthAt(long index) { return (int) VH_maxDstExtent$width.get(this.segment(), 0L, index); }
+    public int maxDstExtent$heightAt(long index) { return (int) VH_maxDstExtent$height.get(this.segment(), 0L, index); }
+    public int supportedAlpha() { return (int) VH_supportedAlpha.get(this.segment(), 0L, 0L); }
+    public int minSrcPosition$x() { return (int) VH_minSrcPosition$x.get(this.segment(), 0L, 0L); }
+    public int minSrcPosition$y() { return (int) VH_minSrcPosition$y.get(this.segment(), 0L, 0L); }
+    public int maxSrcPosition$x() { return (int) VH_maxSrcPosition$x.get(this.segment(), 0L, 0L); }
+    public int maxSrcPosition$y() { return (int) VH_maxSrcPosition$y.get(this.segment(), 0L, 0L); }
+    public int minSrcExtent$width() { return (int) VH_minSrcExtent$width.get(this.segment(), 0L, 0L); }
+    public int minSrcExtent$height() { return (int) VH_minSrcExtent$height.get(this.segment(), 0L, 0L); }
+    public int maxSrcExtent$width() { return (int) VH_maxSrcExtent$width.get(this.segment(), 0L, 0L); }
+    public int maxSrcExtent$height() { return (int) VH_maxSrcExtent$height.get(this.segment(), 0L, 0L); }
+    public int minDstPosition$x() { return (int) VH_minDstPosition$x.get(this.segment(), 0L, 0L); }
+    public int minDstPosition$y() { return (int) VH_minDstPosition$y.get(this.segment(), 0L, 0L); }
+    public int maxDstPosition$x() { return (int) VH_maxDstPosition$x.get(this.segment(), 0L, 0L); }
+    public int maxDstPosition$y() { return (int) VH_maxDstPosition$y.get(this.segment(), 0L, 0L); }
+    public int minDstExtent$width() { return (int) VH_minDstExtent$width.get(this.segment(), 0L, 0L); }
+    public int minDstExtent$height() { return (int) VH_minDstExtent$height.get(this.segment(), 0L, 0L); }
+    public int maxDstExtent$width() { return (int) VH_maxDstExtent$width.get(this.segment(), 0L, 0L); }
+    public int maxDstExtent$height() { return (int) VH_maxDstExtent$height.get(this.segment(), 0L, 0L); }
+    public VkDisplayPlaneCapabilitiesKHR supportedAlphaAt(long index, int value) { VH_supportedAlpha.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minSrcPosition$xAt(long index, int value) { VH_minSrcPosition$x.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minSrcPosition$yAt(long index, int value) { VH_minSrcPosition$y.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxSrcPosition$xAt(long index, int value) { VH_maxSrcPosition$x.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxSrcPosition$yAt(long index, int value) { VH_maxSrcPosition$y.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minSrcExtent$widthAt(long index, int value) { VH_minSrcExtent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minSrcExtent$heightAt(long index, int value) { VH_minSrcExtent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxSrcExtent$widthAt(long index, int value) { VH_maxSrcExtent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxSrcExtent$heightAt(long index, int value) { VH_maxSrcExtent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minDstPosition$xAt(long index, int value) { VH_minDstPosition$x.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minDstPosition$yAt(long index, int value) { VH_minDstPosition$y.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxDstPosition$xAt(long index, int value) { VH_maxDstPosition$x.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxDstPosition$yAt(long index, int value) { VH_maxDstPosition$y.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minDstExtent$widthAt(long index, int value) { VH_minDstExtent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minDstExtent$heightAt(long index, int value) { VH_minDstExtent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxDstExtent$widthAt(long index, int value) { VH_maxDstExtent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxDstExtent$heightAt(long index, int value) { VH_maxDstExtent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR supportedAlpha(int value) { VH_supportedAlpha.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minSrcPosition$x(int value) { VH_minSrcPosition$x.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minSrcPosition$y(int value) { VH_minSrcPosition$y.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxSrcPosition$x(int value) { VH_maxSrcPosition$x.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxSrcPosition$y(int value) { VH_maxSrcPosition$y.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minSrcExtent$width(int value) { VH_minSrcExtent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minSrcExtent$height(int value) { VH_minSrcExtent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxSrcExtent$width(int value) { VH_maxSrcExtent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxSrcExtent$height(int value) { VH_maxSrcExtent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minDstPosition$x(int value) { VH_minDstPosition$x.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minDstPosition$y(int value) { VH_minDstPosition$y.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxDstPosition$x(int value) { VH_maxDstPosition$x.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxDstPosition$y(int value) { VH_maxDstPosition$y.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minDstExtent$width(int value) { VH_minDstExtent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR minDstExtent$height(int value) { VH_minDstExtent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxDstExtent$width(int value) { VH_maxDstExtent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPlaneCapabilitiesKHR maxDstExtent$height(int value) { VH_maxDstExtent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _supportedAlphaAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_supportedAlpha, index), LAYOUT_supportedAlpha); }
+    public MemorySegment _supportedAlpha() { return _supportedAlphaAt(0L); }
+    public VkDisplayPlaneCapabilitiesKHR _supportedAlphaAt(long index, MemorySegment src) { _supportedAlphaAt(index).copyFrom(src); return this; }
+    public VkDisplayPlaneCapabilitiesKHR _supportedAlpha(MemorySegment src) { return _supportedAlphaAt(0L, src); }
+    public MemorySegment _minSrcPositionAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minSrcPosition, index), LAYOUT_minSrcPosition); }
+    public MemorySegment _minSrcPosition() { return _minSrcPositionAt(0L); }
+    public VkDisplayPlaneCapabilitiesKHR _minSrcPositionAt(long index, MemorySegment src) { _minSrcPositionAt(index).copyFrom(src); return this; }
+    public VkDisplayPlaneCapabilitiesKHR _minSrcPosition(MemorySegment src) { return _minSrcPositionAt(0L, src); }
+    public MemorySegment _maxSrcPositionAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxSrcPosition, index), LAYOUT_maxSrcPosition); }
+    public MemorySegment _maxSrcPosition() { return _maxSrcPositionAt(0L); }
+    public VkDisplayPlaneCapabilitiesKHR _maxSrcPositionAt(long index, MemorySegment src) { _maxSrcPositionAt(index).copyFrom(src); return this; }
+    public VkDisplayPlaneCapabilitiesKHR _maxSrcPosition(MemorySegment src) { return _maxSrcPositionAt(0L, src); }
+    public MemorySegment _minSrcExtentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minSrcExtent, index), LAYOUT_minSrcExtent); }
+    public MemorySegment _minSrcExtent() { return _minSrcExtentAt(0L); }
+    public VkDisplayPlaneCapabilitiesKHR _minSrcExtentAt(long index, MemorySegment src) { _minSrcExtentAt(index).copyFrom(src); return this; }
+    public VkDisplayPlaneCapabilitiesKHR _minSrcExtent(MemorySegment src) { return _minSrcExtentAt(0L, src); }
+    public MemorySegment _maxSrcExtentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxSrcExtent, index), LAYOUT_maxSrcExtent); }
+    public MemorySegment _maxSrcExtent() { return _maxSrcExtentAt(0L); }
+    public VkDisplayPlaneCapabilitiesKHR _maxSrcExtentAt(long index, MemorySegment src) { _maxSrcExtentAt(index).copyFrom(src); return this; }
+    public VkDisplayPlaneCapabilitiesKHR _maxSrcExtent(MemorySegment src) { return _maxSrcExtentAt(0L, src); }
+    public MemorySegment _minDstPositionAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minDstPosition, index), LAYOUT_minDstPosition); }
+    public MemorySegment _minDstPosition() { return _minDstPositionAt(0L); }
+    public VkDisplayPlaneCapabilitiesKHR _minDstPositionAt(long index, MemorySegment src) { _minDstPositionAt(index).copyFrom(src); return this; }
+    public VkDisplayPlaneCapabilitiesKHR _minDstPosition(MemorySegment src) { return _minDstPositionAt(0L, src); }
+    public MemorySegment _maxDstPositionAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDstPosition, index), LAYOUT_maxDstPosition); }
+    public MemorySegment _maxDstPosition() { return _maxDstPositionAt(0L); }
+    public VkDisplayPlaneCapabilitiesKHR _maxDstPositionAt(long index, MemorySegment src) { _maxDstPositionAt(index).copyFrom(src); return this; }
+    public VkDisplayPlaneCapabilitiesKHR _maxDstPosition(MemorySegment src) { return _maxDstPositionAt(0L, src); }
+    public MemorySegment _minDstExtentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minDstExtent, index), LAYOUT_minDstExtent); }
+    public MemorySegment _minDstExtent() { return _minDstExtentAt(0L); }
+    public VkDisplayPlaneCapabilitiesKHR _minDstExtentAt(long index, MemorySegment src) { _minDstExtentAt(index).copyFrom(src); return this; }
+    public VkDisplayPlaneCapabilitiesKHR _minDstExtent(MemorySegment src) { return _minDstExtentAt(0L, src); }
+    public MemorySegment _maxDstExtentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDstExtent, index), LAYOUT_maxDstExtent); }
+    public MemorySegment _maxDstExtent() { return _maxDstExtentAt(0L); }
+    public VkDisplayPlaneCapabilitiesKHR _maxDstExtentAt(long index, MemorySegment src) { _maxDstExtentAt(index).copyFrom(src); return this; }
+    public VkDisplayPlaneCapabilitiesKHR _maxDstExtent(MemorySegment src) { return _maxDstExtentAt(0L, src); }
 }

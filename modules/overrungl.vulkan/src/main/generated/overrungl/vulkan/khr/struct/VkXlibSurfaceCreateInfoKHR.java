@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,239 +12,92 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkXlibSurfaceCreateInfoKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkXlibSurfaceCreateFlagsKHR flags;
+///     VkXlibSurfaceCreateFlagsKHR flags;
 ///     Display* dpy;
-///     ((unsigned long) XID) Window window;
-/// };
+///     Window window;
+/// }
 /// ```
 public final class VkXlibSurfaceCreateInfoKHR extends GroupType {
-    /// The struct layout of `VkXlibSurfaceCreateInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.ADDRESS.withName("dpy"),
-        CanonicalTypes.C_LONG.withName("window")
+        ValueLayout.JAVA_INT.withName("window")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `dpy`.
     public static final long OFFSET_dpy = LAYOUT.byteOffset(PathElement.groupElement("dpy"));
-    /// The memory layout of `dpy`.
-    public static final MemoryLayout LAYOUT_dpy = LAYOUT.select(PathElement.groupElement("dpy"));
-    /// The [VarHandle] of `dpy` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dpy = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dpy"));
-    /// The byte offset of `window`.
     public static final long OFFSET_window = LAYOUT.byteOffset(PathElement.groupElement("window"));
-    /// The memory layout of `window`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_dpy = LAYOUT.select(PathElement.groupElement("dpy"));
     public static final MemoryLayout LAYOUT_window = LAYOUT.select(PathElement.groupElement("window"));
-    /// The [VarHandle] of `window` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_dpy = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dpy"));
     public static final VarHandle VH_window = LAYOUT.arrayElementVarHandle(PathElement.groupElement("window"));
 
-    /// Creates `VkXlibSurfaceCreateInfoKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkXlibSurfaceCreateInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkXlibSurfaceCreateInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkXlibSurfaceCreateInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkXlibSurfaceCreateInfoKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkXlibSurfaceCreateInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkXlibSurfaceCreateInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkXlibSurfaceCreateInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkXlibSurfaceCreateInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkXlibSurfaceCreateInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkXlibSurfaceCreateInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkXlibSurfaceCreateInfoKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkXlibSurfaceCreateInfoKHR`
     public static VkXlibSurfaceCreateInfoKHR alloc(SegmentAllocator allocator) { return new VkXlibSurfaceCreateInfoKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkXlibSurfaceCreateInfoKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkXlibSurfaceCreateInfoKHR`
     public static VkXlibSurfaceCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkXlibSurfaceCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkXlibSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRXlibSurface.VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR); }
+    public static VkXlibSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRXlibSurface.VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR);
+        return s;
+    }
     public VkXlibSurfaceCreateInfoKHR copyFrom(VkXlibSurfaceCreateInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkXlibSurfaceCreateInfoKHR reinterpret(long count) { return new VkXlibSurfaceCreateInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkXlibSurfaceCreateInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkXlibSurfaceCreateInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkXlibSurfaceCreateInfoKHR flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `dpy` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment dpy(MemorySegment segment, long index) { return (MemorySegment) VH_dpy.get(segment, 0L, index); }
-    /// {@return `dpy`}
-    public MemorySegment dpy() { return dpy(this.segment(), 0L); }
-    /// Sets `dpy` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dpy(MemorySegment segment, long index, MemorySegment value) { VH_dpy.set(segment, 0L, index, value); }
-    /// Sets `dpy` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkXlibSurfaceCreateInfoKHR dpy(MemorySegment value) { dpy(this.segment(), 0L, value); return this; }
-
-    /// {@return `window` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long window(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, VH_window.get(segment, 0L, index)); }
-    /// {@return `window`}
-    public long window() { return window(this.segment(), 0L); }
-    /// Sets `window` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void window(MemorySegment segment, long index, long value) { VH_window.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.C_LONG, value)); }
-    /// Sets `window` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkXlibSurfaceCreateInfoKHR window(long value) { window(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkXlibSurfaceCreateInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkXlibSurfaceCreateInfoKHR`
     public VkXlibSurfaceCreateInfoKHR asSlice(long index) { return new VkXlibSurfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkXlibSurfaceCreateInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkXlibSurfaceCreateInfoKHR`
     public VkXlibSurfaceCreateInfoKHR asSlice(long index, long count) { return new VkXlibSurfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkXlibSurfaceCreateInfoKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkXlibSurfaceCreateInfoKHR at(long index, Consumer<VkXlibSurfaceCreateInfoKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkXlibSurfaceCreateInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkXlibSurfaceCreateInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkXlibSurfaceCreateInfoKHR flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `dpy` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment dpyAt(long index) { return dpy(this.segment(), index); }
-    /// Sets `dpy` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkXlibSurfaceCreateInfoKHR dpyAt(long index, MemorySegment value) { dpy(this.segment(), index, value); return this; }
-
-    /// {@return `window` at the given index}
-    /// @param index the index of the struct buffer
-    public long windowAt(long index) { return window(this.segment(), index); }
-    /// Sets `window` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkXlibSurfaceCreateInfoKHR windowAt(long index, long value) { window(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public MemorySegment dpyAt(long index) { return (MemorySegment) VH_dpy.get(this.segment(), 0L, index); }
+    public int windowAt(long index) { return (int) VH_window.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public MemorySegment dpy() { return (MemorySegment) VH_dpy.get(this.segment(), 0L, 0L); }
+    public int window() { return (int) VH_window.get(this.segment(), 0L, 0L); }
+    public VkXlibSurfaceCreateInfoKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkXlibSurfaceCreateInfoKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkXlibSurfaceCreateInfoKHR flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkXlibSurfaceCreateInfoKHR dpyAt(long index, MemorySegment value) { VH_dpy.set(this.segment(), 0L, index, value); return this; }
+    public VkXlibSurfaceCreateInfoKHR windowAt(long index, int value) { VH_window.set(this.segment(), 0L, index, value); return this; }
+    public VkXlibSurfaceCreateInfoKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkXlibSurfaceCreateInfoKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkXlibSurfaceCreateInfoKHR flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkXlibSurfaceCreateInfoKHR dpy(MemorySegment value) { VH_dpy.set(this.segment(), 0L, 0L, value); return this; }
+    public VkXlibSurfaceCreateInfoKHR window(int value) { VH_window.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkXlibSurfaceCreateInfoKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkXlibSurfaceCreateInfoKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkXlibSurfaceCreateInfoKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkXlibSurfaceCreateInfoKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkXlibSurfaceCreateInfoKHR _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkXlibSurfaceCreateInfoKHR _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _dpyAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dpy, index), LAYOUT_dpy); }
+    public MemorySegment _dpy() { return _dpyAt(0L); }
+    public VkXlibSurfaceCreateInfoKHR _dpyAt(long index, MemorySegment src) { _dpyAt(index).copyFrom(src); return this; }
+    public VkXlibSurfaceCreateInfoKHR _dpy(MemorySegment src) { return _dpyAt(0L, src); }
+    public MemorySegment _windowAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_window, index), LAYOUT_window); }
+    public MemorySegment _window() { return _windowAt(0L); }
+    public VkXlibSurfaceCreateInfoKHR _windowAt(long index, MemorySegment src) { _windowAt(index).copyFrom(src); return this; }
+    public VkXlibSurfaceCreateInfoKHR _window(MemorySegment src) { return _windowAt(0L, src); }
 }

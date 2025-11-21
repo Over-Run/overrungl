@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.arm.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,206 +12,79 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDataGraphPipelineSessionCreateInfoARM {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint64_t) VkFlags64) VkDataGraphPipelineSessionCreateFlagsARM flags;
-///     (uint64_t) VkPipeline dataGraphPipeline;
-/// };
+///     VkDataGraphPipelineSessionCreateFlagsARM flags;
+///     VkPipeline dataGraphPipeline;
+/// }
 /// ```
 public final class VkDataGraphPipelineSessionCreateInfoARM extends GroupType {
-    /// The struct layout of `VkDataGraphPipelineSessionCreateInfoARM`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("flags"),
         ValueLayout.JAVA_LONG.withName("dataGraphPipeline")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `dataGraphPipeline`.
     public static final long OFFSET_dataGraphPipeline = LAYOUT.byteOffset(PathElement.groupElement("dataGraphPipeline"));
-    /// The memory layout of `dataGraphPipeline`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
     public static final MemoryLayout LAYOUT_dataGraphPipeline = LAYOUT.select(PathElement.groupElement("dataGraphPipeline"));
-    /// The [VarHandle] of `dataGraphPipeline` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     public static final VarHandle VH_dataGraphPipeline = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataGraphPipeline"));
 
-    /// Creates `VkDataGraphPipelineSessionCreateInfoARM` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkDataGraphPipelineSessionCreateInfoARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkDataGraphPipelineSessionCreateInfoARM` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDataGraphPipelineSessionCreateInfoARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineSessionCreateInfoARM(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkDataGraphPipelineSessionCreateInfoARM` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDataGraphPipelineSessionCreateInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineSessionCreateInfoARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkDataGraphPipelineSessionCreateInfoARM` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDataGraphPipelineSessionCreateInfoARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineSessionCreateInfoARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkDataGraphPipelineSessionCreateInfoARM` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDataGraphPipelineSessionCreateInfoARM`
     public static VkDataGraphPipelineSessionCreateInfoARM alloc(SegmentAllocator allocator) { return new VkDataGraphPipelineSessionCreateInfoARM(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkDataGraphPipelineSessionCreateInfoARM` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkDataGraphPipelineSessionCreateInfoARM`
     public static VkDataGraphPipelineSessionCreateInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineSessionCreateInfoARM(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkDataGraphPipelineSessionCreateInfoARM allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.arm.VKARMDataGraph.VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_CREATE_INFO_ARM); }
+    public static VkDataGraphPipelineSessionCreateInfoARM allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.arm.VKARMDataGraph.VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_CREATE_INFO_ARM);
+        return s;
+    }
     public VkDataGraphPipelineSessionCreateInfoARM copyFrom(VkDataGraphPipelineSessionCreateInfoARM src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkDataGraphPipelineSessionCreateInfoARM reinterpret(long count) { return new VkDataGraphPipelineSessionCreateInfoARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelineSessionCreateInfoARM sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelineSessionCreateInfoARM pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long flags(MemorySegment segment, long index) { return (long) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public long flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, long value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelineSessionCreateInfoARM flags(long value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `dataGraphPipeline` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long dataGraphPipeline(MemorySegment segment, long index) { return (long) VH_dataGraphPipeline.get(segment, 0L, index); }
-    /// {@return `dataGraphPipeline`}
-    public long dataGraphPipeline() { return dataGraphPipeline(this.segment(), 0L); }
-    /// Sets `dataGraphPipeline` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dataGraphPipeline(MemorySegment segment, long index, long value) { VH_dataGraphPipeline.set(segment, 0L, index, value); }
-    /// Sets `dataGraphPipeline` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelineSessionCreateInfoARM dataGraphPipeline(long value) { dataGraphPipeline(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkDataGraphPipelineSessionCreateInfoARM`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDataGraphPipelineSessionCreateInfoARM`
     public VkDataGraphPipelineSessionCreateInfoARM asSlice(long index) { return new VkDataGraphPipelineSessionCreateInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkDataGraphPipelineSessionCreateInfoARM`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDataGraphPipelineSessionCreateInfoARM`
     public VkDataGraphPipelineSessionCreateInfoARM asSlice(long index, long count) { return new VkDataGraphPipelineSessionCreateInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkDataGraphPipelineSessionCreateInfoARM` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkDataGraphPipelineSessionCreateInfoARM at(long index, Consumer<VkDataGraphPipelineSessionCreateInfoARM> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelineSessionCreateInfoARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelineSessionCreateInfoARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public long flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelineSessionCreateInfoARM flagsAt(long index, long value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `dataGraphPipeline` at the given index}
-    /// @param index the index of the struct buffer
-    public long dataGraphPipelineAt(long index) { return dataGraphPipeline(this.segment(), index); }
-    /// Sets `dataGraphPipeline` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDataGraphPipelineSessionCreateInfoARM dataGraphPipelineAt(long index, long value) { dataGraphPipeline(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long flagsAt(long index) { return (long) VH_flags.get(this.segment(), 0L, index); }
+    public long dataGraphPipelineAt(long index) { return (long) VH_dataGraphPipeline.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long flags() { return (long) VH_flags.get(this.segment(), 0L, 0L); }
+    public long dataGraphPipeline() { return (long) VH_dataGraphPipeline.get(this.segment(), 0L, 0L); }
+    public VkDataGraphPipelineSessionCreateInfoARM sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkDataGraphPipelineSessionCreateInfoARM pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkDataGraphPipelineSessionCreateInfoARM flagsAt(long index, long value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkDataGraphPipelineSessionCreateInfoARM dataGraphPipelineAt(long index, long value) { VH_dataGraphPipeline.set(this.segment(), 0L, index, value); return this; }
+    public VkDataGraphPipelineSessionCreateInfoARM sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDataGraphPipelineSessionCreateInfoARM pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDataGraphPipelineSessionCreateInfoARM flags(long value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDataGraphPipelineSessionCreateInfoARM dataGraphPipeline(long value) { VH_dataGraphPipeline.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkDataGraphPipelineSessionCreateInfoARM _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkDataGraphPipelineSessionCreateInfoARM _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkDataGraphPipelineSessionCreateInfoARM _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkDataGraphPipelineSessionCreateInfoARM _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkDataGraphPipelineSessionCreateInfoARM _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkDataGraphPipelineSessionCreateInfoARM _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _dataGraphPipelineAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dataGraphPipeline, index), LAYOUT_dataGraphPipeline); }
+    public MemorySegment _dataGraphPipeline() { return _dataGraphPipelineAt(0L); }
+    public VkDataGraphPipelineSessionCreateInfoARM _dataGraphPipelineAt(long index, MemorySegment src) { _dataGraphPipelineAt(index).copyFrom(src); return this; }
+    public VkDataGraphPipelineSessionCreateInfoARM _dataGraphPipeline(MemorySegment src) { return _dataGraphPipelineAt(0L, src); }
 }

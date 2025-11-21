@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,180 +12,75 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkClearRect {
-///     (struct VkRect2D) VkRect2D rect;
+///     VkRect2D rect;
 ///     uint32_t baseArrayLayer;
 ///     uint32_t layerCount;
-/// };
+/// }
 /// ```
 public final class VkClearRect extends GroupType {
-    /// The struct layout of `VkClearRect`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkRect2D.LAYOUT.withName("rect"),
         ValueLayout.JAVA_INT.withName("baseArrayLayer"),
         ValueLayout.JAVA_INT.withName("layerCount")
     );
-    /// The byte offset of `rect`.
     public static final long OFFSET_rect = LAYOUT.byteOffset(PathElement.groupElement("rect"));
-    /// The memory layout of `rect`.
-    public static final MemoryLayout LAYOUT_rect = LAYOUT.select(PathElement.groupElement("rect"));
-    /// The byte offset of `baseArrayLayer`.
     public static final long OFFSET_baseArrayLayer = LAYOUT.byteOffset(PathElement.groupElement("baseArrayLayer"));
-    /// The memory layout of `baseArrayLayer`.
-    public static final MemoryLayout LAYOUT_baseArrayLayer = LAYOUT.select(PathElement.groupElement("baseArrayLayer"));
-    /// The [VarHandle] of `baseArrayLayer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_baseArrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseArrayLayer"));
-    /// The byte offset of `layerCount`.
     public static final long OFFSET_layerCount = LAYOUT.byteOffset(PathElement.groupElement("layerCount"));
-    /// The memory layout of `layerCount`.
+    public static final MemoryLayout LAYOUT_rect = LAYOUT.select(PathElement.groupElement("rect"));
+    public static final MemoryLayout LAYOUT_baseArrayLayer = LAYOUT.select(PathElement.groupElement("baseArrayLayer"));
     public static final MemoryLayout LAYOUT_layerCount = LAYOUT.select(PathElement.groupElement("layerCount"));
-    /// The [VarHandle] of `layerCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_rect$offset$x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rect"), PathElement.groupElement("offset"), PathElement.groupElement("x"));
+    public static final VarHandle VH_rect$offset$y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rect"), PathElement.groupElement("offset"), PathElement.groupElement("y"));
+    public static final VarHandle VH_rect$extent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rect"), PathElement.groupElement("extent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_rect$extent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rect"), PathElement.groupElement("extent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_baseArrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseArrayLayer"));
     public static final VarHandle VH_layerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layerCount"));
 
-    /// Creates `VkClearRect` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkClearRect(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkClearRect` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkClearRect of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearRect(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkClearRect` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkClearRect ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearRect(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkClearRect` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkClearRect ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearRect(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkClearRect` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkClearRect`
     public static VkClearRect alloc(SegmentAllocator allocator) { return new VkClearRect(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkClearRect` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkClearRect`
     public static VkClearRect alloc(SegmentAllocator allocator, long count) { return new VkClearRect(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkClearRect copyFrom(VkClearRect src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkClearRect reinterpret(long count) { return new VkClearRect(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `rect` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment rect(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_rect, index), LAYOUT_rect); }
-    /// {@return `rect`}
-    public MemorySegment rect() { return rect(this.segment(), 0L); }
-    /// Sets `rect` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void rect(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_rect, index), LAYOUT_rect.byteSize()); }
-    /// Sets `rect` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClearRect rect(MemorySegment value) { rect(this.segment(), 0L, value); return this; }
-    /// Accepts `rect` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkClearRect rect(Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(rect())); return this; }
-
-    /// {@return `baseArrayLayer` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int baseArrayLayer(MemorySegment segment, long index) { return (int) VH_baseArrayLayer.get(segment, 0L, index); }
-    /// {@return `baseArrayLayer`}
-    public int baseArrayLayer() { return baseArrayLayer(this.segment(), 0L); }
-    /// Sets `baseArrayLayer` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void baseArrayLayer(MemorySegment segment, long index, int value) { VH_baseArrayLayer.set(segment, 0L, index, value); }
-    /// Sets `baseArrayLayer` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClearRect baseArrayLayer(int value) { baseArrayLayer(this.segment(), 0L, value); return this; }
-
-    /// {@return `layerCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int layerCount(MemorySegment segment, long index) { return (int) VH_layerCount.get(segment, 0L, index); }
-    /// {@return `layerCount`}
-    public int layerCount() { return layerCount(this.segment(), 0L); }
-    /// Sets `layerCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void layerCount(MemorySegment segment, long index, int value) { VH_layerCount.set(segment, 0L, index, value); }
-    /// Sets `layerCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClearRect layerCount(int value) { layerCount(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkClearRect`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkClearRect`
     public VkClearRect asSlice(long index) { return new VkClearRect(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkClearRect`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkClearRect`
     public VkClearRect asSlice(long index, long count) { return new VkClearRect(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkClearRect` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkClearRect at(long index, Consumer<VkClearRect> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `rect` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment rectAt(long index) { return rect(this.segment(), index); }
-    /// Sets `rect` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClearRect rectAt(long index, MemorySegment value) { rect(this.segment(), index, value); return this; }
-    /// Accepts `rect` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkClearRect rectAt(long index, Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(rectAt(index))); return this; }
-
-    /// {@return `baseArrayLayer` at the given index}
-    /// @param index the index of the struct buffer
-    public int baseArrayLayerAt(long index) { return baseArrayLayer(this.segment(), index); }
-    /// Sets `baseArrayLayer` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClearRect baseArrayLayerAt(long index, int value) { baseArrayLayer(this.segment(), index, value); return this; }
-
-    /// {@return `layerCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int layerCountAt(long index) { return layerCount(this.segment(), index); }
-    /// Sets `layerCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClearRect layerCountAt(long index, int value) { layerCount(this.segment(), index, value); return this; }
-
+    public int rect$offset$xAt(long index) { return (int) VH_rect$offset$x.get(this.segment(), 0L, index); }
+    public int rect$offset$yAt(long index) { return (int) VH_rect$offset$y.get(this.segment(), 0L, index); }
+    public int rect$extent$widthAt(long index) { return (int) VH_rect$extent$width.get(this.segment(), 0L, index); }
+    public int rect$extent$heightAt(long index) { return (int) VH_rect$extent$height.get(this.segment(), 0L, index); }
+    public int baseArrayLayerAt(long index) { return (int) VH_baseArrayLayer.get(this.segment(), 0L, index); }
+    public int layerCountAt(long index) { return (int) VH_layerCount.get(this.segment(), 0L, index); }
+    public int rect$offset$x() { return (int) VH_rect$offset$x.get(this.segment(), 0L, 0L); }
+    public int rect$offset$y() { return (int) VH_rect$offset$y.get(this.segment(), 0L, 0L); }
+    public int rect$extent$width() { return (int) VH_rect$extent$width.get(this.segment(), 0L, 0L); }
+    public int rect$extent$height() { return (int) VH_rect$extent$height.get(this.segment(), 0L, 0L); }
+    public int baseArrayLayer() { return (int) VH_baseArrayLayer.get(this.segment(), 0L, 0L); }
+    public int layerCount() { return (int) VH_layerCount.get(this.segment(), 0L, 0L); }
+    public VkClearRect rect$offset$xAt(long index, int value) { VH_rect$offset$x.set(this.segment(), 0L, index, value); return this; }
+    public VkClearRect rect$offset$yAt(long index, int value) { VH_rect$offset$y.set(this.segment(), 0L, index, value); return this; }
+    public VkClearRect rect$extent$widthAt(long index, int value) { VH_rect$extent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkClearRect rect$extent$heightAt(long index, int value) { VH_rect$extent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkClearRect baseArrayLayerAt(long index, int value) { VH_baseArrayLayer.set(this.segment(), 0L, index, value); return this; }
+    public VkClearRect layerCountAt(long index, int value) { VH_layerCount.set(this.segment(), 0L, index, value); return this; }
+    public VkClearRect rect$offset$x(int value) { VH_rect$offset$x.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClearRect rect$offset$y(int value) { VH_rect$offset$y.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClearRect rect$extent$width(int value) { VH_rect$extent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClearRect rect$extent$height(int value) { VH_rect$extent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClearRect baseArrayLayer(int value) { VH_baseArrayLayer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClearRect layerCount(int value) { VH_layerCount.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _rectAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_rect, index), LAYOUT_rect); }
+    public MemorySegment _rect() { return _rectAt(0L); }
+    public VkClearRect _rectAt(long index, MemorySegment src) { _rectAt(index).copyFrom(src); return this; }
+    public VkClearRect _rect(MemorySegment src) { return _rectAt(0L, src); }
+    public MemorySegment _baseArrayLayerAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_baseArrayLayer, index), LAYOUT_baseArrayLayer); }
+    public MemorySegment _baseArrayLayer() { return _baseArrayLayerAt(0L); }
+    public VkClearRect _baseArrayLayerAt(long index, MemorySegment src) { _baseArrayLayerAt(index).copyFrom(src); return this; }
+    public VkClearRect _baseArrayLayer(MemorySegment src) { return _baseArrayLayerAt(0L, src); }
+    public MemorySegment _layerCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_layerCount, index), LAYOUT_layerCount); }
+    public MemorySegment _layerCount() { return _layerCountAt(0L); }
+    public VkClearRect _layerCountAt(long index, MemorySegment src) { _layerCountAt(index).copyFrom(src); return this; }
+    public VkClearRect _layerCount(MemorySegment src) { return _layerCountAt(0L, src); }
 }

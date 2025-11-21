@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,20 +12,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoDecodeInfoKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkVideoDecodeFlagsKHR flags;
-///     (uint64_t) VkBuffer srcBuffer;
-///     (uint64_t) VkDeviceSize srcBufferOffset;
-///     (uint64_t) VkDeviceSize srcBufferRange;
-///     (struct VkVideoPictureResourceInfoKHR) VkVideoPictureResourceInfoKHR dstPictureResource;
+///     VkVideoDecodeFlagsKHR flags;
+///     VkBuffer srcBuffer;
+///     VkDeviceSize srcBufferOffset;
+///     VkDeviceSize srcBufferRange;
+///     VkVideoPictureResourceInfoKHR dstPictureResource;
 ///     const VkVideoReferenceSlotInfoKHR* pSetupReferenceSlot;
 ///     uint32_t referenceSlotCount;
 ///     const VkVideoReferenceSlotInfoKHR* pReferenceSlots;
-/// };
+/// }
 /// ```
 public final class VkVideoDecodeInfoKHR extends GroupType {
-    /// The struct layout of `VkVideoDecodeInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -39,385 +37,167 @@ public final class VkVideoDecodeInfoKHR extends GroupType {
         ValueLayout.JAVA_INT.withName("referenceSlotCount"),
         ValueLayout.ADDRESS.withName("pReferenceSlots")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `srcBuffer`.
     public static final long OFFSET_srcBuffer = LAYOUT.byteOffset(PathElement.groupElement("srcBuffer"));
-    /// The memory layout of `srcBuffer`.
-    public static final MemoryLayout LAYOUT_srcBuffer = LAYOUT.select(PathElement.groupElement("srcBuffer"));
-    /// The [VarHandle] of `srcBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcBuffer"));
-    /// The byte offset of `srcBufferOffset`.
     public static final long OFFSET_srcBufferOffset = LAYOUT.byteOffset(PathElement.groupElement("srcBufferOffset"));
-    /// The memory layout of `srcBufferOffset`.
-    public static final MemoryLayout LAYOUT_srcBufferOffset = LAYOUT.select(PathElement.groupElement("srcBufferOffset"));
-    /// The [VarHandle] of `srcBufferOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcBufferOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcBufferOffset"));
-    /// The byte offset of `srcBufferRange`.
     public static final long OFFSET_srcBufferRange = LAYOUT.byteOffset(PathElement.groupElement("srcBufferRange"));
-    /// The memory layout of `srcBufferRange`.
-    public static final MemoryLayout LAYOUT_srcBufferRange = LAYOUT.select(PathElement.groupElement("srcBufferRange"));
-    /// The [VarHandle] of `srcBufferRange` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcBufferRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcBufferRange"));
-    /// The byte offset of `dstPictureResource`.
     public static final long OFFSET_dstPictureResource = LAYOUT.byteOffset(PathElement.groupElement("dstPictureResource"));
-    /// The memory layout of `dstPictureResource`.
-    public static final MemoryLayout LAYOUT_dstPictureResource = LAYOUT.select(PathElement.groupElement("dstPictureResource"));
-    /// The byte offset of `pSetupReferenceSlot`.
     public static final long OFFSET_pSetupReferenceSlot = LAYOUT.byteOffset(PathElement.groupElement("pSetupReferenceSlot"));
-    /// The memory layout of `pSetupReferenceSlot`.
-    public static final MemoryLayout LAYOUT_pSetupReferenceSlot = LAYOUT.select(PathElement.groupElement("pSetupReferenceSlot"));
-    /// The [VarHandle] of `pSetupReferenceSlot` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pSetupReferenceSlot = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSetupReferenceSlot"));
-    /// The byte offset of `referenceSlotCount`.
     public static final long OFFSET_referenceSlotCount = LAYOUT.byteOffset(PathElement.groupElement("referenceSlotCount"));
-    /// The memory layout of `referenceSlotCount`.
-    public static final MemoryLayout LAYOUT_referenceSlotCount = LAYOUT.select(PathElement.groupElement("referenceSlotCount"));
-    /// The [VarHandle] of `referenceSlotCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_referenceSlotCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("referenceSlotCount"));
-    /// The byte offset of `pReferenceSlots`.
     public static final long OFFSET_pReferenceSlots = LAYOUT.byteOffset(PathElement.groupElement("pReferenceSlots"));
-    /// The memory layout of `pReferenceSlots`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_srcBuffer = LAYOUT.select(PathElement.groupElement("srcBuffer"));
+    public static final MemoryLayout LAYOUT_srcBufferOffset = LAYOUT.select(PathElement.groupElement("srcBufferOffset"));
+    public static final MemoryLayout LAYOUT_srcBufferRange = LAYOUT.select(PathElement.groupElement("srcBufferRange"));
+    public static final MemoryLayout LAYOUT_dstPictureResource = LAYOUT.select(PathElement.groupElement("dstPictureResource"));
+    public static final MemoryLayout LAYOUT_pSetupReferenceSlot = LAYOUT.select(PathElement.groupElement("pSetupReferenceSlot"));
+    public static final MemoryLayout LAYOUT_referenceSlotCount = LAYOUT.select(PathElement.groupElement("referenceSlotCount"));
     public static final MemoryLayout LAYOUT_pReferenceSlots = LAYOUT.select(PathElement.groupElement("pReferenceSlots"));
-    /// The [VarHandle] of `pReferenceSlots` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_srcBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcBuffer"));
+    public static final VarHandle VH_srcBufferOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcBufferOffset"));
+    public static final VarHandle VH_srcBufferRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcBufferRange"));
+    public static final VarHandle VH_dstPictureResource$sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPictureResource"), PathElement.groupElement("sType"));
+    public static final VarHandle VH_dstPictureResource$pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPictureResource"), PathElement.groupElement("pNext"));
+    public static final VarHandle VH_dstPictureResource$codedOffset$x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPictureResource"), PathElement.groupElement("codedOffset"), PathElement.groupElement("x"));
+    public static final VarHandle VH_dstPictureResource$codedOffset$y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPictureResource"), PathElement.groupElement("codedOffset"), PathElement.groupElement("y"));
+    public static final VarHandle VH_dstPictureResource$codedExtent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPictureResource"), PathElement.groupElement("codedExtent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_dstPictureResource$codedExtent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPictureResource"), PathElement.groupElement("codedExtent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_dstPictureResource$baseArrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPictureResource"), PathElement.groupElement("baseArrayLayer"));
+    public static final VarHandle VH_dstPictureResource$imageViewBinding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPictureResource"), PathElement.groupElement("imageViewBinding"));
+    public static final VarHandle VH_pSetupReferenceSlot = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSetupReferenceSlot"));
+    public static final VarHandle VH_referenceSlotCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("referenceSlotCount"));
     public static final VarHandle VH_pReferenceSlots = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pReferenceSlots"));
 
-    /// Creates `VkVideoDecodeInfoKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkVideoDecodeInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkVideoDecodeInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoDecodeInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeInfoKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkVideoDecodeInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoDecodeInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkVideoDecodeInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoDecodeInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkVideoDecodeInfoKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoDecodeInfoKHR`
     public static VkVideoDecodeInfoKHR alloc(SegmentAllocator allocator) { return new VkVideoDecodeInfoKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkVideoDecodeInfoKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkVideoDecodeInfoKHR`
     public static VkVideoDecodeInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeInfoKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkVideoDecodeInfoKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRVideoDecodeQueue.VK_STRUCTURE_TYPE_VIDEO_DECODE_INFO_KHR); }
+    public static VkVideoDecodeInfoKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRVideoDecodeQueue.VK_STRUCTURE_TYPE_VIDEO_DECODE_INFO_KHR);
+        return s;
+    }
     public VkVideoDecodeInfoKHR copyFrom(VkVideoDecodeInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkVideoDecodeInfoKHR reinterpret(long count) { return new VkVideoDecodeInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `srcBuffer` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long srcBuffer(MemorySegment segment, long index) { return (long) VH_srcBuffer.get(segment, 0L, index); }
-    /// {@return `srcBuffer`}
-    public long srcBuffer() { return srcBuffer(this.segment(), 0L); }
-    /// Sets `srcBuffer` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcBuffer(MemorySegment segment, long index, long value) { VH_srcBuffer.set(segment, 0L, index, value); }
-    /// Sets `srcBuffer` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR srcBuffer(long value) { srcBuffer(this.segment(), 0L, value); return this; }
-
-    /// {@return `srcBufferOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long srcBufferOffset(MemorySegment segment, long index) { return (long) VH_srcBufferOffset.get(segment, 0L, index); }
-    /// {@return `srcBufferOffset`}
-    public long srcBufferOffset() { return srcBufferOffset(this.segment(), 0L); }
-    /// Sets `srcBufferOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcBufferOffset(MemorySegment segment, long index, long value) { VH_srcBufferOffset.set(segment, 0L, index, value); }
-    /// Sets `srcBufferOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR srcBufferOffset(long value) { srcBufferOffset(this.segment(), 0L, value); return this; }
-
-    /// {@return `srcBufferRange` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long srcBufferRange(MemorySegment segment, long index) { return (long) VH_srcBufferRange.get(segment, 0L, index); }
-    /// {@return `srcBufferRange`}
-    public long srcBufferRange() { return srcBufferRange(this.segment(), 0L); }
-    /// Sets `srcBufferRange` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcBufferRange(MemorySegment segment, long index, long value) { VH_srcBufferRange.set(segment, 0L, index, value); }
-    /// Sets `srcBufferRange` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR srcBufferRange(long value) { srcBufferRange(this.segment(), 0L, value); return this; }
-
-    /// {@return `dstPictureResource` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment dstPictureResource(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_dstPictureResource, index), LAYOUT_dstPictureResource); }
-    /// {@return `dstPictureResource`}
-    public MemorySegment dstPictureResource() { return dstPictureResource(this.segment(), 0L); }
-    /// Sets `dstPictureResource` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstPictureResource(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_dstPictureResource, index), LAYOUT_dstPictureResource.byteSize()); }
-    /// Sets `dstPictureResource` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR dstPictureResource(MemorySegment value) { dstPictureResource(this.segment(), 0L, value); return this; }
-    /// Accepts `dstPictureResource` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkVideoDecodeInfoKHR dstPictureResource(Consumer<overrungl.vulkan.khr.struct.VkVideoPictureResourceInfoKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoPictureResourceInfoKHR.of(dstPictureResource())); return this; }
-
-    /// {@return `pSetupReferenceSlot` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pSetupReferenceSlot(MemorySegment segment, long index) { return (MemorySegment) VH_pSetupReferenceSlot.get(segment, 0L, index); }
-    /// {@return `pSetupReferenceSlot`}
-    public MemorySegment pSetupReferenceSlot() { return pSetupReferenceSlot(this.segment(), 0L); }
-    /// Sets `pSetupReferenceSlot` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pSetupReferenceSlot(MemorySegment segment, long index, MemorySegment value) { VH_pSetupReferenceSlot.set(segment, 0L, index, value); }
-    /// Sets `pSetupReferenceSlot` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR pSetupReferenceSlot(MemorySegment value) { pSetupReferenceSlot(this.segment(), 0L, value); return this; }
-
-    /// {@return `referenceSlotCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int referenceSlotCount(MemorySegment segment, long index) { return (int) VH_referenceSlotCount.get(segment, 0L, index); }
-    /// {@return `referenceSlotCount`}
-    public int referenceSlotCount() { return referenceSlotCount(this.segment(), 0L); }
-    /// Sets `referenceSlotCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void referenceSlotCount(MemorySegment segment, long index, int value) { VH_referenceSlotCount.set(segment, 0L, index, value); }
-    /// Sets `referenceSlotCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR referenceSlotCount(int value) { referenceSlotCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pReferenceSlots` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pReferenceSlots(MemorySegment segment, long index) { return (MemorySegment) VH_pReferenceSlots.get(segment, 0L, index); }
-    /// {@return `pReferenceSlots`}
-    public MemorySegment pReferenceSlots() { return pReferenceSlots(this.segment(), 0L); }
-    /// Sets `pReferenceSlots` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pReferenceSlots(MemorySegment segment, long index, MemorySegment value) { VH_pReferenceSlots.set(segment, 0L, index, value); }
-    /// Sets `pReferenceSlots` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR pReferenceSlots(MemorySegment value) { pReferenceSlots(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkVideoDecodeInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoDecodeInfoKHR`
     public VkVideoDecodeInfoKHR asSlice(long index) { return new VkVideoDecodeInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkVideoDecodeInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoDecodeInfoKHR`
     public VkVideoDecodeInfoKHR asSlice(long index, long count) { return new VkVideoDecodeInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkVideoDecodeInfoKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkVideoDecodeInfoKHR at(long index, Consumer<VkVideoDecodeInfoKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `srcBuffer` at the given index}
-    /// @param index the index of the struct buffer
-    public long srcBufferAt(long index) { return srcBuffer(this.segment(), index); }
-    /// Sets `srcBuffer` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR srcBufferAt(long index, long value) { srcBuffer(this.segment(), index, value); return this; }
-
-    /// {@return `srcBufferOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public long srcBufferOffsetAt(long index) { return srcBufferOffset(this.segment(), index); }
-    /// Sets `srcBufferOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR srcBufferOffsetAt(long index, long value) { srcBufferOffset(this.segment(), index, value); return this; }
-
-    /// {@return `srcBufferRange` at the given index}
-    /// @param index the index of the struct buffer
-    public long srcBufferRangeAt(long index) { return srcBufferRange(this.segment(), index); }
-    /// Sets `srcBufferRange` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR srcBufferRangeAt(long index, long value) { srcBufferRange(this.segment(), index, value); return this; }
-
-    /// {@return `dstPictureResource` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment dstPictureResourceAt(long index) { return dstPictureResource(this.segment(), index); }
-    /// Sets `dstPictureResource` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR dstPictureResourceAt(long index, MemorySegment value) { dstPictureResource(this.segment(), index, value); return this; }
-    /// Accepts `dstPictureResource` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkVideoDecodeInfoKHR dstPictureResourceAt(long index, Consumer<overrungl.vulkan.khr.struct.VkVideoPictureResourceInfoKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoPictureResourceInfoKHR.of(dstPictureResourceAt(index))); return this; }
-
-    /// {@return `pSetupReferenceSlot` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pSetupReferenceSlotAt(long index) { return pSetupReferenceSlot(this.segment(), index); }
-    /// Sets `pSetupReferenceSlot` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR pSetupReferenceSlotAt(long index, MemorySegment value) { pSetupReferenceSlot(this.segment(), index, value); return this; }
-
-    /// {@return `referenceSlotCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int referenceSlotCountAt(long index) { return referenceSlotCount(this.segment(), index); }
-    /// Sets `referenceSlotCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR referenceSlotCountAt(long index, int value) { referenceSlotCount(this.segment(), index, value); return this; }
-
-    /// {@return `pReferenceSlots` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pReferenceSlotsAt(long index) { return pReferenceSlots(this.segment(), index); }
-    /// Sets `pReferenceSlots` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeInfoKHR pReferenceSlotsAt(long index, MemorySegment value) { pReferenceSlots(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public long srcBufferAt(long index) { return (long) VH_srcBuffer.get(this.segment(), 0L, index); }
+    public long srcBufferOffsetAt(long index) { return (long) VH_srcBufferOffset.get(this.segment(), 0L, index); }
+    public long srcBufferRangeAt(long index) { return (long) VH_srcBufferRange.get(this.segment(), 0L, index); }
+    public int dstPictureResource$sTypeAt(long index) { return (int) VH_dstPictureResource$sType.get(this.segment(), 0L, index); }
+    public MemorySegment dstPictureResource$pNextAt(long index) { return (MemorySegment) VH_dstPictureResource$pNext.get(this.segment(), 0L, index); }
+    public int dstPictureResource$codedOffset$xAt(long index) { return (int) VH_dstPictureResource$codedOffset$x.get(this.segment(), 0L, index); }
+    public int dstPictureResource$codedOffset$yAt(long index) { return (int) VH_dstPictureResource$codedOffset$y.get(this.segment(), 0L, index); }
+    public int dstPictureResource$codedExtent$widthAt(long index) { return (int) VH_dstPictureResource$codedExtent$width.get(this.segment(), 0L, index); }
+    public int dstPictureResource$codedExtent$heightAt(long index) { return (int) VH_dstPictureResource$codedExtent$height.get(this.segment(), 0L, index); }
+    public int dstPictureResource$baseArrayLayerAt(long index) { return (int) VH_dstPictureResource$baseArrayLayer.get(this.segment(), 0L, index); }
+    public long dstPictureResource$imageViewBindingAt(long index) { return (long) VH_dstPictureResource$imageViewBinding.get(this.segment(), 0L, index); }
+    public MemorySegment pSetupReferenceSlotAt(long index) { return (MemorySegment) VH_pSetupReferenceSlot.get(this.segment(), 0L, index); }
+    public int referenceSlotCountAt(long index) { return (int) VH_referenceSlotCount.get(this.segment(), 0L, index); }
+    public MemorySegment pReferenceSlotsAt(long index) { return (MemorySegment) VH_pReferenceSlots.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public long srcBuffer() { return (long) VH_srcBuffer.get(this.segment(), 0L, 0L); }
+    public long srcBufferOffset() { return (long) VH_srcBufferOffset.get(this.segment(), 0L, 0L); }
+    public long srcBufferRange() { return (long) VH_srcBufferRange.get(this.segment(), 0L, 0L); }
+    public int dstPictureResource$sType() { return (int) VH_dstPictureResource$sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment dstPictureResource$pNext() { return (MemorySegment) VH_dstPictureResource$pNext.get(this.segment(), 0L, 0L); }
+    public int dstPictureResource$codedOffset$x() { return (int) VH_dstPictureResource$codedOffset$x.get(this.segment(), 0L, 0L); }
+    public int dstPictureResource$codedOffset$y() { return (int) VH_dstPictureResource$codedOffset$y.get(this.segment(), 0L, 0L); }
+    public int dstPictureResource$codedExtent$width() { return (int) VH_dstPictureResource$codedExtent$width.get(this.segment(), 0L, 0L); }
+    public int dstPictureResource$codedExtent$height() { return (int) VH_dstPictureResource$codedExtent$height.get(this.segment(), 0L, 0L); }
+    public int dstPictureResource$baseArrayLayer() { return (int) VH_dstPictureResource$baseArrayLayer.get(this.segment(), 0L, 0L); }
+    public long dstPictureResource$imageViewBinding() { return (long) VH_dstPictureResource$imageViewBinding.get(this.segment(), 0L, 0L); }
+    public MemorySegment pSetupReferenceSlot() { return (MemorySegment) VH_pSetupReferenceSlot.get(this.segment(), 0L, 0L); }
+    public int referenceSlotCount() { return (int) VH_referenceSlotCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pReferenceSlots() { return (MemorySegment) VH_pReferenceSlots.get(this.segment(), 0L, 0L); }
+    public VkVideoDecodeInfoKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR srcBufferAt(long index, long value) { VH_srcBuffer.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR srcBufferOffsetAt(long index, long value) { VH_srcBufferOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR srcBufferRangeAt(long index, long value) { VH_srcBufferRange.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$sTypeAt(long index, int value) { VH_dstPictureResource$sType.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$pNextAt(long index, MemorySegment value) { VH_dstPictureResource$pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$codedOffset$xAt(long index, int value) { VH_dstPictureResource$codedOffset$x.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$codedOffset$yAt(long index, int value) { VH_dstPictureResource$codedOffset$y.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$codedExtent$widthAt(long index, int value) { VH_dstPictureResource$codedExtent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$codedExtent$heightAt(long index, int value) { VH_dstPictureResource$codedExtent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$baseArrayLayerAt(long index, int value) { VH_dstPictureResource$baseArrayLayer.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$imageViewBindingAt(long index, long value) { VH_dstPictureResource$imageViewBinding.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR pSetupReferenceSlotAt(long index, MemorySegment value) { VH_pSetupReferenceSlot.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR referenceSlotCountAt(long index, int value) { VH_referenceSlotCount.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR pReferenceSlotsAt(long index, MemorySegment value) { VH_pReferenceSlots.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeInfoKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR srcBuffer(long value) { VH_srcBuffer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR srcBufferOffset(long value) { VH_srcBufferOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR srcBufferRange(long value) { VH_srcBufferRange.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$sType(int value) { VH_dstPictureResource$sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$pNext(MemorySegment value) { VH_dstPictureResource$pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$codedOffset$x(int value) { VH_dstPictureResource$codedOffset$x.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$codedOffset$y(int value) { VH_dstPictureResource$codedOffset$y.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$codedExtent$width(int value) { VH_dstPictureResource$codedExtent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$codedExtent$height(int value) { VH_dstPictureResource$codedExtent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$baseArrayLayer(int value) { VH_dstPictureResource$baseArrayLayer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource$imageViewBinding(long value) { VH_dstPictureResource$imageViewBinding.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR pSetupReferenceSlot(MemorySegment value) { VH_pSetupReferenceSlot.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR referenceSlotCount(int value) { VH_referenceSlotCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeInfoKHR pReferenceSlots(MemorySegment value) { VH_pReferenceSlots.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkVideoDecodeInfoKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeInfoKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkVideoDecodeInfoKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeInfoKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkVideoDecodeInfoKHR _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeInfoKHR _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _srcBufferAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcBuffer, index), LAYOUT_srcBuffer); }
+    public MemorySegment _srcBuffer() { return _srcBufferAt(0L); }
+    public VkVideoDecodeInfoKHR _srcBufferAt(long index, MemorySegment src) { _srcBufferAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeInfoKHR _srcBuffer(MemorySegment src) { return _srcBufferAt(0L, src); }
+    public MemorySegment _srcBufferOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcBufferOffset, index), LAYOUT_srcBufferOffset); }
+    public MemorySegment _srcBufferOffset() { return _srcBufferOffsetAt(0L); }
+    public VkVideoDecodeInfoKHR _srcBufferOffsetAt(long index, MemorySegment src) { _srcBufferOffsetAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeInfoKHR _srcBufferOffset(MemorySegment src) { return _srcBufferOffsetAt(0L, src); }
+    public MemorySegment _srcBufferRangeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcBufferRange, index), LAYOUT_srcBufferRange); }
+    public MemorySegment _srcBufferRange() { return _srcBufferRangeAt(0L); }
+    public VkVideoDecodeInfoKHR _srcBufferRangeAt(long index, MemorySegment src) { _srcBufferRangeAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeInfoKHR _srcBufferRange(MemorySegment src) { return _srcBufferRangeAt(0L, src); }
+    public MemorySegment _dstPictureResourceAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstPictureResource, index), LAYOUT_dstPictureResource); }
+    public MemorySegment _dstPictureResource() { return _dstPictureResourceAt(0L); }
+    public VkVideoDecodeInfoKHR _dstPictureResourceAt(long index, MemorySegment src) { _dstPictureResourceAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeInfoKHR _dstPictureResource(MemorySegment src) { return _dstPictureResourceAt(0L, src); }
+    public MemorySegment _pSetupReferenceSlotAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pSetupReferenceSlot, index), LAYOUT_pSetupReferenceSlot); }
+    public MemorySegment _pSetupReferenceSlot() { return _pSetupReferenceSlotAt(0L); }
+    public VkVideoDecodeInfoKHR _pSetupReferenceSlotAt(long index, MemorySegment src) { _pSetupReferenceSlotAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeInfoKHR _pSetupReferenceSlot(MemorySegment src) { return _pSetupReferenceSlotAt(0L, src); }
+    public MemorySegment _referenceSlotCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_referenceSlotCount, index), LAYOUT_referenceSlotCount); }
+    public MemorySegment _referenceSlotCount() { return _referenceSlotCountAt(0L); }
+    public VkVideoDecodeInfoKHR _referenceSlotCountAt(long index, MemorySegment src) { _referenceSlotCountAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeInfoKHR _referenceSlotCount(MemorySegment src) { return _referenceSlotCountAt(0L, src); }
+    public MemorySegment _pReferenceSlotsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pReferenceSlots, index), LAYOUT_pReferenceSlots); }
+    public MemorySegment _pReferenceSlots() { return _pReferenceSlotsAt(0L); }
+    public VkVideoDecodeInfoKHR _pReferenceSlotsAt(long index, MemorySegment src) { _pReferenceSlotsAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeInfoKHR _pReferenceSlots(MemorySegment src) { return _pReferenceSlotsAt(0L, src); }
 }

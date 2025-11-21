@@ -17,16 +17,15 @@ public final class VKEXTBufferDeviceAddress {
     public static final int VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT = 0x00020000;
     public static final int VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT = 0x00000010;
     public static final int VK_ERROR_INVALID_DEVICE_ADDRESS_EXT = -1000257000;
+    private VKEXTBufferDeviceAddress() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetBufferDeviceAddressEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKEXTBufferDeviceAddress() {}
-
     /// Invokes `vkGetBufferDeviceAddressEXT`.
     /// ```
-    /// (uint64_t) VkDeviceAddress vkGetBufferDeviceAddressEXT((struct VkDevice*) VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
+    /// VkDeviceAddress vkGetBufferDeviceAddressEXT(VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
     /// ```
     public static long vkGetBufferDeviceAddressEXT(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferDeviceAddressEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressEXT");

@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,16 +12,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorPoolCreateInfo {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkDescriptorPoolCreateFlags flags;
+///     VkDescriptorPoolCreateFlags flags;
 ///     uint32_t maxSets;
 ///     uint32_t poolSizeCount;
 ///     const VkDescriptorPoolSize* pPoolSizes;
-/// };
+/// }
 /// ```
 public final class VkDescriptorPoolCreateInfo extends GroupType {
-    /// The struct layout of `VkDescriptorPoolCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -31,254 +29,88 @@ public final class VkDescriptorPoolCreateInfo extends GroupType {
         ValueLayout.JAVA_INT.withName("poolSizeCount"),
         ValueLayout.ADDRESS.withName("pPoolSizes")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `maxSets`.
     public static final long OFFSET_maxSets = LAYOUT.byteOffset(PathElement.groupElement("maxSets"));
-    /// The memory layout of `maxSets`.
-    public static final MemoryLayout LAYOUT_maxSets = LAYOUT.select(PathElement.groupElement("maxSets"));
-    /// The [VarHandle] of `maxSets` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSets"));
-    /// The byte offset of `poolSizeCount`.
     public static final long OFFSET_poolSizeCount = LAYOUT.byteOffset(PathElement.groupElement("poolSizeCount"));
-    /// The memory layout of `poolSizeCount`.
-    public static final MemoryLayout LAYOUT_poolSizeCount = LAYOUT.select(PathElement.groupElement("poolSizeCount"));
-    /// The [VarHandle] of `poolSizeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_poolSizeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("poolSizeCount"));
-    /// The byte offset of `pPoolSizes`.
     public static final long OFFSET_pPoolSizes = LAYOUT.byteOffset(PathElement.groupElement("pPoolSizes"));
-    /// The memory layout of `pPoolSizes`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_maxSets = LAYOUT.select(PathElement.groupElement("maxSets"));
+    public static final MemoryLayout LAYOUT_poolSizeCount = LAYOUT.select(PathElement.groupElement("poolSizeCount"));
     public static final MemoryLayout LAYOUT_pPoolSizes = LAYOUT.select(PathElement.groupElement("pPoolSizes"));
-    /// The [VarHandle] of `pPoolSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_maxSets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSets"));
+    public static final VarHandle VH_poolSizeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("poolSizeCount"));
     public static final VarHandle VH_pPoolSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPoolSizes"));
 
-    /// Creates `VkDescriptorPoolCreateInfo` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkDescriptorPoolCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkDescriptorPoolCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDescriptorPoolCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorPoolCreateInfo(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkDescriptorPoolCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDescriptorPoolCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorPoolCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkDescriptorPoolCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDescriptorPoolCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorPoolCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkDescriptorPoolCreateInfo` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDescriptorPoolCreateInfo`
     public static VkDescriptorPoolCreateInfo alloc(SegmentAllocator allocator) { return new VkDescriptorPoolCreateInfo(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkDescriptorPoolCreateInfo` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkDescriptorPoolCreateInfo`
     public static VkDescriptorPoolCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorPoolCreateInfo(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkDescriptorPoolCreateInfo allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO); }
+    public static VkDescriptorPoolCreateInfo allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO);
+        return s;
+    }
     public VkDescriptorPoolCreateInfo copyFrom(VkDescriptorPoolCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkDescriptorPoolCreateInfo reinterpret(long count) { return new VkDescriptorPoolCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxSets` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxSets(MemorySegment segment, long index) { return (int) VH_maxSets.get(segment, 0L, index); }
-    /// {@return `maxSets`}
-    public int maxSets() { return maxSets(this.segment(), 0L); }
-    /// Sets `maxSets` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxSets(MemorySegment segment, long index, int value) { VH_maxSets.set(segment, 0L, index, value); }
-    /// Sets `maxSets` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo maxSets(int value) { maxSets(this.segment(), 0L, value); return this; }
-
-    /// {@return `poolSizeCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int poolSizeCount(MemorySegment segment, long index) { return (int) VH_poolSizeCount.get(segment, 0L, index); }
-    /// {@return `poolSizeCount`}
-    public int poolSizeCount() { return poolSizeCount(this.segment(), 0L); }
-    /// Sets `poolSizeCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void poolSizeCount(MemorySegment segment, long index, int value) { VH_poolSizeCount.set(segment, 0L, index, value); }
-    /// Sets `poolSizeCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo poolSizeCount(int value) { poolSizeCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pPoolSizes` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pPoolSizes(MemorySegment segment, long index) { return (MemorySegment) VH_pPoolSizes.get(segment, 0L, index); }
-    /// {@return `pPoolSizes`}
-    public MemorySegment pPoolSizes() { return pPoolSizes(this.segment(), 0L); }
-    /// Sets `pPoolSizes` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pPoolSizes(MemorySegment segment, long index, MemorySegment value) { VH_pPoolSizes.set(segment, 0L, index, value); }
-    /// Sets `pPoolSizes` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo pPoolSizes(MemorySegment value) { pPoolSizes(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkDescriptorPoolCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDescriptorPoolCreateInfo`
     public VkDescriptorPoolCreateInfo asSlice(long index) { return new VkDescriptorPoolCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkDescriptorPoolCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDescriptorPoolCreateInfo`
     public VkDescriptorPoolCreateInfo asSlice(long index, long count) { return new VkDescriptorPoolCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkDescriptorPoolCreateInfo` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkDescriptorPoolCreateInfo at(long index, Consumer<VkDescriptorPoolCreateInfo> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `maxSets` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxSetsAt(long index) { return maxSets(this.segment(), index); }
-    /// Sets `maxSets` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo maxSetsAt(long index, int value) { maxSets(this.segment(), index, value); return this; }
-
-    /// {@return `poolSizeCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int poolSizeCountAt(long index) { return poolSizeCount(this.segment(), index); }
-    /// Sets `poolSizeCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo poolSizeCountAt(long index, int value) { poolSizeCount(this.segment(), index, value); return this; }
-
-    /// {@return `pPoolSizes` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pPoolSizesAt(long index) { return pPoolSizes(this.segment(), index); }
-    /// Sets `pPoolSizes` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo pPoolSizesAt(long index, MemorySegment value) { pPoolSizes(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public int maxSetsAt(long index) { return (int) VH_maxSets.get(this.segment(), 0L, index); }
+    public int poolSizeCountAt(long index) { return (int) VH_poolSizeCount.get(this.segment(), 0L, index); }
+    public MemorySegment pPoolSizesAt(long index) { return (MemorySegment) VH_pPoolSizes.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public int maxSets() { return (int) VH_maxSets.get(this.segment(), 0L, 0L); }
+    public int poolSizeCount() { return (int) VH_poolSizeCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pPoolSizes() { return (MemorySegment) VH_pPoolSizes.get(this.segment(), 0L, 0L); }
+    public VkDescriptorPoolCreateInfo sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorPoolCreateInfo pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorPoolCreateInfo flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorPoolCreateInfo maxSetsAt(long index, int value) { VH_maxSets.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorPoolCreateInfo poolSizeCountAt(long index, int value) { VH_poolSizeCount.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorPoolCreateInfo pPoolSizesAt(long index, MemorySegment value) { VH_pPoolSizes.set(this.segment(), 0L, index, value); return this; }
+    public VkDescriptorPoolCreateInfo sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorPoolCreateInfo pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorPoolCreateInfo flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorPoolCreateInfo maxSets(int value) { VH_maxSets.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorPoolCreateInfo poolSizeCount(int value) { VH_poolSizeCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDescriptorPoolCreateInfo pPoolSizes(MemorySegment value) { VH_pPoolSizes.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkDescriptorPoolCreateInfo _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkDescriptorPoolCreateInfo _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkDescriptorPoolCreateInfo _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkDescriptorPoolCreateInfo _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkDescriptorPoolCreateInfo _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkDescriptorPoolCreateInfo _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _maxSetsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxSets, index), LAYOUT_maxSets); }
+    public MemorySegment _maxSets() { return _maxSetsAt(0L); }
+    public VkDescriptorPoolCreateInfo _maxSetsAt(long index, MemorySegment src) { _maxSetsAt(index).copyFrom(src); return this; }
+    public VkDescriptorPoolCreateInfo _maxSets(MemorySegment src) { return _maxSetsAt(0L, src); }
+    public MemorySegment _poolSizeCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_poolSizeCount, index), LAYOUT_poolSizeCount); }
+    public MemorySegment _poolSizeCount() { return _poolSizeCountAt(0L); }
+    public VkDescriptorPoolCreateInfo _poolSizeCountAt(long index, MemorySegment src) { _poolSizeCountAt(index).copyFrom(src); return this; }
+    public VkDescriptorPoolCreateInfo _poolSizeCount(MemorySegment src) { return _poolSizeCountAt(0L, src); }
+    public MemorySegment _pPoolSizesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pPoolSizes, index), LAYOUT_pPoolSizes); }
+    public MemorySegment _pPoolSizes() { return _pPoolSizesAt(0L); }
+    public VkDescriptorPoolCreateInfo _pPoolSizesAt(long index, MemorySegment src) { _pPoolSizesAt(index).copyFrom(src); return this; }
+    public VkDescriptorPoolCreateInfo _pPoolSizes(MemorySegment src) { return _pPoolSizesAt(0L, src); }
 }

@@ -14,17 +14,16 @@ public final class VKKHRExternalMemoryWin32 {
     public static final int VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR = 1000073001;
     public static final int VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR = 1000073002;
     public static final int VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR = 1000073003;
+    private VKKHRExternalMemoryWin32() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetMemoryWin32HandleKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetMemoryWin32HandlePropertiesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetMemoryWin32HandlePropertiesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRExternalMemoryWin32() {}
-
     /// Invokes `vkGetMemoryWin32HandleKHR`.
     /// ```
-    /// (int) VkResult vkGetMemoryWin32HandleKHR((struct VkDevice*) VkDevice device, const VkMemoryGetWin32HandleInfoKHR* pGetWin32HandleInfo, HANDLE* pHandle);
+    /// VkResult vkGetMemoryWin32HandleKHR(VkDevice device, const VkMemoryGetWin32HandleInfoKHR* pGetWin32HandleInfo, HANDLE* pHandle);
     /// ```
     public static int vkGetMemoryWin32HandleKHR(@NonNull VkDevice device, @NonNull MemorySegment pGetWin32HandleInfo, @NonNull MemorySegment pHandle) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandleKHR");
@@ -35,9 +34,9 @@ public final class VKKHRExternalMemoryWin32 {
 
     /// Invokes `vkGetMemoryWin32HandlePropertiesKHR`.
     /// ```
-    /// (int) VkResult vkGetMemoryWin32HandlePropertiesKHR((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, (void*) HANDLE handle, VkMemoryWin32HandlePropertiesKHR* pMemoryWin32HandleProperties);
+    /// VkResult vkGetMemoryWin32HandlePropertiesKHR(VkDevice device, VkExternalMemoryHandleTypeFlagBits handleType, HANDLE handle, VkMemoryWin32HandlePropertiesKHR* pMemoryWin32HandleProperties);
     /// ```
-    public static int vkGetMemoryWin32HandlePropertiesKHR(@NonNull VkDevice device, int handleType, @NonNull MemorySegment handle, @NonNull MemorySegment pMemoryWin32HandleProperties) {
+    public static int vkGetMemoryWin32HandlePropertiesKHR(@NonNull VkDevice device, int handleType, int handle, @NonNull MemorySegment pMemoryWin32HandleProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryWin32HandlePropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandlePropertiesKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetMemoryWin32HandlePropertiesKHR", device, handleType, handle, pMemoryWin32HandleProperties); }
         return (int) Handles.MH_vkGetMemoryWin32HandlePropertiesKHR.invokeExact(device.capabilities().PFN_vkGetMemoryWin32HandlePropertiesKHR, device.segment(), handleType, handle, pMemoryWin32HandleProperties); }

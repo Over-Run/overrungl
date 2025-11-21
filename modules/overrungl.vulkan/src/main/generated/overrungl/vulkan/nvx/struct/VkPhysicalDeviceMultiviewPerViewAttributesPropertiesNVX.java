@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nvx.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,173 +12,66 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 perViewPositionAllComponents;
-/// };
+///     VkBool32 perViewPositionAllComponents;
+/// }
 /// ```
 public final class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("perViewPositionAllComponents")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `perViewPositionAllComponents`.
     public static final long OFFSET_perViewPositionAllComponents = LAYOUT.byteOffset(PathElement.groupElement("perViewPositionAllComponents"));
-    /// The memory layout of `perViewPositionAllComponents`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_perViewPositionAllComponents = LAYOUT.select(PathElement.groupElement("perViewPositionAllComponents"));
-    /// The [VarHandle] of `perViewPositionAllComponents` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     public static final VarHandle VH_perViewPositionAllComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("perViewPositionAllComponents"));
 
-    /// Creates `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX`
     public static VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX`
     public static VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.nvx.VKNVXMultiviewPerViewAttributes.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX); }
+    public static VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.nvx.VKNVXMultiviewPerViewAttributes.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX);
+        return s;
+    }
     public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX copyFrom(VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX reinterpret(long count) { return new VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `perViewPositionAllComponents` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int perViewPositionAllComponents(MemorySegment segment, long index) { return (int) VH_perViewPositionAllComponents.get(segment, 0L, index); }
-    /// {@return `perViewPositionAllComponents`}
-    public int perViewPositionAllComponents() { return perViewPositionAllComponents(this.segment(), 0L); }
-    /// Sets `perViewPositionAllComponents` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void perViewPositionAllComponents(MemorySegment segment, long index, int value) { VH_perViewPositionAllComponents.set(segment, 0L, index, value); }
-    /// Sets `perViewPositionAllComponents` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX perViewPositionAllComponents(int value) { perViewPositionAllComponents(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX`
     public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX asSlice(long index) { return new VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX`
     public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX asSlice(long index, long count) { return new VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX at(long index, Consumer<VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `perViewPositionAllComponents` at the given index}
-    /// @param index the index of the struct buffer
-    public int perViewPositionAllComponentsAt(long index) { return perViewPositionAllComponents(this.segment(), index); }
-    /// Sets `perViewPositionAllComponents` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX perViewPositionAllComponentsAt(long index, int value) { perViewPositionAllComponents(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int perViewPositionAllComponentsAt(long index) { return (int) VH_perViewPositionAllComponents.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int perViewPositionAllComponents() { return (int) VH_perViewPositionAllComponents.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX perViewPositionAllComponentsAt(long index, int value) { VH_perViewPositionAllComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX perViewPositionAllComponents(int value) { VH_perViewPositionAllComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _perViewPositionAllComponentsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_perViewPositionAllComponents, index), LAYOUT_perViewPositionAllComponents); }
+    public MemorySegment _perViewPositionAllComponents() { return _perViewPositionAllComponentsAt(0L); }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX _perViewPositionAllComponentsAt(long index, MemorySegment src) { _perViewPositionAllComponentsAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX _perViewPositionAllComponents(MemorySegment src) { return _perViewPositionAllComponentsAt(0L, src); }
 }

@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,173 +12,66 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 attachmentFeedbackLoopDynamicState;
-/// };
+///     VkBool32 attachmentFeedbackLoopDynamicState;
+/// }
 /// ```
 public final class VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("attachmentFeedbackLoopDynamicState")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `attachmentFeedbackLoopDynamicState`.
     public static final long OFFSET_attachmentFeedbackLoopDynamicState = LAYOUT.byteOffset(PathElement.groupElement("attachmentFeedbackLoopDynamicState"));
-    /// The memory layout of `attachmentFeedbackLoopDynamicState`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_attachmentFeedbackLoopDynamicState = LAYOUT.select(PathElement.groupElement("attachmentFeedbackLoopDynamicState"));
-    /// The [VarHandle] of `attachmentFeedbackLoopDynamicState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     public static final VarHandle VH_attachmentFeedbackLoopDynamicState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentFeedbackLoopDynamicState"));
 
-    /// Creates `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`
     public static VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`
     public static VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTAttachmentFeedbackLoopDynamicState.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT); }
+    public static VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTAttachmentFeedbackLoopDynamicState.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT);
+        return s;
+    }
     public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT copyFrom(VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT reinterpret(long count) { return new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `attachmentFeedbackLoopDynamicState` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int attachmentFeedbackLoopDynamicState(MemorySegment segment, long index) { return (int) VH_attachmentFeedbackLoopDynamicState.get(segment, 0L, index); }
-    /// {@return `attachmentFeedbackLoopDynamicState`}
-    public int attachmentFeedbackLoopDynamicState() { return attachmentFeedbackLoopDynamicState(this.segment(), 0L); }
-    /// Sets `attachmentFeedbackLoopDynamicState` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void attachmentFeedbackLoopDynamicState(MemorySegment segment, long index, int value) { VH_attachmentFeedbackLoopDynamicState.set(segment, 0L, index, value); }
-    /// Sets `attachmentFeedbackLoopDynamicState` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT attachmentFeedbackLoopDynamicState(int value) { attachmentFeedbackLoopDynamicState(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`
     public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`
     public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT at(long index, Consumer<VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `attachmentFeedbackLoopDynamicState` at the given index}
-    /// @param index the index of the struct buffer
-    public int attachmentFeedbackLoopDynamicStateAt(long index) { return attachmentFeedbackLoopDynamicState(this.segment(), index); }
-    /// Sets `attachmentFeedbackLoopDynamicState` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT attachmentFeedbackLoopDynamicStateAt(long index, int value) { attachmentFeedbackLoopDynamicState(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int attachmentFeedbackLoopDynamicStateAt(long index) { return (int) VH_attachmentFeedbackLoopDynamicState.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int attachmentFeedbackLoopDynamicState() { return (int) VH_attachmentFeedbackLoopDynamicState.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT attachmentFeedbackLoopDynamicStateAt(long index, int value) { VH_attachmentFeedbackLoopDynamicState.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT attachmentFeedbackLoopDynamicState(int value) { VH_attachmentFeedbackLoopDynamicState.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _attachmentFeedbackLoopDynamicStateAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_attachmentFeedbackLoopDynamicState, index), LAYOUT_attachmentFeedbackLoopDynamicState); }
+    public MemorySegment _attachmentFeedbackLoopDynamicState() { return _attachmentFeedbackLoopDynamicStateAt(0L); }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT _attachmentFeedbackLoopDynamicStateAt(long index, MemorySegment src) { _attachmentFeedbackLoopDynamicStateAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT _attachmentFeedbackLoopDynamicState(MemorySegment src) { return _attachmentFeedbackLoopDynamicStateAt(0L, src); }
 }

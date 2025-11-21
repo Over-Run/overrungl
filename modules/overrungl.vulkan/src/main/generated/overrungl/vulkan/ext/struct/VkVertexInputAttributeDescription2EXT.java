@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,16 +12,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVertexInputAttributeDescription2EXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t location;
 ///     uint32_t binding;
-///     (int) VkFormat format;
+///     VkFormat format;
 ///     uint32_t offset;
-/// };
+/// }
 /// ```
 public final class VkVertexInputAttributeDescription2EXT extends GroupType {
-    /// The struct layout of `VkVertexInputAttributeDescription2EXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -31,254 +29,88 @@ public final class VkVertexInputAttributeDescription2EXT extends GroupType {
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_INT.withName("offset")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `location`.
     public static final long OFFSET_location = LAYOUT.byteOffset(PathElement.groupElement("location"));
-    /// The memory layout of `location`.
-    public static final MemoryLayout LAYOUT_location = LAYOUT.select(PathElement.groupElement("location"));
-    /// The [VarHandle] of `location` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_location = LAYOUT.arrayElementVarHandle(PathElement.groupElement("location"));
-    /// The byte offset of `binding`.
     public static final long OFFSET_binding = LAYOUT.byteOffset(PathElement.groupElement("binding"));
-    /// The memory layout of `binding`.
-    public static final MemoryLayout LAYOUT_binding = LAYOUT.select(PathElement.groupElement("binding"));
-    /// The [VarHandle] of `binding` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_binding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("binding"));
-    /// The byte offset of `format`.
     public static final long OFFSET_format = LAYOUT.byteOffset(PathElement.groupElement("format"));
-    /// The memory layout of `format`.
-    public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
-    /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
-    /// The byte offset of `offset`.
     public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
-    /// The memory layout of `offset`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_location = LAYOUT.select(PathElement.groupElement("location"));
+    public static final MemoryLayout LAYOUT_binding = LAYOUT.select(PathElement.groupElement("binding"));
+    public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
     public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
-    /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_location = LAYOUT.arrayElementVarHandle(PathElement.groupElement("location"));
+    public static final VarHandle VH_binding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("binding"));
+    public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
     public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
 
-    /// Creates `VkVertexInputAttributeDescription2EXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkVertexInputAttributeDescription2EXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkVertexInputAttributeDescription2EXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVertexInputAttributeDescription2EXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVertexInputAttributeDescription2EXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkVertexInputAttributeDescription2EXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVertexInputAttributeDescription2EXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVertexInputAttributeDescription2EXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkVertexInputAttributeDescription2EXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVertexInputAttributeDescription2EXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVertexInputAttributeDescription2EXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkVertexInputAttributeDescription2EXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVertexInputAttributeDescription2EXT`
     public static VkVertexInputAttributeDescription2EXT alloc(SegmentAllocator allocator) { return new VkVertexInputAttributeDescription2EXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkVertexInputAttributeDescription2EXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkVertexInputAttributeDescription2EXT`
     public static VkVertexInputAttributeDescription2EXT alloc(SegmentAllocator allocator, long count) { return new VkVertexInputAttributeDescription2EXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkVertexInputAttributeDescription2EXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTShaderObject.VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT); }
+    public static VkVertexInputAttributeDescription2EXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTShaderObject.VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT);
+        return s;
+    }
     public VkVertexInputAttributeDescription2EXT copyFrom(VkVertexInputAttributeDescription2EXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkVertexInputAttributeDescription2EXT reinterpret(long count) { return new VkVertexInputAttributeDescription2EXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `location` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int location(MemorySegment segment, long index) { return (int) VH_location.get(segment, 0L, index); }
-    /// {@return `location`}
-    public int location() { return location(this.segment(), 0L); }
-    /// Sets `location` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void location(MemorySegment segment, long index, int value) { VH_location.set(segment, 0L, index, value); }
-    /// Sets `location` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT location(int value) { location(this.segment(), 0L, value); return this; }
-
-    /// {@return `binding` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int binding(MemorySegment segment, long index) { return (int) VH_binding.get(segment, 0L, index); }
-    /// {@return `binding`}
-    public int binding() { return binding(this.segment(), 0L); }
-    /// Sets `binding` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void binding(MemorySegment segment, long index, int value) { VH_binding.set(segment, 0L, index, value); }
-    /// Sets `binding` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT binding(int value) { binding(this.segment(), 0L, value); return this; }
-
-    /// {@return `format` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
-    /// {@return `format`}
-    public int format() { return format(this.segment(), 0L); }
-    /// Sets `format` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void format(MemorySegment segment, long index, int value) { VH_format.set(segment, 0L, index, value); }
-    /// Sets `format` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT format(int value) { format(this.segment(), 0L, value); return this; }
-
-    /// {@return `offset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int offset(MemorySegment segment, long index) { return (int) VH_offset.get(segment, 0L, index); }
-    /// {@return `offset`}
-    public int offset() { return offset(this.segment(), 0L); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void offset(MemorySegment segment, long index, int value) { VH_offset.set(segment, 0L, index, value); }
-    /// Sets `offset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT offset(int value) { offset(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkVertexInputAttributeDescription2EXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVertexInputAttributeDescription2EXT`
     public VkVertexInputAttributeDescription2EXT asSlice(long index) { return new VkVertexInputAttributeDescription2EXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkVertexInputAttributeDescription2EXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVertexInputAttributeDescription2EXT`
     public VkVertexInputAttributeDescription2EXT asSlice(long index, long count) { return new VkVertexInputAttributeDescription2EXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkVertexInputAttributeDescription2EXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkVertexInputAttributeDescription2EXT at(long index, Consumer<VkVertexInputAttributeDescription2EXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `location` at the given index}
-    /// @param index the index of the struct buffer
-    public int locationAt(long index) { return location(this.segment(), index); }
-    /// Sets `location` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT locationAt(long index, int value) { location(this.segment(), index, value); return this; }
-
-    /// {@return `binding` at the given index}
-    /// @param index the index of the struct buffer
-    public int bindingAt(long index) { return binding(this.segment(), index); }
-    /// Sets `binding` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT bindingAt(long index, int value) { binding(this.segment(), index, value); return this; }
-
-    /// {@return `format` at the given index}
-    /// @param index the index of the struct buffer
-    public int formatAt(long index) { return format(this.segment(), index); }
-    /// Sets `format` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT formatAt(long index, int value) { format(this.segment(), index, value); return this; }
-
-    /// {@return `offset` at the given index}
-    /// @param index the index of the struct buffer
-    public int offsetAt(long index) { return offset(this.segment(), index); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputAttributeDescription2EXT offsetAt(long index, int value) { offset(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int locationAt(long index) { return (int) VH_location.get(this.segment(), 0L, index); }
+    public int bindingAt(long index) { return (int) VH_binding.get(this.segment(), 0L, index); }
+    public int formatAt(long index) { return (int) VH_format.get(this.segment(), 0L, index); }
+    public int offsetAt(long index) { return (int) VH_offset.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int location() { return (int) VH_location.get(this.segment(), 0L, 0L); }
+    public int binding() { return (int) VH_binding.get(this.segment(), 0L, 0L); }
+    public int format() { return (int) VH_format.get(this.segment(), 0L, 0L); }
+    public int offset() { return (int) VH_offset.get(this.segment(), 0L, 0L); }
+    public VkVertexInputAttributeDescription2EXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkVertexInputAttributeDescription2EXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkVertexInputAttributeDescription2EXT locationAt(long index, int value) { VH_location.set(this.segment(), 0L, index, value); return this; }
+    public VkVertexInputAttributeDescription2EXT bindingAt(long index, int value) { VH_binding.set(this.segment(), 0L, index, value); return this; }
+    public VkVertexInputAttributeDescription2EXT formatAt(long index, int value) { VH_format.set(this.segment(), 0L, index, value); return this; }
+    public VkVertexInputAttributeDescription2EXT offsetAt(long index, int value) { VH_offset.set(this.segment(), 0L, index, value); return this; }
+    public VkVertexInputAttributeDescription2EXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVertexInputAttributeDescription2EXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVertexInputAttributeDescription2EXT location(int value) { VH_location.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVertexInputAttributeDescription2EXT binding(int value) { VH_binding.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVertexInputAttributeDescription2EXT format(int value) { VH_format.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVertexInputAttributeDescription2EXT offset(int value) { VH_offset.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkVertexInputAttributeDescription2EXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkVertexInputAttributeDescription2EXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkVertexInputAttributeDescription2EXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkVertexInputAttributeDescription2EXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _locationAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_location, index), LAYOUT_location); }
+    public MemorySegment _location() { return _locationAt(0L); }
+    public VkVertexInputAttributeDescription2EXT _locationAt(long index, MemorySegment src) { _locationAt(index).copyFrom(src); return this; }
+    public VkVertexInputAttributeDescription2EXT _location(MemorySegment src) { return _locationAt(0L, src); }
+    public MemorySegment _bindingAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_binding, index), LAYOUT_binding); }
+    public MemorySegment _binding() { return _bindingAt(0L); }
+    public VkVertexInputAttributeDescription2EXT _bindingAt(long index, MemorySegment src) { _bindingAt(index).copyFrom(src); return this; }
+    public VkVertexInputAttributeDescription2EXT _binding(MemorySegment src) { return _bindingAt(0L, src); }
+    public MemorySegment _formatAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_format, index), LAYOUT_format); }
+    public MemorySegment _format() { return _formatAt(0L); }
+    public VkVertexInputAttributeDescription2EXT _formatAt(long index, MemorySegment src) { _formatAt(index).copyFrom(src); return this; }
+    public VkVertexInputAttributeDescription2EXT _format(MemorySegment src) { return _formatAt(0L, src); }
+    public MemorySegment _offsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_offset, index), LAYOUT_offset); }
+    public MemorySegment _offset() { return _offsetAt(0L); }
+    public VkVertexInputAttributeDescription2EXT _offsetAt(long index, MemorySegment src) { _offsetAt(index).copyFrom(src); return this; }
+    public VkVertexInputAttributeDescription2EXT _offset(MemorySegment src) { return _offsetAt(0L, src); }
 }

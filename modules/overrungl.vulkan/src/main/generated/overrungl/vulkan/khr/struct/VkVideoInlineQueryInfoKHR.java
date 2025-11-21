@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoInlineQueryInfoKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (uint64_t) VkQueryPool queryPool;
+///     VkQueryPool queryPool;
 ///     uint32_t firstQuery;
 ///     uint32_t queryCount;
-/// };
+/// }
 /// ```
 public final class VkVideoInlineQueryInfoKHR extends GroupType {
-    /// The struct layout of `VkVideoInlineQueryInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,223 +27,77 @@ public final class VkVideoInlineQueryInfoKHR extends GroupType {
         ValueLayout.JAVA_INT.withName("firstQuery"),
         ValueLayout.JAVA_INT.withName("queryCount")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `queryPool`.
     public static final long OFFSET_queryPool = LAYOUT.byteOffset(PathElement.groupElement("queryPool"));
-    /// The memory layout of `queryPool`.
-    public static final MemoryLayout LAYOUT_queryPool = LAYOUT.select(PathElement.groupElement("queryPool"));
-    /// The [VarHandle] of `queryPool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_queryPool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queryPool"));
-    /// The byte offset of `firstQuery`.
     public static final long OFFSET_firstQuery = LAYOUT.byteOffset(PathElement.groupElement("firstQuery"));
-    /// The memory layout of `firstQuery`.
-    public static final MemoryLayout LAYOUT_firstQuery = LAYOUT.select(PathElement.groupElement("firstQuery"));
-    /// The [VarHandle] of `firstQuery` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_firstQuery = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstQuery"));
-    /// The byte offset of `queryCount`.
     public static final long OFFSET_queryCount = LAYOUT.byteOffset(PathElement.groupElement("queryCount"));
-    /// The memory layout of `queryCount`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_queryPool = LAYOUT.select(PathElement.groupElement("queryPool"));
+    public static final MemoryLayout LAYOUT_firstQuery = LAYOUT.select(PathElement.groupElement("firstQuery"));
     public static final MemoryLayout LAYOUT_queryCount = LAYOUT.select(PathElement.groupElement("queryCount"));
-    /// The [VarHandle] of `queryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_queryPool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queryPool"));
+    public static final VarHandle VH_firstQuery = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstQuery"));
     public static final VarHandle VH_queryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queryCount"));
 
-    /// Creates `VkVideoInlineQueryInfoKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkVideoInlineQueryInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkVideoInlineQueryInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoInlineQueryInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoInlineQueryInfoKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkVideoInlineQueryInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoInlineQueryInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoInlineQueryInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkVideoInlineQueryInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoInlineQueryInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoInlineQueryInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkVideoInlineQueryInfoKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoInlineQueryInfoKHR`
     public static VkVideoInlineQueryInfoKHR alloc(SegmentAllocator allocator) { return new VkVideoInlineQueryInfoKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkVideoInlineQueryInfoKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkVideoInlineQueryInfoKHR`
     public static VkVideoInlineQueryInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoInlineQueryInfoKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkVideoInlineQueryInfoKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRVideoMaintenance1.VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR); }
+    public static VkVideoInlineQueryInfoKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRVideoMaintenance1.VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR);
+        return s;
+    }
     public VkVideoInlineQueryInfoKHR copyFrom(VkVideoInlineQueryInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkVideoInlineQueryInfoKHR reinterpret(long count) { return new VkVideoInlineQueryInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoInlineQueryInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoInlineQueryInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `queryPool` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long queryPool(MemorySegment segment, long index) { return (long) VH_queryPool.get(segment, 0L, index); }
-    /// {@return `queryPool`}
-    public long queryPool() { return queryPool(this.segment(), 0L); }
-    /// Sets `queryPool` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void queryPool(MemorySegment segment, long index, long value) { VH_queryPool.set(segment, 0L, index, value); }
-    /// Sets `queryPool` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoInlineQueryInfoKHR queryPool(long value) { queryPool(this.segment(), 0L, value); return this; }
-
-    /// {@return `firstQuery` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int firstQuery(MemorySegment segment, long index) { return (int) VH_firstQuery.get(segment, 0L, index); }
-    /// {@return `firstQuery`}
-    public int firstQuery() { return firstQuery(this.segment(), 0L); }
-    /// Sets `firstQuery` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void firstQuery(MemorySegment segment, long index, int value) { VH_firstQuery.set(segment, 0L, index, value); }
-    /// Sets `firstQuery` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoInlineQueryInfoKHR firstQuery(int value) { firstQuery(this.segment(), 0L, value); return this; }
-
-    /// {@return `queryCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int queryCount(MemorySegment segment, long index) { return (int) VH_queryCount.get(segment, 0L, index); }
-    /// {@return `queryCount`}
-    public int queryCount() { return queryCount(this.segment(), 0L); }
-    /// Sets `queryCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void queryCount(MemorySegment segment, long index, int value) { VH_queryCount.set(segment, 0L, index, value); }
-    /// Sets `queryCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoInlineQueryInfoKHR queryCount(int value) { queryCount(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkVideoInlineQueryInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoInlineQueryInfoKHR`
     public VkVideoInlineQueryInfoKHR asSlice(long index) { return new VkVideoInlineQueryInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkVideoInlineQueryInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoInlineQueryInfoKHR`
     public VkVideoInlineQueryInfoKHR asSlice(long index, long count) { return new VkVideoInlineQueryInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkVideoInlineQueryInfoKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkVideoInlineQueryInfoKHR at(long index, Consumer<VkVideoInlineQueryInfoKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoInlineQueryInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoInlineQueryInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `queryPool` at the given index}
-    /// @param index the index of the struct buffer
-    public long queryPoolAt(long index) { return queryPool(this.segment(), index); }
-    /// Sets `queryPool` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoInlineQueryInfoKHR queryPoolAt(long index, long value) { queryPool(this.segment(), index, value); return this; }
-
-    /// {@return `firstQuery` at the given index}
-    /// @param index the index of the struct buffer
-    public int firstQueryAt(long index) { return firstQuery(this.segment(), index); }
-    /// Sets `firstQuery` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoInlineQueryInfoKHR firstQueryAt(long index, int value) { firstQuery(this.segment(), index, value); return this; }
-
-    /// {@return `queryCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int queryCountAt(long index) { return queryCount(this.segment(), index); }
-    /// Sets `queryCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoInlineQueryInfoKHR queryCountAt(long index, int value) { queryCount(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long queryPoolAt(long index) { return (long) VH_queryPool.get(this.segment(), 0L, index); }
+    public int firstQueryAt(long index) { return (int) VH_firstQuery.get(this.segment(), 0L, index); }
+    public int queryCountAt(long index) { return (int) VH_queryCount.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long queryPool() { return (long) VH_queryPool.get(this.segment(), 0L, 0L); }
+    public int firstQuery() { return (int) VH_firstQuery.get(this.segment(), 0L, 0L); }
+    public int queryCount() { return (int) VH_queryCount.get(this.segment(), 0L, 0L); }
+    public VkVideoInlineQueryInfoKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoInlineQueryInfoKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoInlineQueryInfoKHR queryPoolAt(long index, long value) { VH_queryPool.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoInlineQueryInfoKHR firstQueryAt(long index, int value) { VH_firstQuery.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoInlineQueryInfoKHR queryCountAt(long index, int value) { VH_queryCount.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoInlineQueryInfoKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoInlineQueryInfoKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoInlineQueryInfoKHR queryPool(long value) { VH_queryPool.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoInlineQueryInfoKHR firstQuery(int value) { VH_firstQuery.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoInlineQueryInfoKHR queryCount(int value) { VH_queryCount.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkVideoInlineQueryInfoKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkVideoInlineQueryInfoKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkVideoInlineQueryInfoKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkVideoInlineQueryInfoKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _queryPoolAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_queryPool, index), LAYOUT_queryPool); }
+    public MemorySegment _queryPool() { return _queryPoolAt(0L); }
+    public VkVideoInlineQueryInfoKHR _queryPoolAt(long index, MemorySegment src) { _queryPoolAt(index).copyFrom(src); return this; }
+    public VkVideoInlineQueryInfoKHR _queryPool(MemorySegment src) { return _queryPoolAt(0L, src); }
+    public MemorySegment _firstQueryAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_firstQuery, index), LAYOUT_firstQuery); }
+    public MemorySegment _firstQuery() { return _firstQueryAt(0L); }
+    public VkVideoInlineQueryInfoKHR _firstQueryAt(long index, MemorySegment src) { _firstQueryAt(index).copyFrom(src); return this; }
+    public VkVideoInlineQueryInfoKHR _firstQuery(MemorySegment src) { return _firstQueryAt(0L, src); }
+    public MemorySegment _queryCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_queryCount, index), LAYOUT_queryCount); }
+    public MemorySegment _queryCount() { return _queryCountAt(0L); }
+    public VkVideoInlineQueryInfoKHR _queryCountAt(long index, MemorySegment src) { _queryCountAt(index).copyFrom(src); return this; }
+    public VkVideoInlineQueryInfoKHR _queryCount(MemorySegment src) { return _queryCountAt(0L, src); }
 }

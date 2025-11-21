@@ -13,16 +13,15 @@ public final class VKAMDDisplayNativeHdr {
     public static final int VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD = 1000213000;
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD = 1000213001;
     public static final int VK_COLOR_SPACE_DISPLAY_NATIVE_AMD = 1000213000;
+    private VKAMDDisplayNativeHdr() {}
     public static final class Handles {
         public static final MethodHandle MH_vkSetLocalDimmingAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         private Handles() {}
     }
 
-    private VKAMDDisplayNativeHdr() {}
-
     /// Invokes `vkSetLocalDimmingAMD`.
     /// ```
-    /// void vkSetLocalDimmingAMD((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapChain, (uint32_t) VkBool32 localDimmingEnable);
+    /// void vkSetLocalDimmingAMD(VkDevice device, VkSwapchainKHR swapChain, VkBool32 localDimmingEnable);
     /// ```
     public static void vkSetLocalDimmingAMD(@NonNull VkDevice device, long swapChain, int localDimmingEnable) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLocalDimmingAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkSetLocalDimmingAMD");

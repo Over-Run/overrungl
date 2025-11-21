@@ -10,17 +10,16 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class VKEXTAcquireDrmDisplay {
     public static final int VK_EXT_ACQUIRE_DRM_DISPLAY_SPEC_VERSION = 1;
     public static final String VK_EXT_ACQUIRE_DRM_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_drm_display";
+    private VKEXTAcquireDrmDisplay() {}
     public static final class Handles {
         public static final MethodHandle MH_vkAcquireDrmDisplayEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_vkGetDrmDisplayEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKEXTAcquireDrmDisplay() {}
-
     /// Invokes `vkAcquireDrmDisplayEXT`.
     /// ```
-    /// (int) VkResult vkAcquireDrmDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, int32_t drmFd, (uint64_t) VkDisplayKHR display);
+    /// VkResult vkAcquireDrmDisplayEXT(VkPhysicalDevice physicalDevice, int32_t drmFd, VkDisplayKHR display);
     /// ```
     public static int vkAcquireDrmDisplayEXT(@NonNull VkPhysicalDevice physicalDevice, int drmFd, long display) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkAcquireDrmDisplayEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireDrmDisplayEXT");
@@ -31,7 +30,7 @@ public final class VKEXTAcquireDrmDisplay {
 
     /// Invokes `vkGetDrmDisplayEXT`.
     /// ```
-    /// (int) VkResult vkGetDrmDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, int32_t drmFd, uint32_t connectorId, VkDisplayKHR* display);
+    /// VkResult vkGetDrmDisplayEXT(VkPhysicalDevice physicalDevice, int32_t drmFd, uint32_t connectorId, VkDisplayKHR* display);
     /// ```
     public static int vkGetDrmDisplayEXT(@NonNull VkPhysicalDevice physicalDevice, int drmFd, int connectorId, @NonNull MemorySegment display) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetDrmDisplayEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDrmDisplayEXT");

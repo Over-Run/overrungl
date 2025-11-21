@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_imageless_framebuffer` - device extension
 public final class VKKHRImagelessFramebuffer {
     public static final int VK_KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION = 1;
@@ -11,7 +14,5 @@ public final class VKKHRImagelessFramebuffer {
     public static final int VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENT_IMAGE_INFO_KHR = 1000108002;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO_KHR = 1000108003;
     public static final int VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT_KHR = 0x00000001;
-
     private VKKHRImagelessFramebuffer() {}
-
 }
